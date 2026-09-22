@@ -1,0 +1,98 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "后备箱灯功能逻辑框图",
+  "row_semantics": "输入信号来源系统",
+  "column_semantics": "信号名称及其流向",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LdSpcLampCtrl(RZCU/LHZCU)",
+      "type": "controller",
+      "description": "后备箱灯控制单元，负责接收各系统信号并生成控制指令"
+    },
+    {
+      "name": "LdSpcLampDrv(RZCU/LHZCU)",
+      "type": "controller",
+      "description": "后备箱灯驱动单元，接收控制指令并执行"
+    },
+    {
+      "name": "BrakingSystem",
+      "type": "system",
+      "description": "制动系统，提供车辆平均速度信息"
+    },
+    {
+      "name": "TailgateSystem",
+      "type": "system",
+      "description": "尾门系统，提供尾门开启状态信息"
+    },
+    {
+      "name": "LockingSystem",
+      "type": "system",
+      "description": "门锁系统，提供车辆锁止状态信息"
+    },
+    {
+      "name": "VehicleStateSystem",
+      "type": "system",
+      "description": "整车状态管理系统，提供车辆模式和用户模式相关状态信息"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehSpdAvg",
+      "type": "input_signal",
+      "source": "BrakingSystem",
+      "description": "车辆平均速度"
+    },
+    {
+      "name": "LdspcOpenSts",
+      "type": "input_signal",
+      "source": "TailgateSystem",
+      "description": "尾门开启状态"
+    },
+    {
+      "name": "VehLckSts",
+      "type": "input_signal",
+      "source": "LockingSystem",
+      "description": "车辆锁止状态"
+    },
+    {
+      "name": "VehMd",
+      "type": "input_signal",
+      "source": "VehicleStateSystem",
+      "description": "车辆模式"
+    },
+    {
+      "name": "VehMdV",
+      "type": "input_signal",
+      "source": "VehicleStateSystem",
+      "description": "车辆模式值"
+    },
+    {
+      "name": "UsrMd",
+      "type": "input_signal",
+      "source": "VehicleStateSystem",
+      "description": "用户模式"
+    },
+    {
+      "name": "UsrMdV",
+      "type": "input_signal",
+      "source": "VehicleStateSystem",
+      "description": "用户模式值"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LdSpcLampCtrlCmd",
+      "type": "output_signal",
+      "destination": "LdSpcLampDrv",
+      "description": "后备箱灯控制指令"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该逻辑框图可用于验证后备箱灯在不同车辆状态（如制动、尾门状态、锁止状态、车辆模式）下的正确控制逻辑，确保在RZCU或LHZCU存在时，后备箱灯功能按预期工作。",
+  "uncertain_points": []
+}
+```

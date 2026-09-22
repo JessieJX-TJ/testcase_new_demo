@@ -1,0 +1,42 @@
+d.{FrontFogLight.FrontFogLightState.FrontFogLightSta}{ InstanceID=4} = Ox1=On-
+>0x0=OFF
+(exlFrontFogLghtHwDrvEnPrm=0x1；通过 Instance ID 3/4 获取前雾灯状
+(注:无前雾灯功能,InsdFnCfgFrtFogLght=0x0,则默认前雾灯为关闭状
+态)
+或者
+2)LHZCU判断前雾灯关闭:
+{ExteriorLightSwitchProcess.
+FrontFogLghtFucProStatus.FrontFogLghtFucProsSta}=0x0=OFF
+8. 远光灯状态为关闭:
+1)远光灯反馈状态为关闭:
+{MainBeamLight. MainBeamLightStatus.
+MainBeamLightSta}{InstanceID=1}=0x0=OFF&
+MainBeamLightSta}{InstanceID=2}=0x1=OFF
+(exlMainBeamHwDrvEnPrm=0x0时,通过InstanceID1,2获取状态)
+MainBeamLightSta}{InstanceID=3}=0x1=OFF&
+MainBeamLightSta}{InstanceID=4}=0x1=OFF
+(exlMainBeamHwDrvEnPrm=0x1 时,通过 InstanceID=4 获取右侧远光灯状态)
+2)LHZCU判断远光灯关闭:
+{ExteriorLightSwitchProcess. MainBeamLightFucProStatus.
+MainBeamLghtFucProsSta}=0x0=OFF
+9. 后雾灯在工厂模式下开启 2min:a&&b&&c
+a、整车模式为工厂模式:VehMd=0x2= VehMd_2 FACTORY
+&& VehMdV=0x1=VehMdV_1_Valid
+b、后雾灯点亮:
+{ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta}=0x1
+|0x2||0x3
+c、持续2min
+执行动作
+[后雾灯控制模块LHZCU]接口响应:
+Notifier:
+[外灯控制组合服务ICB]调用基础服务
+[后雾灯控制模块LHZCU]同时发出控制信号给ICB:
+RearFogLghtCtrl=0x0=RearFogLghtCtrl_0_Off
+ICB分发控制信号至RZCU:
+RearFogLghtCtrl_HW=0x1=RearFogLghtCtrl_HW_0_Off
+[外灯控制组合服务ICB]调用接口:
+{ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta}=0x0=OFF,获取后
+雾灯开关状态
+当{ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta}接口参数
+为Ox0=OFF时,{ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta}接
+口参数同时赋值 0x0=OFF

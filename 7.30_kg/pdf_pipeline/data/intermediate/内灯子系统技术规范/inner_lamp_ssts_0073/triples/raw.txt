@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "背光灯点亮",
+    "relation": "触发条件",
+    "tail": "接收到LHZCU的请求信号VehSideLghtSts_l_DCMFL_LIN = 0x3 (All_Side_Light_And_License_Plate_Light_On)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["触发条件", "VehSideLghtSts_l_DCMFL_LIN", "DTSM_FL"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "背光灯关闭",
+    "relation": "触发条件",
+    "tail": "接收VehSideLghtSts_l_DCMFL_LIN = 0x0 (No_Side_Light_On)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["退出条件", "VehSideLghtSts_l_DCMFL_LIN", "DTSM_FL"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "背光灯状态维持",
+    "relation": "触发条件",
+    "tail": "接收VehSideLghtSts_l_DCMFL_LIN = 0x1 (Left_Side_Light_On_Only) / 0x2 (Right_Side_Light_On_Only)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["退出条件", "VehSideLghtSts_l_DCMFL_LIN", "DTSM_FL"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "背光灯关闭",
+    "relation": "故障响应",
+    "tail": "检测到背光灯短路/开路故障",
+    "triple_type": "故障响应",
+    "evidence_terms": ["异常处理", "背光灯短路/开路故障", "DTSM_FL"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DTSM_FL驱动背光灯点亮",
+    "relation": "输出为",
+    "tail": "VehSideLghtSts_l_DCMFL_LIN = 0x3 (All_Side_Light_And_License_Plate_Light_On)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "VehSideLghtSts_l_DCMFL_LIN", "DTSM_FL"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "背光灯关闭",
+    "relation": "抑制条件",
+    "tail": "前置条件：背光灯无短路/开路故障",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "异常处理", "DTSM_FL"],
+    "confidence_note": "high"
+  }
+]
+```

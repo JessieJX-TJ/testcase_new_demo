@@ -1,0 +1,66 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯控制系统接口参数定义与功能描述",
+  "row_semantics": "表格的每一行代表一个独立的服务接口或控制功能，详细描述了其作用、参数名称及取值含义。",
+  "column_semantics": "表格采用多列布局，主要分为功能描述区和参数定义区。其中，第一列用于标识功能模块或接口名称，后续列提供了该接口的调用说明、参数类型、参数名及其具体枚举值定义。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "CombLightFucProStatus",
+      "type": "interface",
+      "description": "组合灯光功能状态查询接口"
+    },
+    {
+      "name": "ControlDippedBeamLight",
+      "type": "interface",
+      "description": "近光灯控制接口"
+    },
+    {
+      "name": "SOA",
+      "type": "controller",
+      "description": "Service Oriented Architecture，服务导向架构"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Local Headlight Control Unit，局部大灯控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Control Box，集成控制盒"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CombLightFucProSta",
+      "type": "parameter",
+      "description": "组合灯光功能状态参数，定义了自动灯光点亮或熄灭的条件",
+      "values": [
+        "0x0=ALL OFF",
+        "0X1=Only SidePositionLight ON",
+        "0X2=Only DippedBeamLight ON",
+        "0X3=SidePositionAndDippedBeam OFF",
+        "0X4=SidePositionAndDippedBeam ON",
+        "0x5=Unknown"
+      ]
+    },
+    {
+      "name": "DippedBeamLightReq",
+      "type": "parameter",
+      "description": "近光灯请求参数，用于控制左侧或右侧近光灯的开关",
+      "values": [
+        "0x0=OFF",
+        "0x1=ON"
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯控制系统中组合灯光状态查询和近光灯控制的接口参数，可用于验证车辆在不同驾驶场景下（如侧位灯、近光灯单独或组合工作）的灯光响应是否符合设计规范。",
+  "uncertain_points": []
+}
+```

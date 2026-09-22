@@ -1,0 +1,20 @@
+前置条件
+氛围灯处于关闭状态
+触发条件
+接收到氛围灯本地控制模块亮度变化请求信号
+DoorFR1LampBrtnsCmd_l=0x00(No Request)变化为！
+=0x00(No Request)
+执行动作
+[氛围灯驱动控制模块]按照亮度设置表对应亮度值的PWM
+驱动氛围灯切换亮度
+退出条件
+1、接收到氛围灯本地控制模块的亮度变化请求信号
+DoorFR1LampBrtnsCmd_l=0x00(No Request),维持
+当前亮度不变
+2、
+接收到氛围灯本地控制模块的请求信号
+DoorFR1LampOnOff_1=0x0(OFF),按照对应渐变速
+度DoorFR1LampFadeSpdCmd_1,关闭氛围灯
+3、当接收到 DoorFR1LampBrtnsCmd_1信号为 0x65-0xFF
+时,保持当前的亮度不变；(0x65-0xFF为预留值,待
+后续开发使用)

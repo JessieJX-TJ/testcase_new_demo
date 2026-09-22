@@ -1,0 +1,88 @@
+{
+  "table_type": "state_table",
+  "topic": "左侧和右侧近光灯状态定义",
+  "row_semantics": "按功能模块（左侧/右侧）和状态类型（软件状态/硬件状态）划分的近光灯状态定义",
+  "column_semantics": {
+    "输出": "信号的输出方向",
+    "CANFD": "通过CANFD总线传输的信号",
+    "ICB": "内部通信总线（Internal Communication Bus）相关的信号",
+    "LHZCU": "左侧或右侧HCU（Body Control Module）",
+    "网络状态": "信号在网络中的状态（如激活、未激活）"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LDipdBeamLghtSts",
+      "description": "左侧近光灯状态（软件层面定义）",
+      "type": "功能名"
+    },
+    {
+      "name": "RDipdBeamLghtSts",
+      "description": "右侧近光灯状态（软件层面定义）",
+      "type": "功能名"
+    },
+    {
+      "name": "LDipdBeamLghtSts_HW",
+      "description": "左侧近光灯硬件状态",
+      "type": "功能名"
+    },
+    {
+      "name": "RDipdBeamLghtSts_HW",
+      "description": "右侧近光灯硬件状态",
+      "type": "功能名"
+    },
+    {
+      "name": "LHZCU",
+      "description": "左侧车身控制单元",
+      "type": "控制器/模块名"
+    },
+    {
+      "name": "RHZCU",
+      "description": "右侧车身控制单元",
+      "type": "控制器/模块名"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "LDipdBeamLghtSts_0_Off",
+      "description": "左侧近光灯关闭状态",
+      "type": "输出信号"
+    },
+    {
+      "name": "LDipdBeamLghtSts_1_On",
+      "description": "左侧近光灯开启状态",
+      "type": "输出信号"
+    },
+    {
+      "name": "RDipdBeamLghtSts_0_Off",
+      "description": "右侧近光灯关闭状态",
+      "type": "输出信号"
+    },
+    {
+      "name": "RDipdBeamLghtSts_1_On",
+      "description": "右侧近光灯开启状态",
+      "type": "输出信号"
+    },
+    {
+      "name": "LDipdBeamLghtSts_HW_0_Off",
+      "description": "左侧近光灯硬件关闭状态",
+      "type": "输出信号"
+    },
+    {
+      "name": "LDipdBeamLghtSts_HW_1_On",
+      "description": "左侧近光灯硬件开启状态",
+      "type": "输出信号"
+    },
+    {
+      "name": "RDipdBeamLghtSts_HW_0_Off",
+      "description": "右侧近光灯硬件关闭状态",
+      "type": "输出信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆左侧和右侧近光灯在软件和硬件层面的状态值（0x0=关闭，0x1=开启），以及这些状态信号通过CANFD、ICB和HCU等路径的传输方式和网络状态，可用于验证近光灯状态信号的正确性及其在不同通信路径上的表现。",
+  "uncertain_points": []
+}

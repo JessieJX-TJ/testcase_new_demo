@@ -1,0 +1,81 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯转向灯控制与状态监控",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的转向灯控制或状态信号，描述其硬件控制逻辑和当前状态。",
+  "column_semantics": "列标题表示信号的来源、传输方式及涉及的控制器模块。具体包括：信号类型（输出/内部信号）、通信协议（如CANFD）、以及相关的控制器单元（如LHZCU, RHZCU, RZCU）。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RRDircnLghtCtrl_HW",
+      "type": "功能名",
+      "description": "右后转向灯硬件控制信号"
+    },
+    {
+      "name": "FLDircnLghtSts_HW",
+      "type": "功能名",
+      "description": "左前转向灯硬件状态信号"
+    },
+    {
+      "name": "FRDircnLghtSts_HW",
+      "type": "功能名",
+      "description": "右前转向灯硬件状态信号"
+    },
+    {
+      "name": "RLDircnLghtSts_HW",
+      "type": "功能名",
+      "description": "左后转向灯硬件状态信号"
+    },
+    {
+      "name": "RRDircnLghtSts_HW",
+      "type": "功能名",
+      "description": "右后转向灯硬件状态信号"
+    },
+    {
+      "name": "FLDircnLghtSts",
+      "type": "功能名",
+      "description": "左前转向灯状态（可能为软件层面的状态信号）"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "RRDircnLghtCtrl_HW",
+      "type": "输出信号",
+      "description": "用于控制右后转向灯的硬件信号，值为0x0（Off）或0x1（On）"
+    },
+    {
+      "name": "FLDircnLghtSts_HW",
+      "type": "输出信号",
+      "description": "左前转向灯的硬件状态信号，值为0x0（Off）或0x1（On）"
+    },
+    {
+      "name": "FRDircnLghtSts_HW",
+      "type": "输出信号",
+      "description": "右前转向灯的硬件状态信号，值为0x0（Off）或0x1（On）"
+    },
+    {
+      "name": "RLDircnLghtSts_HW",
+      "type": "输出信号",
+      "description": "左后转向灯的硬件状态信号，值为0x0（Off）或0x1（On）"
+    },
+    {
+      "name": "RRDircnLghtSts_HW",
+      "type": "输出信号",
+      "description": "右后转向灯的硬件状态信号，值为0x0（Off）或0x1（On）"
+    },
+    {
+      "name": "FLDircnLghtSts",
+      "type": "输出信号",
+      "description": "左前转向灯的状态信号，通过CANFD传输，可能包含网络状态信息"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯转向灯的硬件控制信号及其状态信号，明确了各信号的值含义（Off/On），以及信号的传输方式（如CANFD）和涉及的控制器模块（如LHZCU, RHZCU）。可用于验证转向灯控制逻辑是否正确，以及各控制器间信号交互的准确性。",
+  "uncertain_points": [
+    "表格未明确说明各信号的具体更新频率或响应时间。",
+    "未详细描述故障状态下的信号行为。",
+    "未提供具体的阈值或定时约束条件。"
+  ]
+}

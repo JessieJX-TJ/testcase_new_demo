@@ -1,0 +1,95 @@
+{
+  "table_type": "parameter_table",
+  "topic": "整车外灯系统功能与参数更新需求",
+  "row_semantics": "按版本号（V4.5至V5.1）记录不同阶段的功能需求、参数修改及发布状态，每行代表一个版本的详细描述。",
+  "column_semantics": [
+    "第一列：版本号或标识符",
+    "第二列：版本发布日期",
+    "第三列：负责人姓名",
+    "第四列：版本内容描述，包含新增功能、参数修改、逻辑优化等"
+  ],
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "PP02 CSUV PPV",
+      "type": "车型/项目阶段",
+      "description": "特定车型（如CSUV）在PPV（Production Part Validation）阶段的需求"
+    },
+    {
+      "name": "S32L PPV",
+      "type": "车型/项目阶段",
+      "description": "特定车型（如S32L）在PPV阶段的需求"
+    },
+    {
+      "name": "S31L/S32L",
+      "type": "车型/项目阶段",
+      "description": "特定车型（如S31L和S32L）的更改项"
+    },
+    {
+      "name": "MapLampHMI",
+      "type": "模块/功能",
+      "description": "阅读灯人机交互模块，用于语音控制下发请求信号"
+    },
+    {
+      "name": "MapLampCtrl",
+      "type": "模块/功能",
+      "description": "阅读灯控制模块，用于请求信号下发和状态反馈判断"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Zone-C-SUV(PP02)-CR-122",
+      "type": "系统状态",
+      "description": "车辆处于Ready状态时，对灯随门动关门计时器提前结束的需求"
+    },
+    {
+      "name": "Configure Passenger",
+      "type": "配置参数",
+      "description": "用于语音控制和请求信号下发的乘客侧配置字"
+    },
+    {
+      "name": "LIN",
+      "type": "通信协议",
+      "description": "前两排阅读灯使用的LIN总线通信协议"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "VehSideLghtSts_1_LHZCU/VehSideLghtSts_1_RHZCU",
+      "type": "输出信号",
+      "description": "车身侧面灯光状态信号，用于指示左侧和右侧车灯的状态"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块",
+      "description": "集成控制盒，负责接收和处理阅读灯亮度信息"
+    },
+    {
+      "name": "亮度值",
+      "type": "物理量",
+      "description": "阅读灯的亮度等级，由ICB软件验证并发送新的亮度值"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "ZCU直驱导致ICB无法接收亮度问题",
+      "type": "故障状态",
+      "description": "由于ZCU直接驱动导致ICB无法在同一时间接收亮度信息的问题"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "延时300ms",
+      "type": "定时",
+      "description": "在判断6颗阅读灯点亮状态时增加的延时，确保状态反馈准确"
+    },
+    {
+      "name": "15min",
+      "type": "定时",
+      "description": "后备箱灯计时期间的处理时间，与实车状态保持一致"
+    }
+  ],
+  "engineering_interpretation": "该表格详细记录了从V4.5到V5.1各版本中关于整车外灯系统（特别是阅读灯）的功能需求、参数调整、逻辑优化及测试验证要求，可用于指导相关功能的测试用例设计与验证。",
+  "uncertain_points": []
+}

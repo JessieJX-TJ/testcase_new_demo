@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "伴我回家控制功能的信号周期与模块交互需求",
+  "row_semantics": "表格列出了与[伴我回家控制]功能相关的三个主要信号处理流程及其对应的周期或响应时间。",
+  "column_semantics": {
+    "1": "序号，标识不同的信号处理流程",
+    "2": "信号描述，包含功能模块名称、操作内容及周期/时间要求"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "module",
+      "description": "[伴我回家控制个性化模块]，负责个性化设置信息的发送"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "[伴我回家控制模块]，负责接收并判断个性化信息"
+    },
+    {
+      "name": "外灯组合服务",
+      "type": "service",
+      "description": "提供近光和位置灯的基础服务"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "function": "[伴我回家控制个性化模块 ICB]",
+      "signal": "个性化设置信息发送",
+      "period": "500ms"
+    },
+    {
+      "function": "[伴我回家控制模块 LHZCU]",
+      "signal": "接收个性化信息并判断当前条件",
+      "response_time": "30ms"
+    },
+    {
+      "function": "[外灯组合服务 ICB]",
+      "signal": "调用近光和位置灯基础服务",
+      "period": "30ms"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了[伴我回家控制]功能中关键信号的发送和处理周期，用于验证相关模块（ICB, LHZCU）在特定时间内的响应能力和协调性。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,40 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯个性化服务接口规范",
+  "row_semantics": "表格的每一行代表一个接口或功能的具体参数定义，包括其名称、方向、类型、发送方/接收方、路径及来源。",
+  "column_semantics": {
+    "Interface Name": "接口名称，需与逻辑框图内容一致，例如 'PersonalizationData.MapLampSet'。",
+    "Direction": "接口的方向，如 '输入/输出' 或 '提供/消费'。",
+    "Type": "接口的类型，如 'CAN/LIN/SOA 服务/硬线等'。",
+    "Sender/Provider": "信号发送方或服务提供方，如 '信号发送节点或者 SoA 服务提供方'。",
+    "Receiver/Consumer": "信号接收方或服务消费方，如 '信号接收节点或者 SoA 服务消费方'。",
+    "Channel": "路径通道，如 '指定信号通道'。",
+    "Source": "接口来源，如 '指定信号来源'。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "PersonalizationData.MapLampSet",
+      "type": "功能名",
+      "description": "组合服务，用于读取灯个性化服务，实现灯随门动使能开关功能。"
+    },
+    {
+      "name": "MapLampSetInfo",
+      "type": "参数名",
+      "description": "该功能的参数定义，包含启用（Enabled）、禁用（Disabled）和无效（Invalid）三种状态。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "MapLampSetInfo",
+      "type": "输出信号",
+      "description": "表示灯随门动功能的当前状态，可为 Enabled、Disabled 或 Invalid。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证 'PersonalizationData.MapLampSet' 功能在不同场景下的正确性，特别是灯随门动功能的启用、禁用和无效状态是否符合设计要求。",
+  "uncertain_points": []
+}

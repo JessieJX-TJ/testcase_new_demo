@@ -1,0 +1,38 @@
+备注
+1. 转向灯退出同步性要求(a&b)
+a)其图标闪烁频率和声音提醒与实际转向灯的闪烁频率需保持一致退出,三者同步性允许的最
+为:50ms
+b)单侧转向灯熄灭同步性允许的最大延时周期为:40ms
+[[Allocated System],Reserved,转向灯开关控制#VP3-25650, Function Allocation
+Requirement]
+[FAS-IBD05-0025]—转向灯处于一档/二档开启时,退出转向灯(以左侧转向灯为例)
+(CAN链路)
+场景描述
+转向灯处于一档/二档开启时,退出转向灯
+前置条件
+1. 左侧转向灯处于激活状态
+触发动作
+1. DircnLghtSwReq: 0x1=DircnLghtSwReq_1_Left_First_gear_direction_light_on
+2. DircnLghtSwReq: Ox3=DircnLghtSwReq_3_Right_First_gear_direction_light_on
+执行动作
+1. [转向灯开关控制模块LHZCU]由内部软件保持跳变为无请求
+2. [转向灯开关控制模块LHZCU]信号跳变为:
+FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_Off
+RLDircnLghtCtrl=0x0=RLDircnLghtCtrl_0_Off
+3. ICB 根据接收到的 LHZCU 发送的转向灯 FLDircnLghtCtrl/RLDircnLghtCtrl=OFF,转换
+灯控CAN信号,控制转向灯熄灭
+4. ICB 接收控制信号延时 60ms 分发至 LHZCU/RZCU(配置需求:DircnLghtCtrlDelayPrm)
+FLDircnLghtCtrl_HW=0x0=FLDircnLghtCtrl_HW_0_Off
+RLDircnLghtCtrl_HW=0x0=RLDircnLghtCtrl_HW_0_Off
+5. [驱动处理模块LHZCU/RZCU]接收 ICB 发送的控制信号,退出转向灯点亮
+6. ICB 接收控制信号:
+做退出左侧转向灯图标指示灯显示以及声音提醒
+7. [驱动处理模块RZCU]将状态/故障状态反馈至[转向灯开关控制模块LHZCU]:
+RLDircnLghtSts_HW =0x0= RLDircnLghtSts_HW _0_Off
+RLDircnLghtFltsts_HW =0x0=RLDircnLghtFltsts_HW _0_False
+(exlDircnLghtHwDrvEnPrm=0x1;通过域控获取转向灯状态；)
+8. ICB 将状态/故障状态反馈至[转向灯开关控制模块 LHZCU]:
+FLDircnLghtSts=0x0= FLDircnLghtSts _0_Off
+RLDircnLghtSts=0x0=RLDircnLghtSts_0_Off
+FLDircnLghtFltsts=0x0=FLDircnLghtFltsts_0_False
+RLDircnLghtFltsts=0x0=RLDircnLghtFltsts_0_False

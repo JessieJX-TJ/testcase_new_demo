@@ -1,0 +1,148 @@
+[
+  {
+    "head": "氛围灯开启",
+    "relation": "触发条件",
+    "tail": "接收到信号 0x1=UpIPBLampOnOff_1_1_ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UpIPBLampOnOff_1",
+      "0x1=UpIPBLampOnOff_1_1_ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0311",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "接收到信号 0x0=UpIPBLampOnOff_1_0_OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UpIPBLampOnOff_1",
+      "0x0=UpIPBLampOnOff_1_0_OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0311",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯颜色设置",
+    "relation": "触发条件",
+    "tail": "接收到信号 0x01-0xFF=各个颜色值",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UpIPBLampColor_Cmd_1",
+      "0x01-0xFF=各个颜色值"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0311",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯亮度调节",
+    "relation": "触发条件",
+    "tail": "接收到信号 0x01-0x64=1%-100%",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UpIPBLampBrtns_Cmd_1",
+      "0x01-0x64=1%-100%"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0311",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯呼吸模式设置",
+    "relation": "触发条件",
+    "tail": "接收到信号 0x1-0xF=UpIPBLampBrthngCmd_1_x_RateX",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UpIPBLampBrthngCmd_1",
+      "0x1-0xF=UpIPBLampBrthngCmd_1_x_RateX"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0311",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯颜色保持不变",
+    "relation": "状态保持条件",
+    "tail": "当指令值为 0 或未定义颜色号时",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "UpIPBLampColor_Cmd_1",
+      "0x00=UpIPBLampColorCmd_1_0_No Request",
+      "0x01-0xFF=各个颜色值"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0311",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯亮度保持不变",
+    "relation": "状态保持条件",
+    "tail": "当指令值为 0 时",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "UpIPBLampBrtns_Cmd_1",
+      "0x00=UpIPBLampBrtnsCmd_1_0_No Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0311",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯呼吸模式 Rate0",
+    "relation": "输入为",
+    "tail": "信号 0x0=UpIPBLampBrthngCmd_1_0_No Request",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "UpIPBLampBrthngCmd_1",
+      "Rate0",
+      "0x0=UpIPBLampBrthngCmd_1_0_No Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0311",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯呼吸模式 Rate1",
+    "relation": "输入为",
+    "tail": "信号 0x1=UpIPBLampBrthngCmd_1_1_Rate1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "UpIPBLampBrthngCmd_1",
+      "Rate1",
+      "500ms",
+      "0x1=UpIPBLampBrthngCmd_1_1_Rate1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0311",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯呼吸模式 Rate2",
+    "relation": "输入为",
+    "tail": "信号 0x2=UpIPBLampBrthngCmd_1_2_Rate2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "UpIPBLampBrthngCmd_1",
+      "Rate2",
+      "1s",
+      "0x2=UpIPBLampBrthngCmd_1_2_Rate2"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0311",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  }
+]

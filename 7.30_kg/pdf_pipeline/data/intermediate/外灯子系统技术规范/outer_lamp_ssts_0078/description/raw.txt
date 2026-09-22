@@ -1,0 +1,88 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "前雾灯控制逻辑",
+  "row_semantics": "表格分为两个主要部分：前置条件（触发条件）和执行动作，描述了在特定条件下系统如何控制前雾灯。",
+  "column_semematics": "第一列定义了条件或动作的类别（如‘前置条件’、‘执行动作’），第二列详细描述了具体的条件或动作内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FrtFogLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "前雾灯控制模块"
+    },
+    {
+      "name": "FrtFogLghtDrvMdl",
+      "type": "controller_module",
+      "description": "前雾灯驱动模块"
+    },
+    {
+      "name": "RearFogLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "后雾灯控制模块"
+    },
+    {
+      "name": "SOA",
+      "type": "service_interface",
+      "description": "面向服务架构的服务接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "收到【FrtFogLghtCtrlMdl】发送的 RFrtFogLghtCtrl_HW==0x1 (On)",
+      "source": "FrtFogLghtCtrlMdl",
+      "signal": "RFrtFogLghtCtrl_HW",
+      "value": "0x1",
+      "state": "On"
+    },
+    {
+      "condition": "收到 SOA 服务 {FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq}{InstanceID=4}=0x1 (ON)",
+      "source": "SOA",
+      "signal": "FrontFogLightCtrReq",
+      "instance_id": "4",
+      "value": "0x1",
+      "state": "On"
+    }
+  ],
+  "core_outputs": [
+    {
+      "action": "【FrtFogLghtDrvMdl】持续驱动右前雾灯输出 (FogLamp_RH_HSD)",
+      "target": "FrtFogLghtDrvMdl",
+      "signal": "FogLamp_RH_HSD",
+      "state": "On"
+    },
+    {
+      "action": "【FrtFogLghtDrvMdl】持续发送 RFrtFogLghtSts=0x1 (On) 至 【RearFogLghtCtrlMdl】，至少发送三帧",
+      "source": "FrtFogLghtDrvMdl",
+      "signal": "RFrtFogLghtSts",
+      "value": "0x1",
+      "state": "On",
+      "target": "RearFogLghtCtrlMdl",
+      "frame_count": "3"
+    },
+    {
+      "action": "【FrtFogLghtDrvMdl】持续发送{FrontFogLight.FrontFogLightState.FrontFogLightSta}",
+      "source": "FrtFogLghtDrvMdl",
+      "signal": "FrontFogLightSta",
+      "target": "unknown"
+    },
+    {
+      "action": "{InstanceID=4}=0x1 (On) 至【RearFogLghtCtrlMdl】，至少发送三帧",
+      "source": "unknown",
+      "signal": "InstanceID",
+      "value": "4",
+      "state": "On",
+      "target": "RearFogLghtCtrlMdl",
+      "frame_count": "3"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证前雾灯控制系统在接收到特定硬件信号和SOA服务请求时，能否正确驱动右前雾灯并持续发送状态信息至后雾灯控制模块，确保至少发送三帧数据。",
+  "uncertain_points": [
+    "表格中未明确指出所有信号的具体来源和目标模块之间的完整通信路径。",
+    "对于“InstanceID=4”的具体含义及其在不同上下文中的作用存在不确定性。"
+  ]
+}
+```

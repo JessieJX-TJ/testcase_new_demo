@@ -1,0 +1,61 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "光雨信号 AutoLghtOnReq 的输出定义及与各控制器的交互",
+  "row_semantics": "描述光雨信号 AutoLghtOnReq 的两种可能输出值及其对应的布尔状态",
+  "column_semantics": {
+    "1": "功能/信号名称：光雨信号 AutoLghtOnReq",
+    "2": "输出类型：表示该信号的输出属性",
+    "3": "CAN：表示通过 CAN 总线传输的信号",
+    "4": "LHZCU：车身控制单元 (Lighting and Hazard Control Unit)",
+    "5": "ICB：集成控制盒 (Integrated Control Box)",
+    "6": "外灯 SSTS：外部灯光系统状态 (Surface Status Tracking System)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "AutoLghtOnReq",
+      "type": "输入信号",
+      "description": "光雨信号，用于触发自动灯光开启请求"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "车身控制单元，负责管理车辆的照明和危险警示系统"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块",
+      "description": "集成控制盒，可能包含多种车辆控制功能"
+    },
+    {
+      "name": "SSTS",
+      "type": "系统状态",
+      "description": "外部灯光系统状态，用于跟踪外部灯光的工作情况"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "AutoLghtOnReq_0",
+      "value": "0x0",
+      "description": "自动灯光开启请求关闭状态"
+    },
+    {
+      "name": "AutoLghtOnReq_1",
+      "value": "0x1",
+      "description": "自动灯光开启请求激活状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "AutoLghtOnReq",
+      "description": "光雨信号的输出值，指示是否需要自动开启灯光"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了光雨信号 AutoLghtOnReq 的两种可能输出值（0 和 1）及其对应的布尔状态，并指明了该信号在 CAN 总线、LHZCU、ICB 和外灯 SSTS 系统中的作用，可用于验证车辆在不同光雨条件下自动灯光系统的正确响应。",
+  "uncertain_points": []
+}
+```

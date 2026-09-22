@@ -1,0 +1,63 @@
+子系统技术规范
+Sub System Technical Specification
+IM
+内灯子系统 Interior Lighting Sub System
+智己汽车
+Z-ONE-3.0平台-SSTS-
+版本<1.2>
+206 of 235 页
+IBD10
+氛围灯渐变速度指令
+0x0=UpIPCLampFadeSpdCmd_1_0_Spd0
+0x1=UpIPCLampFadeSpdCmd_1_1_Spd1
+0x2=UpIPCLampFadeSpdCmd_1_2_Spd2
+0x3=UpIPCLampFadeSpdCmd_1_3_Spd3
+灯头颜色/亮度切换时从当前状态到目标状态切换的所需的时间
+默认速度Spd0: 2000ms
+Spd1:300ms
+Spd2:100ms;(能力预留)
+Spd3:(预留0)
+LowIPAmbtLamp
+LowIPAmbtL
+RHZCU
+内灯
+输入
+LIN
+A
+ampA
+_LIN5
+SSTS
+氛围灯开启请求
+0x0=LowIPALampOnOff_1_0_OFF
+0x1=LowIPALampOnOff_1_1_ON
+点亮ON时需同时接收到非0值的颜色亮度指令
+LowIPALampColo
+rCmd_1
+氛围灯颜色指令
+0x00=LowIPALampColorCmd_1_0_No Request
+0x01-0xFF=各个颜色值
+灯头切换为色坐标对应的颜色
+指令值为0或者未定义颜色号时保持颜色不变
+LowIPALampBrtn
+sCmd_1
+氛围灯亮度指令
+0x00=LowIPALampBrtnsCmd_1_0_No Request
+0x01-0x64=1%-100%
+0x65-0xFF=Reserved
+灯头亮度调节到相应的百分比值
+指令值为0时保持亮度不变
+LowIPALampBrth
+ngCmd_1
+氛围灯呼吸指令
+0x0=LowIPALampBrthngCmd_1_0_No Request
+0x1=LowIPALampBrthngCmd_1_1_Rate1
+0x2=LowIPALampBrthngCmd_1_2_Rate2
+0x3=LowIPALampBrthngCmd_1_3_Rate3
+0x4=LowIPALampBrthngCmd_1_4_Rate4
+0x5=LowIPALampBrthngCmd_1_5_Rate5
+0x6=LowIPALampBrthngCmd_1_6_Rate6
+0x7=LowIPALampBrthngCmd_1_7_Rate7
+0x8=LowIPALampBrthngCmd_1_8_Rate8
+0x9=LowIPALampBrthngCmd_1_9_Rate9
+0xA=LowIPALampBrthngCmd_1_10_Rate10
+0xB=LowIPALampBrthngCmd_1_11_Rate11

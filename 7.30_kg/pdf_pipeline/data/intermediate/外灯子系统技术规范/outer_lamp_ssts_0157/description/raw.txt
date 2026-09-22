@@ -1,0 +1,76 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "Main Beam Light Switch Fault Detection and Response",
+  "row_semantics": "Each row represents a specific fault condition, its triggering criteria, the system's response actions, and the exit condition for the fault state.",
+  "column_semantics": {
+    "Column 1": "Condition Type (e.g., Precondition, Trigger Condition, Action, Exit Condition)",
+    "Column 2": "Description of the corresponding condition or action"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightSwSOAEnPrm",
+      "type": "parameter",
+      "description": "Configuration parameter enabling the Main Beam Light Switch Self-Test."
+    },
+    {
+      "name": "MainBeamLightSwitchStatus",
+      "type": "signal",
+      "description": "Status signal indicating the current state of the main beam light switch."
+    },
+    {
+      "name": "MainBeamLightCtrlMdl",
+      "type": "module",
+      "description": "Module responsible for controlling the main beam light."
+    },
+    {
+      "name": "DTC_B1077_1C",
+      "type": "fault_code",
+      "description": "Diagnostic Trouble Code for the detected fault in the main beam light switch."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Precondition",
+      "description": "MainBeamLightSwSOAEnPrm == 1 (Enable) - The self-test for the main beam light switch is enabled."
+    },
+    {
+      "name": "Trigger Condition",
+      "description": "远光灯开关检测到未定义的阻值 - The main beam light switch detects an undefined resistance value."
+    },
+    {
+      "name": "Exit Condition",
+      "description": "远光灯开关检测到已知定义的阻值 - The main beam light switch detects a known defined resistance value, exiting the fault state."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLightSwitchStatus",
+      "value": "0x2 (Error)",
+      "description": "The system continuously sends this error status to the MainBeamLightCtrlMdl module."
+    },
+    {
+      "name": "DTC_B1077_1C",
+      "value": "Set",
+      "description": "The system sets this diagnostic trouble code to indicate the fault."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC_B1077_1C",
+      "description": "Detected when the main beam light switch reports an undefined resistance value."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "Minimum Transmission Count",
+      "value": "至少发送三帧",
+      "description": "The error status must be sent at least three frames to ensure reliable detection."
+    }
+  ],
+  "engineering_interpretation": "This table defines the fault detection logic and response behavior for the main beam light switch when it reports an undefined resistance value. It specifies the conditions under which the fault is triggered, the system's actions (sending error status and setting DTC), and the condition required to exit the fault state.",
+  "uncertain_points": []
+}
+```

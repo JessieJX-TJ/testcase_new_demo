@@ -1,0 +1,68 @@
+{
+  "table_type": "other",
+  "topic": "外灯控制逻辑与接口规范",
+  "row_semantics": "表格按执行顺序列出了外灯控制的各个步骤和相关接口调用，描述了后雾灯、近光灯等外灯的控制流程。",
+  "column_semantics": "表格包含两列：左侧为‘执行动作’，详细描述了每个步骤的执行内容；右侧为具体的代码或逻辑描述。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "模块/服务",
+      "description": "外灯控制组合服务，负责处理外灯的开关状态和功能"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器",
+      "description": "后雾灯控制模块，负责后雾灯的控制逻辑"
+    },
+    {
+      "name": "ICB",
+      "type": "系统/接口",
+      "description": "外灯控制组合服务接口，用于与其他系统交互"
+    },
+    {
+      "name": "HMI_ICB",
+      "type": "系统/接口",
+      "description": "人机交互界面相关的外灯控制接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlRearFogLghtPrm",
+      "type": "配置参数",
+      "description": "物理开关状态，指示后雾灯是否开启"
+    },
+    {
+      "name": "RearFogLghtFucProStatus",
+      "type": "状态信号",
+      "description": "后雾灯的功能状态，包括关闭、仅后雾灯开启、侧位灯和近光灯开启等"
+    },
+    {
+      "name": "RearFogLghtSwSta",
+      "type": "状态信号",
+      "description": "后雾灯开关状态"
+    },
+    {
+      "name": "LDipBeamLightCtrl",
+      "type": "控制信号",
+      "description": "近光灯控制信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "CombLghtFucProSta",
+      "type": "输出信号",
+      "description": "组合灯光功能状态，表示当前激活的灯光模式（如侧位灯和近光灯、仅后雾灯等）"
+    },
+    {
+      "name": "SidePositionLightReq",
+      "type": "请求信号",
+      "description": "侧位灯请求信号，用于控制侧位灯的点亮"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证外灯控制系统在不同操作场景下的功能逻辑，特别是后雾灯、近光灯和侧位灯的协同控制行为，确保各模块间的接口调用和状态转换符合设计规范。",
+  "uncertain_points": []
+}

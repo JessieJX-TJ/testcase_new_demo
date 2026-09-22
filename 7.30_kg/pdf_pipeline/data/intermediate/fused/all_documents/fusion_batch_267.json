@@ -1,0 +1,602 @@
+[
+  {
+    "head": "FtwlFLlampBrtnsCmd_1",
+    "relation": "状态保持条件",
+    "tail": "信号值为 0",
+    "sources": [
+      "inner_lamp_ssts_0443"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Timed Delay Control Circuit Short to Ground Fault",
+    "relation": "触发条件",
+    "tail": "节电延时驱动激活状态",
+    "sources": [
+      "inner_lamp_ssts_0444"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Timed Delay Control Circuit Short to Ground Fault",
+    "relation": "触发条件",
+    "tail": "驱动电流超过阈值（TBD A）且持续时间 ≥ 100 ms",
+    "sources": [
+      "inner_lamp_ssts_0444"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驱动电流超过阈值（TBD A）",
+    "relation": "超时约束",
+    "tail": "持续时间 ≥ 100 ms",
+    "sources": [
+      "inner_lamp_ssts_0444"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampOnOff_1",
+    "relation": "触发条件",
+    "tail": "LIN 信号值 = 0x1（ON）",
+    "sources": [
+      "inner_lamp_ssts_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampOnOff_1",
+    "relation": "触发条件",
+    "tail": "LIN 信号值 = 0x0（OFF）",
+    "sources": [
+      "inner_lamp_ssts_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "rear left door ambient lamp",
+    "relation": "点亮前提条件",
+    "tail": "同时接收到非零值的颜色亮度指令",
+    "sources": [
+      "inner_lamp_ssts_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampColorCmd_1",
+    "relation": "触发条件",
+    "tail": "LIN 信号值 ∈ [0x01, 0xFF]（有效颜色值）",
+    "sources": [
+      "inner_lamp_ssts_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampColorCmd_1",
+    "relation": "状态保持条件",
+    "tail": "LIN 信号值 = 0x00（No Request）",
+    "sources": [
+      "inner_lamp_ssts_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampBrtnsCmd_1",
+    "relation": "触发条件",
+    "tail": "LIN 信号值 ∈ [0x65, 0xFF]（保留值，用于亮度调节）",
+    "sources": [
+      "inner_lamp_ssts_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampBrtnsCmd_1",
+    "relation": "状态保持条件",
+    "tail": "LIN 信号值 = 0x00（No Request）",
+    "sources": [
+      "inner_lamp_ssts_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampBrthngCmd_1",
+    "relation": "触发条件",
+    "tail": "LIN 信号值 ∈ [0x01, 0x0F]（对应呼吸速率 Rate1–Rate15）",
+    "sources": [
+      "inner_lamp_ssts_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampBrthngCmd_1",
+    "relation": "状态保持条件",
+    "tail": "LIN 信号值 = 0x00（No Request）",
+    "sources": [
+      "inner_lamp_ssts_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampOnOff_1",
+    "relation": "与...互斥",
+    "tail": "DoorRL1LampColorCmd_1（同一时刻不可同时主导灯状态）",
+    "sources": [
+      "inner_lamp_ssts_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数",
+    "relation": "包含子功能",
+    "tail": "外灯",
+    "sources": [
+      "inner_lamp_ssts_0447"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数",
+    "relation": "包含子功能",
+    "tail": "车身控制",
+    "sources": [
+      "inner_lamp_ssts_0447"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数",
+    "relation": "包含子功能",
+    "tail": "电动尾门",
+    "sources": [
+      "inner_lamp_ssts_0447"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯",
+    "relation": "依赖于",
+    "tail": "配置项",
+    "sources": [
+      "inner_lamp_ssts_0447"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后门扶手开关",
+    "relation": "输出为",
+    "tail": "RZCU_LIN4",
+    "sources": [
+      "inner_lamp_ssts_0448"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "三排左座椅调节开关",
+    "relation": "输出为",
+    "tail": "RZCU_LIN3",
+    "sources": [
+      "inner_lamp_ssts_0448"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "三排右座椅调节开关",
+    "relation": "输出为",
+    "tail": "RZCU_LIN4",
+    "sources": [
+      "inner_lamp_ssts_0448"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "三排左座椅调节开关",
+    "relation": "抑制条件",
+    "tail": "无（NA）",
+    "sources": [
+      "inner_lamp_ssts_0448"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "三排右座椅调节开关",
+    "relation": "抑制条件",
+    "tail": "无（NA）",
+    "sources": [
+      "inner_lamp_ssts_0448"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "84: Parameter A=0.3419, B=0.2282, C=228, D=51, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "85: Parameter A=0.3419, B=0.2082, C=215, D=24, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "86: Parameter A=0.3248, B=0.1626, C=203, D=0, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "87: Parameter A=0.3219, B=0.2412, C=201, D=77, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "88: Parameter A=0.3219, B=0.2212, C=191, D=48, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "89: Parameter A=0.3219, B=0.2012, C=181, D=22, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "90: Parameter A=0.3090, B=0.1561, C=177, D=0, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "91: Parameter A=0.3019, B=0.2343, C=166, D=72, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "92: Parameter A=0.3019, B=0.2143, C=158, D=45, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "93: Parameter A=0.2925, B=0.1493, C=152, D=0, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "94: Parameter A=0.3019, B=0.1943, C=151, D=21, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "95: Parameter A=0.2819, B=0.2473, C=142, D=97, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "96: Parameter A=0.2819, B=0.2673, C=150, D=128, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "97: Parameter A=0.2819, B=0.2873, C=158, D=165, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "98: Parameter A=0.2819, B=0.3073, C=168, D=206, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "99: Parameter A=0.2619, B=0.2802, C=124, D=154, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "100: Parameter A=0.2619, B=0.2602, C=118, D=120, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "101: Parameter A=0.2619, B=0.2402, C=112, D=91, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "102: Parameter A=0.2619, B=0.2202, C=108, D=64, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "103: Parameter A=0.2819, B=0.2073, C=129, D=43, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "104: Parameter A=0.2819, B=0.1873, C=124, D=20, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "105: Parameter A=0.2819, B=0.2273, C=135, D=68, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "106: Parameter A=0.2728, B=0.1413, C=125, D=0, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "107: Parameter A=0.2619, B=0.2002, C=103, D=40, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "108: Parameter A=0.2619, B=0.1902, C=101, D=29, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "109: Parameter A=0.2619, B=0.1802, C=100, D=19, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "110: Parameter A=0.2419, B=0.2441, C=88, D=100, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "111: Parameter A=0.2419, B=0.2340, C=86, D=87, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "112: Parameter A=0.2419, B=0.2238, C=85, D=74, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "113: Parameter A=0.2419, B=0.1934, C=80, D=39, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "114: Parameter A=0.2419, B=0.1832, C=79, D=28, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "115: Parameter A=0.2502, B=0.1320, C=97, D=0, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "116: Parameter A=0.2259, B=0.1220, C=70, D=0, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "117: Parameter A=0.2019, B=0.1121, C=46, D=0, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "118: Parameter A=0.2219, B=0.2062, C=61, D=58, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "119: Parameter A=0.2219, B=0.2162, C=62, D=69, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "配置功能标识",
+    "tail": "120: Parameter A=0.2219, B=0.2262, C=63, D=81, E=255",
+    "sources": [
+      "inner_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

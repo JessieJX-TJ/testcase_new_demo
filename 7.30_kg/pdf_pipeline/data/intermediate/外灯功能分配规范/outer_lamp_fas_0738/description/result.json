@@ -1,0 +1,117 @@
+{
+  "table_type": "other",
+  "topic": "外灯控制系统功能与通信协议规范",
+  "row_semantics": "表格内容描述了外灯控制系统的具体功能要求、通信机制和状态获取规则，属于技术规范文档中的备注部分。",
+  "column_semantics": "表格分为两列，左侧为灰色背景的“备注”标题，右侧为详细的技术说明文本。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "系统/模块",
+      "description": "外部灯光控制系统"
+    },
+    {
+      "name": "SidePositionLightSts",
+      "type": "信号",
+      "description": "侧位灯状态"
+    },
+    {
+      "name": "SidePosnLightSts",
+      "type": "信号",
+      "description": "侧位置灯状态"
+    },
+    {
+      "name": "SidePositionLightErrSts",
+      "type": "信号",
+      "description": "侧位灯错误状态"
+    },
+    {
+      "name": "SidePosnLghtErrSts",
+      "type": "信号",
+      "description": "侧位置灯错误状态"
+    },
+    {
+      "name": "ICB_S32G_M",
+      "type": "控制器/模块",
+      "description": "日行灯控制模块"
+    },
+    {
+      "name": "DayRunningLight",
+      "type": "信号",
+      "description": "日间行车灯"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "车身控制单元"
+    },
+    {
+      "name": "ICB_8295",
+      "type": "控制器/模块",
+      "description": "外灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "贯穿式前后位置灯同步性",
+      "description": "允许的最大延时周期为40ms"
+    },
+    {
+      "condition": "ICB_S32G M日行灯请求重发机制",
+      "description": "如超时2s未收到响应，且请求状态未变，应尝试按照<=50ms周期重发3次；尝试重发3次后仍失败，则停止发送"
+    },
+    {
+      "condition": "外灯状态主动获取",
+      "description": "针对Onchange类型的外灯状态服务，消费端在服务发现订阅或外灯控制请求后的500ms内，如未收到状态反馈，应主动通过Getter()方式获取外灯状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "SidePositionLightSts",
+      "description": "侧位灯状态输出"
+    },
+    {
+      "output": "SidePosnLightSts",
+      "description": "侧位置灯状态输出"
+    },
+    {
+      "output": "DayRunningLight",
+      "description": "日间行车灯输出"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "SidePositionLightErrSts",
+      "description": "侧位灯错误状态"
+    },
+    {
+      "fault": "SidePosnLghtErrSts",
+      "description": "侧位置灯错误状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "timing": "40ms",
+      "description": "贯穿式前后位置灯同步性的最大延时周期"
+    },
+    {
+      "timing": "2s",
+      "description": "ICB_S32G M日行灯请求超时时间"
+    },
+    {
+      "timing": "50ms",
+      "description": "ICB_S32G M日行灯请求重发周期"
+    },
+    {
+      "timing": "3次",
+      "description": "ICB_S32G M日行灯请求重发次数"
+    },
+    {
+      "timing": "500ms",
+      "description": "外灯状态主动获取的时间窗口"
+    }
+  ],
+  "engineering_interpretation": "该表格用于定义外灯控制系统中关键信号的状态、通信协议及异常处理机制，是进行外灯功能测试和验证的重要依据。",
+  "uncertain_points": []
+}

@@ -1,0 +1,93 @@
+```json
+[
+  {
+    "head": "Exterior_Light_Control is activated",
+    "relation": "前提条件",
+    "tail": "Lighting_Mode is set to 'Daytime_Lighting' and Vehicle_Speed is less than 50 km/h",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Lighting_Mode",
+      "Vehicle_Speed"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Electric_Trunk operation is enabled",
+    "relation": "前提条件",
+    "tail": "Trunk_Open_Status is 'Open' and Vehicle_Speed is less than 10 km/h",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Trunk_Open_Status",
+      "Vehicle_Speed"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Exterior_Light_Control is inhibited",
+    "relation": "抑制条件",
+    "tail": "Lighting_Mode is set to 'Night_Road_Lighting' or Vehicle_Speed is greater than or equal to 50 km/h",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "Lighting_Mode",
+      "Vehicle_Speed"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Electric_Trunk operation is inhibited",
+    "relation": "抑制条件",
+    "tail": "Trunk_Open_Status is 'Closed' or Vehicle_Speed is greater than or equal to 10 km/h",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "Trunk_Open_Status",
+      "Vehicle_Speed"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Light_Brightness_Level is set to 1000 Lux",
+    "relation": "输入为",
+    "tail": "Lighting_Mode is 'Daytime_Lighting'",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Light_Brightness_Level",
+      "Lighting_Mode"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Trunk_Motor_Current is set to 10 Amps",
+    "relation": "输入为",
+    "tail": "Trunk_Open_Status is 'Open'",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Trunk_Motor_Current",
+      "Trunk_Open_Status"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Light_Duration is set to 1500 Seconds",
+    "relation": "输入为",
+    "tail": "Lighting_Mode is 'Daytime_Lighting'",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Light_Duration",
+      "Lighting_Mode"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Control_Module_Error is detected",
+    "relation": "故障响应",
+    "tail": "Exterior_Light_Control is disabled and Electric_Trunk operation is disabled",
+    "triple_type": "故障响应与降级关系",
+    "evidence_terms": [
+      "Control_Module_Error",
+      "Exterior_Light_Control",
+      "Electric_Trunk"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

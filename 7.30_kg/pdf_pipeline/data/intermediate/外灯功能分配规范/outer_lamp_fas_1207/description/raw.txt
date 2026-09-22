@@ -1,0 +1,113 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Exterior Light Switch Process Statuses",
+  "row_semantics": "Each row represents a specific status or control signal related to exterior lighting functions, including directional lights, brake lights, and combined light functions.",
+  "column_semantics": {
+    "Row Header": "Function name (e.g., RRDircnLghtCtrl, DirncLghtFucProStatus)",
+    "Input/Output": "Indicates whether the signal is an input or output for the system",
+    "Controller/Module": "List of involved electronic control units (ECUs) such as LHZCU, ICB_S32G M, BKBCAN FD",
+    "Other Columns": "Additional ECUs or network interfaces involved in the signal exchange"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RRDircnLghtCtrl",
+      "type": "function",
+      "description": "Right Rear Directional Light Control"
+    },
+    {
+      "name": "DirncLghtFucProStatus",
+      "type": "status",
+      "description": "Directional Light Function Pro Status"
+    },
+    {
+      "name": "DirectionLightModeStatus",
+      "type": "mode",
+      "description": "Direction Light Mode Status"
+    },
+    {
+      "name": "BrakeLightFucProStatus",
+      "type": "status",
+      "description": "Brake Light Function Pro Status"
+    },
+    {
+      "name": "CombLghtFucProStatus",
+      "type": "status",
+      "description": "Combined Light Function Pro Status"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirncLghtFucProSta",
+      "type": "input",
+      "description": "Directional Light Function Pro Status parameter"
+    },
+    {
+      "name": "DirncLghtMdSts",
+      "type": "input",
+      "description": "Direction Light Mode Status parameter"
+    },
+    {
+      "name": "BrakeLghtFucProsSta",
+      "type": "input",
+      "description": "Brake Light Function Pro Status parameter"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RRDircnLghtCtrl_0_Off",
+      "type": "output",
+      "description": "Signal to turn off right rear directional light"
+    },
+    {
+      "name": "RRDircnLghtCtrl_1_on",
+      "type": "output",
+      "description": "Signal to turn on right rear directional light"
+    },
+    {
+      "name": "Left_Direction_Light_On",
+      "type": "output",
+      "description": "Signal indicating left directional light is on"
+    },
+    {
+      "name": "Right_Direction_Light_On",
+      "type": "output",
+      "description": "Signal indicating right directional light is on"
+    },
+    {
+      "name": "Both_Side_Direction_Light_On",
+      "type": "output",
+      "description": "Signal indicating both sides' directional lights are on"
+    },
+    {
+      "name": "Enabled",
+      "type": "output",
+      "description": "Signal indicating direction light mode is enabled"
+    },
+    {
+      "name": "Disabled",
+      "type": "output",
+      "description": "Signal indicating direction light mode is disabled"
+    },
+    {
+      "name": "OFF",
+      "type": "output",
+      "description": "Signal indicating brake light is off"
+    },
+    {
+      "name": "ON",
+      "type": "output",
+      "description": "Signal indicating brake light is on"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interface signals and their states for various exterior light functions, including directional lights, brake lights, and combined lights. It specifies the input/output nature of each signal, the involved ECUs, and the possible values/statuses for each function. This information is crucial for testing the correct activation, deactivation, and status reporting of these lighting systems.",
+  "uncertain_points": [
+    "The exact timing behavior of the signals is not specified in this table.",
+    "The specific actions taken by the system upon receiving certain statuses (e.g., unknown states) are not detailed."
+  ]
+}
+```

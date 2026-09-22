@@ -1,0 +1,64 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior lamp function) 的模式定义与验证",
+  "row_semantics": "表格按功能模块划分，详细定义了车辆在不同模式下的外灯行为状态。",
+  "column_semantics": "第一列列出功能模块或状态类型，第二列提供该模块的详细状态定义及其数值编码。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "description": "Vehicle Mode, 定义车辆的整体运行模式，如NORMAL、CRASH、FACTORY等。"
+    },
+    {
+      "name": "VehMdV",
+      "description": "Vehicle Mode Validity, 表示VehMd状态的有效性，包括Invalid和Valid两种状态。"
+    },
+    {
+      "name": "UsrMd",
+      "description": "User Mode, 定义用户操作模式，如Sleep、Standby、Comfortable等。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMd",
+      "values": [
+        "0x0_NORMAL",
+        "0x1_CRASH",
+        "0x2_FACTORY",
+        "0x3_TRANSPORT",
+        "0x4_DYNO",
+        "0x5_EXHIBITION",
+        "0x8_Engineering",
+        "0x9_Service"
+      ],
+      "description": "车辆运行模式，涵盖正常驾驶、碰撞、工厂测试、运输、动态测试、展览、工程调试及服务模式。"
+    },
+    {
+      "name": "VehMdV",
+      "values": [
+        "0x0_Invalid",
+        "0x1_Valid"
+      ],
+      "description": "车辆模式状态的有效性判断，用于确保外灯功能在合法模式下工作。"
+    },
+    {
+      "name": "UsrMd",
+      "values": [
+        "0x0_Sleep",
+        "0x1_Standby",
+        "0x2_Comfortable",
+        "0x3_NormalDriving",
+        "0x4_AIParking",
+        "0x5_AIPilot",
+        "0x6_XOTA"
+      ],
+      "description": "用户操作模式，包括睡眠、待机、舒适、常规驾驶、AI泊车、AI驾驶及远程升级模式。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证外灯功能在不同车辆模式（VehMd）和用户模式（UsrMd）下的正确行为，以及模式状态（VehMdV）的有效性，确保外灯在各种场景下按照规范工作。",
+  "uncertain_points": []
+}

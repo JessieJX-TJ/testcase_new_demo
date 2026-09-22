@@ -1,0 +1,112 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的功能分配规范",
+  "row_semantics": "表格的每一行代表一个特定的功能或信号，描述其输出、内部信号、涉及的控制器/模块及其状态定义。",
+  "column_semantics": "第一列是功能/信号名称；第二列是输出类型；第三至第六列是涉及的控制器/模块名称；第七列是具体的信号值定义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehIntrusionPrevnHzrdLmpReq",
+      "type": "功能名",
+      "description": "车辆防入侵请求信号"
+    },
+    {
+      "name": "VCUSecyWrngInfo",
+      "type": "功能名",
+      "description": "车辆控制单元辅助警告信号"
+    },
+    {
+      "name": "BMSWrngInfo",
+      "type": "功能名",
+      "description": "电池管理系统报警信号"
+    },
+    {
+      "name": "VehCrshTyp",
+      "type": "功能名",
+      "description": "车辆碰撞请求类型信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehIntrusionPrevnHzrdLmpReq_0_NoReq",
+      "description": "无请求"
+    },
+    {
+      "name": "VehIntrusionPrevnHzrdLmpReq_1_OneCycl",
+      "description": "单周期请求"
+    },
+    {
+      "name": "VehIntrusionPrevnHzrdLmpReq_2_ThreeCycl",
+      "description": "三周期请求"
+    },
+    {
+      "name": "VehIntrusionPrevnHzrdLmpReq_3_Triggered",
+      "description": "触发请求"
+    },
+    {
+      "name": "VCUSecyWrngInfo_0_None",
+      "description": "无警告"
+    },
+    {
+      "name": "VCUSecyWrngInfo_1_HighCellVoltageDifferencePleaseOnboardChargingAndBalancing",
+      "description": "高单体电压差，请上车充电和均衡"
+    },
+    {
+      "name": "VCUSecyWrngInfo_2_BatteryThermalRunawayPleaseEvacuateImmediately",
+      "description": "电池热失控，请立即疏散"
+    },
+    {
+      "name": "VCUSecyWrngInfo_3_BattertThermalRunawayPre_warning",
+      "description": "电池热失控预警告"
+    },
+    {
+      "name": "BMSWrngInfo_0_None",
+      "description": "无报警"
+    },
+    {
+      "name": "BMSWrngInfo_1_HighcellvoltageDifferencepleaseonboardChargingandbalancing",
+      "description": "高单体电压差，请上车充电和均衡"
+    },
+    {
+      "name": "BMSWrngInfo_2_BatteryThermalRunawayPleaseEvacuateImmediately",
+      "description": "电池热失控，请立即疏散"
+    },
+    {
+      "name": "VehCrshTyp_0_NoCrash",
+      "description": "无碰撞"
+    },
+    {
+      "name": "VehCrshTyp_1_Front_Crash",
+      "description": "前碰撞"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "VehIntrusionPrevnHzrdLmpReq",
+      "controller": "LHZCU",
+      "description": "车辆防入侵请求输出信号"
+    },
+    {
+      "name": "VCUSecyWrngInfo",
+      "controller": "CANFD, RZCU, LHZCU",
+      "description": "车辆控制单元辅助警告输出信号"
+    },
+    {
+      "name": "BMSWrngInfo",
+      "controller": "CANFD, ESS, LHZCU",
+      "description": "电池管理系统报警输出信号"
+    },
+    {
+      "name": "VehCrshTyp",
+      "controller": "CANFD, SDM, LHZCU",
+      "description": "车辆碰撞请求类型输出信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了外灯功能相关的多个信号（如车辆防入侵请求、电池热失控警告、车辆碰撞类型）的输出状态及其对应的控制器，可用于验证相关信号在不同条件下的正确输出和系统响应。",
+  "uncertain_points": []
+}
+```

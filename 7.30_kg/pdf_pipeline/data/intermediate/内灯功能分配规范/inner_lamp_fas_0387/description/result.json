@@ -1,0 +1,45 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Reading Lamp Operation Parameters",
+  "row_semantics": "Specific configuration or behavior of the reading lamp under certain conditions",
+  "column_semantics": {
+    "保持源": "The source or condition that maintains the current state or parameter",
+    "保持原因": "The reason or condition for maintaining the state or parameter",
+    "备注": "Additional notes or context regarding the maintenance"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Local Head Control Unit, likely responsible for managing the reading lamp's operation"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Reading Lamp State",
+      "description": "The state of the reading lamp, which can be on, off, in standby, or sleep mode"
+    },
+    {
+      "name": "Standby or Sleep Mode",
+      "description": "The reading lamp is either in a low-power standby state or fully powered down (sleep)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Reading Lamp On Duration",
+      "description": "The duration for which the reading lamp remains illuminated when activated"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Reading Lamp Illumination Time",
+      "value": "15min",
+      "description": "When the reading lamp is turned on, it will remain lit for a maximum of 15 minutes before automatically turning off"
+    }
+  ],
+  "engineering_interpretation": "This table defines the operational parameters for the reading lamp, specifically its illumination duration and the conditions under which it remains active. It is used to verify that the reading lamp behaves according to the specified timing constraints when activated.",
+  "uncertain_points": []
+}

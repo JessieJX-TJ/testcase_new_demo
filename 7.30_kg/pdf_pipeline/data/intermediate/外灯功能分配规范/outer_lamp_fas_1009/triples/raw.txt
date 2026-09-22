@@ -1,0 +1,84 @@
+```json
+[
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "触发条件",
+    "tail": "车辆触发防入侵",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "场景描述",
+      "当车辆触发防入侵时,危险警报灯会自动激活"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "前提条件",
+    "tail": "UsgMd=All 且 UsgMdV=Valid 且 VehMd=All 且 VehMdV=Valid",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "前置条件",
+      "1&2&3&4"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "前提条件",
+    "tail": "ExtrLghtCtrlCmmntnTyp=0x0=SOA 或 ExtrLghtCtrlCmmntnTyp=0x1=CAN",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "前置条件",
+      "5",
+      "6"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "前提条件",
+    "tail": "ExtrLghtStsCmmntnTyp=0x0=SOA 或 ExtrLghtStsCmmntnTyp=0x1=CAN",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "前置条件",
+      "7",
+      "8"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "前提条件",
+    "tail": "收到[车辆防入侵LHZCU]请求输入1||2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "触发动作",
+      "收到[车辆防入侵LHZCU]请求输入1||2"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯控制模式",
+    "relation": "输出为",
+    "tail": "VehIntrusionPrevnHzrdLmpReq_1_OneCycl 或 VehIntrusionPrevnHzrdLmpReq_2_ThreeCycl",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "触发动作",
+      "VehIntrusionPrevnHzrdLmpReq=0x1=VehIntrusionPrevnHzrdLmpReq_1_OneCycl",
+      "VehIntrusionPrevnHzrdLmpReq=0x2=VehIntrusionPrevnHzrdLmpReq_2_ThreeCycl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯闪烁频率",
+    "relation": "状态保持条件",
+    "tail": "按照1.25Hz频率闪烁（先on后off），即按照800ms一个闪烁周期发送",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "执行动作",
+      "控制双闪灯按照1.25Hz频率闪烁(先on后off),即按照800ms一个闪烁周期发送"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

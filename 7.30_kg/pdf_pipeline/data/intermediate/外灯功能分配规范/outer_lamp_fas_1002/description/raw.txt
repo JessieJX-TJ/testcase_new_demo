@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "DIDs Internal Parameter Data Identifiers for Brake Light Open Control Reason",
+  "row_semantics": "Each row represents a specific internal parameter data identifier related to the brake light open control reason.",
+  "column_semantics": {
+    "Short Name": "The short name of the parameter, which is 'BrkLghtOpenCtrlRsn' in this case.",
+    "Description": "A brief description of the parameter, indicating it relates to the 'reason for brake light turning on'.",
+    "Value Table": "A list of possible values for the parameter, each with a hexadecimal code and corresponding meaning (e.g., 0x00 for no signal, 0x01 for CAN signal, etc.).",
+    "Default": "The default value of the parameter, which is '0x00'.",
+    "Remark": "Additional information about the parameter, explaining that it stores the last 10 instances of brake light turning on reasons, with the most recent at the lowest index.",
+    "ECU": "The Electronic Control Unit associated with this parameter, which is 'TDM'."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLghtOpenCtrlRsn",
+      "type": "parameter",
+      "description": "Internal parameter data identifier for the reason why the brake light turns on."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrkLghtOpenCtrlRsn_0_None",
+      "value": "0x00",
+      "description": "No signal detected as the reason for brake light turning on."
+    },
+    {
+      "name": "BrkLghtOpenCtrlRsn_1_CANSignal",
+      "value": "0x01",
+      "description": "CAN signal detected as the reason for brake light turning on."
+    },
+    {
+      "name": "BrkLghtOpenCtrlRsn_1_HardWireSignal",
+      "value": "0x02",
+      "description": "Hard-wire signal detected as the reason for brake light turning on."
+    },
+    {
+      "name": "Reversed",
+      "value": "0x03~0x07",
+      "description": "Reserved values for future use or other unspecified reasons."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the internal parameter data identifier for tracking the reasons behind brake light activation. It can be used to verify that the system correctly logs and reports the source of brake light activation events, ensuring traceability and aiding in fault diagnosis.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,82 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "迎宾光毯灯功能控制逻辑",
+  "row_semantics": "表格按功能描述、前置条件、触发条件、执行动作和备注的顺序组织，详细定义了迎宾光毯灯（Welcome Lamp）在特定条件下开启或关闭的逻辑。",
+  "column_semantics": "表格包含两列：左侧为场景描述和条件/动作分类标签，右侧为具体的条件或动作描述文本。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "迎宾光毯灯 (Welcome Lamp)",
+      "type": "功能",
+      "description": "车辆外部的一种照明功能，用于在驾驶员接近车辆时提供欢迎照明效果。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "Lighting and Hazard Control Unit，负责控制车辆外部灯光的功能模块，包括迎宾光毯灯的开关和亮度调节。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlWelcomeGrandLampEnPrm",
+      "type": "输入信号",
+      "description": "车辆是否具备迎宾光毯灯功能的参数，值为0x1表示具备该功能。",
+      "value": "0x1"
+    },
+    {
+      "name": "PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet",
+      "type": "输入信号",
+      "description": "大屏设置的迎宾光毯灯状态，0x1表示禁用。",
+      "value": "Disabled"
+    },
+    {
+      "name": "UsgMd",
+      "type": "系统状态",
+      "description": "整车电源模式，非休眠状态表示车辆处于正常供电状态。",
+      "value": "UsgMd_0_Sleep"
+    },
+    {
+      "name": "档位",
+      "type": "系统状态",
+      "description": "整车当前的档位状态，P挡表示驻车状态。",
+      "value": "P挡"
+    },
+    {
+      "name": "PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet",
+      "type": "输入信号",
+      "description": "大屏设置的迎宾光毯灯状态，从禁用变为启用。",
+      "value": "Enabled"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "WelcomeLamp_HSD",
+      "type": "输出信号",
+      "description": "迎宾光毯灯驱动硬线端口信号，控制灯的点亮和熄灭。",
+      "action": "3s内渐亮，持续点亮3s，3s内渐灭"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "WelcomeLamp_HSD",
+      "timing": "3s内渐亮",
+      "condition": "迎宾光毯灯开启"
+    },
+    {
+      "name": "WelcomeLamp_HSD",
+      "timing": "持续点亮3s",
+      "condition": "迎宾光毯灯开启"
+    },
+    {
+      "name": "WelcomeLamp_HSD",
+      "timing": "3s内渐灭",
+      "condition": "迎宾光毯灯关闭"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在特定车辆状态和设置下，迎宾光毯灯的开启和关闭逻辑，以及其亮度变化的时间特性。可用于验证车辆在不同配置和操作条件下，迎宾光毯灯是否能正确响应并按照预期行为工作。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,59 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "DoorFR4LampBthngCmd_1 command rate definitions for interior lighting sub-system",
+  "row_semantics": "Each row represents a specific breathing rate command value (Rate0 to Rate15) for the DoorFR4LampBthngCmd_1 signal, defining its periodic behavior and associated original breathing mode.",
+  "column_semantics": {
+    "Code Value": "The hexadecimal code representing the command rate (e.g., 0x0 for No Request, 0x1 for Rate1, up to 0xF for Rate15).",
+    "周期": "The time interval between each blinking cycle of the lamp in seconds (e.g., 500ms, 1s, 2s, etc.).",
+    "原呼吸模式值": "The corresponding original breathing mode that this rate maps to or replaces."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorFR4LampBthngCmd_1",
+      "type": "signal",
+      "description": "Command signal for controlling the breathing rate of the front right door interior lamp."
+    },
+    {
+      "name": "DoorFR4LampFadeSpdCmd_1",
+      "type": "signal",
+      "description": "Command signal for controlling the fade speed of the front right door interior lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Rate",
+      "description": "Defined by the Code Value (0x0 to 0xF), specifying how frequently the lamp blinks."
+    },
+    {
+      "name": "Fade Speed",
+      "description": "Defined by the Code Value (0x0 to 0xF) for DoorFR4LampFadeSpdCmd_1, specifying how quickly the lamp fades in or out."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Lamp Blinking Behavior",
+      "description": "The actual blinking frequency and fade speed of the interior lamp based on the commanded rate."
+    },
+    {
+      "name": "Breathing Mode",
+      "description": "The specific breathing pattern (mode) that the lamp follows, which can be replaced or augmented by new rates."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Period",
+      "description": "The time interval between each blink cycle, ranging from 500ms to 12s depending on the rate."
+    },
+    {
+      "name": "Fade Time",
+      "description": "The time required for the lamp to transition from current state to target state during color/亮度切换."
+    }
+  ],
+  "engineering_interpretation": "This table defines the mapping between command codes and their corresponding breathing rates and fade speeds for the front right door interior lamp. It is used to verify that the lamp behaves according to the specified rate commands, including correct timing and mode transitions.",
+  "uncertain_points": []
+}
+```

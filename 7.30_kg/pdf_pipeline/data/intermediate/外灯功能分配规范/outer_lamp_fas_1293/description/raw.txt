@@ -1,0 +1,107 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "前雾灯控制逻辑与接口规范",
+  "row_semantics": "表格按执行顺序（Step）列出了前雾灯控制的详细逻辑和相关模块的交互过程。",
+  "column_semantics": "表格包含两列：左侧为步骤编号及描述，右侧为对应步骤的具体实现细节（如代码、条件、模块调用等）。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SidePositionAndDippedBeam",
+      "type": "system_state",
+      "description": "侧位灯和近光灯状态"
+    },
+    {
+      "name": "S32G",
+      "type": "controller",
+      "description": "整车控制器，负责接收开关请求并下发控制指令"
+    },
+    {
+      "name": "LHZCU/RHZCU",
+      "type": "controller",
+      "description": "驱动处理模块，内部跳变为硬线输出"
+    },
+    {
+      "name": "ICB",
+      "type": "interface",
+      "description": "Internal Communication Bus，用于模块间通信"
+    },
+    {
+      "name": "HMI子系统",
+      "type": "system_component",
+      "description": "人机交互子系统"
+    },
+    {
+      "name": "前雾灯",
+      "type": "function",
+      "description": "车辆前部的辅助照明灯"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "大屏开关请求",
+      "type": "input_signal",
+      "description": "来自大屏幕的开关请求信号"
+    },
+    {
+      "name": "工厂模式",
+      "type": "mode",
+      "description": "车辆处于出厂设置模式"
+    },
+    {
+      "name": "VehMd",
+      "type": "system_state",
+      "description": "车辆模式标识"
+    },
+    {
+      "name": "VehMdV",
+      "type": "system_state",
+      "description": "车辆模式版本标识"
+    },
+    {
+      "name": "前雾灯点亮条件",
+      "type": "condition",
+      "description": "满足特定条件时前雾灯才能点亮"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FrontFogLightReq",
+      "type": "output_signal",
+      "description": "前雾灯控制请求信号"
+    },
+    {
+      "name": "FrontFogLightFucProStatus",
+      "type": "output_signal",
+      "description": "前雾灯功能状态"
+    },
+    {
+      "name": "FrontFogLightFucProsSta",
+      "type": "output_signal",
+      "description": "前雾灯功能状态参数"
+    },
+    {
+      "name": "CAN信号",
+      "type": "output_signal",
+      "description": "通过CAN总线发送的控制信号"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "FrontFogLightErrorStatus",
+      "type": "fault_status",
+      "description": "前雾灯故障状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "2min",
+      "type": "timing_constraint",
+      "description": "前雾灯在工厂模式下开启持续时间为2分钟"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了前雾灯在不同系统模式下的控制逻辑，包括其在工厂模式下的自动开启/关闭行为、与多个控制器（如S32G、LHZCU/RHZCU）及接口（如ICB）的交互过程，以及相关的状态监控和故障检测机制。可用于验证前雾灯在特定场景下的正确控制流程。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,80 @@
+{
+  "table_type": "fault_table",
+  "topic": "右制动灯短路故障检测与处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件、触发条件到执行动作、退出条件及异常处理的完整诊断序列。",
+  "column_semantics": "两列结构，左侧为条件/动作描述类别，右侧为具体的技术要求或参数。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "BrkLghtFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "制动灯反馈系统开环使能参数"
+    },
+    {
+      "name": "BrkLghtDrvMdl",
+      "type": "module",
+      "description": "制动灯驱动模块"
+    },
+    {
+      "name": "BrkLghtCtrlMdl",
+      "type": "module",
+      "description": "制动灯控制模块"
+    },
+    {
+      "name": "DTC B1042_11",
+      "type": "fault_code",
+      "description": "特定的诊断故障代码，表示右制动灯短路故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "BrkLghtFbkSOAEnPrm == 1 (Enable)",
+      "description": "制动灯反馈系统开环使能参数必须为启用状态"
+    },
+    {
+      "condition": "右制动灯处于输出状态",
+      "description": "在检测短路前，右制动灯应处于正常输出状态"
+    },
+    {
+      "condition": "检测到右制动灯短路到地",
+      "description": "系统检测到右制动灯存在短路至地的故障"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "description": "短路故障已恢复正常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "BrkLamp_RH_HSD",
+      "action": "停止驱动右制动灯",
+      "description": "当检测到短路时，停止对右制动灯的驱动"
+    },
+    {
+      "signal": "BrakeLightState.BrakeLightSta",
+      "value": "2 (Error)",
+      "action": "持续发送错误状态",
+      "description": "向制动灯控制模块持续发送制动灯状态为错误（值为2）"
+    },
+    {
+      "signal": "置位 DTC B1042_11",
+      "action": "设置故障代码",
+      "description": "在检测到短路时，设置特定的诊断故障代码"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTC B1042_11",
+      "description": "右制动灯短路至地故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在检测到短路后，制动灯驱动模块需至少连续发送三帧错误状态信息"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了右制动灯短路故障的检测、处理和恢复逻辑，可用于验证整车电子系统在制动灯短路情况下的诊断与保护功能。",
+  "uncertain_points": []
+}

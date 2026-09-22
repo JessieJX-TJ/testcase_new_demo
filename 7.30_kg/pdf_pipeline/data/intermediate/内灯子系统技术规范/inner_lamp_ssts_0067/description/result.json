@@ -1,0 +1,74 @@
+{
+  "table_type": "logic_table",
+  "topic": "氛围灯控制逻辑",
+  "row_semantics": "表格按功能流程划分，描述了氛围灯从关闭到点亮、再到关闭的完整控制逻辑，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "第一列定义了逻辑阶段（如前置条件、触发条件等），第二列详细描述了该阶段的具体内容。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "氛围灯",
+      "type": "功能",
+      "description": "车辆内部用于营造氛围的照明设备"
+    },
+    {
+      "name": "FtwlFLLampOnOff_1",
+      "type": "控制器/模块",
+      "description": "氛围灯本地控制模块，负责接收开启/关闭请求信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "前置条件",
+      "description": "氛围灯处于关闭状态"
+    },
+    {
+      "name": "触发条件",
+      "description": "接收到FtwlFLLampOnOff_1模块的开启请求信号，且颜色和渐变速度命令均为无请求状态"
+    },
+    {
+      "name": "退出条件",
+      "description": "接收到FtwlFLLampOnOff_1模块的关闭请求信号，并按照渐变速度关闭"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FtwlFLLampColorCmd_1",
+      "type": "输出信号",
+      "description": "颜色值，用于设置氛围灯的颜色"
+    },
+    {
+      "name": "FtwlFLLampBrtnsCmd_1",
+      "type": "输出信号",
+      "description": "亮度值，用于设置氛围灯的亮度"
+    },
+    {
+      "name": "FtwlFLLampFadeSpdCmd_1",
+      "type": "输出信号",
+      "description": "渐变速度，用于设置氛围灯点亮或熄灭时的过渡速度"
+    },
+    {
+      "name": "执行动作",
+      "description": "驱动氛围灯点亮"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "过压、欠压故障",
+      "description": "氛围灯模块出现过压或欠压情况"
+    },
+    {
+      "name": "LIN信号丢失",
+      "description": "超过6秒未接收到ZCU的LIN信号"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "默认定时",
+      "value": "6s",
+      "description": "超过6秒未接收到ZCU的LIN信号"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证氛围灯在不同控制信号下的点亮、渐变及关闭行为，以及在异常情况下的安全保护机制。",
+  "uncertain_points": []
+}

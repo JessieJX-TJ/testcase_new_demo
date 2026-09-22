@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "右后转向灯短路故障被检测",
+    "relation": "触发条件",
+    "tail": "检测到右后转向灯短路到电源",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["触发条件", "检测到右后转向灯短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RRDILghtDrvMdl反馈故障状态",
+    "relation": "输出为",
+    "tail": "RRDircnLghtFltsts_HW=0x1 (True)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "RRDILghtDrvMdl", "RRDircnLghtFltsts_HW"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "诊断故障代码B104A 12被置位",
+    "relation": "执行动作",
+    "tail": "检测到右后转向灯短路到电源",
+    "triple_type": "故障响应",
+    "evidence_terms": ["执行动作", "置位 DTC B104A 12", "触发条件"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯短路故障处理流程结束",
+    "relation": "退出条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "时序约束",
+    "evidence_terms": ["退出条件", "检测到短路恢复"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯短路故障检测",
+    "relation": "前提条件",
+    "tail": "exlDircnLghtHwDrvEnPrm==1",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "exlDircnLghtHwDrvEnPrm==1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯短路故障检测",
+    "relation": "前提条件",
+    "tail": "右后转向灯处于未输出状态",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "右后转向灯处于未输出状态"],
+    "confidence_note": "high"
+  }
+]
+```

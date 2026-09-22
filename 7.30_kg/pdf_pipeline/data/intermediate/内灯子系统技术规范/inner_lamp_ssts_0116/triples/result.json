@@ -1,0 +1,129 @@
+[
+  {
+    "head": "氛围灯开启",
+    "relation": "触发条件",
+    "tail": "CnsoRHBLampOnOff_1 = 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CnsoRHBLampOnOff_1",
+      "0x1=CnsoRHBLampOnOff_1_1_ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0116",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "CnsoRHBLampOnOff_1 = 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CnsoRHBLampOnOff_1",
+      "0x0=CnsoRHBLampOnOff_1_0_OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0116",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯颜色保持不变",
+    "relation": "状态保持条件",
+    "tail": "CnsoRHBLampColorCmd_1 = 0 或未定义颜色号",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "CnsoRHBLampColorCmd_1",
+      "指令值为0或者未定义颜色号时保持颜色不变"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0116",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯亮度调节",
+    "relation": "输入为",
+    "tail": "CnsoRHBLampBrtnsCmd_1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CnsoRHBLampBrtnsCmd_1",
+      "灯头亮度调节到相应的百分比值"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0116",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯亮度保持不变",
+    "relation": "状态保持条件",
+    "tail": "CnsoRHBLampBrtnsCmd_1 = 0x00",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "CnsoRHBLampBrtnsCmd_1",
+      "指令值为0时保持亮度不变"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0116",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯呼吸模式启动",
+    "relation": "触发条件",
+    "tail": "CnsoRHBLampBrthngCmd_1 ≠ 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CnsoRHBLampBrthngCmd_1",
+      "0x0=CnsoRHBLampBrthngCmd_1_0_No Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0116",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯呼吸模式周期为500ms",
+    "relation": "输入为",
+    "tail": "CnsoRHBLampBrthngCmd_1 = Rate1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CnsoRHBLampBrthngCmd_1",
+      "Rate1",
+      "500ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0116",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯呼吸模式新增(0-100%跳变)",
+    "relation": "包含子功能",
+    "tail": "CnsoRHBLampBrthngCmd_1 = Rate1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CnsoRHBLampBrthngCmd_1",
+      "新增(0-100%跳变)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0116",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯开启请求",
+    "relation": "前提条件",
+    "tail": "点亮ON时需同时接收到非0值的颜色亮度指令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "氛围灯开启请求",
+      "点亮ON时需同时接收到非0值的颜色亮度指令"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_ssts_0116",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  }
+]

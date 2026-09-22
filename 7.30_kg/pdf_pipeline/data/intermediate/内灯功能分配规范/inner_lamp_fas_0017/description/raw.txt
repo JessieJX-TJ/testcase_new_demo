@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "整车外灯系统后备箱灯控制策略",
+  "row_semantics": "描述特定功能（后备箱灯）在不同条件下的本地保持行为",
+  "column_semantics": {
+    "保持源": "触发或定义该保持行为的信号或状态来源",
+    "保持原因": "详细说明该保持行为的原因和条件",
+    "备注": "对保持行为的补充说明"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RZCU/LHZCU",
+      "type": "controller_module",
+      "description": "区域控制单元，负责本地化控制逻辑"
+    },
+    {
+      "name": "LdSpclLamp_HSD",
+      "type": "signal",
+      "description": "特殊灯光信号，可能与后备箱灯相关"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "后备箱灯状态",
+      "value": "切为待机或休眠"
+    },
+    {
+      "condition": "控制器状态",
+      "value": "RZCU/LHZCU 本地保持"
+    },
+    {
+      "condition": "信号状态",
+      "value": "LdSpclLamp_HSD 本地保持 15min"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "后备箱灯保持状态",
+      "value": "本地保持"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal": "LdSpclLamp_HSD",
+      "constraint": "本地保持 15min"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证整车后备箱灯在特定条件下（如待机或休眠模式下）是否能够按照设计要求，在RZCU/LHZCU区域内保持15分钟的功能。",
+  "uncertain_points": []
+}
+```

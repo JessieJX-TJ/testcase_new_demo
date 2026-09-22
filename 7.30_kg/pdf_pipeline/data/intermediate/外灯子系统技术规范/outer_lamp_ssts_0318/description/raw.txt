@@ -1,0 +1,86 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "外灯右位置灯电路故障诊断需求",
+  "row_semantics": "每行代表一个具体的故障诊断场景，包含故障类型、进入条件和退出条件。",
+  "column_semantics": {
+    "名称": "故障代码或诊断场景的唯一标识符。",
+    "描述": "对故障现象的简要说明。",
+    "进入条件": "触发该故障诊断场景的检测条件。",
+    "退出条件": "结束该故障诊断场景的检测条件。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B1061_11",
+      "type": "fault_code",
+      "description": "右位置灯输出短路到地故障"
+    },
+    {
+      "name": "B1061_12",
+      "type": "fault_code",
+      "description": "右位置灯输出短路到电源故障"
+    },
+    {
+      "name": "B1061_13",
+      "type": "fault_code",
+      "description": "右位置灯输出开路故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "检测到短路到地",
+      "description": "用于识别右位置灯输出短路到地的故障条件。",
+      "source": "传感器/诊断模块"
+    },
+    {
+      "name": "检测到短路到电源",
+      "description": "用于识别右位置灯输出短路到电源的故障条件。",
+      "source": "传感器/诊断模块"
+    },
+    {
+      "name": "检测到输出开路",
+      "description": "用于识别右位置灯输出开路的故障条件。",
+      "source": "传感器/诊断模块"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "检测到未短路到地",
+      "description": "表示右位置灯输出不再短路到地，可能恢复正常或切换到其他状态。",
+      "target": "诊断系统/ECU"
+    },
+    {
+      "name": "检测到未短路到电源",
+      "description": "表示右位置灯输出不再短路到电源，可能恢复正常或切换到其他状态。",
+      "target": "诊断系统/ECU"
+    },
+    {
+      "name": "检测到输出开路恢复",
+      "description": "表示右位置灯输出从开路状态恢复，可能恢复正常功能。",
+      "target": "诊断系统/ECU"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "B1061_11",
+      "type": "fault",
+      "description": "右位置灯输出短路到地故障"
+    },
+    {
+      "name": "B1061_12",
+      "type": "fault",
+      "description": "右位置灯输出短路到电源故障"
+    },
+    {
+      "name": "B1061_13",
+      "type": "fault",
+      "description": "右位置灯输出开路故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯右位置灯电路在短路到地、短路到电源以及开路三种故障状态下的诊断需求，包括故障的进入和退出条件，可用于验证整车电子电器系统的故障诊断功能是否正确实现。",
+  "uncertain_points": []
+}
+```

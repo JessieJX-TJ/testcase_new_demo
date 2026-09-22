@@ -1,0 +1,79 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Light Function Allocation Specification",
+  "row_semantics": "Defines mapping parameters and error states for interior lamp control",
+  "column_semantics": "Specifies input sources (e.g., LIN, OHC, LHZCU) for different lamp control parameters",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MapLampThrdLSts_1",
+      "type": "parameter",
+      "description": "Mapping table for left side interior lamp levels"
+    },
+    {
+      "name": "MapLampThrdRSts_1",
+      "type": "parameter",
+      "description": "Mapping table for right side interior lamp levels"
+    },
+    {
+      "name": "MapLampXXErr_1",
+      "type": "parameter",
+      "description": "Error status mapping for interior lamps"
+    },
+    {
+      "name": "MapLampFLErr_1",
+      "type": "parameter",
+      "description": "Front left lamp error status"
+    },
+    {
+      "name": "MapLampFRErr_1",
+      "type": "parameter",
+      "description": "Front right lamp error status"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Level",
+      "description": "Brightness levels from OFF to Level 30"
+    },
+    {
+      "name": "Reserved",
+      "description": "Reserved value at 0x1F"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LIN",
+      "type": "input_signal",
+      "description": "Local Interconnect Network interface"
+    },
+    {
+      "name": "OHC",
+      "type": "input_signal",
+      "description": "On-Board Computer"
+    },
+    {
+      "name": "LHZCU",
+      "type": "input_signal",
+      "description": "Lighting and Hazard Control Unit"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No error",
+      "value": "0x0",
+      "description": "Indicates normal operation"
+    },
+    {
+      "name": "Error",
+      "value": "0x1",
+      "description": "Indicates a fault condition"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameter mappings and error states for interior lamp control, specifying how different input signals (LIN, OHC, LHZCU) are used to set lamp levels and detect errors.",
+  "uncertain_points": []
+}
+```

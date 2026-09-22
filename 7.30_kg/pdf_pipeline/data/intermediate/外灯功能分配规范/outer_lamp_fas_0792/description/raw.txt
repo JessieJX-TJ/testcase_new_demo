@@ -1,0 +1,116 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "日行灯控制流程与时间约束",
+  "row_semantics": "流程步骤或功能模块",
+  "column_semantics": "无明确列，为单列流程图",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "8295",
+      "type": "控制器/模块",
+      "description": "日行灯软开关"
+    },
+    {
+      "name": "S32G外灯组合服务基础服务",
+      "type": "控制器/模块",
+      "description": "外灯组合服务的基础功能模块"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "日行灯控制模块，包含逻辑和信号处理"
+    },
+    {
+      "name": "S32G外灯SWC",
+      "type": "控制器/模块",
+      "description": "外灯软件组件"
+    },
+    {
+      "name": "S32G数字灯光SDK",
+      "type": "控制器/模块",
+      "description": "数字灯光软件开发工具包"
+    },
+    {
+      "name": "LHA/RHA",
+      "type": "控制器/模块",
+      "description": "日行灯驱动"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Eth/Method",
+      "type": "输入信号",
+      "description": "以太网方法调用"
+    },
+    {
+      "name": "Eth/Setter",
+      "type": "输入信号",
+      "description": "以太网设置器调用"
+    },
+    {
+      "name": "Eth/Event",
+      "type": "输入信号",
+      "description": "以太网事件触发"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "CANFD",
+      "type": "输出信号",
+      "description": "CAN FlexRay总线数据传输"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "8295 日行灯软开关",
+      "value": "30ms",
+      "description": "日行灯软开关操作耗时"
+    },
+    {
+      "name": "S32G外灯组合服务基础服务",
+      "value": "20ms",
+      "description": "外灯组合服务基础服务处理耗时"
+    },
+    {
+      "name": "LHZCU 日行灯控制模块",
+      "value": "30ms",
+      "description": "日行灯控制模块（逻辑+信号处理）耗时"
+    },
+    {
+      "name": "S32G外灯SWC",
+      "value": "10ms",
+      "description": "外灯SWC内部通讯耗时"
+    },
+    {
+      "name": "S32G数字灯光SDK",
+      "value": "40ms",
+      "description": "数字灯光SDK处理耗时"
+    },
+    {
+      "name": "LHA/RHA 日行灯驱动",
+      "value": "30ms",
+      "description": "日行灯驱动耗时"
+    },
+    {
+      "name": "50ms",
+      "value": "50ms",
+      "description": "Eth/Event到S32G的延迟"
+    },
+    {
+      "name": "40ms",
+      "value": "40ms",
+      "description": "从S32G外灯SWC到CANFD的延迟"
+    },
+    {
+      "name": "250ms",
+      "value": "250ms",
+      "description": "整个流程的总耗时"
+    }
+  ],
+  "engineering_interpretation": "该表格描述了日行灯控制系统的功能流程、涉及的控制器/模块、输入输出信号以及关键的时间约束，可用于验证日行灯控制功能在不同模块间的协同工作是否满足时间要求。",
+  "uncertain_points": []
+}
+```

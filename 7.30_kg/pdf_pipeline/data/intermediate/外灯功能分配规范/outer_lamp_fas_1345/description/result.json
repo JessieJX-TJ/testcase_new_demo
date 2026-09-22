@@ -1,0 +1,85 @@
+{
+  "table_type": "state_table",
+  "topic": "后雾灯状态描述",
+  "row_semantics": "表格按行描述了不同状态下后雾灯的显示逻辑和开关状态，每行对应一个特定的状态或条件。",
+  "column_semantics": "表格没有明确的列，内容为连续的文本描述，主要分为两个部分：HMI显示状态信号描述和灯光开关状态描述。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HMI子系统ICB",
+      "type": "controller",
+      "description": "负责处理和显示与后雾灯相关的用户界面信息的子系统。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外部灯光开关处理模块，负责管理各种外部灯光的状态。"
+    },
+    {
+      "name": "RearFogLghtFucProStatus",
+      "type": "input_signal",
+      "description": "后雾灯功能状态信号，指示后雾灯当前的功能状态。"
+    },
+    {
+      "name": "RearFogLghtSwStatus",
+      "type": "input_signal",
+      "description": "后雾灯开关状态信号，指示后雾灯开关的实际位置。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RearFogLghtCtrl",
+      "type": "input_signal",
+      "description": "后雾灯控制信号，用于控制后雾灯的开启和关闭。",
+      "values": [
+        "0x0=OFF",
+        "0x1=Only RearFogLght ON",
+        "0x2=RearFogLghtAndDippedLight ON",
+        "0x3=RearFogLghtAndFrontFogLight ON",
+        "0x4=Reserved",
+        "0x5=Reserved",
+        "0x6=Reserved",
+        "0x7=Unknown"
+      ]
+    },
+    {
+      "name": "CAN信号反馈状态",
+      "type": "input_signal",
+      "description": "通过CAN总线反馈的后雾灯状态信息。",
+      "values": [
+        "0x0=OFF",
+        "0x1=Only RearFogLght ON",
+        "0x2=RearFogLghtAndDippedLight ON",
+        "0x3=RearFogLghtAndFrontFogLight ON"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "HMI显示",
+      "type": "output_signal",
+      "description": "HMI子系统根据后雾灯的状态在用户界面上显示相应的图标或信息。",
+      "values": [
+        "不做图标指示灯显示",
+        "做后雾灯显示",
+        "做后雾灯及近光灯显示",
+        "做后雾灯及前雾灯显示"
+      ]
+    },
+    {
+      "name": "RearFogLghtSwSta",
+      "type": "output_signal",
+      "description": "后雾灯开关状态的输出信号，表示当前开关的位置。",
+      "values": [
+        "0x0=OFF",
+        "0X1=ON",
+        "0x2=Unknown"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了后雾灯在不同控制信号和反馈状态下的HMI显示行为以及开关状态，可用于验证HMI子系统在各种场景下是否正确显示后雾灯状态，并确保灯光开关状态的准确反馈。",
+  "uncertain_points": []
+}

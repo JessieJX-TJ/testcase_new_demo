@@ -1,0 +1,87 @@
+[
+  {
+    "head": "制动踏板开关粘连故障被触发",
+    "relation": "前提条件",
+    "tail": "制动踏板开关粘连,高有效>600s(TBD)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "制动踏板开关粘连",
+      "高有效",
+      ">600s"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0281",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "系统执行制动灯开关信号发送动作",
+    "relation": "前提条件",
+    "tail": "制动踏板开关粘连故障被触发",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "【BrkLghtSwMdl】持续发送三帧 BrkLghtSwReq=0x1",
+      "至【BrkLghtCtrlMdl】模块"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0281",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "DTC B1066 73 被置位",
+    "relation": "前提条件",
+    "tail": "制动踏板开关粘连故障被触发",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "置位 DTC B1066 73"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0281",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "反馈开关状态为正常开启",
+    "relation": "输入为",
+    "tail": "BrkLghtSwSts=0x1=BrkLghtSwSts_1_On",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "BrkLghtSwSts",
+      "0x1",
+      "BrkLghtSwSts_1_On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0281",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "反馈开关状态验证为无效",
+    "relation": "输入为",
+    "tail": "BrkLghtSwStsV=0x1=BrkLghtSwStsV_1_Invalid",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "BrkLghtSwStsV",
+      "0x1",
+      "BrkLghtSwStsV_1_Invalid"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0281",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "制动踏板开关粘连故障诊断过程结束",
+    "relation": "前提条件",
+    "tail": "制动踏板开关信号悬空",
+    "triple_type": "退出条件",
+    "evidence_terms": [
+      "制动踏板开关信号悬空"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0281",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  }
+]

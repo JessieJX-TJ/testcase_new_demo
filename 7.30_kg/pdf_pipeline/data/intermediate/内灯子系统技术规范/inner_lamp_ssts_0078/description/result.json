@@ -1,0 +1,82 @@
+{
+  "table_type": "parameter_table",
+  "topic": "氛围灯驱动控制模块的功能规范",
+  "row_semantics": "表格定义了氛围灯驱动控制模块的执行动作、退出条件和异常处理规则。",
+  "column_semantics": "第一列描述了动作类型（执行动作、退出条件、异常处理），第二列详细说明了对应的动作参数或条件。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DoorFR1LampColorCmd_1",
+      "type": "input_parameter",
+      "description": "前门右侧氛围灯的颜色值"
+    },
+    {
+      "name": "DoorFR1LampBrtNsCmd_1",
+      "type": "input_parameter",
+      "description": "前门右侧氛围灯的亮度值"
+    },
+    {
+      "name": "DoorFR1LampFadeSpdCmd_1",
+      "type": "input_parameter",
+      "description": "前门右侧氛围灯的渐变速度"
+    },
+    {
+      "name": "DoorFR1LampOnOff_l",
+      "type": "input_signal",
+      "description": "前门右侧氛围灯的本地控制请求信号，0x0表示关闭"
+    },
+    {
+      "name": "ZCU_LIN",
+      "type": "input_signal",
+      "description": "中央控制单元的LIN总线信号"
+    },
+    {
+      "name": "氛围灯模块",
+      "type": "controller_module",
+      "description": "负责驱动和控制氛围灯的电子控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "执行动作条件",
+      "description": "当接收到颜色值、亮度值和渐变速度参数时，驱动氛围灯点亮"
+    },
+    {
+      "name": "退出条件",
+      "description": "当接收到本地控制模块的关闭请求信号（DoorFR1LampOnOff_l = 0x0）时，按照设定的渐变速度关闭氛围灯"
+    },
+    {
+      "name": "异常处理条件",
+      "description": "1. 模块出现过压、欠压故障时直接关闭；2. 超过6秒未接收到ZCU的LIN信号时直接关闭"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "氛围灯点亮",
+      "type": "output_action",
+      "description": "根据输入的颜色、亮度和渐变速度参数，驱动氛围灯点亮"
+    },
+    {
+      "name": "氛围灯关闭",
+      "type": "output_action",
+      "description": "根据本地控制请求信号或异常情况，关闭氛围灯"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "过压/欠压故障",
+      "type": "fault_status",
+      "description": "氛围灯模块检测到电压异常时的状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "LIN信号超时",
+      "type": "timing_constraint",
+      "description": "默认6秒内未接收到ZCU的LIN信号即触发异常处理"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证氛围灯驱动控制模块在正常点亮、本地关闭以及异常情况下的行为是否符合设计规范，确保其在不同输入条件下能够正确响应并采取适当的保护措施。",
+  "uncertain_points": []
+}

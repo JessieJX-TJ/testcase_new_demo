@@ -1,0 +1,32 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "拖挂模式下拖挂车位置灯开启逻辑",
+  "row_semantics": "表格按功能描述、前置条件、触发条件、执行动作的顺序展开，详细定义了在特定场景下外灯控制的逻辑流程。",
+  "column_semantics": "表格没有明确的列，信息以行的形式组织，每行代表一个逻辑步骤或条件。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "LHZCU",
+    "ICB",
+    "RZCU",
+    "TDM"
+  ],
+  "core_conditions": [
+    "车辆具备拖车模式功能 (InsdFnCfgVehDragMd=0x1)",
+    "拖挂模式开启 (VehDragMdSts=0x1=VehDragMdSts_1_On)",
+    "LHZCU发送的外灯控制信号满足以下任一条件：仅侧位灯亮 (CombLghtFucProSta=0x1)、侧位灯和近光灯亮 (CombLghtFucProSta=0x4)、前雾灯和侧位灯亮 (FrontFogLghtFucProsSta=0x4)"
+  ],
+  "core_outputs": [
+    "外灯组合服务ICB调用基础服务控制侧位灯 (SidePositionLight) 开启",
+    "RZCU对应发送拖挂侧位灯开启请求 (TrlrSideLightOnReq=0x3=Both_left_and_Right_Side_light_on)",
+    "TDM根据接收到的请求进行处理"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "无需延迟调用 (注: 无需延迟调用)"
+  ],
+  "engineering_interpretation": "该表格定义了在拖挂模式下，当车辆满足特定前置条件时，如何通过LHZCU、ICB、RZCU和TDM等控制器协同工作，正确开启拖挂车的位置灯（侧位灯）的逻辑。可用于验证拖挂模式下外灯系统的功能正确性。",
+  "uncertain_points": []
+}
+```

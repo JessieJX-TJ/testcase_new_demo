@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "转向灯点亮或熄灭",
+    "relation": "触发条件",
+    "tail": "调用 DircnLghtFucProCtrl 接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Method",
+      "Interface Name: DircnLghtFucProCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯控制成功",
+    "relation": "输出为",
+    "tail": "DircnLghtFucProCtrlResp = 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Resp",
+      "Parameter Name: {DircnLghtFucProCtrl Resp}",
+      "0x0=ControlSuccess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯控制失败",
+    "relation": "输出为",
+    "tail": "DircnLghtFucProCtrlResp = 0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Resp",
+      "Parameter Name: {DircnLghtFucProCtrl Resp}",
+      "0x1=Failed"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态为左转向灯点亮",
+    "relation": "输出为",
+    "tail": "DircnLghtFucProSta = 0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Event",
+      "Interface Name: DircnLghtFucProStatus",
+      "Parameter Name: {DircnLghtFucProSta}",
+      "0x1=Left_Direction_Light_On"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态为熄灭",
+    "relation": "输出为",
+    "tail": "DircnLghtFucProSta = 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Event",
+      "Interface Name: DircnLghtFucProStatus",
+      "Parameter Name: {DircnLghtFucProSta}",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "获取转向灯状态",
+    "relation": "触发条件",
+    "tail": "调用 DircnLghtFucProStatus 接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Event",
+      "Interface Name: DircnLghtFucProStatus"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

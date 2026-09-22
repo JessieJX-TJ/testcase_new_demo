@@ -1,0 +1,115 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "车辆后备箱灯与背光灯控制系统功能规范",
+  "row_semantics": "输入信号来源系统",
+  "column_semantics": "输出控制信号或驱动模块",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LdSpclampCtrl(RZCU)",
+      "type": "controller",
+      "description": "左侧专用灯控制器，负责处理后备箱灯相关逻辑"
+    },
+    {
+      "name": "VehBcklightngCtrl(LHZCU)",
+      "type": "controller",
+      "description": "整车背光灯控制器，负责处理背光灯相关逻辑"
+    },
+    {
+      "name": "BrakingSystem",
+      "type": "system",
+      "description": "制动系统，提供车速平均值（VehSpdAvg）"
+    },
+    {
+      "name": "TailgateSystem",
+      "type": "system",
+      "description": "尾门子系统，提供尾门开启状态（LdspcOpenSts）"
+    },
+    {
+      "name": "LockingSystem",
+      "type": "system",
+      "description": "门锁子系统，提供车门锁止状态（VehLockSts）"
+    },
+    {
+      "name": "VehicleStateSystem",
+      "type": "system",
+      "description": "整车状态管理系统，提供多种模式信息（VehMd, VehMdV, UsrMd, UsrMdV）"
+    },
+    {
+      "name": "ExteriorLightingSystem",
+      "type": "system",
+      "description": "外灯子系统，提供侧边灯光状态（VehSideLightSts）"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehSpdAvg",
+      "type": "input_signal",
+      "description": "车辆速度平均值"
+    },
+    {
+      "name": "LdspcOpenSts",
+      "type": "input_signal",
+      "description": "尾门开启状态"
+    },
+    {
+      "name": "VehLockSts",
+      "type": "input_signal",
+      "description": "车门锁止状态"
+    },
+    {
+      "name": "VehMd",
+      "type": "input_signal",
+      "description": "车辆模式"
+    },
+    {
+      "name": "VehMdV",
+      "type": "input_signal",
+      "description": "车辆模式值"
+    },
+    {
+      "name": "UsrMd",
+      "type": "input_signal",
+      "description": "用户模式"
+    },
+    {
+      "name": "UsrMdV",
+      "type": "input_signal",
+      "description": "用户模式值"
+    },
+    {
+      "name": "VehSideLightSts",
+      "type": "input_signal",
+      "description": "侧边灯光状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LdSpclampCtrlCmd",
+      "type": "output_signal",
+      "description": "左侧专用灯控制命令"
+    },
+    {
+      "name": "VehBcklightngCtrlCmd",
+      "type": "output_signal",
+      "description": "整车背光灯控制命令"
+    },
+    {
+      "name": "VehBcklightngLHDrv(RHZCU)",
+      "type": "output_module",
+      "description": "左后背光灯驱动模块"
+    },
+    {
+      "name": "VehBcklightngRHDrv(RHZCU)",
+      "type": "output_module",
+      "description": "右后背光灯驱动模块"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该结构图描述了车辆后备箱灯和背光灯的控制逻辑，展示了不同系统输入如何影响控制器输出，并最终驱动相应的灯光模块。可用于验证灯光系统在不同驾驶模式、车门状态和外部条件下的正确响应。",
+  "uncertain_points": []
+}
+```

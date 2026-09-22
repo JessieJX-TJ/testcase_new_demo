@@ -1,0 +1,75 @@
+{
+  "table_type": "fault_table",
+  "topic": "Main Beam Light Switch Fault Detection Logic",
+  "row_semantics": "Each row represents a specific fault detection scenario or condition related to the main beam light switch.",
+  "column_semantics": {
+    "前置条件": "The initial configuration or state required for the fault detection logic to be applicable.",
+    "触发条件": "The event or condition that initiates the fault detection process.",
+    "执行动作": "The actions taken by the system when the fault is detected, including signal transmission and DTC setting.",
+    "退出条件": "The condition under which the fault detection process is terminated."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightSwSOAEnPrm",
+      "type": "parameter",
+      "description": "Configuration parameter enabling the main beam light switch SOA (Safe Operating Area) protection."
+    },
+    {
+      "name": "MainBeamLightSwMdl",
+      "type": "module",
+      "description": "Module responsible for managing the main beam light switch status."
+    },
+    {
+      "name": "MainBeamLightCtrlMdl",
+      "type": "module",
+      "description": "Module responsible for controlling the main beam light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "远光灯开关短路到电源",
+      "type": "input_signal",
+      "description": "The main beam light switch is shorted to the power supply."
+    },
+    {
+      "name": "远光灯开关非短路到电源",
+      "type": "input_signal",
+      "description": "The main beam light switch is not shorted to the power supply."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLightSwitchStatus",
+      "type": "signal",
+      "description": "Status of the main beam light switch being transmitted by MainBeamLightSwMdl."
+    },
+    {
+      "name": "MainBeamLightSwitchSta",
+      "type": "signal",
+      "description": "Status value sent by MainBeamLightSwMdl, indicating an error (0x2)."
+    },
+    {
+      "name": "DTC B1077_15",
+      "type": "fault_code",
+      "description": "Diagnostic Trouble Code set by the system when the fault is detected."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "MainBeamLightSwSOAEnPrm==1",
+      "type": "fault_condition",
+      "description": "The main beam light switch SOA protection is enabled."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "至少发送三帧",
+      "type": "timing_constraint",
+      "description": "The system must send at least three frames of the error status."
+    }
+  ],
+  "engineering_interpretation": "This table defines the fault detection logic for the main beam light switch, specifying the conditions under which a fault is triggered, the actions taken by the system, and the diagnostic code set. It is used to verify the system's ability to detect and respond to a short circuit in the main beam light switch.",
+  "uncertain_points": []
+}

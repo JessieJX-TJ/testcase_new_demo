@@ -1,0 +1,49 @@
+{SidePositionLightStatus. SidePositionLightSta}(InstanceID=2)=0x1=ON
+{SidePositionLightStatus. SidePositionLightSta}(InstanceID=3)=0x1=ON
+{SidePositionLightStatus. SidePositionLightSta}(InstanceID=4)=0x1=ON
+(exlSideLghtHwDrvEnPrm=0x1；备注:位置灯炮筒灯方案,以instance1
+2,3,4反馈的状态判断,如 S31LEP)
+或者
+2)LHZCU已判断仅位置灯开启,近光灯关闭:
+{ExteriorLightSwitchProcess. CombLghtFucProStatus.CombLghtFucProSta}=0x1=
+Only SidePositionLight ON
+灯光挡位为Auto:{ExteriorLightSwitchProcess.CombLghtSwStatus.
+CombLghtSwSta}=0x3=AUTO
+前雾灯未开启:
+{FrontFogLight.FrontFogLightState.FrontFogLightSta}{InstancelD=1}
+=0x0=OFF;&&
+{FrontFogLight.FrontFogLightState.FrontFogLightSta}{InstancelD=2}
+=0x0=OFF
+(exlFrontFogLghtHwDrvEnPrm=0x0;通过InstanceID1/2 获取前雾灯状态)
+{FrontFogLight.FrontFogLightState.FrontFogLightSta}{InstancelD=3}
+{FrontFogLight.FrontFogLightState.FrontFogLightSta}{InstancelD=4}
+(exlFrontFogLghtHwDrvEnPrm=0x1；通过InstanceID3/4获取前雾灯状
+态)
+(注:无前雾灯功能,InsdFnCfgFrtFogLght=0x0,则默认前雾灯为关闭状
+态；)
+备注:
+a.需求中同时存在SOA和CAN的,按照配置字开发
+b.需求中只存在一种通讯类型的,按照该通讯类型开发
+c.PPV阶段及以后按照 SOA 通讯方式开发:
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+触发
+1.S32G收到[大屏开关请求ICB]输入
+动作
+{ExteriorLightControlSystem. ControlRearFogLight.RearFogLightReq}=0x1=On
+(配置字: exlRearFoglghtPrm=0(大屏开关))
+2. S32G 收到[七键开关请求 IFP]输入跳变
+IFPRearFoglghtSwReq_l==0x0=IFPRearFoglghtSwReq_1_0_No Press→
+0x1=IFPRearFoglghtSwReq_1_1_Press
+(a.配置字:exlRearFoglghtPrm=1(物理开关)
+b.后雾灯未开启:
+{ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta}=
+0x0(OFF);)
+执行
+[外灯控制组合服务ICB]调用接口:
+Method:
+Req:
+{ExteriorLightSwitchProcess.
+RearFogLghtFucProCtrl.RearFogLghtFucProCtrlReq}=0x1=ON
+Resp:
+{ExteriorLightSwitchProcess. RearFogLghtFucProCtrl.RearFogLghtFucProCtrlResp}=

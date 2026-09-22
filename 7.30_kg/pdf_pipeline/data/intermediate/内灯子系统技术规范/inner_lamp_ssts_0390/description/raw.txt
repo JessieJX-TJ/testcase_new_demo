@@ -1,0 +1,65 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Ambient Lamp Breath Mode Hold Off Time Parameters",
+  "row_semantics": "Each row represents a specific parameter related to the hold-off time for different rates of the ambient lamp's breathing mode.",
+  "column_semantics": {
+    "标定项/Item": "The name of the parameter being described.",
+    "标定描述/Description": "A brief description of what the parameter controls.",
+    "参数范围/Range": "The valid range of values that the parameter can take.",
+    "分辨率/Factor": "The resolution or step size for the parameter value, often expressed as a percentage or a fixed increment.",
+    "默认值/Default": "The default value assigned to the parameter if no other value is specified."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "function",
+      "description": "An exterior lighting system that provides ambient illumination around the vehicle."
+    },
+    {
+      "name": "Breath Mode",
+      "type": "mode",
+      "description": "A lighting pattern where the intensity of the ambient lamp gradually increases and decreases in a smooth, wave-like manner."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Hold Off Time",
+      "description": "The duration during which the ambient lamp remains off after completing a breathing cycle before starting the next one.",
+      "parameters": [
+        {
+          "name": "AmbtiLampBrthngholdoffPercent",
+          "range": "0 - FF",
+          "default": "0xA (10%)",
+          "resolution": "E = N*1%"
+        },
+        {
+          "name": "AmbtiLampBrthngRate1holdoffPercent",
+          "range": "0 - 32",
+          "default": "Reserved, not used",
+          "resolution": "E = N*1%"
+        },
+        {
+          "name": "AmbtiLampBrthngRate2holdoffPercent",
+          "range": "0 - 32",
+          "default": "Reserved, not used",
+          "resolution": "E = N*1%"
+        },
+        {
+          "name": "AmbtiLampBrthngRate3holdoffPercent",
+          "range": "0 - 32",
+          "default": "0xA (10%)",
+          "resolution": "E = N*1%"
+        }
+      ]
+    }
+  ],
+  "engineering_interpretation": "This table defines the configurable hold-off time parameters for the ambient lamp's breathing mode at different rates, allowing for fine-tuning of the timing behavior of the lighting effect.",
+  "uncertain_points": []
+}
+```

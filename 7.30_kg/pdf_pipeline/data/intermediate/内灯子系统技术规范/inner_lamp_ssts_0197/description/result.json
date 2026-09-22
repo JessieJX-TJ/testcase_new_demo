@@ -1,0 +1,53 @@
+{
+  "table_type": "signal_table",
+  "topic": "Ambient Lamp Breathing Control Function",
+  "row_semantics": "Each row represents a condition-action pair for the ambient lamp breathing control logic.",
+  "column_semantics": {
+    "Column 1": "Condition Type (e.g., Precondition, Trigger Condition, Action)",
+    "Column 2": "Description of the specific condition or action"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "function",
+      "description": "The lighting feature that provides mood lighting around the vehicle."
+    },
+    {
+      "name": "CnsoLHALampBrthngCmd_l",
+      "type": "input_signal",
+      "description": "Local control module's breathing speed command signal for the ambient lamp."
+    },
+    {
+      "name": "AmbtLghtLHRollingCtr_l",
+      "type": "input_signal",
+      "description": "Ambient light rolling control signal synchronized with the ambient lamp."
+    },
+    {
+      "name": "CnsoLHALampBrthngCmd_l",
+      "type": "output_signal",
+      "description": "Signal sent to the ambient lamp driving control module to adjust brightness."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "Precondition",
+      "description": "Ambient lamp is in the 'on' state."
+    },
+    {
+      "condition": "Trigger Condition",
+      "description": "Receiving the breathing speed command signal CnsoLHALampBrthngCmd_l and the ambient lamp synchronization signal AmbtLghtLHRollingCtr_l."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "Action",
+      "description": "Driving the ambient lamp to perform brightness adjustment from 0% to 100% and back to 0% according to the breathing period specified by CnsoLHALampBrthngCmd_l."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the behavior of the ambient lamp's breathing mode, specifying the conditions under which it should activate and the corresponding actions it should perform. It is used to verify that the ambient lamp correctly responds to local control commands and synchronization signals by adjusting its brightness in a specified breathing pattern.",
+  "uncertain_points": []
+}

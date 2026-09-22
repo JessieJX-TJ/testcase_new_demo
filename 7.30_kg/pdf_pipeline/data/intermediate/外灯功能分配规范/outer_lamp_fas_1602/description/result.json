@@ -1,0 +1,61 @@
+{
+  "table_type": "fault_table",
+  "topic": "外灯功能 - 近光灯故障状态查询",
+  "row_semantics": "表格按外灯功能的近光灯（Dipped Beam Light）进行分组，分别针对左侧和右侧近光灯的状态查询。",
+  "column_semantics": {
+    "第一列": "功能模块名称，如'DippedBeamLight.DippedBeamLightErrorStatus'，表示左侧或右侧近光灯的错误状态查询。",
+    "第二列": "服务调用类型，'消费'表示该接口为消费型服务。",
+    "第三列": "SOA (Service-Oriented Architecture) 层级标识。",
+    "第四列": "控制器/模块名称，如'LHZCU'、'RHZCU'，代表负责处理该功能的控制单元。",
+    "第五列": "控制器/模块名称，与第四列类似，可能表示冗余或不同层级的控制单元。",
+    "第六列": "未使用或预留字段。",
+    "第七列": "硬线故障状态，描述了具体的故障状态枚举值。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight",
+      "type": "功能模块",
+      "description": "外灯功能中的近光灯模块，用于控制和监测近光灯的工作状态。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "左侧近光灯控制单元，负责处理左侧近光灯的逻辑和状态反馈。"
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块",
+      "description": "右侧近光灯控制单元，负责处理右侧近光灯的逻辑和状态反馈。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightErrorStatus",
+      "type": "输出信号",
+      "description": "近光灯的错误状态，包括无错误（0x0）、错误（0x1）和未知（0x2）。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "value": "0x0",
+      "description": "近光灯工作正常，无故障发生。"
+    },
+    {
+      "name": "Error",
+      "value": "0x1",
+      "description": "近光灯检测到故障，需要进一步诊断。"
+    },
+    {
+      "name": "Unknown",
+      "value": "0x2",
+      "description": "近光灯状态未知，可能是通信异常或其他原因导致无法确定状态。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了通过SOA接口查询左侧和右侧近光灯故障状态的规范，可用于验证车辆外灯系统中近光灯模块的故障检测与上报功能是否符合设计要求。",
+  "uncertain_points": []
+}

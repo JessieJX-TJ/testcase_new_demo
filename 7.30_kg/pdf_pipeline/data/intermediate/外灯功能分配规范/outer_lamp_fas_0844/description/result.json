@@ -1,0 +1,70 @@
+{
+  "table_type": "fault_table",
+  "topic": "近光灯（Dipped Beam）的硬件故障状态与系统状态定义",
+  "row_semantics": "表格按功能模块划分，详细定义了左侧和右侧近光灯的硬件故障状态以及近光灯的整体状态（开启/关闭）。",
+  "column_semantics": "列代表不同的控制器或通信接口（如CANFD、LHZCU、RHZCU、ICB等），用于描述特定信号在这些路径上的输出状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LDipdBeamLghtFlsts_HW",
+      "type": "function",
+      "description": "左侧近光灯硬件故障状态"
+    },
+    {
+      "name": "RDipdBeamLghtFlsts_HW",
+      "type": "function",
+      "description": "右侧近光灯硬件故障状态"
+    },
+    {
+      "name": "DipdBeamLghtSts",
+      "type": "function",
+      "description": "近光灯整体状态（开启/关闭）"
+    },
+    {
+      "name": "DipdBeamLghtFlsts",
+      "type": "function",
+      "description": "近光灯故障状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "LDipdBeamLghtFlsts_HW",
+      "value": "0x0=LDipdBeamLghtFlsts_HW_0_False; 0x1=LDipdBeamLghtFlsts_HW_1_True;",
+      "description": "左侧近光灯硬件故障状态的布尔值输出"
+    },
+    {
+      "name": "RDipdBeamLghtFlsts_HW",
+      "value": "0x0=RDipdBeamLghtFlsts_HW_0_False; 0x1=RDipdBeamLghtFlsts_HW_1_True;",
+      "description": "右侧近光灯硬件故障状态的布尔值输出"
+    },
+    {
+      "name": "DipdBeamLghtSts",
+      "value": "0x0=DipdBeamLghtSts_0_Off; 0x1=DipdBeamLghtSts_1_On;",
+      "description": "近光灯整体状态的布尔值输出"
+    },
+    {
+      "name": "DipdBeamLghtFlsts",
+      "value": "0x0=DipdBeamLghtSts_0_False; 0x1=DipdBeamLghtSts_1_True;",
+      "description": "近光灯故障状态的布尔值输出"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "LDipdBeamLghtFlsts_HW",
+      "description": "左侧近光灯硬件故障状态"
+    },
+    {
+      "name": "RDipdBeamLghtFlsts_HW",
+      "description": "右侧近光灯硬件故障状态"
+    },
+    {
+      "name": "DipdBeamLghtFlsts",
+      "description": "近光灯故障状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆近光灯系统的硬件故障状态和工作状态，并指明了这些状态在不同控制器（如LHZCU、RHZCU、ICB等）和通信接口（如CANFD）上的输出值。可用于验证近光灯系统在正常和故障模式下的信号输出是否符合规范。",
+  "uncertain_points": []
+}

@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯控制接口规范",
+  "row_semantics": "描述特定接口的详细信息，包括其名称、方向、类型、发送方/提供方、接收方/消费方以及路径。",
+  "column_semantics": {
+    "接口名称": "接口的唯一标识符，用于识别该信号或数据流。",
+    "方向": "信号的传输方向，如输入、输出或双向。",
+    "类型": "信号的数据类型，例如SOA（结构化对象数组）。",
+    "发送方/提供方": "信号的来源模块或控制器。",
+    "接收方/消费方": "信号的目标模块或控制器。",
+    "路径": "信号传输的通道或路径标识。",
+    "接口来源": "接口的来源或归属系统。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControl.DippedBeamLightRequestStatus",
+      "type": "signal",
+      "description": "外灯控制中的近光灯请求状态信号，用于指示近光灯的开关状态。"
+    },
+    {
+      "name": "S32G_MC",
+      "type": "controller",
+      "description": "发送方控制器，可能是一个基于S32G微控制器的模块，负责提供近光灯请求状态信号。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "接收方控制器之一，可能是一个车身控制单元（Body Control Unit），负责处理近光灯请求状态信号。"
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "接收方控制器之一，可能是另一个车身控制单元，与LHZCU协同工作。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DippedBeamLightReqSts",
+      "type": "parameter",
+      "description": "近光灯请求状态参数，表示近光灯的当前状态。",
+      "values": [
+        {
+          "code": "0x0",
+          "value": "OFF",
+          "description": "近光灯关闭状态。"
+        },
+        {
+          "code": "0x1",
+          "value": "ON",
+          "description": "近光灯开启状态。"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯控制系统中近光灯请求状态信号的接口规范，可用于验证信号在不同控制器之间的正确传输和状态转换。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,54 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯系统功能逻辑",
+  "row_semantics": "描述特定场景下的功能触发条件与结果",
+  "column_semantics": {
+    "第一列": "场景描述，定义触发条件和预期行为",
+    "第二列": "前置条件，列出触发该场景所需的所有前提条件"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "近光灯",
+      "type": "输入信号",
+      "description": "用户开启的前大灯状态"
+    },
+    {
+      "name": "大屏软开关",
+      "type": "输入信号",
+      "description": "用户通过车辆中控大屏上的软件开关进行的操作"
+    },
+    {
+      "name": "雾灯",
+      "type": "输出信号",
+      "description": "在满足特定条件下被触发开启的车灯"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "近光灯已开启",
+      "description": "作为触发雾灯开启的前提条件之一"
+    },
+    {
+      "condition": "用户通过大屏软开关进行操作",
+      "description": "用户主动触发雾灯开启的行为"
+    },
+    {
+      "condition": "1&2&3&4&5",
+      "description": "表示一系列前置条件的组合，具体含义需进一步明确"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "雾灯开启",
+      "description": "在满足所有前置条件后，雾灯将被激活"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证在近光灯开启且用户通过大屏软开关触发的情况下，雾灯能否正确开启的功能逻辑。",
+  "uncertain_points": [
+    "1&2&3&4&5的具体含义未明确说明，需要进一步确认每个数字代表的前置条件是什么。"
+  ]
+}

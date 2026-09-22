@@ -1,0 +1,157 @@
+[
+  {
+    "head": "近光灯点亮",
+    "relation": "触发条件",
+    "tail": "隧道变光模块 LHZCU 检测到前方 200m 有隧道",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "隧道变光模块 LHZCU",
+      "TunnelRemindInfo",
+      "200m"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1018",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "前提条件",
+    "tail": "环境光状态为白天",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AutoLightOnReq",
+      "0"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1018",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "前提条件",
+    "tail": "车辆档位状态为 D 档",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "TrShiftLvrPos",
+      "D"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1018",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "前提条件",
+    "tail": "车速大于 20kph",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehSpdAvg",
+      ">20kph"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1018",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "前提条件",
+    "tail": "智慧场景灯光设置为使能",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DLPSceSceneLightSet",
+      "1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1018",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "前提条件",
+    "tail": "导航开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "NaviStatus",
+      "1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1018",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "依赖于",
+    "tail": "近光灯控制模块 LHZCU 同时发出控制信号给 ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHDCtrl",
+      "ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1018",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "依赖于",
+    "tail": "ICB 将服务接口或控制信号转换成灯控 CAN 信号,并控制近光灯点亮",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICBCtrl",
+      "CAN Signal"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1018",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "包含子功能",
+    "tail": "外灯控制组合服务 ICB 调用接口",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "ExtLightCtrl",
+      "ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1018",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "包含子功能",
+    "tail": "HMI 子系统 ICB 调用接口",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "HMI Ctrl",
+      "ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1018",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "包含子功能",
+    "tail": "驱动处理模块 LHZCU/RHZCU 内部跳变为硬线输出,驱动近光灯点亮",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "DrvOutput",
+      "ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1018",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

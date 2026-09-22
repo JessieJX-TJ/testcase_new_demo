@@ -1,0 +1,72 @@
+{
+  "table_type": "logic_table",
+  "topic": "昼间行车灯上电自动开启功能规范",
+  "row_semantics": "描述了在特定前置条件下触发的动作和执行动作的逻辑流程",
+  "column_semantics": {
+    "left": "场景描述和前置条件",
+    "right": "触发动作和执行动作"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "贯穿式前位置灯控制模块"
+    },
+    {
+      "name": "VehMd",
+      "type": "vehicle_mode",
+      "description": "车辆模式，指示车辆处于运输状态"
+    },
+    {
+      "name": "UsG Md",
+      "type": "user_ground_mode",
+      "description": "用户地面模式，表示车辆上电后的不同状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMd_3_TRANSPORT",
+      "description": "车辆模式为运输状态"
+    },
+    {
+      "name": "DayRunngLghtDsblSts",
+      "description": "昼间行车灯禁用状态为关闭"
+    },
+    {
+      "name": "CombLghtFucProSta",
+      "description": "组合灯功能状态，近光灯关闭"
+    },
+    {
+      "name": "FrontFogLghtFucProSta",
+      "description": "前雾灯功能状态，前雾灯关闭"
+    },
+    {
+      "name": "MainBeamLghtFucProSta",
+      "description": "远光灯功能状态，远光灯关闭或闪烁开启"
+    },
+    {
+      "name": "InsdFnCfgAcrossFrtPosLght",
+      "description": "具备贯穿式前位置灯功能"
+    },
+    {
+      "name": "UsG Md",
+      "description": "用户地面模式，包括睡眠、待机、XOTA等状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DayRunningLghtFucProSta",
+      "description": "日间行车灯功能状态，设置为开启"
+    },
+    {
+      "name": "PositionLghtFucProSta",
+      "description": "位置灯功能状态，设置为开启"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在车辆上电时，当满足一系列前置条件（如车辆处于运输状态、相关灯光处于关闭状态、具备贯穿式前位置灯功能）时，系统应自动开启日间行车灯和位置灯的功能逻辑。可用于验证车辆上电后灯光系统的自动开启行为是否符合设计规范。",
+  "uncertain_points": []
+}

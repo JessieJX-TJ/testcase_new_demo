@@ -1,0 +1,33 @@
+```json
+{
+  "table_type": "other",
+  "topic": "外灯状态服务的Onchange发送类型处理逻辑",
+  "row_semantics": "描述在特定条件下，消费端如何处理外灯状态服务的订阅或控制请求后的状态反馈机制。",
+  "column_semantics": "无明确列结构，内容为一段文字说明，主要描述行为逻辑。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "外灯状态服务",
+    "Onchange发送类型",
+    "消费端",
+    "服务",
+    "订阅请求",
+    "外灯控制请求",
+    "状态反馈",
+    "Getter()方式"
+  ],
+  "core_conditions": [
+    "消费端在服务发现订阅或者外灯控制请求后",
+    "500ms内未收到状态反馈"
+  ],
+  "core_outputs": [
+    "应主动通过状态服务 Getter()方式获取外灯状态"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "500ms"
+  ],
+  "engineering_interpretation": "该技术规范用于验证消费端在外灯状态服务的Onchange发送类型下，是否能在规定时间内（500ms）正确响应并获取外灯状态，确保系统在异常情况下的自我恢复能力。",
+  "uncertain_points": []
+}
+```

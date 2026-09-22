@@ -1,0 +1,80 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "整车外灯系统诊断需求清单",
+  "row_semantics": "每行代表一个具体的故障诊断场景，针对右近关灯（Right Near Turn Signal Light）的特定电气故障进行描述。",
+  "column_semantics": {
+    "名称": "故障诊断场景的唯一标识符，格式为B105A XX，其中XX表示具体故障类型编号。",
+    "描述": "对故障诊断场景的简要文字说明，指明了故障的具体表现形式。",
+    "进入条件": "触发该故障诊断场景的检测条件，即系统需要满足的输入信号状态。",
+    "退出条件": "结束该故障诊断场景的检测条件，即系统恢复到正常状态时的信号状态。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B105A_11",
+      "description": "右近关灯输出短路到地故障",
+      "controller_module": "车身控制模块 (BCM) / 灯光控制单元",
+      "input_signals": [
+        "短路到地信号"
+      ],
+      "output_signals": [],
+      "system_states": [],
+      "modes": [],
+      "fault_states": [
+        "短路到地"
+      ],
+      "thresholds_timings": []
+    },
+    {
+      "name": "B105A_12",
+      "description": "右近关灯输出短路到电源故障",
+      "controller_module": "车身控制模块 (BCM) / 灯光控制单元",
+      "input_signals": [
+        "短路到电源信号"
+      ],
+      "output_signals": [],
+      "system_states": [],
+      "modes": [],
+      "fault_states": [
+        "短路到电源"
+      ],
+      "thresholds_timings": []
+    },
+    {
+      "name": "B105A_13",
+      "description": "右近关灯输出开路故障",
+      "controller_module": "车身控制模块 (BCM) / 灯光控制单元",
+      "input_signals": [
+        "开路信号"
+      ],
+      "output_signals": [],
+      "system_states": [],
+      "modes": [],
+      "fault_states": [
+        "开路"
+      ],
+      "thresholds_timings": []
+    }
+  ],
+  "core_conditions": [
+    "检测到短路到地",
+    "检测到短路到电源",
+    "检测到输出开路"
+  ],
+  "core_outputs": [
+    "检测到未短路到地",
+    "检测到未短路到电源",
+    "检测到输出开路恢复"
+  ],
+  "core_faults": [
+    "短路到地",
+    "短路到电源",
+    "开路"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了右近关灯电路在短路到地、短路到电源和开路三种故障状态下的诊断逻辑，可用于验证车身控制模块对这些电气故障的检测与恢复能力。",
+  "uncertain_points": []
+}
+```

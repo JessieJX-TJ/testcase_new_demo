@@ -1,0 +1,39 @@
+2、ICB将CAN控制信号转换成数字灯光灯控CAN信号,控制制动灯点亮
+3、ICB 将控制信号延时 60ms 分发至 RZCU；(配置需求:BrkLghtCtrlDelayPrm)
+BrkLghtCtrl_HW=0x1=BrkLghtCtrl_HW_1_On
+4、ICB接收信号:BrkLghtCtrl=0x1=BrkLghtCtrl_1_On；做大屏制动灯触发的动画显示
+5、[驱动处理模块 RZCU]接收 ICB 控制信号,BrkLghtCtrl_HW=0x1=BrkLghtCtrl_HW_1_On,内部跳
+输出,驱动制动灯点亮
+6、[驱动处理模块RZCU]将状态/故障状态反馈至[制动灯开关控制模块LHZCU]:
+BrkLghtSts_HW=0x1=BrkLghtSts_HW_1_On
+BrkLghtFltSts_HW=0x0=BrkLghtFltSts_HW_0_False
+(exlBrkLghtHwDrvEnPrm=0x1=DrvieAndFeedBack；则 RZCU反馈获取到的制动灯点亮及故障状态
+7、ICB接收数字灯光灯控反馈状态,并将制动灯点亮状态/故障状态反馈至[制动灯开关控制模块LH
+BrkLghtSts=0x1=BrkLghtSts_1_On
+BrkLghtFltSts=0x0=BrkLghtFltSts_0_False
+(exlBrkLghtHwDrvEnPrm=0x0||0x2；通过数字灯光灯控获取制动灯点亮及故障状态；)
+8、[制动灯开关控制模块LHZCU]将状态/故障状态反馈至ICB:
+BrkLghtSta=0x1=BrkLghtSta_1_On
+BrkLghtFltSta=0x0=BrkLghtFltSta_0_False
+9、[外灯组合服务ICB]将接收到的LHZCU发送的制动灯点亮状态及故障状态CAN信号转为服务状
+{ExteriorLightControlSystem. BrakeLightSts. BrakeLghtSts}=01=ON
+{ExteriorLightControlSystem. BrakeLightErrSts. BrakeLghtErrSts}= Ox0=No Error
+10、[制动灯开关控制模块LHZCU]将开关状态反馈至ICB:
+BrkLghtSwSts=0x1=BrkLghtSwSts_1_On
+BrkLghtSwStsV=0x0=BrkLghtSwStsV_0_Valid
+备注
+1、制动灯开启同步性要求:
+左侧、右侧以及高位制动灯需保持同步点亮,三侧最大延时不超过40ms
+注:制动灯开关控制前置条件和触发动作均由外灯主控模块LHZCU处理,后续功能
+需求如无特殊说明均按此处理
+[Z3-0801外灯,[SYS_VehicleType],制动灯开关控制#VP3-25644, Function Allocation
+Requirement]
+场景描述
+将车辆VS模式切换为:休眠||待机||XOTA||运输
+前置条件
+1. 制动灯处于激活状态
+触发动作
+1∥2∥(3&4&5&6&7&8)
+1、用户模式不满足:
+(UsgMd=0x0=UsgMd_0_Sleep;∥UsgMd=0x1 =UsgMd_1_Standby;∥UsgMd=0x6=UsgMd_6_XOTA
+UsgMdV=Valid

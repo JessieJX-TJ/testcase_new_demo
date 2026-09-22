@@ -1,0 +1,84 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "氛围灯控制逻辑",
+  "row_semantics": "描述氛围灯从关闭到点亮，以及从点亮到关闭的触发条件、执行动作和退出条件的逻辑流程。",
+  "column_semantics": {
+    "0": "条件/动作类型（如前置条件、触发条件、执行动作、退出条件、异常处理）",
+    "1": "对应的具体描述或规则"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RoofLHALampOnOff_1",
+      "type": "controller_module",
+      "description": "氛围灯本地控制模块"
+    },
+    {
+      "name": "RoofLHALampColorCmd_1",
+      "type": "input_signal",
+      "description": "颜色值控制信号"
+    },
+    {
+      "name": "RoofLHALampBrtnsCmd_1",
+      "type": "input_signal",
+      "description": "亮度值控制信号"
+    },
+    {
+      "name": "RoofLHALampFadeSpdCmd_1",
+      "type": "input_signal",
+      "description": "渐变速度控制信号"
+    },
+    {
+      "name": "ZCU",
+      "type": "controller_module",
+      "description": "区域控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "氛围灯处于关闭状态",
+      "trigger": "接收到RoofLHALampOnOff_1 = 0x1 (ON) && RoofLHALampColorCmd_1 != 0x00 (No Request) && RoofLHALampBrtnsCmd_1 != 0x00 (No Request)",
+      "action": "驱动氛围灯点亮"
+    },
+    {
+      "condition": "氛围灯已点亮",
+      "trigger": "接收到RoofLHALampOnOff_1 = 0x0 (OFF)",
+      "action": "按照RoofLHALampFadeSpdCmd_1设定的渐变速度关闭氛围灯"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "RoofLHALampOnOff_1",
+      "value": "0x1 (ON)",
+      "description": "开启氛围灯"
+    },
+    {
+      "signal": "RoofLHALampOnOff_1",
+      "value": "0x0 (OFF)",
+      "description": "关闭氛围灯"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "过压、欠压故障",
+      "action": "直接关闭氛围灯"
+    },
+    {
+      "fault": "未接收到ZCU的LIN信号",
+      "timeout": "6s",
+      "action": "直接关闭氛围灯"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "LIN信号接收超时",
+      "value": "6s",
+      "description": "默认超时时间，超过此时间未接收到ZCU的LIN信号将触发关闭氛围灯"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了氛围灯的开启和关闭逻辑，包括触发条件、执行动作、退出条件以及异常处理规则，可用于验证氛围灯在不同控制信号下的行为是否符合设计规范。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,48 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "寻车灯控制模块 LHZCU 的控制信号跳变与外灯组合服务 ICB 的功能描述",
+  "row_semantics": "逐条列出寻车灯控制模块 LHZCU 的不同控制状态及其对应的信号发送要求，以及外灯组合服务 ICB 的功能定义。",
+  "column_semantics": "无明确列结构，内容为按行组织的文本描述，每行代表一个独立的功能或控制逻辑。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "LHZCU (寻车灯控制模块)",
+    "ICB (外灯组合服务)",
+    "FLDircnLightCtrl (前左转向灯控制)",
+    "FRDircnLightCtrl (前右转向灯控制)",
+    "RLDircnLightCtrl (后左转向灯控制)",
+    "RRDircnLightCtrl (后右转向灯控制)",
+    "DircnLightMdSts (转向灯流水模式使能状态)",
+    "ExteriorLightSwitchProcess (外部灯光开关过程)",
+    "DircnLghtFucProStatus (转向灯功能过程状态)",
+    "DircnLghtFucProSta (转向灯功能过程状态附加信息)",
+    "DirectionLightModeStatus (方向灯模式状态)"
+  ],
+  "core_conditions": [
+    "双闪灯频率闪烁 (1.25Hz, 800ms周期)",
+    "转向灯流水模式使能",
+    "解锁信号 0x1",
+    "闭锁信号 0x2",
+    "外灯组合服务调用延时 60ms"
+  ],
+  "core_outputs": [
+    "发送特定周期的信号 (400ms或50ms)",
+    "设置转向灯流水模式使能状态",
+    "控制双闪灯持续3S点亮",
+    "控制双闪灯按照1.25Hz频率点亮三个闪烁周期",
+    "将服务接口或控制信号转换成灯控CAN信号"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "双闪灯闪烁周期: 800ms",
+    "转向灯闪烁周期: 50ms",
+    "外灯组合服务延时: 60ms"
+  ],
+  "engineering_interpretation": "该技术规范用于验证寻车灯控制模块 LHZCU 在不同触发条件下的信号输出行为，以及外灯组合服务 ICB 对转向灯和双闪灯的控制逻辑，确保其符合设计要求。",
+  "uncertain_points": [
+    "具体信号值的详细含义未在表中明确说明",
+    "部分状态机流程细节未展开描述"
+  ]
+}
+```

@@ -1,0 +1,94 @@
+```json
+[
+  {
+    "head": "控制右前转向灯点亮或熄灭",
+    "relation": "触发条件",
+    "tail": "调用DirectionLightControl接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "调用该服务接口,控制右前转向灯点亮或者熄灭",
+      "Interface Name: DirectionLightControl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "获取右前转向灯状态",
+    "relation": "触发条件",
+    "tail": "订阅DirectionLightState接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "订阅该服务,通过该接口可以获取右前转向灯的状态",
+      "Interface Name: DirectionLightState"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯状态为OFF",
+    "relation": "输出为",
+    "tail": "DirectionLightState信号值为0x0",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Output: DirectionLightState",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯状态为On",
+    "relation": "输出为",
+    "tail": "DirectionLightState信号值为0x1",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Output: DirectionLightState",
+      "0x1=On"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯状态为Error",
+    "relation": "输出为",
+    "tail": "DirectionLightState信号值为0x2",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Output: DirectionLightState",
+      "0x2=Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯状态为Unknown",
+    "relation": "输出为",
+    "tail": "DirectionLightState信号值为0x3",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Output: DirectionLightState",
+      "0x3=Unknown"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DirectionLightCtrlReq参数值为0x0",
+    "relation": "输入为",
+    "tail": "控制指令为熄灭",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {DirectionLightCtrReq}",
+      "InstanceID=2",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DirectionLightCtrlReq参数值为0x1",
+    "relation": "输入为",
+    "tail": "控制指令为点亮",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {DirectionLightCtrReq}",
+      "InstanceID=2",
+      "0x1=On"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

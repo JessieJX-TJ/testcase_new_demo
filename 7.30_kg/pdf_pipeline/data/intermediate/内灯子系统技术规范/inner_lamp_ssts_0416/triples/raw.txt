@@ -1,0 +1,144 @@
+```json
+[
+  {
+    "head": "第三排左侧阅读灯点亮",
+    "relation": "前提条件",
+    "tail": "接收到阅读灯控制模块的请求信号 ThirdRowMapLampLHBrtLvl=0x1 (Level_1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ThirdRowMapLampLHBrtLvl",
+      "0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "第三排左侧阅读灯熄灭",
+    "relation": "前提条件",
+    "tail": "接收到阅读灯控制模块的请求信号 ThirdRowMapLampLHBrtLvl=0x0 (OFF)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ThirdRowMapLampLHBrtLvl",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "阅读灯驱动控制模块输出 PWM 信号",
+    "relation": "输入为",
+    "tail": "ThirdRowMapLampLHDimSpd 的值（0x0, 0x1, 0x2）",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ThirdRowMapLampLHDimSpd"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "阅读灯瞬时点亮",
+    "relation": "依赖于",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x2",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "ThirdRowMapLampLHDimSpd",
+      "0x2"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "阅读灯瞬时熄灭",
+    "relation": "依赖于",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x2",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "ThirdRowMapLampLHDimSpd",
+      "0x2"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "阅读灯以速度 1 点亮",
+    "relation": "依赖于",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x0",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "ThirdRowMapLampLHDimSpd",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "阅读灯以速度 2 点亮",
+    "relation": "依赖于",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x1",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "ThirdRowMapLampLHDimSpd",
+      "0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "阅读灯以速度 1 熄灭",
+    "relation": "依赖于",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x0",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "ThirdRowMapLampLHDimSpd",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "阅读灯以速度 2 熄灭",
+    "relation": "依赖于",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x1",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "ThirdRowMapLampLHDimSpd",
+      "0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "阅读灯默认以速度 1 点亮",
+    "relation": "故障响应",
+    "tail": "未接收到点亮速度信号时，按照默认 ThirdRowMapLampLHDimSpd=0x0 (速度 1) 执行",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "ThirdRowMapLampLHDimSpd",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "阅读灯默认以速度 1 熄灭",
+    "relation": "故障响应",
+    "tail": "未接收到熄灭速度信号时，按照默认 ThirdRowMapLampLHDimSpd=0x0 (速度 1) 执行",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "ThirdRowMapLampLHDimSpd",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "第三排左侧阅读灯驱动被关断",
+    "relation": "故障响应",
+    "tail": "第三排左侧阅读灯触发短路/开路故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "短路/开路故障"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "第三排左侧阅读灯驱动被关断",
+    "relation": "故障响应",
+    "tail": "未接收到阅读灯控制模块的亮度请求信号",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "ThirdRowMapLampLHDimSpd"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

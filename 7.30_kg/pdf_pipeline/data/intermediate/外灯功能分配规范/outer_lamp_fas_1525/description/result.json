@@ -1,0 +1,60 @@
+{
+  "table_type": "structure_table",
+  "topic": "大灯高度调节系统时序与模块交互",
+  "row_semantics": "流程步骤或系统模块",
+  "column_semantics": "无，此表为线性流程图而非传统表格",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "8295",
+      "type": "controller",
+      "description": "大灯高度调节软开关模块"
+    },
+    {
+      "name": "S32G",
+      "type": "controller",
+      "description": "个性化设置模块"
+    },
+    {
+      "name": "LHA/RHA",
+      "type": "controller",
+      "description": "大灯高度调节驱动模块"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "大灯高度调节驱动",
+      "description": "最终输出，控制大灯高度"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "module": "8295",
+      "operation": "大灯高度调节软开关",
+      "timing": "30ms"
+    },
+    {
+      "module": "S32G",
+      "operation": "个性化设置",
+      "timing": "10ms"
+    },
+    {
+      "module": "LHA/RHA",
+      "operation": "大灯高度调节驱动",
+      "timing": "30ms"
+    },
+    {
+      "inter_module": "Eth/Setter",
+      "timing": "40ms"
+    },
+    {
+      "total_system": "大灯高度调节",
+      "timing": "70ms"
+    }
+  ],
+  "engineering_interpretation": "该图表描述了大灯高度调节系统的时序流程，用于验证从软开关触发到最终驱动执行的整个过程是否在规定时间内完成，确保系统响应速度符合设计要求。",
+  "uncertain_points": []
+}

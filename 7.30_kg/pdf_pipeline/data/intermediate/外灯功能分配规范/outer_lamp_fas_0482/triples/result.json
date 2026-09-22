@@ -1,0 +1,94 @@
+[
+  {
+    "head": "获取右后位置灯的状态",
+    "relation": "触发条件",
+    "tail": "订阅SidePositionLightStatus服务",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "SidePositionLight.SidPositionLightStatus",
+      "Interface Name: SidePositionLightStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0482",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "获取位置灯的状态",
+    "relation": "触发条件",
+    "tail": "订阅SidePositionLightSta服务",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.SidePositionLightSta",
+      "Interface Name: SidePositionLightSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0482",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "SidePositionLightStatus信号",
+    "relation": "输出为",
+    "tail": "OFF, ON, Error, Unknown",
+    "triple_type": "逻辑映射",
+    "evidence_terms": [
+      "SidePositionLightStatus",
+      "0x0=OFF",
+      "0x1=ON",
+      "0x2=Error",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0482",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "SidePositionLightSta信号",
+    "relation": "输出为",
+    "tail": "OFF, ON",
+    "triple_type": "逻辑映射",
+    "evidence_terms": [
+      "SidePositionLightSta",
+      "0x0=OFF",
+      "0x1=ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0482",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "获取右后位置灯的状态",
+    "relation": "依赖于",
+    "tail": "SOA, ICB, LHZ CU",
+    "triple_type": "依赖关系",
+    "evidence_terms": [
+      "SidePositionLight.SidPositionLightStatus",
+      "SOA",
+      "ICB",
+      "LHZ CU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0482",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "获取位置灯的状态",
+    "relation": "依赖于",
+    "tail": "SOA, LHZCU, ICB",
+    "triple_type": "依赖关系",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.SidePositionLightSta",
+      "SOA",
+      "LHZCU",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0482",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  }
+]

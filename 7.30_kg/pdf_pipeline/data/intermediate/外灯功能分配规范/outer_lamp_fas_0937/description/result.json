@@ -1,0 +1,49 @@
+{
+  "table_type": "signal_table",
+  "topic": "制动灯状态反馈与故障检测",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的信号或状态反馈项，详细描述其属性和定义。",
+  "column_semantics": "表格包含多列，分别表示信号的类型（如输出、消费）、通信方式（如CANFD）、涉及的控制器/模块（如LHZCU, ICB, RZCU）、以及信号的具体定义和状态值。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrkLghtSta",
+      "type": "output_signal",
+      "description": "制动灯状态反馈信号，指示制动灯当前是开启还是关闭。",
+      "controller": "LHZCU"
+    },
+    {
+      "name": "BrkLghtFltSta",
+      "type": "fault_signal",
+      "description": "制动灯故障状态反馈信号，指示制动灯是否存在硬件故障。",
+      "controller": "ICB"
+    },
+    {
+      "name": "BrakeLightState",
+      "type": "parameter",
+      "description": "制动灯状态参数，用于订阅制动灯的状态信息。",
+      "controller": "RZCU"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "BrkLghtSta",
+      "value": "0x0=Off; 0x1=On"
+    },
+    {
+      "name": "BrkLghtFltSta",
+      "value": "0x0=False; 0x1=True"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "BrkLghtFltSta",
+      "condition": "True",
+      "description": "当信号值为1时，表示制动灯存在硬件故障。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证制动灯状态反馈信号（BrkLghtSta）和制动灯故障状态反馈信号（BrkLghtFltSta）在不同控制器（如LHZCU, ICB）之间的正确传输与状态定义，确保制动灯状态和故障信息能够被准确采集和处理。",
+  "uncertain_points": []
+}

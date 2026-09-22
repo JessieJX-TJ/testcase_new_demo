@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "右远光灯短路到地故障处理功能",
+    "relation": "前提条件",
+    "tail": "1.MainBeamLghtFbkSOAEnPrm==1(Enable)且2. 右远光灯处于输出状态",
+    "triple_type": "工程规则",
+    "evidence_terms": ["MainBeamLghtFbkSOAEnPrm", "右远光灯输出状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右远光灯短路到地故障处理功能",
+    "relation": "触发条件",
+    "tail": "检测到右远光灯短路到地",
+    "triple_type": "工程规则",
+    "evidence_terms": ["右远光灯短路到地"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【RMainBeamLghtDrvMdl】停止驱动右远光灯输出 (MainBeamLamp_RH_HSD)",
+    "relation": "故障响应",
+    "tail": "检测到右远光灯短路到地",
+    "triple_type": "工程规则",
+    "evidence_terms": ["RMainBeamLghtDrvMdl", "MainBeamLamp_RH_HSD", "右远光灯短路到地"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【RMainBeamLghtDrvMdl】持续发送 MainBeamLightState. MainBeamLightSta = 2 (Error) InstanceID=2 至 【MainBeamLghtCtrlMdl】，至少发送三帧",
+    "relation": "故障响应",
+    "tail": "检测到右远光灯短路到地",
+    "triple_type": "工程规则",
+    "evidence_terms": ["RMainBeamLghtDrvMdl", "MainBeamLightState", "MainBeamLghtCtrlMdl", "右远光灯短路到地"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "置位 DTC B105C 11",
+    "relation": "故障响应",
+    "tail": "检测到右远光灯短路到地",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DTC B105C 11", "右远光灯短路到地"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右远光灯短路到地故障处理功能",
+    "relation": "退出条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "工程规则",
+    "evidence_terms": ["短路恢复"],
+    "confidence_note": "high"
+  }
+]
+```

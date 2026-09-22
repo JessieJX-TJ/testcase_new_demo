@@ -1,0 +1,101 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "手动触发危险警报灯开关控制逻辑",
+  "row_semantics": "表格按功能描述、前置条件、触发动作、执行动作的顺序组织，详细定义了危险警报灯（Hazard Warning Lights, HWL）在特定输入条件下应如何响应。",
+  "column_semantics": "表格包含三列：第一列为场景描述和功能模块分类，第二列为前置条件列表，第三列为触发动作和执行动作的具体指令。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "危险警报灯开关控制模块 LHZCU",
+      "type": "controller",
+      "description": "负责处理危险警报灯开关信号并控制HWL闪烁模式的电子控制单元。"
+    },
+    {
+      "name": "ExtrLghtCtrlCmmtnTyp",
+      "type": "signal",
+      "description": "外部灯光控制通信类型，用于指定SOA或CAN通信方式。"
+    },
+    {
+      "name": "ExtrLghtStsCmmtnTyp",
+      "type": "signal",
+      "description": "外部灯光状态通信类型，用于指定SOA或CAN通信方式。"
+    },
+    {
+      "name": "HzrdLghtSwReq",
+      "type": "signal",
+      "description": "危险警报灯开关请求信号，由用户手动触发。"
+    },
+    {
+      "name": "FLDircnLghtCtrl",
+      "type": "signal",
+      "description": "前左方向灯控制信号，用于控制HWL闪烁。"
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "type": "signal",
+      "description": "前右方向灯控制信号，用于控制HWL闪烁。"
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "type": "signal",
+      "description": "后左方向灯控制信号，用于控制HWL闪烁。"
+    },
+    {
+      "name": "RRDircnLghtCtrl",
+      "type": "signal",
+      "description": "后右方向灯控制信号，用于控制HWL闪烁。"
+    },
+    {
+      "name": "DircnLghtMdSts",
+      "type": "signal",
+      "description": "方向灯模式状态信号，指示当前HWL的工作模式（如双闪或流水）。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件组合",
+      "description": "UsgMd=All; UsgMdV=Valid; VehMd=All; VehMdV=Valid; ExtrLghtCtrlCmmtnTyp=0x0=SOA; ExtrLghtCtrlCmmtnTyp=0x1=CAN; ExtrLghtStsCmmtnTyp=0x0=SOA; ExtrLghtStsCmmtnTyp=0x1=CAN",
+      "notes": "a. 需求中同时存在 SOA 和 CAN 的，按照配置字开发；b. 需求中只存在一种通讯类型的，按照该通讯类型开发；c. PPV 阶段及以后按照 SOA 通讯方式开发"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "HzrdLghtSwReq",
+      "value": "0x1=HzrdLghtSwReq_1_On",
+      "description": "当危险警报灯开关被触发时，发送此信号以激活HWL控制模块。"
+    },
+    {
+      "output": "FLDircnLghtCtrl, FRDircnLghtCtrl, RLDircnLghtCtrl, RRDircnLghtCtrl",
+      "value": "0x1=On, 0x0=Off",
+      "description": "控制前后左右四个方向灯按照1.25Hz频率交替闪烁，实现双闪效果。"
+    },
+    {
+      "output": "DircnLghtMdSts",
+      "value": "0x0=Enabled",
+      "description": "使能转向灯流水模式，表示HWL处于双闪工作模式。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal": "FLDircnLghtCtrl, FRDircnLghtCtrl, RLDircnLghtCtrl, RRDircnLghtCtrl",
+      "frequency": "1.25Hz",
+      "on_off_pattern": "先 on 后 off",
+      "period": "800ms",
+      "description": "控制HWL闪烁的周期性信号，每个周期为800ms，其中400ms为亮，400ms为灭。"
+    },
+    {
+      "signal": "DircnLghtMdSts",
+      "mode": "Enabled",
+      "description": "使能转向灯流水模式，表示HWL处于双闪工作模式。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了危险警报灯开关的手动触发逻辑，包括前置条件、触发动作和执行动作，主要用于验证危险警报灯控制系统在不同通信模式下的正确响应和HWL闪烁模式的实现。",
+  "uncertain_points": [
+    "具体配置字开发细节未明确说明。",
+    "PPV阶段及以后按照SOA通信方式开发的具体实施细节未明确。"
+  ]
+}
+```

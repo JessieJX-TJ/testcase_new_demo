@@ -1,0 +1,107 @@
+[
+  {
+    "head": "右后转向灯控制信号(RRDircnLghtCtrl_HW)为输入",
+    "relation": "前提条件",
+    "tail": "右后转向灯状态信号(RRDircnLghtSts)为输出",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RRDircnLghtCtrl_HW",
+      "Direction",
+      "Input",
+      "RRDircnLghtSts",
+      "Type",
+      "CAN"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0424",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "右后转向灯控制信号(RRDircnLghtCtrl_HW)值为0x0",
+    "relation": "触发条件",
+    "tail": "右后转向灯熄灭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RRDircnLghtCtrl_HW",
+      "0x0=RRDircnLghtCtrl_HW_0_Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0424",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "右后转向灯控制信号(RRDircnLghtCtrl_HW)值为0x1",
+    "relation": "触发条件",
+    "tail": "右后转向灯点亮",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RRDircnLghtCtrl_HW",
+      "0x1=RRDircnLghtCtrl_HW_1_On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0424",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "右后转向灯状态信号(RRDircnLghtSts)为输出",
+    "relation": "依赖于",
+    "tail": "右后转向灯控制信号(RRDircnLghtCtrl_HW)为输入",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RRDircnLghtSts",
+      "RRDircnLghtCtrl_HW"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0424",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "右后转向灯硬线驱动信号(DILamp_RH_HSD)为输出",
+    "relation": "输出为",
+    "tail": "尾灯",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DILamp_RH_HSD",
+      "Output",
+      "Tail Lamp"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0424",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "右后转向灯控制服务接口(DirectionLightControl_DirectionLightCtReq)为输入",
+    "relation": "输入为",
+    "tail": "RZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DirectionLightControl_DirectionLightCtReq",
+      "SOA",
+      "ICB/LHZCU",
+      "RZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0424",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "调用右后转向灯控制服务接口(DirectionLightControl_DirectionLightCtReq)",
+    "relation": "触发条件",
+    "tail": "控制右后转向灯点亮或者熄灭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DirectionLightControl_DirectionLightCtReq",
+      "调用该服务接口,控制右后转向灯点亮或者熄灭"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0424",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  }
+]

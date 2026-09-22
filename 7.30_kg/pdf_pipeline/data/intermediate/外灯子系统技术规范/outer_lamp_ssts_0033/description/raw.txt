@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "左制动灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件、触发条件到执行动作、退出条件及异常处理。",
+  "column_semantics": "左侧列为功能阶段（如前置条件、触发条件等），右侧列详细描述该阶段的具体内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLghtDrvMdl",
+      "type": "controller_module",
+      "description": "制动灯驱动模块"
+    },
+    {
+      "name": "DTC B1041 11",
+      "type": "diagnostic_trouble_code",
+      "description": "制动灯电路短路故障代码"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlBrkLghtHwDrvEnPrm",
+      "type": "input_signal",
+      "description": "硬件驱动使能参数",
+      "condition": "==1"
+    },
+    {
+      "name": "左制动灯输出状态",
+      "type": "system_state",
+      "description": "左制动灯当前的输出模式"
+    },
+    {
+      "name": "检测到左制动灯短路到地",
+      "type": "trigger_condition",
+      "description": "系统检测到制动灯电路与地之间发生短路"
+    },
+    {
+      "name": "检测到短路恢复",
+      "type": "exit_condition",
+      "description": "系统检测到之前发生的短路故障已恢复正常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLamp_LH_HSD",
+      "type": "output_signal",
+      "description": "左前制动灯硬件控制信号，设置为停止输出"
+    },
+    {
+      "name": "BrkLghtSts",
+      "type": "output_signal",
+      "description": "制动灯状态信号，持续发送值为0（Off）"
+    },
+    {
+      "name": "BrkLghtCtrlMdl",
+      "type": "output_signal",
+      "description": "制动灯控制模块，至少发送三帧数据"
+    },
+    {
+      "name": "BrkLghtFltSts_HW",
+      "type": "feedback_signal",
+      "description": "硬件故障状态反馈，设置为0x1 (BrkLghtFltSts_HW_1_True)"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC B1041 11",
+      "type": "fault_status",
+      "description": "制动灯电路短路故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了当左制动灯发生短路故障时，系统如何通过制动灯驱动模块进行故障抑制、状态反馈和故障码置位，并在故障恢复后退出相应处理流程。可用于验证制动灯短路故障诊断与处理功能的正确性。",
+  "uncertain_points": []
+}
+```

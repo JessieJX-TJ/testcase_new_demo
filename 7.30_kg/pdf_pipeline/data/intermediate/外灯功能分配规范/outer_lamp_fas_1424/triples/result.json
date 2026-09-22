@@ -1,0 +1,133 @@
+[
+  {
+    "head": "远光灯点亮",
+    "relation": "触发条件",
+    "tail": "ICB 将服务接口或控制信号转换成灯控 CAN 信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU/RHZCU",
+      "MainBeamLight",
+      "CAN 信号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1424",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "远光灯点亮",
+    "relation": "触发条件",
+    "tail": "[远光灯驱动处理模块 LHZCU/RHZCU] 接收 ICB 控制信号,内部跳变为硬线输出",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU/RHZCU",
+      "MainBeamLight",
+      "CAN 信号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1424",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "远光灯自动开启",
+    "relation": "前提条件",
+    "tail": "[远光灯自动控制模块 LHZCU] 判断远光灯自动开启前置条件满足",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "AutoMaiBeamLghtCtrlDsblSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1424",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "远光灯自动开启",
+    "relation": "前提条件",
+    "tail": "AutoMaiBeamLghtCtrlDsblSts = 0x0 = False",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "AutoMaiBeamLghtCtrlDsblSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1424",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "远光灯状态反馈",
+    "relation": "输出为",
+    "tail": "{MainBeamLight.MainBeamLightStatus.MainBeamLightSta}{InstanceID=1}=0x1=ON 或 {MainBeamLight.MainBeamLightStatus.MainBeamLightSta}{InstanceID=2}=0x1=ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "MainBeamLightStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1424",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "远光灯错误状态反馈",
+    "relation": "输出为",
+    "tail": "{MainBeamLight.MainBeamLightErrorStatus.MainBeamLightErrorSta}{InstanceID=1}=0x0=No Error 或 {MainBeamLight.MainBeamLightErrorStatus.MainBeamLightErrorSta}{InstanceID=2}=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "MainBeamLightErrorStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1424",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "远光灯同步点亮",
+    "relation": "超时约束",
+    "tail": "左侧和右侧远光灯需保持同步点亮,两侧最大延时不能超过 40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "MainBeamLight",
+      "40ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1424",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "远光灯手动关闭请求",
+    "relation": "触发条件",
+    "tail": "一个点火循环内,远光灯自动控制功能处于激活状态时,检测到三次远光灯手动关闭请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AutoMaiBeamLghtCtrlDsblSts",
+      "ExteriorLightSwitchProcess"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1424",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "远光灯自动控制功能禁止",
+    "relation": "抑制条件",
+    "tail": "AutoMaiBeamLghtCtrlDsblSts = 0x1 = True",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "AutoMaiBeamLghtCtrlDsblSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1424",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

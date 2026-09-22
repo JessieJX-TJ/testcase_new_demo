@@ -1,0 +1,28 @@
+场景描述
+拖挂模式下,拖挂车位置灯开启
+前置条件
+1&&2
+1、车辆具备拖车模式功能:InsdFnCfgVehDragMd=0x1
+2、拖挂模式开启:VehDragMdSts=0x1=VehDragMdSts_1_On
+注:LHZCU、ICB、RZCU需判断此前置条件
+触发条件
+LHZCU发送的外灯控制信号为:
+{ExteriorLightSwitchProcess.
+CombLghtFucProStatus.CombLghtFucProSta}=0x1=Only SidePositionLight
+CombLghtFucProStatus.CombLghtFucProSta}=0x4= SidePositionAndDippedBeam
+{ExteriorLightSwitchProcess.FrontFogLghtFucProStatus.FrontFogLghtFucProsSta}=
+0x4=FrontFogLghtAndSideLight ON
+执行动作
+1、[外灯组合服务ICB]判断前置条件满足,根据接收到的LHZCU发送的位置
+灯开启请求,对应调用基础服务:
+{SidePositionLight.
+ControlSidePositionLightSidePositionLightReq}{InstanceID=9}=0x1=ON
+ControlSidePositionLightSidePositionLightReq}{InstanceID=10}=0x1=ON
+(注:无需延迟调用)
+2、RZCU判断前置条件满足,根据接收到的:
+ControlSidePositionLight SidePositionLightReq}{InstanceID=9}=0x1=ON &
+ControlSidePositionLight SidePositionLightReq}{InstanceID=10}=0x1=ON
+对应发送
+TrlrSideLghtOnReq=0x3=TrlrSideLghtOnReq_3_Both_left_and_Right_Side_light_on
+给 TDM
+4、TDM根据接收到的:

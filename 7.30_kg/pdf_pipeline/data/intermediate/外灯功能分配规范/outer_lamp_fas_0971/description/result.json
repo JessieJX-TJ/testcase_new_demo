@@ -1,0 +1,38 @@
+{
+  "table_type": "fault_table",
+  "topic": "拖车模式下外灯位置灯状态与故障反馈机制",
+  "row_semantics": "表格按功能点编号（如5、6、7等）列出不同场景下的外灯位置灯状态及故障反馈逻辑。",
+  "column_semantics": "无明确列，内容为多行文本描述，每行对应一个功能点的详细逻辑。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "RZCU (Right Zone Control Unit)",
+    "TDM (Trailer Diagnostic Module)",
+    "ICB (Instrument Cluster Box)",
+    "LHZCU (Left Hand Zone Control Unit)",
+    "ExteriorLightControlSystem"
+  ],
+  "core_conditions": [
+    "拖车模式 (Trailer Mode)",
+    "前置条件满足 (Precondition met)",
+    "exlSideLghtHwDrvEnPrm 参数值 (exlSideLghtHwDrvEnPrm parameter value)"
+  ],
+  "core_outputs": [
+    "SidePositionLight.Sta (位置灯状态)",
+    "SidePositionLightErrSta (位置灯错误状态)",
+    "FrtVehSideLghtFltSts (前车侧灯故障状态)"
+  ],
+  "core_faults": [
+    "SidePositionLightErrorStatus",
+    "FrtVehSideLghtFltSts_1_PosnLeFlr",
+    "FrtVehSideLghtFltSts_2_PosnRiFlr",
+    "FrtVehSideLghtFltSts_3_PosnLeAndRiFlr"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在拖车模式下，车辆外灯（特别是位置灯）的状态和故障反馈逻辑，用于验证RZCU、TDM等控制器之间的信号交互是否符合规范，确保在特定条件下位置灯的状态和故障信息能够正确传递。",
+  "uncertain_points": [
+    "具体参数值exlSideLghtHwDrvEnPrm的含义未明确说明",
+    "表格中未明确列出所有可能的前置条件",
+    "未明确说明各控制器之间信号交互的具体时序要求"
+  ]
+}

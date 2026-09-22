@@ -1,0 +1,36 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯控制信号定义",
+  "row_semantics": "表格按外灯功能模块进行分组，每一行代表一个具体的外灯控制信号（如左前位置灯、右前位置灯等）及其对应的控制逻辑。",
+  "column_semantics": "第一列用于标识信号所属的外灯功能模块；第二列描述信号的类型（如输出信号）及通信协议（CANFD, LIN, SOA）；后续列为控制器/模块名称（LHZCU, ICB等），表示该信号由哪个控制器处理。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "FLSideLghtCtrl",
+    "FRSideLghtCtrl",
+    "RLSideLghtCtrl",
+    "RRSideLghtCtrl"
+  ],
+  "core_conditions": [
+    "0x0=Off",
+    "0x1=On"
+  ],
+  "core_outputs": [
+    "FLSideLghtCtrl_0_Off",
+    "FLSideLghtCtrl_1_On",
+    "FRSideLghtCtrl_0_Off",
+    "FRSideLghtCtrl_1_On",
+    "RLSideLghtCtrl_0_Off",
+    "RLSideLghtCtrl_1_On",
+    "RRSideLghtCtrl_0_Off"
+  ],
+  "core_faults": [
+    "0x1=Error",
+    "0x2=Unknown"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯（如左前、右前、左后、右后位置灯）的控制信号及其状态值，可用于验证各外灯信号在不同控制器下的正确输出状态和故障处理逻辑。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,81 @@
+[
+  {
+    "head": "HMI子系统显示昼间行车灯开关状态为关闭",
+    "relation": "输入为",
+    "tail": "{ExteriorLightSwitchProcess.DayRunningLghtSwStatus.DayRunningLghtSwSta} = 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "DayRunningLghtSwStatus",
+      "DayRunningLghtSwSta",
+      "0x0"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1059",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "HMI子系统显示昼间行车灯开关状态为开启",
+    "relation": "输入为",
+    "tail": "{ExteriorLightSwitchProcess.DayRunningLghtSwStatus.DayRunningLghtSwSta} = 0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "DayRunningLghtSwStatus",
+      "DayRunningLghtSwSta",
+      "0x1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1059",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "HMI子系统触发故障弹窗提醒",
+    "relation": "前提条件",
+    "tail": "当昼间行车灯发生故障时: DayTmRunngLghtFlsts_0_False",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DayTmRunngLghtFlsts_0_False",
+      "HMI子系统",
+      "故障弹窗提醒"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1059",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "HMI子系统触发故障弹窗提醒",
+    "relation": "依赖于",
+    "tail": "HMI子系统根据昼间行车灯服务接口或者CAN信号故障状态",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "HMI子系统",
+      "昼间行车灯服务接口",
+      "CAN信号",
+      "故障状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1059",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "DayRunningLightErrSta = 0x1",
+    "relation": "触发条件",
+    "tail": "HMI子系统触发故障弹窗提醒",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DayRunningLightErrSta",
+      "0x1",
+      "HMI子系统",
+      "故障弹窗提醒"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1059",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  }
+]

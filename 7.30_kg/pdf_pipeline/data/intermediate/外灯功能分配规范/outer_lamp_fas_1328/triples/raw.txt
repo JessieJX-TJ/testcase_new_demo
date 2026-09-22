@@ -1,0 +1,114 @@
+```json
+[
+  {
+    "head": "Directional Light Initialization",
+    "relation": "前提条件",
+    "tail": "ExternalLightControlSystem is initialized",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Initialization of directional lights (On/Off)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Directional Light Turns On",
+    "relation": "触发条件",
+    "tail": "DirectionalLight.gltStat = On",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DirectionalLight.gltStat = On"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Directional Light Turns Off",
+    "relation": "触发条件",
+    "tail": "DirectionalLight.gltStat = Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DirectionalLight.gltStat = Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Fault Injection for Open Circuit",
+    "relation": "触发条件",
+    "tail": "FaultType = Open Circuit",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Fault injection (e.g., Open Circuit, Short to Ground)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Error Status Detected",
+    "relation": "依赖于",
+    "tail": "DirectionalLight.gltErrorSta",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "Error status monitoring (e.g., No Error, Error Detected)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Flash Mode Activation",
+    "relation": "触发条件",
+    "tail": "ModeSwitchProcess = Flash Mode",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Mode switching (e.g., Flash Mode, Warning Mode)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Warning Mode Activation",
+    "relation": "触发条件",
+    "tail": "ModeSwitchProcess = Warning Mode",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Mode switching (e.g., Flash Mode, Warning Mode)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "No Error Status",
+    "relation": "输出为",
+    "tail": "DirectionalLight.gltErrorSta = No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Error status monitoring (e.g., No Error, Error Detected)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Error Detected Status",
+    "relation": "输出为",
+    "tail": "DirectionalLight.gltErrorSta = Error Detected",
+    "triple_type": "输入与输出映ap关系",
+    "evidence_terms": [
+      "Error status monitoring (e.g., No Error, Error Detected)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Flash Mode and Warning Mode",
+    "relation": "与...互斥",
+    "tail": "Flash Mode and Warning Mode cannot be activated simultaneously",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "Mode switching (e.g., Flash Mode, Warning Mode)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Fault Injection Timing",
+    "relation": "超时约束",
+    "tail": "Fault injection must occur within Instance ID 1234 sequence",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "Timing between fault injection and response monitoring"
+    ],
+    "confidence_note": "medium"
+  }
+]
+```

@@ -1,0 +1,452 @@
+```json
+[
+  {
+    "head": "ICB",
+    "relation": "controls",
+    "tail": "Ambient Lamp Service",
+    "sources": ["inner_lamp_ssts_0454"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "controls",
+    "tail": "Reading Lamp Control",
+    "sources": ["inner_lamp_ssts_0454"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "contains_subfunction",
+    "tail": "FLDSP",
+    "sources": ["inner_lamp_ssts_0454"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "contains_subfunction",
+    "tail": "RLDSP",
+    "sources": ["inner_lamp_ssts_0454"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "contains_subfunction",
+    "tail": "FRDSP",
+    "sources": ["inner_lamp_ssts_0454"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "contains_subfunction",
+    "tail": "RRDSP",
+    "sources": ["inner_lamp_ssts_0454"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHC",
+    "relation": "contains_subfunction",
+    "tail": "MapLamp_FL",
+    "sources": ["inner_lamp_ssts_0454"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHC",
+    "relation": "contains_subfunction",
+    "tail": "MapLamp_FR",
+    "sources": ["inner_lamp_ssts_0454"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Deactivation",
+    "relation": "trigger_condition",
+    "tail": "Ambient Lamp Module detects overvoltage or undervoltage fault",
+    "sources": ["inner_lamp_ssts_0455"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Deactivation",
+    "relation": "trigger_condition",
+    "tail": "No LIN signal received from ZCU for >6 seconds",
+    "sources": ["inner_lamp_ssts_0455"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "State Hold",
+    "relation": "trigger_condition",
+    "tail": "DoorFR1LampBrtnsCmd_1 brightness value is invalid",
+    "sources": ["inner_lamp_ssts_0455"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "State Hold",
+    "relation": "fault_response",
+    "tail": "DoorFR1LampBrtnsCmd_1 brightness value is invalid",
+    "sources": ["inner_lamp_ssts_0455"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Light Brightness",
+    "relation": "remains_unchanged",
+    "tail": "Command value is 0x00",
+    "sources": ["inner_lamp_ssts_0456"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Light Brightness",
+    "relation": "adjusts_to_percentage",
+    "tail": "Command value is in range 0x01–0x64",
+    "sources": ["inner_lamp_ssts_0456"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Light Breathing Rate",
+    "relation": "configured_by_code_value",
+    "tail": "Code Value is in range 0x0–0xF",
+    "sources": ["inner_lamp_ssts_0456", "inner_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Light Breathing Rate",
+    "relation": "determines_period",
+    "tail": "Code Value",
+    "sources": ["inner_lamp_ssts_0456", "inner_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Light Breathing Rate",
+    "relation": "determines_mode",
+    "tail": "Code Value",
+    "sources": ["inner_lamp_ssts_0456", "inner_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Light Breathing Rate",
+    "relation": "period_is",
+    "tail": "500ms when Code Value = Rate1",
+    "sources": ["inner_lamp_ssts_0456"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Light Breathing Rate",
+    "relation": "period_is",
+    "tail": "12s when Code Value = Rate15",
+    "sources": ["inner_lamp_ssts_0456"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Short-to-Battery Fault",
+    "relation": "trigger_condition",
+    "tail": "Passenger footwell lamp driver is activated",
+    "sources": ["inner_lamp_ssts_0460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Short-to-Battery Fault",
+    "relation": "trigger_condition",
+    "tail": "Driver current < TBD A",
+    "sources": ["inner_lamp_ssts_0460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Short-to-Battery Fault",
+    "relation": "duration_constraint",
+    "tail": "Fault condition persists for 100ms",
+    "sources": ["inner_lamp_ssts_0460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backlight Illumination",
+    "relation": "trigger_condition",
+    "tail": "VehIlluminateCtrlCmd = 0x1 (Open)",
+    "sources": ["inner_lamp_ssts_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backlight Deactivation",
+    "relation": "trigger_condition",
+    "tail": "VehIlluminateCtrlCmd = 0x0 (Close)",
+    "sources": ["inner_lamp_ssts_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Command",
+    "relation": "trigger_condition",
+    "tail": "Code Value is 0x1–0xF",
+    "sources": ["inner_lamp_ssts_0462", "inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Command",
+    "relation": "suppression_condition",
+    "tail": "Code Value is 0x0",
+    "sources": ["inner_lamp_ssts_0462", "inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Command",
+    "relation": "output",
+    "tail": "Breathing period (e.g., 500ms, 1s, etc.)",
+    "sources": ["inner_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Command",
+    "relation": "output",
+    "tail": "Original breathing mode value",
+    "sources": ["inner_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Command",
+    "relation": "state_persistence_condition",
+    "tail": "Breathing effect continues while Code Value is 0x1–0xF",
+    "sources": ["inner_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Command",
+    "relation": "reset_condition",
+    "tail": "Breathing stops immediately when Code Value = 0x0",
+    "sources": ["inner_lamp_ssts_0462", "inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Command",
+    "relation": "transition_constraint",
+    "tail": "Current breathing mode stops immediately upon new Code Value reception",
+    "sources": ["inner_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Fade Speed Command",
+    "relation": "trigger_condition",
+    "tail": "Code Value is 0x0–0x3",
+    "sources": ["inner_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Fade Speed Command",
+    "relation": "input_source",
+    "tail": "LIN interface, RHZCU, LowIPAmbtLampC, RHZCU_LIN5, Inner Lamp SSTS",
+    "sources": ["inner_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Fade Speed Command",
+    "relation": "input_signal",
+    "tail": "UpIPALampFadeSpdCmd_1_0_Spd0",
+    "sources": ["inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Fade Speed Command",
+    "relation": "input_signal",
+    "tail": "UpIPALampFadeSpdCmd_1_1_Spd1",
+    "sources": ["inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Fade Speed Command",
+    "relation": "input_signal",
+    "tail": "UpIPALampFadeSpdCmd_1_2_Spd2",
+    "sources": ["inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Fade Speed Command",
+    "relation": "input_signal",
+    "tail": "UpIPALampFadeSpdCmd_1_3_Spd3",
+    "sources": ["inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Fade Speed Command",
+    "relation": "output",
+    "tail": "Time required for color/brightness transition from current to target state",
+    "sources": ["inner_lamp_ssts_0462", "inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Fade Speed Command",
+    "relation": "output_dependency",
+    "tail": "Spd0: 2000ms",
+    "sources": ["inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Light Breathing Effect",
+    "relation": "enabled_condition",
+    "tail": "Command value is 0x4–0xF",
+    "sources": ["inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Light Breathing Effect",
+    "relation": "disabled_condition",
+    "tail": "Command value is 0x0",
+    "sources": ["inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Sleep Mode Entry",
+    "relation": "prerequisite",
+    "tail": "No valid wake-up source signal present",
+    "sources": ["inner_lamp_ssts_0464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Wake-up Mechanism",
+    "relation": "depends_on",
+    "tail": "Specific wake-up source",
+    "sources": ["inner_lamp_ssts_0464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Wake-up/Sleep Behavior",
+    "relation": "suppression_condition",
+    "tail": "Wake-up source = NA",
+    "sources": ["inner_lamp_ssts_0464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Wake-up/Sleep Behavior",
+    "relation": "suppression_condition",
+    "tail": "Wake-up/sleep method = NA",
+    "sources": ["inner_lamp_ssts_0464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical & Electronic System Parameter Configuration",
+    "relation": "prerequisite",
+    "tail": "Parameter Range is valid",
+    "sources": ["inner_lamp_ssts_0466"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical & Electronic System Parameter Configuration",
+    "relation": "prerequisite",
+    "tail": "Factor (resolution) is positive",
+    "sources": ["inner_lamp_ssts_0466"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical & Electronic System Parameter Configuration",
+    "relation": "prerequisite",
+    "tail": "Default value lies within parameter Range",
+    "sources": ["inner_lamp_ssts_0466"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Lamp Breathing Mode Brightness Control",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampBrthngCmd_l = 0x3 (Rate3, 1s period)",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brightness Transition (0% → 100%)",
+    "relation": "governed_by_curve",
+    "tail": "y = x² curve over 400ms",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brightness Transition (100% → 0%)",
+    "relation": "governed_by_parameter",
+    "tail": "AmbiLampBrthng Rate3holdoffPercent after 100ms hold time",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Lamp Breathing Mode Rate13",
+    "relation": "configured_by",
+    "tail": "0xD in DoorFL1LampBrthngCmd_l",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Lamp Breathing Mode Rate15",
+    "relation": "configured_by",
+    "tail": "0xF in DoorFL1LampBrthngCmd_l",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Lamp Breathing Mode Rate13",
+    "relation": "brightness_profile",
+    "tail": "200 data points, 40ms step, brightness percentage table",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Lamp Breathing Mode Rate15",
+    "relation": "brightness_profile",
+    "tail": "120 data points, 100ms step, brightness percentage table",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical System Function",
+    "relation": "enabled_condition",
+    "tail": "Battery voltage is in normal range (9V–16V)",
+    "sources": ["inner_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

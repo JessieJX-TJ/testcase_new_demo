@@ -1,0 +1,61 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "大灯高度手动调节功能的技术规范",
+  "row_semantics": "描述了用户通过大屏控制大灯高度调节功能的场景，包括前置条件、触发动作和执行动作。",
+  "column_semantics": {
+    "Column1": "场景描述、前置条件、触发动作、执行动作的分类标题",
+    "Column2": "对应分类的具体内容描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "大灯高度调节",
+      "type": "功能",
+      "description": "允许用户通过大屏手动调节大灯的高度档位"
+    },
+    {
+      "name": "S32G",
+      "type": "控制器/模块",
+      "description": "接收并处理手动大灯高度调节请求的主控单元"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块",
+      "description": "外灯控制组合服务接口，负责将服务信号转换为CAN信号并发送给LDM"
+    },
+    {
+      "name": "LDM",
+      "type": "控制器/模块",
+      "description": "大灯驱动模块，接收并执行大灯高度调节指令"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InsdFnCfgHdLampLvlng",
+      "type": "输入信号",
+      "description": "配置大灯高度调节模式为手动（0x0）",
+      "value": "0x0"
+    },
+    {
+      "name": "HeadLampLevelSetInfo",
+      "type": "输入信号",
+      "description": "手动调节的大灯高度档位信息",
+      "value": "0x1=Level1 (高)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "HdlmpLv lngReq",
+      "type": "输出信号",
+      "description": "私有CAN信号，表示大灯高度调节请求",
+      "value": "0x1"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证用户通过大屏手动调节大灯高度的功能是否按照设计要求正确实现，包括信号传递、模块间交互以及最终执行效果。",
+  "uncertain_points": []
+}
+```

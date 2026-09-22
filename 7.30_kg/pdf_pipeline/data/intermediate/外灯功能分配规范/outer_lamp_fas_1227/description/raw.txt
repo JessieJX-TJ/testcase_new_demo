@@ -1,0 +1,49 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "近光灯驱动处理模块的状态描述",
+  "row_semantics": "每行代表一个状态变量的当前执行情况，包括左右两侧大灯和灯光闪烁功能的状态",
+  "column_semantics": "无明确列，表格内容为状态变量的定义和其对应的值（0x0表示关闭或False）",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LDipdBeamLightSts_HW",
+      "type": "controller_module",
+      "description": "左侧大灯状态硬件接口"
+    },
+    {
+      "name": "RDipdBeamLightSts_HW",
+      "type": "controller_module",
+      "description": "右侧大灯状态硬件接口"
+    },
+    {
+      "name": "LDipdBeamLightFltSts_HW",
+      "type": "controller_module",
+      "description": "左侧大灯闪烁功能状态硬件接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "LDipdBeamLightSts_HW_0_Off",
+      "type": "system_state",
+      "description": "左侧大灯处于关闭状态"
+    },
+    {
+      "name": "RDipdBeamLightSts_HW_0_Off",
+      "type": "system_state",
+      "description": "右侧大灯处于关闭状态"
+    },
+    {
+      "name": "LDipdBeamLightFltSts_HW_0_False",
+      "type": "system_state",
+      "description": "左侧大灯闪烁功能处于关闭状态"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证近光灯驱动处理模块在不同状态下的实际执行情况，特别是确认左右两侧大灯及其闪烁功能是否正确地处于关闭状态。",
+  "uncertain_points": []
+}
+```

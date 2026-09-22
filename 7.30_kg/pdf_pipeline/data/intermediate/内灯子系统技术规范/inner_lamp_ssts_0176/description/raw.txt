@@ -1,0 +1,66 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System - Ambient Lamp Brightness Control",
+  "row_semantics": "Each row defines a specific command or configuration for ambient lamp brightness control, including direct brightness setting and breathing rate commands.",
+  "column_semantics": "Columns represent different communication interfaces (LIN, LHZCU, CnsoAmbtLampC_RH, LHZCU_LIN5) and the target system/module (Interior Lighting SSTS).",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "CnsoRHCLampBrtnsCmd_1",
+      "type": "command",
+      "description": "Direct brightness control command for ambient lamps."
+    },
+    {
+      "name": "CnsoRHCLampBrthngCmd_1",
+      "type": "command",
+      "description": "Breathing mode control command for ambient lamps."
+    },
+    {
+      "name": "CnsoAmbtLampC_RH",
+      "type": "controller",
+      "description": "Right-hand side ambient lamp control unit."
+    },
+    {
+      "name": "LHZCU_LIN5",
+      "type": "controller",
+      "description": "Local Zone Control Unit via LIN5 interface."
+    },
+    {
+      "name": "Interior Lighting SSTS",
+      "type": "system",
+      "description": "Sub System Technical Specification for Interior Lighting."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Brightness Level",
+      "description": "Defined by hexadecimal values from 0x00 to 0xFF, where 0x00 means no request and 0x65-0xFF are reserved."
+    },
+    {
+      "name": "Breathing Rate",
+      "description": "Defined by hexadecimal values from 0x0 to 0xF, each corresponding to a specific breathing rate in seconds."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Ambient Lamp Brightness",
+      "description": "The actual brightness level of the ambient lamps as a percentage."
+    },
+    {
+      "name": "Ambient Lamp Breathing Mode",
+      "description": "The active breathing rate mode of the ambient lamps."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Breathing Period",
+      "description": "Defined by the 'Rate' values in the table, ranging from 500ms to 12s."
+    }
+  ],
+  "engineering_interpretation": "This table specifies the command structure and parameter definitions for controlling the brightness and breathing modes of ambient interior lights. It is used to verify that the system correctly interprets and applies commands from various controllers across different communication interfaces.",
+  "uncertain_points": []
+}
+```

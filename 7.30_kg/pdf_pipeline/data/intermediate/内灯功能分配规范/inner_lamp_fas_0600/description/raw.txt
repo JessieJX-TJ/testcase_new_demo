@@ -1,0 +1,58 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "车辆门锁状态信号接口定义",
+  "row_semantics": "每行代表一个信号接口的详细描述，包括其名称、方向、类型、发送方/接收方、路径及来源。",
+  "column_semantics": {
+    "Interface Name": "信号接口的名称，需与逻辑框图内容一致。",
+    "Direction": "信号的传输方向，如输入或输出。",
+    "Type": "信号的通信类型，如CAN、LIN、S/OA服务或硬线等。",
+    "Sender/Provider": "信号的发送方或提供方，如节点或SoA服务。",
+    "Receiver/Consumer": "信号的接收方或消费方，如节点或SoA服务。",
+    "Channel": "信号传输的指定通道。",
+    "Interface Source": "信号的来源，如指定信号源或具体模块（如门锁SST）。",
+    "Description": "对信号的具体描述，包括其值的含义。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VehLckSts",
+      "type": "Signal",
+      "description": "车辆门锁状态信号，用于指示车门的锁定或解锁状态。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "车辆中央控制单元，作为信号的发送方。"
+    },
+    {
+      "name": "RZCU",
+      "type": "Controller/Module",
+      "description": "区域控制单元，作为信号的接收方。"
+    },
+    {
+      "name": "门锁SST",
+      "type": "System Component",
+      "description": "门锁系统中的特定模块，作为信号的来源。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "VehLckSts_0_Unlocked",
+      "value": "0x0",
+      "description": "表示车门处于未锁定状态。"
+    },
+    {
+      "name": "VehLckSts_1_Signal_Position_Entry_Unlocked",
+      "value": "0x1",
+      "description": "表示信号位置入口处于未锁定状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆门锁状态信号（VehLckSts）的接口规范，包括其传输方向、类型、发送方和接收方等信息，可用于验证门锁状态信号在LHZCU和RZCU之间的正确传输与解析。",
+  "uncertain_points": []
+}
+```

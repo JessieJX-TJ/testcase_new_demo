@@ -1,0 +1,36 @@
+```json
+[
+  {
+    "head": "转向灯开关预处理模块检测到转向灯开关状态",
+    "relation": "前提条件",
+    "tail": "当转向灯开关导通输入阻值无法判断挡位时",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "转向灯开关导通输入阻值无法判断挡位"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DircnIndLampSwStsMntry信号被设置为未知位置状态",
+    "relation": "输出为",
+    "tail": "DircnIndLampSwStsMntry=0x5=DircnIndLampSwStsMntry_5_UnknownPosition",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DircnIndLampSwStsMntry",
+      "UnknownPosition"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DircnIndLampSwStsMntry信号恢复为默认关闭状态",
+    "relation": "超时约束",
+    "tail": "发送3帧后跳转为DircnIndLampSwStsMntry=0x0=DircnIndLampSwStsMntry_0_off",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "发送3帧后",
+      "默认状态"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

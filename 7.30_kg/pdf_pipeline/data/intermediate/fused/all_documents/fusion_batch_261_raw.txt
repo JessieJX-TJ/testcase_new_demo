@@ -1,0 +1,444 @@
+```json
+[
+  {
+    "head": "LHZCU does not transmit 0x3",
+    "relation": "fault response",
+    "tail": "short circuit fault of the switch",
+    "sources": ["inner_lamp_ssts_0379"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0 Platform - SSTS-IBD10",
+    "relation": "contains subfunction",
+    "tail": "Interior Lighting Subsystem",
+    "sources": ["inner_lamp_ssts_0380", "inner_lamp_ssts_0381"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IM Motors",
+    "relation": "controls",
+    "tail": "Z-ONE-3.0 Platform - SSTS-IBD10",
+    "sources": ["inner_lamp_ssts_0381"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color Change Request is received",
+    "relation": "trigger condition",
+    "tail": "FtwlFLLampColorCmd_1 != 0x00 (No Request) or FtwlFLLampColorCmd_1 has changed from 0x00",
+    "sources": ["inner_lamp_ssts_0383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp is turned off",
+    "relation": "trigger condition",
+    "tail": "FtwlFLLampOnOff_1 == 0x0 (OFF)",
+    "sources": ["inner_lamp_ssts_0383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp maintains current color",
+    "relation": "suppression condition",
+    "tail": "FtwlFLLampColorCmd_1 == 0x00 (No Request) or undefined color code",
+    "sources": ["inner_lamp_ssts_0383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp is turned off",
+    "relation": "trigger condition",
+    "tail": "FtwlFLLampOnOff_1 == 0x0 (OFF) and FtwlFLLampFadeSpdCmd_1 specifies fade speed",
+    "sources": ["inner_lamp_ssts_0383"],
+    "conflict": true,
+    "conflict_note": "Conflicts with simpler trigger 'FtwlFLLampOnOff_1 == 0x0 (OFF)' — this adds an additional constraint on fade speed. Both are retained per rule (iii): one is general, one is specific."
+  },
+  {
+    "head": "PWM signal corresponds to requested color",
+    "relation": "output",
+    "tail": "FtwlFLLampColorCmd_1 specifies a valid color",
+    "sources": ["inner_lamp_ssts_0383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Module shuts down due to fault",
+    "relation": "fault response",
+    "tail": "overvoltage or undervoltage detected in the ambient lamp module",
+    "sources": ["inner_lamp_ssts_0383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp maintains previous state",
+    "relation": "fault response",
+    "tail": "FtwlFLLampColorCmd_1 has an abnormal value",
+    "sources": ["inner_lamp_ssts_0383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp is turned off",
+    "relation": "fault response",
+    "tail": "ZCU_LIN_Signal not received within 6 seconds",
+    "sources": ["inner_lamp_ssts_0383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp state is maintained",
+    "relation": "state retention condition",
+    "tail": "FtwlFLLampColorCmd_1 == 0x00 (No Request) or undefined color code",
+    "sources": ["inner_lamp_ssts_0383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp is turned off",
+    "relation": "timeout constraint",
+    "tail": "ZCU_LIN_Signal not received within 6 seconds",
+    "sources": ["inner_lamp_ssts_0383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System parameter configuration",
+    "relation": "prerequisite condition",
+    "tail": "parameter range is valid",
+    "sources": ["inner_lamp_ssts_0386"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System parameter configuration",
+    "relation": "prerequisite condition",
+    "tail": "parameter resolution/factor is reasonable",
+    "sources": ["inner_lamp_ssts_0386"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System parameter configuration",
+    "relation": "prerequisite condition",
+    "tail": "default value is set",
+    "sources": ["inner_lamp_ssts_0386"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Hold-Off Time is configured",
+    "relation": "prerequisite condition",
+    "tail": "parameter value is within range 0–0xFF for general mode or 0–0x32 for specific modes",
+    "sources": ["inner_lamp_ssts_0387"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Specific Breathing Rate Modes (1–12) are active",
+    "relation": "prerequisite condition",
+    "tail": "AmbitLampBrthngRateXholdoffPercent (X = 1 to 12) parameters are set and used",
+    "sources": ["inner_lamp_ssts_0387"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Specific Breathing Rate Mode (2) is not used",
+    "relation": "suppression condition",
+    "tail": "AmbitLampBrthngRate2holdoffPercent parameter value is 'reserved, not used'",
+    "sources": ["inner_lamp_ssts_0387", "inner_lamp_ssts_0390"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Specific Breathing Rate Mode (3) is not used",
+    "relation": "suppression condition",
+    "tail": "AmbitLampBrthngRate3holdoffPercent parameter value is 'reserved, not used'",
+    "sources": ["inner_lamp_ssts_0387", "inner_lamp_ssts_0390"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "General Ambient Lamp Breathing Mode Hold-Off Time is set",
+    "relation": "input",
+    "tail": "AmbitLampBrthngholdoffPercent parameter value",
+    "sources": ["inner_lamp_ssts_0387"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Specific Breathing Rate Mode Hold-Off Time is set",
+    "relation": "input",
+    "tail": "AmbitLampBrthngRateXholdoffPercent (X = 1 to 12) parameter values",
+    "sources": ["inner_lamp_ssts_0387"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Specific Breathing Rate Mode Hold-Off Time default value",
+    "relation": "output",
+    "tail": "default value of 0x0A (10%) for most modes",
+    "sources": ["inner_lamp_ssts_0387"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Specific Breathing Rate Mode Hold-Off Time override",
+    "relation": "output",
+    "tail": "override values such as 0x00 (0%), 0x14 (20%), 0x05 (5%) for specific modes",
+    "sources": ["inner_lamp_ssts_0387"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System enters sleep operation",
+    "relation": "prerequisite condition",
+    "tail": "valid wake/sleep mechanism exists",
+    "sources": ["inner_lamp_ssts_0388"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System wake source",
+    "relation": "depends on",
+    "tail": "N/A",
+    "sources": ["inner_lamp_ssts_0388"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System wake/sleep mechanism",
+    "relation": "depends on",
+    "tail": "N/A",
+    "sources": ["inner_lamp_ssts_0388"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Function module enabled",
+    "relation": "prerequisite condition",
+    "tail": "supply voltage is normal (9 V–16 V)",
+    "sources": ["inner_lamp_ssts_0389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Function module disabled",
+    "relation": "prerequisite condition",
+    "tail": "supply voltage is low (< 6 V) or under-voltage (6 V–9 V) or over-voltage (16 V–18 V) or high-voltage (> 18 V)",
+    "sources": ["inner_lamp_ssts_0389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngholdoffPercent parameter is effective",
+    "relation": "prerequisite condition",
+    "tail": "AmbtLampBrthngholdoffPercent parameter value is within 0–0xFF",
+    "sources": ["inner_lamp_ssts_0390"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate1holdoffPercent parameter is not used",
+    "relation": "suppression condition",
+    "tail": "AmbtLampBrthngRate1holdoffPercent parameter default value is 'reserved, not used'",
+    "sources": ["inner_lamp_ssts_0390"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate3holdoffPercent parameter is effective",
+    "relation": "prerequisite condition",
+    "tail": "AmbtLampBrthngRate3holdoffPercent parameter value is within 0–0x32",
+    "sources": ["inner_lamp_ssts_0390"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngholdoffPercent parameter resolution",
+    "relation": "depends on",
+    "tail": "E = N × 1%",
+    "sources": ["inner_lamp_ssts_0390"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate1holdoffPercent parameter resolution",
+    "relation": "depends on",
+    "tail": "E = N × 1%",
+    "sources": ["inner_lamp_ssts_0390"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate2holdoffPercent parameter resolution",
+    "relation": "depends on",
+    "tail": "E = N × 1%",
+    "sources": ["inner_lamp_ssts_0390"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate3holdoffPercent parameter resolution",
+    "relation": "depends on",
+    "tail": "E = N × 1%",
+    "sources": ["inner_lamp_ssts_0390"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Retention source",
+    "relation": "prerequisite condition",
+    "tail": "N/A",
+    "sources": ["inner_lamp_ssts_0391"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Retention reason",
+    "relation": "prerequisite condition",
+    "tail": "N/A",
+    "sources": ["inner_lamp_ssts_0391"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Remarks",
+    "relation": "prerequisite condition",
+    "tail": "N/A",
+    "sources": ["inner_lamp_ssts_0391"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp head performs periodic breathing flash",
+    "relation": "prerequisite condition",
+    "tail": "breathing mode is configured and system is not in stop state",
+    "sources": ["inner_lamp_ssts_0392"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Switch to next breathing mode",
+    "relation": "trigger condition",
+    "tail": "breathing mode transition occurs",
+    "sources": ["inner_lamp_ssts_0392", "inner_lamp_ssts_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL4LampFadeSpdCmd_1",
+    "relation": "output",
+    "tail": "ambient lamp fade speed command",
+    "sources": ["inner_lamp_ssts_0392"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL5LampOnOff_1",
+    "relation": "output",
+    "tail": "ambient lamp ON/OFF request",
+    "sources": ["inner_lamp_ssts_0392"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL5LampColOrCmd_1",
+    "relation": "output",
+    "tail": "ambient lamp color command",
+    "sources": ["inner_lamp_ssts_0392"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Spd1 fade speed",
+    "relation": "input",
+    "tail": "300 ms",
+    "sources": ["inner_lamp_ssts_0392"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Spd2 fade speed",
+    "relation": "input",
+    "tail": "100 ms (capability reserved)",
+    "sources": ["inner_lamp_ssts_0392"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Spd3 fade speed",
+    "relation": "input",
+    "tail": "0 (reserved)",
+    "sources": ["inner_lamp_ssts_0392"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC diagnostic code is set",
+    "relation": "prerequisite condition",
+    "tail": "fault setting condition is satisfied",
+    "sources": ["inner_lamp_ssts_0393"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC diagnostic code is cleared",
+    "relation": "prerequisite condition",
+    "tail": "fault recovery condition is satisfied",
+    "sources": ["inner_lamp_ssts_0393"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR2LampFadeSpdCmd_1 controls door lamp fade speed",
+    "relation": "trigger condition",
+    "tail": "input signal is DoorAmbtLampB_FR or RHZCU_LIN4",
+    "sources": ["inner_lamp_ssts_0395"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door lamp breathing mode switching",
+    "relation": "prerequisite condition",
+    "tail": "command value is non-zero",
+    "sources": ["inner_lamp_ssts_0395"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Stop door lamp breathing",
+    "relation": "trigger condition",
+    "tail": "command value is zero",
+    "sources": ["inner_lamp_ssts_0395"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door lamp color/brightness transition",
+    "relation": "state retention condition",
+    "tail": "transition time from current to target state; default speed is 2000 ms",
+    "sources": ["inner_lamp_ssts_0395"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR3LampOnOff_1 controls door lamp ON/OFF",
+    "relation": "trigger condition",
+    "tail": "input signal is DoorAmbtLampC_FR or RHZCU_LIN4",
+    "sources": ["inner_lamp_ssts_0395"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Illuminate door lamp",
+    "relation": "prerequisite condition",
+    "tail": "non-zero color and brightness commands are simultaneously received",
+    "sources": ["inner_lamp_ssts_0395"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

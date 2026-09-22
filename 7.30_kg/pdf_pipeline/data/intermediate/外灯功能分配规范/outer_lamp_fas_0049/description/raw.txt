@@ -1,0 +1,85 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 制动灯控制与倒车灯状态",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的外灯相关控制或状态信息。",
+  "column_semantics": "列定义了信号的交互特性：输出/消费、通信协议（如CANFD）、涉及的控制器模块（如LHZCU、ICB），以及是否在仪表HMI中复用。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrkLghtCtrl",
+      "type": "功能名",
+      "description": "制动灯控制功能"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.ReverseLightFucProStatus",
+      "type": "功能名",
+      "description": "外灯开关处理 - 倒车灯功能过程状态"
+    },
+    {
+      "name": "CANFD",
+      "type": "控制器/模块名",
+      "description": "Controller Area Network Flexible Data Rate, 车载网络通信协议"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Local High-level Zone Control Unit, 局部高层区域控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "Integrated Control Board, 集成控制板"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrkLghtCtrl_0_Off",
+      "type": "系统状态",
+      "description": "制动灯关闭状态"
+    },
+    {
+      "name": "BrkLghtCtrl_1_On",
+      "type": "系统状态",
+      "description": "制动灯开启状态"
+    },
+    {
+      "name": "ReverseLightFucProStatus",
+      "type": "系统状态",
+      "description": "倒车灯功能过程状态"
+    },
+    {
+      "name": "OFF",
+      "type": "模式名",
+      "description": "关闭模式"
+    },
+    {
+      "name": "ON",
+      "type": "模式名",
+      "description": "开启模式"
+    },
+    {
+      "name": "Unknown",
+      "type": "故障状态",
+      "description": "未知状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLghtCtrl",
+      "type": "输出信号",
+      "description": "制动灯控制信号，由LHZCU和ICB输出"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.ReverseLightFucProStatus",
+      "type": "输出信号",
+      "description": "倒车灯功能过程状态信号，由SOA、LHZCU和ICB消费"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中制动灯和倒车灯的功能分配与信号交互规范，可用于验证制动灯控制逻辑及倒车灯状态获取服务的正确性。",
+  "uncertain_points": []
+}
+```

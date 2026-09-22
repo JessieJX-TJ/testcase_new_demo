@@ -1,0 +1,394 @@
+[
+  {
+    "head": "后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "组合开关处于Auto档位",
+    "sources": [
+      "outer_lamp_fas_0871"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "车辆处于白天模式",
+    "sources": [
+      "outer_lamp_fas_0871"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯/位置灯点亮",
+    "relation": "触发条件",
+    "tail": "后雾灯开启",
+    "sources": [
+      "outer_lamp_fas_0871"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯/位置灯点亮",
+    "relation": "触发条件",
+    "tail": "组合开关处于Auto档位",
+    "sources": [
+      "outer_lamp_fas_0871"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯/位置灯点亮",
+    "relation": "触发条件",
+    "tail": "车辆处于白天模式",
+    "sources": [
+      "outer_lamp_fas_0871"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯/位置灯熄灭",
+    "relation": "触发条件",
+    "tail": "后雾灯被手动关闭",
+    "sources": [
+      "outer_lamp_fas_0871"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯与近光灯同步熄灭",
+    "relation": "超时约束",
+    "tail": "左右侧熄灭延时≤40ms",
+    "sources": [
+      "outer_lamp_fas_0871"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯状态反馈 (BrkLghtSts)",
+    "relation": "输入来源",
+    "tail": "CANFD模块",
+    "sources": [
+      "outer_lamp_fas_0872"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯故障状态反馈 (BrkLghtFltSts)",
+    "relation": "输入来源",
+    "tail": "CANFD模块",
+    "sources": [
+      "outer_lamp_fas_0872"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯硬件故障状态反馈 (BrkLghtFltSts_HW)",
+    "relation": "输出为",
+    "tail": "硬线故障状态",
+    "sources": [
+      "outer_lamp_fas_0872"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯状态反馈 (BrkLghtSts)",
+    "relation": "状态保持条件",
+    "tail": "信号持续有效",
+    "sources": [
+      "outer_lamp_fas_0872"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯故障状态反馈 (BrkLghtFltSts)",
+    "relation": "诊断关联",
+    "tail": "制动灯系统可能存在电气或机械故障",
+    "sources": [
+      "outer_lamp_fas_0872"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta = 0x1 (Only RearFogLght ON)",
+    "sources": [
+      "outer_lamp_fas_0873"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "依赖于",
+    "tail": "ICB将服务接口或控制信号转换为灯控CAN信号",
+    "sources": [
+      "outer_lamp_fas_0873"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "组合灯光功能状态",
+    "relation": "输出为",
+    "tail": "CombLghtFucProSta = 0x4 (SidePositionAndDippedBeam ON)",
+    "sources": [
+      "outer_lamp_fas_0873"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开关状态",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta = 0x1 (ON)",
+    "sources": [
+      "outer_lamp_fas_0873"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯请求信号",
+    "relation": "前提条件",
+    "tail": "SidePositionLightReq = 0x1 (ON)",
+    "sources": [
+      "outer_lamp_fas_0873"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "平台：0平台-FAS-IBD05",
+    "sources": [
+      "outer_lamp_fas_0874",
+      "outer_lamp_fas_0880",
+      "outer_lamp_fas_0885"
+    ],
+    "conflict": true,
+    "conflict_note": "存在版本、页码等非功能性描述（'版本<'、'547 of 935 页'、'773 of 935 页'）与平台标识混用；'版本<'语义不完整且无上下文，可能为文档截断或占位符，与其他明确平台定义冲突"
+  },
+  {
+    "head": "近光灯关闭",
+    "relation": "触发条件",
+    "tail": "车辆进入隧道",
+    "sources": [
+      "outer_lamp_fas_0876"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯关闭",
+    "relation": "触发条件",
+    "tail": "近光灯开启状态为隧道变关开启",
+    "sources": [
+      "outer_lamp_fas_0876"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "触发条件",
+    "tail": "车辆离开隧道",
+    "sources": [
+      "outer_lamp_fas_0876"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启状态为隧道变关开启",
+    "relation": "前提条件",
+    "tail": "车辆从白天室外环境进入隧道",
+    "sources": [
+      "outer_lamp_fas_0876"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启状态为隧道变关开启",
+    "relation": "依赖于",
+    "tail": "ExtrLghtCtrlCmmntnTyp = 0x0 (SOA)",
+    "sources": [
+      "outer_lamp_fas_0876"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启状态为隧道变关开启",
+    "relation": "依赖于",
+    "tail": "ExtrLghtStsCmmntnTyp = 0x0 (SOA)",
+    "sources": [
+      "outer_lamp_fas_0876"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "触发条件",
+    "tail": "电池热失控",
+    "sources": [
+      "outer_lamp_fas_0878"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "前提条件",
+    "tail": "UsgMd = All ∧ UsgMdV = Valid ∧ VehMd = All ∧ VehMdV = Valid",
+    "sources": [
+      "outer_lamp_fas_0878"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯点亮",
+    "relation": "触发条件",
+    "tail": "ICB_S32G MCU接收DirectionLightReq = 0x3 (Both Side Direction Light Flash)",
+    "sources": [
+      "outer_lamp_fas_0879"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯熄灭",
+    "relation": "触发条件",
+    "tail": "ICB_S32G MCU接收DirectionLightReq = 0x0 (No Flash)",
+    "sources": [
+      "outer_lamp_fas_0879"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯控制请求",
+    "relation": "前提条件",
+    "tail": "UsgMd = All ∧ UsgMdV = Valid ∧ VehMd = All ∧ VehMdV = Valid",
+    "sources": [
+      "outer_lamp_fas_0879"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_S32G MCU发送DirLghtSrvcReq_3_Both_Side_Direction_Light_Flash",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0879"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_S32G MCU发送DirLghtSrvcReq_0_No_Flash",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0879"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU控制双闪灯闪烁",
+    "relation": "依赖于",
+    "tail": "ICB_S32G MCU发送DirLghtSrvcReq_3_Both_Side_Direction_Light_Flash",
+    "sources": [
+      "outer_lamp_fas_0879"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU控制双闪灯退出闪烁",
+    "relation": "依赖于",
+    "tail": "ICB_S32G MCU发送DirLghtSrvcReq_0_No_Flash",
+    "sources": [
+      "outer_lamp_fas_0879"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU反馈控制状态",
+    "relation": "输出到",
+    "tail": "LHZCU（危险警报灯开关控制模块）",
+    "sources": [
+      "outer_lamp_fas_0879"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "输出到",
+    "tail": "TailLpAsmbA_LH, TailLpAsmbA_RH, TailLpAsmbB",
+    "sources": [
+      "outer_lamp_fas_0881"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "包含子功能",
+    "tail": "TailLpAsmbA_LH, TailLpAsmbA_RH, TailLpAsmbB",
+    "sources": [
+      "outer_lamp_fas_0881"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯开启",
+    "relation": "触发条件",
+    "tail": "用户切换车辆档位至倒车档",
+    "sources": [
+      "outer_lamp_fas_0884"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMd ∉ {0x0 (睡眠), 0x1 (待机), 0x2 (舒适), 0x6 (XOTA)}",
+    "sources": [
+      "outer_lamp_fas_0884"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯故障状态反馈 (BrkLghtFltSts)",
+    "relation": "输出接口",
+    "tail": "CANFD接口",
+    "sources": [
+      "outer_lamp_fas_0886"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

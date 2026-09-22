@@ -1,0 +1,64 @@
+[
+  {
+    "head": "系统执行唤醒操作",
+    "relation": "前提条件",
+    "tail": "接收到有效唤醒源信号",
+    "sources": [
+      "inner_lamp_fas_0001"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统进入休眠模式",
+    "relation": "前提条件",
+    "tail": "未检测到任何有效唤醒源信号",
+    "sources": [
+      "inner_lamp_fas_0001"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统唤醒方式",
+    "relation": "依赖于",
+    "tail": "具体唤醒源类型及状态",
+    "sources": [
+      "inner_lamp_fas_0001",
+      "inner_lamp_fas_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统休眠方式",
+    "relation": "依赖于",
+    "tail": "无有效唤醒源信号",
+    "sources": [
+      "inner_lamp_fas_0001",
+      "inner_lamp_fas_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "唤醒源",
+    "relation": "触发",
+    "tail": "系统唤醒或休眠行为",
+    "sources": [
+      "inner_lamp_fas_0002"
+    ],
+    "conflict": false,
+    "conflict_note": "原三元组'输入为→唤醒/休眠方式'语义不准确；'唤醒源'是事件/信号实体，不'输入为'行为方式，而应'触发'行为；已按车辆控制领域术语规范修正relation为'trigger'对应中文'触发'，tail统一为'系统唤醒或休眠行为'以覆盖唤醒与休眠双重语义，避免歧义"
+  },
+  {
+    "head": "阅读灯开关控制功能",
+    "relation": "由",
+    "tail": "控制器VP3-25770实现",
+    "sources": [
+      "inner_lamp_fas_0003"
+    ],
+    "conflict": false,
+    "conflict_note": "原'relation: 依赖于'易与架构依赖（如软件依赖硬件）混淆；在功能分配语境下，'由...实现'更准确表达功能载体归属，符合ISO 26262及AUTOSAR功能分配建模惯例"
+  }
+]

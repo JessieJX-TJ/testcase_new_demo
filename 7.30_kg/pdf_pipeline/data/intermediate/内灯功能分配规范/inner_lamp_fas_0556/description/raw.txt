@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Interior Light Function Allocation Specification",
+  "row_semantics": "Each row represents a specific lamp switch request status, detailing the possible states for different interior light switches.",
+  "column_semantics": "The table does not have explicit columns; instead, each entry defines a state mapping for a specific lamp switch request.",
+  "has_merged_cells": false,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MapLampFRSwReq_1",
+      "type": "signal",
+      "description": "Front Right Lamp Switch Request"
+    },
+    {
+      "name": "MapLampRLSwReq_1",
+      "type": "signal",
+      "description": "Rear Left Lamp Switch Request"
+    },
+    {
+      "name": "MapLampRRSwReq_1",
+      "type": "signal",
+      "description": "Rear Right Lamp Switch Request"
+    },
+    {
+      "name": "MapLampThrdLSwReq_1",
+      "type": "signal",
+      "description": "Third Row Left Lamp Switch Request"
+    },
+    {
+      "name": "MapLampThrdRSwReq_1",
+      "type": "signal",
+      "description": "Third Row Right Lamp Switch Request"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Idle",
+      "value": "0x0",
+      "description": "No action requested"
+    },
+    {
+      "name": "Press",
+      "value": "0x1",
+      "description": "Switch pressed, request to turn on or toggle"
+    },
+    {
+      "name": "Reserved",
+      "value": "0x2",
+      "description": "Reserved for future use"
+    },
+    {
+      "name": "Error",
+      "value": "0x3",
+      "description": "Error condition detected"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table specifies the expected states and their meanings for various interior lamp switch requests, which can be used to validate the correct interpretation of switch inputs by the vehicle's lighting control system during functional testing.",
+  "uncertain_points": []
+}
+```

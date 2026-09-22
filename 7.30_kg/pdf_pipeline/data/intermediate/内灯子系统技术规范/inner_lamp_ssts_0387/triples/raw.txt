@@ -1,0 +1,98 @@
+```json
+[
+  {
+    "head": "Ambient Lamp Breathing Mode Hold-Off Time is Configured",
+    "relation": "前提条件",
+    "tail": "Parameter value is within the range 0 - FF for general mode or 0 - 32 for specific modes",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AmbitLampBrthngholdoffPercent",
+      "AmbitLampBrthngRateXholdoffPercent"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Specific Breathing Rate Modes (1-12) are Active",
+    "relation": "前提条件",
+    "tail": "Parameter values for AmbitLampBrthngRateXholdoffPercent (X=1 to 12) are set and used",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AmbitLampBrthngRate1holdoffPercent",
+      "AmbitLampBrthngRate2holdoffPercent",
+      "AmbitLampBrthngRate3holdoffPercent",
+      "AmbitLampBrthngRate4holdoffPercent",
+      "AmbitLampBrthngRate5holdoffPercent",
+      "AmbitLampBrthngRate6holdoffPercent",
+      "AmbitLampBrthngRate7holdoffPercent",
+      "AmbitLampBrthngRate8holdoffPercent",
+      "AmbitLampBrthngRate9holdoffPercent",
+      "AmbitLampBrthngRate10holdoffPercent",
+      "AmbitLampBrthngRate11holdoffPercent",
+      "AmbitLampBrthngRate12holdoffPercent"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Specific Breathing Rate Mode (2) is Not Used",
+    "relation": "抑制条件",
+    "tail": "Parameter value for AmbitLampBrthngRate2holdoffPercent is '预留,暂不使用'",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "AmbitLampBrthngRate2holdoffPercent"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Specific Breathing Rate Mode (3) is Not Used",
+    "relation": "抑制条件",
+    "tail": "Parameter value for AmbitLampBrthngRate3holdoffPercent is '预留,暂不使用'",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "AmbitLampBrthngRate3holdoffPercent"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "General Ambient Lamp Breathing Mode Hold-Off Time is Set",
+    "relation": "输入为",
+    "tail": "Parameter value for AmbitLampBrthngholdoffPercent",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "AmbitLampBrthngholdoffPercent"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Specific Breathing Rate Mode Hold-Off Time is Set",
+    "relation": "输入为",
+    "tail": "Parameter values for AmbitLampBrthngRateXholdoffPercent (X=1 to 12)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "AmbitLampBrthngRateXholdoffPercent"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Specific Breathing Rate Mode Hold-Off Time Default Value",
+    "relation": "输出为",
+    "tail": "Default value of 0xA (10%) for most modes",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "AmbitLampBrthngRateXholdoffPercent"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Specific Breathing Rate Mode Hold-Off Time Override",
+    "relation": "输出为",
+    "tail": "Override values such as 0x00 (0%), 0x14 (20%), 0x5 (5%) for specific modes",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "AmbitLampBrthngRate4holdoffPercent",
+      "AmbitLampBrthngRate8holdoffPercent",
+      "AmbitLampBrthngRate9holdoffPercent"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

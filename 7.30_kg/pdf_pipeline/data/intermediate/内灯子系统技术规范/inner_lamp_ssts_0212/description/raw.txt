@@ -1,0 +1,59 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - FtwlFL Lamp Breath Command Rate Parameters",
+  "row_semantics": "Each row represents a specific breathing rate command value for the front left full lamp (FtwlFL) in the interior lighting system, detailing its corresponding period and original breathing mode.",
+  "column_semantics": {
+    "Code Value": "The hexadecimal code representing the breathing rate command.",
+    "Period": "The time interval (in seconds or milliseconds) for the breathing cycle.",
+    "Original Breathing Mode Value": "The default breathing pattern associated with this rate."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "FtwlFL_Lamp_Brthng_Cmd",
+      "type": "command",
+      "description": "Front left full lamp breathing command, controlling the breathing rate of the lamp."
+    },
+    {
+      "name": "Rate",
+      "type": "parameter",
+      "description": "Defines the breathing rate of the lamp, ranging from 0 to 15."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Period",
+      "description": "The time interval between each breathing cycle, varying from 500ms to 12s."
+    },
+    {
+      "name": "Original Breathing Mode",
+      "description": "The default breathing pattern associated with each rate, such as '新增' (new addition) or specific modes like '原呼吸模式 1'."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Lamp Blinking",
+      "description": "The lamp performs periodic blinking according to the specified breathing rate command."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Stop Breathing on Code 0",
+      "description": "When the command code is 0, the breathing function stops immediately."
+    },
+    {
+      "name": "Mode Switching Delay",
+      "description": "When switching between different breathing modes, the current breathing stops and the next mode starts immediately."
+    },
+    {
+      "name": "Fade Speed Command",
+      "description": "Controls the speed of color/brightness transition when changing from one state to another, with default speed set to 2000ms."
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters for the breathing rate commands of the front left full lamp in the interior lighting system. It specifies how the lamp should blink at different rates, including the period of each blink and the associated original breathing mode. This information is crucial for testing the functionality of the lamp's breathing mode under various rate commands.",
+  "uncertain_points": []
+}
+```

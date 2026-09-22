@@ -1,0 +1,178 @@
+[
+  {
+    "head": "外灯功能 (Exterior Lamp Function) 根据车辆模式 (VehMd) 信号变化",
+    "relation": "依赖于",
+    "tail": "VehMd 信号值",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "VehMd",
+      "0x0 = VehMd_0_NORMAL",
+      "0x1 = VehMd_1_CRASH",
+      "0x2 = VehMd_2_FACTORY",
+      "0x3 = VehMd_3_TRANSPORT",
+      "0x4 = VehMd4 DYNO",
+      "0x5= VehMd5EXHIBITION",
+      "0x8= VehMd_8_Engineering",
+      "0x9= VehMd_9_Service"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1171",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "外灯功能 (Exterior Lamp Function) 的有效性验证",
+    "relation": "依赖于",
+    "tail": "VehMdV 信号值",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "VehMdV",
+      "0x0=VehMdV_0_Invalid",
+      "0x1=VehMdV_1_Valid"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1171",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "车辆模式 (VehMd) 信号处于正常模式 (NORMAL)",
+    "relation": "前提条件",
+    "tail": "外灯功能 (Exterior Lamp Function) 正常工作",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "0x0 = VehMd_0_NORMAL"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1171",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "车辆模式 (VehMd) 信号处于碰撞模式 (CRASH)",
+    "relation": "前提条件",
+    "tail": "外灯功能 (Exterior Lamp Function) 触发紧急状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "0x1 = VehMd_1_CRASH"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1171",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "车辆模式 (VehMd) 信号处于工厂模式 (FACTORY)",
+    "relation": "前提条件",
+    "tail": "外灯功能 (Exterior Lamp Function) 进入调试或测试模式",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "0x2 = VehMd_2_FACTORY"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1171",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "车辆模式 (VehMd) 信号处于运输模式 (TRANSPORT)",
+    "relation": "前提条件",
+    "tail": "外灯功能 (Exterior Lamp Function) 按照运输规范配置",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "0x3 = VehMd_3_TRANSPORT"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1171",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "车辆模式 (VehMd) 信号处于动态测试模式 (DYNO)",
+    "relation": "前提条件",
+    "tail": "外灯功能 (Exterior Lamp Function) 支持动态性能测试",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "0x4 = VehMd4 DYNO"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1171",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "车辆模式 (VehMd) 信号处于展览模式 (EXHIBITION)",
+    "relation": "前提条件",
+    "tail": "外灯功能 (Exterior Lamp Function) 显示特定展览效果",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "0x5= VehMd5EXHIBITION"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1171",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "车辆模式 (VehMd) 信号处于工程模式 (Engineering)",
+    "relation": "前提条件",
+    "tail": "外灯功能 (Exterior Lamp Function) 提供工程调试信息",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "0x8= VehMd_8_Engineering"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1171",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "车辆模式 (VehMd) 信号处于服务模式 (Service)",
+    "relation": "前提条件",
+    "tail": "外灯功能 (Exterior Lamp Function) 启用服务诊断模式",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "0x9= VehMd_9_Service"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1171",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "车辆模式验证 (VehMdV) 信号为无效 (Invalid)",
+    "relation": "抑制条件",
+    "tail": "外灯功能 (Exterior Lamp Function) 不启用",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "VehMdV",
+      "0x0=VehMdV_0_Invalid"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1171",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "车辆模式验证 (VehMdV) 信号为有效 (Valid)",
+    "relation": "前提条件",
+    "tail": "外灯功能 (Exterior Lamp Function) 可启用",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMdV",
+      "0x1=VehMdV_1_Valid"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1171",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

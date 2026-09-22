@@ -1,0 +1,83 @@
+{
+  "table_type": "state_table",
+  "topic": "HMI 转向灯状态信号描述",
+  "row_semantics": "不同 CAN 信号状态或服务接口状态下的转向灯显示行为",
+  "column_semantics": "无明确列，内容为逐条规则描述",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HMI 子系统",
+      "type": "controller"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller"
+    },
+    {
+      "name": "FLDirnLghtCtrl",
+      "type": "input_signal"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.DirncLghtFucProStatus.DirncLghtFucProSta",
+      "type": "input_signal"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.DirectionLightErrSta.DirncLghtErrSta",
+      "type": "output_signal"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "当 FLDirnLghtCtrl = 0x1 或 ExteriorLightSwitchProcess.DirncLghtFucProStatus.DirncLghtFucProSta = 0x1",
+      "action": "做指示灯显示以及声音提醒"
+    },
+    {
+      "condition": "当 FLDirnLghtCtrl = 0x0 或 ExteriorLightSwitchProcess.DirncLghtFucProStatus.DirncLghtFucProSta = 0x0",
+      "action": "不做指示灯显示和声音提醒"
+    },
+    {
+      "condition": "当 ExteriorLightSwitchProcess.DirectionLightErrSta.DirncLghtErrSta = 0x1",
+      "action": "表示左转向灯故障"
+    },
+    {
+      "condition": "当 ExteriorLightSwitchProcess.DirectionLightErrSta.DirncLghtErrSta = 0x2",
+      "action": "表示右转向灯故障"
+    },
+    {
+      "condition": "当 ExteriorLightSwitchProcess.DirectionLightErrSta.DirncLghtErrSta = 0x3",
+      "action": "表示左右两侧转向灯均有故障"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "指示灯显示",
+      "type": "output_signal"
+    },
+    {
+      "name": "声音提醒",
+      "type": "output_signal"
+    },
+    {
+      "name": "故障弹窗提醒",
+      "type": "output_signal"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Left_Direction_Light_Error",
+      "type": "fault_state"
+    },
+    {
+      "name": "Right_Direction_Light_Error",
+      "type": "fault_state"
+    },
+    {
+      "name": "Both_Side_Direction_Light_Error",
+      "type": "fault_state"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了 HMI 子系统根据 LHZCU 发出的转向灯控制信号（FLDirnLghtCtrl）及外部灯光开关处理模块的状态信号（DirncLghtFucProStatus.DirncLghtFucProSta），来决定是否进行转向灯的 HMI 显示、声音提醒，并在转向灯发生故障时，通过 DirectionLightErrSta 信号报告具体的故障类型。",
+  "uncertain_points": []
+}

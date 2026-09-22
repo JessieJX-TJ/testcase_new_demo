@@ -1,0 +1,70 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "主远光灯控制逻辑",
+  "row_semantics": "表格按功能执行的阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "表格包含两列，第一列为阶段描述（如前置条件、触发条件等），第二列为该阶段的具体内容或规则。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "主远光灯反馈安全范围使能参数，当前设置为0（禁用）"
+    },
+    {
+      "name": "MainBeamLightCtrlMdl",
+      "type": "module",
+      "description": "主远光灯控制模块，负责接收指令并下发控制命令"
+    },
+    {
+      "name": "RMainBeamLightCtrl_HW",
+      "type": "signal",
+      "description": "硬件层面的主远光灯控制信号，用于直接驱动硬件"
+    },
+    {
+      "name": "RMainBeamLightDrvMdl",
+      "type": "module",
+      "description": "主远光灯驱动模块，负责持续驱动右远光灯输出"
+    },
+    {
+      "name": "MainBeamHldmp_RH_HSD",
+      "type": "signal",
+      "description": "右远光灯硬件驱动信号"
+    },
+    {
+      "name": "RMainBeamLightSts",
+      "type": "signal",
+      "description": "主远光灯状态信号，用于指示灯的状态（On/Off）"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MainBeamLightFbkSOAEnPrm == 0 (Disable)",
+      "description": "前置条件：主远光灯反馈安全范围使能参数被设置为0，表示禁用"
+    },
+    {
+      "condition": "收到【MainBeamLightCtrlMdl】统一分发的 RMainBeamLightCtrl_HW == 1 (On)",
+      "description": "触发条件：当接收到 MainBeamLightCtrlMdl 模块分发的 RMainBeamLightCtrl_HW 信号为1（开启状态）时，触发后续动作"
+    },
+    {
+      "condition": "收到【MainBeamLightCtrlMdl】发送的 RMainBeamLightCtrl_HW == 0 (Off)",
+      "description": "退出条件：当接收到 MainBeamLightCtrlMdl 模块发送的 RMainBeamLightCtrl_HW 信号为0（关闭状态）时，退出当前逻辑"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "RMainBeamLightDrvMdl",
+      "description": "持续驱动右远光灯输出 MainBeamHldmp_RH_HSD"
+    },
+    {
+      "output": "RMainBeamLightSts",
+      "description": "持续发送 RMainBeamLightSts = 1 (On) 至 MainBeamLightCtrlMdl，至少发送三帧"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了主远光灯从开启到关闭的完整控制逻辑，可用于验证主远光灯在不同控制信号下的正确响应行为，确保系统按照预设逻辑进行操作。",
+  "uncertain_points": []
+}
+```

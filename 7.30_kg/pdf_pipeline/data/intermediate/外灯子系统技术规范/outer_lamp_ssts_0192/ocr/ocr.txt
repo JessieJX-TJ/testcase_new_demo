@@ -1,0 +1,15 @@
+前置条件
+右前雾灯处于输出状态
+触发条件
+检测到右前雾灯短路到地
+执行动作
+1&2&3&4&5&6&7
+【FrtFogLghtDrvMdl】停止驱动右前雾灯输出(FogLamp_RH_HSD)
+【FrtFogLghtDrvMdl】持续发送RFrtFogLghtSts=0x0(OFF)至
+【FrtFogLghtCtrlMdl】,至少发送三帧
+【FrtFogLghtDrvMdl】持续发送RFrtFogLghtFltSts=0x1(Ture)至
+【FrtFogLghtDrvMdl】持续发送{FrontFogLight.
+FrontFogLightState.FrontFogLightSta}{InstanceID=4}=0x1(OFF)至
+5.【FrtFogLghtDrvMdl】持续发送{FrontFogLight. FrontFogLightErrorStatus
+FrontFogLightErrorSta}{InstanceID=4} =0x1(Error)至
+6. 置位 DTC B1053 11

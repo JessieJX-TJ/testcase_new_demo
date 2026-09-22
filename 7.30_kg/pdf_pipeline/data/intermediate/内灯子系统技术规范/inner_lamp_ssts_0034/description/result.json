@@ -1,0 +1,92 @@
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform)",
+  "row_semantics": "Each row represents a specific command or mode related to the interior lighting system, particularly for rear door lamps (DoorRR3Lamp and DoorRR4Lamp). The rows define different operational states, timing parameters, and control signals for these lights.",
+  "column_semantics": {
+    "Input": "The leftmost column lists the input commands or modes (e.g., DoorRR3LampFadeSpdCmd_1, DoorRR4LampOnOff_1).",
+    "LIN": "Indicates the LIN bus interface for communication.",
+    "RHZCU": "Refers to the Rear High Zone Control Unit, a central controller for the lighting system.",
+    "DoorAmbtLampD_RR": "Specifically refers to the ambient lamp driver for the right rear door.",
+    "RHZCU_LIN4": "Another LIN channel used by the RHZCU for this sub-system.",
+    "内灯SSTS": "Internal lighting sub-system technical specification, indicating the scope of the table."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorRR3Lamp",
+      "type": "function",
+      "description": "Rear right door lamp control, including fade speed commands."
+    },
+    {
+      "name": "DoorRR4Lamp",
+      "type": "function",
+      "description": "Rear left door lamp control, including on/off and color commands."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Rear High Zone Control Unit, responsible for managing the interior lighting functions."
+    },
+    {
+      "name": "DoorAmbtLampD_RR",
+      "type": "module",
+      "description": "Ambient lamp driver module for the right rear door."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Rate9 to Rate15",
+      "type": "timing_mode",
+      "description": "Different breathing cycle rates for the lamp, ranging from 4.5s to 12s, with specific modes labeled as '原呼吸模式' (original breathing mode) or '新增' (new addition)."
+    },
+    {
+      "name": "指令值",
+      "type": "control_signal",
+      "description": "Command value that controls the lamp behavior; 0 stops breathing, and switching modes stops the current mode and switches to the next."
+    },
+    {
+      "name": "Spd1 to Spd3",
+      "type": "speed_parameter",
+      "description": "Speed parameters for fading the lamp's brightness, with default and reserved values."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorRR3LampFadeSpdCmd_1",
+      "type": "output_signal",
+      "description": "Output signal for controlling the fade speed of the rear right door lamp."
+    },
+    {
+      "name": "DoorRR4LampOnOff_1",
+      "type": "output_signal",
+      "description": "Output signal for turning the rear left door lamp on or off."
+    },
+    {
+      "name": "DoorRR4LampColorCmd_1",
+      "type": "output_signal",
+      "description": "Output signal for setting the color of the rear left door lamp."
+    },
+    {
+      "name": "DoorRR4LampBrtnsCmd_1",
+      "type": "output_signal",
+      "description": "Output signal for controlling the brightness of the rear left door lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Breathing Cycle",
+      "description": "Defined by Rate9 to Rate15, specifying the time intervals for the breathing effect of the lamps."
+    },
+    {
+      "name": "Fade Speed",
+      "description": "Spd1 (300ms), Spd2 (100ms), and Spd3 (reserved) define the time required for the lamp to transition between brightness levels."
+    }
+  ],
+  "engineering_interpretation": "This table defines the control logic and timing parameters for the interior rear door lamps, including breathing modes, fade speeds, and on/off commands, enabling verification of the correct operation of the RHZCU in managing these lighting functions.",
+  "uncertain_points": [
+    "The exact meaning of '原呼吸模式' (original breathing mode) is not explicitly defined beyond its label.",
+    "The purpose of '能力预留' (capability reserved) for Spd2 is not elaborated upon."
+  ]
+}

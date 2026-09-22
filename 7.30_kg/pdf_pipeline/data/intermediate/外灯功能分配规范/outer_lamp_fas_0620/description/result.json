@@ -1,0 +1,54 @@
+{
+  "table_type": "fault_table",
+  "topic": "DirectionLight DirectionLightErrorStatus",
+  "row_semantics": "Each row represents a specific direction light error status subscription request for different instances.",
+  "column_semantics": "Columns represent the consuming system components (SOA, ICB, LHZCU) and the network fault status.",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "Interface",
+      "description": "Service interface for subscribing to direction light error status."
+    },
+    {
+      "name": "InstanceID",
+      "type": "Parameter",
+      "description": "Unique identifier for each instance of the direction light error status subscription."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightErrorSta",
+      "type": "Input Signal",
+      "description": "Parameter name indicating the direction light error status."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "No Error",
+      "type": "System State",
+      "description": "Indicates that there is no error in the direction light."
+    },
+    {
+      "name": "Error",
+      "type": "System State",
+      "description": "Indicates that an error has occurred in the direction light."
+    },
+    {
+      "name": "Unknown",
+      "type": "System State",
+      "description": "Indicates that the status of the direction light is unknown."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Network Fault Status",
+      "type": "Fault State",
+      "description": "Indicates the status of the network connection related to the direction light error status."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the error status subscription interfaces for various direction lights (left front, right front, left rear) and specifies the possible error states (No Error, Error, Unknown) for each instance. It is used to verify the correct subscription and reporting of direction light error statuses across different system components (SOA, ICB, LHZCU).",
+  "uncertain_points": []
+}

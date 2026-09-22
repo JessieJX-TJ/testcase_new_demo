@@ -1,0 +1,43 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯控制功能需求",
+  "row_semantics": "定义了特定接口的信号属性及其在系统中的交互关系",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识信号所属的功能模块或通信端口",
+    "Direction": "信号流向，指示是输入还是输出信号",
+    "Type": "信号类型，区分内部信号或外部信号",
+    "Sender/Provider": "信号的发送方或提供方，通常是控制器或模块",
+    "Receiver/Consumer": "信号的接收方或消费方，通常是控制器或模块",
+    "Channel": "信号传输路径或通道信息",
+    "Interface Source": "接口来源，描述信号的物理或逻辑来源"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FtwlLampFRCtrlCmd",
+      "type": "功能名",
+      "description": "前左灯控制命令信号，用于控制前左灯的开关状态"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Light Headlamp Zone Control Unit，负责控制车辆灯光区域的单元"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FtwlLampFRCtrlCmd",
+      "direction": "输出",
+      "type": "内部",
+      "sender": "LHZCU",
+      "receiver": "LHZCU",
+      "description": "前左灯控制命令信号，其值为0x0表示关闭（OFF），0x1表示开启（ON）"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了前左灯控制命令信号（FtwlLampFRCtrlCmd）的接口属性，可用于验证LHZCU模块对外发出的前左灯控制信号是否符合规范，包括信号方向、类型及有效值范围。",
+  "uncertain_points": []
+}

@@ -1,0 +1,56 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车电子系统中前雾灯控制接口的技术规范",
+  "row_semantics": "描述了特定接口的详细信息，包括其功能、通信类型、发送方/接收方以及相关参数定义。",
+  "column_semantics": {
+    "Interface Name": "接口名称，指明了该条目所描述的具体服务或信号名称。",
+    "Direction": "方向，指示数据流是输入还是输出，提供还是消费。",
+    "Type": "类型，说明了通信机制（如CAN、LIN、SOA）或物理连接方式（硬线等）。",
+    "Sender/Provider": "发送方/提供方，指出哪个节点负责发送或提供该信号。",
+    "Receiver/Consumer": "接收方/消费方，指出哪个节点负责接收或消费该信号。",
+    "Channel": "路径/通道，指定信号传输的物理或逻辑通道。",
+    "Interface Source": "接口来源，可能指定了信号的具体来源或上下文。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FrontFogLightControl",
+      "type": "Function",
+      "description": "前雾灯控制功能，用于调节车辆左侧前雾灯的点亮或熄灭状态。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Local Host Control Unit，本地主机控制单元，作为信号的提供方（Sender/Provider）。"
+    },
+    {
+      "name": "RHZCU",
+      "type": "Controller/Module",
+      "description": "Remote Host Control Unit，远程主机控制单元，作为信号的接收方（Receiver/Consumer）。"
+    },
+    {
+      "name": "ICB",
+      "type": "Communication Channel",
+      "description": "Inter-Cluster Bus，集群间总线，用于不同控制单元之间的通信。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FrontFogLightCtrlReq",
+      "type": "Input Signal",
+      "description": "前雾灯控制请求参数，由LHZCU提供，用于指示雾灯的开关状态（0x0=OFF, 0x1=ON）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FrontFogLight",
+      "type": "Output Signal",
+      "description": "前雾灯的实际状态，由RHZCU根据接收到的控制请求进行调整。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子系统中前雾灯控制功能的接口规范，包括信号的发送方、接收方、通信类型及参数定义，可用于验证LHZCU与RHZCU之间通过ICB通信时，前雾灯控制请求的正确传递和执行。",
+  "uncertain_points": []
+}

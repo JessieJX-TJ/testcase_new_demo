@@ -1,0 +1,63 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "远光灯开关关闭时的主光灯控制逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，当用户关闭远光灯开关且开关处于悬空状态时，系统执行的动作、退出条件及异常处理。",
+  "column_semantics": {
+    "1": "前置条件：配置字 MainBeamLghtSwSOAEnPrm 设置为 0（禁用）",
+    "2": "触发条件：用户关闭远光灯开关，且开关处于悬空状态",
+    "3": "执行动作：持续发送主光灯开关请求信号 MainBeamLghtSwReq = 0x0（关闭）至主光灯控制模块 MainBeamLghtCtrlMdl，至少发送三帧",
+    "4": "退出条件：远光灯开关变为非悬空状态",
+    "5": "异常处理：未定义"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLghtSwSOAEnPrm",
+      "type": "parameter",
+      "description": "主光灯开关超时保护使能参数，值为 0 表示禁用"
+    },
+    {
+      "name": "MainBeamLghtSwMdl",
+      "type": "module",
+      "description": "主光灯开关模块"
+    },
+    {
+      "name": "MainBeamLghtCtrlMdl",
+      "type": "module",
+      "description": "主光灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "用户关闭远光灯开关",
+      "signal": "MainBeamLghtSwMdl",
+      "state": "关闭"
+    },
+    {
+      "condition": "远光灯开关悬空",
+      "signal": "MainBeamLghtSwMdl",
+      "state": "悬空"
+    },
+    {
+      "condition": "配置字 MainBeamLghtSwSOAEnPrm == 0",
+      "parameter": "MainBeamLghtSwSOAEnPrm",
+      "value": "0"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "MainBeamLghtSwReq",
+      "value": "0x0",
+      "action": "持续发送",
+      "destination": "MainBeamLghtCtrlMdl",
+      "quantity": "至少三帧"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证当远光灯开关关闭且处于悬空状态时，系统是否正确地持续发送主光灯关闭请求信号至主光灯控制模块，并确保在远光灯开关非悬空时退出该逻辑。",
+  "uncertain_points": []
+}
+```

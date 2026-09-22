@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"signal_table\",\n  \"topic\": \"整车外灯状态与故障信号定义\",\n  \"row_semantics\": \"表格按功能模块（如左前位置灯、左后位置灯等）逐项列出相关信号的状态定义和通信方式。\",\n  \"column_semantics\": \"第一列为功能模块名称，第二列详细描述了该模块的信号状态定义（如开/关、正常/故障），后续列为支持的通信协议或控制器模块。\",\n  \"has_merged_cells\": true,\n  \"header_levels\": 2,\n  \"core_entities\": [\n    \"FRSideLghtSts\", // 右前位置灯状态\n    \"RLSideLghtSts\", // 左后位置灯状态\n    \"RRSideLghtSts\", // 右后位置灯状态\n    \"FLSideLghtFltsts\", // 左前位置灯故障状态\n    \"FRSideLghtFltsts\" // 右前位置灯故障状态\n  ],\n  \"core_conditions\": [\n    \"0x0\", // Off 或 False 状态\n    \"0x1\"  // On 或 True 状态\n  ],\n  \"core_outputs\": [\n    \"FRSideLghtSts\",\n    \"RLSideLghtSts\",\n    \"RRSideLghtSts\",\n    \"FLSideLghtFltsts\",\n    \"FRSideLghtFltsts\"\n  ],\n  \"core_faults\": [\n    \"FLSideLghtFltsts_0_False\", // 左前位置灯正常状态\n    \"FLSideLghtFltsts_1_True\",  // 左前位置灯故障状态\n    \"FRSideLghtFltsts_0_False\", // 右前位置灯正常状态\n    \"FRSideLghtFltsts_1_True\"   // 右前位置灯故障状态\n  ],\n  \"core_timing_constraints\": [],\n  \"engineering_interpretation\": \"该表格定义了整车外灯（包括位置灯和故障状态）在不同控制器（CANFD, ICB, LHZCU）下的信号状态值及其含义，可用于验证车辆外灯系统在各种工况下的信号输出是否符合规范。\",\n  \"uncertain_points\": []\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

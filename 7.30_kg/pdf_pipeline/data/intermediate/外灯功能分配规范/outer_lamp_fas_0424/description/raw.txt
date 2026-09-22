@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "远光灯（Main Beam）相关硬件配置与驱动使能参数",
+  "row_semantics": "表格的每一行代表一个特定的远光灯相关的配置参数，描述了该参数的名称、功能类型、取值含义以及适用的车型阶段。",
+  "column_semantics": [
+    "第一列：参数名称（Parameter Name）",
+    "第二列：参数功能描述（Function Description）",
+    "第三列：参数取值定义（Value Definition）",
+    "第四列：默认值或当前值（Default/Current Value）",
+    "第五列：参数适用范围及说明（Scope and Notes）"
+  ],
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "exlMainBeamTypePrm",
+      "type": "parameter",
+      "description": "远光灯类型配置参数，用于定义主光束和近光束的物理实现方式（分离式或一体式）。"
+    },
+    {
+      "name": "exlMainBeamHwDrvEnPrm",
+      "type": "parameter",
+      "description": "远光灯硬件线驱动使能参数，控制远光灯硬件驱动电路是否启用。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "parameter": "exlMainBeamTypePrm",
+      "condition": "0x0",
+      "value_description": "主光束与近光束为独立灯泡（Separate with dipped beam lamp）"
+    },
+    {
+      "parameter": "exlMainBeamTypePrm",
+      "condition": "0x1",
+      "value_description": "主光束与近光束为同一灯泡（One bulb）"
+    },
+    {
+      "parameter": "exlMainBeamHwDrvEnPrm",
+      "condition": "0x0",
+      "value_description": "禁用远光灯硬件线驱动"
+    },
+    {
+      "parameter": "exlMainBeamHwDrvEnPrm",
+      "condition": "0x1",
+      "value_description": "启用远光灯硬件线驱动"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆远光灯系统的硬件配置参数及其在不同车型阶段的适用性，可用于验证车辆在不同配置下的远光灯硬件逻辑是否正确，例如检查指定车型阶段下，远光灯类型和驱动使能参数是否符合设计规范。",
+  "uncertain_points": []
+}
+```

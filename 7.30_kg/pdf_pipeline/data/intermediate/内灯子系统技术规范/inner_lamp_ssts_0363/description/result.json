@@ -1,0 +1,48 @@
+{
+  "table_type": "fault_table",
+  "topic": "诊断 DTC 需求清单",
+  "row_semantics": "每行代表一个故障代码（DTC）的详细信息，包括其显示码、描述、触发条件和恢复条件。",
+  "column_semantics": {
+    "序号": "故障代码的编号或顺序标识。",
+    "DTC 显示码": "诊断故障代码的具体编码，用于系统识别特定故障。",
+    "故障描述": "对故障现象的简要描述，帮助工程师理解故障类型。",
+    "故障置位条件": "触发该故障代码的系统状态或输入信号条件。",
+    "故障恢复条件": "清除故障代码所需的系统状态或操作条件。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DTC 显示码",
+      "type": "signal",
+      "description": "诊断故障代码的唯一标识符，用于系统内部故障检测和报告。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "故障置位条件",
+      "type": "condition",
+      "description": "触发故障代码记录的系统状态或输入信号组合。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "故障恢复条件",
+      "type": "condition",
+      "description": "清除故障代码所需的系统状态或操作要求。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC 显示码",
+      "type": "fault",
+      "description": "由系统检测到并记录的故障代码，用于后续诊断和维修。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证车辆电子控制系统中各故障代码的触发与恢复逻辑，确保系统在发生故障时能够正确记录并提供恢复条件，支持测试工程师进行故障注入和验证。",
+  "uncertain_points": [
+    "具体故障描述内容未明确，需进一步细化。",
+    "故障置位和恢复条件的具体实现细节未在表中体现，需参考相关功能规范。"
+  ]
+}

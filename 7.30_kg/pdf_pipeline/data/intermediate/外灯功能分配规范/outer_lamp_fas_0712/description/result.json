@@ -1,0 +1,59 @@
+{
+  "table_type": "other",
+  "topic": "外灯控制逻辑与状态管理",
+  "row_semantics": "表格内容描述了外灯（如近光灯、位置灯、后雾灯）的控制逻辑、状态反馈以及相关的系统要求，属于功能规范类文档。",
+  "column_semantics": "表格分为两列：左侧为备注标题，右侧为详细的技术说明和要求。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "实例ID，用于标识不同的灯控方案实例，如instance1, 2, 3, 4。"
+    },
+    {
+      "name": "exlSideLghtHwDrvEnPrm",
+      "type": "parameter",
+      "description": "外部侧灯硬件驱动使能参数，值为0x1表示启用。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "后雾灯控制模块，负责管理后雾灯及其相关自动灯光开启状态。"
+    },
+    {
+      "name": "AutoSidePosnLghtONbyRrFogLghtSts",
+      "type": "state",
+      "description": "后雾灯请求自动灯光开启的位置灯开启状态内部变量，默认为False，当后雾灯导致同步开启近光灯/位置灯时设置为True。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "Auto开关开启状态下",
+      "description": "当Auto开关处于开启状态时，后雾灯的开启将触发近光灯和位置灯的同步开启。"
+    },
+    {
+      "condition": "检测到位置灯状态为关闭",
+      "description": "当系统检测到位置灯关闭时，清除AutoSidePosnLghtONbyRrFogLghtSts置位。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "近光灯、位置灯和后雾灯开启同步性",
+      "description": "左侧和右侧的近光灯、位置灯和后雾灯需保持同步点亮，最大延时不超过40ms。"
+    },
+    {
+      "output": "AutoSidePosnLghtONbyRrFogLghtSts状态更新",
+      "description": "根据后雾灯的开启状态和Auto开关的状态，更新AutoSidePosnLghtONbyRrFogLghtSts变量的值。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "40ms",
+      "description": "近光灯、位置灯和后雾灯的开启同步延时最大不能超过40ms。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了外灯（特别是后雾灯）的控制逻辑、状态反馈机制以及相关的同步性要求，可用于验证外灯系统的功能正确性和响应时间是否符合设计规范。",
+  "uncertain_points": []
+}

@@ -1,0 +1,60 @@
+{
+  "table_type": "structure_table",
+  "topic": "外灯组合服务 (ICB) 的系统架构与交互流程",
+  "row_semantics": "表示系统中的不同组件或模块，按逻辑层级排列。",
+  "column_semantics": "无列概念，整个图表为一个整体的系统结构图，展示模块间的连接关系。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "外灯应用请求 (8295)",
+      "type": "功能/输入信号",
+      "description": "外部应用程序发起的外灯相关请求，标识符为8295。"
+    },
+    {
+      "name": "外灯组合服务 (ICB)",
+      "type": "控制器/模块",
+      "description": "负责处理和组合外灯相关请求的核心服务模块。"
+    },
+    {
+      "name": "(LHZCU)",
+      "type": "控制器/模块",
+      "description": "可能是一个车身控制单元，参与外灯请求的处理。"
+    },
+    {
+      "name": "LHA",
+      "type": "控制器/模块",
+      "description": "左侧外灯相关的硬件或控制单元。"
+    },
+    {
+      "name": "RHA",
+      "type": "控制器/模块",
+      "description": "右侧外灯相关的硬件或控制单元。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "id": "1",
+      "description": "外灯应用请求到外灯组合服务的响应时间为30ms。",
+      "timing": "30ms"
+    },
+    {
+      "id": "2",
+      "description": "从(LHZCU)到外灯组合服务的交互。",
+      "timing": "uncertain"
+    },
+    {
+      "id": "3",
+      "description": "外灯组合服务到LHA和RHA的输出。",
+      "timing": "uncertain"
+    }
+  ],
+  "engineering_interpretation": "该图表可用于验证外灯组合服务 (ICB) 在接收到外灯应用请求后的响应时间（30ms）以及其与(LHZCU)、LHA、RHA等模块之间的交互时序是否符合设计规范。",
+  "uncertain_points": [
+    "交互(2)的具体时序未明确给出。",
+    "交互(3)的具体时序未明确给出。"
+  ]
+}

@@ -1,0 +1,70 @@
+```json
+[
+  {
+    "head": "FRSideLightDrvMdl 停止驱动右前位置灯输出",
+    "relation": "前提条件",
+    "tail": "右前位置灯处于输出状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "前置条件",
+      "1. 右前位置灯处于输出状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRSideLightDrvMdl 持续发送 SidePositionLightStatus",
+    "relation": "前提条件",
+    "tail": "检测到右前位置灯短路到电源",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "触发条件",
+      "检测到右前位置灯短路到电源"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "置位 DTC B1061 12",
+    "relation": "前提条件",
+    "tail": "检测到右前位置灯短路到电源",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "执行动作",
+      "3. 置位 DTC B1061 12"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRSideLightDrvMdl 停止驱动右前位置灯输出",
+    "relation": "退出条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "退出条件",
+      "检测到短路恢复"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRSideLightDrvMdl 持续发送 SidePositionLightStatus",
+    "relation": "状态保持条件",
+    "tail": "检测到右前位置灯短路到电源",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "执行动作",
+      "【FRSideLghtDrvMdl】持续发送SidePositionLightStatus."
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRSideLightDrvMdl 持续发送 SidePositionLightStatus",
+    "relation": "包含子功能",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "执行动作",
+      "至少发送三帧"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

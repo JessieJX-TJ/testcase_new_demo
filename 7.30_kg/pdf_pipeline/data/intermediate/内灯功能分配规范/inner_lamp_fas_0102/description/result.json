@@ -1,0 +1,34 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯开关控制功能的访问权限限制",
+  "row_semantics": "表格定义了特定功能（VP3-63062）的访问权限限制规则，即哪些控制器或模块可以对该功能进行读写操作。",
+  "column_semantics": {
+    "ID": "功能或参数的唯一标识符，表示被限制的功能或模块。",
+    "Restriction": "描述对ID所代表的功能或模块的访问权限限制类型，如读写权限、激活条件等。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VP3-63062",
+      "type": "function",
+      "description": "一个具体的外灯开关控制功能或模块，可能是车身控制单元（BCM）中的某个特定功能点。"
+    },
+    {
+      "name": "VP3-25770",
+      "type": "controller_module",
+      "description": "一个控制器或模块，可能是车身控制单元（BCM）或其他相关系统，用于执行或管理VP3-63062功能。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "Read access restriction",
+      "description": "仅允许特定控制器（VP3-25770）对VP3-63062功能进行读取操作，可能用于监控或状态查询。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证车身控制单元（BCM）或其他相关控制器在读取外灯开关控制功能（VP3-63062）时的权限管理逻辑，确保只有授权模块（VP3-25770）能够执行读取操作。",
+  "uncertain_points": []
+}

@@ -1,0 +1,53 @@
+功能分配规范
+零束
+Function Allocation Specification
+Z-ONE
+外灯功能Exterior lamp function
+Z-ONE-3.0平台-FAS-IBD05
+版本<1.0>
+630 of 935 页
+BrkLghtSta=0x1=BrkLghtSta_1_On(0x0=BrkLghtSta_0_Off)
+BrkLghtFltSta=0x0=BrkLghtFltSta_0_False
+9、[外灯组合服务ICB]将接收到的LHZCU发送的制动灯点亮及故障状态CAN信号转化为服务透传
+{ExteriorLightControlSystem. BrakeLightSts. BrakeLghtSts}=0x1=ON;(或 Ox0=OFF)
+{ExteriorLightControlSystem. BrakeLightErrSts. BrakeLghtErrSts}= Ox0=No Error
+备注
+紧急制动灯开启同步性要求:
+左侧、右侧以及高位制动灯需保持同步点亮,三侧最大延时不超过40ms
+制动灯的优先级策略:
+当车辆同时触发制动灯请求和紧急制动灯请求时,紧急制动灯>制动灯
+当车辆制动灯处于激活时,紧急制动灯触发请求,应立即打断制动灯执行动作,执行紧急制动灯请
+灯>制动灯
+当车辆紧急制动灯处理激活时,制动灯触发请求,不响应制动灯请求
+当紧急制动灯退出后,如监测到制动灯还存在请求,应继续执行制动灯请求
+[[Allocated System],[SYS_VehicleType],紧急制动灯控制#VP3-25680, Function
+Allocation Requirement]
+场景描述
+此功能会在车辆处于紧急减速/ABS激活时自动触发刹车灯闪烁来加强对后方的指示
+前置条件
+车辆紧急制动灯处于激活状态
+触发动作
+收到[紧急制动IBS]请求输入:EmgcBrkA=0x1=EmgcBrkA_1_True->0x0=EmgcBrkA_0_Fals
+&& EmgcBrkAV=0x0=EmgcBrkAV_0_Valid
+危险报警灯开启:
+FLDircnLghtCtrl=0x1=FLDircnLghtCtrl_1_on; &
+FRDircnLghtCtrl=0x1=FRDircnLghtCtrl_1_on
+执行动作1.1
+满足触发动作1,且判断当前车速不大于2km/h
+(预留不开
+VehSpdAvg<=2Km/h && VehSpdAvgV=0x0=VehSpdAvgV_0_Valid
+继续执行5s闪烁
+满足触发动作2,则跳过该执行动作,直接执行动作2
+执行动作1.2
+满足触发动作1,且判断当前车速大于2km/h
+VehSpdAvg>2Km/h && VehSpdAvgV=0x0=VehSpdAvgV_0_Valid
+继续执行2s闪烁
+执行动作2
+1、[紧急制动灯控制模块LHZCU]信号跳变为:BrkLghtCtrl=0x0=BrkLghtCtrl_0_Off
+2、ICB根据接收到的LHZCU发送BrkLghtCtrl=0x0=OFF,转换成数字灯光灯控CAN信号,控制紧
+灭
+3、ICB 同样根据接收到的 LHZCU发送 BrkLghtCtrl=0x0=OFF,延时 60ms 将制动灯控制 CAN 信号
+RZCU(配置需求:BrkLghtCtrlDelayPrm):
+BrkLghtCtrl_HW=0x0=BrkLghtCtrl_HW_0_Off
+4、ICB接收信号:BrkLghtCtrl=0x0=BrkLghtCtrl_0_Off,退出紧急制动灯触发的动画显示
+5、[驱动处理模块RZCU]接收ICB发送信号BrkLghtCtrl_HW=0x0=off,内部跳变为硬线输出,驱

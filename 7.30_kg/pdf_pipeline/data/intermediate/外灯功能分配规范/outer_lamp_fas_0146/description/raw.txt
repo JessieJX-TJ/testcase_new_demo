@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "DirectionLight DirectionLightErrorStatus",
+  "row_semantics": "Each row represents a specific service interface for subscribing to the error status of a direction light (either right or left turn signal).",
+  "column_semantics": {
+    "1": "Function name: DirectionLight.DirectionLightErrorStatus",
+    "2": "Consumption type (e.g., SOA - Service Oriented Architecture)",
+    "3": "Controller/Module Name (e.g., RHZCU, LHZCU, RZCU)",
+    "4": "Controller/Module Name (e.g., LHZCU)",
+    "5": "Empty column",
+    "6": "Hard Line Fault Status"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "function",
+      "description": "Represents the direction light system."
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "service_interface",
+      "description": "Service interface for subscribing to the error status of direction lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "Unique identifier for the instance of the service interface.",
+      "values": [
+        {
+          "code": "0x2",
+          "value": "InstanceID=2 for right front turn signal"
+        },
+        {
+          "code": "0x3",
+          "value": "InstanceID=3 for left rear turn signal"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightErrorSta",
+      "type": "output_signal",
+      "description": "Parameter name indicating the error status of the direction light.",
+      "values": [
+        {
+          "code": "0x0",
+          "value": "No Error"
+        },
+        {
+          "code": "0x1",
+          "value": "Error"
+        },
+        {
+          "code": "0x2",
+          "value": "Unknown"
+        }
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "HardLineFaultStatus",
+      "type": "fault_status",
+      "description": "Indicates the hard line fault status related to the direction light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for subscribing to the error status of direction lights (right front and left rear turn signals) across different controllers/modules. It specifies the parameter names, instance IDs, and possible error status values for testing and validating the correct reporting of direction light errors in the vehicle's electronic system.",
+  "uncertain_points": []
+}
+```

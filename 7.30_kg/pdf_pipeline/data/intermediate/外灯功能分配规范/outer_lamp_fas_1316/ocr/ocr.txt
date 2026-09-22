@@ -1,0 +1,32 @@
+场景描述
+远光灯开启,用户通过大屏软开关,触发后雾灯的开启
+前置条件
+1&2&3
+(UsgMd!=0x0 = UsgMd_0_Sleep； & UsgMd!=0x1 = UsgMd_1_Standby
+& UsgMd!=0x6=UsgMd_6_XOTA) && UsgMdV=Valid
+VehMd!=0x3 = VehMd_3 TRANSPORT; && VehMdV=Valid
+远光灯状态为开启:
+1)远光灯反馈状态为开启:
+{MainBeamLight. MainBeamLightStatus. MainBeamLightSta}{InstanceID=1}=0x1=ON|
+{MainBeamLight. MainBeamLightStatus. MainBeamLightSta}{InstanceID=2}=0x1=ON
+(exlMainBeamHwDrvEnPrm=0x0时,通过 InstanceID1,2获取状态)
+{MainBeamLight. MainBeamLightStatus. MainBeamLightSta}{InstanceID=3}=0x1=ON
+{MainBeamLight. MainBeamLightStatus. MainBeamLightSta}{InstanceID=4}=0x1=ON
+(exlMainBeamHwDrvEnPrm=0x1 时,通过 InstanceID=4 获取右侧远光灯状态)
+或者
+2)LHZCU已判断远光灯开启:
+{ExteriorLightSwitchProcess. MainBeamLightFucProStatus. MainBeamLghtFucProsSta}=
+触发动作
+1.S32G收到[大屏开关请求ICB]输入
+{ExteriorLightControlSystem. ControlRearFogLight.RearFogLightReq}=0x1=On
+(配置字: exlRearFoglghtPrm=0(大屏开关))
+2. S32G 收到[七键开关请求 IFP]输入跳变
+(a.配置字: exlRearFoglghtPrm=1(物理开关)
+执行动作
+1、[外灯控制组合服务ICB]调用接口:
+Method:
+Req:
+Resp:
+2、[后雾灯控制模块LHZCU]接口响应:
+Notifier:
+3、[外灯控制组合服务ICB]调用接口:

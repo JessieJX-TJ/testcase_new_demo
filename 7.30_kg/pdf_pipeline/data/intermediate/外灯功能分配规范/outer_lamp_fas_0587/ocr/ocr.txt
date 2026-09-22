@@ -1,0 +1,48 @@
+2. [转向灯开关控制模块LHZCU]信号发送为:
+控制转向灯按照1.25Hz频率闪烁(先on后off),即按照800ms一个闪烁周期持续发送
+发送400ms
+FLDircnLghtCtrl=0x1=FLDircnLghtCtrl_1_on
+RLDircnLghtCtrl=0x1=RLDircnLghtCtrl_1_on
+发送 400ms
+FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_Off
+RLDircnLghtCtrl=0x0=RLDircnLghtCtrl_0_Off
+发送转向灯流水模式使能状态:DircnLghtMdSts=0x0=DircnLghtMdSts_0_Enable
+3. ICB 根据接收到的 LHZCU 发送的转向灯 FLDircnLghtCtrl/RLDircnLghtCtrl=ON/OFF,转换
+控CAN信号,控制转向灯流水点亮/熄灭
+4. ICB 同样根据LHZCU 控制输入,将控制信号延时60ms 分发至 LHZCU/RZCU(配置需求:
+DircnLghtCtrlDelayPrm)
+FLDircnLghtCtrl_HW=0x1=FLDircnLghtCtrl_HW_1_on(或 0x0=FLDircnLghtCtrl_HW_0_OFF)
+RLDircnLghtCtrl_HW=0x1=RLDircnLghtCtrl_HW_1_on (或 0x0=RLDircnLghtCtrl_HW_0_OFF)
+5. [驱动处理模块LHZCU/RZCU]接收ICB 发送的控制信号,内部跳变为硬线输出,驱动左侧
+熄灭
+6. ICB接收控制信号:
+做左侧转向灯图标指示灯显示以及声音提醒
+7. [驱动处理模块RZCU]将左后侧转向灯状态/故障状态反馈至[转向灯开关控制模块LHZCU]:
+RLDircnLghtSts_HW =0x1= RLDircnLghtSts_HW _1_On(或 0x0= RLDircnLghtSts_HW_0_OFF)
+RLDircnLghtFltsts_HW =0x0=RLDircnLghtFltsts_HW _0_False
+(exlDircnLghtHwDrvEnPrm=0x1;通过域控获取转向灯状态；)
+8. ICB将状态/故障状态反馈至[转向灯开关控制模块LHZCU]:
+FLDircnLghtSts=0x1= FLDircnLghtSts _1_On(或 0x0= FLDircnLghtSts _0_OFF)
+RLDircnLghtSts=0x1= RLDircnLghtSts_1_On(或 0x0= RLDircnLghtSts_1_OFF)
+FLDircnLghtFltsts=0x0=FLDircnLghtFltsts_0_False
+RLDircnLghtFltsts=0x0=RLDircnLghtFltsts_0_False
+(exlDircnLghtHwDrvEnPrm=0x0|0x2;通过数字灯控获取转向灯状态；)
+9. [转向灯开关控制模块LHZCU]将状态/故障状态反馈至ICB:
+DircnLghtSts=0x1=Left_Direction_Light_On
+DircnLghtFltsts=0x0=DircnLghtFltsts_0_No_Error
+10.[外灯组合服务ICB]接收LHZCU发送的转向灯点亮及故障状态CAN信号转成对应的服务透
+11. [转向灯开关控制模块LHZCU]将转向灯开关状态反馈至ICB:
+DircnLghtSwReq=0x2=DircnLghtSwReq_2_Left_Second_gear_On
+13.[转向灯开关控制模块LHZCU]将转向灯控制状态反馈至 SDM:
+EDRDircnIndLampSwSts=0x1=EDRDircnIndLampSwSts_1_Left
+备注
+转向灯同步性要求(a&b):
+a)其图标闪烁频率和声音提醒与实际转向灯的闪烁频率需保持一致,三者同步性允许的最大延时周
+50ms
+b)单侧转向灯的同步性允许的最大延时周期为:40ms
+转向灯二档位说明:
+左侧转向灯开关置为二档时:
+[转向灯驱动处理模块]接收[转向灯开关控制模块]控制信号,开启转向灯,直至[转向灯开关预处理模
+跳变为:
+DircnLghtSwReq=0x0=DircnLghtSwReq_0_Off时
+[转向灯开关控制模块]跳变为:

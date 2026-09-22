@@ -1,0 +1,113 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "危险警报灯故障描述",
+  "row_semantics": "表格的每一行代表一种具体的故障类型或相关逻辑描述。",
+  "column_semantics": "表格包含两列：第一列是故障类型名称，第二列是对该故障类型的详细描述。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "危险警报灯",
+      "type": "功能名"
+    },
+    {
+      "name": "转向灯",
+      "type": "功能名"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名"
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块名"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器/模块名"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名"
+    },
+    {
+      "name": "HMI子系统",
+      "type": "系统组件"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "双闪灯频率",
+      "value": "2.5Hz",
+      "unit": "Hz",
+      "description": "控制双闪灯以2.5Hz频率闪烁，一个闪烁周期为400ms。"
+    },
+    {
+      "name": "转向灯ON时间",
+      "value": "200ms",
+      "unit": "ms",
+      "description": "转向灯在ON状态持续200ms。"
+    },
+    {
+      "name": "高电平",
+      "value": "9-16V",
+      "unit": "V",
+      "description": "灯控模块通过诊断线反馈故障状态时，高电平（9-16V）代表故障。"
+    },
+    {
+      "name": "低电平",
+      "value": "<0.25V",
+      "unit": "V",
+      "description": "低电平（<0.25V）代表正常状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "双闪灯指示灯",
+      "type": "输出信号",
+      "description": "HMI子系统的双闪灯指示灯和声音提醒需保持同步闪烁。"
+    },
+    {
+      "name": "故障状态反馈",
+      "type": "输出信号",
+      "description": "灯控模块通过诊断线将故障状态反馈至LHZCU/RHZCU/RZCU。"
+    },
+    {
+      "name": "故障信号",
+      "type": "输出信号",
+      "description": "ICB根据当前转向灯的故障信息，反馈故障信号至LHZCU。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "危险警报灯故障",
+      "description": "当危险警报灯发生故障时，控制双闪灯以2.5Hz频率闪烁，并保持HMI子系统双闪灯指示灯和声音提醒同步闪烁。"
+    },
+    {
+      "name": "转向灯硬线故障",
+      "description": "灯控模块通过诊断线反馈故障状态至LHZCU/RHZCU/RZCU，高电平（9-16V）代表故障，低电平（<0.25V）代表正常。"
+    },
+    {
+      "name": "转向灯DTC故障",
+      "description": "ICB根据当前转向灯的故障信息，反馈故障信号至LHZCU。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "闪烁周期",
+      "value": "400ms",
+      "unit": "ms",
+      "description": "双闪灯的一个闪烁周期为400ms。"
+    },
+    {
+      "name": "转向灯ON时间",
+      "value": "200ms",
+      "unit": "ms",
+      "description": "转向灯在ON状态持续200ms。"
+    }
+  ],
+  "engineering_interpretation": "这张表可用于验证危险警报灯和转向灯在发生故障时，系统是否能够正确地通过双闪灯指示、HMI子系统提示以及控制器间信号反馈来识别和处理故障。",
+  "uncertain_points": []
+}
+```

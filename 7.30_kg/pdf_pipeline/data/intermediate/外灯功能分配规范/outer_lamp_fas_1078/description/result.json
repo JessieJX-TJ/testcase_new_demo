@@ -1,0 +1,37 @@
+{
+  "table_type": "fault_table",
+  "topic": "External Light Control System Fault Status Definition",
+  "row_semantics": "Each row represents a specific fault status or condition related to the main beam light control system.",
+  "column_semantics": "The first column provides a label or description for the fault, while the second column specifies the corresponding fault status value.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "system",
+      "description": "The overall system responsible for controlling exterior lighting functions."
+    },
+    {
+      "name": "MainBeamLightErrSts",
+      "type": "status",
+      "description": "Status indicating errors related to the main beam lights."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "MainBeamLightErrSts",
+      "value": "0x0",
+      "description": "No Error condition for the main beam light control system."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "condition": "Simultaneous extinguishing of left and right high beams",
+      "constraint": "Maximum delay between left and right sides cannot exceed 40ms"
+    }
+  ],
+  "engineering_interpretation": "This table defines the fault status for the main beam light control system, indicating that a value of 0x0 signifies no error. It also specifies a timing requirement for the synchronization of high beam extinguishing between the left and right sides.",
+  "uncertain_points": []
+}

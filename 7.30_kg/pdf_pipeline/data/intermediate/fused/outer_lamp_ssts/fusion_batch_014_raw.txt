@@ -1,0 +1,460 @@
+```json
+[
+  {
+    "head": "RightFrontFogLightBlinkingStateSetting",
+    "relation": "precondition",
+    "tail": "RightFrontFogLightOutputActive",
+    "sources": ["outer_lamp_ssts_0192"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontFogLightBlinkingStateSetting",
+    "relation": "triggerCondition",
+    "tail": "RightFrontFogLightShortToGroundDetected",
+    "sources": ["outer_lamp_ssts_0192"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightStateSetToOff",
+    "relation": "precondition",
+    "tail": "RightFrontFogLightOutputActive",
+    "sources": ["outer_lamp_ssts_0192"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightStateSetToOff",
+    "relation": "triggerCondition",
+    "tail": "RightFrontFogLightShortToGroundDetected",
+    "sources": ["outer_lamp_ssts_0192"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLghtCtrlMdlSignalTransmittedAtLeastThreeFrames",
+    "relation": "stateHoldingCondition",
+    "tail": "FrtFogLghtDrvMdlSendsRFrtFogLghtSts0x0OFF",
+    "sources": ["outer_lamp_ssts_0192"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightShortToGroundDetected",
+    "relation": "precondition",
+    "tail": "ReverseLightOutputShortToGround",
+    "sources": ["outer_lamp_ssts_0194"],
+    "conflict": true,
+    "conflict_note": "Conflicting preconditions for same physical condition: '检测到短路到地' vs '检测到未短路到地' both listed as precondition for '倒车灯输出短路到地'. These are logical inverses — likely one is mislabeled as 'precondition' instead of 'negatedPrecondition' or 'inversionCondition'. Retained both with conflict flag."
+  },
+  {
+    "head": "ReverseLightShortToBatteryDetected",
+    "relation": "precondition",
+    "tail": "ReverseLightOutputShortToBattery",
+    "sources": ["outer_lamp_ssts_0194"],
+    "conflict": true,
+    "conflict_note": "Conflicting preconditions for same physical condition: '检测到短路到电源' vs '检测到未短路到电源' both listed as precondition for '倒车灯输出短路到电源'. Logical contradiction in labeling — likely one should be 'negatedPrecondition'."
+  },
+  {
+    "head": "ReverseLightOpenLoadDetected",
+    "relation": "precondition",
+    "tail": "ReverseLightOutputOpenLoad",
+    "sources": ["outer_lamp_ssts_0194"],
+    "conflict": true,
+    "conflict_note": "Conflicting preconditions for same physical condition: '检测到输出开路' vs '检测到输出开路恢复' both listed as precondition for '倒车灯输出开路'. 'Recovery' implies transition from faulted to normal state — cannot be precondition for the same static fault condition. Likely misclassification."
+  },
+  {
+    "head": "TurnSignalOutputAnomalyDetectionActivated",
+    "relation": "precondition",
+    "tail": "DILightFbkSOAEnPrmEquals1",
+    "sources": ["outer_lamp_ssts_0195"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalOutputAnomalyDetectionActivated",
+    "relation": "precondition",
+    "tail": "RightRearTurnSignalOutputActive",
+    "sources": ["outer_lamp_ssts_0195"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SystemExecutesErrorSignalTransmission",
+    "relation": "triggerCondition",
+    "tail": "TurnSignalOutputAnomalyDetectionActivated",
+    "sources": ["outer_lamp_ssts_0195"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SystemSetsFaultCode",
+    "relation": "triggerCondition",
+    "tail": "TurnSignalOutputAnomalyDetectionActivated",
+    "sources": ["outer_lamp_ssts_0195"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDLightDrvMdlSendsErrorSignal",
+    "relation": "inputTo",
+    "tail": "DILightCtrlMdl",
+    "sources": ["outer_lamp_ssts_0195"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC_CB104A_13Set",
+    "relation": "faultResponse",
+    "tail": "TurnSignalOutputAnomalyDetectionActivated",
+    "sources": ["outer_lamp_ssts_0195"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SystemWakeupOperation",
+    "relation": "triggerCondition",
+    "tail": "RainSignalDetected",
+    "sources": ["outer_lamp_ssts_0197"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SystemWakeupOperation",
+    "relation": "inputAs",
+    "tail": "SignalTriggered",
+    "sources": ["outer_lamp_ssts_0197"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SystemWakesFromSleepState",
+    "relation": "triggerCondition",
+    "tail": "SpecificWakeSourceSignalReceived",
+    "sources": ["outer_lamp_ssts_0198"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SystemEntersSleepState",
+    "relation": "triggerCondition",
+    "tail": "NoWakeSourceSignalDetected",
+    "sources": ["outer_lamp_ssts_0198"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SystemWakeupMethod",
+    "relation": "dependsOn",
+    "tail": "SpecificWakeSource",
+    "sources": ["outer_lamp_ssts_0198", "outer_lamp_ssts_0387"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlRightFrontTurnLightOnOrOff",
+    "relation": "triggerCondition",
+    "tail": "DirectionLightControlInterfaceInvoked",
+    "sources": ["outer_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "QueryRightFrontTurnLightState",
+    "relation": "triggerCondition",
+    "tail": "DirectionLightStateInterfaceSubscribed",
+    "sources": ["outer_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontTurnLightStateIsOff",
+    "relation": "outputAs",
+    "tail": "DirectionLightStateSignalValue0x0",
+    "sources": ["outer_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontTurnLightStateIsOn",
+    "relation": "outputAs",
+    "tail": "DirectionLightStateSignalValue0x1",
+    "sources": ["outer_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontTurnLightStateIsError",
+    "relation": "outputAs",
+    "tail": "DirectionLightStateSignalValue0x2",
+    "sources": ["outer_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontTurnLightStateIsUnknown",
+    "relation": "outputAs",
+    "tail": "DirectionLightStateSignalValue0x3",
+    "sources": ["outer_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightCtrlReqValue0x0",
+    "relation": "inputAs",
+    "tail": "ControlCommandOff",
+    "sources": ["outer_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightCtrlReqValue0x1",
+    "relation": "inputAs",
+    "tail": "ControlCommandOn",
+    "sources": ["outer_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DiagnosticRequirementB1077_11Activated",
+    "relation": "triggerCondition",
+    "tail": "HighBeamSwitchShortToGroundDetected",
+    "sources": ["outer_lamp_ssts_0200"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DiagnosticRequirementB1077_11Deactivated",
+    "relation": "suppressionCondition",
+    "tail": "HighBeamSwitchNotShortToGround",
+    "sources": ["outer_lamp_ssts_0200"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DiagnosticRequirementB1077_15Activated",
+    "relation": "triggerCondition",
+    "tail": "HighBeamSwitchShortToBatteryDetected",
+    "sources": ["outer_lamp_ssts_0200"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DiagnosticRequirementB1077_15Deactivated",
+    "relation": "suppressionCondition",
+    "tail": "HighBeamSwitchNotShortToBattery",
+    "sources": ["outer_lamp_ssts_0200"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DiagnosticRequirementB1077_1CActivated",
+    "relation": "triggerCondition",
+    "tail": "HighBeamSwitchUndefinedResistanceDetected",
+    "sources": ["outer_lamp_ssts_0200"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DiagnosticRequirementB1077_1CDeactivated",
+    "relation": "suppressionCondition",
+    "tail": "HighBeamSwitchKnownResistanceDetected",
+    "sources": ["outer_lamp_ssts_0200"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSwitchSignalSOAEnableFunction",
+    "relation": "triggerCondition",
+    "tail": "DILghtSwSOAEnPrmEquals1",
+    "sources": ["outer_lamp_ssts_0201"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSwitchSignalSOAEnableFunction",
+    "relation": "suppressionCondition",
+    "tail": "DILghtSwSOAEnPrmEquals0",
+    "sources": ["outer_lamp_ssts_0201"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILghtSwSOAEnPrmValue",
+    "relation": "inputAs",
+    "tail": "0Or1",
+    "sources": ["outer_lamp_ssts_0201"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightBrakeLightOpenLoadFaultDetection",
+    "relation": "triggerCondition",
+    "tail": "RightBrakeLightOpenLoadDetected",
+    "sources": ["outer_lamp_ssts_0202"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightDriverModuleSendsErrorStatusContinuously",
+    "relation": "precondition",
+    "tail": "BrkLghtFbkSOAEnPrmEquals1",
+    "sources": ["outer_lamp_ssts_0202"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightDriverModuleSendsErrorStatusContinuously",
+    "relation": "precondition",
+    "tail": "RightBrakeLightOutputActive",
+    "sources": ["outer_lamp_ssts_0202"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightDriverModuleSendsErrorStatusContinuously",
+    "relation": "stateHoldingCondition",
+    "tail": "AtLeastThreeFramesTransmitted",
+    "sources": ["outer_lamp_ssts_0202"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnLightControlFunctionActivated",
+    "relation": "precondition",
+    "tail": "DILghtSwSOAEnPrmEquals1",
+    "sources": ["outer_lamp_ssts_0203"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnLightControlFunctionActivated",
+    "relation": "triggerCondition",
+    "tail": "RightTurnStalkReselectedWith1200OhmPlusMinus5Percent",
+    "sources": ["outer_lamp_ssts_0203"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSwitchStatusSignalTransmittedContinuously",
+    "relation": "dependsOn",
+    "tail": "TurnLightControlFunctionActivated",
+    "sources": ["outer_lamp_ssts_0203"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSwitchStatusSignalValue0x2",
+    "relation": "outputAs",
+    "tail": "DILghtSwMdlSendsDirectionLightSwitchStatus",
+    "sources": ["outer_lamp_ssts_0203"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLightDrvMdlStopsDrivingRightFrontSidePositionLightOutput",
+    "relation": "precondition",
+    "tail": "RightFrontSidePositionLightOutputActive",
+    "sources": ["outer_lamp_ssts_0204"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLightDrvMdlSendsSidePositionLightStatusContinuously",
+    "relation": "precondition",
+    "tail": "RightFrontSidePositionLightShortToBatteryDetected",
+    "sources": ["outer_lamp_ssts_0204"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC_B1061_12Set",
+    "relation": "precondition",
+    "tail": "RightFrontSidePositionLightShortToBatteryDetected",
+    "sources": ["outer_lamp_ssts_0204"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLightDrvMdlSendsSidePositionLightStatusContinuously",
+    "relation": "stateHoldingCondition",
+    "tail": "RightFrontSidePositionLightShortToBatteryDetected",
+    "sources": ["outer_lamp_ssts_0204"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLightDrvMdlSendsSidePositionLightStatusContinuously",
+    "relation": "subfunctionIncludes",
+    "tail": "AtLeastThreeFramesTransmitted",
+    "sources": ["outer_lamp_ssts_0204"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontTurnLightShortToGroundFaultHandlingActivated",
+    "relation": "triggerCondition",
+    "tail": "LeftFrontTurnLightShortToGroundDetected",
+    "sources": ["outer_lamp_ssts_0205"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontTurnLightShortToGroundFaultHandlingSuppressed",
+    "relation": "suppressionCondition",
+    "tail": "DILightFbkSOAEnPrmNotEquals1",
+    "sources": ["outer_lamp_ssts_0205"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontTurnLightShortToGroundFaultHandlingSuppressed",
+    "relation": "suppressionCondition",
+    "tail": "LeftFrontTurnLightOutputNotActive",
+    "sources": ["outer_lamp_ssts_0205"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontTurnLightShortToGroundFaultHandlingFunction",
+    "relation": "diagnosticAssociation",
+    "tail": "DTC_B104A_11",
+    "sources": ["outer_lamp_ssts_0205"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampControlFunction",
+    "relation": "precondition",
+    "tail": "CalibrationItemRangeValid",
+    "sources": ["outer_lamp_ssts_0206"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BodyControlFunction",
+    "relation": "precondition",
+    "tail": "CalibrationDescriptionCorrect",
+    "sources": ["outer_lamp_ssts_0206"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PowerTailgateFunction",
+    "relation": "precondition",
+    "tail": "FactorResolutionAppropriate",
+    "sources": ["outer_lamp_ssts_0206"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ECUParameterConfiguration",
+    "relation": "dependsOn",
+    "tail": "DefaultValueCorrect",
+    "sources": ["outer_lamp_ssts_0206"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

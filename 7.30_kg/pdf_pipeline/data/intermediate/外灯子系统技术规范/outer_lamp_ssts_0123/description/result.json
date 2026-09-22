@@ -1,0 +1,61 @@
+{
+  "table_type": "fault_table",
+  "topic": "左前转向灯短路故障诊断与处理逻辑",
+  "row_semantics": "表格按时间顺序或状态流程描述了故障诊断的前置条件、触发条件、执行动作和退出条件。",
+  "column_semantics": "第一列定义了不同阶段（如前置条件、触发条件等），第二列详细描述了该阶段的具体内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FLDILghtDrvMd1",
+      "type": "controller_module",
+      "description": "左前转向灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlDircnLghtHwDrvEnPrmm",
+      "value": "==1",
+      "description": "硬件驱动使能参数为1，表示系统处于激活状态"
+    },
+    {
+      "name": "左前转向灯未输出状态",
+      "value": "uncertain",
+      "description": "左前转向灯当前没有输出信号，可能是熄灭或异常"
+    },
+    {
+      "name": "检测到左前转向灯灯短路到电源",
+      "value": "uncertain",
+      "description": "系统检测到左前转向灯存在短路至电源的故障"
+    },
+    {
+      "name": "检测到短路恢复",
+      "value": "uncertain",
+      "description": "系统检测到之前存在的短路故障已经恢复正常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtFltsts_HW",
+      "value": "=0x1 (True)",
+      "description": "硬件层转向灯故障状态反馈为真，表示检测到故障"
+    },
+    {
+      "name": "DTCC_B104A_12",
+      "value": "置位",
+      "description": "设置DTC（Diagnostic Trouble Code）B104A_12，用于记录此特定故障代码"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "左前转向灯短路到电源",
+      "description": "左前转向灯电路发生短路至电源的故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了左前转向灯短路故障的诊断逻辑，包括触发条件、执行的动作（如设置故障状态和DTC码）以及退出条件，可用于验证车辆电子系统在转向灯短路情况下的故障诊断功能。",
+  "uncertain_points": [
+    "具体传感器或信号名称未明确指出",
+    "故障恢复的具体判断逻辑未详细说明"
+  ]
+}

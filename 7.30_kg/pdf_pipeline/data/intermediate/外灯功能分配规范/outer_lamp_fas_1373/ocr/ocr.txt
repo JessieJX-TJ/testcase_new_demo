@@ -1,0 +1,36 @@
+功能分配规范
+零束
+Function Allocation Specification
+Z·ONE
+外灯功能Exterior lamp function
+Z-ONE-3.0平台-FAS-IBD05
+版本<1.0>
+239 of 935 页
+UsgMdV=Valid
+VehMd!=0x3 =VehMd_3_TRANSPORT
+VehMdV=Valid
+LHZCU已判断关闭位置灯:
+SidePositionAndDippedBeam OFF
+备注:
+a.需求中同时存在SOA和CAN的,按照配置字开发
+b.需求中只存在一种通讯类型的,按照该通讯类型开发:
+c.PPV阶段及以后按照SOA通讯方式开发:
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+触发动作
+S32G收到[大屏开关请求ICB]输入
+执行动作
+[外灯控制组合服务ICB]调用接口发送近光灯请求状态给LHZCU:
+Notifer:
+[近光灯控制模块LHZCU]接口响应:
+Notifier:
+ICB将服务接口或控制信号转换成灯控CAN信号,并控制近光灯和位置灯点亮
+[外灯控制组合服务ICB]调用接口:
+态
+当组合灯光请求为近光灯
+&&{ExteriorLightSwitchProcess.CombLghtFucProStatus.CombLghtFucProSta}接口参数为
+同时赋值 0x2=DippedBeamLight ON
+[HMI子系统ICB]调用接口:
+获取近光灯和位置灯指示灯显示:
+[外灯控制组合服务ICB]调用基础服务:
+{ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts}=0x1=On

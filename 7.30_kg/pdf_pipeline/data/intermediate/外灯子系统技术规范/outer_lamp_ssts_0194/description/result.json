@@ -1,0 +1,77 @@
+{
+  "table_type": "fault_table",
+  "topic": "Reverse Light Output Fault Detection",
+  "row_semantics": "Each row represents a specific fault condition related to the reverse light output, including short circuit to ground, short circuit to power supply, and open circuit.",
+  "column_semantics": {
+    "B1045_11": "Fault Condition: Reverse Light Output Short Circuit to Ground",
+    "B1045_12": "Fault Condition: Reverse Light Output Short Circuit to Power Supply",
+    "B1045_13": "Fault Condition: Reverse Light Output Open Circuit",
+    "Detection_Short_to_Ground": "Detection of Reverse Light Output Short Circuit to Ground",
+    "Detection_Short_to_Power": "Detection of Reverse Light Output Short Circuit to Power Supply",
+    "Detection_Open_Circuit": "Detection of Reverse Light Output Open Circuit"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Reverse_Light_Output",
+      "type": "output_signal",
+      "description": "The signal controlling the reverse light."
+    },
+    {
+      "name": "Ground",
+      "type": "input_signal",
+      "description": "The reference point for the electrical circuit."
+    },
+    {
+      "name": "Power_Supply",
+      "type": "input_signal",
+      "description": "The voltage source supplying power to the circuit."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Short_to_Ground",
+      "description": "A fault where the reverse light output is shorted to the ground."
+    },
+    {
+      "name": "Short_to_Power",
+      "description": "A fault where the reverse light output is shorted to the power supply."
+    },
+    {
+      "name": "Open_Circuit",
+      "description": "A fault where the reverse light output is disconnected from the circuit."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Detection_Short_to_Ground",
+      "description": "Signal indicating detection of a short circuit to ground."
+    },
+    {
+      "name": "Detection_Short_to_Power",
+      "description": "Signal indicating detection of a short circuit to power."
+    },
+    {
+      "name": "Detection_Open_Circuit",
+      "description": "Signal indicating detection of an open circuit."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "B1045_11",
+      "description": "Fault code for reverse light output short circuit to ground."
+    },
+    {
+      "name": "B1045_12",
+      "description": "Fault code for reverse light output short circuit to power supply."
+    },
+    {
+      "name": "B1045_13",
+      "description": "Fault code for reverse light output open circuit."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the fault detection logic for reverse light output faults, specifying how the system detects short circuits to ground, short circuits to power, and open circuits in the reverse light output circuit.",
+  "uncertain_points": []
+}

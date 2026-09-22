@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Type–Expected Behavior Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/type_expected_classification.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="side-rail">
+            <div class="rail-top">
+                <div class="rail-logo">
+                    <img class="rail-logo-img" src="{{ url_for('static', filename='img/im_logo.png') }}" alt="IM" onerror="this.style.display='none'">
+                    <span class="rail-logo-text">IM</span>
+                </div>
+            </div>
+            <div class="rail-nav">
+                <a class="rail-btn" href="/" target="_top" title="Home">🏠</a>
+            </div>
+        </aside>
+
+        <main class="shell-main">
+            <!-- <div class="page-title">Test Type–Expected Behavior Classification</div> -->
+            <div class="container">
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="search-box">
+                <input type="text" id="searchBox" placeholder="🔍 Search case name, ID, expected behavior...">
+            </div>
+            <div class="filter-box">
+                <select id="filterType">
+                    <option value="all">All Cases</option>
+                    <option value="single">Single Expected Result</option>
+                    <option value="multiple">Multiple Expected Results</option>
+                </select>
+            </div>
+            <div class="stats-box">
+                <span id="statsText">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Left: test type classification -->
+            <aside class="type-sidebar">
+                <div class="sidebar-header">
+                    <h3>📋 Test Type</h3>
+                    <span id="typeCount" class="count-badge">0</span>
+                </div>
+                <div id="typeList" class="type-list">
+                    <div class="loading">Loading...</div>
+                </div>
+            </aside>
+
+            <!-- Middle: expected behavior classification -->
+            <aside class="expected-sidebar">
+                <div class="sidebar-header">
+                    <h3>✅ Expected Behavior</h3>
+                    <span id="expectedCount" class="count-badge">0</span>
+                </div>
+                <div class="current-type-info" id="currentTypeInfo">
+                    <p>👈 Please select a test type from the left</p>
+                </div>
+                <div class="selection-controls">
+                    <div class="checkbox-controls">
+                        <label class="select-all-label">
+                            <input type="checkbox" id="selectAllExpected">
+                            <span>Select All</span>
+                        </label>
+                        <button id="clearAllExpected" class="btn-clear" title="Clear all selections">
+                            ✖ Clear
+                        </button>
+                    </div>
+                    <button id="generateReverseCases" class="btn-generate" disabled>
+                        🔄 Generate Reverse Cases
+                    </button>
+                    <span id="selectedExpectedCount" class="selected-count">Selected: 0</span>
+                </div>
+                <div id="expectedList" class="expected-list">
+                    <div class="empty-state">
+                        <p>Step 1: Select a test type from the left</p>
+                        <p style="margin-top: 6px; opacity: 0.85;">Then check expected behaviors here (multi-select / select all / clear supported)</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right: case list -->
+            <main class="case-list-panel">
+                <div class="panel-header">
+                    <div class="header-left">
+                        <h3 id="currentSelection">Please select expected behavior</h3>
+                        <span id="caseCount" class="count-badge">0 cases</span>
+                    </div>
+                    <div class="header-right">
+                        <button id="exportBtn" class="btn-secondary">📥 Export Cases</button>
+                    </div>
+                </div>
+
+                <div id="caseList" class="case-list">
+                    <div class="empty-state">
+                        <p>Step 2: Select one or more expected behaviors</p>
+                        <p style="margin-top: 6px; opacity: 0.85;">Step 3: Matching cases appear on the right; export or generate reverse cases</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Generation result modal -->
+        <div id="resultModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>🎉 Reverse Test Case Generation Results</h2>
+                    <button class="modal-close" onclick="closeResultModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="result-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Generated count: </span>
+                            <span id="generatedCount" class="summary-value">0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Generated at: </span>
+                            <span id="generatedTime" class="summary-value">-</span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button id="downloadExcelBtn" class="btn-primary">📥 Download Excel</button>
+                        <button id="downloadJsonBtn" class="btn-secondary">📄 Download JSON</button>
+                    </div>
+                    <div id="generatedCasesList" class="generated-cases-list">
+                        <!-- Generated cases displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </main>
+
+        <aside class="shell-right">
+            <div class="right-card">
+                <div class="right-title">Overview</div>
+                <div class="right-metric" id="rightStats">Loading...</div>
+            </div>
+            <div class="right-card">
+                <div class="right-title">Quick Actions</div>
+                <div class="right-actions">
+                    <button class="btn-primary" type="button" onclick="document.getElementById('generateReverseCases')?.click()">Generate Reverse Cases</button>
+                    <button class="btn-secondary" type="button" onclick="document.getElementById('exportBtn')?.click()">Export Current Cases</button>
+                </div>
+            </div>
+            <div class="right-card">
+                <div class="right-title">How to Use</div>
+                <div class="guide-steps">
+                    <div class="guide-step">
+                        <div class="step-badge">1</div>
+                        <div class="step-body">
+                            <div class="step-title">Select Test Type</div>
+                            <div class="step-desc">Choose a test type from the left list; the system loads matching expected behaviors.</div>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-badge">2</div>
+                        <div class="step-body">
+                            <div class="step-title">Check Expected Behaviors</div>
+                            <div class="step-desc">Multi-select expected behaviors; Select All / Clear are supported.</div>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                        <div class="step-badge">3</div>
+                        <div class="step-body">
+                            <div class="step-title">View / Export Cases</div>
+                            <div class="step-desc">Matching cases appear on the right; export or generate reverse cases.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/type_expected_classification.js') }}"></script>
+    <script>
+        const statsEl = document.getElementById('statsText');
+        const rightStatsEl = document.getElementById('rightStats');
+        if (statsEl && rightStatsEl) {
+            const sync = () => { rightStatsEl.textContent = statsEl.textContent || ''; };
+            sync();
+            const observer = new MutationObserver(sync);
+            observer.observe(statsEl, { childList: true, characterData: true, subtree: true });
+        }
+    </script>
+</body>
+</html>

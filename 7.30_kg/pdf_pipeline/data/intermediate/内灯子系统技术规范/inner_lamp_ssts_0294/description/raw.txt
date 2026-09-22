@@ -1,0 +1,54 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Ambient Lamp Breathing Mode Hold Off Percentage Parameters",
+  "row_semantics": "Each row represents a specific parameter configuration for the ambient lamp breathing mode hold-off percentage, defining the duration and intensity of the breathing effect.",
+  "column_semantics": {
+    "1": "Parameter Name (e.g., AmbtiLampBrthngRate4holdoffPercent)",
+    "2": "Description (e.g., Ambient Lamp Breathing Mode Wait Time)",
+    "3": "Range (e.g., 0 - 32)",
+    "4": "Equation/Formula (e.g., E = N*1%)",
+    "5": "Hexadecimal Value and Percentage (e.g., 0x00 (0%))"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "Function",
+      "description": "The ambient lighting system in the vehicle, capable of displaying a breathing mode effect."
+    },
+    {
+      "name": "Breathing Mode",
+      "type": "Mode",
+      "description": "A visual lighting effect where the brightness gradually increases and decreases in a smooth cycle."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Hold Off Percentage",
+      "description": "The percentage of time the ambient lamp remains off during the breathing cycle.",
+      "range": "0 - 32",
+      "formula": "E = N*1%",
+      "values": [
+        {"hex": "0x00", "percent": "0%"},
+        {"hex": "0xA", "percent": "10%"},
+        {"hex": "0x14", "percent": "20%"},
+        {"hex": "0x5", "percent": "5%"}
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Wait Time",
+      "description": "The duration the ambient lamp waits before starting or resuming the breathing mode.",
+      "unit": "arbitrary units (0-32)",
+      "formula": "E = N*1%"
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters for configuring the hold-off percentage of the ambient lamp's breathing mode, which controls the intensity and timing of the breathing effect. It is used to verify that the ambient lamp displays the correct breathing pattern based on the specified hold-off percentage values.",
+  "uncertain_points": []
+}
+```

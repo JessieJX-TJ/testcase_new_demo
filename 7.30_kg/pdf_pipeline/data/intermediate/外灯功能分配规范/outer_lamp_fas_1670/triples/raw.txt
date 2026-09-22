@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "制动灯功能开启",
+    "relation": "前提条件",
+    "tail": "ICB.BrakeLightSwitchProcess.BrakeLightFrcSta = 0x1=ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["ICB", "BrakeLightSwitchProcess", "BrakeLightFrcSta"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯功能开启",
+    "relation": "前提条件",
+    "tail": "RZCU接收到ICB控制信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["RZCU", "ICB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯功能开启",
+    "relation": "前提条件",
+    "tail": "制动系统有效",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["制动系统"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯功能开启",
+    "relation": "前提条件",
+    "tail": "LHZCU.BrakeLightSwitchCtrl = 0x1=ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["LHZCU", "BrakeLightSwitchCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯功能开启",
+    "relation": "超时约束",
+    "tail": "左侧、右侧以及高位制动灯需保持同步点亮，三侧最大延时不能超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": ["制动灯", "同步点亮", "40ms"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯功能开启",
+    "relation": "依赖于",
+    "tail": "ICB提供制动灯开关状态反馈",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ICB", "制动灯开关状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯功能开启",
+    "relation": "依赖于",
+    "tail": "RZCU接收并处理ICB控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["RZCU", "ICB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯功能开启",
+    "relation": "依赖于",
+    "tail": "LHZCU控制制动灯开关",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["LHZCU", "制动灯开关"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯功能开启",
+    "relation": "抑制条件",
+    "tail": "BrakeLight.BrkLightErrorStatus != 0x0=No Error",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["BrakeLight", "BrkLightErrorStatus"],
+    "confidence_note": "high"
+  }
+]
+```

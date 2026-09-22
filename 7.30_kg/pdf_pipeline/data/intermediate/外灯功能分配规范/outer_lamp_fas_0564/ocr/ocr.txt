@@ -1,0 +1,20 @@
+场景描述
+慢行灯开启
+前置条件
+1&2&3&4&5:
+车辆具备慢行灯功能:exlManoeuvringLampEnPrm==0x1
+大屏使能开关开启:
+PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.
+ManoeuvringLampSet ==0x0=Enabled
+注:软开关链路:8295—32G—LHZCU
+整车档位为非P挡
+车辆行驶速度小于20km/h
+车辆近光灯/远光灯点亮
+触发条件
+车辆上 PT READY 后第一次车速大于等于 1km/h
+整车档位跳变为R档
+处于自动泊车状态:AIParkngSts!=(0x0||0x2D||0xB||0x36)
+执行动作
+[迎宾光毯灯开关控制模块LHZCU]驱动硬线端口
+ManoeuvringLamp_HSD 0.8 内渐亮
+备注

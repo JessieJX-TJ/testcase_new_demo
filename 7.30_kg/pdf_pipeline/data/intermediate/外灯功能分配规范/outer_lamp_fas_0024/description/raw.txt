@@ -1,0 +1,74 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 转向灯状态与故障状态",
+  "row_semantics": "表格按转向灯类型（右前、左后、右后）及其硬件故障状态进行分类，每类包含转向灯状态和故障状态的定义。",
+  "column_semantics": {
+    "FRDircnLghtSts": "右前转向灯状态",
+    "RLDircnLghtSts": "左后转向灯状态",
+    "RRDircnLghtSts": "右后转向灯状态",
+    "FLDircnLghtFltsts_HW": "左前转向灯硬件故障状态",
+    "FRDircnLghtFltsts_HW": "右前转向灯硬件故障状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FRDircnLghtSts",
+      "description": "右前转向灯状态，表示转向灯的开关状态（0: Off, 1: On）"
+    },
+    {
+      "name": "RLDircnLghtSts",
+      "description": "左后转向灯状态，表示转向灯的开关状态（0: Off, 1: On）"
+    },
+    {
+      "name": "RRDircnLghtSts",
+      "description": "右后转向灯状态，表示转向灯的开关状态（0: Off, 1: On）"
+    },
+    {
+      "name": "FLDircnLghtFltsts_HW",
+      "description": "左前转向灯硬件故障状态，表示是否存在硬件故障（0: False, 1: True）"
+    },
+    {
+      "name": "FRDircnLghtFltsts_HW",
+      "description": "右前转向灯硬件故障状态，表示是否存在硬件故障（0: False, 1: True）"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "CANFD",
+      "description": "通过CANFD总线输出信号"
+    },
+    {
+      "name": "ICB",
+      "description": "内部通信总线（Internal Communication Bus）"
+    },
+    {
+      "name": "LHZCU",
+      "description": "车辆中央控制单元（Local Hybrid Zone Control Unit）"
+    },
+    {
+      "name": "网络状态",
+      "description": "网络通信状态"
+    },
+    {
+      "name": "硬线故障状态",
+      "description": "硬线连接的故障状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "FLDircnLghtFltsts_HW",
+      "description": "左前转向灯硬件故障状态"
+    },
+    {
+      "name": "FRDircnLghtFltsts_HW",
+      "description": "右前转向灯硬件故障状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中转向灯的状态（开/关）及其硬件故障状态的信号分配规范，可用于验证转向灯控制逻辑及故障检测功能是否符合设计要求。",
+  "uncertain_points": []
+}
+```

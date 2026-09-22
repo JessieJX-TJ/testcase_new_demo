@@ -1,0 +1,43 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Headlight Leveling Motor Leveling Adjust Control",
+  "row_semantics": "Each row represents a distinct service interface for controlling the manual height adjustment of either the left or right headlight leveling motor.",
+  "column_semantics": {
+    "Column 1": "Function Name (e.g., HeadLightLevelingMotor.LevelingAdjustControl)",
+    "Column 2": "Consumption Type (SOA, ICB)",
+    "Column 3": "Interface Description and Parameter Details"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "HeadLightLevelingMotor",
+      "type": "Controller/Module",
+      "description": "The electronic control unit responsible for adjusting the height of the vehicle's headlight leveling motors."
+    },
+    {
+      "name": "LevelingAdjustControl",
+      "type": "Function",
+      "description": "Service interface for manually adjusting the height of the headlight leveling motor."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "LevelingAdjustCtrlReq",
+      "type": "Input Signal",
+      "description": "Parameter specifying the desired level of adjustment for the headlight. Values range from 0x0 (NoRequest) to 0x4 (Leveling4)."
+    },
+    {
+      "name": "InstanceID",
+      "type": "Identifier",
+      "description": "Unique identifier for the instance of the control request, distinguishing between left (1) and right (2) headlight adjustments."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for manually adjusting the height of the left and right headlight leveling motors, specifying the required parameters and their possible values for each instance.",
+  "uncertain_points": []
+}
+```

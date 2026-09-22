@@ -1,0 +1,30 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "前雾灯故障状态定义",
+  "row_semantics": "表格按功能模块划分，每一行代表一个前雾灯（左侧或右侧）的硬件（HW）或软件（Flt）故障状态定义。",
+  "column_semantics": "列定义了信号的来源（如CANFD）、涉及的控制器/模块（如LHZCU、RHZCU、ICB），以及故障状态类型（硬线故障或网络故障）。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "LFrtFogLghtFltSts_HW", // 左侧前雾灯硬件故障状态
+    "RFrtFogLghtFltSts_HW", // 右侧前雾灯硬件故障状态
+    "LFrtFogLghtFltSts",   // 左侧前雾灯软件故障状态
+    "RFrtFogLghtFltSts"    // 右侧前雾灯软件故障状态
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    "0x0= Off", // 灯光关闭
+    "0x1= On",  // 灯光开启
+    "0x0= False", // 故障状态为假
+    "0x1= True"   // 故障状态为真
+  ],
+  "core_faults": [
+    "硬线故障状态",
+    "网络故障状态"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证车辆前雾灯系统的硬件和软件故障状态，包括其在不同控制器（如LHZCU、RHZCU、ICB）下的表现，确保系统能够正确报告故障并执行相应的安全策略。",
+  "uncertain_points": []
+}
+```

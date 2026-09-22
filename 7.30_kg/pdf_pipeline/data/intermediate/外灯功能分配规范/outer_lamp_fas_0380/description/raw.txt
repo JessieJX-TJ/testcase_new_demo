@@ -1,0 +1,113 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 - 危险警告灯自动控制模块 LHZCU 的状态与控制逻辑",
+  "row_semantics": "表格按场景描述、前置条件、触发动作和执行动作的顺序，详细定义了危险警告灯在紧急制动停止闪烁后自动开启双闪的功能流程。",
+  "column_semantics": "表格分为四个主要列：场景描述（Scenario Description）、前置条件（Precondition）、触发动作（Trigger Action）和执行动作（Execution Action），用于描述功能的触发与执行过程。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "危险警报灯自动控制模块，负责处理危险警告灯的状态反馈和控制逻辑。"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "集成控制盒，接收并反馈危险警告灯的状态信息。"
+    },
+    {
+      "name": "SDM",
+      "type": "Controller/Module",
+      "description": "转向灯控制模块，接收转向灯控制状态反馈。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "紧急制动停止闪烁后自动开启双闪",
+      "description": "当车辆紧急制动停止闪烁后，系统将自动激活危险警告灯的双闪模式。"
+    },
+    {
+      "name": "VehSpdAvg < 10Km/h",
+      "description": "车辆平均速度低于 10km/h 且持续 1 秒，触发危险警告灯双闪模式。"
+    },
+    {
+      "name": "VehSpdAvGV = 0x0",
+      "description": "车辆速度信号值为 0x0，表示车辆处于静止状态。"
+    },
+    {
+      "name": "UseMd = All",
+      "description": "使用模式为“All”，表示所有相关功能均被激活。"
+    },
+    {
+      "name": "UseMdV = Valid",
+      "description": "使用模式验证有效，确保系统处于正常工作状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DircnLightSts",
+      "type": "Signal",
+      "description": "方向灯状态信号，指示方向灯是否点亮或故障。"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "type": "Signal",
+      "description": "方向灯故障状态信号，指示方向灯是否存在故障。"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "type": "Signal",
+      "description": "车辆危险模式状态信号，指示危险警告灯是否处于激活状态。"
+    },
+    {
+      "name": "FLDircnLghtCtrl",
+      "type": "Signal",
+      "description": "前左方向灯控制信号，用于控制前左方向灯的闪烁状态。"
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "type": "Signal",
+      "description": "前右方向灯控制信号，用于控制前右方向灯的闪烁状态。"
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "type": "Signal",
+      "description": "后左方向灯控制信号，用于控制后左方向灯的闪烁状态。"
+    },
+    {
+      "name": "RRDircnLghtCtrl",
+      "type": "Signal",
+      "description": "后右方向灯控制信号，用于控制后右方向灯的闪烁状态。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrSts",
+      "type": "Fault Status",
+      "description": "方向灯故障状态，指示方向灯是否存在故障。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "1.25Hz 频率闪烁",
+      "description": "危险警告灯以 1.25Hz 的频率闪烁，即每 800ms 发送一个闪烁周期。"
+    },
+    {
+      "name": "400ms 发送间隔",
+      "description": "控制信号每 400ms 发送一次，确保信号的实时性和稳定性。"
+    },
+    {
+      "name": "50ms 同步延时",
+      "description": "危险警报灯的图标闪烁频率和声音提醒与实际危险警报灯的闪烁频率需保持一致，三者同步性允许的最大延时为 50ms。"
+    },
+    {
+      "name": "40ms 同步延时",
+      "description": "危险警报灯的同步性允许的最大延时周期为 40ms。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了危险警告灯在紧急制动停止闪烁后自动开启双闪的功能逻辑，包括触发条件、执行动作及相关的信号控制和定时约束，可用于验证危险警告灯自动控制模块 LHZCU 在特定场景下的功能正确性和响应时间。",
+  "uncertain_points": []
+}
+```

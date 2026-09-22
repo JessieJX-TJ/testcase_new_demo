@@ -1,0 +1,99 @@
+```json
+[
+  {
+    "head": "近光灯在工厂模式下开启",
+    "relation": "前提条件",
+    "tail": "整车模式为工厂模式 (VehMd = 0x2) 且 近光灯点亮状态满足 (CombLghtFucProStatus = 0x2 || 0x4) 且 持续时间 2分钟",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "CombLghtFucProStatus",
+      "持续 2min"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯熄灭",
+    "relation": "触发条件",
+    "tail": "S32G 收到大屏开关请求 ICB (ControlCombinedLight CombinedLightReq = 0x0)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "S32G",
+      "ICB",
+      "CombinedLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯熄灭",
+    "relation": "触发条件",
+    "tail": "用户模式为 standby 且伴我回家前置条件不满足 (UsGmD_1_Standby = 0x1, UsGmD_V = Valid, b1||b2||b3 不满足)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "UsGmD",
+      "Standby",
+      "伴我回家前置条件"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯熄灭",
+    "relation": "触发条件",
+    "tail": "近光灯点亮状态为后雾灯请求自动灯光的近光灯开启 (AutoDipdBeamLghtONbyRrFogLghtSts = 0x1, AutoSidePosnLghtONbyRrFogLghtSts = 0x1, AutoLghtOnReq_I_0x0 = False, AutoLghtOnReq_ICB_0x0 = False, CombLghtSwStatus = 0x3)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AutoDipdBeamLghtONbyRrFogLghtSts",
+      "AutoSidePosnLghtONbyRrFogLghtSts",
+      "AutoLghtOnReq_I",
+      "AutoLghtOnReq_ICB",
+      "CombLghtSwStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制模块 LHZCU 输出为 ALL OFF",
+    "relation": "输出为",
+    "tail": "CombLghtFucProStatus = 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "CombLghtFucProStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 转换成 CAN 信号",
+    "relation": "输出为",
+    "tail": "控制近光灯熄灭",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "CAN",
+      "近光灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯控制组合服务 ICB 调用接口",
+    "relation": "触发条件",
+    "tail": "获取近光灯开关状态 (CombLghtSwStatus = 0x0 = OFF)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "CombLghtSwStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯在工厂模式下开启 2min",
+    "relation": "状态保持条件",
+    "tail": "持续时间 2分钟",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "工厂模式",
+      "持续 2min"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

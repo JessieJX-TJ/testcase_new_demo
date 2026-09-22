@@ -1,0 +1,126 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "危险警灯及外灯组合服务控制逻辑",
+  "row_semantics": "表格按编号顺序描述了不同控制模块在特定事件或条件下的信号控制行为，包括危险警灯的自动控制、外灯组合服务调用、ICB与CAN信号转换、驱动模块接收ICB信号以及驱动处理模块的状态反馈。",
+  "column_semantics": "无明确列结构，内容为逐行描述的控制逻辑文本，包含功能描述、控制器/模块名、输入信号、输出信号及定时参数。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "危险警灯自动控制模块"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "接口控制模块"
+    },
+    {
+      "name": "RHZCU",
+      "type": "Controller/Module",
+      "description": "外灯组合服务控制器"
+    },
+    {
+      "name": "RZCU",
+      "type": "Controller/Module",
+      "description": "驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CrashHazardTi",
+      "description": "碰撞危险计时器，用于重新检测碰撞事件的时间间隔"
+    },
+    {
+      "name": "HzrdLghtSwReq",
+      "description": "危险报警灯开关状态"
+    },
+    {
+      "name": "InstanceID",
+      "description": "实例标识符，用于区分不同的外灯组合服务实例"
+    },
+    {
+      "name": "DircnLghtCtrlDelayPrm",
+      "description": "方向灯控制延迟参数"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtCtrl",
+      "description": "前左方向灯控制信号"
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "description": "前右方向灯控制信号"
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "description": "后左方向灯控制信号"
+    },
+    {
+      "name": "RRDircnLghtCtrl",
+      "description": "后右方向灯控制信号"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "description": "外部灯光开关过程状态"
+    },
+    {
+      "name": "DircnLghtFucProStatus",
+      "description": "方向灯功能过程状态"
+    },
+    {
+      "name": "DircnLghtFucProSta",
+      "description": "方向灯功能过程状态"
+    },
+    {
+      "name": "FLDirenLghtSts_HW",
+      "description": "前左方向灯硬件状态"
+    },
+    {
+      "name": "FRDirenLghtSts_HW",
+      "description": "前右方向灯硬件状态"
+    },
+    {
+      "name": "RLDirenLghtSts_HW",
+      "description": "后左方向灯硬件状态"
+    },
+    {
+      "name": "RRDirenLghtSts_HW",
+      "description": "后右方向灯硬件状态"
+    },
+    {
+      "name": "FLDirenLghtFlsts_HW",
+      "description": "前左方向灯故障状态"
+    },
+    {
+      "name": "FRDirenLghtFlsts_HW",
+      "description": "前右方向灯故障状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DircnLghtFlsts_HW",
+      "description": "方向灯故障状态，指示灯显示及声音提醒"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "CrashHazardTi",
+      "value": "可配置",
+      "unit": "时间",
+      "description": "碰撞危险计时器初始值，用于重新检测碰撞事件的时间间隔"
+    },
+    {
+      "name": "DircnLghtCtrlDelayPrm",
+      "value": "60ms",
+      "unit": "毫秒",
+      "description": "外灯组合服务调用延迟时间"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了危险警灯和外灯组合服务的控制逻辑，包括信号的发送、接收、转换及状态反馈，可用于验证整车电子系统中危险警灯和外灯组合服务的功能正确性、信号交互及时性和故障处理能力。",
+  "uncertain_points": []
+}
+```

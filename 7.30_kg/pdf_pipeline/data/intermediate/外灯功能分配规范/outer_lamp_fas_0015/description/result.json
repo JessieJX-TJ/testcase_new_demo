@@ -1,0 +1,65 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯转向灯与危险报警灯的控制策略及优先级管理",
+  "row_semantics": "表格中的每一行代表一个独立的功能需求或控制逻辑，描述了在特定条件下转向灯和危险报警灯的行为。",
+  "column_semantics": "表格包含两列：第一列是功能优先级描述（功能描述），第二列是对该描述的具体解释或实现逻辑。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "转向灯",
+      "type": "功能/信号",
+      "description": "车辆外部灯光系统中的方向指示灯，用于表示车辆转向意图。"
+    },
+    {
+      "name": "危险警报灯",
+      "type": "功能/信号",
+      "description": "车辆外部灯光系统中的紧急警示灯，用于在车辆出现故障或需要警示其他车辆时闪烁。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "转向灯开关控制模块，负责接收转向灯硬线开关控制信号及SOA（Safety Oriented Architecture）控制请求，并根据优先级进行处理。"
+    },
+    {
+      "name": "SOA 控制请求",
+      "type": "输入信号",
+      "description": "来自安全架构的控制请求，可能用于触发危险警报灯或其他安全相关功能。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "见转向灯与危险警报灯仲裁策略",
+      "description": "当转向灯和危险警报灯同时激活时，需要遵循特定的仲裁策略以决定哪个功能优先执行。"
+    },
+    {
+      "condition": "转向灯在激活中退出/被打断",
+      "description": "转向灯在激活过程中被用户手动关闭或因外部原因中断时，系统应立即响应并退出转向灯状态。"
+    },
+    {
+      "condition": "LHZCU 接收到转向灯硬线开关控制及 SOA 控制请求",
+      "description": "当 LHZCU 模块接收到转向灯硬线开关控制信号和 SOA 控制请求时，需按照预设的优先级进行处理。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "转向灯退出",
+      "description": "转向灯从激活状态退出，停止闪烁。",
+      "related_condition": "转向灯在激活中退出/被打断"
+    },
+    {
+      "output": "危险警报灯激活",
+      "description": "危险警报灯开始闪烁，用于警示其他车辆。",
+      "related_condition": "见转向灯与危险警报灯仲裁策略"
+    },
+    {
+      "output": "LHZCU 处理结果",
+      "description": "LHZCU 根据优先级处理转向灯硬线开关控制信号和 SOA 控制请求，并输出相应的控制指令。",
+      "related_condition": "LHZCU 接收到转向灯硬线开关控制及 SOA 控制请求"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子电器系统中转向灯与危险警报灯的控制逻辑，特别是它们之间的仲裁策略以及在不同控制信号输入下的响应行为。",
+  "uncertain_points": []
+}

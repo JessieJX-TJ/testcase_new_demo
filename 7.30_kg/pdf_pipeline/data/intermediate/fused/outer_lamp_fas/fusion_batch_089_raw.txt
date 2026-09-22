@@ -1,0 +1,436 @@
+```json
+[
+  {
+    "head": "远光灯开关控制模块 LHZCU",
+    "relation": "输出为",
+    "tail": "ICB（远光灯状态）",
+    "sources": ["outer_lamp_fas_0953"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "获取右侧远光灯状态",
+    "tail": "exlMainBeamHwDrvEnPrm = 0x1",
+    "sources": ["outer_lamp_fas_0953"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯熄灭同步性",
+    "relation": "超时约束",
+    "tail": "左侧与右侧远光灯熄灭时间差 ≤ 40 ms",
+    "sources": ["outer_lamp_fas_0953"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主远光灯状态",
+    "relation": "前提条件",
+    "tail": "MainBeamLightSts_0_Off",
+    "sources": ["outer_lamp_fas_0953"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 ICB",
+    "relation": "依赖于",
+    "tail": "ExteriorLightControlSystem",
+    "sources": ["outer_lamp_fas_0953"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "获取右侧近光灯状态",
+    "tail": "DippedBeamLightStatus 服务接口（InstanceID=2）",
+    "sources": ["outer_lamp_fas_0955"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "获取左侧近光灯状态",
+    "tail": "DippedBeamLightStatus 服务接口（InstanceID=3）",
+    "sources": ["outer_lamp_fas_0955"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯状态",
+    "relation": "输出为",
+    "tail": "DippedBeamLightSta（值域：OFF/ON/Error/Unknown）",
+    "sources": ["outer_lamp_fas_0955"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯状态",
+    "relation": "输出为",
+    "tail": "DippedBeamLightSta（值域：OFF/ON/Unknown）",
+    "sources": ["outer_lamp_fas_0955"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯状态",
+    "relation": "依赖于",
+    "tail": "RHZCU 控制器",
+    "sources": ["outer_lamp_fas_0955"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯状态",
+    "relation": "依赖于",
+    "tail": "LHZCU 控制器",
+    "sources": ["outer_lamp_fas_0955"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLightFucProCtrl 接口",
+    "relation": "成功控制外灯",
+    "tail": "ControlSuccess = 0x0",
+    "sources": ["outer_lamp_fas_0956"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLightFucProCtrl 接口",
+    "relation": "控制外灯失败",
+    "tail": "Failed = 0x1",
+    "sources": ["outer_lamp_fas_0956"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLightSwStatus 接口",
+    "relation": "报告侧位灯开启",
+    "tail": "SidePositionLight = ON (0x1)",
+    "sources": ["outer_lamp_fas_0956"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLightSwStatus 接口",
+    "relation": "报告近光灯开启",
+    "tail": "DippedBeamLight = ON (0x2)",
+    "sources": ["outer_lamp_fas_0956"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLightSwStatus 接口",
+    "relation": "报告外灯处于自动模式",
+    "tail": "Mode = AUTO (0x3)",
+    "sources": ["outer_lamp_fas_0956"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLightSwStatus 接口",
+    "relation": "报告外灯关闭",
+    "tail": "Mode = OFF (0x0)",
+    "sources": ["outer_lamp_fas_0956"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLightSwStatus 接口",
+    "relation": "报告外灯状态未知",
+    "tail": "Mode = Unknown (0x4)",
+    "sources": ["outer_lamp_fas_0956"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLightSwStatus 接口",
+    "relation": "依赖于",
+    "tail": "基础服务调用机制",
+    "sources": ["outer_lamp_fas_0956"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "触发条件",
+    "tail": "BrkLghtCtrl = 0x1（ICB 接收）",
+    "sources": ["outer_lamp_fas_0957"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "触发条件",
+    "tail": "BrkLghtCtrl_HW = 0x1（RZCU 接收）",
+    "sources": ["outer_lamp_fas_0957"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "触发条件",
+    "tail": "ExteriorLightControlSystem.BrakeLightSts.BrakeLghtSts = 0x1（ON）",
+    "sources": ["outer_lamp_fas_0957"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "依赖于",
+    "tail": "LHZCU 制动灯开关状态反馈（BrkLghtSwSts = 0x1）",
+    "sources": ["outer_lamp_fas_0957"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "超时约束",
+    "tail": "左/右/高位制动灯同步点亮，最大延时 ≤ 40 ms",
+    "sources": ["outer_lamp_fas_0957"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "前提条件",
+    "tail": "制动灯处于激活状态",
+    "sources": ["outer_lamp_fas_0957"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "抑制条件",
+    "tail": "UsgMd ∈ {0x0 (Sleep), 0x1 (Standby), 0x6 (XOTA)}",
+    "sources": ["outer_lamp_fas_0957"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯状态反馈",
+    "relation": "输出为",
+    "tail": "RZCU → LHZCU：BrkLghtSts_HW = 0x1, BrkLghtFltSts_HW = 0x0",
+    "sources": ["outer_lamp_fas_0957"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯状态反馈",
+    "relation": "输出为",
+    "tail": "LHZCU → ICB：BrkLghtSta = 0x1, BrkLghtFltSta = 0x0",
+    "sources": ["outer_lamp_fas_0957"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightErrorStatus 接口",
+    "relation": "触发条件",
+    "tail": "订阅右侧昼间行车灯故障状态",
+    "sources": ["outer_lamp_fas_0960"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightSts 接口",
+    "relation": "触发条件",
+    "tail": "订阅昼间行车灯状态",
+    "sources": ["outer_lamp_fas_0960"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightErrorStatus",
+    "relation": "输出为",
+    "tail": "0x0=NoError, 0x1=Error, 0x2=Unknown",
+    "sources": ["outer_lamp_fas_0960"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightSts",
+    "relation": "输出为",
+    "tail": "0x0=OFF, 0x1=ON, 0x2=Unknown",
+    "sources": ["outer_lamp_fas_0960"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.ControlDippedBeamLight 服务接口",
+    "relation": "控制左侧近光灯",
+    "tail": "InstanceID=1, DippedBeamLightReq ∈ {0x0, 0x1}",
+    "sources": ["outer_lamp_fas_0962"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.ControlDippedBeamLight 服务接口",
+    "relation": "控制右侧近光灯",
+    "tail": "InstanceID=2, DippedBeamLightReq ∈ {0x0, 0x1}",
+    "sources": ["outer_lamp_fas_0962"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.ControlDippedBeamLight 服务接口",
+    "relation": "控制左侧近光灯（独立实体）",
+    "tail": "InstanceID=3, DippedBeamLightReq ∈ {0x0, 0x1}",
+    "sources": ["outer_lamp_fas_0962"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.ControlDippedBeamLight 服务接口",
+    "relation": "依赖于",
+    "tail": "SOA 模块",
+    "sources": ["outer_lamp_fas_0962"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.ControlDippedBeamLight 服务接口",
+    "relation": "依赖于",
+    "tail": "LHZCU 模块",
+    "sources": ["outer_lamp_fas_0962"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.ControlDippedBeamLight 服务接口",
+    "relation": "依赖于",
+    "tail": "ICB 模块",
+    "sources": ["outer_lamp_fas_0962"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.ControlDippedBeamLight 服务接口",
+    "relation": "依赖于",
+    "tail": "RHZCU 模块",
+    "sources": ["outer_lamp_fas_0962"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.ControlDippedBeamLight 服务接口",
+    "relation": "依赖于",
+    "tail": "BS→CS 通信路径",
+    "sources": ["outer_lamp_fas_0962"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtFltSts",
+    "relation": "输出为",
+    "tail": "0x0=False, 0x1=True",
+    "sources": ["outer_lamp_fas_0964"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtSta",
+    "relation": "输出为",
+    "tail": "0x0=off, 0x1=on",
+    "sources": ["outer_lamp_fas_0964"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtFltSta",
+    "relation": "输出为",
+    "tail": "0x0=False, 0x1=True",
+    "sources": ["outer_lamp_fas_0964"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightState 服务接口",
+    "relation": "依赖于",
+    "tail": "Interface Name: ReverseLightState",
+    "sources": ["outer_lamp_fas_0964"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightState",
+    "relation": "输出到",
+    "tail": "RZCU",
+    "sources": ["outer_lamp_fas_0964"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightState",
+    "relation": "输出到",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0964"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制延时参数",
+    "relation": "输入为",
+    "tail": "0x3（≈60 ms）",
+    "sources": ["outer_lamp_fas_0967"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制通讯类型参数",
+    "relation": "输入为",
+    "tail": "0x0（SOA）",
+    "sources": ["outer_lamp_fas_0967"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制延时参数",
+    "relation": "默认值",
+    "tail": "0x3",
+    "sources": ["outer_lamp_fas_0967"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制通讯类型参数",
+    "relation": "默认值",
+    "tail": "0x0",
+    "sources": ["outer_lamp_fas_0967"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU 冷启动逻辑",
+    "relation": "前提条件",
+    "tail": "自动灯光采用视觉方案",
+    "sources": ["outer_lamp_fas_0969"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU 冷启动逻辑",
+    "relation": "前提条件",
+    "tail": "ICB（座舱芯片）未完全唤醒",
+    "sources": ["outer_lamp_fas_0969"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU 冷启动逻辑",
+    "relation": "触发条件",
+    "tail": "LHZCU 唤醒并满足自动灯光触发条件",
+    "sources": ["outer_lamp_fas_0969"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU 冷启动逻辑",
+    "relation": "触发条件",
+    "tail": "ICB 向 LHZCU 发送信号：RefBeamSwSts_ICB、VRLSSts_ICB、LghtOpMd_ICB、FwdLkngAmbtLghtLv1_ICB、RLSAmbtLghtLv1_ICB",
+    "sources": ["outer_lamp_fas_0969"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

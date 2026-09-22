@@ -1,0 +1,59 @@
+{
+  "table_type": "logic_table",
+  "topic": "主驾侧照脚灯渐进点亮功能",
+  "row_semantics": "描述了触发和执行该功能的条件与动作",
+  "column_semantics": {
+    "0": "前置条件",
+    "1": "触发条件",
+    "2": "执行动作"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FtwlLampFLCtrlCmd",
+      "type": "input_signal",
+      "description": "照脚灯应用控制模块发送的控制命令"
+    },
+    {
+      "name": "FtwlAmbtLamp_FL_HSD",
+      "type": "output_signal",
+      "description": "主驾侧照脚灯驱动控制模块发送的PWM信号"
+    },
+    {
+      "name": "FtwlAmbtLampLightupDelayPrm",
+      "type": "parameter",
+      "description": "渐进点亮延迟时间参数"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "主驾侧照脚灯无短路/开路故障"
+    },
+    {
+      "condition": "触发条件",
+      "description": "接收到照脚灯应用控制模块FtwlLampFLCtrlCmd = 0x1 (Open)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "FtwlAmbtLamp_FL_HSD",
+      "description": "发送驱动信号，PWM值从0%到100%持续FtwlAmbtLampLightupDelayPrm时间后渐进点亮照脚灯"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "短路/开路故障",
+      "description": "主驾侧照脚灯存在短路或开路故障时，该功能不触发"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "FtwlAmbtLampLightupDelayPrm",
+      "description": "渐进点亮延迟时间，默认为2秒，可配置"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在特定条件下（如无故障且接收到开启命令），系统如何通过控制PWM信号来实现主驾侧照脚灯的渐进点亮功能，可用于验证该功能的逻辑正确性和响应时间。",
+  "uncertain_points": []
+}

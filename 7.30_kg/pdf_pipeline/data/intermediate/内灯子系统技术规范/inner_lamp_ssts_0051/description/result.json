@@ -1,0 +1,106 @@
+{
+  "table_type": "logic_table",
+  "topic": "氛围灯控制逻辑",
+  "row_semantics": "表格描述了氛围灯在不同条件下的控制逻辑，包括触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": {
+    "1": "条件或动作的类别（如前置条件、触发条件、执行动作等）",
+    "2": "具体的条件、信号值或动作描述"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "氛围灯",
+      "type": "功能",
+      "description": "车辆内部用于营造氛围的照明设备"
+    },
+    {
+      "name": "CnsoLHALampBrtnsCmd_l",
+      "type": "输入信号",
+      "description": "本地控制模块发送的亮度变化请求信号"
+    },
+    {
+      "name": "CnsoLHALampOnOff_1",
+      "type": "输入信号",
+      "description": "本地控制模块发送的开关请求信号"
+    },
+    {
+      "name": "CnsoLHALampFadeSpdCmd_l",
+      "type": "参数",
+      "description": "渐变速度控制参数"
+    },
+    {
+      "name": "ZCU",
+      "type": "控制器",
+      "description": "中央控制单元，负责接收LIN信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "氛围灯处于关闭状态",
+      "source": "前置条件"
+    },
+    {
+      "condition": "接收到CnsoLHALampBrtnsCmd_l信号从0x00变为非0x00",
+      "source": "触发条件"
+    },
+    {
+      "condition": "接收到CnsoLHALampOnOff_1信号为0x00（OFF）",
+      "source": "退出条件"
+    },
+    {
+      "condition": "接收到CnsoLHALampBrtnsCmd_l信号为0x65-0xFF",
+      "source": "退出条件"
+    },
+    {
+      "condition": "氛围灯模块出现过压、欠压故障",
+      "source": "异常处理"
+    },
+    {
+      "condition": "超过6秒未接收到ZCU的LIN信号",
+      "source": "异常处理"
+    },
+    {
+      "condition": "CnsoLHALampBrtnsCmd_l信号异常",
+      "source": "异常处理"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "按照亮度设置表对应亮度值的PWM驱动氛围灯切换亮度",
+      "target": "氛围灯",
+      "action": "调整亮度"
+    },
+    {
+      "output": "直接关闭氛围灯",
+      "target": "氛围灯",
+      "action": "关闭"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "过压、欠压故障",
+      "component": "氛围灯模块",
+      "action": "直接关闭氛围灯"
+    },
+    {
+      "fault": "未接收到ZCU的LIN信号",
+      "component": "ZCU",
+      "timeout": "6秒",
+      "action": "直接关闭氛围灯"
+    },
+    {
+      "fault": "CnsoLHALampBrtnsCmd_l信号异常",
+      "component": "氛围灯模块",
+      "action": "维持上一时刻状态值"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "超过6秒未接收到ZCU的LIN信号",
+      "timeout": "6秒"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证氛围灯在不同控制信号输入下的亮度调节、开关及异常保护功能，确保其符合设计规范。",
+  "uncertain_points": []
+}

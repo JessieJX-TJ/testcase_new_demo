@@ -1,0 +1,58 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯（后备箱灯）待机与休眠模式下的延时熄灭时间配置",
+  "row_semantics": "表格的每一行代表一个具体的配置参数，描述了在不同系统模式下后备箱灯的延时熄灭行为。",
+  "column_semantics": {
+    "配置项/Item": "参数的名称或标识符，用于唯一确定一个配置项。",
+    "配置描述/Description": "对该配置项的功能或作用进行文字说明。",
+    "参数范围/Range": "该参数可设置的有效数值范围。",
+    "分辨率/Factor": "参数调整时的最小变化单位或精度。",
+    "默认值/Default": "系统启动或未指定时该参数的预设值。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LdSpcLampStndbyDelayPrm",
+      "type": "功能名",
+      "description": "待机模式下后备箱灯延时熄灭的时间配置参数。"
+    },
+    {
+      "name": "LdSpcLampSleepDelayPrm",
+      "type": "功能名",
+      "description": "休眠模式下后备箱灯延时熄灭的时间配置参数。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "StndbyMode",
+      "type": "模式名",
+      "description": "待机模式，系统处于低功耗等待状态。"
+    },
+    {
+      "name": "SleepMode",
+      "type": "模式名",
+      "description": "休眠模式，系统进入深度低功耗状态。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "parameter": "LdSpcLampStndbyDelayPrm",
+      "description": "待机模式下后备箱灯延时熄灭的时间。",
+      "default_value": "15min",
+      "unit": "分钟"
+    },
+    {
+      "parameter": "LdSpcLampSleepDelayPrm",
+      "description": "休眠模式下后备箱灯延时熄灭的时间。",
+      "default_value": "15min",
+      "unit": "分钟"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在车辆待机和休眠两种模式下，后备箱灯保持点亮的延时熄灭时间的可配置参数及其默认值，可用于验证系统在不同电源管理模式下后备箱灯行为的正确性。",
+  "uncertain_points": []
+}
+```

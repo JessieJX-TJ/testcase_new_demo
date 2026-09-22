@@ -1,0 +1,73 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Main Beam Light System Status and Switch Process",
+  "row_semantics": "Each row represents a specific service interface related to the main beam light system, detailing its function, parameter structure, and possible states.",
+  "column_semantics": "Columns represent different system components or modules (SOA, ICB, LHZCU) that interact with the service interfaces, indicating their involvement in consuming or providing data for each function.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MainBeamLight.MainBeamLightErrorStatus",
+      "type": "function",
+      "description": "Service interface to subscribe to the fault status of the right-side main beam light."
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.MainBeamLightSta",
+      "type": "function",
+      "description": "Service interface to subscribe to the on/off status of the main beam light."
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.MainBeamLightErrSta",
+      "type": "function",
+      "description": "Service interface to subscribe to the fault status of the main beam light."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "MainBeamLightErrorSta",
+      "type": "output_signal",
+      "description": "Parameter returned by MainBeamLight.MainBeamLightErrorStatus, indicating the error status of the main beam light.",
+      "values": [
+        "0x0=No Error",
+        "0x1=Error",
+        "0x2=Unknown"
+      ]
+    },
+    {
+      "name": "MainBeamLightSta",
+      "type": "output_signal",
+      "description": "Parameter returned by ExteriorLightSwitchProcess.MainBeamLightSta, indicating the on/off status of the main beam light.",
+      "values": [
+        "0x0=OFF",
+        "0X1=ON",
+        "0x2=Unknown"
+      ]
+    },
+    {
+      "name": "MainBeamLightErrSta",
+      "type": "output_signal",
+      "description": "Parameter returned by ExteriorLightSwitchProcess.MainBeamLightErrSta, indicating the fault status of the main beam light.",
+      "values": [
+        "0x0=No Error",
+        "0x1=Error",
+        "0x2=Unknown"
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "MainBeamLightErrorSta",
+      "description": "Indicates whether there is an error in the main beam light system."
+    },
+    {
+      "name": "MainBeamLightErrSta",
+      "description": "Indicates the fault status of the main beam light."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for monitoring the status and fault conditions of the main beam light system. It can be used to verify that the system correctly reports the on/off state and fault status of the main beam light to the relevant controllers (SOA, ICB, LHZCU).",
+  "uncertain_points": []
+}
+```

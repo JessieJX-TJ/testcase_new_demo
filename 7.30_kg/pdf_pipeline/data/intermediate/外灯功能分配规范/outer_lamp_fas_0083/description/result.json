@@ -1,0 +1,102 @@
+{
+  "table_type": "logic_table",
+  "topic": "后雾灯控制逻辑与状态管理",
+  "row_semantics": "表格按执行顺序（步骤编号）列出控制逻辑和动作。",
+  "column_semantics": "无多列，内容为单列文本描述，包含条件、判断和执行动作。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Light and Hazard Control Unit，负责前雾灯和远光灯的判断与控制。"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Interior Control Box，接收来自LHZCU的控制信号并执行外灯控制。"
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "Rear Zone Control Unit，接收来自LHZCU的控制信号并执行后雾灯控制。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "process",
+      "description": "外部灯光开关处理模块，用于获取和设置各种灯光的状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FrontFogLightState",
+      "description": "前雾灯状态，包括硬件使能和软件配置状态。",
+      "conditions": [
+        "InstanceID=4, On>0x0=OFF",
+        "exlFrontFogLghtHwDrvEnPrm=0x1",
+        "InsdFnCfgFrtFogLght=0x0"
+      ]
+    },
+    {
+      "name": "MainBeamLightStatus",
+      "description": "主大灯（远光灯）状态，包括左右两侧及不同实例ID的状态。",
+      "conditions": [
+        "InstanceID=1,2,3,4, MainBeamLightSta=0x0/0x1=OFF"
+      ]
+    },
+    {
+      "name": "VehMd",
+      "description": "整车模式，用于判断是否处于工厂模式。",
+      "conditions": [
+        "VehMd=0x2 = VehMd_2_FACTORY"
+      ]
+    },
+    {
+      "name": "VehMdV",
+      "description": "整车模式验证值，用于判断后雾灯点亮条件。",
+      "conditions": [
+        "VehMdV=0x1=VehMdV_1_Valid"
+      ]
+    },
+    {
+      "name": "RearFogLightFucProStatus",
+      "description": "后雾灯功能激活状态。",
+      "conditions": [
+        "RearFogLightFucProStatus=0x0=OFF"
+      ]
+    },
+    {
+      "name": "RearFogLightSwStatus",
+      "description": "后雾灯开关状态。",
+      "conditions": [
+        "RearFogLightSwStatus=0x0=OFF"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogLightCtrl",
+      "description": "后雾灯控制信号，由LHZCU发出给ICB。",
+      "outputs": [
+        "RearFogLightCtrl=0x0=RearFogLightCtrl_0_Off"
+      ]
+    },
+    {
+      "name": "RearFogLightCtrl_HW",
+      "description": "后雾灯硬件控制信号，由LHZCU发出给RZCU。",
+      "outputs": [
+        "RearFogLightCtrl_HW=0x1=RearFogLightCtrl_HW_0_Off"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "FactoryModeDuration",
+      "description": "后雾灯在工厂模式下开启持续时间。",
+      "constraints": "2min"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了后雾灯在不同系统状态下的控制逻辑，包括前雾灯和远光灯的状态判断、工厂模式下的特殊行为以及控制器间的信号交互，可用于验证后雾灯在各种场景下的正确启闭及其与相关控制器的协调工作。",
+  "uncertain_points": []
+}

@@ -1,0 +1,75 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "远光灯开关控制逻辑",
+  "row_semantics": "表格定义了在特定条件下，远光灯的激活、关闭及其相关控制逻辑。",
+  "column_semantics": {
+    "Column1": "条件描述或触发动作编号",
+    "Column2": "详细描述或执行步骤"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "远光灯",
+      "type": "功能",
+      "description": "车辆的主要照明系统之一，用于夜间或低能见度下的道路照明。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "Lighting and Hazard Control Unit，负责控制车辆灯光系统的开关和状态管理。"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块",
+      "description": "Integrated Control Box，集成控制盒，可能参与灯光信号的转换和传输。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "远光灯处于激活状态",
+      "description": "远光灯当前处于点亮或准备点亮的状态。"
+    },
+    {
+      "name": "车辆模式",
+      "description": "包括工厂模式、运输模式、展览模式等，影响远光灯的行为。"
+    },
+    {
+      "name": "近光灯状态",
+      "description": "近光灯是否关闭，是判断远光灯行为的重要条件。"
+    },
+    {
+      "name": "整车模式",
+      "description": "车辆的整体运行模式，如工厂模式下有特殊灯光行为。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "远光灯熄灭",
+      "description": "通过LHZCU控制远光灯关闭，并发送相应信号给其他模块。"
+    },
+    {
+      "name": "灯光请求判断",
+      "description": "将原本基于灯光状态的触发条件改为基于灯光请求的判断逻辑。"
+    },
+    {
+      "name": "CAN信号转换",
+      "description": "ICB将服务接口或控制信号转换为CAN总线信号，用于控制远光灯。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "2min",
+      "description": "在工厂模式下，远光灯开启后持续亮起2分钟。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了远光灯在不同车辆模式下的控制逻辑，特别是当车辆处于工厂模式时，远光灯的开启行为和持续时间，以及在近光灯关闭时如何判断并控制远光灯的熄灭。",
+  "uncertain_points": [
+    "具体的'ExteriorLightSwitchProcess'内部实现细节未明确说明。",
+    "'MainBeamLightFucProStatus'的具体状态值含义未完全定义。",
+    "'SidePositionLight'和'DippedBeam'的具体控制逻辑未详细展开。"
+  ]
+}
+```

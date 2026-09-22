@@ -1,0 +1,66 @@
+```json
+[
+  {
+    "head": "转向灯开关状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "DirectionLightSwStatus",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "转向灯开关控制模块LHZCU",
+      "DircnLghtSwReq_0_off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯控制状态反馈至SDM",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "转向灯开关控制模块LHZCU",
+      "EDRDircnIndLampSwSts_0_off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯退出同步性要求",
+    "relation": "前提条件",
+    "tail": "图标闪烁频率和声音提醒与实际转向灯的闪烁频率一致",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "转向灯",
+      "图标闪烁频率",
+      "声音提醒",
+      "实际转向灯闪烁频率"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯退出同步性要求",
+    "relation": "超时约束",
+    "tail": "三者同步性允许的最大延时为50ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "转向灯",
+      "图标闪烁频率",
+      "声音提醒",
+      "实际转向灯闪烁频率",
+      "50ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "单侧转向灯熄灭同步性要求",
+    "relation": "超时约束",
+    "tail": "最大延时周期为40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "单侧转向灯",
+      "熄灭",
+      "同步性",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

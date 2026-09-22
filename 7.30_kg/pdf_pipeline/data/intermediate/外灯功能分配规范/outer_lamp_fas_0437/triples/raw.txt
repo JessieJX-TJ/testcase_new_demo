@@ -1,0 +1,95 @@
+```json
+[
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "触发条件",
+    "tail": "UsgMd != 0x3 (Normal Driving) && UsgMd != 0x4 (AI Parking) && UsgMd != 0x5 (AI Pilot) && UsgMdV = Valid && VehMd = 0x3 (TRANSPORT) || VehMd = 0x5 (EXHIBITION) && VehMdV = Valid && VehSpdAvg ≤ 20Km/h (持续2S) && CombLghtSwSta != 0x3 (AUTO) && LHZCU 判断近光灯关闭 (ALL OFF) && vehRlsType == 0 或 vehRlsType == 1 (环境光状态) && TrShiftLvrPos != 0x4 (D档) && ALMainBeamLghtCtrl_2_RequestOffFromCamera 与 ARMainBeamLghtCtrl_2_RequestOffFromCamera 均为请求关闭信号",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "UsgMd",
+      "VehMd",
+      "VehSpdAvg",
+      "CombLghtSwSta",
+      "LHZCU",
+      "vehRlsType",
+      "TrShiftLvrPos",
+      "ALMainBeamLghtCtrl_2_RequestOffFromCamera",
+      "ARMainBeamLghtCtrl_2_RequestOffFromCamera"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "抑制条件",
+    "tail": "TrShiftLvrPos = 0x4 (D档)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "TrShiftLvrPos"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "前提条件",
+    "tail": "远光灯自动控制功能处于激活状态",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "远光灯自动控制功能"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "CombLghtSwSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "LHZCU 判断近光灯关闭 (ALL OFF)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "LHZCU",
+      "SidePositionLight ON",
+      "Ox3= SidePositionAndDippedBeam OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "vehRlsType (环境光状态)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "vehRlsType"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "TrShiftLvrPos (车辆档位状态)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "TrShiftLvrPos"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "智驾摄像头识别信息 IPD",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "智驾摄像头识别信息 IPD"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Direction Light Control Logic",
+  "row_semantics": "Each row represents a distinct phase in the control logic of the direction light system, including precondition, trigger condition, execution action, and exit condition.",
+  "column_semantics": "The two columns represent the 'Condition' and 'Action' phases of the logic table, where the left column specifies the conditions under which the action is triggered, and the right column specifies the actions taken when those conditions are met.",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "A system parameter that enables or disables the feedback mechanism for the direction light."
+    },
+    {
+      "name": "FRDILightDrvMdl",
+      "type": "controller",
+      "description": "The controller responsible for driving the direction lights."
+    },
+    {
+      "name": "DILightCtrlMdl",
+      "type": "module",
+      "description": "The module that sends control requests for the direction lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILightFbkSOAEnPrm == 1 (Enable)",
+      "description": "The feedback mechanism for the direction light must be enabled."
+    },
+    {
+      "condition": "DILightCtrlMdl sends DirectionLightControl.DirectionLightCtrReq == 1 (On) InstanceID=2",
+      "description": "A request to turn on the right front转向灯 (转向灯 RH HSD) has been received."
+    },
+    {
+      "condition": "DILightCtrlMdl sends DirectionLightControl.DirectionLightCtrReq == 0 (Off) InstanceID=2",
+      "description": "A request to turn off the right front转向灯 has been received."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "FRDILightDrvMdl持续驱动右前转向灯输出 (DILamp_RH_HSD)",
+      "description": "The FRDILightDrvMdl continuously drives the output of the right front转向灯 (转向灯 RH HSD)."
+    },
+    {
+      "output": "FRDILightDrvMdl持续发送 DirectionLightControl.DirectionLightSta == 1 (On) InstanceID=2 至 DILightCtrlMdl",
+      "description": "The FRDILightDrvMdl continuously sends the status of the direction light as 'On' (InstanceID=2) to the DILightCtrlMdl."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "The status update from FRDILightDrvMdl to DILightCtrlMdl must be sent at least three frames."
+    }
+  ],
+  "engineering_interpretation": "This table defines the control logic for the direction light system, specifying how the system responds to enable/disable commands and maintains the correct state of the lights. It can be used to verify that the direction light system correctly processes control requests and updates the status accordingly.",
+  "uncertain_points": []
+}
+```

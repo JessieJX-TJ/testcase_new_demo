@@ -1,0 +1,99 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Reverse Light Trigger Condition Change and Exit Logic",
+  "row_semantics": "Each row represents a condition or action related to the reverse light system, organized into sections for clarity.",
+  "column_semantics": "The table has two main columns: 'Scenario Description' (which is not used in this specific table) and 'Trigger Action', which details the conditions and actions for the reverse light system.",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Reverse Light",
+      "type": "function",
+      "description": "The vehicle's reverse light system."
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "controller",
+      "description": "A module responsible for processing exterior light switch inputs and statuses."
+    },
+    {
+      "name": "TrShiftLvrPos",
+      "type": "input_signal",
+      "description": "Transmission shift lever position signal."
+    },
+    {
+      "name": "TrShiftLvrPosV",
+      "type": "input_signal",
+      "description": "Transmission shift lever position validity signal."
+    },
+    {
+      "name": "UsrMd",
+      "type": "system_state",
+      "description": "User mode setting, indicating different operational modes like Sleep, Standby, Comfortable, etc."
+    },
+    {
+      "name": "VehMd",
+      "type": "system_state",
+      "description": "Vehicle mode setting, indicating different vehicle operational modes like TRANSPORT, FACTORY, etc."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "Reverse Light is active",
+      "description": "The prerequisite condition for the logic described in the table."
+    },
+    {
+      "condition": "UsrMd = 0x0 (Sleep) || UsrMd = 0x1 (Standby) || UsrMd = 0x2 (Comfortable) || UsrMd = 0x6 (XOTA)",
+      "description": "User mode must be one of these specific states for the trigger action to occur."
+    },
+    {
+      "condition": "UsrMdV = Valid",
+      "description": "User mode value must be valid."
+    },
+    {
+      "condition": "VehMd = 0x3 (TRANSPORT)",
+      "description": "Vehicle mode must be set to TRANSPORT."
+    },
+    {
+      "condition": "VehMdV = Valid",
+      "description": "Vehicle mode value must be valid."
+    },
+    {
+      "condition": "TrShiftLvrPos! = 0x2 (Reverse Range) && TrShiftLvrPosV = 0x0 (Valid)",
+      "description": "Transmission shift lever position must not be in Reverse Range and must be valid."
+    },
+    {
+      "condition": "Factory Mode",
+      "description": "Specific condition for factory mode activation of the reverse light."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "Change reverse light trigger condition",
+      "description": "Modify the condition under which the reverse light is triggered."
+    },
+    {
+      "output": "Exit reverse light",
+      "description": "Terminate the activation of the reverse light."
+    },
+    {
+      "output": "Reverse Light On for 2 minutes in Factory Mode",
+      "description": "Activate the reverse light for a duration of 2 minutes when in factory mode."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "2min",
+      "description": "The reverse light remains on for 2 minutes when activated in factory mode."
+    }
+  ],
+  "engineering_interpretation": "This table defines the logic for changing the trigger condition and exiting the reverse light system based on user and vehicle modes, transmission position, and factory mode settings. It is used to verify that the reverse light behaves correctly under specified conditions.",
+  "uncertain_points": [
+    "The exact meaning of 'SOA' and 'CAN' in the notes is not explicitly defined in the table.",
+    "The full context of 'ExteriorLightSwitchProcess' and its internal logic is not provided.",
+    "The specific implementation details of 'PPV stage' and how it relates to SOA communication are not elaborated."
+  ]
+}
+```

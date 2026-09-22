@@ -1,0 +1,96 @@
+```json
+[
+  {
+    "head": "贯穿式前后位置灯同步性",
+    "relation": "超时约束",
+    "tail": "最大延时周期为40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "贯穿式前后位置灯",
+      "同步性",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB_S32G M日行灯请求重发机制",
+    "relation": "触发条件",
+    "tail": "ICB发送DayRunningLightCtrReq且未在2s内收到响应",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB_S32G M",
+      "DayRunningLightCtrReq",
+      "2s"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB_S32G M日行灯请求重发机制",
+    "relation": "超时约束",
+    "tail": "尝试按照<=50ms周期重发3次",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "ICB_S32G M",
+      "50ms",
+      "3次"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB_S32G M日行灯请求重发机制",
+    "relation": "故障响应",
+    "tail": "尝试重发3次后仍失败，则停止发送",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "ICB_S32G M",
+      "3次",
+      "失败"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "前提条件",
+    "tail": "发送类型为Onchange的外灯状态服务",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外灯状态主动获取",
+      "Onchange"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "超时约束",
+    "tail": "消费端在服务发现订阅或外灯控制请求后的500ms内未收到状态反馈",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "外灯状态主动获取",
+      "500ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "触发条件",
+    "tail": "未收到状态反馈",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外灯状态主动获取",
+      "状态反馈"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "输出为",
+    "tail": "通过状态服务Getter()方式获取外灯状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "外灯状态主动获取",
+      "Getter()"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

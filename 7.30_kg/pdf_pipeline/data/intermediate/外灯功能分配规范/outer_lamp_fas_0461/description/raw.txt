@@ -1,0 +1,104 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能分配规范",
+  "row_semantics": "表格按功能模块（如TrlrSideLghtFltSts、TrlrLampChkSts等）列出各项外灯相关的状态和检查信息。",
+  "column_semantics": "列出了不同通信总线（CAN, TDM, RZCU, SFCANFD）以及接口类型（SOA, RZCU, LHZCU, RZCU_ETH）下的信号分配情况。",
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "TrlrSideLghtFltSts",
+      "type": "功能名",
+      "description": "拖车侧灯闪烁状态"
+    },
+    {
+      "name": "TrlrLampChkSts",
+      "type": "功能名",
+      "description": "拖车灯检查状态"
+    },
+    {
+      "name": "DirectionLight.DirectionLightStatus",
+      "type": "功能名",
+      "description": "方向灯状态"
+    },
+    {
+      "name": "DirectionLight.DirectionLightErrorStaus",
+      "type": "功能名",
+      "description": "方向灯错误状态"
+    },
+    {
+      "name": "BrakeLight.BrakeLightState",
+      "type": "功能名",
+      "description": "刹车灯状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "TrlrSideLghtFltSts_0_NoFlr",
+      "type": "输出信号",
+      "description": "无闪烁状态"
+    },
+    {
+      "name": "TrlrSideLghtFltSts_1_PosnLeFlr",
+      "type": "输出信号",
+      "description": "左侧位置灯闪烁状态"
+    },
+    {
+      "name": "TrlrSideLghtFltSts_2_PosnRiFlr",
+      "type": "输出信号",
+      "description": "右侧位置灯闪烁状态"
+    },
+    {
+      "name": "TrlrSideLghtFltSts_3_PosnLeAndFlr",
+      "type": "输出信号",
+      "description": "左侧位置灯与闪烁灯同时点亮状态"
+    },
+    {
+      "name": "TrlrLampChkSts_0_Idle",
+      "type": "输出信号",
+      "description": "空闲状态"
+    },
+    {
+      "name": "TrlrLampChkSts_1_TrlrLampChkStrtd",
+      "type": "输出信号",
+      "description": "拖车灯检查启动状态"
+    },
+    {
+      "name": "TrlrLampChkSts_2_TrlrLampChkCmpl",
+      "type": "输出信号",
+      "description": "拖车灯检查完成状态"
+    },
+    {
+      "name": "TrlrLampChkSts_3_CnlOper",
+      "type": "输出信号",
+      "description": "取消操作状态"
+    },
+    {
+      "name": "TrlrLampChkSts_4_TrlrLampEngOffReqd",
+      "type": "输出信号",
+      "description": "拖车灯关闭请求状态"
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "系统状态",
+      "description": "方向灯的当前状态（OFF, ON, Unknown）"
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "故障状态",
+      "description": "方向灯的错误状态（No Error, Error, Unknown）"
+    },
+    {
+      "name": "BrakeLightState",
+      "type": "系统状态",
+      "description": "刹车灯的当前状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中各个功能模块的状态和检查信号在不同控制器和通信总线上的分配情况，可用于验证外灯功能在不同场景下的信号传递和状态响应是否符合设计规范。",
+  "uncertain_points": []
+}
+```

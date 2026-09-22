@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Ambient Lamp Color Change Control Logic",
+  "row_semantics": "Each row represents a distinct condition or action in the control logic for changing the ambient lamp color.",
+  "column_semantics": {
+    "Column 1": "Condition/Action Type (e.g., Precondition, Trigger Condition, Execution Action, Exit Condition, Exception Handling)",
+    "Column 2": "Description of the corresponding condition or action"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "function",
+      "description": "The lighting system that changes color based on control signals."
+    },
+    {
+      "name": "UpIPALampColorCmd_l",
+      "type": "signal",
+      "description": "Local control module signal requesting a change in ambient lamp color."
+    },
+    {
+      "name": "UpIPALampOnOff_l",
+      "type": "signal",
+      "description": "Local control module signal to turn the ambient lamp on/off."
+    },
+    {
+      "name": "UpIPALampFadeSpdCmd_l",
+      "type": "signal",
+      "description": "Local control module signal to control the fade speed of the ambient lamp."
+    },
+    {
+      "name": "Ambient Lamp Drive Control Module",
+      "type": "controller",
+      "description": "The module responsible for driving the ambient lamp and managing its color and brightness."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Precondition",
+      "description": "Ambient lamp is in an enabled state."
+    },
+    {
+      "name": "Trigger Condition",
+      "description": "Received a local control module signal requesting a color change (UpIPALampColorCmd_l ≠ 0x00)."
+    },
+    {
+      "name": "Exit Condition",
+      "description": "Either received a 'No Request' signal (UpIPALampColorCmd_l = 0x00) or a request to turn off the lamp (UpIPALampOnOff_l = 0x00)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Color Change",
+      "description": "The ambient lamp switches to the requested color based on the color coordinate mapping."
+    },
+    {
+      "name": "PWM Current",
+      "description": "The drive current for PWM is adjusted according to the mapped color value to drive the lamp."
+    },
+    {
+      "name": "Lamp Off",
+      "description": "The ambient lamp is turned off when the appropriate signal is received."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Overvoltage/Low Voltage Fault",
+      "description": "If the ambient lamp module experiences overvoltage or undervoltage faults, the ambient lamp is directly turned off."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the logic for controlling the color change of an ambient lamp based on local control module signals. It specifies the conditions under which the lamp color is changed, maintained, or turned off, as well as how it handles fault conditions.",
+  "uncertain_points": []
+}
+```

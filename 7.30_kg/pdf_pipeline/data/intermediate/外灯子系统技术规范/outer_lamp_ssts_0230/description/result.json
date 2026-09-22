@@ -1,0 +1,50 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯方向开关状态控制逻辑",
+  "row_semantics": "描述了在特定前置条件和触发条件下，系统执行的特定动作序列。",
+  "column_semantics": {
+    "Column1": "前置条件（Precondition）",
+    "Column2": "触发条件（Trigger Condition）",
+    "Column3": "执行动作（Action to be performed）"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILghtSwSOAEnPrm",
+      "type": "configuration_parameter",
+      "description": "配置字，用于启用或禁用相关功能。值为1表示启用。"
+    },
+    {
+      "name": "DILghtSwMdl",
+      "type": "controller_module",
+      "description": "外灯方向开关模块，负责发送方向灯开关状态信息。"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "controller_module",
+      "description": "外灯控制模块，接收并处理方向灯开关状态信息。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "details": "配置字 DILghtSwSOAEnPrm == 1 (Enable)"
+    },
+    {
+      "condition": "触发条件",
+      "details": "用户轻拨右转向拨杆，开关阻值为 4020 Ω (±5%)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DirectionLightSwitchStatus",
+      "description": "外灯方向开关状态信号，值为 0x4 表示右转向灯开启一档。",
+      "details": "持续发送 DirectionLightSwitchStatus，值为 0x4，至少发送三帧。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定配置和用户操作下，系统应如何持续发送方向灯开关状态信号以控制外灯的行为，可用于验证外灯方向开关状态控制逻辑的功能正确性。",
+  "uncertain_points": []
+}

@@ -1,0 +1,121 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "内灯光系统中第三排右侧阅读灯的点亮与熄灭速度控制规范",
+  "row_semantics": "表格按功能阶段（点亮、熄灭、异常处理）划分行，每种阶段下又细分为不同速度等级或默认情况。",
+  "column_semantics": "第一列定义了功能阶段或条件（如‘当点亮速度信号’、‘退出条件’、‘异常处理’），第二列详细描述了该阶段下的具体控制逻辑，包括输入信号、控制器模块、输出行为及速度参数。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampRHDImSpd",
+      "type": "input_signal",
+      "description": "第三排右侧阅读灯的亮度/速度控制信号，用于设定点亮和熄灭的速度等级。"
+    },
+    {
+      "name": "ThirdRowMapLampRHBrtLvl",
+      "type": "input_signal",
+      "description": "第三排右侧阅读灯的亮度请求信号，用于控制阅读灯的开关状态。"
+    },
+    {
+      "name": "阅读灯驱动控制模块",
+      "type": "controller_module",
+      "description": "负责根据接收到的亮度/速度信号，通过PWM驱动方式控制阅读灯的点亮、熄灭及其速度。"
+    },
+    {
+      "name": "ThirdRowMapLampRHDImSpd=0x1",
+      "type": "output_signal",
+      "description": "表示阅读灯以速度2点亮，对应0.1秒/档的点亮速率。"
+    },
+    {
+      "name": "ThirdRowMapLampRHDImSpd=0x0",
+      "type": "output_signal",
+      "description": "表示阅读灯熄灭，对应0.025秒/档的熄灭速率。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "当点亮速度信号",
+      "details": "根据ThirdRowMapLampRHDImSpd的不同值（0x1, 0x2），设置不同的点亮速度（0.1秒/档, 0.15秒/档）。"
+    },
+    {
+      "condition": "未接收到点亮速度信号时",
+      "details": "按照默认值ThirdRowMapLampRHDImSpd=0x0（速度1）执行。"
+    },
+    {
+      "condition": "退出条件",
+      "details": "当接收到阅读灯控制模块的请求信号ThirdRowMapLampRHBrtLvl=0x0（OFF）时，熄灭阅读灯。"
+    },
+    {
+      "condition": "熄灭速度信号",
+      "details": "根据ThirdRowMapLampRHDImSpd的不同值（0x0, 0x1, 0x2），设置不同的熄灭速度（0.025秒/档, 0.15秒/档, 瞬间熄灭）。"
+    },
+    {
+      "condition": "未接收到熄灭速度信号时",
+      "details": "按照默认值ThirdRowMapLampRHDImSpd=0x0（速度1）执行。"
+    },
+    {
+      "condition": "异常处理",
+      "details": "当检测到特定故障（如短路开路）时，直接关断对应阅读灯驱动。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "阅读灯点亮",
+      "details": "根据指定的速度等级（0.1秒/档, 0.15秒/档）由PWM驱动模块控制点亮。"
+    },
+    {
+      "output": "阅读灯熄灭",
+      "details": "根据指定的速度等级（0.025秒/档, 0.15秒/档, 瞬间）由PWM驱动模块控制熄灭。"
+    },
+    {
+      "output": "关断阅读灯驱动",
+      "details": "在异常情况下，直接切断对阅读灯的驱动电源。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "ThirdRowMapLamp触发短路/开路故障",
+      "description": "第三排右侧阅读灯电路发生短路或开路故障。",
+      "action": "直接关断对应阅读灯驱动。"
+    },
+    {
+      "fault_name": "未接收到亮度请求信号",
+      "description": "未能接收到阅读灯控制模块发送的亮度请求信号。",
+      "action": "直接关断第三排右侧阅读灯驱动（即使收到点亮熄灭速度信号ThirdRowMapLampRHDImSpd）。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "signal": "ThirdRowMapLampRHDImSpd",
+      "speed_level": "0x1",
+      "timing": "0.1秒/档",
+      "description": "点亮速度为0.1秒/档，对应速度2。"
+    },
+    {
+      "signal": "ThirdRowMapLampRHDImSpd",
+      "speed_level": "0x2",
+      "timing": "0.15秒/档",
+      "description": "点亮速度为0.15秒/档，对应速度3。"
+    },
+    {
+      "signal": "ThirdRowMapLampRHDImSpd",
+      "speed_level": "0x0",
+      "timing": "0.025秒/档",
+      "description": "熄灭速度为0.025秒/档，对应速度1。"
+    },
+    {
+      "signal": "ThirdRowMapLampRHDImSpd",
+      "speed_level": "0x0",
+      "timing": "瞬间",
+      "description": "熄灭速度为瞬间熄灭，对应速度3。"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证内灯光系统中第三排右侧阅读灯的点亮与熄灭速度控制逻辑，确保其在不同速度等级下的响应符合规范，并在异常情况下能够正确执行关断操作。",
+  "uncertain_points": [
+    "表格中未明确说明'ThirdRowMapLampRHDImSpd'信号的具体物理接口类型。",
+    "未提及在正常工作状态下，阅读灯的亮度等级是否可调，以及如何调整。",
+    "未说明在多路阅读灯同时工作时，各路之间的优先级或协调机制。"
+  ]
+}
+```

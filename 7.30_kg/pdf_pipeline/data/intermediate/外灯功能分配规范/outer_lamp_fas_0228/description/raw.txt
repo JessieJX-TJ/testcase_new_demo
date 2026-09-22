@@ -1,0 +1,33 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "整车外灯转向灯故障状态检测与诊断",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的转向灯（左前、右前、左后、右后）或左前转向灯的硬件故障状态，详细描述了该转向灯的故障状态信息。",
+  "column_semantics": "表格列出了故障状态的输出来源（如CANFD、ICB、LHZCU等）、网络故障状态以及具体的故障状态值（0x0=Off/False, 0x1=On/True）。部分行还额外指明了内部信号或硬线故障状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "FLDircnLghtFltsts",   // 左前转向灯故障状态
+    "FRDircnLghtFltsts",   // 右前转向灯故障状态
+    "RLDircnLghtFltsts",   // 左后转向灯故障状态
+    "RRDircnLghtFltsts",   // 右后转向灯故障状态
+    "FLDircnLghtFltsts_HW" // 左前转向灯硬件故障状态
+  ],
+  "core_conditions": [
+    "CANFD",               // CANFD总线
+    "ICB",                 // ICB控制器
+    "LHZCU",               // LHZCU控制器
+    "网络故障状态"         // 网络通信故障
+  ],
+  "core_outputs": [
+    "0x0=Off/_False",      // 故障状态关闭/假
+    "0x1=On/_True"         // 故障状态开启/真
+  ],
+  "core_faults": [
+    "转向灯故障状态"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯系统中四个方向转向灯的故障状态检测逻辑，可用于验证各转向灯在不同控制器和通信网络下的故障状态输出是否符合设计规范。",
+  "uncertain_points": []
+}
+```

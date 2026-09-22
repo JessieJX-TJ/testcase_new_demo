@@ -1,0 +1,54 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯控制系统功能与信号交互规范",
+  "row_semantics": "表格的每一行代表一个具体的外灯控制功能或模式，描述了该功能的控制接口、调用的服务以及对应的CAN信号发送。",
+  "column_semantics": "表格包含两列：第一列是功能名称（如自动补打转向灯、雨夜模式点亮角灯等），第二列详细描述了该功能的控制逻辑，包括调用的组合服务、基础服务以及发送的CAN信号。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "功能名",
+      "values": [
+        "自动补打转向灯",
+        "雨夜模式点亮角灯",
+        "哨兵模式",
+        "工厂OTA灯光辅助",
+        "Super模式下关闭昼间行车灯开关"
+      ]
+    },
+    {
+      "name": "控制器/模块名",
+      "values": [
+        "S32G_M",
+        "LHZCU"
+      ]
+    },
+    {
+      "name": "系统状态",
+      "values": [
+        "DirLightSrvcReq",
+        "FrontFogLightFucProCtrlReq",
+        "CombLightFucProCtrlSts",
+        "DayRunningLightFucProStatus"
+      ]
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "输出信号",
+      "values": [
+        "DirLightSrvcReq",
+        "FrontFogLightFucProCtrlReq",
+        "CombLightFucProCtrlSts",
+        "DayRunningLightFucProStatus"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯系统中多个功能模块的控制逻辑和信号交互流程，可用于验证各外灯功能在不同模式下的正确控制行为及CAN信号的发送。",
+  "uncertain_points": []
+}
+```

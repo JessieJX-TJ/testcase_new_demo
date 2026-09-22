@@ -1,0 +1,68 @@
+```json
+[
+  {
+    "head": "倒车灯点亮",
+    "relation": "前提条件",
+    "tail": "RevsLightCtrl = 0x0 = RevsLightCtrl_0_Off",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["RevsLightCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯熄灭",
+    "relation": "前提条件",
+    "tail": "RevsLightCtrl = 0x0 = RevsLightCtrl_0_Off",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["RevsLightCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯点亮",
+    "relation": "抑制条件",
+    "tail": "ReverseLightErrSta ≠ 0x0 = No Error",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["ReverseLightErrSta"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "RevsLightSta = 0x0 = RevsLightSta_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["RevsLightSta", "ICB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯故障状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "RevsLightFltSta = 0x0 = RevsLightFltSta_0_False",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["RevsLightFltSta", "ICB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动处理模块RZCU内部跳变为硬线输出",
+    "relation": "前提条件",
+    "tail": "ICB控制信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["RZCU", "ICB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯熄灭同步性要求",
+    "relation": "超时约束",
+    "tail": "左侧和右侧倒车灯熄灭延时不超过40ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": ["熄灭同步性", "40ms"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务ICB订阅接口",
+    "relation": "依赖于",
+    "tail": "{ExteriorLightControlSystem.ReverseLightSts.ReverseLghtSts} = 0x0 = OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ICB", "ExteriorLightControlSystem"],
+    "confidence_note": "high"
+  }
+]
+```

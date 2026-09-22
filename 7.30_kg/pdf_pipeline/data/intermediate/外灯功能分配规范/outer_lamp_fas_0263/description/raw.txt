@@ -1,0 +1,95 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 前雾灯控制信号定义",
+  "row_semantics": "表格按前雾灯的左右两侧及其硬件版本（HW）进行分组，详细定义了每种前雾灯的控制信号。",
+  "column_semantics": "第一列列出信号名称；第二列说明信号类型为输出；后续列为支持该信号的通信协议（CANFD）、控制器模块（如LHZCU、ICB）及具体条目指向。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LFrtFogLghtCtrl",
+      "type": "output_signal",
+      "description": "左侧前雾灯控制信号"
+    },
+    {
+      "name": "RFrtFogLghtCtrl",
+      "type": "output_signal",
+      "description": "右侧前雾灯控制信号"
+    },
+    {
+      "name": "LFrtFogLghtCtrl_HW",
+      "type": "output_signal",
+      "description": "左侧前雾灯硬件版本控制信号"
+    },
+    {
+      "name": "RFrtFogLghtCtrl_HW",
+      "type": "output_signal",
+      "description": "右侧前雾灯硬件版本控制信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0",
+      "value": "0x0",
+      "description": "信号关闭状态"
+    },
+    {
+      "name": "0x1",
+      "value": "0x1",
+      "description": "信号开启状态"
+    },
+    {
+      "name": "0x2",
+      "value": "0x2",
+      "description": "未知状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LFrtFogLghtCtrl_0_Off",
+      "description": "左侧前雾灯关闭"
+    },
+    {
+      "name": "LFrtFogLghtCtrl_1_On",
+      "description": "左侧前雾灯开启"
+    },
+    {
+      "name": "RFrtFogLghtCtrl_0_Off",
+      "description": "右侧前雾灯关闭"
+    },
+    {
+      "name": "RFrtFogLghtCtrl_1_On",
+      "description": "右侧前雾灯开启"
+    },
+    {
+      "name": "LFrtFogLghtCtrl_HW_0_Off",
+      "description": "左侧前雾灯硬件版本关闭"
+    },
+    {
+      "name": "LFrtFogLghtCtrl_HW_1_On",
+      "description": "左侧前雾灯硬件版本开启"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "code": "0x0",
+      "description": "无错误"
+    },
+    {
+      "name": "Error",
+      "code": "0x1",
+      "description": "发生错误"
+    },
+    {
+      "name": "Unknown",
+      "code": "0x2",
+      "description": "状态未知"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证车辆前雾灯控制信号在不同控制器和通信协议下的正确输出状态，确保其在开启/关闭模式下与系统预期行为一致。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,63 @@
+{
+  "table_type": "signal_table",
+  "topic": "Left Rear Turn Signal Lamp Control and Status",
+  "row_semantics": "The table defines two related service interfaces for controlling and monitoring the left rear turn signal lamp: one for sending control commands and another for receiving status updates.",
+  "column_semantics": {
+    "first_column": "Function Name (DirectionLightControl or DirectionLightState)",
+    "second_column": "Input/Output Type (SOA, ICB/LHZCU, RZCU, External Light FAS/SSTS)",
+    "third_column": "Detailed Definition and Interface Information"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightControl",
+      "type": "function",
+      "description": "Service interface to control the left rear turn signal lamp (on/off)."
+    },
+    {
+      "name": "DirectionLightState",
+      "type": "function",
+      "description": "Service interface to query the current state of the left rear turn signal lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightCtrlReq",
+      "type": "input_signal",
+      "description": "Parameter for the control request. Values: 0x0=OFF, 0x1=On.",
+      "source": "SOA"
+    },
+    {
+      "name": "DirectionLightSta",
+      "type": "output_signal",
+      "description": "Parameter for the current state. Values: 0x0=OFF, 0x1=On, 0x2=Error, 0x3=Unknown.",
+      "source": "RZCU"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "External Light FAS",
+      "type": "output_signal",
+      "description": "Signal sent to the external light system to activate the left rear turn signal.",
+      "source": "ICB/LHZCU"
+    },
+    {
+      "name": "External Light SSTS",
+      "type": "input_signal",
+      "description": "Signal received from the external light system indicating its status.",
+      "source": "SOA"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightSta_Error",
+      "type": "fault_state",
+      "description": "Indicates an error in the turn signal lamp status.",
+      "value": "0x2"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the communication protocol between vehicle modules (SOA, ICB/LHZCU, RZCU) for controlling and monitoring the left rear turn signal lamp, enabling test verification of lamp activation/deactivation and state reporting functionality.",
+  "uncertain_points": []
+}

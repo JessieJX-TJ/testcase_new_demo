@@ -1,0 +1,68 @@
+{
+  "table_type": "fault_table",
+  "topic": "倒车灯故障诊断与处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，描述了从触发条件到执行动作、退出条件及异常处理的完整诊断过程。",
+  "column_semantics": "表格包含两列，左侧为流程阶段或条件类型（如前置条件、触发条件、执行动作等），右侧为对应的具体内容描述。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RevsLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "倒车灯反馈系统开路保护使能参数"
+    },
+    {
+      "name": "RevsLightDrvMdl",
+      "type": "module",
+      "description": "倒车灯驱动模块"
+    },
+    {
+      "name": "RevsLightCtrlMdl",
+      "type": "module",
+      "description": "倒车灯控制模块"
+    },
+    {
+      "name": "DTC B1045 13",
+      "type": "fault_code",
+      "description": "特定的故障代码，表示检测到倒车灯开路故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "RevsLightFbkSOAEnPrm == 1 (Enable)",
+      "description": "前置条件，确保倒车灯反馈系统开路保护功能已启用"
+    },
+    {
+      "condition": "检测到倒车灯开路",
+      "description": "触发条件，当系统检测到倒车灯电路存在开路时激活诊断流程"
+    },
+    {
+      "condition": "检测到开路恢复",
+      "description": "退出条件，当开路故障被修复后，诊断流程结束"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "【RevsLightDrvMdl】持续发送 ReverseLightState. ReverseLightSta = 2 (Error)",
+      "description": "执行动作1，驱动模块持续发送错误状态信息至控制模块"
+    },
+    {
+      "output": "置位 DTC B1045 13",
+      "description": "执行动作2，设置特定的故障代码以记录故障事件"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTC B1045 13",
+      "description": "倒车灯开路故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在执行动作中，要求持续发送错误状态信息至少三帧"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了倒车灯系统开路故障的诊断逻辑，包括触发条件、执行动作（如发送错误状态和设置故障码）以及退出条件，可用于验证车辆倒车灯系统的故障诊断功能是否符合设计规范。",
+  "uncertain_points": []
+}

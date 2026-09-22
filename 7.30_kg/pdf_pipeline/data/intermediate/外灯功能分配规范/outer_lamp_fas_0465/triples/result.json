@@ -1,0 +1,58 @@
+[
+  {
+    "head": "后雾灯请求自动灯光近光灯开启状态变量 AutoDipdBeamLghtONbyRrFogLghtSts 置位",
+    "relation": "触发条件",
+    "tail": "Auto 开关开启状态下,开后雾灯导致同步开启近光灯",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Auto 开关开启状态",
+      "开后雾灯",
+      "同步开启近光灯"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0465",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "AutoDipdBeamLghtONbyRrFogLghtSts 变量置位清除",
+    "relation": "复位条件",
+    "tail": "下电或检测到近光灯状态为关闭",
+    "triple_type": "复位条件",
+    "evidence_terms": [
+      "下电",
+      "近光灯状态为关闭"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0465",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "后雾灯控制模块中 AutoDipdBeamLghtONbyRrFogLghtSts 变量默认值为 False",
+    "relation": "前提条件",
+    "tail": "系统初始化或未满足触发条件时",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "默认 AutoDipdBeamLghtONbyRrFogLghtSts=0x0=False"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0465",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "后雾灯与近光灯保持同步点亮",
+    "relation": "超时约束",
+    "tail": "两侧最大延时不能超过 40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "左侧和右侧需保持同步点亮",
+      "最大延时 40ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0465",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  }
+]

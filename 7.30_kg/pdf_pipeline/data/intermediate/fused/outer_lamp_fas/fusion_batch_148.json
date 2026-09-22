@@ -1,0 +1,534 @@
+[
+  {
+    "head": "LeftRearTurnSignalStatus",
+    "relation": "outputEncoding",
+    "tail": "0x0=OFF; 0x1=ON; 0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_1601"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearTurnSignalStatus",
+    "relation": "outputEncoding",
+    "tail": "0x0=OFF; 0x1=ON; 0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_1601"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDippedBeamErrorStatus",
+    "relation": "outputSignal",
+    "tail": "DippedBeamLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_1602"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightDippedBeamErrorStatus",
+    "relation": "outputSignal",
+    "tail": "DippedBeamLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_1602"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDippedBeamErrorStatus",
+    "relation": "isUnknownWhen",
+    "tail": "DippedBeamLightErrorStatus == 0x2",
+    "sources": [
+      "outer_lamp_fas_1602"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightDippedBeamErrorStatus",
+    "relation": "isUnknownWhen",
+    "tail": "DippedBeamLightErrorStatus == 0x2",
+    "sources": [
+      "outer_lamp_fas_1602"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "hasSubfunction",
+    "tail": "Z-ONE-3.0 Platform-FAS-IBD05 Controller",
+    "sources": [
+      "outer_lamp_fas_1603"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SystemConfigurationNameLoading",
+    "relation": "prerequisite",
+    "tail": "ConfigurationName exists and is valid",
+    "sources": [
+      "outer_lamp_fas_1604"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunctionEnable",
+    "relation": "triggerCondition",
+    "tail": "Parameter set to valid value",
+    "sources": [
+      "outer_lamp_fas_1604"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunctionDisable",
+    "relation": "suppressionCondition",
+    "tail": "Parameter set to invalid or default value",
+    "sources": [
+      "outer_lamp_fas_1604"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OutputSignal",
+    "relation": "outputComputation",
+    "tail": "Computed from parameters",
+    "sources": [
+      "outer_lamp_fas_1604"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SystemState",
+    "relation": "dependsOn",
+    "tail": "ConfigurationName setting",
+    "sources": [
+      "outer_lamp_fas_1604"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "prerequisite",
+    "tail": "Document page reference (e.g., '297 of 935', '187 of 935', '754 of 935')",
+    "sources": [
+      "outer_lamp_fas_1606",
+      "outer_lamp_fas_1612",
+      "outer_lamp_fas_1618"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrLampChkSts_3_CncIOper",
+    "relation": "outputSignal",
+    "tail": "TrlrLampChkSts",
+    "sources": [
+      "outer_lamp_fas_1607"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehDragMdSts_0_Off",
+    "relation": "outputSignal",
+    "tail": "VehDragMdSts",
+    "sources": [
+      "outer_lamp_fas_1607"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehDragMdSts_1_On",
+    "relation": "outputSignal",
+    "tail": "VehDragMdSts",
+    "sources": [
+      "outer_lamp_fas_1607"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrSideLghtFltSts",
+    "relation": "dependsOn",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_fas_1607"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrLampChkSts",
+    "relation": "dependsOn",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_fas_1607"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehDragMdSts",
+    "relation": "dependsOn",
+    "tail": "IPD/LHZCU/RZCU/PM",
+    "sources": [
+      "outer_lamp_fas_1607"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalActivationLevel1",
+    "relation": "triggerCondition",
+    "tail": "DircnLghtSwReq == 0x1",
+    "sources": [
+      "outer_lamp_fas_1614"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalActivationLevel2",
+    "relation": "triggerCondition",
+    "tail": "DircnLghtSwReq == 0x2",
+    "sources": [
+      "outer_lamp_fas_1614"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalDeactivation",
+    "relation": "triggerCondition",
+    "tail": "DircnLghtSwReq == 0x0",
+    "sources": [
+      "outer_lamp_fas_1614"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtSwReq",
+    "relation": "mapsTo",
+    "tail": "LeftTurnSignalActivationLevel1",
+    "sources": [
+      "outer_lamp_fas_1614"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtSwReq",
+    "relation": "mapsTo",
+    "tail": "LeftTurnSignalActivationLevel2",
+    "sources": [
+      "outer_lamp_fas_1614"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtSwReq",
+    "relation": "mapsTo",
+    "tail": "LeftTurnSignalDeactivation",
+    "sources": [
+      "outer_lamp_fas_1614"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd",
+    "relation": "outputEncoding",
+    "tail": "VehMd_0_NORMAL or VehMd_1_CRASH",
+    "sources": [
+      "outer_lamp_fas_1615"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd",
+    "relation": "inputSource",
+    "tail": "Specified signal channel (CAN/LIN/SOA/hardwire)",
+    "sources": [
+      "outer_lamp_fas_1615"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd",
+    "relation": "dependsOn",
+    "tail": "CAN/LIN/SOA service or hardwire interface",
+    "sources": [
+      "outer_lamp_fas_1615"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorStatusSubscription",
+    "relation": "prerequisite",
+    "tail": "BrakeLightErrorStatus service interface invoked",
+    "sources": [
+      "outer_lamp_fas_1616"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightState",
+    "relation": "outputEncoding",
+    "tail": "0x0=OFF; 0x1=ON; 0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_1616"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorStatus",
+    "relation": "outputEncoding",
+    "tail": "0x0=No Error",
+    "sources": [
+      "outer_lamp_fas_1616"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorStatus",
+    "relation": "dependsOn",
+    "tail": "RZCU module",
+    "sources": [
+      "outer_lamp_fas_1616"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightState",
+    "relation": "dependsOn",
+    "tail": "ICB and LHZCU modules",
+    "sources": [
+      "outer_lamp_fas_1616"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatusRetrieval",
+    "relation": "triggerCondition",
+    "tail": "ExteriorLightSwitchProcess.DirectionLightSta service invoked",
+    "sources": [
+      "outer_lamp_fas_1617"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatusRetrieval",
+    "relation": "triggerCondition",
+    "tail": "ExteriorLightSwitchProcess.DirectionLightErrSta service invoked",
+    "sources": [
+      "outer_lamp_fas_1617"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus",
+    "relation": "mapsTo",
+    "tail": "Right_Direction_Light_On (0x2)",
+    "sources": [
+      "outer_lamp_fas_1617"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus",
+    "relation": "mapsTo",
+    "tail": "Both_Side_Direction_Light_On (0x3)",
+    "sources": [
+      "outer_lamp_fas_1617"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus",
+    "relation": "mapsTo",
+    "tail": "Unknown (0x4)",
+    "sources": [
+      "outer_lamp_fas_1617"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus",
+    "relation": "mapsTo",
+    "tail": "Error (0x1)",
+    "sources": [
+      "outer_lamp_fas_1617"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus",
+    "relation": "mapsTo",
+    "tail": "No Error (0x0)",
+    "sources": [
+      "outer_lamp_fas_1617"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMIDirectionLightIndication",
+    "relation": "triggerCondition",
+    "tail": "FLDirnLghtCtrl == 0x1 OR ExteriorLightSwitchProcess.DirncLghtFucProStatus.DirncLghtFucProSta == 0x1",
+    "sources": [
+      "outer_lamp_fas_1619"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMISoundAlert",
+    "relation": "triggerCondition",
+    "tail": "FLDirnLghtCtrl == 0x1 OR ExteriorLightSwitchProcess.DirncLghtFucProStatus.DirncLghtFucProSta == 0x1",
+    "sources": [
+      "outer_lamp_fas_1619"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMIDirectionLightIndication",
+    "relation": "suppressionCondition",
+    "tail": "FLDirnLghtCtrl == 0x0 OR ExteriorLightSwitchProcess.DirncLghtFucProStatus.DirncLghtFucProSta == 0x0",
+    "sources": [
+      "outer_lamp_fas_1619"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMISoundAlert",
+    "relation": "suppressionCondition",
+    "tail": "FLDirnLghtCtrl == 0x0 OR ExteriorLightSwitchProcess.DirncLghtFucProStatus.DirncLghtFucProSta == 0x0",
+    "sources": [
+      "outer_lamp_fas_1619"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMIDirectionLightFaultDisplay",
+    "relation": "triggerCondition",
+    "tail": "ExteriorLightSwitchProcess.DirectionLightErrSta.DirncLghtErrSta == 0x1",
+    "sources": [
+      "outer_lamp_fas_1619"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMIDirectionLightFaultDisplay",
+    "relation": "triggerCondition",
+    "tail": "ExteriorLightSwitchProcess.DirectionLightErrSta.DirncLghtErrSta == 0x2",
+    "sources": [
+      "outer_lamp_fas_1619"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMIDirectionLightFaultDisplay",
+    "relation": "triggerCondition",
+    "tail": "ExteriorLightSwitchProcess.DirectionLightErrSta.DirncLghtErrSta == 0x3",
+    "sources": [
+      "outer_lamp_fas_1619"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMIFaultPopupAlert",
+    "relation": "triggerCondition",
+    "tail": "ExteriorLightSwitchProcess.DirectionLightErrSta.DirncLghtErrSta ∈ {0x1, 0x2, 0x3}",
+    "sources": [
+      "outer_lamp_fas_1619"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightDriverModule",
+    "relation": "respondsTo",
+    "tail": "Brake light switch control request",
+    "sources": [
+      "outer_lamp_fas_1620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightDriverModule",
+    "relation": "outputs",
+    "tail": "Brake light status feedback",
+    "sources": [
+      "outer_lamp_fas_1620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightDriverModule",
+    "relation": "outputs",
+    "tail": "Brake light fault status feedback",
+    "sources": [
+      "outer_lamp_fas_1620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightDriverModule",
+    "relation": "respondsTo",
+    "tail": "Rear fog light switch control request",
+    "sources": [
+      "outer_lamp_fas_1620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightDriverModule",
+    "relation": "outputs",
+    "tail": "Rear fog light status feedback",
+    "sources": [
+      "outer_lamp_fas_1620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

@@ -1,0 +1,119 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform) - Door Rear Left Lamp Control Commands",
+  "row_semantics": "Each row represents a specific command or configuration parameter for controlling the rear left door lamp's color, brightness, and breathing rate.",
+  "column_semantics": {
+    "Row Header": "Command Name (e.g., DoorRL5LampColorCmd_1)",
+    "Input": "Signal source type (LIN, LHZCU, etc.)",
+    "LIN": "Local Interconnect Network signal input",
+    "LHZCU": "Local High-level Zone Control Unit",
+    "DoorAmbtLampE_RL": "Door Ambient Lamp Enable for Rear Left",
+    "LHZCU_LIN4": "LIN4 interface of LHZCU",
+    "内灯SSTS": "Interior Lighting Sub System Technical Specification"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "DoorRL5LampColorCmd_1",
+      "type": "command",
+      "description": "Command to set the color of the rear left door ambient lamp."
+    },
+    {
+      "name": "DoorRL5LampBrtnsCmd_1",
+      "type": "command",
+      "description": "Command to set the brightness level of the rear left door ambient lamp."
+    },
+    {
+      "name": "DoorRL5LampBrthngCmd_1",
+      "type": "command",
+      "description": "Command to set the breathing rate of the rear left door ambient lamp."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Local High-level Zone Control Unit responsible for processing commands and controlling the lamp."
+    },
+    {
+      "name": "LIN",
+      "type": "communication_protocol",
+      "description": "Local Interconnect Network used for communication between modules."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Color Value",
+      "description": "Range from 0x00 (no request) to 0xFF (various color values).",
+      "type": "input_signal"
+    },
+    {
+      "name": "Brightness Value",
+      "description": "Range from 0x00 (no request) to 0xFF (brightness percentage).",
+      "type": "input_signal"
+    },
+    {
+      "name": "Breathing Rate Code",
+      "description": "Code values from 0x00 to 0xFF, with specific rates defined for each code.",
+      "type": "input_signal"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorAmbtLampE_RL",
+      "description": "Enable signal for the rear left door ambient lamp.",
+      "type": "output_signal"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate0",
+      "description": "No request, no timing constraint.",
+      "value": "/"
+    },
+    {
+      "name": "Rate1",
+      "description": "500ms period for breathing rate.",
+      "value": "500ms"
+    },
+    {
+      "name": "Rate2",
+      "description": "1s period for breathing rate.",
+      "value": "1s"
+    },
+    {
+      "name": "Rate3",
+      "description": "1s period for breathing rate.",
+      "value": "1s"
+    },
+    {
+      "name": "Rate4",
+      "description": "2s period for breathing rate.",
+      "value": "2s"
+    },
+    {
+      "name": "Rate5",
+      "description": "2.4s period for breathing rate.",
+      "value": "2.4s"
+    },
+    {
+      "name": "Rate6",
+      "description": "3s period for breathing rate.",
+      "value": "3s"
+    },
+    {
+      "name": "Rate7",
+      "description": "3.5s period for breathing rate.",
+      "value": "3.5s"
+    },
+    {
+      "name": "Rate8",
+      "description": "4s period for breathing rate.",
+      "value": "4s"
+    }
+  ],
+  "engineering_interpretation": "This table defines the control parameters for the rear left door ambient lamp in the Interior Lighting Sub System, including color, brightness, and breathing rate. It specifies how these parameters are communicated via LIN and processed by the LHZCU, and what the corresponding breathing rates are for different code values.",
+  "uncertain_points": []
+}
+```

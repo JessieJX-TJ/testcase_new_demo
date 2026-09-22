@@ -1,0 +1,484 @@
+```json
+[
+  {
+    "head": "Rear Right Door Floor Lamp Control Circuit Short to Battery",
+    "relation": "前提条件",
+    "tail": "右后激光迎宾灯驱动激活状态",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Floor Lamp Control Circuit Short to Ground",
+    "relation": "前提条件",
+    "tail": "右后激光迎宾灯驱动激活状态",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Floor Lamp Control Circuit Open Circuit",
+    "relation": "前提条件",
+    "tail": "右后激光迎宾灯驱动激活状态",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Floor Lamp Control Circuit Short to Battery",
+    "relation": "超时约束",
+    "tail": "驱动电流小于阈值 (TBD) A, 持续 100ms",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Floor Lamp Control Circuit Short to Ground",
+    "relation": "超时约束",
+    "tail": "驱动电流超过阈值 (TBD) A, 持续 100ms",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Floor Lamp Control Circuit Open Circuit",
+    "relation": "超时约束",
+    "tail": "驱动电流小于阈值 (TBD) A, 持续 100ms",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "前提条件",
+    "tail": "接收到 CnsoLHALampBrthngCmd_1 的 Code 值命令",
+    "sources": ["inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头呼吸闪烁",
+    "relation": "依赖于",
+    "tail": "CnsoLHALampBrthngCmd_1 的 Code 值和对应周期",
+    "sources": ["inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "立即停止呼吸",
+    "relation": "触发条件",
+    "tail": "CnsoLHALampBrthngCmd_1 指令值为 0",
+    "sources": ["inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "立即停止当前呼吸并切换至下一呼吸模式",
+    "relation": "触发条件",
+    "tail": "不同呼吸模式切换时",
+    "sources": ["inner_lamp_ssts_0309", "inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯渐变速度指令",
+    "relation": "输入为",
+    "tail": "CnsoLHALampFadeSpdCmd_1 的 Code 值",
+    "sources": ["inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头颜色/亮度切换所需时间",
+    "relation": "依赖于",
+    "tail": "CnsoLHALampFadeSpdCmd_1 的 Spd 代码值",
+    "sources": ["inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "默认渐变速度 Spd0",
+    "relation": "状态保持条件",
+    "tail": "当未指定 Spd 代码值时",
+    "sources": ["inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯开启请求",
+    "relation": "前提条件",
+    "tail": "接收到 CnsoLHBLampOn_Off_1 = 0x0 (CnsoLHBLampOnOff_1_0_OFF)",
+    "sources": ["inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampBrthngCmd_1 呼吸模式启动",
+    "relation": "触发条件",
+    "tail": "Code 值为 Rate1 至 Rate15",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampBrthngCmd_1 呼吸模式启动",
+    "relation": "触发条件",
+    "tail": "Code 值非 Rate0",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": true,
+    "conflict_note": "Rate1–Rate15 是 Rate0 的补集，但 '非Rate0' 包含非法值（如Rate16+），而文档明确限定有效范围为Rate0–Rate15；二者语义不完全等价，存在边界歧义风险"
+  },
+  {
+    "head": "DoorRR2LampBrthngCmd_1 呼吸模式停止",
+    "relation": "触发条件",
+    "tail": "指令值为 0",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampBrthngCmd_1 呼吸模式切换",
+    "relation": "触发条件",
+    "tail": "不同呼吸模式切换时",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampFadeSpdCmd_1 渐变速度设置",
+    "relation": "输入为",
+    "tail": "Spd0–Spd3",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR3LampOnOff_1 Ambient 灯开启",
+    "relation": "触发条件",
+    "tail": "Code 值为 0x1 (DoorRR3LampOnOff_1_1_ON)",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR3LampOnOff_1 Ambient 灯关闭",
+    "relation": "触发条件",
+    "tail": "Code 值为 0x0 (DoorRR3LampOnOff_1_0_OFF)",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR3LampOnOff_1 Ambient 灯开启",
+    "relation": "前提条件",
+    "tail": "同时接收到非零值的颜色/亮度指令",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampBrthngCmd_1 呼吸模式保持",
+    "relation": "状态保持条件",
+    "tail": "在指定周期内持续闪烁",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampFadeSpdCmd_1 渐变速度",
+    "relation": "超时约束",
+    "tail": "默认速度为 2000ms, Spd1 为 300ms, Spd2 为 100ms",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯开启",
+    "relation": "触发条件",
+    "tail": "接收到 UpIPBLampOnOff_1 = 0x1 (UpIPBLampOnOff_1_1_ON)",
+    "sources": ["inner_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "接收到 UpIPBLampOnOff_1 = 0x0 (UpIPBLampOnOff_1_0_OFF)",
+    "sources": ["inner_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯颜色设置",
+    "relation": "触发条件",
+    "tail": "接收到 UpIPBLampColorCmd_1 ∈ [0x01, 0xFF]",
+    "sources": ["inner_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯亮度调节",
+    "relation": "触发条件",
+    "tail": "接收到 UpIPBLampBrtCmd_1 ∈ [0x01, 0x64] (1%–100%)",
+    "sources": ["inner_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯呼吸模式设置",
+    "relation": "触发条件",
+    "tail": "接收到 UpIPBLampBrthngCmd_1 ∈ [0x1, 0xF] (Rate1–Rate15)",
+    "sources": ["inner_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯颜色保持不变",
+    "relation": "状态保持条件",
+    "tail": "当 UpIPBLampColorCmd_1 = 0 或未定义颜色号时",
+    "sources": ["inner_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯亮度保持不变",
+    "relation": "状态保持条件",
+    "tail": "当 UpIPBLampBrtCmd_1 = 0 时",
+    "sources": ["inner_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯呼吸模式 Rate0",
+    "relation": "输入为",
+    "tail": "UpIPBLampBrthngCmd_1 = 0x0 (UpIPBLampBrthngCmd_1_0_No Request)",
+    "sources": ["inner_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯呼吸模式 Rate1",
+    "relation": "输入为",
+    "tail": "UpIPBLampBrthngCmd_1 = 0x1 (UpIPBLampBrthngCmd_1_1_Rate1)",
+    "sources": ["inner_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯呼吸模式 Rate2",
+    "relation": "输入为",
+    "tail": "UpIPBLampBrthngCmd_1 = 0x2 (UpIPBLampBrthngCmd_1_2_Rate2)",
+    "sources": ["inner_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IM Vehicle Platform",
+    "relation": "包含子功能",
+    "tail": "Interior Lighting Sub System",
+    "sources": ["inner_lamp_ssts_0312"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Functional Parameters",
+    "relation": "前提条件",
+    "tail": "参数定义为 'NA'",
+    "sources": ["inner_lamp_ssts_0314"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Wake-up/Sleep Entry",
+    "relation": "触发条件",
+    "tail": "唤醒源为 NA",
+    "sources": ["inner_lamp_ssts_0315"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Notes",
+    "relation": "包含子功能",
+    "tail": "NA",
+    "sources": ["inner_lamp_ssts_0315"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Configuration Parameters",
+    "relation": "前提条件",
+    "tail": "配置项（Item）、描述（Description）、范围（Range）、分辨率（Factor）、默认值（Default）均需明确设置",
+    "sources": ["inner_lamp_ssts_0316"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Lamp Drive Request",
+    "relation": "输入为",
+    "tail": "LdSpcLampCtrlCmd",
+    "sources": ["inner_lamp_ssts_0317"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LdspcLamp_HSD",
+    "relation": "输出为",
+    "tail": "Interior Lamp Status",
+    "sources": ["inner_lamp_ssts_0317"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LdSpcLampCtrlCmd",
+    "relation": "依赖于",
+    "tail": "RZCU Controller",
+    "sources": ["inner_lamp_ssts_0317"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LdspcLamp_HSD",
+    "relation": "依赖于",
+    "tail": "RZCU Controller",
+    "sources": ["inner_lamp_ssts_0317"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Function Configuration",
+    "relation": "前提条件",
+    "tail": "参数范围（Range）有效",
+    "sources": ["inner_lamp_ssts_0318"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Function Configuration",
+    "relation": "前提条件",
+    "tail": "分辨率（Factor）满足要求",
+    "sources": ["inner_lamp_ssts_0318"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Function Configuration",
+    "relation": "前提条件",
+    "tail": "默认值（Default）设置正确",
+    "sources": ["inner_lamp_ssts_0318"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Parameter Range",
+    "relation": "前提条件",
+    "tail": "标定描述（Description）",
+    "sources": ["inner_lamp_ssts_0321"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Resolution Factor",
+    "relation": "前提条件",
+    "tail": "标定描述（Description）",
+    "sources": ["inner_lamp_ssts_0321"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Default Value",
+    "relation": "前提条件",
+    "tail": "标定描述（Description）",
+    "sources": ["inner_lamp_ssts_0321"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Enable",
+    "relation": "前提条件",
+    "tail": "供电电压正常（9V–16V）",
+    "sources": ["inner_lamp_ssts_0322", "inner_lamp_ssts_0407"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disable",
+    "relation": "前提条件",
+    "tail": "供电电压低压（<6V）",
+    "sources": ["inner_lamp_ssts_0322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disable",
+    "relation": "前提条件",
+    "tail": "供电电压欠压（6V–9V）",
+    "sources": ["inner_lamp_ssts_0322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disable",
+    "relation": "前提条件",
+    "tail": "供电电压过压（16V–18V）",
+    "sources": ["inner_lamp_ssts_0322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disable",
+    "relation": "前提条件",
+    "tail": "供电电压高压（>18V）",
+    "sources": ["inner_lamp_ssts_0322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Enable",
+    "relation": "输入为",
+    "tail": "供电电压正常（9V–16V）",
+    "sources": ["inner_lamp_ssts_0322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disable",
+    "relation": "输入为",
+    "tail": "供电电压低压（<6V）",
+    "sources": ["inner_lamp_ssts_0322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disable",
+    "relation": "输入为",
+    "tail": "供电电压欠压（6V–9V）",
+    "sources": ["inner_lamp_ssts_0322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disable",
+    "relation": "输入为",
+    "tail": "供电电压过压（16V–18V）",
+    "sources": ["inner_lamp_ssts_0322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disable",
+    "relation": "输入为",
+    "tail": "供电电压高压（>18V）",
+    "sources": ["inner_lamp_ssts_0322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehBacklightngLH CtrlCmd",
+    "relation": "输入为",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0323"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

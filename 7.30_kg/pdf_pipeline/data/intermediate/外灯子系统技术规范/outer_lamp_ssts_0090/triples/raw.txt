@@ -1,0 +1,44 @@
+```json
+[
+  {
+    "head": "远光灯开关短路到地故障被识别",
+    "relation": "触发条件",
+    "tail": "远光灯开关短路到地",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["远光灯开关短路到地"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统发送主光灯开关请求信号关闭",
+    "relation": "前提条件",
+    "tail": "配置字MainBeamLghtSwSOAEnPrm==0(Disable)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["MainBeamLightSwSOAEnPrm == 0 (Disable)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统持续发送主光灯开关请求信号为关闭状态",
+    "relation": "执行动作",
+    "tail": "1.【MainBeamLghtSwMdl】持续发送 MainBeamLghtSwReq=0x0(Off)至【MainBeamLghtCtrlMdl】,至少发送三帧",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["MainBeamLghtSwMdl", "MainBeamLghtSwReq", "MainBeamLghtCtrlMdl", "0x0 (Off)", "三帧"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统置位诊断故障代码B1077 11",
+    "relation": "执行动作",
+    "tail": "1.【MainBeamLghtSwMdl】持续发送 MainBeamLghtSwReq=0x0(Off)至【MainBeamLghtCtrlMdl】,至少发送三帧。并置位DTC B1077 11",
+    "triple_type": "故障响应",
+    "evidence_terms": ["DTC B1077 11", "B1077 11"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯控制逻辑退出",
+    "relation": "退出条件",
+    "tail": "远光灯开关非短路到地",
+    "triple_type": "状态保持条件",
+    "evidence_terms": ["远光灯开关非短路到地"],
+    "confidence_note": "high"
+  }
+]
+```

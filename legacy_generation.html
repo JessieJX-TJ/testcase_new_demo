@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Test Case Generation System - RAG Assistant</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link href="static/vendor/vis-network.min.css" rel="stylesheet" />
+    <script src="static/vendor/vis-network.min.js"></script>
+    <link rel="icon" href="static/img/im_logo.png">
+    <link rel="stylesheet" href="static/css/legacy-generation.css?v=20260915-legacy">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="brand-title">
+                <img class="brand-logo" src="static/img/im_logo.png" alt="IM" onerror="this.style.display='none'">
+                <span>Vehicle Test Case Workbench</span>
+            </h1>
+            <p class="subtitle">Vehicle Knowledge Graph & Test Cases</p>
+            <div class="tabs">
+                <button type="button" class="tab-btn" data-tab="kg">Knowledge Graph Build</button>
+                <button type="button" class="tab-btn active" data-tab="main">Test Case Generation</button>
+
+                <button type="button" class="tab-btn" data-tab="skills">Skills Platform</button>
+            </div>
+        </div>
+
+        <div id="panel-kg" class="tab-panel">
+            <div class="iframe-shell">
+                <div class="kg-workbench-header">
+                    <div class="kg-workbench-title">
+                        <strong>Knowledge Graph Build Workbench</strong>
+                    </div>
+                    <a class="kg-open-link" href="#" target="_top">Open Ontology Workbench</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel-main" class="tab-panel active">
+        <div class="input-section">
+            <div class="input-label">
+                <span>💬</span>
+                <span>Enter your test requirement</span>
+                <span style="margin-left:auto;font-size:0.75em;font-weight:600;color:#94a3b8;">Click tags to quickly compose a query</span>
+            </div>
+
+            <div class="source-switch" id="sourceSwitch">
+                <button type="button" class="source-card active" data-source="nl">
+                    <strong>Natural Language Requirement</strong>
+                    <span>Enter a test goal; generate cases with the knowledge graph and similar examples.</span>
+                </button>
+                <button type="button" class="source-card" data-source="sts">
+                    <strong>STS Document</strong>
+                    <span>Upload an STS PDF, parse sections, cluster into topics, then generate test cases.</span>
+                </button>
+            </div>
+
+            <div class="chips-section" id="chipsSection">
+                <div>
+                    <div class="chips-category-label">🔵 Function Modules</div>
+                    <div class="chips-row">
+                        <span class="chip chip-module" data-type="module" data-value="Bluetooth key unlock">Bluetooth Unlock</span>
+                        <span class="chip chip-module" data-type="module" data-value="NFC key unlock">NFC Unlock</span>
+                        <span class="chip chip-module" data-type="module" data-value="Digital Key">Digital Key</span>
+                        <span class="chip chip-module" data-type="module" data-value="Keyless Entry">Keyless Entry</span>
+                        <span class="chip chip-module" data-type="module" data-value="Door Lock">Door Lock</span>
+                        <span class="chip chip-module" data-type="module" data-value="Walk-away Lock">Walk-away Lock</span>
+                        <span class="chip chip-module" data-type="module" data-value="Power mode switch">Power Mode Switch</span>
+                        <span class="chip chip-module" data-type="module" data-value="Window Control">Window Control</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="chips-category-label">🧪 Test Types</div>
+                    <div class="chips-row">
+                        <span class="chip chip-type" data-type="testtype" data-value="Normal function verification">Normal Function</span>
+                        <span class="chip chip-type" data-type="testtype" data-value="Abnormal / failure scenarios">Abnormal Failure</span>
+                        <span class="chip chip-type" data-type="testtype" data-value="Boundary condition testing">Boundary Conditions</span>
+                        <span class="chip chip-type" data-type="testtype" data-value="Concurrent operation scenarios">Concurrent Operations</span>
+                        <span class="chip chip-type" data-type="testtype" data-value="System recovery testing">System Recovery</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="chips-category-label">📌 State Conditions</div>
+                    <div class="chips-row">
+                        <span class="chip chip-state" data-type="state" data-value="Power mode OFF">Power OFF</span>
+                        <span class="chip chip-state" data-type="state" data-value="Bluetooth not connected">Bluetooth Disconnected</span>
+                        <span class="chip chip-state" data-type="state" data-value="Vehicle is locked">Vehicle Locked</span>
+                        <span class="chip chip-state" data-type="state" data-value="Phone low battery">Low Battery</span>
+                        <span class="chip chip-state" data-type="state" data-value="Weak network signal">Weak Signal</span>
+                    </div>
+                </div>
+            </div>
+
+            <textarea id="userInput" rows="4" placeholder="Example: Write a test case for pressing the handle button when keyless entry has failed&#10;Or: Generate scenarios for Bluetooth key unlock failure&#10;Or click the tags above to quickly compose a query..."></textarea>
+
+            <div class="sts-inline-panel" id="stsInlinePanel">
+                <div class="sts-upload-row">
+                    <input id="stsPdfInput" type="file" accept="application/pdf">
+                    <button type="button" class="sts-mini-btn" id="stsUploadBtn">Upload PDF</button>
+                    <button type="button" class="sts-mini-btn" id="stsParseBtn" disabled>Parse Sections</button>
+                </div>
+                <div class="sts-url-row">
+                    <input id="stsPdfUrlInput" type="url" placeholder="Or enter a MinerU-accessible PDF URL, e.g. https://.../sts.pdf">
+                    <button type="button" class="sts-mini-btn" id="stsUseUrlBtn">Use URL</button>
+                </div>
+                <div class="sts-status-line" id="stsStatusLine">Please select an STS PDF document.</div>
+                <div class="sts-sections-box" id="stsSectionsBox"></div>
+            </div>
+
+            <div class="sts-detail-modal" id="stsDetailModal" aria-hidden="true">
+                <div class="sts-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="stsDetailTitle">
+                    <div class="sts-detail-header">
+                        <div>
+                            <div class="sts-detail-title" id="stsDetailTitle">Related Sections & Requirements</div>
+                            <div class="sts-topic-meta" id="stsDetailMeta"></div>
+                        </div>
+                        <button type="button" class="sts-detail-close" id="stsDetailClose" aria-label="Close">×</button>
+                    </div>
+                    <div class="sts-detail-body" id="stsDetailBody"></div>
+                </div>
+            </div>
+
+            <div class="input-actions">
+                <div class="submit-field">
+                    <button id="submitBtn">
+                        <span style="position: relative; z-index: 1;">🚀 Generate Test Cases Intelligently</span>
+                    </button>
+                </div>
+            </div>
+            <div class="loading" id="loading">
+                <span class="loading-spinner"></span>
+                <span class="loading-text">Retrieving similar cases and generating test cases, please wait...</span>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <div class="panel similar-cases-section" id="similarCasesSection" style="display:none;">
+                <div class="panel-header-row">
+                    <h2 style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">
+                        <span>📎</span>
+                        <span>Retrieved similar test cases (used as generation references)</span>
+                    </h2>
+                    <button type="button" class="panel-toggle" id="toggleSimilarBtn">Collapse</button>
+                </div>
+                <div class="similar-cases-grid" id="similarCasesGrid" style="margin-top: 18px;"></div>
+            </div>
+        </div>
+
+        <div class="results-layout">
+            <div class="panel">
+                <h2>
+                    <span>✅</span>
+                    <span>Generated Test Cases</span>
+                </h2>
+                <details class="thought-section" id="thoughtSection">
+                    <summary>Thought process (click to expand/collapse)</summary>
+                    <pre id="thoughtOutput" class="thought-log">Waiting for generation...</pre>
+                </details>
+                <div id="generatedPlaceholder" class="retrieved-case-card" style="border-left-color:#e2e8f0;">
+                    <div style="color:#94a3b8;font-size:0.92em;">No generation results yet</div>
+                </div>
+                <div id="generatedCaseList" class="generated-case-list"></div>
+                <div id="generatedCaseCard" class="retrieved-case-card" style="display:none; border-left-color:#111827;">
+                    <h4 id="genCaseTitle">Test Case (model-generated)</h4>
+                    <div class="pae-section" id="genPreBlock" style="display:none;">
+                        <div class="pae-label precondition">📌 Preconditions</div>
+                        <ul class="pae-items" id="genPreList"></ul>
+                    </div>
+                    <div class="pae-section" id="genActBlock" style="display:none;">
+                        <div class="pae-label action">⚙️ Actions</div>
+                        <ul class="pae-items" id="genActList"></ul>
+                    </div>
+                    <div class="pae-section" id="genExpBlock" style="display:none;">
+                        <div class="pae-label expected">✅ Expected Behavior</div>
+                        <ul class="pae-items" id="genExpList"></ul>
+                    </div>
+                    <div id="genRawText" style="font-size:0.88em; color:#334155; line-height:1.6; white-space:pre-wrap; display:none;"></div>
+                </div>
+
+                <!-- Post-generation Action Bar -->
+                <div class="action-bar" id="genActionBar">
+                    <button class="action-btn ab-regen" id="regenBtn">🔄 Regenerate</button>
+                    <button class="action-btn ab-copy" id="copyBtn">📋 Copy Case</button>
+                    <button class="action-btn ab-save" id="addToSessionBtn">📌 Add to History</button>
+                    <button class="action-btn ab-refine" id="refineToggleBtn">✏️ Refine Case</button>
+                    <button class="action-btn ab-auto" id="autoImproveBtn">🔧 Auto Optimize</button>
+                    <button class="action-btn ab-accept" id="acceptGeneratedBtn">Accept</button>
+                    <button class="action-btn ab-reject" id="rejectGeneratedBtn">Reject</button>
+                    <div class="ab-inline-wrap">
+                        <input type="text" class="ab-inline-input" id="abInlineInput" placeholder="Enter improvement notes to refine directly...">
+                        <button class="action-btn ab-improve" id="abImproveBtn">🚀 Apply Improvement</button>
+                    </div>
+                </div>
+                <div class="review-inline-panel" id="rejectReasonPanel">
+                    <label for="rejectReasonInput">Rejection Reason</label>
+                    <textarea id="rejectReasonInput" placeholder="Enter the rejection reason, e.g. incomplete preconditions, non-executable steps, non-verifiable expected results..."></textarea>
+                    <button type="button" class="action-btn ab-reject" id="saveRejectedBtn">Save to Failed Case Library</button>
+                </div>
+                <div class="review-status-line" id="reviewStatusLine"></div>
+
+                <!-- Auto-optimize Panel -->
+                <div class="auto-panel" id="autoPanel" style="display:none;">
+                    <div class="auto-panel-header">
+                        <span class="auto-panel-title">🔧 Auto Optimize</span>
+                        <div class="auto-cfg-row">
+                            <span>Target score</span>
+                            <input type="number" class="auto-cfg-inp" id="autoThreshold" value="95" min="50" max="95">
+                            <span>Max rounds</span>
+                            <input type="number" class="auto-cfg-inp" id="autoMaxIter" value="3" min="1" max="5">
+                        </div>
+                    </div>
+                    <div class="auto-timeline" id="autoTimeline"></div>
+                    <div class="auto-panel-footer" id="autoFooter" style="display:none;"></div>
+                </div>
+
+                <!-- Refine Panel -->
+                <div class="refine-section" id="refineSection">
+                    <div class="refine-label">✏️ Continue refining from the current result</div>
+                    <div class="refine-quick">
+                        <span class="refine-chip" data-val="Add boundary scenarios for network anomalies">➕ Add Abnormal Scenarios</span>
+                        <span class="refine-chip" data-val="Add test steps for concurrent operations">🔀 Add Concurrent Scenarios</span>
+                        <span class="refine-chip" data-val="Add more detailed precondition descriptions">📌 Enrich Preconditions</span>
+                        <span class="refine-chip" data-val="Simplify and clarify execution steps">✅ Simplify Steps</span>
+                        <span class="refine-chip" data-val="Add verification steps after system recovery">🔧 Add Recovery Checks</span>
+                    </div>
+                    <div class="refine-row">
+                        <input type="text" class="refine-input" id="refineInput" placeholder="Refine instruction, e.g.: add handling steps when Bluetooth disconnects...">
+                        <button class="refine-btn" id="refineSubmitBtn">Refine & Generate</button>
+                    </div>
+                </div>
+
+                <div class="evaluator-section">
+                    <div class="evaluator-row" id="evaluatorRow" style="display:none;">
+                        <button id="evaluateBtn" class="evaluator-btn">🧾 Evaluate Generation Result</button>
+                        <span id="evaluatorStatus" class="evaluator-status" style="display:none;">Evaluating...</span>
+                    </div>
+                    <div id="evaluatorResult" class="evaluator-result" style="display:none;">
+                        <div class="score-card">
+                            <div class="score-title">Overall Score</div>
+                            <div id="scoreValue" class="score-value">-</div>
+                        </div>
+                        <div class="issue-box">
+                            <div class="issue-title">Issues & Suggestions</div>
+                            <ul id="issueList" class="issue-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h2>
+                    <span>🔎</span>
+                    <span>Knowledge Graph Visualization</span>
+                </h2>
+                <div class="retrieved-case-card kg-card">
+                    <div id="network"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" id="retrievedCasesSection" style="display:none;">
+            <h2>
+                <span>📎</span>
+                <span>Retrieved Knowledge Graph Test Cases</span>
+            </h2>
+            <div class="retrieved-cases-grid" id="retrievedCasesGrid"></div>
+        </div>
+
+        <div class="panel" id="pdfEvidenceSection" style="display:none;">
+            <h2>
+                <span>📘</span>
+                <span>PDF Spec Knowledge Graph Evidence</span>
+            </h2>
+            <div class="pdf-evidence-grid" id="pdfEvidenceGrid"></div>
+        </div>
+
+        <!-- Session History -->
+        <div class="panel" id="sessionSection" style="display:none; margin-top:20px;">
+            <div class="panel-header-row">
+                <h2 style="margin-bottom:0;border-bottom:none;padding-bottom:0;">
+                    <span>🕘</span>
+                    <span>Session History</span>
+                </h2>
+                <button type="button" class="panel-toggle" id="toggleSessionBtn">Collapse</button>
+            </div>
+            <div class="session-list" id="sessionList"></div>
+        </div>
+        </div>
+
+        <div id="panel-skills" class="tab-panel">
+            <div class="iframe-shell">
+                <iframe class="batch-iframe" src="skills_platform.html" title="Skills Platform"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const panelKg = document.getElementById('panel-kg');
+        const panelMain = document.getElementById('panel-main');
+        const panelSkills = document.getElementById('panel-skills');
+
+        function setActiveTab(tabName) {
+            tabButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tabName));
+            panelKg.classList.toggle('active', tabName === 'kg');
+            panelMain.classList.toggle('active', tabName === 'main');
+            panelSkills.classList.toggle('active', tabName === 'skills');
+        }
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => setActiveTab(btn.dataset.tab));
+        });
+
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, ch => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            }[ch]));
+        }
+
+        function renderGeneratedCase(genText, preItems, actItems, expItems) {
+            const genCardEl = document.getElementById('generatedCaseCard');
+            const genPh = document.getElementById('generatedPlaceholder');
+            const listEl = document.getElementById('generatedCaseList');
+            if (listEl) {
+                listEl.style.display = 'none';
+                listEl.innerHTML = '';
+            }
+            const fill = (ul, items) => {
+                ul.innerHTML = '';
+                (items || []).forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    ul.appendChild(li);
+                });
+            };
+
+            fill(document.getElementById('genPreList'), preItems);
+            fill(document.getElementById('genActList'), actItems);
+            fill(document.getElementById('genExpList'), expItems);
+            document.getElementById('genPreBlock').style.display = preItems.length ? 'block' : 'none';
+            document.getElementById('genActBlock').style.display = actItems.length ? 'block' : 'none';
+            document.getElementById('genExpBlock').style.display = expItems.length ? 'block' : 'none';
+            const rawDiv = document.getElementById('genRawText');
+            rawDiv.textContent = genText || '';
+            rawDiv.style.display = (preItems.length || actItems.length || expItems.length) ? 'none' : 'block';
+            genPh.style.display = 'none';
+            genCardEl.style.display = 'block';
+            document.getElementById('genActionBar').style.display = 'flex';
+            const evalRow = document.getElementById('evaluatorRow');
+            if (evalRow) evalRow.style.display = 'flex';
+            resetGeneratedReviewState();
+        }
+
+        function renderGeneratedCaseList(cases) {
+            const listEl = document.getElementById('generatedCaseList');
+            const genCardEl = document.getElementById('generatedCaseCard');
+            const genPh = document.getElementById('generatedPlaceholder');
+            if (!listEl) return;
+            currentGeneratedCases = cases || [];
+            listEl.innerHTML = '';
+            (cases || []).forEach((caseItem, index) => {
+                const text = caseItem.testcase || '';
+                const parsed = parseGeneratedCase(text);
+                const details = document.createElement('details');
+                details.className = 'generated-case-item';
+                details.open = index === 0;
+                const title = (text.match(/(?:测试项|测试用例名称)\s*[：:]\s*([^\n]+)/) || [])[1] || `Test Case ${index + 1}`;
+                const preHtml = (parsed.pre || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
+                const actHtml = (parsed.act || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
+                const expHtml = (parsed.exp || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
+                details.innerHTML = `
+                    <summary>Test Case ${index + 1}: ${escapeHtml(title)}</summary>
+                    <div class="generated-case-body">
+                        ${preHtml ? `<div class="pae-section"><div class="pae-label precondition">📌 Preconditions</div><ul class="pae-items">${preHtml}</ul></div>` : ''}
+                        ${actHtml ? `<div class="pae-section"><div class="pae-label action">⚙️ Actions</div><ul class="pae-items">${actHtml}</ul></div>` : ''}
+                        ${expHtml ? `<div class="pae-section"><div class="pae-label expected">✅ Expected Behavior</div><ul class="pae-items">${expHtml}</ul></div>` : ''}
+                        ${(!preHtml && !actHtml && !expHtml) ? `<div style="font-size:0.88em;color:#334155;line-height:1.6;white-space:pre-wrap;">${escapeHtml(text)}</div>` : ''}
+                        <div class="generated-case-actions" data-case-index="${index}">
+                            <button type="button" class="action-btn sts-eval-btn">🧾 Evaluate</button>
+                            <button type="button" class="action-btn ab-accept sts-accept-btn">Accept</button>
+                            <button type="button" class="action-btn ab-reject sts-reject-btn">Reject</button>
+                            <input type="text" class="inline-refine" placeholder="Enter improvement notes to refine directly...">
+                            <button type="button" class="action-btn ab-improve sts-refine-btn">🚀 Apply Improvement</button>
+                            <div class="generated-case-status"></div>
+                        </div>
+                    </div>
+                `;
+                listEl.appendChild(details);
+            });
+            if (genPh) genPh.style.display = 'none';
+            if (genCardEl) genCardEl.style.display = 'none';
+            listEl.style.display = 'flex';
+            document.getElementById('genRawText').textContent = (cases || []).map(item => item.testcase || '').join('\n\n---\n\n');
+            document.getElementById('genActionBar').style.display = 'none';
+            const evalRow = document.getElementById('evaluatorRow');
+            if (evalRow) evalRow.style.display = 'none';
+            resetGeneratedReviewState();
+        }
+
+        function setCaseActionStatus(actionBar, message, isError = false) {
+            const status = actionBar.querySelector('.generated-case-status');
+            if (!status) return;
+            status.textContent = message;
+            status.classList.toggle('error', isError);
+            status.style.display = 'block';
+        }
+
+        function getCaseFromActionBar(actionBar) {
+            const index = Number(actionBar.dataset.caseIndex);
+            return currentGeneratedCases[index] || null;
+        }
+
+        async function evaluateGeneratedCaseItem(actionBar) {
+            const caseItem = getCaseFromActionBar(actionBar);
+            if (!caseItem || !caseItem.testcase) return;
+            setCaseActionStatus(actionBar, 'Evaluating...');
+            const response = await fetch('/api/evaluate-testcase', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ testcase: caseItem.testcase })
+            });
+            const result = await response.json();
+            if (!result.success) throw new Error(result.error || 'Evaluation failed');
+            const score = result.score ?? result.data?.score ?? '-';
+            const issues = result.issues || result.data?.issues || [];
+            setCaseActionStatus(actionBar, `Evaluation complete: ${score} pts${issues.length ? '; issues: ' + issues.join('; ') : ''}`);
+        }
+
+        async function archiveGeneratedCaseItem(actionBar, decision) {
+            const caseItem = getCaseFromActionBar(actionBar);
+            if (!caseItem || !caseItem.testcase) return;
+            let comment = '';
+            if (decision === 'rejected') {
+                comment = window.prompt('Enter rejection reason:') || '';
+                if (!comment.trim()) {
+                    setCaseActionStatus(actionBar, 'Please enter a rejection reason.', true);
+                    return;
+                }
+            }
+            const payload = {
+                decision,
+                comment,
+                case: {
+                    source: 'sts_main_generation',
+                    testcase: caseItem.testcase,
+                    preconditions: parseGeneratedCase(caseItem.testcase).pre || [],
+                    actions: parseGeneratedCase(caseItem.testcase).act || [],
+                    expected_behaviors: parseGeneratedCase(caseItem.testcase).exp || [],
+                    topic: caseItem.topic,
+                    unit_id: caseItem.unit_id,
+                    section_id: caseItem.section_id,
+                    generated_at: new Date().toISOString(),
+                }
+            };
+            const response = await fetch('/api/review/generated-case', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            const result = await response.json();
+            if (!result.success) throw new Error(result.error || 'Archive failed');
+            setCaseActionStatus(actionBar, decision === 'accepted' ? 'Accepted and saved to the correct case library.' : 'Rejected and saved to the failed case library.');
+        }
+
+        async function refineGeneratedCaseItem(actionBar) {
+            const caseItem = getCaseFromActionBar(actionBar);
+            const input = actionBar.querySelector('.inline-refine');
+            const instruction = (input?.value || '').trim();
+            if (!caseItem || !caseItem.testcase) return;
+            if (!instruction) {
+                input?.focus();
+                setCaseActionStatus(actionBar, 'Please enter improvement notes first.', true);
+                return;
+            }
+            setCaseActionStatus(actionBar, 'Refining...');
+            const response = await fetch('/refine-stream', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ current_testcase: caseItem.testcase, instruction, eval_issues: [] })
+            });
+            if (!response.ok || !response.body) throw new Error('Refine request failed');
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = '';
+            while (true) {
+                const {done, value} = await reader.read();
+                if (done) break;
+                buffer += decoder.decode(value, {stream: true});
+                const lines = buffer.split('\n');
+                buffer = lines.pop() || '';
+                for (const line of lines) {
+                    if (!line.trim()) continue;
+                    const event = JSON.parse(line);
+                    if (event.type === 'result') {
+                        const index = Number(actionBar.dataset.caseIndex);
+                        const refined = event.data?.testcase || '';
+                        if (refined) {
+                            currentGeneratedCases[index] = {...currentGeneratedCases[index], testcase: refined};
+                            renderGeneratedCaseList(currentGeneratedCases);
+                            setCaseActionStatus(document.querySelector(`.generated-case-actions[data-case-index="${index}"]`), 'Refine complete.');
+                        }
+                    } else if (event.type === 'error') {
+                        throw new Error(event.message || 'Refine failed');
+                    }
+                }
+            }
+        }
+
+        document.getElementById('generatedCaseList').addEventListener('click', async event => {
+            const actionBar = event.target.closest('.generated-case-actions');
+            if (!actionBar) return;
+            try {
+                if (event.target.closest('.sts-eval-btn')) await evaluateGeneratedCaseItem(actionBar);
+                else if (event.target.closest('.sts-accept-btn')) await archiveGeneratedCaseItem(actionBar, 'accepted');
+                else if (event.target.closest('.sts-reject-btn')) await archiveGeneratedCaseItem(actionBar, 'rejected');
+                else if (event.target.closest('.sts-refine-btn')) await refineGeneratedCaseItem(actionBar);
+            } catch (error) {
+                setCaseActionStatus(actionBar, error.message || 'Operation failed', true);
+            }
+        });
+
+        function renderKnowledgeGraph(graph) {
+            const rawNodes = (graph && graph.nodes) || [];
+            const rawEdges = (graph && graph.edges) || [];
+            const container = document.getElementById('network');
+            if (!container) return;
+            if (!rawNodes.length && !rawEdges.length) {
+                container.innerHTML = '<div style="height:100%;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:13px;">No graph visualization data available</div>';
+                return;
+            }
+            const styledNodes = rawNodes.map(node => {
+                const color = node.color || {};
+                const isTestCase = node.isTestCase;
+                const label = node.label || '';
+                return {
+                    id: node.id,
+                    label: label.length > 20 ? label.substring(0, 20) + '...' : label,
+                    title: label,
+                    shape: isTestCase ? 'box' : 'ellipse',
+                    font: { size: isTestCase ? 12 : 10, face: 'Microsoft YaHei, sans-serif', bold: isTestCase ? {size: 13} : undefined },
+                    margin: isTestCase ? 8 : 5,
+                    color: {
+                        background: color.background || '#e0f2fe',
+                        border: color.border || '#7dd3fc',
+                        highlight: { background: color.highlight || '#bae6fd', border: color.border || '#38bdf8' }
+                    },
+                    borderWidth: isTestCase ? 2 : 1,
+                };
+            });
+            const edgeColors = { '前提条件': '#0ea5e9', '执行动作': '#f59e0b', '预期行为': '#22c55e' };
+            const styledEdges = rawEdges.map(edge => ({
+                from: edge.from,
+                to: edge.to,
+                label: edge.label,
+                font: { size: 9, color: '#64748b', strokeWidth: 0 },
+                color: { color: edgeColors[edge.label] || '#cbd5e1', highlight: '#334155' },
+                arrows: { to: { scaleFactor: 0.5 } },
+                smooth: { type: 'cubicBezier', roundness: 0.35 },
+            }));
+            const nodes = new vis.DataSet(styledNodes);
+            const edges = new vis.DataSet(styledEdges);
+            new vis.Network(container, {nodes, edges}, {
+                physics: {
+                    stabilization: { iterations: 300, fit: true },
+                    barnesHut: {
+                        gravitationalConstant: -3500,
+                        springLength: 140,
+                        springConstant: 0.025,
+                        damping: 0.12,
+                        avoidOverlap: 0.7
+                    }
+                },
+                interaction: { hover: true, tooltipDelay: 150, zoomView: true, dragView: true },
+                layout: { improvedLayout: true }
+            });
+        }
+
+        function triplesToGraph(triples) {
+            const nodeMap = new Map();
+            const edges = [];
+            (triples || []).forEach((triple, index) => {
+                const head = triple.head || triple.from;
+                const relation = triple.relation || triple.label || '';
+                const tail = triple.tail || triple.to;
+                if (!head || !tail) return;
+                if (!nodeMap.has(head)) nodeMap.set(head, { id: head, label: head, isTestCase: /TestCase|测试用例/i.test(head) });
+                if (!nodeMap.has(tail)) nodeMap.set(tail, { id: tail, label: tail, isTestCase: /TestCase|测试用例/i.test(tail) });
+                edges.push({ from: head, to: tail, label: relation || `Relation ${index + 1}` });
+            });
+            return { nodes: Array.from(nodeMap.values()), edges };
+        }
+
+        function resetGeneratedReviewState() {
+            const reasonPanel = document.getElementById('rejectReasonPanel');
+            const reasonInput = document.getElementById('rejectReasonInput');
+            const statusLine = document.getElementById('reviewStatusLine');
+            if (reasonPanel) reasonPanel.classList.remove('active');
+            if (reasonInput) reasonInput.value = '';
+            if (statusLine) {
+                statusLine.textContent = '';
+                statusLine.classList.remove('error');
+                statusLine.style.display = 'none';
+            }
+        }
+
+        function setGeneratedReviewStatus(message, isError = false) {
+            const statusLine = document.getElementById('reviewStatusLine');
+            if (!statusLine) return;
+            statusLine.textContent = message;
+            statusLine.classList.toggle('error', isError);
+            statusLine.style.display = 'block';
+        }
+
+        function collectGeneratedCaseForReview() {
+            const pre = Array.from(document.querySelectorAll('#genPreList li')).map(li => li.textContent.trim()).filter(Boolean);
+            const act = Array.from(document.querySelectorAll('#genActList li')).map(li => li.textContent.trim()).filter(Boolean);
+            const exp = Array.from(document.querySelectorAll('#genExpList li')).map(li => li.textContent.trim()).filter(Boolean);
+            const rawText = (document.getElementById('genRawText').textContent || '').trim();
+            const userInput = (document.getElementById('userInput').value || '').trim();
+            if (!rawText && !pre.length && !act.length && !exp.length) {
+                throw new Error('There is no test case available to archive.');
+            }
+            return {
+                source: inputSourceMode === 'sts' ? 'sts_main_generation' : 'natural_language_generation',
+                user_input: userInput,
+                testcase: rawText,
+                preconditions: pre,
+                actions: act,
+                expected_behaviors: exp,
+                evaluation_issues: currentEvalIssues || [],
+                generated_at: new Date().toISOString(),
+            };
+        }
+
+        async function saveGeneratedCaseReview(decision, comment = '') {
+            const payload = {
+                decision,
+                comment,
+                case: collectGeneratedCaseForReview(),
+            };
+            const response = await fetch('/api/review/generated-case', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            const result = await response.json();
+            if (!result.success) {
+                throw new Error(result.error || 'Archive failed');
+            }
+            return result.data;
+        }
+
+        let inputSourceMode = 'nl';
+        let currentStsDocumentId = null;
+        let currentStsSections = [];
+        let currentStsClusters = [];
+        let currentGeneratedCases = [];
+
+        function setInputSourceMode(mode) {
+            inputSourceMode = mode;
+            document.querySelectorAll('.source-card').forEach(card => {
+                card.classList.toggle('active', card.dataset.source === mode);
+            });
+            document.getElementById('chipsSection').style.display = mode === 'nl' ? 'flex' : 'none';
+            document.getElementById('userInput').style.display = mode === 'nl' ? 'block' : 'none';
+            document.getElementById('stsInlinePanel').classList.toggle('active', mode === 'sts');
+            document.querySelector('.input-actions').classList.toggle('sts-mode', mode === 'sts');
+            document.querySelector('#submitBtn span').textContent = mode === 'sts'
+                ? '🚀 Generate Test Cases from STS Document'
+                : '🚀 Generate Test Cases Intelligently';
+        }
+
+        document.querySelectorAll('.source-card').forEach(card => {
+            card.addEventListener('click', () => setInputSourceMode(card.dataset.source));
+        });
+
+        document.getElementById('stsDetailClose').addEventListener('click', closeStsClusterDetail);
+        document.getElementById('stsDetailModal').addEventListener('click', event => {
+            if (event.target.id === 'stsDetailModal') closeStsClusterDetail();
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeStsClusterDetail();
+        });
+
+        function setStsStatus(message) {
+            document.getElementById('stsStatusLine').textContent = message;
+        }
+
+        function getStsUnitText(unit) {
+            return [
+                unit.preconditions ? `Precondition: ${unit.preconditions}` : '',
+                unit.triggers ? `Trigger: ${unit.triggers}` : '',
+                unit.actions ? `Action/Result: ${unit.actions}` : '',
+                unit.expected_results ? `Expected: ${unit.expected_results}` : '',
+                unit.hmi_display ? `HMI: ${unit.hmi_display}` : '',
+                unit.status_feedback ? `Feedback: ${unit.status_feedback}` : ''
+            ].filter(Boolean).join('; ') || unit.content_preview || unit.requirement_text || '';
+        }
+
+        function renderStsClusterDetailContent(cluster) {
+            const sections = cluster.sections || [];
+            const units = cluster.requirement_units || [];
+            const sectionHtml = sections.length ? sections.map(section => `
+                <div class="sts-section-row">
+                    <strong>${escapeHtml(section.section_id)} ${escapeHtml(section.title)}</strong>
+                    <div class="sts-topic-meta">Pages ${section.page_start || '-'} - ${section.page_end || '-'}</div>
+                    <div class="sts-section-preview">${escapeHtml(section.content_preview || (section.content || '').slice(0, 260))}</div>
+                </div>
+            `).join('') : '<div class="sts-topic-meta">No related sections</div>';
+            const unitHtml = units.length ? units.map(unit => `
+                <div class="sts-section-row">
+                    <strong>${escapeHtml(unit.unit_id || unit.section_id || '')}</strong>
+                    <div class="sts-section-preview">${escapeHtml(getStsUnitText(unit))}</div>
+                </div>
+            `).join('') : '<div class="sts-topic-meta">No requirement units</div>';
+            return `
+                <div class="sts-detail-section-title">Related Sections</div>
+                ${sectionHtml}
+                <div class="sts-detail-section-title">Requirement Units</div>
+                ${unitHtml}
+            `;
+        }
+
+        function openStsClusterDetail(clusterId) {
+            const cluster = currentStsClusters.find(item => item.cluster_id === clusterId);
+            if (!cluster) return;
+            document.getElementById('stsDetailTitle').textContent = cluster.topic || 'Related Sections & Requirements';
+            document.getElementById('stsDetailMeta').textContent = `Pages ${cluster.page_start || '-'} - ${cluster.page_end || '-'} · ${cluster.unit_count || 0} requirement units`;
+            document.getElementById('stsDetailBody').innerHTML = renderStsClusterDetailContent(cluster);
+            const modal = document.getElementById('stsDetailModal');
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeStsClusterDetail() {
+            const modal = document.getElementById('stsDetailModal');
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        function renderStsSections(sections, clusters = []) {
+            const box = document.getElementById('stsSectionsBox');
+            if (clusters.length) {
+                box.style.display = 'block';
+                box.innerHTML = `
+                    <div class="sts-topic-grid">
+                        ${clusters.map(cluster => {
+                            const units = cluster.requirement_units || [];
+                            return `
+                            <label class="sts-topic-card">
+                                <div class="sts-topic-head">
+                                    <input type="checkbox" class="sts-cluster-check" value="${escapeHtml(cluster.cluster_id)}">
+                                    <div>
+                                        <div class="sts-topic-title">${escapeHtml(cluster.topic || 'Untitled topic')}</div>
+                                        <div class="sts-topic-meta">Pages ${cluster.page_start || '-'} - ${cluster.page_end || '-'} · ${cluster.unit_count || 0} requirement units</div>
+                                        <div class="sts-section-preview">${escapeHtml(cluster.summary || '')}</div>
+                                    </div>
+                                    <span class="sts-topic-badge">Topic</span>
+                                </div>
+                                <div class="sts-keywords">
+                                    ${(cluster.keywords || []).slice(0, 8).map(keyword => `<span class="sts-keyword">${escapeHtml(keyword)}</span>`).join('')}
+                                </div>
+                                <button type="button" class="sts-detail-btn" data-cluster-id="${escapeHtml(cluster.cluster_id)}">View related sections & requirements</button>
+                            </label>
+                        `}).join('')}
+                    </div>
+                `;
+                box.querySelectorAll('.sts-detail-btn').forEach(btn => {
+                    btn.addEventListener('click', event => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        openStsClusterDetail(btn.dataset.clusterId);
+                    });
+                });
+                return;
+            }
+            if (!sections.length) {
+                box.style.display = 'block';
+                box.innerHTML = '<div style="padding:12px;color:#94a3b8;">No usable sections were parsed.</div>';
+                return;
+            }
+            box.style.display = 'block';
+            box.innerHTML = sections.map(section => `
+                <label class="sts-topic-card">
+                    <input type="checkbox" class="sts-section-check" value="${escapeHtml(section.section_id)}">
+                    <span>
+                        <strong>${escapeHtml(section.section_id)} ${escapeHtml(section.title)}</strong>
+                        <small>Pages ${section.page_start || '-'} - ${section.page_end || '-'} · ${escapeHtml((section.content || '').slice(0, 120))}</small>
+                    </span>
+                </label>
+            `).join('');
+        }
+
+        async function registerStsUrlDocument() {
+            const urlInput = document.getElementById('stsPdfUrlInput');
+            const url = (urlInput.value || '').trim();
+            if (!url) {
+                setStsStatus('Please upload an STS PDF or enter a MinerU-accessible PDF URL.');
+                return null;
+            }
+            setStsStatus('Registering PDF URL...');
+            const response = await fetch('/api/sts/register-url', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ url })
+            });
+            const result = await response.json();
+            if (!result.success) {
+                setStsStatus(`URL registration failed: ${result.error}`);
+                return null;
+            }
+            currentStsDocumentId = result.data.document_id;
+            currentStsSections = [];
+            currentStsClusters = [];
+            document.getElementById('stsSectionsBox').style.display = 'none';
+            document.getElementById('stsParseBtn').disabled = false;
+            setStsStatus('PDF URL registered. Click Parse Sections.');
+            return currentStsDocumentId;
+        }
+
+        function renderStsRagEvidence(caseItem) {
+            const similarCases = caseItem.similar_cases || [];
+            const similarSection = document.getElementById('similarCasesSection');
+            const similarGrid = document.getElementById('similarCasesGrid');
+            if (similarGrid && similarSection) {
+                similarGrid.innerHTML = '';
+                if (similarCases.length) {
+                    similarCases.forEach((testCase, index) => {
+                        const card = document.createElement('div');
+                        card.className = 'case-card';
+                        const similarityPercent = ((testCase.similarity_score || 0) * 100).toFixed(1);
+                        card.innerHTML = `
+                            <h3>Reference Case ${index + 1}: ${escapeHtml(testCase.caseName || 'Untitled')}</h3>
+                            ${testCase.logic ? `<div class="case-logic"><strong>Test Logic</strong><br>${escapeHtml(testCase.logic)}</div>` : ''}
+                            ${testCase.user_input ? `<div class="case-input"><strong>Original Requirement: </strong>${escapeHtml(testCase.user_input)}</div>` : ''}
+                            <span class="similarity-score">Similarity ${similarityPercent}%</span>
+                        `;
+                        similarGrid.appendChild(card);
+                    });
+                    similarSection.style.display = 'block';
+                } else {
+                    similarSection.style.display = 'none';
+                }
+            }
+
+            const retrievedCases = (caseItem.retrieved_testcases || []).filter(tc =>
+                (tc.preconditions || []).length
+                && (tc.actions || []).length
+                && (tc.expected_behaviors || []).length
+            );
+            const retrievedSection = document.getElementById('retrievedCasesSection');
+            const retrievedGrid = document.getElementById('retrievedCasesGrid');
+            if (!retrievedGrid || !retrievedSection) return;
+            retrievedGrid.innerHTML = '';
+            if (retrievedCases.length) {
+                retrievedCases.forEach((tc, index) => {
+                    const card = document.createElement('div');
+                    const color = tc.color || '#3b82f6';
+                    card.className = 'retrieved-case-card';
+                    card.style.borderLeftColor = color;
+                    const preHtml = (tc.preconditions || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
+                    const actHtml = (tc.actions || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
+                    const expHtml = (tc.expected_behaviors || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
+                    card.innerHTML = `
+                        <h4><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color};margin-right:6px;"></span>Test Case ${index + 1}: ${escapeHtml(tc.case_name || tc.caseName || '')}</h4>
+                        ${preHtml ? `<div class="pae-section"><div class="pae-label precondition">📌 Preconditions</div><ul class="pae-items">${preHtml}</ul></div>` : ''}
+                        ${actHtml ? `<div class="pae-section"><div class="pae-label action">⚙️ Actions</div><ul class="pae-items">${actHtml}</ul></div>` : ''}
+                        ${expHtml ? `<div class="pae-section"><div class="pae-label expected">✅ Expected Behavior</div><ul class="pae-items">${expHtml}</ul></div>` : ''}
+                    `;
+                    retrievedGrid.appendChild(card);
+                });
+                retrievedSection.style.display = 'block';
+            } else {
+                retrievedSection.style.display = 'none';
+            }
+        }
+
+        document.getElementById('stsUseUrlBtn').addEventListener('click', registerStsUrlDocument);
+        document.getElementById('stsPdfUrlInput').addEventListener('input', () => {
+            const hasUrl = Boolean(document.getElementById('stsPdfUrlInput').value.trim());
+            if (hasUrl && !currentStsDocumentId) {
+                document.getElementById('stsParseBtn').disabled = false;
+            }
+        });
+
+        document.getElementById('stsUploadBtn').addEventListener('click', async () => {
+            const fileInput = document.getElementById('stsPdfInput');
+            const file = fileInput.files[0];
+            if (!file) {
+                setStsStatus('Please choose an STS PDF file first.');
+                return;
+            }
+            const formData = new FormData();
+            formData.append('file', file);
+            setStsStatus('Uploading PDF...');
+            const response = await fetch('/api/sts/upload', { method: 'POST', body: formData });
+            const result = await response.json();
+            if (!result.success) {
+                setStsStatus(`Upload failed: ${result.error}`);
+                return;
+            }
+            currentStsDocumentId = result.data.document_id;
+            currentStsSections = [];
+            currentStsClusters = [];
+            document.getElementById('stsParseBtn').disabled = false;
+            document.getElementById('stsSectionsBox').style.display = 'none';
+            setStsStatus(`Upload complete: ${result.data.filename}. Please click Parse Sections.`);
+        });
+
+        document.getElementById('stsParseBtn').addEventListener('click', async () => {
+            if (!currentStsDocumentId && document.getElementById('stsPdfUrlInput').value.trim()) {
+                const registeredId = await registerStsUrlDocument();
+                if (!registeredId) {
+                    return;
+                }
+            }
+            if (!currentStsDocumentId) {
+                setStsStatus('Please upload an STS PDF first.');
+                return;
+            }
+            setStsStatus('Parsing PDF, extracting requirement units, and clustering topics...');
+            const response = await fetch(`/api/sts/parse/${currentStsDocumentId}`, { method: 'POST' });
+            const result = await response.json();
+            if (!result.success) {
+                setStsStatus(`Parse failed: ${result.error}`);
+                return;
+            }
+            currentStsSections = result.data.sections || [];
+            currentStsClusters = result.data.topic_clusters || [];
+            renderStsSections(currentStsSections, currentStsClusters);
+            const unitCount = (result.data.requirement_units || []).length;
+            setStsStatus(`Parse complete: ${currentStsSections.length} sections, ${unitCount} requirement units, clustered into ${currentStsClusters.length} topics. Select topics to generate test cases.`);
+        });
+
+        async function triggerStsGenerationFromMainCard() {
+            if (!currentStsDocumentId) {
+                setStsStatus('Please upload and parse an STS PDF first.');
+                return;
+            }
+            const clusterIds = Array.from(document.querySelectorAll('.sts-cluster-check:checked')).map(item => item.value);
+            const sectionIds = Array.from(document.querySelectorAll('.sts-section-check:checked')).map(item => item.value);
+            if (!clusterIds.length && !sectionIds.length) {
+                setStsStatus('Please select at least one topic or section.');
+                return;
+            }
+
+            const loading = document.getElementById('loading');
+            const submitBtn = document.getElementById('submitBtn');
+            const thoughtOutput = document.getElementById('thoughtOutput');
+            loading.classList.add('active');
+            submitBtn.disabled = true;
+            thoughtOutput.textContent = `Generating test cases from STS ${clusterIds.length ? 'topics' : 'sections'} — selected ${clusterIds.length || sectionIds.length} items\n`;
+            document.getElementById('thoughtSection').setAttribute('open', '');
+            setStsStatus('Generating test cases from requirement units in the selected STS topics...');
+
+            try {
+                const response = await fetch(`/api/sts/generate-cases/${currentStsDocumentId}`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        cluster_ids: clusterIds,
+                        section_ids: clusterIds.length ? [] : sectionIds,
+                        max_units: 3,
+                        max_sections: 3,
+                        use_rag: true,
+                        testcase_count: 2,
+                        model: 'qwen-plus'
+                    })
+                });
+                if (!response.ok) {
+                    let message = `Service returned ${response.status}`;
+                    try {
+                        const payload = await response.json();
+                        message = payload.error || message;
+                    } catch (_) {}
+                    throw new Error(message);
+                }
+                const result = await response.json();
+                if (!result.success) {
+                    throw new Error(result.error || 'Generation failed');
+                }
+                const cases = result.data.generated_cases || [];
+                setStsStatus(`Generation complete: ${cases.length} cases entered the pending review library.`);
+                thoughtOutput.textContent += `Generation complete: ${cases.length} cases entered the pending review library.\n`;
+                if (cases.length) {
+                    const firstGeneratedCase = cases.find(item => (item.rag_triples || []).length) || cases[0];
+                    renderGeneratedCaseList(cases);
+                    renderStsRagEvidence(firstGeneratedCase);
+                    renderKnowledgeGraph(triplesToGraph(firstGeneratedCase.rag_triples || []));
+                    document.getElementById('generatedCaseList').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } catch (error) {
+                const message = error instanceof TypeError && error.message === 'Failed to fetch'
+                    ? 'Request incomplete—RAG retrieval or model generation may have timed out, or the backend interrupted. Reduce selected topics and retry.'
+                    : error.message;
+                setStsStatus(`Generation failed: ${message}`);
+                alert(`STS generation failed: ${message}`);
+            } finally {
+                loading.classList.remove('active');
+                submitBtn.disabled = false;
+            }
+        }
+        document.getElementById('submitBtn').onclick = function() {
+            if (inputSourceMode === 'sts') {
+                triggerStsGenerationFromMainCard();
+                return;
+            }
+            const userInput = document.getElementById('userInput').value;
+            const testcaseCount = 1;
+            const thoughtOutput = document.getElementById('thoughtOutput');
+            
+            if (!userInput.trim()) {
+                alert('Please enter a test requirement!');
+                return;
+            }
+
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('submitBtn').disabled = true;
+            thoughtOutput.textContent = '';
+            // Clear generation cards
+            const genCard = document.getElementById('generatedCaseCard');
+            genCard.style.display = 'none';
+            const genList = document.getElementById('generatedCaseList');
+            if (genList) { genList.style.display = 'none'; genList.innerHTML = ''; }
+            const genPh = document.getElementById('generatedPlaceholder');
+            if (genPh) genPh.style.display = 'none';
+            document.getElementById('genPreList').innerHTML = '';
+            document.getElementById('genActList').innerHTML = '';
+            document.getElementById('genExpList').innerHTML = '';
+            document.getElementById('genRawText').textContent = '';
+            document.getElementById('similarCasesSection').style.display = 'none';
+            document.getElementById('retrievedCasesSection').style.display = 'none';
+            const pdfEvidenceSection = document.getElementById('pdfEvidenceSection');
+            const pdfEvidenceGrid = document.getElementById('pdfEvidenceGrid');
+            if (pdfEvidenceSection) pdfEvidenceSection.style.display = 'none';
+            if (pdfEvidenceGrid) pdfEvidenceGrid.innerHTML = '';
+            resetGeneratedReviewState();
+            document.getElementById('thoughtSection').setAttribute('open', '');
+            const evalRow = document.getElementById('evaluatorRow');
+            if (evalRow) evalRow.style.display = 'none';
+            const abEl = document.getElementById('genActionBar');
+            if (abEl) abEl.style.display = 'none';
+            const rsEl = document.getElementById('refineSection');
+            if (rsEl) rsEl.style.display = 'none';
+
+            fetch('/generate-stream', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ user_input: userInput, testcase_count: testcaseCount })
+            })
+            .then(async response => {
+                if (!response.ok || !response.body) {
+                    throw new Error('Generation API response error');
+                }
+
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder('utf-8');
+                let buffer = '';
+
+                const appendThought = (line) => {
+                    thoughtOutput.textContent += (thoughtOutput.textContent ? '\n' : '') + line;
+                    thoughtOutput.scrollTop = thoughtOutput.scrollHeight;
+                };
+
+                // splitThinkAndAnswer & parseGeneratedCase defined in outer scope below
+
+                // ---
+                // (using outer-scope parseGeneratedCase)
+                void 0;
+
+                // ---
+                function parseGeneratedCase_unused(genText) {
+                    const text = String(genText || '')
+                        .replace(/\r\n?/g, '\n')
+                        .replace(/[锛?]/g, ':')
+                        .trim();
+
+                    const headerUnion = '(?:鍓嶆彁鏉′欢|鍓嶇疆鏉′欢|鍓嶆彁|鍏堝喅鏉′欢|Prerequisite|Preconditions|鎵ц鍔ㄤ綔|鎿嶄綔姝ラ|娴嬭瘯姝ラ|鎵ц姝ラ|姝ラ|Actions|棰勬湡琛屼负|棰勬湡缁撴灉|鏈熸湜缁撴灉|鏈熸湜|Expected)';
+                    const headerRe = new RegExp('^\\s*' + headerUnion + '\\s*:\\s*', 'mi');
+
+                    const lines = text.split('\n');
+                    let indices = []; // {idx, type, lineStart, contentStart}
+                    for (let i = 0; i < lines.length; i++) {
+                        const m = lines[i].match(new RegExp('^\\s*(' + headerUnion + ')\\s*:\\s*', 'i'));
+                        if (m) {
+                            const label = m[1];
+                            let type = '';
+                            if (/(前提条件|前置条件|前提|先决条件|Prerequisite|Preconditions)/i.test(label)) type = 'pre';
+                            else if (/(鎵ц鍔ㄤ綔|鎿嶄綔姝ラ|娴嬭瘯姝ラ|鎵ц姝ラ|姝ラ|Actions)/i.test(label)) type = 'act';
+                            else if (/(预期行为|预期结果|期望结果|期望|Expected)/i.test(label)) type = 'exp';
+                            indices.push({ idx: i, type, offset: lines[i].indexOf(m[0]) + m[0].length });
+                        }
+                    }
+
+                    // ---
+                    let pre = [], act = [], exp = [];
+                    function collectItems(fromLine, toLine, fromOffset) {
+                        const segment = lines.slice(fromLine, toLine);
+                        if (segment.length > 0) {
+                            // ---
+                            segment[0] = segment[0].slice(fromOffset);
+                        }
+                        const raw = segment.join('\n').trim();
+                        if (!raw) return [];
+                        return raw
+                            .split(/\n+/)
+                            .map(s => s.replace(/^\s*[-鈥d涓€浜屼笁鍥涗簲鍏竷鍏節鍗乚+[\.|銆乗)]?\s*/, '').trim())
+                            .filter(Boolean);
+                    }
+
+                    if (indices.length > 0) {
+                        for (let i = 0; i < indices.length; i++) {
+                            const cur = indices[i];
+                            const next = indices[i + 1];
+                            const items = collectItems(cur.idx, next ? next.idx : lines.length, cur.offset);
+                            if (cur.type === 'pre') pre = items;
+                            if (cur.type === 'act') act = items;
+                            if (cur.type === 'exp') exp = items;
+                        }
+                    }
+
+                    if ((!act.length || !exp.length) && text) {
+                        const tryAct = text.split(/\n/).filter(s => /鎵ц|鎿嶄綔|姝ラ/.test(s));
+                        const tryExp = text.split(/\n/).filter(s => /预期|期望|Expected/.test(s));
+                        if (!act.length && tryAct.length) act = tryAct.map(s => s.replace(/^\s*[-鈥d\.\)]+\s*/, '').trim()).filter(Boolean);
+                        if (!exp.length && tryExp.length) exp = tryExp.map(s => s.replace(/^\s*[-鈥d\.\)]+\s*/, '').trim()).filter(Boolean);
+                    }
+
+	                    return { pre, act, exp };
+	                }
+
+	                const renderPdfEvidence = (pdfEvidence) => {
+	                    const pdfSection = document.getElementById('pdfEvidenceSection');
+	                    const pdfGrid = document.getElementById('pdfEvidenceGrid');
+	                    if (!pdfSection || !pdfGrid) return;
+	                    pdfGrid.innerHTML = '';
+	                    const items = pdfEvidence || [];
+	                    if (!items.length) {
+	                        pdfSection.style.display = 'none';
+	                        return;
+	                    }
+	                    items.forEach((item, index) => {
+	                        const card = document.createElement('div');
+	                        card.className = 'pdf-evidence-card';
+	                        const sources = (item.sources || []).join(', ');
+	                        const score = Number(item.score || 0).toFixed(2);
+	                        card.innerHTML = `
+	                            <div class="pdf-evidence-meta">
+	                                <span class="pdf-evidence-chip">Evidence ${index + 1}</span>
+	                                <span class="pdf-evidence-chip">${escapeHtml(item.doc_name || 'PDF document')}</span>
+	                                <span class="pdf-evidence-chip">score ${escapeHtml(score)}</span>
+	                            </div>
+	                            <div class="pdf-evidence-triple">
+	                                (${escapeHtml(item.head || '')}, ${escapeHtml(item.relation || '')}, ${escapeHtml(item.tail || '')})
+	                            </div>
+	                            ${sources ? `<div class="pdf-evidence-source">source: ${escapeHtml(sources)}</div>` : ''}
+	                        `;
+	                        pdfGrid.appendChild(card);
+	                    });
+	                    pdfSection.style.display = 'block';
+	                };
+
+	                const renderFinal = (data) => {
+                    // uses outer-scope splitThinkAndAnswer & parseGeneratedCase
+                    if (data.similar_cases && data.similar_cases.length > 0) {
+                        const casesGrid = document.getElementById('similarCasesGrid');
+                        casesGrid.innerHTML = '';
+                        data.similar_cases.forEach((testCase, index) => {
+                            const caseCard = document.createElement('div');
+                            caseCard.className = 'case-card';
+                            const similarityPercent = ((testCase.similarity_score || 0) * 100).toFixed(1);
+                            caseCard.innerHTML = `
+                                <h3>Reference Case ${index + 1}: ${escapeHtml(testCase.caseName || 'Untitled')}</h3>
+                                ${testCase.logic ? `<div class="case-logic"><strong>Test Logic</strong><br>${escapeHtml(testCase.logic)}</div>` : ''}
+                                ${testCase.user_input ? `<div class="case-input"><strong>Original Requirement: </strong>${escapeHtml(testCase.user_input)}</div>` : ''}
+                                <span class="similarity-score">Similarity ${similarityPercent}%</span>
+                            `;
+                            casesGrid.appendChild(caseCard);
+                        });
+                        document.getElementById('similarCasesSection').style.display = 'block';
+                    } else {
+                        document.getElementById('similarCasesSection').style.display = 'none';
+                    }
+
+                    const splitResult = splitThinkAndAnswer(data.testcase || '');
+                    if (splitResult.thinkText) {
+                        appendThought('Model thought output: ');
+                        appendThought(splitResult.thinkText);
+                    }
+                    const genText = splitResult.answerText || '';
+                    const parsed = parseGeneratedCase(genText);
+                    const preItems = parsed.pre || [];
+                    const actItems = parsed.act || [];
+                    const expItems = parsed.exp || [];
+                    // clear stored eval issues since result is fresh
+                    currentEvalIssues = [];
+
+                    const genCardEl = document.getElementById('generatedCaseCard');
+                    const preUl = document.getElementById('genPreList');
+                    const actUl = document.getElementById('genActList');
+                    const expUl = document.getElementById('genExpList');
+                    const rawDiv = document.getElementById('genRawText');
+
+                    const fill = (ul, items) => { ul.innerHTML = items.map(x => `<li>${x}</li>`).join(''); };
+                    if (preItems.length) { fill(preUl, preItems); document.getElementById('genPreBlock').style.display = 'block'; } else { document.getElementById('genPreBlock').style.display = 'none'; }
+                    if (actItems.length) { fill(actUl, actItems); document.getElementById('genActBlock').style.display = 'block'; } else { document.getElementById('genActBlock').style.display = 'none'; }
+                    if (expItems.length) { fill(expUl, expItems); document.getElementById('genExpBlock').style.display = 'block'; } else { document.getElementById('genExpBlock').style.display = 'none'; }
+
+                    // Keep original text for the evaluation API
+                    rawDiv.textContent = genText;
+                    if (!preItems.length && !actItems.length && !expItems.length) {
+                        rawDiv.style.display = 'block';
+                    } else {
+                        rawDiv.style.display = 'none';
+                    }
+                    // Hide empty state; show real cards
+                    const genPh2 = document.getElementById('generatedPlaceholder');
+                    if (genPh2) genPh2.style.display = 'none';
+                    genCardEl.style.display = 'block';
+                    // Show evaluate button and action bar
+                    if (evalRow) evalRow.style.display = 'flex';
+                    const actionBarEl = document.getElementById('genActionBar');
+                    if (actionBarEl) actionBarEl.style.display = 'flex';
+                    // ---
+                    if (typeof addToSession === 'function') {
+                        addToSession(
+                            document.getElementById('userInput').value.trim(),
+                            preItems, actItems, expItems, genText
+                        );
+                    }
+                    resetGeneratedReviewState();
+                    genCardEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                    // Render retrieved KG test case cards
+                    const rtcGrid = document.getElementById('retrievedCasesGrid');
+                    const rtcSection = document.getElementById('retrievedCasesSection');
+                    if (!rtcGrid || !rtcSection) return;
+                    rtcGrid.innerHTML = '';
+                    const rtcList = data.retrieved_testcases || [];
+                    if (rtcList.length > 0) {
+                        rtcList.forEach((tc, i) => {
+                            const card = document.createElement('div');
+                            card.className = 'retrieved-case-card';
+                            card.style.borderLeftColor = tc.color || '#3b82f6';
+                            const preHtml = (tc.preconditions || []).map(p => `<li>${p}</li>`).join('');
+                            const actHtml = (tc.actions || []).map(a => `<li>${a}</li>`).join('');
+                            const expHtml = (tc.expected_behaviors || []).map(e => `<li>${e}</li>`).join('');
+                            card.innerHTML = `
+                                <h4><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${tc.color};margin-right:6px;"></span>Test Case ${i + 1}: ${tc.case_name || ''}</h4>
+                                ${preHtml ? `<div class="pae-section"><div class="pae-label precondition">📌 Preconditions</div><ul class="pae-items">${preHtml}</ul></div>` : ''}
+                                ${actHtml ? `<div class="pae-section"><div class="pae-label action">⚙️ Actions</div><ul class="pae-items">${actHtml}</ul></div>` : ''}
+                                ${expHtml ? `<div class="pae-section"><div class="pae-label expected">✅ Expected Behavior</div><ul class="pae-items">${expHtml}</ul></div>` : ''}
+                            `;
+                            rtcGrid.appendChild(card);
+                        });
+                        rtcSection.style.display = 'block';
+	                    } else {
+	                        rtcSection.style.display = 'none';
+	                    }
+
+		                    renderPdfEvidence(data.pdf_kg_evidence || []);
+
+	                    renderKnowledgeGraph(data.graph || {});
+	                };
+
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break;
+
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop() || '';
+
+                    lines.forEach(line => {
+                        const trimmed = line.trim();
+                        if (!trimmed) return;
+                        if (trimmed.startsWith('event:')) return;
+                        const event = JSON.parse(trimmed.startsWith('data:') ? trimmed.slice(5).trim() : trimmed);
+
+	                        if (event.type === 'thought' && event.message) {
+	                            appendThought(event.message);
+	                        } else if (event.type === 'pdf_evidence') {
+	                            appendThought(`PDF spec evidence shown: ${(event.data || []).length} triples`);
+	                            renderPdfEvidence(event.data || []);
+	                        } else if (event.type === 'result' && event.data) {
+                            appendThought('Generation complete, rendering results...');
+                            document.getElementById('thoughtSection').removeAttribute('open');
+                            renderFinal(event.data);
+                        } else if (event.type === 'error') {
+                            throw new Error(event.message || 'Generation failed');
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                alert('Generation failed: ' + error.message);
+            })
+            .finally(() => {
+                document.getElementById('loading').classList.remove('active');
+                document.getElementById('submitBtn').disabled = false;
+            });
+        };
+
+        document.getElementById('evaluateBtn').onclick = function() {
+            // ---
+            let text = (document.getElementById('genRawText').textContent || '').trim();
+            if (!text) {
+                // ---
+                const pre = Array.from(document.querySelectorAll('#genPreList li')).map(li => li.textContent.trim());
+                const act = Array.from(document.querySelectorAll('#genActList li')).map(li => li.textContent.trim());
+                const exp = Array.from(document.querySelectorAll('#genExpList li')).map(li => li.textContent.trim());
+                let parts = [];
+                if (pre.length) {
+                    parts.push('Preconditions:\n' + pre.map(x => '- ' + x).join('\n'));
+                }
+                if (act.length) {
+                    parts.push('Actions:\n' + act.map(x => '- ' + x).join('\n'));
+                }
+                if (exp.length) {
+                    parts.push('Expected Behavior:\n' + exp.map(x => '- ' + x).join('\n'));
+                }
+                text = parts.join('\n\n');
+            }
+            if (!text.trim()) {
+                alert('Please generate a test case before evaluation.');
+                return;
+            }
+
+            const statusEl = document.getElementById('evaluatorStatus');
+            const resultEl = document.getElementById('evaluatorResult');
+            const containerEl = document.getElementById('evaluatorResult');
+
+            statusEl.style.display = 'inline';
+            resultEl.style.display = 'none';
+
+            fetch('/api/evaluate-testcase', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ testcase: text })
+            })
+            .then(r => r.json())
+            .then(data => {
+                statusEl.style.display = 'none';
+                if (!data.success) {
+                    alert(data.error || 'Evaluation failed');
+                    return;
+                }
+
+                document.getElementById('scoreValue').textContent = String(data.score ?? '-');
+                const ul = document.getElementById('issueList');
+                ul.innerHTML = '';
+                (data.issues || []).forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    ul.appendChild(li);
+                });
+
+                if (!data.issues || data.issues.length === 0) {
+                    const li = document.createElement('li');
+                    li.textContent = 'No obvious format issues found. Ready for manual review.';
+                    ul.appendChild(li);
+                }
+
+                containerEl.style.display = 'grid';
+                resultEl.style.display = 'grid';
+                currentEvalIssues = data.issues || [];
+            })
+            .catch(err => {
+                statusEl.style.display = 'none';
+                alert('Evaluation failed: ' + err.message);
+            });
+        };
+
+        (function initSimilarCasesToggle() {
+            const section = document.getElementById('similarCasesSection');
+            const grid = document.getElementById('similarCasesGrid');
+            const btn = document.getElementById('toggleSimilarBtn');
+            if (!section || !grid || !btn) return;
+
+            let collapsed = false;
+            const render = () => {
+                grid.style.display = collapsed ? 'none' : 'grid';
+                btn.textContent = collapsed ? 'Expand' : 'Collapse';
+            };
+            render();
+            btn.addEventListener('click', () => {
+                collapsed = !collapsed;
+                render();
+            });
+        })();
+
+        // ---
+        // Quick Scenario Chips
+        // ---
+        const chipState = { module: null, testtype: null, state: null };
+
+        function composePromptFromChips() {
+            const m = chipState.module, t = chipState.testtype, s = chipState.state;
+            if (!m && !t && !s) return '';
+            let parts = [];
+            if (m) parts.push(`module ${m}`);
+            if (t) parts.push(`test type ${t}`);
+            if (s) parts.push(`vehicle state ${s}`);
+            return `Generate one test case for ${parts.join(', ')}`;
+        }
+
+        document.querySelectorAll('.chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                const type = chip.dataset.type;
+                const val = chip.dataset.value;
+                if (chipState[type] === val) {
+                    chipState[type] = null;
+                    chip.classList.remove('active');
+                } else {
+                    document.querySelectorAll(`.chip[data-type="${type}"]`).forEach(c => c.classList.remove('active'));
+                    chipState[type] = val;
+                    chip.classList.add('active');
+                }
+                const composed = composePromptFromChips();
+                if (composed) document.getElementById('userInput').value = composed;
+            });
+        });
+
+        // Reset chip highlights when user manually edits textarea
+        document.getElementById('userInput').addEventListener('input', () => {
+            const composed = composePromptFromChips();
+            if (composed && document.getElementById('userInput').value !== composed) {
+                Object.keys(chipState).forEach(k => chipState[k] = null);
+                document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+            }
+        });
+
+        // ---
+        // Shared text helpers (used by both generate & refine)
+        // ---
+        const splitThinkAndAnswer = (rawText) => {
+            const text = String(rawText || '');
+            const thinkRegex = /<think>([\s\S]*?)<\/think>/gi;
+            let thinkParts = [];
+            let match;
+            while ((match = thinkRegex.exec(text)) !== null) {
+                const part = (match[1] || '').trim();
+                if (part) thinkParts.push(part);
+            }
+            const answer = text.replace(thinkRegex, '').trim();
+            return { thinkText: thinkParts.join('\n\n'), answerText: answer };
+        };
+
+        function parseGeneratedCase(genText) {
+            const text = String(genText || '')
+                .replace(/\r\n?/g, '\n')
+                .replace(/[：]/g, ':')
+                .trim();
+            const headerUnion = '(?:前提条件|前置条件|前提|先决条件|Prerequisite|Preconditions|执行动作|操作步骤|测试步骤|执行步骤|步骤|Actions|预期行为|预期结果|期望结果|期望|Expected)';
+            const lines = text.split('\n');
+            let indices = [];
+            for (let i = 0; i < lines.length; i++) {
+                const m = lines[i].match(new RegExp('^\\s*(' + headerUnion + ')\\s*:\\s*', 'i'));
+                if (m) {
+                    const label = m[1];
+                    let type = '';
+                    if (/(前提条件|前置条件|前提|先决条件|Prerequisite|Preconditions)/i.test(label)) type = 'pre';
+                    else if (/(执行动作|操作步骤|测试步骤|执行步骤|步骤|Actions)/i.test(label)) type = 'act';
+                    else if (/(预期行为|预期结果|期望结果|期望|Expected)/i.test(label)) type = 'exp';
+                    indices.push({ idx: i, type, offset: lines[i].indexOf(m[0]) + m[0].length });
+                }
+            }
+            let pre = [], act = [], exp = [];
+            function collectItems(fromLine, toLine, fromOffset) {
+                const segment = lines.slice(fromLine, toLine);
+                if (segment.length > 0) segment[0] = segment[0].slice(fromOffset);
+                const raw = segment.join('\n').trim();
+                if (!raw) return [];
+                return raw.split(/\n+/).map(s => s.replace(/^\s*[-•\d一二三四五六七八九十]+[\.、)]?\s*/, '').trim()).filter(Boolean);
+            }
+            if (indices.length > 0) {
+                for (let i = 0; i < indices.length; i++) {
+                    const cur = indices[i], next = indices[i + 1];
+                    const items = collectItems(cur.idx, next ? next.idx : lines.length, cur.offset);
+                    if (cur.type === 'pre') pre = items;
+                    if (cur.type === 'act') act = items;
+                    if (cur.type === 'exp') exp = items;
+                }
+            }
+            if ((!act.length || !exp.length) && text) {
+                const tryAct = text.split(/\n/).filter(s => /执行|操作|步骤/.test(s));
+                const tryExp = text.split(/\n/).filter(s => /预期|期望|Expected/.test(s));
+                if (!act.length && tryAct.length) act = tryAct.map(s => s.replace(/^\s*[-•\d\.\)]+\s*/, '').trim()).filter(Boolean);
+                if (!exp.length && tryExp.length) exp = tryExp.map(s => s.replace(/^\s*[-•\d\.\)]+\s*/, '').trim()).filter(Boolean);
+            }
+            return { pre, act, exp };
+        }
+
+        // ---
+        // Refine: direct improvement without KG retrieval
+        // ---
+        let currentEvalIssues = [];
+
+        function triggerImprove(instruction) {
+            const rawCase = (document.getElementById('genRawText').textContent || '').trim();
+            if (!rawCase) { alert('No current test case. Please generate one first.'); return; }
+            const inst = (instruction || '').trim() || 'Improve this test case based on evaluation feedback.';
+
+            const loading = document.getElementById('loading');
+            const submitBtn = document.getElementById('submitBtn');
+            const thoughtOutput = document.getElementById('thoughtOutput');
+            loading.classList.add('active');
+            submitBtn.disabled = true;
+            thoughtOutput.textContent = '';
+            document.getElementById('thoughtSection').setAttribute('open', '');
+            document.getElementById('refineSection').style.display = 'none';
+            document.getElementById('evaluatorResult').style.display = 'none';
+
+            const appendThought = (line) => {
+                thoughtOutput.textContent += (thoughtOutput.textContent ? '\n' : '') + line;
+                thoughtOutput.scrollTop = thoughtOutput.scrollHeight;
+            };
+
+            fetch('/refine-stream', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ current_testcase: rawCase, instruction: inst, eval_issues: currentEvalIssues })
+            })
+            .then(async response => {
+                if (!response.ok || !response.body) throw new Error('Refine API response error');
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder('utf-8');
+                let buffer = '';
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break;
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop() || '';
+                    lines.forEach(line => {
+                        const trimmed = line.trim();
+                        if (!trimmed) return;
+                        if (trimmed.startsWith('event:')) return;
+                        const event = JSON.parse(trimmed.startsWith('data:') ? trimmed.slice(5).trim() : trimmed);
+                        if (event.type === 'thought' && event.message) {
+                            appendThought(event.message);
+                        } else if (event.type === 'result' && event.data) {
+                            appendThought('Refine complete, updating case...');
+                            document.getElementById('thoughtSection').removeAttribute('open');
+                            const sr = splitThinkAndAnswer(event.data.testcase || '');
+                            if (sr.thinkText) appendThought('Model thought output: ' + sr.thinkText);
+                            const genText = sr.answerText || '';
+                            const parsed = parseGeneratedCase(genText);
+                            const preItems = parsed.pre || [], actItems = parsed.act || [], expItems = parsed.exp || [];
+                            const fill = (ul, items) => { ul.innerHTML = items.map(x => `<li>${x}</li>`).join(''); };
+                            fill(document.getElementById('genPreList'), preItems);
+                            fill(document.getElementById('genActList'), actItems);
+                            fill(document.getElementById('genExpList'), expItems);
+                            document.getElementById('genPreBlock').style.display = preItems.length ? 'block' : 'none';
+                            document.getElementById('genActBlock').style.display = actItems.length ? 'block' : 'none';
+                            document.getElementById('genExpBlock').style.display = expItems.length ? 'block' : 'none';
+                            const rawDiv = document.getElementById('genRawText');
+                            rawDiv.textContent = genText;
+                            rawDiv.style.display = (!preItems.length && !actItems.length && !expItems.length) ? 'block' : 'none';
+                            currentEvalIssues = [];
+                            document.getElementById('abInlineInput').value = '';
+                            if (typeof addToSession === 'function') {
+                                addToSession(document.getElementById('userInput').value.trim(), preItems, actItems, expItems, genText);
+                            }
+                            resetGeneratedReviewState();
+                            document.getElementById('generatedCaseCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } else if (event.type === 'error') {
+                            throw new Error(event.message || 'Refine failed');
+                        }
+                    });
+                }
+            })
+            .catch(error => { alert('Refine failed: ' + error.message); })
+            .finally(() => {
+                loading.classList.remove('active');
+                submitBtn.disabled = false;
+            });
+        }
+
+        // ---
+        // Session History
+        // ---
+        const sessionHistory = [];
+        let sessionActiveIdx = -1;
+
+        function addToSession(query, preItems, actItems, expItems, rawText) {
+            const entry = {
+                num: sessionHistory.length + 1,
+                query: query || '(untitled)',
+                pre: preItems || [],
+                act: actItems || [],
+                exp: expItems || [],
+                rawText: rawText || '',
+                time: new Date().toLocaleTimeString('zh', { hour: '2-digit', minute: '2-digit' })
+            };
+            sessionHistory.unshift(entry);
+            sessionActiveIdx = 0;
+            renderSessionList();
+            document.getElementById('sessionSection').style.display = 'block';
+        }
+
+        function renderSessionList() {
+            const list = document.getElementById('sessionList');
+            list.innerHTML = '';
+            sessionHistory.forEach((entry, i) => {
+                const item = document.createElement('div');
+                item.className = 'session-item' + (i === sessionActiveIdx ? ' session-active' : '');
+                const preview = entry.act.length ? entry.act[0] : (entry.rawText.split('\n')[0] || '');
+                item.innerHTML = `
+                    <div class="session-badge">${entry.num}</div>
+                    <div class="session-body">
+                        <div class="session-query">${entry.query}</div>
+                        <div class="session-pae-preview">Action: ${preview.substring(0, 60)}${preview.length > 60 ? '...' : ''}</div>
+                        <div class="session-time">${entry.time}</div>
+                    </div>
+                    <button class="session-view-btn">View</button>
+                `;
+                const viewBtn = item.querySelector('.session-view-btn');
+                viewBtn.addEventListener('click', e => { e.stopPropagation(); restoreSession(i); });
+                item.addEventListener('click', () => restoreSession(i));
+                list.appendChild(item);
+            });
+        }
+
+        function restoreSession(i) {
+            sessionActiveIdx = i;
+            renderSessionList();
+            const entry = sessionHistory[i];
+            document.getElementById('userInput').value = entry.query;
+
+            const ph = document.getElementById('generatedPlaceholder');
+            if (ph) ph.style.display = 'none';
+            const genCard = document.getElementById('generatedCaseCard');
+            genCard.style.display = 'block';
+
+            const fillUl = (ulId, items) => {
+                document.getElementById(ulId).innerHTML = items.map(x => `<li>${x}</li>`).join('');
+            };
+            const showBlock = (blockId, hasItems) => {
+                document.getElementById(blockId).style.display = hasItems ? 'block' : 'none';
+            };
+            fillUl('genPreList', entry.pre); showBlock('genPreBlock', entry.pre.length > 0);
+            fillUl('genActList', entry.act); showBlock('genActBlock', entry.act.length > 0);
+            fillUl('genExpList', entry.exp); showBlock('genExpBlock', entry.exp.length > 0);
+
+            const rawDiv = document.getElementById('genRawText');
+            rawDiv.textContent = entry.rawText;
+            rawDiv.style.display = (!entry.pre.length && !entry.act.length && !entry.exp.length) ? 'block' : 'none';
+
+            document.getElementById('genActionBar').style.display = 'flex';
+            const evalRow = document.getElementById('evaluatorRow');
+            if (evalRow) evalRow.style.display = 'flex';
+            document.getElementById('refineSection').style.display = 'none';
+            document.getElementById('evaluatorResult').style.display = 'none';
+
+            genCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        (function initSessionToggle() {
+            const btn = document.getElementById('toggleSessionBtn');
+            const list = document.getElementById('sessionList');
+            if (!btn || !list) return;
+            let collapsed = false;
+            btn.addEventListener('click', () => {
+                collapsed = !collapsed;
+                list.style.display = collapsed ? 'none' : 'flex';
+                btn.textContent = collapsed ? 'Expand' : 'Collapse';
+            });
+        })();
+
+        // ---
+        // Post-generation Action Bar Handlers
+        // ---
+        document.getElementById('regenBtn').addEventListener('click', () => {
+            triggerImprove('Improve and regenerate this test case based on evaluation feedback.');
+        });
+
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            const text = document.getElementById('genRawText').textContent || '';
+            if (!text.trim()) { alert('Nothing to copy.'); return; }
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copyBtn');
+                const orig = btn.innerHTML;
+                btn.innerHTML = 'Copied';
+                setTimeout(() => { btn.innerHTML = orig; }, 1500);
+            }).catch(() => {
+                const ta = document.createElement('textarea');
+                ta.value = text; document.body.appendChild(ta);
+                ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+                const btn = document.getElementById('copyBtn');
+                const orig = btn.innerHTML;
+                btn.innerHTML = 'Copied';
+                setTimeout(() => { btn.innerHTML = orig; }, 1500);
+            });
+        });
+
+        document.getElementById('addToSessionBtn').addEventListener('click', () => {
+            const q = document.getElementById('userInput').value.trim();
+            const pre = Array.from(document.querySelectorAll('#genPreList li')).map(li => li.textContent.trim());
+            const act = Array.from(document.querySelectorAll('#genActList li')).map(li => li.textContent.trim());
+            const exp = Array.from(document.querySelectorAll('#genExpList li')).map(li => li.textContent.trim());
+            const raw = document.getElementById('genRawText').textContent || '';
+            if (!raw.trim() && !pre.length && !act.length) { alert('Nothing to add.'); return; }
+            addToSession(q, pre, act, exp, raw);
+            const btn = document.getElementById('addToSessionBtn');
+            const orig = btn.innerHTML;
+            btn.innerHTML = 'Added';
+            setTimeout(() => { btn.innerHTML = orig; }, 1500);
+        });
+
+        document.getElementById('acceptGeneratedBtn').addEventListener('click', async () => {
+            try {
+                await saveGeneratedCaseReview('accepted');
+                document.getElementById('rejectReasonPanel').classList.remove('active');
+                setGeneratedReviewStatus('Accepted and saved to the correct case library.');
+            } catch (error) {
+                setGeneratedReviewStatus(error.message, true);
+            }
+        });
+
+        document.getElementById('rejectGeneratedBtn').addEventListener('click', () => {
+            const panel = document.getElementById('rejectReasonPanel');
+            panel.classList.add('active');
+            document.getElementById('rejectReasonInput').focus();
+            setGeneratedReviewStatus('Enter a rejection reason before saving to the failed case library.', true);
+        });
+
+        document.getElementById('saveRejectedBtn').addEventListener('click', async () => {
+            const reason = document.getElementById('rejectReasonInput').value.trim();
+            if (!reason) {
+                setGeneratedReviewStatus('Please enter a rejection reason first.', true);
+                document.getElementById('rejectReasonInput').focus();
+                return;
+            }
+            try {
+                await saveGeneratedCaseReview('rejected', reason);
+                document.getElementById('rejectReasonPanel').classList.remove('active');
+                setGeneratedReviewStatus('Rejected and saved to the failed case library.');
+            } catch (error) {
+                setGeneratedReviewStatus(error.message, true);
+            }
+        });
+
+        document.getElementById('refineToggleBtn').addEventListener('click', () => {
+            const rs = document.getElementById('refineSection');
+            const visible = rs.style.display === 'block';
+            rs.style.display = visible ? 'none' : 'block';
+            if (!visible) document.getElementById('refineInput').focus();
+        });
+
+        document.getElementById('autoImproveBtn').addEventListener('click', () => {
+            const panel = document.getElementById('autoPanel');
+            const isVisible = panel.style.display !== 'none';
+            if (isVisible) {
+                panel.style.display = 'none';
+            } else {
+                panel.style.display = 'block';
+                triggerAutoImprove();
+            }
+        });
+
+        // ---
+        // Refine Chips + Submit
+        // ---
+        document.querySelectorAll('.refine-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                document.getElementById('refineInput').value = chip.dataset.val;
+                document.getElementById('refineInput').focus();
+            });
+        });
+
+        document.getElementById('refineSubmitBtn').addEventListener('click', triggerRefine);
+        document.getElementById('refineInput').addEventListener('keydown', e => {
+            if (e.key === 'Enter') triggerRefine();
+        });
+
+        function triggerRefine() {
+            const inst = document.getElementById('refineInput').value.trim();
+            if (!inst) { document.getElementById('refineInput').focus(); return; }
+            document.getElementById('refineSection').style.display = 'none';
+            triggerImprove(inst);
+        }
+
+        // ---
+        // ---
+        // ---
+        function triggerAutoImprove() {
+            const rawCase = (document.getElementById('genRawText').textContent || '').trim();
+            if (!rawCase) { alert('No current test case. Please generate one first.'); return; }
+
+            const threshold = parseInt(document.getElementById('autoThreshold').value) || 80;
+            const maxIter = parseInt(document.getElementById('autoMaxIter').value) || 3;
+
+            const loading = document.getElementById('loading');
+            const submitBtn = document.getElementById('submitBtn');
+            const thoughtOutput = document.getElementById('thoughtOutput');
+            const autoTimeline = document.getElementById('autoTimeline');
+            const autoFooter = document.getElementById('autoFooter');
+
+            loading.classList.add('active');
+            submitBtn.disabled = true;
+            thoughtOutput.textContent = '';
+            document.getElementById('thoughtSection').setAttribute('open', '');
+            document.getElementById('refineSection').style.display = 'none';
+            document.getElementById('evaluatorResult').style.display = 'none';
+            autoTimeline.innerHTML = '';
+            autoFooter.style.display = 'none';
+
+            const appendThought = (line) => {
+                thoughtOutput.textContent += (thoughtOutput.textContent ? '\n' : '') + line;
+                thoughtOutput.scrollTop = thoughtOutput.scrollHeight;
+            };
+
+            const iterEls = {};
+            const getIterEl = (n) => {
+                if (!iterEls[n]) {
+                    const el = document.createElement('div');
+                    el.className = 'auto-iter';
+                    el.innerHTML = `
+                        <div class="auto-iter-dot" id="autoDot${n}"></div>
+                        <div class="auto-iter-body">
+                            <div class="auto-iter-title" id="autoIterTitle${n}">Round ${n}</div>
+                            <div class="auto-iter-issues" id="autoIterIssues${n}"></div>
+                        </div>`;
+                    autoTimeline.appendChild(el);
+                    iterEls[n] = el;
+                }
+                return iterEls[n];
+            };
+
+            fetch('/auto-improve-stream', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ current_testcase: rawCase, threshold, max_iterations: maxIter })
+            })
+            .then(async response => {
+                if (!response.ok || !response.body) throw new Error('Auto-optimize API response error');
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder('utf-8');
+                let buffer = '';
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break;
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop() || '';
+                    lines.forEach(line => {
+                        const trimmed = line.trim();
+                        if (!trimmed) return;
+                        if (trimmed.startsWith('event:')) return;
+                        const ev = JSON.parse(trimmed.startsWith('data:') ? trimmed.slice(5).trim() : trimmed);
+
+                        if (ev.type === 'auto_start') {
+                            appendThought(`Hermes Agent started | target score: ${ev.threshold} | max rounds: ${ev.max_iterations}`);
+
+                        } else if (ev.type === 'auto_phase') {
+                            appendThought(ev.message);
+                            const n = ev.iteration;
+                            if (n) {
+                                getIterEl(n);
+                                const dot = document.getElementById(`autoDot${n}`);
+                                const title = document.getElementById(`autoIterTitle${n}`);
+                                if (dot) dot.className = `auto-iter-dot ${ev.phase}`;
+                                if (title) {
+                                    if (ev.phase === 'evaluating') title.innerHTML = `Round ${n} <span style="color:#f59e0b;font-size:0.85em;">Evaluating...</span>`;
+                                    if (ev.phase === 'refining')   title.innerHTML = `Round ${n} <span style="color:#6366f1;font-size:0.85em;">Refining...</span>`;
+                                    if (ev.phase === 'done')        title.innerHTML = `Round ${n} <span style="color:#22c55e;font-size:0.85em;">Target met</span>`;
+                                    if (ev.phase === 'max_reached') title.innerHTML = `Round ${n} <span style="color:#f97316;font-size:0.85em;">Max reached</span>`;
+                                }
+                            }
+
+                        } else if (ev.type === 'auto_eval') {
+                            const n = ev.iteration, score = ev.score, reached = ev.reached;
+                            appendThought(`Round ${n} score: ${score} pts ${reached ? 'Target met' : 'Needs improvement'}`);
+                            getIterEl(n);
+                            const dot   = document.getElementById(`autoDot${n}`);
+                            const title = document.getElementById(`autoIterTitle${n}`);
+                            const issEl = document.getElementById(`autoIterIssues${n}`);
+                            const cls = score >= threshold ? 'pass' : score >= 60 ? 'warn' : 'fail';
+                            if (dot)   dot.className = `auto-iter-dot ${reached ? 'pass' : 'fail'}`;
+                            if (title) title.innerHTML = `Round ${n} <span class="auto-score-pill ${cls}">${score} pts</span>${reached ? ' <span style="color:#22c55e">Target met</span>' : ''}`;
+                            if (issEl) {
+                                const shown = (ev.issues || []).slice(0, 3);
+                                issEl.innerHTML = shown.map(x => `- ${x}`).join('<br>') + ((ev.issues || []).length > 3 ? `<br>... ${ev.issues.length} suggestions total` : '');
+                            }
+
+                        } else if (ev.type === 'result' && ev.data) {
+                            appendThought('Auto-optimize complete, updating case...');
+                            document.getElementById('thoughtSection').removeAttribute('open');
+                            const sr = splitThinkAndAnswer(ev.data.testcase || '');
+                            const genText = sr.answerText || '';
+                            const parsed = parseGeneratedCase(genText);
+                            const pre = parsed.pre || [], act = parsed.act || [], exp = parsed.exp || [];
+                            const fill = (ul, items) => { ul.innerHTML = items.map(x => `<li>${x}</li>`).join(''); };
+                            fill(document.getElementById('genPreList'), pre);
+                            fill(document.getElementById('genActList'), act);
+                            fill(document.getElementById('genExpList'), exp);
+                            document.getElementById('genPreBlock').style.display = pre.length ? 'block' : 'none';
+                            document.getElementById('genActBlock').style.display = act.length ? 'block' : 'none';
+                            document.getElementById('genExpBlock').style.display = exp.length ? 'block' : 'none';
+                            const rawDiv = document.getElementById('genRawText');
+                            rawDiv.textContent = genText;
+                            rawDiv.style.display = (!pre.length && !act.length && !exp.length) ? 'block' : 'none';
+                            const finalScore = ev.data.final_score || 0;
+                            const fc = finalScore >= threshold ? 'pass' : 'warn';
+                            autoFooter.innerHTML = `Auto-optimize complete &nbsp;|&nbsp; Final score <span class="auto-score-pill ${fc}" style="margin:0 4px;">${finalScore} pts</span>`;
+                            autoFooter.style.display = 'flex';
+                            currentEvalIssues = [];
+                            if (typeof addToSession === 'function') {
+                                addToSession(document.getElementById('userInput').value.trim(), pre, act, exp, genText);
+                            }
+                            resetGeneratedReviewState();
+                            document.getElementById('generatedCaseCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                        } else if (ev.type === 'error') {
+                            throw new Error(ev.message || 'Auto-optimize failed');
+                        }
+                    });
+                }
+            })
+            .catch(err => {
+                appendThought('❌ Error: ' + err.message);
+                alert('Auto improve failed: ' + err.message);
+            })
+            .finally(() => {
+                loading.classList.remove('active');
+                submitBtn.disabled = false;
+            });
+        }
+
+        document.getElementById('abImproveBtn').addEventListener('click', () => {
+            const inst = document.getElementById('abInlineInput').value.trim();
+            triggerImprove(inst);
+        });
+
+        document.getElementById('abInlineInput').addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+                const inst = document.getElementById('abInlineInput').value.trim();
+                triggerImprove(inst);
+            }
+        });
+    </script>
+</body>
+</html>

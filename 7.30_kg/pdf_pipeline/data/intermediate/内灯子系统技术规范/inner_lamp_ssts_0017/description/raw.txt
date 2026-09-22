@@ -1,0 +1,106 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System - Door Rear Right Lamp Control Commands",
+  "row_semantics": "Each row represents a specific command or control signal for the rear right door ambient lamp, detailing its input requirements, associated controllers/modules, and functional behavior.",
+  "column_semantics": {
+    "Row Header": "Command/function name (e.g., DoorRR4LampFadeSpdCmd_1)",
+    "Input": "Signal source type (e.g., LIN bus)",
+    "LIN": "LIN communication interface",
+    "RHZCU": "Right Hand Zone Control Unit",
+    "DoorAmbtLampD_RR": "Door Ambient Lamp Driver for RR",
+    "RHZCU_LIN4": "RHZCU's LIN4 interface",
+    "内灯SSTS": "Interior Lighting Sub System Test Specification"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorRR4LampFadeSpdCmd_1",
+      "type": "function",
+      "description": "Controls the fade speed of the rear right door ambient lamp."
+    },
+    {
+      "name": "DoorRR5LampOnOff_1",
+      "type": "function",
+      "description": "Controls the on/off state of the rear right door ambient lamp."
+    },
+    {
+      "name": "DoorRR5LampColorCmd_1",
+      "type": "function",
+      "description": "Sets the color of the rear right door ambient lamp."
+    },
+    {
+      "name": "DoorRR5LampBrtnsCmd_1",
+      "type": "function",
+      "description": "Adjusts the brightness of the rear right door ambient lamp."
+    },
+    {
+      "name": "DoorRR5LampBrthngCmd_1",
+      "type": "function",
+      "description": "Controls the breathing rate of the rear right door ambient lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "LIN",
+      "description": "LIN bus communication interface for signal transmission."
+    },
+    {
+      "name": "RHZCU",
+      "description": "Right Hand Zone Control Unit responsible for processing commands."
+    },
+    {
+      "name": "DoorAmbtLampD_RR",
+      "description": "Driver module for controlling the rear right door ambient lamp."
+    },
+    {
+      "name": "RHZCU_LIN4",
+      "description": "LIN4 interface of the RHZCU for specific communication."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorAmbtLampE_RR",
+      "description": "Output signal to the actual lamp driver for execution."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Spd0",
+      "value": "2000ms",
+      "description": "Default fade speed time."
+    },
+    {
+      "name": "Spd1",
+      "value": "300ms",
+      "description": "Fast fade speed time."
+    },
+    {
+      "name": "Spd2",
+      "value": "100ms",
+      "description": "Reserved fast fade speed time (capability reserved)."
+    },
+    {
+      "name": "Spd3",
+      "value": "0",
+      "description": "Reserved fade speed time (not used)."
+    },
+    {
+      "name": "Brightness Range",
+      "value": "0x00-0xFF",
+      "description": "Brightness adjustment range in hexadecimal values."
+    },
+    {
+      "name": "Breathing Rate",
+      "value": "0x01-0x05",
+      "description": "Breathing rate adjustment range in hexadecimal values."
+    }
+  ],
+  "engineering_interpretation": "This table defines the command set for controlling the rear right door ambient lamp's fade speed, on/off state, color, brightness, and breathing rate. It specifies the required input signals, the involved controllers/modules, and the expected behavior for each command, including timing constraints for fade operations.",
+  "uncertain_points": [
+    "The exact implementation details of the 'DoorAmbtLampE_RR' output signal are not specified beyond its existence as an output."
+  ]
+}
+```

@@ -1,0 +1,91 @@
+{
+  "table_type": "parameter_table",
+  "topic": "子系统技术规范 - 内灯子系统 (Interior Lighting Sub System) 技术规格",
+  "row_semantics": "表格按版本号（V5.3 至 V6.4）列出每次更新的日期、负责人及具体修改内容，描述了内灯系统的功能参数和行为变化。",
+  "column_semantics": {
+    "Column 1": "版本号 (Version Number)",
+    "Column 2": "更新日期 (Update Date)",
+    "Column 3": "负责人 (Responsible Person)",
+    "Column 4": "详细修改内容 (Detailed Modification Content)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "内灯子系统 (Interior Lighting Sub System)",
+      "type": "subsystem",
+      "description": "负责车辆内部照明功能的子系统，包括阅读灯、氛围灯等。"
+    },
+    {
+      "name": "Z-ONE-3.0 平台-SSTS-IBD10",
+      "type": "platform",
+      "description": "智己汽车 Z-ONE-3.0 平台的特定子系统标识符。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "PWM 更改",
+      "description": "不同亮度等级对应的 PWM 值调整，如 level20 的 PWM 从默认值更改为 60%，level30 的 PWM 更改为 90%。"
+    },
+    {
+      "name": "点亮速度变更",
+      "description": "阅读灯点亮速度从 3 级瞬变调整为 4.5s。"
+    },
+    {
+      "name": "LIN 控制",
+      "description": "采用 LIN 总线控制顶棚氛围灯和照脚灯驱动。"
+    },
+    {
+      "name": "呼吸模式曲线",
+      "description": "新增 Rate13 和 Rate15 呼吸曲线，并对最高/最低亮度等待时间进行调整。"
+    },
+    {
+      "name": "AmbtLghtLHRollingCtr_1 信号处理",
+      "description": "当 AmbtLghtLHRollingCtr_1 信号不累加或跳变时，停止呼吸模式。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "阅读灯亮度等级",
+      "description": "不同等级下的 PWM 输出值。"
+    },
+    {
+      "name": "氛围灯状态",
+      "description": "包括单色光源、氛围灯、呼吸模式等状态。"
+    },
+    {
+      "name": "LIN 控制信号",
+      "description": "用于控制顶棚氛围灯和照脚灯的 LIN 信号。"
+    },
+    {
+      "name": "呼吸曲线",
+      "description": "提供 y=x2/100 形式的呼吸曲线。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "AmbtLghtLHRollingCtr_1 跳变故障",
+      "description": "当 AmbtLghtLHRollingCtr_1 信号出现跳变时，触发呼吸模式停止。"
+    },
+    {
+      "name": "阅读灯亮度请求无效",
+      "description": "当收到无效的亮度请求时，维持上一状态。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "点亮速度",
+      "description": "阅读灯点亮速度从 3 级瞬变调整为 4.5s。"
+    },
+    {
+      "name": "呼吸模式等待时间",
+      "description": "根据 Rate4 至 Rate9 的 holdonpercent 设置，调整最高/最低亮度等待时间。"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证内灯子系统在不同版本更新中的功能参数和行为是否符合设计规范，特别是阅读灯亮度、氛围灯模式、LIN 控制逻辑以及呼吸模式曲线的变化。",
+  "uncertain_points": [
+    "表格中未明确提及具体的硬件控制器型号或详细的信号定义。",
+    "部分参数的具体数值范围未给出，如 holdonpercent 的具体取值区间。",
+    "未明确说明各版本之间的兼容性要求或回滚策略。"
+  ]
+}

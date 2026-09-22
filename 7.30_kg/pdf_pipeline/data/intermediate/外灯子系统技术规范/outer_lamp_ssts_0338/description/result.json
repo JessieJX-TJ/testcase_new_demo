@@ -1,0 +1,75 @@
+{
+  "table_type": "fault_table",
+  "topic": "整车电子系统中右转向灯的诊断需求",
+  "row_semantics": "每行代表一个具体的故障诊断场景，针对右转向灯的不同异常状态进行定义。",
+  "column_semantics": {
+    "名称": "诊断场景的唯一标识符，通常包含功能模块和故障类型代码。",
+    "描述": "对诊断场景的具体描述，说明了触发该诊断的故障现象。",
+    "进入条件": "触发该诊断场景的检测条件，即系统需要满足什么条件才能进入该诊断。",
+    "退出条件": "退出该诊断场景的检测条件，即系统需要满足什么条件才能从该诊断中恢复或退出。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B104A 11",
+      "type": "function_name",
+      "description": "右转向灯输出短路到地的诊断场景"
+    },
+    {
+      "name": "B104A 12",
+      "type": "function_name",
+      "description": "右转向灯输出短路到电源的诊断场景"
+    },
+    {
+      "name": "B104A 13",
+      "type": "function_name",
+      "description": "右转向灯输出开路的诊断场景"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "检测到短路到地",
+      "description": "系统检测到右转向灯电路短路到地时触发诊断场景 B104A 11"
+    },
+    {
+      "name": "检测到短路到电源",
+      "description": "系统检测到右转向灯电路短路到电源时触发诊断场景 B104A 12"
+    },
+    {
+      "name": "检测到输出开路",
+      "description": "系统检测到右转向灯电路开路时触发诊断场景 B104A 13"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "检测到未短路到地",
+      "description": "当系统检测到不再短路到地时，退出诊断场景 B104A 11"
+    },
+    {
+      "name": "检测到未短路到电源",
+      "description": "当系统检测到不再短路到电源时，退出诊断场景 B104A 12"
+    },
+    {
+      "name": "检测到输出开路恢复",
+      "description": "当系统检测到右转向灯电路恢复正常（不再开路）时，退出诊断场景 B104A 13"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "短路到地",
+      "description": "右转向灯电路发生短路并连接到车身接地的情况"
+    },
+    {
+      "name": "短路到电源",
+      "description": "右转向灯电路发生短路并连接到电源正极的情况"
+    },
+    {
+      "name": "开路",
+      "description": "右转向灯电路断开，无法正常导通的情况"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证整车电子系统中右转向灯在不同电气故障状态下的诊断逻辑，确保系统能够正确检测并响应短路到地、短路到电源以及开路等故障，并在故障排除后恢复正常工作。",
+  "uncertain_points": []
+}

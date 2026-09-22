@@ -1,0 +1,137 @@
+{
+  "table_type": "logic_table",
+  "topic": "转向灯控制逻辑",
+  "row_semantics": "描述了在特定前置条件下，触发动作和执行动作的详细步骤，用于规范转向灯的行为。",
+  "column_semantics": {
+    "0": "场景描述、前置条件、触发动作、执行动作的分类标题",
+    "1": "对应分类的具体内容描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "转向灯开关控制模块 LHZCU",
+      "type": "controller",
+      "description": "负责接收指令并控制转向灯点亮或熄灭的电子控制单元。"
+    },
+    {
+      "name": "驱动处理模块 LHZCU/RZCU",
+      "type": "controller",
+      "description": "负责处理转向灯的亮灭状态，并反馈状态信息给其他模块。"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Inter-Cluster Bus，负责在不同控制器之间传输控制信号和状态信息。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "左侧转向灯激活状态",
+      "type": "input_signal",
+      "description": "前置条件，表示左侧转向灯当前处于点亮状态。"
+    },
+    {
+      "name": "StrgWhlAng",
+      "type": "input_signal",
+      "description": "方向盘转角信号，用于判断是否达到退出转向灯的角度阈值。",
+      "details": {
+        "thresholds": [
+          {
+            "condition": "StrgWhlAng >= 20°, <= 10°",
+            "action": "默认往左侧转向"
+          },
+          {
+            "condition": "StrgWhlAng >= 20(回正后往右侧转 10°)",
+            "action": "默认回正 10°"
+          }
+        ]
+      }
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "转向灯点亮/熄灭",
+      "type": "output_signal",
+      "description": "执行动作的结果，即转向灯根据控制信号点亮或熄灭。",
+      "details": {
+        "control_signals": [
+          {
+            "module": "转向灯开关控制模块 LHZCU",
+            "signal": "FLDirnLghtCtrl",
+            "value": "0x0 = FLDircnLghtCtrl_0_Off"
+          },
+          {
+            "module": "转向灯开关控制模块 LHZCU",
+            "signal": "RLDirnLghtCtrl",
+            "value": "0x0 = RLDircnLghtCtrl_0_Off"
+          }
+        ]
+      }
+    },
+    {
+      "name": "转向灯状态反馈",
+      "type": "output_signal",
+      "description": "将转向灯的点亮状态或故障状态反馈至相关模块。",
+      "details": {
+        "feedback_signals": [
+          {
+            "module": "驱动处理模块 LHZCU/RZCU",
+            "signal": "FLDirnLghtSts",
+            "value": "0x0 = FLDircnLghtSts_0_Off"
+          },
+          {
+            "module": "驱动处理模块 LHZCU/RZCU",
+            "signal": "RLDirnLghtSts",
+            "value": "0x0 = RLDircnLghtSts_0_Off"
+          },
+          {
+            "module": "转向灯开关控制模块 LHZCU",
+            "signal": "DirncLghtSts",
+            "value": "0x0 = OFF"
+          }
+        ]
+      }
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "转向灯故障状态",
+      "type": "fault_state",
+      "description": "当转向灯出现异常时，系统会将其状态标记为故障。",
+      "details": {
+        "fault_signals": [
+          {
+            "module": "驱动处理模块 LHZCU/RZCU",
+            "signal": "FLDirnLghtFltsts_HW",
+            "value": "0x0 = FLDircnLghtFltsts_HW_0_False"
+          },
+          {
+            "module": "驱动处理模块 LHZCU/RZCU",
+            "signal": "RLDirnLghtFltsts_HW",
+            "value": "0x0 = RLDircnLghtFltsts_HW_0_False"
+          }
+        ]
+      }
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "控制信号延时",
+      "type": "timing_constraint",
+      "description": "ICB 接收控制信号后，延迟 60ms 分发至 LHZCU/RZCU。",
+      "details": {
+        "delay_time": "60ms",
+        "target_modules": [
+          "转向灯开关控制模块 LHZCU",
+          "转向灯开关控制模块 RZCU"
+        ]
+      }
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在方向盘旋转至一定角度时，左侧转向灯如何从激活状态退出的详细控制逻辑，包括前置条件、触发动作和执行动作，适用于验证转向灯控制系统的功能正确性和响应时间。",
+  "uncertain_points": [
+    "具体的配置值 exlDIAutoOffAnglePrm 和 exlDIAutoOffAngleHystPrm 的具体数值未明确给出。",
+    "域控获取转向灯状态的具体机制未详细说明。"
+  ]
+}

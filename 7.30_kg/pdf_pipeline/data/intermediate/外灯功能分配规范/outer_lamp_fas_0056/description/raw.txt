@@ -1,0 +1,73 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "整车外灯控制系统中主远光灯的控制与状态订阅接口规范",
+  "row_semantics": "每行代表一个独立的服务接口定义，描述了特定功能（如控制或状态订阅）的详细参数和通信路径。",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识具体的功能点。",
+    "Direction": "数据流向，指示是输入还是输出。",
+    "Type": "接口类型，SOA表示面向服务架构。",
+    "Sender/Provider": "发送方或提供方控制器模块。",
+    "Receiver/Consumer": "接收方或消费方控制器模块。",
+    "Channel": "通信路径，通常为以太网通道。",
+    "Source": "接口来源，此处为空，可能指内部系统或标准定义。",
+    "Description": "接口功能描述及参数详情。",
+    "Parameter Name": "参数名称，用于传递控制指令或状态信息。",
+    "InstanceID": "实例ID，区分不同控制对象。",
+    "Values": "参数的具体取值及其含义（如ON/OFF）。",
+    "Function": "接口执行的具体功能描述。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MainBeamLight.ControlMainBeamLight (Left)",
+      "type": "function",
+      "description": "控制左侧主远光灯的点亮或熄灭。",
+      "controller": "LHZCU",
+      "target": "ICB_S32GM",
+      "channel": "LHZCU_ETH"
+    },
+    {
+      "name": "MainBeamLight.ControlMainBeamLight (Right)",
+      "type": "function",
+      "description": "控制右侧主远光灯的点亮或熄灭。",
+      "controller": "RHZCU",
+      "target": "ICB_S32GM, LHZCU",
+      "channel": "RHZCU_ETH, LHZCU_ETH"
+    },
+    {
+      "name": "MainBeamLight.MainBeamLightStatus",
+      "type": "function",
+      "description": "订阅左侧主远光灯的状态。",
+      "controller": "LHZCU",
+      "target": "ICB_S32GM",
+      "channel": "LHZCU_ETH"
+    }
+  ],
+  "core_conditions": [
+    {
+      "interface": "MainBeamLight.ControlMainBeamLight (Left)",
+      "condition": "InstanceID=3",
+      "parameter": "MainBeamLightReq",
+      "value": "0x0=OFF; 0x1=ON"
+    },
+    {
+      "interface": "MainBeamLight.ControlMainBeamLight (Right)",
+      "condition": "InstanceID=4",
+      "parameter": "MainBeamLightReq",
+      "value": "0x0=OFF; 0x1=ON"
+    }
+  ],
+  "core_outputs": [
+    {
+      "interface": "MainBeamLight.MainBeamLightStatus",
+      "output": "主远光灯状态信息"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯系统中主远光灯的控制接口和服务状态订阅接口，可用于验证LHZCU/RHZCU控制器通过以太网向ICB_S32GM/LHZCU发送控制指令，以及订阅左侧主远光灯状态的功能正确性。",
+  "uncertain_points": []
+}
+```

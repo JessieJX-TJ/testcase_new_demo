@@ -1,0 +1,55 @@
+```json
+[
+  {
+    "head": "制动灯开关控制模块 LHZCU 反馈制动灯状态",
+    "relation": "触发条件",
+    "tail": "制动灯开关状态为 OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "BrakeLightSwSta=0x0-Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务 ICH 订阅制动灯状态",
+    "relation": "触发条件",
+    "tail": "制动灯状态为 OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.BrakeLightSta=0x0-OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯熄灭同步性要求",
+    "relation": "超时约束",
+    "tail": "左侧、右侧以及高位制动灯需保持同步熄灭，三侧最大延时不能超过 40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "制动灯熄灭同步性要求",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开关控制模块 LHZCU 反馈制动灯开关状态",
+    "relation": "输出为",
+    "tail": "制动灯开关状态为 OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "BrakeLightSwSts=0x0-Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开关控制模块 LHZCU 反馈制动灯紧急状态",
+    "relation": "输出为",
+    "tail": "无错误 (No Error)",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "BrakeLightEzSta=0x0-No Error"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

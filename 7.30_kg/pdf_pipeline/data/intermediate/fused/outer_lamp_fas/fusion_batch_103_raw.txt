@@ -1,0 +1,452 @@
+```json
+[
+  {
+    "head": "拖车后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "TrlrRrFogLghtOnReq_1_On",
+    "sources": ["outer_lamp_fas_1100"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车后雾灯熄灭",
+    "relation": "触发条件",
+    "tail": "TrlrRrFogLghtOnReq_0_Off",
+    "sources": ["outer_lamp_fas_1100"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TDM",
+    "relation": "控制对象",
+    "tail": "拖车后雾灯",
+    "sources": ["outer_lamp_fas_1100"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightState",
+    "relation": "输入为",
+    "tail": "TrlrRrFogLghtSts_1_On",
+    "sources": ["outer_lamp_fas_1100"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightState",
+    "relation": "输入为",
+    "tail": "TrlrRrFogLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_1100"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightErrorStatus",
+    "relation": "输入为",
+    "tail": "TrlrRrFogLghtFltSts_0_False",
+    "sources": ["outer_lamp_fas_1100"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "输出到",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_1100"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "依赖于",
+    "tail": "外灯组合服务",
+    "sources": ["outer_lamp_fas_1100"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯关闭功能",
+    "relation": "触发条件",
+    "tail": "用户通过HMI大屏软开关触发光关闭有效",
+    "sources": ["outer_lamp_fas_1101"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "自动灯光请求关闭状态发送至LHZCU",
+    "relation": "前提条件",
+    "tail": "自动灯光处于激活状态",
+    "sources": ["outer_lamp_fas_1101"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "依赖于",
+    "tail": "外灯控制组合服务",
+    "sources": ["outer_lamp_fas_1101"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "输出为",
+    "tail": "近光灯控制信号",
+    "sources": ["outer_lamp_fas_1101"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "包含子功能",
+    "tail": "灯控CAN信号",
+    "sources": ["outer_lamp_fas_1101"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统ICB",
+    "relation": "依赖于",
+    "tail": "HMI子系统",
+    "sources": ["outer_lamp_fas_1101"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧昼间行车灯控制",
+    "relation": "触发条件",
+    "tail": "调用DayRunningLightControl接口，Parameter Name=DayRunningLightCtrReq, InstanceID=1, 输入值=0x1 (ON) 或 0x0 (OFF)",
+    "sources": ["outer_lamp_fas_1106"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧昼间行车灯控制",
+    "relation": "触发条件",
+    "tail": "调用DayRunningLightControl接口，Parameter Name=DayRunningLightCtrReq, InstanceID=2, 输入值=0x1 (ON) 或 0x0 (OFF)",
+    "sources": ["outer_lamp_fas_1106"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧昼间行车灯状态订阅",
+    "relation": "触发条件",
+    "tail": "调用DayRunningLightState接口",
+    "sources": ["outer_lamp_fas_1106"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightControl接口",
+    "relation": "依赖于",
+    "tail": "SOA",
+    "sources": ["outer_lamp_fas_1106"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightControl接口",
+    "relation": "依赖于",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_1106"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightState接口",
+    "relation": "依赖于",
+    "tail": "SOA",
+    "sources": ["outer_lamp_fas_1106"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightState接口",
+    "relation": "依赖于",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_1106"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightState接口",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_1106"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯状态",
+    "relation": "输入为",
+    "tail": "LDipdBeamLghtSts_1_On",
+    "sources": ["outer_lamp_fas_1107"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯状态",
+    "relation": "输入为",
+    "tail": "LDipdBeamLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_1107"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯状态",
+    "relation": "输入为",
+    "tail": "RDipdBeamLghtSts_1_On",
+    "sources": ["outer_lamp_fas_1107"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯状态",
+    "relation": "输入为",
+    "tail": "RDipdBeamLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_1107"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯硬件状态",
+    "relation": "输入为",
+    "tail": "LDipdBeamLghtSts_HW_1_On",
+    "sources": ["outer_lamp_fas_1107"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯硬件状态",
+    "relation": "输入为",
+    "tail": "LDipdBeamLghtSts_HW_0_Off",
+    "sources": ["outer_lamp_fas_1107"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯硬件状态",
+    "relation": "输入为",
+    "tail": "RDipdBeamLghtSts_HW_1_On",
+    "sources": ["outer_lamp_fas_1107"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯硬件状态",
+    "relation": "输入为",
+    "tail": "RDipdBeamLghtSts_HW_0_Off",
+    "sources": ["outer_lamp_fas_1107"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯硬件状态传输",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_1107"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制延时",
+    "relation": "输入为",
+    "tail": "DircnLghtCtrlDelayPrm",
+    "sources": ["outer_lamp_fas_1108"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆解锁灯光点亮时间",
+    "relation": "输入为",
+    "tail": "VehLckLghtActTme",
+    "sources": ["outer_lamp_fas_1108"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制通讯类型",
+    "relation": "输入为",
+    "tail": "ExtrLghtCtrlCmmntnTyp",
+    "sources": ["outer_lamp_fas_1108", "outer_lamp_fas_1318"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态通讯类型",
+    "relation": "输入为",
+    "tail": "ExtrLghtStsCmmntnTyp",
+    "sources": ["outer_lamp_fas_1108", "outer_lamp_fas_1318"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Daytime Running Light (DRL)",
+    "relation": "前提条件",
+    "tail": "Vehicle Power Status is ON and Ambient Light Sensor Input indicates low ambient light",
+    "sources": ["outer_lamp_fas_1109"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low Beam Headlamp",
+    "relation": "前提条件",
+    "tail": "Vehicle Power Status is ON, Lighting Mode Selection is set to Low Beam, and Ambient Light Sensor Input indicates low ambient light",
+    "sources": ["outer_lamp_fas_1109"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High Beam Headlamp",
+    "relation": "前提条件",
+    "tail": "Vehicle Power Status is ON, Lighting Mode Selection is set to High Beam, and Ambient Light Sensor Input indicates low ambient light",
+    "sources": ["outer_lamp_fas_1109"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High Beam Headlamp",
+    "relation": "抑制条件",
+    "tail": "Daytime Running Light (DRL) is activated",
+    "sources": ["outer_lamp_fas_1109"],
+    "conflict": true,
+    "conflict_note": "DRL激活时高光灯被抑制，与DRL和High Beam同为‘低环境光+点火’前提存在逻辑冲突：二者不应同时满足；需确认DRL是否在高光灯模式下强制禁用"
+  },
+  {
+    "head": "Low Beam Headlamp Output Signal",
+    "relation": "输出为",
+    "tail": "Low Beam Headlamp is activated",
+    "sources": ["outer_lamp_fas_1109"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High Beam Headlamp Output Signal",
+    "relation": "输出为",
+    "tail": "High Beam Headlamp is activated",
+    "sources": ["outer_lamp_fas_1109"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "依赖于",
+    "tail": "功能分配规范",
+    "sources": ["outer_lamp_fas_1110", "outer_lamp_fas_1116"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯开关控制模块LHZCU",
+    "relation": "触发条件",
+    "tail": "危险报警灯开关状态为开启",
+    "sources": ["outer_lamp_fas_1112"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU",
+    "relation": "触发条件",
+    "tail": "紧急方向灯开关状态为3 (hazard)",
+    "sources": ["outer_lamp_fas_1112"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU",
+    "relation": "触发条件",
+    "tail": "车辆入侵预警请求信号有效（VehIntrusionPrevnHzrdLmpReq = true）",
+    "sources": ["outer_lamp_fas_1112"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtCtrl",
+    "relation": "输出为",
+    "tail": "LHZCU信号跳变为0x0 (Off)",
+    "sources": ["outer_lamp_fas_1112"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "依赖于",
+    "tail": "LHZCU发送的转向灯状态",
+    "sources": ["outer_lamp_fas_1112"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "超时约束",
+    "tail": "60ms延时",
+    "sources": ["outer_lamp_fas_1112"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU",
+    "relation": "前提条件",
+    "tail": "检测到双闪灯触发事件",
+    "sources": ["outer_lamp_fas_1112"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧远光灯故障状态",
+    "relation": "输出为",
+    "tail": "LMainBeamLghtFltSts",
+    "sources": ["outer_lamp_fas_1113"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯模式状态",
+    "relation": "输出为",
+    "tail": "MainBeamLghtMdSts",
+    "sources": ["outer_lamp_fas_1113"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LMainBeamLghtFltSts",
+    "relation": "依赖于",
+    "tail": "网络故障状态",
+    "sources": ["outer_lamp_fas_1113"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RMainBeamLghtFltSts",
+    "relation": "依赖于",
+    "tail": "网络故障状态",
+    "sources": ["outer_lamp_fas_1113"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtMdSts",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtMdSts_0_No_Request",
+    "sources": ["outer_lamp_fas_1113"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtMdSts",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtMdSts_1_Manual_Mode",
+    "sources": ["outer_lamp_fas_1113"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtMdSts",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtMdSts_1_Auto_Mode",
+    "sources": ["outer_lamp_fas_1113"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

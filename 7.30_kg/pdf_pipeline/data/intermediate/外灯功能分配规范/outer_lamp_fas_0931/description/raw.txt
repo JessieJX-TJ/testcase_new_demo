@@ -1,0 +1,80 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "转向灯故障状态与控制接口规范",
+  "row_semantics": "表格按功能模块划分，每一行代表一个转向灯相关的状态或控制接口定义。",
+  "column_semantics": "列标题分为功能描述、信号/状态类型、涉及的控制器/模块以及故障状态指示。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RLDircnLghtFltsts",
+      "type": "signal",
+      "description": "左后转向灯故障状态信号"
+    },
+    {
+      "name": "RRDircnLghtFltsts",
+      "type": "signal",
+      "description": "右后转向灯故障状态信号"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "type": "signal",
+      "description": "转向灯故障状态总线信号"
+    },
+    {
+      "name": "ExteriorLightControlSystem.ControlDirectionLight",
+      "type": "interface",
+      "description": "外部灯光控制系统转向灯控制接口"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "RLDircnLghtFltsts",
+      "value": "0x0=RLDircnLghtFltsts_0_False; 0x1=RLDircnLghtFltsts_1_True;",
+      "description": "左后转向灯故障状态输出值定义"
+    },
+    {
+      "name": "RRDircnLghtFltsts",
+      "value": "0x0=RRDircnLghtFltsts_0_False; 0x1=RRDircnLghtFltsts_1_True;",
+      "description": "右后转向灯故障状态输出值定义"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "value": "0x0=DircnLghtFltsts_0_No_Error; 0x1=DircnLghtFltsts_1_Left_Direction_Light_Error; 0x2=DircnLghtFltsts_2_Right_Direction_Light_Error; 0x3=DircnLghtFltsts_3_Both_Side_Direction_Light_Error;",
+      "description": "转向灯故障状态总线信号值定义"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RLDircnLghtFltsts",
+      "condition": "RLDircnLghtFltsts_1_True",
+      "description": "左后转向灯存在故障"
+    },
+    {
+      "name": "RRDircnLghtFltsts",
+      "condition": "RRDircnLghtFltsts_1_True",
+      "description": "右后转向灯存在故障"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "condition": "DircnLghtFltsts_1_Left_Direction_Light_Error",
+      "description": "左转向灯存在故障"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "condition": "DircnLghtFltsts_2_Right_Direction_Light_Error",
+      "description": "右转向灯存在故障"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "condition": "DircnLghtFltsts_3_Both_Side_Direction_Light_Error",
+      "description": "左右两侧转向灯均存在故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆转向灯系统的故障状态信号及其含义，并提供了控制转向灯亮灭的接口规范，可用于验证转向灯系统在不同工况下的故障检测与控制逻辑是否符合设计要求。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,15 @@
+前置条件
+1. exlCHMSLHwDrvEnPrm ==1
+2. 高位制动灯处于输出状态
+触发条件
+检测到高位制动灯短路到地
+执行动作
+【BrkLghtDrvMdl】停止驱动高位制动灯(CHMSL_HSD)
+【BrkLghtDrvMdl】持续发送 BrkLghtSts=0(Off)至
+【BrkLghtCtrlMdl】,至少发送三帧
+【BrkLghtDrvMdl】反馈
+BrkLghtFltSts_HW=0x1 (BrkLghtFltSts_HW_1_True)
+4. 置位 DTC B1043 11
+退出条件
+检测到短路恢复
+异常处理

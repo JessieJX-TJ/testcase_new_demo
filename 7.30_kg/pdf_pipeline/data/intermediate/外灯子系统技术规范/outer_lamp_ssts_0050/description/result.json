@@ -1,0 +1,47 @@
+{
+  "table_type": "fault_table",
+  "topic": "DTC (Diagnostic Trouble Code) B1053 13 的置位与恢复逻辑",
+  "row_semantics": "表格定义了在特定条件下，系统如何处理故障代码 DTC B1053 13 的置位、退出条件以及异常处理。",
+  "column_semantics": {
+    "执行动作": "描述系统在满足特定条件时执行的操作，例如置位故障代码。",
+    "退出条件": "描述系统从当前状态退出并恢复正常操作的条件。",
+    "异常处理": "描述在发生异常情况时系统应采取的措施。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DTC B1053 13",
+      "type": "故障代码",
+      "description": "诊断故障代码 B1053 13，具体含义需参考车辆维修手册或相关技术文档。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "检测到开路恢复",
+      "type": "输入信号/系统状态",
+      "description": "当系统检测到导致 DTC B1053 13 触发的开路故障已恢复时，满足退出条件。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "置位 DTC B1053 13",
+      "type": "输出信号",
+      "description": "系统在满足特定条件时，将故障代码 DTC B1053 13 置为激活状态。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC B1053 13",
+      "type": "故障状态",
+      "description": "表示系统检测到与该代码相关的故障，可能涉及外灯、车身控制或电动尾门等模块中的电路开路问题。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证车辆电子控制系统在检测到特定开路故障并恢复后，是否能够正确地置位和清除故障代码 DTC B1053 13，确保系统的故障诊断功能符合设计规范。",
+  "uncertain_points": [
+    "DTC B1053 13 的具体含义和触发条件未明确说明。",
+    "异常处理的具体内容未详细描述，仅留空。",
+    "未明确指出涉及哪些具体的控制器或模块（如 BCM, ECU 等）。"
+  ]
+}

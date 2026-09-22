@@ -1,0 +1,71 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "主驾激光迎宾灯控制逻辑",
+  "row_semantics": "描述了主驾激光迎宾灯功能的触发、执行、退出及异常处理的条件和动作。",
+  "column_semantics": {
+    "1": "定义了实现该功能所需的前提条件",
+    "2": "定义了触发该功能执行的条件或信号",
+    "3": "定义了在满足触发条件后执行的具体动作",
+    "4": "定义了退出该功能的条件",
+    "5": "定义了异常情况下的处理方式"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DrvrDoorFlorLampCtrlCmd",
+      "type": "input_signal",
+      "description": "应用控制模块发送的请求信号，用于控制主驾激光迎宾灯的状态。"
+    },
+    {
+      "name": "DoorFlorLamp_FL_HSD",
+      "type": "output_signal",
+      "description": "主驾激光迎宾灯驱动控制模块发送的驱动信号，控制灯光的开启与关闭。"
+    },
+    {
+      "name": "主驾激光迎宾灯",
+      "type": "function_name",
+      "description": "车辆提供的一个功能，当驾驶员靠近时自动点亮迎宾灯，并伴有激光效果。"
+    },
+    {
+      "name": "主驾激光迎宾灯驱动控制模块",
+      "type": "controller_module",
+      "description": "负责接收控制指令并驱动主驾激光迎宾灯工作的电子控制单元。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "主驾激光迎宾灯无短路/开路故障，确保硬件状态正常。"
+    },
+    {
+      "condition": "触发条件",
+      "description": "接收到应用控制模块的请求信号 DrvrDoorFlorLampCtrlCmd = 0x1 (Open)，表示请求开启迎宾灯。"
+    },
+    {
+      "condition": "退出条件",
+      "description": "接收到 DrvrDoorFlorLampCtrlCmd = 0x0 (Close) 信号，表示请求关闭迎宾灯。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "action": "执行动作",
+      "description": "发送驱动信号 DoorFlorLamp_FL_HSD（高电平）给主驾激光迎宾灯驱动控制模块，以开启迎宾灯。"
+    },
+    {
+      "action": "退出动作",
+      "description": "关闭主驾激光迎宾灯驱动，停止灯光输出。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "主驾激光迎宾灯短路/开路故障",
+      "description": "检测到主驾激光迎宾灯存在短路或开路问题，可能导致功能失效或安全隐患。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证主驾激光迎宾灯功能在不同控制信号输入下的正确响应，包括正常开启、关闭以及异常情况下的安全处理。",
+  "uncertain_points": []
+}
+```

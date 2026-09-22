@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"fault_table\",\n  \"topic\": \"整车外灯转向灯故障状态定义\",\n  \"row_semantics\": \"表格按功能模块（左后、右后、左前、右前转向灯）列出各自的硬件故障状态定义。\",\n  \"column_semantics\": {\n    \"1\": \"功能模块名称 (如RLDircnLghtFltsts_HW)\",\n    \"2\": \"输出信号类型 (CANFD)\",\n    \"3\": \"控制器/模块 (RZCU, ICB)\",\n    \"4\": \"控制器/模块 (LHZCU)\",\n    \"5\": \"故障状态类型 (硬线故障状态, 网络故障状态)\"\n  },\n  \"has_merged_cells\": true,\n  \"header_levels\": 2,\n  \"core_entities\": [\n    \"RLDircnLghtFltsts_HW\", // 左后转向灯\n    \"RRDircnLghtFltsts_HW\", // 右后转向灯\n    \"FLDircnLghtFltsts\",   // 左前转向灯\n    \"FRDircnLghtFltsts\",   // 右前转向灯\n    \"RLDircnLghtFltsts\"    // 左后转向灯 (重复项)\n  ],\n  \"core_conditions\": [\n    \"0x0=RLDircnLghtFltsts_HW_0_False;\",\n    \"0x1=RLDircnLghtFltsts_HW_1_True;\"\n  ],\n  \"core_outputs\": [\n    \"RLDircnLghtFltsts_HW\",\n    \"RRDircnLghtFltsts_HW\",\n    \"FLDircnLghtFltsts\",\n    \"FRDircnLghtFltsts\",\n    \"RLDircnLghtFltsts\"\n  ],\n  \"core_faults\": [\n    \"硬线故障状态\",\n    \"网络故障状态\"\n  ],\n  \"core_timing_constraints\": [],\n  \"engineering_interpretation\": \"该表格定义了整车四个方向（左后、右后、左前、右前）转向灯的硬件故障状态编码规则，用于测试验证各转向灯在不同控制器（RZCU, ICB, LHZCU）下的故障检测与上报功能。\",\n  \"uncertain_points\": []\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

@@ -1,0 +1,226 @@
+[
+  {
+    "head": "拖车制动灯点亮",
+    "relation": "触发条件",
+    "tail": "TDM接收到TrlrBrkLghtOnReq_1_On信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "TDM",
+      "TrlrBrkLghtOnReq_1_On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "拖车制动灯熄灭",
+    "relation": "触发条件",
+    "tail": "TDM接收到TrlrBrkLghtOnReq_0_Off信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "TDM",
+      "TrlrBrkLghtOnReq_0_Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "拖车制动灯状态反馈",
+    "relation": "输出为",
+    "tail": "TrlrBrkLghtSts_1_On或TrlrBrkLghtSts_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "TDM",
+      "TrlrBrkLghtSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "拖车制动灯故障状态反馈",
+    "relation": "输出为",
+    "tail": "TrlrBrkLghtFltSts_1_True或TrlrBrkLghtFltSts_0_False",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "TDM",
+      "TrlrBrkLghtFltSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "ICB接收制动灯状态",
+    "relation": "依赖于",
+    "tail": "LHZCU判断前置条件满足且结合拖车制动灯状态反馈",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "BrkLghtSta",
+      "TrlrBrkLghtSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "外灯组合服务ICB透传制动灯状态",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.BrakeLightSts_ON或ExteriorLightControlSystem.BrakeLightSts_OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "ExteriorLightControlSystem.BrakeLightSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "外灯组合服务ICB透传制动灯错误状态",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.BrakeLightErrSts_No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "ExteriorLightControlSystem.BrakeLightErrSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "拖车制动灯点亮",
+    "relation": "抑制条件",
+    "tail": "RZCU检测到前车制动灯故障状态BrkLghtFltSta_1_True",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "RZCU",
+      "BrkLghtFltSta_1_True"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "拖车制动灯熄灭",
+    "relation": "抑制条件",
+    "tail": "RZCU检测到前车制动灯故障状态BrkLghtFltSta_0_False",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "RZCU",
+      "BrkLghtFltSta_0_False"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "拖车制动灯状态反馈给TDM",
+    "relation": "输入为",
+    "tail": "BrkFltSts_1_True或BrkFltSts_0_False",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RZCU",
+      "BrkFltSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "拖车制动灯故障状态",
+    "relation": "诊断关联",
+    "tail": "TrlrBrkLghtFltSts_1_True",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "TrlrBrkLghtFltSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "拖车制动灯故障状态",
+    "relation": "诊断关联",
+    "tail": "TrlrBrkLghtFltSts_0_False",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "TrlrBrkLghtFltSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "拖车制动灯状态",
+    "relation": "诊断关联",
+    "tail": "TrlrBrkLghtSts_1_On",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "TrlrBrkLghtSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "拖车制动灯状态",
+    "relation": "诊断关联",
+    "tail": "TrlrBrkLghtSts_0_Off",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "TrlrBrkLghtSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "拖车制动灯点亮",
+    "relation": "复位条件",
+    "tail": "TDM检测到与RZCU CAN通讯链路故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "TDM",
+      "RZCU",
+      "CAN"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "拖车制动灯熄灭",
+    "relation": "复位条件",
+    "tail": "TDM检测到与RZCU CAN通讯链路故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "TDM",
+      "RZCU",
+      "CAN"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1389",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  }
+]

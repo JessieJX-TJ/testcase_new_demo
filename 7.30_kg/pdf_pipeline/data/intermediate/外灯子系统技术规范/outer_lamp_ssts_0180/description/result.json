@@ -1,0 +1,78 @@
+{
+  "table_type": "fault_table",
+  "topic": "远光灯开关检测故障诊断逻辑",
+  "row_semantics": "表格按功能流程顺序排列，描述了从触发条件到退出条件的完整故障诊断过程。",
+  "column_semantics": {
+    "0": "诊断阶段描述（如前置条件、触发条件等）",
+    "1": "对应阶段的具体参数或状态"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightSwSOAEnPrm",
+      "type": "parameter",
+      "description": "主控模块配置字，用于启用或禁用远光灯开关超范围检测功能。"
+    },
+    {
+      "name": "MainBeamLghtSwMdl",
+      "type": "module",
+      "description": "远光灯开关模型模块，负责处理开关信号的逻辑判断。"
+    },
+    {
+      "name": "MainBeamLghtCtrlMdl",
+      "type": "module",
+      "description": "远光灯控制模型模块，负责发送远光灯请求信号。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字 MainBeamLightSwSOAEnPrm == 0 (Disable)，表示禁用远光灯开关超范围检测功能。"
+    },
+    {
+      "condition": "触发条件",
+      "description": "远光灯开关检测到未定义的阻值，表明可能存在硬件故障或信号异常。"
+    },
+    {
+      "condition": "退出条件",
+      "description": "远光灯开关检测到已知定义的阻值，表示故障已排除或系统恢复正常。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "MainBeamLghtSwReq",
+      "value": "0x0 (Off)",
+      "description": "持续发送远光灯关闭请求信号至控制模块，确保远光灯处于关闭状态。"
+    },
+    {
+      "signal": "DTC B1077 1C",
+      "value": "uncertain",
+      "description": "置位特定的故障代码（DTC），用于记录和诊断远光灯开关检测异常。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "MainBeamLightSwSOAEnPrm",
+      "description": "远光灯开关超范围检测功能被禁用，可能导致无法正确检测开关异常。",
+      "status": "uncertain"
+    },
+    {
+      "fault_name": "DTC B1077 1C",
+      "description": "远光灯开关检测到未定义阻值时触发的故障代码，指示存在潜在的电气或机械故障。",
+      "status": "active"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "执行动作持续时间",
+      "description": "【MainBeamLghtSwMdl】至少发送三帧 MainBeamLghtSwReq = 0x0 (Off) 信号，确保远光灯完全关闭。",
+      "unit": "frames"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了远光灯开关检测功能在特定配置下的故障诊断逻辑，可用于验证当远光灯开关检测到异常阻值时，系统是否能够正确触发故障代码并采取安全措施（如关闭远光灯）。适用于整车电子电器系统的功能测试和故障诊断验证。",
+  "uncertain_points": [
+    "DTC B1077 1C 的具体含义和影响未明确说明。",
+    "MainBeamLightSwSOAEnPrm 的禁用状态对其他相关功能的影响未详细描述。"
+  ]
+}

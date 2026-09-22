@@ -1,0 +1,146 @@
+[
+  {
+    "head": "安全气囊展开请求 (AirbagDpl) 输出为真",
+    "relation": "触发条件",
+    "tail": "车辆发生侧碰 (VehCrshTyp_2_Side_Crash)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AirbagDpl",
+      "0x2=VehCrshTyp_2_Side_Crash",
+      "0x1=AirbagDpl_1_True"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1225",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "安全气囊展开请求 (AirbagDpl) 输出为假",
+    "relation": "触发条件",
+    "tail": "车辆未发生侧碰 (VehCrshTyp_2_Side_Crash)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AirbagDpl",
+      "0x2=VehCrshTyp_2_Side_Crash",
+      "0x0=AirbagDpl_0_False"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1225",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "安全气囊展开反向请求 (AirbagDplInvsn) 输出为已展开",
+    "relation": "触发条件",
+    "tail": "车辆发生侧碰 (VehCrshTyp_2_Side_Crash)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AirbagDplInvsn",
+      "0x2=VehCrshTyp_2_Side_Crash",
+      "0x0=AirbagDplInvsn_0_AirbagDeployed"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1225",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "安全气囊展开反向请求 (AirbagDplInvsn) 输出为未展开",
+    "relation": "触发条件",
+    "tail": "车辆未发生侧碰 (VehCrshTyp_2_Side_Crash)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AirbagDplInvsn",
+      "0x2=VehCrshTyp_2_Side_Crash",
+      "0x1=AirbagDplInvsn_1_NoAirbagDeployed"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1225",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "碰撞发生输出 (Crash_Out) 占空比为20%",
+    "relation": "前提条件",
+    "tail": "碰撞发生时",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "Crash_Out",
+      "碰撞发生时,占空比为20%"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1225",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "紧急制动请求 (EmgcBrkA) 输出为真",
+    "relation": "触发条件",
+    "tail": "紧急制动请求信号有效",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "EmgcBrkA",
+      "0x1=EmgcBrkA_1_True"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1225",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "紧急制动请求 (EmgcBrkA) 输出为假",
+    "relation": "触发条件",
+    "tail": "紧急制动请求信号无效",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "EmgcBrkA",
+      "0x0=EmgcBrkA_0_False"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1225",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "紧急制动验证 (EmgcBrkAV) 输出为有效",
+    "relation": "触发条件",
+    "tail": "紧急制动请求信号有效",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "EmgcBrkAV",
+      "0x0=EmgcBrkAV_0_Valid"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1225",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "紧急制动验证 (EmgcBrkAV) 输出为无效",
+    "relation": "触发条件",
+    "tail": "紧急制动请求信号无效",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "EmgcBrkAV",
+      "0x1=EmgcBrkAV_1_Invalid"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1225",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "智驾后碰撞双闪灯请求 (RCWWrnng) 输出",
+    "relation": "输入为",
+    "tail": "碰撞发生时",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RCWWrnng",
+      "碰撞发生时"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1225",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  }
+]

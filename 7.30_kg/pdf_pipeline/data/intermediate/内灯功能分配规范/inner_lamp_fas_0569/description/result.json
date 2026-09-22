@@ -1,0 +1,78 @@
+{
+  "table_type": "signal_table",
+  "topic": "内灯（Interior Light）功能分配规范",
+  "row_semantics": "表格的每一行代表一个与内灯控制相关的信号或功能模块，包括其输入/输出属性、数据类型及有效值定义。",
+  "column_semantics": "列标题表示信号的来源或目标系统，如CAN总线、内部模块、特定控制器（LHZCU, LHZCU U等）以及VS SST S（Vehicle System Test Stand Simulation System）。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "UsGmDV",
+      "type": "input_signal",
+      "description": "用户模式数据验证信号，指示用户模式数据的有效性。"
+    },
+    {
+      "name": "VehBcklghtngCtrlCmd",
+      "type": "output_signal",
+      "description": "车辆后部照明控制命令，用于控制内灯的开关状态。"
+    },
+    {
+      "name": "VehIlluminateCtrlCmd",
+      "type": "output_signal",
+      "description": "车辆照明控制命令，同样用于控制内灯的开关状态。"
+    },
+    {
+      "name": "ICB/ZXD",
+      "type": "controller_module",
+      "description": "集成控制盒/区域执行器，作为信号的来源之一。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "左前门控制单元，可能参与内灯控制逻辑。"
+    },
+    {
+      "name": "LHZCU U",
+      "type": "controller_module",
+      "description": "左前门控制单元的另一个实例或变体，参与内灯控制。"
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller_module",
+      "description": "右前门控制单元，参与内灯控制。"
+    },
+    {
+      "name": "VS SST S",
+      "type": "system_environment",
+      "description": "车辆系统测试模拟环境，用于信号的输入和输出验证。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsGmDV_Invalid",
+      "value": "0x0",
+      "description": "表示用户模式数据无效。"
+    },
+    {
+      "name": "UsGmDV_Valid",
+      "value": "0x1",
+      "description": "表示用户模式数据有效。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Close",
+      "value": "0x0",
+      "description": "内灯关闭命令。"
+    },
+    {
+      "name": "Open",
+      "value": "0x1",
+      "description": "内灯打开命令。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了内灯控制系统中关键信号的输入/输出关系、数据格式及其有效值范围，可用于验证车辆在不同场景下内灯控制功能的正确性和一致性。",
+  "uncertain_points": []
+}

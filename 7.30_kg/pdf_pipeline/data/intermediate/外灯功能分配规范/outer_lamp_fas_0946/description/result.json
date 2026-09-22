@@ -1,0 +1,47 @@
+{
+  "table_type": "parameter_table",
+  "topic": "车辆外灯及转向灯控制参数配置",
+  "row_semantics": "表格中的每一行代表一个独立的配置参数，描述了与外灯和转向灯相关的特定功能或设置。",
+  "column_semantics": {
+    "配置字名称": "参数的唯一标识符或名称，用于在系统中引用该配置。",
+    "功能": "描述该参数的具体作用或功能。",
+    "参数": "列出该参数可接受的值及其对应的含义（通常为十六进制表示）。",
+    "默认值": "当未显式配置时，系统将使用的默认值。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DirnLghtCtrlDelayPrm",
+      "type": "parameter",
+      "description": "转向灯控制延时参数，用于设置转向灯闪烁的间隔时间。"
+    },
+    {
+      "name": "StrgWhlAngPrm",
+      "type": "parameter",
+      "description": "方向盘角度参数，可能用于根据方向盘角度调整灯光行为（如弯道灯）。"
+    },
+    {
+      "name": "ExtrLghtCtrlCmmtnTyp",
+      "type": "parameter",
+      "description": "外灯控制通讯类型参数，定义外灯控制信号的通信协议（如SOA或CAN）。"
+    },
+    {
+      "name": "ExtrLghtStsCmmtnTyp",
+      "type": "parameter",
+      "description": "外灯状态通讯类型参数，定义外灯状态反馈信号的通信协议（如SOA或CAN）。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "parameter": "DirnLghtCtrlDelayPrm",
+      "description": "转向灯控制延时参数，可设置的延时范围从0ms到160ms，步长为20ms。",
+      "unit": "ms"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了车辆外灯和转向灯控制相关的多个配置参数，包括延时、角度、通讯类型等，可用于验证系统在不同参数配置下的行为是否符合设计规范。",
+  "uncertain_points": []
+}

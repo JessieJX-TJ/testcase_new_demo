@@ -1,0 +1,96 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "外灯系统状态与控制逻辑",
+  "row_semantics": "逐行描述不同外灯模块的状态反馈、控制逻辑及故障检测规则",
+  "column_semantics": "无明确列，内容为连续的工程代码段，每行为一个独立的测试或验证场景",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "功能名",
+      "description": "方向灯（转向灯）系统"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "外灯组合服务单元"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "车身控制模块"
+    },
+    {
+      "name": "SDM",
+      "type": "控制器/模块名",
+      "description": "座椅驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightSta",
+      "type": "输入信号",
+      "description": "方向灯状态（ON/OFF）"
+    },
+    {
+      "name": "DirectionLightErrSta",
+      "type": "输出信号",
+      "description": "方向灯错误状态"
+    },
+    {
+      "name": "DirnLightSts",
+      "type": "输入信号",
+      "description": "寻车灯状态"
+    },
+    {
+      "name": "VehHzrdMdSta",
+      "type": "输入信号",
+      "description": "危险警示灯状态"
+    },
+    {
+      "name": "EDRDirnIndLampSwSts",
+      "type": "输入信号",
+      "description": "电子驻车指示灯开关状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightSta",
+      "type": "输出信号",
+      "description": "方向灯实际状态"
+    },
+    {
+      "name": "DirectionLightErrSta",
+      "type": "输出信号",
+      "description": "方向灯错误状态"
+    },
+    {
+      "name": "DirnLightSts",
+      "type": "输出信号",
+      "description": "寻车灯状态"
+    },
+    {
+      "name": "VehHzrdMdSta",
+      "type": "输出信号",
+      "description": "危险警示灯状态"
+    },
+    {
+      "name": "EDRDirnIndLampSwSts",
+      "type": "输出信号",
+      "description": "电子驻车指示灯开关状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "故障状态",
+      "description": "方向灯系统错误状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了车辆外灯系统（包括方向灯、寻车灯等）在不同控制器（如LHZCU、ICB、SDM）之间的状态反馈、控制逻辑和故障检测规则，可用于验证外灯系统的状态同步、控制响应及故障诊断功能。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,54 @@
+{
+  "table_type": "other",
+  "topic": "拖挂模式下车辆外灯控制逻辑与功能分配要求",
+  "row_semantics": "表格内容描述了拖挂模式下车辆外灯的控制逻辑和功能分配，包括位置灯点亮时牌照灯的联动、ICB外灯请求服务重发机制等。",
+  "column_semantics": "表格为单列结构，包含两部分内容：1) 外灯状态反馈信号的定义；2) 拖挂模式下的具体控制要求。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "FrtVehSideLghtFltSts",
+      "type": "signal",
+      "description": "前车侧灯故障状态信号，值为0x0表示无故障"
+    },
+    {
+      "name": "TDM",
+      "type": "controller",
+      "description": "拖挂模式控制器"
+    },
+    {
+      "name": "ICB",
+      "type": "module",
+      "description": "集成控制盒（Integrated Control Box）"
+    },
+    {
+      "name": "VP3-101128",
+      "type": "function_id",
+      "description": "拖挂模式子系统执行的功能标识符"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "TDM 点亮位置灯",
+      "description": "当拖挂模式控制器点亮车辆位置灯时"
+    },
+    {
+      "condition": "拖挂模式激活",
+      "description": "车辆处于拖挂模式下"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "牌照灯点亮",
+      "description": "在TDM点亮位置灯的同时，需点亮牌照灯"
+    },
+    {
+      "output": "ICB外灯请求服务重发",
+      "description": "ICB外灯请求服务重发机制参考前车"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证拖挂模式下车辆外灯（如位置灯、牌照灯）的联动控制逻辑，以及ICB模块对外灯请求服务的重发机制是否符合设计规范。",
+  "uncertain_points": []
+}

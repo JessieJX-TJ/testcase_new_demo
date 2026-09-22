@@ -1,0 +1,56 @@
+{
+  "table_type": "logic_table",
+  "topic": "Main Beam Light Control Logic",
+  "row_semantics": "Each row represents a distinct phase or condition in the control logic for the main beam light, including setup, execution, exit, and exception handling.",
+  "column_semantics": "The left column categorizes the logic into phases (Precondition, Trigger Condition, Execution Action, Exit Condition, Exception Handling), while the right column provides detailed specifications for each phase.",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightCtrlMdl",
+      "type": "controller_module",
+      "description": "Main controller module responsible for managing the main beam light."
+    },
+    {
+      "name": "LMmainBeamLightDrvMdl",
+      "type": "driver_module",
+      "description": "Driver module that controls the physical output of the main beam light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightFkSOAEnPrm",
+      "value": "1 (Enable)",
+      "description": "Precondition indicating that the main beam light function is enabled."
+    },
+    {
+      "name": "MainBeamLightCtrlReq",
+      "value": "1 (On)",
+      "description": "Trigger condition indicating that the main beam light request is to be turned on."
+    },
+    {
+      "name": "MainBeamLightCtrlReq",
+      "value": "0 (Off)",
+      "description": "Exit condition indicating that the main beam light request is to be turned off."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamHdlmp_LH_HSD",
+      "description": "Output signal driving the left high-side driver for the main beam light."
+    },
+    {
+      "name": "MainBeamLightState",
+      "value": "1 (On)",
+      "description": "Output signal indicating the state of the main beam light as 'on'."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "description": "At least three frames of MainBeamLightState must be sent continuously when the main beam light is requested to turn on."
+    }
+  ],
+  "engineering_interpretation": "This table defines the control logic for the main beam light, specifying the conditions under which it should be activated, the actions taken during activation, and the conditions for deactivation. It is used to verify that the main beam light behaves correctly in response to control requests from the MainBeamLightCtrlMdl.",
+  "uncertain_points": []
+}

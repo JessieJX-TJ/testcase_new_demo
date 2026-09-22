@@ -1,0 +1,55 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light and Exterior Light Switch Process Status Parameters",
+  "row_semantics": "Each row represents a specific service interface or parameter related to direction light error status and mode status.",
+  "column_semantics": "The columns represent different system components or modules (SOA, ICB, LHZCU) and their interaction with the network fault status for the respective parameters.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightErrorSta",
+      "type": "Parameter",
+      "description": "Status of direction light error"
+    },
+    {
+      "name": "DircnLghtMdSts",
+      "type": "Parameter",
+      "description": "Mode status of direction light"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "description": "Service interface to query the direction light error status after subscribing to the right turn signal."
+    },
+    {
+      "name": "DirectionLightModeStatus",
+      "description": "Service interface to query the direction light mode status."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightErrorSta",
+      "values": [
+        "0x0=No Error",
+        "0x1=Error",
+        "0x2=Unknown"
+      ]
+    },
+    {
+      "name": "DircnLghtMdSts",
+      "values": [
+        "0x0=Enabled"
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Network Fault Status",
+      "description": "Indicates the network fault status affecting the communication between components."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and interfaces for querying the error status and mode status of direction lights, which can be used to verify the correct operation and fault detection of the direction light system in response to various inputs and network conditions.",
+  "uncertain_points": []
+}

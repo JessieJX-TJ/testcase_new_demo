@@ -1,0 +1,56 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯转向灯状态订阅与报告",
+  "row_semantics": "逐行描述不同方向的转向灯状态订阅接口及其参数配置",
+  "column_semantics": {
+    "1": "功能模块/子功能",
+    "2": "服务类型 (消费/提供)",
+    " "3": "SOA (Service-Oriented Architecture) 接口",
+    "4": "RZCU (Right Zone Control Unit)",
+    "5": "LHZCU (Left High Zone Control Unit)",
+    "6": "硬线连接状态",
+    "7": "备注/描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "Interface",
+      "description": "转向灯状态查询接口"
+    },
+    {
+      "name": "DirectionLightSta",
+      "type": "Parameter",
+      "description": "转向灯状态参数，包含OFF、ON、Unknown三种值"
+    },
+    {
+      "name": "InstanceID",
+      "type": "Identifier",
+      "description": "实例ID，用于区分不同转向灯状态的订阅实例"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID=2",
+      "description": "订阅右前转向灯状态"
+    },
+    {
+      "name": "InstanceID=3",
+      "description": "订阅左后转向灯状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "Signal",
+      "description": "返回转向灯当前状态（OFF, ON, Unknown）"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子系统中关于外灯转向灯状态的订阅接口规范，用于测试各控制单元对转向灯状态的正确订阅和响应。",
+  "uncertain_points": []
+}
+```

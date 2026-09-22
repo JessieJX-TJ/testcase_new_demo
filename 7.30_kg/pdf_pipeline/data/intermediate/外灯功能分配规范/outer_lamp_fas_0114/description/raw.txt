@@ -1,0 +1,127 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "寻车灯远程控制模块 LHZCU 的状态与故障反馈机制",
+  "row_semantics": "表格按功能编号（7至11）列出不同场景下的信号状态和反馈逻辑，描述了 LHZCU 模块与 ICB、SDM 等控制器之间的信号交互。",
+  "column_semantics": "无明确列，内容为逐行的功能描述和对应的信号值定义。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "寻车灯远程控制模块"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "集成控制盒"
+    },
+    {
+      "name": "SDM",
+      "type": "Controller/Module",
+      "description": "车身域控制器"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FLDircnLghtSts",
+      "type": "Input Signal",
+      "description": "前左转向灯状态"
+    },
+    {
+      "name": "FRDircnLghtSts",
+      "type": "Input Signal",
+      "description": "前右转向灯状态"
+    },
+    {
+      "name": "RLDircnLghtSts",
+      "type": "Input Signal",
+      "description": "后左转向灯状态"
+    },
+    {
+      "name": "RRDircnLghtSts",
+      "type": "Input Signal",
+      "description": "后右转向灯状态"
+    },
+    {
+      "name": "DircnLghtSts",
+      "type": "Output Signal",
+      "description": "方向灯状态"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "type": "Output Signal",
+      "description": "车辆危险警示模式状态"
+    },
+    {
+      "name": "EDRDircnIndLampSwSts",
+      "type": "Output Signal",
+      "description": "紧急转向指示灯开关状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtFltsts",
+      "type": "Output Signal",
+      "description": "前左转向灯故障状态"
+    },
+    {
+      "name": "FRDircnLghtFltsts",
+      "type": "Output Signal",
+      "description": "前右转向灯故障状态"
+    },
+    {
+      "name": "RLDircnLghtFltsts",
+      "type": "Output Signal",
+      "description": "后左转向灯故障状态"
+    },
+    {
+      "name": "RRDircnLghtFltsts",
+      "type": "Output Signal",
+      "description": "后右转向灯故障状态"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "type": "Output Signal",
+      "description": "方向灯故障状态"
+    },
+    {
+      "name": "DirectionLightErrSts",
+      "type": "Output Signal",
+      "description": "转向灯错误状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No_Flash",
+      "type": "Fault State",
+      "description": "无闪烁状态"
+    },
+    {
+      "name": "No_Error",
+      "type": "Fault State",
+      "description": "无错误状态"
+    },
+    {
+      "name": "No_Request",
+      "type": "Fault State",
+      "description": "无请求状态"
+    },
+    {
+      "name": "_off",
+      "type": "Fault State",
+      "description": "关闭状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "双闪灯同步性要求",
+      "value": "40ms",
+      "description": "双闪灯的同步性允许的最大延时周期"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证寻车灯远程控制模块 LHZCU 在不同状态下（如转向灯点亮、故障状态、双闪灯模式）向 ICB 和 SDM 发送正确状态和故障反馈的逻辑，确保系统在各种工况下能够准确传递信号并处理相关故障。",
+  "uncertain_points": []
+}
+```

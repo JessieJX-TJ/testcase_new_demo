@@ -1,0 +1,58 @@
+```json
+[
+  {
+    "head": "后雾灯和近光灯开启同步性",
+    "relation": "前提条件",
+    "tail": "组合开关为Auto开关状态且白天模式下",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Combination Switch is in Auto mode",
+      "Daylight Mode is active"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯开启导致近光灯/位置灯点亮",
+    "relation": "触发条件",
+    "tail": "后雾灯开启且组合开关为Auto模式、白天模式",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLightSts = On",
+      "Combination Switch is in Auto mode",
+      "Daylight Mode is active"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯手动关闭导致近光灯/位置灯熄灭",
+    "relation": "触发条件",
+    "tail": "后雾灯手动关闭",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLightSts = Off (manual)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯和近光灯同步熄灭",
+    "relation": "前提条件",
+    "tail": "后雾灯和近光灯开启同步性要求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "后雾灯和近光灯开启同步性要求"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯和近光灯最大延时不超过40ms",
+    "relation": "超时约束",
+    "tail": "后雾灯和近光灯同步熄灭",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "40ms",
+      "后雾灯和近光灯开启同步性要求"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

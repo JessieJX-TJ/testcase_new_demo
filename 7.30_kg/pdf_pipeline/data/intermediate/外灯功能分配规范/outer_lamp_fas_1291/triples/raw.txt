@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "HMI显示制动灯动画",
+    "relation": "触发条件",
+    "tail": "CAN信号或服务接口反馈状态为0x1",
+    "triple_type": "工程规则",
+    "evidence_terms": ["CAN Bus", "BrakeLightCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI不显示制动灯动画",
+    "relation": "抑制条件",
+    "tail": "CAN信号或服务接口反馈状态为0x0",
+    "triple_type": "工程规则",
+    "evidence_terms": ["CAN Bus", "BrakeLightCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI显示制动灯故障错误信息",
+    "relation": "触发条件",
+    "tail": "制动灯发生故障",
+    "triple_type": "工程规则",
+    "evidence_terms": ["ExteriorLightSwitchProcess", "BrakeLightCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯故障",
+    "relation": "依赖于",
+    "tail": "ExteriorLightSwitchProcess检测到异常",
+    "triple_type": "工程规则",
+    "evidence_terms": ["ExteriorLightSwitchProcess", "BrakeLightCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI显示制动灯动画",
+    "relation": "输入为",
+    "tail": "CAN信号或服务接口反馈状态为0x1",
+    "triple_type": "工程规则",
+    "evidence_terms": ["CAN Bus", "BrakeLightCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI显示制动灯故障错误信息",
+    "relation": "输入为",
+    "tail": "制动灯发生故障",
+    "triple_type": "工程规则",
+    "evidence_terms": ["ExteriorLightSwitchProcess", "BrakeLightCtrl"],
+    "confidence_note": "high"
+  }
+]
+```

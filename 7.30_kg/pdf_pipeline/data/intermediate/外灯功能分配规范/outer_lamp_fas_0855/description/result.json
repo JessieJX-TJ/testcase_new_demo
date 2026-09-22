@@ -1,0 +1,35 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑与状态判断",
+  "row_semantics": "表格的每一行代表一个具体的控制逻辑或状态判断条件，描述了在特定条件下系统对外灯（如位置灯、前雾灯）的控制行为或状态反馈。",
+  "column_semantics": "表格没有明确的列，内容以行的形式组织，每行包含触发动作、条件判断和相关参数/状态。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "LHZCU (Lighting and Hazard Control Unit)",
+    "ExteriorLightSwitchProcess",
+    "FrontFogLight",
+    "SidePositionLightStatus",
+    "CombLightSwSta"
+  ],
+  "core_conditions": [
+    "位置灯私有 CAN 通讯方案反馈状态判断",
+    "灯光挡位为 Auto",
+    "前雾灯未开启",
+    "S32G 收到大屏开关请求 ICB",
+    "S32G 收到七键开关请求 IFP"
+  ],
+  "core_outputs": [
+    "位置灯关闭",
+    "近光灯关闭",
+    "前雾灯关闭",
+    "大屏开关请求 ICB",
+    "七键开关请求 IFP"
+  ],
+  "core_faults": [
+    "无前雾灯功能时，默认前雾灯为关闭状态"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了车辆外灯（如位置灯、前雾灯）在不同控制信号输入下的状态判断逻辑和控制输出，可用于验证 LHZCU 在接收特定开关请求（如大屏开关、七键开关）时，对外灯系统的正确控制行为。",
+  "uncertain_points": []
+}

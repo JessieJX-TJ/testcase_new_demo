@@ -1,0 +1,442 @@
+[
+  {
+    "head": "拖挂车双跳灯开启",
+    "relation": "前提条件",
+    "tail": "拖挂模式开启 (VehDragMdSts = 0x1 = VehDragMdSts_1_On)",
+    "sources": [
+      "outer_lamp_fas_1573"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车双跳灯开启",
+    "relation": "触发条件",
+    "tail": "转向灯开关控制模块（LHZCU）发送 RLDircnLghtCtrl = 0x1 或 RRDircnLghtCtrl = 0x1",
+    "sources": [
+      "outer_lamp_fas_1573"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车双跳灯开启",
+    "relation": "依赖于",
+    "tail": "RZCU判断前置条件满足",
+    "sources": [
+      "outer_lamp_fas_1573"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车双跳灯开启",
+    "relation": "依赖于",
+    "tail": "RZCU订阅的转向灯模式状态 DircnLghtMdSts = 0x0",
+    "sources": [
+      "outer_lamp_fas_1573"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车双跳灯开启",
+    "relation": "依赖于",
+    "tail": "TDM接收到 TrlrDirLghtOnReq = 0x3 且 TrlrDirLghtMdSts = 0x0",
+    "sources": [
+      "outer_lamp_fas_1573"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车双跳灯关闭",
+    "relation": "前提条件",
+    "tail": "拖挂模式开启 (VehDragMdSts = 0x1 = VehDragMdSts_1_On)",
+    "sources": [
+      "outer_lamp_fas_1573"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车双跳灯关闭",
+    "relation": "触发条件",
+    "tail": "转向灯开关控制模块（LHZCU）发送 RLDircnLghtCtrl = 0x0 或 RRDircnLghtCtrl = 0x0",
+    "sources": [
+      "outer_lamp_fas_1573"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车双跳灯关闭",
+    "relation": "依赖于",
+    "tail": "TDM接收到 TrlrDirLghtOnReq = 0x0 且 TrlrDirLghtMdSts = 0x1",
+    "sources": [
+      "outer_lamp_fas_1573"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车双跳灯状态反馈",
+    "relation": "输出为",
+    "tail": "TrlrDirLghtSts",
+    "sources": [
+      "outer_lamp_fas_1573"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车双跳灯故障状态反馈",
+    "relation": "输出为",
+    "tail": "DircnLghtFltSts",
+    "sources": [
+      "outer_lamp_fas_1573"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车双跳灯状态反馈",
+    "relation": "输入为",
+    "tail": "TrlrDirLghtSts",
+    "sources": [
+      "outer_lamp_fas_1573"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车双跳灯状态反馈",
+    "relation": "输出为",
+    "tail": "DircnLghtSts",
+    "sources": [
+      "outer_lamp_fas_1573"
+    ],
+    "conflict": true,
+    "conflict_note": "与 'TrlrDirLghtSts' 同为状态反馈输出，但信号名不一致（TrlrDirLghtSts vs DircnLghtSts）；需确认是否为同一信号不同命名或冗余定义"
+  },
+  {
+    "head": "组合灯光控制请求被发送",
+    "relation": "触发条件",
+    "tail": "ExteriorLightControlSystem.ControlCombinedLight 接口被调用",
+    "sources": [
+      "outer_lamp_fas_1574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯开启",
+    "relation": "输入为",
+    "tail": "CombinedLightReq = 0x1",
+    "sources": [
+      "outer_lamp_fas_1574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "输入为",
+    "tail": "CombinedLightReq = 0x2",
+    "sources": [
+      "outer_lamp_fas_1574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "自动模式开启",
+    "relation": "输入为",
+    "tail": "CombinedLightReq = 0x3",
+    "sources": [
+      "outer_lamp_fas_1574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "组合灯光开关状态被获取",
+    "relation": "触发条件",
+    "tail": "ExteriorLightSwitchProcess.CombLghtSwStatus 接口被调用",
+    "sources": [
+      "outer_lamp_fas_1574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯当前状态",
+    "relation": "输出为",
+    "tail": "CombLghtSwSta = 0x1",
+    "sources": [
+      "outer_lamp_fas_1574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯当前状态",
+    "relation": "输出为",
+    "tail": "CombLghtSwSta = 0x2",
+    "sources": [
+      "outer_lamp_fas_1574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "自动模式当前状态",
+    "relation": "输出为",
+    "tail": "CombLghtSwSta = 0x3",
+    "sources": [
+      "outer_lamp_fas_1574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "配置字名称",
+    "relation": "包含子功能",
+    "tail": "功能",
+    "sources": [
+      "outer_lamp_fas_1575"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "配置字名称",
+    "relation": "输入为",
+    "tail": "参数",
+    "sources": [
+      "outer_lamp_fas_1575"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "配置字名称",
+    "relation": "输出为",
+    "tail": "默认值",
+    "sources": [
+      "outer_lamp_fas_1575"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯驱动处理模块",
+    "relation": "依赖于",
+    "tail": "所有方向灯硬件状态为 OFF：FLDirnLghtSts_HW = 0x0, FRDircnLghtSts_HW = 0x0, RLDircnLghtSts_HW = 0x0, RRDircnLghtSts_HW = 0x0",
+    "sources": [
+      "outer_lamp_fas_1576"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯驱动处理模块",
+    "relation": "依赖于",
+    "tail": "所有方向灯状态实例（ID=1~4）DirectionLightSta = 0x0",
+    "sources": [
+      "outer_lamp_fas_1576"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯驱动处理模块",
+    "relation": "依赖于",
+    "tail": "所有方向灯错误状态实例（ID=1~4）DirectionLightErrorSta = 0x0",
+    "sources": [
+      "outer_lamp_fas_1576"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯驱动处理模块",
+    "relation": "依赖于",
+    "tail": "所有方向灯硬件状态为 ON：FLDirnLghtSts_HW = 0x1, FRDircnLghtSts_HW = 0x1, RLDircnLghtSts_HW = 0x1, RRDircnLghtSts_HW = 0x1",
+    "sources": [
+      "outer_lamp_fas_1576"
+    ],
+    "conflict": true,
+    "conflict_note": "与前一条‘依赖于所有灯硬件状态为 OFF’存在逻辑冲突：同一模块不能同时要求所有灯硬件状态既为OFF又为ON；需确认是否为不同工作模式（如初始化检查 vs 激活驱动）或文档错误"
+  },
+  {
+    "head": "危险警报灯激活",
+    "relation": "触发条件",
+    "tail": "车辆发生碰撞",
+    "sources": [
+      "outer_lamp_fas_1577"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯激活",
+    "relation": "前提条件",
+    "tail": "UsrMd = All 且 UsrMdV = Valid",
+    "sources": [
+      "outer_lamp_fas_1577"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯激活",
+    "relation": "前提条件",
+    "tail": "VehMd = All 且 VehMdV = Valid",
+    "sources": [
+      "outer_lamp_fas_1577"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "调用 ExteriorLightSwitchProcess.DippedBeamLightErrSta 接口",
+    "relation": "触发条件",
+    "tail": "获取近光灯故障状态",
+    "sources": [
+      "outer_lamp_fas_1579"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.DippedBeamLightErrSta 接口的输出",
+    "relation": "输出为",
+    "tail": "DipdBeamLightErrSta ∈ {0x0=No Error, 0x1=Error, 0x2=Unknown}",
+    "sources": [
+      "outer_lamp_fas_1579"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "订阅 SidePositionLight.SidePositionLightStatus 接口",
+    "relation": "前提条件",
+    "tail": "获取左前位置灯状态",
+    "sources": [
+      "outer_lamp_fas_1579"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight.SidePositionLightStatus 接口的输出",
+    "relation": "输出为",
+    "tail": "SidePositionLightSta ∈ {0x0=OFF, 0x1=ON, 0x2=Error, 0x3=Unknown}",
+    "sources": [
+      "outer_lamp_fas_1579"
+    ],
+    "conflict": true,
+    "conflict_note": "原文中 '0x2=Error, 0x2=Unknown' 存在枚举值重复（0x2 映射两个语义），应为笔误；标准应为 0x2=Error, 0x3=Unknown"
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "触发条件",
+    "tail": "环境光状态为 AutoLightOnReq_1 或 AutoLightOnReq_ICB",
+    "sources": [
+      "outer_lamp_fas_1580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "前提条件",
+    "tail": "车辆档位为 D 档（TrShfLvrPos = 0x4）",
+    "sources": [
+      "outer_lamp_fas_1580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "前提条件",
+    "tail": "自动远光灯控制未被禁止（AutoMaiBeamLghtCtrlDsblSts = 0x0）",
+    "sources": [
+      "outer_lamp_fas_1580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "前提条件",
+    "tail": "智能前大灯功能启用（InsdFnCfgIntlgtMaiBeamLght = 0x1）",
+    "sources": [
+      "outer_lamp_fas_1580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "前提条件",
+    "tail": "IHC 开关使能（iIHCEnbSetSts = 0x0）",
+    "sources": [
+      "outer_lamp_fas_1580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "输入为",
+    "tail": "智驾摄像头识别信息（IPD）",
+    "sources": [
+      "outer_lamp_fas_1580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "依赖于",
+    "tail": "PP 阶段 LHZCU 接收 IPD 信号",
+    "sources": [
+      "outer_lamp_fas_1580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "输出为",
+    "tail": "ExtAutoMaiBeamLightCtrlReq_1_RequestOnFromCamera",
+    "sources": [
+      "outer_lamp_fas_1580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯关闭请求",
+    "relation": "触发条件",
+    "tail": "车速 ≥ 40 km/h 持续 ≥ 2 秒 且 IPD 未请求关闭",
+    "sources": [
+      "outer_lamp_fas_1580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯关闭请求",
+    "relation": "依赖于",
+    "tail": "PP 阶段及以后 LHZCU 接收车速与 IPD 信号进行联合判断",
+    "sources": [
+      "outer_lamp_fas_1580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

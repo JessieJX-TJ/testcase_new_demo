@@ -1,0 +1,48 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯组合服务 ICB 订阅接口及其手动大灯高度调节电机同步性要求",
+  "row_semantics": "表格分为两个主要部分：第一部分描述了外灯组合服务 ICB 的订阅接口状态，第二部分为备注，提供了手动大灯高度调节电机的同步性要求。",
+  "column_semantics": "表格包含两列，左侧列为类别（如 '态' 和 '备注'），右侧列为对应的具体内容或参数描述。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "controller_module",
+      "description": "外部灯光控制系统"
+    },
+    {
+      "name": "LevelingAdjustSts",
+      "type": "input_signal",
+      "description": "水平调节状态信号"
+    },
+    {
+      "name": "LevelingAdjErrSts",
+      "type": "output_signal",
+      "description": "水平调节错误状态信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "LevelingAdjustSts = 0x1",
+      "description": "表示 Leveling1 状态，根据个性化设置"
+    },
+    {
+      "condition": "LevelingAdjErrSts = 0x0",
+      "description": "表示 No Error（无错误）状态"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "requirement": "手动大灯高度调节电机同步性最大延时周期",
+      "value": "40ms",
+      "description": "手动大灯高度调节电机的同步性允许的最大延时周期为 40 毫秒"
+    }
+  ],
+  "engineering_interpretation": "该表格用于定义外灯组合服务 ICB 的订阅接口状态以及手动大灯高度调节电机的同步性要求，可用于测试验证外灯控制系统的状态响应和电机调节的同步性能。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,97 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "DirectionLight Control",
+  "row_semantics": "Each row represents a specific control command for a direction light, including its purpose, interface details, and parameter configuration.",
+  "column_semantics": {
+    "A": "Function Name (e.g., ControlDirectionLight)",
+    "B": "Consumption Type (e.g., SOA, RHZCU, RZCU)",
+    "C": "Controller/Module (e.g., ICB)",
+    "D": "Control Method (e.g., Hard Line Control)",
+    "E": "Description and Interface Details"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DirectionLight.ControlDirectionLight",
+      "type": "function",
+      "description": "Controls the direction lights (right front or left rear)"
+    },
+    {
+      "name": "SOA",
+      "type": "consumption_type",
+      "description": "Service-Oriented Architecture"
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller_module",
+      "description": "Right Headlight Zone Control Unit"
+    },
+    {
+      "name": "RZCU",
+      "type": "controller_module",
+      "description": "Right Zone Control Unit"
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "Integrated Control Box"
+    },
+    {
+      "name": "Hard Line Control",
+      "type": "control_method",
+      "description": "Direct hardware-level control"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "Unique identifier for the control instance",
+      "values": [
+        {
+          "value": "2",
+          "description": "Controls right front turn signal"
+        },
+        {
+          "value": "3",
+          "description": "Controls left rear turn signal"
+        }
+      ]
+    },
+    {
+      "name": "DirectionLightReq",
+      "type": "parameter",
+      "description": "Request to control direction light",
+      "values": [
+        {
+          "value": "0x0=OFF",
+          "description": "Turn off the direction light"
+        },
+        {
+          "value": "0x1=ON",
+          "description": "Turn on the direction light"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLight Status",
+      "type": "output_signal",
+      "description": "State of the direction light (on/off)"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Periodic Call",
+      "type": "timing_constraint",
+      "description": "The service interface is called periodically to control the direction light"
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters and interfaces for controlling direction lights in a vehicle, specifying which controller/module is responsible for each light and how it can be turned on or off via a service interface.",
+  "uncertain_points": []
+}
+```

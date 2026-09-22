@@ -1,0 +1,28 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior lamp function) 的模式定义",
+  "row_semantics": "表格按车辆模式 (VehMd)、车辆模式验证 (VehMdV) 和用户模式 (UsG Md) 进行分类，详细定义了不同模式的数值编码及其含义。",
+  "column_semantics": "表格包含以下列：提供/消费 (Provide/Consume)、SoA 服务提供方 (SoA Service Provider)、SoA 服务消费方 (SoA Service Consumer)、通道 (Channel)、来源 (Source)。这些列用于描述信号或数据流的交互属性，但在此表中未填充具体值。",
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "description": "Vehicle Mode, 车辆运行模式, 定义了车辆在不同场景下的操作状态, 如NORMAL(正常), CRASH(碰撞), FACTORY(工厂), TRANSPORT(运输), DYNO(测功机), EXHIBITION(展览), Engineering(工程), Service(服务)."
+    },
+    {
+      "name": "VehMdV",
+      "description": "Vehicle Mode Validation, 车辆模式验证状态, 表示VehMd的有效性, 包含Invalid(无效)和Valid(有效)两种状态."
+    },
+    {
+      "name": "UsG Md",
+      "description": "User Mode, 用户模式, 定义了驾驶员或乘客的操作模式, 如Sleep(睡眠), Standby(待机), Comfortable(舒适), NormalDriving(正常驾驶), AIParking(自动泊车)."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证车辆在不同运行模式（如正常驾驶、碰撞保护、工厂测试等）下，外灯功能是否按照规范正确响应。例如，当车辆处于CRASH模式时，外灯应触发紧急警示功能。",
+  "uncertain_points": []
+}

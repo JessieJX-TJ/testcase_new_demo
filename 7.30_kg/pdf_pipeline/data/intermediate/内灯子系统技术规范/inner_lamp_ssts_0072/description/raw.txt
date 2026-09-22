@@ -1,0 +1,82 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - DoorFR1 Lamp Breathing Mode Control",
+  "row_semantics": "Each row represents a specific breathing rate mode for the front right door lamp, including its code value, period, and associated original breathing mode.",
+  "column_semantics": {
+    "Code Value": "The hexadecimal code representing a specific breathing rate mode.",
+    "周期": "The period (time interval) of the breathing cycle in seconds.",
+    "原呼吸模式值": "The original breathing mode value associated with this rate, if applicable."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorFR1LampBrthngCmd_1_x_Ratey",
+      "type": "function",
+      "description": "Front right door lamp breathing command function, where 'x' is the command index and 'y' is the rate."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Regional Zone Control Unit, responsible for controlling regional lighting functions."
+    },
+    {
+      "name": "DoorAmbtLampA_FR",
+      "type": "controller",
+      "description": "Door Ambient Lamp A Front Right controller."
+    },
+    {
+      "name": "RHZCU_LIN4",
+      "type": "controller",
+      "description": "Regional Zone Control Unit LIN4 interface."
+    },
+    {
+      "name": "SSTS",
+      "type": "system",
+      "description": "Sub System Technical Specification, referring to the overall system documentation."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Rate",
+      "description": "The frequency at which the lamp breathes, defined by the period column."
+    },
+    {
+      "name": "Original Breathing Mode",
+      "description": "The initial breathing pattern associated with certain rates."
+    },
+    {
+      "name": "Command Value 0",
+      "description": "Stops the breathing function immediately."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorFR1LampFadeSpdCmd_1_x_SpdY",
+      "type": "signal",
+      "description": "Fade speed command signal for the door lamp, where 'x' is the command index and 'Y' is the speed level."
+    },
+    {
+      "name": "灯头颜色/亮度切换时间",
+      "type": "parameter",
+      "description": "Time required for the lamp head to switch from current state to target state during color or brightness change."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Period",
+      "description": "Defined as the time interval between two consecutive breathing cycles, ranging from 500ms to 12s."
+    },
+    {
+      "name": "Fade Speed",
+      "description": "Default fade speed is 2000ms; other speeds are 300ms and 100ms (reserved for future use)."
+    }
+  ],
+  "engineering_interpretation": "This table defines the breathing rate modes for the front right door lamp, specifying how the lamp should breathe based on different command codes. It is used to verify that the lamp correctly implements the specified breathing patterns according to the given command values and periods.",
+  "uncertain_points": [
+    "The exact behavior of the lamp when switching between different breathing modes is not fully detailed."
+  ]
+}
+```

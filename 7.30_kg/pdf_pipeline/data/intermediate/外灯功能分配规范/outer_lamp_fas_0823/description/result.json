@@ -1,0 +1,36 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯近光灯控制逻辑与状态反馈",
+  "row_semantics": "描述了HMI系统、外灯控制组合服务、驱动处理模块、近光灯控制模块以及外灯组合服务之间关于近光灯（Dipped Beam Light）的状态和请求的交互流程与反馈机制。",
+  "column_semantics": "无明确列，表格内容为按编号顺序排列的功能描述文本，每行代表一个特定的交互或状态反馈步骤。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "HMI子系统ICB",
+    "外灯控制组合服务ICB",
+    "驱动处理模块LHZCU/RHZCU",
+    "近光灯控制模块LHZCU",
+    "外灯组合服务ICB"
+  ],
+  "core_conditions": [
+    "DippedBeamLightRequestStatus.DippedBeamLightReqSts",
+    "DippedBeamLightStatus",
+    "DippedBeamLightErrorStatus"
+  ],
+  "core_outputs": [
+    "ExteriorLightSwitchProcess.CombLightFucProStatus.CombLightFucProSta",
+    "ExteriorLightControl.DippedBeamLightStatus.DippedBeamLightSta",
+    "DippedBeamLight.DippedBeamLightStatus.DippedBeamLightSta",
+    "DippedBeamLight.DippedBeamLightErrorStatus.DippedBeamLightErrorSta",
+    "ExteriorLightSwitchProcess.DippedBeamLightSta.DipdBeamLghtSta",
+    "ExteriorLightSwitchProcess.DippedBeamLightErrSta.DipdBeamLghtErrSta"
+  ],
+  "core_faults": [
+    "No Error"
+  ],
+  "core_timing_constraints": [
+    "两侧最大延时不能超过40ms"
+  ],
+  "engineering_interpretation": "该表格详细定义了车辆外灯近光灯系统中各ECU/模块之间的通信接口、状态流转及故障反馈机制，可用于验证近光灯点亮、熄灭及其同步性的功能测试。",
+  "uncertain_points": []
+}

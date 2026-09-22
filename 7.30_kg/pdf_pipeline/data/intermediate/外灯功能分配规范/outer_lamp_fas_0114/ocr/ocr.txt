@@ -1,0 +1,23 @@
+7、ICB将状态/故障状态反馈至[寻车灯远程控制模块LHZCU]:
+FLDircnLghtSts=0x0= FLDircnLghtSts_0_Off
+FRDircnLghtSts=0x0=FRDircnLghtSts_0_ Off
+RLDircnLghtSts=0x0=RLDircnLghtSts_0_Off
+RRDircnLghtSts=0x0=RRDircnLghtSts_0_ Off
+FLDircnLghtFltsts=0x0=FLDircnLghtFltsts_0_False
+FRDircnLghtFltsts=0x0=FRDircnLghtFltsts_0_False
+RLDircnLghtFltsts=0x0=RLDircnLghtFltsts_0_False
+RRDircnLghtFltsts=0x0=RRDircnLghtFltsts_0_False
+(exlDircnLghtHwDrvEnPrm=0x0||0x2;通过数字灯控获取转向灯状态;)
+8、[寻车灯远程控制模块LHZCU]将状态/故障状态反馈至ICB:
+DircnLghtSts=0x0=OFF
+DircnLghtFltsts=0x0=DircnLghtFltsts_0_No_Error
+9、[外灯组合服务ICB]接收LHZCU发送的转向灯点亮及故障状态CAN信号转成对应的服务
+{ExteriorLightControlSystem. DirectionLightSts. DirectionLghtSts}=0x0=No Flash
+10、[寻车灯远程控制模块LHZCU]将双闪灯模式实时状态反馈至ICB:
+VehHzrdMdSts=0x0=VehHzrdMdSts_0_No_Request
+11、[寻车灯远程控制模块LHZCU]将转向灯控制状态反馈至SDM:
+EDRDircnIndLampSwSts=0x0=EDRDircnIndLampSwSts_0_off
+备注
+1、双闪灯同步性要求:
+双闪灯的同步性允许的最大延时周期为:40ms
+双闪灯打断策略:当双闪灯处于激活状态,有新的请求时,应立即打断,响应新的请求

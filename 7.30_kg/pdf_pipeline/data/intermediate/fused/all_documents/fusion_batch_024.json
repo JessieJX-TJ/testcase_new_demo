@@ -1,0 +1,512 @@
+[
+  {
+    "head": "消费端获取外灯状态",
+    "relation": "触发条件",
+    "tail": "应主动通过状态服务 Getter() 方式获取外灯状态",
+    "sources": [
+      "outer_lamp_fas_0238"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯控制信号",
+    "relation": "输入为",
+    "tail": "IPD 发送的 DIILampsCtrl 信号",
+    "sources": [
+      "outer_lamp_fas_0241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯控制信号为开",
+    "relation": "触发条件",
+    "tail": "IPD 发送 3 帧 0x2",
+    "sources": [
+      "outer_lamp_fas_0241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯控制信号为关",
+    "relation": "触发条件",
+    "tail": "IPD 发送 3 帧 0x1",
+    "sources": [
+      "outer_lamp_fas_0241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯控制信号为无请求",
+    "relation": "触发条件",
+    "tail": "IPD 发送 0x0",
+    "sources": [
+      "outer_lamp_fas_0241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯控制信号回落至默认值 0x0",
+    "relation": "复位条件",
+    "tail": "IPD 发送 3 帧 0x2 或 0x1 后",
+    "sources": [
+      "outer_lamp_fas_0241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯同步延时",
+    "relation": "超时约束",
+    "tail": "危险警报灯的同步性 ≤ 40 ms",
+    "sources": [
+      "outer_lamp_fas_0241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "触发条件",
+    "tail": "大屏软开关被触发",
+    "sources": [
+      "outer_lamp_fas_0244"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMd 不为 Sleep、Standby、Comfortable 或 XOTA 模式",
+    "sources": [
+      "outer_lamp_fas_0244"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMd 值有效",
+    "sources": [
+      "outer_lamp_fas_0244"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "车辆模式为 TRANSPORT",
+    "sources": [
+      "outer_lamp_fas_0244"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "车辆模式值有效",
+    "sources": [
+      "outer_lamp_fas_0244"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "LHZCU 已判断开启位置灯",
+    "sources": [
+      "outer_lamp_fas_0244"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LEDHeadLamp 控制信号被设置为 OFF",
+    "relation": "前提条件",
+    "tail": "PL_Directional_ghtCtrl = OFF 且 PR_Directional_ghtCtrl = OFF 且 XR_Directional_ghtCtrl = OFF 且 XL_Directional_ghtCtrl = OFF",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LEDDecorBall 控制信号被设置为 OFF",
+    "relation": "前提条件",
+    "tail": "LEDDecorBall_ProStatus = OFF",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警告灯自动控制模块 LHZCU 激活",
+    "relation": "前提条件",
+    "tail": "Vehicle_Motion_State = Vehicle_Lane_Motion_State.A_RCW_Male",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警告灯自动控制模块 LHZCU 激活",
+    "relation": "前提条件",
+    "tail": "Vehicle_Hazard_Event = Vehicle_Hazard_NonSafety_Events.LHZCU_Active",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警告灯自动控制模块 LHZCU 激活",
+    "relation": "前提条件",
+    "tail": "SEM_FDR_Decorball_ampvBt0s = OFF",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警告灯自动控制模块 LHZCU 停止激活",
+    "relation": "前提条件",
+    "tail": "后碰撞预警消失",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICM 请求外部照明控制",
+    "relation": "前提条件",
+    "tail": "InstanceID ∈ {1, 2, 3}",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICM 请求外部照明控制",
+    "relation": "前提条件",
+    "tail": "RCW_Wrong = No_Error",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICM 请求外部照明控制",
+    "relation": "前提条件",
+    "tail": "DeciLghtCtrl_DelayPoint = 0x0",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PL_Directional_ghtCtrl 设置为 OFF",
+    "relation": "前提条件",
+    "tail": "InstanceID ∈ {1, 5}",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PR_Directional_ghtCtrl 设置为 OFF",
+    "relation": "前提条件",
+    "tail": "InstanceID ∈ {2, 6}",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "XR_Directional_ghtCtrl 设置为 OFF",
+    "relation": "前提条件",
+    "tail": "InstanceID ∈ {3, 7}",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "XL_Directional_ghtCtrl 设置为 OFF",
+    "relation": "前提条件",
+    "tail": "InstanceID ∈ {4, 8}",
+    "sources": [
+      "outer_lamp_fas_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "贯穿尾灯总成",
+    "relation": "包含子功能",
+    "tail": "TailLpAsmbB",
+    "sources": [
+      "outer_lamp_fas_0247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "输出到",
+    "tail": "LHA",
+    "sources": [
+      "outer_lamp_fas_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "输出到",
+    "tail": "RHA",
+    "sources": [
+      "outer_lamp_fas_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "输出到",
+    "tail": "TailIp.pAsmbA_RH",
+    "sources": [
+      "outer_lamp_fas_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "输出到",
+    "tail": "TailIp.pAsmbA_LH",
+    "sources": [
+      "outer_lamp_fas_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "输出到",
+    "tail": "TailIp.pAsmbB",
+    "sources": [
+      "outer_lamp_fas_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "自动灯光大屏请求 (ICB)",
+    "relation": "输入来自",
+    "tail": "外灯组合服务 (ICB)",
+    "sources": [
+      "outer_lamp_fas_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "阳光雨量传感器",
+    "relation": "输入来自",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "阳光雨量传感器",
+    "relation": "输入来自",
+    "tail": "RHZCU",
+    "sources": [
+      "outer_lamp_fas_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "控制对象",
+    "tail": "LHA",
+    "sources": [
+      "outer_lamp_fas_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "控制对象",
+    "tail": "RHA",
+    "sources": [
+      "outer_lamp_fas_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "包含子功能",
+    "tail": "自动灯光大屏请求 (ICB)",
+    "sources": [
+      "outer_lamp_fas_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "触发条件",
+    "tail": "VehIntrusionPrevnHzrdLmpReq 取值且周期后",
+    "sources": [
+      "outer_lamp_fas_0251"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "输出为",
+    "tail": "FLDirclnLghtCtrl = 0x0, FRDirclnLghtCtrl = 0x0, RLDirclnLghtCtrl = 0x0, RRDirclnLghtCtrl = 0x0",
+    "sources": [
+      "outer_lamp_fas_0251"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "超时约束",
+    "tail": "DircnLghtCtrlDelayPrm ≤ 60 ms",
+    "sources": [
+      "outer_lamp_fas_0251"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输入为",
+    "tail": "ICB 接收的控制信号",
+    "sources": [
+      "outer_lamp_fas_0251"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "超时约束",
+    "tail": "DirenLghtCtrlDelayPrm ≤ 60 ms",
+    "sources": [
+      "outer_lamp_fas_0251"
+    ],
+    "conflict": true,
+    "conflict_note": "DircnLghtCtrlDelayPrm 与 DirenLghtCtrlDelayPrm 字符拼写不一致，疑似同一参数；需确认是否为笔误或不同命名规范。建议统一为 DircnLghtCtrlDelayPrm（符合 'Directional Light Control Delay Parameter' 缩写惯例）"
+  },
+  {
+    "head": "驱动模块 LHZCU/RHZCU/RZCU",
+    "relation": "输入来自",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0251"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驱动处理模块 LHZCU/RHZCU/RZCU",
+    "relation": "输出为",
+    "tail": "FLDirclnLghtSts_HW = 0x0, FRDirclnLghtSts_HW = 0x0, RLDirclnLghtSts_HW = 0x0, RRDirclnLghtSts_HW = 0x0",
+    "sources": [
+      "outer_lamp_fas_0251"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驱动处理模块 LHZCU/RHZCU/RZCU",
+    "relation": "输出为",
+    "tail": "FLDirclnLghtFltsts_HW = 0x0, FRDirclnLghtFltsts_HW = 0x0, RLDirclnLghtFltsts_HW = 0x0, RRDirclnLghtFltsts_HW = 0x0",
+    "sources": [
+      "outer_lamp_fas_0251"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯点亮",
+    "relation": "前提条件",
+    "tail": "前雾灯开关状态为 ON",
+    "sources": [
+      "outer_lamp_fas_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯熄灭",
+    "relation": "前提条件",
+    "tail": "前雾灯开关状态为 OFF",
+    "sources": [
+      "outer_lamp_fas_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯控制信号发送",
+    "relation": "触发条件",
+    "tail": "外灯控制组合服务 ICB 调用基础服务",
+    "sources": [
+      "outer_lamp_fas_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯指示灯显示",
+    "relation": "抑制条件",
+    "tail": "HMI 子系统 ICB 调用接口",
+    "sources": [
+      "outer_lamp_fas_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯硬件输出",
+    "relation": "依赖于",
+    "tail": "驱动处理模块 LHZCU/RHZCU 内部跳变为硬线输出",
+    "sources": [
+      "outer_lamp_fas_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

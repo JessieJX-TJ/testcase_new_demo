@@ -1,0 +1,62 @@
+{
+  "table_type": "fault_table",
+  "topic": "外灯（Ambient Lamp）熄灭控制逻辑与异常处理",
+  "row_semantics": "定义了外灯熄灭的退出条件和异常情况下的处理方式",
+  "column_semantics": "第一列描述条件或状态，第二列详细说明对应的逻辑或动作",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FtwlAmbtLamp_FL_HSD",
+      "type": "controller_module",
+      "description": "主驾侧外灯继电器模块"
+    },
+    {
+      "name": "FtwlAmbtLampLightupDelayPrm",
+      "type": "parameter",
+      "description": "外灯点亮延迟参数"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "FtwlAmbtLamp_FL_HSD",
+      "condition": "0x0 (Close)",
+      "description": "接收主驾侧外灯继电器关闭信号"
+    },
+    {
+      "signal": "PWM值",
+      "condition": "从100%到0%",
+      "description": "持续降低PWM占空比"
+    },
+    {
+      "signal": "FtwlAmbtLampLightupDelayPrm",
+      "condition": "可配置，默认2s",
+      "description": "设定渐熄灭时间"
+    }
+  ],
+  "core_outputs": [
+    {
+      "action": "渐熄灭照脚灯",
+      "description": "按照设定的PWM值和延迟时间，平滑关闭外灯"
+    },
+    {
+      "action": "立即熄灭关闭主驾侧照脚灯驱动",
+      "description": "在检测到故障时，快速切断外灯供电"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "主驾侧照脚灯短路/开路故障",
+      "description": "检测到主驾侧外灯电路存在短路或开路异常"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "timing_name": "FtwlAmbtLampLightupDelayPrm",
+      "value": "默认2s",
+      "description": "外灯渐熄灭过程中的延迟时间"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证外灯系统在正常熄灭和异常情况下的行为，确保其符合设计规范，包括渐熄灭功能的平滑性和故障模式下的快速响应。",
+  "uncertain_points": []
+}

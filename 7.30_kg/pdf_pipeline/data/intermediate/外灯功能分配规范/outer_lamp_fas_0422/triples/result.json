@@ -1,0 +1,150 @@
+[
+  {
+    "head": "转向灯拨杆手动触发",
+    "relation": "前提条件",
+    "tail": "系统管理模块状态不为0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsGmMd != 0x0",
+      "UsGmMd_0_Sleep"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0422",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯拨杆手动触发",
+    "relation": "前提条件",
+    "tail": "未进入睡眠模式",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsGmMd != 0x0",
+      "UsGmMd_0_Sleep"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0422",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯拨杆手动触发",
+    "relation": "前提条件",
+    "tail": "系统管理模块处于待机模式",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "0x1=UsGmMd_l_Standby"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0422",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯拨杆手动触发",
+    "relation": "前提条件",
+    "tail": "系统管理模块版本有效",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsGmMdV = Valid"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0422",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯拨杆手动触发",
+    "relation": "前提条件",
+    "tail": "外部灯光控制通信类型配置为SOA或CAN",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExtrLghtCtrlCmmntnTyp=0x0=SOA",
+      "ExtrLghtCtrlCmmntnTyp=0x1=CAN"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0422",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯拨杆手动触发",
+    "relation": "前提条件",
+    "tail": "外部灯光状态通信类型配置为SOA或CAN",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExtrLghtStsCmmntnTyp=0x0=SOA",
+      "ExtrLghtStsCmmntnTyp=0x1=CAN"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0422",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯拨杆手动触发",
+    "relation": "触发条件",
+    "tail": "收到转向灯开关预处理模块LHZCU的输入信号DircnLghtSwReq",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "收到[转向灯开关预处理模块LHZCU]输入",
+      "DircnLghtSwReq: 0x2=DircnLghtSwReq_2_Left_Second_gear_direction_light_on"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0422",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯拨杆手动触发",
+    "relation": "抑制条件",
+    "tail": "开关停留时间小于50ms",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "开关停留时间<50ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0422",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯拨杆手动触发",
+    "relation": "输出为",
+    "tail": "转向灯开关请求信号DircnLghtSwReq设置为0x2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DircnLghtSwReq: 0x2=DircnLghtSwReq_2_Left_Second_gear_direction_light_on"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0422",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯拨杆手动触发",
+    "relation": "输出为",
+    "tail": "转向灯按照1.25Hz频率闪烁",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "控制转向灯按照1.25Hz频率闪烁"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0422",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯拨杆手动触发",
+    "relation": "超时约束",
+    "tail": "开关停留时间大于50ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "开关停留时间>50ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0422",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

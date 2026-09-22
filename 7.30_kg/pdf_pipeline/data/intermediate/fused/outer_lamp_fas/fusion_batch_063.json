@@ -1,0 +1,608 @@
+[
+  {
+    "head": "危险报警灯开关功能",
+    "relation": "依赖于",
+    "tail": "LHZCU执行开关信号采集、前置条件判断及点灯驱动",
+    "sources": [
+      "outer_lamp_fas_0673"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯开关功能",
+    "relation": "包含子功能",
+    "tail": "ZXD：执行控制指令分发与HMI状态显示",
+    "sources": [
+      "outer_lamp_fas_0673"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯开关功能",
+    "relation": "包含子功能",
+    "tail": "VMCU：接收灯控指令并驱动灯点亮",
+    "sources": [
+      "outer_lamp_fas_0673"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯开关功能",
+    "relation": "包含子功能",
+    "tail": "RHZCU：接收灯控指令并驱动灯点亮",
+    "sources": [
+      "outer_lamp_fas_0673"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯开关功能",
+    "relation": "包含子功能",
+    "tail": "LHA：执行点灯动作",
+    "sources": [
+      "outer_lamp_fas_0673"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯开关功能",
+    "relation": "包含子功能",
+    "tail": "TailLpAsmbA_LH：左后尾灯总成点灯",
+    "sources": [
+      "outer_lamp_fas_0673"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯开关功能",
+    "relation": "包含子功能",
+    "tail": "TailLpAsmbA_RH：右后尾灯总成点灯",
+    "sources": [
+      "outer_lamp_fas_0673"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯开关功能",
+    "relation": "包含子功能",
+    "tail": "TailLpAsmbB：后组合灯B点灯",
+    "sources": [
+      "outer_lamp_fas_0673"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "控制右后位置灯点亮或熄灭",
+    "relation": "触发条件",
+    "tail": "调用SidePositionLight.ControlSidePositionLight服务接口",
+    "sources": [
+      "outer_lamp_fas_0674"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "获取左侧近光灯状态",
+    "relation": "触发条件",
+    "tail": "调用DippedBeamLight.DippedBeamLightStatus服务接口（InstanceID=1）",
+    "sources": [
+      "outer_lamp_fas_0674"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight.ControlSidePositionLight接口（InstanceID=3）",
+    "relation": "输入为",
+    "tail": "控制右后位置灯点亮或熄灭",
+    "sources": [
+      "outer_lamp_fas_0674"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.DippedBeamLightStatus接口（InstanceID=1）",
+    "relation": "输入为",
+    "tail": "获取左侧近光灯状态",
+    "sources": [
+      "outer_lamp_fas_0674"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.DippedBeamLightStatus接口返回状态为Error",
+    "relation": "故障响应",
+    "tail": "获取左侧近光灯状态失败",
+    "sources": [
+      "outer_lamp_fas_0674"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.DippedBeamLightStatus接口返回状态为Unknown",
+    "relation": "故障响应",
+    "tail": "无法确定左侧近光灯状态",
+    "sources": [
+      "outer_lamp_fas_0674"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "获取左侧近光灯状态",
+    "relation": "触发条件",
+    "tail": "调用DippedBeamLight.DippedBeamLightStatus服务接口（InstanceID=3）",
+    "sources": [
+      "outer_lamp_fas_0675",
+      "outer_lamp_fas_1027"
+    ],
+    "conflict": true,
+    "conflict_note": "与outer_lamp_fas_0674中InstanceID=1冲突：同一功能（获取左侧近光灯状态）对应不同InstanceID（1 vs 3），需确认是否为版本差异或配置分支"
+  },
+  {
+    "head": "获取右侧近光灯状态",
+    "relation": "触发条件",
+    "tail": "调用DippedBeamLight.DippedBeamLightStatus服务接口（InstanceID=4）",
+    "sources": [
+      "outer_lamp_fas_0675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯状态",
+    "relation": "输出为",
+    "tail": "DippedBeamLightSta参数值（0x0=OFF, 0x1=ON, 0x2=Unknown）",
+    "sources": [
+      "outer_lamp_fas_0675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯状态",
+    "relation": "输出为",
+    "tail": "DippedBeamLightSta参数值（0x0=OFF, 0x1=ON, 0x2=Unknown）",
+    "sources": [
+      "outer_lamp_fas_0675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.DippedBeamLightStatus接口",
+    "relation": "依赖于",
+    "tail": "SOA控制器",
+    "sources": [
+      "outer_lamp_fas_0675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.DippedBeamLightStatus接口",
+    "relation": "依赖于",
+    "tail": "ICB控制器",
+    "sources": [
+      "outer_lamp_fas_0675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight.DippedBeamLightStatus接口",
+    "relation": "依赖于",
+    "tail": "LHZCU控制器",
+    "sources": [
+      "outer_lamp_fas_0675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制信号",
+    "relation": "输入为",
+    "tail": "FLDirnLghtCtrl_0_Off",
+    "sources": [
+      "outer_lamp_fas_0677"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制信号",
+    "relation": "输入为",
+    "tail": "FLDirnLghtCtrl_1_On",
+    "sources": [
+      "outer_lamp_fas_0677"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯控制信号",
+    "relation": "输入为",
+    "tail": "FRDirnLghtCtrl_0_Off",
+    "sources": [
+      "outer_lamp_fas_0677"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯控制信号",
+    "relation": "输入为",
+    "tail": "FRDirnLghtCtrl_1_On",
+    "sources": [
+      "outer_lamp_fas_0677"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制信号",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0677"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯控制信号",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0677"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制信号",
+    "relation": "依赖于",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0677"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.LevelingAdjustErrSts功能正常",
+    "relation": "输出为",
+    "tail": "LevelingAdjustErrSts = 0x0 (No Error)",
+    "sources": [
+      "outer_lamp_fas_0681"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.LevelingAdjustErrSts功能发生错误",
+    "relation": "输出为",
+    "tail": "LevelingAdjustErrSts = 0x1 (Error)",
+    "sources": [
+      "outer_lamp_fas_0681"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.LevelingAdjustErrSts功能状态未知",
+    "relation": "输出为",
+    "tail": "LevelingAdjustErrSts = 0x2 (Unknown)",
+    "sources": [
+      "outer_lamp_fas_0681"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "调用ExteriorLightControlSystem.LevelingAdjustErrSts接口",
+    "relation": "触发条件",
+    "tail": "获取手动大灯高度调节功能故障状态",
+    "sources": [
+      "outer_lamp_fas_0681"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯和近光灯退出同步性要求",
+    "relation": "前提条件",
+    "tail": "左侧和右侧需保持同步熄灭",
+    "sources": [
+      "outer_lamp_fas_0684"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯和近光灯退出同步性要求",
+    "relation": "超时约束",
+    "tail": "两侧最大延时不能超过40ms",
+    "sources": [
+      "outer_lamp_fas_0684"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorStatus",
+    "relation": "输入为",
+    "tail": "exlSideLghtHwDrvEnPrm=0x1；备注：位置灯炮筒灯方案，通过InstanceID=1/2/3/4反馈状态（如S31L）",
+    "sources": [
+      "outer_lamp_fas_0684"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorSta",
+    "relation": "依赖于",
+    "tail": "InstanceID=4",
+    "sources": [
+      "outer_lamp_fas_0684"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务（ICB）",
+    "relation": "包含子功能",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0685",
+      "outer_lamp_fas_0800"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务（ICB）",
+    "relation": "包含子功能",
+    "tail": "RHZCU",
+    "sources": [
+      "outer_lamp_fas_0685",
+      "outer_lamp_fas_0800"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务（ICB）",
+    "relation": "包含子功能",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_fas_0685",
+      "outer_lamp_fas_0800"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务（ICB）",
+    "relation": "输出到",
+    "tail": "TailLpAsmbA_LH",
+    "sources": [
+      "outer_lamp_fas_0685"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务（ICB）",
+    "relation": "输出到",
+    "tail": "TailLpAsmbA_RH",
+    "sources": [
+      "outer_lamp_fas_0685"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务（ICB）",
+    "relation": "输出到",
+    "tail": "TailLpAsmbB",
+    "sources": [
+      "outer_lamp_fas_0685"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "输出到",
+    "tail": "外灯组合服务（ICB）",
+    "sources": [
+      "outer_lamp_fas_0685"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "输出到",
+    "tail": "外灯组合服务（ICB）",
+    "sources": [
+      "outer_lamp_fas_0685"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "输出到",
+    "tail": "外灯组合服务（ICB）",
+    "sources": [
+      "outer_lamp_fas_0685"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "输出到",
+    "tail": "TailLpAsmbA_LH",
+    "sources": [
+      "outer_lamp_fas_0685"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "输出到",
+    "tail": "TailLpAsmbA_RH",
+    "sources": [
+      "outer_lamp_fas_0685"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "输出到",
+    "tail": "TailLpAsmbB",
+    "sources": [
+      "outer_lamp_fas_0685"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯在工厂模式下开启",
+    "relation": "触发条件",
+    "tail": "整车模式为工厂模式",
+    "sources": [
+      "outer_lamp_fas_0689"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯在工厂模式下开启",
+    "relation": "触发条件",
+    "tail": "远光灯反馈状态为关闭",
+    "sources": [
+      "outer_lamp_fas_0689"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯持续开启2分钟",
+    "relation": "状态保持条件",
+    "tail": "远光灯在工厂模式下已开启",
+    "sources": [
+      "outer_lamp_fas_0689"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯关闭",
+    "relation": "触发条件",
+    "tail": "近光灯反馈状态为关闭或LHZCU判断近光灯关闭",
+    "sources": [
+      "outer_lamp_fas_0689"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关控制模块LHZCU信号跳变为关闭",
+    "relation": "触发条件",
+    "tail": "主光灯请求信号为关闭",
+    "sources": [
+      "outer_lamp_fas_0689"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务（ICB）调用基础服务",
+    "relation": "触发条件",
+    "tail": "主光灯请求信号为关闭",
+    "sources": [
+      "outer_lamp_fas_0689"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯在工厂模式下开启",
+    "relation": "抑制条件",
+    "tail": "非工厂模式",
+    "sources": [
+      "outer_lamp_fas_0689"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智能场景服务请求",
+    "relation": "包含子功能",
+    "tail": "哨兵模式",
+    "sources": [
+      "outer_lamp_fas_0690"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智能场景服务请求",
+    "relation": "包含子功能",
+    "tail": "紧急制动灯闪烁退出后的双闪灯自动开启",
+    "sources": [
+      "outer_lamp_fas_0690"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智驾相关请求",
+    "relation": "依赖于",
+    "tail": "行车模式或泊车模式",
+    "sources": [
+      "outer_lamp_fas_0690"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能（Exterior Lamp Function）",
+    "relation": "依赖于",
+    "tail": "软件版本 < 1.0",
+    "sources": [
+      "outer_lamp_fas_0691",
+      "outer_lamp_fas_1155",
+      "outer_lamp_fas_1696"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "查询右后转向灯状态",
+    "relation": "触发条件",
+    "tail": "调用DirectionLightErrorStatus服务接口",
+    "sources": [
+      "outer_lamp_fas_0692"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

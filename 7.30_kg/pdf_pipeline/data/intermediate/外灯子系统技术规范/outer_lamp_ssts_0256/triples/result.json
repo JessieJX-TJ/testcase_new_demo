@@ -1,0 +1,72 @@
+[
+  {
+    "head": "制动灯开关信号被触发",
+    "relation": "前提条件",
+    "tail": "用户踩下制动踏板,开关信号高有效",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "用户踩下制动踏板",
+      "开关信号高有效"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0256",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "BrkLghtSwReq信号发送",
+    "relation": "依赖于",
+    "tail": "制动灯开关模块",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "【BrkLghtSwMdl】",
+      "BrkLghtSwReq=0x1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0256",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "制动灯控制模块接收信号",
+    "relation": "输入为",
+    "tail": "BrkLghtSwReq信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "【BrkLghtCtrlMdl】",
+      "BrkLghtSwReq=0x1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0256",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "制动灯开关状态反馈",
+    "relation": "输出为",
+    "tail": "BrkLghtSwSts信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "BrkLghtSwSts_1_On",
+      "2. 反馈开关状态:"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0256",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "制动灯开关状态有效性反馈",
+    "relation": "输出为",
+    "tail": "BrkLghtSwStsV信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "BrkLghtSwStsV_0_Valid",
+      "2. 反馈开关状态:"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0256",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  }
+]

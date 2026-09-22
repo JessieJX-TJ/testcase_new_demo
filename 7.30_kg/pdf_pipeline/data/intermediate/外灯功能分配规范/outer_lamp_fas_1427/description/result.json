@@ -1,0 +1,53 @@
+{
+  "table_type": "state_table",
+  "topic": "手动大灯高度调节状态描述",
+  "row_semantics": "表格的行描述了手动大灯高度调节功能的状态信息，包括其开关状态和个性化设置。",
+  "column_semantics": {
+    "column_1": "功能状态描述：具体说明手动大灯高度调节的当前状态及其相关参数。",
+    "column_2": "系统显示状态：HMI（人机交互界面）根据个性化设置显示手动大灯水平高度的开关状态。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "手动大灯高度调节",
+      "type": "功能",
+      "description": "允许驾驶员手动调整车辆大灯的水平高度以适应不同路况或环境。"
+    },
+    {
+      "name": "HMI子系统",
+      "type": "控制器/模块",
+      "description": "负责根据个性化设置显示手动大灯水平高度的开关状态，并与用户进行交互。"
+    },
+    {
+      "name": "PersonalizationData.HeadLampLevelSet",
+      "type": "输入信号",
+      "description": "存储个性化设置中手动大灯水平高度的设定值。"
+    },
+    {
+      "name": "HeadLampLevelSetInfo",
+      "type": "输出信号",
+      "description": "表示手动大灯水平高度设置的状态信息，用于HMI显示。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "手动大灯开关状态",
+      "description": "指示手动大灯是否处于开启或关闭状态。"
+    },
+    {
+      "name": "个性化设置",
+      "description": "用户自定义的手动大灯水平高度设置参数。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "HMI显示状态",
+      "description": "HMI子系统根据个性化设置显示手动大灯水平高度的开关状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证HMI子系统在手动大灯高度调节功能中的显示逻辑，确保其能够正确反映个性化设置下的开关状态。",
+  "uncertain_points": []
+}

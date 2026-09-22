@@ -1,0 +1,54 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "危险报警灯开关功能需求",
+  "row_semantics": "描述危险报警灯开关在特定条件下的行为逻辑，包括触发条件、解除条件、持续时间以及涉及的网络节点和控制器。",
+  "column_semantics": {
+    "报警源": "触发危险报警灯开关动作的来源或事件。",
+    "控制器": "执行危险报警灯开关功能的电子控制单元（ECU）。",
+    "网络报警功能需求 (网络报警事件的原因, 需要哪些节点配合做什么工作)": "描述网络层面上需要哪些节点协同完成报警功能的需求。",
+    "报警条件": "触发危险报警灯开关的条件。",
+    "报警解除条件": "解除危险报警灯开关的条件。",
+    "网络需求时长(ms)": "危险报警灯开关在网络中持续的时间长度。",
+    "报警事件涉及节点": "与危险报警灯开关相关的网络节点。",
+    "涉及网段 (NOI)": "危险报警灯开关功能所涉及的网络段。",
+    "功能需求": "危险报警灯开关的具体功能要求，包括指示灯状态和信号输出。",
+    "uncertain_points": "无"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "危险报警灯开关"
+  ],
+  "core_conditions": [
+    "LHZCU",
+    "ZXD",
+    "VMCU",
+    "RHZCU",
+    "Tail.pAsembA_RH",
+    "Tail.pAsembB",
+    "Time Out"
+  ],
+  "core_outputs": [
+    "Backbone_CANFD",
+    "LHZCU_SUB_F_CAN",
+    "TAIL_CANFD",
+    "RHZCU_SUB_F_CAN",
+    "LHZCU做开关采集类, 并做前置条件判断, 做激励动点灯;",
+    "ZXD: 做控制指令信号分发, 并接收状态;  急停信号(HM)显示:",
+    "VMCU: 接收报警灯开关命令, 动点亮尾灯;",
+    "RHZCU: 接收报警灯开关命令, 电动点灯亮;",
+    "LHA: 点灯;",
+    "RHA: 点灯;",
+    "Tail.pAsembA_RH: 点灯;",
+    "Tail.pAsembA_LH: 点灯;",
+    "Tail.pAsembB: 点灯"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "10s"
+  ],
+  "engineering_interpretation": "该表格详细定义了危险报警灯开关的功能需求，包括其触发条件、解除条件、持续时间以及相关的网络节点和控制器的交互要求，可用于验证危险报警灯开关在不同场景下的正确响应和功能实现。",
+  "uncertain_points": []
+}
+```

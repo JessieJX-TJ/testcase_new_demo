@@ -1,0 +1,50 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "车辆模式与紧急制动请求的参数定义",
+  "row_semantics": "表格按功能模块或信号类别组织，每一行代表一个特定的参数或状态定义。",
+  "column_semantics": "表格包含多列，但具体列标题未在图片中显示，主要通过合并单元格和文本描述来定义参数值及其含义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMdV",
+      "type": "system_state",
+      "description": "车辆模式验证状态，指示车辆模式是否有效。"
+    },
+    {
+      "name": "UsGmMd",
+      "type": "mode_name",
+      "description": "用户驾驶模式，定义了不同的驾驶场景和功能配置。"
+    },
+    {
+      "name": "UsGmMdV",
+      "type": "system_state",
+      "description": "用户驾驶模式验证状态，指示用户驾驶模式是否有效。"
+    },
+    {
+      "name": "EmgcBrkA",
+      "type": "output_signal",
+      "description": "紧急制动请求信号，用于触发紧急制动功能。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "EmgcBrkA",
+      "value_range": [
+        "0x0=EmgcBrkA_0_False",
+        "0x1=EmgcBrkA_1_True"
+      ],
+      "description": "紧急制动请求信号的输出值，表示是否发出紧急制动请求（False/True）。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆模式（如Sleep、Standby、Comfortable等）和紧急制动请求信号的参数值及其含义，可用于测试车辆模式切换逻辑和紧急制动功能的正确性。",
+  "uncertain_points": [
+    "具体列标题未明确说明，可能影响对某些参数的完整理解。",
+    "表格中未明确列出所有相关控制器或模块（如CANFD、IBS、LHZCU等），其作用和交互关系需结合上下文理解。"
+  ]
+}
+```

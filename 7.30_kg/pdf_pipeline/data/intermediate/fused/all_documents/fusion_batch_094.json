@@ -1,0 +1,370 @@
+[
+  {
+    "head": "日间行车灯开启",
+    "relation": "输入为",
+    "tail": "UsG Md != 0x1 (UsgMd_1_Standby) OR UsG Md != 0x6 (UsgMd_6_XOTA) AND UsG MdV = Valid",
+    "sources": [
+      "outer_lamp_fas_1012"
+    ],
+    "conflict": true,
+    "conflict_note": "UsG Md != 0x1 和 != 0x6 是互斥条件（非同一模式），但共存于同一功能触发逻辑中，需确认是否为‘或’关系；且未明确Valid与非零值的逻辑组合关系，存在语义歧义。建议补充状态机图或真值表。"
+  },
+  {
+    "head": "位置灯开启",
+    "relation": "包含子功能",
+    "tail": "日间行车灯开启",
+    "sources": [
+      "outer_lamp_fas_1012"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制延时",
+    "relation": "输入为",
+    "tail": "DircnLghtCtrlDelayPrm 参数",
+    "sources": [
+      "outer_lamp_fas_1013"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制延时",
+    "relation": "超时约束",
+    "tail": "0x0–0x8 对应 0 ms–160 ms",
+    "sources": [
+      "outer_lamp_fas_1013"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制通讯类型",
+    "relation": "输入为",
+    "tail": "ExtrLghtCtrlCmmntnTyp 参数",
+    "sources": [
+      "outer_lamp_fas_1013"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制通讯类型",
+    "relation": "依赖于",
+    "tail": "ExtrLghtCtrlCmmntnTyp 参数的值",
+    "sources": [
+      "outer_lamp_fas_1013"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态通讯类型",
+    "relation": "输入为",
+    "tail": "ExtrLghtStsCmmntnTyp 参数",
+    "sources": [
+      "outer_lamp_fas_1013"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态通讯类型",
+    "relation": "依赖于",
+    "tail": "ExtrLghtStsCmmntnTyp 参数的值",
+    "sources": [
+      "outer_lamp_fas_1013"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "碰撞模式允许手动关闭延迟时间",
+    "relation": "输入为",
+    "tail": "CrashHzardTi 参数",
+    "sources": [
+      "outer_lamp_fas_1013"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "碰撞模式允许手动关闭延迟时间",
+    "relation": "超时约束",
+    "tail": "0–15 秒",
+    "sources": [
+      "outer_lamp_fas_1013"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制",
+    "relation": "输入为",
+    "tail": "FLDircnLghtCtrl_0_Off / FLDircnLghtCtrl_1_on",
+    "sources": [
+      "outer_lamp_fas_1015",
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯控制",
+    "relation": "输入为",
+    "tail": "FRDircnLghtCtrl_0_Off / FRDircnLghtCtrl_1_on",
+    "sources": [
+      "outer_lamp_fas_1015",
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯控制",
+    "relation": "输入为",
+    "tail": "RLDircnLghtCtrl_0_Off / RLDircnLghtCtrl_1_on",
+    "sources": [
+      "outer_lamp_fas_1015",
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯控制",
+    "relation": "输入为",
+    "tail": "RRDircnLghtCtrl_0_Off / RRDircnLghtCtrl_1_on",
+    "sources": [
+      "outer_lamp_fas_1015",
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制",
+    "relation": "输出为",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_1015",
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯控制",
+    "relation": "输出为",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_1015",
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯控制",
+    "relation": "输出为",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_1015",
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯控制",
+    "relation": "输出为",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_1015",
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制",
+    "relation": "依赖于",
+    "tail": "LHZCU, ICB",
+    "sources": [
+      "outer_lamp_fas_1015"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtCtrl 信号",
+    "relation": "控制",
+    "tail": "左后转向灯",
+    "sources": [
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl 信号",
+    "relation": "控制",
+    "tail": "右后转向灯",
+    "sources": [
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtCtrl_HW 信号",
+    "relation": "控制",
+    "tail": "左前转向灯",
+    "sources": [
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtCtrl_HW 信号",
+    "relation": "控制",
+    "tail": "右前转向灯",
+    "sources": [
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtCtrl_HW 信号",
+    "relation": "控制",
+    "tail": "左后转向灯",
+    "sources": [
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtCtrl 信号",
+    "relation": "输出为",
+    "tail": "CANFD, LHZCU, ICB, RZCU",
+    "sources": [
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl 信号",
+    "relation": "输出为",
+    "tail": "CANFD, LHZCU, ICB, RZCU",
+    "sources": [
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtCtrl_HW 信号",
+    "relation": "输出为",
+    "tail": "CANFD, ICB, LHZCU",
+    "sources": [
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtCtrl_HW 信号",
+    "relation": "输出为",
+    "tail": "CANFD, ICB, RHZCU",
+    "sources": [
+      "outer_lamp_fas_1017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统显示位置灯及近光灯",
+    "relation": "触发条件",
+    "tail": "服务接口反馈状态 = 0x4",
+    "sources": [
+      "outer_lamp_fas_1016"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统不做图标指示",
+    "relation": "抑制条件",
+    "tail": "服务接口反馈状态 ∈ {0x0, 0x3} OR CAN信号反馈状态 = 0x0",
+    "sources": [
+      "outer_lamp_fas_1016"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统做位置灯指示灯显示",
+    "relation": "触发条件",
+    "tail": "服务接口反馈状态 = 0x1 OR CAN信号反馈状态 = 0x1",
+    "sources": [
+      "outer_lamp_fas_1016"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统表征灯光开关处于Off档位",
+    "relation": "输入为",
+    "tail": "反馈状态 = 0x0",
+    "sources": [
+      "outer_lamp_fas_1016"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统表征灯光开关处于位置灯档位",
+    "relation": "输入为",
+    "tail": "反馈状态 = 0x1",
+    "sources": [
+      "outer_lamp_fas_1016"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统弹窗提醒位置灯故障",
+    "relation": "触发条件",
+    "tail": "SideLghtFltsts = 0x1 OR SideLghtFltsts_1_True",
+    "sources": [
+      "outer_lamp_fas_1016"
+    ],
+    "conflict": true,
+    "conflict_note": "SideLghtFltsts=0x1 与 SideLghtFltsts_1_True 语义等价但命名不一致（布尔标志 vs 枚举值），属术语不统一；建议统一为 SideLghtFltsts = True 或 0x1，避免多源定义歧义。"
+  },
+  {
+    "head": "HMI子系统订阅位置灯故障状态",
+    "relation": "依赖于",
+    "tail": "位置灯服务接口或CAN信号故障状态",
+    "sources": [
+      "outer_lamp_fas_1016"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "触发条件",
+    "tail": "隧道变光模块（LHZCU）检测到前方200 m有隧道",
+    "sources": [
+      "outer_lamp_fas_1018"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

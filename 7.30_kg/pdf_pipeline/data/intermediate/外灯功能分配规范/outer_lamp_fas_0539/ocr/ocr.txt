@@ -1,0 +1,10 @@
+同步设置贯穿式前位置灯开关状态:
+0x1=On)
+备注
+1、ICB_8295贯穿式前位置灯请求重发机制:
+ICB 发送组合灯光请求
+ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq,如超时
+2s未
+ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightResp=0x0=Cont
+rolSuccess的反馈,且请求状态未变,应尝试按照<=50ms周期重发3次；尝试重发
+3次后仍未反馈请求成功,则停止发送

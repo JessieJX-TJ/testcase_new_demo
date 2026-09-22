@@ -1,0 +1,111 @@
+```json
+[
+  {
+    "head": "转向灯熄灭",
+    "relation": "触发条件",
+    "tail": "ICB 将服务接口或控制信号转换成灯控 CAN 信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "灯控 CAN 信号",
+      "转向灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯点亮",
+    "relation": "抑制条件",
+    "tail": "驱动处理模块 LHZCU/RZCU 接收 ICB 服务接口或控制信号",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "LHZCU/RZCU",
+      "ICB",
+      "转向灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态反馈",
+    "relation": "输出为",
+    "tail": "转向灯开关控制模块 LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "转向灯状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯故障状态反馈",
+    "relation": "输出为",
+    "tail": "转向灯开关控制模块 LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "转向灯故障状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态反馈",
+    "relation": "输入为",
+    "tail": "外灯组合服务 ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "转向灯状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯故障状态反馈",
+    "relation": "输入为",
+    "tail": "外灯组合服务 ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "转向灯故障状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯熄灭",
+    "relation": "依赖于",
+    "tail": "ICB 接收控制信号延时 60ms 分发至 LHZCU/RZCU",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU/RZCU",
+      "60ms 延时"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态/故障状态反馈",
+    "relation": "超时约束",
+    "tail": "60ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU/RZCU",
+      "60ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯错误状态",
+    "relation": "诊断关联",
+    "tail": "DirectionLightErrorStatus",
+    "triple_type": "故障响应与降级关系",
+    "evidence_terms": [
+      "DirectionLightErrorStatus",
+      "转向灯"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

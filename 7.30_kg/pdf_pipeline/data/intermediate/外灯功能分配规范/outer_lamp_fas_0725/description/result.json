@@ -1,0 +1,55 @@
+{
+  "table_type": "signal_table",
+  "topic": "制动灯状态与故障监控服务接口定义",
+  "row_semantics": "表格按功能模块和接口类型进行分组，每一行代表一个独立的服务接口定义，描述了该接口的调用目的、参数名称、实例ID及其对应的值含义。",
+  "column_semantics": "表格包含以下列：左侧为功能模块名（如 BrakeLight.BrakeLightState），中间为服务接口的消费方（SOA, ICB等），右侧为网络状态或硬线故障状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrakeLightState",
+      "type": "function",
+      "description": "订阅制动灯当前状态"
+    },
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "function",
+      "description": "订阅制动灯故障状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "BrakeLightSta",
+      "type": "parameter",
+      "description": "制动灯状态参数",
+      "values": [
+        {
+          "code": "0x0",
+          "value": "OFF",
+          "description": "制动灯关闭"
+        },
+        {
+          "code": "0x1",
+          "value": "ON",
+          "description": "制动灯开启"
+        },
+        {
+          "code": "0x2",
+          "value": "Unknown",
+          "description": "制动灯状态未知"
+        }
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "fault_status",
+      "description": "制动灯系统故障状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子系统中制动灯状态和服务接口的规范，可用于验证制动灯状态上报功能以及制动灯故障检测功能的正确性。",
+  "uncertain_points": []
+}

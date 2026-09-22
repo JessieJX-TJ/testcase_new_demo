@@ -1,0 +1,59 @@
+{
+  "table_type": "fault_table",
+  "topic": "Reverse Light Function and Fault Handling",
+  "row_semantics": "Different conditions and fault scenarios related to the reverse light system",
+  "column_semantics": "None (single-column structure describing conditions and actions)",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "CAN Signal or Service Interface Feedback Status",
+      "type": "input_signal"
+    },
+    {
+      "name": "RevsLightFltSts",
+      "type": "system_state"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.ReverseLightErrSta",
+      "type": "system_state"
+    },
+    {
+      "name": "HMI",
+      "type": "output_signal"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "CAN Signal or Service Interface Feedback Status = 0x1",
+      "description": "Trigger reverse light animation display"
+    },
+    {
+      "condition": "CAN Signal or Service Interface Feedback Status = 0x0",
+      "description": "Do not trigger reverse light animation display"
+    },
+    {
+      "condition": "RevsLightFltSts = 0x1",
+      "description": "Indicates a reverse light fault condition"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "Reverse Light Animation Display",
+      "description": "Visual feedback for reverse light activation"
+    },
+    {
+      "output": "HMI Alert",
+      "description": "User interface notification of reverse light fault"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "ReverseLightErrSta",
+      "description": "Fault status indicating an error in the reverse light system"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the behavior of the reverse light system under normal operation and fault conditions, specifying when animation should be displayed and how faults should be reported via HMI.",
+  "uncertain_points": []
+}

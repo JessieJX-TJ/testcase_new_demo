@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/skills_platform.css') }}">
+</head>
+<body>
+    <main class="skills-shell">
+        <header class="hero">
+            <div>
+                <span class="eyebrow">TestCase Agent Skills</span>
+                <h1>Skills Platform</h1>
+                <p>Connect external skill sources, search and import automatically; engineer-written Prompt Skills are also saved, injected, and ready for trial runs.</p>
+            </div>
+            <div class="hero-actions">
+                <button id="reloadBtn">Reload</button>
+                <a href="/" target="_top">Back to Generation</a>
+            </div>
+        </header>
+
+        <section class="metric-row">
+            <div class="metric"><span>Loaded</span><strong id="skillTotal">0</strong></div>
+            <div class="metric"><span>Built-in Skills</span><strong id="builtinTotal">0</strong></div>
+            <div class="metric"><span>Custom / Imported</span><strong id="customTotal">0</strong></div>
+        </section>
+
+        <section class="workspace">
+            <aside class="panel list-panel">
+                <div class="panel-title">
+                    <h2>Local Skills</h2>
+                    <input id="skillFilter" placeholder="Filter loaded skills">
+                </div>
+                <div id="skillList" class="skill-list"></div>
+            </aside>
+
+            <section class="panel editor-panel">
+                <div class="panel-title">
+                    <h2>Write & Inject</h2>
+                    <span>Saved skills enter the local registry immediately</span>
+                </div>
+                <form id="skillForm" class="skill-form">
+                    <label>
+                        Skill Name
+                        <input id="skillName" placeholder="e.g. custom.testcase_boundary_cases">
+                    </label>
+                    <label>
+                        Description
+                        <input id="skillDescription" placeholder="Describe when this skill is suitable">
+                    </label>
+                    <label>
+                        Prompt Template
+                        <textarea id="skillPrompt" placeholder="You may use variables such as {{ requirement }}, {{ testcase }}"></textarea>
+                    </label>
+                    <div class="form-actions">
+                        <button type="submit">Save & Inject</button>
+                        <button type="button" id="fillTemplateBtn">Fill Template</button>
+                    </div>
+                </form>
+            </section>
+
+            <aside class="panel marketplace-panel">
+                <div class="panel-title">
+                    <h2>External Search</h2>
+                    <span>Supports marketplace index or remote URL</span>
+                </div>
+                <div class="search-box">
+                    <input id="marketQuery" placeholder="Search STS, boundary values, evaluation, or paste a JSON/Markdown/SKILL.md URL">
+                    <button id="searchBtn">Search</button>
+                </div>
+                <p class="hint">Configure SKILL_MARKETPLACE_INDEX_URLS in .env; separate multiple URLs with commas.</p>
+                <div id="marketList" class="market-list"></div>
+            </aside>
+        </section>
+
+        <section class="panel run-panel">
+            <div class="panel-title">
+                <div>
+                    <h2>Use Current Skill</h2>
+                    <span id="selectedName">None selected</span>
+                </div>
+                <button id="runSkillBtn" disabled>Trial Run</button>
+            </div>
+            <div class="run-grid">
+                <label>
+                    Input JSON
+                    <textarea id="runInput" class="run-input">{
+  "requirement": "The power tailgate must not open when vehicle speed is >= 5 km/h, and the user must be notified.",
+  "testcase": "Test case pending evaluation"
+}</textarea>
+                </label>
+                <label>
+                    Run Result
+                    <pre id="runOutput">Select a skill on the left, or import one from external search, then run a trial.</pre>
+                </label>
+            </div>
+        </section>
+
+        <section class="panel detail-panel">
+            <div class="panel-title">
+                <h2>Current Skill Details</h2>
+                <span>metadata</span>
+            </div>
+            <pre id="skillDetail">Select a skill on the left to view details.</pre>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/skills_platform.js') }}"></script>
+</body>
+</html>

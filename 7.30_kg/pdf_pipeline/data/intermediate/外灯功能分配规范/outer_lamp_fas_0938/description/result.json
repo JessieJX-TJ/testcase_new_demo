@@ -1,0 +1,130 @@
+{
+  "table_type": "logic_table",
+  "topic": "制动灯开关控制逻辑与信号交互",
+  "row_semantics": "表格按执行顺序（1至8）描述了制动灯系统在不同场景下的控制逻辑和信号交互过程。",
+  "column_semantics": "无明确列，内容为逐行描述的执行步骤，包含条件、动作及信号状态。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "BrkSysBrkLightsReqd",
+      "type": "controller",
+      "description": "制动灯请求信号，由制动系统发出，指示是否需要点亮制动灯。"
+    },
+    {
+      "name": "EmgcBrkA",
+      "type": "signal",
+      "description": "紧急制动激活信号，用于触发紧急制动时的特殊灯光模式。"
+    },
+    {
+      "name": "ExtrLightCtrlCmmntnTyp",
+      "type": "signal",
+      "description": "外部灯光控制通信类型，定义了控制信号的传输方式（SOA或CAN）。"
+    },
+    {
+      "name": "BrakeLightPrcProSta",
+      "type": "signal",
+      "description": "制动灯预处理状态，表示制动灯的当前处理状态。"
+    },
+    {
+      "name": "BrakeLightCtrlReq",
+      "type": "signal",
+      "description": "制动灯控制请求信号，由外部灯光控制器发出，请求控制制动灯。"
+    },
+    {
+      "name": "BrakeLightCtrl",
+      "type": "signal",
+      "description": "制动灯控制信号，实际控制制动灯的亮灭。"
+    },
+    {
+      "name": "BrakeLightOnDlyMnyPrms",
+      "type": "parameter",
+      "description": "制动灯延时开启参数，定义制动灯点亮前的延迟时间。"
+    },
+    {
+      "name": "BrakeLightCtrlFromStatus",
+      "type": "signal",
+      "description": "制动灯控制来源状态，指示制动灯控制信号的来源（如ECU、手动等）。"
+    },
+    {
+      "name": "BrakeLightErrFlt",
+      "type": "fault",
+      "description": "制动灯故障信号，当制动灯系统出现异常时触发。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "BrkSysBrkLightsReqd == 0x0",
+      "description": "制动系统未请求点亮制动灯。",
+      "source": "BrkSysBrkLightsReqd"
+    },
+    {
+      "condition": "EmgcBrkA == 0x0",
+      "description": "紧急制动未激活。",
+      "source": "EmgcBrkA"
+    },
+    {
+      "condition": "ExtrLightCtrlCmmntnTyp == 0x0",
+      "description": "外部灯光控制通信类型为SOA。",
+      "source": "ExtrLightCtrlCmmntnTyp"
+    },
+    {
+      "condition": "BrakeLightPrcProSta == 0x0",
+      "description": "制动灯预处理状态为关闭。",
+      "source": "BrakeLightPrcProSta"
+    },
+    {
+      "condition": "BrakeLightCtrlReq == 0x0",
+      "description": "制动灯控制请求信号为关闭。",
+      "source": "BrakeLightCtrlReq"
+    },
+    {
+      "condition": "InstanceID == 1",
+      "description": "实例ID为1，可能用于区分不同的控制逻辑或测试场景。",
+      "source": "InstanceID"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "BrakeLightCtrl",
+      "description": "制动灯的实际控制信号，决定制动灯的亮灭。",
+      "target": "BrakeLightCtrl"
+    },
+    {
+      "output": "BrakeLightOnDlyMnyPrms",
+      "description": "制动灯延时开启参数，影响制动灯点亮的时机。",
+      "target": "BrakeLightOnDlyMnyPrms"
+    },
+    {
+      "output": "BrakeLightCtrlFromStatus",
+      "description": "制动灯控制来源状态，指示控制信号的来源。",
+      "target": "BrakeLightCtrlFromStatus"
+    },
+    {
+      "output": "BrakeLightErrFlt",
+      "description": "制动灯故障信号，当系统检测到异常时触发。",
+      "target": "BrakeLightErrFlt"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "BrakeLightErrFlt",
+      "description": "制动灯系统故障，可能由于硬件或软件异常导致。",
+      "trigger": "BrakeLightCtrlFromStatus"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "BrakeLightOnDlyMnyPrms",
+      "description": "制动灯点亮前的延迟时间，确保在适当的时间点点亮制动灯。",
+      "unit": "ms",
+      "value": "40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细描述了制动灯系统的控制逻辑，包括配置需求、紧急制动处理、PPV阶段开发、外灯组合服务、ICB接口信号处理、驱动处理逻辑以及故障处理机制，可用于验证制动灯系统在不同通信模式（SOA/CAN）下的正确响应和信号交互。",
+  "uncertain_points": [
+    "具体延迟时间（40ms）的精确应用场景未明确说明。",
+    "InstanceID的具体含义和使用场景未详细解释。",
+    "BrakeLightCtrlFromStatus的详细来源状态列表未列出。"
+  ]
+}

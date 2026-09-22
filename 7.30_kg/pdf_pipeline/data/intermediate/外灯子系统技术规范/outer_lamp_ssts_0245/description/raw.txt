@@ -1,0 +1,80 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "整车外灯制动灯及高位制动灯的电路故障检测规范",
+  "row_semantics": "每行代表一个具体的故障检测场景，包含制动灯或高位制动灯的输出状态（短路到电源/地、开路）以及对应的检测结果（短路到电源/地、未短路到电源/地、输出开路）。",
+  "column_semantics": {
+    "B1041_12": "左制动灯输出短路到电源时的检测结果",
+    "B1041_13": "左制动灯输出开路时的检测结果",
+    "B1042_11": "右制动灯输出短路到地时的检测结果",
+    "B1042_12": "右制动灯输出短路到电源时的检测结果",
+    "B1042_13": "右制动灯输出开路时的检测结果",
+    "B1043_11": "高位制动灯输出短路到地时的检测结果",
+    "B1043_12": "高位制动灯输出短路到电源时的检测结果",
+    "B1043_13": "高位制动灯输出开路时的检测结果"
+  },
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "Left Brake Light (B1041)",
+      "type": "function",
+      "description": "左侧制动灯系统"
+    },
+    {
+      "name": "Right Brake Light (B1042)",
+      "type": "function",
+      "description": "右侧制动灯系统"
+    },
+    {
+      "name": "High Mount Stop Lamp (B1043)",
+      "type": "function",
+      "description": "高位制动灯系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Output Short to Power",
+      "description": "制动灯输出端与电源之间发生短路"
+    },
+    {
+      "name": "Output Short to Ground",
+      "description": "制动灯输出端与地之间发生短路"
+    },
+    {
+      "name": "Output Open Circuit",
+      "description": "制动灯输出端断开，无电流路径"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Detect Short to Power",
+      "description": "检测到制动灯输出端与电源之间存在短路"
+    },
+    {
+      "name": "Detect Short to Ground",
+      "description": "检测到制动灯输出端与地之间存在短路"
+    },
+    {
+      "name": "Detect Output Open",
+      "description": "检测到制动灯输出端处于开路状态"
+    },
+    {
+      "name": "Detect Not Short to Power",
+      "description": "未检测到制动灯输出端与电源之间存在短路"
+    },
+    {
+      "name": "Detect Not Short to Ground",
+      "description": "未检测到制动灯输出端与地之间存在短路"
+    },
+    {
+      "name": "Detect Output Not Open",
+      "description": "未检测到制动灯输出端处于开路状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在不同制动灯（左、右、高位）输出状态下（短路到电源/地、开路），系统应能正确检测出相应的故障类型（短路到电源/地、未短路到电源/地、输出开路）。可用于验证整车外灯系统的故障诊断功能是否符合设计要求。",
+  "uncertain_points": []
+}
+```

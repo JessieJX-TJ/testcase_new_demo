@@ -1,0 +1,56 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑 - 左前转向灯持续驱动功能",
+  "row_semantics": "描述一个特定功能的触发、执行、退出条件及异常处理",
+  "column_semantics": {
+    "Column1": "功能阶段/条件类型 (如前置条件、触发条件、执行动作等)",
+    "Column2": "对应的具体条件或动作描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "FLDILghtDrvMdl",
+      "type": "模块/控制器",
+      "description": "左前转向灯驱动模块"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "模块/控制器",
+      "description": "外部灯光控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "exlDircnLghtHwDrvEnPrm == 1 || 2",
+      "description": "前置条件，表示硬件驱动使能参数处于允许状态"
+    },
+    {
+      "condition": "收到【DILghtCtrlMdl】经统一分发的 FLDircnLghtCtrl_HW == 1 (On)",
+      "description": "触发条件，接收到外部灯光控制模块发出的左前转向灯开启指令"
+    },
+    {
+      "condition": "收到【DILghtCtrlMdl】发送的 FLDircnLghtCtrl_HW == 0 (Off)",
+      "description": "退出条件，接收到外部灯光控制模块发出的左前转向灯关闭指令"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "FLDILghtDrvMdl",
+      "action": "持续驱动左前转向灯输出 (DILamp_LH_HSD)"
+    },
+    {
+      "signal": "FLDILghtDrvMdl",
+      "action": "持续发送 FLDILghtSts_HW = 1 (On) 至 DILghtCtrlMdl"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在执行动作中，确保信号发送的帧数要求"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了车辆左前转向灯在特定条件下（由外部灯光控制模块触发）的持续驱动逻辑，包括启动、运行和停止的完整流程，可用于验证转向灯控制系统在不同输入信号下的正确响应。",
+  "uncertain_points": []
+}

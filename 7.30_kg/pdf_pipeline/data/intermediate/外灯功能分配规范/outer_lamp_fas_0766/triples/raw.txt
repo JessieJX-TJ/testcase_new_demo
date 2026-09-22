@@ -1,0 +1,100 @@
+```json
+[
+  {
+    "head": "迎宾光毯灯开启",
+    "relation": "前提条件",
+    "tail": "车辆具备迎宾光毯灯功能 (exlWelcomeGrandLampEnPrm==0x1)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["exlWelcomeGrandLampEnPrm"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯开启",
+    "relation": "前提条件",
+    "tail": "大屏使能开关关闭 (PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet==0x1= Disabled)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯开启",
+    "relation": "前提条件",
+    "tail": "整车电源模式非休眠 (UsgMd != UsgMd_0_Sleep)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["UsgMd"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯开启",
+    "relation": "前提条件",
+    "tail": "整车档位为P挡",
+    "triple_type": "工程规则",
+    "evidence_terms": ["档位"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯开启",
+    "relation": "触发条件",
+    "tail": "大屏使能开关跳变为打开 (PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet→0x0= Enabled)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯开启",
+    "relation": "抑制条件",
+    "tail": "大屏使能开关处于关闭状态 (PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet==0x1= Disabled)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯驱动硬线端口 (WelcomeLamp_HSD) 渐亮",
+    "relation": "依赖于",
+    "tail": "迎宾光毯灯开启",
+    "triple_type": "工程规则",
+    "evidence_terms": ["WelcomeLamp_HSD", "迎宾光毯灯开启"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯驱动硬线端口 (WelcomeLamp_HSD) 持续点亮3s",
+    "relation": "依赖于",
+    "tail": "迎宾光毯灯开启",
+    "triple_type": "工程规则",
+    "evidence_terms": ["WelcomeLamp_HSD", "迎宾光毯灯开启"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯驱动硬线端口 (WelcomeLamp_HSD) 渐灭",
+    "relation": "依赖于",
+    "tail": "迎宾光毯灯关闭",
+    "triple_type": "工程规则",
+    "evidence_terms": ["WelcomeLamp_HSD", "迎宾光毯灯关闭"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯开启",
+    "relation": "超时约束",
+    "tail": "3s内渐亮",
+    "triple_type": "工程规则",
+    "evidence_terms": ["WelcomeLamp_HSD", "渐亮"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯开启",
+    "relation": "超时约束",
+    "tail": "持续点亮3s",
+    "triple_type": "工程规则",
+    "evidence_terms": ["WelcomeLamp_HSD", "持续点亮"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯关闭",
+    "relation": "超时约束",
+    "tail": "3s内渐灭",
+    "triple_type": "工程规则",
+    "evidence_terms": ["WelcomeLamp_HSD", "渐灭"],
+    "confidence_note": "high"
+  }
+]
+```

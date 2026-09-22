@@ -1,0 +1,95 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "转向灯系统状态与故障检测",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的转向灯相关状态或模式变量。",
+  "column_semantics": "第一列描述变量名称及其功能；后续列为该变量涉及的控制器/模块（如CANFD、LHZCU等）；最右侧一列为硬线故障状态指示。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RLDircnLghtFltsts_HW",
+      "type": "output_signal",
+      "description": "右后转向灯硬件故障状态"
+    },
+    {
+      "name": "RRDircnLghtFltsts_HW",
+      "type": "output_signal",
+      "description": "右后转向灯硬件故障状态"
+    },
+    {
+      "name": "DircnLghtMdSts",
+      "type": "mode_variable",
+      "description": "双闪灯闪烁模式"
+    },
+    {
+      "name": "DircnLghtSts",
+      "type": "output_signal",
+      "description": "转向灯状态"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "type": "fault_state",
+      "description": "转向灯故障状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "RLDircnLghtFltsts_HW",
+      "values": [
+        "0=False",
+        "1=True"
+      ]
+    },
+    {
+      "name": "RRDircnLghtFltsts_HW",
+      "values": [
+        "0=False",
+        "1=True"
+      ]
+    },
+    {
+      "name": "DircnLghtMdSts",
+      "values": [
+        "0=Enabled",
+        "1=Disabled"
+      ]
+    },
+    {
+      "name": "DircnLghtSts",
+      "values": [
+        "0=OFF",
+        "1=Left_Direction_Light_On",
+        "2=Right_Direction_Light_On",
+        "3=Both_Side_Direction_Light_On",
+        "4=Reserved"
+      ]
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "values": [
+        "0=No_Fault",
+        "1=Fault"
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RLDircnLghtFltsts_HW",
+      "description": "右后转向灯硬件故障"
+    },
+    {
+      "name": "RRDircnLghtFltsts_HW",
+      "description": "右后转向灯硬件故障"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "description": "转向灯系统故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆转向灯系统的各种状态和故障检测逻辑，可用于验证转向灯在不同模式下的正确行为以及故障检测功能是否正常工作。",
+  "uncertain_points": []
+}
+```

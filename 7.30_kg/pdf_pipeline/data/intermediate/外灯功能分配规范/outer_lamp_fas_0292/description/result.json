@@ -1,0 +1,62 @@
+{
+  "table_type": "signal_table",
+  "topic": "OTA Service FOTA Status Interface Definition",
+  "row_semantics": "Each row defines a specific interface for the FOTA (Firmware Over-The-Air) status within the OTA Service, detailing its communication characteristics.",
+  "column_semantics": {
+    "Interface Name": "The name of the interface being defined.",
+    "Direction": "Indicates whether the interface is for sending or receiving data.",
+    "Type": "Specifies the type of interface, such as SOA (Service-Oriented Architecture).",
+    "Sender/Provider": "Identifies the entity responsible for providing or sending the data.",
+    "Receiver/Consumer": "Identifies the entity responsible for consuming or receiving the data.",
+    "Channel": "Specifies the communication channel used for this interface.",
+    "Interface Source": "Indicates the source or origin of the interface definition."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "OTAService.FOTATatus",
+      "type": "interface",
+      "description": "The main interface for reporting the FOTA status within the OTA Service."
+    },
+    {
+      "name": "SOA",
+      "type": "interface_type",
+      "description": "The interface follows a Service-Oriented Architecture pattern."
+    },
+    {
+      "name": "S32G_MCU",
+      "type": "controller_module",
+      "description": "The S32G Microcontroller Unit is the provider of the FOTA status information."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "The LHZCU (likely a Local Host Control Unit) is the receiver/consumer of the FOTA status information."
+    },
+    {
+      "name": "LHZCU_ETH",
+      "type": "communication_channel",
+      "description": "The Ethernet communication channel is used for transmitting the FOTA status information."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FOTATatus",
+      "type": "parameter",
+      "description": "The parameter representing the FOTA status.",
+      "values": [
+        {
+          "code": "0x0",
+          "value": "NoFOTA",
+          "description": "Indicates that there is no FOTA update available."
+        }
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the communication interface for the FOTA status within the OTA Service, specifying the sender (S32G_MCU), receiver (LHZCU), communication channel (LHZCU_ETH), and the parameter structure for the FOTA status. It is used to verify the correct transmission and interpretation of the FOTA status between the MCU and the control unit over the specified channel.",
+  "uncertain_points": []
+}

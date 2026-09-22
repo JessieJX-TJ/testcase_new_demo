@@ -1,0 +1,177 @@
+[
+  {
+    "head": "远光灯开启请求",
+    "relation": "触发条件",
+    "tail": "环境光状态为 AutoLightOnReq_1 或 AutoLightOnReq_ICB",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AutoLightOnReq_1",
+      "AutoLightOnReq_ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "前提条件",
+    "tail": "车辆档位状态为 D 档 (TrShfLvrPos = 0x4)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "TrShfLvrPos"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "前提条件",
+    "tail": "自动远光灯开启内部禁止状态为 False (AutoMaiBeamLghtCtrlDsblSts = 0x0)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AutoMaiBeamLghtCtrlDsblSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "前提条件",
+    "tail": "具备智能前大灯控制功能 (InsdFnCfgIntlgtMaiBeamLght = 0x1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "InsdFnCfgIntlgtMaiBeamLght"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "前提条件",
+    "tail": "IHC 开关使能状态为 Enable (iIHCEnbSetSts = 0x0)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "iIHCEnbSetSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯关闭请求",
+    "relation": "触发条件",
+    "tail": "车速大于等于 40km/h 超过两秒",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehSpdAvg",
+      "IPD"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯关闭请求",
+    "relation": "触发条件",
+    "tail": "IPD 未请求远光灯关闭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehSpdAvg",
+      "IPD"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯关闭请求",
+    "relation": "超时约束",
+    "tail": "车速大于等于 40km/h 的状态需要持续 2 秒以上",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "VehSpdAvg",
+      "持续时间"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "输入为",
+    "tail": "智驾摄像头识别信息 IPD",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "IPD"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "依赖于",
+    "tail": "PP 阶段 LHZCU 接收智驾摄像头识别信息 IPD",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "PPV 阶段",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯关闭请求",
+    "relation": "依赖于",
+    "tail": "PP 阶段及以后 LHZCU 接收车速和 IPD 信号判断",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "PP 阶段",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯开启请求",
+    "relation": "输出为",
+    "tail": "ExtAutoMaiBeamLightCtrlReq_1_RequestOnFromCamera",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExtAutoMaiBeamLightCtrlReq_1_RequestOnFromCamera"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯关闭请求",
+    "relation": "输出为",
+    "tail": "ExtAutoMaiBeamLightCtrlReq_2_RequestOffFromCamera",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExtAutoMaiBeamLightCtrlReq_2_RequestOffFromCamera"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1580",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

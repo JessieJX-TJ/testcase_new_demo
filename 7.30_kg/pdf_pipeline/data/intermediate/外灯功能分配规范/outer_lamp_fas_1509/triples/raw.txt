@@ -1,0 +1,87 @@
+```json
+[
+  {
+    "head": "车顶射灯开启",
+    "relation": "前提条件",
+    "tail": "UsgMd!=0x0=UsgMd_0_Sleep; UsgMd!=0x1=UsgMd_1_Standby; UsgMd!=0x6=UsgMd_6_X; UsgMdV=Valid; VehMd!=0x3=VehMd_3_TRANSPORT; VehMd!=0x5=VehMd_5_EXHIBITION; VehMdV=Valid; 远光灯增强使能:PersonalizationData.MainBeamEnhanceEnbSet.MainBeamEnhanceEnbSetInfo=0x1; 远光灯状态为开启; 具备车灯射灯功能:InsdFnCfgRoofSpotLght=0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsgMd!=0x0",
+      "UsgMd!=0x1",
+      "UsgMd!=0x6",
+      "UsgMdV=Valid",
+      "VehMd!=0x3",
+      "VehMd!=0x5",
+      "VehMdV=Valid",
+      "MainBeamEnhanceEnbSet",
+      "MainBeamLightStatus=ON",
+      "InsdFnCfgRoofSpotLght"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "触发条件",
+    "tail": "ICB_S32G M收到IPD输入车顶射灯开启请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB_S32G M",
+      "IPD",
+      "RoofSpotLightReq=0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "依赖于",
+    "tail": "车顶射灯控制模块LHZCU",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯点亮",
+    "relation": "控制对象",
+    "tail": "RoofSpotLight",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RoofSpotLight"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯状态反馈",
+    "relation": "输出为",
+    "tail": "RoofSpotLightStatus=0x1=ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RoofSpotLightStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯故障状态反馈",
+    "relation": "输出为",
+    "tail": "RoofSpotLightErrorStatus=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RoofSpotLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯请求重发",
+    "relation": "超时约束",
+    "tail": "尝试按照<=50ms周期重发3次；尝试重发3次后仍未反馈请求成功,则停止发送",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "50ms",
+      "3次",
+      "停止发送"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,125 @@
+{
+  "table_type": "fault_table",
+  "topic": "外灯位置灯输出电路故障诊断需求",
+  "row_semantics": "每行代表一个具体的故障诊断场景，针对左位置灯的特定输出状态进行定义。",
+  "column_semantics": {
+    "名称": "故障诊断场景的唯一标识符，格式为B1061 11、B1061 12等。",
+    "描述": "对该故障诊断场景的简要说明，指明是左位置灯的哪种输出异常（短路或开路）。",
+    "进入条件": "触发该故障诊断场景的检测条件，即系统检测到何种异常状态。",
+    "退出条件": "解除该故障诊断场景的检测条件，即异常状态恢复到正常状态。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "左位置灯",
+      "type": "功能名",
+      "description": "车辆左侧的照明灯，用于指示车辆位置和转向信号。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "短路到地",
+      "description": "左位置灯输出端与车身接地之间发生短路故障。",
+      "signal": "左位置灯输出信号",
+      "condition_type": "输入信号异常"
+    },
+    {
+      "name": "短路到电源",
+      "description": "左位置灯输出端与电源之间发生短路故障。",
+      "signal": "左位置灯输出信号",
+      "condition_type": "输入信号异常"
+    },
+    {
+      "name": "开路",
+      "description": "左位置灯输出端断开，无法正常输出信号。",
+      "signal": "左位置灯输出信号",
+      "condition_type": "输入信号异常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "检测到短路到地",
+      "description": "系统检测到左位置灯输出端与地之间存在短路。",
+      "signal": "左位置灯输出信号",
+      "output_type": "状态监测"
+    },
+    {
+      "name": "检测到短路到电源",
+      "description": "系统检测到左位置灯输出端与电源之间存在短路。",
+      "signal": "左位置灯输出信号",
+      "output_type": "状态监测"
+    },
+    {
+      "name": "检测到输出开路",
+      "description": "系统检测到左位置灯输出端断开。",
+      "signal": "左位置灯输出信号",
+      "output_type": "状态监测"
+    },
+    {
+      "name": "检测到未短路到地",
+      "description": "系统确认左位置灯输出端与地之间不存在短路。",
+      "signal": "左位置灯输出信号",
+      "output_type": "状态恢复"
+    },
+    {
+      "name": "检测到未短路到电源",
+      "description": "系统确认左位置灯输出端与电源之间不存在短路。",
+      "signal": "左位置灯输出信号",
+      "output_type": "状态恢复"
+    },
+    {
+      "name": "检测到输出开路恢复",
+      "description": "系统确认左位置灯输出端已恢复正常连接。",
+      "signal": "左位置灯输出信号",
+      "output_type": "状态恢复"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "B1061 11",
+      "description": "左位置灯输出短路到地故障。",
+      "related_entities": [
+        "左位置灯"
+      ],
+      "related_conditions": [
+        "短路到地"
+      ],
+      "related_outputs": [
+        "检测到短路到地",
+        "检测到未短路到地"
+      ]
+    },
+    {
+      "name": "B1061 12",
+      "description": "左位置灯输出短路到电源故障。",
+      "related_entities": [
+        "左位置灯"
+      ],
+      "related_conditions": [
+        "短路到电源"
+      ],
+      "related_outputs": [
+        "检测到短路到电源",
+        "检测到未短路到电源"
+      ]
+    },
+    {
+      "name": "B1061 13",
+      "description": "左位置灯输出开路故障。",
+      "related_entities": [
+        "左位置灯"
+      ],
+      "related_conditions": [
+        "开路"
+      ],
+      "related_outputs": [
+        "检测到输出开路",
+        "检测到输出开路恢复"
+      ]
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了左位置灯输出电路的三种主要故障诊断场景（短路到地、短路到电源、开路），并明确了触发诊断的进入条件和解除诊断的退出条件，可用于验证整车电子电器系统对这些故障的检测、记录和恢复能力。",
+  "uncertain_points": []
+}

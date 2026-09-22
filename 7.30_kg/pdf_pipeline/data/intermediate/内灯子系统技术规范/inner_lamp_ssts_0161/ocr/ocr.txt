@@ -1,0 +1,66 @@
+子系统技术规范
+Sub System Technical Specification
+IM
+内灯子系统Interior Lighting Sub System
+智己汽车
+Z-ONE-3.0平台-SSTS-
+版本<1.2>
+120 of 235 页
+IBD10
+不同呼吸模式切换时,立即停止当前呼吸,切换下一呼吸模式
+CnsoLHCLampFa
+CnsoAm
+LHZCU
+内灯
+deSpdCmd_1
+输入
+LIN
+btLampC
+LIN5
+SSTS
+LH
+氛围灯渐变速度指令
+0x0=CnsoLHCLampFadeSpdCmd_1_0_Spd0
+0x1=CnsoLHCLampFadeSpdCmd_1_1_Spd1
+0x2=CnsoLHCLampFadeSpdCmd_1_2_Spd2
+0x3=CnsoLHCLampFadeSpdCmd_1_3_Spd3
+灯头颜色/亮度切换时从当前状态到目标状态切换的所需的时间
+默认速度Spd0:2000ms
+Spd1:300ms
+Spd2:100ms;(能力预留)
+Spd3:(预留0)
+CnsoRHALampOn
+CnsoAmbt
+Off_1
+LampA_R
+_LIN5
+H
+氛围灯开启请求
+0x0=CnsoRHALampOnOff_1_0_OFF
+0x1=CnsoRHALampOnOff_1_1_ON
+点亮ON时需同时接收到非0值的颜色亮度指令
+CnsoRHALampCo
+lorCmd_1
+btLampA
+RH
+氛围灯颜色指令
+0x00=CnsoRHALampColorCmd_1_0_No Request
+0x01-0xFF=各个颜色值
+灯头切换为色坐标对应的颜色
+指令值为0或者未定义颜色号时保持颜色不变
+CnsoRHALampBr
+tnsCmd_1
+tlLampA
+氛围灯亮度指令
+0x00=No Request
+0x00=CnsoRHALampBrtnsCmd_1_0_No Request
+0x65-0xFF=Reserved
+灯头亮度调节到相应的百分比值
+指令值为0时保持亮度不变
+thngCmd_1
+氛围灯呼吸指令
+0x0=CnsoRHALampBrthngCmd_1_0_No Request
+0x1=CnsoRHALampBrthngCmd_1_1_Rate1
+0x2=CnsoRHALampBrthngCmd_1_2_Rate2
+0x3=CnsoRHALampBrthngCmd_1_3_Rate3
+0x4=CnsoRHALampBrthngCmd 14Rate4

@@ -1,0 +1,81 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "左前转向灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程的顺序排列，从前置条件到异常处理，描述了故障检测、触发、执行动作、退出条件和异常处理的完整过程。",
+  "column_semantics": "表格包含两列：第一列为功能阶段（如前置条件、触发条件等），第二列为该阶段的具体描述或操作。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "方向灯反馈系统开环使能参数，值为1表示启用"
+    },
+    {
+      "name": "FLDILightDrvMdl",
+      "type": "controller",
+      "description": "左前转向灯驱动模块"
+    },
+    {
+      "name": "DILamp_LH_HSD",
+      "type": "output_signal",
+      "description": "左前转向灯输出信号"
+    },
+    {
+      "name": "DirectionLightControl",
+      "type": "signal",
+      "description": "方向灯控制信号"
+    },
+    {
+      "name": "DTC_B104A_11",
+      "type": "fault_status",
+      "description": "诊断故障代码，表示左前转向灯短路故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILightFbkSOAEnPrm == 1 (Enable)",
+      "description": "方向灯反馈系统开环使能参数必须为1（启用）"
+    },
+    {
+      "condition": "左前转向灯处于输出状态",
+      "description": "左前转向灯必须处于输出状态"
+    },
+    {
+      "condition": "检测到左前转向灯短路到地",
+      "description": "系统检测到左前转向灯存在短路到地的故障"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "description": "系统检测到之前存在的短路故障已恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DILamp_LH_HSD",
+      "action": "停止驱动左前转向灯输出",
+      "description": "在故障触发时，停止左前转向灯的输出"
+    },
+    {
+      "signal": "DirectionLightControl",
+      "action": "持续发送 DirectionLightControl. DirectionLightState = 2 (Error) InstanceID=1",
+      "description": "向DILightCtrlMdl发送错误状态信息，至少发送三帧"
+    },
+    {
+      "signal": "DTC_B104A_11",
+      "action": "置位",
+      "description": "设置诊断故障代码B104A_11，表示故障发生"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTC_B104A_11",
+      "description": "左前转向灯短路到地故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了左前转向灯短路到地故障的检测与处理逻辑，可用于验证整车电子电器系统在转向灯电路出现短路故障时的响应行为，包括故障检测、错误信号发送、故障码设置以及故障恢复后的状态恢复。",
+  "uncertain_points": []
+}
+```

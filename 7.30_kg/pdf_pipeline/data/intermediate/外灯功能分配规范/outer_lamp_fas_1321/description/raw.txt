@@ -1,0 +1,56 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "制动踏板位置监测子系统与制动力灯的交互逻辑",
+  "row_semantics": "描述了在特定前置条件下，触发制动踏板位置监测系统有效时，制动力灯应被开启的逻辑规则。",
+  "column_semantics": {
+    "0": "场景描述，说明了触发条件和预期行为",
+    "1": "前置条件，详细列出了使该逻辑生效的具体状态要求"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FAS_IBD05-0002",
+      "type": "功能名",
+      "description": "制动踏板位置监测子系统与制动力灯交互的功能标识符"
+    },
+    {
+      "name": "制动踏板位置监测子系统",
+      "type": "控制器/模块名",
+      "description": "负责监测制动踏板位置的电子控制单元或软件子系统"
+    },
+    {
+      "name": "制动力灯",
+      "type": "输出信号",
+      "description": "当制动踏板位置监测系统有效时，由系统控制开启的外部照明灯"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "type": "输入信号",
+      "description": "用户模式状态寄存器，包含多个位的状态信息",
+      "conditions": [
+        "UsrMd != 0x0 => UsrMd_0_Sleep", // 用户模式不为睡眠状态
+        "UsrMd != 0x1 => UsrMd_1_Standby", // 用户模式不为待机状态
+        "UsrMd != 0x6 => UsrMd_6_XOTA" // 用户模式不为XOTA（eXtended Over-The-Air）状态
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "制动力灯",
+      "type": "输出信号",
+      "description": "在满足前置条件且制动踏板位置监测系统有效时，由系统控制点亮"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定用户模式状态下，当制动踏板位置监测子系统检测到有效制动时，制动力灯应被激活的逻辑规则。可用于验证制动踏板监测系统与制动力灯之间的正确联动关系。",
+  "uncertain_points": [
+    "具体实现细节未明确说明（如制动力灯的电气规格、响应时间等）",
+    "服务链路预留字段未开发，可能影响未来扩展性"
+  ]
+}
+```

@@ -1,0 +1,92 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform)",
+  "row_semantics": "Each row represents a specific command or control signal for the front right door ambient lamp, detailing its input source, value encoding, and associated behavior.",
+  "column_semantics": {
+    "Row Header": "Function Name (e.g., DoorFR2LampOnOff_1)",
+    "Input": "Signal Source (e.g., LIN bus)",
+    "LIN": "Local Interconnect Network bus designation",
+    "RHZCU": "Right Hand Zone Control Unit",
+    "DoorAmbtLampB_FR": "Front Right Door Ambient Lamp Behavior",
+    "RHZCU_LIN4": "Specific LIN channel within RHZCU",
+    "内灯SSTS": "Internal Lighting Sub System Technical Specification"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "DoorFR2LampOnOff_1",
+      "type": "function",
+      "description": "Control signal to turn the front right door ambient lamp ON or OFF."
+    },
+    {
+      "name": "DoorFR2LampColorCmd_1",
+      "type": "function",
+      "description": "Command signal to set the color of the front right door ambient lamp."
+    },
+    {
+      "name": "DoorFR2LampBrtnsCmd_1",
+      "type": "function",
+      "description": "Command signal to adjust the brightness of the front right door ambient lamp."
+    },
+    {
+      "name": "DoorFR2LampBrthngCmd_1",
+      "type": "function",
+      "description": "Command signal to control the breathing (pulsing) effect of the front right door ambient lamp."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Hand Zone Control Unit responsible for processing and executing lighting commands."
+    },
+    {
+      "name": "LIN",
+      "type": "communication_bus",
+      "description": "Local Interconnect Network used for transmitting signals between modules."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DoorFR2LampOnOff_1_0_OFF",
+      "description": "Request to turn the lamp OFF."
+    },
+    {
+      "name": "DoorFR2LampOnOff_1_1_ON",
+      "description": "Request to turn the lamp ON."
+    },
+    {
+      "name": "DoorFR2LampColorCmd_1_0_No Request",
+      "description": "No color request is made; lamp retains current color."
+    },
+    {
+      "name": "DoorFR2LampBrtnsCmd_1_0_No Request",
+      "description": "No brightness adjustment request is made; lamp retains current brightness."
+    },
+    {
+      "name": "DoorFR2LampBrthngCmd_1_RateX",
+      "description": "Sets the breathing rate of the lamp to a specific level (Rate1 to Rate15)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorAmbtLampB_FR",
+      "type": "output_signal",
+      "description": "The actual behavior of the front right door ambient lamp as commanded."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate1",
+      "value": "500ms",
+      "description": "Breathing rate corresponding to Rate1, indicating a 500ms cycle time for the breathing effect."
+    }
+  ],
+  "engineering_interpretation": "This table defines the communication protocol and command structure for controlling the front right door ambient lamp's on/off state, color, brightness, and breathing effects via the LIN bus to the RHZCU. It specifies how different command values map to specific lamp behaviors.",
+  "uncertain_points": [
+    "The exact mapping of '0x01-0xFF' for all color values is not detailed in the table.",
+    "The specific implementation details of the breathing modes beyond Rate15 are not provided."
+  ]
+}
+```

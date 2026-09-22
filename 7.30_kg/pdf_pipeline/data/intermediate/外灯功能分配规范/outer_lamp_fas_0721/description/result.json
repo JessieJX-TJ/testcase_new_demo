@@ -1,0 +1,45 @@
+{
+  "table_type": "logic_table",
+  "topic": "转向灯开关控制模块 LHZCU 的功能逻辑与信号交互",
+  "row_semantics": "表格按执行动作（Action）列出不同场景下的控制逻辑和信号交互流程",
+  "column_semantics": "左侧列为执行动作描述，右侧详细说明该动作的内部软件请求、信号发送/接收、状态反馈等具体实现细节",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "转向灯开关控制模块 LHZCU",
+    "ICB (Integrated Control Box)",
+    "驱动处理模块 LHZCU/RZCU",
+    "外灯组合服务 ICB",
+    "SDM (Safety Deployment Module)"
+  ],
+  "core_conditions": [
+    "DircnLghtSwReq=0x1",
+    "DircnLghtSwReq_1_Left_First_gear_direction_light_on",
+    "FLDircnLghtCtrl_HW_1_on",
+    "RLDircnLghtCtrl_HW_1_on"
+  ],
+  "core_outputs": [
+    "FLDircnLghtCtrl_1_on",
+    "RLDircnLghtCtrl_1_on",
+    "DircnLghtMdSts_Enabled",
+    "DircnLghtCtrlDelayPrm",
+    "FLDircnLghtSts_1_On",
+    "RLDircnLghtSts_1_On",
+    "DircnLghtFltsts_0_No_Error",
+    "Direction_Light_Flash",
+    "Direction_Light_Err",
+    "EDRDircnIndLampSwSts_1_Left"
+  ],
+  "core_faults": [
+    "DircnLghtFltsts_0_False",
+    "Direction_Light_Err"
+  ],
+  "core_timing_constraints": [
+    "1.25Hz 频率闪烁 (800ms 周期)",
+    "400ms 发送延时",
+    "60ms 分发延时",
+    "40ms 单侧转向灯同步性最大延时"
+  ],
+  "engineering_interpretation": "该表格详细定义了转向灯开关控制模块 LHZCU 在不同输入条件下的行为逻辑，包括信号发送、状态反馈、故障处理及与其他控制器的交互，可用于验证转向灯系统的功能正确性和时序一致性。",
+  "uncertain_points": []
+}

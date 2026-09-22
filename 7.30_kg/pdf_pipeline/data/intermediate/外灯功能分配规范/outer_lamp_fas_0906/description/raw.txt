@@ -1,0 +1,96 @@
+```json
+{
+  "table_type": "other",
+  "topic": "危险警报灯开关控制模块 (LHZCU) 的状态反馈与同步性要求",
+  "row_semantics": "表格的每一行代表一个特定的功能或状态反馈步骤，编号从10到14，描述了LHZCU模块在不同情境下向ICB（集成控制盒）和SDM（车身域控制器）反馈的状态信息。",
+  "column_semantics": "表格没有明确的列，内容为连续的文本描述，主要包含功能描述、控制器/模块名称、信号名称及其值。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "危险警报灯开关控制模块，负责管理危险警报灯的状态和反馈。"
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "集成控制盒，接收来自LHZCU的状态和故障反馈信息。"
+    },
+    {
+      "name": "SDM",
+      "type": "controller_module",
+      "description": "车身域控制器，接收转向灯控制状态反馈。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DircnLghtSts",
+      "type": "input_signal",
+      "description": "方向灯状态，表示当前方向灯的工作状态（如OFF, No Flash等)。"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "type": "input_signal",
+      "description": "车辆危险模式状态，表示危险警报灯是否被激活。"
+    },
+    {
+      "name": "HzrdLghtSwSts",
+      "type": "input_signal",
+      "description": "危险灯开关状态，表示危险警报灯开关的位置。"
+    },
+    {
+      "name": "EDRDircnIndLampSwSts",
+      "type": "input_signal",
+      "description": "电子驻车制动系统中的方向指示灯开关状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DircnLghtFtsts_0_False",
+      "type": "output_signal",
+      "description": "方向灯故障状态反馈，值为False表示无故障。"
+    },
+    {
+      "name": "DircnLghtFtsts_0_No_Error",
+      "type": "output_signal",
+      "description": "方向灯故障状态反馈，值为No Error表示无错误。"
+    },
+    {
+      "name": "DirectionLightSts",
+      "type": "output_signal",
+      "description": "方向灯状态，用于外灯组合服务ICB进行状态转换。"
+    },
+    {
+      "name": "DirectionLghtErrSts",
+      "type": "output_signal",
+      "description": "方向灯错误状态，值为No Error表示无错误。"
+    },
+    {
+      "name": "VehHzrdMdSts_0_No_Request",
+      "type": "output_signal",
+      "description": "车辆危险模式状态，值为No Request表示无请求。"
+    },
+    {
+      "name": "HzrdLghtSwSts_0_off",
+      "type": "output_signal",
+      "description": "危险灯开关状态，值为off表示开关关闭。"
+    },
+    {
+      "name": "EDRDircnIndLampSwSts_0_off",
+      "type": "output_signal",
+      "description": "电子驻车制动系统中的方向指示灯开关状态，值为off表示开关关闭。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "同步周期",
+      "value": "50ms",
+      "description": "危险警报灯的闪烁频率和声音提醒与实际危险警报灯的闪烁频率需保持一致，三者退出同步性允许的最大延时周期为40ms。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了危险警报灯开关控制模块(LHZCU)在不同操作模式下向ICB和SDM反馈状态的具体规则，以及危险警报灯的同步性要求，可用于验证LHZCU模块的状态反馈逻辑和危险警报灯的同步性能。",
+  "uncertain_points": []
+}
+```

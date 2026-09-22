@@ -1,0 +1,113 @@
+```json
+[
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "用户通过大屏软开关操作",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "用户通过大屏软开关",
+      "触发前雾灯的开启"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯开启",
+    relation: "前提条件",
+    tail: "UsrMd != Sleep && UsrMd != Standby && UsrMd != Comfortable && UsrMd != XOTA",
+    triple_type: "功能触发条件",
+    evidence_terms: [
+      "UsgMd_0_Sleep",
+      "UsgMd_1_Standby",
+      "UsgMd_2_Comfortable",
+      "UsgMd_6_XOTA"
+    ],
+    confidence_note: "high"
+  },
+  {
+    "head": "前雾灯开启",
+    relation: "前提条件",
+    tail: "UsrMdV = Valid",
+    triple_type: "功能触发条件",
+    evidence_terms: [
+      "UsgMdV"
+    ],
+    confidence_note: "high"
+  },
+  {
+    "head": "前雾灯开启",
+    relation: "前提条件",
+    tail: "VehMd = TRANSPORT",
+    triple_type: "功能触发条件",
+    evidence_terms: [
+      "VehMd_3_TRANSPORT"
+    ],
+    confidence_note: "high"
+  },
+  {
+    "head": "前雾灯开启",
+    relation: "前提条件",
+    tail: "VehMdV = Valid",
+    triple_type: "功能触发条件",
+    evidence_terms: [
+      "VehMdV"
+    ],
+    confidence_note: "high"
+  },
+  {
+    "head": "前雾灯开启",
+    relation: "前提条件",
+    tail: "LHZCU 已判断关闭位置灯",
+    triple_type: "功能触发条件",
+    evidence_terms: [
+      "LHZCU",
+      "SidePositionAndDippedBeam OFF"
+    ],
+    confidence_note: "high"
+  },
+  {
+    "head": "前雾灯开启请求",
+    relation: "输入为",
+    tail: "S32G 收到 [大屏开关请求 ICB]",
+    triple_type: "输入与输出映射关系",
+    evidence_terms: [
+      "S32G",
+      "大屏开关请求 ICB"
+    ],
+    confidence_note: "high"
+  },
+  {
+    "head": "前雾灯开启请求",
+    relation: "输出为",
+    tail: "ExteriorLightControlSystem.ControlFrontFogLight_FrontFogLightReq = On",
+    triple_type: "输入与输出映射关系",
+    evidence_terms: [
+      "ExteriorLightControlSystem",
+      "FrontFogLightReq"
+    ],
+    confidence_note: "high"
+  },
+  {
+    "head": "外灯控制组合服务 ICB 调用接口",
+    relation: "依赖于",
+    tail: "前雾灯开启请求",
+    triple_type: "模式或状态依赖关系",
+    evidence_terms: [
+      "ICB",
+      "FrontFogLightReq"
+    ],
+    confidence_note: "high"
+  },
+  {
+    "head": "前雾灯控制模块 LHZCU 接口响应",
+    relation: "依赖于",
+    tail: "外灯控制组合服务 ICB 调用接口",
+    triple_type: "模式或状态依赖关系",
+    evidence_terms: [
+      "LHZCU",
+      "ICB"
+    ],
+    confidence_note: "high"
+  }
+]
+```

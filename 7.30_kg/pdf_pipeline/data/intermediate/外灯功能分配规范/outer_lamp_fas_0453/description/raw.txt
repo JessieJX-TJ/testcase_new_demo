@@ -1,0 +1,93 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Emergency Braking Light (IBS) System Control Logic",
+  "row_semantics": "Each row represents a sequential step in the execution of the Emergency Braking Light (IBS) system control logic, triggered by specific inputs and leading to defined outputs and system states.",
+  "column_semantics": {
+    "Column 1": "Trigger Action - Defines the initiating event or condition that triggers the subsequent actions.",
+    "Column 2": "Execution Actions - Details the sequence of operations, including signal assignments, module interactions, and state changes, required to implement the IBS function."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Emergency Brake Light Control Module LHZCU",
+      "type": "Controller/Module",
+      "description": "The main control unit responsible for managing the emergency braking light function, including signal processing and output control."
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "Interior Communication Bus, which interfaces with the LHZCU to receive commands and provide feedback on the brake light status."
+    },
+    {
+      "name": "RZCU",
+      "type": "Controller/Module",
+      "description": "Drive Processing Module, which receives signals from the ICB and controls the physical activation of the brake lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "EmgcBrkA",
+      "type": "Input Signal",
+      "description": "Emergency Brake Activation signal, set to 0x1 when activated."
+    },
+    {
+      "name": "EmgcBrkAV",
+      "type": "Input Signal",
+      "description": "Emergency Brake Activation Validity signal, set to 0x0 when valid."
+    },
+    {
+      "name": "BrkLightCtrl",
+      "type": "Output Signal",
+      "description": "Control signal sent to the brake light, toggling between on (0x1) and off (0x0)."
+    },
+    {
+      "name": "BrkLightFucProsSta",
+      "type": "System State",
+      "description": "Status of the brake light function process, indicating whether it is on (0x1) or off (0x0)."
+    },
+    {
+      "name": "BrkLightFitSts",
+      "type": "System State",
+      "description": "Physical fit status of the brake light, indicating whether it is on (0x1) or off (0x0)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLightCtrl",
+      "type": "Output Signal",
+      "description": "Signal controlling the emergency braking light, toggling at a frequency of 3.33Hz (300ms cycle) to create a flashing effect."
+    },
+    {
+      "name": "BrkLightFucProsSta",
+      "type": "System State",
+      "description": "Updated status reflecting the current state of the brake light function process."
+    },
+    {
+      "name": "BrkLightFitSts",
+      "type": "System State",
+      "description": "Updated physical status of the brake light, indicating whether it is illuminated."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "Fault Status",
+      "description": "Indicates if there is an error in the brake light system, with values 0x0 for no error."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "3.33Hz Flashing Frequency",
+      "description": "The emergency braking light flashes at a frequency of 3.33Hz, corresponding to a 300ms cycle (50ms on, 250ms off)."
+    },
+    {
+      "name": "60ms Delay",
+      "description": "A 60ms delay is introduced when the ICB receives the brake light ON/OFF command from the LHZCU."
+    }
+  ],
+  "engineering_interpretation": "This table defines the detailed logic for the Emergency Braking Light (IBS) system, outlining the sequence of actions required to activate and control the emergency brake lights during an emergency braking event. It specifies the interaction between the Emergency Brake Light Control Module (LHZCU), the Interior Communication Bus (ICB), and the Drive Processing Module (RZCU), including signal assignments, timing constraints, and system state updates.",
+  "uncertain_points": []
+}
+```

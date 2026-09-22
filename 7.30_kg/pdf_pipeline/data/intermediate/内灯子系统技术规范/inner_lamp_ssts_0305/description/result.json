@@ -1,0 +1,49 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯控制系统接口定义与信号交互规范",
+  "row_semantics": "每行代表一个具体的接口或信号定义，描述其在系统中的角色和属性。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，用于标识该信号或数据流的逻辑实体。",
+    "Direction": "信号的流向，指示是输入还是输出。",
+    "Type": "信号的类型，如CAN/LIN总线、SOA服务、硬线等。",
+    "Sender/Provider": "信号的发送方或提供方，通常是某个控制器或模块。",
+    "Receiver/Consumer": "信号的接收方或消费方，通常是另一个控制器或模块。",
+    "Channel": "信号传输的路径或通道，例如指定的通信总线或物理连接。",
+    "Interface Source": "信号的来源，具体指明是哪个模块或系统的输出。",
+    "Additional Info": "对信号的额外说明或功能描述，如功能用途、数值定义等。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DrvrDoorFlorLampCtrlCmd",
+      "type": "Input Signal",
+      "description": "驾驶员侧迎宾灯控制命令信号，由LHZCU发送，作为内部信号输入到LHZCU进行处理。",
+      "source": "LHZCU",
+      "destination": "LHZCU",
+      "channel": "Internal Signal Channel",
+      "additional_info": "主驾激光迎宾灯驱动请求，0x0表示关闭，0x1表示开启。"
+    },
+    {
+      "name": "DoorFlorLamp_FL_HSD",
+      "type": "Output Signal",
+      "description": "驾驶员侧迎宾灯驱动硬线信号，由LHZCU输出，用于直接驱动门灯。",
+      "source": "LHZCU",
+      "destination": "DoorFlorLamp_FL",
+      "channel": "Hard Line",
+      "additional_info": "主驾激光迎宾灯驱动硬线，DoorFlorLamp_FL_HSD。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DoorFlorLamp_FL_HSD",
+      "value": "0x0 (Close) / 0x1 (Open)",
+      "description": "根据DrvrDoorFlorLampCtrlCmd信号的值决定迎宾灯的开关状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了整车外灯控制系统中驾驶员侧迎宾灯的控制信号接口，包括信号的流向、类型、发送方、接收方、传输通道及来源，主要用于验证LHZCU与DoorFlorLamp_FL之间的信号交互逻辑是否符合设计要求。",
+  "uncertain_points": []
+}

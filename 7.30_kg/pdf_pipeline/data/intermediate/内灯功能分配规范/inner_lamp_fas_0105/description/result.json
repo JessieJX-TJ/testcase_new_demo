@@ -1,0 +1,62 @@
+{
+  "table_type": "logic_table",
+  "topic": "整车背光控制功能在不同使用模式和车辆模式下的行为规范",
+  "row_semantics": "表格的行代表一个具体的子功能，即'整车背光控制'。",
+  "column_semantics": "表格的列分为两大类：Usage Mode（使用模式）和 Vehicle Mode（车辆模式）。Usage Mode包括休眠、待机、舒适、正常驾驶、智能泊车、智能驾驶、XOTA、工程；Vehicle Mode包括工厂、运输、转毂、展车、碰撞、正常、维修。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "整车背光控制",
+      "type": "subfunction"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Usage Mode",
+      "values": [
+        "休眠",
+        "待机",
+        "舒适",
+        "正常驾驶",
+        "智能泊车",
+        "智能驾驶",
+        "XOTA",
+        "工程"
+      ]
+    },
+    {
+      "name": "Vehicle Mode",
+      "values": [
+        "工厂",
+        "运输",
+        "转毂",
+        "展车",
+        "碰撞",
+        "正常",
+        "维修"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "允许",
+      "description": "表示该模式下整车背光控制功能被允许启用或工作。"
+    },
+    {
+      "name": "不允许",
+      "description": "表示该模式下整车背光控制功能被禁止启用或工作。"
+    },
+    {
+      "name": "限时",
+      "description": "表示该模式下整车背光控制功能在特定条件下允许启用，但有时间限制。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车背光控制功能在各种使用场景和车辆状态下的正确启用/禁用逻辑，确保其符合设计规范。",
+  "uncertain_points": [
+    "具体实现细节未明确说明（如控制逻辑的具体算法）",
+    "未定义异常情况下的处理方式"
+  ]
+}

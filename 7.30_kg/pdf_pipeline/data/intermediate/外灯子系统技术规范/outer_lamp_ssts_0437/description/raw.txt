@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "远光灯开关信号处理逻辑",
+  "row_semantics": "表格定义了在特定前置条件下，当远光灯开关满足触发条件时，系统执行的动作、退出条件以及异常处理规则。",
+  "column_semantics": {
+    "Column1": "描述逻辑的前置条件、触发条件、执行动作、退出条件和异常处理。",
+    "Column2": "详细说明对应行的条件或动作的具体内容。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "MainBeamLghtSwSOAEnPrm",
+      "type": "配置字",
+      "description": "用于启用或禁用远光灯开关超范围检测功能的参数，默认值为0（Disable）"
+    },
+    {
+      "name": "MainBeamLghtSwMdl",
+      "type": "控制器/模块名",
+      "description": "主控模块，负责发送远光灯开关请求信号"
+    },
+    {
+      "name": "MainBeamLghtCtrlMdl",
+      "type": "控制器/模块名",
+      "description": "主控模块，接收并处理远光灯控制信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字 MainBeamLghtSwSOAEnPrm == 0 (Disable)，表示远光灯开关超范围检测功能被禁用"
+    },
+    {
+      "condition": "触发条件",
+      "description": "用户打开远光灯开关，开关阻值为 300 Ω (±5%)"
+    },
+    {
+      "condition": "退出条件",
+      "description": "远光灯开关阻值变为非 300 Ω (±5%)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "MainBeamLghtSwReq",
+      "type": "输出信号",
+      "description": "持续发送 MainBeamLghtSwReq = 0x1 (On) 至 MainBeamLghtCtrlMdl，至少发送三帧"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证远光灯开关在特定阻值条件下，系统是否能够正确发送远光灯开启请求信号，并在阻值变化时正确退出该状态。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "右后转向灯输出(DILamp_RH_HSD)被持续驱动",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm==1 (Enable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["DILightFbkSOAEnPrm==1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯输出(DILamp_RH_HSD)被持续驱动",
+    "relation": "触发条件",
+    "tail": "收到【DILghtCtrlMdl】发送的DirectionLightControl. DirectionLightCtrReq ==1(On) InstanceID=4",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["DILghtCtrlMdl", "DirectionLightCtrReq", "InstanceID=4"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RRDILightDrvMdl持续发送DirectionLightControl. DirectionLightSta==1至DILightCtrlMdl",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm==1 (Enable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["DILightFbkSOAEnPrm==1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RRDILightDrvMdl持续发送DirectionLightControl. DirectionLightSta==1至DILightCtrlMdl",
+    "relation": "触发条件",
+    "tail": "收到【DILghtCtrlMdl】发送的DirectionLightControl. DirectionLightCtrReq ==1(On) InstanceID=4",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["DILghtCtrlMdl", "DirectionLightCtrReq", "InstanceID=4"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统退出方向灯控制状态",
+    "relation": "触发条件",
+    "tail": "收到【DILghtCtrlMdl】发送的DirectionLightControl. DirectionLightCtrReq ==0(Off) InstanceID=4",
+    "triple_type": "退出条件",
+    "evidence_terms": ["DILghtCtrlMdl", "DirectionLightCtrReq", "InstanceID=4"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "至少发送三帧DirectionLightSta==1",
+    "relation": "状态保持条件",
+    "tail": "RRDILightDrvMdl持续发送DirectionLightControl. DirectionLightSta==1至DILightCtrlMdl",
+    "triple_type": "时序约束",
+    "evidence_terms": ["RRDILightDrvMdl", "DirectionLightSta", "InstanceID=4"],
+    "confidence_note": "high"
+  }
+]
+```

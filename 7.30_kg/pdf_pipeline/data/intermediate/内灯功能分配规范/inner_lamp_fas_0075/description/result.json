@@ -1,0 +1,63 @@
+{
+  "table_type": "logic_table",
+  "topic": "充电照明灯功能逻辑框图",
+  "row_semantics": "输入信号来源系统",
+  "column_semantics": "信号流向与处理模块",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LockingSystem",
+      "type": "system",
+      "description": "门锁子系统"
+    },
+    {
+      "name": "ChrgrFlapSystem",
+      "type": "system",
+      "description": "电动小门子系统"
+    },
+    {
+      "name": "BrakingSystem",
+      "type": "system",
+      "description": "制动子系统"
+    },
+    {
+      "name": "ChrgrFlapLampCtrl(RZCU)",
+      "type": "controller",
+      "description": "充电照明灯控制单元"
+    },
+    {
+      "name": "ChrgrFlapLampDrv(RZCU)",
+      "type": "controller",
+      "description": "充电照明灯驱动单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehLckSts",
+      "type": "input_signal",
+      "description": "车辆锁止状态"
+    },
+    {
+      "name": "RLChrgrFlapSts",
+      "type": "input_signal",
+      "description": "右前充电小门状态"
+    },
+    {
+      "name": "VehSpdAvg",
+      "type": "input_signal",
+      "description": "车辆平均速度"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ChrgrFlapLampCtrlCmd",
+      "type": "output_signal",
+      "description": "充电照明灯控制命令"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该图描述了充电照明灯的控制逻辑，展示了来自车辆锁止、充电小门和制动系统的输入信号如何被RZCU（区域控制单元）中的充电照明灯控制模块处理，并最终生成控制命令发送给驱动模块。",
+  "uncertain_points": []
+}

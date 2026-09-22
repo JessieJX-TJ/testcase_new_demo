@@ -1,0 +1,83 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - Lamp Breathing Mode and Fade Speed Control",
+  "row_semantics": "Each row represents a specific breathing rate or fade speed setting for the interior lamp, including its corresponding code value, period (timing), and original breathing mode.",
+  "column_semantics": {
+    "Code 值": "The hexadecimal code value that corresponds to a specific breathing rate or fade speed setting.",
+    "周期": "The time period (in seconds) for the breathing cycle or fade transition.",
+    "原呼吸模式值": "The original breathing mode value associated with this setting, if applicable."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "CnsoLHALampBrthngCmd_1",
+      "type": "function",
+      "description": "Command for controlling the breathing mode of the left-hand ambient lamp."
+    },
+    {
+      "name": "CnsoLHALampFadeSpdCmd_1",
+      "type": "function",
+      "description": "Command for controlling the fade speed of the left-hand ambient lamp."
+    },
+    {
+      "name": "CnsoLHBLampOn_Off_1",
+      "type": "function",
+      "description": "Command for turning the left-hand ambient lamp on or off."
+    },
+    {
+      "name": "LIN",
+      "type": "controller",
+      "description": "Local Interconnect Network, the communication bus used for sending commands."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit, the module responsible for processing lighting commands."
+    },
+    {
+      "name": "SSTS",
+      "type": "system",
+      "description": "Sub System Technical Specification, the overarching specification document."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Rate",
+      "description": "Different breathing rates defined by the code values, ranging from no request to 12 seconds."
+    },
+    {
+      "name": "Spd",
+      "description": "Fade speed settings for transitioning between brightness levels, with different speeds defined by code values."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Lamp Breathing",
+      "description": "The periodic on/off cycling of the lamp at a specified rate."
+    },
+    {
+      "name": "Lamp Fade",
+      "description": "The gradual change in lamp brightness over a specified time period."
+    },
+    {
+      "name": "Lamp On/Off",
+      "description": "The state of the lamp being either on or off."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Breathing Period",
+      "description": "Defined by the 'Period' column, specifying how long each breathing cycle takes (e.g., 500ms, 1s, up to 12s)."
+    },
+    {
+      "name": "Fade Speed",
+      "description": "Defined by the 'Spd' codes, specifying the time it takes to fade between brightness levels (e.g., 300ms, 100ms)."
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters for controlling the breathing and fading behavior of the interior ambient lamps. It specifies how different code values correspond to specific timing intervals for breathing modes and fade speeds, which can be used to test the responsiveness and accuracy of the lighting system under various command inputs.",
+  "uncertain_points": []
+}
+```

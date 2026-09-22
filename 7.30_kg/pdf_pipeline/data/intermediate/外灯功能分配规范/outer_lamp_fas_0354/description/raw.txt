@@ -1,0 +1,42 @@
+```json
+{
+  "table_type": "other",
+  "topic": "前雾灯控制与状态反馈机制",
+  "row_semantics": "表格内容按编号顺序描述了前雾灯的控制逻辑、状态反馈接口、订阅服务以及相关的重发机制和状态获取流程。",
+  "column_semantics": "表格仅有一列，用于详细描述各项功能或流程的具体实现细节。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "FrontFogLight (前雾灯)",
+    "LHZCU (前雾灯控制模块)",
+    "ICB (集成控制盒)",
+    "ExteriorLightSwitchProcess (外灯开关处理模块)",
+    "ExteriorLightControlSystem (外灯控制系统)"
+  ],
+  "core_conditions": [
+    "FrontFogLightState (前雾灯状态)",
+    "FrontFogLightErrorStatus (前雾灯错误状态)",
+    "ExteriorLightSwitchProcess.FrontFogLightSta (外灯开关处理模块中的前雾灯状态)",
+    "ExteriorLightControlSystem.ControlFrontFogLightReq (ICB发送的前雾灯请求)",
+    "ExteriorLightControlSystem.ControlFrontFogLightResp (ICB返回的前雾灯响应)"
+  ],
+  "core_outputs": [
+    "FrontFogLightSts (前雾灯状态)",
+    "FrontFogLightErrSts (前雾灯错误状态)",
+    "FrontFogLightCtrlReq (前雾灯控制请求)",
+    "FrontFogLightCtrlResp (前雾灯控制响应)"
+  ],
+  "core_faults": [
+    "No Error (无错误)",
+    "ControlSuccess (控制成功)"
+  ],
+  "core_timing_constraints": [
+    "40ms (前雾灯开启同步延时最大值)",
+    "<=50ms (重发尝试周期)",
+    "2s (超时时间)",
+    "500ms (状态反馈等待时间)"
+  ],
+  "engineering_interpretation": "该表格定义了前雾灯的控制逻辑、状态反馈机制以及与外部系统（如ICB）之间的交互规则，可用于验证前雾灯在不同场景下的正确控制、状态同步及故障反馈功能。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,29 @@
+{
+  "doc_id": "outer_lamp_fas",
+  "image_id": "outer_lamp_fas_1001",
+  "image_path": "/home/fanhongxuan/TestCase_Agent/7.30_kg/智己PDF/output/13 Z-ONE-3.0平台-FAS-IBD05 外灯功能分配规范v7.7-20260408/auto/images/8fc8e51a9410a835754cb97a6aa5e16b8049ff92b0f64157b25ec8eabb09f463.jpg",
+  "whitelist_terms": [
+    "Noter:",
+    "ON;时, {ExteriorLightSwitchProcess.RearFogLghtSwStatus.",
+    "RearFogLghtSwSta}接口参数同时赋值0x1=ON",
+    "5、[HMI子系统ICB]调用接口:",
+    "Notifier:",
+    "获取后雾灯和近光灯指示灯显示:",
+    "6、[外灯控制组合服务ICB]调用接口:",
+    "{RearFogLight.RearFogLightControl.RearFogLightCtrReq}=0x1=ON",
+    "{ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts}=0x1=On",
+    "7、[驱动处理模块LHZCU/RHZCU/RZCU]内部跳变为硬线输出,驱动后雾灯/近光灯点亮:",
+    "8、[驱动处理模块RZCU]将状态/故障状态反馈至[后雾灯控制模块LHZCU]:",
+    "{RearFogLight. RearFogLightState. RearFogLightSta}=0x1=ON",
+    "{RearFogLight. RearFogLightErrorStatus. RearFogLightErrorSta}=0x0=No Error",
+    "9、[后雾灯控制模块LHZCU]将状态/故障状态反馈至ICB:",
+    "{ExteriorLightSwitchProcess.RearFogLightSta.RearFogLghtSta}=0x1=ON",
+    "10、[外灯组合服务ICB]订阅接口:",
+    "{ExteriorLightControlSystem. RearFogLightSts. RearFogLghtSts}=0x1=On",
+    "11、[后雾灯控制模块LHZCU]订阅近光灯状态/故障状态接口:",
+    "(exIDipdBeamHwDrvEnPrm=0x0||0x2:通过 Instance ID 3/4 获取近光灯状态)",
+    "(exlDipdBeamHwDrvEnPrm=0x1:通过 Instance ID 1/2 获取近光灯状态)",
+    "1、近光灯和后雾灯开启同步性要求:"
+  ],
+  "term_count": 21
+}

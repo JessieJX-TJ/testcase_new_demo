@@ -1,0 +1,71 @@
+{
+  "table_type": "signal_table",
+  "topic": "Ambient Lamp Breathing Control Logic",
+  "row_semantics": "Time-based brightness control patterns for ambient lamp breathing modes",
+  "column_semantics": "Time axis (ms) representing the duration of each brightness state in the breathing cycle",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "FtwlFLLLampBrthngCmd_l",
+      "type": "controller_module",
+      "description": "Controller module responsible for sending ambient lamp breathing commands"
+    },
+    {
+      "name": "ZCU",
+      "type": "controller_module",
+      "description": "Zone Control Unit, which sends commands to the ambient lamp"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Mode Switch",
+      "description": "Switching between different breathing modes triggers immediate stop of current mode and switch to next"
+    },
+    {
+      "name": "Brightness Control Modes",
+      "description": "Two distinct modes: 0%-100% step change and 0%-100% gradual change"
+    },
+    {
+      "name": "Command Signals",
+      "description": "Specific command signals (e.g., 0x1, 0x2, 0x3-0x15, 0xE) define the breathing pattern characteristics"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Ambient Lamp Brightness",
+      "description": "The output is the changing brightness level of the ambient lamp over time, expressed as a percentage (0%-100%)"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate1",
+      "description": "For step change mode, Rate1 defines the period of each brightness state (e.g., 500ms)",
+      "unit": "ms"
+    },
+    {
+      "name": "Rate2",
+      "description": "For step change mode, Rate2 defines the period of each brightness state (e.g., 1s)",
+      "unit": "ms"
+    },
+    {
+      "name": "A",
+      "description": "Duration of brightness increase in gradual change mode, calculated as RateX * (0.5 - AmbtLampBrthngRateXholdoffPercent)",
+      "unit": "ms"
+    },
+    {
+      "name": "B",
+      "description": "Duration at maximum and minimum brightness in gradual change mode, equal to the breathing mode cycle period",
+      "unit": "ms"
+    },
+    {
+      "name": "AmbtLampBrthngRateXholdoffPercent",
+      "description": "Percentage of breathing mode cycle period to hold at start/end of ramping phase",
+      "unit": "%",
+      "default_value": "10%"
+    }
+  ],
+  "engineering_interpretation": "This table illustrates the timing and brightness behavior of ambient lamp breathing modes, enabling verification of correct implementation of both step change and gradual change breathing patterns based on ZCU commands.",
+  "uncertain_points": []
+}

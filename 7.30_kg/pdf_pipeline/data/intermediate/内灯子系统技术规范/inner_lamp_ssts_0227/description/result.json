@@ -1,0 +1,55 @@
+{
+  "table_type": "fault_table",
+  "topic": "第三排右侧阅读灯无短路/开路故障的测试验证",
+  "row_semantics": "表格按功能流程分为前置条件、触发条件和执行动作三个阶段，描述了在特定故障条件下系统的行为逻辑。",
+  "column_semantics": "第一列定义了测试场景的阶段（前置条件、触发条件、执行动作），第二列详细描述了每个阶段的具体内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampRHBrTlvl",
+      "type": "input_signal",
+      "description": "阅读灯控制模块发出的亮度请求信号，Level_1表示低亮度等级"
+    },
+    {
+      "name": "ThirdRowMapLampRHDimSpd",
+      "type": "output_signal",
+      "description": "阅读灯驱动控制模块输出的PWM调光信号，0x00表示速度1，即点亮速度为0.025秒/档"
+    },
+    {
+      "name": "Reading Lamp Driving Control Module",
+      "type": "controller",
+      "description": "负责驱动阅读灯按照设定亮度点亮的控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "第三排右侧阅读灯存在无短路/开路故障"
+    },
+    {
+      "condition": "触发条件",
+      "description": "接收到阅读灯控制模块的请求信号，ThirdRowMapLampRHBrTlvl=0x1 (Level_1)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "执行动作",
+      "description": "[阅读灯驱动控制模块]驱动阅读灯按照对应亮度点亮阅读灯：当点亮速度信号ThirdRowMapLampRHDimSpd=0x00（速度1），[阅读灯驱动控制模块]按照设定PWM驱动点亮阅读灯（速度0.025秒/档）"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "无短路/开路故障",
+      "description": "指第三排右侧阅读灯在电路中不存在短路或开路的情况"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "点亮速度",
+      "description": "阅读灯点亮的速度为0.025秒/档，由ThirdRowMapLampRHDimSpd=0x00表示"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证在第三排右侧阅读灯无短路/开路故障的情况下，当接收到亮度请求信号时，阅读灯驱动控制模块能否正确地按照设定的PWM信号驱动阅读灯点亮，并达到预期的点亮速度。",
+  "uncertain_points": []
+}

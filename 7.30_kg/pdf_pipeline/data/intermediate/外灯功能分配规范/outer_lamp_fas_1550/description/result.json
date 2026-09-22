@@ -1,0 +1,36 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯（Main Beam Light, Dipped Beam Light）控制与状态反馈机制",
+  "row_semantics": "每行描述一个特定的控制或状态反馈场景，涉及ICB（Integrated Control Box）与远光灯开关控制模块（LHZCU）之间的信号交互。",
+  "column_semantics": "无明确列定义，内容为多行文本描述，主要展示信号名称、实例ID、控制值及功能说明。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB",
+    "LHZCU",
+    "RHZCU",
+    "MainBeamLight",
+    "DippedBeamLight"
+  ],
+  "core_conditions": [
+    "ControlMainBeamLight.MainBeamLightReq",
+    "ControlDippedBeamLight.DippedBeamLightReq",
+    "ExteriorLightSwitchProcess.MainBeamLightFucProStatus",
+    "MainBeamLight.MainBeamLightStatus",
+    "MainBeamLight.MainBeamLightErrorStatus"
+  ],
+  "core_outputs": [
+    "LMainBeamLightCtrl_1_On",
+    "LMainBeamLightSts_1_On",
+    "RMainBeamLightSts_1_On",
+    "MainBeamLight.MainBeamLightSta",
+    "MainBeamLight.MainBeamLightErrSta"
+  ],
+  "core_faults": [
+    "MainBeamLight.MainBeamLightFitSts",
+    "MainBeamLight.MainBeamLightErrorStatus"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了车辆外灯（主灯和近光灯）的控制逻辑与状态反馈流程，可用于验证ICB与远光灯控制模块之间信号交互的正确性，包括灯光点亮/熄灭控制、状态指示及故障反馈。",
+  "uncertain_points": []
+}

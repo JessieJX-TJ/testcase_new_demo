@@ -1,0 +1,63 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "阳光雨量传感器LIN信号缺失时的外灯控制逻辑",
+  "row_semantics": "表格描述了在特定前置条件下触发的动作、执行条件、退出条件以及异常处理。",
+  "column_semantics": {
+    "Column1": "描述逻辑的不同阶段或条件类型（如前置条件、触发条件、执行动作等）",
+    "Column2": "详细说明对应阶段的具体内容"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "AutoLghtSwMdl",
+      "type": "module",
+      "description": "外灯开关模块，负责发送外灯开启请求信号"
+    },
+    {
+      "name": "AutoLghtCtrlMdl",
+      "type": "module",
+      "description": "外灯控制模块，接收并处理外灯开启请求信号"
+    },
+    {
+      "name": "阳光雨量传感器 LIN 信号",
+      "type": "input_signal",
+      "description": "由阳光雨量传感器通过LIN总线发送的信号，用于检测环境光照和雨水状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "持续 2s 未收到阳光雨量传感器 LIN 信号",
+      "type": "trigger_condition",
+      "description": "当系统在2秒内未接收到阳光雨量传感器的LIN信号时，触发后续逻辑"
+    },
+    {
+      "condition": "收到阳光雨量传感器 LIN 信号",
+      "type": "exit_condition",
+      "description": "当系统重新接收到阳光雨量传感器的LIN信号时，退出当前逻辑"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "AutoLghtOnReq",
+      "value": "0x2 (Error)",
+      "module": "AutoLghtSwMdl",
+      "description": "AutoLghtSwMdl 模块持续发送错误代码 0x2 的外灯开启请求信号至 AutoLghtCtrlMdl 模块"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "持续 2s",
+      "description": "未收到阳光雨量传感器 LIN 信号的时间阈值为 2 秒"
+    },
+    {
+      "constraint": "至少发送三帧",
+      "description": "AutoLghtSwMdl 模块需要至少发送三帧外灯开启请求信号"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在阳光雨量传感器LIN信号丢失时，外灯控制系统如何通过AutoLghtSwMdl模块发送错误信号至AutoLghtCtrlMdl模块来维持外灯开启状态的逻辑，并规定了信号发送的次数和退出条件。",
+  "uncertain_points": []
+}
+```

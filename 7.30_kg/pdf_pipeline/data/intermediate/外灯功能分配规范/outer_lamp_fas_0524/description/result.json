@@ -1,0 +1,52 @@
+{
+  "table_type": "fault_table",
+  "topic": "外灯功能 (Exterior Lamp Function)",
+  "row_semantics": "表格中的每一行代表一个与外灯相关的服务接口或状态信息，主要关注制动灯的故障状态和开关状态。",
+  "column_semantics": "列标题表示不同系统模块或控制器对特定服务接口的参与情况，如消费 (Consumption)、SOA (Service-Oriented Architecture)、ICB (Integrated Control Box)、LHZCU (Local Host Central Unit) 等。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "function",
+      "description": "制动灯故障状态服务接口"
+    },
+    {
+      "name": "BrakeLightSta",
+      "type": "function",
+      "description": "制动灯状态服务接口"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "signal",
+      "description": "制动灯故障状态信号，包含无错误 (0x0), 错误 (0x1), 未知 (0x2) 三种状态。",
+      "controller": "LHZCU",
+      "direction": "output"
+    },
+    {
+      "name": "BrakeLightSta",
+      "type": "signal",
+      "description": "制动灯状态信号，包含关闭 (0x0), 开启 (0x1), 未知 (0x2) 三种状态。",
+      "controller": "LHZCU",
+      "direction": "output"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "fault",
+      "description": "制动灯故障状态，用于检测制动灯是否存在错误。",
+      "states": [
+        "No Error (0x0)",
+        "Error (0x1)",
+        "Unknown (0x2)"
+      ]
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了制动灯故障状态和开关状态的服务接口及其对应的信号值，可用于验证LHZCU在不同情况下正确输出制动灯的状态和故障信息。",
+  "uncertain_points": []
+}

@@ -1,0 +1,52 @@
+{
+  "table_type": "fault_table",
+  "topic": "左前位置灯开路故障诊断与处理",
+  "row_semantics": "表格按时间顺序或逻辑流程描述了故障诊断的前置条件、触发条件、执行动作、退出条件以及异常处理。",
+  "column_semantics": {
+    "1": "条件/动作描述",
+    "2": "具体状态或操作"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "左前位置灯",
+      "type": "功能模块",
+      "description": "车辆外部照明系统的一部分，用于指示车辆在静止状态下的位置。"
+    },
+    {
+      "name": "DTC B1061 13",
+      "type": "故障代码",
+      "description": "诊断故障代码，表示检测到左前位置灯开路故障。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "左前位置灯处于输出状态，表明系统已尝试点亮该灯。"
+    },
+    {
+      "condition": "触发条件",
+      "description": "检测到左前位置灯开路，即电路中存在断开或高阻抗路径。"
+    },
+    {
+      "condition": "退出条件",
+      "description": "检测到短路恢复，即开路故障已被修复，电路恢复正常导通状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "置位 DTC B1061 13",
+      "description": "当检测到开路故障时，系统将设置相应的故障代码，以便后续诊断和维修。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTC B1061 13",
+      "description": "左前位置灯开路故障，可能由灯泡损坏、线路断开或连接器松动等原因引起。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了左前位置灯开路故障的诊断逻辑，可用于验证车辆电子控制系统在检测到此类故障时是否能够正确设置故障代码，并在故障恢复后清除相关代码。",
+  "uncertain_points": []
+}

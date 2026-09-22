@@ -1,0 +1,78 @@
+```json
+[
+  {
+    "head": "后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta = 0x1 = ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "触发条件",
+    "tail": "ICB 将服务接口或控制信号转换成灯控 CAN 信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "CAN信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯控制信号发送",
+    "relation": "输出为",
+    "tail": "RearFogLghtCtrl = 0x1 = RearFogLghtCtrl_1_On",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RearFogLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制信号发送",
+    "relation": "输出为",
+    "tail": "LDipdBeamLghtCtrl = 0x1 = LDipdBeamLghtCtrl_1_On; RDipdBeamLghtCtrl = 0x1 = RDipdBeamLghtCtrl_1_On",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "LDipdBeamLghtCtrl",
+      "RDipdBeamLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯指示灯显示",
+    "relation": "依赖于",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta = 0x1 = Only RearFogLght ON",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯指示灯显示",
+    "relation": "依赖于",
+    "tail": "ExteriorLightSwitchProcess.CombLghtFucProStatus.CombLghtFucProSta = 0x2 = Only DippedBeamLight",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.CombLghtFucProStatus.CombLghtFucProSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯请求状态更新",
+    "relation": "输出为",
+    "tail": "ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts = 0x1 = On",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightControl.DippedBeamLightRequestStatus"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

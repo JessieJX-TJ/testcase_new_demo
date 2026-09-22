@@ -1,0 +1,110 @@
+[
+  {
+    "head": "ICB 发送车顶射灯控制请求",
+    "relation": "触发条件",
+    "tail": "ExteriorLightControlSystem.RoofSpotLightSts.RoofSpotLghtSts = 0x1 = ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB_8295",
+      "ICB_S32G M",
+      "RoofSpotLightReq"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0992",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "ICB 发送车顶射灯控制请求",
+    "relation": "前提条件",
+    "tail": "ExteriorLightControlSystem.RoofSpotLightErrSts.RoofSpotLghtErrSts = 0x0 = No Error",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB_8295",
+      "ICB_S32G M",
+      "RoofSpotLightReq"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0992",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "车顶射灯控制请求重发",
+    "relation": "超时约束",
+    "tail": "尝试按照 <=50ms 周期重发 3 次",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "ICB_8295",
+      "ICB_S32G M",
+      "RoofSpotLightReq"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0992",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "车顶射灯控制请求重发",
+    "relation": "抑制条件",
+    "tail": "尝试重发 3 次后仍未反馈请求成功",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "ICB_8295",
+      "ICB_S32G M",
+      "RoofSpotLightReq"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0992",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "前提条件",
+    "tail": "发送类型为 Onchange 的外灯状态服务",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Onchange",
+      "LHZCU",
+      "ICB_S32G M",
+      "ICB_8295"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0992",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "超时约束",
+    "tail": "消费端在服务发现订阅或外灯控制请求后的 500ms 内未收到状态反馈",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "Onchange",
+      "LHZCU",
+      "ICB_S32G M",
+      "ICB_8295"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0992",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "触发条件",
+    "tail": "应主动通过状态服务 Getter() 方式获取外灯状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Onchange",
+      "LHZCU",
+      "ICB_S32G M",
+      "ICB_8295"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0992",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

@@ -1,0 +1,65 @@
+```json
+[
+  {
+    "head": "LMainBeamLghtDrvMdl 停止驱动左远光灯输出",
+    "relation": "前提条件",
+    "tail": "MainBeamLightState 的 MainBeamLightSta = 0 (Off) 且 InstanceID = 1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "【LMainBeamLghtDrvMdl】停止驱动左远光灯输出",
+      "MainBeamLightSta = 0 (Off)",
+      "InstanceID = 1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "MainBeamLghtDrvMdl 持续发送 MainBeamLightState",
+    "relation": "前提条件",
+    "tail": "MainBeamLightSta = 0 (Off) 且 InstanceID = 1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "【MainBeamLghtDrvMdl】持续发送MainBeamLightState.",
+      "MainBeamLightSta = 0 (Off)",
+      "InstanceID = 1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "MainBeamLghtDrvMdl 至少发送三帧 MainBeamLightState",
+    "relation": "前提条件",
+    "tail": "MainBeamLightSta = 0 (Off) 且 InstanceID = 1",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "【MainBeamLghtDrvMdl】持续发送MainBeamLightState.",
+      "至少发送三帧"
+    ],
+    "confidence_note": "medium"
+  },
+  {
+    "head": "LMainBeamLghtDrvMdl 停止驱动左远光灯输出",
+    "relation": "抑制条件",
+    "tail": "收到 MainBeamLightControl 且 MainBeamLightCtrReq == 1 (On) 且 InstanceID = 1",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "退出条件",
+      "MainBeamLightControl",
+      "MainBeamLightCtrReq == 1 (On)",
+      "InstanceID = 1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "MainBeamLghtDrvMdl 持续发送 MainBeamLightState",
+    "relation": "抑制条件",
+    "tail": "收到 MainBeamLightControl 且 MainBeamLightCtrReq == 1 (On) 且 InstanceID = 1",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "退出条件",
+      "MainBeamLightControl",
+      "MainBeamLightCtrReq == 1 (On)",
+      "InstanceID = 1"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

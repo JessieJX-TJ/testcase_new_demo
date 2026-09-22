@@ -1,0 +1,49 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 方向灯状态",
+  "row_semantics": "描述不同方向灯的状态信息及其相关参数",
+  "column_semantics": {
+    "A": "功能模块名称",
+    "B": "信号类型/来源 (SOA, 硬线状态等)",
+    "C": "控制器/模块名 (LHZCU, RHZCU)",
+    "D": "实例ID",
+    "E": "状态值定义 (OFF, ON, Unknown)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "功能模块",
+      "description": "方向灯状态监控模块"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "左前转向灯控制单元"
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块",
+      "description": "右前转向灯控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "参数",
+      "description": "实例标识符，区分不同转向灯状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "输出信号",
+      "description": "表示转向灯的当前状态（关闭、开启、未知）"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆左右前转向灯的状态监控接口，可用于验证转向灯在不同控制单元下的状态反馈是否正确。",
+  "uncertain_points": []
+}

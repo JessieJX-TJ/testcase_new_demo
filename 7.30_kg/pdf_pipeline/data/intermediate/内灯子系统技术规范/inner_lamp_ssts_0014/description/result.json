@@ -1,0 +1,61 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Ambient Lamp Breathing Mode Control",
+  "row_semantics": "Different breathing modes and their corresponding control parameters",
+  "column_semantics": "Mode type, control signal values, timing parameters, and brightness behavior",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "CnsoLHALampBrtnsCmd_1",
+      "type": "controller_module",
+      "description": "Module responsible for controlling ambient lamp breathing mode"
+    },
+    {
+      "name": "ZCU",
+      "type": "controller",
+      "description": "Zone Control Unit sending commands to the ambient lamp"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Mode Switch",
+      "description": "Switching between different breathing modes (e.g., from one rate to another)"
+    },
+    {
+      "name": "Brightness Adjustment",
+      "description": "Adjustment of brightness levels (0%-100%) in either step or gradual manner"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Ambient Lamp Brightness",
+      "description": "Output signal representing the brightness level of the ambient lamp"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate1",
+      "description": "500ms cycle time for 0-100% step change",
+      "formula": "A = RateX * (0.5 - AmbtLampBrthngRateXholdoffPercent)",
+      "default_value": "500ms"
+    },
+    {
+      "name": "Rate2",
+      "description": "1s cycle time for 0-100% step change",
+      "formula": "A = RateX * (0.5 - AmbtLampBrthngRateXholdoffPercent)",
+      "default_value": "1000ms"
+    },
+    {
+      "name": "B",
+      "description": "Hold time at maximum and minimum brightness levels",
+      "formula": "B = RateX * AmbtLampBrthngRateXholdoffPercent",
+      "default_value": "10% of cycle time"
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameter settings for two types of ambient lamp breathing modes: step change (0x1) and gradual change (0x3-0xE). It specifies how the ZCU should send commands to the CnsoLHALampBrtnsCmd_1 module to achieve the desired brightness patterns, including timing parameters for each mode.",
+  "uncertain_points": [
+    "The exact implementation details of how the ZCU sends commands to the CnsoLHALampBrtnsCmd_1 module are not specified."
+  ]
+}

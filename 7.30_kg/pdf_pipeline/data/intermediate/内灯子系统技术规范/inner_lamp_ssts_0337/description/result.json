@@ -1,0 +1,48 @@
+{
+  "table_type": "state_table",
+  "topic": "Reading Lamp Work Status Signal",
+  "row_semantics": "Each row represents a specific state of the reading lamp, identified by its status code.",
+  "column_semantics": {
+    "阅读灯工作状态信号号": "The signal name or identifier for the reading lamp's operational status.",
+    "状态位": "The hexadecimal value representing the current state of the reading lamp.",
+    "判定条件说明": "Description of the conditions that lead to this particular state.",
+    "备注": "Additional notes or comments related to the state."
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampRHSts",
+      "type": "signal",
+      "description": "Signal indicating the status of the third-row map lamp on the right-hand side."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "0x0=OFF",
+      "description": "The reading lamp is not in a driving state."
+    },
+    {
+      "condition": "0x1=Level_1",
+      "description": "Received a brightness level request of 1, and the reading lamp is illuminated."
+    },
+    {
+      "condition": "0x2=Level_2",
+      "description": "Received a brightness level request of 2, and the reading lamp is illuminated."
+    },
+    {
+      "condition": "0x1E=Level_30",
+      "description": "Received a brightness level request of 30, and the reading lamp is illuminated."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "Reading Lamp Status",
+      "description": "The current operational status of the reading lamp based on received commands."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the various states of the reading lamp's operation based on received brightness level requests, which can be used to verify the correct mapping and response of the reading lamp to different control inputs.",
+  "uncertain_points": []
+}

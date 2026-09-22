@@ -1,0 +1,57 @@
+{
+  "table_type": "fault_table",
+  "topic": "灯开关传感采集模块的异常处理逻辑",
+  "row_semantics": "表格的行代表不同的处理场景或状态，包括正常操作和异常情况。",
+  "column_semantics": "表格的列描述了在特定场景下的系统行为或信号状态。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampRHSwReq",
+      "type": "signal",
+      "description": "第三排右侧灯开关请求信号，表示灯开关的状态。"
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Hand Zone Control Unit，右侧区域控制单元，负责处理灯开关相关的逻辑。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "ThirdRowMapLampRHSwReq == 0x0 (Idle)",
+      "description": "灯开关处于空闲（未按下）状态。"
+    },
+    {
+      "condition": "检测到电容开关一直按下",
+      "description": "系统检测到电容开关被持续按下的异常情况。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "ThirdRowMapLampRHSwReq = 0x0 (Idle)",
+      "description": "在正常情况下，灯开关请求信号保持空闲状态。"
+    },
+    {
+      "output": "不发送 0x3",
+      "description": "RHZCU 不执行开关短路故障处理，不发送 0x3 信号。"
+    },
+    {
+      "output": "一直发送 0x1",
+      "description": "如果检测到电容开关一直按下，则 RHZCU 会持续发送 0x1 信号。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "开关短路故障",
+      "description": "灯开关可能存在短路问题，导致无法正确识别开关状态。"
+    },
+    {
+      "fault": "电容开关持续按下",
+      "description": "电容开关被持续按住，可能由于机械故障或误操作引起。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了灯开关传感采集模块在不同状态下的行为，特别是异常情况下的处理逻辑，可用于验证 RHZCU 在灯开关空闲、短路故障以及电容开关持续按下时的信号输出是否符合规范。",
+  "uncertain_points": []
+}

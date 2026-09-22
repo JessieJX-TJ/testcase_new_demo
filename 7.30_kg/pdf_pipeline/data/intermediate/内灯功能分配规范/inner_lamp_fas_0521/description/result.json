@@ -1,0 +1,45 @@
+{
+  "table_type": "logic_table",
+  "topic": "整车电子系统中后备箱灯控制模块的功能规范",
+  "row_semantics": "每行代表一个逻辑模块的功能描述及其分配的子系统/物理模块",
+  "column_semantics": {
+    "逻辑模块名称": "模块的英文名称及其功能简述",
+    "逻辑块功能描述": "模块的具体功能和作用",
+    "分配的子系统/物理模块": "该模块所属的子系统或物理控制器"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LdSpcLampCtrl",
+      "type": "逻辑模块",
+      "description": "后备箱灯应用控制模块，负责处理后备箱灯的点亮熄灭控制逻辑"
+    },
+    {
+      "name": "LdSpcLampDrv",
+      "type": "逻辑模块",
+      "description": "后备箱灯驱动模块，负责响应控制请求并驱动后备箱灯的实际点亮熄灭"
+    },
+    {
+      "name": "RZCU/LHZCU",
+      "type": "控制器/物理模块",
+      "description": "区域控制单元/本地区域控制单元，是后备箱灯控制逻辑的执行载体"
+    },
+    {
+      "name": "内灯子系统 (RZCU/LHZCU)",
+      "type": "子系统",
+      "description": "包含后备箱灯在内的车内照明系统"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "后备箱灯点亮熄灭",
+      "description": "由LdSpcLampDrv模块驱动的实际输出行为"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了后备箱灯控制系统中两个关键逻辑模块的功能职责及其与底层控制器的关联，可用于验证LdSpcLampCtrl模块是否正确实现点亮熄灭控制逻辑，以及LdSpcLampDrv模块是否能准确响应并驱动后备箱灯。",
+  "uncertain_points": []
+}

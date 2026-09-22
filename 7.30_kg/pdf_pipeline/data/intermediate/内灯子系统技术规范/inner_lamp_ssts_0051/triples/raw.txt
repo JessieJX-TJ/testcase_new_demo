@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "氛围灯调整亮度",
+    "relation": "触发条件",
+    "tail": "接收到CnsoLHALampBrtnsCmd_l信号从0x00变为非0x00",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["CnsoLHALampBrtnsCmd_l", "0x00", "No Request"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "接收到CnsoLHALampOnOff_1信号为0x00（OFF）",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["CnsoLHALampOnOff_1", "0x00", "OFF"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯亮度保持不变",
+    "relation": "触发条件",
+    "tail": "接收到CnsoLHALampBrtnsCmd_l信号为0x65-0xFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["CnsoLHALampBrtnsCmd_l", "0x65-0xFF"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "故障响应",
+    "tail": "氛围灯模块出现过压、欠压故障",
+    "triple_type": "故障响应",
+    "evidence_terms": ["过压", "欠压", "氛围灯模块"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "故障响应",
+    "tail": "超过6秒未接收到ZCU的LIN信号",
+    "triple_type": "故障响应",
+    "evidence_terms": ["ZCU", "LIN信号", "6秒"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯维持上一时刻状态值",
+    "relation": "故障响应",
+    "tail": "CnsoLHALampBrtnsCmd_l信号异常",
+    "triple_type": "故障响应",
+    "evidence_terms": ["CnsoLHALampBrtnsCmd_l", "异常"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯亮度设置",
+    "relation": "依赖于",
+    "tail": "[氛围灯驱动控制模块]按照亮度设置表对应亮度值的PWM",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["PWM", "亮度设置表"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯亮度保持不变",
+    "relation": "状态保持条件",
+    "tail": "接收到CnsoLHALampBrtnsCmd_l信号为0x00(No Request)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["CnsoLHALampBrtnsCmd_l", "0x00", "No Request"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "超时约束",
+    "tail": "超过6秒未接收到ZCU的LIN信号",
+    "triple_type": "时序约束",
+    "evidence_terms": ["ZCU", "LIN信号", "6秒"],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "危险报警灯功能被触发",
+    "relation": "前提条件",
+    "tail": "配置字HzrdLghtSwSOAEnPrm==0（Disable）",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["前置条件", "HzrdLghtSwSOAEnPrm"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险报警灯功能被触发",
+    "relation": "触发条件",
+    "tail": "用户手动按下危险报警灯开关,开关接地",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["触发条件", "用户手动按下危险报警灯开关", "开关接地"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HzrdLghtSwMdl模块发送HzrdLghtSwReq=0x1信号",
+    "relation": "执行动作",
+    "tail": "危险报警灯功能被触发",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "HzrdLghtSwMdl", "HzrdLghtSwReq", "HzrdLghtCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HzrdLghtSwMdl模块发送HzrdLghtSwReq=0x1信号",
+    "relation": "依赖于",
+    "tail": "危险报警灯功能被触发",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "HzrdLghtSwMdl", "HzrdLghtSwReq", "HzrdLghtCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HzrdLghtSwMdl模块发送HzrdLghtSwReq=0x1信号",
+    "relation": "输出为",
+    "tail": "HzrdLghtCtrlMdl模块",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "HzrdLghtSwMdl", "HzrdLghtSwReq", "HzrdLghtCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险报警灯功能退出",
+    "relation": "退出条件",
+    "tail": "开关悬空",
+    "triple_type": "状态保持条件",
+    "evidence_terms": ["退出条件", "开关悬空"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HzrdLghtSwMdl模块发送HzrdLghtSwReq=0x1信号",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": ["执行动作", "HzrdLghtSwReq", "三帧"],
+    "confidence_note": "high"
+  }
+]
+```

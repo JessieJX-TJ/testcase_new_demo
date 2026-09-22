@@ -1,0 +1,19 @@
+场景描述
+此功能会在车辆处于紧急减速/ABS激活时自动触发刹车灯闪烁来加强对后方的指示
+前置条件
+1&2&3&4&{[5||6]&[7|8]]:
+UsgMd=0x3=UsgMd_3_NormalDriving;∥
+UsgMd=0x4=UsgMd_4_AIParking;|
+UsgMd=0x5=UsgMd_5_AIPilot
+UsgMdV=Valid
+VehMd=0x8=VehMd_8_Engineering;|
+VehMd=0x1 = VehMd_1_CRASH;|
+VehMd=0x0 = VehMd_0_NORMAL;|
+VehMd=0x9= VehMd_9_Service
+VehMdV=Valid
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtCtrlCmmntnTyp=0x1=CAN
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtStsCmmntnTyp=0x1=CAN
+备注:
+a.需求中同时存在SOA和CAN的,按照配置字开发

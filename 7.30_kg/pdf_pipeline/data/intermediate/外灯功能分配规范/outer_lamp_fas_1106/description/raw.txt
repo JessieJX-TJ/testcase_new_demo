@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - DayRunningLight控制与状态",
+  "row_semantics": "表格按功能模块和操作类型组织，每一行代表一个独立的接口或状态查询。",
+  "column_semantics": {
+    "1": "功能模块名称",
+    "2": "服务消费方 (SOA)",
+    "3": "内部通信总线 (ICB) - 控制端",
+    "4": "内部通信总线 (ICB) - 状态端",
+    "5": "外部通信总线 (LHZC U) - 状态端",
+    "6": "预留列"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DayRunningLightControl",
+      "type": "功能/接口",
+      "description": "用于控制日间行车灯（DRL）的开关状态"
+    },
+    {
+      "name": "DayRunningLightState",
+      "type": "功能/接口",
+      "description": "用于查询日间行车灯的状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DayRunningLightCtrlReq",
+      "type": "输入信号",
+      "description": "控制请求参数，用于指定DRL的开关状态（0x0=OFF, 0x1=ON）"
+    },
+    {
+      "name": "InstanceID",
+      "type": "实例标识符",
+      "description": "区分不同DRL控制实例的ID"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DayRunningLightState",
+      "type": "输出信号",
+      "description": "返回DRL当前的实际状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中日间行车灯（DRL）的控制接口和状态查询接口，可用于验证DRL的开关控制逻辑、状态反馈准确性以及不同控制实例的隔离性。",
+  "uncertain_points": []
+}
+```

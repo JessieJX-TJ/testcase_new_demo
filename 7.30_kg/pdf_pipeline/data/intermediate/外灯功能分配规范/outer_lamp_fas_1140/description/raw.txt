@@ -1,0 +1,84 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 转向灯控制",
+  "row_semantics": "表格按不同的转向灯控制功能（左后、右后、左前）进行分组，每组描述一个特定的控制接口及其参数。",
+  "column_semantics": {
+    "A": "功能模块名称",
+    "B": "服务调用方 (SOA)",
+    "C": "区域中央控制单元 (RZCU)",
+    "D": "集成式车身控制器 (ICB)",
+    "E": "预留列",
+    "F": "控制方式 (硬线控制或网络控制)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight.ControlDirectionLight",
+      "type": "function",
+      "description": "转向灯控制功能"
+    },
+    {
+      "name": "SOA",
+      "type": "controller",
+      "description": "Service-Oriented Architecture, 服务调用方"
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "Regional Central Control Unit, 区域中央控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Body Controller, 集成式车身控制器"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例ID，用于区分不同的转向灯控制实例",
+      "values": [
+        {
+          "id": "3",
+          "description": "左后转向灯控制"
+        },
+        {
+          "id": "4",
+          "description": "右后转向灯控制"
+        }
+      ]
+    },
+    {
+      "name": "DirectionLightReq",
+      "description": "转向灯请求参数",
+      "values": [
+        {
+          "value": "0x0",
+          "description": "OFF, 熄灭"
+        },
+        {
+          "value": "0x1",
+          "description": "ON, 点亮"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "转向灯状态",
+      "description": "左后、右后或左前转向灯的点亮或熄灭状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "周期调用",
+      "description": "该服务接口需要周期性调用以维持转向灯的正常工作"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中转向灯的控制逻辑和参数配置，主要用于验证不同控制器（SOA, RZCU, ICB）在硬线控制和网络控制模式下，对左后、右后及左前转向灯的点亮/熄灭功能是否符合规范要求。",
+  "uncertain_points": []
+}
+```

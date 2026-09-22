@@ -1,0 +1,63 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 方向灯控制与状态",
+  "row_semantics": "表格按功能模块划分，每一行代表一个方向灯相关的服务接口或状态信息，详细描述了控制和状态的参数定义。",
+  "column_semantics": {
+    "功能模块": "表示该行所属的功能模块名称，如ControlDirectionLight（控制方向灯）或DirectionLightStatus（方向灯状态）。",
+    "消费": "表示该服务接口或状态信息的消费方，即哪个系统或模块会使用此功能。",
+    "SOA": "Service-Oriented Architecture，面向服务架构，表示该功能是否通过SOA接口提供。",
+    "ICB": "Internal Communication Bus，内部通信总线，表示该功能是否通过ICB接口提供。",
+    "网络控制": "表示该功能是否可以通过网络进行远程控制。",
+    "硬线状态": "表示该功能的状态是否通过硬件线路直接反馈。",
+    "描述": "对该服务接口或状态信息的详细描述，包括功能说明、接口名称、参数名称及实例ID等。",
+    "参数值": "具体参数的可能取值及其含义，如0x0=OFF, 0x1=ON等。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "功能模块",
+      "description": "外灯功能中的方向灯相关控制与状态模块。"
+    },
+    {
+      "name": "ControlDirectionLight",
+      "type": "功能名",
+      "description": "用于控制右后转向灯点亮或熄灭的服务接口。"
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "功能名",
+      "description": "用于获取左前转向灯状态的服务接口。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightReq",
+      "type": "输入信号",
+      "description": "控制方向灯请求参数，用于指定转向灯的状态（ON/OFF）。"
+    },
+    {
+      "name": "DirectionLightSta",
+      "type": "输出信号",
+      "description": "方向灯状态参数，用于反馈转向灯的实际状态（ON/OFF/Unknown）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "输出信号",
+      "description": "返回左前转向灯的当前状态，包括ON、OFF和Unknown三种状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证方向灯控制接口（ControlDirectionLight）和状态反馈接口（DirectionLightStatus）的功能正确性，包括控制命令的发送与接收、状态信号的准确反馈以及不同控制器（如SOA、LHZCU、RHZCU）之间的交互逻辑。",
+  "uncertain_points": [
+    "表格中未明确说明具体的控制器间通信协议细节。",
+    "未提及异常情况下的处理机制（如网络中断时的状态保持）。",
+    "未定义具体的超时时间或重试机制。"
+  ]
+}
+```

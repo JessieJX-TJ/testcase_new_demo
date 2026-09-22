@@ -1,0 +1,63 @@
+子系统技术规范
+Sub System Technical Specification
+IM
+内灯子系统 Interior Lighting Sub System
+智己汽车
+Z-ONE-3.0平台-SSTS-
+版本<1.2>
+169 of 235 页
+IBD10
+DoorRR4LampFad
+DoorAm
+RHZCU
+内灯
+eSpdCmd_1
+输入
+LIN
+btLampD
+LIN4
+SSTS
+RR
+氛围灯渐变速度指令
+0x0=DoorRR4LampFadeSpdCmd_1_0_Spd0
+0x1=DoorRR4LampFadeSpdCmd_1_1_Spd1
+0x2=DoorRR4LampFadeSpdCmd_1_2_Spd2
+0x3=DoorRR4LampFadeSpdCmd_1_3_Spd3
+灯头颜色/亮度切换时从当前状态到目标状态切换的所需的时间
+默认速度Spd0:2000ms
+Spd1:300ms
+Spd2:100ms;(能力预留)
+Spd3:(预留0)
+DoorRR5LampOn
+DoorAmbt
+amE
+R
+氛围灯开启请求
+0x0=DoorRR5LampOnOff_1_0_OFF
+0x1=DoorRR5LampOnOff_1_1_ON
+点亮ON时需同时接收到非0值的颜色亮度指令
+DoorRR5LampCol
+orCmd_1
+btlLampE
+氛围灯颜色指令
+0x00=DoorRR5LampColorCmd_1_0_No Request
+0x01-0xFF=各个颜色值
+灯头切换为色坐标对应的颜色
+指令值为0或者未定义颜色号时保持颜色不变
+DoorRR5LampBrt
+nsCmd_1
+btLampE
+氛围灯亮度指令
+0x00=No Request
+0x00=DoorRR5LampBrtnsCmd_1_0_No Request
+0x65-0xFF=Reserved
+灯头亮度调节到相应的百分比值
+指令值为0时保持亮度不变
+hngCmd_1
+氛围灯呼吸指令
+0x0=DoorRR5LampBrthngCmd_1_0_No Request
+0x1=DoorRR5LampBrthngCmd_1_1_Rate1
+0x2=DoorRR5LampBrthngCmd_1_2_Rate2
+0x3=DoorRR5LampBrthngCmd_1_3_Rate3
+0x4=DoorRR5LampBrthngCmd_1_4_Rate4
+0x5=DoorRR5LampBrthngCmd_1_5_Rate5

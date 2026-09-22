@@ -1,0 +1,89 @@
+[
+  {
+    "head": "寻车灯状态(DircnLghtSts)为OFF",
+    "relation": "触发条件",
+    "tail": "外灯组合服务ICB订阅接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DircnLghtSts=0x0=OFF",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "方向灯错误状态(DirectionLightErrSta)为No Error",
+    "relation": "前提条件",
+    "tail": "通过Instance ID获取转向灯状态",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "DirectionLightErrorStatus",
+      "exlDircnLghtHwDrvEnPrm"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "寻车灯控制模块LHZCU将状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "ICB状态/故障状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "DircnLghtSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "危险警示灯请求(VehHzrdMdSts_0_No_Request)",
+    "relation": "触发条件",
+    "tail": "寻车灯控制模块LHZCU发送双闪灯实时状态至ICB",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehHzrdMdSts",
+      "LHZCU",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "寻车灯控制模块LHZCU将转向灯控制状态反馈至SDM",
+    "relation": "输出为",
+    "tail": "电子驻车指示灯开关状态(EDRDircnIndLampSwSts)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "SDM",
+      "EDRDircnIndLampSwSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "方向灯状态(DirectionLightSta)为OFF",
+    "relation": "前提条件",
+    "tail": "通过Instance ID获取转向灯状态",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "DirectionLightSta",
+      "InstanceID"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  }
+]

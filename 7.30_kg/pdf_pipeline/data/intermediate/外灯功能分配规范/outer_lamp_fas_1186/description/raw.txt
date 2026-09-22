@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "制动系统与外灯控制模块之间的信号交互及时间延迟分析",
+  "row_semantics": "流程步骤或信号传输路径",
+  "column_semematics": "无明确列，整体为横向流程图结构",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "制动系统",
+      "type": "system"
+    },
+    {
+      "name": "LHZCU 制动灯控制模块",
+      "type": "controller"
+    },
+    {
+      "name": "S32G 外灯SWC",
+      "type": "module"
+    },
+    {
+      "name": "S32G 数字灯光SDK",
+      "type": "software"
+    },
+    {
+      "name": "TailLampAsmbl 制动灯驱动",
+      "type": "actuator"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CANFD",
+      "description": "Controller Area Network Flexible Data Rate, 用于模块间通信的总线协议"
+    },
+    {
+      "name": "逻辑+信号处理",
+      "description": "LHZCU模块内部对信号进行逻辑判断和处理"
+    },
+    {
+      "name": "内部信号",
+      "description": "S32G模块内部不同组件间的信号传递"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "TailLampAsmbl 制动灯驱动",
+      "description": "最终输出到制动灯执行机构的信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal": "制动系统 -> LHZCU",
+      "delay": "100ms"
+    },
+    {
+      "signal": "LHZCU -> S32G 外灯SWC",
+      "delay": "20ms"
+    },
+    {
+      "signal": "S32G 外灯SWC -> S32G 数字灯光SDK",
+      "delay": "10ms"
+    },
+    {
+      "signal": "S32G 数字灯光SDK -> TailLampAsmbl",
+      "delay": "40ms"
+    },
+    {
+      "total_delay": "270ms",
+      "description": "从制动系统触发到制动灯实际响应的总延迟时间"
+    }
+  ],
+  "engineering_interpretation": "该图表可用于验证制动系统信号从触发到制动灯实际点亮的端到端时序性能，确保在规定时间内完成信号处理和执行。",
+  "uncertain_points": []
+}
+```

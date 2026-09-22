@@ -1,0 +1,73 @@
+{
+  "table_type": "parameter_table",
+  "topic": "DoorFL2LampBrthngCmd_l_1 (Front Left Door Lamp Breathing Command Level 1)",
+  "row_semantics": "Each row represents a specific breathing rate command for the front left door lamp, defined by a hexadecimal code value.",
+  "column_semantics": {
+    "Code Value": "The hexadecimal command code that specifies the breathing rate.",
+    "周期": "The period of the breathing cycle in seconds.",
+    "原呼吸模式值": "The original breathing mode value associated with the rate."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "DoorFL2LampBrthngCmd_l_1",
+      "type": "function",
+      "description": "Command for controlling the breathing pattern of the front left door lamp."
+    },
+    {
+      "name": "LIN",
+      "type": "controller",
+      "description": "Local Interconnect Network interface for communication."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit."
+    },
+    {
+      "name": "DoorAmbtLampB_FL",
+      "type": "signal",
+      "description": "Signal for ambient door lamp on the front left side."
+    },
+    {
+      "name": "LHZCU_LIN4",
+      "type": "signal",
+      "description": "Signal from LHZCU to LIN4 network."
+    },
+    {
+      "name": "内灯SSTS",
+      "type": "system",
+      "description": "Interior Lighting Sub System."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Code Value",
+      "description": "Specifies the breathing rate command via hexadecimal codes (0x0 to 0xF)."
+    },
+    {
+      "name": "Period",
+      "description": "Defines the time interval for each breathing cycle (e.g., 500ms, 1s, up to 12s)."
+    },
+    {
+      "name": "Original Breathing Mode Value",
+      "description": "Indicates the corresponding original breathing mode for each rate."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorFL2LampBrthngCmd_l_1",
+      "description": "Output signal that controls the breathing pattern of the front left door lamp based on the specified code value."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Period",
+      "description": "Defines the timing for each breathing cycle, ranging from 500ms to 12s."
+    }
+  ],
+  "engineering_interpretation": "This table defines the mapping between hexadecimal code values and their corresponding breathing rates for the front left door lamp. It is used to verify that the lamp responds correctly to different breathing commands, ensuring consistent behavior across various periods and modes.",
+  "uncertain_points": []
+}

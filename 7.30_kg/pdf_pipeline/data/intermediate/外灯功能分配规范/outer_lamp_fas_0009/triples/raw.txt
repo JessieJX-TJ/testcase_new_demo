@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "获取侧位置灯状态",
+    "relation": "触发条件",
+    "tail": "订阅 ExteriorLightControlSystem.SidePositionLightSts 服务",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.SidePositionLightSts",
+      "SOA",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "获取左前位置灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用 SidePositionLight.SidePositionLightErrorStatus 服务接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SidePositionLight.SidePositionLightErrorStatus",
+      "SOA",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位置灯状态参数",
+    "relation": "输出为",
+    "tail": "SidePosnLghtSta",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Parameter Name: {SidePosnLghtSta}",
+      "0x0=OFF",
+      "0X1=ON",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左前位置灯故障状态参数",
+    "relation": "输出为",
+    "tail": "SidePositionLightErrorSta",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Parameter Name: {SidePositionLightErrorSta}",
+      "InstanceID=5",
+      "0x0=No Error",
+      "0x1=Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位置灯状态",
+    "relation": "依赖于",
+    "tail": "ExteriorLightControlSystem.SidePositionLightSts 接口",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "Interface Name: SidePositionLightSts",
+      "Parameter Name: {SidePosnLghtSts}"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左前位置灯故障状态",
+    "relation": "依赖于",
+    "tail": "SidePositionLight.SidePositionLightErrorStatus 接口",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "Interface Name: SidePositionLightErrorStatus",
+      "Parameter Name: {SidePositionLightErrorSta}"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

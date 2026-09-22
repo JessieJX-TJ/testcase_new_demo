@@ -1,0 +1,38 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯位置灯状态与故障检测",
+  "row_semantics": "逐行定义了不同位置灯的点亮状态反馈和故障状态反馈的具体信号路径及实例ID",
+  "column_semantics": "表格为单列结构，每行包含一个功能描述及其对应的信号路径和实例标识",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "controller_module",
+      "description": "车身侧面位置灯系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightStatus",
+      "type": "input_signal",
+      "description": "位置灯当前的点亮状态（如亮/灭）"
+    },
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "input_signal",
+      "description": "位置灯当前的故障状态（如正常/故障）"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "fault_state",
+      "description": "指示位置灯是否存在电气或机械故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义整车电子系统中侧位灯（包括左前、右前、左后、右后）的点亮状态和故障状态的信号反馈机制，是进行灯光系统功能验证和故障诊断测试的基础。",
+  "uncertain_points": []
+}

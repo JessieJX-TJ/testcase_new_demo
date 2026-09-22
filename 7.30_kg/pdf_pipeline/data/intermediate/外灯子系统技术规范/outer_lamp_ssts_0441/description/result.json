@@ -1,0 +1,76 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑 - 左后转向灯持续驱动功能",
+  "row_semantics": "定义了外灯控制逻辑的前置条件、触发条件、执行动作、退出条件和异常处理",
+  "column_semematics": {
+    "0": "条件/动作类型",
+    "1": "具体描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RLDircnLghtDrvEnPrm",
+      "type": "parameter",
+      "description": "左后转向灯驱动使能参数"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "module",
+      "description": "外灯控制模块"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW",
+      "type": "signal",
+      "description": "硬件层左后转向灯控制信号"
+    },
+    {
+      "name": "RLDILghtDrvMdl",
+      "type": "module",
+      "description": "左后转向灯驱动模块"
+    },
+    {
+      "name": "DILamp_LH_HSD",
+      "type": "signal",
+      "description": "左后转向灯输出信号"
+    },
+    {
+      "name": "RLDILghtSts_HW",
+      "type": "signal",
+      "description": "硬件层左后转向灯状态信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "exlDircnLghtHwDrvEnPrm == 1 || 2",
+      "description": "外灯驱动使能参数为1或2时，允许执行该逻辑"
+    },
+    {
+      "condition": "收到【DILghtCtrlMdl】统一分发的 RLDircnLghtCtrl_HW == 1 (On)",
+      "description": "当接收到外灯控制模块分发的左后转向灯控制信号为开启状态时，触发该逻辑"
+    },
+    {
+      "condition": "收到【DILghtCtrlMdl】发送的 RLDircnLghtCtrl_HW == 0 (Off)",
+      "description": "当接收到外灯控制模块发送的左后转向灯控制信号为关闭状态时，退出该逻辑"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "DILamp_LH_HSD",
+      "description": "持续驱动左后转向灯输出信号"
+    },
+    {
+      "output": "RLDILghtSts_HW",
+      "description": "持续发送左后转向灯状态信号至外灯控制模块"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在执行动作中，RLDILghtSts_HW信号需要至少发送三帧数据"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了整车外灯系统中左后转向灯在特定条件下持续驱动的控制逻辑，可用于验证外灯控制模块与转向灯驱动模块之间的信号交互及状态保持功能。",
+  "uncertain_points": []
+}

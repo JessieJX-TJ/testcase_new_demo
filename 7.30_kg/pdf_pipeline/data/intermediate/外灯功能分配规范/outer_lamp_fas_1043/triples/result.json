@@ -1,0 +1,178 @@
+[
+  {
+    "head": "危险警报灯开启",
+    "relation": "触发条件",
+    "tail": "ICB 根据 LHZCU 控制输入,延时 60ms 并分发控制信号至 LHZCU、RHZCU 和 RZCU",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "RHZCU",
+      "RZCU",
+      "FLDirnLghtCtrl_HW",
+      "FRDirnLghtCtrl_HW",
+      "RLDirnLghtCtrl_HW",
+      "RRDirnLghtCtrl_HW"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1043",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯开启",
+    "relation": "前提条件",
+    "tail": "驱动处理模块 LHZCU/RHZCU/RZCU 接收 ICB 控制信号,驱动双闪灯点亮/熄灭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "RHZCU",
+      "RZCU",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1043",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯开启",
+    "relation": "触发条件",
+    "tail": "ICB 接收危险警报灯开关控制模块 LHZCU 的控制信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1043",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯开启",
+    "relation": "触发条件",
+    "tail": "做危险警报灯图标指示灯显示以及声音提醒",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1043",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "转向灯点亮状态反馈",
+    "relation": "输出为",
+    "tail": "DirclnLghtSts_HW",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RHZCU",
+      "RZCU",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1043",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "故障状态反馈",
+    "relation": "输出为",
+    "tail": "DirclnLghtFltsts_HW",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RHZCU",
+      "RZCU",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1043",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "依赖于",
+    "tail": "通过域控获取转向灯状态 (exlDircnLghtHwDrvEnPrm=0x1)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "LHZCU",
+      "exlDircnLghtHwDrvEnPrm"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1043",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "依赖于",
+    "tail": "通过数字灯控获取转向灯状态 (exlDircnLghtHwDrvEnPrm=0x0||0x2)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "LHZCU",
+      "exlDircnLghtHwDrvEnPrm"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1043",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "触发条件",
+    "tail": "记忆本次车辆碰撞触发双闪灯事件,并将模式信号发送至 VehHzrdMdSts_2_Collision_Mode",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "VehHzrdMdSts_2_Collision_Mode"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1043",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯手动解除",
+    "relation": "触发条件",
+    "tail": "危险警报灯自动控制模块 LHZCU 检测到 a&b",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "CrashHazardTi",
+      "HzrdLghtSwReq"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1043",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险告警灯开启",
+    "relation": "超时约束",
+    "tail": "CrashHazardTi (可值为5s, 计时期间检测到新的碰撞事件需重新计时)",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "CrashHazardTi"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1043",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯关闭",
+    "relation": "触发条件",
+    "tail": "用户手动关闭危险报警开关 (HzrdLghtSwReq=0x1=HzrdLghtSwReq_1_On)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "HzrdLghtSwReq"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1043",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

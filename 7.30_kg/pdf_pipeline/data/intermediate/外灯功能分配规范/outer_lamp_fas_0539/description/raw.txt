@@ -1,0 +1,63 @@
+```json
+{
+  "table_type": "other",
+  "topic": "同步设置贯穿式前位置灯开关状态及ICB_8295贯穿式前位置灯请求重发机制",
+  "row_semantics": "表格内容分为两部分：第一部分描述了外灯开关状态的同步设置，第二部分详细说明了ICB_8295控制器在处理贯穿式前位置灯请求时的重发机制。",
+  "column_semantics": "表格仅有一列，用于展示具体的工程规范和备注信息。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "模块/系统",
+      "description": "外灯开关处理模块，负责管理外灯的开关状态。"
+    },
+    {
+      "name": "ICB_8295",
+      "type": "控制器",
+      "description": "集成控制盒（Integrated Control Box），负责发送组合灯光请求并管理请求的重发机制。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "模块/系统",
+      "description": "外灯控制系统，负责控制日间行车灯（Day Running Light）的状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "ExteriorLightSwitchProcess.DayRunningLghtSwStatus.DayRunningLghtSwSta",
+      "value": "0x0=OFF (或 0x1=On)",
+      "description": "外灯开关的日间行车灯状态，表示灯是否开启或关闭。"
+    },
+    {
+      "signal": "ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq",
+      "description": "外灯控制系统发出的日间行车灯请求信号。"
+    },
+    {
+      "signal": "ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightResp",
+      "value": "0x0=ControlSuccess",
+      "description": "外灯控制系统对日间行车灯请求的响应信号，表示请求是否成功。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "ICB 发送组合灯光请求",
+      "description": "ICB_8295控制器发送组合灯光请求，触发外灯控制系统进行相应操作。"
+    },
+    {
+      "signal": "停止发送",
+      "description": "如果请求重发3次后仍未收到反馈，则停止发送请求。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "condition": "如超时2s未收到反馈",
+      "action": "尝试按照<=50ms周期重发3次",
+      "description": "在2秒内未收到响应时，系统会以不超过50毫秒的周期尝试重发请求最多3次。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了外灯开关的日间行车灯状态同步规则，并详细描述了ICB_8295控制器在处理日间行车灯请求时的重发机制，包括超时重发的条件、周期和次数限制。",
+  "uncertain_points": []
+}
+```

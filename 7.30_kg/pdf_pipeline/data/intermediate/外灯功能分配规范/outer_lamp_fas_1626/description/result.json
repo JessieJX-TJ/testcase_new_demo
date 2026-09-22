@@ -1,0 +1,59 @@
+{
+  "table_type": "signal_table",
+  "topic": "Direction Light Control Logic and Status Feedback for ICB and LHZCU Modules",
+  "row_semantics": "Each row represents a specific control or status condition related to direction lights, including signal transformations, state transitions, and error feedback.",
+  "column_semantics": "The table does not have explicit columns; instead, each row contains a complete statement describing a condition or action involving direction light signals and their states.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB (Intelligent Control Box)",
+    "LHZCU/RHZCU/RZCU (Driving Module)",
+    "FLDirenLightCtrl_HW (Front Left Direction Light Hardware Control)",
+    "FRDirenLightCtrl_HW (Front Right Direction Light Hardware Control)",
+    "RLDirenLightCtrl_HW (Rear Left Direction Light Hardware Control)",
+    "RRDirenLightCtrl_HW (Rear Right Direction Light Hardware Control)",
+    "FLDirenLightSts_HW (Front Left Direction Light Hardware Status)",
+    "FRDirenLightSts_HW (Front Right Direction Light Hardware Status)",
+    "RLDirenLightSts_HW (Rear Left Direction Light Hardware Status)",
+    "RRDirenLightSts_HW (Rear Right Direction Light Hardware Status)",
+    "FLDirenLightFlits_HW (Front Left Direction Light Flashes Hardware)",
+    "FRDirenLightFlits_HW (Front Right Direction Light Flashes Hardware)",
+    "RLDirenLightFlits_HW (Rear Left Direction Light Flashes Hardware)",
+    "RRDirenLightFlits_HW (Rear Right Direction Light Flashes Hardware)"
+  ],
+  "core_conditions": [
+    "ICB将服务接口或控制信号转换成灯控 CAN 信号，控制双闪熄灭",
+    "ICB将控制信号延时60ms分发至驱动模块 LHZCU/RHZCU/RZCU",
+    "FLDirenLightCtrl_HW=0x0=FLDirenLightCtrl_HW_0_off",
+    "FRDirenLightCtrl_HW=0x0=FRDirenLightCtrl_HW_0_off",
+    "RLDirenLightCtrl_HW=0x0=RLDirenLightCtrl_HW_0_off",
+    "RRDirenLightCtrl_HW=0x0=RRDirenLightCtrl_HW_0_off",
+    "FLDirenLightSts_HW=0x0=FLDirenLightSts_HW_0_OFF",
+    "FRDirenLightSts_HW=0x0=FRDirenLightSts_HW_0_OFF",
+    "RLDirenLightSts_HW=0x0=RLDirenLightSts_HW_0_OFF",
+    "RRDirenLightSts_HW=0x0=RRDirenLightSts_HW_0_OFF",
+    "FLDirenLightFlits_HW=0x0=FLDirenLightFlits_HW_0_False",
+    "FRDirenLightFlits_HW=0x0=FRDirenLightFlits_HW_0_False",
+    "RLDirenLightFlits_HW=0x0=RLDirenLightFlits_HW_0_False",
+    "RRDirenLightFlits_HW=0x0=RRDirenLightFlits_HW_0_False"
+  ],
+  "core_outputs": [
+    "Control of dual flash extinction via CAN signal",
+    "Signal distribution to driving modules with 60ms delay",
+    "Status feedback of direction lights to LHZCU",
+    "Feedback of fault states to LHZCU",
+    "Transition turn signal status acquisition"
+  ],
+  "core_faults": [
+    "DirectionLightErrorStatus",
+    "No Error"
+  ],
+  "core_timing_constraints": [
+    "60ms delay in signal distribution from ICB to driving modules"
+  ],
+  "engineering_interpretation": "This table defines the logic for controlling direction lights through the ICB and LHZCU modules, including signal conversion, timing delays, and status/error feedback mechanisms. It is used to verify that the ICB correctly transforms and distributes control signals, and that the LHZCU accurately reflects the status and faults of the direction lights.",
+  "uncertain_points": [
+    "The exact meaning of 'exlDirClnHwDrvEnPrm' is unclear without additional context.",
+    "The specific implementation details of 'DirectionLightSwitchProcess' are not provided."
+  ]
+}

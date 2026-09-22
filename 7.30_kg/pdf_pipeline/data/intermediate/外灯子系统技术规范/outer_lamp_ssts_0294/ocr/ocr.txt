@@ -1,0 +1,14 @@
+前置条件
+exlDipBeamHwDrvEnPrm==1||2
+触发条件
+收到【DipdBeamLghtCtrlMdl】发送的
+ControlDippedBeamLight. DippedBeamLightReq==0(Off) (InstanceID=2)
+{ExteriorLightControl.
+DippedBeamLightRequestStatus.DippedBeamLightReqSts}=0x0=Off
+执行动作
+【RDipdBeamLghtDrvMdl】停止驱动右近光灯输出
+(DipdBeamHdlmp_RH_HSD)
+【RDipdBeamLghtDrvMdl】持续发送DippedBeamLightStatus.
+DippedBeamLightSta ==0(Off)(InstanceID=2)至【DipdBeamLghtCtrlMdl】
+至少发送三帧
+退出条件

@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "左制动灯短路至地故障被检测",
+    "relation": "触发条件",
+    "tail": "检测到左制动灯短路到地",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["触发条件", "检测到左制动灯短路到地"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯驱动模块停止驱动左制动灯",
+    "relation": "执行动作",
+    "tail": "BrkLamp_LH_HSD",
+    "triple_type": "功能响应",
+    "evidence_terms": ["执行动作", "停止驱动左制动灯 (BrkLamp_LH_HSD)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制模块持续发送错误状态",
+    "relation": "执行动作",
+    "tail": "BrakeLightState = 2 (Error)",
+    "triple_type": "功能响应",
+    "evidence_terms": ["执行动作", "持续发送 BrakeLightState. BrakeLightSta=2 (Error)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制模块置位故障代码",
+    "relation": "执行动作",
+    "tail": "DTC_B1041_11",
+    "triple_type": "功能响应",
+    "evidence_terms": ["执行动作", "置位 DTC B1041_11"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左制动灯短路至地故障恢复",
+    "relation": "退出条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["退出条件", "检测到短路恢复"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯驱动模块停止驱动左制动灯",
+    "relation": "前提条件",
+    "tail": "BrkLghtFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "BrkLghtFbkSOAEnPrm == 1 (Enable)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯驱动模块停止驱动左制动灯",
+    "relation": "前提条件",
+    "tail": "左制动灯处于输出状态",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "左制动灯处于输出状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制模块持续发送错误状态",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": ["执行动作", "至少发送三帧"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制模块置位故障代码",
+    "relation": "诊断关联",
+    "tail": "DTC_B1041_11",
+    "triple_type": "故障响应",
+    "evidence_terms": ["执行动作", "置位 DTC B1041_11"],
+    "confidence_note": "high"
+  }
+]
+```

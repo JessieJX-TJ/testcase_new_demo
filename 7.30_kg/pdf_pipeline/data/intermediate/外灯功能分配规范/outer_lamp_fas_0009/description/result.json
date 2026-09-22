@@ -1,0 +1,55 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Exterior Light Control System (外灯控制系统) - Side Position Light Status and Error Status",
+  "row_semantics": "Each row represents a specific service or interface related to the side position lights, including their status and error status.",
+  "column_semantics": {
+    "A": "Service/Interface Name",
+    "B": "Consumption Type (SOA/ICB/LHZCU)",
+    "C": "Controller/Module Involved (SOA/ICB/LHZCU/BS→LHZCU)",
+    "D": "Description/Functionality",
+    "E": "Interface Name",
+    "F": "Parameter Name",
+    "G": "Parameter Values and Definitions"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem.SidePositionLightSts",
+      "type": "service",
+      "description": "Service for obtaining the status of side position lights."
+    },
+    {
+      "name": "SidePositionLight.SidePositionLightErrorStatus",
+      "type": "service",
+      "description": "Service for obtaining the error status of left front side position light."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "SidePosnLightSta",
+      "type": "parameter",
+      "description": "Status of side position lights (OFF, ON, Unknown).",
+      "values": {
+        "0x0": "OFF",
+        "0X1": "ON",
+        "0x2": "Unknown"
+      }
+    },
+    {
+      "name": "SidePositionLightErrorSta",
+      "type": "parameter",
+      "description": "Error status of left front side position light (No Error, Error, Unknown).",
+      "values": {
+        "0x0": "No Error",
+        "0x1": "Error",
+        "0x2": "Unknown"
+      }
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and interfaces for querying the status and error status of side position lights in the vehicle's exterior light control system, which can be used to verify the correct operation and fault detection of these lights.",
+  "uncertain_points": []
+}

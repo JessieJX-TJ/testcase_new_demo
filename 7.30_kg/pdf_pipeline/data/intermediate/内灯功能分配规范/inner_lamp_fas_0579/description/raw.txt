@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Light Function Allocation Specification",
+  "row_semantics": "Defines mapping parameters for interior lamp dimming levels across different control modes and brightness settings.",
+  "column_semantics": "Represents different control units or interfaces (LIN, LHZCU, OHC) where the mapped parameters are applied.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MapLampThrdLBrtLvl_1",
+      "type": "function_name",
+      "description": "Mapping parameter for left front interior lamp brightness level control."
+    },
+    {
+      "name": "MapLampThrdRBrtLvl_1",
+      "type": "function_name",
+      "description": "Mapping parameter for right front interior lamp brightness level control."
+    },
+    {
+      "name": "MapLampXXDimSpd_1",
+      "type": "function_name",
+      "description": "General mapping parameter for interior lamp dimming speed control."
+    },
+    {
+      "name": "MapLampFLDimSpd_1",
+      "type": "function_name",
+      "description": "Mapping parameter for front left interior lamp dimming speed control."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Level 1",
+      "type": "state",
+      "description": "Lowest brightness level setting."
+    },
+    {
+      "name": "Level 30",
+      "type": "state",
+      "description": "Highest brightness level setting."
+    },
+    {
+      "name": "OFF",
+      "type": "state",
+      "description": "Lamp is turned off."
+    },
+    {
+      "name": "Speed 1",
+      "type": "mode",
+      "description": "Fast manual dimming speed."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LIN",
+      "type": "controller",
+      "description": "Local Interconnect Network interface for communication."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit."
+    },
+    {
+      "name": "OHC",
+      "type": "controller",
+      "description": "On-Board Computer."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table specifies the parameter mappings for interior lamp brightness levels and dimming speeds, which can be used to verify that the correct brightness levels and dimming behaviors are achieved across different control units (LIN, LHZCU, OHC) as per the defined levels (OFF, Level 1, ..., Level 30).",
+  "uncertain_points": [
+    "The exact implementation details of how these mappings translate to physical lamp behavior are not specified.",
+    "The specific timing or sequence of dimming actions is not detailed in this table."
+  ]
+}
+```

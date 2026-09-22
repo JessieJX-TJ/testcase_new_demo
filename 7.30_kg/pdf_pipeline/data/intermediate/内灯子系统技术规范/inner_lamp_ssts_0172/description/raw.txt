@@ -1,0 +1,90 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "ThirdRowMapLampLH相关参数配置与状态反馈",
+  "row_semantics": "表格详细定义了第三排左侧阅读灯（ThirdRowMapLampLH）的各项控制参数、状态反馈及故障信息，包括亮度等级请求、渐灭速度、状态反馈和故障状态。",
+  "column_semantics": "第一列为主功能名，第二列描述功能详情，后续列为信号来源或作用域（如输入、内部、控制器模块等）。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampLHBrTlvl",
+      "type": "parameter",
+      "description": "第三排左侧阅读灯亮度等级请求"
+    },
+    {
+      "name": "ThirdRowMapLampLHDimSpd",
+      "type": "parameter",
+      "description": "第三排左侧阅读灯渐亮渐灭速度"
+    },
+    {
+      "name": "ThirdRowMapLampLHSsts",
+      "type": "state",
+      "description": "第三排左侧阅读灯状态反馈"
+    },
+    {
+      "name": "ThirdRowMapLampLHErr",
+      "type": "fault",
+      "description": "第三排左侧阅读灯故障状态反馈"
+    },
+    {
+      "name": "ThirdRowMapLampLHPWM_SIG",
+      "type": "signal",
+      "description": "第三排左侧阅读灯亮度驱动控制信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrightnessLevel",
+      "description": "亮度等级从0x0(OFF)到0x1E(Level_30)",
+      "type": "range"
+    },
+    {
+      "name": "DimmingSpeed",
+      "description": "渐灭速度从0x0(手动快)到0x2(瞬变)",
+      "type": "enumeration"
+    },
+    {
+      "name": "LampState",
+      "description": "灯状态从0x0(OFF)到0x1E(Level_30)",
+      "type": "enumeration"
+    },
+    {
+      "name": "ErrorStatus",
+      "description": "错误状态0x0(无错误)和0x1(错误)",
+      "type": "enumeration"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ThirdRowMapLampLHBrTlvl",
+      "description": "亮度等级输出请求"
+    },
+    {
+      "name": "ThirdRowMapLampLHDimSpd",
+      "description": "渐灭速度输出请求"
+    },
+    {
+      "name": "ThirdRowMapLampLHSsts",
+      "description": "灯状态反馈输出"
+    },
+    {
+      "name": "ThirdRowMapLampLHErr",
+      "description": "故障状态反馈输出"
+    },
+    {
+      "name": "ThirdRowMapLampLHPWM_SIG",
+      "description": "PWM信号输出用于亮度驱动控制"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "ThirdRowMapLampLHErr",
+      "description": "指示阅读灯是否存在硬件或软件故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证第三排左侧阅读灯的亮度等级设置、渐灭速度调节、工作状态反馈以及故障检测功能是否符合设计规范。",
+  "uncertain_points": []
+}
+```

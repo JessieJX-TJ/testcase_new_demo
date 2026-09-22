@@ -1,0 +1,104 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System Technical Specification for Z-ONE-3.0 Platform",
+  "row_semantics": "Each row represents a specific lighting function or feature within the interior lighting system, detailing its control logic and associated modules.",
+  "column_semantics": {
+    "1": "Function Identifier (e.g., Z3-0803EF09-001)",
+    "2": "Technical Reference (e.g., 8.5.1.2.1 Laser Welcome Light Door Opening Control)",
+    "3": "Description of the Function/Control Logic",
+    "4": "Associated Modules (e.g., Laser Welcome Light Control Module, Reading Light Switch Collection Module)",
+    "5": "Module Codes (e.g., [SSTS-IBD02-0030])"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "Laser Welcome Light",
+      "type": "function",
+      "description": "Lighting feature that activates upon door opening."
+    },
+    {
+      "name": "Reading Light",
+      "type": "function",
+      "description": "Lighting feature with switch control and brightness adjustment."
+    },
+    {
+      "name": "Ambient Light",
+      "type": "function",
+      "description": "General lighting feature with options for switching, color selection, brightness adjustment, breathing effect mode, and node control."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Door Opening",
+      "type": "input_signal",
+      "description": "Trigger event for Laser Welcome Light activation."
+    },
+    {
+      "name": "Switch Input",
+      "type": "input_signal",
+      "description": "Signal from the reading light switch."
+    },
+    {
+      "name": "Brightness Adjustment",
+      "type": "input_signal",
+      "description": "User input for adjusting reading light brightness."
+    },
+    {
+      "name": "Color Selection",
+      "type": "input_signal",
+      "description": "User input for selecting ambient light color."
+    },
+    {
+      "name": "Brightness Level",
+      "type": "input_signal",
+      "description": "User input for setting ambient light brightness."
+    },
+    {
+      "name": "Breathing Effect Mode",
+      "type": "input_signal",
+      "description": "Mode selection for ambient light breathing effect."
+    },
+    {
+      "name": "Node Control",
+      "type": "input_signal",
+      "description": "Control signal for individual nodes in ambient lighting."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Light Activation",
+      "type": "output_signal",
+      "description": "Activation of the respective lighting feature."
+    },
+    {
+      "name": "Brightness Output",
+      "type": "output_signal",
+      "description": "Output signal for adjusting light brightness."
+    },
+    {
+      "name": "Color Output",
+      "type": "output_signal",
+      "description": "Output signal for setting light color."
+    },
+    {
+      "name": "Effect Output",
+      "type": "output_signal",
+      "description": "Output signal for activating breathing effect mode."
+    },
+    {
+      "name": "Node Output",
+      "type": "output_signal",
+      "description": "Output signal for controlling individual ambient light nodes."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table specifies the technical requirements and control logic for various interior lighting functions within the Z-ONE-3.0 platform, including laser welcome lights, reading lights, and ambient lights. It details the associated modules and their functionalities, which can be used to verify the correct operation of these lighting systems under different control inputs and conditions.",
+  "uncertain_points": [
+    "The exact timing behavior of the breathing effect mode is not specified.",
+    "The specific thresholds for brightness adjustment are not provided."
+  ]
+}
+```

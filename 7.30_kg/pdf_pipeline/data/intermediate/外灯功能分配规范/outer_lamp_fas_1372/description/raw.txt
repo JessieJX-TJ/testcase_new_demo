@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "车辆模式（Vehicle Mode）接口定义与信号映射",
+  "row_semantics": "表格的每一行代表一个具体的车辆模式或其相关接口定义，详细描述了该模式下的信号交互特性。",
+  "column_semantics": {
+    "Interface Name": "接口名称，指明了信号交互的具体模块或功能点，如VehMd（Vehicle Mode）",
+    "Direction": "信号流向，指示是输入还是输出，提供方还是消费方",
+    "Type": "信号类型，如CAN/LIN/SOA服务或硬线等",
+    "Sender/Provider": "信号发送方或服务提供方，通常是某个节点或模块",
+    "Receiver/Consumer": "信号接收方或服务消费方，通常是另一个节点或模块",
+    "Channel": "信号传输路径或通道，如指定信号通道",
+    "Source": "接口来源，指定了信号的具体来源"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "type": "功能名",
+      "description": "车辆模式（Vehicle Mode），表示车辆当前所处的不同运行状态或场景"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMd_0_NORMAL",
+      "description": "正常模式，车辆处于常规驾驶状态"
+    },
+    {
+      "name": "VehMd_1_CRASH",
+      "description": "碰撞模式，车辆检测到碰撞事件"
+    },
+    {
+      "name": "VehMd_2_FACTORY",
+      "description": "工厂模式，车辆处于工厂调试或测试状态"
+    },
+    {
+      "name": "VehMd_3_TRANSPORT",
+      "description": "运输模式，车辆处于运输或拖车状态"
+    },
+    {
+      "name": "VehMd_4_DYNO",
+      "description": "测功机模式，车辆在测功机上进行性能测试"
+    },
+    {
+      "name": "VehMd_5_EXHIBITION",
+      "description": "展览模式，车辆处于展示或展览状态"
+    },
+    {
+      "name": "VehMd_8_Engineering",
+      "description": "工程模式，车辆处于工程调试或开发状态"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证车辆模式（VehMd）相关的信号接口及其在不同模式下的行为，确保在特定模式下信号能够正确地从发送方传输到接收方，并符合预定义的通信协议和路径。",
+  "uncertain_points": []
+}
+```

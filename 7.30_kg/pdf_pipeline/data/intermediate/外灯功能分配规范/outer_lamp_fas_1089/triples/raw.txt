@@ -1,0 +1,135 @@
+```json
+[
+  {
+    "head": "车顶射灯自动点亮",
+    "relation": "触发条件",
+    "tail": "LHZCU判断车速超过80km/h持续超过2s",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "VehSpdAvg > 80Km/h",
+      "持续超过2s"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯自动点亮",
+    "relation": "前提条件",
+    "tail": "远光灯增强使能且IHC功能激活",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ILC function activated",
+      "Remote light enhancement enabled"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯自动点亮",
+    "relation": "前提条件",
+    "tail": "具备车灯射灯功能 (InsdFnCfgRoofSpotLght = 0x1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "InsdFnCfgRoofSpotLght"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯自动点亮",
+    "relation": "前提条件",
+    "tail": "车顶射灯未开启 ({ExteriorLightSwitchProcess.RoofSpotLightFucProStatus = 0x0})",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RoofSpotLightFucProStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU",
+    "relation": "输出为",
+    "tail": "RoofSpotLightFucProStatus = ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RoofSpotLightFucProStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU",
+    "relation": "输出为",
+    "tail": "RoofSpotLightFucProSta = ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RoofSpotLightFucProSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU",
+    "relation": "执行动作",
+    "tail": "[车顶射灯控制模块LHZCU]发送车顶射灯控制仲裁状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "Notifier"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU",
+    "relation": "执行动作",
+    "tail": "[车顶射灯控制模块LHZCU]内部软件保持有效请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU",
+    "relation": "依赖于",
+    "tail": "外灯组合服务ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU",
+    "relation": "反馈接收",
+    "tail": "ICB将车顶射灯状态及故障状态反馈给LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU",
+    "relation": "反馈发送",
+    "tail": "LHZCU将车顶射灯状态及故障状态反馈给ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU",
+    "relation": "超时约束",
+    "tail": "若500ms内未收到状态反馈，则主动获取",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "500ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

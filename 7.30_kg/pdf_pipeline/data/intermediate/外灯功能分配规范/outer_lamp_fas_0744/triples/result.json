@@ -1,0 +1,115 @@
+[
+  {
+    "head": "近光灯点亮",
+    "relation": "前提条件",
+    "tail": "ICB发送的近光灯控制状态为ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "DippedBeamLightRequestStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0744",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "抑制条件",
+    "tail": "DipdBeamLghtSts_0_Off",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "DipdBeamLghtSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0744",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "近光灯状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "DipdBeamLghtSts",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU/RHZCU",
+      "ICB",
+      "DipdBeamLghtSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0744",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "近光灯故障状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "DipdBeamLghtFltSts",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU/RHZCU",
+      "ICB",
+      "DipdBeamLghtFltSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0744",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "近光灯状态/故障状态反馈至ICB",
+    "relation": "依赖于",
+    "tail": "InstanceID 1/2",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "InstanceID",
+      "LHZCU/RHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0744",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "近光灯状态/故障状态反馈至ICB",
+    "relation": "依赖于",
+    "tail": "InstanceID 3/4",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "InstanceID",
+      "LHZCU/RHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0744",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "近光灯和位置灯退出同步性要求",
+    "relation": "超时约束",
+    "tail": "左侧和右侧需保持同步熄灭,两侧最大延时不能超过40ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "近光灯",
+      "位置灯",
+      "40ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0744",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "DippedBeamLightErrorStatus",
+    "relation": "故障响应",
+    "tail": "No Error",
+    "triple_type": "故障响应与降级关系",
+    "evidence_terms": [
+      "DippedBeamLightErrorStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0744",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  }
+]

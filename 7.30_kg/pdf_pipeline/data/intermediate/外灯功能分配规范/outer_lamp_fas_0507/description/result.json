@@ -1,0 +1,58 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Control Interface Parameters",
+  "row_semantics": "Each row represents a specific instance of the DirectionLight control interface with its associated parameters and usage context.",
+  "column_semantics": {
+    "A": "Function Name (e.g., DirectionLight.ControlDirectionLight)",
+    "B": "Consumption Type (SOA, ICB, Network Control)",
+    "C": "Interface Name (ControlDirectionLight)",
+    "D": "Parameter Name ({DirectionLightReq})",
+    "E": "Instance ID",
+    "F": "Parameter Values (0x0=OFF, 0x1=ON)",
+    "G": "Description/Usage Context"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "function",
+      "description": "Controls the direction lights (turn signals) of the vehicle."
+    },
+    {
+      "name": "ControlDirectionLight",
+      "type": "interface",
+      "description": "The service interface used to control the direction lights."
+    },
+    {
+      "name": "DirectionLightReq",
+      "type": "parameter",
+      "description": "Request parameter for the ControlDirectionLight interface, specifying the desired state of the light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "Unique identifier for each control request instance, distinguishing between different lights or states."
+    },
+    {
+      "name": "DirectionLightReq",
+      "description": "Specifies whether the light should be turned ON or OFF."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LightState",
+      "description": "The actual state of the direction light (ON or OFF) as controlled by the interface."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Periodic Invocation",
+      "description": "The interface is periodically invoked to control the lights, ensuring timely updates."
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters and usage contexts for controlling direction lights via the ControlDirectionLight interface. It specifies how different instances (e.g., right front turn signal, left rear turn signal) are controlled by setting the DirectionLightReq parameter to either ON or OFF.",
+  "uncertain_points": []
+}

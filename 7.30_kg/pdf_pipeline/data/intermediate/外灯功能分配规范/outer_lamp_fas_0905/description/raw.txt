@@ -1,0 +1,76 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "转向灯系统信号定义与状态描述",
+  "row_semantics": "表格按功能模块划分，详细定义了转向灯相关的输入、输出信号及其状态值。",
+  "column_semantics": "第一列为功能模块或信号名称，第二列及后续列为信号的传输方式（如输出、内部通讯）或相关控制器/模块名，第三列开始为具体的信号定义及其对应的数值含义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DircnLghtSwReq",
+      "type": "input_signal",
+      "description": "方向指示灯开关请求信号，用于表示驾驶员通过方向盘左侧或右侧的拨杆发出的转向请求。"
+    },
+    {
+      "name": "DircnIndLghtSwSts_1_LeftOn",
+      "type": "input_signal",
+      "description": "左转向灯开关状态，表示方向盘左侧拨杆处于点亮位置。"
+    },
+    {
+      "name": "DircnIndLghtSwSts_2_RightOn",
+      "type": "input_signal",
+      "description": "右转向灯开关状态，表示方向盘右侧拨杆处于点亮位置。"
+    },
+    {
+      "name": "DircnIndLampSwStsMntry",
+      "type": "input_signal",
+      "description": "转向灯开关瞬时信号，用于监测转向灯开关的实际操作状态。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Local Hazard Control Unit，本地危险控制单元，负责处理转向灯相关的逻辑和控制。"
+    },
+    {
+      "name": "BKBCANFD",
+      "type": "controller_module",
+      "description": "Backbone Controller Area Network Flexible Data-rate，骨干网CAN总线，用于车辆内部通信。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DircnLghtSwReq_0_Off",
+      "description": "转向灯请求信号为关闭状态。"
+    },
+    {
+      "name": "DircnLghtSwReq_1_Left_First_gear_direction_light_on",
+      "description": "左转向第一档方向灯点亮请求。"
+    },
+    {
+      "name": "DircnLghtSwReq_2_Right_Second_gear_direction_light_on",
+      "description": "右转向第二档方向灯点亮请求。"
+    },
+    {
+      "name": "DircnIndLampSwStsMntry_0_off",
+      "description": "转向灯开关处于关闭状态。"
+    },
+    {
+      "name": "DircnIndLampSwStsMntry_1_LeftshortturnmodeSwitchactive",
+      "description": "左短转弯模式开关处于激活状态。"
+    },
+    {
+      "name": "DircnIndLampSwStsMntry_5_UnknownPosition",
+      "description": "转向灯开关位置未知。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆转向灯系统的输入信号及其状态值，主要用于验证转向灯开关请求信号（DircnLghtSwReq）和转向灯开关状态信号（DircnIndLampSwStsMntry）在不同场景下的正确性，确保车辆能够根据驾驶员的操作正确点亮相应的转向灯。",
+  "uncertain_points": [
+    "表格中未明确说明各信号的具体传输协议细节。",
+    "未提及转向灯系统的故障检测机制和异常处理流程。"
+  ]
+}
+```

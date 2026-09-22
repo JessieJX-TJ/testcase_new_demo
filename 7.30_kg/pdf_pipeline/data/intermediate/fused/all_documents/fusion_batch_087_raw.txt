@@ -1,0 +1,476 @@
+```json
+[
+  {
+    "head": "ExteriorLightSwitchProcess.MainBeamLightSwitchStatus",
+    "relation": "trigger_condition",
+    "tail": "retrieve_main_beam_light_switch_status",
+    "sources": ["outer_lamp_fas_0932"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.MainBeamLightSwitchStatus",
+    "relation": "output_value_encoding",
+    "tail": "0x0=OFF, 0x1=ON, 0x2=Flash, 0x3=Unknown",
+    "sources": ["outer_lamp_fas_0932"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtOnReq",
+    "relation": "input_source",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0932"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "outputs_to",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0933"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "outputs_DircnLghtSts",
+    "tail": "0x0=OFF",
+    "sources": ["outer_lamp_fas_0933"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "outputs_DircnLghtFltsts",
+    "tail": "0x0=DircnLghtFltsts_0_No_Error",
+    "sources": ["outer_lamp_fas_0933"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSynchronizationRequirement",
+    "relation": "includes_subfunction",
+    "tail": "icon_and_sound_flash_frequency_must_match_actual_hazard_light_frequency",
+    "sources": ["outer_lamp_fas_0933"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSynchronizationRequirement",
+    "relation": "includes_subfunction",
+    "tail": "maximum_allowed_synchronization_delay_is_40ms",
+    "sources": ["outer_lamp_fas_0933"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSynchronizationRequirement",
+    "relation": "timeout_constraint",
+    "tail": "maximum_synchronization_delay_among_all_components_is_50ms",
+    "sources": ["outer_lamp_fas_0933"],
+    "conflict": true,
+    "conflict_note": "Conflicting delay constraints: '40ms' (subfunction) vs '50ms' (timeout_constraint); likely reflects different synchronization scopes (e.g., UI feedback vs lamp actuation), but requires clarification"
+  },
+  {
+    "head": "SidePositionLight.ControlSidePositionLight",
+    "relation": "trigger_condition",
+    "tail": "control_right_rear_side_position_light: InstanceID=8, SidePositionLightReq=0x1",
+    "sources": ["outer_lamp_fas_0934"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight.ControlSidePositionLight",
+    "relation": "trigger_condition",
+    "tail": "extinguish_right_rear_side_position_light: InstanceID=8, SidePositionLightReq=0x0",
+    "sources": ["outer_lamp_fas_0934"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight.ControlSidePositionLight",
+    "relation": "trigger_condition",
+    "tail": "control_left_front_side_position_light: InstanceID=1, SidePositionLightReq=0x1",
+    "sources": ["outer_lamp_fas_0934"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight.ControlSidePositionLight",
+    "relation": "trigger_condition",
+    "tail": "extinguish_left_front_side_position_light: InstanceID=1, SidePositionLightReq=0x0",
+    "sources": ["outer_lamp_fas_0934"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearSidePositionLightStatus",
+    "relation": "depends_on",
+    "tail": "SidePositionLightReq (0x0 or 0x1)",
+    "sources": ["outer_lamp_fas_0934"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontSidePositionLightStatus",
+    "relation": "depends_on",
+    "tail": "SidePositionLightReq (0x0 or 0x1)",
+    "sources": ["outer_lamp_fas_0934"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FogLghtFltSts",
+    "relation": "trigger_condition",
+    "tail": "FogLght_is_active",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnlampFltSts",
+    "relation": "trigger_condition",
+    "tail": "LeFlr_is_flashing",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnlampFltSts",
+    "relation": "trigger_condition",
+    "tail": "RiFlr_is_flashing",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtVehSideLghtFlts",
+    "relation": "trigger_condition",
+    "tail": "PosnLeFlr_is_illuminated",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkFltSts",
+    "relation": "trigger_condition",
+    "tail": "BrkLght_is_illuminated",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RvsgFltSts",
+    "relation": "trigger_condition",
+    "tail": "RvsgLght_is_illuminated",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrBrkLghtSts",
+    "relation": "trigger_condition",
+    "tail": "TrlrBrkLght_is_illuminated",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrBrkLghtFltSts",
+    "relation": "trigger_condition",
+    "tail": "TrlrBrkLght_is_flashing",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FogLghtFltSts",
+    "relation": "input_source",
+    "tail": "CAN_bus_signal",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnlampFltSts",
+    "relation": "input_source",
+    "tail": "CAN_bus_signal",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtVehSideLghtFlts",
+    "relation": "input_source",
+    "tail": "CAN_bus_signal",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkFltSts",
+    "relation": "input_source",
+    "tail": "CAN_bus_signal",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RvsgFltSts",
+    "relation": "input_source",
+    "tail": "CAN_bus_signal",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrBrkLghtSts",
+    "relation": "input_source",
+    "tail": "CAN_bus_signal",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrBrkLghtFltSts",
+    "relation": "input_source",
+    "tail": "CAN_bus_signal",
+    "sources": ["outer_lamp_fas_0935"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSta",
+    "relation": "output_encoding",
+    "tail": "0x0=Off, 0x1=On",
+    "sources": ["outer_lamp_fas_0937"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtFltSta",
+    "relation": "output_encoding",
+    "tail": "0x0=False, 0x1=True",
+    "sources": ["outer_lamp_fas_0937"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtFltSta",
+    "relation": "depends_on",
+    "tail": "hardware_status",
+    "sources": ["outer_lamp_fas_0937"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSta",
+    "relation": "input_source",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0937"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtFltSta",
+    "relation": "input_source",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0937"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtFltSta",
+    "relation": "diagnostic_association",
+    "tail": "fault_state",
+    "sources": ["outer_lamp_fas_0937"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLght_activation",
+    "relation": "prerequisite_condition",
+    "tail": "BrkSysBrkLightsReqd == 0x0",
+    "sources": ["outer_lamp_fas_0938"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLght_activation",
+    "relation": "prerequisite_condition",
+    "tail": "EmgcBrkA == 0x0",
+    "sources": ["outer_lamp_fas_0938"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLght_activation",
+    "relation": "prerequisite_condition",
+    "tail": "ExtrLightCtrlCmmntnTyp == 0x0",
+    "sources": ["outer_lamp_fas_0938"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLght_activation",
+    "relation": "inhibition_condition",
+    "tail": "BrakeLightPrcProSta != 0x0",
+    "sources": ["outer_lamp_fas_0938"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightCtrl",
+    "relation": "output_value",
+    "tail": "BrakeLightCtrlReq == 0x0",
+    "sources": ["outer_lamp_fas_0938"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightCtrl",
+    "relation": "depends_on",
+    "tail": "ExtrLightCtrlCmmntnTyp",
+    "sources": ["outer_lamp_fas_0938"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightCtrlFromStatus",
+    "relation": "output_value",
+    "tail": "BrakeLightCtrl",
+    "sources": ["outer_lamp_fas_0938"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrFlt",
+    "relation": "trigger_condition",
+    "tail": "BrakeLightCtrlFromStatus",
+    "sources": ["outer_lamp_fas_0938"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightOnDlyMnyPrms",
+    "relation": "timeout_constraint",
+    "tail": "40ms",
+    "sources": ["outer_lamp_fas_0938"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess",
+    "relation": "prerequisite_condition",
+    "tail": "InstanceID ∈ {1, 3}",
+    "sources": ["outer_lamp_fas_0939"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Directed_light_GlobalStatus",
+    "relation": "trigger_condition",
+    "tail": "InstanceID ∈ {1, 3, 5, 7}",
+    "sources": ["outer_lamp_fas_0939"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Directed_light_FuncProStatus",
+    "relation": "trigger_condition",
+    "tail": "InstanceID ∈ {1, 3, 5, 7}",
+    "sources": ["outer_lamp_fas_0939"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "KBC_ServiceInterface",
+    "relation": "prerequisite_condition",
+    "tail": "KBC_service_interface_enabled",
+    "sources": ["outer_lamp_fas_0939"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LEZCT_RZCT_module",
+    "relation": "prerequisite_condition",
+    "tail": "LEZCT_RZCT_module_enabled",
+    "sources": ["outer_lamp_fas_0939"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LEHZCT_module",
+    "relation": "prerequisite_condition",
+    "tail": "LEHZCT_module_enabled",
+    "sources": ["outer_lamp_fas_0939"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Directed_light_GlobalStatus",
+    "relation": "state_maintenance_condition",
+    "tail": "InstanceID ∈ {1, 3, 5, 7}",
+    "sources": ["outer_lamp_fas_0939"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Directed_light_FuncProStatus",
+    "relation": "state_maintenance_condition",
+    "tail": "InstanceID ∈ {1, 3, 5, 7}",
+    "sources": ["outer_lamp_fas_0939"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LEZCT_RZCT_module",
+    "relation": "input_source",
+    "tail": "KBC_ServiceInterface_control_signal",
+    "sources": ["outer_lamp_fas_0939"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LEHZCT_module",
+    "relation": "input_source",
+    "tail": "LEZCT_RZCT_module_control_signal",
+    "sources": ["outer_lamp_fas_0939"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Directed_light_FuncProStatus",
+    "relation": "prerequisite_condition",
+    "tail": "InstanceID ∈ {5, 7} and status = No_Error",
+    "sources": ["outer_lamp_fas_0939"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLight_and_PositionLight_activation",
+    "relation": "prerequisite_condition",
+    "tail": "left_and_right_sides_activated_synchronously",
+    "sources": ["outer_lamp_fas_0941"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLight_and_PositionLight_activation",
+    "relation": "timeout_constraint",
+    "tail": "max_inter-side_activation_delay ≤ 40ms",
+    "sources": ["outer_lamp_fas_0941"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightOnDlyMnyPrms",
+    "relation": "input_value",
+    "tail": "0x0 (0ms_delay)",
+    "sources": ["outer_lamp_fas_0942"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

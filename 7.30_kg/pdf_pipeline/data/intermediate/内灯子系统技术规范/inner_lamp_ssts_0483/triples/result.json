@@ -1,0 +1,103 @@
+[
+  {
+    "head": "DoorFL3LampFadeSpdCmd_1 控制门灯渐变速度",
+    "relation": "输入为",
+    "tail": "LIN 接口信号 DoorFL2LampFadeSpdCmd_1",
+    "triple_type": "输入关系",
+    "evidence_terms": [
+      "DoorFL2LampFadeSpdCmd_1",
+      "LIN",
+      "DoorAm btLampB_FL"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0483",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "门灯颜色指令生效",
+    "relation": "前提条件",
+    "tail": "接收到非0值的颜色亮度指令",
+    "triple_type": "触发条件",
+    "evidence_terms": [
+      "DoorFL3LampOnOff_1",
+      "点亮ON时需同时接收到非0值的颜色亮度指令"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0483",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "门灯亮度调节",
+    "relation": "输入为",
+    "tail": "LIN 接口信号 DoorFL3LampBrtnsCmd_1",
+    "triple_type": "输入关系",
+    "evidence_terms": [
+      "DoorFL3LampBrtnsCmd_1",
+      "LIN",
+      "DoorAm btLampC_FL"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0483",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "门灯呼吸效果控制",
+    "relation": "输入为",
+    "tail": "LIN 接口信号 DoorFL3LampBrthngCmd_1",
+    "triple_type": "输入关系",
+    "evidence_terms": [
+      "DoorFL3LampBrthngCmd_1",
+      "LIN",
+      "DoorAm btLampC_FL"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0483",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "门灯颜色保持不变",
+    "relation": "状态保持条件",
+    "tail": "指令值为0或者未定义颜色号",
+    "triple_type": "状态依赖",
+    "evidence_terms": [
+      "DoorFL3LampColorCmd_1",
+      "指令值为0或者未定义颜色号时保持颜色不变"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0483",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "门灯亮度保持不变",
+    "relation": "状态保持条件",
+    "tail": "指令值为0",
+    "triple_type": "状态依赖",
+    "evidence_terms": [
+      "DoorFL3LampBrtnsCmd_1",
+      "指令值为0时保持亮度不变"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0483",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "门灯呼吸效果无请求",
+    "relation": "前提条件",
+    "tail": "指令值为0x0",
+    "triple_type": "触发条件",
+    "evidence_terms": [
+      "DoorFL3LampBrthngCmd_1",
+      "0x0=DoorFL3LampBrthngCmd_1_0_No Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0483",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  }
+]

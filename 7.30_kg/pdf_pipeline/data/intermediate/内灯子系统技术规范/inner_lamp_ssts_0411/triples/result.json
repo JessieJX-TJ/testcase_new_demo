@@ -1,0 +1,146 @@
+[
+  {
+    "head": "Front Right Door Ambient Lamp Color Command",
+    "relation": "触发条件",
+    "tail": "DoorFR6LampColorCmd_1_0_No Request or 0x01-0xFF=各个颜色值",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR6LampColorCmd_1",
+      "0x00",
+      "0x01-0xFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0411",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Color Output",
+    "relation": "依赖于",
+    "tail": "DoorFR6LampColorCmd_1_0_No Request or 0x01-0xFF=各个颜色值",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorFR6LampColorCmd_1",
+      "灯头切换为色坐标对应的颜色"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0411",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Color Output",
+    "relation": "状态保持条件",
+    "tail": "指令值为0或者未定义颜色号时保持颜色不变",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "指令值为0",
+      "未定义颜色号",
+      "保持颜色不变"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0411",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Brightness Command",
+    "relation": "触发条件",
+    "tail": "DoorFR6LampBrtnsCmd_1_0_No Request or 0x65-0xFF=Reserved",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR6LampBrtnsCmd_1",
+      "0x00",
+      "0x65-0xFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0411",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Brightness Output",
+    "relation": "依赖于",
+    "tail": "DoorFR6LampBrtnsCmd_1_0_No Request or 0x65-0xFF=Reserved",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorFR6LampBrtnsCmd_1",
+      "灯头亮度调节到相应的百分比值"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0411",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Brightness Output",
+    "relation": "状态保持条件",
+    "tail": "指令值为0时保持亮度不变",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "指令值为0",
+      "保持亮度不变"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0411",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Breathing Command",
+    "relation": "触发条件",
+    "tail": "DoorFR6LampBrthngCmd_1_0_No Request to DoorFR6LampBrthngCmd_1_15_Rate15",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR6LampBrthngCmd_1",
+      "0x0-0xF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0411",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Breathing Output",
+    "relation": "依赖于",
+    "tail": "DoorFR6LampBrthngCmd_1_0_No Request to DoorFR6LampBrthngCmd_1_15_Rate15",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorFR6LampBrthngCmd_1",
+      "呼吸模式值"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0411",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Breathing Output",
+    "relation": "依赖于",
+    "tail": "Code 值 (Rate0 to Rate15)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Code 值",
+      "周期",
+      "原呼吸模式值"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0411",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Breathing Output",
+    "relation": "优先级高于",
+    "tail": "Rate0 (No Request)",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "Rate0",
+      "No Request"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_ssts_0411",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  }
+]

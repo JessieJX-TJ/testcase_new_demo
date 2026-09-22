@@ -1,0 +1,597 @@
+[
+  {
+    "head": "System enters sleep state",
+    "relation": "trigger condition",
+    "tail": "No wake-up source signal detected",
+    "sources": [
+      "inner_lamp_fas_0072",
+      "outer_lamp_ssts_0198"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System wake-up mechanism",
+    "relation": "depends on",
+    "tail": "Specific wake-up source",
+    "sources": [
+      "inner_lamp_fas_0001",
+      "inner_lamp_ssts_0464",
+      "outer_lamp_ssts_0198",
+      "outer_lamp_ssts_0387"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Control right front turn signal illumination or extinction",
+    "relation": "trigger condition",
+    "tail": "DirectionLightControl interface is invoked",
+    "sources": [
+      "outer_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Query right front turn signal status",
+    "relation": "trigger condition",
+    "tail": "DirectionLightState interface is subscribed",
+    "sources": [
+      "outer_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right front turn signal status = OFF",
+    "relation": "output value",
+    "tail": "DirectionLightState signal value = 0x0",
+    "sources": [
+      "outer_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right front turn signal status = ON",
+    "relation": "output value",
+    "tail": "DirectionLightState signal value = 0x1",
+    "sources": [
+      "outer_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right front turn signal status = ERROR",
+    "relation": "output value",
+    "tail": "DirectionLightState signal value = 0x2",
+    "sources": [
+      "outer_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right front turn signal status = UNKNOWN",
+    "relation": "output value",
+    "tail": "DirectionLightState signal value = 0x3",
+    "sources": [
+      "outer_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightCtrlReq parameter = 0x0",
+    "relation": "input value",
+    "tail": "Control command = extinguish",
+    "sources": [
+      "outer_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightCtrlReq parameter = 0x1",
+    "relation": "input value",
+    "tail": "Control command = illuminate",
+    "sources": [
+      "outer_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Diagnostic requirement B1077_11 activation",
+    "relation": "trigger condition",
+    "tail": "High beam switch detects short-to-ground",
+    "sources": [
+      "outer_lamp_ssts_0200"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Diagnostic requirement B1077_11 deactivation",
+    "relation": "suppression condition",
+    "tail": "High beam switch does not detect short-to-ground",
+    "sources": [
+      "outer_lamp_ssts_0200"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Diagnostic requirement B1077_15 activation",
+    "relation": "trigger condition",
+    "tail": "High beam switch detects short-to-battery",
+    "sources": [
+      "outer_lamp_ssts_0200"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Diagnostic requirement B1077_15 deactivation",
+    "relation": "suppression condition",
+    "tail": "High beam switch does not detect short-to-battery",
+    "sources": [
+      "outer_lamp_ssts_0200"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Diagnostic requirement B1077_1C activation",
+    "relation": "trigger condition",
+    "tail": "High beam switch detects undefined resistance value",
+    "sources": [
+      "outer_lamp_ssts_0200"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Diagnostic requirement B1077_1C deactivation",
+    "relation": "suppression condition",
+    "tail": "High beam switch detects defined resistance value",
+    "sources": [
+      "outer_lamp_ssts_0200"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn signal switch SOA function",
+    "relation": "trigger condition",
+    "tail": "DILghtSwSOAEnPrm parameter = 1",
+    "sources": [
+      "outer_lamp_ssts_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn signal switch SOA function",
+    "relation": "suppression condition",
+    "tail": "DILghtSwSOAEnPrm parameter = 0",
+    "sources": [
+      "outer_lamp_ssts_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILghtSwSOAEnPrm parameter",
+    "relation": "input value",
+    "tail": "0 or 1",
+    "sources": [
+      "outer_lamp_ssts_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right brake light open-circuit fault detection",
+    "relation": "trigger condition",
+    "tail": "Right brake light open-circuit detected",
+    "sources": [
+      "outer_lamp_ssts_0202"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake light driver module transmits error status continuously",
+    "relation": "prerequisite condition",
+    "tail": "BrkLghtFbkSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0202"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake light driver module transmits error status continuously",
+    "relation": "prerequisite condition",
+    "tail": "Right brake light is in output state",
+    "sources": [
+      "outer_lamp_ssts_0202"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake light driver module transmits error status continuously",
+    "relation": "state persistence condition",
+    "tail": "At least three frames transmitted",
+    "sources": [
+      "outer_lamp_ssts_0202"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn signal control function activation",
+    "relation": "prerequisite condition",
+    "tail": "DILghtSwSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn signal control function activation",
+    "relation": "trigger condition",
+    "tail": "User re-actuates right turn stalk; switch resistance = 1200 Ω (±5%)",
+    "sources": [
+      "outer_lamp_ssts_0203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction light switch status signal transmission",
+    "relation": "depends on",
+    "tail": "Turn signal control function activation",
+    "sources": [
+      "outer_lamp_ssts_0203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction light switch status = 0x2 (Right Direction Light On, second position)",
+    "relation": "output value",
+    "tail": "DILghtSwMdl continuously transmits DirectionLightSwitchStatus",
+    "sources": [
+      "outer_lamp_ssts_0203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLightDrvMdl stops driving right front side position lamp output",
+    "relation": "prerequisite condition",
+    "tail": "Right front side position lamp is in output state",
+    "sources": [
+      "outer_lamp_ssts_0204"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLightDrvMdl continuously transmits SidePositionLightStatus",
+    "relation": "prerequisite condition",
+    "tail": "Right front side position lamp short-to-battery detected",
+    "sources": [
+      "outer_lamp_ssts_0204"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1061 12 set",
+    "relation": "prerequisite condition",
+    "tail": "Right front side position lamp short-to-battery detected",
+    "sources": [
+      "outer_lamp_ssts_0204"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLightDrvMdl continuously transmits SidePositionLightStatus",
+    "relation": "state persistence condition",
+    "tail": "Right front side position lamp short-to-battery detected",
+    "sources": [
+      "outer_lamp_ssts_0204"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLightDrvMdl continuously transmits SidePositionLightStatus",
+    "relation": "sub-function",
+    "tail": "At least three frames transmitted",
+    "sources": [
+      "outer_lamp_ssts_0204"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left front turn signal short-to-ground fault handling function activation",
+    "relation": "trigger condition",
+    "tail": "Left front turn signal short-to-ground detected",
+    "sources": [
+      "outer_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left front turn signal short-to-ground fault handling function suppression",
+    "relation": "suppression condition",
+    "tail": "DILightFbkSOAEnPrm != 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left front turn signal short-to-ground fault handling function suppression",
+    "relation": "suppression condition",
+    "tail": "Left front turn signal is not in output state",
+    "sources": [
+      "outer_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left front turn signal short-to-ground fault handling function",
+    "relation": "diagnostic association",
+    "tail": "DTC_B104A_11",
+    "sources": [
+      "outer_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior lamp control function",
+    "relation": "prerequisite condition",
+    "tail": "Calibration item parameter range is valid",
+    "sources": [
+      "outer_lamp_ssts_0206"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body control function",
+    "relation": "prerequisite condition",
+    "tail": "Calibration description is correct",
+    "sources": [
+      "outer_lamp_ssts_0206"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power tailgate function",
+    "relation": "prerequisite condition",
+    "tail": "Resolution factor is properly configured",
+    "sources": [
+      "outer_lamp_ssts_0206"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ECU parameter configuration",
+    "relation": "depends on",
+    "tail": "Default value is correct",
+    "sources": [
+      "outer_lamp_ssts_0206"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn signal feedback signal SOA function enable",
+    "relation": "trigger condition",
+    "tail": "DILightFbkSOAEnPrm = 1",
+    "sources": [
+      "outer_lamp_ssts_0207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn signal feedback signal SOA function disable",
+    "relation": "trigger condition",
+    "tail": "DILightFbkSOAEnPrm = 0",
+    "sources": [
+      "outer_lamp_ssts_0207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn signal feedback signal SOA function default state",
+    "relation": "output value",
+    "tail": "DILightFbkSOAEnPrm default value = 0",
+    "sources": [
+      "outer_lamp_ssts_0207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Side position light (SPL) deactivated",
+    "relation": "trigger condition",
+    "tail": "SideLghtCtrlMdl sends ControlSidePositionLight.SidePositionLightReq = 0 (Off), InstanceID = 3",
+    "sources": [
+      "outer_lamp_ssts_0208"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtDrvMdl stops driving left rear side position lamp output (PosLamp_LH&RH_HSD)",
+    "relation": "prerequisite condition",
+    "tail": "Side position light (SPL) deactivated",
+    "sources": [
+      "outer_lamp_ssts_0208"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtDrvMdl continuously transmits SidePositionLightStatus.SidePositionLightSta = 0 (Off), InstanceID = 3 to SideLghtCtrlMdl",
+    "relation": "prerequisite condition",
+    "tail": "Side position light (SPL) deactivated",
+    "sources": [
+      "outer_lamp_ssts_0208"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exit condition for SPL deactivation state",
+    "relation": "prerequisite condition",
+    "tail": "SideLghtCtrlMdl sends ControlSidePositionLight.SidePositionLightReq = 1 (On), InstanceID = 3",
+    "sources": [
+      "outer_lamp_ssts_0208"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtDrvMdl continuously transmits SidePositionLightStatus.SidePositionLightSta = 0 (Off), InstanceID = 3 to SideLghtCtrlMdl",
+    "relation": "timeout constraint",
+    "tail": "At least three frames transmitted",
+    "sources": [
+      "outer_lamp_ssts_0208"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Side position light (SPL) output stopped",
+    "relation": "trigger condition",
+    "tail": "SideLghtCtrlMdl sends ControlSidePositionLight.SidePositionLightReq = 0 (Off), InstanceID = 2",
+    "sources": [
+      "outer_lamp_ssts_0209"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSSideLghtDrvMdl stops driving right front side position lamp output",
+    "relation": "prerequisite condition",
+    "tail": "SideLghtCtrlMdl sends ControlSidePositionLight.SidePositionLightReq = 0 (Off), InstanceID = 2",
+    "sources": [
+      "outer_lamp_ssts_0209"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSSideLghtDrvMdl continuously transmits side position light status",
+    "relation": "prerequisite condition",
+    "tail": "SideLghtCtrlMdl sends ControlSidePositionLight.SidePositionLightReq = 0 (Off), InstanceID = 2",
+    "sources": [
+      "outer_lamp_ssts_0209"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Side position light status = OFF",
+    "relation": "output value",
+    "tail": "FRSSideLghtDrvMdl continuously transmits SidePositionLightStatus.SidePositionLightSta = 0 (Off), InstanceID = 2 to SideLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0209"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System exits side position light control state",
+    "relation": "trigger condition",
+    "tail": "SideLghtCtrlMdl sends ControlSidePositionLight.SidePositionLightReq = 1 (On), InstanceID = 2",
+    "sources": [
+      "outer_lamp_ssts_0209"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "At least three frames of side position light status transmitted",
+    "relation": "state persistence condition",
+    "tail": "FRSSideLghtDrvMdl continuously transmits SidePositionLightStatus.SidePositionLightSta = 0 (Off), InstanceID = 2 to SideLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0209"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior lamp retention",
+    "relation": "state persistence condition",
+    "tail": "Battery power supply active",
+    "sources": [
+      "inner_lamp_fas_0460",
+      "outer_lamp_ssts_0210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior lamp retention",
+    "relation": "state persistence condition",
+    "tail": "Vehicle speed = 0 km/h",
+    "sources": [
+      "outer_lamp_ssts_0210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body control signal retention",
+    "relation": "state persistence condition",
+    "tail": "All doors closed",
+    "sources": [
+      "outer_lamp_ssts_0210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power tailgate action retention",
+    "relation": "state persistence condition",
+    "tail": "Tailgate closed",
+    "sources": [
+      "outer_lamp_ssts_0210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power tailgate action retention",
+    "relation": "state persistence condition",
+    "tail": "Battery power supply active",
+    "sources": [
+      "outer_lamp_ssts_0210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

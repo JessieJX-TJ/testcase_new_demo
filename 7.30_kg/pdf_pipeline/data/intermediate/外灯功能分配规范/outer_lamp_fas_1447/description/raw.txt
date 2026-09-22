@@ -1,0 +1,50 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车电子电器系统 - 侧位灯控制功能",
+  "row_semantics": "定义了侧位灯（Side Position Light）的控制请求信号及其对应的执行动作和备注信息。",
+  "column_semantics": {
+    "输入": "描述控制侧位灯的请求信号及其参数。",
+    "执行动作": "指示侧位灯应执行的具体操作，如开启或关闭。",
+    "备注": "提供额外的说明或上下文信息，例如功能驱动来源。",
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "功能名",
+      "description": "侧位灯功能模块，负责控制车辆侧面位置灯的开关状态。"
+    },
+    {
+      "name": "ControlSidePositionLight.SidePositionLightReq",
+      "type": "控制器/模块名",
+      "description": "侧位灯控制请求信号，由系统发送以触发侧位灯的状态变化。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例标识符，用于区分不同的侧位灯控制请求实例。",
+      "value": "1"
+    },
+    {
+      "name": "SidePositionLightReq",
+      "description": "侧位灯控制请求值，指定侧位灯的目标状态。",
+      "value": "0x1=On (或 0x0=Off)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SidePositionLight",
+      "description": "侧位灯的实际输出状态，根据控制请求进行切换。",
+      "action": "On or Off"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子电器系统中侧位灯控制功能的正确性，确保在接收到特定的控制请求信号后，侧位灯能够按照预期的状态（开启或关闭）进行响应。",
+  "uncertain_points": []
+}
+```

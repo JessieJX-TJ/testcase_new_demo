@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "近光灯开启功能的触发条件",
+  "row_semantics": "表格定义了在特定系统模式下，通过大屏软开关触发近光灯开启的前提条件。",
+  "column_semantics": {
+    "第一列": "场景描述，说明用户通过大屏软开关触发近光灯开启的行为。",
+    "第二列": "前置条件，详细列出了触发该功能所需的系统状态组合。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "UsrMd",
+      "type": "controller_module",
+      "description": "用户模式控制器/模块，表示车辆当前的运行模式。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "UsrMd",
+      "value": "0x0",
+      "mode_name": "Sleep",
+      "description": "系统处于睡眠模式。"
+    },
+    {
+      "signal": "UsrMd",
+      "value": "0x1",
+      "mode_name": "Standby",
+      "description": "系统处于待机模式。"
+    },
+    {
+      "signal": "UsrMd",
+      "value": "0x6",
+      "mode_name": "XOTA",
+      "description": "系统处于扩展在线升级（XOTA）模式。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "Headlight_LowBeam",
+      "action": "Enable",
+      "description": "近光灯被开启。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证在不同系统模式下，通过大屏软开关能否正确触发近光灯的开启功能。",
+  "uncertain_points": []
+}
+```

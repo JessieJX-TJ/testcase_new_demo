@@ -1,0 +1,415 @@
+[
+  {
+    "head": "MainBeamLightSta",
+    "relation": "input_for",
+    "tail": "left and right main beam light status (OFF)",
+    "sources": [
+      "outer_lamp_fas_0978"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftRearTurnSignal",
+    "relation": "triggered_by",
+    "tail": "periodic invocation of turn signal control service interface",
+    "sources": [
+      "outer_lamp_fas_0980"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearTurnSignal",
+    "relation": "triggered_by",
+    "tail": "periodic invocation of turn signal control service interface",
+    "sources": [
+      "outer_lamp_fas_0980"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightReq",
+    "relation": "input_value_mapping",
+    "tail": "0x0 = OFF, 0x1 = ON",
+    "sources": [
+      "outer_lamp_fas_0980"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftRearTurnSignal",
+    "relation": "depends_on",
+    "tail": "InstanceID = 6",
+    "sources": [
+      "outer_lamp_fas_0980"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearTurnSignal",
+    "relation": "depends_on",
+    "tail": "InstanceID = 8",
+    "sources": [
+      "outer_lamp_fas_0980"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightStatusRetrieval",
+    "relation": "prerequisite",
+    "tail": "service discovery subscription or exterior lamp control request",
+    "sources": [
+      "outer_lamp_fas_0982",
+      "outer_lamp_fas_0992"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightStatusRetrieval",
+    "relation": "timeout_constraint",
+    "tail": "500ms response deadline after subscription/control request",
+    "sources": [
+      "outer_lamp_fas_0982",
+      "outer_lamp_fas_0992"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightStatusRetrieval",
+    "relation": "triggered_by",
+    "tail": "explicit call to Getter() status service",
+    "sources": [
+      "outer_lamp_fas_0982",
+      "outer_lamp_fas_0992"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningModuleStatus",
+    "relation": "triggered_by",
+    "tail": "SOARequest reception with value 0xD",
+    "sources": [
+      "outer_lamp_fas_0983"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightControlModule",
+    "relation": "controls",
+    "tail": "hardwire-driven front fog light activation",
+    "sources": [
+      "outer_lamp_fas_0984"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightActivation",
+    "relation": "prerequisite",
+    "tail": "LFrtFogLghtCtrl_HW == 0x1 OR LFrtFogLghtCtrl_HW_1_On",
+    "sources": [
+      "outer_lamp_fas_0984"
+    ],
+    "conflict": true,
+    "conflict_note": "Two syntactically different but semantically equivalent prerequisites for same activation; both reflect same hardware control signal — likely variant naming in same spec. Retained as single merged tail with OR logic."
+  },
+  {
+    "head": "DippedBeamLightReqSts",
+    "relation": "input_for",
+    "tail": "dipped beam light request status signal",
+    "sources": [
+      "outer_lamp_fas_0986"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightReqSts",
+    "relation": "value_definition",
+    "tail": "0x0 = OFF, 0x1 = ON",
+    "sources": [
+      "outer_lamp_fas_0986"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightControlRequest",
+    "relation": "output_to",
+    "tail": "LHZCU and RHZCU modules",
+    "sources": [
+      "outer_lamp_fas_0986"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightControlRequest",
+    "relation": "input_from",
+    "tail": "S32G_MC controller",
+    "sources": [
+      "outer_lamp_fas_0986"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightAutoActivation",
+    "relation": "triggered_by",
+    "tail": "emergency braking event",
+    "sources": [
+      "outer_lamp_fas_0987"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightAutoActivation",
+    "relation": "prerequisite",
+    "tail": "vehicle in driving state",
+    "sources": [
+      "outer_lamp_fas_0987"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightAutoActivation",
+    "relation": "suppressed_by",
+    "tail": "reserved/unimplemented feature block",
+    "sources": [
+      "outer_lamp_fas_0987"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSta",
+    "relation": "output_value_set",
+    "tail": "OFF, ON, Unknown",
+    "sources": [
+      "outer_lamp_fas_0989"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus",
+    "relation": "interface_name_for",
+    "tail": "turn signal status query interface",
+    "sources": [
+      "outer_lamp_fas_0989"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunctionEnablement",
+    "relation": "depends_on_vehicle_mode",
+    "tail": "VehMd ∈ {VehMd_2_FACTORY, VehMd_3_TRANSPORT, VehMd_4_DYNO, VehMd_5_EXHIBITION, VehMd_8_Engineering, VehMd_9_Service}",
+    "sources": [
+      "outer_lamp_fas_0991"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunctionEnablement",
+    "relation": "depends_on_user_mode",
+    "tail": "UsG Md ∈ {UsG Md_0_Sleep, UsG Md_1_Standby, UsG Md_2_Comfortable, UsG Md_3_NormalDriving, UsG Md_4_AI_Parking, UsG Md_5_AI_Pilot, UsG Md_6_XOTA}",
+    "sources": [
+      "outer_lamp_fas_0991"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunctionValidationStatus",
+    "relation": "triggered_by",
+    "tail": "VehMdV == VehMdV_1_Valid",
+    "sources": [
+      "outer_lamp_fas_0991"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunctionValidationStatus",
+    "relation": "triggered_by",
+    "tail": "VehMdV == VehMdV_0_Invalid",
+    "sources": [
+      "outer_lamp_fas_0991"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightControlRequest",
+    "relation": "triggered_by",
+    "tail": "ExteriorLightControlSystem.RoofSpotLightSts.RoofSpotLghtSts == 0x1",
+    "sources": [
+      "outer_lamp_fas_0992"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightControlRequest",
+    "relation": "prerequisite",
+    "tail": "ExteriorLightControlSystem.RoofSpotLightErrSts.RoofSpotLghtErrSts == 0x0",
+    "sources": [
+      "outer_lamp_fas_0992"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightControlRetry",
+    "relation": "timeout_constraint",
+    "tail": "retry up to 3 times at ≤50ms intervals",
+    "sources": [
+      "outer_lamp_fas_0992"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightControlRetry",
+    "relation": "suppressed_by",
+    "tail": "3 retries exhausted without success confirmation",
+    "sources": [
+      "outer_lamp_fas_0992"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorStatus",
+    "relation": "triggered_by",
+    "tail": "invocation of BrakeLightErrorStatus service interface",
+    "sources": [
+      "outer_lamp_fas_0993"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSta",
+    "relation": "triggered_by",
+    "tail": "invocation of BrakeLightSta service interface",
+    "sources": [
+      "outer_lamp_fas_0993"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorSta",
+    "relation": "output_value_set",
+    "tail": "0x0 = No Error, 0x1 = Error, 0x2 = Unknown",
+    "sources": [
+      "outer_lamp_fas_0993"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSta",
+    "relation": "output_value_set",
+    "tail": "0x0 = OFF",
+    "sources": [
+      "outer_lamp_fas_0993"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorSta",
+    "relation": "depends_on_interface",
+    "tail": "BrakeLightErrorStatus service interface",
+    "sources": [
+      "outer_lamp_fas_0993"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSta",
+    "relation": "depends_on_interface",
+    "tail": "BrakeLightSta service interface",
+    "sources": [
+      "outer_lamp_fas_0993"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightActivation",
+    "relation": "prerequisite",
+    "tail": "main beam enhancement enabled AND roof spot light function available AND roof spot light not already active",
+    "sources": [
+      "outer_lamp_fas_0994"
+    ],
+    "conflict": true,
+    "conflict_note": "Three distinct prerequisites from same source: 'far beam enhancement enable', 'function availability', and 'not already on' — logically independent and all required; merged into single conjunctive tail per engineering intent."
+  },
+  {
+    "head": "RoofSpotLightActivation",
+    "relation": "triggered_by",
+    "tail": "single forward push of headlight stalk",
+    "sources": [
+      "outer_lamp_fas_0994"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightActivation",
+    "relation": "depends_on",
+    "tail": "LHZCU confirms MainBeamLghtOnReq == ON",
+    "sources": [
+      "outer_lamp_fas_0994"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightActivation",
+    "relation": "suppressed_by",
+    "tail": "roof spot light already activated",
+    "sources": [
+      "outer_lamp_fas_0994"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "outputs",
+    "tail": "RoofSpotLightFucProSta == ON",
+    "sources": [
+      "outer_lamp_fas_0994"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "state_persistence_condition",
+    "tail": "MainBeamLghtOnReq == ON",
+    "sources": [
+      "outer_lamp_fas_0994"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

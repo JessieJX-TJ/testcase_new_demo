@@ -1,0 +1,199 @@
+[
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "车辆模式为工厂模式 (VehMd=0x2 = VehMd_2_FACTORY)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "VehMdV"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "车辆模式有效 (VehMdV=0x1=VehMdV_1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "VehMdV"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "前提条件",
+    "tail": "后雾灯开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLight",
+      "2min"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "前提条件",
+    "tail": "持续 2 分钟",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLight",
+      "2min"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯关闭",
+    "relation": "抑制条件",
+    "tail": "近光灯开启 (SidePositionLight ON",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "SidePositionLight",
+      "Ox3"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯关闭",
+    "relation": "抑制条件",
+    "tail": "| Ox3= SidePositionAndDippedBeam OFF)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "SidePositionLight",
+      "Ox3"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯关闭",
+    "relation": "抑制条件",
+    "tail": "前雾灯开启 (FrontFogLight ON)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "FrontFogLight"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯关闭",
+    "relation": "抑制条件",
+    "tail": "远光灯开启 (MainBeamLight ON)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "MainBeamLight"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯控制模块 LHZCU 输出通知信号",
+    "relation": "输出为",
+    "tail": "外灯控制组合服务 ICB 调用接口",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "Notifier"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯指示灯显示",
+    "relation": "依赖于",
+    "tail": "HMI子系统 ICB 调用接口",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "HMI子系统",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯停止点亮",
+    "relation": "前提条件",
+    "tail": "驱动处理模块 RZCU 内部跳变为硬线输出",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RZCU",
+      "RearFogLightCtrlReq"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯状态反馈",
+    "relation": "包含子功能",
+    "tail": "后雾灯控制模块 LHZCU 将状态/故障状态反馈至 ICB",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "ExteriorLightSwitchProcess.RearFogLightSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯错误状态反馈",
+    "relation": "包含子功能",
+    "tail": "后雾灯控制模块 LHZCU 将状态/故障状态反馈至 ICB",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "RearFogLightErrorStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯开启超时",
+    "relation": "超时约束",
+    "tail": "后雾灯在工厂模式下开启 2 分钟",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RearFogLight",
+      "2min"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0446",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

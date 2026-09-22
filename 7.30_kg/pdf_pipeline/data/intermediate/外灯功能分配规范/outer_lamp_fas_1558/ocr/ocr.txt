@@ -1,0 +1,34 @@
+FLDircnLghtCtrl=0x1=FLDircnLghtCtrl_1_on
+RLDircnLghtCtrl=0x1=RLDircnLghtCtrl_1_on
+发送400ms
+FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_Off
+RLDircnLghtCtrl=0x0=RLDircnLghtCtrl_0_Off
+发送转向灯流水模式使能状态:DircnLghtMdSts=0x0=DircnLghtMdSts_0_Enable
+[转向灯开关控制模块LHZCU]接口发送:
+控制转向灯按照1.25Hz频率闪烁(先on后off),即按照800ms一个闪烁周期持续发送
+发送8个Cycle(Cycle:50ms)on
+Event:
+发送8个Cycle(Cycle:50ms)off
+{ExteriorLightSwitchProcess. DircnLghtFucProStatus. DircnLghtFucProSta}=0x0=OFF
+发送转向灯流水模式使能状态:
+{ExteriorLightSwitchProcess.DirectionLightModeStatus.DircnLghtMdSts}=0x0=Enable
+[外灯组合服务ICB]根据接收到的LHZCU发送的转向灯ON/OFF,对应调用基础服务,针对
+{InstanceID=1}{InstanceID=3},组合服务延时 60ms 调用(配置需求:DircnLghtCtrlDelayPrm)
+ICB将服务接口或控制信号转换成灯控CAN信号,控制转向灯流水点亮
+ICB 将控制信号延时 60ms 分发至LHZCU/RZCU(配置需求:DircnLghtCtrlDelayPrm)
+FLDircnLghtCtrl_HW=0x1=FLDircnLghtCtrl_HW_1_on
+RLDircnLghtCtrl_HW=0x1=RLDircnLghtCtrl_HW_1_on
+[驱动处理模块LHZCU/RZCU]接收ICB服务接口或控制信号,内部跳变为硬线输出,驱动
+亮
+ICB接收控制信号:
+做左侧转向灯图标指示灯显示以及声音提醒
+[驱动处理模块LHZCU/RZCU]将状态/故障状态反馈至[转向灯开关控制模块LHZCU]:
+FLDircnLghtSts_HW=0x1=FLDircnLghtSts_HW_1_On
+RLDircnLghtSts_HW =0x1=RLDircnLghtSts_HW_1_On
+FLDircnLghtFltsts_HW=0x0=FLDircnLghtFltsts_HW_0_False
+RLDircnLghtFltsts_HW =0x0=RLDircnLghtFltsts_HW_0_False
+(exlDircnLghtHwDrvEnPrm=0x1;通过 Instance ID 1/2/3/4 获取转向灯状态；)
+ICB将状态/故障状态反馈至[转向灯开关控制模块LHZCU]:
+FLDirenLghtSts=0x1=FLDircnLghtSts_1_On
+RLDirenLghtSts=0x1=RLDircnLghtSts_1_On
+FLDirenLghtFltsts=0x0=FLDirenLghtFltsts_0_False

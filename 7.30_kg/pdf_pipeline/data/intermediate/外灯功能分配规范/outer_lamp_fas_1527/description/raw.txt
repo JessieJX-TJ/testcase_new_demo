@@ -1,0 +1,80 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑与接口规范",
+  "row_semantics": "表格按触发动作和执行动作的顺序描述了前雾灯控制的流程，包括外部开关请求、控制器响应、模块交互和服务调用等。",
+  "column_semantics": "表格包含两列：左侧为动作描述（触发动作、执行动作），右侧为具体的代码实现或逻辑描述。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "功能名",
+      "description": "外灯开关处理模块，负责处理外灯相关的控制逻辑。"
+    },
+    {
+      "name": "S32G",
+      "type": "控制器/模块名",
+      "description": "一个车载控制器，用于接收大屏开关请求并触发外灯控制流程。"
+    },
+    {
+      "name": "LHZCU/RHZCU",
+      "type": "控制器/模块名",
+      "description": "驱动处理模块，负责将服务接口信号转换为硬线输出以驱动前雾灯点亮。"
+    },
+    {
+      "name": "HMI子系统",
+      "type": "控制器/模块名",
+      "description": "人机交互子系统，提供前雾灯指示灯显示功能。"
+    },
+    {
+      "name": "FrontFogLight",
+      "type": "功能名",
+      "description": "前雾灯，作为被控制的外灯部件。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ExteriorLightControlSystem.ControlFrontFogLight FrontFogLightReq",
+      "type": "输入信号",
+      "description": "来自大屏开关的请求信号，用于触发前雾灯控制。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.FrontFogLghtFucProStatus FrontFogLghtFucProsSta",
+      "type": "系统状态",
+      "description": "前雾灯的功能状态，例如 Only FrontFogLight (仅前雾灯)。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.FrontFogLghtSwStatus FrontFogLghtSwSta",
+      "type": "系统状态",
+      "description": "前雾灯开关的状态，例如 ON (开启)。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.ExtrLghtCtrlCmmtnTyp",
+      "type": "配置需求",
+      "description": "外灯控制通信类型配置，例如 SOA (Service-Oriented Architecture)。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl FrontFogLghtFucProCtrlResp",
+      "type": "输出信号",
+      "description": "前雾灯控制的响应信号，表示控制成功。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.FrontFogLghtFucProStatus FrontFogLghtFucProsSta",
+      "type": "系统状态",
+      "description": "更新后的前雾灯功能状态。"
+    },
+    {
+      "name": "FrontFogLight.FrontFogLightState.FrontFogLightSta",
+      "type": "输出信号",
+      "description": "前雾灯的实际状态，例如 ON (点亮)。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了前雾灯控制的逻辑流程，包括从外部开关请求到最终驱动前雾灯点亮的完整路径，适用于验证外灯控制系统在不同通信模式下的功能正确性。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,476 @@
+```json
+[
+  {
+    "head": "配置项/Item",
+    "relation": "依赖于",
+    "tail": "参数范围/Range",
+    "sources": ["inner_lamp_ssts_0071", "inner_lamp_ssts_0080"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "配置项/Item",
+    "relation": "输出为",
+    "tail": "默认值/Default",
+    "sources": ["inner_lamp_ssts_0071", "inner_lamp_ssts_0166", "inner_lamp_ssts_0513"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "relation": "触发条件",
+    "tail": "Code值为0x5至0xF",
+    "sources": ["inner_lamp_ssts_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "relation": "触发条件",
+    "tail": "周期与原呼吸模式值匹配",
+    "sources": ["inner_lamp_ssts_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "门灯呼吸功能停止",
+    "relation": "前提条件",
+    "tail": "指令值为0",
+    "sources": ["inner_lamp_ssts_0072"],
+    "conflict": true,
+    "conflict_note": "同一实体'门灯呼吸功能停止'在相同语义下同时被标记为'前提条件'和'抑制条件'，二者逻辑层级不同但存在语义重叠；'抑制条件'通常隐含更高优先级的强制干预，需确认是否为设计意图。保留两者并标记冲突。"
+  },
+  {
+    "head": "门灯呼吸功能停止",
+    "relation": "抑制条件",
+    "tail": "指令值为0",
+    "sources": ["inner_lamp_ssts_0072"],
+    "conflict": true,
+    "conflict_note": "同一实体'门灯呼吸功能停止'在相同语义下同时被标记为'前提条件'和'抑制条件'，二者逻辑层级不同但存在语义重叠；'抑制条件'通常隐含更高优先级的强制干预，需确认是否为设计意图。保留两者并标记冲突。"
+  },
+  {
+    "head": "呼吸模式切换",
+    "relation": "前提条件",
+    "tail": "不同呼吸模式切换时",
+    "sources": ["inner_lamp_ssts_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "门灯呼吸功能状态",
+    "relation": "依赖于",
+    "tail": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "sources": ["inner_lamp_ssts_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "门灯呼吸周期",
+    "relation": "依赖于",
+    "tail": "周期定义：500ms至12s",
+    "sources": ["inner_lamp_ssts_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorAm btLampA_FR",
+    "relation": "控制对象",
+    "tail": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "sources": ["inner_lamp_ssts_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "控制对象",
+    "tail": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "sources": ["inner_lamp_ssts_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "门灯呼吸功能复位",
+    "relation": "复位条件",
+    "tail": "指令值为0",
+    "sources": ["inner_lamp_ssts_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "门灯呼吸功能状态保持",
+    "relation": "状态保持条件",
+    "tail": "非指令值为0时持续运行",
+    "sources": ["inner_lamp_ssts_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampFadeSpdCmd_1_x_SpdY",
+    "relation": "输出为",
+    "tail": "氛围灯渐变速度指令",
+    "sources": ["inner_lamp_ssts_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "背光灯点亮",
+    "relation": "触发条件",
+    "tail": "VehSideLghtSts_l_DCMFL_LIN = 0x3 (All_Side_Light_And_License_Plate_Light_On)",
+    "sources": ["inner_lamp_ssts_0073"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "背光灯关闭",
+    "relation": "触发条件",
+    "tail": "VehSideLghtSts_l_DCMFL_LIN = 0x0 (No_Side_Light_On)",
+    "sources": ["inner_lamp_ssts_0073"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "背光灯状态维持",
+    "relation": "触发条件",
+    "tail": "VehSideLghtSts_l_DCMFL_LIN ∈ {0x1 (Left_Side_Light_On_Only), 0x2 (Right_Side_Light_On_Only)}",
+    "sources": ["inner_lamp_ssts_0073"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "背光灯关闭",
+    "relation": "故障响应",
+    "tail": "检测到背光灯短路或开路故障",
+    "sources": ["inner_lamp_ssts_0073", "inner_lamp_ssts_0307", "inner_lamp_ssts_0453"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTSM_FL",
+    "relation": "输出为",
+    "tail": "VehSideLghtSts_l_DCMFL_LIN = 0x3 (All_Side_Light_And_License_Plate_Light_On)",
+    "sources": ["inner_lamp_ssts_0073"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "背光灯关闭",
+    "relation": "抑制条件",
+    "tail": "背光灯无短路/开路故障",
+    "sources": ["inner_lamp_ssts_0073"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统参数配置",
+    "relation": "前提条件",
+    "tail": "标定项/Item 为有效标识符",
+    "sources": ["inner_lamp_ssts_0074"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统参数配置",
+    "relation": "前提条件",
+    "tail": "标定描述/Description 为有效说明",
+    "sources": ["inner_lamp_ssts_0074"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统参数配置",
+    "relation": "前提条件",
+    "tail": "参数范围/Range 为有效取值区间",
+    "sources": ["inner_lamp_ssts_0074"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统参数配置",
+    "relation": "前提条件",
+    "tail": "分辨率/Factor 为有效精度",
+    "sources": ["inner_lamp_ssts_0074"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统参数配置",
+    "relation": "前提条件",
+    "tail": "默认值/Default 为预设值",
+    "sources": ["inner_lamp_ssts_0074"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDSP(DOTSM)",
+    "relation": "输出为",
+    "tail": "LIN",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IterDoorOpenSw_FL (DTSM)",
+    "relation": "输出为",
+    "tail": "LIN",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSw",
+    "relation": "输出为",
+    "tail": "硬线",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDSP",
+    "relation": "输出为",
+    "tail": "硬线",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IterDoorOpenSw_RL",
+    "relation": "输出为",
+    "tail": "硬线",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofDspSw",
+    "relation": "输出为",
+    "tail": "NA",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SecRowSeatAmrstSw_LH",
+    "relation": "输出为",
+    "tail": "NA",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThrdRowUSB_LH",
+    "relation": "输出为",
+    "tail": "NA",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDSP(DOTSM)",
+    "relation": "依赖于",
+    "tail": "P12LM1",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IterDoorOpenSw_FL (DTSM)",
+    "relation": "依赖于",
+    "tail": "P12LM1",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSw",
+    "relation": "依赖于",
+    "tail": "P12LM1",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDSP",
+    "relation": "依赖于",
+    "tail": "P12LM1",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IterDoorOpenSw_RL",
+    "relation": "依赖于",
+    "tail": "P12LM1",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofDspSw",
+    "relation": "依赖于",
+    "tail": "P12LM1",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SecRowSeatAmrstSw_LH",
+    "relation": "依赖于",
+    "tail": "P12LM1",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThrdRowUSB_LH",
+    "relation": "依赖于",
+    "tail": "P12LM1",
+    "sources": ["inner_lamp_ssts_0075"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头呼吸闪烁",
+    "relation": "前提条件",
+    "tail": "呼吸周期指令存在且有效",
+    "sources": ["inner_lamp_ssts_0076", "inner_lamp_ssts_0481"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "呼吸模式切换",
+    "relation": "触发条件",
+    "tail": "立即停止当前呼吸并切换至下一模式",
+    "sources": ["inner_lamp_ssts_0076", "inner_lamp_ssts_0433", "inner_lamp_ssts_0472", "inner_lamp_ssts_0481", "inner_lamp_ssts_0564"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头颜色/亮度切换",
+    "relation": "前提条件",
+    "tail": "从当前状态到目标状态切换所需时间",
+    "sources": ["inner_lamp_ssts_0076"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头保持颜色不变",
+    "relation": "触发条件",
+    "tail": "指令值为0或颜色号未定义",
+    "sources": ["inner_lamp_ssts_0076"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头亮度调节",
+    "relation": "触发条件",
+    "tail": "指令值不为0",
+    "sources": ["inner_lamp_ssts_0076"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯开启请求",
+    "relation": "输入为",
+    "tail": "DoorFL6LampOnOff_1",
+    "sources": ["inner_lamp_ssts_0076"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "点亮ON时需同时接收到非0值的颜色亮度指令",
+    "relation": "前提条件",
+    "tail": "DoorFL6LampOnOff_1信号为ON",
+    "sources": ["inner_lamp_ssts_0076"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头颜色切换",
+    "relation": "依赖于",
+    "tail": "DoorFL6LampColorCmd_1",
+    "sources": ["inner_lamp_ssts_0076"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头亮度调节",
+    "relation": "依赖于",
+    "tail": "DoorFL6LampBrtnsCmd_1",
+    "sources": ["inner_lamp_ssts_0076"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "默认速度Spd0",
+    "relation": "超时约束",
+    "tail": "灯头颜色/亮度切换时间",
+    "sources": ["inner_lamp_ssts_0076"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left MapLamp Control Circuit Short to Battery",
+    "relation": "触发条件",
+    "tail": "MapLamp Driving Activation State为激活态且驱动电流 < 阈值（TBD）A，持续100ms",
+    "sources": ["inner_lamp_ssts_0077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left MapLamp Control Circuit Short to Ground",
+    "relation": "触发条件",
+    "tail": "MapLamp Driving Activation State为激活态且驱动电流 > 阈值（TBD）A，持续100ms",
+    "sources": ["inner_lamp_ssts_0077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left MapLamp Control Circuit Open",
+    "relation": "触发条件",
+    "tail": "MapLamp Driving Activation State为激活态且驱动电流 < 阈值（TBD）A，持续100ms",
+    "sources": ["inner_lamp_ssts_0077"],
+    "conflict": true,
+    "conflict_note": "Short to Battery 与 Open 故障触发条件完全相同（同为电流<阈值+100ms），但物理机理矛盾（短路至电池通常导致电流增大），存在明显技术冲突，需工程澄清。"
+  },
+  {
+    "head": "Third Row Left MapLamp Control Circuit Short to Battery",
+    "relation": "前提条件",
+    "tail": "MapLamp Driving Activation State为激活态",
+    "sources": ["inner_lamp_ssts_0077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left MapLamp Control Circuit Short to Ground",
+    "relation": "前提条件",
+    "tail": "MapLamp Driving Activation State为激活态",
+    "sources": ["inner_lamp_ssts_0077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left MapLamp Control Circuit Open",
+    "relation": "前提条件",
+    "tail": "MapLamp Driving Activation State为激活态",
+    "sources": ["inner_lamp_ssts_0077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left MapLamp Control Circuit Short to Battery",
+    "relation": "超时约束",
+    "tail": "100ms持续时间",
+    "sources": ["inner_lamp_ssts_0077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left MapLamp Control Circuit Short to Ground",
+    "relation": "超时约束",
+    "tail": "100ms持续时间",
+    "sources": ["inner_lamp_ssts_0077"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

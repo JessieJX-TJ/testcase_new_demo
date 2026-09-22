@@ -1,0 +1,40 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯开关控制功能的限制条件",
+  "row_semantics": "表格定义了特定功能（VP3-142159）的限制参数，即该功能在何种条件下被启用或禁用。",
+  "column_semantics": {
+    "ID": "功能或模块的唯一标识符，指代具体的电子控制单元（ECU）功能或子系统。",
+    "Restriction": "描述该功能的限制条件或触发规则，通常包含一个参考编号（如#VP3-25770），表明其依赖于其他规范中的定义。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VP3-142159",
+      "type": "功能名",
+      "description": "表示一个具体的电子控制功能，可能与外灯（如阅读灯）的开关控制相关。"
+    },
+    {
+      "name": "VP3-25770",
+      "type": "控制器/模块名",
+      "description": "引用另一个规范中的编号，可能是实现VP3-142159功能所依赖的控制器或模块。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "阅读灯开关控制",
+      "type": "输入信号",
+      "description": "指示用户是否操作了阅读灯的开关，是触发VP3-142159功能的关键输入。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证VP3-142159功能在特定限制条件（如依赖于VP3-25770模块）下的正确性，确保其行为符合设计规范。",
+  "uncertain_points": [
+    "VP3-25770的具体功能和作用未在当前表格中明确说明。",
+    "表格未提供VP3-142159功能的详细逻辑或状态转换规则。"
+  ]
+}
+```

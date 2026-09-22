@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "RLSideLghtFltsts=0x0=RLSideLghtFltsts_0_False",
+    "relation": "前提条件",
+    "tail": "SidePositionLight.SidePositionLightStatus.InstanceID=5,6,7,8 的侧位灯状态为 OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["RLSideLghtFltsts", "SidePositionLightStatus", "InstanceID"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RRSideLghtFltsts=0x0=RRSideLghtFltsts_0_False",
+    "relation": "前提条件",
+    "tail": "SidePositionLight.SidePositionLightStatus.InstanceID=5,6,7,8 的侧位灯状态为 OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["RRSideLghtFltsts", "SidePositionLightStatus", "InstanceID"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "SidePositionLight.SidePositionLightStatus.InstanceID=1,2,3,4 的侧位灯状态为 OFF",
+    "relation": "前提条件",
+    "tail": "exlSideLghtHwDrvEnPrm=0x1；备注:位置灯炮筒灯方案",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["SidePositionLightStatus", "InstanceID", "exlSideLghtHwDrvEnPrm"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "SidePositionLight.SidePositionLightErrorStatus.InstanceID=5,6,7,8 的侧位灯错误状态为 No Error",
+    "relation": "前提条件",
+    "tail": "RLSideLghtFltsts=0x0=RLSideLghtFltsts_0_False",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["SidePositionLightErrorStatus", "InstanceID", "RLSideLghtFltsts"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "SidePositionLight.SidePositionLightErrorStatus.InstanceID=1,2,3,4 的侧位灯错误状态为 No Error",
+    "relation": "前提条件",
+    "tail": "exlSideLghtHwDrvEnPrm=0x1；备注:位置灯炮筒灯方案",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["SidePositionLightErrorStatus", "InstanceID", "exlSideLghtHwDrvEnPrm"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧和右侧侧位灯需保持同步熄灭",
+    "relation": "超时约束",
+    "tail": "两侧最大延时不能超过 40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": ["左侧侧位灯", "右侧侧位灯", "熄灭", "40ms"],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,444 @@
+```json
+[
+  {
+    "head": "ICB",
+    "relation": "输入为",
+    "tail": "FLDirnLghtCtrl=0x0=FLDirnLghtCtrl_0_Off",
+    "sources": ["outer_lamp_fas_0721", "outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输入为",
+    "tail": "RLDirnLghtCtrl=0x0=RLDirnLghtCtrl_0_Off",
+    "sources": ["outer_lamp_fas_0721", "outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输入为",
+    "tail": "FLDirnLghtCtrl_HW=0x0=FLDirnLghtCtrl_HW_0_Off",
+    "sources": ["outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输入为",
+    "tail": "RLDirnLghtCtrl_HW=0x0=RLDirnLghtCtrl_HW_0_Off",
+    "sources": ["outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输出为",
+    "tail": "CAN信号，控制转向灯熄灭",
+    "sources": ["outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "超时约束",
+    "tail": "60ms 分发延时",
+    "sources": ["outer_lamp_fas_0721", "outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驱动处理模块 LHZCU/RZCU",
+    "relation": "输入来自",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0721"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驱动处理模块 LHZCU/RZCU",
+    "relation": "输出为",
+    "tail": "转向灯点亮状态/故障状态反馈至转向灯开关控制模块 LHZCU",
+    "sources": ["outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关控制模块 LHZCU",
+    "relation": "输出为",
+    "tail": "转向灯点亮状态/故障状态反馈至 ICB",
+    "sources": ["outer_lamp_fas_0721", "outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关控制模块 LHZCU",
+    "relation": "复位条件",
+    "tail": "DircnLghtSts=0x0=OFF",
+    "sources": ["outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关控制模块 LHZCU",
+    "relation": "复位条件",
+    "tail": "DircnLghtFltsts=0x0=DircnLghtFltsts_0_No_Error",
+    "sources": ["outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯退出",
+    "relation": "触发条件",
+    "tail": "StrgWhlAng ≥ |20°| 且 ≤ |10°|（配置参数：exlDIAutoOffAnglePrm 默认20°，exlDIAutoOffAngleHystPrm 默认10°；方向符号由EPS定义，左正右负）",
+    "sources": ["outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯退出",
+    "relation": "前提条件",
+    "tail": "左侧转向灯处于激活状态",
+    "sources": ["outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯退出",
+    "relation": "触发条件",
+    "tail": "StrgWhlAngV = 0x0 = StrgWhlAngV_0_Valid",
+    "sources": ["outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯退出",
+    "relation": "触发条件",
+    "tail": "手动旋转方向盘至一定角度",
+    "sources": ["outer_lamp_fas_0727"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "单侧转向灯同步性",
+    "relation": "超时约束",
+    "tail": "40ms 最大允许延时",
+    "sources": ["outer_lamp_fas_0721"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主光束灯开启请求信号 MainBeamLghtOnReq",
+    "relation": "输入为",
+    "tail": "0x0 = MainBeamLghtOnReq_1_OFF",
+    "sources": ["outer_lamp_fas_0722"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主光束灯开启请求信号 MainBeamLghtOnReq",
+    "relation": "输入为",
+    "tail": "0x1 = MainBeamLghtOnReq_1_On",
+    "sources": ["outer_lamp_fas_0722"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主光束灯闪烁开关请求信号 MainBeamLghtSwReq_2_Flash",
+    "relation": "输入为",
+    "tail": "0x2 = MainBeamLghtSwReq_2_Flash",
+    "sources": ["outer_lamp_fas_0722"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InstanceID=4 错误状态",
+    "relation": "输出为",
+    "tail": "0x0 = No Error",
+    "sources": ["outer_lamp_fas_0724"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InstanceID=4 错误状态",
+    "relation": "输出为",
+    "tail": "0x1 = Error",
+    "sources": ["outer_lamp_fas_0724"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InstanceID=4 错误状态",
+    "relation": "输出为",
+    "tail": "0x2 = Unknown",
+    "sources": ["outer_lamp_fas_0724"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSta 参数",
+    "relation": "输出为",
+    "tail": "0x0 = 制动灯状态为 OFF",
+    "sources": ["outer_lamp_fas_0725"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSta 参数",
+    "relation": "输出为",
+    "tail": "0x1 = 制动灯状态为 ON",
+    "sources": ["outer_lamp_fas_0725"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSta 参数",
+    "relation": "输出为",
+    "tail": "0x2 = 制动灯状态为 Unknown",
+    "sources": ["outer_lamp_fas_0725"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "调用 BrakeLightState 接口",
+    "relation": "触发条件",
+    "tail": "订阅制动灯状态",
+    "sources": ["outer_lamp_fas_0725"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "调用 BrakeLightErrorStatus 接口",
+    "relation": "触发条件",
+    "tail": "订阅制动灯故障状态",
+    "sources": ["outer_lamp_fas_0725"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯状态",
+    "relation": "输出为",
+    "tail": "LDipdBeamLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_0729"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯状态",
+    "relation": "输出为",
+    "tail": "LDipdBeamLghtSts_1_On",
+    "sources": ["outer_lamp_fas_0729"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯状态",
+    "relation": "输出为",
+    "tail": "RDipdBeamLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_0729"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯状态",
+    "relation": "输出为",
+    "tail": "RDipdBeamLghtSts_1_On",
+    "sources": ["outer_lamp_fas_0729"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯硬件状态",
+    "relation": "输出为",
+    "tail": "LDipdBeamLghtSts_HW_0_Off",
+    "sources": ["outer_lamp_fas_0729"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯硬件状态",
+    "relation": "输出为",
+    "tail": "LDipdBeamLghtSts_HW_1_On",
+    "sources": ["outer_lamp_fas_0729"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯状态",
+    "relation": "依赖于",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0729", "outer_lamp_fas_1107"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯状态",
+    "relation": "依赖于",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0729", "outer_lamp_fas_1107"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯硬件状态",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0729", "outer_lamp_fas_1107"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯硬件状态",
+    "relation": "依赖于",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_fas_0729"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯状态",
+    "relation": "输出为",
+    "tail": "RLDircnLghtSts_HW_0_Off",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯状态",
+    "relation": "输出为",
+    "tail": "RLDircnLghtSts_HW_1_On",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯状态",
+    "relation": "输出为",
+    "tail": "RRDircnLghtSts_HW_0_Off",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯状态",
+    "relation": "输出为",
+    "tail": "RRDircnLghtSts_HW_1_On",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_1_Manual_Mode",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_2_Collision_Mode",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_3_SHWA_Mode",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_4_RCW_Mode",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_5_AI_Pilot_Warning_Mode",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_6_Battery_Thermal_Malfunction",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_7_Emergency_Brake",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_8_Alarm_trigger",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_9_Find_my_car",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_10_ExtrLckLghtRmndr",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_11_PwrLfTgtDirIndcnLamp",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_12_TireBlowout",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts_13_SOARequest",
+    "sources": ["outer_lamp_fas_0730"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "做左侧转向灯图标指示灯显示以及声音提醒",
+    "relation": "包含子功能",
+    "tail": "转向灯开关控制模块 LHZCU",
+    "sources": ["outer_lamp_fas_0721"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

@@ -1,0 +1,476 @@
+```json
+[
+  {
+    "head": "VehLckSts",
+    "relation": "input_from",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_fas_0576", "inner_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckSts",
+    "relation": "output_to",
+    "tail": "RZCU",
+    "sources": ["inner_lamp_fas_0576"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckSts",
+    "relation": "output_to",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_fas_0576"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLamp_LH",
+    "relation": "connected_to",
+    "tail": "TmdDlyLamp_HSD",
+    "sources": ["inner_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLamp_RH",
+    "relation": "connected_to",
+    "tail": "TmdDlyLamp_HSD",
+    "sources": ["inner_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TmdDlyLamp_HSD",
+    "relation": "output_to",
+    "tail": "ODH",
+    "sources": ["inner_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ODH",
+    "relation": "controls",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior lighting auto-on/off based on door status",
+    "relation": "prerequisite",
+    "tail": "Requirement ID VP3-64147",
+    "sources": ["inner_lamp_fas_0578"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior lighting auto-on/off based on door status",
+    "relation": "depends_on",
+    "tail": "Controller VP3-25772",
+    "sources": ["inner_lamp_fas_0578"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampThrdLBrtLvl_1 = Level 2",
+    "relation": "triggers",
+    "tail": "MapLampXXDimSpd_1 output = LIN",
+    "sources": ["inner_lamp_fas_0579"],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'MapLampThrdLBrtLvl_1 = Level 30 → output = LIN' and 'MapLampThrdLBrtLvl_1 = Level 1 → output = LIN'; same tail but different head values imply inconsistent mapping. Also conflicts with 'MapLampThrdRBrtLvl_1 = Level 1 → output = LHZCU' (same level number used for different lamps yielding different outputs)."
+  },
+  {
+    "head": "MapLampThrdRBrtLvl_1 = Level 30",
+    "relation": "triggers",
+    "tail": "MapLampXXDimSpd_1 output = LHZCU",
+    "sources": ["inner_lamp_fas_0579"],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'MapLampThrdRBrtLvl_1 = OFF → output = LHZCU' and 'MapLampThrdRBrtLvl_1 = Level 1 → output = LHZCU': identical tail under mutually exclusive head conditions; suggests ambiguous or overlapping level definitions."
+  },
+  {
+    "head": "MapLampFLDimSpd_1 = Speed 1",
+    "relation": "triggers",
+    "tail": "MapLampXXDimSpd_1 output = OHC",
+    "sources": ["inner_lamp_fas_0579"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampThrdLBrtLvl_1 = OFF",
+    "relation": "triggers",
+    "tail": "MapLampXXDimSpd_1 output = LIN",
+    "sources": ["inner_lamp_fas_0579"],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'MapLampThrdLBrtLvl_1 = Level 2' and 'Level 1' both mapping to same output — implies non-exclusive or ill-defined state space."
+  },
+  {
+    "head": "MapLampThrdRBrtLvl_1 = OFF",
+    "relation": "triggers",
+    "tail": "MapLampXXDimSpd_1 output = LHZCU",
+    "sources": ["inner_lamp_fas_0579"],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'MapLampThrdRBrtLvl_1 = Level 30' and 'Level 1' both mapping to same output — suggests inconsistent specification of OFF vs numeric levels."
+  },
+  {
+    "head": "MapLampThrdLBrtLvl_1 = Level 1",
+    "relation": "triggers",
+    "tail": "MapLampXXDimSpd_1 output = LIN",
+    "sources": ["inner_lamp_fas_0579"],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'Level 2' and 'OFF' also mapping to LIN — indicates lack of functional uniqueness or missing guard conditions."
+  },
+  {
+    "head": "MapLampThrdRBrtLvl_1 = Level 2",
+    "relation": "triggers",
+    "tail": "MapLampXXDimSpd_1 output = LHZCU",
+    "sources": ["inner_lamp_fas_0579"],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'Level 30' and 'OFF' mapping to same output — undermines level-based control determinism."
+  },
+  {
+    "head": "MapLampThrdLBrtLvl_1 = Level 30",
+    "relation": "triggers",
+    "tail": "MapLampXXDimSpd_1 output = LIN",
+    "sources": ["inner_lamp_fas_0579"],
+    "conflict": true,
+    "conflict_note": "Direct conflict: same head condition as 'MapLampThrdLBrtLvl_1 = Level 30' appears in another triple mapping to LHZCU (but that one is RBrt, not LBrt); however, this triple contradicts itself with other LBrt mappings — e.g., Level 1/2/OFF all map to LIN, while Level 30 also maps to LIN here, yet no rationale for why Level 30 is special. Still, primary conflict is semantic overload: Level 30 used for both LBrt→LIN and RBrt→LHZCU, suggesting naming ambiguity between left/right thresholds."
+  },
+  {
+    "head": "VatyMirLampLHCtrl (LHZCU)",
+    "relation": "outputs",
+    "tail": "VatyMirLampCtrlCmd",
+    "sources": ["inner_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampLHCtrl (LHZCU)",
+    "relation": "controls",
+    "tail": "VatyMirLampDrv (LHZCU)",
+    "sources": ["inner_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LockingSystem",
+    "relation": "provides",
+    "tail": "VehLckSts",
+    "sources": ["inner_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleStateSystem",
+    "relation": "provides",
+    "tail": "VehMd",
+    "sources": ["inner_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleStateSystem",
+    "relation": "provides",
+    "tail": "VehMdV",
+    "sources": ["inner_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleStateSystem",
+    "relation": "provides",
+    "tail": "UsgMd",
+    "sources": ["inner_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleStateSystem",
+    "relation": "provides",
+    "tail": "UsgMdV",
+    "sources": ["inner_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampLHCtrl (LHZCU)",
+    "relation": "receives_input_from",
+    "tail": "LockingSystem",
+    "sources": ["inner_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampLHCtrl (LHZCU)",
+    "relation": "receives_input_from",
+    "tail": "VehicleStateSystem",
+    "sources": ["inner_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLight",
+    "relation": "mode_state",
+    "tail": "Standby Mode (UsrMdV = 0x1)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLight",
+    "relation": "mode_state",
+    "tail": "Comfortable Mode (UsrMdV = 0x2)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLight",
+    "relation": "mode_state",
+    "tail": "Normal Driving Mode (UsrMdV = 0x3)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLight",
+    "relation": "mode_state",
+    "tail": "AI Parking Mode (UsrMdV = 0x4)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLight",
+    "relation": "mode_state",
+    "tail": "AIPilot Mode (UsrMdV = 0x5)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLight",
+    "relation": "mode_state",
+    "tail": "XOTA Mode (UsrMdV = 0x6)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DriverDoor",
+    "relation": "state",
+    "tail": "Closed (DrvrDoorOpenSts = 0x0)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DriverDoor",
+    "relation": "state",
+    "tail": "Open (DrvrDoorOpenSts = 0x1)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DriverDoor",
+    "relation": "state",
+    "tail": "Ajar (DrvrDoorOpenSts = 0x2)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DriverDoor",
+    "relation": "state",
+    "tail": "Fully Open (DrvrDoorOpenSts = 0x3)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearDoor",
+    "relation": "state",
+    "tail": "Closed (RLDoorOpenSts = 0x0)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearDoor",
+    "relation": "state",
+    "tail": "Open (RLDoorOpenSts = 0x1)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearDoor",
+    "relation": "state",
+    "tail": "Ajar (RLDoorOpenSts = 0x2)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearDoor",
+    "relation": "state",
+    "tail": "Fully Open (RLDoorOpenSts = 0x3)",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DrvrWlcmPedlLghtCtrlCmd",
+    "relation": "output_of",
+    "tail": "Driver's Welcome Pedal Light Control",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsrMdV",
+    "relation": "validity_condition",
+    "tail": "Valid when UsrMdV = 0x1",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsrMdV",
+    "relation": "validity_condition",
+    "tail": "Invalid when UsrMdV = 0x0",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DrvrDoorOpenSts",
+    "relation": "required_for",
+    "tail": "Driver's Door Open Status Reporting",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDoorOpenSts",
+    "relation": "required_for",
+    "tail": "Right Rear Door Open Status Reporting",
+    "sources": ["inner_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FOTA functional continuity",
+    "relation": "prerequisite",
+    "tail": "FOTA process must preserve function (Y/N = Y)",
+    "sources": ["inner_lamp_fas_0584"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FOTA execution policy",
+    "relation": "inhibition_condition",
+    "tail": "FOTA prohibited during active function execution (Y/N = Y)",
+    "sources": ["inner_lamp_fas_0584"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FOTA runtime signaling",
+    "relation": "prerequisite",
+    "tail": "Function must broadcast status/signals during runtime (Y/N = Y)",
+    "sources": ["inner_lamp_fas_0584"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System wake-up",
+    "relation": "prerequisite",
+    "tail": "Valid wake-up source signal present",
+    "sources": ["inner_lamp_fas_0586"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System wake-up",
+    "relation": "trigger_condition",
+    "tail": "Receives designated wake-up source",
+    "sources": ["inner_lamp_fas_0586"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Wake-up/hibernation notes",
+    "relation": "depends_on",
+    "tail": "Specific wake-up source or wake-up/hibernation method",
+    "sources": ["inner_lamp_fas_0586"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLight",
+    "relation": "activation_condition",
+    "tail": "UsrMdV_1_Valid",
+    "sources": ["inner_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLight",
+    "relation": "activation_condition",
+    "tail": "LdspcOpenSts_1_Load_Space_Open",
+    "sources": ["inner_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLight",
+    "relation": "deactivation_condition",
+    "tail": "UsrMdV_0_Invalid OR LdspcOpenSts_0_Load_Space_Closed",
+    "sources": ["inner_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLight",
+    "relation": "output_command",
+    "tail": "LdSpcLampCtrlCmd",
+    "sources": ["inner_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleSpeedAverage",
+    "relation": "input_to",
+    "tail": "InteriorLight control logic",
+    "sources": ["inner_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakingSubsystem",
+    "relation": "depends_on",
+    "tail": "RZCU",
+    "sources": ["inner_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TailgateSubsystem",
+    "relation": "depends_on",
+    "tail": "RZCU",
+    "sources": ["inner_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLight",
+    "relation": "state_condition",
+    "tail": "Exterior Locked State (VehLckSts = 0x3)",
+    "sources": ["inner_lamp_fas_0590"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

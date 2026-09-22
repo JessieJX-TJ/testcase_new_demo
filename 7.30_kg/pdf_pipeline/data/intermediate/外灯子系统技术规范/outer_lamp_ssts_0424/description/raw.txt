@@ -1,0 +1,80 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Right Rear Turn Signal Control and Status",
+  "row_semantics": "Each row represents a specific interface or signal related to the right rear turn signal control and status, detailing its direction, type, sender/provider, receiver/consumer, channel, and source.",
+  "column_semantics": {
+    "Interface Name": "The name of the interface or signal being described.",
+    "Direction": "Indicates whether the signal is an input or output.",
+    "Type": "The communication type (e.g., CAN, hardline).",
+    "Sender/Provider": "The entity responsible for sending or providing the signal.",
+    "Receiver/Consumer": "The entity that receives or consumes the signal.",
+    "Channel": "The communication channel used.",
+    "Source": "The physical or logical source of the signal."
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RRDircnLghtCtrl_HW",
+      "type": "Input",
+      "communication_type": "CAN",
+      "sender": "ICB",
+      "receiver": "RZCU",
+      "channel": "",
+      "source": "External Lamp FAS"
+    },
+    {
+      "name": "DILamp_RH_HSD",
+      "type": "Output",
+      "communication_type": "Hardline",
+      "sender": "RZCU",
+      "receiver": "Tail Lamp",
+      "channel": "",
+      "source": "External Lamp SSTs"
+    },
+    {
+      "name": "RRDircnLghtSts",
+      "type": "Output",
+      "communication_type": "CAN",
+      "sender": "RZCU",
+      "receiver": "LHZCU",
+      "channel": "",
+      "source": "External Lamp SSTs"
+    },
+    {
+      "name": "DirectionLightControl_DirectionLightCtReq",
+      "type": "Input",
+      "communication_type": "SOA",
+      "sender": "ICB/LHZCU",
+      "receiver": "RZCU",
+      "channel": "",
+      "source": "External Lamp FAS"
+    }
+  ],
+  "core_conditions": [
+    {
+      "interface_name": "RRDircnLghtCtrl_HW",
+      "condition": "0x0 = Off, 0x1 = On"
+    },
+    {
+      "interface_name": "RRDircnLghtSts",
+      "condition": "0x0 = Off, 0x1 = On"
+    }
+  ],
+  "core_outputs": [
+    {
+      "interface_name": "DILamp_RH_HSD",
+      "output": "Hardline high-side drive"
+    },
+    {
+      "interface_name": "RRDircnLghtSts",
+      "output": "Signal indicating turn light status"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interfaces and signals involved in controlling and monitoring the right rear turn signal, including their communication protocols, directions, and states. It can be used to verify the correct implementation of turn signal control logic and status reporting within the vehicle's electronic system.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,222 @@
+[
+  {
+    "head": "AmbientLightColorSwitchAction",
+    "relation": "triggerCondition",
+    "tail": "DoorFL1LampColorCmd_l transitions from 0x00 (No Request) to any non-zero value",
+    "sources": [
+      "inner_lamp_ssts_0001"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightSystemEnabled",
+    "relation": "prerequisite",
+    "tail": "AmbientLightColorSwitchAction",
+    "sources": [
+      "inner_lamp_ssts_0001"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightDriverModule.ColorCoordinateBasedColorSwitching",
+    "relation": "dependsOn",
+    "tail": "AmbientLightSystemEnabled",
+    "sources": [
+      "inner_lamp_ssts_0001"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightDriverModule.ColorCoordinateBasedColorSwitching",
+    "relation": "inputSignal",
+    "tail": "DoorFL1LampColorCmd_l",
+    "sources": [
+      "inner_lamp_ssts_0001"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightDriverModule.PWMBasedColorSwitching",
+    "relation": "subFunctionOf",
+    "tail": "AmbientLightDriverModule.ColorCoordinateBasedColorSwitching",
+    "sources": [
+      "inner_lamp_ssts_0001"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLErr",
+    "relation": "diagnosticStatus",
+    "tail": "NoError",
+    "sources": [
+      "inner_lamp_ssts_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLErr",
+    "relation": "diagnosticStatus",
+    "tail": "Error",
+    "sources": [
+      "inner_lamp_ssts_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFRErr",
+    "relation": "diagnosticStatus",
+    "tail": "NoError",
+    "sources": [
+      "inner_lamp_ssts_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFRErr",
+    "relation": "diagnosticStatus",
+    "tail": "Error",
+    "sources": [
+      "inner_lamp_ssts_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRLErr",
+    "relation": "diagnosticStatus",
+    "tail": "NoError",
+    "sources": [
+      "inner_lamp_ssts_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRLErr",
+    "relation": "diagnosticStatus",
+    "tail": "Error",
+    "sources": [
+      "inner_lamp_ssts_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRRErr",
+    "relation": "diagnosticStatus",
+    "tail": "NoError",
+    "sources": [
+      "inner_lamp_ssts_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRRErr",
+    "relation": "diagnosticStatus",
+    "tail": "Error",
+    "sources": [
+      "inner_lamp_ssts_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHCHwErr",
+    "relation": "diagnosticStatus",
+    "tail": "NoError",
+    "sources": [
+      "inner_lamp_ssts_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHCHwErr",
+    "relation": "diagnosticStatus",
+    "tail": "Error",
+    "sources": [
+      "inner_lamp_ssts_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampXXErr",
+    "relation": "diagnosticSignalGroup",
+    "tail": "MapLampFLErr, MapLampFRErr, MapLampRLErr, MapLampRRErr",
+    "sources": [
+      "inner_lamp_ssts_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHCHwErr",
+    "relation": "diagnosticSignal",
+    "tail": "OHC hardware fault status",
+    "sources": [
+      "inner_lamp_ssts_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "outputsBrightnessLevel",
+    "tail": "ParameterSet.Column5Value",
+    "sources": [
+      "inner_lamp_ssts_0003"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "outputsColorState",
+    "tail": "ParameterSet.Column7ColorCode",
+    "sources": [
+      "inner_lamp_ssts_0003"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem.ParameterSet45Activation",
+    "relation": "triggerCondition",
+    "tail": "ParameterSet.Column1Value == 1560 AND ParameterSet.Column2Value == 1187 AND ParameterSet.Column3Value == 82",
+    "sources": [
+      "inner_lamp_ssts_0003"
+    ],
+    "conflict": true,
+    "conflict_note": "Three separate triples in input describe disjoint fragments of the same multi-column condition; merged into one precise conjunction. Original triples were syntactically incomplete ('第1列为', '第2列为', '第3列为 82') and risked misinterpretation as independent conditions."
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "maintainsBrightnessLevelWhen",
+    "tail": "ParameterSet.Column5Value is within specified operational range",
+    "sources": [
+      "inner_lamp_ssts_0003"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem.outputsColorState",
+    "relation": "dependsOn",
+    "tail": "ParameterSet.Column7ColorCode",
+    "sources": [
+      "inner_lamp_ssts_0003"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

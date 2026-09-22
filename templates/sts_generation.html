@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STS Document Test Case Generation</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/im_logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sts_generation.css') }}?v=20260915-sts">
+</head>
+<body>
+    <main class="app-shell">
+        <header class="topbar">
+            <div>
+                <span class="eyebrow">STS Test Case Workspace</span>
+                <h1>STS Document Test Case Generation</h1>
+                <p>Upload an STS PDF, then parse with MinerU, split sections, extract requirement units, and cluster by topic to generate traceable test cases.</p>
+            </div>
+            <nav>
+                <a href="{{ url_for('index') }}" target="_top">Back to Generation</a>
+                <a href="{{ url_for('skills_platform') }}">Skills Platform</a>
+            </nav>
+        </header>
+
+        <section class="panel upload-panel">
+            <div class="panel-title">
+                <div>
+                    <h2>Document Parsing</h2>
+                    <p>Supports local PDF upload or a MinerU-accessible PDF URL.</p>
+                </div>
+                <strong id="docStatus">Not uploaded</strong>
+            </div>
+            <div class="upload-grid">
+                <input id="pdfFile" type="file" accept="application/pdf">
+                <button id="uploadBtn">Upload PDF</button>
+                <button id="parseBtn" disabled>Parse & Cluster</button>
+            </div>
+            <div class="url-row">
+                <input id="pdfUrl" type="url" placeholder="Or enter a PDF URL, e.g. https://.../sts.pdf">
+                <button id="useUrlBtn">Use URL</button>
+            </div>
+            <pre id="logBox" class="log-box"></pre>
+        </section>
+
+        <section class="summary-grid" id="summaryGrid">
+            <div><span>Sections</span><strong id="sectionCount">0</strong></div>
+            <div><span>Requirement Units</span><strong id="unitCount">0</strong></div>
+            <div><span>Signals</span><strong id="signalCount">0</strong></div>
+            <div><span>Topics</span><strong id="clusterCount">0</strong></div>
+        </section>
+
+        <section class="workspace">
+            <aside class="panel topic-panel">
+                <div class="panel-title">
+                    <div>
+                        <h2>Topic Clustering</h2>
+                        <p>Prefer high-quality topics for generation.</p>
+                    </div>
+                    <button id="generateBtn" disabled>Generate Selected Topics</button>
+                </div>
+                <div id="topicsList" class="topic-list">
+                    <div class="empty">Waiting to parse STS document</div>
+                </div>
+            </aside>
+
+            <section class="panel detail-panel">
+                <div class="panel-title">
+                    <div>
+                        <h2>Sections & Requirement Evidence</h2>
+                        <p>Review the evidence pack before model generation.</p>
+                    </div>
+                    <button id="refreshReviewBtn">Refresh Pending Review</button>
+                </div>
+                <div id="evidenceList" class="evidence-list">
+                    <div class="empty">Select a topic to view sections and requirement units.</div>
+                </div>
+            </section>
+        </section>
+
+        <section class="panel result-panel">
+            <div class="panel-title">
+                <div>
+                    <h2>Test Cases Pending Review</h2>
+                    <p>Accepted and rejected cases are stored in separate libraries.</p>
+                </div>
+                <div class="review-tabs">
+                    <button class="review-tab active" data-status="pending">Pending Review</button>
+                    <button class="review-tab" data-status="accepted">Accepted</button>
+                    <button class="review-tab" data-status="rejected">Rejected</button>
+                </div>
+            </div>
+            <div id="casesList" class="cases-list">
+                <div class="empty">No cases pending review</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/sts_generation.js') }}?v=20260915-sts"></script>
+</body>
+</html>

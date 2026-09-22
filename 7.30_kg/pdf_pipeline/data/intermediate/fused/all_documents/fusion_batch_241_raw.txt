@@ -1,0 +1,476 @@
+```json
+[
+  {
+    "head": "整车电子电器系统功能参数",
+    "relation": "前提条件",
+    "tail": "分辨率/Factor 非空",
+    "sources": ["inner_lamp_ssts_0122"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统功能参数",
+    "relation": "前提条件",
+    "tail": "默认值/Default 非空",
+    "sources": ["inner_lamp_ssts_0122"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH 灯光模式",
+    "relation": "前提条件",
+    "tail": "RoofLHALampOnOff_1 = 0x0 (OFF)",
+    "sources": ["inner_lamp_ssts_0123"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH 灯光模式",
+    "relation": "前提条件",
+    "tail": "RoofLHALampBrthngCmd_1 = 0x00 (No Request)",
+    "sources": ["inner_lamp_ssts_0123"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH 灯光模式",
+    "relation": "前提条件",
+    "tail": "AmbtLghtLHRollingCtr_1 不再按 1 顺序叠加",
+    "sources": ["inner_lamp_ssts_0123"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH 灯光模式",
+    "relation": "抑制条件",
+    "tail": "RoofLHALampOnOff_1 = 0x0 (OFF)",
+    "sources": ["inner_lamp_ssts_0123"],
+    "conflict": true,
+    "conflict_note": "同一信号（RoofLHALampOnOff_1 = 0x0）在相同语义实体（RoofAmbtLampA_LH 灯光模式）下，既作为前提条件又作为抑制条件，逻辑矛盾：前提条件通常使功能可激活，抑制条件则阻止其生效。需确认设计意图（如是否为不同子状态或时序约束）。"
+  },
+  {
+    "head": "RoofAmbtLampA_LH 灯光模式",
+    "relation": "抑制条件",
+    "tail": "RoofLHALampBrthngCmd_1 = 0x00 (No Request)",
+    "sources": ["inner_lamp_ssts_0123"],
+    "conflict": true,
+    "conflict_note": "与前提条件 'RoofLHALampBrthngCmd_1 = 0x00 (No Request)' 冲突：同一信号值同时作为功能启用前提和抑制条件，存在逻辑不一致。需验证是否为笔误（如应为 ≠ 0x00）或上下文依赖（如与其他条件组合）"
+  },
+  {
+    "head": "RoofAmbtLampA_LH 灯光模式",
+    "relation": "抑制条件",
+    "tail": "AmbtLghtLHRollingCtr_1 不再按 1 顺序叠加",
+    "sources": ["inner_lamp_ssts_0123"],
+    "conflict": true,
+    "conflict_note": "与前提条件 'AmbtLghtLHRollingCtr_1 不再按 1 顺序叠加' 冲突：完全相同的描述被赋予相反语义关系（前提 vs 抑制），构成直接逻辑冲突。建议核查原始文档上下文（如是否分属不同工作模式或故障分支）"
+  },
+  {
+    "head": "RoofAmbtLampA_LH 灯光状态",
+    "relation": "输入为",
+    "tail": "RoofLHALampBrtNsCmd_1 (亮度值)",
+    "sources": ["inner_lamp_ssts_0123"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH 灯光状态",
+    "relation": "输入为",
+    "tail": "RoofLHALampColorCmd_1 (颜色值)",
+    "sources": ["inner_lamp_ssts_0123"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH 灯光状态",
+    "relation": "输入为",
+    "tail": "RoofLHALampFadeSpdCmd_1 (渐变速度)",
+    "sources": ["inner_lamp_ssts_0123"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH 灯光模式",
+    "relation": "故障响应",
+    "tail": "氛围灯模块过压或欠压故障",
+    "sources": ["inner_lamp_ssts_0123"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH 灯光模式",
+    "relation": "故障响应",
+    "tail": "ZCU LIN 信号超时（>6 s）",
+    "sources": ["inner_lamp_ssts_0123"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH 灯光模式",
+    "relation": "超时约束",
+    "tail": "ZCU LIN 信号超时（>6 s）",
+    "sources": ["inner_lamp_ssts_0123"],
+    "conflict": false,
+    "conflict_note": "与同源‘故障响应’共存，非冲突：超时约束定义触发阈值，故障响应定义该阈值触发后的行为，二者互补"
+  },
+  {
+    "head": "LedgeLamp_LH",
+    "relation": "输出到",
+    "tail": "RZCU",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LedgeLamp_RH",
+    "relation": "输出到",
+    "tail": "RZCU",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PerLingCiaSe",
+    "relation": "输入来自",
+    "tail": "RZCU",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrunkFtldSwAcry",
+    "relation": "输入来自",
+    "tail": "RZCU",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLamp_LH",
+    "relation": "输出到",
+    "tail": "GHC",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLamp_FR",
+    "relation": "输出到",
+    "tail": "GHC",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLamp_RH",
+    "relation": "输出到",
+    "tail": "GHC",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLamp_LH",
+    "relation": "输出到",
+    "tail": "ICB",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLamp_RH",
+    "relation": "输出到",
+    "tail": "ICB",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TailLamp_LH",
+    "relation": "输出到",
+    "tail": "ICB",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TailLamp_RH",
+    "relation": "输出到",
+    "tail": "ICB",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFltLamp_FL",
+    "relation": "输出到",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFltLamp_FR",
+    "relation": "输出到",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFltLamp_RL",
+    "relation": "输出到",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFltLamp_RR",
+    "relation": "输出到",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "控制对象",
+    "tail": "LedgeLamp_LH",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "控制对象",
+    "tail": "LedgeLamp_RH",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "控制对象",
+    "tail": "PerLingCiaSe",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "控制对象",
+    "tail": "TrunkFtldSwAcry",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "GHC",
+    "relation": "控制对象",
+    "tail": "MapLamp_LH",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "GHC",
+    "relation": "控制对象",
+    "tail": "MapLamp_RH",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "控制对象",
+    "tail": "BrakeLamp_LH",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "控制对象",
+    "tail": "BrakeLamp_RH",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "控制对象",
+    "tail": "TailLamp_LH",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "控制对象",
+    "tail": "TailLamp_RH",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "控制对象",
+    "tail": "DoorFltLamp_FL",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "包含子功能",
+    "tail": "ICB",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "连接到",
+    "tail": "ICB",
+    "sources": ["inner_lamp_ssts_0125"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智己汽车",
+    "relation": "包含子功能",
+    "tail": "Interior Lighting Sub System",
+    "sources": ["inner_lamp_ssts_0126"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0 平台-SSTS-IBD10",
+    "relation": "控制对象",
+    "tail": "Interior Lighting Sub System",
+    "sources": ["inner_lamp_ssts_0126", "inner_lamp_ssts_0129", "inner_lamp_ssts_0239"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Sub System Technical Specification",
+    "relation": "包含子功能",
+    "tail": "Interior Lighting Sub System",
+    "sources": ["inner_lamp_ssts_0126", "inner_lamp_ssts_0239"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Sub System Technical Specification",
+    "relation": "输入来自",
+    "tail": "Interior Lighting Sub System",
+    "sources": ["inner_lamp_ssts_0130", "inner_lamp_ssts_0465"],
+    "conflict": true,
+    "conflict_note": "同一 head-tail 对（Sub System Technical Specification → Interior Lighting Sub System）存在相反关系：'包含子功能' 与 '输入来自' 语义互斥。前者表示 SSTS 包含该子系统，后者暗示该子系统向 SSTS 提供输入，逻辑上可能共存但需明确层级（如 SSTS 文档本身包含子系统定义，同时接收其运行数据）。建议统一为更准确关系，如 '规范覆盖' 或 '引用子系统'"
+  },
+  {
+    "head": "ThirdRowMapLampLHSwReq",
+    "relation": "前提条件",
+    "tail": "ThrdRowMapLamp_LH_Sw_SIG 未被按下",
+    "sources": ["inner_lamp_ssts_0127"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSwReq",
+    "relation": "前提条件",
+    "tail": "ThrdRowMapLamp_LH_Sw_SIG 被按下",
+    "sources": ["inner_lamp_ssts_0127"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSwReq",
+    "relation": "前提条件",
+    "tail": "ThirdRowMapLampLHSwReq 检测到异常",
+    "sources": ["inner_lamp_ssts_0127"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSwReq",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0127"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThrdRowMapLamp_LH_Sw_SIG",
+    "relation": "输入为",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0127"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSwReq",
+    "relation": "依赖于",
+    "tail": "ThrdRowMapLamp_LH_Sw_SIG",
+    "sources": ["inner_lamp_ssts_0127"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制参数",
+    "relation": "前提条件",
+    "tail": "参数范围/Range 为有效值",
+    "sources": ["inner_lamp_ssts_0128"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制逻辑",
+    "relation": "前提条件",
+    "tail": "分辨率/Factor 满足精度要求",
+    "sources": ["inner_lamp_ssts_0128"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门控制",
+    "relation": "前提条件",
+    "tail": "默认值/Default 设置正确",
+    "sources": ["inner_lamp_ssts_0128"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统检测到低压",
+    "relation": "触发条件",
+    "tail": "电压异常需求",
+    "sources": ["inner_lamp_ssts_0131"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统检测到欠压",
+    "relation": "触发条件",
+    "tail": "电压异常需求",
+    "sources": ["inner_lamp_ssts_0131"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统检测到正常",
+    "relation": "触发条件",
+    "tail": "电压异常需求",
+    "sources": ["inner_lamp_ssts_0131"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统检测到过压",
+    "relation": "触发条件",
+    "tail": "电压异常需求",
+    "sources": ["inner_lamp_ssts_0131"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

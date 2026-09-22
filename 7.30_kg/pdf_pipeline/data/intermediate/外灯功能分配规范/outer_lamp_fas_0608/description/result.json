@@ -1,0 +1,37 @@
+{
+  "table_type": "fault_table",
+  "topic": "DirectionLight DirectionLightErrorStatus",
+  "row_semantics": "Each row represents a specific direction light error status subscription for different转向灯 (turn signals) and their associated fault states.",
+  "column_semantics": {
+    "1": "Function Name: DirectionLight.DirectionLightErrorStatus",
+    "2": "Consumer: SOA",
+    "3": "Controller/Module: RZCU",
+    "4": "Controller/Module: LHZCU",
+    "5": "Controller/Module: ICB (only in the third row)",
+    "6": "Fault State: Hard Line Fault Status or Network Fault Status"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "DirectionLight",
+    "SOA",
+    "RZCU",
+    "LHZCU",
+    "ICB"
+  ],
+  "core_conditions": [
+    "Left Turn Signal Subscription",
+    "Right Turn Signal Subscription"
+  ],
+  "core_outputs": [
+    "DirectionLightErrorStatus"
+  ],
+  "core_faults": [
+    "No Error",
+    "Error",
+    "Unknown"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the error status reporting mechanism for left and right turn signals, specifying which controllers (RZCU, LHZCU, ICB) are involved and what fault states (hard line or network) can be reported for each signal.",
+  "uncertain_points": []
+}

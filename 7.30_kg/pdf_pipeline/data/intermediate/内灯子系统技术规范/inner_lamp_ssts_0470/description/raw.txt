@@ -1,0 +1,85 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform)",
+  "row_semantics": "Each row represents a specific control signal or command for the interior lighting system, detailing its function, source, destination, and communication protocol.",
+  "column_semantics": {
+    "接口名称需与逻辑框图内容一致": "Signal/function name that must match the logical block diagram content.",
+    "输入/输出/提供/消费": "Indicates whether the signal is an input, output, provided by, or consumed by a component.",
+    "CAN/LIN /SOA服务/硬线等": "Communication protocol or service type (e.g., LIN bus, SOA service).",
+    "信号发送节点或者SoA服务提供方": "The node or service provider that sends the signal.",
+    "信号接收节点或者SoA服务消费方": "The node or service consumer that receives the signal.",
+    "指定信号通道": "Specific signal channel used for transmission.",
+    "指定信号来源": "Source of the specified signal."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "AmbtLghtRHRollingCtr_1",
+      "type": "controller_module",
+      "description": "Ambient light rolling control signal."
+    },
+    {
+      "name": "DoorFR1LampOnOff_1",
+      "type": "controller_module",
+      "description": "Front right door lamp on/off control request."
+    },
+    {
+      "name": "DoorFR1LampColorCmd_1",
+      "type": "controller_module",
+      "description": "Front right door lamp color command."
+    },
+    {
+      "name": "DoorFR1LampBrtnsCmd_1",
+      "type": "controller_module",
+      "description": "Front right door lamp brightness command."
+    },
+    {
+      "name": "DoorFR1LampBrthngCmd_1",
+      "type": "controller_module",
+      "description": "Front right door lamp breathing command."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "E=N*1",
+      "description": "Ambient light synchronization signal, continuously looped from 0 to 255 for LIN heartbeat use."
+    },
+    {
+      "name": "0x00=DoorFR1LampColorCmd_1_0_No Request",
+      "description": "No color request command."
+    },
+    {
+      "name": "0x65-0xFF=Reserved",
+      "description": "Reserved range for future use in brightness commands."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RHZCU",
+      "type": "controller_module",
+      "description": "Main controller module responsible for processing and forwarding signals."
+    },
+    {
+      "name": "DoorAmbtLampX_FR",
+      "type": "output_signal",
+      "description": "Output signal for ambient light on the front right door."
+    },
+    {
+      "name": "DoorAmbtLampA_FR",
+      "type": "output_signal",
+      "description": "Output signal for ambient light on the front right door (alternative path)."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "LIN heartbeat",
+      "description": "Signal E=N*1 must be continuously looped when not being incremented to maintain LIN bus health."
+    }
+  ],
+  "engineering_interpretation": "This table defines the communication protocols, signal mappings, and control commands for the interior lighting system's ambient, color, brightness, and breathing functions, primarily involving the RHZCU controller and LIN bus communication.",
+  "uncertain_points": []
+}
+```

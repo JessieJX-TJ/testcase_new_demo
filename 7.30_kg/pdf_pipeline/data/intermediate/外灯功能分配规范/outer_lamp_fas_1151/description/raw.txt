@@ -1,0 +1,75 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "侧位灯（Side Position Light）控制与状态获取功能规范",
+  "row_semantics": "表格按功能模块划分，每一行代表一个独立的接口或服务定义，描述了控制侧位灯亮灭以及获取其状态的相关参数和接口信息。",
+  "column_semantics": {
+    "1": "功能模块名称（如ControlSidePositionLight, SidePositionLightStatus）",
+    "2": "消费类型（Consumption Type）",
+    "3": "SOA (Service-Oriented Architecture) 相关信息",
+    "4": "ICB (Internal Communication Bus) 相关信息",
+    "5": "ICB 相关信息（重复列，可能表示不同ICB通道或用途）",
+    "6": "未明确用途的空白列",
+    "7": "未明确用途的空白列"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "功能模块",
+      "description": "侧位灯控制与状态获取功能组"
+    },
+    {
+      "name": "ControlSidePositionLight",
+      "type": "功能模块",
+      "description": "用于控制侧位灯（左/右后）的亮灭"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "功能模块",
+      "description": "用于订阅并获取侧位灯（左前）的状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightReq",
+      "type": "输入信号",
+      "description": "控制请求参数，包含灯光开关指令（0x0=OFF, 0x1=ON）",
+      "details": {
+        "instanceID": 7,
+        "values": {
+          "0x0": "OFF",
+          "0x1": "ON"
+        }
+      }
+    },
+    {
+      "name": "SidePositionLightReq",
+      "type": "输入信号",
+      "description": "控制请求参数，包含灯光开关指令（0x0=OFF, 0x1=ON）",
+      "details": {
+        "instanceID": 8,
+        "values": {
+          "0x0": "OFF",
+          "0x1": "ON"
+        }
+      }
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightSta",
+      "type": "输出信号",
+      "description": "侧位灯状态反馈参数",
+      "details": {
+        "instanceID": 5
+      }
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆侧位灯的控制接口和服务，包括左后、右后位置灯的开关控制以及左前位置灯的状态查询。可用于验证侧位灯控制逻辑是否正确响应命令，以及状态反馈是否准确。",
+  "uncertain_points": []
+}
+```

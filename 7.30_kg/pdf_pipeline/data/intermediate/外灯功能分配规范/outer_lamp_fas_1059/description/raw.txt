@@ -1,0 +1,68 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Daytime Running Lamp (DRL) System Status Description",
+  "row_semantics": "Different states and conditions of the DRL system, including fault detection and switch status feedback.",
+  "column_semantics": "The left column describes the condition or state, while the right column provides the corresponding system response or status value.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "Module responsible for processing exterior light switch inputs."
+    },
+    {
+      "name": "DayRunningLightErrSta",
+      "type": "signal",
+      "description": "Signal indicating the error status of the Daytime Running Light."
+    },
+    {
+      "name": "DayRunningLghtSwSta",
+      "type": "signal",
+      "description": "Signal indicating the switch status of the Daytime Running Light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DayTmRunngLghtFlsts = 0x0",
+      "description": "No faults detected in the Daytime Running Light system."
+    },
+    {
+      "condition": "DayTmRunngLghtFlsts_0_False",
+      "description": "Specific fault condition related to the first bit of the fault status register."
+    },
+    {
+      "condition": "DayRunningLightErrSta = 0x1",
+      "description": "Error status triggered when a fault is detected."
+    },
+    {
+      "condition": "DayRunningLghtSwSta = 0x0",
+      "description": "Switch status indicating the DRL is OFF."
+    },
+    {
+      "condition": "DayRunningLghtSwSta = 0x1",
+      "description": "Switch status indicating the DRL is ON."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "HMI子系统显示",
+      "description": "Human-Machine Interface subsystem displays the DRL status and any fault messages."
+    },
+    {
+      "output": "故障弹窗提醒",
+      "description": "Fault pop-up window alert triggered by the HMI subsystem when a fault is detected."
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "DayRunningLightErrSta",
+      "description": "Error status signal indicating a fault in the Daytime Running Light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the expected behavior of the Daytime Running Light system under normal operation and fault conditions, including how the HMI subsystem should display the DRL status and trigger alerts. It is used to verify that the system correctly reports switch status and fault conditions to the HMI.",
+  "uncertain_points": []
+}
+```

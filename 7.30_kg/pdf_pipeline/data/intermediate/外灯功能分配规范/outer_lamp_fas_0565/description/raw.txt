@@ -1,0 +1,91 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "外灯控制流程与时序规范",
+  "row_semantics": "流程步骤或模块顺序",
+  "column_semantics": "无，表格为线性流程图",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "B295",
+      "type": "控制器/模块",
+      "description": "后雾灯软开关"
+    },
+    {
+      "name": "S32G",
+      "type": "控制器/模块",
+      "description": "外灯组合服务转基础服务控制器"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "后雾灯灯控制模块"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器/模块",
+      "description": "硬线驱动控制器"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Eth/Method",
+      "type": "输入信号",
+      "description": "以太网方法通信"
+    },
+    {
+      "name": "Eth/Event",
+      "type": "输入信号",
+      "description": "以太网事件通信"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "S32G 外灯SWC: 20ms (逻辑+异步发送)",
+      "type": "输出信号",
+      "description": "S32G控制器的外灯开关控制信号，包含逻辑处理和异步发送机制"
+    },
+    {
+      "name": "RZCU 硬线驱动",
+      "type": "输出信号",
+      "description": "RZCU控制器的硬线驱动信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "B295 后雾灯软开关",
+      "value": "30ms",
+      "description": "后雾灯软开关的响应时间"
+    },
+    {
+      "name": "S32G 外灯组合服务转基础服务",
+      "value": "20ms",
+      "description": "S32G控制器的服务转换时间"
+    },
+    {
+      "name": "LHZCU 后雾灯灯控制模块",
+      "value": "30ms",
+      "description": "LHZCU模块的逻辑与信号处理时间"
+    },
+    {
+      "name": "S32G 外灯SWC",
+      "value": "20ms",
+      "description": "S32G控制器的外灯开关控制信号处理时间"
+    },
+    {
+      "name": "RZCU 硬线驱动",
+      "value": "50ms",
+      "description": "RZCU控制器的硬线驱动响应时间"
+    },
+    {
+      "name": "总时延",
+      "value": "200ms",
+      "description": "整个外灯控制流程的总时延"
+    }
+  ],
+  "engineering_interpretation": "该表用于验证外灯控制系统中各模块间通信与处理的时序一致性，确保从后雾灯软开关触发到最终硬线驱动输出的全流程在规定时间内完成。",
+  "uncertain_points": []
+}
+```

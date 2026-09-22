@@ -1,0 +1,66 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯控制系统接口规范",
+  "row_semantics": "表格中的每一行代表一个特定的信号接口或服务接口，描述了该接口的功能、数据流向、类型、提供方/消费方、路径及来源。",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识具体的信号或服务。",
+    "Direction": "信号或服务的数据流向，如输入、输出、提供、消费等。",
+    "Type": "接口的类型，如CAN/LIN总线、SOA服务、硬线等。",
+    "Sender/Provider": "信号发送方或服务提供方的模块或系统。",
+    "Receiver/Consumer": "信号接收方或服务消费方的模块或系统。",
+    "Channel": "信号传输的路径或通道，如指定信号通道。",
+    "Interface Source": "接口信号的来源，如指定信号来源或外灯SSTS/FAS等。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RHZCU",
+      "type": "Controller/Module",
+      "description": "Right Headlight Zone Control Unit，右近光灯区域控制单元，负责处理右近光灯相关的信号和控制逻辑。"
+    },
+    {
+      "name": "RHA",
+      "type": "Controller/Module",
+      "description": "Right Headlight Actuator，右近光灯执行器，接收控制指令并驱动右近光灯的动作。"
+    },
+    {
+      "name": "ICB/LHZCU",
+      "type": "Controller/Module",
+      "description": "Integrated Control Box / Left Headlight Zone Control Unit，集成控制盒/左近光灯区域控制单元，负责处理左侧相关信号。"
+    },
+    {
+      "name": "DippedBeamLightReq",
+      "type": "Input Signal",
+      "description": "左近光灯控制请求信号，用于控制左侧近光灯的点亮或熄灭。"
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "Output Signal",
+      "description": "左近光灯状态信号，用于报告左侧近光灯的工作状态（点亮或熄灭）。"
+    },
+    {
+      "name": "SSTS",
+      "type": "Interface Source",
+      "description": "Side Sensor System Trigger，侧传感器系统触发器，可能与外部传感器相关联，作为信号来源。"
+    },
+    {
+      "name": "FAS",
+      "type": "Interface Source",
+      "description": "Front Assist System，前方辅助系统，可能与车辆前方的传感器或系统相关联，作为信号来源。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightStatus",
+      "description": "通过该接口可以获取左侧近光灯的状态，包括点亮（ON）或熄灭（OFF）。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了外灯控制系统中左右近光灯相关的信号和SOA服务接口，包括控制请求、状态反馈以及对应的控制器、信号类型和传输路径，可用于验证外灯控制功能的正确性，确保信号在不同控制器之间的正确传递和响应。",
+  "uncertain_points": []
+}
+```

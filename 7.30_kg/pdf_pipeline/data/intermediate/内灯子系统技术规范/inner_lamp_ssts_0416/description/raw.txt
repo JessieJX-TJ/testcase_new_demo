@@ -1,0 +1,92 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "第三排左侧阅读灯的点亮与熄灭控制逻辑",
+  "row_semantics": "表格按功能阶段（触发条件、执行动作、退出条件、异常处理）划分，详细描述了阅读灯在不同速度信号下的行为。",
+  "column_semantics": "第一列定义了功能的不同阶段或状态；第二列详细描述了该阶段的具体条件和动作。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampLHBrtLvl",
+      "type": "input_signal",
+      "description": "阅读灯亮度请求信号，用于控制阅读灯的点亮和熄灭速度。"
+    },
+    {
+      "name": "ThirdRowMapLampLHDimSpd",
+      "type": "output_signal",
+      "description": "阅读灯驱动模块输出的PWM信号，用于控制阅读灯的亮度和闪烁速度。"
+    },
+    {
+      "name": "阅读灯驱动控制模块",
+      "type": "controller",
+      "description": "负责根据接收到的亮度请求信号，生成相应的PWM驱动信号以控制阅读灯的行为。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "接收到阅读灯控制模块的请求信号",
+      "subconditions": [
+        "ThirdRowMapLampLHBrtLvl=0x1 (Level_1)"
+      ]
+    },
+    {
+      "condition": "未接收到点亮速度信号时",
+      "subconditions": [
+        "按照默认 ThirdRowMapLampLHDimSpd=0x0 (速度 1) 执行"
+      ]
+    },
+    {
+      "condition": "接收到熄灭速度信号",
+      "subconditions": [
+        "ThirdRowMapLampLHBrtLvl=0x0 (OFF)"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "点亮阅读灯",
+      "details": [
+        "根据 ThirdRowMapLampLHDimSpd 的值，设置不同的 PWM 驱动速度：\n- 0x0: 速度 1 (0.025 秒/档)\n- 0x1: 速度 2 (0.1 秒/档)\n- 0x2: 速度 3 (瞬点亮)"
+      ]
+    },
+    {
+      "output": "熄灭阅读灯",
+      "details": [
+        "根据 ThirdRowMapLampLHDimSpd 的值，设置不同的 PWM 驱动速度：\n- 0x0: 速度 1 (0.025 秒/档)\n- 0x1: 速度 2 (0.15 秒/档)\n- 0x2: 速度 3 (瞬熄灭)"
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "第三排左侧阅读灯无短路/开路故障",
+      "description": "当检测到阅读灯电路存在短路或开路故障时，系统应直接关断对应阅读灯驱动。",
+      "trigger_condition": "触发短路/开路故障"
+    },
+    {
+      "fault_name": "未接收到阅读灯控制模块的亮度请求信号",
+      "description": "如果未能接收到亮度请求信号，则直接关断第三排左侧阅读灯驱动。",
+      "trigger_condition": "未接收到 ThirdRowMapLampLHDimSpd 信号"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "signal": "ThirdRowMapLampLHDimSpd",
+      "speed": "0x0",
+      "timing": "0.025 秒/档"
+    },
+    {
+      "signal": "ThirdRowMapLampLHDimSpd",
+      "speed": "0x1",
+      "timing": "0.1 秒/档"
+    },
+    {
+      "signal": "ThirdRowMapLampLHDimSpd",
+      "speed": "0x2",
+      "timing": "瞬时"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证第三排左侧阅读灯在不同亮度请求信号下的点亮和熄灭行为，包括正常速度和瞬时操作，并测试在故障情况下的安全关断机制。",
+  "uncertain_points": []
+}
+```

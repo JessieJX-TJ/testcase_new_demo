@@ -1,0 +1,84 @@
+[
+  {
+    "head": "紧急制动灯发生故障",
+    "relation": "前提条件",
+    "tail": "BrakeLightFltSta = 0x1 = True",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "当紧急制动灯发生故障时",
+      "BrkLghtFltSta=0x1=True"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1512",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "紧急制动灯发生故障",
+    "relation": "前提条件",
+    "tail": "BrakeLightErrSta = 0x1 = Error",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "当紧急制动灯发生故障时",
+      "{ExteriorLightSwitchProcess. BrakeLightErrSta.BrakeLghtErrSta}=0x1=Error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1512",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "HMI子系统显示故障弹窗提醒",
+    "relation": "触发条件",
+    "tail": "BrakeLightFltSta = 0x1 = True",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "HMI子系统根据紧急制动灯服务接口或者CAN信号故障状态做故障弹窗提醒",
+      "BrkLghtFltSta=0x1=True"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1512",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "HMI子系统显示故障弹窗提醒",
+    "relation": "触发条件",
+    "tail": "BrakeLightErrSta = 0x1 = Error",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "HMI子系统根据紧急制动灯服务接口或者CAN信号故障状态做故障弹窗提醒",
+      "{ExteriorLightSwitchProcess. BrakeLightErrSta.BrakeLghtErrSta}=0x1=Error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1512",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "BrakeLightFltSta",
+    "relation": "输出为",
+    "tail": "0x1 = True",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "BrkLghtFltSta=0x1=True"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1512",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "BrakeLightErrSta",
+    "relation": "输出为",
+    "tail": "0x1 = Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "{ExteriorLightSwitchProcess. BrakeLightErrSta.BrakeLghtErrSta}=0x1=Error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1512",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  }
+]

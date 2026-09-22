@@ -1,0 +1,460 @@
+```json
+[
+  {
+    "head": "RHA_Lamp",
+    "relation": "outputs",
+    "tail": "Hazard_Lamp_Hold_Source",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TailpAsmBA_RH_Lamp",
+    "relation": "outputs",
+    "tail": "Hazard_Lamp_Hold_Source",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TailpAsmBA_LH_Lamp",
+    "relation": "outputs",
+    "tail": "Hazard_Lamp_Hold_Source",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TailpAsmBB_Lamp",
+    "relation": "outputs",
+    "tail": "Hazard_Lamp_Hold_Source",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard_Lamp_Function_Hold",
+    "relation": "hold_condition",
+    "tail": "always",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Output",
+    "relation": "prerequisite",
+    "tail": "User_Mode != UsgMd_0_Sleep",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Output",
+    "relation": "prerequisite",
+    "tail": "User_Mode ∈ {UsgMd_1_Standby, UsgMd_6_XOTA}",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Output",
+    "relation": "prerequisite",
+    "tail": "User_Mode_Valid = true",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Output",
+    "relation": "prerequisite",
+    "tail": "Vehicle_Mode != VehMd_3_TRANSPORT",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Output",
+    "relation": "prerequisite",
+    "tail": "Vehicle_Mode_Valid = true",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Output",
+    "relation": "prerequisite",
+    "tail": "Exterior_Light_Switch_Status != AUTO",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Output",
+    "relation": "prerequisite",
+    "tail": "DLP_Scene_Light_Setting = DISABLED",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Output",
+    "relation": "prerequisite",
+    "tail": "Tunnel_Detection = true",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Output",
+    "relation": "prerequisite",
+    "tail": "Auto_Light_On_Request = true",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Output",
+    "relation": "inhibition_condition",
+    "tail": "Hazard_Lamp_Activated = true",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": true,
+    "conflict_note": "Same head-relation pair has both 'prerequisite' and 'inhibition_condition' for Hazard_Lamp_Activated; logically contradictory: one requires hazard off (implied), the other explicitly inhibits when hazard is on. Requires functional clarification."
+  },
+  {
+    "head": "ICB_Dipped_Beam_Off_Control",
+    "relation": "prerequisite",
+    "tail": "Exterior_Light_Switch_Status = OFF",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_Dipped_Beam_Off_Control",
+    "relation": "prerequisite",
+    "tail": "LDipdBeamLghtCtrl = Off",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_Dipped_Beam_Off_Control",
+    "relation": "prerequisite",
+    "tail": "RDipdBeamLghtCtrl = Off",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_Dipped_Beam_Off_Control",
+    "relation": "depends_on",
+    "tail": "LHZCU_Side_Position_And_Dipped_Beam_OFF_Interface_To_ICB",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_Service_Interface_Call",
+    "relation": "prerequisite",
+    "tail": "ICB_Dipped_Beam_Off_Control",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI_ICB_Service_Call",
+    "relation": "prerequisite",
+    "tail": "ICB_Service_Interface_Call",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp_Indicator_Display",
+    "relation": "prerequisite",
+    "tail": "HMI_ICB_Service_Call",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn_Signal_Switch",
+    "relation": "input_from",
+    "tail": "LHZCU_Switch_Preprocessing_Module",
+    "sources": ["outer_lamp_fas_1062", "outer_lamp_fas_1467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU_Switch_Preprocessing_Module",
+    "relation": "output_to",
+    "tail": "LHZCU_Turn_Signal_Control_Module",
+    "sources": ["outer_lamp_fas_1062", "outer_lamp_fas_1467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU_Turn_Signal_Control_Module",
+    "relation": "output_to",
+    "tail": "RZCU_TDM_Forwarding",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU_TDM_Forwarding",
+    "relation": "output_to",
+    "tail": "TDM_Trailer_Turn_Signal_Driver",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Position_Lamp_Soft_Switch",
+    "relation": "input_from",
+    "tail": "S32G_Outer_Lamp_Combination_To_Basic_Service",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S32G_Outer_Lamp_Combination_To_Basic_Service",
+    "relation": "output_to",
+    "tail": "LHZCU_Turn_Signal_Control_Module",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU_Turn_Signal_Control_Module",
+    "relation": "output_to",
+    "tail": "S32G_Outer_Lamp_SWC",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S32G_Outer_Lamp_SWC",
+    "relation": "output_to",
+    "tail": "RZCU_Service_To_CAN",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU_Service_To_CAN",
+    "relation": "output_to",
+    "tail": "TDM_Trailer_Turn_Signal_Driver",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU_Reversing_Lamp_Control_Module",
+    "relation": "output_to",
+    "tail": "S32G_Outer_Lamp_SWC",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU_Service_To_CAN",
+    "relation": "output_to",
+    "tail": "TDM_Trailer_Reversing_Lamp_Driver",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "contains_subfunction",
+    "tail": "Switch_Preprocessing_Module",
+    "sources": ["outer_lamp_fas_1062", "outer_lamp_fas_1467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "contains_subfunction",
+    "tail": "Turn_Signal_Control_Module",
+    "sources": ["outer_lamp_fas_1062", "outer_lamp_fas_1467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S32G",
+    "relation": "contains_subfunction",
+    "tail": "Outer_Lamp_Combination_To_Basic_Service",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S32G",
+    "relation": "contains_subfunction",
+    "tail": "Outer_Lamp_SWC",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front_Fog_Light_Status",
+    "relation": "prerequisite",
+    "tail": "ICB_Subscribes_To_Front_Fog_Light_Status_Interface",
+    "sources": ["outer_lamp_fas_1063"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front_Fog_Light_Error_Status",
+    "relation": "prerequisite",
+    "tail": "ICB_Subscribes_To_Front_Fog_Light_Status_Interface",
+    "sources": ["outer_lamp_fas_1063"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front_Fog_Light_Status",
+    "relation": "prerequisite",
+    "tail": "ICB_Subscribes_To_Front_Fog_Light_Interface",
+    "sources": ["outer_lamp_fas_1063"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front_Fog_Light_Error_Status",
+    "relation": "prerequisite",
+    "tail": "ICB_Subscribes_To_Front_Fog_Light_Interface",
+    "sources": ["outer_lamp_fas_1063"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front_Fog_Light_Off_Synchronization",
+    "relation": "timeout_constraint",
+    "tail": "Left_and_right_front_fog_lamps_must_turn_off_within_40ms_of_each_other",
+    "sources": ["outer_lamp_fas_1063"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Between_Ranges",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Park_Range",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Reverse_Range",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Neutral_Range",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Forward_Range_A",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Forward_Range_B",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Forward_Range_C",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Forward_Range_D",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Forward_Range_E",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Forward_Range_F",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Forward_Range_G",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Forward_Range_H",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Transmission_Shift_Lever_Position",
+    "relation": "maps_to",
+    "tail": "Lever_Position_Unknown",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Daytime_Running_Light_Response",
+    "relation": "prerequisite",
+    "tail": "Transmission_Shift_Lever_Position_Valid = true",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Daytime_Running_Light_Response",
+    "relation": "prerequisite",
+    "tail": "Control_Success",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": true,
+    "conflict_note": "Ambiguous tail: 'Control_Success' is a result/state, not a condition. Conflicts with semantic role of 'prerequisite'. Likely mislabeled — should be 'result' or 'output'."
+  }
+]
+```

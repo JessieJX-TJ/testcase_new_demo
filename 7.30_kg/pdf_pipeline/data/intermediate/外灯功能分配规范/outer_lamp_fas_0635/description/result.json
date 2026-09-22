@@ -1,0 +1,63 @@
+{
+  "table_type": "other",
+  "topic": "近光灯开启同步性要求及伴我回家功能逻辑",
+  "row_semantics": "表格内容描述了两个独立的技术规范点，分别涉及近光灯的同步点亮要求和伴我回家功能的激活逻辑。",
+  "column_semantics": "表格仅有一列，用于详细描述技术规范的内容。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Light Headlamp Zone Control Unit，负责控制车灯相关功能的电子控制单元。"
+    },
+    {
+      "name": "UsgMd",
+      "type": "mode",
+      "description": "Usage Mode，表示车辆当前的使用模式，如舒适模式、正常驾驶模式、泊车模式、自动驾驶模式等。"
+    },
+    {
+      "name": "AutoLghtOnReq_1",
+      "type": "signal",
+      "description": "自动大灯开启请求信号1，用于触发自动大灯开启的请求。"
+    },
+    {
+      "name": "AutoLghtOnReq_ICB",
+      "type": "signal",
+      "description": "自动大灯开启请求ICB（Internal Communication Bus），可能是内部通信总线上的另一个大灯开启请求信号。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsgMd = 0x2 || UsgMd = 0x3 || UsgMd = 0x4 || UsgMd = 0x5",
+      "description": "当车辆处于舒适模式、正常驾驶模式、泊车模式或自动驾驶模式时，系统需要记忆特定的自动大灯开启请求状态。"
+    },
+    {
+      "condition": "UsgMd 变化为 0x1",
+      "description": "当车辆模式从上述模式切换到待机模式（Standby）时，系统根据之前记忆的自动大灯开启请求状态来判断是否激活伴我回家功能。"
+    },
+    {
+      "condition": "左侧和右侧近光灯需保持同步点亮",
+      "description": "在近光灯开启时，左右两侧的灯光必须同时点亮，以确保照明效果的一致性。"
+    },
+    {
+      "condition": "两侧最大延时不能超过 40ms",
+      "description": "左右两侧近光灯点亮的时间差不能超过 40毫秒，以保证视觉上的一致性和安全性。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "伴我回家功能激活判断",
+      "description": "根据记忆的自动大灯开启请求状态，在模式切换后判断是否激活伴我回家功能。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "两侧最大延时不超过 40ms",
+      "description": "近光灯左右两侧点亮的最大时间差限制为 40 毫秒，以确保同步性。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了近光灯同步点亮的要求以及伴我回家功能的激活逻辑，可用于验证 LHZCU 在不同使用模式下对自动大灯开启请求的处理逻辑，特别是模式切换时伴我回家功能的正确判断。",
+  "uncertain_points": []
+}

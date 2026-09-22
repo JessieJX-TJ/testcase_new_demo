@@ -1,0 +1,71 @@
+[
+  {
+    "head": "Reading Lamp Reports Error",
+    "relation": "触发条件",
+    "tail": "ThirdRowMapLampRHErr 状态位为 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ThirdRowMapLampRHErr",
+      "0x1=Error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0167",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "Reading Lamp Reports No Error",
+    "relation": "触发条件",
+    "tail": "ThirdRowMapLampRHErr 状态位为 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ThirdRowMapLampRHErr",
+      "0x0=No error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0167",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "Reading Lamp Current Exceeds Maximum * 1.5",
+    "relation": "前提条件",
+    "tail": "Reading Lamp is On",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "1、阅读灯在点亮状态,电流超过最大电流值*1.5"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0167",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "Reading Lamp Current Below Minimum * 0.1",
+    "relation": "前提条件",
+    "tail": "Reading Lamp is Off",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "2、阅读灯在熄灭状态,电流低于最小电流值*0.1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0167",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "Reading Lamp Fault Condition",
+    "relation": "诊断关联",
+    "tail": "Reading Lamp Current Exceeds Maximum * 1.5 OR Reading Lamp Current Below Minimum * 0.1",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "1 || 2",
+      "1、阅读灯在点亮状态,电流超过最大电流值*1.5",
+      "2、阅读灯在熄灭状态,电流低于最小电流值*0.1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0167",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "fault_table"
+  }
+]

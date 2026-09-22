@@ -1,0 +1,64 @@
+{
+  "table_type": "logic_table",
+  "topic": "主远光灯控制逻辑",
+  "row_semantics": "表格按功能执行的阶段划分，包括前置条件、触发条件和执行动作。",
+  "column_semantics": "表格分为三列，分别描述了实现特定功能所需的条件和对应的动作。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightFbkSOAEEnPrm",
+      "type": "parameter",
+      "description": "主远光灯反馈系统开环使能参数，用于判断是否允许进行主远光灯控制。"
+    },
+    {
+      "name": "RMainBeamLightCtrl_HW",
+      "type": "signal",
+      "description": "硬件级主远光灯控制信号，表示物理开关状态。"
+    },
+    {
+      "name": "RMainBeamLightDrvMdl",
+      "type": "module",
+      "description": "主远光灯驱动模块，负责控制远光灯的实际输出。"
+    },
+    {
+      "name": "MainBeamLamp_RH_HSD",
+      "type": "output_signal",
+      "description": "右远光灯输出信号，由驱动模块控制。"
+    },
+    {
+      "name": "MainBeamLightDrvMdl",
+      "type": "module",
+      "description": "主远光灯驱动模块，负责持续发送状态信息。"
+    },
+    {
+      "name": "RMainBeamLightSts",
+      "type": "signal",
+      "description": "主远光灯状态信号，表示当前远光灯的工作状态（如关闭）。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MainBeamLightFbkSOAEEnPrm == 0 (Disable)",
+      "description": "前置条件：系统不允许进行主远光灯控制。"
+    },
+    {
+      "condition": "收到【MainBeamLightCtrlMdl】统一分发的 RMainBeamLightCtrl_HW == 0 (Off)",
+      "description": "触发条件：接收到主远光灯控制模块分发的硬件级控制信号为关闭状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "action": "停止驱动右远光灯输出 (MainBeamLamp_RH_HSD)",
+      "description": "执行动作：停止向右远光灯输出信号，使其熄灭。"
+    },
+    {
+      "action": "持续发送 RMainBeamLightSts = 0 (Off) 至 MainBeamLightCtrlMdl",
+      "description": "执行动作：持续发送主远光灯状态为关闭的信息至主远光灯控制模块，至少发送三帧。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定条件下（系统禁用且硬件级控制信号为关闭）主远光灯驱动模块应执行的逻辑动作，主要用于验证主远光灯在关闭状态下的正确控制流程。",
+  "uncertain_points": []
+}

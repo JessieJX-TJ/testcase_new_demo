@@ -1,0 +1,57 @@
+```json
+[
+  {
+    "head": "RearFogLightDrvMdl 持续发送 RearFogPositionLightStatus",
+    "relation": "前提条件",
+    "tail": "RearFogPositionLightSta = 1 (On)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogPositionLightSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RearFogLightDrvMdl 停止发送 RearFogPositionLightStatus",
+    "relation": "退出条件",
+    "tail": "RearFogPositionLightReq == 0 (Off)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "RearFogPositionLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ControlRearFogPositionLight",
+    "relation": "输入为",
+    "tail": "RearFogLightCtrlMdl",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ControlRearFogPositionLight",
+      "RearFogLightCtrlMdl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RearFogPositionLightStatus",
+    "relation": "输出为",
+    "tail": "RearFogLightDrvMdl",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogPositionLightStatus",
+      "RearFogLightDrvMdl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RearFogPositionLightSta = 1 (On)",
+    "relation": "状态保持条件",
+    "tail": "至少发送三帧 RearFogPositionLightStatus",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RearFogPositionLightSta",
+      "RearFogPositionLightStatus"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

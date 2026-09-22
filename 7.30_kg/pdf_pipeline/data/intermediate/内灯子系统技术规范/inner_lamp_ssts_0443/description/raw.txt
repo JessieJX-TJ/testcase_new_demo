@@ -1,0 +1,104 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (SSTS) signal specifications for Z-ONE-3.0 platform",
+  "row_semantics": "Each row represents a specific signal interface used for communication between the Light Head Control Unit (LHZCU) and various lamp modules (e.g., FtwlAmbtLamp_FL, FtwlAmbtLamp_FR) within the Interior Lighting Sub System.",
+  "column_semantics": {
+    "Interface Name": "Name of the signal interface.",
+    "Direction": "Indicates whether the signal is an input or output.",
+    "Type": "Communication protocol type (e.g., CAN/LIN/SOA service/hardware line).",
+    "Sender/Provider": "The entity that sends or provides the signal.",
+    "Receiver/Consumer": "The entity that receives or consumes the signal.",
+    "Channel": "Specific communication channel used for the signal.",
+    "Interface Source": "Source of the interface definition."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Light Head Control Unit, responsible for controlling various lighting functions."
+    },
+    {
+      "name": "FtwlAmbtLamp_FL",
+      "type": "Module",
+      "description": "Front Left Ambient Lamp module."
+    },
+    {
+      "name": "FtwlAmbtLamp_FR",
+      "type": "Module",
+      "description": "Front Right Ambient Lamp module."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "AmbtLghtLHRolliingCtr_1",
+      "description": "Ambient light rolling control signal, used for continuous dimming or breathing effects."
+    },
+    {
+      "name": "FtwlFLlampOnOff_1",
+      "description": "Front left ambient lamp on/off request signal."
+    },
+    {
+      "name": "FtwlFLlampColorCmd_1",
+      "description": "Front left ambient lamp color command signal."
+    },
+    {
+      "name": "FtwlFLlampBrtnsCmd_1",
+      "description": "Front left ambient lamp brightness command signal."
+    },
+    {
+      "name": "FtwlFLlampBrthngCmd_1",
+      "description": "Front left ambient lamp breathing command signal."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "AmbtLghtLHRolliingCtr_1",
+      "description": "Output signal for ambient light rolling control."
+    },
+    {
+      "name": "FtwlFLlampOnOff_1",
+      "description": "Output signal for ambient light on/off control."
+    },
+    {
+      "name": "FtwlFLlampColorCmd_1",
+      "description": "Output signal for ambient light color selection."
+    },
+    {
+      "name": "FtwlFLlampBrtnsCmd_1",
+      "description": "Output signal for ambient light brightness adjustment."
+    },
+    {
+      "name": "FtwlFLlampBrthngCmd_1",
+      "description": "Output signal for ambient light breathing effect control."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "AmbtLghtLHRolliingCtr_1",
+      "description": "Signal value range: 0-255; can be used for LIN heartbeat; stops breathing when not updated."
+    },
+    {
+      "name": "FtwlFLlampOnOff_1",
+      "description": "Value 0x0 = OFF; Value 0x1 = ON."
+    },
+    {
+      "name": "FtwlFLlampColorCmd_1",
+      "description": "Value 0x00 = No Request; Values 0x01-0xFF = Various color values."
+    },
+    {
+      "name": "FtwlFLlampBrtnsCmd_1",
+      "description": "Value 0x00 = No Request; Values 0x00-0x64 = Brightness percentage; Values 0x65-0xFF = Reserved."
+    },
+    {
+      "name": "FtwlFLlampBrthngCmd_1",
+      "description": "Value 0x00 = No Request."
+    }
+  ],
+  "engineering_interpretation": "This table defines the signal interfaces and their characteristics for controlling interior ambient lighting functions in the Z-ONE-3.0 platform's SSTS. It specifies how the LHZCU communicates with different lamp modules to control features such as on/off, color, brightness, and breathing effects.",
+  "uncertain_points": []
+}
+```

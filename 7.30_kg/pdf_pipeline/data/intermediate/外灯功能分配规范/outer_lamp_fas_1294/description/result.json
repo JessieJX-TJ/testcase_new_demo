@@ -1,0 +1,60 @@
+{
+  "table_type": "logic_table",
+  "topic": "车辆防入侵系统中危险警报灯的自动控制逻辑",
+  "row_semantics": "描述了在特定前置条件下，当触发动作发生时，系统执行的动作序列。",
+  "column_semantics": {
+    "场景描述": "对整个逻辑规则的简要说明，即当车辆触发防入侵时，危险警报灯会自动激活以提醒用户。",
+    "前置条件": "定义了触发后续动作所需的系统状态或信号条件。",
+    "触发动作": "指明了导致系统进入特定行为模式的具体输入事件或信号。",
+    "执行动作": "详细描述了在满足前置条件和触发动作后，系统将执行的具体操作。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "危险警报灯自动控制模块 LHZCU",
+      "type": "控制器/模块名",
+      "description": "负责控制危险警报灯闪烁的电子控制单元。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd=All",
+      "description": "用户模式为所有模式（All）的状态条件。"
+    },
+    {
+      "name": "UsrMdV=Valid",
+      "description": "用户模式有效（Valid）的状态条件。"
+    },
+    {
+      "name": "VehMd=All",
+      "description": "车辆模式为所有模式（All）的状态条件。"
+    },
+    {
+      "name": "VehMdV=Valid",
+      "description": "车辆模式有效（Valid）的状态条件。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "VehIntrusionPrevnHzrdLmpReq",
+      "description": "车辆防入侵前级危险灯请求信号，值为0x3表示已触发防入侵状态。",
+      "type": "输出信号"
+    },
+    {
+      "name": "危险警报灯自动控制模块 LHZCU 信号跳变为",
+      "description": "控制危险警报灯按照1.25Hz频率闪烁（先on后off），周期为800ms。",
+      "type": "执行动作"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal": "危险警报灯",
+      "frequency": "1.25Hz",
+      "description": "危险警报灯按照1.25Hz频率闪烁，即每800ms一个闪烁周期。"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证当车辆处于防入侵状态时，危险警报灯是否能够根据预设的逻辑条件正确地自动激活并按照指定频率闪烁。",
+  "uncertain_points": []
+}

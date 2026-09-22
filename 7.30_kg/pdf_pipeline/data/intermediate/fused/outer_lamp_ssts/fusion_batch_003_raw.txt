@@ -1,0 +1,484 @@
+```json
+[
+  {
+    "head": "外灯系统点亮",
+    "relation": "抑制条件",
+    "tail": "传感器失效",
+    "sources": ["outer_lamp_ssts_0027"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯亮度调节",
+    "relation": "抑制条件",
+    "tail": "电源状态异常",
+    "sources": ["outer_lamp_ssts_0027"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯开关信号输出",
+    "relation": "输出为",
+    "tail": "外灯系统点亮前提条件满足",
+    "sources": ["outer_lamp_ssts_0027"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯光亮度调节信号输出",
+    "relation": "输出为",
+    "tail": "外灯亮度调节前提条件满足",
+    "sources": ["outer_lamp_ssts_0027"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "模式指示信号输出",
+    "relation": "输出为",
+    "tail": "外灯模式切换前提条件满足",
+    "sources": ["outer_lamp_ssts_0027"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯系统进入安全模式",
+    "relation": "故障响应",
+    "tail": "外灯故障",
+    "sources": ["outer_lamp_ssts_0027"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯系统降级运行",
+    "relation": "故障响应",
+    "tail": "传感器失效",
+    "sources": ["outer_lamp_ssts_0027"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯系统保持当前模式",
+    "relation": "状态保持条件",
+    "tail": "车速信号未变化",
+    "sources": ["outer_lamp_ssts_0027"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯系统保持当前模式",
+    "relation": "状态保持条件",
+    "tail": "驾驶模式未切换",
+    "sources": ["outer_lamp_ssts_0027"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯系统复位",
+    "relation": "复位条件",
+    "tail": "电源状态恢复",
+    "sources": ["outer_lamp_ssts_0027"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆唤醒",
+    "relation": "触发条件",
+    "tail": "制动踏板开关信号发生电平跳变沿",
+    "sources": ["outer_lamp_ssts_0028"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动踏板开关",
+    "relation": "输入为",
+    "tail": "电平跳变沿触发唤醒",
+    "sources": ["outer_lamp_ssts_0028"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯输出异常检测功能被激活",
+    "relation": "前提条件",
+    "tail": "DILghtFbkSOAEnPrm == 1 (Enable)",
+    "sources": ["outer_lamp_ssts_0029"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯输出异常检测功能被激活",
+    "relation": "前提条件",
+    "tail": "右前转向灯处于输出状态",
+    "sources": ["outer_lamp_ssts_0029"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统设置故障代码 DTC B104A13",
+    "relation": "触发条件",
+    "tail": "右前转向灯输出异常检测功能被激活",
+    "sources": ["outer_lamp_ssts_0029"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B104A13 故障代码被置位",
+    "relation": "诊断关联",
+    "tail": "右前转向灯输出异常检测功能被激活",
+    "sources": ["outer_lamp_ssts_0029"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSta == 2 (Error) 信号至少发送三帧",
+    "relation": "超时约束",
+    "tail": "FRDILghtDrvMdl 模块持续发送 DirectionLightSta == 2 (Error) 至 DILghtCtrlMdl",
+    "sources": ["outer_lamp_ssts_0029"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯子系统",
+    "relation": "控制对象",
+    "tail": "版本<0.1>",
+    "sources": ["outer_lamp_ssts_0030", "outer_lamp_ssts_0079", "outer_lamp_ssts_0138", "outer_lamp_ssts_0344", "outer_lamp_ssts_0412", "outer_lamp_ssts_0422"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯子系统",
+    "relation": "输出到",
+    "tail": "50 of 114 页",
+    "sources": ["outer_lamp_ssts_0030"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯输出短路到地故障",
+    "relation": "前提条件",
+    "tail": "检测到短路到地",
+    "sources": ["outer_lamp_ssts_0031"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯输出短路到地故障",
+    "relation": "抑制条件",
+    "tail": "检测到未短路到地",
+    "sources": ["outer_lamp_ssts_0031"],
+    "conflict": true,
+    "conflict_note": "同一故障类型下，'前提条件'与'抑制条件'语义互斥：'检测到短路到地'是激活该故障诊断的必要条件，而'检测到未短路到地'是其否决条件；二者逻辑上构成‘使能/禁用’对，但共存于同一三元组头实体下易引发执行歧义，需确认是否应拆分为不同关系（如 'enable_condition' / 'disable_condition'）或归属不同层级（如诊断使能 vs 故障判定）"
+  },
+  {
+    "head": "右远光灯输出短路到电源故障",
+    "relation": "前提条件",
+    "tail": "检测到短路到电源",
+    "sources": ["outer_lamp_ssts_0031"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯输出短路到电源故障",
+    "relation": "抑制条件",
+    "tail": "检测到未短路到电源",
+    "sources": ["outer_lamp_ssts_0031"],
+    "conflict": true,
+    "conflict_note": "同'右远光灯输出短路到地故障'，存在前提/抑制语义冲突：二者定义同一故障的激活与禁用边界，但未明确区分上下文（如诊断使能阶段 vs 实时故障判定阶段），建议补充上下文限定或重构关系类型"
+  },
+  {
+    "head": "右远光灯输出开路故障",
+    "relation": "前提条件",
+    "tail": "检测到输出开路",
+    "sources": ["outer_lamp_ssts_0031"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯输出开路故障",
+    "relation": "抑制条件",
+    "tail": "检测到输出开路恢复",
+    "sources": ["outer_lamp_ssts_0031"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯子系统",
+    "relation": "包含子功能",
+    "tail": "子系统技术规范",
+    "sources": ["outer_lamp_ssts_0032", "outer_lamp_ssts_0113", "outer_lamp_ssts_0141", "outer_lamp_ssts_0182", "outer_lamp_ssts_0296", "outer_lamp_ssts_0381", "outer_lamp_ssts_0390"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯子系统",
+    "relation": "控制对象",
+    "tail": "3.0架构-SSTS-IBD02",
+    "sources": ["outer_lamp_ssts_0032", "outer_lamp_ssts_0049", "outer_lamp_ssts_0106", "outer_lamp_ssts_0141", "outer_lamp_ssts_0182", "outer_lamp_ssts_0235", "outer_lamp_ssts_0236", "outer_lamp_ssts_0369", "outer_lamp_ssts_0370", "outer_lamp_ssts_0390", "outer_lamp_ssts_0464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯子系统",
+    "relation": "输入来自",
+    "tail": "智己汽车",
+    "sources": ["outer_lamp_ssts_0032", "outer_lamp_ssts_0182", "outer_lamp_ssts_0215", "outer_lamp_ssts_0310", "outer_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯驱动模块停止驱动左制动灯",
+    "relation": "前提条件",
+    "tail": "exlBrkLghtHwDrvEnPrm == 1",
+    "sources": ["outer_lamp_ssts_0033"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯驱动模块停止驱动左制动灯",
+    "relation": "前提条件",
+    "tail": "左制动灯处于输出状态",
+    "sources": ["outer_lamp_ssts_0033", "outer_lamp_ssts_0457"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯驱动模块停止驱动左制动灯",
+    "relation": "触发条件",
+    "tail": "检测到左制动灯短路到地",
+    "sources": ["outer_lamp_ssts_0033"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯驱动模块持续发送制动灯状态为Off",
+    "relation": "触发条件",
+    "tail": "检测到左制动灯短路到地",
+    "sources": ["outer_lamp_ssts_0033"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制模块至少发送三帧数据",
+    "relation": "触发条件",
+    "tail": "检测到左制动灯短路到地",
+    "sources": ["outer_lamp_ssts_0033"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯故障状态反馈设置为1",
+    "relation": "触发条件",
+    "tail": "检测到左制动灯短路到地",
+    "sources": ["outer_lamp_ssts_0033"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "置位DTC B104111",
+    "relation": "触发条件",
+    "tail": "检测到左制动灯短路到地",
+    "sources": ["outer_lamp_ssts_0033"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯驱动模块置位DTC B104111",
+    "relation": "故障响应",
+    "tail": "检测到左制动灯短路到地",
+    "sources": ["outer_lamp_ssts_0033"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯功能启用",
+    "relation": "前提条件",
+    "tail": "HzrdLightSwSOAEnPrm == 1 (Enable)",
+    "sources": ["outer_lamp_ssts_0034"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯状态发送",
+    "relation": "触发条件",
+    "tail": "用户松开危险报警灯开关，开关悬空",
+    "sources": ["outer_lamp_ssts_0034"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLightSwMdl 模块持续发送 HazardLightSwitchStatus",
+    "relation": "依赖于",
+    "tail": "危险报警灯状态发送",
+    "sources": ["outer_lamp_ssts_0034"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtCtrlMdl 接收 HazardLightSwitchStatus",
+    "relation": "依赖于",
+    "tail": "HzrdLightSwMdl 模块持续发送 HazardLightSwitchStatus",
+    "sources": ["outer_lamp_ssts_0034"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯功能退出",
+    "relation": "复位条件",
+    "tail": "开关接地",
+    "sources": ["outer_lamp_ssts_0034"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLightSwMdl 模块持续发送 HazardLightSwitchStatus",
+    "relation": "状态保持条件",
+    "tail": "用户松开危险报警灯开关，开关悬空",
+    "sources": ["outer_lamp_ssts_0034"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLightSwMdl 模块至少发送三帧 HazardLightSwitchStatus",
+    "relation": "超时约束",
+    "tail": "用户松开危险报警灯开关，开关悬空",
+    "sources": ["outer_lamp_ssts_0034"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统检测到右后位置灯短路到地",
+    "relation": "触发条件",
+    "tail": "执行动作",
+    "sources": ["outer_lamp_ssts_0036"],
+    "conflict": true,
+    "conflict_note": "'执行动作'为泛化占位符，缺乏可验证语义；与后续具体故障响应（如停止驱动、置位DTC）形成抽象-具体不匹配。建议统一替换为具体动作描述或标记为待澄清项"
+  },
+  {
+    "head": "右后位置灯处于输出状态",
+    "relation": "前提条件",
+    "tail": "系统检测到右后位置灯短路到地",
+    "sources": ["outer_lamp_ssts_0036"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtDrvMdl 模块停止驱动右后位置灯输出",
+    "relation": "故障响应",
+    "tail": "检测到右后位置灯短路到地",
+    "sources": ["outer_lamp_ssts_0036"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtDrvMdl 模块持续发送 SidePositionLightStatus",
+    "relation": "故障响应",
+    "tail": "检测到右后位置灯短路到地",
+    "sources": ["outer_lamp_ssts_0036"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "置位 DTC B106111",
+    "relation": "故障响应",
+    "tail": "检测到右后位置灯短路到地",
+    "sources": ["outer_lamp_ssts_0036"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtDrvMdl 模块持续发送 SidePositionLightStatus",
+    "relation": "包含子功能",
+    "tail": "置位 DTC B106111",
+    "sources": ["outer_lamp_ssts_0036"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "诊断需求开始",
+    "relation": "前提条件",
+    "tail": "满足进入条件",
+    "sources": ["outer_lamp_ssts_0037"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "诊断需求结束",
+    "relation": "前提条件",
+    "tail": "满足退出条件",
+    "sources": ["outer_lamp_ssts_0037"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制功能",
+    "relation": "前提条件",
+    "tail": "配置项为'外灯亮度调节'",
+    "sources": ["outer_lamp_ssts_0038"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制功能",
+    "relation": "前提条件",
+    "tail": "参数范围在有效范围内",
+    "sources": ["outer_lamp_ssts_0038"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制功能",
+    "relation": "前提条件",
+    "tail": "配置项为'车门自动解锁速度'",
+    "sources": ["outer_lamp_ssts_0038"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制功能",
+    "relation": "前提条件",
+    "tail": "分辨率满足精度要求",
+    "sources": ["outer_lamp_ssts_0038"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门功能",
+    "relation": "前提条件",
+    "tail": "配置项为'后备箱开启高度'",
+    "sources": ["outer_lamp_ssts_0038"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门功能",
+    "relation": "前提条件",
+    "tail": "默认值设置正确",
+    "sources": ["outer_lamp_ssts_0038"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯控制功能被禁用",
+    "relation": "前提条件",
+    "tail": "RevsLightFbkSOAEnPrm == 0 (Disable)",
+    "sources": ["outer_lamp_ssts_0039"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统检测到倒车灯开路",
+    "relation": "触发条件",
+    "tail": "检测到倒车灯开路",
+    "sources": ["outer_lamp_ssts_0039"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统置位故障代码 DTC B104513",
+    "relation": "诊断关联",
+    "tail": "DTC B104513",
+    "sources": ["outer_lamp_ssts_0039"],
+    "conflict": true,
+    "conflict_note": "tail 值 'DTC B104513' 为自指，缺乏语义指向（应为'触发条件'或'故障响应'等）。与标准诊断建模惯例不符（通常为 'DTC B104513 被置位' 或 'DTC B104513 关联于倒车灯开路故障'），建议修正为 'DTC B104513 被置位' 并补充 relation='故障响应'"
+  }
+]
+```

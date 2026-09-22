@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "诊断 DTC 需求清单/Requirement List",
+  "row_semantics": "表格的每一行代表一个独立的故障需求或诊断代码（DTC）的描述，用于定义故障的触发条件和恢复条件。",
+  "column_semantics": {
+    "序号": "故障需求的编号，用于唯一标识每个故障项。",
+    "DTC 显示码": "诊断故障代码（DTC）的显示码，用于在诊断工具中识别特定的故障。",
+    "故障描述": "对故障现象的简要描述，帮助理解故障的具体表现。",
+    "故障置位条件": "触发该故障（即设置 DTC）的条件或事件。",
+    "故障恢复条件": "清除该故障（即复位 DTC）的条件或事件。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DTC 显示码",
+      "type": "signal",
+      "description": "用于唯一标识诊断故障代码的信号或参数。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "故障置位条件",
+      "description": "触发故障（设置 DTC）的条件，可能涉及输入信号、系统状态或外部事件。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "故障恢复条件",
+      "description": "清除故障（复位 DTC）的条件，通常与故障置位条件相对应。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC 显示码",
+      "description": "具体的故障代码，用于在诊断过程中定位问题。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子电器系统中各功能模块（如外灯、车身控制、电动尾门等）的故障诊断逻辑，确保系统能够正确检测并记录故障，并在满足恢复条件时清除故障。",
+  "uncertain_points": [
+    "表格中的 'NA' 表示具体的信息未填写，需要进一步确认。",
+    "故障置位和恢复条件的具体细节未明确，需结合相关功能规范进一步分析。"
+  ]
+}
+```

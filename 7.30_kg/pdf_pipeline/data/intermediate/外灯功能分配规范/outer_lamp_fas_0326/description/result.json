@@ -1,0 +1,90 @@
+{
+  "table_type": "signal_table",
+  "topic": "寻车灯远程控制模块 LHZCU 的信号状态与反馈机制",
+  "row_semantics": "表格的每一行代表一个具体的信号或状态描述，涵盖了从外部输入到内部处理再到输出反馈的完整流程。",
+  "column_semantics": "表格没有明确的列，信息以行的形式组织，每行描述一个特定的信号或状态及其相关属性。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "寻车灯远程控制模块，负责处理寻车灯相关的信号和状态"
+    },
+    {
+      "name": "ICB",
+      "type": "System",
+      "description": "集成控制盒，接收来自LHZCU的状态和故障反馈"
+    },
+    {
+      "name": "SDM",
+      "type": "System",
+      "description": "车身域控制器，接收转向灯控制状态反馈"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "System",
+      "description": "外灯组合服务系统，订阅LHZCU的双闪灯状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightSta",
+      "type": "Input Signal",
+      "description": "方向灯状态，包括OFF、No Flash等"
+    },
+    {
+      "name": "DirectionLightErrSta",
+      "type": "Input Signal",
+      "description": "方向灯错误状态，表示无错误"
+    },
+    {
+      "name": "exlDircnLghtHwDrvEnPrm",
+      "type": "Input Signal",
+      "description": "通过Instance ID获取转向灯状态"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "type": "Output Signal",
+      "description": "车辆危险警示灯状态，用于PPV（预碰撞预警）"
+    },
+    {
+      "name": "EDRDircnIndLampSwSts",
+      "type": "Output Signal",
+      "description": "紧急转向指示灯开关状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirenLghtSts",
+      "type": "Output Signal",
+      "description": "寻车灯状态，设置为OFF"
+    },
+    {
+      "name": "DirectionLightSts",
+      "type": "Output Signal",
+      "description": "方向灯状态，设置为No Flash"
+    },
+    {
+      "name": "DirectionLightErrSts",
+      "type": "Output Signal",
+      "description": "方向灯错误状态，设置为No Error"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "Fault Status",
+      "description": "方向灯错误状态，表示无错误"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "双闪灯同步性延时周期",
+      "value": "40ms",
+      "description": "双闪灯同步性允许的最大延时周期"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了寻车灯远程控制模块(LHZCU)在不同状态下的信号交互和反馈机制，可用于验证LHZCU与ICB、SDM及外部灯光控制系统之间的信号传输、状态同步以及故障反馈功能是否符合设计要求。",
+  "uncertain_points": []
+}

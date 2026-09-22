@@ -1,0 +1,63 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车电子电器系统接口定义与信号流向规范",
+  "row_semantics": "描述单个接口的详细信息及其在系统中的作用，包括接口名称、数据流向、类型、发送方/提供方、接收方/消费方、路径及接口来源。",
+  "column_semantics": {
+    "Interface Name": "接口的唯一标识名称，需与逻辑框图内容一致。",
+    "Direction": "信号或数据的流向，如输入/输出、提供/消费。",
+    "Type": "接口的类型，例如CAN/LIN/SOA服务或硬线等。",
+    "Sender/Provider": "信号的发送方或提供方，可能是信号发送节点或SoA服务。",
+    "Receiver/Consumer": "信号的接收方或消费方，可能是信号接收节点或SoA服务。",
+    "Channel": "信号传输的路径或通道，指定信号通道。",
+    "Interface Source": "接口的来源，指定信号来源。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "接口名称 (Interface Name)",
+      "type": "功能名",
+      "description": "接口的唯一标识符，用于区分不同的系统模块或子系统之间的通信点。"
+    },
+    {
+      "name": "方向 (Direction)",
+      "type": "控制器/模块名",
+      "description": "定义了信号或数据在接口中的流动方向，如从控制器到传感器（输出）或从传感器到控制器（输入）。"
+    },
+    {
+      "name": "类型 (Type)",
+      "type": "控制器/模块名",
+      "description": "指明接口的物理或逻辑特性，例如CAN总线、LIN总线、SOA服务或直接硬线连接。"
+    },
+    {
+      "name": "发送方/提供方 (Sender/Provider)",
+      "type": "控制器/模块名",
+      "description": "信号的源头，可能是某个节点（如ECU）或一个软件服务（如SoA服务）。"
+    },
+    {
+      "name": "接收方/消费方 (Receiver/Consumer)",
+      "type": "控制器/模块名",
+      "description": "信号的终点，可能是另一个节点或软件服务。"
+    },
+    {
+      "name": "路径 (Channel)",
+      "type": "控制器/模块名",
+      "description": "信号传输的具体路径，如特定的CAN总线ID或LIN总线地址。"
+    },
+    {
+      "name": "接口来源 (Interface Source)",
+      "type": "控制器/模块名",
+      "description": "信号的最终来源，可能是一个具体的硬件组件或软件模块。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子电器系统中各接口的定义是否正确，确保信号流向、类型、发送方、接收方、路径及来源符合设计要求，从而保证系统间通信的准确性和可靠性。",
+  "uncertain_points": [
+    "具体的功能名未在表格中明确列出，仅通过接口名称进行间接关联。",
+    "未明确指出具体的控制器或模块名称，仅以通用术语描述。",
+    "未涉及系统状态、模式名、故障状态及阈值/定时等更深层次的测试条件。"
+  ]
+}

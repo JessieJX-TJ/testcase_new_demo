@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"other\",\n  \"topic\": \"远光灯控制与状态获取机制\",\n  \"row_semantics\": \"表格中的每一行代表一个独立的技术要求或功能描述，涵盖了远光灯的同步性、请求重发机制、外灯状态主动获取、前置条件下的外灯状态判断等内容。\",\n  \"column_semantics\": \"表格仅有一列，即“备注”列，用于详细描述各项技术规范。\",\n  \"has_merged_cells\": false,\n  \"header_levels\": 0,\n  \"core_entities\": [\n    \"MainBeamLight\", // 功能名：主远光灯\n    \"ICB\", // 控制器/模块名：集成控制盒\n    \"LHZCU\", // 控制器/模块名：本地主机控制单元\n    \"Onchange\" // 系统状态/模式名：外灯状态变化事件\n  ],\n  \"core_conditions\": [\n    \"左侧和右侧需保持同步点亮\",\n    \"未收到MainBeamLight.ControlMainBeamLight.MainBeamLightResp反馈\",\n    \"请求状态未变\",\n    \"发送类型为Onchange的外灯状态服务\",\n    \"500ms后仍未收到状态反馈\",\n    \"信号丢失\",\n    \"网络丢失\",\n    \"反馈的外灯点亮状态与LHZCU的控制状态不符\"\n  ],\n  \"core_outputs\": [\n    \"远光灯开启同步性要求\",\n    \"ICB远光灯请求重发机制\",\n    \"外灯状态主动获取\",\n    \"前置条件中外灯状态判断\"\n  ],\n  \"core_faults\": [\n    \"信号丢失\",\n    \"网络丢失\",\n    \"反馈状态与控制状态不符\"\n  ],\n  \"core_timing_constraints\": [\n    \"两侧最大延时不能超过40ms\",\n    \"尝试重发3次后仍未反馈请求成功，送;\",\n    \"尝试按照<=50ms周期重发3次\",\n    \"500ms（待标定）后主动Getter()方式也无法获取外灯状态\"\n  ],\n  \"engineering_interpretation\": \"该表格定义了车辆远光灯系统的控制逻辑、状态反馈机制以及在异常情况下的处理规则，可用于验证远光灯的同步点亮性能、请求重发机制的有效性、外灯状态获取的及时性和准确性，以及在信号或网络丢失等故障场景下的系统行为。\",\n  \"uncertain_points\": [\n    \"待标定的500ms定时阈值具体数值未明确\",\n    \"具体的故障处理流程细节未完全展开\"\n  ]\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

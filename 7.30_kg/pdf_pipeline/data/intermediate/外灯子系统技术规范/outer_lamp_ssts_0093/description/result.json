@@ -1,0 +1,55 @@
+{
+  "table_type": "signal_table",
+  "topic": "Airbag Deployment Inversion and Vehicle Crash Hazard Request Signal Mapping",
+  "row_semantics": "Defines the mapping between input signals for airbag deployment inversion and output signals for vehicle crash hazard request, including their corresponding states and associated controllers/modules.",
+  "column_semantics": {
+    "1": "Function Name (AirbagDplInsvn / VehCrashHazrdReq)",
+    "2": "Signal Type (Input / Output)",
+    "3": "Controller/Module (CAN, SDM, LHZCU, SSTS)",
+    "4": "Internal Signal Name",
+    "5": "Output Controller/Module",
+    "6": "External Light (SSTS)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "AirbagDplInsvn",
+      "type": "function",
+      "description": "Airbag Deployment Inversion function, determining whether airbags are deployed based on input signals."
+    },
+    {
+      "name": "VehCrashHazrdReq",
+      "type": "function",
+      "description": "Vehicle Crash Hazard Request function, indicating the presence of a crash hazard."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Airbag_Deployed_Inversion",
+      "type": "input_signal",
+      "description": "Input signal for airbag deployment inversion, with values indicating deployed (0x0) or not deployed (0x1)."
+    },
+    {
+      "name": "VehCrashHazrdReq",
+      "type": "output_signal",
+      "description": "Output signal for vehicle crash hazard request, with values indicating off (0x0) or on (0x1)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "VehCrashHazrdReq_0_Off",
+      "type": "system_state",
+      "description": "System state indicating no crash hazard detected."
+    },
+    {
+      "name": "VehCrashHazrdReq_1_On",
+      "type": "system_state",
+      "description": "System state indicating a crash hazard is present."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the signal mappings and state transitions for airbag deployment inversion and vehicle crash hazard request functions, which can be used to verify the correct signal propagation and state changes in the vehicle's safety systems during testing.",
+  "uncertain_points": []
+}

@@ -1,0 +1,71 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Exterior Light Switch Process - Brake Light Switch Status",
+  "row_semantics": "The rows represent different parameters and their associated request/response definitions, as well as event information for the brake light switch status.",
+  "column_semantics": "The columns categorize the information into sections: Request (Req), Response (Resp), Event, and system/module consumption (e.g., SOA, LHZCU, ICB).",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrakeLightReq",
+      "type": "input_signal",
+      "description": "Request parameter to control the brake light state."
+    },
+    {
+      "name": "BrakeLightResp",
+      "type": "output_signal",
+      "description": "Response parameter indicating the success or failure of the brake light control request."
+    },
+    {
+      "name": "BrakeLightSwSts",
+      "type": "system_state",
+      "description": "Current status of the brake light switch."
+    }
+  ],
+  "core_conditions": [
+    {
+      "parameter": "BrakeLightReq",
+      "value": "0x0=OFF",
+      "description": "Request to turn off the brake light."
+    },
+    {
+      "parameter": "BrakeLightReq",
+      "value": "0x1=ON",
+      "description": "Request to turn on the brake light."
+    }
+  ],
+  "core_outputs": [
+    {
+      "parameter": "BrakeLightResp",
+      "value": "0x0=ControlSuccess",
+      "description": "Indicates that the brake light control request was successfully processed."
+    },
+    {
+      "parameter": "BrakeLightResp",
+      "value": "0x1=Failed",
+      "description": "Indicates that the brake light control request failed."
+    },
+    {
+      "parameter": "BrakeLightSwSts",
+      "value": "0x0=OFF",
+      "description": "Brake light switch is in the OFF position."
+    },
+    {
+      "parameter": "BrakeLightSwSts",
+      "value": "0x1=ON",
+      "description": "Brake light switch is in the ON position."
+    },
+    {
+      "parameter": "BrakeLightSwSts",
+      "value": "0x2=Unknown",
+      "description": "Brake light switch status is unknown."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interface for controlling and monitoring the brake light switch status within the vehicle's exterior light system. It specifies the request and response parameters for turning the brake light on or off, as well as the current status of the brake light switch.",
+  "uncertain_points": [
+    "The specific behavior of the system when 'BrakeLightSwSts' is 'Unknown' is not detailed.",
+    "The exact timing or sequence of events related to the 'BrakeLightSwitchStatus' interface is not specified."
+  ]
+}

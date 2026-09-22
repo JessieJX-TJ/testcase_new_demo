@@ -1,0 +1,574 @@
+[
+  {
+    "head": "Driver Door Floor Lamp Control Circuit Open Circuit",
+    "relation": "timeout_constraint",
+    "tail": "100 ms",
+    "sources": [
+      "inner_lamp_ssts_0209"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lighting Function",
+    "relation": "depends_on",
+    "tail": "Exterior Lighting Brightness Level",
+    "sources": [
+      "inner_lamp_ssts_0211"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Module (BCM)",
+    "relation": "depends_on",
+    "tail": "Vehicle Driving Mode (e.g., Comfort, Sport)",
+    "sources": [
+      "inner_lamp_ssts_0211"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Liftgate System",
+    "relation": "depends_on",
+    "tail": "Power Liftgate Open/Close Status",
+    "sources": [
+      "inner_lamp_ssts_0211"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode",
+    "relation": "trigger_condition",
+    "tail": "Command value = Rate0 (Code 0x0) → immediate stop of breathing",
+    "sources": [
+      "inner_lamp_ssts_0212"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode",
+    "relation": "trigger_condition",
+    "tail": "Breathing mode value changes → immediate stop and transition to new mode",
+    "sources": [
+      "inner_lamp_ssts_0212"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlFLLampFadeSpdCmd_1",
+    "relation": "output_as",
+    "tail": "Ambient Lamp Fade Speed Command",
+    "sources": [
+      "inner_lamp_ssts_0212"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlFLLampFadeSpdCmd_1",
+    "relation": "input_source",
+    "tail": "LIN bus, LHZCU, LHZCU_LIN5, Interior Lamp SSTS",
+    "sources": [
+      "inner_lamp_ssts_0212"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color/Brightness Transition Time",
+    "relation": "depends_on",
+    "tail": "Default fade speed Spd0: 2000 ms",
+    "sources": [
+      "inner_lamp_ssts_0212"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rate1",
+    "relation": "input_code",
+    "tail": "0x1 → period = 500 ms",
+    "sources": [
+      "inner_lamp_ssts_0212"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rate2",
+    "relation": "input_code",
+    "tail": "0x2 → period = 1000 ms",
+    "sources": [
+      "inner_lamp_ssts_0212"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CAN Node Design Requirement",
+    "relation": "has_subfunction",
+    "tail": "General E/E Component Test Requirements",
+    "sources": [
+      "inner_lamp_ssts_0213"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Power Management Specification",
+    "relation": "has_subfunction",
+    "tail": "General E/E System and Component Design Requirements",
+    "sources": [
+      "inner_lamp_ssts_0213"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Function",
+    "relation": "prerequisite",
+    "tail": "Supply voltage normal (9 V – 16 V)",
+    "sources": [
+      "inner_lamp_ssts_0215",
+      "inner_lamp_ssts_0342",
+      "inner_lamp_ssts_0216"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Function",
+    "relation": "suppression_condition",
+    "tail": "Supply voltage low (< 6 V)",
+    "sources": [
+      "inner_lamp_ssts_0215",
+      "inner_lamp_ssts_0342",
+      "inner_lamp_ssts_0216"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Function",
+    "relation": "suppression_condition",
+    "tail": "Supply voltage undervoltage (6 V – 9 V)",
+    "sources": [
+      "inner_lamp_ssts_0215",
+      "inner_lamp_ssts_0342",
+      "inner_lamp_ssts_0216"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Function",
+    "relation": "suppression_condition",
+    "tail": "Supply voltage overvoltage (16 V – 18 V)",
+    "sources": [
+      "inner_lamp_ssts_0215",
+      "inner_lamp_ssts_0342",
+      "inner_lamp_ssts_0216"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Function",
+    "relation": "suppression_condition",
+    "tail": "Supply voltage high (> 18 V)",
+    "sources": [
+      "inner_lamp_ssts_0215",
+      "inner_lamp_ssts_0342",
+      "inner_lamp_ssts_0216"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Function",
+    "relation": "input",
+    "tail": "Supply voltage state",
+    "sources": [
+      "inner_lamp_ssts_0215"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Function",
+    "relation": "output",
+    "tail": "Enable signal",
+    "sources": [
+      "inner_lamp_ssts_0215",
+      "inner_lamp_ssts_0342"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Function",
+    "relation": "output",
+    "tail": "Disable signal",
+    "sources": [
+      "inner_lamp_ssts_0215",
+      "inner_lamp_ssts_0342"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "operates_at_brightness_level",
+    "tail": "1160 → Control Input/Configuration Identifier = 26",
+    "sources": [
+      "inner_lamp_ssts_0217"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "outputs_target_light_intensity",
+    "tail": "746 cd/m² (for brightness level 1160, ID=26)",
+    "sources": [
+      "inner_lamp_ssts_0217"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "operates_at_brightness_level",
+    "tail": "2800 → Control Input/Configuration Identifier = 68",
+    "sources": [
+      "inner_lamp_ssts_0217"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "outputs_target_light_intensity",
+    "tail": "770 cd/m² (for brightness level 2800, ID=68)",
+    "sources": [
+      "inner_lamp_ssts_0217"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "achieves_maximum_output_intensity",
+    "tail": "≥ 1000 cd/m² when Parameter Setting ≥ 1600 AND Configuration ID ≥ 38",
+    "sources": [
+      "inner_lamp_ssts_0217"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity Mirror Lamp Driver",
+    "relation": "depends_on",
+    "tail": "TmdDlyLamp_HSD",
+    "sources": [
+      "inner_lamp_ssts_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity Mirror Lamp Driver",
+    "relation": "output_specification",
+    "tail": "Rated voltage: 13.5 V",
+    "sources": [
+      "inner_lamp_ssts_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity Mirror Lamp Driver",
+    "relation": "output_specification",
+    "tail": "Steady-state current: 0.168 A",
+    "sources": [
+      "inner_lamp_ssts_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity Mirror Lamp Driver",
+    "relation": "output_specification",
+    "tail": "Peak current: 0.208 A",
+    "sources": [
+      "inner_lamp_ssts_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Zone Backlight Lamp Driver",
+    "relation": "depends_on",
+    "tail": "LHZCU_BacklightLamp_HSD",
+    "sources": [
+      "inner_lamp_ssts_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Zone Backlight Lamp Driver",
+    "relation": "depends_on",
+    "tail": "RHZCU_BacklightLamp_HSD",
+    "sources": [
+      "inner_lamp_ssts_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Lamp Driver",
+    "relation": "depends_on",
+    "tail": "LdspcLamp_HSD",
+    "sources": [
+      "inner_lamp_ssts_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Overhead Console (OHC) Power Supply",
+    "relation": "depends_on",
+    "tail": "LHZCU_eSw12",
+    "sources": [
+      "inner_lamp_ssts_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Reading Lamp Power Supply",
+    "relation": "depends_on",
+    "tail": "OHC_HSD_1",
+    "sources": [
+      "inner_lamp_ssts_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Rear Reading Lamp Control",
+    "relation": "depends_on",
+    "tail": "MapLamp_RL_PWM_SIG",
+    "sources": [
+      "inner_lamp_ssts_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Reading Lamp Control",
+    "relation": "depends_on",
+    "tail": "MapLamp_RR_PWM_SIG",
+    "sources": [
+      "inner_lamp_ssts_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Ambient Lamp Driver",
+    "relation": "depends_on",
+    "tail": "LHZCU_eSwl",
+    "sources": [
+      "inner_lamp_ssts_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "input_range_for_target_luminous_intensity",
+    "tail": "Control Input Value: 9 – 56",
+    "sources": [
+      "inner_lamp_ssts_0219"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "measures_luminous_intensity",
+    "tail": "Measured luminous intensity: 470 – 1000 cd/m²",
+    "sources": [
+      "inner_lamp_ssts_0219"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "prerequisite_for_target_luminous_intensity",
+    "tail": "Control Input Value set between 9 and 56",
+    "sources": [
+      "inner_lamp_ssts_0219"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "trigger_condition_for_maximum_brightness",
+    "tail": "Control Input Value = 56",
+    "sources": [
+      "inner_lamp_ssts_0219"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "state_maintenance_condition",
+    "tail": "Control Input Value remains constant within tolerance range",
+    "sources": [
+      "inner_lamp_ssts_0219"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IM Motors Z-ONE-3.0 Interior Lighting Subsystem",
+    "relation": "controls",
+    "tail": "Subsystem Technical Specification",
+    "sources": [
+      "inner_lamp_ssts_0220"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate1holdoffPercent",
+    "relation": "suppression_condition",
+    "tail": "Reserved — not used",
+    "sources": [
+      "inner_lamp_ssts_0221"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate2holdoffPercent",
+    "relation": "suppression_condition",
+    "tail": "Reserved — not used",
+    "sources": [
+      "inner_lamp_ssts_0221"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IFP Backlight Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "ICB request signal SideLghtSts_IFP_l = 0x1 (On)",
+    "sources": [
+      "inner_lamp_ssts_0223"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backlight Lamp Deactivation",
+    "relation": "trigger_condition",
+    "tail": "SideLghtSts_IFP_l = 0x0 (Off)",
+    "sources": [
+      "inner_lamp_ssts_0223"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backlight Lamp Deactivation",
+    "relation": "fault_response",
+    "tail": "Detected short circuit or open circuit fault",
+    "sources": [
+      "inner_lamp_ssts_0223"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backlight Lamp Operation",
+    "relation": "prerequisite",
+    "tail": "No short circuit or open circuit fault in backlight lamp",
+    "sources": [
+      "inner_lamp_ssts_0223"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR4LampBthngCmd_1",
+    "relation": "trigger_condition",
+    "tail": "Code value ∈ [0x1, 0xF] (i.e., non-zero, non-NoRequest)",
+    "sources": [
+      "inner_lamp_ssts_0226"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR4LampBthngCmd_1",
+    "relation": "prerequisite_for_stopping_breathing",
+    "tail": "Code value = 0x0 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0226"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR4LampBthngCmd_1",
+    "relation": "prerequisite_for_mode_switching",
+    "tail": "Transition between distinct breathing mode codes",
+    "sources": [
+      "inner_lamp_ssts_0226"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR4LampFadeSpdCmd_1",
+    "relation": "input_for",
+    "tail": "Ambient Lamp Fade Speed Control",
+    "sources": [
+      "inner_lamp_ssts_0226"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color/Brightness Transition Time",
+    "relation": "timeout_constraint",
+    "tail": "Time required to transition from current to target state",
+    "sources": [
+      "inner_lamp_ssts_0226"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR4LampBthngCmd_1",
+    "relation": "depends_on",
+    "tail": "Code value = 0x5 → activates Rate5 (2.4 s) breathing mode",
+    "sources": [
+      "inner_lamp_ssts_0226"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

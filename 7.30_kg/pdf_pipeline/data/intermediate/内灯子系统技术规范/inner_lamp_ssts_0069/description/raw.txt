@@ -1,0 +1,92 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "氛围灯亮度控制逻辑",
+  "row_semantics": "描述了氛围灯在不同条件下的状态转换和执行动作，包括前置条件、触发条件、执行动作、退出条件以及异常处理。",
+  "column_semantics": "第一列定义了状态或条件的类别（如前置条件、触发条件等），第二列详细描述了该类别的具体内容。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RoofLHALampBrtnsCmd_l",
+      "type": "input_signal",
+      "description": "氛围灯本地控制模块亮度变化请求信号"
+    },
+    {
+      "name": "RoofLHALampOnOff_l",
+      "type": "input_signal",
+      "description": "氛围灯本地控制模块开关请求信号"
+    },
+    {
+      "name": "RoofLHALampFadeSpdCmd_l",
+      "type": "parameter",
+      "description": "渐变速度参数"
+    },
+    {
+      "name": "ZCU_LIN_Signal",
+      "type": "input_signal",
+      "description": "中央控制单元LIN总线信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "氛围灯处于关闭状态",
+      "type": "pre_condition",
+      "description": "触发后续逻辑的前提条件"
+    },
+    {
+      "condition": "接收到RoofLHALampBrtnsCmd_l信号从0x00变为非0x00",
+      "type": "trigger_condition",
+      "description": "触发亮度变化请求的信号变化"
+    },
+    {
+      "condition": "接收到RoofLHALampOnOff_l信号为0x00 (OFF)",
+      "type": "exit_condition",
+      "description": "关闭氛围灯的退出条件"
+    },
+    {
+      "condition": "接收到RoofLHALampBrtnsCmd_l信号为0x65-0xFF",
+      "type": "exit_condition",
+      "description": "保持当前亮度不变的退出条件"
+    },
+    {
+      "condition": "超过6秒未接收到ZCU的LIN信号",
+      "type": "timing_constraint",
+      "description": "默认超时时间为6秒"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "PWM驱动电流",
+      "type": "output_signal",
+      "description": "根据亮度设置表生成的PWM驱动电流，用于驱动氛围灯"
+    },
+    {
+      "output": "氛围灯切换亮度",
+      "type": "action",
+      "description": "根据PWM驱动电流改变氛围灯的亮度"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "过压、欠压故障",
+      "type": "fault_state",
+      "description": "氛围灯模块出现过压或欠压时的状态"
+    },
+    {
+      "fault": "RoofLHALampBrtnsCmd_l异常",
+      "type": "fault_state",
+      "description": "RoofLHALampBrtnsCmd_l信号值异常时的状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "6s",
+      "type": "timing_constraint",
+      "description": "默认超时时间，超过此时间未接收到ZCU的LIN信号将触发异常处理"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证氛围灯亮度控制模块在不同输入信号变化下的状态转换逻辑，包括亮度调节、开关控制以及异常情况下的保护机制。",
+  "uncertain_points": []
+}
+```

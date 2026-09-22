@@ -1,0 +1,95 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "External Light Control Module (Notifier) and Rear Fog Light Control Module (LHZCU/RHZCU/RZCU) Signal Status and Fault Feedback",
+  "row_semantics": "Each row represents a specific signal or status related to the external light control system, including Dipped Beam Lights, Rear Fog Lights, and Side Position Lights, along with their corresponding states and error statuses.",
+  "column_semantics": "The table does not have explicit columns but rather lists signal names followed by their instance IDs and current status values (e.g., ON/OFF, No Error). The structure is sequential, with each entry describing a particular signal's state or fault condition.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "Notifier",
+      "type": "module",
+      "description": "Responsible for managing the overall external light control requests."
+    },
+    {
+      "name": "LHZCU/RHZCU/RZCU",
+      "type": "module",
+      "description": "Driver processing module that handles the hard-line output for rear fog lights and near light lamps."
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Internal Communication Bus responsible for sending position lamp control requests to the LHZCU."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DippedBeamLightRequestStatus",
+      "type": "input_signal",
+      "description": "Request status for dipped beam lights from the Notifier."
+    },
+    {
+      "name": "RearFogLightCtrlReq",
+      "type": "input_signal",
+      "description": "Control request for rear fog lights from the Notifier."
+    },
+    {
+      "name": "RearFogLightSta",
+      "type": "output_signal",
+      "description": "Status of the rear fog lights, indicating whether they are ON or OFF."
+    },
+    {
+      "name": "RearFogLightErrorSta",
+      "type": "fault_status",
+      "description": "Error status for the rear fog lights, indicating if there is an error (e.g., No Error)."
+    },
+    {
+      "name": "SidePositionLightSta",
+      "type": "output_signal",
+      "description": "Status of the side position lights, indicating whether they are ON or OFF."
+    },
+    {
+      "name": "SidePositionLightErrorSta",
+      "type": "fault_status",
+      "description": "Error status for the side position lights, indicating if there is an error (e.g., No Error)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightSta",
+      "type": "output_signal",
+      "description": "Status of the dipped beam lights, indicating whether they are ON or OFF."
+    },
+    {
+      "name": "DippedBeamLightErrorSta",
+      "type": "fault_status",
+      "description": "Error status for the dipped beam lights, indicating if there is an error (e.g., No Error)."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RearFogLightErrorSta",
+      "type": "fault_status",
+      "description": "Indicates if there is an error in the rear fog light system."
+    },
+    {
+      "name": "DippedBeamLightErrorSta",
+      "type": "fault_status",
+      "description": "Indicates if there is an error in the dipped beam light system."
+    },
+    {
+      "name": "SidePositionLightErrorSta",
+      "type": "fault_status",
+      "description": "Indicates if there is an error in the side position light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the expected signal statuses and fault conditions for various external lighting components (dipped beam lights, rear fog lights, and side position lights) within the vehicle's lighting control system. It is used to verify that the Notifier, LHZCU/RHZCU/RZCU modules, and ICB correctly report and respond to the operational states and potential faults of these lights.",
+  "uncertain_points": [
+    "The exact timing or sequence of signal updates is not specified in the table.",
+    "The specific actions taken by the modules upon detecting a fault are not detailed.",
+    "The communication protocol between the Notifier, LHZCU/RHZCU/RZCU, and ICB is not explicitly described."
+  ]
+}
+```

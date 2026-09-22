@@ -1,0 +1,63 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "远光灯开关状态监控与信号发送逻辑",
+  "row_semantics": "表格定义了在特定前置条件和触发条件下，系统执行的动作、退出条件及异常处理规则。",
+  "column_semantics": {
+    "1": "前置条件描述",
+    "2": "触发条件描述"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightSwSOAEnPrm",
+      "type": "parameter",
+      "description": "主光灯开关超时保护使能参数，值为1表示启用"
+    },
+    {
+      "name": "MainBeamLightSwMdl",
+      "type": "module",
+      "description": "主光灯开关模型模块"
+    },
+    {
+      "name": "MainBeamLightSwitchStatus",
+      "type": "signal",
+      "description": "主光灯开关状态信号"
+    },
+    {
+      "name": "MainBeamLightCtrlMdl",
+      "type": "module",
+      "description": "主光灯控制模型模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MainBeamLightSwSOAEnPrm == 1 (Enable)",
+      "description": "前置条件：主光灯开关超时保护功能已启用"
+    },
+    {
+      "condition": "用户关闭远光灯开关，开关悬空",
+      "description": "触发条件：用户操作关闭远光灯开关，并且开关处于悬空状态"
+    },
+    {
+      "condition": "远光灯开关变为非悬空",
+      "description": "退出条件：远光灯开关状态从悬空变为非悬空"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "MainBeamLightSwitchStatus.MainBeamLightSwitchSta=0x0 (Off)",
+      "description": "输出信号：持续发送主光灯开关状态为关闭（0x0）"
+    },
+    {
+      "output": "至少发送三帧",
+      "description": "输出行为：至少连续发送三帧主光灯开关状态信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证当远光灯开关关闭且处于悬空状态时，系统是否能够正确持续发送主光灯开关关闭状态信号，并在开关状态改变时退出该逻辑。",
+  "uncertain_points": []
+}
+```

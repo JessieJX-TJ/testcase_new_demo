@@ -1,0 +1,100 @@
+```json
+{
+  "table_type": "other",
+  "topic": "外灯组合服务 ICB 的倒车灯控制逻辑与状态同步要求",
+  "row_semantics": "表格内容分为两部分：左侧为代码示例和接口定义，右侧为功能需求和测试条件说明。",
+  "column_semantics": "表格未采用传统行列结构，而是以文本块形式呈现信息，左侧为代码片段，右侧为详细的功能描述和测试要求。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "外灯组合服务 (Interior Control Box) 模块，负责处理外灯相关请求和状态管理。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "Subsystem",
+      "description": "外部灯光控制系统，包含倒车灯的控制逻辑和状态反馈机制。"
+    },
+    {
+      "name": "ReverseLight",
+      "type": "Function",
+      "description": "倒车灯功能，包括点亮、熄灭及状态同步。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RevsLightSta",
+      "type": "Input Signal",
+      "description": "倒车灯状态输入信号，值为 0x1 表示开启，0x0 表示关闭。"
+    },
+    {
+      "name": "ReverseLightSts",
+      "type": "Output Signal",
+      "description": "倒车灯状态输出信号，值为 0x1 表示点亮，0x0 表示熄灭。"
+    },
+    {
+      "name": "ReverseLightErrSts",
+      "type": "Output Signal",
+      "description": "倒车灯错误状态输出信号，值为 0x0 表示无错误。"
+    },
+    {
+      "name": "ReverseLightCtrlReq",
+      "type": "Input Signal",
+      "description": "ICB 发送的倒车灯控制请求信号，包含实例 ID。"
+    },
+    {
+      "name": "ReverseLightCtrlResp",
+      "type": "Output Signal",
+      "description": "倒车灯控制响应信号，值为 0x0 表示控制成功。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ReverseLightSts",
+      "type": "Output Signal",
+      "description": "倒车灯的状态输出，用于指示当前是否点亮。"
+    },
+    {
+      "name": "ReverseLightErrSts",
+      "type": "Output Signal",
+      "description": "倒车灯的错误状态输出，用于指示是否存在故障。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "ReverseLightErrSts",
+      "type": "Fault Status",
+      "description": "当 ReverseLightErrSts 不为 0x0 时，表示倒车灯存在错误状态。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步延时",
+      "value": "≤40ms",
+      "description": "两个倒车灯之间的最大延时不能超过 40 毫秒，以确保同步点亮。"
+    },
+    {
+      "name": "重发周期",
+      "value": "≤50ms",
+      "description": "在未收到控制响应的情况下，ICB 将按照不超过 50 毫秒的周期重发请求。"
+    },
+    {
+      "name": "重发次数",
+      "value": "3次",
+      "description": "最多尝试重发请求 3 次，若仍未成功则停止发送。"
+    },
+    {
+      "name": "状态获取延迟",
+      "value": "500ms",
+      "description": "消费端在订阅或接收到外灯控制请求后，应在 500 毫秒内主动获取外灯状态。"
+    }
+  ],
+  "engineering_interpretation": "该表格主要用于定义和验证倒车灯的控制逻辑、状态同步机制以及错误处理流程，确保在不同条件下（如同步性、重发机制、状态获取）倒车灯能够正确、可靠地工作。",
+  "uncertain_points": [
+    "具体的 Instance ID 值未明确给出。",
+    "未详细说明 ReverseLightCtrlReq 和 ReverseLightCtrlResp 的具体交互协议细节。"
+  ]
+}
+```

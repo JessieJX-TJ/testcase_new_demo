@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "制动灯点亮与关闭原因记录",
+  "row_semantics": "表格分为两大部分，分别记录制动灯点亮（BrkLghtOpen）和关闭（BrkLghtCls）的原因。",
+  "column_semantics": {
+    "1": "制动灯点亮或关闭的原因代码（CtrlRsn）",
+    "2": "原因描述（如 BrakeLightSwitchOn, ElectricPowertrainBrakePedalApplied等）",
+    "3": "存储位置（0x00，表示最近10次记录的起始地址）",
+    "4": "存储模块/控制器名称（LHZCU）",
+    "5": "预留字段"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLghtOpen",
+      "type": "功能名",
+      "description": "制动灯点亮事件"
+    },
+    {
+      "name": "BrkLghtCls",
+      "type": "功能名",
+      "description": "制动灯关闭事件"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "负责存储制动灯点亮和关闭原因信息的控制器"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CtrlRsn",
+      "type": "输入信号",
+      "description": "制动灯点亮或关闭的具体原因代码"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了制动灯点亮和关闭时可能记录的原因代码及其含义，可用于验证LHZCU控制器是否正确记录并存储制动灯状态变化的原因。",
+  "uncertain_points": []
+}
+```

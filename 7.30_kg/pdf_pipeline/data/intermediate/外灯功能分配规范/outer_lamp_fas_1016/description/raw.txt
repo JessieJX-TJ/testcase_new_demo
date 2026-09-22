@@ -1,0 +1,89 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "位置灯 (Position Lamp) HMI 显示状态描述",
+  "row_semantics": "表格按功能模块和信号类型对位置灯的HMI显示状态进行分类描述，包括状态信号、开关状态和故障状态。",
+  "column_semantics": "无明显列结构，内容为多段文本描述，主要分为三个部分：HMI显示状态信号描述、位置灯开关状态描述、位置灯故障状态描述。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HMI 子系统 ICB",
+      "type": "controller",
+      "description": "负责处理和显示位置灯相关状态信息的子系统"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外部灯光开关处理模块"
+    },
+    {
+      "name": "CombLghtFucProStatus",
+      "type": "input_signal",
+      "description": "组合灯功能状态信号"
+    },
+    {
+      "name": "CombLghtSwStatus",
+      "type": "input_signal",
+      "description": "组合灯开关状态信号"
+    },
+    {
+      "name": "SidePositionLight",
+      "type": "output_signal",
+      "description": "侧位灯输出信号"
+    },
+    {
+      "name": "DippedBeamLight",
+      "type": "output_signal",
+      "description": "近光灯输出信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "HMI显示状态",
+      "description": "根据CombLghtFucProStatus信号值（0x0至0x5）决定HMI上位置灯和近光灯的显示状态"
+    },
+    {
+      "name": "开关状态",
+      "description": "根据CombLghtSwStatus信号值（0x0至0x4）表示位置灯开关当前所处的档位"
+    },
+    {
+      "name": "CAN信号反馈",
+      "description": "当CAN信号反馈状态为0x1时，触发HMI子系统做位置灯指示灯显示"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "HMI显示",
+      "description": "HMI界面上的位置灯和近光灯指示灯显示"
+    },
+    {
+      "name": "弹窗提醒",
+      "description": "当检测到位置灯故障时，HMI子系统会弹出故障提醒窗口"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SideLightFlits",
+      "type": "fault_status",
+      "description": "位置灯闪烁状态，用于判断是否存在故障"
+    },
+    {
+      "name": "SidePositionLightErrSta",
+      "type": "fault_status",
+      "description": "侧位灯错误状态"
+    },
+    {
+      "name": "SidePosnLightErrSta",
+      "type": "fault_status",
+      "description": "侧位置灯错误状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了位置灯在不同状态下的HMI显示规则、开关状态映射以及故障检测逻辑，可用于验证HMI子系统在接收不同输入信号时是否能正确显示位置灯状态，并在发生故障时及时触发弹窗提醒。",
+  "uncertain_points": [
+    "表格中未明确说明所有可能的CAN信号反馈状态值及其对应的行为。",
+    "未提及具体的HMI显示刷新频率或延迟要求。"
+  ]
+}
+```

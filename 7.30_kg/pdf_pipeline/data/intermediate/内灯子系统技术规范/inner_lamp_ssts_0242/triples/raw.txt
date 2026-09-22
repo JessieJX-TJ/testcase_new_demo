@@ -1,0 +1,36 @@
+```json
+[
+  {
+    "head": "驱动背光灯点亮",
+    "relation": "触发条件",
+    "tail": "接收到 RZCU的请求信号 VehSideLghtSts_1_RZCU=0x1 (VehSideLghtSts_1_1_ON)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["RZCU", "VehSideLghtSts_1_RZCU", "0x1", "DoorPnlSeatFnSw_RL", "DoorPnlSeatFnSw_RR", "ThrdRowSeatSw_LH", "ThrdRowSeatSw_RH"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动背光灯点亮",
+    "relation": "前提条件",
+    "tail": "背光灯无短路/开路故障",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["背光灯无短路/开路故障"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "关闭背光灯",
+    "relation": "触发条件",
+    "tail": "接收 VehSideLghtSts_1_RZCU = 0x0 (VehSideLghtSts_1_1_ON)",
+    "triple_type": "功能退出条件",
+    "evidence_terms": ["RZCU", "VehSideLghtSts_1_RZCU", "0x0"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "关闭背光灯",
+    "relation": "异常处理",
+    "tail": "检测到背光灯短路/开路故障",
+    "triple_type": "故障响应",
+    "evidence_terms": ["背光灯短路/开路故障"],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,117 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的功能分配规范",
+  "row_semantics": "每一行描述一个具体的控制逻辑或状态反馈，编号从14到19，涵盖了信号转换、控制接收、状态反馈等操作。",
+  "column_semantics": "无明确的列划分，内容为连续的文本描述，主要包含条件语句和变量赋值。",
+  "has_merged_cells": false,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "Controller",
+      "description": "Interface Control Board，负责接口或控制信号的转换与接收"
+    },
+    {
+      "name": "LHZCU/RHZCU/RZCU",
+      "type": "Module",
+      "description": "驱动处理模块，负责接收ICB信号并控制外灯状态"
+    },
+    {
+      "name": "DirectionLight",
+      "type": "Function",
+      "description": "方向灯相关功能"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ControlDirectionLight",
+      "description": "控制方向灯的请求信号"
+    },
+    {
+      "name": "DirectionLightReq",
+      "description": "方向灯请求信号"
+    },
+    {
+      "name": "ICB service interface or control signal",
+      "description": "ICB的服务接口或控制信号"
+    },
+    {
+      "name": "FLDirecLightCtrl_HW",
+      "description": "前左方向灯硬件控制信号"
+    },
+    {
+      "name": "FRDirecLightCtrl_HW",
+      "description": "前右方向灯硬件控制信号"
+    },
+    {
+      "name": "RLDirecLightCtrl_HW",
+      "description": "后左方向灯硬件控制信号"
+    },
+    {
+      "name": "RRDirecLightCtrl_HW",
+      "description": "后右方向灯硬件控制信号"
+    },
+    {
+      "name": "DirectionLightFucProStatus",
+      "description": "方向灯功能过程状态"
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "description": "方向灯错误状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDirecLightSts_HW",
+      "description": "前左方向灯硬件状态"
+    },
+    {
+      "name": "FRDirecLightSts_HW",
+      "description": "前右方向灯硬件状态"
+    },
+    {
+      "name": "RLDirecLightSts_HW",
+      "description": "后左方向灯硬件状态"
+    },
+    {
+      "name": "RRDirecLightSts_HW",
+      "description": "后右方向灯硬件状态"
+    },
+    {
+      "name": "FLDirecLightFlits_HW",
+      "description": "前左方向灯闪烁状态"
+    },
+    {
+      "name": "FRDirecLightFlits_HW",
+      "description": "前右方向灯闪烁状态"
+    },
+    {
+      "name": "RLDirecLightFlits_HW",
+      "description": "后左方向灯闪烁状态"
+    },
+    {
+      "name": "RRDirecLightFlits_HW",
+      "description": "后右方向灯闪烁状态"
+    },
+    {
+      "name": "DirectionLightSta",
+      "description": "方向灯状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "description": "方向灯错误状态，用于指示系统故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "60ms",
+      "description": "ICB将控制信号延时60ms分发至驱动模块"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了外灯功能中，ICB与驱动模块（LHZCU/RHZCU/RZCU）之间的信号交互逻辑，包括信号转换、控制接收、状态反馈及错误处理，可用于验证外灯系统的信号链路完整性、控制逻辑正确性以及故障响应机制。",
+  "uncertain_points": []
+}
+```

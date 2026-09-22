@@ -1,0 +1,71 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Vehicle Lock Status Signal Definition and Communication",
+  "row_semantics": "Each row represents a specific signal interface definition, detailing its properties and associated status values.",
+  "column_semantics": {
+    "Interface Name": "The name of the signal interface, which must match the logic block content.",
+    "Direction": "Indicates whether the signal is an input or output (e.g., provide/consume).",
+    "Type": "The communication protocol type (e.g., CAN/LIN/SOA service/hardline).",
+    "Sender/Provider": "The entity that sends or provides the signal (e.g., signal sending node or SoA service provider).",
+    "Receiver/Consumer": "The entity that receives or consumes the signal (e.g., signal receiving node or SoA service consumer).",
+    "Channel": "The specified signal channel for communication.",
+    "Interface Source": "The designated source of the interface."
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VehLckSts",
+      "type": "Signal",
+      "description": "Vehicle Lock Status signal, indicating the current locking state of the vehicle."
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Local Body Control Unit, responsible for sending the vehicle lock status signal."
+    },
+    {
+      "name": "RZCU/LHZCU",
+      "type": "Controller/Module",
+      "description": "Remote Body Control Unit or Local Body Control Unit, responsible for receiving the vehicle lock status signal."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "VehLckSts",
+      "values": [
+        {
+          "code": "0x0",
+          "state": "Unlocked"
+        },
+        {
+          "code": "0x1",
+          "state": "Signal_Position_Entry_Unlocked"
+        },
+        {
+          "code": "0x2",
+          "state": "Interior_Locked"
+        },
+        {
+          "code": "0x3",
+          "state": "Exterior_Locked"
+        },
+        {
+          "code": "0x4",
+          "state": "Super_locked"
+        },
+        {
+          "code": "0x5",
+          "state": "Reserved"
+        }
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the Vehicle Lock Status (VehLckSts) signal, including its direction, type, sender, receiver, channel, and source. It also specifies the possible states of the signal, such as Unlocked, Interior Locked, Exterior Locked, Super Locked, and Reserved. This information is crucial for testing the correct transmission and interpretation of the vehicle lock status between the LHZCU and RZCU/LHZCU controllers.",
+  "uncertain_points": []
+}
+```

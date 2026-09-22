@@ -1,0 +1,82 @@
+{
+  "table_type": "parameter_table",
+  "topic": "DirectionLight DirectionLightStatus",
+  "row_semantics": "Each row represents a different direction light status subscription request for a specific vehicle light (left front, right front, left rear).",
+  "column_semantics": {
+    "1": "Function Name: DirectionLight DirectionLightStatus",
+    "2": "Consumption (SOA)",
+    "3": "Controller/Module: LHZCU",
+    "4": "Controller/Module: RHZCU",
+    "5": "Controller/Module: LHZCU",
+    "6": "Controller/Module: RZCU",
+    "7": "Hardline Status"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "function",
+      "description": "Service interface to subscribe to the status of direction lights."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Left Front Light Control Unit"
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Front Light Control Unit"
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "Right Rear Light Control Unit"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "Unique identifier for each light status subscription instance.",
+      "values": [
+        {
+          "value": "1",
+          "description": "Subscription for left front turn light status."
+        },
+        {
+          "value": "2",
+          "description": "Subscription for right front turn light status."
+        }
+      ]
+    },
+    {
+      "name": "LightStatus",
+      "description": "Current state of the subscribed turn light.",
+      "values": [
+        {
+          "value": "0x0=OFF",
+          "description": "Turn light is off."
+        },
+        {
+          "value": "0x1=ON",
+          "description": "Turn light is on."
+        },
+        {
+          "value": "0x2=Unknown",
+          "description": "Turn light status is unknown."
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "HardlineStatus",
+      "description": "Indicates the physical connection status of the hardline for the subscribed light."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for subscribing to the status of various direction lights in a vehicle. It specifies which control units (LHZCU, RHZCU, RZCU) are involved and the expected status values (OFF, ON, Unknown) for each subscription instance.",
+  "uncertain_points": []
+}

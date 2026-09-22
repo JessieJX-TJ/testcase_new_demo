@@ -1,0 +1,11 @@
+{ExteriorLightControlSystem. SidePositionLightSts. SidePosnLghtSts}=Ox1=ON
+备注
+1、贯穿式前后位置灯同步性要求:
+贯穿式前后位置灯的同步性允许的最大延时周期为:40ms
+2、ICB_S32GM日行灯请求重发机制:
+ICB发送日行灯请求,DayRunningLight.DayRunningLightControl. DayRunningLightCtrReq(对应In
+馈(对应InstanceID),且请求状态未变,应尝试按照<=50ms周期重发3次；尝试重发3次后仍
+功,则停止发送
+3、外灯状态主动获取:涉及 LHZCU/ICB_S32G M/ICB_8295
+针对发送类型为Onchange的外灯状态服务,消费端在服务发现订阅或者外灯控制请求后的500ms
+内,如未收到状态反馈,应主动通过状态服务Getter()方式获取外灯状态

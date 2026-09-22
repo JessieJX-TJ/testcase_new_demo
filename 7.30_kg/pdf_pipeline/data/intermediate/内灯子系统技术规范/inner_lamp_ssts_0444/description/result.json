@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"fault_table\",\n  \"topic\": \"诊断DTC需求清单\",\n  \"row_semantics\": \"表格中的每一行代表一个具体的故障诊断代码（DTC）及其相关条件和恢复条件。\",\n  \"column_semantics\": {\n    \"序号\": \"故障条目的编号，用于唯一标识该故障信息。\",\n    \"DTC 显示码\": \"故障诊断代码的显示标识符，用于在车辆诊断系统中识别特定故障。\",\n    \"故障描述\": \"对故障现象的详细描述，帮助理解故障的本质。\",\n    \"故障置位条件\": \"触发故障代码设置的具体条件或事件。\",\n    \"故障恢复条件\": \"清除故障代码所需的条件或状态。\",\n  },\n  \"has_merged_cells\": false,\n  \"header_levels\": 1,\n  \"core_entities\": [\n    {\n      \"name\": \"Timed delay Control Circuit short to ground\",\n      \"type\": \"功能名\",\n      \"description\": \"定时延迟控制电路短路至地的故障现象。\"\n    }\n  ],\n  \"core_conditions\": [\n    {\n      \"condition\": \"节电延时驱动激活状态\",\n      \"description\": \"节电模式下延时驱动功能被激活的状态。\",\n      \"source\": \"故障置位条件\"\n    },\n    {\n      \"condition\": \"驱动电流超过阈值 (TBD)A, 持续 100ms\",\n      \"description\": \"驱动电流超过预设阈值(TBD)安培，并持续100毫秒。\",\n      \"source\": \"故障置位条件\"\n    },\n    {\n      \"condition\": \"电流有效值小于 (TBD)A\",\n      \"description\": \"电流有效值低于预设阈值(TBD)安培。\",\n      \"source\": \"故障恢复条件\"\n    }\n  ],\n  \"core_outputs\": [],\n  \"core_faults\": [\n    {\n      \"code\": \"TBD\",\n      \"description\": \"定时延迟控制电路短路至地的故障代码。\",\n      \"type\": \"故障状态\"\n    }\n  ],\n  \"core_timing_constraints\": [\n    {\n      \"constraint\": \"持续 100ms\",\n      \"description\": \"故障置位条件中电流超过阈值需要持续100毫秒。\",\n      \"source\": \"故障置位条件\"\n    }\n  ],\n  \"engineering_interpretation\": \"该表格定义了针对‘定时延迟控制电路短路至地’这一故障的诊断逻辑，包括其触发条件、恢复条件及相关的阈值和时间限制，可用于验证车辆电子控制系统在特定故障情况下的诊断功能是否符合设计要求。\",\n  \"uncertain_points\": [\n    \"DTC 显示码为 TBD，具体代码未明确给出。\",\n    \"阈值 (TBD)A 具体数值未明确给出。\",\n    \"故障恢复条件中电流有效值小于 (TBD)A 的具体阈值未明确给出。\"\n  ]\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

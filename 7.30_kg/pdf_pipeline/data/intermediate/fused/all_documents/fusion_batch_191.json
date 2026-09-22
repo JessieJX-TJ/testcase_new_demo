@@ -1,0 +1,627 @@
+[
+  {
+    "head": "RRSideLghtDrvMdl",
+    "relation": "depends_on",
+    "tail": "right_rear_position_light_short_to_power",
+    "sources": [
+      "outer_lamp_ssts_0469"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtDrvMdl",
+    "relation": "has_subfunction",
+    "tail": "transmit_at_least_three_frames",
+    "sources": [
+      "outer_lamp_ssts_0469"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "automatic_headlamp_function",
+    "relation": "trigger_condition",
+    "tail": "sun_rain_sensor_LIN_signal_AutoLghtOnReq_l == 1",
+    "sources": [
+      "outer_lamp_ssts_0471"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "automatic_headlamp_function_execution",
+    "relation": "prerequisite",
+    "tail": "automatic_headlamp_function",
+    "sources": [
+      "outer_lamp_ssts_0471"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoLghtSwMdl",
+    "relation": "outputs_to",
+    "tail": "AutoLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0471"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "automatic_headlamp_function_execution",
+    "relation": "state_maintenance_condition",
+    "tail": "transmit_at_least_three_frames_LIN_signal",
+    "sources": [
+      "outer_lamp_ssts_0471"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "right_high_beam_open_circuit_diagnosis",
+    "relation": "trigger_condition",
+    "tail": "right_high_beam_open_circuit_detected",
+    "sources": [
+      "outer_lamp_ssts_0472"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "main_beam_light_driver_module",
+    "relation": "prerequisite",
+    "tail": "MainBeamLightFbkSOAEnPrm == 0",
+    "sources": [
+      "outer_lamp_ssts_0472"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "main_beam_light_control_module",
+    "relation": "input_from",
+    "tail": "RMainBeamLightDrvMdl_transmits_RMainBeamLghtSts_0_to_MainBeamLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0472"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_lamp_subsystem",
+    "relation": "has_subfunction",
+    "tail": "Sub_System_Technical_Specification",
+    "sources": [
+      "outer_lamp_ssts_0473"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_turn_signal_driver",
+    "relation": "trigger_condition",
+    "tail": "DILghtCtrlMdl_broadcasts_RRDircnLghtCtrl_HW == 0",
+    "sources": [
+      "outer_lamp_ssts_0474"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_turn_signal_driver",
+    "relation": "prerequisite",
+    "tail": "exlDirCnLghtHwDrvEnPrm == 1 || 2",
+    "sources": [
+      "outer_lamp_ssts_0474"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDILghtDrvMdl",
+    "relation": "outputs",
+    "tail": "DILamp_RH_HSD_stopped",
+    "sources": [
+      "outer_lamp_ssts_0474"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDILghtDrvMdl",
+    "relation": "outputs_to",
+    "tail": "DILghtCtrlMdl_transmits_RRDILghtSts_HW_0_for_at_least_three_frames",
+    "sources": [
+      "outer_lamp_ssts_0474"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_turn_signal_control_logic",
+    "relation": "exit_condition",
+    "tail": "DILghtCtrlMdl_sends_RRDircnLghtCtrl_HW == 1",
+    "sources": [
+      "outer_lamp_ssts_0474"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_lamp_control_function",
+    "relation": "prerequisite",
+    "tail": "ambient_light_intensity_threshold_configured_valid",
+    "sources": [
+      "outer_lamp_ssts_0475"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "power_tailgate_function",
+    "relation": "prerequisite",
+    "tail": "vehicle_speed_limit_satisfied",
+    "sources": [
+      "outer_lamp_ssts_0475"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "body_control_function",
+    "relation": "suppression_condition",
+    "tail": "specific_configuration_not_enabled",
+    "sources": [
+      "outer_lamp_ssts_0475"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "system_wake_up_operation",
+    "relation": "trigger_condition",
+    "tail": "hazard_warning_switch_activated_ground",
+    "sources": [
+      "outer_lamp_ssts_0476",
+      "inner_lamp_fas_0001"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "system_wake_up_operation",
+    "relation": "input_from",
+    "tail": "edge_transition_signal",
+    "sources": [
+      "outer_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "edge_transition_wake_up",
+    "relation": "depends_on",
+    "tail": "hazard_warning_switch_activated_ground",
+    "sources": [
+      "outer_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "rear_fog_light_short_to_ground_fault",
+    "relation": "prerequisite",
+    "tail": "short_to_ground_detected",
+    "sources": [
+      "outer_lamp_ssts_0479"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "rear_fog_light_short_to_ground_fault",
+    "relation": "suppression_condition",
+    "tail": "no_short_to_ground_detected",
+    "sources": [
+      "outer_lamp_ssts_0479"
+    ],
+    "conflict": true,
+    "conflict_note": "Prerequisite and suppression condition are logical inverses; indicates fault detection lifecycle (activation vs. deactivation), not contradiction per se — retained with conflict flag for traceability."
+  },
+  {
+    "head": "rear_fog_light_short_to_power_fault",
+    "relation": "prerequisite",
+    "tail": "short_to_power_detected",
+    "sources": [
+      "outer_lamp_ssts_0479"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "rear_fog_light_short_to_power_fault",
+    "relation": "suppression_condition",
+    "tail": "no_short_to_power_detected",
+    "sources": [
+      "outer_lamp_ssts_0479"
+    ],
+    "conflict": true,
+    "conflict_note": "Prerequisite and suppression condition are logical inverses; indicates fault detection lifecycle (activation vs. deactivation), not contradiction per se — retained with conflict flag for traceability."
+  },
+  {
+    "head": "rear_fog_light_open_circuit_fault",
+    "relation": "prerequisite",
+    "tail": "open_circuit_detected",
+    "sources": [
+      "outer_lamp_ssts_0479"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "rear_fog_light_open_circuit_fault",
+    "relation": "suppression_condition",
+    "tail": "open_circuit_restored",
+    "sources": [
+      "outer_lamp_ssts_0479"
+    ],
+    "conflict": true,
+    "conflict_note": "Prerequisite and suppression condition are logical inverses; indicates fault detection lifecycle (activation vs. deactivation), not contradiction per se — retained with conflict flag for traceability."
+  },
+  {
+    "head": "left_dipped_beam_driver",
+    "relation": "prerequisite",
+    "tail": "exlDipBeamHwDrvEnPrm == 1",
+    "sources": [
+      "outer_lamp_ssts_0480"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left_dipped_beam_driver",
+    "relation": "prerequisite",
+    "tail": "left_dipped_beam_output_active",
+    "sources": [
+      "outer_lamp_ssts_0480"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left_dipped_beam_driver",
+    "relation": "trigger_condition",
+    "tail": "left_dipped_beam_short_to_ground_detected",
+    "sources": [
+      "outer_lamp_ssts_0480"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC_setting",
+    "relation": "trigger_condition",
+    "tail": "left_dipped_beam_short_to_ground_detected",
+    "sources": [
+      "outer_lamp_ssts_0480"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightStatus_transmission",
+    "relation": "trigger_condition",
+    "tail": "left_dipped_beam_short_to_ground_detected",
+    "sources": [
+      "outer_lamp_ssts_0480"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightErrorStatus_transmission",
+    "relation": "trigger_condition",
+    "tail": "left_dipped_beam_short_to_ground_detected",
+    "sources": [
+      "outer_lamp_ssts_0480"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_lamp_control_function",
+    "relation": "prerequisite",
+    "tail": "exterior_lamp_mode_configured_to_automatic",
+    "sources": [
+      "outer_lamp_ssts_0482"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "power_tailgate_control_function",
+    "relation": "suppression_condition",
+    "tail": "trunk_safety_lock_configured_to_locked",
+    "sources": [
+      "outer_lamp_ssts_0482"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "system_sleep_mode",
+    "relation": "prerequisite",
+    "tail": "no_wake_up_source_signal_detected",
+    "sources": [
+      "inner_lamp_fas_0001"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "system_sleep_mode",
+    "relation": "depends_on",
+    "tail": "no_valid_wake_up_source_signal",
+    "sources": [
+      "inner_lamp_fas_0001"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "system_wake_up_or_sleep_behavior",
+    "relation": "triggered_by",
+    "tail": "wake_up_source",
+    "sources": [
+      "inner_lamp_fas_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "wake_up_source",
+    "relation": "input_to",
+    "tail": "wake_up_or_sleep_behavior",
+    "sources": [
+      "inner_lamp_fas_0002"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "reading_lamp_switch_control_function",
+    "relation": "depends_on",
+    "tail": "controller_VP3_25770",
+    "sources": [
+      "inner_lamp_fas_0003",
+      "inner_lamp_fas_0620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "interior_light_function",
+    "relation": "prerequisite",
+    "tail": "Z_ONE_platform",
+    "sources": [
+      "inner_lamp_fas_0004",
+      "inner_lamp_fas_0208",
+      "inner_lamp_fas_0322",
+      "inner_lamp_fas_0359"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "interior_light_function",
+    "relation": "depends_on",
+    "tail": "Function_Allocation_Specification",
+    "sources": [
+      "inner_lamp_fas_0004",
+      "inner_lamp_fas_0107",
+      "inner_lamp_fas_0426",
+      "inner_lamp_fas_0464"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "interior_light_function",
+    "relation": "depends_on",
+    "tail": "Z_ONE_3_0_platform",
+    "sources": [
+      "inner_lamp_fas_0005",
+      "inner_lamp_fas_0135",
+      "inner_lamp_fas_0154",
+      "inner_lamp_fas_0163",
+      "inner_lamp_fas_0235",
+      "inner_lamp_fas_0252",
+      "inner_lamp_fas_0257",
+      "inner_lamp_fas_0299",
+      "inner_lamp_fas_0367",
+      "inner_lamp_fas_0403",
+      "inner_lamp_fas_0432",
+      "inner_lamp_fas_0446",
+      "inner_lamp_fas_0450",
+      "inner_lamp_fas_0454",
+      "inner_lamp_fas_0459",
+      "inner_lamp_fas_0471",
+      "inner_lamp_fas_0476",
+      "inner_lamp_fas_0480",
+      "inner_lamp_fas_0486",
+      "inner_lamp_fas_0490",
+      "inner_lamp_fas_0560",
+      "inner_lamp_fas_0564",
+      "inner_lamp_fas_0592",
+      "inner_lamp_fas_0615",
+      "inner_lamp_fas_0625",
+      "inner_lamp_fas_0639",
+      "inner_lamp_fas_0651"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "interior_light_function",
+    "relation": "has_subfunction",
+    "tail": "Z_ONE_3_0_platform_FAS_IBD02",
+    "sources": [
+      "inner_lamp_fas_0005",
+      "inner_lamp_fas_0032",
+      "inner_lamp_fas_0042",
+      "inner_lamp_fas_0062",
+      "inner_lamp_fas_0088",
+      "inner_lamp_fas_0110",
+      "inner_lamp_fas_0116",
+      "inner_lamp_fas_0123",
+      "inner_lamp_fas_0150",
+      "inner_lamp_fas_0202",
+      "inner_lamp_fas_0203",
+      "inner_lamp_fas_0208",
+      "inner_lamp_fas_0216",
+      "inner_lamp_fas_0235",
+      "inner_lamp_fas_0250",
+      "inner_lamp_fas_0252",
+      "inner_lamp_fas_0257",
+      "inner_lamp_fas_0262",
+      "inner_lamp_fas_0281",
+      "inner_lamp_fas_0292",
+      "inner_lamp_fas_0294",
+      "inner_lamp_fas_0299",
+      "inner_lamp_fas_0330",
+      "inner_lamp_fas_0336",
+      "inner_lamp_fas_0367",
+      "inner_lamp_fas_0403",
+      "inner_lamp_fas_0404",
+      "inner_lamp_fas_0412",
+      "inner_lamp_fas_0426",
+      "inner_lamp_fas_0429",
+      "inner_lamp_fas_0432",
+      "inner_lamp_fas_0446",
+      "inner_lamp_fas_0450",
+      "inner_lamp_fas_0454",
+      "inner_lamp_fas_0459",
+      "inner_lamp_fas_0470",
+      "inner_lamp_fas_0476",
+      "inner_lamp_fas_0480",
+      "inner_lamp_fas_0486",
+      "inner_lamp_fas_0502",
+      "inner_lamp_fas_0508",
+      "inner_lamp_fas_0560",
+      "inner_lamp_fas_0564",
+      "inner_lamp_fas_0573",
+      "inner_lamp_fas_0592",
+      "inner_lamp_fas_0601",
+      "inner_lamp_fas_0606",
+      "inner_lamp_fas_0607",
+      "inner_lamp_fas_0615",
+      "inner_lamp_fas_0625",
+      "inner_lamp_fas_0637",
+      "inner_lamp_fas_0639"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampService",
+    "relation": "has_subfunction",
+    "tail": "reading_lamp_global_switch",
+    "sources": [
+      "inner_lamp_fas_0006"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampService",
+    "relation": "has_subfunction",
+    "tail": "reading_lamp_individual_switch",
+    "sources": [
+      "inner_lamp_fas_0006"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "reading_lamp_global_switch",
+    "relation": "trigger_condition",
+    "tail": "MapLampLazyOnOffSts == ON",
+    "sources": [
+      "inner_lamp_fas_0006"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "reading_lamp_global_switch",
+    "relation": "trigger_condition",
+    "tail": "MapLampLazyOnOffSts == OFF",
+    "sources": [
+      "inner_lamp_fas_0006"
+    ],
+    "conflict": true,
+    "conflict_note": "Opposite trigger states (ON/OFF) for same switch — likely represents toggle behavior, not conflict. But semantically contradictory as isolated conditions; marked for review."
+  },
+  {
+    "head": "reading_lamp_individual_switch",
+    "relation": "trigger_condition",
+    "tail": "MapLampOnOffSts",
+    "sources": [
+      "inner_lamp_fas_0006"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampOnOffSts",
+    "relation": "depends_on",
+    "tail": "LampID",
+    "sources": [
+      "inner_lamp_fas_0006"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LampID",
+    "relation": "input_value",
+    "tail": "0x0 = FL",
+    "sources": [
+      "inner_lamp_fas_0006"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LampID",
+    "relation": "input_value",
+    "tail": "0x1 = FR",
+    "sources": [
+      "inner_lamp_fas_0006"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LampID",
+    "relation": "input_value",
+    "tail": "0x2 = RL",
+    "sources": [
+      "inner_lamp_fas_0006"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LampID",
+    "relation": "input_value",
+    "tail": "0x3 = RR",
+    "sources": [
+      "inner_lamp_fas_0006"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

@@ -1,0 +1,126 @@
+[
+  {
+    "head": "后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "S32G收到[大屏开关请求ICB]输入",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "S32G收到[大屏开关请求ICB]",
+      "{ExteriorLightControlSystem.ControlRearFogLight.RearFogLightReq}=0x1=On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1218",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "{ExteriorLightControlSystem.ControlRearFogLight.RearFogLightReq}=0x1=On",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "S32G收到[大屏开关请求ICB]",
+      "{ExteriorLightControlSystem.ControlRearFogLight.RearFogLightReq}=0x1=On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1218",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "控制对象",
+    "tail": "ICB将服务接口或控制信号转换成灯控CAN信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "灯控CAN信号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1218",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "侧位灯点亮",
+    "relation": "触发条件",
+    "tail": "InstanceID为",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "InstanceID",
+      "ControlSidePositionLight.SidePositionLightReq=0x1=ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1218",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "侧位灯点亮",
+    "relation": "触发条件",
+    "tail": "8时,ControlSidePositionLight.SidePositionLightReq=0x1=ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "InstanceID",
+      "ControlSidePositionLight.SidePositionLightReq=0x1=ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1218",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "位置灯指示灯显示",
+    "relation": "依赖于",
+    "tail": "HMI子系统ICB调用接口获取后雾灯、近光灯和位置灯指示灯显示",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "HMI子系统ICB",
+      "位置灯指示灯"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1218",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯状态更新",
+    "relation": "输入为",
+    "tail": "CombLightFucProStatus=0x4=SidePositionAndDippedBeam",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CombLightFucProStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1218",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "仅后雾灯状态",
+    "relation": "输入为",
+    "tail": "CombLightFucProStatus=0x1=Only RearFogLight",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CombLightFucProStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1218",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "侧位灯点亮",
+    "relation": "优先级高于",
+    "tail": "后雾灯点亮",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "侧位灯",
+      "后雾灯"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "outer_lamp_fas_1218",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

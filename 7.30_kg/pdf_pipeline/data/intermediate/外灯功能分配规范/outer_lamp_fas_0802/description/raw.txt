@@ -1,0 +1,75 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯组合服务 ICB 接收 LHZCU 发送的转向灯点亮及故障状态 CAN 信号转成对应的服务逻辑",
+  "row_semantics": "表格按功能编号列出了一系列与转向灯控制相关的信号处理步骤，描述了从外部灯控制系统接收信号到将开关状态反馈至其他模块的过程。",
+  "column_semantics": "表格包含两列：左侧为功能编号和描述，右侧为具体的信号定义和状态值。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "外灯组合服务 ICB",
+      "type": "service",
+      "description": "负责接收并转换 LHZCU 发送的转向灯相关 CAN 信号的服务模块"
+    },
+    {
+      "name": "转向灯开关控制模块 LHZCU",
+      "type": "controller",
+      "description": "负责控制转向灯开关状态并向 ICB 和 SDM 反馈状态的模块"
+    },
+    {
+      "name": "SDM",
+      "type": "controller",
+      "description": "车身数据管理器，接收转向灯控制状态反馈"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DircnLghtSts",
+      "type": "input_signal",
+      "description": "方向灯状态信号，表示转向灯是否点亮（0x0=OFF）",
+      "unit": "hex"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "type": "input_signal",
+      "description": "方向灯故障状态信号，表示是否有故障（0x0=No_Error）",
+      "unit": "hex"
+    },
+    {
+      "name": "DircnLghtSwReq",
+      "type": "output_signal",
+      "description": "方向灯开关请求信号，表示转向灯开关状态（0x0=off）",
+      "unit": "hex"
+    },
+    {
+      "name": "EDRDircnIndLampSwSts",
+      "type": "output_signal",
+      "description": "电子差速制动系统中的独立转向灯开关状态信号（0x0=off）",
+      "unit": "hex"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "DirectionLghtErrSts",
+      "type": "fault_state",
+      "description": "方向灯错误状态，表示是否存在故障（0x0=No Error）"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步延时",
+      "description": "图标闪烁频率和声音提醒与实际转向灯的闪烁频率需保持一致退出，三者同步性允许的最大延时为 50ms",
+      "value": "50ms"
+    },
+    {
+      "name": "熄灭延时",
+      "description": "单侧转向灯熄灭同步性允许的最大延时周期为 40ms",
+      "value": "40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了外灯组合服务 ICB 如何处理 LHZCU 发送的转向灯点亮及故障状态 CAN 信号，并将转向灯开关状态反馈至 ICB 和 SDM 的具体逻辑，可用于验证转向灯系统的信号交互、状态反馈以及同步性要求。",
+  "uncertain_points": []
+}
+```

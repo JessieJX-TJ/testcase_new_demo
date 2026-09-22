@@ -1,0 +1,52 @@
+{
+  "table_type": "logic_table",
+  "topic": "背光灯无短路/开路故障处理逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，触发条件满足时执行的动作、退出条件以及异常处理的逻辑流程。",
+  "column_semantics": {
+    "Column1": "定义了逻辑流程中的不同阶段或状态（如前置条件、触发条件、执行动作等）",
+    "Column2": "详细描述了对应阶段的具体内容或条件"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "IFP",
+      "type": "控制器/模块名",
+      "description": "Integrated Flashing Processor，负责驱动和控制背光灯的状态"
+    },
+    {
+      "name": "SideLghtSts_IFP_l",
+      "type": "输入信号",
+      "description": "ICB发送给IFP的请求信号，用于指示背光灯的目标状态（0x1表示开启，0x0表示关闭）"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "背光灯无短路/开路故障"
+    },
+    {
+      "condition": "触发条件",
+      "description": "接收到ICB的请求信号SideLghtSts_IFP_l=0x1（On）"
+    },
+    {
+      "condition": "退出条件",
+      "description": "接收到SideLghtSts_IFP_l=0x0（OFF），关闭背光灯"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "IFP 驱动背光灯点亮",
+      "description": "当触发条件满足时，IFP将驱动背光灯进入点亮状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "背光灯短路/开路故障",
+      "description": "检测到背光灯存在短路或开路故障时，系统将采取异常处理措施"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证IFP模块在处理背光灯请求信号时的逻辑正确性，确保在正常和异常情况下（如无故障、短路/开路故障）能够正确驱动背光灯并进行相应的故障处理。",
+  "uncertain_points": []
+}

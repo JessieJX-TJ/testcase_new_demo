@@ -1,0 +1,70 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "主远光灯控制逻辑",
+  "row_semantics": "表格按功能流程分为前置条件、触发条件、执行动作、退出条件和异常处理五个阶段，描述了主远光灯从禁用到关闭再到重新启用的完整控制逻辑。",
+  "column_semantics": "表格包含两列，第一列为阶段描述（如前置条件、触发条件等），第二列为该阶段的具体条件或动作描述。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "主远光灯反馈超时允许参数，用于判断系统是否处于禁用状态。"
+    },
+    {
+      "name": "LMainBeamLightCtrlMdl",
+      "type": "signal",
+      "description": "主远光灯控制模块，作为输入信号接收来自硬件的控制指令。"
+    },
+    {
+      "name": "LMainBeamLightCtrl_HW",
+      "type": "signal",
+      "description": "主远光灯硬件控制信号，表示物理开关的状态（0=Off, 1=On）。"
+    },
+    {
+      "name": "LMainBeamLightDrvMdl",
+      "type": "module",
+      "description": "主远光灯驱动模块，负责实际的灯光输出控制。"
+    },
+    {
+      "name": "MainBeamLamp_LH_HSD",
+      "type": "output_signal",
+      "description": "左远光灯输出信号，表示左远光灯的实际点亮状态。"
+    },
+    {
+      "name": "MainBeamLghtSts",
+      "type": "system_state",
+      "description": "主远光灯状态，用于指示当前远光灯的工作状态（0=Off）。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MainBeamLightFbkSOAEnPrm == 0 (Disable)",
+      "description": "系统处于禁用状态，主远光灯功能被禁用。"
+    },
+    {
+      "condition": "收到 LMainBeamLightCtrlMdl 统一分发的 LMainBeamLightCtrl_HW == 0 (Off)",
+      "description": "接收到硬件控制信号为关闭状态，触发主远光灯关闭逻辑。"
+    },
+    {
+      "condition": "收到 LMainBeamLightCtrlMdl 发送的 LMainBeamLightCtrl_HW == 1 (On)",
+      "description": "接收到硬件控制信号为开启状态，触发主远光灯重新启用逻辑。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "LMainBeamLightDrvMdl 停止驱动左远光灯输出 (MainBeamLamp_LH_HSD)",
+      "description": "当接收到关闭指令时，停止左远光灯的输出。"
+    },
+    {
+      "output": "持续发送 MainBeamLghtSts == 0 (Off) 至 LMainBeamLightCtrlMdl",
+      "description": "在关闭状态下，持续向控制模块发送远光灯关闭状态信息，至少发送三帧。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证主远光灯在不同控制信号下的响应逻辑，确保其在禁用、关闭和重新启用状态下的行为符合设计规范。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,82 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "转向灯控制信号周期规范",
+  "row_semantics": "表格按编号列出与转向灯控制相关的不同模块或信号的发送/处理周期描述",
+  "column_semantics": {
+    "1": "序号/功能描述",
+    "2": "信号周期描述"
+  },
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "转向灯开关控制模块",
+      "type": "controller_module",
+      "description": "负责发送转向灯控制信号的模块"
+    },
+    {
+      "name": "HMI子系统",
+      "type": "system",
+      "description": "人机交互子系统，接收并显示转向灯状态"
+    },
+    {
+      "name": "转向灯驱动处理模块",
+      "type": "controller_module",
+      "description": "负责反馈转向灯状态信号的模块"
+    },
+    {
+      "name": "S32G",
+      "type": "controller",
+      "description": "车载计算平台，请求CAN信号发送"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "转向灯控制信号",
+      "module": "转向灯开关控制模块",
+      "description": "由转向灯开关控制模块发送的控制信号"
+    },
+    {
+      "name": "转向灯状态信号",
+      "module": "转向灯驱动处理模块",
+      "description": "由转向灯驱动处理模块反馈的转向灯状态信号"
+    },
+    {
+      "name": "CAN信号",
+      "module": "S32G",
+      "description": "S32G通过CAN总线发送的转向灯服务请求信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal": "转向灯控制信号",
+      "module": "转向灯开关控制模块",
+      "period": "10ms",
+      "description": "信号发送周期为10ms，内部处理时间为30ms"
+    },
+    {
+      "signal": "转向灯状态信号",
+      "module": "HMI子系统",
+      "period": "40ms",
+      "description": "信号处理周期为40ms"
+    },
+    {
+      "signal": "转向灯状态信号",
+      "module": "转向灯驱动处理模块",
+      "period": "30ms+50ms",
+      "description": "信号周期为30ms+50ms"
+    },
+    {
+      "signal": "CAN信号",
+      "module": "S32G",
+      "period": "20ms",
+      "description": "CAN信号发送周期为20ms"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了整车电子系统中转向灯控制相关模块和信号的周期性行为，可用于验证各模块间信号交互的时序正确性、信号传输延迟以及系统响应时间是否符合设计要求。",
+  "uncertain_points": []
+}
+```

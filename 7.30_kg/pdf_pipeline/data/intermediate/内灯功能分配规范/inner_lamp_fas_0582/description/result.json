@@ -1,0 +1,68 @@
+{
+  "table_type": "structure_table",
+  "topic": "外后视镜灯光控制逻辑",
+  "row_semantics": "输入信号来源",
+  "column_semantics": "信号类型及其流向",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LockingSystem",
+      "type": "system",
+      "description": "门锁子系统"
+    },
+    {
+      "name": "VehicleStateSystem",
+      "type": "system",
+      "description": "整车状态管理子系统"
+    },
+    {
+      "name": "VatyMirLampLHCtrl(LHZCU)",
+      "type": "controller",
+      "description": "左后视镜灯光控制器（LHZCU）"
+    },
+    {
+      "name": "VatyMirLampDrv(LHZCU)",
+      "type": "driver",
+      "description": "左后视镜灯光驱动器（LHZCU）"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehLckSts",
+      "type": "input_signal",
+      "description": "车辆锁止状态"
+    },
+    {
+      "name": "VehMd",
+      "type": "input_signal",
+      "description": "车辆模式"
+    },
+    {
+      "name": "VehMdV",
+      "type": "input_signal",
+      "description": "车辆模式值"
+    },
+    {
+      "name": "UsrMd",
+      "type": "input_signal",
+      "description": "用户模式"
+    },
+    {
+      "name": "UsrMdV",
+      "type": "input_signal",
+      "description": "用户模式值"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "VatyMirLampCtrlCmd",
+      "type": "output_signal",
+      "description": "左后视镜灯光控制命令"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该图描述了车辆门锁状态和整车状态如何影响左后视镜灯光控制器的输出命令，可用于验证外后视镜灯光在不同车辆状态下的正确控制逻辑。",
+  "uncertain_points": []
+}

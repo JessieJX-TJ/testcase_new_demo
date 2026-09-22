@@ -1,0 +1,66 @@
+{
+  "table_type": "logic_table",
+  "topic": "转向灯系统故障诊断与处理逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，当触发条件满足时，系统执行的动作、退出条件以及异常处理规则。",
+  "column_semantics": {
+    "1": "前置条件：配置字DILghtSwSOAEnPrm的值为1（启用状态）",
+    "2": "触发条件：转向拨杆开关短路到地",
+    "3": "执行动作：持续发送方向灯开关状态至控制模块，并置位DTC（故障代码）",
+    "4": "退出条件：转向灯开关检测到未短路到地",
+    "5": "异常处理：未明确指定"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILghtSwSOAEnPrm",
+      "type": "parameter",
+      "description": "配置字，用于启用或禁用转向灯相关功能"
+    },
+    {
+      "name": "DILghtSwMdl",
+      "type": "module",
+      "description": "方向灯开关模块，负责采集和发送开关状态"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "module",
+      "description": "方向灯控制模块，接收并处理方向灯开关状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILghtSwSOAEnPrm == 1",
+      "description": "前置条件，表示转向灯功能已启用"
+    },
+    {
+      "condition": "转向拨杆开关短路到地",
+      "description": "触发条件，表示检测到转向拨杆开关异常短路"
+    },
+    {
+      "condition": "转向灯开关检测到未短路到地",
+      "description": "退出条件，表示转向拨杆开关恢复正常状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DirectionLightSwitchStatus",
+      "value": "0x5 (Error)",
+      "description": "输出信号，表示方向灯开关状态为错误状态"
+    },
+    {
+      "signal": "DTC",
+      "value": "置位",
+      "description": "置位DTC（故障代码），用于记录故障信息"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "转向拨杆开关短路到地",
+      "description": "转向拨杆开关异常短路到地，触发故障处理逻辑"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证转向灯系统在拨杆开关短路到地时的故障检测与处理逻辑，确保系统能够正确发送错误状态并置位DTC。",
+  "uncertain_points": []
+}

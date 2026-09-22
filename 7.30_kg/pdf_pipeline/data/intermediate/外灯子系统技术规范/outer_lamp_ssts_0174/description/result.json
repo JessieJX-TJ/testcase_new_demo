@@ -1,0 +1,67 @@
+{
+  "table_type": "fault_table",
+  "topic": "危险报警灯开关异常检测与处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，描述了从触发条件到执行动作、退出条件及异常处理的完整逻辑。",
+  "column_semantics": "第一列定义了逻辑阶段（如前置条件、触发条件、执行动作等），第二列详细描述了该阶段的具体内容。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HzrdLightSwSOAEnPrm",
+      "type": "parameter",
+      "description": "危险报警灯开关超时保护使能配置参数"
+    },
+    {
+      "name": "HzrdLightSwMdl",
+      "type": "module",
+      "description": "危险报警灯开关模块"
+    },
+    {
+      "name": "HzrdLightCtrlMdl",
+      "type": "module",
+      "description": "危险报警灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字 HzrdLightSwSOAEnPrm == 1 (Enable)"
+    },
+    {
+      "condition": "触发条件",
+      "description": "危险报警灯开关连续接地超过 20s"
+    },
+    {
+      "condition": "退出条件",
+      "description": "开关悬空"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "HazardLightSwitchStatus",
+      "value": "2 (Error)",
+      "description": "持续发送危险报警灯开关状态为错误"
+    },
+    {
+      "signal": "DTC",
+      "value": "uncertain",
+      "description": "置位故障代码 (DTC)，具体代码未明确"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "HzrdLightSwSOA",
+      "description": "危险报警灯开关超时保护故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "20s",
+      "description": "危险报警灯开关连续接地时间超过 20 秒"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了危险报警灯开关在异常情况下的诊断逻辑，可用于验证车辆电子系统对危险报警灯开关超时保护功能的正确实现，包括故障检测、状态上报和DTC生成。",
+  "uncertain_points": [
+    "DTC 具体代码未明确"
+  ]
+}

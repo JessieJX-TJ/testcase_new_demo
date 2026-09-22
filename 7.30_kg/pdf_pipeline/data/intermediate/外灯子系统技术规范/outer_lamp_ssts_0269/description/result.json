@@ -1,0 +1,41 @@
+{
+  "table_type": "parameter_table",
+  "topic": "整车唤醒/休眠方式的技术规范",
+  "row_semantics": "描述不同唤醒源对应的唤醒或休眠方式及其备注信息",
+  "column_semantics": {
+    "唤醒源": "触发系统唤醒的来源或条件",
+    "唤醒/休眠方式": "系统在特定唤醒源下采取的具体唤醒或休眠操作模式",
+    "备注": "对唤醒/休眠方式的补充说明或特殊要求"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "唤醒源",
+      "type": "input_signal",
+      "description": "触发车辆电子系统从休眠状态唤醒的外部或内部信号"
+    },
+    {
+      "name": "唤醒/休眠方式",
+      "type": "output_signal",
+      "description": "系统根据唤醒源执行的具体操作，如电平跳变、沿触发等"
+    },
+    {
+      "name": "备注",
+      "type": "additional_info",
+      "description": "对唤醒/休眠方式的补充说明"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "电平跳变沿触发唤醒",
+      "type": "output_signal",
+      "description": "当检测到电平发生跳变时，触发系统唤醒"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证车辆电子系统在不同唤醒源下的唤醒/休眠行为是否符合设计规范，确保系统能够正确响应预定义的唤醒条件。",
+  "uncertain_points": []
+}

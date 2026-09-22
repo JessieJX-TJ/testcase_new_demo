@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "后备箱灯点亮",
+    "relation": "触发条件",
+    "tail": "接收到应用控制模块的请求信号 LdSpclampCtrlCmdu0x1 (Open)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["触发条件", "执行动作"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后备箱灯关闭",
+    "relation": "触发条件",
+    "tail": "接收 LdSpclampCtrlCmdu0x0 (Close), 关闭后背箱灯",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["退出条件", "执行动作"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后备箱灯关闭",
+    "relation": "故障响应",
+    "tail": "检测到后备箱灯短路/开路故障",
+    "triple_type": "故障响应",
+    "evidence_terms": ["异常处理", "前置条件"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "[后备箱灯驱动控制模块]发送驱动 LdspcLamp_HSD",
+    "relation": "输入为",
+    "tail": "接收到应用控制模块的请求信号 LdSpclampCtrlCmdu0x1 (Open)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["触发条件", "执行动作"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后备箱灯点亮",
+    "relation": "依赖于",
+    "tail": "[后备箱灯驱动控制模块]发送驱动 LdspcLamp_HSD",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["执行动作", "前置条件"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后备箱灯关闭",
+    "relation": "依赖于",
+    "tail": "接收 LdSpclampCtrlCmdu0x0 (Close)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["退出条件", "前置条件"],
+    "confidence_note": "high"
+  }
+]
+```

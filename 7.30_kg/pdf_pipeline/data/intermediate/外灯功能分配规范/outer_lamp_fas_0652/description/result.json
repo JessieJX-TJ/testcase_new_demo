@@ -1,0 +1,84 @@
+{
+  "table_type": "signal_table",
+  "topic": "Side Position Light (Position Lamp) Control and Status Feedback for Vehicle Systems",
+  "row_semantics": "Each row represents a specific instance or configuration of the side position light system, including its status, error status, and associated control signals.",
+  "column_semantics": "The table does not have explicit columns; instead, it uses a structured text format where each line defines a parameter or signal related to the side position light system.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "FRSideLightFlts",
+      "type": "signal",
+      "description": "Front Right Side Position Light Fault Status"
+    },
+    {
+      "name": "RLSideLightFlts",
+      "type": "signal",
+      "description": "Rear Left Side Position Light Fault Status"
+    },
+    {
+      "name": "RRSideLightFlts",
+      "type": "signal",
+      "description": "Rear Right Side Position Light Fault Status"
+    },
+    {
+      "name": "SidePositionLight.SidePositionLightStatus",
+      "type": "signal",
+      "description": "Status of the side position light (e.g., ON/OFF)"
+    },
+    {
+      "name": "SidePositionLight.SidePositionLightErrorStatus",
+      "type": "signal",
+      "description": "Error status of the side position light"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting Harness Control Unit, responsible for controlling the side position lights"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Instrument Cluster Box, receives status and fault feedback from LHZCU"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLight.Sta",
+      "description": "Indicates whether the side position light is ON or OFF"
+    },
+    {
+      "name": "SidePositionLightErrSta",
+      "description": "Indicates if there is an error in the side position light system"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SideLightSts",
+      "type": "signal",
+      "description": "Overall status of the side lights"
+    },
+    {
+      "name": "SideLightFltsts",
+      "type": "signal",
+      "description": "Fault status of the side lights"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SidePositionLightErrorStatus",
+      "description": "Indicates that an error has occurred in the side position light system"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "40ms",
+      "description": "Maximum allowable delay between the left and right side position lights when turning on or off"
+    }
+  ],
+  "engineering_interpretation": "This table specifies the control logic and status feedback for the vehicle's side position lights, detailing how the LHZCU manages the lights and communicates their status and errors to the ICB. It also includes timing requirements for synchronized operation of the left and right lights.",
+  "uncertain_points": [
+    "The exact internal logic of the LHZCU beyond what is specified in this table is not detailed.",
+    "The specific CAN communication protocol details for M1 PPV are not fully described."
+  ]
+}

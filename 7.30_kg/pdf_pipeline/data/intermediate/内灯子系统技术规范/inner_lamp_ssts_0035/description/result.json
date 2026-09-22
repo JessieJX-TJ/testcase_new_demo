@@ -1,0 +1,113 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System (SSTS) - Z-ONE-3.0 Platform",
+  "row_semantics": "Each row represents a specific command or parameter related to the control of interior ambient lighting, including fade speed, on/off status, color, brightness, and breathing rate.",
+  "column_semantics": {
+    "Input": "The communication interface for sending commands (e.g., LIN bus).",
+    "LIN": "Specific input via LIN bus.",
+    "RHZCU": "Controller/module responsible for processing the command.",
+    "LowIPAmbtLampA": "Target module/controller for ambient lamp A.",
+    "RHZCU_LIN5": "Another RHZCU module, possibly for LIN5 interface.",
+    "内灯 SSTS": "System/Subsystem identifier for Interior Lighting."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "LowIPAmbtLampA",
+      "type": "controller_module",
+      "description": "Controller responsible for ambient lamp A in the interior lighting system."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller_module",
+      "description": "Regional Zone Control Unit, responsible for processing commands and controlling various lighting functions."
+    },
+    {
+      "name": "RHZCU_LIN5",
+      "type": "controller_module",
+      "description": "Another instance of RHZCU, likely associated with LIN5 communication interface."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Fade Speed Command",
+      "description": "Controls the speed at which the ambient light fades in or out.",
+      "values": [
+        "Spd0: 2000ms",
+        "Spd1: 300ms",
+        "Spd2: 100ms (reserved)",
+        "Spd3: reserved"
+      ]
+    },
+    {
+      "name": "On/Off Request",
+      "description": "Enables or disables the ambient lamp.",
+      "values": [
+        "0_OFF: Turn off",
+        "1_ON: Turn on"
+      ]
+    },
+    {
+      "name": "Color Command",
+      "description": "Sets the color of the ambient light.",
+      "values": [
+        "0x00: No request",
+        "0x01-0xFF: Various color values"
+      ]
+    },
+    {
+      "name": "Brightness Command",
+      "description": "Adjusts the brightness level of the ambient light.",
+      "values": [
+        "0x00: No request",
+        "0x01-0x64: 1%-100%",
+        "0x65-0xFF: Reserved"
+      ]
+    },
+    {
+      "name": "Breathing Rate Command",
+      "description": "Sets the breathing rate of the ambient light.",
+      "values": [
+        "0x00-0x0B: Various rates from 0 to 11"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Ambient Lamp Status",
+      "description": "Indicates whether the ambient lamp is on or off.",
+      "type": "state"
+    },
+    {
+      "name": "Ambient Lamp Color",
+      "description": "Current color setting of the ambient lamp.",
+      "type": "state"
+    },
+    {
+      "name": "Ambient Lamp Brightness",
+      "description": "Current brightness level of the ambient lamp.",
+      "type": "state"
+    },
+    {
+      "name": "Ambient Lamp Breathing Rate",
+      "description": "Current breathing rate of the ambient lamp.",
+      "type": "state"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Fade Speed",
+      "description": "Time required for the ambient light to fade from current state to target state.",
+      "default_value": "2000ms",
+      "min_value": "100ms",
+      "max_value": "2000ms"
+    }
+  ],
+  "engineering_interpretation": "This table defines the command set and parameters for controlling the interior ambient lighting system, including fade speed, on/off status, color, brightness, and breathing rate. It is used to verify that the system correctly interprets and executes these commands via the specified communication interfaces (LIN, RHZCU, etc.).",
+  "uncertain_points": [
+    "The exact behavior of Spd2 and Spd3 is not fully defined as they are marked as 'reserved' or 'pre留'.",
+    "The specific mapping between color values (0x01-0xFF) and actual RGB coordinates is not provided."
+  ]
+}

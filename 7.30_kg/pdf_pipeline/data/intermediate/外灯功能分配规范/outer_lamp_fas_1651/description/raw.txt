@@ -1,0 +1,69 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "制动灯控制系统的接口信号定义与配置",
+  "row_semantics": "每行代表一个具体的接口或信号定义，描述其在系统中的角色和属性。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，用于标识该信号或通信路径。",
+    "Direction": "信号的方向，指示是输入还是输出。",
+    "Type": "信号的类型，如CANFD、硬线驱动等。",
+    "Sender/Provider": "信号的发送方或提供方，通常是某个节点或服务。",
+    "Receiver/Consumer": "信号的接收方或消费方，通常是另一个节点或服务。",
+    "Channel": "信号传输的路径或通道，如指定信号通道。",
+    "Source": "信号的来源，例如指定信号来源。",
+    "BrkLghtCtrl_HW:": "制动灯硬件控制的具体值定义，如0x0表示关闭，0x1表示开启。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrkLghtCtrl_HW",
+      "type": "功能名",
+      "description": "制动灯硬件控制接口，用于直接控制制动灯的状态。"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器/模块名",
+      "description": "区域控制单元，负责处理和转发制动灯相关的控制信号。"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "集成控制盒，可能作为制动灯控制信号的中间节点。"
+    },
+    {
+      "name": "TailLpAsmbA_RH",
+      "type": "控制器/模块名",
+      "description": "右后尾灯总成，作为制动灯控制的最终执行部件。"
+    },
+    {
+      "name": "TailLpAsmbA_LH",
+      "type": "控制器/模块名",
+      "description": "左后尾灯总成，作为制动灯控制的最终执行部件。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "BrkLghtCtrl_HW_0_Off",
+      "type": "输出信号",
+      "description": "制动灯关闭状态信号，值为0x0。",
+      "interface": "BrkLghtCtrl_HW",
+      "direction": "输出",
+      "type": "CANFD"
+    },
+    {
+      "name": "BrkLghtCtrl_HW_1_On",
+      "type": "输出信号",
+      "description": "制动灯开启状态信号，值为0x1。",
+      "interface": "BrkLghtCtrl_HW",
+      "direction": "输出",
+      "type": "CANFD"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了制动灯控制系统中各个接口和信号的属性，包括其方向、类型、发送方、接收方、传输路径及具体值定义，可用于验证制动灯控制信号在不同控制器间的正确传输与执行。",
+  "uncertain_points": []
+}
+```

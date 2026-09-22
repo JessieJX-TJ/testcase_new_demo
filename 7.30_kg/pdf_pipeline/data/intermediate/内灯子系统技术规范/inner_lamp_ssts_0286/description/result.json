@@ -1,0 +1,98 @@
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (SSTS) - Door Rear Left Lamp Control Specifications",
+  "row_semantics": "Each row represents a specific control command or parameter related to the rear left door lamp functionality, including fade speed, on/off status, color, and brightness.",
+  "column_semantics": {
+    "Input": "The source of the command or signal, indicating where the control request originates (e.g., LIN bus, LHZCU module).",
+    "LIN": "Signal from the Local Interconnect Network bus.",
+    "LHZCU": "Signal from the Local High-Level Control Unit.",
+    "DoorAm btLampE RL": "Door Ambient Lamp Enable signal for the right rear door.",
+    "LHZCU LIN4": "Specific LIN channel within the LHZCU for this signal.",
+    "内灯 SSTS": "Internal lighting sub-system identifier."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorRL5LampFadeSpdCmd_1",
+      "type": "command",
+      "description": "Controls the fade speed of the rear left door lamp during fade operations."
+    },
+    {
+      "name": "DoorRL6LampOnOff_1",
+      "type": "command",
+      "description": "Enables or disables the rear left door lamp."
+    },
+    {
+      "name": "DoorRL6LampColCmd_1",
+      "type": "command",
+      "description": "Sets the color of the rear left door lamp."
+    },
+    {
+      "name": "DoorRL6LampBrnsCmd_1",
+      "type": "command",
+      "description": "Adjusts the brightness of the rear left door lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Rate9-15",
+      "type": "parameter",
+      "description": "Defines various fade speeds and breathing modes for the lamp."
+    },
+    {
+      "name": "DoorAm btLampE RL",
+      "type": "signal",
+      "description": "Enable/disable signal for the ambient lamp on the right rear door."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorRL5LampFadeSpdCmd_1",
+      "type": "output",
+      "description": "The actual fade speed command sent to the lamp."
+    },
+    {
+      "name": "DoorRL6LampOnOff_1",
+      "type": "output",
+      "description": "The on/off state of the rear left door lamp."
+    },
+    {
+      "name": "DoorRL6LampColCmd_1",
+      "type": "output",
+      "description": "The color setting for the rear left door lamp."
+    },
+    {
+      "name": "DoorRL6LampBrnsCmd_1",
+      "type": "output",
+      "description": "The brightness level of the rear left door lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Fade Speed",
+      "description": "Time required for the lamp to transition from current to target state during color/亮度切换.",
+      "values": {
+        "default": "2000ms",
+        "Sdp1": "300ms",
+        "Sdp2": "100ms"
+      }
+    },
+    {
+      "name": "Breathing Modes",
+      "description": "Defined rates for different breathing patterns of the lamp.",
+      "values": {
+        "Rate9": "4.5s",
+        "Rate10": "5s",
+        "Rate11": "6s",
+        "Rate12": "7s",
+        "Rate13": "8s",
+        "Rate14": "10s",
+        "Rate15": "12s"
+      }
+    }
+  ],
+  "engineering_interpretation": "This table defines the control parameters and commands for the rear left door lamp's fade speed, on/off state, color, and brightness within the Interior Lighting Sub System. It is used to verify that the lamp responds correctly to various input signals and timing constraints as specified in the Z-ONE-3.0 platform.",
+  "uncertain_points": []
+}

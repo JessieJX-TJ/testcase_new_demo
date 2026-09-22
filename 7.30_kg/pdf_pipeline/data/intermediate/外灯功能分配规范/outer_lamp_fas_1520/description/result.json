@@ -1,0 +1,81 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 方向灯控制",
+  "row_semantics": "表格的每一行代表一个独立的方向灯控制功能实例，分别对应左前、右前和左后转向灯的控制。",
+  "column_semantics": {
+    "1": "功能模块名称",
+    "2": "服务消费方 (SOA)",
+    "3": "控制器/模块名 (LHZCU, RHZCU, RZCU)",
+    "4": "控制器/模块名 (ICB)",
+    "5": "预留列",
+    "6": "硬线控制"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight.ControlDirectionLight",
+      "type": "功能名",
+      "description": "方向灯控制接口，用于周期性调用以控制特定转向灯的状态。"
+    },
+    {
+      "name": "SOA",
+      "type": "控制器/模块名",
+      "description": "Service-Oriented Architecture，表示该功能的服务消费方或服务提供方。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Left Headlight Zone Control Unit，左前灯区域控制单元。"
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块名",
+      "description": "Right Headlight Zone Control Unit，右前灯区域控制单元。"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器/模块名",
+      "description": "Right Zone Control Unit，右区域控制单元（可能与右前灯相关）。"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "Integrated Circuit Board，集成电路板，可能为通用控制模块。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "参数",
+      "description": "实例ID，用于区分不同的转向灯控制实例（如1=左前，2=右前，3=左后）。"
+    },
+    {
+      "name": "DirectionLightReq",
+      "type": "输入信号",
+      "description": "方向灯请求参数，包含ON/OFF状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "0x0=OFF",
+      "type": "输出信号",
+      "description": "熄灭转向灯。"
+    },
+    {
+      "name": "0x1=ON",
+      "type": "输出信号",
+      "description": "点亮转向灯。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "周期调用",
+      "type": "定时",
+      "description": "该服务接口需要周期性调用以持续控制转向灯状态。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中方向灯的控制逻辑，详细说明了不同转向灯（左前、右前、左后）的控制接口、参数及状态切换方式，可用于验证各灯控模块在不同场景下的响应正确性。",
+  "uncertain_points": []
+}

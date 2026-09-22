@@ -1,0 +1,69 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "转向灯驱动控制逻辑",
+  "row_semantics": "描述在特定输入条件下执行的动作",
+  "column_semantics": {
+    "输入": "定义了触发转向灯点亮的硬件控制信号和软件请求信号",
+    "执行动作": "描述了在满足输入条件时，系统将执行的具体操作",
+    "备注": "提供额外的信息或说明"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FLDircnLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "左转向灯硬件控制信号，值为0x1表示激活"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "右转向灯硬件控制信号，值为0x1表示激活"
+    },
+    {
+      "name": "DirectionLight.ControlDirectionLight.DirectionLightReq.InstanceID=1",
+      "type": "input_signal",
+      "description": "左转向灯软件请求信号，InstanceID=1表示针对左转向灯的请求"
+    },
+    {
+      "name": "DirectionLight.ControlDirectionLight.DirectionLightReq.InstanceID=3",
+      "type": "input_signal",
+      "description": "右转向灯软件请求信号，InstanceID=3表示针对右转向灯的请求"
+    },
+    {
+      "name": "转向灯驱动处理模块",
+      "type": "controller_module",
+      "description": "负责处理转向灯点亮逻辑的硬件模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "FLDircnLghtCtrl_HW == 0x1",
+      "description": "左转向灯硬件控制信号被激活"
+    },
+    {
+      "condition": "RLDircnLghtCtrl_HW == 0x1",
+      "description": "右转向灯硬件控制信号被激活"
+    },
+    {
+      "condition": "DirectionLight.ControlDirectionLight.DirectionLightReq.InstanceID=1 == On",
+      "description": "左转向灯软件请求信号被设置为开启状态"
+    },
+    {
+      "condition": "DirectionLight.ControlDirectionLight.DirectionLightReq.InstanceID=3 == On",
+      "description": "右转向灯软件请求信号被设置为开启状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "转向灯点亮",
+      "description": "在满足条件时，转向灯将被点亮"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证转向灯驱动处理模块在接收到正确的硬件和软件信号组合时，能否正确点亮相应的转向灯。",
+  "uncertain_points": []
+}
+```

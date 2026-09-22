@@ -1,0 +1,90 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Exterior Light Control System - Dipped Beam and Side Position Light Status/Errors",
+  "row_semantics": "Each row represents a specific instance or status of an exterior light component, including its operational state (ON/OFF) and error status.",
+  "column_semantics": "Columns define the attributes of each light instance, such as light status (e.g., FLSideLightSts), error status (e.g., SidePositionLightErrorSta), and associated CAN communication parameters.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem.DippedBeamLightSts",
+      "type": "controller",
+      "description": "Controls the status of dipped beam lights."
+    },
+    {
+      "name": "SidePositionLight",
+      "type": "module",
+      "description": "Manages side position lights, including their status and error reporting."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Near light control module responsible for subscribing to and managing light status and fault states."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DippedBeamLightSts",
+      "type": "input_signal",
+      "description": "Status of dipped beam lights (ON/OFF)."
+    },
+    {
+      "name": "SidePositionLightSts",
+      "type": "input_signal",
+      "description": "Status of side position lights (ON/OFF)."
+    },
+    {
+      "name": "SidePositionLightErrorSta",
+      "type": "input_signal",
+      "description": "Error status of side position lights."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLSideLightSts",
+      "type": "output_signal",
+      "description": "Front left side light status."
+    },
+    {
+      "name": "FRSideLightSts",
+      "type": "output_signal",
+      "description": "Front right side light status."
+    },
+    {
+      "name": "RLSideLightSts",
+      "type": "output_signal",
+      "description": "Rear left side light status."
+    },
+    {
+      "name": "RRSideLightSts",
+      "type": "output_signal",
+      "description": "Rear right side light status."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DipdBeamLightErrSta",
+      "type": "fault_status",
+      "description": "Error status for dipped beam lights."
+    },
+    {
+      "name": "SidePositionLightErrorSta",
+      "type": "fault_status",
+      "description": "Error status for side position lights."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步点亮延时",
+      "value": "≤40ms",
+      "description": "Left and right side lights must maintain synchronized illumination, with a maximum delay of 40ms between them."
+    }
+  ],
+  "engineering_interpretation": "This table defines the expected behavior and communication protocol for the exterior light control system, specifically focusing on the status and error reporting of dipped beam and side position lights. It is used to verify that the system correctly manages light states and reports errors according to the specified CAN communication schemes.",
+  "uncertain_points": [
+    "The exact mapping between 'InstanceID' values and physical lights is not explicitly detailed in the table.",
+    "The specific CAN communication scheme for 'exlSideLightHwDrvEnPrm' is not fully described beyond 'PPV'."
+  ]
+}
+```

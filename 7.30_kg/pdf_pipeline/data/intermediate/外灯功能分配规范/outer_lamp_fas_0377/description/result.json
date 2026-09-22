@@ -1,0 +1,108 @@
+{
+  "table_type": "logic_table",
+  "topic": "PersonalizationData.FollowMeHomeSet功能实现与控制逻辑",
+  "row_semantics": "触发条件与执行动作的对应关系",
+  "column_semantics": "触发条件列定义了满足特定场景时的输入信号状态；执行动作列详细描述了系统在该条件下应执行的具体操作，包括模块间通信和信号控制。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "PersonalizationData.FollowMeHomeSet",
+      "type": "功能",
+      "description": "用户个性化设置中的“跟随我回家”功能启用状态"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "伴我回家控制模块，负责处理相关逻辑并控制外灯"
+    },
+    {
+      "name": "ICB",
+      "type": "服务/接口",
+      "description": "外灯控制组合服务，提供近光灯控制接口"
+    },
+    {
+      "name": "UsrMd",
+      "type": "输入信号",
+      "description": "用户模式信号，表示车辆当前的驾驶模式（如舒适、正常驾驶、泊车等）"
+    },
+    {
+      "name": "VehMd",
+      "type": "输入信号",
+      "description": "车辆模式信号，表示车辆当前的运行模式（如工厂模式、运输模式等）"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "PersonalizationData.FollowMeHomeSet.Enable",
+      "value": "0x0=Enabled",
+      "description": "功能已启用"
+    },
+    {
+      "name": "PersonalizationData.FollowMeHomeSet.Info.FoMeHmEnableInfo",
+      "value": "0x0=Enabled",
+      "description": "具体功能开关已开启"
+    },
+    {
+      "name": "PersonalizationData.FollowMeHomeSet.Info.FoMeHmTimeInfo",
+      "value": "0x0=30S",
+      "description": "默认延时时间为30秒"
+    },
+    {
+      "name": "PersonalizationData.FollowMeHomeSet.Info.FoMeHmFuncInfo",
+      "value": "0x0=DippedLight",
+      "description": "功能模式为近光灯"
+    },
+    {
+      "name": "UsrMd",
+      "value": "0x2 Comfortable, 0x3 NormalDriving, 0x4 AIParking, 0x5 AIPilot",
+      "description": "用户模式满足特定条件"
+    },
+    {
+      "name": "VehMd",
+      "value": "0x2 FACTORY, 0x3 TRANSPORT",
+      "description": "车辆模式满足特定条件"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ExteriorLightSwitchProcess.CombLightFucProStatus.CombLightFucProSta",
+      "value": "Only DippedBeamLight ON",
+      "description": "外灯切换过程中的组合灯光功能状态，设置为仅近光灯亮起"
+    },
+    {
+      "name": "LHZCU.Notifier",
+      "value": "LDipdBeamLghtCtrl_0x1=LDipdBeamLghtCtrl_1_On; RDipdBeamLghtCtrl_0x1=RDipdBeamLghtCtrl_1_On;",
+      "description": "LHZCU向ICB发送控制信号，请求打开近光灯"
+    },
+    {
+      "name": "ICB",
+      "action": "调用DippedBeamLight基础服务",
+      "description": "ICB服务被调用以控制近光灯点亮"
+    },
+    {
+      "name": "ICB",
+      "action": "转换成CAN信号",
+      "description": "ICB将服务接口或控制信号转换为CAN总线信号进行传输"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "FoMeHmTimeInfo",
+      "value": "30S",
+      "description": "默认延时时间为30秒，若用户未设置则使用此值"
+    },
+    {
+      "name": "周期发送",
+      "value": "500ms",
+      "description": "系统以500毫秒的周期发送数据至LHZCU模块"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了\"跟随我回家\"功能的触发条件、执行逻辑及对外灯控制的具体要求，可用于验证该功能在不同用户和车辆模式下的正确性，以及外灯控制信号的生成和传输。",
+  "uncertain_points": [
+    "具体SOA和CAN通讯协议细节未明确说明",
+    "如果用户设置了时间但未设置灯光，则如何处理未明确",
+    "ICB内部实现细节未在此表中体现"
+  ]
+}

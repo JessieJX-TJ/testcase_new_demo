@@ -1,0 +1,484 @@
+```json
+[
+  {
+    "head": "ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq",
+    "relation": "output_as",
+    "tail": "0x0=OFF or 0x1=ON",
+    "sources": ["outer_lamp_fas_0050"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.DayRunningLightFucProStatus",
+    "relation": "output_as",
+    "tail": "0x0=OFF or 0x1=ON",
+    "sources": ["outer_lamp_fas_0050"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.ExteriorLightControl.CombLghtFucProControlStatus",
+    "relation": "output_as",
+    "tail": "CombLghtFucProCtrlSts=OFF",
+    "sources": ["outer_lamp_fas_0055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.ExteriorLightControl.CombLghtFucProControlStatus",
+    "relation": "output_as",
+    "tail": "CombLghtFucProCtrlSts=SidePositionLight ON",
+    "sources": ["outer_lamp_fas_0055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.ExteriorLightControl.CombLghtFucProControlStatus",
+    "relation": "output_as",
+    "tail": "CombLghtFucProCtrlSts=DippedBeamLight ON",
+    "sources": ["outer_lamp_fas_0055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.ExteriorLightControl.CombLghtFucProControlStatus",
+    "relation": "output_as",
+    "tail": "CombLghtFucProCtrlSts=AUTO",
+    "sources": ["outer_lamp_fas_0055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.ExteriorLightControl.CombLghtFucProControlStatus",
+    "relation": "output_as",
+    "tail": "CombLghtFucProCtrlSts=unknown",
+    "sources": ["outer_lamp_fas_0055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.ControlDayRunningLight",
+    "relation": "requires",
+    "tail": "UsgMdV=Valid",
+    "sources": ["outer_lamp_fas_0050"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.ControlDayRunningLight",
+    "relation": "requires",
+    "tail": "VehMdV=Valid",
+    "sources": ["outer_lamp_fas_0050"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.ControlDayRunningLight",
+    "relation": "requires",
+    "tail": "VehMd!=0x3 (VehMd_3_TRANSPORT)",
+    "sources": ["outer_lamp_fas_0050"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.ControlDayRunningLight",
+    "relation": "requires",
+    "tail": "InsdFnCfgAcrossFrtPosLght=0x1 (AcrossFrontPositionLightEnabled)",
+    "sources": ["outer_lamp_fas_0050"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "executes",
+    "tail": "AcrossFrontPositionLight",
+    "sources": ["outer_lamp_fas_0050"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "receives_request_from",
+    "tail": "ExteriorLightControlSystem.ICB",
+    "sources": ["outer_lamp_fas_0050"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightReq",
+    "relation": "triggers",
+    "tail": "RearFogLight turned ON",
+    "sources": ["outer_lamp_fas_0051"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightReq",
+    "relation": "triggers",
+    "tail": "RearFogLight turned OFF",
+    "sources": ["outer_lamp_fas_0051"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightResp",
+    "relation": "indicates",
+    "tail": "RearFogLight control succeeded (0x0=ControlSuccess)",
+    "sources": ["outer_lamp_fas_0051"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightResp",
+    "relation": "indicates",
+    "tail": "RearFogLight control failed (0x1=Failed)",
+    "sources": ["outer_lamp_fas_0051"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight control request",
+    "relation": "depends_on",
+    "tail": "ExteriorLightControlSystem",
+    "sources": ["outer_lamp_fas_0051"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight control request",
+    "relation": "input_parameter",
+    "tail": "RearFogLightReq",
+    "sources": ["outer_lamp_fas_0051"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight control response",
+    "relation": "output_parameter",
+    "tail": "RearFogLightResp",
+    "sources": ["outer_lamp_fas_0051"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight activation state exit",
+    "relation": "triggered_by",
+    "tail": "prerequisite conditions not satisfied",
+    "sources": ["outer_lamp_fas_0052"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight activation state exit",
+    "relation": "suppressed_by",
+    "tail": "prerequisite conditions satisfied",
+    "sources": ["outer_lamp_fas_0052"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight activation state exit",
+    "relation": "depends_on",
+    "tail": "RearFogLight is active",
+    "sources": ["outer_lamp_fas_0052"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight is active",
+    "relation": "requires",
+    "tail": "RearFogLight activation state exit",
+    "sources": ["outer_lamp_fas_0052"],
+    "conflict": true,
+    "conflict_note": "Cyclic dependency: 'is active' requires 'exit', but 'exit' depends on 'is active'. Likely modeling error — should be 'RearFogLight is active' depends on prerequisites, and 'exit' occurs when prerequisites are violated."
+  },
+  {
+    "head": "DirectionLightReq{InstanceID=5}",
+    "relation": "triggers",
+    "tail": "TurnSignal turned OFF",
+    "sources": ["outer_lamp_fas_0053"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "receives_control_signal_for",
+    "tail": "TurnSignal",
+    "sources": ["outer_lamp_fas_0053"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignal turning ON",
+    "relation": "suppressed_by",
+    "tail": "DirectionLightFucProStatus=0x0=OFF",
+    "sources": ["outer_lamp_fas_0053"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignal turning ON",
+    "relation": "suppressed_by",
+    "tail": "deactivation of left turn indicator icon and audible alert",
+    "sources": ["outer_lamp_fas_0053"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "receives_input_from",
+    "tail": "LHZCU/RZCU",
+    "sources": ["outer_lamp_fas_0053"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "receives_input",
+    "tail": "DirectionLightSts_0_Off and DirectionLightFlits_0_False",
+    "sources": ["outer_lamp_fas_0053"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "receives_input",
+    "tail": "DirectionLightErrSta=0x0=No Error",
+    "sources": ["outer_lamp_fas_0053"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "receives_input",
+    "tail": "DirectionLightSwReq_0_off",
+    "sources": ["outer_lamp_fas_0053"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignal status feedback",
+    "relation": "depends_on",
+    "tail": "LHZCU/RZCU status and fault status",
+    "sources": ["outer_lamp_fas_0053"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignal fault status",
+    "relation": "response_to_fault",
+    "tail": "DirectionLightErrSta=0x0=No Error",
+    "sources": ["outer_lamp_fas_0053"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadLightLevelingMotor.LevelingMotorErrorStatus{InstanceID=1}",
+    "relation": "requires",
+    "tail": "HeadLightLevelingMotor interface call for left headlight leveling",
+    "sources": ["outer_lamp_fas_0054"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadLightLevelingMotor.LevelingMotorErrorStatus{InstanceID=2}",
+    "relation": "requires",
+    "tail": "HeadLightLevelingMotor interface call for right headlight leveling",
+    "sources": ["outer_lamp_fas_0054"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.LevelingAdjustSta",
+    "relation": "requires",
+    "tail": "HeadLightLevelingMotor interface call for manual leveling status",
+    "sources": ["outer_lamp_fas_0054"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LevelingMotorErrorStatus",
+    "relation": "output_as",
+    "tail": "0x0=No Error",
+    "sources": ["outer_lamp_fas_0054"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LevelingMotorErrorStatus",
+    "relation": "output_as",
+    "tail": "0x1=Error",
+    "sources": ["outer_lamp_fas_0054"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LevelingMotorErrorStatus",
+    "relation": "output_as",
+    "tail": "0x2=Unknown",
+    "sources": ["outer_lamp_fas_0054"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadLightLevelingMotor.LevelingMotorErrorStatus{InstanceID=1}",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0054"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadLightLevelingMotor.LevelingMotorErrorStatus{InstanceID=2}",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0054"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem",
+    "relation": "controls",
+    "tail": "MainHighBeamLeft",
+    "sources": ["outer_lamp_fas_0056"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem",
+    "relation": "controls",
+    "tail": "MainHighBeamRight",
+    "sources": ["outer_lamp_fas_0056"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_S32GM",
+    "relation": "subscribes_to",
+    "tail": "MainHighBeamLeft status",
+    "sources": ["outer_lamp_fas_0056"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_S32GM",
+    "relation": "controls",
+    "tail": "MainHighBeamLeft",
+    "sources": ["outer_lamp_fas_0056"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_S32GM",
+    "relation": "controls",
+    "tail": "MainHighBeamRight",
+    "sources": ["outer_lamp_fas_0056"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainHighBeamRight",
+    "relation": "controlled_by",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_fas_0056"],
+    "conflict": true,
+    "conflict_note": "Conflicting control ownership: ICB_S32GM and RHZCU both claimed as controllers. Likely hierarchy: ICB_S32GM orchestrates, RHZCU executes; clarify 'controlled_by' vs 'executed_by'."
+  },
+  {
+    "head": "AcrossFrontPositionLight deactivation from DRL scenario",
+    "relation": "triggered_by",
+    "tail": "Gear position = P",
+    "sources": ["outer_lamp_fas_0057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AcrossFrontPositionLight deactivation from DRL scenario",
+    "relation": "triggered_by",
+    "tail": "Headlight switch = OFF AND valid vehicle/user mode AND front fog light/front headlight status",
+    "sources": ["outer_lamp_fas_0057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AcrossFrontPositionLight deactivation from DRL scenario",
+    "relation": "suppressed_by",
+    "tail": "DRL disable status transitioned from False to True",
+    "sources": ["outer_lamp_fas_0057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLight activation",
+    "relation": "depends_on",
+    "tail": "AcrossFrontPositionLight factory mode enabled for ≥2 min continuously",
+    "sources": ["outer_lamp_fas_0057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DRLDisableStatus",
+    "relation": "mutually_exclusive_with",
+    "tail": "DayRunningLight activated",
+    "sources": ["outer_lamp_fas_0057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AcrossFrontPositionLight deactivation from DRL scenario",
+    "relation": "timeout_constraint",
+    "tail": "AcrossFrontPositionLight factory mode duration = 2 min",
+    "sources": ["outer_lamp_fas_0057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControl.CommunicationType",
+    "relation": "input_parameter",
+    "tail": "ExtrLghtCtrlCmmntnTyp",
+    "sources": ["outer_lamp_fas_0058", "outer_lamp_fas_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControl.CommunicationType",
+    "relation": "depends_on",
+    "tail": "ExtrLghtCtrlCmmntnTyp=0x0 (SOA)",
+    "sources": ["outer_lamp_fas_0058"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControl.CommunicationType",
+    "relation": "output_value",
+    "tail": "0x0",
+    "sources": ["outer_lamp_fas_0058", "outer_lamp_fas_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.DayRunningLightErrSts",
+    "relation": "requires",
+    "tail": "DayRunningLight fault status subscription service",
+    "sources": ["outer_lamp_fas_0059"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.ControlDayRunningLight",
+    "relation": "requires",
+    "tail": "DayRunningLight off request service",
+    "sources": ["outer_lamp_fas_0059"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.ControlDayRunningLight",
+    "relation": "output_response",
+    "tail": "successful control response parameter",
+    "sources": ["outer_lamp_fas_0059"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

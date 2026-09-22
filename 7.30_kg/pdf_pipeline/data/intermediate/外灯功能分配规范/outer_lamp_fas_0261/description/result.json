@@ -1,0 +1,52 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 - 前雾灯状态",
+  "row_semantics": "描述不同前雾灯（左侧、右侧）的状态获取接口及其参数定义",
+  "column_semantics": {
+    "Row Header": "功能点名称",
+    "Consumption": "服务订阅/调用方",
+    "SOA": "Service-Oriented Architecture (面向服务架构)",
+    "LHZCU": "Local High-level Zone Control Unit (局部高级区域控制单元)",
+    "RHZCU": "Regional High-level Zone Control Unit (区域高级区域控制单元)",
+    "ICB": "Integrated Circuit Board (集成电路板)",
+    "Hard Line Status": "硬线状态",
+    "Network Status": "网络状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FrontFogLight.FrontFogLightState",
+      "type": "function",
+      "description": "前雾灯状态获取服务"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例标识符，用于区分不同前雾灯（3-左侧，4-右侧）"
+    },
+    {
+      "name": "Parameter Name",
+      "description": "{FrontFogLightSta}"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "0x0=OFF",
+      "description": "雾灯关闭状态"
+    },
+    {
+      "name": "0x1=ON",
+      "description": "雾灯开启状态"
+    },
+    {
+      "name": "0x2=Unknown",
+      "description": "雾灯状态未知"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆前雾灯状态的查询接口规范，包括左侧和右侧前雾灯的状态获取方式，以及对应的参数和返回值定义，可用于验证车辆电子系统对外灯状态信息的正确采集与上报。",
+  "uncertain_points": []
+}

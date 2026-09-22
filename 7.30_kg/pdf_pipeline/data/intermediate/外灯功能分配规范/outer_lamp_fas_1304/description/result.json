@@ -1,0 +1,57 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 转向灯状态与故障信息",
+  "row_semantics": "表格按功能模块和接口类型组织，每一行代表一个特定的服务接口或系统状态查询。",
+  "column_semantics": "列定义了该接口的消费方（SOA）、控制器/模块（如LHZCU、ICB）以及相关的硬件平台（S32G-8295）。部分列为空，表示未指定或不适用。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "模块/控制器",
+      "description": "外部灯光开关处理模块，负责管理转向灯的状态和错误信息。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "模块/控制器",
+      "description": "外部灯光控制系统，负责控制转向灯的实际闪烁状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightErrSta",
+      "type": "输入信号",
+      "description": "获取转向灯的故障状态，包括无错误（0x0）和错误（0x1）两种状态。"
+    },
+    {
+      "name": "DirectionLightSts",
+      "type": "输出信号",
+      "description": "订阅转向灯的实际闪烁状态，包括无闪烁（0x0）、左转向灯闪烁（0x1）、右转向灯闪烁（0x2）、双侧转向灯闪烁（0x3）以及未知状态（0x4）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightErrSta",
+      "type": "输出信号",
+      "description": "返回转向灯的故障状态，用于诊断和错误处理。"
+    },
+    {
+      "name": "DirectionLightSts",
+      "type": "输出信号",
+      "description": "返回转向灯的实际闪烁状态，用于监控和显示。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrSta",
+      "type": "故障状态",
+      "description": "指示转向灯是否存在硬件或软件层面的故障，0x1表示存在故障。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了外部灯光系统中转向灯的状态查询和故障检测接口，可用于验证转向灯控制逻辑的正确性、故障检测机制的有效性以及状态反馈的准确性。",
+  "uncertain_points": [
+    "表格中部分列未明确标注具体含义，如某些空白列。",
+    "关于“Unknown”状态的具体触发条件和处理方式未在表中说明。"
+  ]
+}

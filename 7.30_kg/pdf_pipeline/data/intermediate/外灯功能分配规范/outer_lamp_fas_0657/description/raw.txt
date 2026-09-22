@@ -1,0 +1,80 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯控制信号规范",
+  "row_semantics": "每行代表一个具体的外灯控制信号接口，描述其功能、方向、类型、发送方、接收方及通信路径。",
+  "column_semantics": {
+    "Interface Name": "信号接口的名称及其功能描述。",
+    "Direction": "信号的方向，指示是输入还是输出。",
+    "Type": "信号的数据类型，此处为CAN总线信号。",
+    "Sender/Provider": "信号的发送方或提供方控制器模块。",
+    "Receiver/Consumer": "信号的接收方或消费方控制器模块。",
+    "Channel": "信号传输的通信路径，此处为BKBCAN FD总线。",
+    "Interface Source": "接口来源信息，此处为空白或未填写。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FLDircnLghtCtrl",
+      "description": "左前转向灯控制信号",
+      "type": "CAN",
+      "sender": "LHZCU",
+      "receiver": "ICB",
+      "channel": "BKBCAN FD"
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "description": "右前转向灯控制信号",
+      "type": "CAN",
+      "sender": "LHZCU",
+      "receiver": "ICB",
+      "channel": "BKBCAN FD"
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "description": "左后转向灯控制信号",
+      "type": "CAN",
+      "sender": "不确定",
+      "receiver": "ICB",
+      "channel": "不确定"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtCtrl_0_Off",
+      "value": "0x0",
+      "description": "左前转向灯关闭状态"
+    },
+    {
+      "name": "FLDircnLghtCtrl_1_on",
+      "value": "0x1",
+      "description": "左前转向灯开启状态"
+    },
+    {
+      "name": "FRDircnLghtCtrl_0_Off",
+      "value": "0x0",
+      "description": "右前转向灯关闭状态"
+    },
+    {
+      "name": "FRDircnLghtCtrl_1_on",
+      "value": "0x1",
+      "description": "右前转向灯开启状态"
+    },
+    {
+      "name": "RLDircnLghtCtrl_0_Off",
+      "value": "0x0",
+      "description": "左后转向灯关闭状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯（转向灯）控制信号的通信规范，包括信号名称、方向、类型、发送方、接收方及通信路径，可用于验证CAN总线上相关转向灯控制信号的正确发送与接收。",
+  "uncertain_points": [
+    "RLDircnLghtCtrl 的发送方和通信路径未明确给出。",
+    "Interface Source 列内容缺失。",
+    "表格中未包含所有可能的转向灯控制信号（如右后转向灯）。"
+  ]
+}
+```

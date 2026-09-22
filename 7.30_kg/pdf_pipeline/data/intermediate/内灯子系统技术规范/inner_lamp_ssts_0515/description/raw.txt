@@ -1,0 +1,84 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Ambient Lamp Breath Mode Timing Parameters",
+  "row_semantics": "Each row represents a specific parameter related to the timing of an ambient lamp's breathing mode, including hold-off times and rate-specific hold-off percentages.",
+  "column_semantics": {
+    "标定项/Item": "The name of the parameter being described.",
+    "标定描述/Description": "A brief description of what the parameter controls (e.g., '等待时间' - wait time).",
+    "参数范围/Range": "The valid numerical range for the parameter value.",
+    "分辨率/Factor": "The resolution or scaling factor applied to the parameter value (e.g., E=N*1% means the value is expressed as a percentage).",
+    "默认值/Default": "The default value for the parameter if not otherwise specified."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "function",
+      "description": "An exterior lighting system that provides mood lighting around the vehicle."
+    },
+    {
+      "name": "Breath Mode",
+      "type": "mode",
+      "description": "A lighting pattern where the lamp intensity gradually increases and decreases in a smooth, wave-like manner."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Hold-off Time",
+      "type": "timing_parameter",
+      "description": "The duration the lamp remains at a constant intensity before transitioning to the next phase of the breathing cycle."
+    },
+    {
+      "name": "Rate Hold-off Percent",
+      "type": "timing_parameter",
+      "description": "The percentage of the total breathing cycle duration allocated to the hold-off time for a specific rate."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "AmbtLampBrthngholdoffPercent",
+      "description": "General hold-off time for the ambient lamp breathing mode, ranging from 0 to FF (hexadecimal).",
+      "unit": "%",
+      "default_value": "0xA (10%)"
+    },
+    {
+      "name": "AmbtLampBrthngRate1holdoffPercent",
+      "description": "Hold-off time for the first rate of the breathing mode, ranging from 0 to 32.",
+      "unit": "%",
+      "default_value": "预留，暂不使用" (Reserved, not used yet)
+    },
+    {
+      "name": "AmbtLampBrthngRate2holdoffPercent",
+      "description": "Hold-off time for the second rate of the breathing mode, ranging from 0 to 32.",
+      "unit": "%",
+      "default_value": "预留，暂不使用 A" (Reserved, not used A)
+    },
+    {
+      "name": "AmbtLampBrthngRate3holdoffPercent",
+      "description": "Hold-off time for the third rate of the breathing mode, ranging from 0 to 32.",
+      "unit": "%",
+      "default_value": "0xA (10%)"
+    },
+    {
+      "name": "AmbtLampBrthngRate4holdoffPercent",
+      "description": "Hold-off time for the fourth rate of the breathing mode, ranging from 0 to 32.",
+      "unit": "%",
+      "default_value": "0x00 (0%)"
+    },
+    {
+      "name": "AmbtLampBrthngRate5holdoffPercent",
+      "description": "Hold-off time for the fifth rate of the breathing mode, ranging from 0 to 32.",
+      "unit": "%",
+      "default_value": "0xA (10%)"
+    }
+  ],
+  "engineering_interpretation": "This table defines the timing parameters for the ambient lamp's breathing mode, specifically the hold-off times at different rates. It can be used to verify that the ambient lamp operates within the specified timing ranges and that the correct default values are applied when no custom settings are provided.",
+  "uncertain_points": [
+    "The exact function of '预留，暂不使用' (Reserved, not used) parameters is unclear without further context on their intended use."
+  ]
+}
+```

@@ -1,0 +1,72 @@
+{
+  "table_type": "logic_table",
+  "topic": "危险警报灯自动激活功能需求",
+  "row_semantics": "表格按逻辑流程分为场景描述、前置条件、触发动作和执行动作四个主要阶段，详细定义了危险警报灯在特定条件下自动激活的系统行为。",
+  "column_semantics": "表格采用两列布局，左侧为类别标题（如场景描述、前置条件等），右侧为对应的具体内容或条件列表。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "危险警报灯",
+      "type": "功能",
+      "description": "车辆在特定工况下自动激活的警示灯光，用于提醒周边行人或车辆注意安全。"
+    },
+    {
+      "name": "车身控制模块 (BCM)",
+      "type": "控制器",
+      "description": "负责接收车辆状态信息并控制危险警报灯激活的电子控制单元。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsG Md=All",
+      "type": "输入信号",
+      "description": "表示所有用户模式均有效，可能涉及车辆使用状态的判断。"
+    },
+    {
+      "name": "UsG MdV=Valid",
+      "type": "输入信号",
+      "description": "表示用户模式验证通过，确保系统处于合法操作状态。"
+    },
+    {
+      "name": "Veh Md=All",
+      "type": "输入信号",
+      "description": "表示所有车辆模式均有效，可能涉及车辆运行状态的判断。"
+    },
+    {
+      "name": "Veh MdV=Valid",
+      "type": "输入信号",
+      "description": "表示车辆模式验证通过，确保车辆处于合法运行状态。"
+    },
+    {
+      "name": "ExtrLghtCtrlCmmntnTyp",
+      "type": "配置参数",
+      "description": "外部灯光控制通信类型，可配置为SOA或CAN协议。"
+    },
+    {
+      "name": "ExtrLghtStsCmmntnTyp",
+      "type": "配置参数",
+      "description": "外部灯光状态通信类型，可配置为SOA或CAN协议。"
+    },
+    {
+      "name": "IPD",
+      "type": "输入信号",
+      "description": "驾驶员请求信号，指示车辆泊车或行驶状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "危险警报灯自动控制模块 LHZCU",
+      "type": "输出信号",
+      "description": "危险警报灯的控制模块，其信号状态变为ON，以激活危险警报灯。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了危险警报灯在车辆行驶或泊车时自动激活的系统逻辑，包括前置条件、触发信号和执行动作，可用于验证车身控制模块在不同通信配置下的危险警报灯控制功能是否符合设计要求。",
+  "uncertain_points": [
+    "具体通信协议（SOA或CAN）的实现细节未明确说明。",
+    "IPD信号的具体来源和触发机制未详细描述。",
+    "PPV阶段及以后的开发要求中提到的SOA通讯方式开发细节未展开。"
+  ]
+}

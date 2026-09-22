@@ -1,0 +1,61 @@
+```json
+[
+  {
+    "head": "LHZCU发送ThirdRowMapLampLHSwReq=0x1(Press)",
+    "relation": "触发条件",
+    "tail": "接收到ThirdRowMapLamp_LH_Sw_SIG为低电平信号，且完成30ms消抖处理",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ThirdRowMapLamp_LH_Sw_SIG",
+      "低电平",
+      "30ms消抖"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU发送ThirdRowMapLampLHSwReq=0x0(Idle)",
+    "relation": "退出条件",
+    "tail": "接收到ThirdRowMapLamp_LH_Sw_SIG为悬空状态",
+    "triple_type": "功能退出条件",
+    "evidence_terms": [
+      "ThirdRowMapLamp_LH_Sw_SIG",
+      "悬空状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ThirdRowMapLampLHSwReq",
+    "relation": "输入为",
+    "tail": "ThirdRowMapLamp_LH_Sw_SIG",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ThirdRowMapLamp_LH_Sw_SIG",
+      "ThirdRowMapLampLHSwReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU不发送0x3",
+    "relation": "故障响应",
+    "tail": "开关的短路故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "短路故障",
+      "0x3"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU持续发送0x1",
+    "relation": "异常处理",
+    "tail": "检测电容开关一直按下",
+    "triple_type": "异常处理",
+    "evidence_terms": [
+      "电容开关",
+      "一直按下",
+      "0x1"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

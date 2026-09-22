@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Main Beam Light Functionality Control and Status",
+  "row_semantics": "Each row represents a specific interface or function related to main beam light control and status reporting.",
+  "column_semantics": "Columns represent different aspects of the interface, including consumption type (SOA, ICB), and detailed parameter definitions for each function.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MainBeamLight",
+      "type": "function",
+      "description": "Main beam light functionality, including control and status monitoring."
+    },
+    {
+      "name": "ControlMainBeamLight",
+      "type": "function",
+      "description": "Function to control the main beam light, either turning it on or off."
+    },
+    {
+      "name": "MainBeamLightFucProStatus",
+      "type": "status",
+      "description": "Status parameter indicating whether the main beam light function is satisfied."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightFucProsSta",
+      "type": "input_parameter",
+      "description": "Parameter indicating the current status of the main beam light function. Values include OFF (0x0), ON (0x1), and Unknown (0x2)."
+    },
+    {
+      "name": "MainBeamLightReq",
+      "type": "input_parameter",
+      "description": "Request parameter for controlling the main beam light. Values include OFF (0x0) and ON (0x1)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLightFucProStatus",
+      "type": "output_status",
+      "description": "Reports the current status of the main beam light function after processing the request."
+    },
+    {
+      "name": "ControlMainBeamLight",
+      "type": "control_output",
+      "description": "Controls the main beam light by sending an ON or OFF command."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interfaces and parameters for controlling and monitoring the main beam light functionality, enabling verification of correct operation and status reporting in response to control commands.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,40 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯控制信号规范",
+  "row_semantics": "逐行定义了不同外灯功能的控制信号及其状态值，包括日间行车灯、位置灯等。",
+  "column_semantics": "无明确列结构，每行描述一个功能点的信号配置，包含实例ID、信号名称和对应的状态值（如0x0=Off）。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB",
+    "LHZCU",
+    "M1 PPV"
+  ],
+  "core_conditions": [
+    "InstanceID",
+    "ControlSignal",
+    "PositionLightReq",
+    "DayRunningLightFucProStatus",
+    "DayRunningLghtSwStatus",
+    "CombLightSwStatus",
+    "CombLightFucProStatus",
+    "DayRunningLightErrorStatus"
+  ],
+  "core_outputs": [
+    "SidePositionLight",
+    "ControlSidePositionLight",
+    "DayRunningLightState",
+    "SidePositionLightErrorStatus"
+  ],
+  "core_faults": [
+    "DayRunningLightErrorStatus"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了整车外灯控制系统中各信号的控制逻辑和状态值，可用于验证外灯功能（如日间行车灯、位置灯）在不同场景下的正确响应，以及故障反馈机制的有效性。",
+  "uncertain_points": [
+    "具体信号的触发条件未明确说明",
+    "部分信号的优先级或仲裁逻辑未详细描述"
+  ]
+}
+```

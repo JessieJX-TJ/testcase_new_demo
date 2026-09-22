@@ -1,0 +1,50 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "右侧前雾灯状态与故障状态信息",
+  "row_semantics": "表格定义了两个主要的系统状态：右侧前雾灯当前的工作状态（FrontFogLightState）和其故障状态（FrontFogLightErrorStatus）。每一行描述一个特定的状态或故障类型。",
+  "column_semantics": {
+    "左侧列": "功能模块名称，包括状态和故障状态的完整标识。",
+    "SOA": "Service Oriented Architecture，表示该接口属于面向服务架构。",
+    "RHZCU": "Right Headlight Zone Control Unit，右大灯区域控制单元，可能为相关控制模块。",
+    "ICB/LHZ CU": "Integrated Circuit Board / Left Headlight Zone Control Unit，集成电路板/左大灯区域控制单元，可能为相关控制模块。",
+    "外灯 FAS": "External Light Fault Alarm System，外部灯光故障报警系统，可能为相关监控模块。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FrontFogLight",
+      "type": "function",
+      "description": "右侧前雾灯功能模块"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FrontFogLightState",
+      "type": "output_signal",
+      "description": "右侧前雾灯当前状态，包括OFF、ON和Unknown三种值。",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "ON",
+        "0x2": "Unknown"
+      }
+    },
+    {
+      "name": "FrontFogLightErrorStatus",
+      "type": "output_signal",
+      "description": "右侧前雾灯故障状态，包括No Error、Error和Unknown三种值。",
+      "values": {
+        "0x0": "No Error",
+        "0x1": "Error",
+        "0x2": "Unknown"
+      }
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证右侧前雾灯的功能状态及其故障检测逻辑，确保通过指定接口能够正确获取并报告雾灯的当前工作状态和是否存在故障。",
+  "uncertain_points": []
+}
+```

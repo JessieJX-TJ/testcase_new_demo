@@ -1,0 +1,84 @@
+```json
+[
+  {
+    "head": "前雾灯控制功能被触发",
+    "relation": "前提条件",
+    "tail": "收到【FrtFogLghtCtrlMdl】发送的 RFrtFogLghtCtrl_HW==0x1 (On)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "FrtFogLghtCtrlMdl",
+      "RFrtFogLghtCtrl_HW",
+      "0x1",
+      "On"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯控制功能被触发",
+    "relation": "前提条件",
+    "tail": "收到 SOA 服务 {FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq}{InstanceID=4}=0x1 (ON)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SOA",
+      "FrontFogLightCtrReq",
+      "InstanceID",
+      "4",
+      "0x1",
+      "ON"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前雾灯输出 (FogLamp_RH_HSD) 被驱动",
+    "relation": "执行动作",
+    "tail": "【FrtFogLghtDrvMdl】持续驱动右前雾灯输出 (FogLamp_RH_HSD)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FrtFogLghtDrvMdl",
+      "FogLamp_RH_HSD"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RFrtFogLghtSts 信号被发送至 RearFogLghtCtrlMdl",
+    "relation": "执行动作",
+    "tail": "【FrtFogLghtDrvMdl】持续发送 RFrtFogLghtSts=0x1 (On) 至 【RearFogLghtCtrlMdl】，至少发送三帧",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FrtFogLghtDrvMdl",
+      "RFrtFogLghtSts",
+      "0x1",
+      "On",
+      "RearFogLghtCtrlMdl",
+      "3"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FrontFogLightSta 信号被发送",
+    "relation": "执行动作",
+    "tail": "【FrtFogLghtDrvMdl】持续发送{FrontFogLight.FrontFogLightState.FrontFogLightSta}",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FrtFogLghtDrvMdl",
+      "FrontFogLightSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "InstanceID=4 的状态被发送至 RearFogLghtCtrlMdl",
+    "relation": "执行动作",
+    "tail": "{InstanceID=4}=0x1 (On) 至【RearFogLghtCtrlMdl】，至少发送三帧",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "InstanceID",
+      "4",
+      "0x1",
+      "On",
+      "RearFogLghtCtrlMdl",
+      "3"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

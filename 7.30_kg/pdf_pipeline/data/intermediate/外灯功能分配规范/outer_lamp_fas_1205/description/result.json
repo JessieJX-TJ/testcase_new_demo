@@ -1,0 +1,53 @@
+{
+  "table_type": "state_table",
+  "topic": "制动灯驱动模块状态描述",
+  "row_semantics": "表示制动灯在不同状态下的硬件（HW）和浮动状态（FltSts）值，以及对应的错误状态。",
+  "column_semantics": "无明确列，表格内容为多行状态定义的组合。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "BrkLghtSts_HW",
+      "type": "output_signal",
+      "description": "制动灯硬件状态，表示当前制动灯的实际执行情况。"
+    },
+    {
+      "name": "BrkLghtFltSts_HW",
+      "type": "output_signal",
+      "description": "制动灯浮动状态，通常用于中间处理或逻辑判断。"
+    },
+    {
+      "name": "BrakeLightState.BrakeLightSta",
+      "type": "output_signal",
+      "description": "制动灯状态实例，表示制动灯的开关状态（ON/OFF）。"
+    },
+    {
+      "name": "BrakeLightErrorStatus.BrakeLightErrorSta",
+      "type": "fault_state",
+      "description": "制动灯错误状态实例，表示是否存在错误（No Error/有错误）。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "BrkLghtSts_HW",
+      "value": "0x0 or 0x1",
+      "description": "表示制动灯关闭（Off）或开启（On）的硬件状态。"
+    },
+    {
+      "name": "BrakeLightState.BrakeLightSta",
+      "value": "0x0 or 0x1",
+      "description": "表示制动灯关闭（OFF）或开启（ON）的状态实例。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "BrakeLightErrorStatus.BrakeLightErrorSta",
+      "value": "0x0",
+      "description": "表示当前没有检测到制动灯相关错误。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义制动灯驱动模块在不同工作状态下的硬件和软件信号值，特别是制动灯的开启/关闭状态及其错误状态，可用于验证制动灯系统在不同条件下的正确执行情况。",
+  "uncertain_points": []
+}

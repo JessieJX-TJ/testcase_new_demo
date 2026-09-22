@@ -1,0 +1,116 @@
+```json
+[
+  {
+    "head": "氛围灯执行呼吸控制",
+    "relation": "前提条件",
+    "tail": "氛围灯处于点亮状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "前置条件",
+      "氛围灯处于点亮状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯执行呼吸控制",
+    "relation": "触发条件",
+    "tail": "接收到氛围灯本地控制模块的呼吸速度指令信号 UpIPALampBrthngCmd_1 != 0x0(No Request)和氛围灯同步信号 AmbtLghtRHRollingCtr_1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "触发条件",
+      "UpIPALampBrthngCmd_1",
+      "AmbtLghtRHRollingCtr_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯亮度由LIN模块控制",
+    "relation": "依赖于",
+    "tail": "UpIPALampBrtnsCmd_1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "UpIPALampBrtnsCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "停止当前呼吸模式",
+    "relation": "触发条件",
+    "tail": "不同呼吸模式切换时",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "执行动作",
+      "不同呼吸模式切换时"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "切换至下一呼吸模式",
+    "relation": "触发条件",
+    "tail": "不同呼吸模式切换时",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "执行动作",
+      "不同呼吸模式切换时"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯呼吸指令周期信号 UpIPALampBrthngCmd_1",
+    "relation": "包含子功能",
+    "tail": "0%-100%跳变调节",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "执行动作",
+      "UpIPALampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯呼吸指令周期信号 UpIPALampBrthngCmd_1",
+    "relation": "包含子功能",
+    "tail": "0%-100%渐变调节",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "执行动作",
+      "UpIPALampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯按照250ms亮度100%,250ms亮度0%循环执行",
+    "relation": "输入为",
+    "tail": "ZCU发送的UpIPALampBrthngCmd_1=0x1(Rate1 500ms 0-100%跳变)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "ZCU",
+      "UpIPALampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "0%-100%跳变调节对应UpIPALampBrthngCmd_1中的0x1(Rate1 500ms 0-100%跳变)",
+    "relation": "输入为",
+    "tail": "UpIPALampBrthngCmd_1 = 0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "UpIPALampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "0%-100%渐变调节对应UpIPALampBrthngCmd_1中的0x2(Rate2 1s 0-100%跳变)",
+    "relation": "输入为",
+    "tail": "UpIPALampBrthngCmd_1 = 0x2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "UpIPALampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

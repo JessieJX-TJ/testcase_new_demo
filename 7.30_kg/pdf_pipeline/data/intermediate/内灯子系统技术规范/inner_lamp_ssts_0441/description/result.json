@@ -1,0 +1,70 @@
+{
+  "table_type": "state_table",
+  "topic": "左后激光迎宾灯驱动控制逻辑",
+  "row_semantics": "描述了左后激光迎宾灯从无故障到触发、执行、退出及异常处理的完整状态转换流程。",
+  "column_semantics": {
+    "前置条件": "系统进入当前状态前必须满足的条件。",
+    "触发条件": "导致状态转换发生的外部输入或内部信号。",
+    "执行动作": "在当前状态下系统执行的具体操作。",
+    "退出条件": "离开当前状态所需的条件。",
+    "异常处理": "检测到特定故障时的应对措施。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RLDoorFlorLampCtrlCmd",
+      "type": "input_signal",
+      "description": "应用控制模块发出的请求信号，用于控制左后激光迎宾灯的状态（0x1表示开，0x0表示关）。"
+    },
+    {
+      "name": "DoorFlorLamp_RL_HSD",
+      "type": "output_signal",
+      "description": "左后激光迎宾灯驱动控制模块发送的驱动信号，值为高电平（高）表示开启。"
+    },
+    {
+      "name": "左后激光迎宾灯",
+      "type": "function_name",
+      "description": "车辆外部灯光系统的一部分，提供迎宾照明功能。"
+    },
+    {
+      "name": "应用控制模块",
+      "type": "controller_module",
+      "description": "负责发出控制命令的上层软件模块。"
+    },
+    {
+      "name": "左后激光迎宾灯驱动控制模块",
+      "type": "controller_module",
+      "description": "直接控制左后激光迎宾灯硬件驱动的底层控制单元。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "前置条件",
+      "description": "左后激光迎宾灯无短路/开路故障。"
+    },
+    {
+      "name": "触发条件",
+      "description": "接收到应用控制模块的请求信号 RLDoorFlorLampCtrlCmd = 0x1 (Open)。"
+    },
+    {
+      "name": "退出条件",
+      "description": "接收到 RLDoorFlorLampCtrlCmd = 0x0 (Close)，关闭左后激光迎宾灯驱动。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorFlorLamp_RL_HSD",
+      "description": "发送驱动信号 DoorFlorLamp_RL_HSD（高），激活左后激光迎宾灯。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "左后激光迎宾灯短路/开路故障",
+      "description": "检测到左后激光迎宾灯存在电气故障时的状态。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证左后激光迎宾灯在正常和故障情况下的驱动控制逻辑，确保其在接收到正确指令时能够正确开启和关闭，并在检测到故障时采取适当的异常处理措施。",
+  "uncertain_points": []
+}

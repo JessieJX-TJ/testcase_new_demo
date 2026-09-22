@@ -1,0 +1,101 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯功能分配规范 - 转向灯开关控制模块 LHZCU 功能验证",
+  "row_semantics": "表格按测试场景的逻辑流程组织，从前置条件到触发动作，再到执行动作和系统反馈，描述了特定场景下的功能行为序列。",
+  "column_semematics": "表格没有传统意义上的列，而是通过多行内容来表达不同阶段的详细信息，包括场景描述、前置条件、触发动作、执行动作等。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "转向灯开关控制模块 LHZCU",
+      "type": "controller_module",
+      "description": "负责接收转向灯状态反馈并控制转向灯点亮/熄灭的核心电子控制单元。"
+    },
+    {
+      "name": "ICB (Integrated Control Box)",
+      "type": "controller_module",
+      "description": "集成控制盒，负责接收LHZCU信号并进行转换处理，同时控制转向灯的熄灭。"
+    },
+    {
+      "name": "驱动处理模块 RZCU",
+      "type": "controller_module",
+      "description": "负责将转向灯的状态反馈至转向灯开关控制模块 LHZCU，并处理故障状态反馈。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "车辆模式",
+      "value": "VS 模式",
+      "description": "车辆处于切换车辆 VS 模式下，这是触发转向灯退出的前置条件之一。"
+    },
+    {
+      "name": "转向灯状态",
+      "value": "左侧转向灯处于激活状态",
+      "description": "在执行动作前，左侧转向灯必须处于点亮（激活）状态。"
+    },
+    {
+      "name": "工厂模式",
+      "value": "VehMd_2_FACTORY",
+      "description": "整车模式为工厂模式，确保系统处于可测试或初始化状态。"
+    },
+    {
+      "name": "内部状态",
+      "value": "UsrMd_6_XOTA",
+      "description": "左转向灯（或双跳灯）内部状态为激活，表明其已准备好响应控制指令。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "转向灯点亮/熄灭",
+      "signal": "FLDirnLghtCtrl",
+      "state": "OFF",
+      "description": "通过ICB控制转向灯熄灭，并在执行动作中明确指出转向灯应熄灭。"
+    },
+    {
+      "name": "指示灯显示与声音提醒",
+      "signal": "RLDircnLghtSts_HW",
+      "state": "0_Off",
+      "description": "退出左侧转向灯后，指示灯应显示熄灭状态，并伴有声音提醒。"
+    },
+    {
+      "name": "状态反馈",
+      "signal": "FLDirnLghtSts",
+      "state": "0_Off",
+      "description": "转向灯状态反馈至转向灯开关控制模块 LHZCU，确认转向灯已熄灭。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "转向灯同步性故障",
+      "condition": "闪烁频率与实际转向灯的闪烁频率不一致",
+      "description": "要求转向灯的闪烁频率、声音提醒和实际转向灯的闪烁频率保持一致，否则视为故障。"
+    },
+    {
+      "name": "单侧转向灯熄灭延时超限",
+      "threshold": "40ms",
+      "description": "单侧转向灯熄灭同步性允许的最大延时周期为40ms，超过此值视为故障。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "action": "转向灯在工厂模式下开启",
+      "duration": "2min",
+      "description": "转向灯在工厂模式下开启2分钟，以确保系统稳定性和测试充分性。"
+    },
+    {
+      "action": "ICB 控制信号延时分发",
+      "delay": "60ms",
+      "description": "ICB 接收控制信号后，延时60ms分发至 LHZCU/RZCU，以满足系统响应时间要求。"
+    },
+    {
+      "action": "转向灯退出同步性最大延时",
+      "duration": "50ms",
+      "description": "转向灯退出同步性要求的最大延时为50ms，三者需保持一致。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了在车辆切换至VS模式时，左侧转向灯如何正确退出并熄灭的功能规范，可用于验证转向灯控制系统在特定模式下的行为是否符合设计要求，特别是关于转向灯熄灭的时序、状态反馈以及同步性要求。",
+  "uncertain_points": [
+    "未明确说明所有可能的输入信号来源（如传感器信号）。",
+    "未详细列出所有可能的输出信号类型（如CAN总线上的其他相关信号）。"
+  ]
+}

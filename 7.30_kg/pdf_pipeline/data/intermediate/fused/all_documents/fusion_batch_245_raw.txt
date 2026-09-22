@@ -1,0 +1,404 @@
+```json
+[
+  {
+    "head": "DoorFL2LampColCmd_1",
+    "relation": "input",
+    "tail": "0x00 = No Request; 0x01–0xFF = color value",
+    "sources": ["inner_lamp_ssts_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL2LampBrtnsCmd_1",
+    "relation": "input",
+    "tail": "0x00 = No Request",
+    "sources": ["inner_lamp_ssts_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL2LampOn_1",
+    "relation": "prerequisite",
+    "tail": "non-zero color and brightness commands received simultaneously",
+    "sources": ["inner_lamp_ssts_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoRHCLampBrtnsCmd_1",
+    "relation": "state_maintenance_condition",
+    "tail": "value = 0x00",
+    "sources": ["inner_lamp_ssts_0176"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoRHCLampBrtnsCmd_1",
+    "relation": "activation_condition",
+    "tail": "value ∈ [0x65, 0xFF]",
+    "sources": ["inner_lamp_ssts_0176"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoRHCLampBrthngCmd_1",
+    "relation": "input",
+    "tail": "0x01 = Rate1",
+    "sources": ["inner_lamp_ssts_0176"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoRHCLampBrthngCmd_1",
+    "relation": "input",
+    "tail": "0x00 = Rate0 (instant 0–100% transition)",
+    "sources": ["inner_lamp_ssts_0176"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoRHCLampBrthngCmd_1",
+    "relation": "input",
+    "tail": "0x02 = Rate2 (original breathing mode 2)",
+    "sources": ["inner_lamp_ssts_0176"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoRHCLampBrthngCmd_1",
+    "relation": "breathing_period_mapping",
+    "tail": "Rate1 → 500 ms",
+    "sources": ["inner_lamp_ssts_0176"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoRHCLampBrthngCmd_1",
+    "relation": "breathing_period_mapping",
+    "tail": "Rate15 → 12 s",
+    "sources": ["inner_lamp_ssts_0176"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BackLightingControlCircuit",
+    "relation": "fault_trigger_condition",
+    "tail": "Short to battery: (1) backlight driver active AND (2) drive current < threshold (TBD A), sustained for 100 ms",
+    "sources": ["inner_lamp_ssts_0177"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BackLightingControlCircuit",
+    "relation": "fault_trigger_condition",
+    "tail": "Short to ground: (1) backlight driver active AND (2) drive current > threshold (TBD A), sustained for 100 ms",
+    "sources": ["inner_lamp_ssts_0177"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BackLightingControlCircuit",
+    "relation": "fault_trigger_condition",
+    "tail": "Open circuit: (1) backlight driver active AND (2) drive current < threshold (TBD A), sustained for 100 ms",
+    "sources": ["inner_lamp_ssts_0177"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BackLightingControlCircuit",
+    "relation": "prerequisite",
+    "tail": "backlight driver active",
+    "sources": ["inner_lamp_ssts_0177"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BackLightingControlCircuit",
+    "relation": "timeout_constraint",
+    "tail": "100 ms",
+    "sources": ["inner_lamp_ssts_0177"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR3LampBrtnsCmd_1",
+    "relation": "input",
+    "tail": "LIN interface via RHZCU, DoorAmbtLampC_FR, RHZCU_LIN4",
+    "sources": ["inner_lamp_ssts_0178"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR3LampBrthngCmd_1",
+    "relation": "input",
+    "tail": "LIN interface via RHZCU, DoorAmbtLampC_FR, RHZCU_LIN4",
+    "sources": ["inner_lamp_ssts_0178"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR3LampBrtnsCmd_1",
+    "relation": "trigger_condition",
+    "tail": "value = 0x00 → brightness unchanged",
+    "sources": ["inner_lamp_ssts_0178"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR3LampBrthngCmd_1",
+    "relation": "trigger_condition",
+    "tail": "value = 0x00 → no breathing request",
+    "sources": ["inner_lamp_ssts_0178"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR3LampBrthngCmd_1",
+    "relation": "trigger_condition",
+    "tail": "value = 0x01 → breathing period = 1 s",
+    "sources": ["inner_lamp_ssts_0178"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR3LampBrthngCmd_1",
+    "relation": "trigger_condition",
+    "tail": "value = 0x0F → breathing period = 15 s",
+    "sources": ["inner_lamp_ssts_0178"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR3LampBrtnsCmd_1",
+    "relation": "suppression_condition",
+    "tail": "value ∈ [0x65, 0xFF] → brightness control disabled",
+    "sources": ["inner_lamp_ssts_0178"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR3LampBrthngCmd_1",
+    "relation": "suppression_condition",
+    "tail": "value ∈ [0x65, 0xFF] → breathing control disabled",
+    "sources": ["inner_lamp_ssts_0178"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR3LampBrthngCmd_1",
+    "relation": "state_maintenance_condition",
+    "tail": "value = 0x00 → breathing mode remains in no-request state",
+    "sources": ["inner_lamp_ssts_0178"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IM Motors",
+    "relation": "controls",
+    "tail": "Interior Lamp Subsystem",
+    "sources": ["inner_lamp_ssts_0180", "inner_lamp_ssts_0224", "inner_lamp_ssts_0298", "inner_lamp_ssts_0525"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IM Motors",
+    "relation": "controls",
+    "tail": "Z-ONE-3.0 Platform - SSTS-IBD10",
+    "sources": ["inner_lamp_ssts_0186", "inner_lamp_ssts_0240", "inner_lamp_ssts_0247", "inner_lamp_ssts_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHBrtLvl",
+    "relation": "input_source",
+    "tail": "LHZCU (via inner lamp SSTS)",
+    "sources": ["inner_lamp_ssts_0181"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Function",
+    "relation": "suppression_condition",
+    "tail": "Body Control Function disabled",
+    "sources": ["inner_lamp_ssts_0183"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Function",
+    "relation": "suppression_condition",
+    "tail": "Power Tailgate Function disabled",
+    "sources": ["inner_lamp_ssts_0183"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Lamp",
+    "relation": "input_source",
+    "tail": "Braking Subsystem, Tailgate Subsystem, Door Lock Subsystem, Vehicle State Management System",
+    "sources": ["inner_lamp_ssts_0185"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Lamp",
+    "relation": "output_destination",
+    "tail": "Left Dedicated Lamp Controller",
+    "sources": ["inner_lamp_ssts_0185"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Lamp",
+    "relation": "controlled_by",
+    "tail": "Left Dedicated Lamp Driver Module",
+    "sources": ["inner_lamp_ssts_0185"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backlight",
+    "relation": "input_source",
+    "tail": "Exterior Lamp Subsystem, Vehicle State Management System",
+    "sources": ["inner_lamp_ssts_0185"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backlight",
+    "relation": "output_destination",
+    "tail": "Vehicle Backlight Controller",
+    "sources": ["inner_lamp_ssts_0185"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backlight",
+    "relation": "controlled_by",
+    "tail": "Left Rear Backlight Driver Module, Right Rear Backlight Driver Module",
+    "sources": ["inner_lamp_ssts_0185"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp Head Color/Brightness Transition Time",
+    "relation": "transition_timing_profile",
+    "tail": "Spd0 = 2000 ms; Spd1 = 300 ms; Spd2 = 100 ms; Spd3 = reserved (0)",
+    "sources": ["inner_lamp_ssts_0175", "inner_lamp_ssts_0187"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp Head Breathing Mode",
+    "relation": "prerequisite",
+    "tail": "breathing mode active → brightness signal ignored",
+    "sources": ["inner_lamp_ssts_0187", "inner_lamp_ssts_0212"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp Head Breathing Mode",
+    "relation": "trigger_condition",
+    "tail": "command value = 0x00 → immediate stop of breathing",
+    "sources": ["inner_lamp_ssts_0187"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp Head Breathing Mode",
+    "relation": "trigger_condition",
+    "tail": "mode switch → immediate termination of current breathing and activation of new mode",
+    "sources": ["inner_lamp_ssts_0187"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHBLampFadeSpdCmd_1",
+    "relation": "input_source",
+    "tail": "LIN interface via LHZCU, CnsoAmbtLampB_LH, LHZCU_LIN5, inner lamp SSTS",
+    "sources": ["inner_lamp_ssts_0187"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHCLampColorCmd_1",
+    "relation": "input_source",
+    "tail": "LIN interface via LHZCU, CnsoAmbtLampC_LH, LHZCU_LIN5, inner lamp SSTS",
+    "sources": ["inner_lamp_ssts_0187"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHCLampOnOff_1",
+    "relation": "trigger_condition",
+    "tail": "ambient lamp ON request",
+    "sources": ["inner_lamp_ssts_0187"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHCLampOnOff_1",
+    "relation": "prerequisite",
+    "tail": "ON command requires simultaneous non-zero color and brightness commands",
+    "sources": ["inner_lamp_ssts_0187"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp Head Color Mapping",
+    "relation": "prerequisite",
+    "tail": "command value = 0 or undefined color code → lamp head transitions to default chromaticity coordinate",
+    "sources": ["inner_lamp_ssts_0187"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp Head Color",
+    "relation": "state_maintenance_condition",
+    "tail": "command value = 0 or undefined color code → color unchanged",
+    "sources": ["inner_lamp_ssts_0187"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampOnOff_1",
+    "relation": "trigger_condition",
+    "tail": "value = 0x00 → lamp turned OFF",
+    "sources": ["inner_lamp_ssts_0190"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampOnOff_1",
+    "relation": "prerequisite",
+    "tail": "value = 0x00 → exit from respiration mode",
+    "sources": ["inner_lamp_ssts_0190"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLghtLHRollingCtr_1",
+    "relation": "trigger_condition",
+    "tail": "ceases sequential increment by 1 → lamp set to constant brightness",
+    "sources": ["inner_lamp_ssts_0190"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLghtLHRollingCtr_1",
+    "relation": "prerequisite",
+    "tail": "ceases sequential increment by 1 → respiration mode stopped",
+    "sources": ["inner_lamp_ssts_0190"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampOnOff_1",
+    "relation": "fault_response",
+    "tail": "overvoltage or undervoltage fault in ambient lamp module",
+    "sources": ["inner_lamp_ssts_0190"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

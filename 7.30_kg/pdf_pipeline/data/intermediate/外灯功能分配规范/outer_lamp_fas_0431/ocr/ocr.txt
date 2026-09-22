@@ -1,0 +1,28 @@
+a、LHZCU判断近光灯开启:
+Only DippedBeamLight ON
+b、LHZCU判断前雾灯开启:
+0x3=FrontFogLghtAndDippedLight ON|| 0x4=FrontFogLghtAndSideLight ON
+(注:无前雾灯功能,InsdFnCfgFrtFogLght=0x0,则默认前雾灯为关闭状态)
+c、LHZCU判断远光灯开启且非远光灯闪烁开启:
+& MainBeamLghtOnReq!=0x2=MainBeamLghtSwReq_2_Flash
+执行动作
+1、[昼间行车灯控制模块LHZCU]接口响应:
+1)日间行车灯:
+Notifier:
+2)位置灯:
+LHZCU判断外灯组合开关挡位OFF 或者Auto档且近光灯未开启:
+ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta=Ox0=OFF//
+CombLghtFucProStatus.CombLghtFucProSta!=0x4=SidePositionAndDippedBeam ON)
+则发送位置灯关闭请求:
+LHZCU判断外灯组合开关挡位为位置灯光档或近光灯档或近光灯Auto点亮
+CombLghtFucProStatus.CombLghtFucProSta =0x4=SidePositionAndDippedBeam ON)
+则不发送位置灯关闭请求
+对于具备前雾灯的车型,InsdFnCfgFrtFogLght=0x1,当因前雾灯开启导致贯穿式A2前位置灯退出时
+0x3=FrontFogLghtAndDippedLight ON // Ox4=FrontFogLghtAndSideLight ON
+则同样不发送位置灯关闭请求
+2、[外灯组合服务ICB]调用基础服务:
+1)日间行车:
+2)位置灯:[外灯控制组合服务ICB]调用基础服务,,针对
+{InstanceID=1}{InstanceID=2}{InstanceID=3}{InstanceID=4},组合服务延时60ms调用(配置需求:
+NumPltLampCtrlDelayPrm):
+(ex1SideLghtHwDrvEnPrm=0x1;备注:位置灯炮筒灯方案,以instance1,2,3,4发送控制请求,如

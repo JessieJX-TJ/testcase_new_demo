@@ -1,0 +1,79 @@
+```json
+[
+  {
+    "head": "HMI子系统ICB调用接口通知近光灯指示灯显示",
+    "relation": "触发条件",
+    "tail": "外灯控制组合服务ICB调用基础服务中DippedBeamLightRequestStatus.DippedBeamLightReqSts为0x0=OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "HMI子系统ICB",
+      "外灯控制组合服务ICB",
+      "DippedBeamLightRequestStatus.DippedBeamLightReqSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动处理模块LHZCU/RHZCU订阅ICB发送的近光灯控制状态",
+    "relation": "依赖于",
+    "tail": "外灯控制组合服务ICB调用基础服务中DippedBeamLightRequestStatus.DippedBeamLightReqSts为0x0=OFF",
+    "triple_type": "输入依赖",
+    "evidence_terms": [
+      "驱动处理模块LHZCU/RHZCU",
+      "外灯控制组合服务ICB",
+      "DippedBeamLightRequestStatus.DippedBeamLightReqSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动模块LHZCU/RHZCU将状态/故障状态反馈至近光灯控制模块LHZCU",
+    "relation": "输出为",
+    "tail": "近光灯控制模块LHZCU",
+    "triple_type": "状态反馈",
+    "evidence_terms": [
+      "驱动模块LHZCU/RHZCU",
+      "近光灯控制模块LHZCU",
+      "DippedBeamLightStatus",
+      "DippedBeamLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制模块LHZCU将状态/故障状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "ICB",
+    "triple_type": "状态反馈",
+    "evidence_terms": [
+      "近光灯控制模块LHZCU",
+      "ICB",
+      "ExteriorLightSwitchProcess.DippedBeamLightSta.DipdBeamLghtSta",
+      "ExteriorLightSwitchProcess.DippedBeamLightErrSta.DipdBeamLghtErrSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务ICB订阅接口",
+    "relation": "输入为",
+    "tail": "外灯控制组合服务ICB",
+    "triple_type": "输入依赖",
+    "evidence_terms": [
+      "外灯组合服务ICB",
+      "外灯控制组合服务ICB",
+      "ExteriorLightControlSystem.DippedBeamLightSts.DipdBeamLghtSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯和位置灯退出同步性要求",
+    "relation": "超时约束",
+    "tail": "左侧和右侧需保持同步熄灭，两侧最大延时不能超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "近光灯",
+      "位置灯",
+      "同步熄灭",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,88 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "转向灯状态与故障信息",
+  "row_semantics": "表格按功能模块划分，详细描述了转向灯的状态、故障状态及其控制接口。",
+  "column_semantics": "第一列为主功能模块名称；第二列为信号类型（输出/消费）；后续列为涉及的控制器或模块名称。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DircnLghtSts",
+      "type": "功能名",
+      "description": "转向灯状态"
+    },
+    {
+      "name": "DircnLghtFtsts",
+      "type": "功能名",
+      "description": "转向灯故障状态"
+    },
+    {
+      "name": "ExteriorLightControlSystem.ControlDirectionLight",
+      "type": "功能名",
+      "description": "外部灯光控制系统 - 控制转向灯"
+    },
+    {
+      "name": "CANFD",
+      "type": "控制器/模块名",
+      "description": "Controller Area Network Flexible Data Rate，用于车辆内部通信"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Local Host Central Unit，本地主机中央单元"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "Integrated Control Board，集成控制板"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器/模块名",
+      "description": "Remote Zone Central Unit，远程区域中央单元"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DircnLghtSts",
+      "type": "输出信号",
+      "description": "表示转向灯当前的工作状态，包括关闭、左转向、右转向及双侧转向。",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "Left_Direction_Light_On",
+        "0x2": "Right_Direction_Light_On",
+        "0x3": "Both_Side_Direction_Light_On",
+        "0x4": "Reserved"
+      }
+    },
+    {
+      "name": "DircnLghtFtsts",
+      "type": "输出信号",
+      "description": "表示转向灯是否存在故障及其类型。",
+      "values": {
+        "0x0": "No_Error",
+        "0x1": "Left_Direction_Light_Error",
+        "0x2": "Right_Direction_Light_Error",
+        "0x3": "Both_Side_Direction_Light_Error"
+      }
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DircnLghtFtsts",
+      "type": "故障状态",
+      "description": "指示转向灯系统中可能发生的故障类型，如左侧、右侧或双侧转向灯故障。",
+      "fault_types": [
+        "Left_Direction_Light_Error",
+        "Right_Direction_Light_Error",
+        "Both_Side_Direction_Light_Error"
+      ]
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆转向灯系统的状态和故障信息，以及如何通过服务接口控制转向灯的亮灭。可用于验证转向灯状态机的正确性、故障检测逻辑的有效性，以及控制接口的功能实现。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,50 @@
+{
+  "table_type": "logic_table",
+  "topic": "制动灯开启逻辑",
+  "row_semantics": "描述了在特定前置条件下，系统触发和执行制动灯开启动作的完整流程。",
+  "column_semantics": {
+    "场景描述": "定义了整个逻辑的工程背景和目的。",
+    "前置条件": "列出了触发制动灯开启的所有必要前提条件。",
+    "触发动作": "详细说明了在满足前置条件后，系统内部各模块之间交互的具体信号输入与处理步骤。",
+    "执行动作": "指明了最终由哪个控制器发出何种信号来实现制动灯的实际点亮。",
+    "uncertain_points": [
+      "具体何时会触发该逻辑（如车辆速度范围）未明确说明。",
+      "制动踏板踩下的具体物理量值或阈值未给出。",
+      "电动车辆再生制动系统的具体能量回收阈值未明确。",
+      "集成式制动系统中BrkSysBrkLghtsReqd_1_True的具体触发条件未详细说明。"
+    ]
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "制动踏板开关",
+    "制动踏板位置监测子系统",
+    "电动车辆再生制动系统",
+    "集成式制动系统",
+    "制动灯开关控制模块 LHZCU",
+    "ICB (Integrated Control Box)"
+  ],
+  "core_conditions": [
+    "UsgMd状态为0_Sleep、1_Standby或6_XOTA",
+    "UsgMdV有效",
+    "VehMd状态为3_TRANSPORT",
+    "VehMdV有效",
+    "制动踏板信号EPTRbkPdlDscrtInptSts为1_BrakeApplied",
+    "制动踏板有效性信号EPTRbkPdlDscrtInptStsV为0_Valid",
+    "滑行能量回收信号CstRgtnBrkLgtReq为1_Request",
+    "滑行能量回收有效性信号CstRgtnBrkLgtReqV为0_Valid"
+  ],
+  "core_outputs": [
+    "BrkLghtSwReq=0x1=BrkLghtSwReq_1_On",
+    "BrkLghtCtrl=0x1=BrkLghtCtrl_1_On"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证当车辆处于特定驾驶模式（如运输模式）且制动踏板被踩下或电动车辆再生制动系统工作时，制动灯是否能够正确、及时地被激活。",
+  "uncertain_points": [
+    "具体触发条件的量化阈值（如制动踏板踩下力度）未明确。",
+    "不同驾驶模式（如0_Sleep、1_Standby、6_XOTA）之间的切换逻辑细节未详述。",
+    "电动车辆再生制动系统的介入时机和强度未明确。",
+    "集成式制动系统与其他制动相关模块的协同响应时间未给出。"
+  ]
+}

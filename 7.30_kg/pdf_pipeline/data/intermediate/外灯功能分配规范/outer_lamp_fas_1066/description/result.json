@@ -1,0 +1,81 @@
+{
+  "table_type": "logic_table",
+  "topic": "近光灯控制逻辑",
+  "row_semantics": "描述在特定前置条件下，触发的动作序列及其对应的系统状态变化",
+  "column_semantics": "表格分为两列：左侧为场景描述和前置条件，右侧为触发动作为序号列表",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "NearHeadlight",
+      "type": "功能名",
+      "description": "车辆的近光灯"
+    },
+    {
+      "name": "UsrMd",
+      "type": "控制器/模块名",
+      "description": "用户模式管理模块"
+    },
+    {
+      "name": "VehMd",
+      "type": "控制器/模块名",
+      "description": "车辆模式管理模块"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "输入信号",
+      "description": "侧位灯状态反馈信号"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Local Headlamp Zone Control Unit（局部大灯区域控制单元）"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "NearHeadlight_Active",
+      "type": "系统状态",
+      "description": "近光灯处于激活状态"
+    },
+    {
+      "name": "SOA_Communication",
+      "type": "模式名",
+      "description": "Service Oriented Architecture（面向服务架构）通信模式"
+    },
+    {
+      "name": "CAN_Communication",
+      "type": "模式名",
+      "description": "Controller Area Network（控制器局域网）通信模式"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "UsrMd_Sleep",
+      "type": "输出信号",
+      "description": "用户模式进入睡眠状态"
+    },
+    {
+      "name": "UsrMd_XOTA",
+      "type": "输出信号",
+      "description": "用户模式进入XOTA（eXtended Over-The-Air，扩展空中下载）状态"
+    },
+    {
+      "name": "VehMd_Transport",
+      "type": "输出信号",
+      "description": "车辆模式进入运输模式"
+    },
+    {
+      "name": "SidePositionLight_Off",
+      "type": "输出信号",
+      "description": "侧位灯关闭"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在近光灯激活状态下，当前置条件不满足时，系统应执行的退出近光灯的逻辑动作，包括用户模式、车辆模式的切换以及侧位灯状态的反馈。",
+  "uncertain_points": [
+    "具体何时触发[1&2]||[3&4]||5||6||7||8 ||9: 的条件未明确说明",
+    "各个实例ID的具体含义和关联关系未详细解释"
+  ]
+}

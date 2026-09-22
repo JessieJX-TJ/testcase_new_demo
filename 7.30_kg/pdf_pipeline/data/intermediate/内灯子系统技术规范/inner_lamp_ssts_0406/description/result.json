@@ -1,0 +1,40 @@
+{
+  "table_type": "state_table",
+  "topic": "Reading Lamp Work Status Signal",
+  "row_semantics": "Each row represents a specific state of the reading lamp, identified by its status code (e.g., OFF, Level_1, Level_2, etc.) and the corresponding conditions under which this state is achieved.",
+  "column_semantics": {
+    "阅读灯工作状态信号号": "The signal identifier for the reading lamp's operational status, specifically 'MapLampXXSts_1'.",
+    "状态位": "The hexadecimal value representing the current state of the reading lamp (e.g., 0x0=OFF, 0x1=Level_1).",
+    "判定条件说明": "Describes the conditions that must be met for the reading lamp to enter the specified state, including received brightness level requests and the lamp's illumination status.",
+    "备注": "Additional notes or comments related to the specific state, often left blank in this table."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MapLampXXSts_1",
+      "type": "signal",
+      "description": "The main signal used to indicate the operational status of the reading lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Brightness Level Request",
+      "description": "The requested brightness level for the reading lamp, ranging from Level_1 (1) to Level_30 (30)."
+    },
+    {
+      "name": "Lamp Illumination Status",
+      "description": "Indicates whether the reading lamp is currently illuminated ('点亮中')."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Reading Lamp State",
+      "description": "The current state of the reading lamp as defined by the status code (e.g., OFF, Level_1, Level_2, etc.)."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the expected states of the reading lamp based on received brightness level requests and the lamp's illumination status. It can be used to verify that the reading lamp correctly transitions between states (e.g., OFF, Level_1, Level_2, etc.) in response to valid input commands.",
+  "uncertain_points": []
+}

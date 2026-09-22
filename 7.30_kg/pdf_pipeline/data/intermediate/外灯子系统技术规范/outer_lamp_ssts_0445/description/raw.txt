@@ -1,0 +1,61 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "转向拨杆开关阻值检测异常处理",
+  "row_semantics": "表格按行定义了触发条件、执行动作、退出条件和异常处理的规则。",
+  "column_semantics": "表格包含两列，第一列为规则类型（如触发条件、执行动作等），第二列为对应的具体描述。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "转向拨杆开关",
+      "type": "input_signal",
+      "description": "检测转向拨杆开关的阻值状态"
+    },
+    {
+      "name": "DTC",
+      "type": "system_status",
+      "description": "故障代码（Diagnostic Trouble Code）"
+    },
+    {
+      "name": "转向灯开关",
+      "type": "input_signal",
+      "description": "检测转向灯开关的阻值状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "转向拨杆开关检测到未定义的阻值",
+      "trigger": "触发条件"
+    },
+    {
+      "condition": "转向灯开关检测到已知定义的阻值",
+      "exit": "退出条件"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "【DILghtSwMdl】持续发送 DircnLghtSwReq = 0x0 (Off)",
+      "description": "控制器模块持续发送转向灯开关请求信号为关闭状态"
+    },
+    {
+      "output": "置位 DTC",
+      "description": "系统设置故障代码以记录异常状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "转向拨杆开关阻值未定义",
+      "description": "转向拨杆开关检测到的阻值不在预定义范围内"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在执行动作中，持续发送信号的最小帧数要求"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证转向拨杆开关阻值检测功能在异常情况下的处理逻辑，确保系统能够正确识别未定义阻值并采取相应措施（如发送关闭信号并设置故障代码），同时在恢复正常阻值时退出异常处理。",
+  "uncertain_points": []
+}
+```

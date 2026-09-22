@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "获取右侧后位置灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用服务接口 SidePositionLight.SidePositionLightErrorStatus",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "SidePositionLight.SidePositionLightErrorStatus",
+      "调用该服务接口,获取右后位置灯故障状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "获取位置灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用服务接口 ExteriorLightSwitchProcess.SidePositionLightErrSta",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.SidePositionLightErrSta",
+      "调用该服务接口,获取位置灯故障状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右侧后位置灯故障状态",
+    "relation": "输出为",
+    "tail": "SidePositionLightErrorStatus",
+    "triple_type": "逻辑映射",
+    "evidence_terms": [
+      "SidePositionLightErrorStatus",
+      "0x0=No Error",
+      "0x1=Error",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "位置灯故障状态",
+    "relation": "输出为",
+    "tail": "SidePositionLightErrSta",
+    "triple_type": "逻辑映射",
+    "evidence_terms": [
+      "SidePositionLightErrSta",
+      "0x0=No Error",
+      "0x1=Error",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

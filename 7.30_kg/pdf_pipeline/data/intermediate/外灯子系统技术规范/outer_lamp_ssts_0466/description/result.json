@@ -1,0 +1,64 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑",
+  "row_semantics": "表格描述了外灯（转向灯）控制的执行动作、退出条件和异常处理规则。",
+  "column_semantics": "第一列定义了操作类型（执行动作、退出条件、异常处理），第二列详细描述了具体的控制逻辑步骤。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RLDILghtDrvMdl",
+      "type": "controller_module",
+      "description": "左后转向灯驱动模块"
+    },
+    {
+      "name": "DILamp_LH_HSD",
+      "type": "output_signal",
+      "description": "左后转向灯输出信号"
+    },
+    {
+      "name": "RLDILghtDrvMdl",
+      "type": "input_signal",
+      "description": "左后转向灯驱动模块状态"
+    },
+    {
+      "name": "RLDILghtSts_HW",
+      "type": "input_signal",
+      "description": "硬件层转向灯状态"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "input_signal",
+      "description": "转向灯控制模块"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "硬件层转向灯方向控制信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "持续发送 RLDILghtSts_HW=0 (Off)",
+      "description": "持续发送硬件层转向灯状态为关闭"
+    },
+    {
+      "condition": "至少发送三帧",
+      "description": "确保信号传输的可靠性"
+    },
+    {
+      "condition": "收到 DILghtCtrlMdl 发送的 RLDircnLghtCtrl_HW == 1 (On)",
+      "description": "接收到转向灯控制模块发出的方向控制信号为开启状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "停止驱动左后转向灯输出 (DILamp_LH_HSD)",
+      "description": "停止向左后转向灯输出信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子系统中左后转向灯的控制逻辑，确保在特定条件下（如接收到开启信号时）能够正确停止转向灯输出，并满足信号发送的帧数要求。",
+  "uncertain_points": []
+}

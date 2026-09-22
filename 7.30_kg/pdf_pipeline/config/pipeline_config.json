@@ -1,0 +1,77 @@
+{
+  "project_name": "zhiji-pdf-kg-pipeline",
+  "input_documents": [
+    {
+      "doc_id": "outer_lamp_fas",
+      "doc_name": "外灯功能分配规范",
+      "image_dir": "/home/fanhongxuan/TestCase_Agent/7.30_kg/智己PDF/output/13 Z-ONE-3.0平台-FAS-IBD05 外灯功能分配规范v7.7-20260408/auto/images"
+    },
+    {
+      "doc_id": "outer_lamp_ssts",
+      "doc_name": "外灯子系统技术规范",
+      "image_dir": "/home/fanhongxuan/TestCase_Agent/7.30_kg/智己PDF/output/14 Z-ONE-3.0平台-SSTS-外灯系统-V4.0/auto/images"
+    },
+    {
+      "doc_id": "inner_lamp_fas",
+      "doc_name": "内灯功能分配规范",
+      "image_dir": "/home/fanhongxuan/TestCase_Agent/7.30_kg/智己PDF/output/23 3.0平台-FAS-内灯功能分配规范-V5.1/auto/images"
+    },
+    {
+      "doc_id": "inner_lamp_ssts",
+      "doc_name": "内灯子系统技术规范",
+      "image_dir": "/home/fanhongxuan/TestCase_Agent/7.30_kg/智己PDF/output/24 Z-ONE-3.0平台-SSTS-内灯子系统-V6.4.1/auto/images"
+    }
+  ],
+  "output_root": "data",
+  "api": {
+    "provider": "openai_compatible",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  },
+  "ocr": {
+    "lang": "ch",
+    "use_angle_cls": true,
+    "use_gpu": true,
+    "device": "cpu",
+    "conf_threshold": 0.8,
+    "min_term_length": 1,
+    "max_term_length": 80,
+    "max_whitelist_terms": 300
+  },
+  "description": {
+    "model": "qwen-vl-plus",
+    "max_retries": 3
+  },
+  "triple_extraction": {
+    "model": "qwen-vl-plus",
+    "max_retries": 3,
+    "allowed_relations": [
+      "前提条件",
+      "触发条件",
+      "抑制条件",
+      "依赖于",
+      "输入为",
+      "输出为",
+      "优先级高于",
+      "与...互斥",
+      "状态保持条件",
+      "复位条件",
+      "故障响应",
+      "超时约束",
+      "诊断关联",
+      "包含子功能",
+      "输入来自",
+      "输出到",
+      "连接到",
+      "控制对象"
+    ]
+  },
+  "fusion": {
+    "model": "qwen-plus",
+    "batch_size": 60,
+    "max_retries": 3
+  },
+  "runtime": {
+    "limit_per_doc": 0,
+    "skip_existing": true
+  }
+}

@@ -1,0 +1,529 @@
+[
+  {
+    "head": "MainBeamLightSwMdl",
+    "relation": "前提条件",
+    "tail": "MainBeamLightSwSOAEnPrm == 0x1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0268",
+      "outer_lamp_ssts_0279"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwMdl",
+    "relation": "触发条件",
+    "tail": "用户操作远光灯开关：开（阻值 ≈ 300 Ω ±5%）或关（悬空）",
+    "sources": [
+      "outer_lamp_ssts_0268",
+      "outer_lamp_ssts_0279"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwMdl",
+    "relation": "输出为",
+    "tail": "MainBeamLightSwitchStatus signal (MainBeamLightSwitchSta)",
+    "sources": [
+      "outer_lamp_ssts_0268",
+      "outer_lamp_ssts_0279"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwMdl",
+    "relation": "依赖于",
+    "tail": "MainBeamLightSwitchSta = 0x1 (On) or 0x0 (Off)",
+    "sources": [
+      "outer_lamp_ssts_0268",
+      "outer_lamp_ssts_0279"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwMdl",
+    "relation": "状态保持条件",
+    "tail": "至少连续发送三帧 MainBeamLightSwitchStatus",
+    "sources": [
+      "outer_lamp_ssts_0268",
+      "outer_lamp_ssts_0273",
+      "outer_lamp_ssts_0279"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统唤醒机制",
+    "relation": "触发条件",
+    "tail": "唤醒源为电平跳变沿",
+    "sources": [
+      "outer_lamp_ssts_0269"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统唤醒机制",
+    "relation": "输出为",
+    "tail": "电平跳变沿触发唤醒",
+    "sources": [
+      "outer_lamp_ssts_0269",
+      "outer_lamp_ssts_0460"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统唤醒机制",
+    "relation": "依赖于",
+    "tail": "电平跳变沿",
+    "sources": [
+      "outer_lamp_ssts_0269"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左远光灯短路至电源故障",
+    "relation": "触发条件",
+    "tail": "左远光灯处于输出状态",
+    "sources": [
+      "outer_lamp_ssts_0270"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左远光灯短路至电源故障",
+    "relation": "抑制条件",
+    "tail": "MainBeamLghtFbkSOAEnPrm == 0x0 (Disable)",
+    "sources": [
+      "outer_lamp_ssts_0270"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左远光灯短路至电源故障",
+    "relation": "故障响应",
+    "tail": "LMainBeamLghtDrvMdl 停止驱动 MainBeamLamp_LH_HSD",
+    "sources": [
+      "outer_lamp_ssts_0270"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左远光灯短路至电源故障",
+    "relation": "故障响应",
+    "tail": "LMainBeamLghtDrvMdl 持续发送 LMainBeamLghtSts = 0x0 (Off) 至 MainBeamLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0270"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左远光灯短路至电源故障",
+    "relation": "故障响应",
+    "tail": "置位 DTC B105C 12",
+    "sources": [
+      "outer_lamp_ssts_0270"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC_B105C_12",
+    "relation": "诊断关联",
+    "tail": "左远光灯短路至电源故障",
+    "sources": [
+      "outer_lamp_ssts_0270"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDILightDrvMdl",
+    "relation": "触发条件",
+    "tail": "收到 DILightCtrlMdl 发送的 DirectionLightControl.DirectionLightCtrReq == 0x0 (Off), InstanceID = 3",
+    "sources": [
+      "outer_lamp_ssts_0271"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDILightDrvMdl",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm == 0x1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0271"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILightCtrlMdl",
+    "relation": "输入为",
+    "tail": "RLDILightDrvMdl 持续发送 DirectionLightControl.DirectionLightSta == 0x0 (Off), InstanceID = 3",
+    "sources": [
+      "outer_lamp_ssts_0271"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILightCtrlMdl",
+    "relation": "触发条件",
+    "tail": "收到 DILightCtrlMdl 发送的 DirectionLightControl.DirectionLightCtrReq == 0x1 (On), InstanceID = 3",
+    "sources": [
+      "outer_lamp_ssts_0271"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯亮度调节功能",
+    "relation": "前提条件",
+    "tail": "标定项（Item）为 '外灯亮度调节参数'",
+    "sources": [
+      "outer_lamp_ssts_0272"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制模块（BCM）",
+    "relation": "复位条件",
+    "tail": "默认值（Default）为 0x0000",
+    "sources": [
+      "outer_lamp_ssts_0272"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门开启延迟时间",
+    "relation": "输入为",
+    "tail": "参数范围（Range）为 100 ms – 500 ms",
+    "sources": [
+      "outer_lamp_ssts_0272"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯工作模式切换",
+    "relation": "依赖于",
+    "tail": "标定描述（Description）包含 '模式选择开关'",
+    "sources": [
+      "outer_lamp_ssts_0272"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "触发条件",
+    "tail": "收到 BrkLightCtrlMdl 发送的 BrakeLight.BrakeLightState.BrakeLightSta[InstanceID=1] == 0x0 (Off)",
+    "sources": [
+      "outer_lamp_ssts_0273"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "触发条件",
+    "tail": "收到 BrkLightCtrlMdl 发送的 BrakeLight.BrakeLightState.BrakeLightSta[InstanceID=1] == 0x1 (On)",
+    "sources": [
+      "outer_lamp_ssts_0273"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "状态保持条件",
+    "tail": "至少连续发送三帧 BrakeLightState.BrakeLightSta",
+    "sources": [
+      "outer_lamp_ssts_0273"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "前提条件",
+    "tail": "BrkLghtFbkSOAEnPrm == 0x1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0273"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDLgLghtDrvMdl",
+    "relation": "触发条件",
+    "tail": "收到 DILghtCtrlMdl 统一分发的 FRDircnLghtCtrl_HW == 0x1 (On)",
+    "sources": [
+      "outer_lamp_ssts_0274"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDLgLghtDrvMdl",
+    "relation": "前提条件",
+    "tail": "exlDirCnLghtHwDrvEnPrm ∈ {0x1, 0x2}",
+    "sources": [
+      "outer_lamp_ssts_0274"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDLgLghtDrvMdl",
+    "relation": "输出为",
+    "tail": "FRDLgLghtSts_HW = 0x1 (On) 至 DILghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0274"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDLgLghtDrvMdl",
+    "relation": "输出为",
+    "tail": "持续驱动 DILamp_RH_HSD 输出",
+    "sources": [
+      "outer_lamp_ssts_0274"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDLgLghtDrvMdl",
+    "relation": "依赖于",
+    "tail": "FRDLgLghtSts_HW = 0x1 (On) 至 DILghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0274"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDLgLghtDrvMdl",
+    "relation": "超时约束",
+    "tail": "至少连续发送三帧 FRDLgLghtSts_HW = 0x1 (On)",
+    "sources": [
+      "outer_lamp_ssts_0274"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoLghtCtrlMdl",
+    "relation": "触发条件",
+    "tail": "阳光雨量传感器 LIN 信号 AutoLghtOnReq_l == 0x0 (False)",
+    "sources": [
+      "outer_lamp_ssts_0275"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoLghtCtrlMdl",
+    "relation": "抑制条件",
+    "tail": "阳光雨量传感器 LIN 信号 AutoLghtOnReq_l == 0x1 (True)",
+    "sources": [
+      "outer_lamp_ssts_0275"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoLghtSwMdl",
+    "relation": "输出为",
+    "tail": "AutoLghtOnReq = 0x0 至 AutoLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0275"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoLghtSwMdl",
+    "relation": "状态保持条件",
+    "tail": "至少连续发送三帧 AutoLghtOnReq",
+    "sources": [
+      "outer_lamp_ssts_0275"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制参数",
+    "relation": "依赖于",
+    "tail": "灯光模式选择",
+    "sources": [
+      "outer_lamp_ssts_0276"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门控制参数",
+    "relation": "依赖于",
+    "tail": "尾门开关状态",
+    "sources": [
+      "outer_lamp_ssts_0276"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯光亮度输出",
+    "relation": "输出为",
+    "tail": "外灯控制参数",
+    "sources": [
+      "outer_lamp_ssts_0276"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "尾门动作指令",
+    "relation": "输出为",
+    "tail": "电动尾门控制参数",
+    "sources": [
+      "outer_lamp_ssts_0276"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左制动灯开路故障",
+    "relation": "触发条件",
+    "tail": "左制动灯开路故障存在",
+    "sources": [
+      "outer_lamp_ssts_0277"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "控制对象",
+    "tail": "BrkLghtSts (制动灯状态信号)",
+    "sources": [
+      "outer_lamp_ssts_0277"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtCtrlMdl",
+    "relation": "包含子功能",
+    "tail": "BrkLghtDrvMdl 动作（含至少三帧发送）",
+    "sources": [
+      "outer_lamp_ssts_0277"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "输出为",
+    "tail": "BrkLghtFltSts_HW (硬件故障状态信号)",
+    "sources": [
+      "outer_lamp_ssts_0277"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC_B1041_13",
+    "relation": "诊断关联",
+    "tail": "左制动灯开路故障",
+    "sources": [
+      "outer_lamp_ssts_0277"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwSOAEnPrm",
+    "relation": "触发条件",
+    "tail": "参数值为 0x1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0278"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwSOAEnPrm",
+    "relation": "抑制条件",
+    "tail": "参数值为 0x0 (Disable)",
+    "sources": [
+      "outer_lamp_ssts_0278"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwSOAEnPrm",
+    "relation": "输入为",
+    "tail": "取值范围为 {0x0, 0x1}",
+    "sources": [
+      "outer_lamp_ssts_0278"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwSOAEnPrm",
+    "relation": "默认值",
+    "tail": "0x0",
+    "sources": [
+      "outer_lamp_ssts_0278"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关",
+    "relation": "触发条件",
+    "tail": "检测到定义阻值（进入保持状态）",
+    "sources": [
+      "outer_lamp_ssts_0280"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动踏板开关粘连故障",
+    "relation": "前提条件",
+    "tail": "制动踏板开关高有效粘连时间 > 600 s（TBD）",
+    "sources": [
+      "outer_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动踏板开关粘连故障",
+    "relation": "触发条件",
+    "tail": "系统执行制动灯开关信号发送动作",
+    "sources": [
+      "outer_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

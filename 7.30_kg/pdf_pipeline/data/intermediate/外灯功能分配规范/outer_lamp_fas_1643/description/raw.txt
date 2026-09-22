@@ -1,0 +1,49 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "拖车外灯控制延时参数定义",
+  "row_semantics": "表格中的每一行代表一个具体的外灯控制延时参数配置项，用于定义不同外灯功能的延时行为。",
+  "column_semantics": {
+    "1": "参数名称（Parameter Name）",
+    "2": "功能描述（Function Description）",
+    "3": "参数计算公式及取值范围（Formula and Range）",
+    "4": "默认值（Default Value）",
+    "5": "备注/状态（Remarks/Status）"
+  },
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "TrlrRrFogLghtCtrlDelayPrm",
+      "type": "parameter",
+      "description": "拖车后雾灯控制延时参数"
+    },
+    {
+      "name": "TrlrSideLghtCtrlDelayPrm",
+      "type": "parameter",
+      "description": "拖车位置灯控制延时参数"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "parameter": "TrlrRrFogLghtCtrlDelayPrm",
+      "formula": "{E=N*10}",
+      "range": "0x0~0xF",
+      "unit": "ms",
+      "description": "拖车后雾灯控制延时时间，由N乘以10得到实际延时值，N的取值范围为0x0到0xF。"
+    },
+    {
+      "parameter": "TrlrSideLghtCtrlDelayPrm",
+      "formula": "{E=N*10}",
+      "range": "0x0~0xF",
+      "unit": "ms",
+      "description": "拖车位置灯控制延时时间，由N乘以10得到实际延时值，N的取值范围为0x0到0xF。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了拖车后雾灯和位置灯的控制延时参数，可用于验证车辆在拖挂状态下外灯延时功能是否符合设计规范，确保延时参数在指定范围内正确生效。",
+  "uncertain_points": []
+}
+```

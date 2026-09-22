@@ -1,0 +1,323 @@
+[
+  {
+    "head": "DippedBeamLight",
+    "relation": "depends_on",
+    "tail": "DippedBeamLight.DippedBeamLightStatus.DippedBeamLightSta",
+    "sources": [
+      "outer_lamp_fas_1046",
+      "outer_lamp_fas_1056"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight",
+    "relation": "depends_on",
+    "tail": "SidePositionLight.SidePositionLightStatus.SidePositionLightSta",
+    "sources": [
+      "outer_lamp_fas_1046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight",
+    "relation": "triggered_by",
+    "tail": "RearFogLightSwStatus.RearFogLightSwSta=0x1",
+    "sources": [
+      "outer_lamp_fas_1047"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight",
+    "relation": "depends_on",
+    "tail": "RearFogLight.RearFogLightState.RearFogLightSta=0x1",
+    "sources": [
+      "outer_lamp_fas_1047"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight",
+    "relation": "status_feedback_to",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_1047"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight",
+    "relation": "synchronization_requirement",
+    "tail": "Left and right must illuminate synchronously, max delay ≤40ms",
+    "sources": [
+      "outer_lamp_fas_1047"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightRequestResend",
+    "relation": "triggered_by",
+    "tail": "Request failed → retry up to 3 times",
+    "sources": [
+      "outer_lamp_fas_1047"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightRequestResend",
+    "relation": "timing_constraint",
+    "tail": "Retry interval ≤50ms, total 3 attempts",
+    "sources": [
+      "outer_lamp_fas_1047"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightRequestResendStop",
+    "relation": "triggered_by",
+    "tail": "3 retries failed with no success feedback",
+    "sources": [
+      "outer_lamp_fas_1047"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtFltsts",
+    "relation": "outputs",
+    "tail": "0x0 = False (no fault), 0x1 = True (fault)",
+    "sources": [
+      "outer_lamp_fas_1048"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtFltsts",
+    "relation": "outputs",
+    "tail": "0x0 = False (no fault), 0x1 = True (fault)",
+    "sources": [
+      "outer_lamp_fas_1048"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus",
+    "relation": "inputs",
+    "tail": "DirectionLightErrorSta",
+    "sources": [
+      "outer_lamp_fas_1055"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus",
+    "relation": "outputs",
+    "tail": "0x0 = No Error, 0x1 = Error, 0x2 = Unknown",
+    "sources": [
+      "outer_lamp_fas_1055"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "NetworkFaultStatus",
+    "relation": "depends_on",
+    "tail": "SOA, ICB, LHZCU",
+    "sources": [
+      "outer_lamp_fas_1055"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight",
+    "relation": "status_subscription",
+    "tail": "InstanceID=3 (left), InstanceID=4 (right)",
+    "sources": [
+      "outer_lamp_fas_1056"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight",
+    "relation": "error_status_subscription",
+    "tail": "InstanceID=1 (left), InstanceID=2 (right), InstanceID=3 (left alt), InstanceID=4 (right alt)",
+    "sources": [
+      "outer_lamp_fas_1056"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting InstanceID assignments for left/right error status: ID=1/2 vs ID=3/4 — may indicate duplicate or versioned definitions; requires verification against interface spec."
+  },
+  {
+    "head": "HMI",
+    "relation": "displays",
+    "tail": "HighBeamAssistEnableStatus from ICB Personalization Subsystem",
+    "sources": [
+      "outer_lamp_fas_1057"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI",
+    "relation": "sends",
+    "tail": "HighBeamAssistEnableStatus to ICB Personalization Subsystem upon user setting",
+    "sources": [
+      "outer_lamp_fas_1057"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI",
+    "relation": "displays",
+    "tail": "RoofSpotLightErrSta=0x1 → roof spot light fault",
+    "sources": [
+      "outer_lamp_fas_1057"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DisclaimerDialog",
+    "relation": "triggered_by",
+    "tail": "First power-on + user taps High Beam Assist Enable switch",
+    "sources": [
+      "outer_lamp_fas_1057"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DisclaimerDialog",
+    "relation": "suppressed_by",
+    "tail": "User selects 'Do not show again'",
+    "sources": [
+      "outer_lamp_fas_1057"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HighBeamAssistEnable",
+    "relation": "enabled_only_in",
+    "tail": "Park (P) gear",
+    "sources": [
+      "outer_lamp_fas_1057"
+    ],
+    "conflict": true,
+    "conflict_note": "Contradiction: 'only in P' vs 'no gear check if same button'. These are conditional alternatives, not logical conflicts — but require explicit context binding (e.g., 'if two separate buttons' vs 'if single toggle button'). Retained as distinct rules with conflict flag for traceability."
+  },
+  {
+    "head": "RoofSpotLightErrSta",
+    "relation": "triggers",
+    "tail": "HMI displays roof spot light fault state",
+    "sources": [
+      "outer_lamp_fas_1057"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight",
+    "relation": "status_inputs",
+    "tail": "RearFogLightSts = 0x0 (OFF), 0x1 (ON), 0x2 (Unknown)",
+    "sources": [
+      "outer_lamp_fas_1058"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight",
+    "relation": "error_status_inputs",
+    "tail": "RearFogLightErrorSta = 0x0 (no fault), 0x1 (fault), 0x2 (unknown)",
+    "sources": [
+      "outer_lamp_fas_1058"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight",
+    "relation": "requires_subscription",
+    "tail": "RearFogLightErrorStatus interface (for fault) and RearFogLightStatus interface (for state)",
+    "sources": [
+      "outer_lamp_fas_1058"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightSwitchStatus",
+    "relation": "inputs",
+    "tail": "{ExteriorLightSwitchProcess.DayRunningLghtSwStatus.DayRunningLghtSwSta} = 0x0 (OFF), 0x1 (ON)",
+    "sources": [
+      "outer_lamp_fas_1059"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI",
+    "relation": "triggers_alert",
+    "tail": "Daytime running light fault (e.g., DayTmRunngLghtFlsts_0_False)",
+    "sources": [
+      "outer_lamp_fas_1059"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI",
+    "relation": "depends_on",
+    "tail": "DayRunningLight service interface or CAN fault signal",
+    "sources": [
+      "outer_lamp_fas_1059"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightErrSta",
+    "relation": "triggers",
+    "tail": "HMI triggers fault popup alert",
+    "sources": [
+      "outer_lamp_fas_1059"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSwitch",
+    "relation": "triggered_by",
+    "tail": "Hazard light switch ON during vehicle power-down",
+    "sources": [
+      "outer_lamp_fas_1060"
+    ],
+    "conflict": true,
+    "conflict_note": "Three mutually exclusive outcomes described for same condition: 'function remains', 'function exits', 'function is maintained' — likely reflects inconsistent documentation of behavior across subsystems (e.g., LHZCU maintains, VMCU/RHZCU/LHA drive, ZXD signals display). Conflict retained for cross-validation."
+  },
+  {
+    "head": "HazardLight",
+    "relation": "driven_by",
+    "tail": "LHZCU, VMCU, RHZCU, LHA, ZXD signal",
+    "sources": [
+      "outer_lamp_fas_1060"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

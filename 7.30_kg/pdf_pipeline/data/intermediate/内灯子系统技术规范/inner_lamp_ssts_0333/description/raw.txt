@@ -1,0 +1,76 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform)",
+  "row_semantics": "Each row represents a specific command or control signal for the interior lighting system, detailing its function, input source, and associated controller/module.",
+  "column_semantics": {
+    "Input": "The type of input signal (e.g., LIN bus communication).",
+    "LIN": "Indicates the use of LIN (Local Interconnect Network) protocol.",
+    "LHZCU": "Controller/module responsible for processing the command.",
+    "DoorAmbtLampD_F_L": "Specific door ambient lamp data field identifier.",
+    "LHZCU_LIN4": "Specific LIN channel within the LHZCU module.",
+    "内灯SSTS": "Subsystem name indicating it's part of the Interior Lighting Sub System."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorFL4LampOnOff_1",
+      "type": "function",
+      "description": "Controls the on/off state of the front left door ambient lamp."
+    },
+    {
+      "name": "DoorFL4LampColorCmd_1",
+      "type": "function",
+      "description": "Sets the color of the front left door ambient lamp."
+    },
+    {
+      "name": "DoorFL4LampBrightnessCmd_1",
+      "type": "function",
+      "description": "Adjusts the brightness level of the front left door ambient lamp."
+    },
+    {
+      "name": "DoorFL4LampBrightnessCmd_1",
+      "type": "function",
+      "description": "Controls the breathing rate of the front left door ambient lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DoorFL4LampOnOff_1",
+      "input": "LIN",
+      "value": "0x0=OFF, 0x1=ON",
+      "description": "Enables or disables the lamp."
+    },
+    {
+      "name": "DoorFL4LampColorCmd_1",
+      "input": "LIN",
+      "value": "0x00=No Request, 0x01-0xFF=Color Value",
+      "description": "Specifies the desired color of the lamp."
+    },
+    {
+      "name": "DoorFL4LampBrightnessCmd_1",
+      "input": "LIN",
+      "value": "0x00=No Request, 0x00=Reserved, 0x65-0xFF=Percentage",
+      "description": "Sets the brightness level as a percentage."
+    },
+    {
+      "name": "DoorFL4LampBreathingCmd_1",
+      "input": "LIN",
+      "value": "0x0-Rate0 to 0xF-Rate15",
+      "description": "Configures the breathing rate from 0 to 15 levels."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate1",
+      "value": "500ms",
+      "description": "The breathing rate corresponds to a 500ms interval."
+    }
+  ],
+  "engineering_interpretation": "This table defines the communication protocol and command structure for controlling the front left door ambient lamp's on/off state, color, brightness, and breathing rate within the Interior Lighting Sub System. It is used to verify that the LIN-based commands are correctly interpreted by the LHZCU module and result in the expected lamp behavior.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,110 @@
+{
+  "table_type": "logic_table",
+  "topic": "危险警报灯（Hazard Warning Light）开关控制逻辑",
+  "row_semantics": "表格按执行步骤顺序描述了危险警报灯从激活到退出的完整控制流程，包括前置条件、触发动作和各阶段的执行动作。",
+  "column_semantics": {
+    "第一列": "场景描述，概括了当前行所描述的动作或状态。",
+    "第二列": "详细描述了该场景下的前置条件、触发动作以及具体的执行动作序列。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "危险警报灯开关模块 LHZCU",
+      "type": "控制器/模块",
+      "description": "负责处理危险警报灯的开关请求，并管理其内部状态和控制信号。"
+    },
+    {
+      "name": "ICB (Integrated Control Box)",
+      "type": "控制器/模块",
+      "description": "接收来自LHZCU的控制信号，并将其转换为CAN信号或数字信号，用于实际控制转向灯的状态。"
+    },
+    {
+      "name": "驱动处理模块 LHZCU/RHZCU/RZCU",
+      "type": "控制器/模块",
+      "description": "接收ICB发送的控制信号，执行双闪灯的熄灭操作，并反馈状态信息。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "危险警报灯处于激活状态",
+      "description": "作为触发后续操作的前提条件，表示系统当前正处于危险警报灯开启的状态。"
+    },
+    {
+      "name": "HzrdLghtSwReq=0x1=HzrdLghtSwReq_1_On",
+      "description": "再次请求危险警报灯开关的动作，是触发退出危险警报灯流程的关键输入信号。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtCtrl",
+      "description": "左前转向灯控制信号，设置为0x0以关闭灯光。",
+      "direction": "输出"
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "description": "右前转向灯控制信号，设置为0x0以关闭灯光。",
+      "direction": "输出"
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "description": "左后转向灯控制信号，设置为0x0以关闭灯光。",
+      "direction": "输出"
+    },
+    {
+      "name": "RRDircnLghtCtrl",
+      "description": "右后转向灯控制信号，设置为0x0以关闭灯光。",
+      "direction": "输出"
+    },
+    {
+      "name": "FLDircnLghtSts",
+      "description": "左前转向灯状态反馈信号，设置为0x0以表示关闭。",
+      "direction": "输出"
+    },
+    {
+      "name": "FRDircnLghtSts",
+      "description": "右前转向灯状态反馈信号，设置为0x0以表示关闭。",
+      "direction": "输出"
+    },
+    {
+      "name": "RLDircnLghtSts",
+      "description": "左后转向灯状态反馈信号，设置为0x0以表示关闭。",
+      "direction": "输出"
+    },
+    {
+      "name": "RRDircnLghtSts",
+      "description": "右后转向灯状态反馈信号，设置为0x0以表示关闭。",
+      "direction": "输出"
+    },
+    {
+      "name": "FLDircnLghtFltsts_HW",
+      "description": "左前转向灯故障状态反馈信号，设置为0x0以表示无故障。",
+      "direction": "输出"
+    },
+    {
+      "name": "FRDircnLghtFltsts_HW",
+      "description": "右前转向灯故障状态反馈信号，设置为0x0以表示无故障。",
+      "direction": "输出"
+    },
+    {
+      "name": "RLDircnLghtFltsts_HW",
+      "description": "左后转向灯故障状态反馈信号，设置为0x0以表示无故障。",
+      "direction": "输出"
+    },
+    {
+      "name": "RRDircnLghtFltsts_HW",
+      "description": "右后转向灯故障状态反馈信号，设置为0x0以表示无故障。",
+      "direction": "输出"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "60ms延时",
+      "description": "ICB在接收控制信号后，会延时60ms再分发至LHZCU、RHZCU和RZCU模块，确保信号稳定传输。",
+      "unit": "ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了危险警报灯从激活到退出的完整控制逻辑，可用于验证危险警报灯开关模块LHZCU、ICB以及驱动处理模块之间的信号交互、状态反馈和时间延迟是否符合设计规范。",
+  "uncertain_points": []
+}

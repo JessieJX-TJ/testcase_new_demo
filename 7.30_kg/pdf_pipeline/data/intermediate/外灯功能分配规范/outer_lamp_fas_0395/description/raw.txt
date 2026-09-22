@@ -1,0 +1,58 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "整车模式与用户模式的映射关系及功能激活状态",
+  "row_semantics": "用户模式 (User Mode)",
+  "column_semantics": "整车模式 (Whole Vehicle Mode)",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "用户模式",
+      "type": "mode",
+      "values": [
+        "休眠",
+        "待机",
+        "舒适",
+        "正常驾驶",
+        "智能泊车",
+        "智能驾驶",
+        "XOTA"
+      ]
+    },
+    {
+      "name": "整车模式",
+      "type": "mode",
+      "values": [
+        "工程",
+        "工厂",
+        "运输",
+        "转毂",
+        "展车",
+        "碰撞",
+        "正常",
+        "维修"
+      ]
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "功能激活状态",
+      "type": "signal",
+      "values": [
+        "X", // 表示不激活或禁用
+        "✓" // 表示激活或启用
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在不同用户模式下，整车应处于何种模式，并明确了各模式下相关功能（如外灯、车身控制等）的激活状态。可用于验证整车在不同用户模式切换时，是否能正确进入对应的整车模式，并确保相应功能按照规范被激活或禁用。",
+  "uncertain_points": [
+    "具体功能（如外灯、车身控制等）未在表中明确列出，仅通过模式间接关联。",
+    "表中'工厂'模式下的'限时'标注含义不明确。",
+    "未明确说明各模式之间的转换逻辑和条件。"
+  ]
+}
+```

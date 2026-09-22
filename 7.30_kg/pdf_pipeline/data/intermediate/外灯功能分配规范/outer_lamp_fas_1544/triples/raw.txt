@@ -1,0 +1,129 @@
+```json
+[
+  {
+    "head": "危险警报灯开关控制模块 LHZCU 内部软件保持双闪灯有效请求跳变为无效退出",
+    "relation": "前提条件",
+    "tail": "HzrdLghtSwReq=0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "HzrdLghtSwReq=0x1",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯开关控制模块 LHZCU 信号跳变为 FLDircnLghtCtrl_0_Off",
+    "relation": "输出为",
+    "tail": "FLDircnLghtCtrl=0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "FLDircnLghtCtrl_0_Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯开关控制模块 LHZCU 信号跳变为 FRDircnLghtCtrl_0_Off",
+    "relation": "输出为",
+    "tail": "FRDircnLghtCtrl=0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "FRDircnLghtCtrl_0_Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯开关控制模块 LHZCU 信号跳变为 RLDircnLghtCtrl_0_Off",
+    "relation": "输出为",
+    "tail": "RLDircnLghtCtrl=0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RLDircnLghtCtrl_0_Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯开关控制模块 LHZCU 信号跳变为 RRDircnLghtCtrl_0_Off",
+    "relation": "输出为",
+    "tail": "RRDircnLghtCtrl=0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RRDircnLghtCtrl_0_Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务 ICB 调用基础服务",
+    "relation": "前提条件",
+    "tail": "InstanceID=1-8",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "InstanceID=1-8"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务 ICB 调用基础服务延时60ms",
+    "relation": "超时约束",
+    "tail": "调用延时60ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB",
+      "60ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 将服务接口或控制信号转换成灯控CAN信号，控制双闪灯熄灭",
+    "relation": "控制对象",
+    "tail": "双闪灯",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "CAN信号",
+      "双闪灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 接收控制信号延时60ms并分发至 LHZCU、RHZCU 和 RZCU",
+    "relation": "前提条件",
+    "tail": "ICB接收控制信号延时60ms",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "60ms",
+      "LHZCU",
+      "RHZCU",
+      "RZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动处理模块 LHZCU/RHZCU/RZCU 接收 ICB 服务接口或控制信号",
+    "relation": "输入为",
+    "tail": "ICB 服务接口或控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU/RHZCU/RZCU",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动处理模块 LHZCU/RHZCU/RZCU 将状态/故障状态反馈至危险警报灯开关控制模块 LHZCU",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU/RHZCU/RZCU",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

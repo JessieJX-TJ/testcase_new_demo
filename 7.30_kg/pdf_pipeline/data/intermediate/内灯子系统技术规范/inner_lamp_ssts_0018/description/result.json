@@ -1,0 +1,96 @@
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform-SSTS-IBD10)",
+  "row_semantics": "Each row represents a specific control command or status signal for the interior ambient lighting system, detailing its direction, sender/provider, receiver/consumer, and associated parameters.",
+  "column_semantics": {
+    "Direction": "Indicates whether the signal is an input to or output from the system.",
+    "Sender/Provider": "The entity responsible for sending or providing the signal, such as CAN/LIN bus, SOA service, or hardware component.",
+    "Receiver/Consumer": "The entity that receives or consumes the signal, often a controller like RHZCU.",
+    "Specified Signal Channel": "The specific communication channel used for the signal, e.g., LIN5.",
+    "Specified Signal Source": "The origin of the signal, typically related to the internal lighting system."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "AmbtLghtRHRollingCtr_1",
+      "type": "signal",
+      "description": "Ambient light rolling control signal, used for continuous synchronization of ambient lighting."
+    },
+    {
+      "name": "UpIPALampOnOff_1",
+      "type": "command",
+      "description": "Command to turn the ambient lamp on or off."
+    },
+    {
+      "name": "UpIPALampColorCmd_1",
+      "type": "command",
+      "description": "Command to change the color of the ambient lamp."
+    },
+    {
+      "name": "UpIPALampBrtnsCmd_1",
+      "type": "command",
+      "description": "Command to adjust the brightness of the ambient lamp."
+    },
+    {
+      "name": "UpIPALampBrthngCmd_1",
+      "type": "command",
+      "description": "Command to control the breathing pattern of the ambient lamp."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right-hand Zone Control Unit, responsible for processing and executing commands related to the ambient lighting system."
+    },
+    {
+      "name": "UpIPAmbtLampA",
+      "type": "module",
+      "description": "Ambient Lamp A, one of the components controlled by the RHZCU for lighting effects."
+    },
+    {
+      "name": "LIN",
+      "type": "communication_protocol",
+      "description": "Local Interconnect Network, used for communication between the RHZCU and other modules."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "AmbtLghtRHRollingCtr_1",
+      "description": "Outputs a continuous rolling signal (0-255) for ambient light synchronization."
+    },
+    {
+      "name": "UpIPALampOnOff_1",
+      "description": "Outputs a binary command (0_OFF, 1_ON) to control the ambient lamp's on/off state."
+    },
+    {
+      "name": "UpIPALampColorCmd_1",
+      "description": "Outputs a color command (0x00_No Request, etc.) to set the ambient lamp's color."
+    },
+    {
+      "name": "UpIPALampBrtnsCmd_1",
+      "description": "Outputs a brightness command (0x00_No Request, 0x65-0xFF Reserved, etc.) to adjust the ambient lamp's brightness."
+    },
+    {
+      "name": "UpIPALampBrthngCmd_1",
+      "description": "Outputs a breathing command (0x0_No Request, 0x1_Rate1, etc.) to control the ambient lamp's breathing pattern."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "E=N*1",
+      "description": "Represents a periodic signal with a frequency defined by N, used for ambient light synchronization."
+    },
+    {
+      "name": "0-255",
+      "description": "Range of values for the rolling control signal, allowing for fine-grained adjustment of the ambient light effect."
+    },
+    {
+      "name": "0x00-0xFF",
+      "description": "Range of values for brightness and breathing commands, with specific values reserved for future use."
+    }
+  ],
+  "engineering_interpretation": "This table defines the communication protocol and control signals for the interior ambient lighting system, specifying how the RHZCU sends commands to control the On/Off state, color, brightness, and breathing pattern of the ambient lamps via the LIN bus.",
+  "uncertain_points": []
+}

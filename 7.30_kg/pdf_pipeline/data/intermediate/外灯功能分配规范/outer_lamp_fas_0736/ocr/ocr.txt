@@ -1,0 +1,35 @@
+并发送至ICB
+[外灯组合服务ICB]调用基础服务,针对{InstanceID=1},组合服务延时60ms调用；(配置需
+BrkLghtCtrlDelayPrm):
+{BrakeLight. BrakeLightControl. BrakeLightCtrReq}{InstanceID=1}=0x0=OFF
+{BrakeLight. BrakeLightControl. BrakeLightCtrReq}{InstanceID=2}=0x0=OFF
+ICB将服务接口或者CAN控制信号转换成灯控CAN信号,控制紧急制动灯熄灭:
+ICB 将控制信号延时 60ms 分发至 RZCU(配置需求:BrkLghtCtrlDelayPrm):
+BrkLghtCtrl_HW=0x0=BrkLghtCtrl_HW_0_off
+ICB接收信号:BrkLghtCtrl=0x0=BrkLghtCtrl_0_off
+做退出紧急制动灯触发的动画显示
+[驱动处理模块RZCU]接收ICB控制信号,内部跳变为硬线输出,退出紧急制动灯点亮
+[驱动处理模块RZCU]将状态/故障状态反馈至[制动灯开关控制模块LHZCU]:
+BrkLghtSts=0x0=BrkLghtSts-0-Off
+BrkLghtFltSts=0x0=BrkLghtFltSts_0_False
+{BrakeLight. BrakeLightState. BrakeLightSta} {InstanceID=1}=0x0=OFF
+(exlBrkLghtHwDrvEnPrm=0x1=DrvieAndFeedBack；通过 Instance ID 1 获取制动灯状态；)
+ICB将状态/故障状态反馈至[制动灯开关控制模块LHZCU]:
+BrkLghtSts=0x0=BrkLghtSts_0_Off
+{BrakeLight. BrakeLightState. BrakeLightSta} {InstanceID=2}=0x0=OFF
+(exlBrkLghtHwDrvEnPrm=0x0||0x2；通过 Instance ID 2 获取制动灯状态；)
+[制动灯开关控制模块LHZCU]将状态/故障状态反馈至ICB:
+BrkLghtSta=0x0=BrkLghtSta_0_Off
+BrkLghtFltSta=0x0=BrkLghtFltSta_0_False
+{ExteriorLightSwitchProcess. BrakeLightSta.BrakeLghtSta}=0x0=OFF
+{ExteriorLightSwitchProcess. BrakeLightErrSta.BrakeLghtErrSta}= Ox0=No Error
+10.[外灯组合服务ICB]订阅接口:
+{ExteriorLightControlSystem. BrakeLightSts. BrakeLghtSts}=0x0=OFF
+{ExteriorLightControlSystem. BrakeLightErrSts. BrakeLghtErrSts}= Ox0=No Error
+备注
+紧急制动灯熄灭同步性要求:
+左侧、右侧以及高位制动灯需保持同步熄灭,三侧最大延时不能超过40ms
+紧急制动灯退出打断策略:
+当紧急制动灯处于激活状态,接收到IBS退出紧急制动灯信号时,应立即退出紧急制动灯:
+[[Allocated System],Reserved,紧急制动灯控制#VP3-25680, Function Allocation
+Requirement]

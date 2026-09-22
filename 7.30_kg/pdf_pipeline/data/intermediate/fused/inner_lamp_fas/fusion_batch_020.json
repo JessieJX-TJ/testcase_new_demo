@@ -1,0 +1,525 @@
+[
+  {
+    "head": "个性化处理",
+    "relation": "依赖于",
+    "tail": "个性化服务调用",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "个性化服务调用",
+    "relation": "依赖于",
+    "tail": "个性化处理",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": true,
+    "conflict_note": "与'个性化处理 依赖于 个性化服务调用'构成双向依赖，存在循环依赖风险，需架构评审确认合理性"
+  },
+  {
+    "head": "个性化处理",
+    "relation": "超时约束",
+    "tail": "<=50ms",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "个性化服务调用",
+    "relation": "超时约束",
+    "tail": "<=30ms",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "应用控制处理",
+    "relation": "依赖于",
+    "tail": "个性化服务调用",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "应用控制处理",
+    "relation": "超时约束",
+    "tail": "<=50ms",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "基础服务调用",
+    "relation": "依赖于",
+    "tail": "应用控制处理",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "基础服务调用",
+    "relation": "超时约束",
+    "tail": "<=50ms",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "本地控制处理",
+    "relation": "依赖于",
+    "tail": "基础服务调用",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "本地控制处理",
+    "relation": "超时约束",
+    "tail": "<=30ms",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LIN信号",
+    "relation": "依赖于",
+    "tail": "本地控制处理",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LIN信号",
+    "relation": "超时约束",
+    "tail": "<=50ms",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驱动处理",
+    "relation": "依赖于",
+    "tail": "LIN信号",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驱动处理",
+    "relation": "超时约束",
+    "tail": "<=20ms",
+    "sources": [
+      "inner_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "阅读灯开关控制功能 VP3-62783",
+    "relation": "抑制条件",
+    "tail": "控制器 VP3-25770 处于特定状态",
+    "sources": [
+      "inner_lamp_fas_0362"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "诊断功能触发",
+    "relation": "前提条件",
+    "tail": "车辆电子系统处于运行状态",
+    "sources": [
+      "inner_lamp_fas_0363",
+      "inner_lamp_fas_0374"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "诊断功能触发",
+    "relation": "前提条件",
+    "tail": "诊断请求信号有效",
+    "sources": [
+      "inner_lamp_fas_0374"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "诊断数据记录",
+    "relation": "依赖于",
+    "tail": "诊断功能已触发",
+    "sources": [
+      "inner_lamp_fas_0363"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制模块",
+    "relation": "依赖于",
+    "tail": "配置项",
+    "sources": [
+      "inner_lamp_fas_0364"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制单元 (BCM)",
+    "relation": "依赖于",
+    "tail": "参数范围",
+    "sources": [
+      "inner_lamp_fas_0364"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门控制器",
+    "relation": "依赖于",
+    "tail": "定义",
+    "sources": [
+      "inner_lamp_fas_0364"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统",
+    "relation": "包含子功能",
+    "tail": "外灯控制模块",
+    "sources": [
+      "inner_lamp_fas_0364"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统",
+    "relation": "包含子功能",
+    "tail": "车身控制单元 (BCM)",
+    "sources": [
+      "inner_lamp_fas_0364"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统",
+    "relation": "包含子功能",
+    "tail": "电动尾门控制器",
+    "sources": [
+      "inner_lamp_fas_0364"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "依赖于",
+    "tail": "车身控制单元 (BCM)",
+    "sources": [
+      "inner_lamp_fas_0368",
+      "inner_lamp_fas_0676"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门系统",
+    "relation": "依赖于",
+    "tail": "车身控制单元 (BCM)",
+    "sources": [
+      "inner_lamp_fas_0368",
+      "inner_lamp_fas_0676"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSwReq 信号",
+    "relation": "触发条件",
+    "tail": "ThirdRowMapLampLHSts 信号报告 Level 1",
+    "sources": [
+      "inner_lamp_fas_0365"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSwReq 信号",
+    "relation": "抑制条件",
+    "tail": "ThirdRowMapLampLHBrtLvl 信号设置为 Level 1",
+    "sources": [
+      "inner_lamp_fas_0365"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSwReq 信号",
+    "relation": "输入为",
+    "tail": "0x0 → Idle 状态",
+    "sources": [
+      "inner_lamp_fas_0365"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSwReq 信号",
+    "relation": "输入为",
+    "tail": "0x1 → Press 状态",
+    "sources": [
+      "inner_lamp_fas_0365"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSwReq 信号",
+    "relation": "输入为",
+    "tail": "0x2 → Reserved 状态",
+    "sources": [
+      "inner_lamp_fas_0365"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSwReq 信号",
+    "relation": "输入为",
+    "tail": "0x3 → Error 状态",
+    "sources": [
+      "inner_lamp_fas_0365"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHBrtLvl 信号",
+    "relation": "输出为",
+    "tail": "0x0 → OFF 状态",
+    "sources": [
+      "inner_lamp_fas_0365"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHBrtLvl 信号",
+    "relation": "输出为",
+    "tail": "0x1 → Level 1 状态",
+    "sources": [
+      "inner_lamp_fas_0365"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHBrtLvl 信号",
+    "relation": "输出为",
+    "tail": "0x2 → Level 2 状态",
+    "sources": [
+      "inner_lamp_fas_0365"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHBrtLvl 信号",
+    "relation": "输出为",
+    "tail": "0x1E → Level 30 状态",
+    "sources": [
+      "inner_lamp_fas_0365"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHBrtLvl 信号",
+    "relation": "输出为",
+    "tail": "0x1F → Reserved 状态",
+    "sources": [
+      "inner_lamp_fas_0365"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手套箱灯",
+    "relation": "前提条件",
+    "tail": "车辆模式为 '工程' 或 '运输' 或 '旋转' 或 '展车' 或 '碰撞' 或 '正常' 或 '维修'",
+    "sources": [
+      "inner_lamp_fas_0366"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手套箱灯",
+    "relation": "抑制条件",
+    "tail": "车辆模式为 '休眠' 或 '待机'",
+    "sources": [
+      "inner_lamp_fas_0366"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手套箱灯",
+    "relation": "输出为",
+    "tail": "车辆模式为 '仅限限时关闭'",
+    "sources": [
+      "inner_lamp_fas_0366"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LdSpcLampCtrlCmd 信号",
+    "relation": "输入为",
+    "tail": "RZCU/LHZ CU 控制器",
+    "sources": [
+      "inner_lamp_fas_0369"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LdSpcLampCtrlCmd 信号",
+    "relation": "输出为",
+    "tail": "RZCU/LHZ CU 控制器",
+    "sources": [
+      "inner_lamp_fas_0369"
+    ],
+    "conflict": true,
+    "conflict_note": "同一信号既声明为输入又声明为输出，需确认是否为双向信号或建模歧义"
+  },
+  {
+    "head": "LdSpcLampCtrlCmd 信号",
+    "relation": "输入来自",
+    "tail": "内部 SST 信号源",
+    "sources": [
+      "inner_lamp_fas_0369"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯",
+    "relation": "依赖于",
+    "tail": "Function Allocation Specification",
+    "sources": [
+      "inner_lamp_fas_0370"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VP3-141986",
+    "relation": "前提条件",
+    "tail": "Reading Lamp Switch Control",
+    "sources": [
+      "inner_lamp_fas_0371"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆门锁状态信号 VehLckSts",
+    "relation": "输入为",
+    "tail": "车身控制单元 LHZCU",
+    "sources": [
+      "inner_lamp_fas_0373"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆门锁状态信号 VehLckSts",
+    "relation": "输出为",
+    "tail": "车身控制单元 LHZCU",
+    "sources": [
+      "inner_lamp_fas_0373"
+    ],
+    "conflict": true,
+    "conflict_note": "同一信号既声明为输入又声明为输出，需确认是否为双向信号或建模歧义"
+  },
+  {
+    "head": "车辆门锁状态信号 VehLckSts",
+    "relation": "依赖于",
+    "tail": "门锁系统 SSTS",
+    "sources": [
+      "inner_lamp_fas_0373"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆门锁状态信号 VehLckSts",
+    "relation": "包含子功能",
+    "tail": "{0x0 = VehLckSts_0_Unlocked}",
+    "sources": [
+      "inner_lamp_fas_0373"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "诊断信息输出",
+    "relation": "输出为",
+    "tail": "诊断结果数据包（含故障代码和描述）",
+    "sources": [
+      "inner_lamp_fas_0374"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "诊断功能抑制",
+    "relation": "抑制条件",
+    "tail": "车辆处于防盗模式 或 安全气囊未激活",
+    "sources": [
+      "inner_lamp_fas_0374"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "诊断响应时间",
+    "relation": "超时约束",
+    "tail": "≤500ms（从诊断请求发出至诊断信息返回）",
+    "sources": [
+      "inner_lamp_fas_0374"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

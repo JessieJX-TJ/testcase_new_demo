@@ -1,0 +1,122 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯组合服务 ICB (Integrated Control Box) 的双闪灯控制逻辑",
+  "row_semantics": "描述了在不同事件或条件下，外灯控制系统（包括方向灯、危险警示灯等）的控制逻辑和状态变化。",
+  "column_semantics": "无明确列，表格内容为按行顺序排列的控制逻辑步骤描述。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "集成控制盒，负责接收外部信号并控制车辆灯光系统。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外部灯光开关处理模块，管理外部灯光的状态切换。"
+    },
+    {
+      "name": "DirectionLight",
+      "type": "module",
+      "description": "方向灯控制模块，负责控制车辆左右方向灯的闪烁模式。"
+    },
+    {
+      "name": "LHZCU/RHZCU/RZCU",
+      "type": "module",
+      "description": "驱动处理模块，负责将 ICB 的控制信号转换为 CAN 信号，并驱动相关灯光点亮。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ExteriorLightSwitchProcess.DirclnLightFucProStatus",
+      "description": "外部灯光开关过程中的功能状态，用于判断是否启用危险警示灯功能。",
+      "value_range": "0x3=Both_Side_Direction_Light, 0x0=OFF"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.DirclnLightFucProSta",
+      "description": "外部灯光开关过程中的状态，用于判断危险警示灯是否开启。",
+      "value_range": "0x3=Both_Side_Direction_Light, 0x0=OFF"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.DirectionLightModeStatus.DirclnLightMdSts",
+      "description": "方向灯模式状态，用于判断是否启用流水灯模式。",
+      "value_range": "0x0=Enabled"
+    },
+    {
+      "name": "InstanceID",
+      "description": "实例 ID，用于区分不同的方向灯控制请求。",
+      "value_range": "1-8"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDireclnLightCtrl_HW",
+      "description": "左前方向灯硬件控制信号。",
+      "value_range": "0x1=ON, 0x0=OFF"
+    },
+    {
+      "name": "FRDireclnLightCtrl_HW",
+      "description": "右前方向灯硬件控制信号。",
+      "value_range": "0x1=ON, 0x0=OFF"
+    },
+    {
+      "name": "RLDireclnLightCtrl_HW",
+      "description": "左后方向灯硬件控制信号。",
+      "value_range": "0x1=ON, 0x0=OFF"
+    },
+    {
+      "name": "RRDireclnLightCtrl_HW",
+      "description": "右后方向灯硬件控制信号。",
+      "value_range": "0x1=ON, 0x0=OFF"
+    },
+    {
+      "name": "DirectionLight.ControlDirectionLight.DirectionLightReq",
+      "description": "方向灯控制请求，用于触发方向灯的闪烁模式。",
+      "value_range": "0x1=ON, 0x0=OFF"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.DirclnLightFucProStatus",
+      "description": "外部灯光开关过程中的功能状态反馈。",
+      "value_range": "0x3=Both_Side_Direction_Light, 0x0=OFF"
+    },
+    {
+      "name": "DirectionLight.DirectionLightStatus.DirectionLightSta",
+      "description": "方向灯状态反馈。",
+      "value_range": "0x1=On, 0x0=OFF"
+    },
+    {
+      "name": "DirectionLight.DirectionLightErrorStatus.DirectionLightErrorSta",
+      "description": "方向灯错误状态反馈。",
+      "value_range": "0x1=No Error"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLight.DirectionLightErrorStatus.DirectionLightErrorSta",
+      "description": "方向灯错误状态，当灯泡故障或电路异常时触发。",
+      "value_range": "0x1=No Error"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "Cycle",
+      "description": "双闪灯的闪烁周期，50ms。",
+      "value": "50ms"
+    },
+    {
+      "name": "Delay",
+      "description": "组合服务延时，60ms。",
+      "value": "60ms"
+    },
+    {
+      "name": "Timeout",
+      "description": "危险警报灯控制指令延时，60ms。",
+      "value": "60ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了外灯组合服务 ICB 在接收到 LHZCU 双闪灯 ON/OFF 命令时的控制逻辑，包括方向灯的流水灯模式启用、危险警示灯的点亮控制以及各方向灯硬件信号的输出状态。可用于验证 ICB 对双闪灯控制的正确性，确保在不同条件下方向灯和危险警示灯能够按照规范要求正常工作。",
+  "uncertain_points": []
+}
+```

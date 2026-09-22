@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "制动踏板粘连诊断需求",
+  "row_semantics": "每行代表一个具体的诊断需求或故障类型",
+  "column_semantics": {
+    "名称": "诊断需求的唯一标识符或功能代码",
+    "描述": "对该诊断需求的简要说明",
+    "进入条件": "触发该诊断需求开始检测的条件",
+    "退出条件": "停止该诊断需求检测的条件"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B1066_73",
+      "type": "function_name",
+      "description": "制动踏板粘连诊断功能"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "开关持续有效 > 600s",
+      "type": "input_condition",
+      "description": "当开关信号持续有效时间超过600秒时，触发诊断"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "制动踏板粘连",
+      "type": "fault_state",
+      "description": "系统检测到制动踏板可能存在粘连故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "开关持续有效 > 600s",
+      "type": "timing_constraint",
+      "value": "600s",
+      "description": "开关信号必须持续有效超过600秒才能触发诊断"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了制动踏板粘连诊断功能的进入和退出条件，用于测试车辆在特定条件下是否能够正确识别并处理制动踏板粘连故障。",
+  "uncertain_points": []
+}
+```

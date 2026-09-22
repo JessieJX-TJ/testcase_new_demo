@@ -1,0 +1,84 @@
+{
+  "table_type": "fault_table",
+  "topic": "左近光灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件、触发条件到执行动作、退出条件和异常处理。",
+  "column_semantics": "表格分为两列，左侧为功能描述的分类（如前置条件、触发条件等），右侧为对应的具体内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "exlDipBeamHwDrvEnPrm",
+      "type": "parameter",
+      "description": "左近光灯硬件驱动使能参数"
+    },
+    {
+      "name": "LDipdBeamLghtDrvMdl",
+      "type": "module",
+      "description": "左近光灯驱动模块"
+    },
+    {
+      "name": "DipdBeamHdlmp_LH_HSD",
+      "type": "controller",
+      "description": "左近光灯处理单元"
+    },
+    {
+      "name": "DipdBeamLghtCtrlMdl",
+      "type": "controller",
+      "description": "左近光灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "exlDipBeamHwDrvEnPrm == 1",
+      "description": "左近光灯硬件驱动使能参数为1"
+    },
+    {
+      "condition": "左近光灯未输出状态",
+      "description": "检测到左近光灯当前处于未输出状态"
+    },
+    {
+      "condition": "检测到左近光灯短路到电源",
+      "description": "触发条件，检测到左近光灯存在短路到电源的故障"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "description": "退出条件，检测到短路故障已恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "LDipdBeamLghtDrvMdl",
+      "action": "停止驱动左近光灯输出",
+      "description": "停止对左近光灯的驱动输出"
+    },
+    {
+      "signal": "LDipdBeamLghtDrvMdl",
+      "action": "持续发送 DippedBeamLightStatus.DippedBeamLightSta=0 (Off) (InstanceID=1)",
+      "description": "持续发送左近光灯关闭状态信息"
+    },
+    {
+      "signal": "LDipdBeamLghtDrvMdl",
+      "action": "持续发送 {DippedBeamLight.DippedBeamLightErrorStatus.DippedBeamLightErrorSta=0x1(Error)} (InstanceID=1)",
+      "description": "持续发送左近光灯错误状态信息"
+    },
+    {
+      "signal": "置位 DTC",
+      "action": "设置故障代码",
+      "description": "记录故障代码以供诊断使用"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "Left Near Beam Short to Power",
+      "description": "左近光灯短路到电源故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在执行动作中，相关信号需要至少发送三帧数据"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当检测到左近光灯短路到电源故障时，系统应执行的故障处理逻辑，包括停止驱动、发送状态信息、设置故障代码，并在故障恢复后退出该处理流程。",
+  "uncertain_points": []
+}

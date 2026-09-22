@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "左远光灯开路故障检测",
+    "relation": "触发条件",
+    "tail": "检测到左远光灯开路",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["触发条件", "检测到左远光灯开路"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主光灯系统进入错误状态",
+    "relation": "前提条件",
+    "tail": "1. MainBeamLghtFbkSOAEnPrm==1(Enable)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "MainBeamLghtFbkSOAEnPrm==1(Enable)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主光灯系统进入错误状态",
+    "relation": "前提条件",
+    "tail": "2. 左远光灯处于输出状态",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "左远光灯处于输出状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主光灯驱动模型持续发送主光灯状态",
+    "relation": "执行动作",
+    "tail": "【LMainBeamLghtDrvMdl】持续发送 MainBeamLightState.",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "LMainBeamLghtDrvMdl", "MainBeamLightState"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主光灯控制模型发送控制帧",
+    "relation": "执行动作",
+    "tail": "【MainBeamLghtCtrlMdl】,至少发送三帧",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "MainBeamLghtCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "置位诊断故障代码",
+    "relation": "执行动作",
+    "tail": "置位 DTC B105C 13",
+    "triple_type": "故障响应",
+    "evidence_terms": ["执行动作", "DTC B105C 13"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯开路故障退出",
+    "relation": "退出条件",
+    "tail": "检测到开路恢复",
+    "triple_type": "时序约束",
+    "evidence_terms": ["退出条件", "检测到开路恢复"],
+    "confidence_note": "high"
+  }
+]
+```

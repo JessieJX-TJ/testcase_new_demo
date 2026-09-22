@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "DoorRR3Lamp执行呼吸模式",
+    "relation": "前提条件",
+    "tail": "接收到对应的呼吸周期指令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["灯头按照对应的呼吸周期指令进行周期闪烁"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR3Lamp停止呼吸",
+    "relation": "触发条件",
+    "tail": "指令值为0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["指令值为0时,立即停止呼吸"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR3Lamp切换呼吸模式",
+    "relation": "触发条件",
+    "tail": "不同呼吸模式切换时",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["不同呼吸模式切换时,立即停止当前呼吸,切换下一呼吸模式"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR4Lamp开启",
+    "relation": "触发条件",
+    "tail": "接收到DoorRR4LampOnOff_1_1_ON命令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["0x1=DoorRR4LampOnOff_1_1_ON"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR4Lamp关闭",
+    "relation": "触发条件",
+    "tail": "接收到DoorRR4LampOnOff_1_0_OFF命令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["0x0=DoorRR4LampOnOff_1_0_OFF"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR4Lamp颜色切换",
+    "relation": "触发条件",
+    "tail": "接收到非0值的颜色亮度指令且门灯开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["点亮ON时需同时接收到非0值的颜色亮度指令"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR4Lamp保持当前颜色",
+    "relation": "状态保持条件",
+    "tail": "指令值为0或者未定义颜色号时",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["指令值为0或者未定义颜色号时保持颜色不变"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR3LampFadeSpdCmd_1速度参数生效",
+    "relation": "输入为",
+    "tail": "Spd1, Spd2, Spd3等速度指令",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["Spd1:300ms", "Spd2:100ms;(能力预留)", "Spd3:(预留0)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR4LampBrtnsCmd_1亮度控制",
+    "relation": "输入为",
+    "tail": "0x00=No Request或0x00=DoorRR4LampBrtnsCmd_1_0_No Request",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["氛围灯亮度指令", "0x00=No Request", "0x00=DoorRR4LampBrtnsCmd_1_0_No Request"],
+    "confidence_note": "high"
+  }
+]
+```

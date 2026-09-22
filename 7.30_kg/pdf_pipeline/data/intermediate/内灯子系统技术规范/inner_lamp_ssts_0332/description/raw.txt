@@ -1,0 +1,62 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Third Row Map Lamp Switch Signal Interface Specification",
+  "row_semantics": "Each row represents a specific signal interface related to the third-row map lamp switch, detailing its direction, type, sender, receiver, channel, and source.",
+  "column_semantics": {
+    "Interface Name": "The name of the signal interface, which should match the logic block content.",
+    "Direction": "Indicates whether the signal is an input or output.",
+    "Type": "Specifies the communication type (e.g., CAN/LIN, SOA service, hardwire).",
+    "Sender/Provider": "The entity that sends or provides the signal.",
+    "Receiver/Consumer": "The entity that receives or consumes the signal.",
+    "Channel": "The designated signal channel for communication.",
+    "Interface Source": "The origin of the signal."
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampRHSwReq",
+      "type": "Signal",
+      "description": "Feedback signal for the state of the third-row right-side reading lamp switch."
+    },
+    {
+      "name": "ThrdRowMapLamp_RH_Sw_SIG",
+      "type": "Signal",
+      "description": "Collection signal for the state of the third-row right-side reading lamp switch."
+    },
+    {
+      "name": "RHZCU",
+      "type": "Controller/Module",
+      "description": "Body Control Unit responsible for processing and controlling the reading lamp functions."
+    },
+    {
+      "name": "SSTS",
+      "type": "System",
+      "description": "Interior Lighting System, likely part of the vehicle's lighting control architecture."
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "ThirdRowMapLampRHSwReq",
+      "condition": "0x0=Idle; 0x1=Press; 0x2=Reserved; 0x3=Error"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "ThirdRowMapLampRHSwReq",
+      "direction": "Output",
+      "receiver": "RHZCU"
+    }
+  ],
+  "core_faults": [
+    {
+      "signal": "ThirdRowMapLampRHSwReq",
+      "fault_state": "0x3=Error"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interface signals for the third-row reading lamp switch, specifying how the signal is sent from the switch (ThrdRowMapLamp_RH_Sw_SIG) to the Body Control Unit (RHZCU) and how the feedback signal (ThirdRowMapLampRHSwReq) is communicated back. It is used to verify the correct transmission and interpretation of the switch state between the hardware and the control unit.",
+  "uncertain_points": []
+}
+```

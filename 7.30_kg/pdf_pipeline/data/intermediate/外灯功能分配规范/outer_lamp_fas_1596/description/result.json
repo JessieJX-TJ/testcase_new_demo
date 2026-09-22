@@ -1,0 +1,40 @@
+{
+  "table_type": "logic_table",
+  "topic": "拖车模式下转向灯控制逻辑",
+  "row_semantics": "描述了在特定前置条件下，系统如何响应并执行转向灯控制的触发条件和执行动作。",
+  "column_semantics": "表格分为三列，分别描述了前置条件、触发条件和执行动作，详细说明了在满足前置条件时，系统如何通过信号交互实现转向灯控制。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "LHZCU",
+    "RZCU",
+    "TDM",
+    "ICB"
+  ],
+  "core_conditions": [
+    "InsdFnCfgVehDragMd=0x1",
+    "VehDragMdSts=0x1=VehDragMdSts_1_On",
+    "RLDircnLghtCtrl=0x1=RLDircnLghtCtrl_1_On",
+    "TrlrDirLghtOnReq=0x1=TrlrDirLghtOnReq_1_Left_direction_light_On"
+  ],
+  "core_outputs": [
+    "RLDircnLghtCtrl",
+    "TrlrDirLghtOnReq",
+    "DircnLghtMdSts",
+    "TrlrDirLghtMdSts",
+    "TrlrDirLghtSts",
+    "DircnLghtFltsts",
+    "TurnlampFltsts"
+  ],
+  "core_faults": [
+    "Left_Direction_Light_Error",
+    "No_Error",
+    "NoFlr"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在拖车模式下，车辆转向灯控制的详细逻辑，包括前置条件判断、信号发送与接收、模式状态转换以及故障反馈机制，可用于验证拖车模式下转向灯功能的正确性和鲁棒性。",
+  "uncertain_points": [
+    "具体信号值的精确含义未明确说明",
+    "部分模块间的交互细节未完全展开"
+  ]
+}

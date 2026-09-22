@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Interior Light Function Allocation Specification",
+  "row_semantics": "Each row represents a specific function or signal related to the interior lighting system, detailing its mode, validity, and control command.",
+  "column_semantics": "The columns define the source/destination of the signal (e.g., CAN bus, ICB/ZXD, LHZCU), the signal type (Input/Output), and the associated controller/module.",
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "UsrMd",
+      "type": "mode",
+      "description": "User-defined operating modes for the interior light, including Sleep, Standby, Comfortable, Normal Driving, AI Parking, AI Pilot, and XOTA."
+    },
+    {
+      "name": "UsrMdV",
+      "type": "signal_validity",
+      "description": "Indicates whether the user mode value is valid or invalid."
+    },
+    {
+      "name": "VatyMirLampCtrlCmd",
+      "type": "control_command",
+      "description": "Command to control the vanity mirror lamp, with options to Close or Open."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CAN",
+      "type": "input_signal",
+      "description": "Signal received via the CAN bus."
+    },
+    {
+      "name": "ICB/ZXD",
+      "type": "input_signal",
+      "description": "Signal received from the ICB/ZXD module."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Lighting and Hazard Control Unit, involved in processing signals and issuing commands."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "VatyMirLampCtrlCmd",
+      "type": "output_signal",
+      "description": "Command sent to the vanity mirror lamp to control its state (Close/Open)."
+    },
+    {
+      "name": "SST",
+      "type": "output_signal",
+      "description": "Signal related to the interior light status, possibly indicating activation or deactivation."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the functional allocation for the interior lighting system, specifying how different user modes are interpreted, validated, and translated into control commands for the vanity mirror lamp. It is used to verify that the system correctly maps user inputs to appropriate lighting states under various driving modes.",
+  "uncertain_points": []
+}
+```

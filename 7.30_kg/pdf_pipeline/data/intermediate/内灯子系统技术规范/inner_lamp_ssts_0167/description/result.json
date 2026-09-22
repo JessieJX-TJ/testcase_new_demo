@@ -1,0 +1,52 @@
+{
+  "table_type": "fault_table",
+  "topic": "Reading Lamp Fault Status Signal",
+  "row_semantics": "Each row represents a specific fault condition for the reading lamp, identified by its status bit.",
+  "column_semantics": {
+    "阅读灯故障状态信号号": "The signal identifier for the reading lamp fault status.",
+    "状态位": "The binary status value indicating whether an error is present (0x1) or not (0x0).",
+    "判定条件说明": "The conditions under which the error status is determined.",
+    "备注": "Additional notes or comments related to the fault condition."
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampRHErr",
+      "type": "signal",
+      "description": "Signal indicating the fault status of the third-row map lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "0x0 = No error",
+      "description": "No fault detected in the reading lamp."
+    },
+    {
+      "condition": "0x1 = Error",
+      "description": "An error condition is detected based on the following criteria:"
+    },
+    {
+      "condition": "1 || 2",
+      "description": "Either of the following two conditions must be met:"
+    },
+    {
+      "condition": "1、Reading lamp is on, current exceeds maximum current value * 1.5",
+      "description": "The reading lamp is illuminated, and the current drawn exceeds 150% of the maximum rated current."
+    },
+    {
+      "condition": "2、Reading lamp is off, current is below minimum current value * 0.1",
+      "description": "The reading lamp is extinguished, but the current drawn is less than 10% of the minimum rated current."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "fault_name": "Reading Lamp Short Circuit/Open Circuit Fault",
+      "description": "Detected when the reading lamp's current behavior deviates from expected values under both on and off states."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the fault detection logic for the third-row map lamp, specifying the conditions under which a fault is reported based on the lamp's operational state and current consumption. It is used to validate the proper functioning of the reading lamp circuitry and ensure that faults are accurately detected and reported.",
+  "uncertain_points": []
+}

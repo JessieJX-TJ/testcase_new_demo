@@ -1,0 +1,42 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "整车外灯转向灯硬件故障状态定义",
+  "row_semantics": "表格按功能模块（左前、右前、左后、右后转向灯）列出其硬件故障状态的定义，包括输出信号值与故障状态的映射关系。",
+  "column_semantics": {
+    "输出": "表示该故障状态对应的输出信号值或标识符。",
+    "CANFD": "通过CANFD总线传输的信号。",
+    "LHZCU": "左侧后轮控制单元。",
+    "RHZCU": "右侧后轮控制单元。",
+    "RZCU": "右侧前轮控制单元。",
+    "LHZCU": "左侧前轮控制单元。",
+    "硬线故障状态": "直接通过硬线信号表示的故障状态。",
+    "ICB": "集成控制盒。",
+    "网络故障状态": "通过网络通信表示的故障状态。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "FLDircnLghtFltsts_HW", // 左前转向灯故障状态
+    "FRDircnLghtFltsts_HW", // 右前转向灯故障状态
+    "RLDircnLghtFltsts_HW", // 左后转向灯故障状态
+    "RRDircnLghtFltsts_HW", // 右后转向灯故障状态
+    "FLDircnLghtFltsts"     // 左前转向灯故障状态 (无HW后缀)
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    "0x0=..._False", // 表示无故障
+    "0x1=..._True"   // 表示有故障
+  ],
+  "core_faults": [
+    "FLDircnLghtFltsts_HW",
+    "FRDircnLghtFltsts_HW",
+    "RLDircnLghtFltsts_HW",
+    "RRDircnLghtFltsts_HW",
+    "FLDircnLghtFltsts"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车四个方向转向灯的硬件故障状态（0x0为无故障，0x1为有故障），并指明了这些状态在不同控制器（如LHZCU、RHZCU等）和通信方式（CANFD、硬线、网络）下的具体表现，可用于验证转向灯系统在发生硬件故障时的状态上报是否符合设计规范。",
+  "uncertain_points": []
+}
+```

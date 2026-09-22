@@ -1,0 +1,90 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能（Exterior Lamp Function）的状态分配规范",
+  "row_semantics": "表格的行代表不同的状态或模式，主要分为VehMdV（Vehicle Mode Validity，车辆模式有效性）和UsrMd（User Mode，用户模式）两大类，每类下定义了具体的模式值及其含义。",
+  "column_semantics": "表格的列主要用于展示每个状态或模式的具体数值定义（如0x0, 0x1等）及其对应的英文描述。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMdV",
+      "description": "车辆模式有效性状态，用于判断车辆当前模式是否有效。"
+    },
+    {
+      "name": "UsrMd",
+      "description": "用户模式状态，表示车辆当前处于何种用户操作模式。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMdV_0_Invalid",
+      "description": "车辆模式无效状态，通常表示车辆未进入任何已定义的有效模式。"
+    },
+    {
+      "name": "VehMdV_1_Valid",
+      "description": "车辆模式有效状态，表示车辆已进入一个有效的模式。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "VehMd_1_CRASH",
+      "description": "碰撞模式，车辆检测到碰撞事件时进入此模式。"
+    },
+    {
+      "name": "VehMd_2_FACTORY",
+      "description": "工厂模式，车辆处于工厂测试或调试状态。"
+    },
+    {
+      "name": "VehMd_3_TRANSPORT",
+      "description": "运输模式，车辆处于运输状态，可能关闭部分灯光以节省能源。"
+    },
+    {
+      "name": "VehMd_4_DYNO",
+      "description": "测功机模式，车辆在测功机上进行测试时使用。"
+    },
+    {
+      "name": "VehMd_5_EXHIBITION",
+      "description": "展览模式，车辆处于展览状态，灯光效果可能与日常驾驶不同。"
+    },
+    {
+      "name": "VehMd_8_Engineering",
+      "description": "工程模式，车辆处于工程测试或开发状态。"
+    },
+    {
+      "name": "VehMd_9_Service",
+      "description": "服务模式，车辆处于售后服务或维修状态。"
+    },
+    {
+      "name": "UsrMd_0_Sleep",
+      "description": "睡眠模式，用户未激活车辆，车辆进入低功耗状态。"
+    },
+    {
+      "name": "UsrMd_1_Standby",
+      "description": "待机模式，车辆处于待命状态，随时可以启动。"
+    },
+    {
+      "name": "UsrMd_2_Comfortable",
+      "description": "舒适模式，车辆提供舒适的驾驶体验，可能调整灯光亮度等。"
+    },
+    {
+      "name": "UsrMd_3_NormalDriving",
+      "description": "正常驾驶模式，车辆处于常规驾驶状态。"
+    },
+    {
+      "name": "UsrMd_4_AIParking",
+      "description": "AI泊车模式，车辆通过人工智能技术进行自动泊车。"
+    },
+    {
+      "name": "UsrMd_5_AIPilot",
+      "description": "AI驾驶模式，车辆通过人工智能技术进行自动驾驶。"
+    },
+    {
+      "name": "UsrMd_6_XOTA",
+      "description": "XOTA模式，可能指某种特定的在线升级或远程控制模式。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯功能在不同模式下的状态分配规则，可用于验证车辆在各种模式下（如碰撞、工厂测试、运输、展览、工程测试、服务、睡眠、待机、舒适、正常驾驶、AI泊车、AI驾驶、XOTA等）外灯功能的表现是否符合设计规范。",
+  "uncertain_points": []
+}

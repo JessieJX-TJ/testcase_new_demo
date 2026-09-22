@@ -1,0 +1,63 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "后雾灯控制与状态监控接口规范",
+  "row_semantics": "表格详细定义了后雾灯（Fog Lamp）相关的三个主要接口：硬线驱动、控制指令和状态反馈，描述了每个接口的通信方向、类型、提供方/接收方控制器以及参数定义。",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识具体的通信功能点。",
+    "Direction": "信号流向，指示是输出还是输入。",
+    "Type": "通信类型，如硬线或服务化接口（SOA）。",
+    "Sender/Provider": "提供该接口信号的控制器或模块。",
+    "Receiver/Consumer": "消费或使用该接口信号的控制器或模块。",
+    "Channel": "通信路径或通道信息。",
+    "Source": "接口来源，通常指外部系统或组件。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FogLamp_R_HSD",
+      "type": "硬件接口",
+      "description": "后雾灯右侧硬线驱动接口，由RZCU提供，用于直接驱动后雾灯RL/RR。"
+    },
+    {
+      "name": "RearFogLightControl",
+      "type": "软件服务接口 (SOA)",
+      "description": "后雾灯控制接口，由ICB/LHZCU调用，通过RZCU发送控制请求（ON/OFF）。"
+    },
+    {
+      "name": "RearFogLightState",
+      "type": "软件服务接口 (SOA)",
+      "description": "后雾灯状态反馈接口，由RZCU提供，LHZCU订阅以获取当前状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "interface": "RearFogLightControl",
+      "parameter": "RearFogLightCtrReq",
+      "values": [
+        "0x0=OFF",
+        "0x1=ON"
+      ],
+      "description": "控制后雾灯点亮或熄灭的请求参数。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "interface": "RearFogLightState",
+      "parameter": "RearFogLightSta",
+      "values": [
+        "0x0=OFF",
+        "0x1=ON",
+        "0x2=Error",
+        "0x3=Unknown"
+      ],
+      "description": "后雾灯当前状态的反馈参数，包括正常状态、错误状态和未知状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证后雾灯系统的控制逻辑和状态反馈功能，确保从控制指令发出到后雾灯实际状态变化的完整链路正确无误。",
+  "uncertain_points": []
+}
+```

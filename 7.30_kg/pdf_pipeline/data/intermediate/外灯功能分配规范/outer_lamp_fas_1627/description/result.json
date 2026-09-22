@@ -1,0 +1,79 @@
+{
+  "table_type": "logic_table",
+  "topic": "远光灯开启逻辑",
+  "row_semantics": "表格按功能描述、前置条件、触发动作和执行动作的顺序组织，详细定义了远光灯开启的触发逻辑。",
+  "column_semantics": "表格包含两列：左侧为场景描述和条件分类（如前置条件），右侧为具体的条件或动作描述。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "UsrMd",
+      "type": "mode",
+      "description": "用户模式，包括Sleep（睡眠）、Standby（待机）和XOTA（在线升级）等状态。"
+    },
+    {
+      "name": "VehMd",
+      "type": "mode",
+      "description": "车辆模式，包括TRANSPORT（运输）和EXHIBITION（展览）等状态。"
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "signal",
+      "description": "近光灯状态反馈信号，指示近光灯是否开启。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Light Handling and Zone Control Unit，负责远光灯开关控制模块的软件逻辑处理。"
+    },
+    {
+      "name": "MainBeamLightOnReq",
+      "type": "signal",
+      "description": "主光灯（远光灯）开启请求信号，由LHZCU内部软件保持有效。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外部灯光开关处理模块，判断是否开启近光灯。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsrMd != 0x0 && UsrMd != 0x1 && UsrMd != 0x6",
+      "description": "用户模式不处于睡眠、待机或XOTA状态。"
+    },
+    {
+      "condition": "VehMd == 0x3 || VehMd == 0x5",
+      "description": "车辆模式处于运输或展览状态。"
+    },
+    {
+      "condition": "DippedBeamLightStatus == ON",
+      "description": "近光灯反馈状态为开启。"
+    },
+    {
+      "condition": "ExteriorLightSwitchProcess.CombLghtFucProStatus == 0x4",
+      "description": "外部灯光开关处理模块已判断开启近光灯。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "MainBeamLightOnReq = 0x1",
+      "description": "LHZCU内部软件保持远光灯开启请求有效。"
+    },
+    {
+      "output": "LMainBeamLightCtrl_1_On",
+      "description": "左主光灯（远光灯）控制信号跳变为开启状态。"
+    },
+    {
+      "output": "RMainBeamLightCtrl_1_On",
+      "description": "右主光灯（远光灯）控制信号跳变为开启状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定用户和车辆模式下，通过操作远光灯拨杆开关触发远光灯开启的详细逻辑，可用于验证LHZCU在不同条件下正确处理远光灯开启请求的功能。",
+  "uncertain_points": [
+    "具体SOA和CAN配置细节未明确说明。",
+    "PPV阶段及以后按照SOA通讯方式开发的具体实现细节未明确说明。"
+  ]
+}

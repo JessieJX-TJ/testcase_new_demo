@@ -1,0 +1,34 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "后雾灯控制功能规范",
+  "row_semantics": "描述不同系统模块之间的信号交互与状态反馈流程",
+  "column_semantics": "无明确列，内容为按编号顺序排列的功能描述和信号交互细节",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "LHZCU",
+    "ICB",
+    "RZCU",
+    "HMI子系统"
+  ],
+  "core_conditions": [
+    "后雾灯开关状态 (RearFogLightSwStatus)",
+    "外灯组合服务订阅状态 (ExteriorLightControlSystem.RearFogLightSts)",
+    "后雾灯点亮请求 (RearFogLightControl.RearFogLightCtrReq)"
+  ],
+  "core_outputs": [
+    "后雾灯点亮状态 (RearFogLight.RearFogLightState)",
+    "后雾灯错误状态 (RearFogLight.RearFogLightErrorStatus)",
+    "后雾灯指示灯显示 (Notifier)"
+  ],
+  "core_faults": [
+    "后雾灯点亮错误 (RearFogLight.RearFogLightErrSta)"
+  ],
+  "core_timing_constraints": [
+    "后雾灯开启同步性要求：左侧和右侧需保持同步点亮，两侧最大延时不能超过40ms"
+  ],
+  "engineering_interpretation": "该表格详细定义了后雾灯控制系统中各模块间的信号交互逻辑、状态反馈机制以及故障处理规则，可用于验证后雾灯点亮功能的正确性、同步性和故障检测能力。",
+  "uncertain_points": []
+}
+```

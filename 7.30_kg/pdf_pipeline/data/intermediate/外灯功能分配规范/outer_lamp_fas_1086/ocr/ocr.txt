@@ -1,0 +1,23 @@
+场景描述
+用户通过钥匙解闭锁车辆自动激活闪灯及喇叭一段时间,以声/光反馈的方式方便用户得知车辆的位
+前置条件
+{[1&2&3&4]}&{[5||6]&[7||8]]:
+UsgMd=0x0 = UsgMd_0_Sleep;|∥
+UsgMd=0x1=UsgMd_1_Standby
+UsgMd=0x6=UsgMd_6_XOTA
+UsgMdV=Valid
+VehMd!=0x3 =VehMd_3_TRANSPORT
+VehMdV=Valid
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtCtrlCmmntnTyp=0x1=CAN
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtStsCmmntnTyp=0x1=CAN
+备注:
+a.需求中同时存在SOA和CAN的,按照配置字开发
+b.需求中只存在一种通讯类型的,按照该通讯类型开发
+c.PPV阶段及以后按照SOA通讯方式开发:
+触发动作
+收到[车辆解闭锁模块]请求:1||2
+[车辆解闭锁模块LHZCU]双闪灯请求:
+ExtrLckLghtRmndr=0x1=ExtrLckLghtRmndr_1_ExteriorLockReminder
+ExtrLckLghtRmndr=0x2=ExtrLckLghtRmndr_2_ExteriorUnlockReminder

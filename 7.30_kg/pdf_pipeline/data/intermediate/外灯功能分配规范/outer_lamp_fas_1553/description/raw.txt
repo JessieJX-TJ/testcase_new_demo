@@ -1,0 +1,68 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "车辆外灯及挡位信号状态定义与交互",
+  "row_semantics": "表格按功能模块或信号类型进行分组，每一行代表一个特定的信号或服务接口定义。",
+  "column_semantics": "第一列为主功能/信号名称；第二列描述信号属性（如有效性、消费方）；后续列为涉及的控制器/模块名称。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "TrShftLvrPosV",
+      "type": "signal",
+      "description": "车辆换挡杆位置信号，表示挡位的有效性状态。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.CombLightSwStatus",
+      "type": "service_interface",
+      "description": "组合灯光开关状态服务接口，用于获取车辆外部灯光的当前开关状态。"
+    },
+    {
+      "name": "DippedBeamLight.DippedBeamLightStatus",
+      "type": "service_interface",
+      "description": "近光灯状态服务接口，用于获取左侧近光灯的工作状态。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "TrShftLvrPosV",
+      "value_range": [
+        "0x0=Valid",
+        "0x1=Invalid"
+      ],
+      "description": "指示换挡杆位置信号是否有效。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.CombLightSwStatus",
+      "value_range": [
+        "0x0=OFF",
+        "0x1=SidePositionLight ON",
+        "0x2=DippedBeamLight ON",
+        "0x3=AUTO",
+        "0x4=Unknown"
+      ],
+      "description": "指示组合灯光开关的当前状态，包括关闭、侧位灯亮、近光灯亮、自动模式以及未知状态。"
+    },
+    {
+      "name": "DippedBeamLight.DippedBeamLightStatus",
+      "value_range": [
+        "不确定"
+      ],
+      "description": "指示左侧近光灯的状态，具体值未在表中给出。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "TrShftLvrPosV_Invalid",
+      "description": "当TrShftLvrPosV信号为无效时触发的故障状态。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统和换挡杆位置信号的关键参数、状态值及其在不同控制器间的交互方式，可用于验证车辆灯光控制系统和挡位信号处理的正确性。",
+  "uncertain_points": [
+    "DippedBeamLight.DippedBeamLightStatus的具体值未明确给出。",
+    "表格中未详细说明各信号的更新频率或响应时间等动态特性。"
+  ]
+}
+```

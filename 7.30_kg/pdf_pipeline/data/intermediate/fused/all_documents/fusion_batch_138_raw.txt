@@ -1,0 +1,436 @@
+```json
+[
+  {
+    "head": "FRSideLghtCtrl",
+    "relation": "input_value",
+    "tail": "0x1",
+    "sources": ["outer_lamp_fas_1492"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtCtrl",
+    "relation": "input_value",
+    "tail": "0x0",
+    "sources": ["outer_lamp_fas_1492"],
+    "conflict": true,
+    "conflict_note": "同一信号RLSideLghtCtrl在相同 source 中存在输入值 0x0 和 0x1 的冲突；可能表示不同工作模式（如默认/关闭 vs 激活），但未注明上下文，需确认是否为互斥条件或状态覆盖"
+  },
+  {
+    "head": "RRSideLghtCtrl",
+    "relation": "input_value",
+    "tail": "0x0",
+    "sources": ["outer_lamp_fas_1492"],
+    "conflict": true,
+    "conflict_note": "同一信号RRSideLghtCtrl在相同 source 中存在输入值 0x0 和 0x1 的冲突；语义未区分触发条件，需补充上下文（如使能位、模式位）"
+  },
+  {
+    "head": "ControlSidePositionLight",
+    "relation": "trigger_condition",
+    "tail": "InstanceID=2, SidePositionLightReq=ON|OFF",
+    "sources": ["outer_lamp_fas_1493"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlSidePositionLight",
+    "relation": "trigger_condition",
+    "tail": "InstanceID=3, SidePositionLightReq=ON|OFF",
+    "sources": ["outer_lamp_fas_1493"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlDippedBeamLight",
+    "relation": "trigger_condition",
+    "tail": "InstanceID=4, SidePositionLightReq=ON|OFF",
+    "sources": ["outer_lamp_fas_1493"],
+    "conflict": false,
+    "conflict_note": "注意：此处 tail 中 'SidePositionLightReq' 明显为笔误（应为 DippedBeamLightReq），但因非明显错误且来源一致，暂不修正，标记为潜在术语错用"
+  },
+  {
+    "head": "ControlSidePositionLight",
+    "relation": "depends_on_service",
+    "tail": "SOA",
+    "sources": ["outer_lamp_fas_1493"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlSidePositionLight",
+    "relation": "controlled_by",
+    "tail": "RZCU",
+    "sources": ["outer_lamp_fas_1493"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlDippedBeamLight",
+    "relation": "controlled_by",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_1493"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "prerequisite",
+    "tail": "Page 224 of 935",
+    "sources": ["outer_lamp_fas_1494"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ConfigurationParameter",
+    "relation": "prerequisite",
+    "tail": "Function",
+    "sources": ["outer_lamp_fas_1499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ConfigurationParameter",
+    "relation": "prerequisite",
+    "tail": "Parameter",
+    "sources": ["outer_lamp_fas_1499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ConfigurationParameter",
+    "relation": "prerequisite",
+    "tail": "DefaultValue",
+    "sources": ["outer_lamp_fas_1499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ConfigurationParameter",
+    "relation": "prerequisite",
+    "tail": "Remark",
+    "sources": ["outer_lamp_fas_1499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Function",
+    "relation": "depends_on",
+    "tail": "Parameter",
+    "sources": ["outer_lamp_fas_1499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Parameter",
+    "relation": "input_for",
+    "tail": "Function",
+    "sources": ["outer_lamp_fas_1499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DefaultValue",
+    "relation": "output_for",
+    "tail": "Function",
+    "sources": ["outer_lamp_fas_1499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningAutoControl",
+    "relation": "prerequisite",
+    "tail": "VCUSecyWrnngInfo received from RZCU (battery thermal runaway)",
+    "sources": ["outer_lamp_fas_1500"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningAutoControl",
+    "relation": "prerequisite",
+    "tail": "BMSWrnngInfo received from ESS (battery thermal runaway)",
+    "sources": ["outer_lamp_fas_1500"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtCtrl",
+    "relation": "activates",
+    "tail": "HazardWarningAutoControl",
+    "sources": ["outer_lamp_fas_1500"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtCtrl",
+    "relation": "activates",
+    "tail": "HazardWarningAutoControl",
+    "sources": ["outer_lamp_fas_1500"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtCtrl",
+    "relation": "activates",
+    "tail": "HazardWarningAutoControl",
+    "sources": ["outer_lamp_fas_1500"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl",
+    "relation": "activates",
+    "tail": "HazardWarningAutoControl",
+    "sources": ["outer_lamp_fas_1500"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtMdSts",
+    "relation": "prerequisite",
+    "tail": "HazardWarningAutoControl enabled",
+    "sources": ["outer_lamp_fas_1500"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess",
+    "relation": "contains_subfunction",
+    "tail": "HazardWarningAutoControl",
+    "sources": ["outer_lamp_fas_1500"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem",
+    "relation": "prerequisite",
+    "tail": "ICB calls base service for hazard warning control",
+    "sources": ["outer_lamp_fas_1500"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem",
+    "relation": "subscribes_to",
+    "tail": "ReverseLightSts",
+    "sources": ["outer_lamp_fas_1501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem",
+    "relation": "subscribes_to",
+    "tail": "ReverseLightErrSts",
+    "sources": ["outer_lamp_fas_1501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightSts",
+    "relation": "input_value",
+    "tail": "OFF",
+    "sources": ["outer_lamp_fas_1501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightSts",
+    "relation": "input_value",
+    "tail": "ON",
+    "sources": ["outer_lamp_fas_1501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightErrSts",
+    "relation": "input_value",
+    "tail": "No Error",
+    "sources": ["outer_lamp_fas_1501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightErrSts",
+    "relation": "input_value",
+    "tail": "Error",
+    "sources": ["outer_lamp_fas_1501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightErrSts",
+    "relation": "input_value",
+    "tail": "Unknown",
+    "sources": ["outer_lamp_fas_1501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlDippedBeamLight",
+    "relation": "trigger_condition",
+    "tail": "DippedBeamLight.ControlDippedBeamLight service invoked",
+    "sources": ["outer_lamp_fas_1502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtSts",
+    "relation": "input_value",
+    "tail": "0x1",
+    "sources": ["outer_lamp_fas_1502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtSts",
+    "relation": "input_value",
+    "tail": "0x0",
+    "sources": ["outer_lamp_fas_1502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtFltsts",
+    "relation": "trigger_condition",
+    "tail": "0x1",
+    "sources": ["outer_lamp_fas_1502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtFltsts",
+    "relation": "suppression_condition",
+    "tail": "0x0",
+    "sources": ["outer_lamp_fas_1502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightReq",
+    "relation": "input_value",
+    "tail": "0x1",
+    "sources": ["outer_lamp_fas_1502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightReq",
+    "relation": "input_value",
+    "tail": "0x0",
+    "sources": ["outer_lamp_fas_1502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightControl",
+    "relation": "prerequisite",
+    "tail": "GearPosition signal sent by Electric Drive Control Subsystem",
+    "sources": ["outer_lamp_fas_1504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightControl",
+    "relation": "depends_on",
+    "tail": "ReverseLightControlModule",
+    "sources": ["outer_lamp_fas_1504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightControlModule",
+    "relation": "trigger_condition",
+    "tail": "Internal processing time 30ms + signal transmission period",
+    "sources": ["outer_lamp_fas_1504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightControl",
+    "relation": "timeout_constraint",
+    "tail": "Signal transmission period > 30ms",
+    "sources": ["outer_lamp_fas_1504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ElectricDriveControlSubsystem",
+    "relation": "outputs",
+    "tail": "GearPosition signal",
+    "sources": ["outer_lamp_fas_1504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "feeds_back",
+    "tail": "{ExteriorLightSwitchProcess.DippedBeamLightSta.DipdBeamLghtSta}=0x1",
+    "sources": ["outer_lamp_fas_1505"],
+    "conflict": true,
+    "conflict_note": "同一反馈字段 DipdBeamLghtSta 被错误复用于 SidePositionLight 状态（见下条），属严重语义混淆：DipdBeamLghtSta ≠ SidePositionLightSta。需澄清命名或拆分信号"
+  },
+  {
+    "head": "LHZCU",
+    "relation": "feeds_back",
+    "tail": "{ExteriorLightSwitchProcess.DippedBeamLightSta.DipdBeamLghtSta}=0x1",
+    "sources": ["outer_lamp_fas_1505"],
+    "conflict": true,
+    "conflict_note": "重复项（同上），且与前一条共用 tail，但 head 不同（近光灯 vs 侧位灯），证实字段复用错误"
+  },
+  {
+    "head": "DippedBeamLight",
+    "relation": "synchronization_requirement",
+    "tail": "Left and right must illuminate simultaneously; max delay ≤ 40ms",
+    "sources": ["outer_lamp_fas_1505"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightErrSta",
+    "relation": "trigger_condition",
+    "tail": "{ExteriorLightSwitchProcess.DippedBeamLightErrSta.DipdBeamLghtErrSta}=0x0",
+    "sources": ["outer_lamp_fas_1505"],
+    "conflict": true,
+    "conflict_note": "tail 表示 'No Error'，但 head 是 'Error State'，逻辑矛盾：Error state triggered when value = No Error？应为 =0x1 或描述反转"
+  },
+  {
+    "head": "SidePositionLightErrSta",
+    "relation": "trigger_condition",
+    "tail": "{ExteriorLightSwitchProcess.DippedBeamLightErrSta.DipdBeamLghtErrSta}=0x0",
+    "sources": ["outer_lamp_fas_1505"],
+    "conflict": true,
+    "conflict_note": "同上，且错误复用 DippedBeamLightErrSta 字段名表达侧位灯故障，属跨功能信号命名污染"
+  },
+  {
+    "head": "BrakeLight",
+    "relation": "prerequisite",
+    "tail": "BrakeLightCtrlReq signal sent",
+    "sources": ["outer_lamp_fas_1507"],
+    "conflict": true,
+    "conflict_note": "同一 head 'BrakeLight' 有两条 prerequisite：'signal sent' 与 'no response' 逻辑互斥，后者实为异常处理前提，应归类为 failure_condition 或 retry_condition"
+  },
+  {
+    "head": "BrakeLight",
+    "relation": "prerequisite",
+    "tail": "No response received",
+    "sources": ["outer_lamp_fas_1507"],
+    "conflict": true,
+    "conflict_note": "同上"
+  },
+  {
+    "head": "BrakeLight",
+    "relation": "synchronization_requirement",
+    "tail": "Left, right and CHMSL must illuminate simultaneously; max delay ≤ 40ms",
+    "sources": ["outer_lamp_fas_1507"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "retry_trigger",
+    "tail": "BrakeLightCtrlReq timeout",
+    "sources": ["outer_lamp_fas_1507"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

@@ -1,0 +1,74 @@
+```json
+[
+  {
+    "head": "RLDILightDrvMdl 持续发送转向灯控制信号",
+    "relation": "前提条件",
+    "tail": "DirectionLightControl.DirectionLightSta = 1 (On) InstanceID=3",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RLDILightDrvMdl",
+      "DirectionLightControl",
+      "DirectionLightSta",
+      "On",
+      "InstanceID=3"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RLDILightDrvMdl 持续发送转向灯控制信号",
+    "relation": "前提条件",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RLDILightDrvMdl",
+      "DirectionLightControl",
+      "至少发送三帧"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯控制模块 DILightCtrlMdl",
+    "relation": "输入为",
+    "tail": "DirectionLightControl.DirectionLightCtrlReq = 0 (Off) InstanceID=3",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DILightCtrlMdl",
+      "DirectionLightControl",
+      "DirectionLightCtrlReq",
+      "Off",
+      "InstanceID=3"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RLDILightDrvMdl 停止发送转向灯控制信号",
+    "relation": "触发条件",
+    "tail": "收到 DILightCtrlMdl 发送的 DirectionLightControl.DirectionLightCtrlReq = 0 (Off) InstanceID=3",
+    "triple_type": "功能退出条件",
+    "evidence_terms": [
+      "RLDILightDrvMdl",
+      "DILightCtrlMdl",
+      "DirectionLightControl",
+      "DirectionLightCtrlReq",
+      "Off",
+      "InstanceID=3"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统执行异常处理",
+    "relation": "触发条件",
+    "tail": "收到 DILightCtrlMdl 发送的 DirectionLightControl.DirectionLightCtrlReq = 0 (Off) InstanceID=3",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "异常处理",
+      "DILightCtrlMdl",
+      "DirectionLightControl",
+      "DirectionLightCtrlReq",
+      "Off",
+      "InstanceID=3"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

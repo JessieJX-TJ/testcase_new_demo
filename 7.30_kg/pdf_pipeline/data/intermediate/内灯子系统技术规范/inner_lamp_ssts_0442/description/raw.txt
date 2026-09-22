@@ -1,0 +1,99 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "ThirdRowMapLampRHSsts, ThirdRowMapLampRHErr, ThrdRowMapLampRH_PWM_SIG",
+  "row_semantics": "定义了第三排右侧阅读灯的状态反馈、故障状态反馈以及亮度驱动控制的相关信号。",
+  "column_semantics": {
+    "0": "功能描述",
+    "1": "输出类型 (如：输出, 内部, 硬线)",
+    "2": "内部模块/控制器 (如：RHZCU, SSTS)",
+    "3": "控制器/模块名称",
+    "4": "控制器/模块名称",
+    "5": "未使用",
+    "6": "内灯状态 (SSTS)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampRHSsts",
+      "type": "function",
+      "description": "第三排右侧阅读灯状态反馈"
+    },
+    {
+      "name": "ThirdRowMapLampRHErr",
+      "type": "function",
+      "description": "第三排右侧阅读灯故障状态反馈"
+    },
+    {
+      "name": "ThrdRowMapLampRH_PWM_SIG",
+      "type": "function",
+      "description": "第三排右侧阅读灯亮度驱动控制"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Speed Control",
+      "description": "速度控制模式，包括手动快、门开慢、瞬变和保留值",
+      "values": {
+        "0x0": "速度 1 (手动，快)",
+        "0x1": "速度 2 (门开，慢)",
+        "0x2": "速度 3 (瞬变)",
+        "0x3": "Reserved"
+      }
+    },
+    {
+      "name": "Brightness Level",
+      "description": "亮度等级反馈，从 OFF 到 Level_30",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "Level_1",
+        "0x2": "Level_2",
+        "...": "省略",
+        "0x1E": "Level_30",
+        "0x1F": "Reserved"
+      }
+    },
+    {
+      "name": "Error Status",
+      "description": "故障状态反馈",
+      "values": {
+        "0x0": "No error",
+        "0x1": "Error"
+      }
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Output Type",
+      "description": "信号的输出类型，如 '输出', '内部', '硬线'",
+      "values": [
+        "输出",
+        "内部",
+        "硬线"
+      ]
+    },
+    {
+      "name": "Controller Module",
+      "description": "涉及的控制器或模块名称，如 RHZCU, SSTS",
+      "values": [
+        "RHZCU",
+        "SSTS"
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "ThirdRowMapLampRHErr",
+      "description": "第三排右侧阅读灯故障状态反馈信号",
+      "states": [
+        "No error",
+        "Error"
+      ]
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证第三排右侧阅读灯的状态反馈、故障状态以及亮度控制信号在不同条件下的正确性，确保其符合设计规范。",
+  "uncertain_points": []
+}
+```

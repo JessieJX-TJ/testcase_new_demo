@@ -1,0 +1,99 @@
+```json
+[
+  {
+    "head": "昼间行车灯开启",
+    "relation": "触发条件",
+    "tail": "车辆上电且用户模式为0x6 (UsgMd=0x6)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsrMd",
+      "UsrMd=0x6"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "昼间行车灯开启",
+    "relation": "前提条件",
+    "tail": "车辆电源有效 (UsgMdV=Valid)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsgMdV",
+      "UsgMdV=Valid"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 控制昼间行车灯开启",
+    "relation": "依赖于",
+    "tail": "LHZCU 发送控制信号至 ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "LDayTmRunningLightCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU 反馈状态至 ICB",
+    "relation": "输出为",
+    "tail": "DayTmRunningLightSts 和 DayTmRunningLightFltsts",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "DayTmRunningLightSts",
+      "DayTmRunningLightFltsts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 反馈状态至 LHZCU",
+    "relation": "输入为",
+    "tail": "LDayTmRunningLightSts 和 RDayTmRunningLightSts",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LDayTmRunningLightSts",
+      "RDayTmRunningLightSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "昼间行车灯同步性要求",
+    "relation": "超时约束",
+    "tail": "最大延时周期为40ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "昼间行车灯",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 重发日行灯请求",
+    "relation": "超时约束",
+    "tail": "若2秒内未收到响应，则按照≤50ms周期重发3次",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB",
+      "2s",
+      "50ms",
+      "重发机制"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "包含子功能",
+    "tail": "涉及 LHZCU/ICB_S32G M/ICB_8295",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外灯状态",
+      "LHZCU",
+      "ICB_S32G M",
+      "ICB_8295"
+    ],
+    "confidence_note": "medium"
+  }
+]
+```

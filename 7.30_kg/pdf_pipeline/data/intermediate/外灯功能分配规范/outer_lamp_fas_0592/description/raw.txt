@@ -1,0 +1,43 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "危险警报灯（Hazard Warning Lamp）系统控制逻辑与状态反馈",
+  "row_semantics": "表格按功能模块编号（9至14）列出各项控制逻辑和状态反馈规则，描述了不同控制器间的交互、信号状态及系统行为。",
+  "column_semantics": "无明确列结构，内容为逐行描述的控制逻辑文本，包含输入信号、输出信号、状态设置及条件判断。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "DirectionLight (转向灯)",
+    "LHZCU (危险警报灯开关控制模块)",
+    "ICB (集成控制盒)",
+    "SDM (安全气囊控制模块)"
+  ],
+  "core_conditions": [
+    "InstanceID (实例ID)",
+    "DirectionLightSta (转向灯状态)",
+    "DirectionLightErrSta (转向灯错误状态)",
+    "DirenLightFlts (转向灯故障标志)",
+    "ExteriorLightSwitchProcess (外部灯光开关处理过程)",
+    "VehHzrdMdSts (车辆危险模式状态)",
+    "HazardLightSwSts (危险灯开关状态)",
+    "EDRDircnIndLampSwSts (紧急方向指示灯开关状态)"
+  ],
+  "core_outputs": [
+    "转向灯状态设置 (On/Off/Flash)",
+    "转向灯错误状态反馈",
+    "危险警报灯闪烁频率",
+    "危险警报灯同步性要求"
+  ],
+  "core_faults": [
+    "转向灯故障标志 (DirenLightFlts)",
+    "危险灯开关状态异常 (HazardLightSwSts)",
+    "紧急方向指示灯开关状态异常 (EDRDircnIndLampSwSts)"
+  ],
+  "core_timing_constraints": [
+    "危险警报灯闪烁频率: 1.25Hz",
+    "危险警报灯同步性延时: 最大40ms"
+  ],
+  "engineering_interpretation": "该表格详细定义了危险警报灯系统的控制逻辑、状态反馈机制以及相关的故障检测和同步性要求，可用于验证危险警报灯在不同驾驶场景下的正确响应、状态反馈及时性及多灯同步性能。",
+  "uncertain_points": []
+}
+```

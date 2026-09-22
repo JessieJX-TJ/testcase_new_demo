@@ -1,0 +1,78 @@
+```json
+[
+  {
+    "head": "控制右侧近光灯点亮或者熄灭",
+    "relation": "触发条件",
+    "tail": "调用接口 ControlDippedBeamLight",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DippedBeamLight.ControlDippedBeamLight",
+      "调用该服务接口,控制右侧近光灯点亮或者熄灭",
+      "Interface Name: ControlDippedBeamLight"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧近光灯状态为 OFF",
+    "relation": "输出为",
+    "tail": "接口 DippedBeamLightStatus 返回参数 DippedBeamLightSta",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DippedBeamLight.DippedBeamLightStatus",
+      "调用该服务接口,获取左侧近光灯状态",
+      "Parameter Name: {DippedBeamLightSta}",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧近光灯状态为 ON",
+    "relation": "输出为",
+    "tail": "接口 DippedBeamLightStatus 返回参数 DippedBeamLightSta",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DippedBeamLight.DippedBeamLightStatus",
+      "调用该服务接口,获取左侧近光灯状态",
+      "Parameter Name: {DippedBeamLightSta}",
+      "0x1=ON"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧近光灯状态为 Unknown",
+    "relation": "输出为",
+    "tail": "接口 DippedBeamLightStatus 返回参数 DippedBeamLightSta",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DippedBeamLight.DippedBeamLightStatus",
+      "调用该服务接口,获取左侧近光灯状态",
+      "Parameter Name: {DippedBeamLightSta}",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "控制右侧近光灯",
+    "relation": "依赖于",
+    "tail": "模块 SOA",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DippedBeamLight.ControlDippedBeamLight",
+      "消费",
+      "SO"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "获取左侧近光灯状态",
+    "relation": "依赖于",
+    "tail": "模块 LHZCU",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DippedBeamLight.DippedBeamLightStatus",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

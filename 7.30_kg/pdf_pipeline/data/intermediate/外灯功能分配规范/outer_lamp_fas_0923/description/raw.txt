@@ -1,0 +1,95 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "近光灯控制逻辑与相关系统交互",
+  "row_semantics": "描述不同场景下近光灯的控制逻辑及其触发条件",
+  "column_semantics": "无明确列，内容为按行组织的条件-动作规则",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Light Headlamp Zone Control Unit，近光灯区域控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "Integrated Control Box，集成控制盒"
+    },
+    {
+      "name": "S32G",
+      "type": "controller_module",
+      "description": "英飞凌32位微控制器"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "system_process",
+      "description": "车身外部灯光开关处理模块"
+    },
+    {
+      "name": "CombLghtFucProStatus",
+      "type": "signal",
+      "description": "组合灯功能状态"
+    },
+    {
+      "name": "VehMd",
+      "type": "signal",
+      "description": "车辆模式"
+    },
+    {
+      "name": "UsGmD",
+      "type": "signal",
+      "description": "用户模式数据"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "LHZCU 判断仅位置灯开启",
+      "details": "CombLghtFucProStatus = 0x1 (Only Side Position Light Only)"
+    },
+    {
+      "condition": "S32G 收到大屏开关请求 ICB",
+      "details": "ControlCombinedLight CombinedLightReq = 0x0 (OFF)"
+    },
+    {
+      "condition": "近光灯在工厂模式下开启 2min",
+      "details": "VehMd = 0x2 (Factory Mode), VehMdV = 0x1,持续2min"
+    },
+    {
+      "condition": "用户模式为 standby 且伴我回家前置条件不满足",
+      "details": "UsGmD_1_Standby = 0x1, UsGmD_V = Valid, b1||b2||b3 不满足"
+    },
+    {
+      "condition": "近光灯点亮状态为后雾灯请求自动灯光的近光灯开启",
+      "details": "AutoDipdBeamLghtONbyRrFogLghtSts = 0x1 (True), AutoSidePosnLghtONbyRrFogLghtSts = 0x1 (True), AutoLghtOnReq_I_0x0 = False, AutoLghtOnReq_ICB_0x0 = False"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "近光灯熄灭",
+      "details": "通过设置 CombLghtFucProStatus = 0x0 (ALL OFF) 实现"
+    },
+    {
+      "output": "ICB 转换成 CAN 信号",
+      "details": "将服务接口或控制信号转换成 CAN 信号"
+    },
+    {
+      "output": "外灯控制组合服务 ICB 调用接口",
+      "details": "获取近光灯开关状态，并同时赋值 0x0 (OFF)"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "近光灯在工厂模式下开启 2min",
+      "details": "持续时间 2分钟"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了近光灯在多种复杂场景下的控制逻辑，包括位置灯单独开启、系统请求关闭、工厂模式测试、用户模式及伴我回家功能失效时的响应，以及后雾灯请求自动灯光时的近光灯行为。主要用于验证车辆在不同驾驶模式和外部条件下的近光灯控制策略是否符合设计规范。",
+  "uncertain_points": [
+    "具体 b1, b2, b3 的条件未明确说明",
+    "AutoLghtOnReq_I 和 AutoLghtOnReq_ICB 的具体触发逻辑未详细展开"
+  ]
+}
+```

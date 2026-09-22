@@ -1,0 +1,67 @@
+{
+  "table_type": "fault_table",
+  "topic": "右制动灯电路短路故障诊断与处理",
+  "row_semantics": "表格定义了在特定前置条件下，当右制动灯电路发生短路时的触发条件、执行动作、退出条件以及异常处理。",
+  "column_semantics": "表格分为两列，左侧为条件/动作类别（如前置条件、触发条件、执行动作等），右侧为具体的描述内容。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "exlBrkLghtHwDrvEnPrm",
+      "type": "input_signal",
+      "description": "外部制动灯硬件驱动使能参数"
+    },
+    {
+      "name": "BrkLghtDrvMdl",
+      "type": "output_signal",
+      "description": "制动灯驱动模块反馈信号"
+    },
+    {
+      "name": "BrkLghtFltSts_HW",
+      "type": "system_state",
+      "description": "制动灯硬件故障状态寄存器"
+    },
+    {
+      "name": "DTCC_B1042_12",
+      "type": "fault_status",
+      "description": "DTC (Diagnostic Trouble Code) B1042, 故障码12位"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "exlBrkLghtHwDrvEnPrm == 1",
+      "description": "外部制动灯硬件驱动使能参数等于1"
+    },
+    {
+      "condition": "右制动动灯处于未输出状态",
+      "description": "右制动灯当前没有输出信号"
+    },
+    {
+      "condition": "检测到右制动动灯短路到电源",
+      "description": "系统检测到右制动灯电路存在短路至电源的情况"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "description": "系统检测到之前存在的短路故障已经恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "action": "【BrkLghtDrvMdl】反馈 BrkLghtFltSts_HW=0x1 (BrkLghtFltSts_HW_1_True)",
+      "description": "制动灯驱动模块反馈制动灯硬件故障状态寄存器值为0x1（表示故障状态为真）"
+    },
+    {
+      "action": "置位 DTC B1042 12",
+      "description": "设置DTC代码B1042的第12位，记录该故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "右制动灯短路到电源",
+      "description": "右制动灯电路发生短路至电源的故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证整车电子系统对右制动灯电路短路故障的诊断逻辑，包括故障检测、反馈机制和DTC记录功能。",
+  "uncertain_points": []
+}

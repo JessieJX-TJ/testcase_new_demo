@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Workbench">
+  <title>Workbench</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/platform.css') }}?v=20260922-graph-fix2">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/qa.css') }}?v=20260917-motion-fix">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/testcase-workspace.css') }}?v=20260917-motion-fix">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/vis-network.min.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="app-rail" aria-label="Main navigation">
+      <a class="brand" href="#graph" aria-label="Workbench">
+        <span class="brand-mark"><i data-lucide="share-2"></i></span>
+        <span class="brand-name">Workbench<small>Automotive Manufacturing</small></span>
+      </a>
+      <nav class="rail-nav">
+        <a class="rail-link is-active" data-view="graph" href="#graph" title="Graph"><i data-lucide="network"></i><span>Graph</span></a>
+        <a class="rail-link" data-view="skill" href="#skill" title="Skill"><i data-lucide="sparkles"></i><span>Skill</span></a>
+        <div class="rail-group" data-rail-group="ontology">
+          <a class="rail-link" data-view="ontology" href="#ontology" title="Ontology"><i data-lucide="layers"></i><span>Ontology</span></a>
+          <div class="rail-subnav" id="ontologyRailSubnav" hidden>
+            <button type="button" class="rail-sublink is-selected" id="kgTabBuild" aria-controls="kgBuildSection" aria-pressed="true">File Build</button>
+            <button type="button" class="rail-sublink" id="kgTabRefine" aria-controls="kgRefineSection" aria-pressed="false">Source Refine</button>
+          </div>
+          <div class="rail-history" id="ontologyRailHistory" aria-label="Chat History">
+            <div class="rail-history-actions">
+              <div class="rail-history-label"><i data-lucide="history"></i><span>Chat History</span><small id="kgSessionCount">0</small></div>
+              <button type="button" class="rail-history-new-btn" id="kgSessionNew" title="New chat" aria-label="New chat"><i data-lucide="plus"></i></button>
+            </div>
+            <div class="rail-history-list" id="kgSessionList"></div>
+          </div>
+        </div>
+      </nav>
+      <div class="rail-bottom">
+        <a class="rail-link" data-view="account" href="#account" title="Groups & Accounts"><i data-lucide="users"></i><span>Groups & Accounts</span></a>
+        <a class="rail-link" id="auditNav" data-view="audit" href="#audit" title="Audit Log" hidden><i data-lucide="clipboard-list"></i><span>Audit Log</span></a>
+      </div>
+    </aside>
+
+    <div class="app-main">
+      <header class="topbar">
+        <div class="stage-bar topbar-stage">
+          <div class="topbar-title-block">
+            <div class="topbar-title-row">
+              <strong id="viewTitle">Relationship Graph</strong>
+              <nav id="ontologyTitleBreadcrumb" class="topbar-breadcrumb" hidden aria-label="Ontology navigation">
+                <button type="button" class="kg-crumb" id="kgCrumbOntologyRoot">Ontology</button>
+                <span class="kg-crumb-sep">/</span>
+                <span class="kg-crumb is-current" id="ontologyCrumbCurrent">Data Source</span>
+              </nav>
+              <nav id="skillTitleBreadcrumb" class="topbar-breadcrumb" hidden aria-label="Skill navigation">
+                <button type="button" class="kg-crumb" id="kgCrumbSkillRoot">Skill</button>
+                <span class="kg-crumb-sep">/</span>
+                <span class="kg-crumb is-current" id="skillCrumbCurrent">New</span>
+              </nav>
+              <span class="stage-meta" id="graphSource"></span>
+            </div>
+            <p id="viewDescription" class="topbar-view-desc">Browse nodes, relationships, and domain structure in the current knowledge graph.</p>
+            <div class="graph-legend" id="graphLegend" aria-label="Legend">
+              <span><i class="legend-node"></i>Test Type</span>
+              <span><i class="legend-node legend-case"></i>Test Case</span>
+              <span><i class="legend-node legend-detail"></i>Condition / Action / Expected</span>
+            </div>
+          </div>
+          <div class="stage-actions" id="graphStageActions">
+            <button type="button" class="skill-list-toggle" id="graphListToggle" title="Open list" aria-label="Open list" aria-pressed="false" data-layout="list"><span class="skill-list-toggle-glyph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path class="skill-list-toggle-bar" d="M1 2.5h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path class="skill-list-toggle-bar" d="M9 8h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path class="skill-list-toggle-bar" d="M9 13.5h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path class="skill-list-toggle-tri" d="M1.2 6.2 6.4 8.9 1.2 11.6Z" fill="currentColor"/></svg></span><span>List</span></button>
+          </div>
+          <div class="stage-actions" id="ontologyStageActions" hidden>
+            <button type="button" class="skill-list-toggle" id="kgOntologyListToggle" title="Open list" aria-label="Open list" aria-pressed="false"><span class="skill-list-toggle-glyph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path class="skill-list-toggle-bar" d="M1 2.5h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path class="skill-list-toggle-bar" d="M9 8h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path class="skill-list-toggle-bar" d="M9 13.5h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path class="skill-list-toggle-tri" d="M1.2 6.2 6.4 8.9 1.2 11.6Z" fill="currentColor"/></svg></span><span>List</span></button>
+          </div>
+          <div class="stage-actions" id="skillStageActions" hidden>
+            <button type="button" class="skill-list-toggle" id="kgSkillListToggle" title="Open list" aria-label="Open list" aria-pressed="false"><span class="skill-list-toggle-glyph" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path class="skill-list-toggle-bar" d="M1 2.5h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path class="skill-list-toggle-bar" d="M9 8h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path class="skill-list-toggle-bar" d="M9 13.5h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path class="skill-list-toggle-tri" d="M1.2 6.2 6.4 8.9 1.2 11.6Z" fill="currentColor"/></svg></span><span>List</span></button>
+          </div>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <select id="kgSelect" hidden aria-hidden="true"><option value="testcase" selected>Test Case Knowledge Graph</option></select>
+        <div id="appStatus" class="notice" role="status" hidden></div>
+
+        <section class="view-panel is-visible" data-panel="graph">
+          <div class="graph-layout">
+            <div class="graph-stage">
+              <div class="graph-canvas-wrap">
+                <div id="graphCanvas" role="img" aria-label="Knowledge Graph"></div>
+                <aside id="graphNodeCard" class="graph-node-card" hidden></aside>
+                <aside id="listPanel" class="list-panel" hidden>
+                  <div class="list-panel-head">
+                    <div class="list-head-stats">
+                      <div class="list-head-metrics" id="listStats"></div>
+                    </div>
+                    <div class="list-head-actions">
+                      <button class="icon-button" id="listExpandToggle" type="button" title="Expand list" aria-label="Expand list"><i data-lucide="maximize-2"></i></button>
+                    </div>
+                  </div>
+                  <div class="list-toolbar" id="listToolbar">
+                    <div class="list-filter">
+                      <label for="listTypeFilter">Test Type</label>
+                      <select id="listTypeFilter"><option value="">All types</option></select>
+                    </div>
+                    <div class="list-filter list-search">
+                      <label for="listSearch">Test Case</label>
+                      <input id="listSearch" type="search" placeholder="Name or keyword">
+                    </div>
+                    <div class="list-filter">
+                      <label for="listLimit">Count</label>
+                      <select id="listLimit">
+                        <option value="180">180</option>
+                        <option value="500">500</option>
+                        <option value="1000">1000</option>
+                        <option value="all">All</option>
+                      </select>
+                    </div>
+                    <button class="icon-button" id="listReset" type="button" title="Reset filters" aria-label="Reset filters"><i data-lucide="rotate-ccw"></i></button>
+                  </div>
+                  <div class="graph-list" id="graphList"></div>
+                </aside>
+                <div class="graph-loading" id="graphLoading">Loading graph</div>
+                <div class="graph-controls">
+                  <button class="icon-button" id="refreshGraph" type="button" title="Refresh graph" aria-label="Refresh graph"><i data-lucide="refresh-cw"></i></button>
+                  <button class="icon-button" id="zoomIn" type="button" title="Zoom in" aria-label="Zoom in"><i data-lucide="plus"></i></button>
+                  <button class="icon-button" id="zoomOut" type="button" title="Zoom out" aria-label="Zoom out"><i data-lucide="minus"></i></button>
+                  <button class="icon-button" id="resetZoom" type="button" title="Reset view" aria-label="Reset view"><i data-lucide="maximize"></i></button>
+                  <button class="icon-button motion-toggle is-static" id="motionToggle" type="button" data-motion="static" title="Static (click for subtle motion)" aria-label="Static; click for subtle motion"><i data-lucide="play"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" data-panel="ontology">
+          <div id="kgWorkbench">
+            <div id="kgSubviewSources" class="kg-subview ontology-stage is-visible is-build-mode">
+              <section class="work-section ontology-work-main ontology-conversation" id="kgBuildSection" data-build-step="intro">
+                <div class="ontology-message-stream">
+                  <div class="ontology-stream-inner">
+                    <article class="ontology-assistant-row" id="kgBuildIntroBubble">
+                      <div class="ontology-assistant-content">
+                        <div class="ontology-bubble-meta"><strong>Ontology Assistant</strong><span>File Build</span></div>
+                        <div class="ontology-assistant-bubble">
+                          <div class="ontology-bubble-intro">
+                            <strong>Choose a build entry point</strong>
+                            <p>Upload a new file via the paperclip, or click “Select Data Source” to pick one from the list—either path opens build parameter setup.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="ontology-assistant-row" id="kgBuildPickerBubble" hidden>
+                      <div class="ontology-assistant-content">
+                        <div class="ontology-bubble-meta"><strong>Ontology Assistant</strong><span>Select Data Source</span></div>
+                        <div class="ontology-assistant-bubble ontology-sources-bubble">
+                          <div class="ontology-bubble-intro">
+                            <strong>Please select a data source</strong>
+                            <p>Selecting one enters the build flow (choose either this or file upload; no need for both).</p>
+                          </div>
+                          <div class="ontology-sources-panel">
+                            <div class="ontology-sources-toolbar">
+                              <div class="ontology-sources-search">
+                                <input type="search" id="kgBuildPickerSearch" class="ontology-sources-search-input" placeholder="Search data sources" aria-label="Search data sources" autocomplete="off">
+                                <button type="button" id="kgBuildPickerSearchBtn" class="ontology-sources-search-icon" title="Search" aria-label="Search">
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                                </button>
+                              </div>
+                              <div class="ontology-sources-actions">
+                                <button type="button" id="kgBuildPickerClear" class="ontology-sources-action-btn">Clear</button>
+                              </div>
+                            </div>
+                            <div id="kgBuildPickerTable" class="ontology-sources-list" role="radiogroup" aria-label="Data source list"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="ontology-assistant-row" id="kgBuildParamsBubble" hidden>
+                      <div class="ontology-assistant-content">
+                        <div class="ontology-bubble-meta"><strong>Ontology Assistant</strong><span>Step 2 · Build Parameters</span></div>
+                        <div class="ontology-assistant-bubble">
+                          <div class="ontology-bubble-intro">
+                            <strong>Configure build parameters</strong>
+                            <p>Enter the business domain and update mode, then confirm to start parsing.</p>
+                            <span id="kgIncrSummary" class="muted ontology-bubble-summary"></span>
+                          </div>
+                          <div class="build-controls ontology-bubble-form">
+                            <div class="field"><label for="kgIncrDomain">Business Domain</label><input id="kgIncrDomain" placeholder="Business domain name"></div>
+                            <div class="field"><label for="kgImportMode">Update mode</label><select id="kgImportMode"><option value="supplement">Supplement Data</option><option value="replace">Replace This Source</option></select></div>
+                          </div>
+                          <p id="kgBuildParamsStatus" class="notice" role="status" hidden></p>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="ontology-user-row" id="kgBuildParamsAck" hidden>
+                      <div class="ontology-user-bubble" id="kgBuildParamsAckText"></div>
+                    </article>
+                    <article class="ontology-assistant-row" id="kgBuildUploadBubble" hidden>
+                      <div class="ontology-assistant-content">
+                        <div class="ontology-bubble-meta"><strong>Ontology Assistant</strong><span>Step 3 · Upload & Parse</span></div>
+                        <div class="ontology-assistant-bubble">
+                          <div class="ontology-bubble-intro">
+                            <strong>Parse data</strong>
+                            <p id="kgBuildUploadHint">Confirm parameters to start parsing; you can replace the uploaded attachment and re-parse.</p>
+                          </div>
+                          <p id="kgStatus" class="notice" role="status" hidden></p>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="ontology-assistant-row" id="kgBuildResultBubble" hidden>
+                      <div class="ontology-assistant-content">
+                        <div class="ontology-bubble-meta"><strong>Ontology Assistant</strong><span>Step 4 · Confirm Submit</span></div>
+                        <div class="ontology-assistant-bubble">
+                          <div id="kgResults" hidden>
+                            <div class="section-heading">
+                              <strong id="kgMeta"></strong>
+                              <div class="inline-actions">
+                                <button id="kgPreviewToggle" class="kg-workbench-button" type="button"><i data-lucide="list"></i>Parse preview</button>
+                                <button id="kgIncrApplyBtn" class="primary-button" type="button" hidden><i data-lucide="check-check"></i>Confirm apply increment</button>
+                              </div>
+                            </div>
+                            <div id="kgPreviewPane" class="table-scroll ontology-preview-scroll" hidden></div>
+                            <div id="kgIncrResults"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="ontology-assistant-row" id="kgBuildDoneBubble" hidden>
+                      <div class="ontology-assistant-content">
+                        <div class="ontology-bubble-meta"><strong>Ontology Assistant</strong><span>Pending Review</span></div>
+                        <div class="ontology-assistant-bubble">
+                          <div class="ontology-bubble-intro">
+                            <strong>Added to pending review</strong>
+                            <p id="kgBuildDoneText"></p>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+                <footer class="ontology-guide-area">
+                  <div class="ontology-guide-inner">
+                    <div id="kgBuildAttachStrip" class="ontology-attach-strip" hidden></div>
+                    <div class="ontology-guide-card">
+                      <div class="ontology-guide-copy">
+                        <strong id="kgBuildGuideTitle">Choose entry</strong>
+                        <span id="kgBuildGuideDesc">Upload a file or select a data source—complete either to enter the build flow</span>
+                      </div>
+                      <div class="ontology-guide-actions">
+                        <input id="kgFileInput" type="file" accept=".xlsx,.xls,.csv,.pdf" hidden>
+                        <button class="icon-button" id="kgBuildAttachBtn" type="button" title="Select file" aria-label="Select file"><i data-lucide="paperclip"></i></button>
+                        <button id="kgBuildSelectBtn" class="primary-button" type="button">Select Data Source</button>
+                        <button id="kgBuildParamsBtn" class="primary-button" type="button" hidden disabled>Enter parameters</button>
+                        <button id="kgParseBtn" class="primary-button" type="button" hidden disabled>Upload & Parse</button>
+                        <button id="kgImportBtn" class="primary-button" type="button" hidden>Confirm Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </footer>
+              </section>
+
+              <section class="work-section ontology-work-main ontology-conversation" id="kgRefineSection" data-refine-step="intro">
+                <div class="section-heading" id="kgRefineSectionHeading"><h2>Source Refine</h2></div>
+                <div class="ontology-message-stream">
+                  <div class="ontology-stream-inner">
+                    <article class="ontology-assistant-row" id="kgRefineIntroBubble">
+                      <div class="ontology-assistant-content">
+                        <div class="ontology-bubble-meta"><strong>Ontology Assistant</strong><span>Source Refine</span></div>
+                        <div class="ontology-assistant-bubble">
+                          <div class="ontology-bubble-intro">
+                            <strong>Refine an existing data source</strong>
+                            <p>Click “Select Data Source” below to pick from the list, or upload a new file via the paperclip.</p>
+                            <span id="kgSourceMeta" class="refine-source-meta muted" hidden></span>
+                          </div>
+                          <span id="kgRefineDirty" class="status-badge warning" hidden>Unsaved changes</span>
+                          <p id="kgRefineFile" class="notice" role="status" hidden></p>
+                          <select id="kgRefineSource" hidden aria-hidden="true"><option value="">Select Data Source</option></select>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="ontology-assistant-row" id="kgRefinePickerBubble" hidden>
+                      <div class="ontology-assistant-content">
+                        <div class="ontology-bubble-meta"><strong>Ontology Assistant</strong><span>Select Data Source</span></div>
+                        <div class="ontology-assistant-bubble ontology-sources-bubble">
+                          <div class="ontology-bubble-intro">
+                            <strong>Please select a data source to refine</strong>
+                            <p>Select one data source; search to filter. The selection appears in the attachment strip below.</p>
+                          </div>
+                          <div class="ontology-sources-panel">
+                            <div class="ontology-sources-toolbar">
+                              <div class="ontology-sources-search">
+                                <input type="search" id="kgRefinePickerSearch" class="ontology-sources-search-input" placeholder="Search data sources" aria-label="Search data sources" autocomplete="off">
+                                <button type="button" id="kgRefinePickerSearchBtn" class="ontology-sources-search-icon" title="Search" aria-label="Search">
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                                </button>
+                              </div>
+                              <div class="ontology-sources-actions">
+                                <button type="button" id="kgRefinePickerClear" class="ontology-sources-action-btn">Clear</button>
+                              </div>
+                            </div>
+                            <div id="kgRefinePickerTable" class="ontology-sources-list" role="radiogroup" aria-label="Data source list"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="ontology-assistant-row" id="kgRefineWorkBubble" hidden>
+                      <div class="ontology-assistant-content">
+                        <div class="ontology-bubble-meta"><strong>Ontology Assistant</strong><span>Refine Workbench</span></div>
+                        <div class="ontology-assistant-bubble">
+                          <div id="kgRefineEmpty" class="empty-state" hidden>No data source selected yet</div>
+
+                          <div id="kgExcelPanel" hidden>
+                            <div class="excel-layout">
+                              <div class="excel-editor">
+                                <div class="row-toolbar">
+                                  <div class="inline-actions row-nav-actions">
+                                    <button id="kgRowPrev" class="icon-button row-nav-btn" type="button" title="Previous row" aria-label="Previous row"><i data-lucide="chevron-left"></i></button>
+                                    <span id="kgRowIndex"></span>
+                                    <button id="kgRowNext" class="icon-button row-nav-btn" type="button" title="Next row" aria-label="Next row"><i data-lucide="chevron-right"></i></button>
+                                  </div>
+                                </div>
+                                <div class="excel-editor-body">
+                                  <div class="row-meta">
+                                    <select id="kgCaseSelect" class="toolbar-select case-finder-select" aria-label="Find case"></select>
+                                    <div class="inline-actions row-meta-actions">
+                                      <button id="kgRowAdd" class="kg-workbench-button" type="button"><i data-lucide="plus"></i>Triples</button>
+                                      <button id="kgRowSave" class="primary-button" type="button"><i data-lucide="save"></i>Save current row</button>
+                                      <button id="kgRowsSave" class="kg-workbench-button" type="button"><i data-lucide="save-all"></i>Save all</button>
+                                    </div>
+                                  </div>
+                                  <div id="kgRowEditor"></div>
+                                  <div class="row-ai">
+                                    <label for="kgRowHint">Improvement notes</label>
+                                    <textarea id="kgRowHint" rows="2" placeholder="Extraction scope, missing relations, or field fixes"></textarea>
+                                    <button id="kgRowReextract" class="kg-workbench-button" type="button"><i data-lucide="sparkles"></i>AI re-extract</button>
+                                  </div>
+                                  <div id="kgReextractPreview" hidden></div>
+                                  <label class="field-label" for="kgRowSummary">Review notes</label>
+                                  <textarea id="kgRowSummary" rows="2"></textarea>
+                                  <details><summary>Change history</summary><div id="kgRowHistoryList"></div></details>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="section-heading">
+                              <h3>Confirmed relations</h3>
+                              <div class="inline-actions">
+                                <select id="kgGraphScope" class="toolbar-select" aria-label="Highlight scope"><option value="current">Current case</option><option value="all">All confirmed</option></select>
+                                <button id="kgExcelExport" class="kg-workbench-button" type="button"><i data-lucide="download"></i>Export all</button>
+                                <button id="kgExcelExportSelected" class="kg-workbench-button" type="button"><i data-lucide="download"></i>Export highlighted</button>
+                              </div>
+                            </div>
+                            <div id="kgExcelGraph" class="refine-graph"></div>
+                            <div id="kgExcelGraphDetails" class="graph-selected-details"></div>
+                          </div>
+
+                          <div id="kgPdfPanel" hidden>
+                            <div class="section-heading"><h2>PDF Review</h2><span id="kgPdfVersion" class="muted"></span></div>
+                            <div class="refine-toolbar">
+                              <div class="field refine-source-field">
+                                <label for="kgPdfImage">Content record</label>
+                                <select id="kgPdfImage"></select>
+                              </div>
+                              <button id="kgPdfEvalBtn" class="kg-workbench-button" type="button"><i data-lucide="scan-search"></i>Quality evaluation</button>
+                              <button id="kgPdfCasePreviewBtn" class="kg-workbench-button" type="button"><i data-lucide="list-checks"></i>Auto scenario split</button>
+                              <button id="kgPdfApplyBtn" class="primary-button" type="button" disabled><i data-lucide="check-check"></i>Apply selected changes</button>
+                            </div>
+                            <div id="kgPdfEval"></div>
+                            <div id="kgPdfCorrections"></div>
+                            <div id="kgPdfPreview" hidden></div>
+                            <div id="kgPdfCasePreview" hidden></div>
+                            <div id="kgPdfTriples" class="table-scroll"></div>
+                            <details open><summary>OCR & Description</summary><div id="kgPdfOcr" class="ocr-content"></div></details>
+                            <details><summary>Change history</summary><div id="kgPdfHistory"></div></details>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+                <footer class="ontology-guide-area">
+                  <div class="ontology-guide-inner">
+                    <div id="kgRefineAttachStrip" class="ontology-attach-strip" hidden></div>
+                    <div class="ontology-guide-card">
+                      <div class="ontology-guide-copy">
+                        <strong id="kgRefineGuideTitle">Select Data Source</strong>
+                        <span id="kgRefineGuideDesc">Click to select a data source, or upload a new file via the paperclip</span>
+                      </div>
+                      <div class="ontology-guide-actions">
+                        <input id="kgRefineFileInput" type="file" accept=".xlsx,.xls,.csv,.pdf" hidden>
+                        <button class="icon-button" id="kgRefineUploadBtn" type="button" title="Upload file" aria-label="Upload file"><i data-lucide="paperclip"></i></button>
+                        <button id="kgRefineLoad" class="primary-button" type="button">Select Data Source</button>
+                      </div>
+                    </div>
+                  </div>
+                </footer>
+              </section>
+
+              <aside id="kgOntologyListBlock" class="skill-list-panel ontology-list-panel" hidden>
+                <div class="list-panel-head" id="kgOntologyListHeading">
+                  <div class="list-head-stats">
+                    <div class="skill-list-title-row">
+                      <div class="skill-list-tabs" id="kgOntologyListTabs" role="tablist" aria-label="Data source list switch">
+                        <button type="button" class="skill-list-tab is-selected" data-ontology-list-tab="sources" role="tab" aria-selected="true">Data Source</button>
+                        <button type="button" class="skill-list-tab" data-ontology-list-tab="pending" role="tab" aria-selected="false">Pending Review<span class="skill-tab-badge" id="kgPendingBadge" hidden>0</span></button>
+                        <button type="button" class="skill-list-tab" data-ontology-list-tab="trash" role="tab" aria-selected="false">Trash</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="skill-list-search-row ontology-list-search-row" id="kgOntologySourceSearchRow">
+                  <input id="kgSourceSearch" class="skill-list-search" type="search" placeholder="Find data sources" aria-label="Find data sources">
+                  <button class="icon-button" id="kgSourcesRefresh" type="button" title="Refresh data sources" aria-label="Refresh data sources"><i data-lucide="refresh-cw"></i></button>
+                </div>
+                <div class="ontology-list-body" id="kgOntologySourcesPane">
+                  <div id="kgSourcesList" class="table-scroll source-table-wrap skill-list-scroll"><p class="empty-state">Loading data sources</p></div>
+                </div>
+                <div class="ontology-list-body" id="kgOntologyPendingPane" hidden>
+                  <div id="kgSourcesPendingList" class="table-scroll source-table-wrap skill-list-scroll"><p class="empty-state">No data sources pending review</p></div>
+                </div>
+                <div class="ontology-list-body" id="kgOntologyTrashPane" hidden>
+                  <div id="kgSourceTrashList" class="trash-list skill-list-scroll"><p class="empty-state">Trash is empty</p></div>
+                </div>
+              </aside>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="view-panel" data-panel="skill">
+          <div id="kgSkillWorkbench">
+            <p id="kgSkillStatus" class="notice" role="status" hidden></p>
+            <div class="skill-stage">
+              <section class="work-section" id="kgSkillCreateSection">
+                <div class="skill-conversation">
+                  <div class="skill-message-stream">
+                    <div id="kgSkillChatLog" class="kg-chat-log" role="log" aria-live="polite"></div>
+                    <div id="kgSkillChatDraft" hidden></div>
+                  </div>
+                  <div class="skill-composer-area">
+                    <div class="skill-composer-inner">
+                      <div class="kg-chat-input skill-composer">
+                        <div class="skill-composer-context">
+                          <span>Skill configuration</span>
+                          <span class="skill-composer-hint">Describe file type, extraction goals, and constraints</span>
+                        </div>
+                        <textarea id="kgSkillChatInput" rows="1" placeholder="Chat with the model to modify or add a skill" aria-label="Skill conversation"></textarea>
+                        <div class="skill-composer-footer">
+                          <div class="skill-composer-tools"></div>
+                          <button class="skill-send-button" id="kgSkillChatSend" type="button" title="Send" aria-label="Send"><i data-lucide="send"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <aside id="kgSkillsBlock" class="skill-list-panel kg-skills-block" hidden>
+                <div class="list-panel-head" id="kgSkillsHeading">
+                  <div class="list-head-stats">
+                    <div class="skill-list-title-row">
+                      <div class="skill-list-tabs" id="kgSkillsTabs" role="tablist" aria-label="Skills list switch">
+                        <button type="button" class="skill-list-tab is-selected" data-skills-tab="library" role="tab" aria-selected="true">Skills Library</button>
+                        <button type="button" class="skill-list-tab" data-skills-tab="pending" role="tab" aria-selected="false">Skills Pending Review</button>
+                        <button type="button" class="skill-list-tab" data-skills-tab="trash" role="tab" aria-selected="false">Trash</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="skill-list-search-row">
+                  <input id="kgSkillSearch" class="skill-list-search" type="search" placeholder="Name, type, or description" aria-label="Find Skill">
+                </div>
+                <div class="skills-catalog" id="kgSkillsCatalog">
+                  <div id="kgSkillRegistry" class="skill-list-scroll"></div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" data-panel="search">
+          <form class="search-form" id="searchForm">
+            <input id="searchInput" type="search" placeholder="Test type, case, or keyword" aria-label="Search keyword" required>
+            <button class="primary-button" type="submit"><i data-lucide="search"></i>Search</button>
+          </form>
+          <div class="search-results" id="searchResults">
+            <div class="empty-workspace compact">
+              <div class="empty-glyph">⌕</div>
+              <h3>No search results</h3>
+              <p>Enter a test type, case, or keyword to start searching.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-panel" data-panel="qa">
+          <div class="qa-layout">
+            <section class="qa-chat-panel">
+              <div id="qaMessages" class="qa-messages" role="log" aria-live="polite"></div>
+              <form id="qaForm" class="qa-composer">
+                <textarea id="qaInput" rows="2" placeholder="Enter your question..." aria-label="Question input"></textarea>
+                <div id="qaMentions" class="qa-mentions" hidden></div>
+                <div class="qa-actions">
+                  <button type="button" class="qa-chip" data-prompt="What test types exist in this knowledge graph?">Test Type</button>
+                  <button type="button" class="qa-chip" data-prompt="What are the preconditions, actions, and expected behaviors of a given test case?">Case Structure</button>
+                  <button type="button" class="qa-chip" data-prompt="Which test cases are related to seat heating?">Seat Heating</button>
+                  <button type="submit" class="qa-send"><i data-lucide="arrow-up"></i><span>Send</span></button>
+                </div>
+              </form>
+            </section>
+            <aside class="qa-sidepanel">
+              <section class="qa-sidecard">
+                <div class="qa-sidehead">
+                  <h2>Evidence</h2>
+                  <span id="qaEvidenceCount">0</span>
+                </div>
+                <div class="qa-evidence-scroll">
+                  <div id="qaEvidence" class="qa-evidence-empty">Waiting for retrieval results</div>
+                  <div id="qaEvidenceDetail" class="qa-evidence-detail" hidden></div>
+                </div>
+              </section>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view-panel" data-panel="test-case-generation">
+          <section class="testcase-workbench" id="tcWorkbench">
+            <div class="tc-subnav" role="tablist" aria-label="Test case generation views">
+              <button type="button" class="tc-tab is-active" data-tc-tab="requirement"><i data-lucide="sparkles"></i>Forward Generation</button>
+              <button type="button" class="tc-tab" data-tc-tab="sts"><i data-lucide="file-text"></i>STS Workflow</button>
+              <button type="button" class="tc-tab" data-tc-tab="records"><i data-lucide="history"></i>Task Records</button>
+            </div>
+
+            <div class="tc-status-line" id="tcStatusLine" role="status">Ready</div>
+
+            <div class="tc-grid">
+              <aside class="tc-controls">
+                <section class="tc-panel is-active" data-tc-panel="requirement">
+                  <div class="tc-section-head">
+                    <h2>Requirement Input</h2>
+                    <button type="button" class="icon-button" id="tcClearRequirement" title="Clear" aria-label="Clear"><i data-lucide="eraser"></i></button>
+                  </div>
+                  <textarea id="tcRequirementInput" rows="7" placeholder="Enter a test requirement, e.g.: vehicle response when pressing the handle button while keyless entry has failed"></textarea>
+                  <div class="tc-chip-row" id="tcPromptChips">
+                    <button type="button" data-chip="Normal function verification">Normal Function</button>
+                    <button type="button" data-chip="Abnormal / failure scenarios">Abnormal Failure</button>
+                    <button type="button" data-chip="Boundary condition testing">Boundary Conditions</button>
+                    <button type="button" data-chip="Bluetooth key unlock">Bluetooth Key</button>
+                    <button type="button" data-chip="Keyless entry">Keyless entry</button>
+                  </div>
+                  <div class="tc-settings">
+                    <label>Count<input id="tcCaseCount" type="number" min="1" max="10" value="1"></label>
+                    <label>Model<select id="tcModel"><option value="Qwen3-4B">Qwen3-4B</option><option value="qwen-plus">qwen-plus</option><option value="qwen3-8b">qwen3-8b</option></select></label>
+                  </div>
+                  <button type="button" class="primary-button tc-wide" id="tcGenerateBtn"><i data-lucide="play"></i>Generate Test Cases</button>
+                </section>
+
+                <section class="tc-panel" data-tc-panel="sts">
+                  <div class="tc-section-head">
+                    <h2>STS Document</h2>
+                    <button type="button" class="icon-button" id="tcStsArtifactsBtn" title="View artifacts" aria-label="View artifacts" disabled><i data-lucide="archive"></i></button>
+                  </div>
+                  <div class="tc-file-row">
+                    <input id="tcStsFile" type="file" accept="application/pdf">
+                    <button type="button" id="tcStsUploadBtn"><i data-lucide="upload"></i>Upload</button>
+                  </div>
+                  <div class="tc-url-row">
+                    <input id="tcStsUrl" type="url" placeholder="MinerU-accessible PDF URL">
+                    <button type="button" id="tcStsUseUrlBtn"><i data-lucide="link"></i>Register</button>
+                  </div>
+                  <div class="tc-doc-card" id="tcStsDocCard" hidden></div>
+                  <div class="tc-inline-actions">
+                    <button type="button" id="tcStsParseBtn" disabled><i data-lucide="scan-text"></i>Parse Sections</button>
+                    <button type="button" class="primary-button" id="tcStsGenerateBtn" disabled><i data-lucide="play"></i>Generate Selected</button>
+                  </div>
+                  <div class="tc-section-list" id="tcStsSectionList"><p class="empty-state">Waiting for STS document</p></div>
+                  <div class="tc-artifact-box" id="tcStsArtifacts" hidden></div>
+                </section>
+
+                <section class="tc-panel" data-tc-panel="records">
+                  <div class="tc-section-head">
+                    <h2>Task Records</h2>
+                    <button type="button" class="icon-button" id="tcRefreshRecords" title="Refresh" aria-label="Refresh"><i data-lucide="refresh-cw"></i></button>
+                  </div>
+                  <div class="tc-record-list" id="tcRecordList"><p class="empty-state">No records yet</p></div>
+                </section>
+              </aside>
+
+              <section class="tc-results">
+                <div class="tc-result-head">
+                  <div>
+                    <h2>Generation Results</h2>
+                    <p id="tcMetaLine">Not generated yet</p>
+                  </div>
+                  <div class="tc-export-actions">
+                    <button type="button" id="tcExportTxtBtn"><i data-lucide="file-text"></i>TXT</button>
+                    <button type="button" id="tcExportJsonBtn"><i data-lucide="braces"></i>JSON</button>
+                    <button type="button" id="tcExportExcelBtn"><i data-lucide="sheet"></i>Excel</button>
+                  </div>
+                </div>
+
+                <div class="tc-run-layout">
+                  <div class="tc-case-column">
+                    <div class="tc-case-tabs" id="tcCaseTabs"></div>
+                    <div class="tc-case-editor-wrap">
+                      <textarea id="tcCaseEditor" rows="16" placeholder="Generated test cases appear here. Edit, then evaluate, refine, review, or export."></textarea>
+                    </div>
+                    <div class="tc-case-fields" id="tcCaseFields"></div>
+                  </div>
+                  <aside class="tc-trace-column">
+                    <div class="tc-trace-head">
+                      <strong>Process status</strong>
+                      <button type="button" class="icon-button" id="tcClearTrace" title="Clear process" aria-label="Clear process"><i data-lucide="trash-2"></i></button>
+                    </div>
+                    <pre id="tcTraceLog">Waiting for task to start</pre>
+                    <div class="tc-evidence" id="tcEvidenceList"></div>
+                  </aside>
+                </div>
+
+                <div class="tc-action-band">
+                  <button type="button" id="tcEvaluateBtn"><i data-lucide="scan-search"></i>Evaluate</button>
+                  <button type="button" id="tcAutoImproveBtn"><i data-lucide="wand-sparkles"></i>Auto Improve</button>
+                  <label>Target score<input id="tcAutoThreshold" type="number" min="50" max="95" value="95"></label>
+                  <label>Rounds<input id="tcAutoIterations" type="number" min="1" max="5" value="3"></label>
+                </div>
+
+                <div class="tc-refine-row">
+                  <input id="tcRefineInput" placeholder="Enter improvement / refine notes">
+                  <button type="button" class="primary-button" id="tcRefineBtn"><i data-lucide="file-pen-line"></i>Refine</button>
+                </div>
+
+                <div class="tc-review-row">
+                  <input id="tcReviewComment" placeholder="Review notes or rejection reason">
+                  <button type="button" id="tcAcceptBtn"><i data-lucide="check"></i>Accept</button>
+                  <button type="button" id="tcRejectBtn"><i data-lucide="x"></i>Reject</button>
+                </div>
+
+                <div class="tc-eval-box" id="tcEvalBox" hidden></div>
+              </section>
+            </div>
+          </section>
+        </section>
+
+        <section class="view-panel" data-panel="account">
+          <div class="panel-heading">
+            <div><p class="overline">ACCOUNT / ACCESS</p><h2>Groups & Accounts</h2><p>Manage the current account, group permissions, and knowledge graph visibility.</p></div>
+            <span class="panel-badge">Reserved</span>
+          </div>
+          <div class="empty-workspace"><div class="empty-glyph">◎</div><h3>Account module reserved</h3><p>After login and permission services are connected, manage groups and accounts here.</p></div>
+        </section>
+
+        <section class="view-panel" data-panel="audit">
+          <div class="panel-heading">
+            <div><p class="overline">AUDIT / LOGS</p><h2>Audit Log</h2><p>View related workbench operation records.</p></div>
+            <span class="panel-badge">Reserved</span>
+          </div>
+          <div class="empty-workspace"><div class="empty-glyph">≡</div><h3>Audit log reserved</h3><p>After the audit service is connected, view the audit log here.</p></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal" id="loginModal" hidden>
+    <section class="login-dialog" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="modal-close" id="loginClose" type="button" aria-label="Close">×</button>
+      <p class="overline">ACCOUNT ACCESS</p>
+      <h2 id="loginTitle">Sign in to Knowledge Workbench</h2>
+      <p>Login is provided by the account module. This page already reserves session, permission, and KG filter APIs.</p>
+      <div class="login-status"><i></i>AUTH_SERVICE_URL pending configuration</div>
+      <button class="primary-button" id="loginDone" type="button">Got it</button>
+    </section>
+  </div>
+
+  <div class="modal" id="kgSourceDeleteModal" hidden>
+    <section class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="kgSourceDeleteTitle">
+      <button class="modal-close" id="kgSourceDeleteClose" type="button" aria-label="Close">×</button>
+      <h2 id="kgSourceDeleteTitle">Move to Trash</h2>
+      <p id="kgSourceDeleteMessage">Delete this item? You can restore it from Trash.</p>
+      <div class="confirm-actions">
+        <button type="button" class="ghost-button" id="kgSourceDeleteCancel">Cancel</button>
+        <button class="primary-button danger-button" type="button" id="kgSourceDeleteConfirm">Move to Trash</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="modal" id="graphConnectionDeleteModal" hidden>
+    <section class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="graphConnectionDeleteTitle">
+      <button class="modal-close" id="graphConnectionDeleteClose" type="button" aria-label="Close">×</button>
+      <h2 id="graphConnectionDeleteTitle">Delete Connection</h2>
+      <p id="graphConnectionDeleteMessage">Delete this connection? Changes apply to the graph only after saving.</p>
+      <div class="confirm-actions">
+        <button type="button" class="ghost-button" id="graphConnectionDeleteCancel">Cancel</button>
+        <button class="primary-button danger-button" type="button" id="graphConnectionDeleteConfirm">Delete</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/lucide-local.js') }}?v=20260918-brand-share"></script>
+  <script src="{{ url_for('static', filename='vendor/vis-network.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/platform.js') }}?v=20260922-graph-fix2"></script>
+  <script src="{{ url_for('static', filename='js/ontology-workbench.js') }}?v=20260922-graph-fix2"></script>
+  <script src="{{ url_for('static', filename='js/graph-workbench.js') }}?v=20260922-graph-fix2"></script>
+  <script src="{{ url_for('static', filename='js/qa.js') }}?v=20260917-motion-fix"></script>
+  <script src="{{ url_for('static', filename='js/testcase-workspace.js') }}?v=20260917-motion-fix"></script>
+</body>
+</html>

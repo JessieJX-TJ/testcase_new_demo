@@ -1,0 +1,388 @@
+```json
+[
+  {
+    "head": "Reading Lamp Switch Control",
+    "relation": "precondition",
+    "tail": "Usage Mode is Sleep, Standby, Comfort, Normal Driving, Smart Parking, Smart Driving, XOTA, Engineering, or Factory",
+    "sources": ["inner_lamp_fas_0635"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch Control",
+    "relation": "inhibition_condition",
+    "tail": "Vehicle Mode is Transport",
+    "sources": ["inner_lamp_fas_0635", "inner_lamp_fas_0638"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Brightness Adjustment",
+    "relation": "precondition",
+    "tail": "Usage Mode is Sleep, Standby, Comfort, Normal Driving, Smart Parking, Smart Driving, XOTA, Engineering, or Factory",
+    "sources": ["inner_lamp_fas_0635"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Brightness Adjustment",
+    "relation": "inhibition_condition",
+    "tail": "Vehicle Mode is Transport",
+    "sources": ["inner_lamp_fas_0635"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door-Linked Interior Lamp Activation",
+    "relation": "precondition",
+    "tail": "Usage Mode is Sleep, Standby, Comfort, Normal Driving, Smart Parking, Smart Driving, XOTA, Engineering, or Factory",
+    "sources": ["inner_lamp_fas_0635"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door-Linked Interior Lamp Activation",
+    "relation": "precondition",
+    "tail": "Input from Door Open Trigger (e.g., door ajar signal)",
+    "sources": ["inner_lamp_fas_0635"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door-Linked Interior Lamp Activation",
+    "relation": "inhibition_condition",
+    "tail": "Vehicle Mode is Transport",
+    "sources": ["inner_lamp_fas_0635"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch Control",
+    "relation": "has_priority_over",
+    "tail": "Reading Lamp Brightness Adjustment",
+    "sources": ["inner_lamp_fas_0635"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Brightness Adjustment",
+    "relation": "is_mutually_exclusive_with",
+    "tail": "Reading Lamp Switch Control",
+    "sources": ["inner_lamp_fas_0635"],
+    "conflict": true,
+    "conflict_note": "Mutual exclusivity contradicts priority relationship: if 'Switch Control' has priority, they are not strictly mutually exclusive; rather, switch control may override brightness adjustment. This semantic inconsistency requires clarification in requirements."
+  },
+  {
+    "head": "Reading Lamp Switch Control",
+    "relation": "state_persistence_condition",
+    "tail": "Usage Mode is XOTA or Engineering",
+    "sources": ["inner_lamp_fas_0635"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Brightness Adjustment",
+    "relation": "state_persistence_condition",
+    "tail": "Usage Mode is XOTA or Engineering",
+    "sources": ["inner_lamp_fas_0635"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door-Linked Interior Lamp Activation",
+    "relation": "state_persistence_condition",
+    "tail": "Usage Mode is XOTA or Engineering",
+    "sources": ["inner_lamp_fas_0635"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Light",
+    "relation": "contains_subfunction",
+    "tail": "Z-ONE-3.0 Platform - FAS-IBD02",
+    "sources": ["inner_lamp_fas_0636"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Light",
+    "relation": "precondition",
+    "tail": "Functional Allocation Specification is satisfied",
+    "sources": ["inner_lamp_fas_0636"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch Control",
+    "relation": "depends_on",
+    "tail": "Restriction VP3-25770",
+    "sources": ["inner_lamp_fas_0638"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch Control",
+    "relation": "inhibition_condition",
+    "tail": "ID VP3-142591",
+    "sources": ["inner_lamp_fas_0638"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Welcome Pedal Lamp Activation",
+    "relation": "precondition",
+    "tail": "WlcmPedlLghtLHCtrl module receives activation request",
+    "sources": ["inner_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver Front Welcome Pedal Lamp Activation",
+    "relation": "precondition",
+    "tail": "DrvrWlcmPedlLghtDrv module receives activation request",
+    "sources": ["inner_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Left Welcome Pedal Lamp Activation",
+    "relation": "precondition",
+    "tail": "RLWlcmPedlLghtDrv module receives activation request",
+    "sources": ["inner_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Welcome Pedal Lamp Activation",
+    "relation": "precondition",
+    "tail": "WlcmPedlLghtRHCtrl module receives activation request",
+    "sources": ["inner_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Passenger Welcome Pedal Lamp Activation",
+    "relation": "precondition",
+    "tail": "FrtPsngWlcmPedlLghtDrv module receives activation request",
+    "sources": ["inner_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Welcome Pedal Lamp Activation",
+    "relation": "precondition",
+    "tail": "RRWlcmPedlLghtDrv module receives activation request",
+    "sources": ["inner_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Welcome Pedal Lamp Activation",
+    "relation": "depends_on",
+    "tail": "LHZCU physical module",
+    "sources": ["inner_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver Front Welcome Pedal Lamp Activation",
+    "relation": "depends_on",
+    "tail": "Interior Light Subsystem (LHZCU)",
+    "sources": ["inner_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Left Welcome Pedal Lamp Activation",
+    "relation": "depends_on",
+    "tail": "Interior Light Subsystem (LHZCU)",
+    "sources": ["inner_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Welcome Pedal Lamp Activation",
+    "relation": "depends_on",
+    "tail": "RHZCU physical module",
+    "sources": ["inner_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Passenger Welcome Pedal Lamp Activation",
+    "relation": "depends_on",
+    "tail": "Interior Light Subsystem (RHZCU)",
+    "sources": ["inner_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Welcome Pedal Lamp Activation",
+    "relation": "depends_on",
+    "tail": "Interior Light Subsystem (RHZCU)",
+    "sources": ["inner_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Light Control Function VP3-63070",
+    "relation": "inhibition_condition",
+    "tail": "Reading Lamp Switch Control (VP3-25770)",
+    "sources": ["inner_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFRDimSpd_1",
+    "relation": "output_mapping",
+    "tail": "0x0 → Manual Fast (Speed 1); 0x1 → Speed 2 (Door Open, Slow); 0x2 → Speed 3 (Transient); 0x3 → Reserved",
+    "sources": ["inner_lamp_fas_0643"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRLDimSpd_1",
+    "relation": "output_mapping",
+    "tail": "0x0 → Manual Fast (Speed 1); 0x1 → Speed 2 (Door Open, Slow); 0x2 → Speed 3 (Transient); 0x3 → Reserved",
+    "sources": ["inner_lamp_fas_0643"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRRDimSpd_1",
+    "relation": "output_mapping",
+    "tail": "0x0 → Manual Fast (Speed 1); 0x1 → Speed 2 (Door Open, Slow); 0x2 → Speed 3 (Transient); 0x3 → Reserved",
+    "sources": ["inner_lamp_fas_0643"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Function Execution",
+    "relation": "inhibition_condition",
+    "tail": "FOTA is prohibited during function execution",
+    "sources": ["inner_lamp_fas_0644"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Makeup Mirror Lamp Switch Control",
+    "relation": "contains_subfunction",
+    "tail": "Makeup Mirror Lamp Switch Control (VP3-25757)",
+    "sources": ["inner_lamp_fas_0645"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0 Platform - FAS-IBD02",
+    "relation": "controls",
+    "tail": "Interior Light",
+    "sources": ["inner_lamp_fas_0646"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Light Activation",
+    "relation": "precondition",
+    "tail": "Z-ONE-3.0 Platform - FAS-IBD02 outputs Interior Light Control Signal",
+    "sources": ["inner_lamp_fas_0646"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Brightness Adjustment (VP3-64107)",
+    "relation": "inhibition_condition",
+    "tail": "Restriction VP3-25771",
+    "sources": ["inner_lamp_fas_0648"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehBcklghtngCtrl (LHZCU)",
+    "relation": "trigger_condition",
+    "tail": "Exterior Lighting System provides VehSideLghtSts AND Vehicle State System provides VehMd and VehMdV",
+    "sources": ["inner_lamp_fas_0650"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehllluminateCtrlCmd Generation (LHZCU)",
+    "relation": "trigger_condition",
+    "tail": "Exterior Lighting System provides VehSideLghtSts AND Vehicle State System provides UsG Md and UsG MdV",
+    "sources": ["inner_lamp_fas_0650"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehBcklghtngLHDrv (LHZCU)",
+    "relation": "input_from",
+    "tail": "VehBcklghtngCtrl (LHZCU) output VehBcklghtngCtrlCmd",
+    "sources": ["inner_lamp_fas_0650"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehBcklghtngRHDrv (RHZCU)",
+    "relation": "input_from",
+    "tail": "VehllluminateCtrlCmd Generation (LHZCU)",
+    "sources": ["inner_lamp_fas_0650"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehBcklghtngCtrl (LHZCU)",
+    "relation": "depends_on",
+    "tail": "Exterior Lighting System provides VehSideLghtSts",
+    "sources": ["inner_lamp_fas_0650"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehBcklghtngCtrl (LHZCU)",
+    "relation": "depends_on",
+    "tail": "Vehicle State System provides VehMd, VehMdV, UsG Md, UsG MdV",
+    "sources": ["inner_lamp_fas_0650"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Light Brightness Adjustment",
+    "relation": "precondition",
+    "tail": "Configuration parameter 'Exterior Light Brightness' is set",
+    "sources": ["inner_lamp_fas_0652"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Light Brightness Adjustment",
+    "relation": "precondition",
+    "tail": "Brightness parameter range is 0% to 100%",
+    "sources": ["inner_lamp_fas_0652"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Window Lift Function (Body Control System)",
+    "relation": "trigger_condition",
+    "tail": "Configuration parameter 'Window Lift Speed' is set",
+    "sources": ["inner_lamp_fas_0652"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Window Lift Function (Body Control System)",
+    "relation": "trigger_condition",
+    "tail": "Resolution is configured to 1 mm/s",
+    "sources": ["inner_lamp_fas_0652"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Opening Delay Time",
+    "relation": "depends_on",
+    "tail": "Configuration parameter 'Tailgate Opening Delay Time' with default value 500 ms",
+    "sources": ["inner_lamp_fas_0652"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

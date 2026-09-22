@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"logic_table\",\n  \"topic\": \"整车外灯控制逻辑与状态管理\",\n  \"row_semantics\": \"触发动作和执行动作的详细描述，定义了在特定条件下系统应执行的操作序列\",\n  \"column_semantics\": \"无明确列标题，表格内容分为两部分：左侧为动作类型（触发/执行），右侧为具体操作步骤和条件\",\n  \"has_merged_cells\": true,\n  \"header_levels\": 1,\n  \"core_entities\": [\n    {\n      \"name\": \"ExtrLightCtrlCmmntnTyp\",\n      \"type\": \"controller\",\n      \"description\": \"外部灯光控制通信类型，配置为SOA\"\n    },\n    {\n      \"name\": \"ExtrLightStsCmmntnTyp\",\n      \"type\": \"controller\",\n      \"description\": \"外部灯光状态通信类型，配置为SOA\"\n    },\n    {\n      \"name\": \"LHZCU\",\n      \"type\": \"controller\",\n      \"description\": \"远光灯开关控制模块\"\n    },\n    {\n      \"name\": \"ICB\",\n      \"type\": \"service\",\n      \"description\": \"外灯组合服务接口控制基础服务\"\n    },\n    {\n      \"name\": \"SOA\",\n      \"type\": \"architecture\",\n      \"description\": \"Service-Oriented Architecture，面向服务的架构\"\n  ],\n  \"core_conditions\": [\n    {\n      \"name\": \"UsrMd\",\n      \"type\": \"mode\",\n      \"description\": \"用户模式，包括Sleep、Standby、XOTA等\"\n    },\n    {\n      \"name\": \"VehMd\",\n      \"type\": \"mode\",\n      \"description\": \"车辆模式，包括TRANSPORT、EXHIBITION、FACTORY等\"\n    },\n    {\n      \"name\": \"DippedBeamLightStatus\",\n      \"type\": \"signal\",\n      \"description\": \"近光灯状态反馈\"\n    },\n    {\n      \"name\": \"ExteriorLightSwitchProcess\",\n      \"type\": \"signal\",\n      \"description\": \"外部灯光开关处理过程\"\n    }\n  ],\n  \"core_outputs\": [\n    {\n      \"name\": \"MainBeamLightFucProStatus\",\n      \"type\": \"signal\",\n      \"description\": \"主光灯功能过程状态\"\n    },\n    {\n      \"name\": \"MainBeamLightReq\",\n      \"type\": \"signal\",\n      \"description\": \"主光灯请求信号\"\n    },\n    {\n      \"name\": \"LMainBeamLightCtrl\",\n      \"type\": \"signal\",\n      \"description\": \"左主光灯控制信号\"\n    },\n    {\n      \"name\": \"RMainBeamLightCtrl\",\n      \"type\": \"signal\",\n      \"description\": \"右主光灯控制信号\"\n    }\n  ],\n  \"core_faults\": [],\n  \"core_timing_constraints\": [\n    {\n      \"name\": \"工厂模式下远光灯开启时间\",\n      \"description\": \"在工厂模式下，远光灯开启2分钟\",\n      \"unit\": \"min\"\n    },\n    {\n      \"name\": \"远光灯持续时间\",\n      \"description\": \"远光灯点亮后持续2分钟\",\n      \"unit\": \"min\"\n    }\n  ],\n  \"engineering_interpretation\": \"该表格详细定义了整车外灯（特别是远光灯和近光灯）在不同用户模式和车辆模式下的控制逻辑，以及通过LHZCU和ICB模块进行的信号交互和状态管理，可用于验证外灯控制系统在各种场景下的正确行为。\",\n  \"uncertain_points\": [\n    \"表格中未明确说明所有可能的车辆模式及其转换条件\",\n    \"未详细列出所有可能的故障状态及其处理逻辑\"\n  ]\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

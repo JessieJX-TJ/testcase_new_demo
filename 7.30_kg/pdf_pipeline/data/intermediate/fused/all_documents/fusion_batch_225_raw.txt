@@ -1,0 +1,332 @@
+```json
+[
+  {
+    "head": "Usage Mode is Standby",
+    "relation": "输入为",
+    "tail": "UsgMd_1_Standby",
+    "sources": ["inner_lamp_fas_0590"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Usage Mode is Comfortable",
+    "relation": "输入为",
+    "tail": "UsgMd_2_Comfortable",
+    "sources": ["inner_lamp_fas_0590"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Usage Mode is Normal Driving",
+    "relation": "输入为",
+    "tail": "UsgMd_3_NormalDriving",
+    "sources": ["inner_lamp_fas_0590"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Welcome Floor Lamp",
+    "relation": "触发条件",
+    "tail": "Usage Mode ∈ {Standby, Comfortable, Normal Driving, Smart Parking, Intelligent Driving, XOTA} AND Vehicle Mode = Normal",
+    "sources": ["inner_lamp_fas_0591"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Welcome Floor Lamp",
+    "relation": "抑制条件",
+    "tail": "Vehicle Mode = Maintenance",
+    "sources": ["inner_lamp_fas_0591"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Welcome Floor Lamp",
+    "relation": "依赖于",
+    "tail": "Input: Door Open Lamp Enable (√)",
+    "sources": ["inner_lamp_fas_0591"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Welcome Floor Lamp",
+    "relation": "状态保持条件",
+    "tail": "Usage Mode = Engineering AND Vehicle Mode ∈ {Transport, Loading, Show, Collision}",
+    "sources": ["inner_lamp_fas_0591"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Passenger Door Status",
+    "relation": "输入为",
+    "tail": "FrtPsngDoorOpenSts",
+    "sources": ["inner_lamp_fas_0593"],
+    "conflict": false,
+    "conflict_note": "涵盖完全关闭、微开、部分开启（锁止检测盲区）、完全打开等全部状态语义"
+  },
+  {
+    "head": "Rear Right Door Status",
+    "relation": "输入为",
+    "tail": "RRDoorOpenSts",
+    "sources": ["inner_lamp_fas_0593"],
+    "conflict": false,
+    "conflict_note": "涵盖完全关闭、微开、部分开启（锁止检测盲区）、完全打开等全部状态语义"
+  },
+  {
+    "head": "Front Passenger Door Ambient Light",
+    "relation": "输出为",
+    "tail": "FrtPsngDoorFlorLampCtrlCmd",
+    "sources": ["inner_lamp_fas_0593"],
+    "conflict": false,
+    "conflict_note": "涵盖开启与关闭两种控制状态"
+  },
+  {
+    "head": "User Mode Voltage Validity",
+    "relation": "输入为",
+    "tail": "UsrMdV",
+    "sources": ["inner_lamp_fas_0593"],
+    "conflict": false,
+    "conflict_note": "涵盖有效与无效两种状态语义"
+  },
+  {
+    "head": "Signal Interface",
+    "relation": "依赖于",
+    "tail": "Direction",
+    "sources": ["inner_lamp_fas_0594"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal Interface",
+    "relation": "依赖于",
+    "tail": "Type",
+    "sources": ["inner_lamp_fas_0594"],
+    "conflict": false,
+    "conflict_note": "CAN/LIN/SOA/硬线等通信类型"
+  },
+  {
+    "head": "Signal Interface",
+    "relation": "依赖于",
+    "tail": "Provider",
+    "sources": ["inner_lamp_fas_0594"],
+    "conflict": false,
+    "conflict_note": "信号发送节点或SOA服务提供方"
+  },
+  {
+    "head": "Signal Interface",
+    "relation": "依赖于",
+    "tail": "Consumer",
+    "sources": ["inner_lamp_fas_0594"],
+    "conflict": false,
+    "conflict_note": "信号接收节点或SOA服务消费方"
+  },
+  {
+    "head": "Signal Interface",
+    "relation": "依赖于",
+    "tail": "Path",
+    "sources": ["inner_lamp_fas_0594"],
+    "conflict": false,
+    "conflict_note": "指定信号通道路径"
+  },
+  {
+    "head": "Signal Interface",
+    "relation": "依赖于",
+    "tail": "Interface Source",
+    "sources": ["inner_lamp_fas_0594"],
+    "conflict": false,
+    "conflict_note": "指定信号来源接口"
+  },
+  {
+    "head": "Trunk Lamp Switch Control Function",
+    "relation": "包含子功能",
+    "tail": "VP3-25761",
+    "sources": ["inner_lamp_fas_0595"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VP3-62731",
+    "relation": "控制对象",
+    "tail": "Trunk Lamp Switch Control Function",
+    "sources": ["inner_lamp_fas_0595"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LH Mirror Lamp 15-min Hold",
+    "relation": "前提条件",
+    "tail": "LHZCU Local Hold Enabled",
+    "sources": ["inner_lamp_fas_0596"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LH Mirror Lamp 15-min Hold",
+    "relation": "前提条件",
+    "tail": "LH Mirror Lamp in Standby or Sleep State",
+    "sources": ["inner_lamp_fas_0596"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LH Mirror Lamp 15-min Hold",
+    "relation": "状态保持条件",
+    "tail": "LH Mirror Lamp in Standby or Sleep State",
+    "sources": ["inner_lamp_fas_0596"],
+    "conflict": false,
+    "conflict_note": "与前提条件语义重叠，合并保留"
+  },
+  {
+    "head": "LH Mirror Lamp 15-min Hold",
+    "relation": "超时约束",
+    "tail": "TmdDlyLamp_LH_HSD signal held locally for 15 min",
+    "sources": ["inner_lamp_fas_0596"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Parameters",
+    "relation": "依赖于",
+    "tail": "Configuration Description",
+    "sources": ["inner_lamp_fas_0597"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Parameters",
+    "relation": "依赖于",
+    "tail": "Parameter Range",
+    "sources": ["inner_lamp_fas_0597"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampBrightness",
+    "relation": "前提条件",
+    "tail": "Door-triggered Map Lamp activation (e.g., DoorMapLampXX)",
+    "sources": ["inner_lamp_fas_0598"],
+    "conflict": false,
+    "conflict_note": "适用于 Level20 设置场景"
+  },
+  {
+    "head": "MapLampBrightness",
+    "relation": "前提条件",
+    "tail": "No brightness value requested",
+    "sources": ["inner_lamp_fas_0598"],
+    "conflict": false,
+    "conflict_note": "默认设为 Level20"
+  },
+  {
+    "head": "MapLampBrightness",
+    "relation": "前提条件",
+    "tail": "Intelligent Scenario SOA Request",
+    "sources": ["inner_lamp_fas_0598"],
+    "conflict": false,
+    "conflict_note": "映射至 MapLampService.MapLampBrightness"
+  },
+  {
+    "head": "MapLamp.DimSpeed",
+    "relation": "前提条件",
+    "tail": "Door-triggered Map Lamp activation (e.g., DoorMapLampXX) OR Door Open",
+    "sources": ["inner_lamp_fas_0598"],
+    "conflict": false,
+    "conflict_note": "0x1 值适用场景"
+  },
+  {
+    "head": "MapLamp.DimSpeed",
+    "relation": "前提条件",
+    "tail": "Voice Control OR Screen-based Individual Reading Lamp Toggle",
+    "sources": ["inner_lamp_fas_0598"],
+    "conflict": false,
+    "conflict_note": "0x0 值适用场景"
+  },
+  {
+    "head": "MapLamp.DimSpeed",
+    "relation": "前提条件",
+    "tail": "Intelligent Scenario SOA Request",
+    "sources": ["inner_lamp_fas_0598"],
+    "conflict": false,
+    "conflict_note": "0x0 值适用场景"
+  },
+  {
+    "head": "VP3-142544 Function",
+    "relation": "依赖于",
+    "tail": "Controller VP3-25770",
+    "sources": ["inner_lamp_fas_0599"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VP3-142544 Function",
+    "relation": "前提条件",
+    "tail": "Reading Lamp Switch Control",
+    "sources": ["inner_lamp_fas_0599"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckSts_0_Unlocked",
+    "relation": "输出为",
+    "tail": "0x0",
+    "sources": ["inner_lamp_fas_0600"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckSts_1_Signal_Position_Entry_Unlocked",
+    "relation": "输出为",
+    "tail": "0x1",
+    "sources": ["inner_lamp_fas_0600"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch Control Function",
+    "relation": "控制对象",
+    "tail": "Exterior Lamp Switch",
+    "sources": ["inner_lamp_fas_0602"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch Control Function",
+    "relation": "依赖于",
+    "tail": "Parameter VP3-25770",
+    "sources": ["inner_lamp_fas_0602", "inner_lamp_fas_0613"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Switch Read Function (VP3-63079)",
+    "relation": "前提条件",
+    "tail": "Reading Lamp Switch Control Restriction (VP3-25770) satisfied",
+    "sources": ["inner_lamp_fas_0603"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Light State",
+    "relation": "依赖于",
+    "tail": "RRWlcmPedlLghtCtrlCmd Signal Value",
+    "sources": ["inner_lamp_fas_0604"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRWlcmPedlLghtCtrlCmd Signal",
+    "relation": "输入为",
+    "tail": "RHZCU Module",
+    "sources": ["inner_lamp_fas_0604"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRWlcmPedlLghtCtrlCmd Signal",
+    "relation": "输出为",
+    "tail": "RHZCU Module",
+    "sources": ["inner_lamp_fas_0604"],
+    "conflict": true,
+    "conflict_note": "同一信号既被标记为输入（由其他模块提供给RHZCU），又被标记为输出（由RHZCU发出）；需确认信号流向：若RHZCU是该信号的源节点，则'输入为'关系存在冲突；建议核查信号方向定义"
+  }
+]
+```

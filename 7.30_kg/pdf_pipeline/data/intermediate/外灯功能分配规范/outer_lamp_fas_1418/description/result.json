@@ -1,0 +1,66 @@
+{
+  "table_type": "parameter_table",
+  "topic": "External Light Switch Process",
+  "row_semantics": "Each row represents a specific service interface related to the status and control of exterior lights, particularly direction lights.",
+  "column_semantics": "Columns represent different system components or modules (SOA, LHZCU, ICB) that consume or interact with the service interfaces.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "function",
+      "description": "The overall process for switching external lights."
+    },
+    {
+      "name": "DircnLghtFucProStatus",
+      "type": "service_interface",
+      "description": "Interface for querying the status of direction lights."
+    },
+    {
+      "name": "DirectionLightSta",
+      "type": "service_interface",
+      "description": "Interface for querying the flash state of direction lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DircnLghtFucProSta",
+      "type": "input_parameter",
+      "description": "Parameter for querying the operational status of direction lights.",
+      "values": [
+        "0x0=OFF",
+        "0x1=Left_Direction_Light_On",
+        "0x2=Right_Direction_Light_On",
+        "0x3=Both_Side_Direction_Light_On",
+        "0x4=Unknown"
+      ]
+    },
+    {
+      "name": "DircnLghtSta",
+      "type": "input_parameter",
+      "description": "Parameter for querying the flash state of direction lights.",
+      "values": [
+        "0x0=No_Flash",
+        "0x1=Left_Direction_Light_Flash",
+        "0x2=Right_Direction_Light_Flash",
+        "0x3=Both_Side_Direction_Light_Flash"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ControlSuccess",
+      "type": "output_status",
+      "description": "Indicates whether the control operation was successful."
+    },
+    {
+      "name": "Failed",
+      "type": "output_status",
+      "description": "Indicates whether the control operation failed."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and statuses for querying the operational and flash states of direction lights within the Exterior Light Switch Process. It is used to verify the correct functionality and response of the system when querying the status of direction lights.",
+  "uncertain_points": []
+}

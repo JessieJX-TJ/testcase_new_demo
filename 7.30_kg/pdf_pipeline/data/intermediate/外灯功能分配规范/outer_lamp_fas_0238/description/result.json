@@ -1,0 +1,43 @@
+{
+  "table_type": "other",
+  "topic": "外灯控制系统的同步性与重发机制需求",
+  "row_semantics": "表格中的每一行代表一个独立的控制或通信机制需求，涵盖了位置灯的同步点亮、组合灯光请求的重发逻辑以及外灯状态主动获取的流程。",
+  "column_semantics": "表格仅有一列，详细描述了各项功能的具体要求和参数。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB",
+    "ExteriorLightControlSystem",
+    "SidePositionLight",
+    "LHZCU",
+    "ICB_S32G_M",
+    "ICB_8295"
+  ],
+  "core_conditions": [
+    "位置灯开启同步性要求",
+    "组合灯光请求重发机制",
+    "位置灯请求重发机制",
+    "外灯状态主动获取"
+  ],
+  "core_outputs": [
+    "ControlCombinedLightReq",
+    "ControlCombinedLightResp",
+    "SidePositionLightReq",
+    "SidePositionLightResp",
+    "Onchange外灯状态服务"
+  ],
+  "core_faults": [
+    "超时未收到反馈",
+    "尝试重发3次后仍未反馈成功"
+  ],
+  "core_timing_constraints": [
+    "两侧最大延时不能超过40ms",
+    "<=50ms周期重发3次",
+    "500ms（待确认）"
+  ],
+  "engineering_interpretation": "该表格定义了整车外灯控制系统中，包括位置灯同步点亮、组合灯光及位置灯请求的重发机制，以及外灯状态主动获取的详细规范，可用于验证外灯控制系统的通信可靠性和响应及时性。",
+  "uncertain_points": [
+    "500ms定时的具体含义和作用尚未明确",
+    "表格中未明确列出所有可能的输入信号和系统状态"
+  ]
+}

@@ -1,0 +1,36 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "Dipped Beam Light Error Status",
+  "row_semantics": "Each row represents a specific service interface for querying the error status of either the right-side or left-side dipped beam light.",
+  "column_semantics": {
+    "1": "Function Name (DippedBeamLight.DippedBeamLightErrorStatus)",
+    "2": "Consumption Type (SOA)",
+    "3": "Controller/Module (RHZCU for right side, ICB for left side)",
+    "4": "Controller/Module (LHZCU for right side, LHZCU for left side)",
+    "5": "Uncertain",
+    "6": "Hardware Fault Status (for right side) / Network Fault Status (for left side)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "DippedBeamLight"
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    "No Error",
+    "Error",
+    "Unknown"
+  ],
+  "core_faults": [
+    "Hardware Fault",
+    "Network Fault"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the error status interfaces for both right and left dipped beam lights, specifying the expected return values (No Error, Error, Unknown) from different controllers/modules. It is used to verify that the system correctly reports the fault status of each dipped beam light under various conditions.",
+  "uncertain_points": [
+    "The exact meaning of 'InstanceID' and its role in the error status query is not explicitly defined in the table.",
+    "The purpose of the fifth column ('Uncertain') is not clearly stated."
+  ]
+}
+```

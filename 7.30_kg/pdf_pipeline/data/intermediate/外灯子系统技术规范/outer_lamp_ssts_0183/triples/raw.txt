@@ -1,0 +1,85 @@
+```json
+[
+  {
+    "head": "主远光灯功能启用",
+    "relation": "触发条件",
+    "tail": "收到【MainBeamLghtCtrlMdl】统一分发的LMainBeamLghtCtrl_HW==1 (On)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "MainBeamLghtCtrlMdl",
+      "LMainBeamLghtCtrl_HW",
+      "On"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主远光灯功能禁用",
+    "relation": "退出条件",
+    "tail": "收到【MainBeamLghtCtrlMd1】发送的LMainBeamLghtCtrl_HW==0 (Off)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "MainBeamLghtCtrlMd1",
+      "LMainBeamLghtCtrl_HW",
+      "Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯输出点亮",
+    "relation": "执行动作",
+    "tail": "【LMainBeamLghtDrvMdl】持续驱动左远光灯输出 (MainBeamHdlmp_LH_HSD)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "LMainBeamLghtDrvMdl",
+      "MainBeamHdlmp_LH_HSD"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主远光灯状态信号发送",
+    "relation": "执行动作",
+    "tail": "【LMainBeamLghtDrvMdl】持续发送LMainBeamLghtSts=1 (On)至【MainBeamLghtCtrlMdl】，至少发送三帧",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "LMainBeamLghtDrvMdl",
+      "LMainBeamLghtSts",
+      "MainBeamLghtCtrlMdl",
+      "三帧"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主远光灯功能禁用",
+    "relation": "前提条件",
+    "tail": "1.MainBeamLghtFbkSOAEnPrm==0 (Disable)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "MainBeamLghtFbkSOAEnPrm",
+      "Disable"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主远光灯状态信号发送",
+    "relation": "依赖于",
+    "tail": "主远光灯功能启用",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "主远光灯功能启用",
+      "LMainBeamLghtSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯输出点亮",
+    "relation": "依赖于",
+    "tail": "主远光灯功能启用",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "主远光灯功能启用",
+      "MainBeamHdlmp_LH_HSD"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

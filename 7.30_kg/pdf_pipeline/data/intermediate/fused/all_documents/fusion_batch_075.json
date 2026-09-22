@@ -1,0 +1,617 @@
+[
+  {
+    "head": "ExteriorLightControlSystem.SidePositionLightErrSts",
+    "relation": "dependsOn",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0798"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlService.ICB",
+    "relation": "controls",
+    "tail": "LHA",
+    "sources": [
+      "outer_lamp_fas_0800",
+      "outer_lamp_fas_1042"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlService.ICB",
+    "relation": "controls",
+    "tail": "RHA",
+    "sources": [
+      "outer_lamp_fas_0800",
+      "outer_lamp_fas_1042"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlService.ICB",
+    "relation": "controls",
+    "tail": "TailLpAsmbA_RH",
+    "sources": [
+      "outer_lamp_fas_0800"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlService.ICB",
+    "relation": "controls",
+    "tail": "TailLpAsmbA_LH",
+    "sources": [
+      "outer_lamp_fas_0800"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlService.ICB",
+    "relation": "controls",
+    "tail": "TailLpAsmbB",
+    "sources": [
+      "outer_lamp_fas_0800"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "receivesFrom",
+    "tail": "ExteriorLightControlService.ICB",
+    "sources": [
+      "outer_lamp_fas_0800"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "receivesFrom",
+    "tail": "ExteriorLightControlService.ICB",
+    "sources": [
+      "outer_lamp_fas_0800"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "sendsTo",
+    "tail": "TailLpAsmbA_LH",
+    "sources": [
+      "outer_lamp_fas_0800"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "sendsTo",
+    "tail": "TailLpAsmbB",
+    "sources": [
+      "outer_lamp_fas_0800"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "sendsTo",
+    "tail": "TailLpAsmbA_RH",
+    "sources": [
+      "outer_lamp_fas_0800"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightOutput",
+    "relation": "triggeredBy",
+    "tail": "CstRgtnBrkLgtReq = 0x1 (CstRgtnBrkLgtReq_1_Request)",
+    "sources": [
+      "outer_lamp_fas_0801"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightOutput",
+    "relation": "triggeredBy",
+    "tail": "CstRgtnBrkLgtReqV = 0x0 (CstRgtnBrkLgtReqV_0_Valid)",
+    "sources": [
+      "outer_lamp_fas_0801"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightOutput",
+    "relation": "requires",
+    "tail": "BalanceID = 1 OR BalanceID = 2",
+    "sources": [
+      "outer_lamp_fas_0801"
+    ],
+    "conflict": true,
+    "conflict_note": "BalanceID=1 和 BalanceID=2 是互斥条件，但同为前提；需确认是否为‘或’关系，或存在未声明的上下文分区（如左/右制动系统）"
+  },
+  {
+    "head": "ExtrLghtCtrlCmmntnTyp",
+    "relation": "configuredAs",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_0801",
+      "outer_lamp_fas_0810"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtCtrlCmmntnTyp",
+    "relation": "configuredAs",
+    "tail": "CAN",
+    "sources": [
+      "outer_lamp_fas_0801",
+      "outer_lamp_fas_0810"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtCtrlCmmntnTyp",
+    "relation": "priorityOver",
+    "tail": "CAN",
+    "sources": [
+      "outer_lamp_fas_0810"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtCtrlCmmntnTyp",
+    "relation": "mutuallyExclusiveWith",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_0810"
+    ],
+    "conflict": true,
+    "conflict_note": "与 'ExtrLghtCtrlCmmntnTyp configuredAs SOA' 冲突：同一配置项不能既互斥又可配置为两者；需澄清 'mutuallyExclusiveWith' 是否指运行时模式切换约束而非静态配置"
+  },
+  {
+    "head": "ExtrLghtStsCmmntnTyp",
+    "relation": "configuredAs",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_0810"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtStsCmmntnTyp",
+    "relation": "configuredAs",
+    "tail": "CAN",
+    "sources": [
+      "outer_lamp_fas_0810"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlService.ICB",
+    "relation": "receivesInput",
+    "tail": "LHZCU.DircnLghtSwSts (CAN signal)",
+    "sources": [
+      "outer_lamp_fas_0802"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlService.ICB",
+    "relation": "dependsOn",
+    "tail": "ExteriorLightControlService.ICB receivesInput LHZCU.DircnLghtSwSts (CAN signal)",
+    "sources": [
+      "outer_lamp_fas_0802"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "sendsTo",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0802"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "sendsTo",
+    "tail": "SDM",
+    "sources": [
+      "outer_lamp_fas_0802"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtExitSynchronization",
+    "relation": "timeoutConstraint",
+    "tail": "Icon blink frequency, audible alert, and physical turn signal must exit synchronously; max allowed delay = 50ms",
+    "sources": [
+      "outer_lamp_fas_0802"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtExitSynchronization",
+    "relation": "timeoutConstraint",
+    "tail": "Single-side turn signal deactivation max delay = 40ms",
+    "sources": [
+      "outer_lamp_fas_0802"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightStatus",
+    "relation": "triggeredBy",
+    "tail": "DippedBeamLightStatus service invocation",
+    "sources": [
+      "outer_lamp_fas_0803"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightErrorStatus",
+    "relation": "triggeredBy",
+    "tail": "DippedBeamLightErrorStatus service invocation",
+    "sources": [
+      "outer_lamp_fas_0803",
+      "outer_lamp_fas_1286"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightStatus",
+    "relation": "outputs",
+    "tail": "0x0=OFF; 0x1=ON; 0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_0803"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightErrorStatus",
+    "relation": "outputs",
+    "tail": "Hardwire fault status",
+    "sources": [
+      "outer_lamp_fas_0803"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightExit",
+    "relation": "triggeredBy",
+    "tail": "User operation via main beam stalk switch",
+    "sources": [
+      "outer_lamp_fas_0804"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightExit",
+    "relation": "requires",
+    "tail": "MainBeamLight is active",
+    "sources": [
+      "outer_lamp_fas_0804"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU.MainBeamLightControlModule",
+    "relation": "triggeredBy",
+    "tail": "MainBeamLghtOnReq = 0x1 (MainBeamLghtSwReq_1_On)",
+    "sources": [
+      "outer_lamp_fas_0804"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlService.ICB",
+    "relation": "triggeredBy",
+    "tail": "LHZCU.MainBeamLightControlModule signal transition to OFF",
+    "sources": [
+      "outer_lamp_fas_0804"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "triggeredBy",
+    "tail": "ExteriorLightControlService.ICB triggers basic services",
+    "sources": [
+      "outer_lamp_fas_0804"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "receivesInput",
+    "tail": "LHZCU.MainBeamLghtOnReq",
+    "sources": [
+      "outer_lamp_fas_0804"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU/RHZCU.MainBeamDriverModule",
+    "relation": "triggeredBy",
+    "tail": "ICB receivesInput LHZCU.MainBeamLghtOnReq",
+    "sources": [
+      "outer_lamp_fas_0804"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU/RHZCU.MainBeamDriverModule",
+    "relation": "activates",
+    "tail": "Hard main beam output",
+    "sources": [
+      "outer_lamp_fas_0804"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InstrumentCluster",
+    "relation": "displays",
+    "tail": "MainBeamLightExit indicator",
+    "sources": [
+      "outer_lamp_fas_0804"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightActivation",
+    "relation": "requires",
+    "tail": "UsgMd ∈ {Sleep, Standby}",
+    "sources": [
+      "outer_lamp_fas_0805"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightActivation",
+    "relation": "requires",
+    "tail": "VehMd = TransportMode",
+    "sources": [
+      "outer_lamp_fas_0805"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightActivation",
+    "relation": "requires",
+    "tail": "All side position lamp instances (1–8) = ON",
+    "sources": [
+      "outer_lamp_fas_0805"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightActivation",
+    "relation": "requires",
+    "tail": "LHZCU lighting function mode = SidePosition + Flashing",
+    "sources": [
+      "outer_lamp_fas_0805"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightActivation",
+    "relation": "triggeredBy",
+    "tail": "S32G receives headlight switch request from ICB",
+    "sources": [
+      "outer_lamp_fas_0805"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightActivation",
+    "relation": "outputs",
+    "tail": "ExteriorLightControlSystem sends DippedBeamLight ON request",
+    "sources": [
+      "outer_lamp_fas_0805"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightActivation",
+    "relation": "outputs",
+    "tail": "LHZCU returns control success response",
+    "sources": [
+      "outer_lamp_fas_0805"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightActivation",
+    "relation": "dependsOn",
+    "tail": "ExteriorLightControlService.ICB",
+    "sources": [
+      "outer_lamp_fas_0805"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightActivation",
+    "relation": "dependsOn",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0805"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLghtAcFltsts",
+    "relation": "inputAt",
+    "tail": "Address_0x0 → RearFogLghtAcFltsts_0_False",
+    "sources": [
+      "outer_lamp_fas_0808"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLghtAcFltsts",
+    "relation": "inputAt",
+    "tail": "Address_0x1 → RearFogLghtAcFltsts_1_True",
+    "sources": [
+      "outer_lamp_fas_0808"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwReq",
+    "relation": "triggeredBy",
+    "tail": "BrkLghtSwReq = 0x1 (BrkLghtSwReq_1_On) from LHZCU brake switch preprocessing module",
+    "sources": [
+      "outer_lamp_fas_0810"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControl",
+    "relation": "configuredVia",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_0810"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControl",
+    "relation": "configuredVia",
+    "tail": "CAN",
+    "sources": [
+      "outer_lamp_fas_0810"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightStatusFeedback",
+    "relation": "configuredVia",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_0810"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightStatusFeedback",
+    "relation": "configuredVia",
+    "tail": "CAN",
+    "sources": [
+      "outer_lamp_fas_0810"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControlLogic",
+    "relation": "enabledBy",
+    "tail": "BrkLghtSwReq = 0x1 (BrkLghtSwReq_1_On) from LHZCU brake switch preprocessing module",
+    "sources": [
+      "outer_lamp_fas_0810"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU.MainBeamLightControlModule",
+    "relation": "sendsTo",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0811"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU.MainBeamLightControlModule",
+    "relation": "sendsTo",
+    "tail": "SDM",
+    "sources": [
+      "outer_lamp_fas_0811"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU.MainBeamLightControlModule",
+    "relation": "outputs",
+    "tail": "MainBeamLghtSwSts = 0x2 (MainBeamLghtSwSts_2_Flash)",
+    "sources": [
+      "outer_lamp_fas_0811"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU.MainBeamLightControlModule",
+    "relation": "outputs",
+    "tail": "MainBeamLghtSts = 0x1 (MainBeamLghtSts_1_On)",
+    "sources": [
+      "outer_lamp_fas_0811"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU.MainBeamLightControlModule",
+    "relation": "outputs",
+    "tail": "MainBeamLghtFltSts = 0x0 (MainBeamLghtFltSts_0_False)",
+    "sources": [
+      "outer_lamp_fas_0811"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

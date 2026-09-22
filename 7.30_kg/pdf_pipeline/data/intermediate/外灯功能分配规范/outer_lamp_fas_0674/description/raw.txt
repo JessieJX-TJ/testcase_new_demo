@@ -1,0 +1,74 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "整车外灯控制与状态查询功能规范",
+  "row_semantics": "表格按功能模块（Service Interface）进行组织，每一行代表一个独立的接口或服务。",
+  "column_semantics": {
+    "功能名": "描述该行所对应的接口名称及其功能。",
+    "消费": "表示该接口是否被其他系统或模块调用（Consumption）。",
+    "SOA": "Service-Oriented Architecture，表示该接口是否支持面向服务架构。",
+    "RZCU": "Right Zone Control Unit，右区域控制单元。",
+    "ICB": "Integrated Control Board，集成控制板。",
+    "LHZCU": "Left Half Zone Control Unit，左半区域控制单元。",
+    "内部通讯": "表示该接口是否涉及内部通信。",
+    "硬线状态": "表示该接口是否通过硬线信号传输状态。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SidePositionLight.ControlSidePositionLight",
+      "description": "用于控制车辆右侧后位置灯的点亮或熄灭。",
+      "controller": "不确定 (未明确指定)",
+      "input_signals": [
+        {
+          "name": "InstanceID",
+          "type": "integer",
+          "description": "实例标识符，用于区分不同的控制请求。",
+          "values": {
+            "0x0": "OFF",
+            "0x1": "ON"
+          }
+        }
+      ],
+      "output_signals": [],
+      "system_states": [],
+      "modes": [],
+      "faults": [],
+      "timing_constraints": []
+    },
+    {
+      "name": "DippedBeamLight.DippedBeamLightStatus",
+      "description": "用于获取车辆左侧近光灯的状态。",
+      "controller": "不确定 (未明确指定)",
+      "input_signals": [],
+      "output_signals": [
+        {
+          "name": "InstanceID",
+          "type": "integer",
+          "description": "实例标识符。",
+          "values": {
+            "0x0": "OFF",
+            "0x1": "ON",
+            "0x2": "Error",
+            "0x3": "Unknown"
+          }
+        }
+      ],
+      "system_states": [],
+      "modes": [],
+      "faults": [],
+      "timing_constraints": []
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯控制系统中两个核心接口的功能、参数及交互要求，可用于验证侧位灯的控制逻辑和近光灯状态查询的正确性。",
+  "uncertain_points": [
+    "控制器/模块名称未明确列出",
+    "具体实现细节（如通信协议、触发条件等）未提供"
+  ]
+}
+```

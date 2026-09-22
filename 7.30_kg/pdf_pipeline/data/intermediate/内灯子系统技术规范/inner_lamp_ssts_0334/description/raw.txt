@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - Breath Mode Rate13 and Rate15 Adjustment",
+  "row_semantics": "Time-based brightness adjustment parameters for two different breath modes (Rate13 and Rate15)",
+  "column_semantics": {
+    "Rate13": {
+      "description": "Brightness levels for Rate13 mode, with 200 data points sampled every 40ms over an 8-second period",
+      "units": "Brightness level (0-32, where 32 represents 100% brightness)"
+    },
+    "Rate15": {
+      "description": "Brightness levels for Rate15 mode, with 120 data points sampled every 100ms over a 12-second period",
+      "units": "Brightness level (0-32, where 32 represents 1000 nits at 100% brightness)"
+    }
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "Interior Lighting Sub System",
+      "type": "subsystem",
+      "description": "The interior lighting system responsible for controlling the breathing pattern of the interior lights"
+    },
+    {
+      "name": "Z-ONE-3.0 Platform",
+      "type": "platform",
+      "description": "The underlying hardware and software platform on which the interior lighting system operates"
+    },
+    {
+      "name": "SSTS-IBD10",
+      "type": "controller/module",
+      "description": "The specific controller or module responsible for managing the interior lighting functions"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breath Mode",
+      "type": "mode",
+      "description": "Two distinct breathing modes (Rate13 and Rate15) that define the timing and brightness profile of the interior lights",
+      "values": [
+        {
+          "name": "Rate13",
+          "description": "A faster breathing mode with 200 steps over 8 seconds"
+        },
+        {
+          "name": "Rate15",
+          "description": "A slower breathing mode with 120 steps over 12 seconds"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Brightness Level",
+      "type": "signal",
+      "description": "The output brightness level of the interior lights, ranging from 0 to 32",
+      "units": "Brightness level (0-32)"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Sample Interval",
+      "description": "The time interval between each brightness adjustment step",
+      "Rate13": "40ms",
+      "Rate15": "100ms"
+    },
+    {
+      "name": "Duration",
+      "description": "The total time duration for each breath cycle",
+      "Rate13": "8 seconds",
+      "Rate15": "12 seconds"
+    }
+  ],
+  "engineering_interpretation": "This table defines the brightness profiles for two breathing modes (Rate13 and Rate15) used in the interior lighting system. It can be used to verify that the SSTS-IBD10 controller correctly implements the specified brightness levels over time for both modes, ensuring consistent and expected visual effects during operation.",
+  "uncertain_points": []
+}
+```

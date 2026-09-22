@@ -1,0 +1,67 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) - 转向灯状态与模式控制",
+  "row_semantics": "表格的每一行代表一个具体的转向灯或双闪灯的状态/模式变量，描述其输出信号的定义及其相关的控制模块。",
+  "column_semantics": "表格的列定义了信号的属性，包括信号名称、输出类型、涉及的控制器/模块以及网络状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DircnLghtMdSts",
+      "type": "mode",
+      "description": "双闪灯闪烁模式"
+    },
+    {
+      "name": "FLDircnLghtSts",
+      "type": "state",
+      "description": "左前转向灯状态"
+    },
+    {
+      "name": "FRDircnLghtSts",
+      "type": "state",
+      "description": "右前转向灯状态"
+    },
+    {
+      "name": "RLDircnLghtSts",
+      "type": "state",
+      "description": "左后转向灯状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DircnLghtMdSts",
+      "value_definitions": {
+        "0x0": "Enabled",
+        "0x1": "Disabled"
+      }
+    },
+    {
+      "name": "FLDircnLghtSts",
+      "value_definitions": {
+        "0x0": "Off",
+        "0x1": "On"
+      }
+    },
+    {
+      "name": "FRDircnLghtSts",
+      "value_definitions": {
+        "0x0": "Off",
+        "0x1": "On"
+      }
+    },
+    {
+      "name": "RLDircnLghtSts",
+      "value_definitions": {
+        "0x0": "Off",
+        "0x1": "On"
+      }
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证车辆外灯系统中转向灯和双闪灯的状态与模式控制逻辑，确保各灯状态信号在不同控制器（如CANFD、ICB、LHZCU等）间的正确输出和交互。",
+  "uncertain_points": []
+}
+```

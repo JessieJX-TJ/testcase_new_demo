@@ -1,0 +1,70 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Day Running Light (DRL) System Status and Error Monitoring",
+  "row_semantics": "Each row represents a specific service interface or parameter related to the Day Running Light system, detailing its state or error status.",
+  "column_semantics": {
+    "A": "Function/Service Name",
+    "B": "Consumption Type (e.g., SOA, ICB)",
+    "C": "Interface Name",
+    "D": "Parameter Name",
+    "E": "Instance ID",
+    "F": "Description/Usage",
+    "G-H": "Reserved for future use or system-specific information"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DayRunningLight",
+      "type": "function",
+      "description": "Main function controlling the Day Running Light system."
+    },
+    {
+      "name": "DayRunningLightState",
+      "type": "controller_module",
+      "description": "Module responsible for monitoring and reporting the operational state of the DRL."
+    },
+    {
+      "name": "DayRunningLightErrorStatus",
+      "type": "controller_module",
+      "description": "Module responsible for monitoring and reporting fault conditions of the DRL."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DayRunningLightSta",
+      "type": "input_signal",
+      "description": "Current state of the Day Running Light (OFF, ON, Unknown)."
+    },
+    {
+      "name": "DayRunningLightErrorSta",
+      "type": "input_signal",
+      "description": "Current error status of the Day Running Light (not explicitly defined in the table)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DayRunningLightState",
+      "type": "output_signal",
+      "description": "Reports the current operational state of the right-side DRL."
+    },
+    {
+      "name": "DayRunningLightErrorStatus",
+      "type": "output_signal",
+      "description": "Reports the fault status of the left-side DRL."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Unknown",
+      "type": "fault_status",
+      "description": "Indicates an undefined or unidentifiable state of the DRL."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and interfaces for monitoring the state and error conditions of the Day Running Light system, enabling verification of correct DRL operation and fault detection.",
+  "uncertain_points": [
+    "The exact meaning and behavior of 'Unknown' state is not fully specified.",
+    "The purpose of columns G and H is reserved and not defined in the table."
+  ]
+}

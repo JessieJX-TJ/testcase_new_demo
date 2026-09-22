@@ -1,0 +1,152 @@
+[
+  {
+    "head": "DoorRL1LampOnOff_1 控制信号使 rear left door ambient lamp 开启",
+    "relation": "触发条件",
+    "tail": "接收到 LIN 信号,其值为 0x1=DoorRL1LampOnOff_1_1_ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL1LampOnOff_1",
+      "LIN",
+      "0x1=DoorRL1LampOnOff_1_1_ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0446",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "DoorRL1LampOnOff_1 控制信号使 rear left door ambient lamp 关闭",
+    "relation": "触发条件",
+    "tail": "接收到 LIN 信号,其值为 0x0=DoorRL1LampOnOff_1_0_OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL1LampOnOff_1",
+      "LIN",
+      "0x0=DoorRL1LampOnOff_1_0_OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0446",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "rear left door ambient lamp 点亮 ON",
+    "relation": "前提条件",
+    "tail": "同时接收到非 0 值的颜色亮度指令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "点亮ON",
+      "颜色亮度指令",
+      "非0值"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0446",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "DoorRL1LampColorCmd_1 控制信号设置 rear left door ambient lamp 颜色",
+    "relation": "触发条件",
+    "tail": "接收到 LIN 信号,其值范围为 0x01-0xFF(表示各个颜色值)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL1LampColorCmd_1",
+      "LIN",
+      "0x01-0xFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0446",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "DoorRL1LampColorCmd_1 控制信号保持 rear left door ambient lamp 颜色不变",
+    "relation": "状态保持条件",
+    "tail": "接收到 LIN 信号,其值为 0x00=DoorRL1LampColorCmd_1_0_No Request",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL1LampColorCmd_1",
+      "LIN",
+      "0x00=DoorRL1LampColorCmd_1_0_No Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0446",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "DoorRL1LampBrtnsCmd_1 控制信号调节 rear left door ambient lamp 亮度",
+    "relation": "触发条件",
+    "tail": "接收到 LIN 信号,其值范围为 0x65-0xFF(Reserved)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL1LampBrtnsCmd_1",
+      "LIN",
+      "0x65-0xFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0446",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "DoorRL1LampBrtnsCmd_1 控制信号保持 rear left door ambient lamp 亮度不变",
+    "relation": "状态保持条件",
+    "tail": "接收到 LIN 信号,其值为 0x00=No Request 或 0x00=DoorRL1LampBrtnsCmd_1_0_No Request",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL1LampBrtnsCmd_1",
+      "LIN",
+      "0x00=No Request",
+      "0x00=DoorRL1LampBrtnsCmd_1_0_No Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0446",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "DoorRL1LampBrthngCmd_1 控制信号设置 rear left door ambient lamp 呼吸速率",
+    "relation": "触发条件",
+    "tail": "接收到 LIN 信号,其值范围为 0x01-0xF(对应 Rate1-Rate15)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL1LampBrthngCmd_1",
+      "LIN",
+      "0x01-0xF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0446",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "DoorRL1LampBrthngCmd_1 控制信号保持 rear left door ambient lamp 呼吸速率不变",
+    "relation": "状态保持条件",
+    "tail": "接收到 LIN 信号,其值为 0x00=DoorRL1LampBrthngCmd_1_0_No Request",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL1LampBrthngCmd_1",
+      "LIN",
+      "0x00=DoorRL1LampBrthngCmd_1_0_No Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0446",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "DoorRL1LampOnOff_1 控制信号与 DoorRL1LampColorCmd_1 控制信号",
+    "relation": "与...互斥",
+    "tail": "在同一时间不能同时有效控制同一个灯的状态(根据上下文推断)",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "DoorRL1LampOnOff_1",
+      "DoorRL1LampColorCmd_1"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_ssts_0446",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  }
+]

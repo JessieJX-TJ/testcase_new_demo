@@ -1,0 +1,54 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车电子电器系统接口定义与通信规范",
+  "row_semantics": "表格中的每一行代表一个具体的接口定义，描述了该接口的名称、方向、类型、发送方/提供方、接收方/消费方、路径以及接口来源。",
+  "column_semantics": {
+    "Interface Name": "接口的唯一标识名称，用于识别特定的通信或控制点。",
+    "Direction": "接口的数据流向，如输入（Input）、输出（Output）或双向（Bidirectional）。",
+    "Type": "接口的类型，例如信号类型（Signal）、数据类型（Data）或控制类型（Control）。",
+    "Providing Party": "负责提供该接口数据或控制信号的实体，通常是某个控制器或模块。",
+    "Consuming Party": "负责接收和使用该接口数据或控制信号的实体，通常是另一个控制器或模块。",
+    "Channel": "接口数据传输的物理或逻辑通道，如CAN总线、LIN总线或其他专用通信链路。",
+    "Source": "接口的来源，可能是硬件模块、软件功能或外部系统。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Interface Name",
+      "type": "function",
+      "description": "接口的唯一标识名称，用于识别特定的通信或控制点。"
+    },
+    {
+      "name": "Controller/Module",
+      "type": "controller",
+      "description": "负责提供或接收接口数据的控制器或模块。"
+    },
+    {
+      "name": "Providing Party",
+      "type": "input_signal",
+      "description": "负责提供接口数据的实体，通常是控制器或模块。"
+    },
+    {
+      "name": "Consuming Party",
+      "type": "output_signal",
+      "description": "负责接收和使用接口数据的实体，通常是控制器或模块。"
+    },
+    {
+      "name": "Channel",
+      "type": "communication_path",
+      "description": "接口数据传输的物理或逻辑通道。"
+    },
+    {
+      "name": "Source",
+      "type": "system_component",
+      "description": "接口的来源，可能是硬件模块、软件功能或外部系统。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "这张表可用于验证整车电子电器系统中各接口的定义是否正确，包括接口名称、方向、类型、通信路径及来源等信息，确保系统各模块之间的通信接口符合设计规范。",
+  "uncertain_points": []
+}

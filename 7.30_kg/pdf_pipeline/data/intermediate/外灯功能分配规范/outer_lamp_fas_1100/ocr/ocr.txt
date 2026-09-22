@@ -1,0 +1,24 @@
+对应发送
+TrlrRrFogLghtOnReq=0x1=TrlrRrFogLghtOnReq_1_On(或
+0x0=TrlrRrFogLghtOnReq_0_Off;),给TDM
+4、TDM根据接收到的:
+0x0=TrlrRrFogLghtOnReq_0_Off;),控制拖车后雾灯点亮(或熄灭)
+5、TDM将拖车后雾灯状态和故障状态反馈给RZCU:
+TrlrRrFogLghtSts=0x1=TrlrRrFogLghtSts_1_On(或
+0x0=TrlrRrFogLghtSts_0_Off)
+TrlrRrFogLghtFltSts=0x0=TrlrRrFogLghtFltSts_0_False
+6、RZCU根据接收到的TDM反馈对应反馈后雾灯点亮及故障状态:
+{RearFogLight. RearFogLightState. RearFogLightSta}=0x1=ON(或
+0x0=OFF)
+{RearFogLight. RearFogLightErrorStatus. RearFogLightErrorSta}=0x0=No
+Error
+7、LHZCU将后雾灯状态给ICB:
+{ExteriorLightSwitchProcess.RearFogLightSta.RearFogLghtSta}=0x1=ON(或
+{ExteriorLightSwitchProcess. RearFogLightErrSta.
+RearFogLightErrorSta}=0x0=No Error
+8、[外灯组合服务ICB]订阅并透传:
+{ExteriorLightControlSystem. RearFogLightSts. RearFogLghtSts}=0x1=On 或
+{ExteriorLightControlSystem. RearFogLightErrSta. RearFogLghtErrSta}=
+0x0=No Error
+备注
+1、ICB外灯请求服务重发机制参考前车

@@ -1,0 +1,44 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Light Function Allocation Specification",
+  "row_semantics": "Each row represents a specific control command or status for interior lighting, detailing its function and associated control units.",
+  "column_semantics": "Columns define the signal name, its output type (e.g., Output, Internal), and the corresponding Control Unit (CU) responsible for processing or executing the command.",
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "FtwlLampFLCtrlCmd",
+      "type": "Signal",
+      "description": "Front Interior Lamp Flashing Control Command"
+    },
+    {
+      "name": "FtwlLampFROnOff",
+      "type": "Signal",
+      "description": "Front Interior Lamp Front Right On/Off Command"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "Level 2 to Level 30",
+      "description": "Brightness levels for the interior lamp, ranging from 0x2 (Level 2) to 0x1E (Level 30)."
+    },
+    {
+      "name": "OFF/ON",
+      "description": "Binary states for turning the lamp on or off."
+    },
+    {
+      "name": "Reserved",
+      "description": "A reserved value (0x1F for FtwlLampFLCtrlCmd and 0x2 for FtwlLampFROnOff) indicating an undefined or future use."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table specifies the functional allocation for controlling interior lights, defining the commands and their associated control units. It can be used to verify that the correct control signals are sent to the appropriate CU (LHZCU, RHZCU) for managing the brightness levels and on/off states of the interior lamps.",
+  "uncertain_points": [
+    "The exact behavior of the 'Reserved' values is not defined in this specification.",
+    "The specific timing or sequence requirements for these commands are not detailed."
+  ]
+}
+```

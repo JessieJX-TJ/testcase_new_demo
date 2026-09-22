@@ -1,0 +1,95 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior lamp function) 的信号分配规范",
+  "row_semantics": "每一行代表一个信号或信号组的定义，包括其名称、类型（输入/输出）、提供方/消费方、通道及来源。",
+  "column_semantics": {
+    "n": "序号或编号",
+    "输入/输出/提供/消费": "信号的方向性描述",
+    "CAN/LIN/SOA服务/硬线等": "信号的通信协议或物理接口类型",
+    "Sender/Provider": "信号的发送方或服务提供方",
+    "Receiver/Consumer": "信号的接收方或服务消费方",
+    "el": "指定信号通道",
+    "来源": "指定信号来源"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "type": "signal_group",
+      "description": "车辆模式 (Vehicle Mode) 信号组，定义了车辆的不同运行模式。"
+    },
+    {
+      "name": "VehMdV",
+      "type": "signal_group",
+      "description": "车辆模式验证 (Vehicle Mode Validation) 信号组，用于指示车辆模式的有效性状态。"
+    },
+    {
+      "name": "UsGMd",
+      "type": "signal_group",
+      "description": "用户模式 (User Mode) 信号组，可能与用户自定义或特定场景模式相关。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMd_0_NORMAL",
+      "type": "mode",
+      "description": "正常模式"
+    },
+    {
+      "name": "VehMd_1_CRASH",
+      "type": "mode",
+      "description": "碰撞模式"
+    },
+    {
+      "name": "VehMd_2_FACTORY",
+      "type": "mode",
+      "description": "工厂模式"
+    },
+    {
+      "name": "VehMd_3_TRANSPORT",
+      "type": "mode",
+      "description": "运输模式"
+    },
+    {
+      "name": "VehMd_4_DYNO",
+      "type": "mode",
+      "description": "测功机模式"
+    },
+    {
+      "name": "VehMd_5_EXHIBITION",
+      "type": "mode",
+      "description": "展览模式"
+    },
+    {
+      "name": "VehMd_8_Engineering",
+      "type": "mode",
+      "description": "工程模式"
+    },
+    {
+      "name": "VehMd_9_Service",
+      "type": "mode",
+      "description": "服务模式"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "VehMdV_0_Invalid",
+      "type": "state",
+      "description": "车辆模式验证无效状态"
+    },
+    {
+      "name": "VehMdV_1_Valid",
+      "type": "state",
+      "description": "车辆模式验证有效状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆模式及相关验证信号的详细规范，可用于测试验证车辆在不同模式下的信号发送与接收逻辑，确保外灯功能在各种运行场景下正确响应。",
+  "uncertain_points": [
+    "具体模块或控制器名称未明确列出，仅通过 'Sender/Provider' 和 'Receiver/Consumer' 字段提及 'SoA 服务提供方/消费方'，但未指明具体ECU或软件组件。",
+    "表格中未明确说明各模式之间的转换条件或触发机制。",
+    "未提供具体的故障状态定义，仅列出了模式和验证状态。"
+  ]
+}

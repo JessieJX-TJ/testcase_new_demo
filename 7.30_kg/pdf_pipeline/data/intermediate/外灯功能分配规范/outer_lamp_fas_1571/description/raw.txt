@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "倒车灯控制模块的信号交互与状态管理",
+  "row_semantics": "表格按执行动作（Action）和备注（Note）分为两部分，详细描述了倒车灯控制过程中各模块之间的信号跳变、接口响应及状态反馈。",
+  "column_semantics": "表格包含两列：左侧为操作类别（如执行动作、备注），右侧为具体的信号处理逻辑和状态描述。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExtrLightStsCmmntnTyp=0x0=SOA",
+      "type": "configuration_requirement",
+      "description": "配置需求，定义了外灯状态通信类型为0x0（SOA模式）"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "倒车灯控制模块（Reverse Light Control Module），负责倒车灯的逻辑控制和状态管理"
+    },
+    {
+      "name": "ICB",
+      "type": "service_interface",
+      "description": "外灯组合服务接口（Interior/Exterior Light Combination Service Interface），提供基础服务并接收外部控制请求"
+    },
+    {
+      "name": "RZCU",
+      "type": "controller_module",
+      "description": "驱动处理模块（Drive Processing Controller Unit），负责将控制信号转换为硬件输出"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RevsLightCtrl",
+      "type": "input_signal",
+      "description": "倒车灯控制信号，值为0x0表示关闭"
+    },
+    {
+      "name": "ReverseLightFucProStatus",
+      "type": "system_status",
+      "description": "倒车灯功能过程状态，值为0x0表示关闭"
+    },
+    {
+      "name": "ReverseLightErrSta",
+      "type": "fault_status",
+      "description": "倒车灯错误状态，值为0x0表示无错误"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RevsLightSta",
+      "type": "output_signal",
+      "description": "倒车灯状态，值为0x0表示关闭"
+    },
+    {
+      "name": "RevsLightFltSta",
+      "type": "output_signal",
+      "description": "倒车灯故障状态，值为0x0表示无故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "ReverseLightErrSta",
+      "type": "fault_status",
+      "description": "倒车灯错误状态，值为0x0表示无错误"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "熄灭同步性",
+      "type": "timing_constraint",
+      "description": "左侧和右侧倒车灯需保持同步熄灭，最大延时不超过40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证倒车灯控制系统在不同模块间信号交互的正确性，包括控制信号的传递、状态反馈以及故障处理机制，并确保倒车灯熄灭时的同步性满足要求。",
+  "uncertain_points": []
+}
+```

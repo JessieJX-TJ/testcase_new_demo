@@ -1,0 +1,62 @@
+```json
+[
+  {
+    "head": "Dipped Beam Light is turned on",
+    "relation": "触发条件",
+    "tail": "收到【DipdBeamLghtCtrlMdl】发送的ControlDippedBeamLight.DippedBeamLightReq == 1 (On) (InstanceID=2)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "收到【DipdBeamLghtCtrlMdl】发送的",
+      "ControlDippedBeamLight.DippedBeamLightReq == 1 (On)",
+      "InstanceID=2"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Dipped Beam Light is turned off",
+    "relation": "退出条件",
+    "tail": "收到【DipdBeamLghtCtrlMdl】发送的ControlDippedBeamLight.DippedBeamLightReq == 0 (Off) (InstanceID=2)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "收到【DipdBeamLghtCtrlMdl】发送的",
+      "ControlDippedBeamLight.DippedBeamLightReq == 0 (Off)",
+      "InstanceID=2"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RDipdBeamDrvMdl drives the right dipped beam light output",
+    "relation": "执行动作",
+    "tail": "Dipped Beam Light is turned on",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "【RDipdBeamLghtDrvMdl】持续驱动右近光灯输出",
+      "(DipdBeamHdlmp_RH_HSD)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Dipped Beam Light Status is sent to DipdBeamCtrlMdl",
+    "relation": "执行动作",
+    "tail": "Dipped Beam Light is turned on",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "【RDipdBeamLghtDrvMdl】持续发送DippedBeamLightStatus",
+      "DippedBeamLightSta == 1 (On)",
+      "InstanceID=2",
+      "至【DipdBeamLghtCtrlMdl】"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Dipped Beam Light Status is sent at least three times",
+    "relation": "状态保持条件",
+    "tail": "Dipped Beam Light is turned on",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "至少发送三帧"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

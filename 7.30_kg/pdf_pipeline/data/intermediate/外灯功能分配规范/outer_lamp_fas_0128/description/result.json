@@ -1,0 +1,38 @@
+{
+  "table_type": "signal_table",
+  "topic": "危险警报灯自动控制模块 (LHZCU) 的状态与反馈机制",
+  "row_semantics": "每行描述一个特定的信号或状态更新场景，涉及方向灯、外灯组合服务以及危险警报灯自动控制模块的状态交互。",
+  "column_semantics": "无明确列结构，内容为逐行描述的文本信息，主要包含功能描述、控制器/模块名称、信号状态及条件。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "LHZCU (危险警报灯自动控制模块)",
+    "ICB (Integrated Control Box)",
+    "SDM (Safety Deployment Module)",
+    "DirectionLight (方向灯)",
+    "ExteriorLightSwitchProcess (外灯开关处理过程)"
+  ],
+  "core_conditions": [
+    "DirenLightSts=0x0=OFF",
+    "ExteriorLightSwitchProcess.DirectionLightSta=0x0=No Flash",
+    "VehHzrdMdSta=0x0(PP)",
+    "exlDircnLightHwDrvEnPrm=0x0 || 0x2"
+  ],
+  "core_outputs": [
+    "RRDirenLightFlsts_0=False",
+    "DirectionLightStatus.InstanceID=5/6/7/8=0x0=OFF",
+    "DirectionLightErrorStatus.InstanceID=5/6/7/8=0x0=No Error",
+    "ExteriorLightControlSystem.DirectionLightSts=0x0=No Flash",
+    "ExteriorLightControlSystem.DirectionLightErrSts=0x0=No Error",
+    "EDRDircnIndLampSwSts=0x0=EDRDircnIndLampSwSts_0_off"
+  ],
+  "core_faults": [
+    "DirectionLightErrorStatus.InstanceID=5/6/7/8=0x0=No Error"
+  ],
+  "core_timing_constraints": [
+    "最大延时周期: 40ms",
+    "三者同步性允许的最大延时: 50ms"
+  ],
+  "engineering_interpretation": "该表格定义了危险警报灯自动控制模块 (LHZCU) 在不同场景下的状态更新规则及其与 ICB、SDM 等其他系统之间的信号交互，主要用于验证危险警报灯的闪烁频率、声音提醒与实际危险警报灯的同步性，以及相关信号状态的正确反馈。",
+  "uncertain_points": []
+}

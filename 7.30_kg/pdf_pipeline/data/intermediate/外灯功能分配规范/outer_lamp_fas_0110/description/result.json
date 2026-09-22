@@ -1,0 +1,78 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的功能分配规范",
+  "row_semantics": "表格的每一行代表一个具体的配置需求或触发条件，描述了外灯控制逻辑中的输入、处理和输出关系。",
+  "column_semantics": "表格没有明确的列标题，但内容按逻辑分为几个部分：配置需求（Requirements）、备注（Notes）、触发动作（Trigger Actions）和执行动作（Execution Actions）。这些部分共同定义了外灯功能的行为逻辑。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "外灯控制模块 (ExtrLightCtrl)",
+      "type": "controller",
+      "description": "负责接收制动踏板信号并根据配置要求控制外灯状态的模块。"
+    },
+    {
+      "name": "制动踏板位置监测子系统 (Brake Pedal Position Monitoring Subsystem)",
+      "type": "sensor_system",
+      "description": "提供制动踏板信号及其有效性信息的子系统。"
+    },
+    {
+      "name": "外灯配合服务 (ExtrLightCoopService)",
+      "type": "service",
+      "description": "与外灯控制相关的协同服务，可能涉及与其他系统的交互。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "制动踏板信号 (EPTBrkPdlDscrtInptSts)",
+      "type": "input_signal",
+      "description": "来自制动踏板位置监测子系统的输入信号，表示制动踏板的状态。"
+    },
+    {
+      "name": "制动踏板有效性信号 (EPTBrkPdlDscrtInptStsV)",
+      "type": "input_signal",
+      "description": "指示制动踏板信号有效性的信号。"
+    },
+    {
+      "name": "外灯控制命令类型 (ExtrLightCtrlCmmtnTyp)",
+      "type": "configuration_parameter",
+      "description": "配置外灯控制命令的通信类型，可为SOA或CAN。"
+    },
+    {
+      "name": "外灯状态命令类型 (ExtrLightStsCmmtnTyp)",
+      "type": "configuration_parameter",
+      "description": "配置外灯状态命令的通信类型，可为SOA或CAN。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "外灯开关控制模式 (LEIXCT)",
+      "type": "output_signal",
+      "description": "外灯的开关控制模式，由ExtrLightCtrl模块输出。"
+    },
+    {
+      "name": "制动灯控制 (BrakeLightCtrl)",
+      "type": "output_signal",
+      "description": "控制制动灯亮灭的信号，由ExtrLightCtrl模块输出。"
+    },
+    {
+      "name": "外灯配合服务请求 (ExtrLightCoopServiceReq)",
+      "type": "output_signal",
+      "description": "外灯配合服务的请求信号，用于与其他系统协同工作。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "外灯配合服务超时时间 (10ms)",
+      "type": "timing_constraint",
+      "description": "外灯配合服务在收到请求后应在10ms内返回响应。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了Z-ONE平台外灯功能的控制逻辑，包括如何根据制动踏板信号和配置参数来控制外灯的开关和状态，并规定了与外部服务交互的超时限制。可用于验证外灯控制逻辑是否符合设计规范，特别是在不同通信模式（SOA/CAN）下的行为一致性。",
+  "uncertain_points": [
+    "具体的服务交互细节未完全说明，如ExtrLightCoopService的具体实现和交互流程。",
+    "表格中未明确列出所有可能的故障状态及其处理逻辑。",
+    "对于CAN和SOA通信模式的具体切换机制和优先级未详细描述。"
+  ]
+}

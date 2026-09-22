@@ -1,0 +1,80 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Error Status",
+  "row_semantics": "Different instances and configurations of direction light error status parameters.",
+  "column_semantics": {
+    "0": "Function Name (DirectionLight.DirectionLightErrorStatus)",
+    "1": "Consumption Type",
+    "2": "SOA Module",
+    "3": "RZCU Module",
+    "4": "LHZCU Module",
+    "5": "Uncertain Column",
+    "6": "Hardware Fault Status"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "function",
+      "description": "Directional lighting system."
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "parameter",
+      "description": "Status parameter for direction light errors."
+    },
+    {
+      "name": "InstanceID",
+      "type": "identifier",
+      "description": "Unique identifier for each instance of the error status parameter."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Error Status",
+      "description": "Indicates the current error state of the direction light.",
+      "values": [
+        {
+          "code": "0x0",
+          "value": "No Error"
+        },
+        {
+          "code": "0x1",
+          "value": "Error"
+        },
+        {
+          "code": "0x2",
+          "value": "Unknown"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "转向灯状态",
+      "description": "The status of the turn signal lights (right or left)."
+    },
+    {
+      "name": "硬线故障状态",
+      "description": "Hardware fault status related to the direction light system."
+    },
+    {
+      "name": "网络故障状态",
+      "description": "Network fault status related to the direction light system."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightError",
+      "description": "General error condition for the direction light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the error status parameters for the direction light system across different modules (SOA, RZCU, LHZCU) and instances. It specifies how to subscribe to the right and left turn signal statuses via a service interface, with defined error codes for no error, error, and unknown states.",
+  "uncertain_points": [
+    "The purpose of the fifth column is not explicitly defined in the table."
+  ]
+}
+```

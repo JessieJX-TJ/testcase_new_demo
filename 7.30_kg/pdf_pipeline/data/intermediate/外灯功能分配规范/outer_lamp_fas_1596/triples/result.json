@@ -1,0 +1,113 @@
+[
+  {
+    "head": "RZCU 判断前置条件满足",
+    "relation": "前提条件",
+    "tail": "InsdFnCfgVehDragMd=0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "InsdFnCfgVehDragMd=0x1",
+      "VehDragMdSts=0x1=VehDragMdSts_1_On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1596",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU 判断前置条件满足",
+    "relation": "前提条件",
+    "tail": "VehDragMdSts=0x1=VehDragMdSts_1_On",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "InsdFnCfgVehDragMd=0x1",
+      "VehDragMdSts=0x1=VehDragMdSts_1_On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1596",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RLDircnLghtCtrl 信号发送",
+    "relation": "触发条件",
+    "tail": "RZCU 判断前置条件满足",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RLDircnLghtCtrl=0x1=RLDircnLghtCtrl_1_On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1596",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "TrlrDirLghtOnReq 信号发送",
+    "relation": "输出为",
+    "tail": "RZCU 根据接收到的 RLDircnLghtCtrl",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RLDircnLghtCtrl",
+      "TrlrDirLghtOnReq"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1596",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "DircnLghtMdSts 状态转换",
+    "relation": "依赖于",
+    "tail": "RZCU 接收到的转向灯模式状态",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "DircnLghtMdSts",
+      "RZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1596",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "TrlrDirLghtMdSts 控制左侧转向灯",
+    "relation": "控制对象",
+    "tail": "左侧转向灯",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "TrlrDirLghtMdSts",
+      "左侧转向灯"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1596",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "TDM 反馈拖车转向灯状态",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "TDM",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1596",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "DircnLghtFltsts 故障状态反馈",
+    "relation": "诊断关联",
+    "tail": "TurnlampFltSts",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DircnLghtFltsts",
+      "TurnlampFltSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1596",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

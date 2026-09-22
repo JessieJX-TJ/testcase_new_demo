@@ -1,0 +1,68 @@
+```json
+[
+  {
+    "head": "危险警报灯图标指示灯显示",
+    "relation": "前提条件",
+    "tail": "ICB接收控制信号 FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_Off 且 FRDircnLghtCtrl=0x0=FRDircnLghtCtrl_0_Off",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["ICB", "FLDircnLghtCtrl", "FRDircnLghtCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯图标指示灯声音提醒",
+    "relation": "前提条件",
+    "tail": "ICB接收控制信号 FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_Off 且 FRDircnLghtCtrl=0x0=FRDircnLghtCtrl_0_Off",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["ICB", "FLDircnLghtCtrl", "FRDircnLghtCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "双闪灯退出点亮",
+    "relation": "前提条件",
+    "tail": "驱动处理模块LHZCU/RHZCU/RZCU接收ICB控制信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["LHZCU", "RHZCU", "RZCU", "ICB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯开关控制模块LHZCU将状态反馈至ICB",
+    "relation": "前提条件",
+    "tail": "危险警报灯自动控制模块LHZCU将状态/故障状态反馈",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["LHZCU", "ICB", "危险警报灯自动控制模块"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯控制状态反馈至SDM",
+    "relation": "前提条件",
+    "tail": "危险警报灯开关控制模块LHZCU将转向灯控制状态反馈",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["LHZCU", "SDM"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯同步性要求",
+    "relation": "超时约束",
+    "tail": "图标闪烁频率与实际危险警报灯闪烁频率保持一致，三者同步性最大延时为50ms",
+    "triple_type": "时序约束",
+    "evidence_terms": ["危险警报灯", "图标闪烁频率", "实际危险警报灯闪烁频率", "50ms"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯同步性允许的最大延时周期",
+    "relation": "超时约束",
+    "tail": "40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": ["危险警报灯", "40ms"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯图标指示灯显示",
+    "relation": "抑制条件",
+    "tail": "当exlDircnLghtHwDrvEnPrm=0x1时（通过域控获取转向灯状态）",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["exlDircnLghtHwDrvEnPrm", "转向灯状态"],
+    "confidence_note": "medium"
+  }
+]
+```

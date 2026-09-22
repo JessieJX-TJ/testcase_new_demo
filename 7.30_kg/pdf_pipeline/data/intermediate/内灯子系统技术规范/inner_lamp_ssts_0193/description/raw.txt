@@ -1,0 +1,66 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - DoorFL6 Lamp Breathing Command Parameters",
+  "row_semantics": "Each row represents a specific breathing rate command for the front left door lamp, including its code value, corresponding period (in seconds), and the original breathing mode it corresponds to.",
+  "column_semantics": {
+    "Code Value": "The hexadecimal code used to trigger a specific breathing rate.",
+    "周期": "The time interval (period) in seconds for the breathing effect.",
+    "原呼吸模式值": "The original breathing mode that this rate corresponds to, or indicates if it's a new mode."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "DoorFL6LampBrthngCmd_1",
+      "type": "command",
+      "description": "Command for controlling the breathing pattern of the front left door lamp."
+    },
+    {
+      "name": "Rate0",
+      "type": "mode",
+      "description": "No request mode for the lamp breathing."
+    },
+    {
+      "name": "Rate1 - Rate15",
+      "type": "mode",
+      "description": "Different breathing rates ranging from 500ms to 12s per cycle."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Period",
+      "description": "Defines the time interval between each breathing cycle."
+    },
+    {
+      "name": "Original Breathing Mode",
+      "description": "Indicates whether the rate corresponds to an existing mode or is a new one."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorFL6LampFadeSpdCmd_1",
+      "type": "signal",
+      "description": "Signal for controlling the fade speed of the door lamp during breathing."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Breathing Period",
+      "description": "Defines the timing for each breathing cycle based on the selected rate.",
+      "unit": "seconds"
+    },
+    {
+      "name": "Fade Speed",
+      "description": "Controls how quickly the lamp fades in and out during the breathing effect.",
+      "unit": "speed level"
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters for the breathing light effect of the front left door lamp, specifying different rates and their corresponding periods. It is used to verify that the lamp responds correctly to each breathing rate command, switching modes as expected and maintaining the correct timing for each cycle.",
+  "uncertain_points": [
+    "The exact implementation details of how the 'original breathing mode' is handled internally are not specified.",
+    "The relationship between the 'fade speed' commands and the actual visual breathing effect is not detailed."
+  ]
+}
+```

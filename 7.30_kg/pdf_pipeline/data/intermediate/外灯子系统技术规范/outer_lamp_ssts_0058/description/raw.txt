@@ -1,0 +1,65 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "右前转向灯短路故障诊断与处理",
+  "row_semantics": "表格按时间顺序或逻辑流程展示了故障诊断的前置条件、触发条件、执行动作和退出条件。",
+  "column_semantics": "表格包含两列，左侧为条件/动作描述，右侧为具体的状态或值。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FRDILghtDrvMdl",
+      "type": "controller_module",
+      "description": "右前转向灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlDircnLghtHwDrvEnPrmm",
+      "value": "=1",
+      "description": "外部方向灯硬件驱动使能参数为1"
+    },
+    {
+      "name": "右前转向灯未输出状态",
+      "value": "uncertain",
+      "description": "右前转向灯当前处于未输出状态"
+    },
+    {
+      "name": "检测到右前转向灯短路到电源",
+      "value": "uncertain",
+      "description": "系统检测到右前转向灯存在短路到电源的故障"
+    },
+    {
+      "name": "检测到短路恢复",
+      "value": "uncertain",
+      "description": "系统检测到之前存在的短路故障已恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FRDircnLghtFltsts_HW",
+      "value": "=0x1 (True)",
+      "description": "硬件故障状态反馈为真，表示检测到故障"
+    },
+    {
+      "name": "置位 DTC B104A 12",
+      "value": "uncertain",
+      "description": "设置特定的故障代码（DTC）B104A 12"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "右前转向灯短路到电源",
+      "code": "DTC B104A 12",
+      "description": "右前转向灯电路发生短路至电源的故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了右前转向灯短路到电源故障的诊断逻辑，包括触发条件、执行的动作（如设置故障代码）以及退出条件，可用于验证车辆电子系统在检测和处理此类硬件故障时的行为是否符合设计规范。",
+  "uncertain_points": [
+    "右前转向灯未输出状态的具体含义不明确",
+    "检测到右前转向灯短路到电源的具体实现机制不明确",
+    "置位 DTC B104A 12 的详细作用和影响范围不明确"
+  ]
+}
+```

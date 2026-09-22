@@ -1,0 +1,72 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯组合服务 ICB (Integrated Control Block) 的状态与故障反馈接口定义",
+  "row_semantics": "每一行代表一个特定的信号实例或功能模块的状态/错误反馈信息",
+  "column_semantics": "无明确列，内容为逐行描述的信号名称及其状态值",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "功能模块",
+      "description": "侧位灯系统"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "功能模块",
+      "description": "外灯开关处理模块"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "功能模块",
+      "description": "外灯控制系统"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块",
+      "description": "集成控制块，负责管理外灯组合服务"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightStatus",
+      "type": "输入信号",
+      "description": "侧位灯的工作状态（ON/OFF）"
+    },
+    {
+      "name": "FrontFogLightSta",
+      "type": "输入信号",
+      "description": "前雾灯的工作状态（ON/OFF）"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightErrorSta",
+      "type": "输出信号",
+      "description": "侧位灯的错误状态反馈"
+    },
+    {
+      "name": "FrontFogLightErrSta",
+      "type": "输出信号",
+      "description": "前雾灯的错误状态反馈"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "故障状态",
+      "description": "表示对应信号或模块工作正常"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步点亮延时",
+      "type": "定时",
+      "description": "左侧和右侧外灯（如位置灯、前雾灯）开启时需保持同步，最大延时不超过40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了外灯组合服务中关键信号的状态和错误反馈接口，用于验证ICB模块对侧位灯和前雾灯的状态监控及故障上报功能，特别是要求左右两侧外灯在开启时保持同步，延时不超过40ms。",
+  "uncertain_points": []
+}
+```

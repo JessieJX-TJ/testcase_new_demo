@@ -1,0 +1,53 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "外灯功能 - 侧位灯故障状态",
+  "row_semantics": "表格按功能点（SidePositionLight.SidePositionLightErrorStatus）列出不同位置的侧位灯故障状态信息，包括右前和左后位置。",
+  "column_semantics": {
+    "功能名": "表示具体的故障状态查询接口名称",
+    "输入": "表示该接口的输入类型或来源",
+    "控制器/模块名": [
+      "SOA",
+      "RHZCU",
+      "ICB_S32_GM",
+      "LHZCU",
+      "RHZCU_ETH",
+      "RZCU",
+      "RZCU_ETH"
+    ],
+    "输出信号": "未明确列出，但通过Interface Name和Parameter Name可推断为返回故障状态值",
+    "系统状态": "未直接列出，但可通过故障状态值间接反映",
+    "模式名": "未涉及",
+    "故障状态": [
+      "0x0=No Error",
+      "0x1=Error",
+      "0x2=Unknown"
+    ],
+    "阈值/定时": "未涉及"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SidePositionLight.SidePositionLightErrorStatus",
+      "description": "侧位灯故障状态查询接口"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightErrorSta",
+      "description": "侧位灯故障状态参数，可能的值包括：No Error (0x0), Error (0x1), Unknown (0x2)"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SidePositionLightErrorSta",
+      "description": "侧位灯故障状态，用于指示右前或左后侧位灯是否存在故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯系统中侧位灯的故障状态查询接口及其参数，可用于验证车辆在不同控制器环境下，侧位灯故障状态的正确获取和上报。",
+  "uncertain_points": []
+}
+```

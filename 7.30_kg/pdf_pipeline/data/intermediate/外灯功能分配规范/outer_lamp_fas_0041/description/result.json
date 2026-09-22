@@ -1,0 +1,44 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯系统状态与模式查询接口",
+  "row_semantics": "表格的每一行代表一个独立的服务接口或功能调用，描述了如何查询外灯系统的特定状态或模式。",
+  "column_semantics": "表格的列定义了服务接口的消费方（SOA）、涉及的控制器/模块（如LHZCU、ICB），以及接口的具体参数和返回值定义。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "function",
+      "description": "查询右转向灯错误状态的服务接口"
+    },
+    {
+      "name": "DirectionLightModeStatus",
+      "type": "function",
+      "description": "获取右转向灯点亮模式的服务接口"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DirectionLightErrorSta",
+      "type": "parameter",
+      "description": "右转向灯错误状态参数，包含No Error (0x0), Error (0x1), Unknown (0x2)",
+      "unit": "enum"
+    },
+    {
+      "name": "DircnLghtMdSts",
+      "type": "parameter",
+      "description": "右转向灯点亮模式参数，包含Enabled (0x0), Disabled (0x1), Unknown (0x2)",
+      "unit": "enum"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "description": "检测右转向灯是否存在错误状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯系统中两个关键状态查询接口的参数规范，可用于验证车辆在不同条件下转向灯的错误状态和点亮模式是否符合设计要求。",
+  "uncertain_points": []
+}

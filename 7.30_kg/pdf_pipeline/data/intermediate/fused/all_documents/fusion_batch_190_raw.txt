@@ -1,0 +1,492 @@
+```json
+[
+  {
+    "head": "Electric Tailgate Operation",
+    "relation": "trigger_condition",
+    "tail": "Key Fob Signal is valid",
+    "sources": ["outer_lamp_ssts_0456", "outer_lamp_ssts_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate Operation",
+    "relation": "trigger_condition",
+    "tail": "Tailgate Lock Status is unlocked",
+    "sources": ["outer_lamp_ssts_0456"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate Operation",
+    "relation": "input",
+    "tail": "Remote control signal received AND vehicle speed = 0 km/h",
+    "sources": ["outer_lamp_ssts_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate Operation",
+    "relation": "depends_on",
+    "tail": "Key Fob Signal is valid",
+    "sources": ["outer_lamp_ssts_0456"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lighting System",
+    "relation": "inhibit_condition",
+    "tail": "Driver Seat Belt Status is unbuckled",
+    "sources": ["outer_lamp_ssts_0456"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate System",
+    "relation": "inhibit_condition",
+    "tail": "Lighting System Fault is active",
+    "sources": ["outer_lamp_ssts_0456"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BCM Output Signals",
+    "relation": "outputs",
+    "tail": "Integrated control result for Exterior Lighting System (Headlamp Switch, Taillights On/Off), Interior Lights On/Off, and Electric Tailgate System",
+    "sources": ["outer_lamp_ssts_0456"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lights On/Off",
+    "relation": "depends_on",
+    "tail": "Door Open Status is open",
+    "sources": ["outer_lamp_ssts_0456"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lighting System Fault",
+    "relation": "fault_response",
+    "tail": "Exterior Lighting System (Headlamp Switch, Taillights On/Off) disabled",
+    "sources": ["outer_lamp_ssts_0456"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate Motor Fault",
+    "relation": "fault_response",
+    "tail": "Electric Tailgate System operation disabled",
+    "sources": ["outer_lamp_ssts_0456"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Brake Light Short-to-Ground Fault",
+    "relation": "trigger_condition",
+    "tail": "Left brake light short-to-ground detected",
+    "sources": ["outer_lamp_ssts_0457"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Light Control Module",
+    "relation": "prerequisite",
+    "tail": "BrkLghtFbkSOAEnPrm == 1 (Enable)",
+    "sources": ["outer_lamp_ssts_0457"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Light Control Module",
+    "relation": "timeout_constraint",
+    "tail": "At least three error status frames transmitted",
+    "sources": ["outer_lamp_ssts_0457"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Light Control Module",
+    "relation": "diagnostic_association",
+    "tail": "DTC_B1041_11",
+    "sources": ["outer_lamp_ssts_0457"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reverse Light Short-to-Ground Fault Handling",
+    "relation": "trigger_condition",
+    "tail": "Reverse light short-to-ground detected",
+    "sources": ["outer_lamp_ssts_0458", "outer_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reverse Light Short-to-Ground Fault Handling",
+    "relation": "inhibit_condition",
+    "tail": "RevsLghtFbkSOAEnPrm == 0 (Disable)",
+    "sources": ["outer_lamp_ssts_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reverse Light Short-to-Ground Fault Handling",
+    "relation": "inhibit_condition",
+    "tail": "Reverse light output is active",
+    "sources": ["outer_lamp_ssts_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reverse Light Short-to-Ground Fault Handling",
+    "relation": "exit_condition",
+    "tail": "Short-to-ground condition recovered",
+    "sources": ["outer_lamp_ssts_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reverse Light Control Module",
+    "relation": "outputs",
+    "tail": "RevsLghtSts = 0 (Off)",
+    "sources": ["outer_lamp_ssts_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reverse Light Control Module",
+    "relation": "outputs",
+    "tail": "DTC_B1045_11",
+    "sources": ["outer_lamp_ssts_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reverse Light Control Module",
+    "relation": "outputs",
+    "tail": "Stop driving RevsLamp_LH_HSD",
+    "sources": ["outer_lamp_ssts_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Wake-up via edge transition",
+    "relation": "depends_on",
+    "tail": "Wake-up source",
+    "sources": ["outer_lamp_ssts_0460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Module",
+    "relation": "inhibit_condition",
+    "tail": "Battery voltage < 10 V",
+    "sources": ["outer_lamp_ssts_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Air Conditioning System Cooling Mode",
+    "relation": "depends_on",
+    "tail": "Engine running AND ambient temperature > 25°C",
+    "sources": ["outer_lamp_ssts_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Emergency Brake Assist System",
+    "relation": "priority_over",
+    "tail": "Adaptive Cruise Control System",
+    "sources": ["outer_lamp_ssts_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Airbag System",
+    "relation": "fault_response",
+    "tail": "Collision sensor anomaly detected",
+    "sources": ["outer_lamp_ssts_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Power Steering System",
+    "relation": "state_maintenance_condition",
+    "tail": "Steering wheel angle within ±10 degrees",
+    "sources": ["outer_lamp_ssts_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Power Steering System",
+    "relation": "state_maintenance_condition",
+    "tail": "Vehicle speed < 60 km/h",
+    "sources": ["outer_lamp_ssts_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Parameters",
+    "relation": "depends_on",
+    "tail": "Calibration Item",
+    "sources": ["inner_lamp_fas_0094", "inner_lamp_ssts_0505", "outer_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate Control Parameters",
+    "relation": "depends_on",
+    "tail": "Calibration Item",
+    "sources": ["inner_lamp_fas_0094", "outer_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Calibration Item",
+    "relation": "prerequisite",
+    "tail": "Parameter Range",
+    "sources": ["inner_lamp_fas_0094", "outer_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Calibration Item",
+    "relation": "prerequisite",
+    "tail": "Resolution Factor",
+    "sources": ["inner_lamp_fas_0094", "outer_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Calibration Item",
+    "relation": "prerequisite",
+    "tail": "Default Value",
+    "sources": ["inner_lamp_fas_0094", "outer_lamp_ssts_0462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Turn Signal Short-to-Ground Fault Handling",
+    "relation": "prerequisite",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "sources": ["outer_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Turn Signal Short-to-Ground Fault Handling",
+    "relation": "prerequisite",
+    "tail": "Right front turn signal output is active",
+    "sources": ["outer_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Turn Signal Short-to-Ground Fault Handling",
+    "relation": "trigger_condition",
+    "tail": "Right front turn signal short-to-ground detected",
+    "sources": ["outer_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDILightDrvMdl",
+    "relation": "outputs",
+    "tail": "Stop driving right front turn signal output (DILamp_RH_HSD)",
+    "sources": ["outer_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDILightDrvMdl",
+    "relation": "outputs",
+    "tail": "Transmit DirectionLightControl.DirectionLightState = 2 (Error), InstanceID = 2 to DILightCtrlMdl",
+    "sources": ["outer_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDILightDrvMdl",
+    "relation": "contains_subfunction",
+    "tail": "Transmit at least three DirectionLightControl frames",
+    "sources": ["outer_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDILightDrvMdl",
+    "relation": "diagnostic_association",
+    "tail": "DTC_B104A_11 (right front turn signal short-to-ground)",
+    "sources": ["outer_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lighting Subsystem",
+    "relation": "outputs_to",
+    "tail": "Page 73 of 114",
+    "sources": ["outer_lamp_ssts_0464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Turn Signal Driver Module",
+    "relation": "prerequisite",
+    "tail": "Turn signal feedback open-loop protection enabled",
+    "sources": ["outer_lamp_ssts_0465"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Turn Signal Driver Module",
+    "relation": "trigger_condition",
+    "tail": "Turn signal control request received: ON, InstanceID = 3",
+    "sources": ["outer_lamp_ssts_0465"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Turn Signal Driver Module",
+    "relation": "depends_on",
+    "tail": "Turn signal control module transmits direction light control request",
+    "sources": ["outer_lamp_ssts_0465"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Rear Turn Signal Driver Module",
+    "relation": "prerequisite",
+    "tail": "RLDILghtDrvMdl transmits RLDILghtSts_HW = 0 (Off) to DILghtCtrlMdl for ≥3 frames",
+    "sources": ["outer_lamp_ssts_0466"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Rear Turn Signal Driver Module",
+    "relation": "exit_condition",
+    "tail": "DILghtCtrlMdl transmits RLDircnLghtCtrl_HW == 1 (On)",
+    "sources": ["outer_lamp_ssts_0466"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Position Lamp Short-to-Ground Fault Diagnosis",
+    "relation": "trigger_condition",
+    "tail": "Left position lamp short-to-ground detected",
+    "sources": ["outer_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Position Lamp Short-to-Power Fault Diagnosis",
+    "relation": "trigger_condition",
+    "tail": "Left position lamp short-to-power detected",
+    "sources": ["outer_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Position Lamp Open-Circuit Fault Diagnosis",
+    "relation": "trigger_condition",
+    "tail": "Left position lamp open-circuit detected",
+    "sources": ["outer_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Turn Signal Driver Module",
+    "relation": "prerequisite",
+    "tail": "exlDircnLghtHwDrvEnPrm == 1",
+    "sources": ["outer_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Turn Signal Driver Module",
+    "relation": "prerequisite",
+    "tail": "Right rear turn signal output is active",
+    "sources": ["outer_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Turn Signal Driver Module",
+    "relation": "trigger_condition",
+    "tail": "Right rear turn signal short-to-ground detected",
+    "sources": ["outer_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDILghtDrvMdl",
+    "relation": "trigger_condition",
+    "tail": "Right rear turn signal short-to-ground detected",
+    "sources": ["outer_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDILghtDrvMdl",
+    "relation": "outputs",
+    "tail": "RRDILghtSts_HW = 0",
+    "sources": ["outer_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDILghtDrvMdl",
+    "relation": "outputs",
+    "tail": "RRDircnLghtFltsts_HW = 0x1",
+    "sources": ["outer_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDILghtDrvMdl",
+    "relation": "diagnostic_association",
+    "tail": "DTC_B104A_11 (right rear turn signal short-to-ground)",
+    "sources": ["outer_lamp_ssts_0468"],
+    "conflict": true,
+    "conflict_note": "DTC_B104A_11 is reused for both right front and right rear turn signal short-to-ground faults — same DTC code but different fault locations; requires DTC sub-code or context-aware interpretation."
+  },
+  {
+    "head": "DTCC_B104A_11",
+    "relation": "diagnostic_association",
+    "tail": "Right rear turn signal short-to-ground detected",
+    "sources": ["outer_lamp_ssts_0468"],
+    "conflict": true,
+    "conflict_note": "Inconsistent DTC naming: 'DTCC_B104A_11' (with double C) vs. standard 'DTC_B104A_11'; likely typo in source doc. Conflicts with FRDILightDrvMdl's DTC_B104A_11 usage — same code, different components."
+  },
+  {
+    "head": "Right Rear Side Marker Lamp Short-to-Power Fault Handling",
+    "relation": "trigger_condition",
+    "tail": "Right rear side marker lamp short-to-power detected",
+    "sources": ["outer_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Side Marker Lamp Short-to-Power Fault Handling",
+    "relation": "prerequisite",
+    "tail": "Right rear side marker lamp output is active",
+    "sources": ["outer_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Side Marker Lamp Short-to-Power Fault Handling",
+    "relation": "fault_response",
+    "tail": "DTC_B1061_12 set",
+    "sources": ["outer_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtDrvMdl",
+    "relation": "depends_on",
+    "tail": "Right rear side marker lamp short-to-power",
+    "sources": ["outer_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

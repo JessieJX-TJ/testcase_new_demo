@@ -1,0 +1,13 @@
+退出条件
+1、接收到氛围灯本地控制模块的颜色变化请求信号
+DoorFL1LampColorCmd_l=0x00(No Request)或者未
+定义颜色号,维持当前颜色不变
+2、接收到氛围灯本地控制模块的请求信号
+DoorFL1LampOnOff_1=0x0(OFF),按照对应渐变速
+度DoorFL1LampFadeSpdCmd_1,关闭氛围灯
+异常处理
+1、氛围灯模块出现过压、欠压故障,直接关闭氛围灯
+2、超过一定时间(默认6s)未接收到ZCU的LIN信号
+直接关闭氛围灯
+3、当氛围灯颜色值DoorFL1LampColorCmd_1异常,维持
+上一时刻状态值

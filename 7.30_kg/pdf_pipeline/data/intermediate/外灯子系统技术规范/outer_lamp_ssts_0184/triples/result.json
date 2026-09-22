@@ -1,0 +1,108 @@
+[
+  {
+    "head": "右后转向灯停止驱动",
+    "relation": "触发条件",
+    "tail": "收到【DILightCtrlMdl】发送的DirectionLightControl.DirectionLightCtrlReq == 0 (Off) InstanceID=4",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DILightCtrlMdl",
+      "DirectionLightCtrlReq",
+      "Off",
+      "InstanceID=4"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0184",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RRDILightDrvMdl 持续发送方向灯状态",
+    "relation": "触发条件",
+    "tail": "收到【DILightCtrlMdl】发送的DirectionLightControl.DirectionLightCtrlReq == 0 (Off) InstanceID=4",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DILightCtrlMdl",
+      "DirectionLightCtrlReq",
+      "Off",
+      "InstanceID=4"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0184",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "系统退出方向灯控制模式",
+    "relation": "触发条件",
+    "tail": "收到【DILightCtrlMdl】发送的DirectionLightControl.DirectionLightCtrlReq == 1 (On) InstanceID=4",
+    "triple_type": "退出条件",
+    "evidence_terms": [
+      "DILightCtrlMdl",
+      "DirectionLightCtrlReq",
+      "On",
+      "InstanceID=4"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0184",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RRDILightDrvMdl 停止驱动右后转向灯输出",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "DILightFbkSOAEnPrm",
+      "Enable"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0184",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RRDILightDrvMdl 持续发送方向灯状态",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "DILightFbkSOAEnPrm",
+      "Enable"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0184",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RRDILightDrvMdl 输出 DILamp_RH_HSD",
+    "relation": "输出为",
+    "tail": "停止驱动右后转向灯",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RRDILightDrvMdl",
+      "DILamp_RH_HSD",
+      "停止驱动"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0184",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RRDILightDrvMdl 发送 DirectionLightSta",
+    "relation": "输出为",
+    "tail": "持续发送至【DILightCtrlMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RRDILightDrvMdl",
+      "DirectionLightSta",
+      "DILightCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0184",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

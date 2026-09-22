@@ -1,0 +1,90 @@
+{
+  "table_type": "signal_table",
+  "topic": "拖挂车外灯控制逻辑规范",
+  "row_semantics": "表格按功能类别（如后雾灯、转向灯、位置灯）对不同灯光状态的控制要求进行分类，每行代表一种具体的灯光控制模式或状态。",
+  "column_semantics": "第一列定义了灯光类型及其子功能；第二列给出了控制请求（TrlrRfGhtOnReq）和模式状态（TrlrDirLghtMdSts）的组合条件；第三列描述了TDM驱动系统对该灯光的实际点亮行为；第四列为空白，可能为预留扩展。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "TrlrRfGhtOnReq",
+      "type": "input_signal",
+      "description": "拖挂车后雾灯点亮请求信号，0x1表示ON，0x0表示OFF。"
+    },
+    {
+      "name": "TrlrDirLghtMdSts",
+      "type": "input_signal",
+      "description": "拖挂车转向灯模式状态信号，用于指定转向灯的工作模式（如流水效果或直接点亮）。"
+    },
+    {
+      "name": "TrlrSideLghtOnReq",
+      "type": "input_signal",
+      "description": "拖挂车位置灯点亮请求信号，用于控制左右侧位置灯的状态。"
+    },
+    {
+      "name": "TDM",
+      "type": "controller",
+      "description": "拖挂车驱动系统（Trailer Drive Module），负责根据输入信号控制拖挂车外部灯光的点亮与熄灭。"
+    },
+    {
+      "name": "倒车灯",
+      "type": "output_signal",
+      "description": "拖挂车倒车灯的点亮或熄灭状态。"
+    },
+    {
+      "name": "后雾灯",
+      "type": "output_signal",
+      "description": "拖挂车后雾灯的点亮或熄灭状态。"
+    },
+    {
+      "name": "转向灯",
+      "type": "output_signal",
+      "description": "拖挂车转向灯的点亮行为，包括流水效果或直接点亮。"
+    },
+    {
+      "name": "位置灯",
+      "type": "output_signal",
+      "description": "拖挂车位置灯的点亮状态，可控制左侧、右侧或双侧位置灯。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "TrlrRfGhtOnReq = 0x1",
+      "description": "当后雾灯点亮请求为ON时，后雾灯点亮。"
+    },
+    {
+      "condition": "TrlrDirLghtOnReq = 0x1 & TrlrDirLghtMdSts = 0x0",
+      "description": "当转向灯点亮请求为ON且模式状态为0x0时，左侧转向灯按照流水效果点亮。"
+    },
+    {
+      "condition": "TrlrDirLghtOnReq = 0x2 & TrlrDirLghtMdSts = 0x1",
+      "description": "当转向灯点亮请求为0x2且模式状态为0x1时，右侧转向灯直接点亮，无流水效果。"
+    },
+    {
+      "condition": "TrlrSideLghtOnReq = 0x3",
+      "description": "当位置灯点亮请求为0x3时，左右侧位置灯同时点亮。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "倒车灯点亮或熄灭",
+      "description": "根据TrlrRfGhtOnReq信号决定倒车灯的亮灭状态。"
+    },
+    {
+      "output": "后雾灯点亮或熄灭",
+      "description": "根据TrlrRfGhtOnReq信号决定后雾灯的亮灭状态。"
+    },
+    {
+      "output": "转向灯点亮行为",
+      "description": "根据TrlrDirLghtOnReq和TrlrDirLghtMdSts信号组合，控制转向灯的点亮模式（流水或直接点亮）。"
+    },
+    {
+      "output": "位置灯点亮状态",
+      "description": "根据TrlrSideLghtOnReq信号决定位置灯的点亮范围（左侧、右侧或双侧）。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证拖挂车外部灯光（如倒车灯、后雾灯、转向灯、位置灯）在不同控制请求和模式状态下的正确点亮行为，确保TDM驱动系统能够按照规范实现预期的灯光控制逻辑。",
+  "uncertain_points": []
+}

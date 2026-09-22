@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "远光灯开启请求",
+    "relation": "前提条件",
+    "tail": "MainBeamLightReq 参数值为 0x1",
+    "triple_type": "工程规则",
+    "evidence_terms": ["MainBeamLightReq", "0x1=ON"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯熄灭请求",
+    "relation": "前提条件",
+    "tail": "MainBeamLightReq 参数值为 0x0",
+    "triple_type": "工程规则",
+    "evidence_terms": ["MainBeamLightReq", "0x0=OFF"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯控制成功",
+    "relation": "输出为",
+    "tail": "MainBeamLightResp 参数值为 0x0",
+    "triple_type": "工程规则",
+    "evidence_terms": ["MainBeamLightResp", "0x0=ControlSuccess"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯控制失败",
+    "relation": "输出为",
+    "tail": "MainBeamLightResp 参数值为 0x1",
+    "triple_type": "工程规则",
+    "evidence_terms": ["MainBeamLightResp", "0x1=Failed"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "调用远光灯控制接口",
+    "relation": "触发条件",
+    "tail": "ExteriorLightControlSystem.ControlMainBeamLight 方法被调用",
+    "triple_type": "工程规则",
+    "evidence_terms": ["Method", "调用该服务接口,请求远光灯开启或者熄灭"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "获取远光灯状态",
+    "relation": "触发条件",
+    "tail": "ExteriorLightSwitchProcess.MainBeamLightFucProStatus 被调用",
+    "triple_type": "工程规则",
+    "evidence_terms": ["调用该服务接口,通过该基础服务获取远光灯点亮或者熄灭的条件"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯控制接口",
+    "relation": "依赖于",
+    "tail": "SOA (服务导向架构)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["SOA"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯控制接口",
+    "relation": "依赖于",
+    "tail": "ICB (内部通信总线)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["ICB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车身控制单元",
+    "relation": "控制对象",
+    "tail": "远光灯功能过程状态",
+    "triple_type": "工程规则",
+    "evidence_terms": ["LHZCU", "MainBeamLightFucProStatus"],
+    "confidence_note": "high"
+  }
+]
+```

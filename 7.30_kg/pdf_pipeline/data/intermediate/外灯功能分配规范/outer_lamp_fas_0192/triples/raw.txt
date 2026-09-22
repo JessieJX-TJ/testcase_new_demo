@@ -1,0 +1,103 @@
+```json
+[
+  {
+    "head": "危险警报灯自动控制模块LHZCU将转向灯控制状态反馈至SDM",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts=0x0=EDRDircnIndLampSwSts_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "SDM",
+      "EDRDircnIndLampSwSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动控制模块LHZCU将状态/故障状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "DirenLghtSts=0x0=OFF; DirenLghtFltsts=0x0=DirenLghtFltsts_0_False",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "DirenLghtSts",
+      "DirenLghtFltsts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务ICB订阅接口",
+    "relation": "输出为",
+    "tail": "{ExteriorLightControlSystem. DirectionLightSts. DirectionLghtSts}=0x0=No Flash",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "ExteriorLightControlSystem",
+      "DirectionLightSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动控制模块LHZCU将实时状态发送至ICB",
+    "relation": "触发条件",
+    "tail": "VehHzrdMdSts== VehHzrdMdSts_0_No_Request;(PPV)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "VehHzrdMdSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯硬件驱动使能参数exlDircnLghtHwDrvEnPrm=0x1",
+    "relation": "前提条件",
+    "tail": "通过Instance ID 1/2/3/4获取转向灯状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "exlDircnLghtHwDrvEnPrm",
+      "Instance ID",
+      "转向灯状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯硬件驱动使能参数exlDircnLghtHwDrvEnPrm=0x0 || 0x2",
+    "relation": "前提条件",
+    "tail": "通过Instance ID 5/6/7/8获取转向灯状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "exlDircnLghtHwDrvEnPrm",
+      "Instance ID",
+      "转向灯状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警示灯闪烁频率与声音提醒同步性要求",
+    "relation": "超时约束",
+    "tail": "三者同步性允许的最大延时50ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "危险警示灯",
+      "闪烁频率",
+      "声音提醒",
+      "同步性",
+      "50ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警示灯的同步性",
+    "relation": "超时约束",
+    "tail": "最大延时周期为40ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "危险警示灯",
+      "同步性",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

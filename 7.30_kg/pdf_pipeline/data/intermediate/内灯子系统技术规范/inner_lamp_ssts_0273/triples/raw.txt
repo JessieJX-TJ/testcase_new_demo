@@ -1,0 +1,104 @@
+```json
+[
+  {
+    "head": "门右侧后部氛围灯点亮",
+    "relation": "触发条件",
+    "tail": "接收到DoorRR6LampOnOff_1_1_ON信号且同时接收到非0值的颜色亮度指令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRR6LampOnOff_1_1_ON",
+      "颜色亮度指令"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门右侧后部氛围灯颜色改变",
+    "relation": "触发条件",
+    "tail": "接收到DoorRR6LampColorCmd_1_0_No Request以外的0x01-0xFF范围内的指令值",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRR6LampColorCmd_1_0_No Request",
+      "0x01-0xFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门右侧后部氛围灯亮度调节",
+    "relation": "触发条件",
+    "tail": "接收到0x00=No Request以外的0x00=DoorRR6LampBrtnsCmd_1_0_No Request以外的0x65-0xFF范围内的指令值",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRR6LampBrtnsCmd_1_0_No Request",
+      "0x65-0xFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门右侧后部氛围灯呼吸模式启用",
+    "relation": "触发条件",
+    "tail": "接收到DoorRR6LampBrthngCmd_1_1_Rate1至DoorRR6LampBrthngCmd_1_15_Rate15之间的任意一个指令值",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRR6LampBrthngCmd_1_1_Rate1",
+      "DoorRR6LampBrthngCmd_1_15_Rate15"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门右侧后部氛围灯保持当前颜色",
+    "relation": "触发条件",
+    "tail": "接收到DoorRR6LampColorCmd_1_0_No Request或未定义颜色号的指令值",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRR6LampColorCmd_1_0_No Request"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门右侧后部氛围灯保持当前亮度",
+    "relation": "触发条件",
+    "tail": "接收到DoorRR6LampBrtnsCmd_1_0_No Request或指令值为0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRR6LampBrtnsCmd_1_0_No Request",
+      "0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门右侧后部氛围灯呼吸模式关闭",
+    "relation": "触发条件",
+    "tail": "接收到DoorRR6LampBrthngCmd_1_0_Rate0指令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRR6LampBrthngCmd_1_0_Rate0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "内灯SSTS状态输出",
+    "relation": "输出为",
+    "tail": "门右侧后部氛围灯开关、颜色、亮度和呼吸模式控制指令的结果",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "内灯 SSTS",
+      "DoorRR6LampOnOff_1",
+      "DoorRR6LampColorCmd_1",
+      "DoorRR6LampBrtnsCmd_1",
+      "DoorRR6LampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门右侧后部氛围灯呼吸周期",
+    "relation": "依赖于",
+    "tail": "呼吸模式指令值，例如Rate1对应500ms周期",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "Rate1",
+      "500ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

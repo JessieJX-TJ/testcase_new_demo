@@ -1,0 +1,59 @@
+```json
+[
+  {
+    "head": "获取位置灯开关状态",
+    "relation": "前提条件",
+    "tail": "调用CombLghtSwStatus服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.CombLghtSwStatus",
+      "Notifier",
+      "Interface Name: CombLghtSwStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "组合灯开关状态参数 (CombLghtSwSta)",
+    "relation": "输出为",
+    "tail": "0x0=OFF, 0X1=SidePositionLight ON, 0X2=DippedBeamLight ON, 0X3=AUTO, 0x4=Unknown",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {CombLghtSwSta}",
+      "0x0=OFF",
+      "0X1=SidePositionLight ON",
+      "0X2=DippedBeamLight ON",
+      "0X3=AUTO",
+      "0x4=Unknown"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "获取位置灯点亮或熄灭条件",
+    "relation": "前提条件",
+    "tail": "订阅CombLghtFucProStatus服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.CombLghtFucProStatus",
+      "Notifier",
+      "Interface Name: CombLghtFucProStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "组合灯功能状态参数 (CombLghtFucProSta)",
+    "relation": "输出为",
+    "tail": "0x0= ALL OFF, 0X1= Only SidePositionLight ON, 0X2= Only DippedBeamLight ON, 0X3= SidePositionAndDippedBeam OFF, 0X4= SidePositionAndDippedBeam ON, 0x5= Unknown",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {CombLghtFucProSta}",
+      "0x0= ALL OFF",
+      "0X1= Only SidePositionLight ON",
+      "0X2= Only DippedBeamLight ON",
+      "0X3= SidePositionAndDippedBeam OFF",
+      "0X4= SidePositionAndDippedBeam ON",
+      "0x5= Unknown"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

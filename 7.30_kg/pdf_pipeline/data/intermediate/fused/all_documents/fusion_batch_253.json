@@ -1,0 +1,342 @@
+[
+  {
+    "head": "RLDoorFlorLampCtrlCmd signal drives left-rear laser welcome lamp",
+    "relation": "trigger condition",
+    "tail": "RLDoorFlorLampCtrlCmd value = 0x1 (Open)",
+    "sources": [
+      "inner_lamp_ssts_0278"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDoorFlorLampCtrlCmd signal drives left-rear laser welcome lamp",
+    "relation": "trigger condition",
+    "tail": "RLDoorFlorLampCtrlCmd value = 0x0 (Close)",
+    "sources": [
+      "inner_lamp_ssts_0278"
+    ],
+    "conflict": true,
+    "conflict_note": "Mutually exclusive trigger conditions for same head/relation: Open vs Close. May represent distinct operational modes (e.g., on/off), but require verification whether both are valid simultaneous triggers or if one is mislabeled (e.g., 'Close' should be 'deactivation condition')."
+  },
+  {
+    "head": "LHZCU controls DoorFlorLamp_RL_HSD signal",
+    "relation": "input is",
+    "tail": "RLDoorFlorLampCtrlCmd signal",
+    "sources": [
+      "inner_lamp_ssts_0278"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFlorLamp_RL_HSD signal drives left-rear laser welcome lamp",
+    "relation": "output is",
+    "tail": "DoorFlorLamp_RL component",
+    "sources": [
+      "inner_lamp_ssts_0278"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4LampBrthngCmd_1 command triggers ambient lamp breathing mode",
+    "relation": "trigger condition",
+    "tail": "Code Value ∈ {0x1, 0x2, ..., 0xF}",
+    "sources": [
+      "inner_lamp_ssts_0280"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4LampBrthngCmd_1 command stops breathing",
+    "relation": "trigger condition",
+    "tail": "Code Value = 0x0",
+    "sources": [
+      "inner_lamp_ssts_0280"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4LampBrthngCmd_1 command switches breathing mode",
+    "relation": "trigger condition",
+    "tail": "Code Value ∈ {0x1, 0x2, ..., 0xF} AND differs from current mode",
+    "sources": [
+      "inner_lamp_ssts_0280"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4LampBrthngCmd_1 command breathing cycle timing",
+    "relation": "depends on",
+    "tail": "Code Value → corresponding period value (per breathing curve table)",
+    "sources": [
+      "inner_lamp_ssts_0280"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4LampBrthngCmd_1 command ignores brightness signal",
+    "relation": "precondition",
+    "tail": "lamp head performs periodic breathing per received cycle instruction",
+    "sources": [
+      "inner_lamp_ssts_0280"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4LampBrthngCmd_1 command immediately stops breathing",
+    "relation": "suppression condition",
+    "tail": "command value = 0x0",
+    "sources": [
+      "inner_lamp_ssts_0280"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4LampBrthngCmd_1 command breathing mode transition",
+    "relation": "state retention condition",
+    "tail": "on mode change: immediately stop current breathing, then start next mode",
+    "sources": [
+      "inner_lamp_ssts_0280"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading lamp brightness level20 PWM changed to 60%",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading lamp brightness level30 PWM changed to 90%",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading lamp turn-on speed 3 changed from instantaneous to 4.5s",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": true,
+    "conflict_note": "Direct conflict with 'Reading lamp turn-on speed 3 changed from 4.5s to instantaneous' — opposite direction changes specified under same precondition 'version V'. Likely indicates version V contains contradictory requirements or revision ambiguity (e.g., 'V' may denote different sub-versions)."
+  },
+  {
+    "head": "Reading lamp turn-on speed 3 changed from 4.5s to instantaneous",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": true,
+    "conflict_note": "Direct conflict with 'Reading lamp turn-on speed 3 changed from instantaneous to 4.5s' — opposite direction changes specified under same precondition 'version V'. Likely indicates version V contains contradictory requirements or revision ambiguity (e.g., 'V' may denote different sub-versions)."
+  },
+  {
+    "head": "Ambient lamp remains powered in transport mode",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front left/right footwell lamps removed from dedicated driver control; replaced by ambient lighting via LIN",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU_LIN4 overhead ambient lamp removed; overhead ambient lamp migrated to RHZCU_LIN5, converted to single-control, and associated signals renamed",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Four ambient lamps added per side on all four doors, with corresponding signal definitions",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU_LIN5 adds control logic for console ambient lamp, footwell ambient lamp, and IP speaker ambient lamp (left side)",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp breathing mode adds Rate13 and Rate15 breathing curve tables",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp breathing curve Rate4 hold-on percent changed to 0%",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp breathing curve Rate6 hold-on percent changed to 10%",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp breathing curve Rate8 hold-on percent changed to 20%",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp breathing curve Rate9 hold-on percent changed to 5%",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp breathing modes 0x3–0xC and 0xE use quadratic breathing curve y = x²/100",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLghtLHRollingCtr_1 signal non-monotonicity (non-accumulation or jump) causes immediate termination of breathing mode and fallback to static color/brightness display",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third-row reading lamp switch/driver fault detection linked to third-row reading lamp enable configuration word",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Invalid reading lamp brightness or turn-on speed requests result in state hold (no change)",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp controller ignores undefined color codes and retains last valid color",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "P12LM2 introduces physical IP button switch; backlight signal routing updated from CAN to LIN (P12LM2 channel)",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right-side IP roof-rail ambient lamp and IP waist ambient lamp added",
+    "relation": "precondition",
+    "tail": "software version V",
+    "sources": [
+      "inner_lamp_ssts_0281"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver footwell lamp control circuit short-to-battery fault detection",
+    "relation": "trigger condition",
+    "tail": "driver footwell lamp drive active AND driver current < TBD A AND duration ≥ 100 ms",
+    "sources": [
+      "inner_lamp_ssts_0282"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver footwell lamp control circuit short-to-ground fault detection",
+    "relation": "trigger condition",
+    "tail": "driver footwell lamp drive active AND driver current > TBD A AND duration ≥ 100 ms",
+    "sources": [
+      "inner_lamp_ssts_0282"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

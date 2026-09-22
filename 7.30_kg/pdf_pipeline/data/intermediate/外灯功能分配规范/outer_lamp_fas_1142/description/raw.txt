@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "危险报警灯（双闪）功能保持与解除条件",
+  "row_semantics": "描述危险报警灯在不同场景下的控制逻辑，包括其保持、解除条件以及相关的控制器和信号。",
+  "column_semantics": {
+    "保持源": "触发危险报警灯保持的来源或条件。",
+    "控制面": "负责控制危险报警灯的模块或控制器。",
+    "保持原因": "危险报警灯保持的具体原因。",
+    "保持解除条件": "危险报警灯从保持状态恢复到非保持状态的条件。",
+    "网络保持时间": "危险报警灯在网络层面保持的时间属性。",
+    "控制面本地保持时间": "危险报警灯在控制面本地保持的时间属性。",
+    "保持控制面": "执行危险报警灯保持功能的控制器或模块列表。",
+    "保持两脚 (NOI)": "危险报警灯保持时涉及的信号或输出列表。",
+    "功能需求": "对危险报警灯保持功能的具体要求或描述。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "危险报警灯开关",
+    "LHZCU"
+  ],
+  "core_conditions": [
+    "危险警报灯未关闭时，整车下电",
+    "always"
+  ],
+  "core_outputs": [
+    "LHZCU",
+    "ZXD",
+    "VMCU",
+    "RHZCU",
+    "THA",
+    "RHA",
+    "Tail_pAsmA_RH",
+    "Tail_pAsmA_LH",
+    "Tail_pAsmB"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "always"
+  ],
+  "engineering_interpretation": "该表格定义了危险报警灯在车辆特定条件下（如整车下电）的保持与解除逻辑，以及相关的控制器、信号和时间参数，可用于验证危险报警灯在不同场景下的功能表现。",
+  "uncertain_points": []
+}
+```

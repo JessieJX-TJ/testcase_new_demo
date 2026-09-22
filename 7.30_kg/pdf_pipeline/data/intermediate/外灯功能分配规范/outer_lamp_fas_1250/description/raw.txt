@@ -1,0 +1,40 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车电子系统接口信号定义与通信规范",
+  "row_semantics": "每行代表一个特定的接口信号或功能模块的详细描述，包括其来源、方向、类型及通信路径。",
+  "column_semantics": {
+    "Interface Name": "接口名称，需与逻辑框图内容一致，标识具体的信号或功能模块。",
+    "Direction": "信号的方向，如输入/输出，提供/消费。",
+    "Type": "信号的类型，如CAN/LIN/SOA服务或硬线等。",
+    "Sender/Provider": "信号的发送方或提供方，如信号发送节点或SoA服务提供方。",
+    "Receiver/Consumer": "信号的接收方或消费方，如信号接收节点或SoA服务消费方。",
+    "Channel": "信号传输的路径或通道，如指定信号通道。",
+    "Interface Source": "接口信号的来源，如指定信号来源。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "type": "功能名",
+      "description": "车辆模式（Vehicle Mode）信号，用于指示车辆当前的工作模式。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "VehMd",
+      "type": "输出信号",
+      "description": "车辆模式信号，具体值包括：0x0 = NORMAL（正常模式）、0x1 = CRASH（碰撞模式）、0x2 = FACTORY（工厂模式）。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆模式（VehMd）信号的接口规范，包括其类型、方向、发送方、接收方、传输通道及来源，主要用于验证车辆模式信号在不同通信协议（如CAN/LIN/SOA）下的正确传输和解析。",
+  "uncertain_points": [
+    "未明确说明具体的控制器/模块名称。",
+    "未详细描述信号的具体应用场景或触发条件。"
+  ]
+}
+```

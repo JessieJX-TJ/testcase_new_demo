@@ -1,0 +1,56 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform-SSTS-IBD10)",
+  "row_semantics": "Each row represents a specific configuration or parameter set for interior lighting, identified by a unique code (e.g., 213, 214). The rows are ordered numerically and likely correspond to different lighting modes, intensities, or color settings.",
+  "column_semantics": {
+    "1": "Parameter Code (Unique identifier for each lighting configuration)",
+    "2": "First Parameter Value (e.g., Red Channel Intensity)",
+    "3": "Second Parameter Value (e.g., Green Channel Intensity)",
+    "4": "Third Parameter Value (e.g., Blue Channel Intensity or Brightness Level)",
+    "5": "Fourth Parameter Value (e.g., PWM Duty Cycle or Specific Control Value)",
+    "6": "Fifth Parameter Value (e.g., Timer Value or Additional Control Parameter)",
+    "7": "Color Representation of the Configuration (Visual indicator of the resulting light color)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "Interior Lighting Sub System",
+      "type": "sub_system",
+      "description": "The internal lighting system of the vehicle, including ambient lights, door courtesy lights, and other interior illumination features."
+    },
+    {
+      "name": "Z-ONE-3.0 Platform",
+      "type": "platform",
+      "description": "The specific vehicle platform for which this lighting specification is defined."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Parameter Code",
+      "description": "A unique identifier for each lighting configuration, used to select or activate a specific lighting mode or setting."
+    },
+    {
+      "name": "Parameter Values",
+      "description": "Various numerical values that define the characteristics of the lighting output, such as intensity, color balance, and timing."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Light Color",
+      "description": "The resulting color of the interior light, determined by the combination of parameter values (e.g., red, orange, pink, etc.)."
+    },
+    {
+      "name": "Light Intensity/Brightness",
+      "description": "The perceived brightness level of the interior light, influenced by parameters like PWM duty cycle or overall intensity values."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameter sets for various interior lighting configurations on the Z-ONE-3.0 platform. It can be used to verify that the lighting system correctly implements the specified color outputs and intensity levels for each configuration code. Test cases can be derived to check if the system responds with the expected light color and intensity when a specific parameter set is activated.",
+  "uncertain_points": [
+    "The exact function of each parameter value (e.g., whether they represent RGB values, PWM signals, or other control signals) is not explicitly stated in the table.",
+    "The meaning of the 'Dynamic Skin Signal' entries at the bottom of the table is unclear without additional context.",
+    "The specific lighting modes or use cases associated with each parameter set are not detailed in the table."
+  ]
+}

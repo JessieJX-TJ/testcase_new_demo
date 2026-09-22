@@ -1,0 +1,17 @@
+场景描
+拖挂模式下,拖挂车倒车灯开启/关闭
+述
+前置条
+1&&2
+件
+1、车辆具备拖车模式功能:InsdFnCfgVehDragMd=0x1
+2、拖挂模式开启:VehDragMdSts=0x1=VehDragMdSts_1_On
+注:LHZCU、ICB、RZCU需判断此前置条件
+触发条
+LHZCU发送的外灯控制信号为倒车灯开启/关闭:
+{ExteriorLightSwitchProcess. ReverseLightFucProStatus.
+ReverseLghtFucProsSta}=0x1=ON;(或0x0=OFF)
+执行动
+1、[外灯组合服务ICB]判断前置条件满足,根据接收到的
+作
+LHZCU发送的倒车灯开启或关闭请求,对应调用基础服务:

@@ -1,0 +1,34 @@
+SidePositionLightReq}=0x1=ON; (InstanceID=3) {SidePositionLight
+ControlSidePositionLight. SidePositionLightReq}=0x1=ON
+(InstanceID=4) {SidePositionLight. ControlSidePositionLight.
+SidePositionLightReq}=0x1=ON
+(exlSideLghtHwDrvEnPrm=0x0；备注:位置灯私有CAN通讯方案,以instance3,4
+5,6,7,8发送请求,如 P12LM1 PPV)
+(InstanceID=1) {SidePositionLight. ControlSidePositionLight.
+(InstanceID=2) {SidePositionLight. ControlSidePositionLight.
+(InstanceID=3) {SidePositionLight. ControlSidePositionLight.
+(exlSideLghtHwDrvEnPrm=0x1；备注:位置灯炮筒灯方案,以instance1,2,3,4发
+送控制请求,如 S31L EP)
+(InstanceID=1) {DippedBeamLight. ControlDippedBeamLight. DippedBeamLightReq)=
+0x1=ON
+(InstanceID=2) {DippedBeamLight. ControlDippedBeamLight. DippedBeamLightReq}=
+0x1=0N
+(InstanceID=3) {DippedBeamLight. ControlDippedBeamLight. DippedBeamLightReq}=
+(InstanceID=4) {DippedBeamLight. ControlDippedBeamLight. DippedBeamLightReq)=
+Notifier:
+{ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts}=0x1=On
+{RearFogLight.RearFogLightControl.RearFogLightCtrReq}=0x1=ON
+[驱动处理模块LHZCU/RHZCU/RZCU]内部跳变为硬线输出,驱动后雾灯/近
+光灯点亮
+位置灯 LHZCU/RHZCU/RZCU 接收到 ICB 发送的位置灯控制请求硬线驱动位
+置灯点亮；(exlSideLghtHwDrvEnPrm=0x1;备注:位置灯炮筒灯方案；)
+[驱动处理模块RZCU]将状态/故障状态反馈至[后雾灯控制模块LHZCU]
+{RearFogLight. RearFogLightState. RearFogLightSta}=0x1=ON
+{RearFogLight. RearFogLightErrorStatus. RearFogLightErrorSta}=Ox0=No Error
+[后雾灯控制模块LHZCU]将状态/故障状态反馈至ICB:
+{ExteriorLightSwitchProcess.RearFogLightSta.RearFogLghtSta}=0x1=ON
+10.[外灯组合服务ICB]订阅接口:
+{ExteriorLightControlSystem. RearFogLightSts. RearFogLghtSts}=0x1=On
+11.[后雾灯控制模块LHZCU]订阅近光灯状态/故障状态接口:
+{DippedBeamLight.DippedBeamLightStatus. DippedBeamLightSta} (InstanceID=3)=
+{DippedBeamLight.DippedBeamLightStatus. DippedBeamLightSta} (InstanceID=4)=

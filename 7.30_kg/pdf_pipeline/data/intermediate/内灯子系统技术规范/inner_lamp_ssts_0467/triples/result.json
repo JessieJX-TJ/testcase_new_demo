@@ -1,0 +1,105 @@
+[
+  {
+    "head": "门灯呼吸模式亮度调节",
+    "relation": "触发条件",
+    "tail": "接收到呼吸周期 DoorFL1LampBrthngCmd_l = 0x3 (Rate3 1s)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DoorFL1LampBrthngCmd_l",
+      "Rate3",
+      "1s"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0467",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "亮度从 0% 变化到 100%",
+    "relation": "依赖于",
+    "tail": "呼吸周期内,400ms 时间内以 y=x^2 曲线形式变化",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DoorFL1LampBrthngCmd_l",
+      "400ms",
+      "y=x^2"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0467",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "亮度从 100% 变化到 0%",
+    "relation": "依赖于",
+    "tail": "等待时间 100ms 后,以 AmbiLampBrthng Rate3holdoffPercent 控制",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "AmbiLampBrthng",
+      "Rate3holdoffPercent",
+      "100ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0467",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "呼吸模式 Rate13",
+    "relation": "输入为",
+    "tail": "DoorFL1LampBrthngCmd_l 中的 0xD",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DoorFL1LampBrthngCmd_l",
+      "0xD"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0467",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "呼吸模式 Rate15",
+    "relation": "输入为",
+    "tail": "DoorFL1LampBrthngCmd_l 中的 0xF",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DoorFL1LampBrthngCmd_l",
+      "0xF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0467",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Rate13 呼吸模式亮度曲线",
+    "relation": "输出为",
+    "tail": "200 个数据点,每 40ms 亮度百分比变化表",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Rate13",
+      "200 数据",
+      "40ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0467",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Rate15 呼吸模式亮度曲线",
+    "relation": "输出为",
+    "tail": "120 个数据点,每 100ms 亮度百分比变化表",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Rate15",
+      "120 数据",
+      "100ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0467",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  }
+]

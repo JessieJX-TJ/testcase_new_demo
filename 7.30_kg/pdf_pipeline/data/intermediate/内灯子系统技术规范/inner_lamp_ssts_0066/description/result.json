@@ -1,0 +1,102 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - Door Lamp Fading and Blinking Control",
+  "row_semantics": "Each row represents a specific breathing mode or fading speed command for the right rear door lamp, defined by its rate (period) and associated behavior.",
+  "column_semantics": {
+    "Code Value": "Identifier for the specific breathing mode or fading speed command.",
+    "Period": "The time interval (in seconds) for the breathing cycle or fading transition.",
+    "Original Breathing Mode Value": "Describes the type of breathing pattern or fading behavior associated with the code value."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorRL1LampFadeSpdCmd_1",
+      "type": "function",
+      "description": "Controls the fading speed of the right rear door lamp 1."
+    },
+    {
+      "name": "DoorRL2LampOnOff_1",
+      "type": "function",
+      "description": "Controls the on/off state of the right rear door lamp 2."
+    },
+    {
+      "name": "DoorRL2LampColCmd_1",
+      "type": "function",
+      "description": "Controls the color and brightness of the right rear door lamp 2 when turned on."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "LIN",
+      "type": "input_signal",
+      "description": "Local Interconnect Network signal, likely used for communication between modules."
+    },
+    {
+      "name": "LHZCU",
+      "type": "input_signal",
+      "description": "Local Hazard Control Unit, possibly responsible for hazard light control."
+    },
+    {
+      "name": "DoorAmbtLampA_RL",
+      "type": "input_signal",
+      "description": "Ambient lamp request from the right rear door area."
+    },
+    {
+      "name": "LHZCU_LIN4",
+      "type": "input_signal",
+      "description": "Specific LIN channel for LHZCU communication."
+    },
+    {
+      "name": "DoorAmbtlLampB_RL",
+      "type": "input_signal",
+      "description": "Ambient lamp request from another right rear door area."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "内灯 SSTS",
+      "type": "output_signal",
+      "description": "Internal lighting status signal, likely indicating the state of interior lights."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate0",
+      "value": "/",
+      "description": "No request; indicates the absence of a breathing mode."
+    },
+    {
+      "name": "Rate1",
+      "value": "500ms",
+      "description": "Breathing period of 500 milliseconds, new mode with 0-100% intensity change."
+    },
+    {
+      "name": "Rate2",
+      "value": "1s",
+      "description": "Breathing period of 1 second, original breathing mode 2 with 0-100% intensity change."
+    },
+    {
+      "name": "Spd0",
+      "value": "2000ms",
+      "description": "Default speed for transitioning from current to target state during color/brightness change."
+    },
+    {
+      "name": "Spd1",
+      "value": "300ms",
+      "description": "Faster speed for transitioning during color/brightness change."
+    },
+    {
+      "name": "Spd2",
+      "value": "100ms",
+      "description": "Fastest speed for transitioning during color/brightness change (reserved for future use)."
+    }
+  ],
+  "engineering_interpretation": "This table defines the various breathing modes and fading speeds for the right rear door lamps in the Interior Lighting Sub System. It specifies how the lamps should behave based on different code values, including their periods and associated breathing patterns. This information is crucial for testing the correct implementation of lamp control logic, ensuring that the lamps respond appropriately to commands and display the intended visual effects.",
+  "uncertain_points": [
+    "The exact internal logic of how the 'DoorRL1LampFadeSpdCmd_1' function maps to the physical lamp behavior is not detailed.",
+    "The specific meaning of '原呼吸模式值' (original breathing mode value) for each code is not fully explained beyond examples.",
+    "The relationship between the different 'Spd' values and their actual implementation in hardware is not specified."
+  ]
+}

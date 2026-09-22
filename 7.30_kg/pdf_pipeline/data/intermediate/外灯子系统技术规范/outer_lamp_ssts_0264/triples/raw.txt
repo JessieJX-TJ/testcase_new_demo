@@ -1,0 +1,75 @@
+```json
+[
+  {
+    "head": "左近光灯开路故障诊断",
+    "relation": "触发条件",
+    "tail": "检测到左近光灯开路",
+    "triple_type": "逻辑规则",
+    "evidence_terms": [
+      "触发条件",
+      "检测到左近光灯开路"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外近光灯驱动模块LDipdBeamLghtDrvMdl",
+    "relation": "输出为",
+    "tail": "DippedBeamLightStatus.DippedBeamLightSta=0 (Off) (InstanceID=1)",
+    "triple_type": "输入输出关系",
+    "evidence_terms": [
+      "执行动作",
+      "LDipdBeamLghtDrvMdl",
+      "DippedBeamLightSta=0 (Off)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外近光灯驱动模块LDipdBeamLghtDrvMdl",
+    "relation": "输出为",
+    "tail": "DippedBeamLightErrorStatus.DippedBeamLightErrorSta=0x1 (Error) (InstanceID=1)",
+    "relation": "输出为",
+    "tail": "置位 DTC",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "执行动作",
+      "LDipdBeamLghtDrvMdl",
+      "DippedBeamLightErrorSta=0x1 (Error)",
+      "置位 DTC"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左近光灯开路故障诊断",
+    "relation": "前提条件",
+    "tail": "exlDipBeamHwDrvEnPrm == 1",
+    "triple_type": "逻辑规则",
+    "evidence_terms": [
+      "前置条件",
+      "exlDipBeamHwDrvEnPrm == 1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左近光灯开路故障诊断",
+    "relation": "前提条件",
+    "tail": "左近光灯处于输出状态",
+    "triple_type": "逻辑规则",
+    "evidence_terms": [
+      "前置条件",
+      "左近光灯处于输出状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左近光灯开路故障诊断",
+    "relation": "退出条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "逻辑规则",
+    "evidence_terms": [
+      "退出条件",
+      "检测到短路恢复"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

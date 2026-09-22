@@ -1,0 +1,83 @@
+{
+  "table_type": "fault_table",
+  "topic": "整车电子电器系统中左转向灯输出电路的故障诊断需求",
+  "row_semantics": "每行代表一个具体的故障诊断场景，针对左转向灯输出电路的不同异常状态进行定义。",
+  "column_semantics": {
+    "名称": "故障诊断场景的唯一标识符，格式为B104A XX，其中XX表示具体故障类型编号。",
+    "描述": "对当前诊断场景所涉及的故障现象进行简要说明。",
+    "进入条件": "触发该故障诊断场景的检测条件，即系统需要满足的输入信号状态。",
+    "退出条件": "结束该故障诊断场景的检测条件，即系统恢复到正常状态或不再满足故障条件时的状态。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B104A 11",
+      "type": "function_name",
+      "description": "左转向灯输出短路到地故障诊断场景"
+    },
+    {
+      "name": "B104A 12",
+      "type": "function_name",
+      "description": "左转向灯输出短路到电源故障诊断场景"
+    },
+    {
+      "name": "B104A 13",
+      "type": "function_name",
+      "description": "左转向灯输出开路故障诊断场景"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "检测到短路到地",
+      "type": "input_signal",
+      "description": "系统检测到左转向灯输出端与地之间存在短路故障"
+    },
+    {
+      "name": "检测到短路到电源",
+      "type": "input_signal",
+      "description": "系统检测到左转向灯输出端与电源之间存在短路故障"
+    },
+    {
+      "name": "检测到输出开路",
+      "type": "input_signal",
+      "description": "系统检测到左转向灯输出端与外部电路断开连接"
+    },
+    {
+      "name": "检测到未短路到地",
+      "type": "input_signal",
+      "description": "系统未检测到左转向灯输出端与地之间的短路故障"
+    },
+    {
+      "name": "检测到未短路到电源",
+      "type": "input_signal",
+      "description": "系统未检测到左转向灯输出端与电源之间的短路故障"
+    },
+    {
+      "name": "检测到输出开路恢复",
+      "type": "input_signal",
+      "description": "系统检测到之前存在的左转向灯输出开路故障已恢复"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "B104A 11",
+      "type": "fault_status",
+      "description": "左转向灯输出短路到地故障"
+    },
+    {
+      "name": "B104A 12",
+      "type": "fault_status",
+      "description": "左转向灯输出短路到电源故障"
+    },
+    {
+      "name": "B104A 13",
+      "type": "fault_status",
+      "description": "左转向灯输出开路故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子电器系统中左转向灯输出电路的三种主要故障诊断场景（短路到地、短路到电源、开路），并明确了触发和结束这些诊断场景的检测条件，可用于指导相关功能的测试验证。",
+  "uncertain_points": []
+}

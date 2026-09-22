@@ -1,0 +1,60 @@
+{
+  "table_type": "fault_table",
+  "topic": "外灯功能 - 前雾灯故障状态",
+  "row_semantics": "表格按前雾灯的左右两侧分别列出其故障状态信息。",
+  "column_semantics": {
+    "1": "功能模块名称",
+    "2": "服务消费方 (SOA)",
+    "3": "控制器/模块名 (LHZCU)",
+    "4": "控制器/模块名 (RHZCU)",
+    "5": "预留",
+    "6": "硬线故障状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FrontFogLight",
+      "description": "前雾灯系统"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FrontFogLightErrorStatus",
+      "description": "前雾灯故障状态接口",
+      "details": {
+        "interface_name": "FrontFogLightErrorStatus",
+        "parameter_name": "{FrontFogLightErrorSta}",
+        "instance_id": "3 for left, 4 for right",
+        "values": {
+          "0x0": "No Error",
+          "0x1": "Error",
+          "0x2": "Unknown"
+        }
+      }
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "FrontFogLightErrorStatus",
+      "description": "前雾灯故障状态",
+      "details": {
+        "type": "Fault Status",
+        "source": "LHZCU or RHZCU",
+        "output_interface": "FrontFogLightErrorStatus",
+        "values": {
+          "0x0": "No Error",
+          "0x1": "Error",
+          "0x2": "Unknown"
+        }
+      }
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆前雾灯（左侧和右侧）的故障状态信息，包括故障状态的取值范围（无错误、错误、未知），以及对应的控制器模块（LHZCU或RHZCU）和接口参数。可用于验证前雾灯系统在不同故障状态下的信号输出是否符合规范。",
+  "uncertain_points": [
+    "具体控制器模块的交互细节未明确说明",
+    "硬线故障状态的具体实现方式未详细描述"
+  ]
+}

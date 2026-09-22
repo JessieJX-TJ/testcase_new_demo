@@ -1,0 +1,460 @@
+```json
+[
+  {
+    "head": "RightRearDirectionLight (DirectionLight) Off",
+    "relation": "trigger_condition",
+    "tail": "ControlDirectionLight service invoked periodically with InstanceID=4",
+    "sources": ["outer_lamp_fas_1210"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearDirectionLight (DirectionLight) Off",
+    "relation": "trigger_condition",
+    "tail": "value = 0x0 = OFF",
+    "sources": ["outer_lamp_fas_1210"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftRearDirectionLight (DirectionLight) Control",
+    "relation": "depends_on",
+    "tail": "SOA, RZCU, ICB modules",
+    "sources": ["outer_lamp_fas_1210"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearDirectionLight (DirectionLight) Control",
+    "relation": "depends_on",
+    "tail": "SOA, RZCU, ICB modules",
+    "sources": ["outer_lamp_fas_1210"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftRearDirectionLight (DirectionLight) Control",
+    "relation": "control_method",
+    "tail": "hardwired control",
+    "sources": ["outer_lamp_fas_1210"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearDirectionLight (DirectionLight) Control",
+    "relation": "control_method",
+    "tail": "hardwired control",
+    "sources": ["outer_lamp_fas_1210"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftRearDirectionLight (DirectionLight) Control",
+    "relation": "subfunction",
+    "tail": "periodic invocation of ControlDirectionLight service interface",
+    "sources": ["outer_lamp_fas_1210"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearDirectionLight (DirectionLight) Control",
+    "relation": "subfunction",
+    "tail": "periodic invocation of ControlDirectionLight service interface",
+    "sources": ["outer_lamp_fas_1210"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU HazardLightRequest Active",
+    "relation": "prerequisite",
+    "tail": "UsgMd = All",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU HazardLightRequest Active",
+    "relation": "prerequisite",
+    "tail": "UsgMdV = Valid",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU HazardLightRequest Active",
+    "relation": "prerequisite",
+    "tail": "VehMd = All",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU HazardLightRequest Active",
+    "relation": "prerequisite",
+    "tail": "VehMdV = Valid",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU HazardLightRequest Active",
+    "relation": "prerequisite",
+    "tail": "ExtrLghtCtrlCmmtnTyp = 0x0 = SOA OR 0x1 = CAN",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": true,
+    "conflict_note": "Conflicting communication type requirements: SOA and CAN are mutually exclusive in a given configuration; both listed as prerequisites without disjunction context — requires architectural clarification"
+  },
+  {
+    "head": "LHZCU HazardLightRequest Active",
+    "relation": "prerequisite",
+    "tail": "ExtrLghtStsCmmtnTyp = 0x0 = SOA OR 0x1 = CAN",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": true,
+    "conflict_note": "Conflicting status communication type requirements: SOA and CAN are mutually exclusive in a given configuration — requires architectural clarification"
+  },
+  {
+    "head": "LHZCU HazardLightFlashActivation",
+    "relation": "trigger_condition",
+    "tail": "HzrdLghtSwReq = 0x1 = HzrdLghtSwReq_1_On received from LHZCU hazard light preprocessing module",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontLeftDirectionLightCtrl (FLDircnLghtCtrl) Flashing at 1.25Hz",
+    "relation": "depends_on",
+    "tail": "LHZCU HazardLightRequest Active",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontRightDirectionLightCtrl (FRDircnLghtCtrl) Flashing at 1.25Hz",
+    "relation": "depends_on",
+    "tail": "LHZCU HazardLightRequest Active",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearLeftDirectionLightCtrl (RLDircnLghtCtrl) Flashing at 1.25Hz",
+    "relation": "depends_on",
+    "tail": "LHZCU HazardLightRequest Active",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearRightDirectionLightCtrl (RRDircnLghtCtrl) Flashing at 1.25Hz",
+    "relation": "depends_on",
+    "tail": "LHZCU HazardLightRequest Active",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU DirectionLightModeStatus Output",
+    "relation": "output_as",
+    "tail": "DircnLghtMdSts = 0x0 = DircnLghtMdSts_0_Enabled",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU HazardLightRequest Active",
+    "relation": "state_persistence_condition",
+    "tail": "LHZCU HazardLightRequest Active",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": false,
+    "conflict_note": "Tautological self-reference; likely indicates state-holding logic requiring implementation-level interpretation"
+  },
+  {
+    "head": "LHZCU HazardLightFlashActivation",
+    "relation": "timing_constraint",
+    "tail": "800 ms flash period (1.25 Hz)",
+    "sources": ["outer_lamp_fas_1211"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightState",
+    "relation": "output_as",
+    "tail": "OFF",
+    "sources": ["outer_lamp_fas_1212"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightState",
+    "relation": "output_as",
+    "tail": "ON",
+    "sources": ["outer_lamp_fas_1212"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightErrorStatus",
+    "relation": "output_as",
+    "tail": "No Error",
+    "sources": ["outer_lamp_fas_1212"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightErrorStatus",
+    "relation": "output_as",
+    "tail": "Error",
+    "sources": ["outer_lamp_fas_1212"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightState",
+    "relation": "output_as",
+    "tail": "OFF",
+    "sources": ["outer_lamp_fas_1212"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightState",
+    "relation": "output_as",
+    "tail": "ON",
+    "sources": ["outer_lamp_fas_1212"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightErrorStatus",
+    "relation": "output_as",
+    "tail": "No Error",
+    "sources": ["outer_lamp_fas_1212"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightStatus",
+    "relation": "output_as",
+    "tail": "RoofSpotLight.RoofSpotLightStatus.RoofSpotLightState RTE signal",
+    "sources": ["outer_lamp_fas_1213"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightErrorStatus",
+    "relation": "output_as",
+    "tail": "RoofSpotLight.RoofSpotLightErrorStatus.RoofSpotLightErrorState RTE signal",
+    "sources": ["outer_lamp_fas_1213"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrailerBrakeLight On",
+    "relation": "trigger_condition",
+    "tail": "LHZCU sends BrkLghtCtrl = 0x1 = BrkLghtCtrl_1_On",
+    "sources": ["outer_lamp_fas_1214"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrailerBrakeLight Off",
+    "relation": "trigger_condition",
+    "tail": "LHZCU sends BrkLghtCtrl = 0x0 = BrkLghtCtrl_0_Off",
+    "sources": ["outer_lamp_fas_1214"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU TrailerBrakeLightControl Enabled",
+    "relation": "prerequisite",
+    "tail": "InsdFnCfgVehDragMd = 0x1 (trailer mode capability enabled)",
+    "sources": ["outer_lamp_fas_1214"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU TrailerBrakeLightControl Enabled",
+    "relation": "prerequisite",
+    "tail": "VehDragMdSts = 0x1 = VehDragMdSts_1_On (trailer mode active)",
+    "sources": ["outer_lamp_fas_1214"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU TrailerBrakeLightControl",
+    "relation": "depends_on",
+    "tail": "LHZCU BrkLghtCtrl signal",
+    "sources": ["outer_lamp_fas_1214"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrailerBrakeLight State",
+    "relation": "input_as",
+    "tail": "LHZCU BrkLghtCtrl signal",
+    "sources": ["outer_lamp_fas_1214"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU TrailerBrakeLightControl",
+    "relation": "output_as",
+    "tail": "LHZCU BrkLghtCtrl signal",
+    "sources": ["outer_lamp_fas_1214"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "document_reference",
+    "tail": "Page 789 of 935",
+    "sources": ["outer_lamp_fas_1215"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI BrakeLightStatus Display",
+    "relation": "trigger_condition",
+    "tail": "HMI subsystem receives FollowMeHome enable status",
+    "sources": ["outer_lamp_fas_1216"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLight On State",
+    "relation": "prerequisite",
+    "tail": "PersonalizationData.FollowMehomeSet.FollowMehomeSetInfo.FoMeHmEnableInfo = 0x0",
+    "sources": ["outer_lamp_fas_1216"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLight Off State",
+    "relation": "inhibition_condition",
+    "tail": "PersonalizationData.FollowMehomeSet.FollowMehomeSetInfo.FoMeHmEnableInfo ≠ 0x0",
+    "sources": ["outer_lamp_fas_1216"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight On",
+    "relation": "trigger_condition",
+    "tail": "S32G receives input from ICB main display switch request",
+    "sources": ["outer_lamp_fas_1218"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight On",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightControlSystem.ControlRearFogLight.RearFogLightReq = 0x1 = On",
+    "sources": ["outer_lamp_fas_1218"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeam On",
+    "relation": "control_method",
+    "tail": "ICB converts service interface or control signal to lamp control CAN message",
+    "sources": ["outer_lamp_fas_1218"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight On",
+    "relation": "trigger_condition",
+    "tail": "InstanceID = 8 AND ControlSidePositionLight.SidePositionLightReq = 0x1 = ON",
+    "sources": ["outer_lamp_fas_1218"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PositionLightIndicator Display",
+    "relation": "depends_on",
+    "tail": "HMI subsystem (ICB) retrieves RearFogLight, DippedBeam, and PositionLight indicator states via interface",
+    "sources": ["outer_lamp_fas_1218"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightState Update",
+    "relation": "input_as",
+    "tail": "CombLightFucProStatus = 0x4 = SidePositionAndDippedBeam",
+    "sources": ["outer_lamp_fas_1218"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightState Only",
+    "relation": "input_as",
+    "tail": "CombLightFucProStatus = 0x1 = Only RearFogLight",
+    "sources": ["outer_lamp_fas_1218"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight On",
+    "relation": "priority_over",
+    "tail": "RearFogLight On",
+    "sources": ["outer_lamp_fas_1218"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight On",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightSwitchProcess.RearFogLightSwStatus.RearFogLightSwSta = 0x1 = ON",
+    "sources": ["outer_lamp_fas_1219"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight On",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightSwitchProcess.RearFogLightFucProStatus.RearFogLightFucProsSta = 0x1 = Only RearFogLght Ctrl",
+    "sources": ["outer_lamp_fas_1219"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight On",
+    "relation": "depends_on",
+    "tail": "RearFogLghtCtrl = 0x1 = RearFogLghtCtrl_1_On",
+    "sources": ["outer_lamp_fas_1219"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightIndicator Display",
+    "relation": "trigger_condition",
+    "tail": "Notifier: ExteriorLightSwitchProcess.RearFogLightSwStatus.RearFogLightSwSta = 0x1 = ON",
+    "sources": ["outer_lamp_fas_1219"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightStatus Feedback",
+    "relation": "output_as",
+    "tail": "RearFogLightSts = 0x1 = RearFogLghtSts_1_On",
+    "sources": ["outer_lamp_fas_1219"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightErrorStatus Feedback",
+    "relation": "output_as",
+    "tail": "RearFogLightErrSta = 0x0 = No Error",
+    "sources": ["outer_lamp_fas_1219"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightStatus Synchronization",
+    "relation": "timing_constraint",
+    "tail": "max 40 ms latency between left and right rear fog lights",
+    "sources": ["outer_lamp_fas_1219"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

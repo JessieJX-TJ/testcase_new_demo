@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "other",
+  "topic": "外灯控制系统 - 倒车灯控制与状态监控",
+  "row_semantics": "表格定义了两个主要的系统交互功能：倒车灯控制请求和倒车灯功能状态通知。",
+  "column_semantics": "列标题表示不同的系统或模块（SOA, LHZCU, ICB），用于标识服务调用或状态报告的来源/目标。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "system",
+      "description": "外灯控制系统，负责管理车辆外部灯光"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Local Headlight Zone Control Unit，本地大灯区域控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Control Box，集成控制盒"
+    },
+    {
+      "name": "SOA",
+      "type": "service",
+      "description": "Service-Oriented Architecture，面向服务架构"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ReverseLightReq",
+      "type": "input_signal",
+      "description": "倒车灯控制请求参数，0x0=关闭，0x1=开启"
+    },
+    {
+      "name": "ReverseLightFucProStatus",
+      "type": "input_signal",
+      "description": "倒车灯功能状态参数，0x0=关闭，0x1=开启"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ReverseLightResp",
+      "type": "output_signal",
+      "description": "倒车灯控制响应参数，0x0=成功，0x1=失败"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯控制系统中倒车灯的控制接口和服务状态通知机制，可用于验证倒车灯的正确开关控制以及其状态反馈功能。",
+  "uncertain_points": []
+}
+```

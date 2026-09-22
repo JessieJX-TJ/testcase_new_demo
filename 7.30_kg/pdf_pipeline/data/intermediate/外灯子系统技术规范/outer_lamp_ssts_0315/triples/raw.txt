@@ -1,0 +1,80 @@
+```json
+[
+  {
+    "head": "左远光灯短路故障处理功能",
+    "relation": "前提条件",
+    "tail": "MainBeamLightFbkSOAEnPrm == 1 (Enable) 且 左远光灯处于输出状态",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "MainBeamLightFbkSOAEnPrm==1(Enable)",
+      "左远光灯处于输出状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯短路故障处理功能",
+    "relation": "触发条件",
+    "tail": "检测到左远光灯短路到地",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "检测到左远光灯短路到地"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯短路故障处理功能",
+    "relation": "执行动作",
+    "tail": "LMainBeamLghtDrvMdl 停止驱动左远光灯输出 (MainBeamLamp_LH_HSD)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "LMainBeamLghtDrvMdl",
+      "MainBeamLamp_LH_HSD"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯短路故障处理功能",
+    "relation": "执行动作",
+    "tail": "LMainBeamLghtDrvMdl 持续发送 MainBeamLightState. MainBeamLightSta = 2 (Error) InstanceID=1 至 MainBeamLghtCtrlMdl",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "LMainBeamLghtDrvMdl",
+      "MainBeamLightState",
+      "MainBeamLightSta",
+      "InstanceID",
+      "MainBeamLghtCtrlMdl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯短路故障处理功能",
+    "relation": "执行动作",
+    "tail": "置位 DTC B105C 11",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DTC B105C 11"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯短路故障处理功能",
+    "relation": "退出条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "检测到短路恢复"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯短路故障处理功能",
+    "relation": "故障响应",
+    "tail": "DTC B105C 11",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DTC B105C 11"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

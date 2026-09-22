@@ -1,0 +1,46 @@
+[[Allocated System],Reserved, 危险警告灯自动控制#VP3-25654, Function Allocation
+Requirement]
+[FAS-IBD05-0092]—危险警报灯自动控制开启(触发源:车辆碰撞场景)(CAN链路)
+场景描述
+当车辆发生碰撞时,危险警报灯会自动激活,以提醒周边行人或者车辆注意安全
+前置条件
+1&2&3&4
+UsgMd=All
+UsgMdV=Valid
+VehMd=All
+VehMdV=Valid
+触发动作
+收到[车辆碰撞SDM]请求输入:
+[1||2||3||4]||[5&6]||7:
+VehCrshTyp:
+0x1=VehCrshTyp_1_Front_Crash
+0x2=VehCrshTyp_2_Side_Crash
+0x3=VehCrshTyp_3_Rear_Crash
+0x4=VehCrshTyp_4_Pedestrian_Crash
+收到[车辆碰撞 SDM]请求输入1&2:
+5.AirbagDpl=0x1=AirbagDpl_1_True
+6.AirbagDplInvsn=0x0=AirbagDplInvsn_0_AirbagDeployed
+7.碰撞发生时,占空比为20%,监测到碰撞的PWM信号波形特性为:
+Toff_Crash=16ms±2ms
+Ton_Crash=4ms±2ms
+High Voltage
+Ground Voltage
+4ms +/- 2ms
+20% duty cycle
+执行动作
+[危险警报灯开关控制模块LHZCU]内部软件保持双闪灯有效请求
+[危险警报灯自动控制模块LHZCU]信号跳变为:
+控制双闪灯按照1.25Hz频率闪烁(先on后off),即按照800ms一个闪烁周期发送
+发送400ms:
+FLDircnLghtCtrl=0x1=FLDircnLghtCtrl_1_on
+FRDircnLghtCtrl=0x1=FRDircnLghtCtrl_1_on
+RLDircnLghtCtrl=0x1=RLDircnLghtCtrl_1_on
+RRDircnLghtCtrl=0x1=RRDircnLghtCtrl_1_on
+FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_off
+FRDircnLghtCtrl=0x0=FRDircnLghtCtrl_0_off
+RLDircnLghtCtrl=0x0=RLDircnLghtCtrl_0_off
+RRDircnLghtCtrl=0x0=RRDircnLghtCtrl_0_off
+发送转向灯流水模式使能状态:DircnLghtMdSts=0x0=DircnLghtMdSts_0_Enabled
+ICB根据接收到的 LHZCU发送的转向灯
+FLDircnLghtCtrl/FRDircnLghtCtrl/RLDircnLghtCtrl/RRDircnLghtCtrl=ON/OFF,转换成数字灯
+信号,控制双闪灯流水点亮/熄灭

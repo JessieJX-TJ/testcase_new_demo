@@ -1,0 +1,120 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "整车外灯控制系统时序与模块交互规范",
+  "row_semantics": "描述了不同功能（转向灯、倒车灯）的信号处理流程，包括输入、内部处理模块、通信方式及输出驱动。",
+  "column_semantics": "展示了从输入信号到最终执行器驱动的时间序列和模块交互路径。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Light Hazard Control Unit，负责转向灯和倒车灯的逻辑控制与信号处理"
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "Rear Zone Control Unit，负责TDM总线上的服务转发"
+    },
+    {
+      "name": "S32G",
+      "type": "controller",
+      "description": "基于S32G芯片的外灯组合控制基础服务或外灯SWC模块"
+    },
+    {
+      "name": "TDM",
+      "type": "system",
+      "description": "Time Division Multiplexing，时间分段多路复用总线系统"
+    },
+    {
+      "name": "B295",
+      "type": "controller",
+      "description": "位置灯软开关模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "转向灯开关",
+      "type": "input_signal",
+      "description": "驾驶员操作的转向灯物理开关信号"
+    },
+    {
+      "name": "倒车挡位",
+      "type": "input_signal",
+      "description": "车辆处于倒车档位的信号"
+    },
+    {
+      "name": "位置灯开关",
+      "type": "input_signal",
+      "description": "驾驶员操作的位置灯开关信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "拖挂车转向灯驱动",
+      "type": "output_signal",
+      "description": "最终驱动拖挂车转向灯的信号"
+    },
+    {
+      "name": "拖挂车倒车灯驱动",
+      "type": "output_signal",
+      "description": "最终驱动拖挂车倒车灯的信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "转向灯预处理时间",
+      "value": "60ms",
+      "description": "转向灯开关信号在LHZCU内的预处理时间"
+    },
+    {
+      "name": "转向灯控制处理时间",
+      "value": "30ms",
+      "description": "转向灯控制模块在LHZCU内的处理时间"
+    },
+    {
+      "name": "转向灯CANFD通信延迟",
+      "value": "20ms",
+      "description": "LHZCU与RZCU之间通过CANFD通信的延迟"
+    },
+    {
+      "name": "转向灯TDM转发时间",
+      "value": "100ms",
+      "description": "RZCU将转向灯信号转发至TDM的延迟"
+    },
+    {
+      "name": "转向灯总响应时间",
+      "value": "235ms",
+      "description": "从转向灯开关操作到拖挂车转向灯驱动的总响应时间"
+    },
+    {
+      "name": "倒车灯控制处理时间",
+      "value": "30ms",
+      "description": "倒车灯控制模块在LHZCU内的处理时间"
+    },
+    {
+      "name": "倒车灯CANFD通信延迟",
+      "value": "20ms",
+      "description": "LHZCU与RZCU之间通过CANFD通信的延迟"
+    },
+    {
+      "name": "倒车灯TDM转发时间",
+      "value": "100ms",
+      "description": "RZCU将倒车灯信号转发至TDM的延迟"
+    },
+    {
+      "name": "倒车灯总响应时间",
+      "value": "275ms",
+      "description": "从倒车挡位信号到拖挂车倒车灯驱动的总响应时间"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证整车外灯控制系统（转向灯、倒车灯）的信号处理时序是否符合设计要求，确保从输入信号到最终执行器驱动的整个链路在规定时间内完成。",
+  "uncertain_points": [
+    "具体硬件接口细节未明确说明",
+    "各模块内部算法的具体实现未详细描述",
+    "故障状态的检测与恢复机制未在此表中体现"
+  ]
+}
+```

@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车电子电器系统接口定义与信号流向规范",
+  "row_semantics": "描述单个接口的详细信息，包括其名称、方向、类型、发送方/提供方、接收方/消费方、路径及来源。",
+  "column_semantics": {
+    "Interface Name": "接口的唯一标识名称，需与逻辑框图内容一致。",
+    "Direction": "信号或数据流的方向，如输入/输出、提供/消费。",
+    "Type": "接口的通信类型，如CAN/LIN/SOA服务或硬线等。",
+    "Sender/Provider": "信号的发送方或服务提供方，可能是节点或SoA服务。",
+    "Receiver/Consumer": "信号的接收方或服务消费方，可能是节点或SoA服务。",
+    "Channel": "信号传输的路径或通道，如指定信号通道。",
+    "Source": "接口的来源，如指定信号来源。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "接口名称 (Interface Name)",
+      "type": "功能名",
+      "description": "接口的唯一标识，需与逻辑框图内容保持一致。"
+    },
+    {
+      "name": "发送方/提供方 (Sender/Provider)",
+      "type": "控制器/模块名",
+      "description": "负责发送信号或提供服务的节点或SoA服务。"
+    },
+    {
+      "name": "接收方/消费方 (Receiver/Consumer)",
+      "type": "控制器/模块名",
+      "description": "负责接收信号或消费服务的节点或SoA服务。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "信号发送节点或者SoA服务提供方",
+      "type": "输出信号",
+      "description": "由发送方提供的具体信号或服务。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义整车电子电器系统中各接口的详细属性，确保信号流向和通信方式的正确性，是进行接口测试和验证的基础依据。",
+  "uncertain_points": [
+    "具体的接口名称未在表中明确列出，需根据实际项目文档确定。",
+    "具体的发送方和接收方节点或SoA服务的具体实现细节未在表中说明，需参考相关设计文档。",
+    "具体的通信路径和信号来源细节未在表中详细描述，需结合系统架构进一步确认。"
+  ]
+}
+```

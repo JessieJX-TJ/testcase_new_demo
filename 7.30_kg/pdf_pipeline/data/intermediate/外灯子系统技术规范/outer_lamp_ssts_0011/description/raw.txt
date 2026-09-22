@@ -1,0 +1,66 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "右制动灯驱动控制逻辑",
+  "row_semantics": "表格定义了在特定前置条件下，系统如何响应触发条件并执行相应动作的逻辑流程。",
+  "column_semantics": "第一列表示逻辑阶段（如前置条件、触发条件、执行动作等），第二列详细描述了该阶段的具体内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLghtDrvMdl",
+      "type": "controller_module",
+      "description": "制动灯驱动模块，负责控制制动灯的状态和发送反馈信息。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlBrkLghtHwDrvEnPrm",
+      "value": "=1",
+      "description": "外部制动灯硬件驱动使能参数为1，表示允许硬件驱动制动灯。"
+    },
+    {
+      "name": "右制动动灯输出状态",
+      "value": "处于输出状态",
+      "description": "右制动灯当前处于输出状态，表明其正在被激活或控制。"
+    },
+    {
+      "name": "检测到右制动动灯开路",
+      "description": "系统检测到右制动灯电路存在开路故障。"
+    },
+    {
+      "name": "检测到开路恢复",
+      "description": "系统检测到之前存在的开路故障已恢复。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLghtSts",
+      "value": "0 (Off)",
+      "description": "持续发送制动灯状态信号，值为0表示制动灯关闭。"
+    },
+    {
+      "name": "BrkLghtCtrlMdl",
+      "description": "制动灯控制模块，至少发送三帧控制信号。"
+    },
+    {
+      "name": "BrkLghtFltSts_HW",
+      "value": "0x1 (BrkLghtFltSts_HW_1_True)",
+      "description": "反馈制动灯故障状态信号，值为0x1表示存在某种硬件故障。"
+    },
+    {
+      "name": "DTC B1042 13",
+      "description": "置位诊断故障代码B1042 13，用于记录检测到的故障信息。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC B1042 13",
+      "description": "当检测到右制动灯开路时，系统会置位此故障代码以指示故障发生。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证右制动灯驱动模块在检测到开路故障时，是否能够正确地发送制动灯关闭信号、反馈故障状态，并置位相应的诊断故障代码；同时验证在开路恢复后，系统能否正确退出故障模式。",
+  "uncertain_points": []
+}
+```

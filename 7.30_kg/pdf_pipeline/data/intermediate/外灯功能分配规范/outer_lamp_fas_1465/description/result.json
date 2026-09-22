@@ -1,0 +1,65 @@
+{
+  "table_type": "signal_table",
+  "topic": "Side Position Light (侧位灯) 状态与控制逻辑",
+  "row_semantics": "表格的每一行代表一个具体的信号或状态描述，以及相关的备注说明。",
+  "column_semantics": "表格包含两列：左侧为灰色背景的标题栏，右侧为橙色背景的内容区，内容区详细描述了信号的状态、错误状态及实例ID等信息。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "功能名",
+      "description": "侧位灯（位置灯）系统"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "后雾灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightStatus",
+      "type": "输入信号",
+      "description": "侧位灯当前状态"
+    },
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "系统状态",
+      "description": "侧位灯错误状态"
+    },
+    {
+      "name": "AutoSidePosnLghtONbyRrFogLghtSts",
+      "type": "内部变量",
+      "description": "后雾灯请求自动灯光的位置灯开启状态"
+    },
+    {
+      "name": "exlSideLghtHwDrvEnPrm",
+      "type": "参数",
+      "description": "位置灯炮筒灯方案启用参数"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightStatus",
+      "type": "输出信号",
+      "description": "侧位灯最终点亮状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "故障状态",
+      "description": "当侧位灯出现异常时设置的错误状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步点亮延时",
+      "type": "定时",
+      "description": "近光灯、位置灯和后雾灯开启需保持同步，最大延时不超过40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了侧位灯系统的状态、错误反馈机制以及与后雾灯控制模块之间的交互逻辑，特别是针对不同实例的反馈状态和同步点亮要求。",
+  "uncertain_points": []
+}

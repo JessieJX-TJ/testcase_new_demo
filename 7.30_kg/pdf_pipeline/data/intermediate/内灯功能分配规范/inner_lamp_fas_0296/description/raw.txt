@@ -1,0 +1,50 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Vehicle Mode and Usage Mode Status Definitions for Interior Lighting Control",
+  "row_semantics": "Each row represents a distinct status or mode variable related to vehicle operation and usage, defining its possible states.",
+  "column_semantics": "Columns represent different system components or interfaces (e.g., CAN bus, ICB/ZXD module, RHZCU controller) that interact with or are responsible for the state of the variable.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehLckSts",
+      "description": "Vehicle Lock Status, indicating the locking state of the vehicle."
+    },
+    {
+      "name": "VehMd",
+      "description": "Vehicle Mode, representing the operational mode of the vehicle (e.g., Normal, Crash, Factory)."
+    },
+    {
+      "name": "VehMdV",
+      "description": "Vehicle Mode Validity, indicating whether the Vehicle Mode is valid or invalid."
+    },
+    {
+      "name": "UsG Md",
+      "description": "Usage Mode, likely related to how the vehicle is being used (e.g., service mode)."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Lock Status Conditions",
+      "description": "Various lock states such as Exterior Locked, Super Locked, Reserved, and Unknown."
+    },
+    {
+      "name": "Vehicle Mode Conditions",
+      "description": "Operational modes including NORMAL, CRASH, FACTORY, TRANSPORT, DYNNO, EXHIBITION, Engineering, and Service."
+    },
+    {
+      "name": "Mode Validity Conditions",
+      "description": "States indicating whether the Vehicle Mode is valid (1_Valid) or invalid (0_Invalid)."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the state mappings for various vehicle-related modes and statuses, which are critical for configuring and validating the behavior of the interior lighting system under different operational conditions. It can be used to test if the system correctly interprets and responds to changes in vehicle mode and usage status across different control units.",
+  "uncertain_points": [
+    "The exact functional boundaries between VehMd and UsG Md are not clearly defined in this table.",
+    "The specific timing or sequence requirements for mode transitions are not provided."
+  ]
+}
+```

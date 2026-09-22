@@ -1,0 +1,123 @@
+{
+  "table_type": "logic_table",
+  "topic": "迎宾踏板灯功能逻辑框图",
+  "row_semantics": "输入信号来源系统",
+  "column_semantics": "信号流向及处理模块",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LockingSystem",
+      "type": "system",
+      "description": "门锁子系统，提供车辆锁止状态和车门开启状态"
+    },
+    {
+      "name": "VehicleStateSystem",
+      "type": "system",
+      "description": "整车状态管理子系统，提供车辆模式、用户模式及相关变量"
+    },
+    {
+      "name": "WlcmPedILghtLHCtrl(LHZCU)",
+      "type": "controller",
+      "description": "左侧迎宾踏板灯控制单元"
+    },
+    {
+      "name": "WlcmPdelLghtRHCtrl(RHZCU)",
+      "type": "controller",
+      "description": "右侧迎宾踏板灯控制单元"
+    },
+    {
+      "name": "DrvrWlcmPedILghtDrv(LHZCU)",
+      "type": "driver",
+      "description": "左侧驾驶员侧迎宾踏板灯驱动模块"
+    },
+    {
+      "name": "RLWlcmPedILghtDrv(LHZCU)",
+      "type": "driver",
+      "description": "左侧乘客侧迎宾踏板灯驱动模块"
+    },
+    {
+      "name": "FrtPsgnWlcmPdelLghtDrv(LHZCU)",
+      "type": "driver",
+      "description": "右侧前排乘客侧迎宾踏板灯驱动模块"
+    },
+    {
+      "name": "RRWlcmPdelLghtDrv(LHZCU)",
+      "type": "driver",
+      "description": "右侧后排乘客侧迎宾踏板灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehLckSts",
+      "type": "input_signal",
+      "description": "车辆锁止状态"
+    },
+    {
+      "name": "DrvrDoorOpenSts",
+      "type": "input_signal",
+      "description": "驾驶员侧车门开启状态"
+    },
+    {
+      "name": "RLDoorOpenSts",
+      "type": "input_signal",
+      "description": "右侧车门开启状态"
+    },
+    {
+      "name": "FrtPsgngDoorOpenSts",
+      "type": "input_signal",
+      "description": "前排乘客侧车门开启状态"
+    },
+    {
+      "name": "RRDoorOpenSts",
+      "type": "input_signal",
+      "description": "后排车门开启状态"
+    },
+    {
+      "name": "VehMd",
+      "type": "input_signal",
+      "description": "车辆模式"
+    },
+    {
+      "name": "VehMdV",
+      "type": "input_signal",
+      "description": "车辆模式变量"
+    },
+    {
+      "name": "UsrGdMd",
+      "type": "input_signal",
+      "description": "用户驾驶模式"
+    },
+    {
+      "name": "UsrGdMdV",
+      "type": "input_signal",
+      "description": "用户驾驶模式变量"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DrvrWlcmPedILghtCtrlCmd",
+      "type": "output_signal",
+      "description": "驾驶员侧迎宾踏板灯控制指令"
+    },
+    {
+      "name": "RLWlcmPedILghtCtrlCmd",
+      "type": "output_signal",
+      "description": "乘客侧迎宾踏板灯控制指令"
+    },
+    {
+      "name": "FrtPsgnWlcmPdelLghtCtrlCmd",
+      "type": "output_signal",
+      "description": "前排乘客侧迎宾踏板灯控制指令"
+    },
+    {
+      "name": "RRWlcmPdelLghtCtrlCmd",
+      "type": "output_signal",
+      "description": "后排乘客侧迎宾踏板灯控制指令"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该图表描述了迎宾踏板灯的控制逻辑，展示了从车辆状态和门锁系统获取输入信号，经过左侧和右侧迎宾踏板灯控制单元处理后，生成相应的踏板灯驱动指令。可用于验证迎宾踏板灯在不同车门状态和车辆模式下的正确点亮与熄灭行为。",
+  "uncertain_points": []
+}

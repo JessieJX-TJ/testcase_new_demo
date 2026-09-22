@@ -1,0 +1,58 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制系统 - 远光灯控制与状态获取",
+  "row_semantics": "表格中的每一行代表一个独立的控制或状态查询服务接口，描述了其功能、输入参数和输出响应。",
+  "column_semantics": "表格的列定义了该服务接口在不同系统架构（如SOA、ICB、LHZCU）中的消费关系，以及服务接口的具体信息（方法、请求/响应参数）。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem.ControlMainBeamLight",
+      "type": "功能名",
+      "description": "远光灯控制服务接口，用于请求开启或熄灭远光灯。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.MainBeamLightFucProStatus",
+      "type": "功能名",
+      "description": "远光灯功能过程状态获取服务接口，用于查询远光灯点亮或熄灭的条件是否满足。"
+    },
+    {
+      "name": "SOA",
+      "type": "控制器/模块名",
+      "description": "Service-Oriented Architecture，面向服务的架构，表示该服务在SOA环境下的消费关系。"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "Integrated Control Box，集成控制盒，表示该服务在ICB环境下的消费关系。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Local High-level Central Unit，本地高层中央单元，表示该服务在LHZCU环境下的消费关系。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightReq",
+      "type": "输入信号",
+      "description": "远光灯控制请求参数，包含0x0（OFF）和0x1（On）两个值，用于指定远光灯的状态。"
+    },
+    {
+      "name": "MainBeamLightFucProsSta",
+      "type": "输入信号",
+      "description": "远光灯功能过程状态参数，包含0x0（OFF）、0x1（ON）和0x2（Unknown）三个值，用于表示远光灯的当前状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLightResp",
+      "type": "输出信号",
+      "description": "远光灯控制响应参数，包含0x0（ControlSuccess）和0x1（Failed）两个值，表示控制操作的成功或失败。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯控制系统中远光灯的控制和服务接口，可用于验证远光灯的开启/关闭请求是否能正确触发，并验证远光灯状态查询接口能否准确返回远光灯的当前状态。",
+  "uncertain_points": []
+}

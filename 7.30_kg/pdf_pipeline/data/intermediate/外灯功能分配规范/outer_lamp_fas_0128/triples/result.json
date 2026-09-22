@@ -1,0 +1,124 @@
+[
+  {
+    "head": "危险警报灯自动控制模块 LHZCU 将状态/故障状态反馈至 ICB",
+    "relation": "输出为",
+    "tail": "DirenLightSts=0x0=OFF",
+    "triple_type": "功能输出",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "DirenLightSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0128",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU 将实时状态发送至 ICB",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts== VehHzrdMdSts_0_No_Request;(PPV)",
+    "triple_type": "功能输出",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "VehHzrdMdSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0128",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU 将转向灯控制状态反馈至 SDM",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts=0x0=EDRDircnIndLampSwSts_0_off",
+    "triple_type": "功能输出",
+    "evidence_terms": [
+      "LHZCU",
+      "SDM",
+      "EDRDircnIndLampSwSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0128",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "外灯组合服务 ICB 订阅接口",
+    "relation": "依赖于",
+    "tail": "ExteriorLightControlSystem.DirectionLightSts=0x0=No Flash",
+    "triple_type": "功能依赖",
+    "evidence_terms": [
+      "ICB",
+      "ExteriorLightControlSystem",
+      "DirectionLightSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0128",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU 将状态/故障状态反馈至 ICB",
+    "relation": "前提条件",
+    "tail": "exlDircnLightHwDrvEnPrm=0x0 || 0x2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "exlDircnLightHwDrvEnPrm",
+      "Instance ID"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0128",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU 将状态/故障状态反馈至 ICB",
+    "relation": "前提条件",
+    "tail": "通过 Instance ID 5/6/7/8 获取转向灯状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "exlDircnLightHwDrvEnPrm",
+      "Instance ID"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0128",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯同步性要求 (a&b)",
+    "relation": "超时约束",
+    "tail": "危险警报灯的同步性允许的最大延时周期为:40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "危险警报灯",
+      "同步性",
+      "最大延时周期"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0128",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯同步性要求 (a&b)",
+    "relation": "超时约束",
+    "tail": "其图标闪烁频率和声音提醒与实际危险警报灯的闪烁频率需保持一致,三者同步性允许的最大延时50ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "危险警报灯",
+      "同步性",
+      "最大延时"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0128",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

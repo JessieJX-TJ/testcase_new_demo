@@ -1,0 +1,32 @@
+```json
+[
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "用户模式（UsrMd）不处于睡眠、待机或XOTA状态且值有效，车辆模式（VehMd）不处于运输模式且值有效",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsgMd != 0x0 = UsgMd_0_Sleep",
+      "UsgMd != 0x1 = UsgMd_1_Standby",
+      "UsgMd != 0x6 = UsgMd_6_XOTA",
+      "UsgMdV = Valid",
+      "VehMd != 0x3 = VehMd_3_TRANSPORT",
+      "VehMdV = Valid"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "抑制条件",
+    "tail": "用户模式（UsrMd）处于睡眠、待机或XOTA状态，或车辆模式（VehMd）处于运输模式",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "UsgMd == 0x0 = UsgMd_0_Sleep",
+      "UsgMd == 0x1 = UsgMd_1_Standby",
+      "UsgMd == 0x6 = UsgMd_6_XOTA",
+      "VehMd == 0x3 = VehMd_3_TRANSPORT"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

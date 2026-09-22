@@ -1,0 +1,43 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "位置灯退出逻辑",
+  "row_semantics": "描述在特定前置条件下，位置灯的行为规则",
+  "column_semantics": {
+    "场景描述": "定义了触发该逻辑的背景条件和预期行为",
+    "前置条件": "列出了执行该逻辑所需满足的具体条件"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "位置灯",
+      "type": "功能名",
+      "description": "车辆外部照明系统中的一个特定灯具"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "位置灯处于激活状态",
+      "description": "位置灯当前处于点亮或工作模式"
+    },
+    {
+      "name": "前置条件不满足",
+      "description": "除了位置灯激活外，其他必要条件未达成"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "退出位置灯",
+      "description": "位置灯从激活状态切换到关闭或非激活状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证当位置灯处于激活状态时，若前置条件不满足，系统是否能正确退出位置灯的功能。",
+  "uncertain_points": [
+    "具体'前置条件'的内容未在表格中详细列出，需参考相关设计文档",
+    "SOA和CAN通信类型的优先级配置细节未明确说明"
+  ]
+}
+```

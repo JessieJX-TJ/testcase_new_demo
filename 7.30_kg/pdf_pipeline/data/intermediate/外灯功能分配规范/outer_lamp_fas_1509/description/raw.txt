@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "车顶射灯功能激活与状态反馈逻辑",
+  "row_semantics": "描述在特定前置条件下，触发动作后执行的动作序列及其对应的系统状态反馈。",
+  "column_semantics": {
+    "Column1": "前置条件列表",
+    "Column2": "触发动作描述",
+    "Column3": "执行动作序列及状态反馈"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "ICB_S32G M",
+    "LHZCU",
+    "ExteriorLightControlSystem",
+    "RoofSpotLight"
+  ],
+  "core_conditions": [
+    "UsgMd!=0x0=UsgMd_0_Sleep",
+    "UsgMd!=0x1=UsgMd_1_Standby",
+    "UsgMd!=0x6=UsgMd_6_X",
+    "UsgMdV=Valid",
+    "VehMd!=0x3=VehMd_3_TRANSPORT",
+    "VehMd!=0x5=VehMd_5_EXHIBITION",
+    "VehMdV=Valid",
+    "PersonalizationData.MainBeamEnhanceEnbSet.MainBeamEnhanceEnbSetInfo=0x1",
+    "InsdFnCfgRootSpotLight=0x1"
+  ],
+  "core_outputs": [
+    "RoofSpotLightReq=0x1=ON",
+    "RoofSpotLightFucProStatus=0x1=ON",
+    "RoofSpotLightStatus=0x1=ON",
+    "RoofSpotLightErrorStatus=0x0=No Error"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "超时时间为50ms",
+    "尝试重发3次",
+    "3次后仍未反馈则停止发送"
+  ],
+  "engineering_interpretation": "该表格定义了车顶射灯功能的激活条件、触发机制以及系统各模块之间的状态交互和反馈流程，可用于验证车顶射灯功能在不同驾驶模式下的正确开启、状态保持及故障反馈。",
+  "uncertain_points": []
+}
+```

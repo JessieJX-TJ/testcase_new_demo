@@ -1,0 +1,39 @@
+{
+  "table_type": "fault_table",
+  "topic": "ICB节点丢失故障判定逻辑",
+  "row_semantics": "定义了ICB节点丢失的诊断条件和相关状态",
+  "column_semantics": {
+    "A": "功能/状态描述",
+    "B": "ICB节点丢失的具体原因代码定义",
+    "C": "ICB节点丢失的布尔值定义",
+    "D": "默认值或参考值",
+    "E": "涉及的控制器单元"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "ICBNodLoss",
+    "RDirLghtClsCtrlRsn_21_OtherReasons",
+    "RDirLghtClsCtrlRsn_22_TireBlowoutSts",
+    "LHZCU",
+    "RHZCU",
+    "RZCU"
+  ],
+  "core_conditions": [
+    "0x15=RDirLghtClsCtrlRsn_21_OtherReasons",
+    "0x16=RDirLghtClsCtrlRsn_22_TireBlowoutSts",
+    "0x17~0xFF=Reversed"
+  ],
+  "core_outputs": [
+    "ICBNodLoss_0_False",
+    "ICBNodLoss_1_True"
+  ],
+  "core_faults": [
+    "ICBNodLoss"
+  ],
+  "core_timing_constraints": [
+    "超时20s（待标定）"
+  ],
+  "engineering_interpretation": "该表格用于定义和验证ICB节点丢失故障的诊断逻辑，特别是当LHZCU/RHZCU/RZCU未在规定时间内（20秒）收到ICB分发的相关外灯控制信号时，系统将记录ICB节点丢失故障。",
+  "uncertain_points": []
+}

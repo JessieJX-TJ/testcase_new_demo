@@ -1,0 +1,61 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑 - 右前转向灯持续驱动功能",
+  "row_semantics": "描述了特定条件下系统行为的触发、执行和退出规则，以及异常处理。",
+  "column_semantics": {
+    "Column1": "状态阶段（如前置条件、触发条件、执行动作、退出条件、异常处理）",
+    "Column2": "对应阶段的具体描述或条件"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "FRDirCnLghtDrvMdl",
+      "type": "控制器/模块",
+      "description": "外灯驱动模块，负责管理转向灯的硬件驱动信号。"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "控制器/模块",
+      "description": "外灯控制模块，负责接收外部指令并下发控制命令。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlDirCnLghtHwDrvEnPrm",
+      "description": "外灯硬件驱动使能参数，值为1||2时满足前置条件。",
+      "type": "输入信号"
+    },
+    {
+      "name": "FRDirCnLghtCtrl_HW",
+      "description": "外灯硬件控制信号，值为1 (On) 时触发功能。",
+      "type": "输入信号"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "description": "外灯控制模块，作为触发和退出条件的交互对象。",
+      "type": "输入/输出信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FRDLgLghtDrvMdl",
+      "description": "外灯驱动模块，用于持续驱动右前转向灯输出。",
+      "type": "输出信号"
+    },
+    {
+      "name": "FRDLgLghtSts_HW",
+      "description": "外灯硬件状态信号，值为1 (On) 表示转向灯处于点亮状态。",
+      "type": "输出信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "description": "在触发条件下，至少发送三帧 FRDLgLghtSts_HW=1 (On) 至 DILghtCtrlMdl。",
+      "type": "定时约束"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在特定参数和信号条件下，系统如何持续驱动右前转向灯，并确保其状态信号被正确发送至控制模块，直至接收到关闭指令。",
+  "uncertain_points": []
+}

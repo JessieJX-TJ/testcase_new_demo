@@ -1,0 +1,28 @@
+{
+  "table_type": "logic_table",
+  "topic": "拖挂模式下拖挂车后雾灯的开启与关闭逻辑",
+  "row_semantics": "表格按功能描述、前置条件、触发条件、执行动作的顺序组织，详细定义了在特定场景下外灯控制信号的生成和响应逻辑。",
+  "column_semantics": "表格分为四个主要部分：场景描述、前置条件、触发条件、执行动作，每一部分详细说明了相关逻辑。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "拖挂模式",
+    "拖挂车后雾灯",
+    "LHZCU (Light Headlamp Zone Control Unit)",
+    "ICB (Interior Combination Box)",
+    "RZCU (Rear Zone Control Unit)"
+  ],
+  "core_conditions": [
+    "车辆具备拖车模式功能 (InsdFnCfgVehDragMd=0x1)",
+    "拖挂模式开启 (VehDragMdSts=0x1=VehDragMdSts_1_On)"
+  ],
+  "core_outputs": [
+    "外灯控制信号为后雾灯开启或关闭",
+    "基础服务调用 (RearFogLight.RearFogLightControl.RearFogLightCtrReq)",
+    "前车后雾灯功能禁用"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证在拖挂模式下，拖挂车后雾灯的开启与关闭逻辑是否符合设计规范，包括前置条件判断、触发条件判定以及执行动作的正确性。",
+  "uncertain_points": []
+}

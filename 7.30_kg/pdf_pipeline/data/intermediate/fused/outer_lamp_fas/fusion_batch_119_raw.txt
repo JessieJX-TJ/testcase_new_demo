@@ -1,0 +1,436 @@
+```json
+[
+  {
+    "head": "制动灯开关状态",
+    "relation": "输出为",
+    "tail": "BrkLghtSwSts",
+    "sources": ["outer_lamp_fas_1273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwSts",
+    "relation": "输入来自",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_1273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwSts",
+    "relation": "输出到",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_1273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动踏板信号",
+    "relation": "输出为",
+    "tail": "EPTBrkPdlDscrtInptSts",
+    "sources": ["outer_lamp_fas_1273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EPTBrkPdlDscrtInptSts",
+    "relation": "输入来自",
+    "tail": "RZCU",
+    "sources": ["outer_lamp_fas_1273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EPTBrkPdlDscrtInptSts",
+    "relation": "输出到",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_1273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开关请求",
+    "relation": "触发条件",
+    "tail": "BrkLghtSwReq_1_On",
+    "sources": ["outer_lamp_fas_1273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开关请求",
+    "relation": "抑制条件",
+    "tail": "BrkLghtSwReq_0_Off",
+    "sources": ["outer_lamp_fas_1273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开关状态",
+    "relation": "输入为",
+    "tail": "BrkLghtSwSts_1_On",
+    "sources": ["outer_lamp_fas_1273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开关状态",
+    "relation": "输入为",
+    "tail": "BrkLghtSwSts_0_Off",
+    "sources": ["outer_lamp_fas_1273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯状态",
+    "relation": "触发条件",
+    "tail": "订阅服务 ExteriorLightSwitchProcess.SidePositionLightSta",
+    "sources": ["outer_lamp_fas_1274"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前位置灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用服务接口 SidePositionLight.SidePositionLightErrorStatus",
+    "sources": ["outer_lamp_fas_1274"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯状态",
+    "relation": "输入为",
+    "tail": "参数 SidePositionLightSta 的值 0x0",
+    "sources": ["outer_lamp_fas_1274"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯状态",
+    "relation": "输入为",
+    "tail": "参数 SidePositionLightSta 的值 0x1",
+    "sources": ["outer_lamp_fas_1274"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯状态",
+    "relation": "输入为",
+    "tail": "参数 SidePositionLightSta 的值 0x2",
+    "sources": ["outer_lamp_fas_1274"],
+    "conflict": true,
+    "conflict_note": "0x2 同时映射为 'Unknown' 和 'Error' —— 语义冲突：同一枚举值承载两种互斥状态，需确认是否为设计缺陷或版本差异"
+  },
+  {
+    "head": "左前位置灯故障状态",
+    "relation": "输出为",
+    "tail": "SidePositionLightErrorSta",
+    "sources": ["outer_lamp_fas_1274"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前照灯",
+    "relation": "处于点亮状态的前提条件",
+    "tail": "输入信号A为激活状态",
+    "sources": ["outer_lamp_fas_1277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前照灯",
+    "relation": "处于熄灭状态的抑制条件",
+    "tail": "输入信号A为非激活状态",
+    "sources": ["outer_lamp_fas_1277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "执行近光灯退出",
+    "relation": "前提条件",
+    "tail": "请求位置灯",
+    "sources": ["outer_lamp_fas_1278"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "执行 Auto 退出",
+    "relation": "前提条件",
+    "tail": "请求位置灯",
+    "sources": ["outer_lamp_fas_1278"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "执行近光灯退出",
+    "relation": "优先级高于",
+    "tail": "执行 Auto 请求",
+    "sources": ["outer_lamp_fas_1278"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "执行 Auto 退出",
+    "relation": "优先级高于",
+    "tail": "执行近光灯请求",
+    "sources": ["outer_lamp_fas_1278"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "执行近光灯退出",
+    "relation": "依赖于",
+    "tail": "近光灯模式",
+    "sources": ["outer_lamp_fas_1278"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "执行 Auto 退出",
+    "relation": "依赖于",
+    "tail": "Auto 模式",
+    "sources": ["outer_lamp_fas_1278"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "触发条件",
+    "tail": "用户通过大屏软开关操作",
+    "sources": ["outer_lamp_fas_1279"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMd != 0x0 && UsrMd != 0x1 && UsrMd != 0x2 && UsrMd != 0x6",
+    "sources": ["outer_lamp_fas_1279"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMdV == Valid",
+    "sources": ["outer_lamp_fas_1279"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "VehMd == 0x3",
+    "sources": ["outer_lamp_fas_1279"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "VehMdV == Valid",
+    "sources": ["outer_lamp_fas_1279"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "位置灯反馈状态为开启 (InstanceID 1–8)",
+    "sources": ["outer_lamp_fas_1279"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯点亮",
+    "relation": "触发条件",
+    "tail": "ICB_S32G MCU 接收组合服务请求, DirLnGhtSrvcReq == 0x1",
+    "sources": ["outer_lamp_fas_1280"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯熄灭",
+    "relation": "触发条件",
+    "tail": "ICB_S32G MCU 接收组合服务请求, DirLnGhtSrvcReq == 0x0",
+    "sources": ["outer_lamp_fas_1280"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯熄灭",
+    "relation": "抑制条件",
+    "tail": "DirLnGhtSrvcReq != 0x0",
+    "sources": ["outer_lamp_fas_1280"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "单侧转向灯熄灭",
+    "relation": "触发条件",
+    "tail": "UsrMdV == Valid && UsgMd != 0x0 && UsgMd != 0x1",
+    "sources": ["outer_lamp_fas_1280"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "单侧转向灯熄灭",
+    "relation": "触发条件",
+    "tail": "DirLnGhtSwReq == 0x1 时, 状态由 0x1 或 0x2 变为 0x0",
+    "sources": ["outer_lamp_fas_1280"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "双侧转向灯熄灭",
+    "relation": "触发条件",
+    "tail": "UsrMdV == Valid && UsgMd != 0x0 && UsgMd != 0x1",
+    "sources": ["outer_lamp_fas_1280"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "双侧转向灯熄灭",
+    "relation": "触发条件",
+    "tail": "DirLnGhtSwReq == 0x1 时, 状态由 0x3 变为 0x0",
+    "sources": ["outer_lamp_fas_1280"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯同步性要求",
+    "relation": "超时约束",
+    "tail": "图标闪烁频率、声音提醒与实际转向灯闪烁频率三者同步性最大延时 ≤ 50ms",
+    "sources": ["outer_lamp_fas_1280"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "单侧转向灯熄灭同步性",
+    "relation": "超时约束",
+    "tail": "单侧转向灯熄灭响应最大延时 ≤ 40ms",
+    "sources": ["outer_lamp_fas_1280"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯",
+    "relation": "状态为开启的输出",
+    "tail": "DipdBeamLghtSts_1_On",
+    "sources": ["outer_lamp_fas_1281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯",
+    "relation": "状态为关闭的输出",
+    "tail": "DipdBeamLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_1281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯故障状态",
+    "relation": "为真时的输出",
+    "tail": "DipdBeamLghtFltsts_1_True",
+    "sources": ["outer_lamp_fas_1281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯故障状态",
+    "relation": "为假时的输出",
+    "tail": "DipdBeamLghtFltsts_0_False",
+    "sources": ["outer_lamp_fas_1281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前位置灯控制信号",
+    "relation": "为开启时的输出",
+    "tail": "FLSideLghtCtrl_1_On",
+    "sources": ["outer_lamp_fas_1281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前位置灯控制信号",
+    "relation": "为关闭时的输出",
+    "tail": "FLSideLghtCtrl_0_Off",
+    "sources": ["outer_lamp_fas_1281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前位置灯控制信号",
+    "relation": "为开启时的输出",
+    "tail": "FRSideLghtCtrl_1_On",
+    "sources": ["outer_lamp_fas_1281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前位置灯控制信号",
+    "relation": "为关闭时的输出",
+    "tail": "FRSideLghtCtrl_0_Off",
+    "sources": ["outer_lamp_fas_1281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯硬件故障状态",
+    "relation": "为真时的输出",
+    "tail": "RDipdBeamLghtFltsts_HW_1_True",
+    "sources": ["outer_lamp_fas_1281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯硬件故障状态",
+    "relation": "为假时的输出",
+    "tail": "RDipdBeamLghtFltsts_HW_0_False",
+    "sources": ["outer_lamp_fas_1281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开关请求",
+    "relation": "输出为",
+    "tail": "HzrdLghtSwReq",
+    "sources": ["outer_lamp_fas_1283"],
+    "conflict": true,
+    "conflict_note": "原始条目中存在歧义命名：'危险警报灯开关请求 输出为 危险警报灯开关'未提供标准化信号名；'危险警报灯请求 输出为 LHZCU'混淆了信号与ECU；统一为标准信号名 HzrdLghtSwReq，并补充其物理归属"
+  },
+  {
+    "head": "危险警报灯开关状态",
+    "relation": "输出到",
+    "tail": "CANFD, LHZCU, ICB",
+    "sources": ["outer_lamp_fas_1283"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制",
+    "relation": "输出到",
+    "tail": "CANFD, LHZCU, ICB",
+    "sources": ["outer_lamp_fas_1283"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯请求",
+    "relation": "HzrdLghtSwReq_0_Off 的前提条件",
+    "tail": "UsrMdV == 0x0 (Invalid)",
+    "sources": ["outer_lamp_fas_1283"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯请求",
+    "relation": "HzrdLghtSwReq_1_On 的前提条件",
+    "tail": "UsrMdV == 0x1 (Valid)",
+    "sources": ["outer_lamp_fas_1283"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

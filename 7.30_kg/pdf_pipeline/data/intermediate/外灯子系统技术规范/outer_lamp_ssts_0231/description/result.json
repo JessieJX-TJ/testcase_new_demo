@@ -1,0 +1,70 @@
+{
+  "table_type": "fault_table",
+  "topic": "高位制动灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，描述了高位制动灯短路故障的前置条件、触发条件、执行动作、退出条件及异常处理。",
+  "column_semantics": "表格包含两列，左侧为条件/动作类别（如前置条件、触发条件等），右侧为具体的描述内容。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLghtDrvMdl",
+      "type": "controller_module",
+      "description": "高位制动灯驱动模块"
+    },
+    {
+      "name": "BrkLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "高位制动灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrkLghtFbkSOAEnPrm",
+      "type": "input_signal",
+      "description": "高位制动灯反馈超范围使能参数，值为1表示启用",
+      "value": "1 (Enable)"
+    },
+    {
+      "name": "高位制动灯输出状态",
+      "type": "system_state",
+      "description": "高位制动灯当前处于输出状态"
+    },
+    {
+      "name": "检测到高位制动灯短路到电源",
+      "type": "trigger_condition",
+      "description": "系统检测到高位制动灯存在短路到电源的故障"
+    },
+    {
+      "name": "检测到短路恢复",
+      "type": "exit_condition",
+      "description": "系统检测到高位制动灯短路故障已恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLghtDrvMdl停止驱动高位制动灯",
+      "type": "output_action",
+      "description": "停止驱动高位制动灯，CHMSL_HSD信号被关闭"
+    },
+    {
+      "name": "BrkLghtDrvMdl持续发送错误状态",
+      "type": "output_action",
+      "description": "持续发送BrakeLightState. BrakeLightSta = 2 (Error)至BrkLghtCtrlMdl，至少发送三帧"
+    },
+    {
+      "name": "DTCB1043-12",
+      "type": "fault_code",
+      "description": "置位DTC B1043-12，记录高位制动灯短路故障代码"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "高位制动灯短路到电源",
+      "type": "fault_status",
+      "description": "高位制动灯与电源之间发生短路"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了高位制动灯短路到电源故障的诊断和处理逻辑，可用于验证车辆电子控制系统在检测到此类故障时是否能够正确停止驱动制动灯、发送错误状态信息并记录故障代码。",
+  "uncertain_points": []
+}

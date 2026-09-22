@@ -1,0 +1,27 @@
+{
+  "table_type": "logic_table",
+  "topic": "FOTA (Firmware Over-The-Air) 过程中功能保持与广播状态的逻辑控制",
+  "row_semantics": "表格的每一行代表一个具体的逻辑块或功能模块，用于定义在 FOTA 升级过程中该模块的功能行为。",
+  "column_semantics": {
+    "逻辑块名称": "指代需要进行 FOTA 功能控制的具体模块或功能单元的名称。",
+    "FOTA 过程中需要保持的功能 (Y/N)": "指示在 FOTA 升级过程中，该模块的功能是否必须保持（Y）或可以被暂停/关闭（N）。",
+    "功能运行时禁止 FOTA": "描述当该模块正在运行时，是否允许执行 FOTA 升级操作。",
+    "功能运行时是否广播功能状态/相关信号": "说明在该模块运行时，是否会对外广播其功能状态或相关的信号信息。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    "逻辑块名称"
+  ],
+  "core_conditions": [
+    "FOTA 过程中需要保持的功能 (Y/N)",
+    "功能运行时禁止 FOTA"
+  ],
+  "core_outputs": [
+    "功能运行时是否广播功能状态/相关信号"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证在整车 FOTA 升级过程中，各个电子电器系统模块（如外灯、车身控制、电动尾门等）的功能保持策略、升级权限以及状态广播行为，确保 FOTA 过程的安全性和稳定性。",
+  "uncertain_points": []
+}

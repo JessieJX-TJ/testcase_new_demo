@@ -1,0 +1,63 @@
+{
+  "table_type": "parameter_table",
+  "topic": "DoorRL6LampBrthngCmd_1 (Door Right Rear Lamp Breathing Command 1) parameter specification for interior lighting system",
+  "row_semantics": "Each row represents a different breathing rate configuration for the door rear lamp, defined by its code value and corresponding period.",
+  "column_semantics": {
+    "Code Value": "Identifier for a specific breathing rate setting (e.g., Rate0, Rate1, ..., Rate15).",
+    "周期": "The time interval (period) in seconds for the breathing pattern.",
+    "原呼吸模式值": "The original breathing mode associated with this rate setting."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorRL6LampBrthngCmd_1",
+      "type": "function",
+      "description": "Command for controlling the breathing (pulsing) pattern of the right rear door lamp."
+    },
+    {
+      "name": "LHZCU_LIN4",
+      "type": "controller",
+      "description": "Local Hub Controller Unit on LIN bus 4, responsible for processing the lamp command."
+    },
+    {
+      "name": "DoorAmbLtLampFRL",
+      "type": "module",
+      "description": "Door Ambient Light Lamp Front Right, part of the ambient lighting system."
+    },
+    {
+      "name": "LIN",
+      "type": "communication_protocol",
+      "description": "Local Interconnect Network, used for communication between the controller and the lamp module."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Code Value",
+      "description": "Specifies the unique identifier for each breathing rate configuration."
+    },
+    {
+      "name": "Period",
+      "description": "Defines the time interval for the breathing cycle, ranging from 500ms to 12s."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Breathing Pattern",
+      "description": "The visual pulsing effect of the lamp at the specified rate."
+    },
+    {
+      "name": "Original Mode",
+      "description": "The default or previous breathing mode before switching to the new rate."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Period",
+      "description": "Minimum and maximum timing for each breathing rate, ensuring consistent behavior across modes."
+    }
+  ],
+  "engineering_interpretation": "This table defines the mapping between code values and their corresponding breathing rates for the door rear lamp, enabling precise control over the lamp's pulsing behavior. It is used to verify that the lamp responds correctly to commands sent via LIN, displaying the expected breathing pattern at the specified rate.",
+  "uncertain_points": []
+}

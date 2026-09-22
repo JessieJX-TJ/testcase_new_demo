@@ -1,0 +1,78 @@
+```json
+[
+  {
+    "head": "远光灯请求被激活",
+    "relation": "前提条件",
+    "tail": "车辆档位状态为 D 档且 TrShftLvrPosV 有效",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "TrShftLvrPos!=0x4=TrShftLvrPos_4_Forward_Range_A(车辆档位为 D 档)",
+      "TrShftLvrPosV=0x0=TrShftLvrPosV0Valid"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯请求被禁用",
+    "relation": "抑制条件",
+    "tail": "vehRlsType == 0 (车辆不在 D 档)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "AutoLghtOnReq_l=0x0=AutoLghtOnReq_0_False(vehRlsType==0)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯请求被发出",
+    "relation": "触发条件",
+    "tail": "收到智驾摄像头识别信息 IPD 请求输入",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "收到[智驾摄像头识别信息IPD]请求输入"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯熄灭",
+    "relation": "触发条件",
+    "tail": "IHC 开关处于禁用状态 (iIHCEnbSetSts == 0x1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "IHC开关禁止状态",
+      "iIHCEnbSetSts=0x1=Disable"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯控制信号发送至 ICB",
+    "relation": "输出为",
+    "tail": "ICB 将服务接口或控制信号转换成灯控 CAN 信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "并将控制信号发送至ICB",
+      "ICB将服务接口或控制信号转换成灯控CAN信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯状态反馈至 ICB",
+    "relation": "输出为",
+    "tail": "[远光灯开关控制模块 LHZCU]将状态/故障状态反馈至 ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "[远光灯开关控制模块LHZCU]将状态/故障状态反馈至ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯熄灭同步性要求",
+    "relation": "超时约束",
+    "tail": "左侧和右侧需保持同步熄灭，两侧最大延时不能超过 40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "远光灯熄灭同步性要求",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

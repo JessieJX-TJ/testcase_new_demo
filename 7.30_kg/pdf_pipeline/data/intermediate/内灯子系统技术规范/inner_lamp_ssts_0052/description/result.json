@@ -1,0 +1,110 @@
+{
+  "table_type": "state_table",
+  "topic": "DoorFL1 Lamp (Front Left Door Lamp) Control Logic and Fault Handling",
+  "row_semantics": "The rows represent different states or conditions related to the operation and exit criteria of the door lamp control module, as well as fault handling procedures.",
+  "column_semantics": "The columns appear to be placeholders for specific values or states related to the lamp control module, but their exact meaning is not explicitly defined in the table. The first column seems to list memory addresses or identifiers (7880, 7920, 7960), which may correspond to internal registers or variables used by the controller.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DoorFL1LampOnOff_1",
+      "type": "input_signal",
+      "description": "Control signal to turn the front left door lamp on or off."
+    },
+    {
+      "name": "DoorFL1LampBrthngCmd_1",
+      "type": "input_signal",
+      "description": "Command signal for breathing mode control of the door lamp."
+    },
+    {
+      "name": "DoorFL1LampBrtNsCmd_1",
+      "type": "input_signal",
+      "description": "Brightness command signal for the door lamp."
+    },
+    {
+      "name": "DoorFL1LampColorCmd_1",
+      "type": "input_signal",
+      "description": "Color command signal for the door lamp."
+    },
+    {
+      "name": "DoorFL1LampFadeSpdCmd_1",
+      "type": "input_signal",
+      "description": "Fade speed command signal for the door lamp."
+    },
+    {
+      "name": "AmbtLightLHRollingCtrl_1",
+      "type": "input_signal",
+      "description": "Ambient light rolling control signal, likely related to the breathing mode sequence."
+    },
+    {
+      "name": "ZCU_LIN",
+      "type": "input_signal",
+      "description": "LIN bus signal from the Zone Control Unit (ZCU), used for communication with the door lamp module."
+    },
+    {
+      "name": "DoorFL1Lamp",
+      "type": "output_signal",
+      "description": "The actual front left door lamp output, controlled by the module."
+    },
+    {
+      "name": "Breathing Mode",
+      "type": "mode_name",
+      "description": "A special lighting mode where the lamp intensity varies over time to create a 'breathing' effect."
+    },
+    {
+      "name": "Off",
+      "type": "system_state",
+      "description": "The state where the door lamp is completely turned off."
+    },
+    {
+      "name": "Static On",
+      "type": "system_state",
+      "description": "The state where the door lamp is lit at a constant brightness without any dynamic effects."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DoorFL1LampOnOff_1 == 0x00 (OFF)",
+      "effect": "Exit Breathing Mode, extinguish ambient lamp according to received color value and fade speed."
+    },
+    {
+      "condition": "DoorFL1LampBrthngCmd_1 == 0x00 (No Request)",
+      "effect": "Exit Breathing Mode, execute commands for brightness, color, and fade speed."
+    },
+    {
+      "condition": "AmbtLightLHRollingCtrl_1 no longer increments sequentially",
+      "effect": "Stop Breathing Mode; display ambient lamp at constant brightness based on received color and brightness values. If both are abnormal, light statically."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "DoorFL1Lamp",
+      "action": "Turn off or adjust brightness/color/fade speed based on input signals."
+    },
+    {
+      "output": "Breathing Mode",
+      "action": "Start/stop based on input commands."
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "Overvoltage or Undervoltage in the ambient lamp module",
+      "action": "Directly turn off the ambient lamp."
+    },
+    {
+      "fault": "No ZCU LIN signal received within 6 seconds",
+      "action": "Directly turn off the ambient lamp."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "6 seconds",
+      "description": "If no ZCU LIN signal is received within this time frame, the ambient lamp should be turned off as a fault condition."
+    }
+  ],
+  "engineering_interpretation": "This table defines the operational logic and fault handling procedures for the front left door lamp control module, including conditions for exiting breathing mode, processing control commands, and responding to faults such as over/under voltage or loss of communication with the ZCU.",
+  "uncertain_points": [
+    "The exact function of the memory addresses (7880, 7920, 7960) is not specified in the table.",
+    "The relationship between the input signals and the internal registers/memory addresses is not detailed."
+  ]
+}

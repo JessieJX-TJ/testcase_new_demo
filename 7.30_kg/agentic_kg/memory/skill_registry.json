@@ -1,0 +1,47 @@
+[
+  {
+    "skill_id": "excel.lock_test_case.v1",
+    "name": "离车上锁测试用例 Excel 抽取",
+    "status": "enabled",
+    "file_type": "excel",
+    "template_kind": "lock_test_case",
+    "tool": "excel.extract_lock",
+    "description": "适用于 Test Cases sheet，包含 Test Case Type/Name/Logic 与 Preconditions/Actions/Expectations 的行式测试用例表。"
+  },
+  {
+    "skill_id": "excel.grouped_test_case.v1",
+    "name": "分组式车身控制测试用例 Excel 抽取",
+    "status": "enabled",
+    "file_type": "excel",
+    "template_kind": "grouped_test_case",
+    "tool": "excel.extract_grouped",
+    "description": "适用于业务数据在第二个 sheet、首行为中文复杂表头，并以 编号/编号名称/标题 分组的测试用例表。"
+  },
+  {
+    "skill_id": "pdf.online_table_pipeline.v1",
+    "name": "PDF 表格在线多阶段抽取",
+    "status": "enabled",
+    "file_type": "pdf",
+    "template_kind": "pdf_manifest",
+    "tool": "pdf.run_online_pipeline",
+    "description": "对单张 PDF 表格图片实时执行 OCR（PaddleOCR）→ 表格结构描述（Qwen-VL）→ 三元组抽取（Qwen-VL），输出候选 TripleRecord。"
+  },
+  {
+    "skill_id": "fusion.semantic_dedup_conflict.v1",
+    "name": "三元组语义融合与冲突识别",
+    "status": "enabled",
+    "file_type": "fusion",
+    "template_kind": "triple_set",
+    "tool": "pdf_kg_pipeline.step5_fuse",
+    "description": "使用 Qwen 文本模型对候选三元组做精确去重、语义归并、术语统一和 conflict 标记。"
+  },
+  {
+    "skill_id": "incremental.case_scoped_diff.v1",
+    "name": "案例作用域增量更新",
+    "status": "enabled",
+    "file_type": "incremental",
+    "template_kind": "lock_incremental",
+    "tool": "incremental.case_scoped_diff",
+    "description": "复用现有 current/pending/apply 机制，按 case_key + fact_hash 生成新增、删除、逻辑变更。"
+  }
+]

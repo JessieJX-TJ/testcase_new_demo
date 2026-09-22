@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "车辆前向摄像头行人与车辆识别及远光灯控制功能规范",
+  "row_semantics": "描述在特定前置条件下，系统应满足的功能逻辑要求",
+  "column_semantics": {
+    "Column1": "场景描述/前置条件分类",
+    "Column2": "具体逻辑条件表达式"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Vehicle Camera",
+      "type": "Controller/Module",
+      "description": "车载摄像头，用于实时识别前方行人和车辆信息"
+    },
+    {
+      "name": "Headlight Control System",
+      "type": "Controller/Module",
+      "description": "内部逻辑控制系统，用于根据识别信息控制远光灯的开启与关闭"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "type": "Input Signal",
+      "description": "用户驾驶模式信号，包括Normal Driving (0x3), AI Parking (0x4), AI Pilot (0x5)",
+      "possible_values": [
+        "0x3",
+        "0x4",
+        "0x5"
+      ]
+    },
+    {
+      "name": "UsrMdV",
+      "type": "Input Signal",
+      "description": "用户驾驶模式有效性信号，表示模式是否有效",
+      "possible_values": [
+        "Valid"
+      ]
+    },
+    {
+      "name": "VehMd",
+      "type": "Input Signal",
+      "description": "车辆模式信号，排除TRANSPORT (0x3)和EXHIBITION (0x5)模式",
+      "possible_values": [
+        "Not 0x3",
+        "Not 0x5"
+      ]
+    },
+    {
+      "name": "VehMdV",
+      "type": "Input Signal",
+      "description": "车辆模式有效性信号，表示模式是否有效",
+      "possible_values": [
+        "Valid"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Headlight Control",
+      "type": "Output Signal",
+      "description": "控制远光灯的开启或关闭，以提高行车安全"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在车辆行驶过程中，车载摄像头识别前方行人和车辆信息，并通过内部逻辑控制远光灯开关的触发条件。主要用于验证当车辆处于正常驾驶、AI泊车或自动驾驶模式时，且用户和车辆模式均有效，同时车辆不处于运输或展览模式下，系统能否正确控制远光灯以提升行车安全性。",
+  "uncertain_points": [
+    "未明确说明摄像头识别的具体算法或精度要求",
+    "未定义远光灯控制的具体策略（如距离阈值）",
+    "未提及异常情况下的默认行为（如识别失败时远光灯状态）"
+  ]
+}
+```

@@ -1,0 +1,109 @@
+```json
+[
+  {
+    "head": "转向灯熄灭",
+    "relation": "触发条件",
+    "tail": "ICB 接收 ControlDirectionLight 信号且 DirectionLightReq{InstanceID=5}=0x0=OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "ControlDirectionLight",
+      "DirectionLightReq",
+      "InstanceID=5",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯点亮",
+    "relation": "抑制条件",
+    "tail": "ICB 接收 DirectionLightFucProStatus=0x0=OFF 且做退出左侧转向灯图标指示灯显示以及声音提醒",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "ICB",
+      "DirectionLightFucProStatus",
+      "0x0=OFF",
+      "退出左侧转向灯图标指示灯显示",
+      "声音提醒"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态反馈至 ICB",
+    "relation": "输入为",
+    "tail": "转向灯开关控制模块 LHZCU 输出 DirectionLightSts_0_Off 和 DirectionLightFlits_0_False",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "DirectionLightSts_0_Off",
+      "DirectionLightFlits_0_False",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯故障状态反馈至 ICB",
+    "relation": "输入为",
+    "tail": "转向灯开关控制模块 LHZCU 输出 DirectionLightErrSta=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "DirectionLightErrSta",
+      "0x0=No Error",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯开关状态反馈至 ICB",
+    "relation": "输入为",
+    "tail": "转向灯开关控制模块 LHZCU 输出 DirectionLightSwReq_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "DirectionLightSwReq_0_off",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯熄灭",
+    "relation": "超时约束",
+    "tail": "ICB 接收控制信号后延时 60ms 分发至 LHZCU/RZCU",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB",
+      "ControlDirectionLight",
+      "60ms",
+      "LHZCU",
+      "RZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态反馈",
+    "relation": "依赖于",
+    "tail": "驱动处理模块 LHZCU/RZCU 的状态/故障状态",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RZCU",
+      "DirectionLightStatus",
+      "DirectionLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯故障状态",
+    "relation": "故障响应",
+    "tail": "转向灯开关控制模块 LHZCU 输出 DirectionLightErrSta=0x0=No Error",
+    "triple_type": "故障响应与降级关系",
+    "evidence_terms": [
+      "LHZCU",
+      "DirectionLightErrSta",
+      "0x0=No Error"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

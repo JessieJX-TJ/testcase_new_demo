@@ -1,0 +1,53 @@
+{
+  "table_type": "parameter_table",
+  "topic": "DirectionLight Control and Status Monitoring",
+  "row_semantics": "Each row represents a specific service interface for controlling or monitoring the direction lights (turn signals) of a vehicle.",
+  "column_semantics": "Columns represent different aspects of the service interface: the first column is the function/module name, followed by consumption type, SOA (Service-Oriented Architecture) reference, controller/module names involved (LHZCU, RHZCU), and the hardware status.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ControlDirectionLight",
+      "type": "function",
+      "description": "Interface to control the right rear turn signal light."
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "function",
+      "description": "Interfaces to monitor the status of left front and right front turn signals."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Left-hand Zone Control Unit, responsible for managing the left-side vehicle systems including lights."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right-hand Zone Control Unit, responsible for managing the right-side vehicle systems including lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightReq",
+      "type": "input_signal",
+      "description": "Parameter for the ControlDirectionLight interface, specifying whether to turn the light ON or OFF."
+    },
+    {
+      "name": "DirectionLightSta",
+      "type": "output_signal",
+      "description": "Parameter for the DirectionLightStatus interfaces, indicating the current state of the turn light (ON, OFF, or Unknown)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LightStatus",
+      "type": "system_state",
+      "description": "The operational state of the turn light as reported by the system."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for controlling and monitoring the vehicle's turn signals, enabling tests to verify that the system correctly responds to commands to turn lights on/off and accurately reports their status.",
+  "uncertain_points": []
+}

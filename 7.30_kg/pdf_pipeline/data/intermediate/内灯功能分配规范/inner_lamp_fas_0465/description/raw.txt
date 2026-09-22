@@ -1,0 +1,82 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Vehicle Lock Status Interface Definition",
+  "row_semantics": "Each row represents a specific state or condition of the vehicle lock status, with detailed definitions for each possible value.",
+  "column_semantics": {
+    "Interface Name": "The name of the interface being defined, which is 'VehLckSts' (Vehicle Lock Status).",
+    "Direction": "Indicates whether the interface is an input or output. In this case, it is 'Input'.",
+    "Type": "Specifies the type of data or signal. Here, it is 'Internal', suggesting it's an internal system status.",
+    "Sender/Provider": "The entity responsible for sending or providing the data. This is 'LHZCU' (likely a Body Control Module or similar controller).",
+    "Receiver/Consumer": "The entity that consumes or receives the data. This is 'ZXD' (possibly another module or system component).",
+    "Channel": "The communication path or channel through which the data is transmitted. This field is empty in the provided table.",
+    "Interface Source": "The source or origin of the interface definition. This is '门锁 SSTS' (Door Lock SSTS), indicating the door lock system as the source."
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VehLckSts",
+      "type": "Signal",
+      "description": "Represents the current status of the vehicle's lock system."
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "The Body Control Module or equivalent that provides the vehicle lock status information."
+    },
+    {
+      "name": "ZXD",
+      "type": "Controller/Module",
+      "description": "The receiving module or system that consumes the vehicle lock status information."
+    },
+    {
+      "name": "门锁 SSTS",
+      "type": "System",
+      "description": "The door lock system that is the source of the interface definition."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehLckSts_0_Unlocked",
+      "value": "0x0",
+      "description": "The vehicle is unlocked."
+    },
+    {
+      "name": "VehLckSts_1_Signal_Position_Entry_Unlocked",
+      "value": "0x1",
+      "description": "The signal position entry is unlocked."
+    },
+    {
+      "name": "VehLckSts_2_Interior_Locked",
+      "value": "0x2",
+      "description": "The interior of the vehicle is locked."
+    },
+    {
+      "name": "VehLckSts_3_Exterior_Locked",
+      "value": "0x3",
+      "description": "The exterior of the vehicle is locked."
+    },
+    {
+      "name": "VehLckSts_4_Super_locked",
+      "value": "0x4",
+      "description": "The vehicle is in a super locked state."
+    },
+    {
+      "name": "VehLckSts_5_Reserved",
+      "value": "0x5",
+      "description": "A reserved state for future use."
+    },
+    {
+      "name": "VehLckSts_6_Reserved",
+      "value": "0x6",
+      "description": "Another reserved state for future use."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the various states of the vehicle lock status signal (VehLckSts) and its corresponding values, which can be used to verify the correct operation of the door lock system and ensure that the vehicle lock status is accurately communicated between the LHZCU and ZXD modules.",
+  "uncertain_points": []
+}
+```

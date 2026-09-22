@@ -1,0 +1,85 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Light Function Allocation Specification",
+  "row_semantics": "Each row represents a specific mapping or configuration parameter for interior lamp dimming speeds, associated with different lamp positions (e.g., front right, rear left).",
+  "column_semantics": "The table does not have explicit columns but rather lists parameters vertically. The bottom section includes a merged cell indicating output interfaces (LIN, OHC, LHZCU) for the 'MapLampXXSts_l' parameter.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MapLampFRDimSpd_l",
+      "type": "parameter",
+      "description": "Mapping for Front Right Lamp Dimming Speed"
+    },
+    {
+      "name": "MapLampRLDimSpd_l",
+      "type": "parameter",
+      "description": "Mapping for Rear Left Lamp Dimming Speed"
+    },
+    {
+      "name": "MapLampRRDimSpd_l",
+      "type": "parameter",
+      "description": "Mapping for Rear Right Lamp Dimming Speed"
+    },
+    {
+      "name": "MapLampThrdLDimSpd_l",
+      "type": "parameter",
+      "description": "Mapping for Third Row Left Lamp Dimming Speed"
+    },
+    {
+      "name": "MapLampThrdRDimSpd_l",
+      "type": "parameter",
+      "description": "Mapping for Third Row Right Lamp Dimming Speed"
+    },
+    {
+      "name": "MapLampXXSts_l",
+      "type": "parameter",
+      "description": "General status mapping for unspecified lamps, with outputs to LIN, OHC, and LHZCU controllers."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0",
+      "value": "0x0",
+      "description": "Speed 1 (Manual, Fast)"
+    },
+    {
+      "name": "0x1",
+      "value": "0x1",
+      "description": "Speed 2 (Door Open, Slow)"
+    },
+    {
+      "name": "0x2",
+      "value": "0x2",
+      "description": "Speed 3 (Instantaneous Change)"
+    },
+    {
+      "name": "0x3",
+      "value": "0x3",
+      "description": "Reserved"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LIN",
+      "description": "Local Interconnect Network interface for communication."
+    },
+    {
+      "name": "OHC",
+      "description": "On-Board Controller, likely responsible for general vehicle control."
+    },
+    {
+      "name": "LHZCU",
+      "description": "Left Hand Zone Control Unit, possibly managing controls on the driver's side."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the mapping of dimming speed levels for various interior lamps, specifying how each speed corresponds to a hexadecimal value. It is used to configure the behavior of interior lighting systems under different conditions, such as manual adjustment, door opening, or instantaneous changes.",
+  "uncertain_points": [
+    "The exact function of 'MapLampFLSts_l' is not fully described in the visible portion of the table.",
+    "The specific implementation details of how these mappings translate into actual lamp behavior are not provided."
+  ]
+}
+```

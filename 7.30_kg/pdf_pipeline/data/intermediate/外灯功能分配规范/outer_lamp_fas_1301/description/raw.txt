@@ -1,0 +1,50 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "External Light Switch Process",
+  "row_semantics": "Request and Response parameters for controlling external lights (turn signals) via a service interface.",
+  "column_semantics": "The table is structured to show the Request (Req) and Response (Resp) parameters for the 'DircnLghtFucProCtrl' method, which is part of the ExteriorLightSwitchProcess. The columns represent different system components or modules involved in the process: SOA, LHZCU, ICB, etc.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess.DircnLghtFucProCtrl",
+      "type": "function",
+      "description": "Service interface for controlling external lights (turn signals)."
+    },
+    {
+      "name": "SOA",
+      "type": "controller",
+      "description": "System Onboard Architecture - likely the central control unit initiating the request."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Local Hardware Control Unit - responsible for executing the light control commands."
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Circuit Board - may be involved in signal processing or interfacing."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightReq",
+      "type": "input_parameter",
+      "description": "Requested state of the direction lights. Values include: No Flash, Left Direction Light Flash, Right Direction Light Flash, Both Side Direction Light Flash."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightResp",
+      "type": "output_parameter",
+      "description": "Response status from the LHZCU. Values include: Control Success, Failed."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the protocol for requesting and receiving responses regarding the control of external turn lights. It specifies the valid input states for the request and the expected response statuses, enabling verification of the correct execution of light control commands within the vehicle's electronic system.",
+  "uncertain_points": []
+}
+```

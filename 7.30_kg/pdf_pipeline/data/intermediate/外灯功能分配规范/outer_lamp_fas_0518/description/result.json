@@ -1,0 +1,114 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯自动灯光开启功能需求",
+  "row_semantics": "描述了在特定前置条件下，触发外灯自动灯光开启的逻辑流程和执行动作。",
+  "column_semantics": "第一列定义场景描述、前置条件、触发动作和执行动作；第二列详细描述了每个阶段的具体要求和参数。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "S32G",
+      "type": "controller",
+      "description": "整车电子控制单元，负责接收用户输入并触发相关功能"
+    },
+    {
+      "name": "ICB",
+      "type": "interface",
+      "description": "大屏开关请求接口，用于接收用户通过大屏软关触发的自动灯光开启请求"
+    },
+    {
+      "name": "LHZCU",
+      "type": "module",
+      "description": "外灯控制组合服务模块，负责处理外灯控制相关的请求和状态"
+    },
+    {
+      "name": "LHZCU",
+      "type": "module",
+      "description": "自动灯光控制模块，负责根据环境条件自动控制灯光状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "description": "用户模式，包括Sleep、Standby、XOTA等状态",
+      "values": [
+        "0x0",
+        "0x1",
+        "0x6"
+      ]
+    },
+    {
+      "name": "VehMd",
+      "description": "车辆模式，包括TRANSPORT等状态",
+      "values": [
+        "0x3"
+      ]
+    },
+    {
+      "name": "AutoLightOnReq_1",
+      "description": "自动灯光开启请求信号，根据车辆类型（vehRlsType）决定是否开启",
+      "values": [
+        "True (vehRlsType==0)",
+        "True (vehRlsType==1)"
+      ]
+    },
+    {
+      "name": "InsFunCfgAutoLtCtrl",
+      "description": "具备自动灯光控制功能的配置标志",
+      "values": [
+        "0x1"
+      ]
+    },
+    {
+      "name": "ExtrLghtCtrlCmmtnTyp",
+      "description": "外部灯光控制通信类型，支持SOA和CAN",
+      "values": [
+        "SOA"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "CombinedLightReq",
+      "description": "组合灯光请求状态，设置为AUTO",
+      "target": "LHZCU"
+    },
+    {
+      "name": "CombLghtFucProSta",
+      "description": "组合灯光功能过程状态，设置为SidePositionAndDippedBeam",
+      "target": "LHZCU"
+    },
+    {
+      "name": "LDipBeamLightCtrl",
+      "description": "近光灯控制信号，设置为ON",
+      "target": "LHZCU"
+    },
+    {
+      "name": "FLSideLightCtrl",
+      "description": "前左侧位置灯控制信号，设置为ON",
+      "target": "LHZCU"
+    },
+    {
+      "name": "FRSideLightCtrl",
+      "description": "前右侧位置灯控制信号，设置为ON",
+      "target": "LHZCU"
+    },
+    {
+      "name": "RLSideLightCtrl",
+      "description": "后左侧位置灯控制信号，设置为ON",
+      "target": "LHZCU"
+    },
+    {
+      "name": "RRSideLightCtrl",
+      "description": "后右侧位置灯控制信号，设置为ON",
+      "target": "LHZCU"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了用户通过大屏软关触发自动灯光开启的功能需求，包括前置条件、触发动作和详细的执行步骤，可用于验证整车在不同模式下自动灯光功能的正确性和一致性。",
+  "uncertain_points": [
+    "具体通信协议细节未明确说明",
+    "其他可能影响自动灯光功能的外部条件未列出"
+  ]
+}

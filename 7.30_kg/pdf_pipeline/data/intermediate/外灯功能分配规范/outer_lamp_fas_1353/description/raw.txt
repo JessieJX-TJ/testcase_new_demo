@@ -1,0 +1,75 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Side Position Light Control Interface Specifications",
+  "row_semantics": "Each row represents a distinct service interface for controlling a specific side position light (left front, right front, left rear) with its associated parameters and control logic.",
+  "column_semantics": {
+    "1": "Function Name/Description",
+    "2": "Consumption Type (SOA)",
+    "3": "Controller Module (LHZCU, RHZCU, RZCU)",
+    "4": "Interface Controller (ICB)",
+    "5": "Additional Information/Reserved"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "function",
+      "description": "Controls the illumination state of side position lights."
+    },
+    {
+      "name": "ControlSidePositionLight",
+      "type": "service_interface",
+      "description": "The API used to send commands to control the side position lights."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Left Front Side Position Light Control Unit"
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller_module",
+      "description": "Right Front Side Position Light Control Unit"
+    },
+    {
+      "name": "RZCU",
+      "type": "controller_module",
+      "description": "Left Rear Side Position Light Control Unit"
+    },
+    {
+      "name": "ICB",
+      "type": "interface_controller",
+      "description": "Interface Control Board responsible for handling communication between modules."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "Unique identifier for the instance of the control command. Different InstanceIDs correspond to different lights (e.g., 1 for left front, 2 for right front)."
+    },
+    {
+      "name": "SidePositionLightReq",
+      "type": "input_signal",
+      "description": "Request parameter specifying the desired state of the side position light."
+    },
+    {
+      "name": "0x0-OFF",
+      "type": "command_value",
+      "description": "Command value to turn off the side position light."
+    },
+    {
+      "name": "0x1-ON",
+      "type": "command_value",
+      "description": "Command value to turn on the side position light."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for controlling the left front, right front, and left rear side position lights. It specifies the required parameters, such as InstanceID and SidePositionLightReq, to send commands to the respective control units (LHZCU, RHZCU, RZCU) via the ICB. This information is crucial for testing the correct implementation and functionality of these light control services in the vehicle's electronic system.",
+  "uncertain_points": []
+}
+```

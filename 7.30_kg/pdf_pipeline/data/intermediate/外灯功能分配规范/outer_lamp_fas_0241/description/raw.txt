@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "危险警报灯（双闪灯）的控制逻辑与同步延时周期要求",
+  "row_semantics": "描述IPD（集成电源分配器）发送不同控制信号时，LHZrCU（车身控制单元）内部对应灯控信号的状态变化逻辑。",
+  "column_semantics": "无列结构，内容为连续的行描述，每行代表一种控制请求及其对应的信号状态。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "IPD",
+      "type": "controller",
+      "description": "集成电源分配器，负责发送危险警报灯的控制信号。"
+    },
+    {
+      "name": "LHZrCU",
+      "type": "controller",
+      "description": "车身控制单元，接收IPD的控制信号并处理内部灯控逻辑。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DIILampsCtrl",
+      "type": "input_signal",
+      "description": "IPD发送的替代信号，用于控制危险警报灯的开关状态。"
+    },
+    {
+      "name": "iHzrdLampsCtrl",
+      "type": "internal_signal",
+      "description": "LHZrCU内部的危险警报灯控制信号，表示当前灯控状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "iHzrdLampsCtrl",
+      "type": "output_signal",
+      "description": "LHZrCU内部的危险警报灯控制信号，其值根据IPD的输入信号决定。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "同步延时周期",
+      "value": "40ms",
+      "description": "危险警报灯的同步性允许的最大延时周期为40毫秒。"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证IPD发送不同控制信号时，LHZrCU内部危险警报灯控制信号是否按照预期逻辑进行状态切换，并确保整个系统的同步延时不超过40毫秒。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,47 @@
+{
+  "table_type": "fault_table",
+  "topic": "右后位置灯电路故障诊断与处理",
+  "row_semantics": "表格按功能流程顺序排列，描述了从前置条件到异常处理的完整逻辑链。",
+  "column_semantics": "第一列定义了流程中的各个阶段（如前置条件、触发条件等），第二列详细说明了每个阶段的具体内容。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "右后位置灯",
+      "type": "功能模块"
+    },
+    {
+      "name": "DTC B1061 13",
+      "type": "故障代码"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "右后位置灯处于输出状态",
+      "type": "前置条件"
+    },
+    {
+      "name": "检测到右后位置灯开路",
+      "type": "触发条件"
+    },
+    {
+      "name": "检测到短路恢复",
+      "type": "退出条件"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "置位 DTC B1061 13",
+      "type": "执行动作"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC B1061 13",
+      "description": "右后位置灯开路故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证整车电子系统在右后位置灯发生开路故障时，是否能够正确检测并记录故障代码（DTC B1061 13），并在故障恢复后正确退出故障状态。",
+  "uncertain_points": []
+}

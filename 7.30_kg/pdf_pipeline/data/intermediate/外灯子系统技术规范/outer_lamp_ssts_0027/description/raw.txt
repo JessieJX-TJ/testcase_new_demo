@@ -1,0 +1,92 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "S31L外灯SIMU阶段逻辑框图 - 主控单元LHZCU",
+  "row_semantics": "表示不同的功能模块或子系统，通常按层级或功能分组排列。",
+  "column_semantics": "表示信号流的方向和连接关系，包括输入、处理和输出环节。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "主控单元，负责外灯系统的逻辑控制"
+    },
+    {
+      "name": "外灯系统",
+      "type": "function",
+      "description": "包括外灯的点亮、亮度调节、模式切换等功能"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "环境光强度",
+      "type": "input_signal",
+      "description": "外部传感器采集的环境光照数据"
+    },
+    {
+      "name": "车速信号",
+      "type": "input_signal",
+      "description": "车辆行驶速度信息"
+    },
+    {
+      "name": "驾驶模式选择",
+      "type": "input_signal",
+      "description": "驾驶员通过中控台选择的驾驶模式"
+    },
+    {
+      "name": "电源状态",
+      "type": "system_state",
+      "description": "车辆电池电压及供电状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "外灯开关信号",
+      "type": "output_signal",
+      "description": "控制外灯开启/关闭的指令信号"
+    },
+    {
+      "name": "灯光亮度调节信号",
+      "type": "output_signal",
+      "description": "调节外灯亮度的PWM或模拟信号"
+    },
+    {
+      "name": "模式指示信号",
+      "type": "output_signal",
+      "description": "指示当前外灯工作模式的状态信号"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "外灯故障",
+      "type": "fault_status",
+      "description": "外灯无法正常点亮或调节的故障状态"
+    },
+    {
+      "name": "传感器失效",
+      "type": "fault_status",
+      "description": "环境光传感器或车速传感器失效"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "响应时间",
+      "type": "timing_constraint",
+      "description": "从信号输入到外灯响应的最短时间要求",
+      "uncertain_points": "具体数值未明确给出"
+    },
+    {
+      "name": "切换延迟",
+      "type": "timing_constraint",
+      "description": "不同模式之间切换时的延迟时间",
+      "uncertain_points": "具体数值未明确给出"
+    }
+  ],
+  "engineering_interpretation": "该逻辑框图可用于验证LHZCU对外灯系统的控制逻辑，包括在不同环境条件（如光线、车速）下外灯的正确响应、模式切换的准确性以及故障情况下的安全保护机制。",
+  "uncertain_points": [
+    "具体的响应时间和切换延迟数值未在图中明确给出",
+    "部分信号的具体名称和定义未详细说明"
+  ]
+}
+```

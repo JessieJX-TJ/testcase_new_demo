@@ -1,0 +1,97 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯位置灯控制与状态信号定义",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的灯光控制或状态信号。",
+  "column_semantics": "列标题表示信号的来源或作用域，包括输出类型（Output）、CANFD通信、LHZCU控制器、ICB模块等。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RLSideLghtCtrl",
+      "type": "control_signal",
+      "description": "左后位置灯控制信号"
+    },
+    {
+      "name": "RRSideLghtCtrl",
+      "type": "control_signal",
+      "description": "右后位置灯控制信号"
+    },
+    {
+      "name": "FLSideLghtSts",
+      "type": "status_signal",
+      "description": "左前位置灯状态信号"
+    },
+    {
+      "name": "FRSideLghtSts",
+      "type": "status_signal",
+      "description": "右前位置灯状态信号"
+    },
+    {
+      "name": "CANFD",
+      "type": "communication_interface",
+      "description": "Controller Area Network Flexible Data Rate通信接口"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Local Hardware Zone Control Unit局部硬件区域控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "Integrated Circuit Board集成电路板"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0",
+      "value": "0x0",
+      "description": "信号值为0x0，表示对应位置灯关闭"
+    },
+    {
+      "name": "0x1",
+      "value": "0x1",
+      "description": "信号值为0x1，表示对应位置灯开启"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RLSideLghtCtrl_0_Off",
+      "description": "左后位置灯关闭状态"
+    },
+    {
+      "name": "RLSideLghtCtrl_1_On",
+      "description": "左后位置灯开启状态"
+    },
+    {
+      "name": "RRSideLghtCtrl_0_Off",
+      "description": "右后位置灯关闭状态"
+    },
+    {
+      "name": "RRSideLghtCtrl_1_On",
+      "description": "右后位置灯开启状态"
+    },
+    {
+      "name": "FLSideLghtSts_0_Off",
+      "description": "左前位置灯关闭状态"
+    },
+    {
+      "name": "FLSideLghtSts_1_On",
+      "description": "左前位置灯开启状态"
+    },
+    {
+      "name": "FRSideLghtSts_0_Off",
+      "description": "右前位置灯关闭状态"
+    },
+    {
+      "name": "FRSideLghtSts_1_On",
+      "description": "右前位置灯开启状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯（位置灯）的控制信号和状态信号在不同控制器（如LHZCU、ICB）及通信接口（如CANFD）下的具体数值含义，可用于验证灯光控制系统在不同场景下的信号交互正确性。",
+  "uncertain_points": []
+}
+```

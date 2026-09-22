@@ -1,0 +1,49 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "倒车灯开启逻辑",
+  "row_semantics": "描述触发倒车灯开启的前置条件",
+  "column_semantics": {
+    "left": "场景描述或条件分类",
+    "right": "具体条件表达式"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "UsrMd",
+      "type": "input_signal",
+      "description": "用户模式信号，表示车辆当前的操作模式"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsrMd != 0x0",
+      "description": "用户模式不为睡眠模式"
+    },
+    {
+      "condition": "UsrMd != 0x1",
+      "description": "用户模式不为待机模式"
+    },
+    {
+      "condition": "UsrMd != 0x2",
+      "description": "用户模式不为舒适模式"
+    },
+    {
+      "condition": "UsrMd != 0x6",
+      "description": "用户模式不为XOTA模式"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Reverse_Light",
+      "type": "output_signal",
+      "description": "倒车灯输出信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定用户模式下（非睡眠、待机、舒适、XOTA模式），通过切换车辆档位可触发倒车灯开启的逻辑条件，可用于验证倒车灯功能在不同用户模式下的正确响应。",
+  "uncertain_points": []
+}
+```

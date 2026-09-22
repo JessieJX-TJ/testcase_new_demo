@@ -1,0 +1,87 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "远光灯自动控制功能的激活与退出逻辑",
+  "row_semantics": "表格按行描述了触发远光灯自动控制功能退出的条件组合，每行代表一个完整的触发场景。",
+  "column_semantics": "表格分为两列：左侧为场景描述和前置条件，右侧为具体的触发动作细节。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExtrLghtCtrlCmmntnTyp",
+      "type": "parameter",
+      "description": "远光灯自动控制通信类型配置参数"
+    },
+    {
+      "name": "UsrMd",
+      "type": "mode",
+      "description": "用户驾驶模式，包括Normal Driving, AI Parking, AI Pilot"
+    },
+    {
+      "name": "VehMd",
+      "type": "mode",
+      "description": "车辆模式，包括TRANSPORT, EXHIBITION"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit，负责判断近光灯状态"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外部灯光开关处理模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "远光灯自动控制功能处于激活状态",
+      "type": "system_state",
+      "description": "功能的前提条件"
+    },
+    {
+      "name": "车速信号",
+      "type": "input_signal",
+      "description": "车辆平均速度低于或等于20Km/h",
+      "threshold": "≤20Km/h"
+    },
+    {
+      "name": "灯光开关状态",
+      "type": "input_signal",
+      "description": "灯光开关设置为AUTO模式",
+      "value": "AUTO"
+    },
+    {
+      "name": "近光灯状态",
+      "type": "input_signal",
+      "description": "近光灯反馈状态为关闭（通过多个Instance ID获取）"
+    },
+    {
+      "name": "环境光状态",
+      "type": "input_signal",
+      "description": "环境光照强度相关状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "退出远光灯自动控制功能",
+      "type": "output_action",
+      "description": "当满足所有前置条件和触发动作时，系统将退出远光灯自动控制功能"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "持续时间",
+      "type": "timing_constraint",
+      "description": "车速信号满足条件且持续2秒",
+      "value": "≥2S"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了在特定条件下，车辆远光灯自动控制功能如何被触发退出的逻辑规则，可用于验证车辆在不同驾驶模式、车速、灯光开关状态及近光灯状态下的远光灯自动控制行为是否符合设计规范。",
+  "uncertain_points": [
+    "具体Instance ID对应的近光灯状态细节未明确说明",
+    "环境光状态的具体阈值或范围未给出"
+  ]
+}
+```

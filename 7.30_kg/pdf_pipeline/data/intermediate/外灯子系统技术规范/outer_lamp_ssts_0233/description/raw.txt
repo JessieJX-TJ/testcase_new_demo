@@ -1,0 +1,66 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "右远光灯驱动控制逻辑",
+  "row_semantics": "描述了在特定前置条件下，触发条件满足时执行的动作，属于典型的控制逻辑表。",
+  "column_semantics": {
+    "1": "前置条件 (Preconditions)",
+    "2": "触发条件 (Trigger Conditions)",
+    "3": "执行动作 (Actions)"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "主远光灯反馈信号的使能参数"
+    },
+    {
+      "name": "RMainBeamLghtDrvMdl",
+      "type": "controller",
+      "description": "右远光灯驱动模块"
+    },
+    {
+      "name": "MainBeamLamp_RH_HSD",
+      "type": "output_signal",
+      "description": "右远光灯高压开关驱动信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MainBeamLightFbkSOAEnPrm == 1 (Enable)",
+      "description": "主远光灯反馈信号的使能参数为1（启用状态）"
+    },
+    {
+      "condition": "右远光灯处于输出状态",
+      "description": "右远光灯当前处于点亮或输出状态"
+    },
+    {
+      "condition": "检测到右远光灯短路到电源",
+      "description": "系统检测到右远光灯存在短路至电源的故障"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "RMainBeamLghtDrvMdl",
+      "action": "停止驱动",
+      "description": "当触发条件满足时，停止对右远光灯驱动模块的控制"
+    },
+    {
+      "signal": "MainBeamLamp_RH_HSD",
+      "action": "停止输出",
+      "description": "同时停止向右远光灯高压开关驱动信号输出"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "右远光灯短路到电源",
+      "description": "一种电气故障，表现为右远光灯异常连接到电源"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在右远光灯发生短路到电源故障时，系统应如何响应的控制逻辑，可用于验证整车电子电器系统在该故障情况下的保护机制是否正确实现。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,127 @@
+{
+  "table_type": "signal_table",
+  "topic": "Directional and Brake Light Control System Signals",
+  "row_semantics": "Each row represents a specific signal or status related to the control and monitoring of vehicle directional and brake lights.",
+  "column_semantics": {
+    "1": "Signal Name",
+    "2": "Input/Output Type",
+    "3": "Communication Network (CAN)",
+    "4": "Local Hardware Zone Controller Unit (LHZCU)",
+    "5": "Regional Zone Controller Unit (RZCU)",
+    "6": "Body Keyless Communication Area Network (BKBCAN) Full Duplex"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrkLghtCtrl",
+      "type": "Control Signal",
+      "description": "Controls the activation of brake lights."
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "type": "Control Signal",
+      "description": "Controls the right-side directional light."
+    },
+    {
+      "name": "RRDircnLghtCtrl",
+      "type": "Control Signal",
+      "description": "Controls the left-side directional light."
+    },
+    {
+      "name": "DircnLghtMdSts",
+      "type": "Status Signal",
+      "description": "Indicates the mode status of directional lights (enabled/disabled)."
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "type": "Fault Status Signal",
+      "description": "Reports faults in directional lights."
+    },
+    {
+      "name": "BrkLghtFltSta",
+      "type": "Fault Status Signal",
+      "description": "Reports the fault status of brake lights."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "BrkLghtCtrl_0_Off",
+      "description": "Brake light is off."
+    },
+    {
+      "name": "BrkLghtCtrl_1_On",
+      "description": "Brake light is on."
+    },
+    {
+      "name": "RLDircnLghtCtrl_0_Off",
+      "description": "Right-side directional light is off."
+    },
+    {
+      "name": "RLDircnLghtCtrl_1_on",
+      "description": "Right-side directional light is on."
+    },
+    {
+      "name": "RRDircnLghtCtrl_0_Off",
+      "description": "Left-side directional light is off."
+    },
+    {
+      "name": "RRDircnLghtCtrl_1_on",
+      "description": "Left-side directional light is on."
+    },
+    {
+      "name": "DircnLghtMdSts_0_Enabled",
+      "description": "Directional lights are enabled."
+    },
+    {
+      "name": "DircnLghtMdSts_1_Disabled",
+      "description": "Directional lights are disabled."
+    },
+    {
+      "name": "DircnLghtFltsts_0_No_Error",
+      "description": "No error detected in directional lights."
+    },
+    {
+      "name": "DircnLghtFltsts_1_Left_Direction_Light_Error",
+      "description": "Error detected in the left-side directional light."
+    },
+    {
+      "name": "DircnLghtFltsts_2_Right_Direction_Light_Error",
+      "description": "Error detected in the right-side directional light."
+    },
+    {
+      "name": "DircnLghtFltsts_3_Both_Side_Direction_Light_Error",
+      "description": "Error detected in both sides of directional lights."
+    },
+    {
+      "name": "BrkLghtFltSta_0_False",
+      "description": "No fault detected in brake lights."
+    },
+    {
+      "name": "BrkLghtFltSta_1_True",
+      "description": "Fault detected in brake lights."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DircnLghtFltsts_1_Left_Direction_Light_Error",
+      "description": "Left-side directional light fault."
+    },
+    {
+      "name": "DircnLghtFltsts_2_Right_Direction_Light_Error",
+      "description": "Right-side directional light fault."
+    },
+    {
+      "name": "DircnLghtFltsts_3_Both_Side_Direction_Light_Error",
+      "description": "Both-side directional light fault."
+    },
+    {
+      "name": "BrkLghtFltSta_1_True",
+      "description": "Brake light fault."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the control signals, status indicators, and fault detection mechanisms for vehicle directional and brake lights across different controller units. It is used to verify the correct operation and fault reporting of these lighting systems in response to various control commands.",
+  "uncertain_points": []
+}

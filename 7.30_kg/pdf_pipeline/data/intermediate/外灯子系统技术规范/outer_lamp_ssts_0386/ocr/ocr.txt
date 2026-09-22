@@ -1,0 +1,13 @@
+前置条件
+1. 左前位置灯处于输出状态
+触发条件
+检测到左前位置灯短路到地
+执行动作
+【FLSideLghtDrvMdl】停止驱动左前位置灯输出(PosLamp_LH_HSD)
+2.【FLSideLghtDrvMdl】持续发送 SidePositionLightStatus.
+SidePositionLightSta=0(Off)(InstanceID=1)至【SideLghtCtrlMdl】
+至少发送三帧
+3. 置位 DTC B1061 11
+退出条件
+检测到短路恢复
+异常处理

@@ -1,0 +1,611 @@
+[
+  {
+    "head": "System Wakeup/Sleep Mode Entry",
+    "relation": "input",
+    "tail": "Wake/Sleep Method Definition",
+    "sources": [
+      "inner_lamp_ssts_0480"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Wake/Sleep Behavior Compliance",
+    "relation": "precondition",
+    "tail": "Wake Source and Wake/Sleep Method Match Correctly",
+    "sources": [
+      "inner_lamp_ssts_0480"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR3LampFadeSpdCmd_1",
+    "relation": "controls",
+    "tail": "DoorAmbtLampD_FR Fade Speed",
+    "sources": [
+      "inner_lamp_ssts_0481"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR4LampOnOff_1",
+    "relation": "controls",
+    "tail": "DoorAmbtLampD_FR On/Off State",
+    "sources": [
+      "inner_lamp_ssts_0481"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR4LampColorCmd_1",
+    "relation": "controls",
+    "tail": "DoorAmbtLampD_FR Color",
+    "sources": [
+      "inner_lamp_ssts_0481"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR4LampBrtnsCmd_1",
+    "relation": "controls",
+    "tail": "DoorAmbtLampD_FR Brightness",
+    "sources": [
+      "inner_lamp_ssts_0481"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR4LampBrthngCmd_1",
+    "relation": "controls",
+    "tail": "DoorAmbtLampD_FR Breathing Effect",
+    "sources": [
+      "inner_lamp_ssts_0481"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color/Brightness Transition Time",
+    "relation": "timeout_constraint",
+    "tail": "Default Speed Spd0: 2000 ms",
+    "sources": [
+      "inner_lamp_ssts_0481"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp ON Activation",
+    "relation": "precondition",
+    "tail": "Non-zero Color and Brightness Commands Received Simultaneously",
+    "sources": [
+      "inner_lamp_ssts_0481",
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR4LampColorCmd_1",
+    "relation": "suppression_condition",
+    "tail": "Color Remains Unchanged When Value Is 0 or Undefined",
+    "sources": [
+      "inner_lamp_ssts_0481",
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR4LampBrtnsCmd_1",
+    "relation": "suppression_condition",
+    "tail": "Brightness Remains Unchanged When Value Is 0",
+    "sources": [
+      "inner_lamp_ssts_0481",
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorFlorLampCtrlCmd",
+    "relation": "input",
+    "tail": "Right Rear Laser Welcome Lamp Drive Request",
+    "sources": [
+      "inner_lamp_ssts_0482"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorFlorLampCtrlCmd",
+    "relation": "precondition",
+    "tail": "Signal Sent by RHZCU",
+    "sources": [
+      "inner_lamp_ssts_0482"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFlorLamp_RR_HSD",
+    "relation": "output",
+    "tail": "Right Rear Laser Welcome Lamp Drive Hardwire Signal",
+    "sources": [
+      "inner_lamp_ssts_0482"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFlorLamp_RR_HSD",
+    "relation": "depends_on",
+    "tail": "RRDoorFlorLampCtrlCmd",
+    "sources": [
+      "inner_lamp_ssts_0482"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFlorLamp_RR_HSD",
+    "relation": "controls",
+    "tail": "Right Rear Laser Welcome Lamp",
+    "sources": [
+      "inner_lamp_ssts_0482"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorFlorLampCtrlCmd",
+    "relation": "input_from",
+    "tail": "RHZCU",
+    "sources": [
+      "inner_lamp_ssts_0482"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorFlorLampCtrlCmd",
+    "relation": "state_retention_condition",
+    "tail": "0x0 = Close; 0x1 = Open",
+    "sources": [
+      "inner_lamp_ssts_0482"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL3LampFadeSpdCmd_1",
+    "relation": "input",
+    "tail": "LIN Signal DoorFL2LampFadeSpdCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL3LampBrtnsCmd_1",
+    "relation": "input",
+    "tail": "LIN Signal DoorFL3LampBrtnsCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL3LampBrthngCmd_1",
+    "relation": "input",
+    "tail": "LIN Signal DoorFL3LampBrthngCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color Retention",
+    "relation": "state_retention_condition",
+    "tail": "Command Value Is 0 or Color ID Is Undefined",
+    "sources": [
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Retention",
+    "relation": "state_retention_condition",
+    "tail": "Command Value Is 0",
+    "sources": [
+      "inner_lamp_ssts_0483",
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Inactivity",
+    "relation": "precondition",
+    "tail": "Command Value Is 0x0",
+    "sources": [
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampColorCmd_1",
+    "relation": "trigger_condition",
+    "tail": "LHZCU Receives DoorRL5LampColorCmd_1 Command",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampColorCmd_1",
+    "relation": "input",
+    "tail": "Color Value in Range 0x01–0xFF",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampColorCmd_1",
+    "relation": "state_retention_condition",
+    "tail": "Color Remains Unchanged When Value Is 0 or Color ID Is Undefined",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrtnsCmd_1",
+    "relation": "trigger_condition",
+    "tail": "LHZCU Receives DoorRL5LampBrtnsCmd_1 Command",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrtnsCmd_1",
+    "relation": "input",
+    "tail": "Brightness Percentage Value in Range 0x00–0xFF",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrthngCmd_1",
+    "relation": "trigger_condition",
+    "tail": "LHZCU Receives DoorRL5LampBrthngCmd_1 Command",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrthngCmd_1",
+    "relation": "input",
+    "tail": "Breathing Rate Code Value in Range 0x00–0xFF",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrthngCmd_1",
+    "relation": "depends_on",
+    "tail": "Code-to-Cycle-Time Mapping Relationship",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrthngCmd_1",
+    "relation": "output",
+    "tail": "Original Breathing Mode Value",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "depends_on",
+    "tail": "Interface Source",
+    "sources": [
+      "inner_lamp_ssts_0486"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "precondition",
+    "tail": "Parameter Range",
+    "sources": [
+      "inner_lamp_ssts_0487",
+      "inner_lamp_ssts_0490",
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "precondition",
+    "tail": "Parameter Resolution (Factor)",
+    "sources": [
+      "inner_lamp_ssts_0487",
+      "inner_lamp_ssts_0490",
+      "inner_lamp_ssts_0491",
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "precondition",
+    "tail": "Parameter Default Value",
+    "sources": [
+      "inner_lamp_ssts_0487",
+      "inner_lamp_ssts_0490",
+      "inner_lamp_ssts_0491",
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "precondition",
+    "tail": "Parameter Description",
+    "sources": [
+      "inner_lamp_ssts_0490",
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "precondition",
+    "tail": "Parameter Item (Calibration ID)",
+    "sources": [
+      "inner_lamp_ssts_0490",
+      "inner_lamp_ssts_0491",
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "precondition",
+    "tail": "Parameter Conversion Definition",
+    "sources": [
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Parameter Calibration Validation",
+    "relation": "precondition",
+    "tail": "All of: Item, Description, Range, Factor, Default Must Comply with Design Specification",
+    "sources": [
+      "inner_lamp_ssts_0490"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Control Parameter Resolution",
+    "relation": "depends_on",
+    "tail": "Calibration Item (Item)",
+    "sources": [
+      "inner_lamp_ssts_0491"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Module Parameter Default Value",
+    "relation": "depends_on",
+    "tail": "Calibration Item (Item)",
+    "sources": [
+      "inner_lamp_ssts_0491"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Control Parameter Range",
+    "relation": "depends_on",
+    "tail": "Calibration Item (Item)",
+    "sources": [
+      "inner_lamp_ssts_0491"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disabled",
+    "relation": "precondition",
+    "tail": "Supply Voltage < 6 V (Undervoltage)",
+    "sources": [
+      "inner_lamp_ssts_0492",
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disabled",
+    "relation": "precondition",
+    "tail": "Supply Voltage 6–9 V (Low Voltage)",
+    "sources": [
+      "inner_lamp_ssts_0492",
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disabled",
+    "relation": "precondition",
+    "tail": "Supply Voltage 16–18 V (Overvoltage)",
+    "sources": [
+      "inner_lamp_ssts_0492",
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disabled",
+    "relation": "precondition",
+    "tail": "Supply Voltage > 18 V (High Voltage)",
+    "sources": [
+      "inner_lamp_ssts_0492",
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Enabled",
+    "relation": "precondition",
+    "tail": "Supply Voltage 9–16 V (Nominal Operating Range)",
+    "sources": [
+      "inner_lamp_ssts_0492"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Exits Breathing Mode",
+    "relation": "precondition",
+    "tail": "FtwlFLLampOnOff_1 = 0x00 (OFF)",
+    "sources": [
+      "inner_lamp_ssts_0493"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Exits Breathing Mode",
+    "relation": "precondition",
+    "tail": "FtwlFLLampBrthngCmd_1 = 0x00 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0493"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Stops Breathing Mode",
+    "relation": "precondition",
+    "tail": "AmbtLghtLHRollingCtr_1 No Longer Increments Sequentially",
+    "sources": [
+      "inner_lamp_ssts_0493"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Turns Off",
+    "relation": "fault_response",
+    "tail": "Overvoltage or Undervoltage Fault in Ambient Lamp Module",
+    "sources": [
+      "inner_lamp_ssts_0493"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Turns Off",
+    "relation": "timeout_constraint",
+    "tail": "No ZCU LIN Signal Received Within 6 Seconds",
+    "sources": [
+      "inner_lamp_ssts_0493"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Configuration Parameter Validation",
+    "relation": "precondition",
+    "tail": "Configuration Item = NA",
+    "sources": [
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Configuration Parameter Validation",
+    "relation": "precondition",
+    "tail": "Description = NA",
+    "sources": [
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Configuration Parameter Validation",
+    "relation": "precondition",
+    "tail": "Range = NA",
+    "sources": [
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Configuration Parameter Validation",
+    "relation": "precondition",
+    "tail": "Conversion Definition = NA",
+    "sources": [
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Configuration Parameter Validation",
+    "relation": "precondition",
+    "tail": "Default Value = NA",
+    "sources": [
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

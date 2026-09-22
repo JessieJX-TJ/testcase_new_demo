@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "左侧远光灯点亮",
+    "relation": "触发条件",
+    "tail": "MainBeamLight. ControlMainBeamLight 接口调用，Parameter Name: {MainBeamLightReq} 的值为 ON (0x1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["MainBeamLight. ControlMainBeamLight", "MainBeamLightReq", "ON"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧远光灯熄灭",
+    "relation": "触发条件",
+    "tail": "MainBeamLight. ControlMainBeamLight 接口调用，Parameter Name: {MainBeamLightReq} 的值为 OFF (0x0)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["MainBeamLight. ControlMainBeamLight", "MainBeamLightReq", "OFF"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右侧远光灯点亮",
+    "relation": "触发条件",
+    "tail": "MainBeamLight. ControlMainBeamLight 接口调用，Parameter Name: {MainBeamLightReq} 的值为 ON (0x1)，InstanceID=2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["MainBeamLight. ControlMainBeamLight", "MainBeamLightReq", "ON", "InstanceID=2"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右侧远光灯熄灭",
+    "relation": "触发条件",
+    "tail": "MainBeamLight. ControlMainBeamLight 接口调用，Parameter Name: {MainBeamLightReq} 的值为 OFF (0x0)，InstanceID=2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["MainBeamLight. ControlMainBeamLight", "MainBeamLightReq", "OFF", "InstanceID=2"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "MainBeamLightFucProStatus 参数值为 ON (0x1)",
+    "relation": "输出为",
+    "tail": "MainBeamLight. ControlMainBeamLight 接口成功执行后，控制对象为左侧远光灯",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["MainBeamLightFucProStatus", "MainBeamLightReq", "ON", "左侧远光灯"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "MainBeamLightFucProStatus 参数值为 OFF (0x0)",
+    "relation": "输出为",
+    "tail": "MainBeamLight. ControlMainBeamLight 接口成功执行后，控制对象为左侧远光灯",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["MainBeamLightFucProStatus", "MainBeamLightReq", "OFF", "左侧远光灯"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "MainBeamLightFucProStatus 参数值为 Unknown (0x2)",
+    "relation": "输出为",
+    "tail": "MainBeamLight. ControlMainBeamLight 接口执行后，状态无法确定",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["MainBeamLightFucProStatus", "Unknown"],
+    "confidence_note": "high"
+  }
+]
+```

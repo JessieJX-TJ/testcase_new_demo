@@ -1,0 +1,91 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "制动灯开关请求响应时序与控制逻辑",
+  "row_semantics": "流程步骤或模块阶段",
+  "column_semantics": "时间点或功能阶段",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Local Host Control Unit, 负责接收和处理外灯相关信号"
+    },
+    {
+      "name": "S32G",
+      "type": "Controller/Module",
+      "description": "System on Chip, 负责执行外灯控制算法和驱动"
+    },
+    {
+      "name": "TailLampAsmbl",
+      "type": "Component",
+      "description": "尾灯总成，包含LED灯泡和驱动电路"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "制动灯开关请求",
+      "type": "Input Signal",
+      "description": "驾驶员触发制动灯的物理开关信号"
+    },
+    {
+      "name": "CANFD",
+      "type": "Communication Protocol",
+      "description": "Controller Area Network Flexible Data Rate, 用于控制器间高速数据传输"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "外灯点亮",
+      "type": "Output Signal",
+      "description": "制动灯实际点亮状态"
+    },
+    {
+      "name": "数字灯光SDK",
+      "type": "Software Development Kit",
+      "description": "提供给上层应用的数字灯光控制接口"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "唤醒周期",
+      "value": "120ms",
+      "description": "LHZCU从待机模式唤醒至处理制动灯请求的时间"
+    },
+    {
+      "name": "采样+信号处理",
+      "value": "60ms",
+      "description": "LHZCU对制动灯开关请求进行采样和初步信号处理的时间"
+    },
+    {
+      "name": "内部信号",
+      "value": "30ms",
+      "description": "LHZCU内部生成制动灯控制信号的时间"
+    },
+    {
+      "name": "逻辑+信号处理",
+      "value": "10ms",
+      "description": "S32G对外部输入信号进行逻辑判断和进一步信号处理的时间"
+    },
+    {
+      "name": "数字灯光SDK",
+      "value": "40ms",
+      "description": "S32G通过SDK发送控制指令到尾灯驱动的时间"
+    },
+    {
+      "name": "制灯灯驱动",
+      "value": "30ms",
+      "description": "尾灯总成实际点亮所需时间"
+    },
+    {
+      "name": "总响应时间",
+      "value": "230ms",
+      "description": "从制动灯开关请求发出到尾灯实际点亮的总时间"
+    }
+  ],
+  "engineering_interpretation": "该表格描述了制动灯系统从用户请求到最终点亮的完整时序和控制逻辑，可用于验证制动灯系统的响应时间、信号处理时延以及各控制器间的通信性能。",
+  "uncertain_points": []
+}
+```

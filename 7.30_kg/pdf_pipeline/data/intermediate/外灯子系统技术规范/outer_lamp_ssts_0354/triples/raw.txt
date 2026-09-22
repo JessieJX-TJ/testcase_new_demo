@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "左远光灯开路故障诊断功能被触发",
+    "relation": "触发条件",
+    "tail": "检测到左远光灯开路",
+    "triple_type": "逻辑规则",
+    "evidence_terms": ["触发条件", "检测到左远光灯开路"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯开路故障诊断功能被抑制",
+    "relation": "抑制条件",
+    "tail": "MainBeamLightFbkSOAEnPrm == 0 (Disable)",
+    "triple_type": "逻辑规则",
+    "evidence_terms": ["前置条件", "1.MainBeamLghtFbkSOAEnPrm==0(Disable)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯开路故障诊断功能被抑制",
+    "relation": "抑制条件",
+    "tail": "左远光灯处于输出状态",
+    "triple_type": "逻辑规则",
+    "evidence_terms": ["前置条件", "2.左远光灯处于输出状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主光束灯驱动模块持续发送关闭信号",
+    "relation": "执行动作",
+    "tail": "LMainBeamLightDrvMdl 持续发送 LMainBeamLightSts = 0 (Off) 至 MainBeamLightCtrlMdl",
+    "triple_type": "逻辑规则",
+    "evidence_terms": ["执行动作", "1.【LMainBeamLghtDrvMdl】持续发送...至【MainBeamLghtCtrlMdl】"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "设置故障代码 DTC_B105C_13",
+    "relation": "执行动作",
+    "tail": "置位 DTCB105C13",
+    "triple_type": "逻辑规则",
+    "evidence_terms": ["执行动作", "2.置位 DTCB105C13"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯开路故障诊断功能退出",
+    "relation": "退出条件",
+    "tail": "检测到开路恢复",
+    "triple_type": "逻辑规则",
+    "evidence_terms": ["退出条件", "检测到开路恢复"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "设置故障代码 DTC_B105C_13",
+    "relation": "诊断关联",
+    "tail": "DTC_B105C_13",
+    "triple_type": "故障响应",
+    "evidence_terms": ["执行动作", "置位 DTCB105C13", "core_faults"],
+    "confidence_note": "high"
+  }
+]
+```

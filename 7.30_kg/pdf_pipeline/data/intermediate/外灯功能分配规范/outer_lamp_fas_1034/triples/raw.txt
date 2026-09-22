@@ -1,0 +1,74 @@
+```json
+[
+  {
+    "head": "制动灯点亮请求被接收",
+    "relation": "触发条件",
+    "tail": "ICB_S32G MCU 接收 ExteriorLightControlSystem.ControlBrakeLight.BrakeLightReq=0x1=ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB_S32G MCU",
+      "ExteriorLightControlSystem",
+      "BrakeLightReq",
+      "ON"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯点亮请求被发送",
+    "relation": "依赖于",
+    "tail": "ICB_S32G MCU 发送 BrkLghtSrvcReq=0x1=ON 给 LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB_S32G MCU",
+      "BrkLghtSrvcReq",
+      "ON",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "控制对象",
+    "tail": "LHZCU 控制执行制动灯点亮或熄灭",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "制动灯点亮"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开启同步性要求满足",
+    "relation": "前提条件",
+    "tail": "左侧、右侧以及高位制动灯需保持同步点亮，三侧最大延时不超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "制动灯开启同步性",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯服务请求 CAN 信号周期发送",
+    "relation": "前提条件",
+    "tail": "制动灯服务请求 CAN 信号为周期发送，非仅发送3帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "CAN信号",
+      "周期发送"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯关闭",
+    "relation": "触发条件",
+    "tail": "BrkLghtSrvcReq 从 ON 变为 OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "BrkLghtSrvcReq",
+      "OFF"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

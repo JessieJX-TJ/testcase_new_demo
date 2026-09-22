@@ -1,0 +1,292 @@
+```json
+[
+  {
+    "head": "IFPRearFoglghtOnSta_1",
+    "relation": "前提条件",
+    "tail": "反馈状态为0x1",
+    "sources": ["outer_lamp_fas_0194"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "物理开关指示灯",
+    "relation": "前提条件",
+    "tail": "反馈状态为0x0",
+    "sources": ["outer_lamp_fas_0194"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "物理开关指示灯",
+    "relation": "前提条件",
+    "tail": "exlRearFoglghtPrm = 1",
+    "sources": ["outer_lamp_fas_0194"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "物理开关指示灯",
+    "relation": "前提条件",
+    "tail": "反馈状态为0x1",
+    "sources": ["outer_lamp_fas_0194"],
+    "conflict": true,
+    "conflict_note": "同一实体‘物理开关指示灯’在相同relation下，tail出现互斥值（0x0 vs 0x1），语义冲突：0x0表熄灭，0x1表点亮，但均被列为‘前提条件’，未明确上下文（如不同功能分支）。需确认是否应为不同head（如‘点亮’/‘熄灭’）或补充约束。"
+  },
+  {
+    "head": "后雾灯故障弹窗提醒",
+    "relation": "触发条件",
+    "tail": "RearFogLightAcFlts_1 = True OR ExteriorLightSwitchProcess.RearFogLightErrSta ≠ 0x1 OR RearFogLightErrorSta ≠ 0x1",
+    "sources": ["outer_lamp_fas_0194"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "方向灯状态订阅",
+    "relation": "触发条件",
+    "tail": "调用 DirectionLightStatus 接口",
+    "sources": ["outer_lamp_fas_0195"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSta",
+    "relation": "输入为",
+    "tail": "方向灯状态：OFF / ON / Unknown",
+    "sources": ["outer_lamp_fas_0195"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "控制对象",
+    "tail": "右前转向灯（InstanceID=1）",
+    "sources": ["outer_lamp_fas_0195"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "控制对象",
+    "tail": "左后转向灯（InstanceID=3）",
+    "sources": ["outer_lamp_fas_0195"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "迎宾光毯灯",
+    "relation": "前提条件",
+    "tail": "车辆档位非P档",
+    "sources": ["outer_lamp_fas_0196"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆档位非P档",
+    "relation": "触发条件",
+    "tail": "LHZCU 停止驱动 WelcomeLamp_HSD 硬线端口",
+    "sources": ["outer_lamp_fas_0196"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "控制对象",
+    "tail": "WelcomeLamp_HSD",
+    "sources": ["outer_lamp_fas_0196"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "控制对象",
+    "tail": "LHZCU, RHZCU, RZCU",
+    "sources": ["outer_lamp_fas_0197", "outer_lamp_fas_0881"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "输出到",
+    "tail": "LHA, RHA, TailL_pAsmbA_LH, TailL_pAsmbA_RH, TailL_pAsmbA_B",
+    "sources": ["outer_lamp_fas_0197", "outer_lamp_fas_0655", "outer_lamp_fas_0685", "outer_lamp_fas_0760"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "包含子功能",
+    "tail": "TailL_pAsmbA_LH, TailL_pAsmbA_RH, TailL_pAsmbA_B",
+    "sources": ["outer_lamp_fas_0197"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯",
+    "relation": "触发条件",
+    "tail": "周期调用 ControlDirectionLight 接口（Parameter: DirectionLightReq, InstanceID=1）且 DirectionLightReq = 0x1",
+    "sources": ["outer_lamp_fas_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯",
+    "relation": "触发条件",
+    "tail": "周期调用 ControlDirectionLight 接口（Parameter: DirectionLightReq, InstanceID=1）且 DirectionLightReq = 0x0",
+    "sources": ["outer_lamp_fas_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯",
+    "relation": "触发条件",
+    "tail": "周期调用 ControlDirectionLight 接口（Parameter: DirectionLightReq, InstanceID=2）且 DirectionLightReq = 0x1",
+    "sources": ["outer_lamp_fas_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯",
+    "relation": "触发条件",
+    "tail": "周期调用 ControlDirectionLight 接口（Parameter: DirectionLightReq, InstanceID=2）且 DirectionLightReq = 0x0",
+    "sources": ["outer_lamp_fas_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用 DirectionLightErrSts 接口",
+    "sources": ["outer_lamp_fas_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯故障状态",
+    "relation": "输出为",
+    "tail": "DirectionLightErrSts = 0x1",
+    "sources": ["outer_lamp_fas_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯无故障状态",
+    "relation": "输出为",
+    "tail": "DirectionLightErrSts = 0x0",
+    "sources": ["outer_lamp_fas_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "输出信号",
+    "tail": "ICB_S32G_M, LHZCU_ETH",
+    "sources": ["outer_lamp_fas_0201"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "输出信号",
+    "tail": "ICB_S32G_M, RZCU_ETH",
+    "sources": ["outer_lamp_fas_0201"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SOA",
+    "relation": "输入信号",
+    "tail": "LHZCU, RZCU",
+    "sources": ["outer_lamp_fas_0201"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CAN",
+    "relation": "输入信号",
+    "tail": "RZCU",
+    "sources": ["outer_lamp_fas_0201"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TDM",
+    "relation": "输入信号",
+    "tail": "SFCANFD",
+    "sources": ["outer_lamp_fas_0201"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车制动灯",
+    "relation": "检测状态",
+    "tail": "TrlrBrkLghtSts（点亮）, TrlrBrkLghtFltSts（故障）",
+    "sources": ["outer_lamp_fas_0202"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车倒车灯",
+    "relation": "检测状态",
+    "tail": "TrlrRevsLghtSts（点亮）, TrlrRevsLghtFltSts（故障）",
+    "sources": ["outer_lamp_fas_0202"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车后雾灯",
+    "relation": "检测状态",
+    "tail": "TrlrRrFogLghtSts（点亮）, TrlrRrFogLghtFltSts（故障）",
+    "sources": ["outer_lamp_fas_0202"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车转向灯",
+    "relation": "检测状态",
+    "tail": "TrlrDirLghtSts（点亮）, TrlrDirLghtFltSts（故障）",
+    "sources": ["outer_lamp_fas_0202"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖挂车位置灯",
+    "relation": "检测状态",
+    "tail": "TrlrSideLghtSts（点亮）, TrlrSideLghtFltSts（故障）",
+    "sources": ["outer_lamp_fas_0202"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制功能",
+    "relation": "前提条件",
+    "tail": "点火开关处于ON位置",
+    "sources": ["outer_lamp_fas_0203", "outer_lamp_ssts_0096"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门开启功能",
+    "relation": "触发条件",
+    "tail": "驾驶员侧车门关闭 AND 遥控钥匙信号有效",
+    "sources": ["outer_lamp_fas_0203"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身稳定控制系统（ESC）",
+    "relation": "抑制条件",
+    "tail": "驾驶员手动关闭ESC功能",
+    "sources": ["outer_lamp_fas_0203"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "空调系统",
+    "relation": "输入为",
+    "tail": "环境温度高于设定值 AND AC按钮被按下 → 制冷模式激活",
+    "sources": ["outer_lamp_fas_0203"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

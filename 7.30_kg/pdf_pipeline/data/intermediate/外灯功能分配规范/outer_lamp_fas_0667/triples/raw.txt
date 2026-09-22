@@ -1,0 +1,103 @@
+```json
+[
+  {
+    "head": "远光灯自动开启",
+    "relation": "前提条件",
+    "tail": "车辆平均速度VehSpdAvg≥40Km/h且持续2秒，同时IPD请求远光灯开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehSpdAvg",
+      "VehSpdAvgV_0_Valid",
+      "IPD",
+      "AutoMainBeamLghtReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯手动开启",
+    "relation": "触发条件",
+    "tail": "IPD请求远光灯开启信号AutoMainBeamLghtReq=0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "IPD",
+      "AutoMainBeamLghtReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯点亮",
+    "relation": "依赖于",
+    "tail": "ICB将服务接口或控制信号转换成CAN信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "CAN"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯模式状态 MainBeamLightMdSts",
+    "relation": "输出为",
+    "tail": "Auto_Mode (0x2)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "MainBeamLightMdSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯错误状态 MainBeamLightErrSta",
+    "relation": "输出为",
+    "tail": "No Error (0x0)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "MainBeamLightErrSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯硬件驱动使能参数 MainBeamHwDrvEnPrm",
+    "relation": "依赖于",
+    "tail": "InstanceID",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "MainBeamHwDrvEnPrm",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯开关控制模块 LHZCU",
+    "relation": "控制对象",
+    "tail": "ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制模块 LHZCU",
+    "relation": "触发条件",
+    "tail": "前置条件满足（无需激活）",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "前置条件"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯错误状态 MainBeamLightErrSta",
+    "relation": "故障响应",
+    "tail": "反馈至远光灯开关控制模块 LHZCU",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "MainBeamLightErrSta",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

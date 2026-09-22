@@ -1,0 +1,66 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "Direction Light Error Status",
+  "row_semantics": "Each row represents a specific direction light error status subscription request for different vehicle directions (right rear, left front, right front).",
+  "column_semantics": {
+    "A": "Function Name (DirectionLight.DirectionLightErrorStatus)",
+    "B": "Consumption Type (SOA/ICB/LHZCU)",
+    "C": "Controller/Module (SOA/ICB/LHZCU)",
+    "D": "Network Fault Status"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "function",
+      "description": "Represents the direction light system or module."
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "interface",
+      "description": "The service interface used to subscribe and retrieve the error status of direction lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "Unique identifier for each direction light status instance. Different InstanceIDs correspond to different directions (e.g., 4 for right rear, 5 for left front)."
+    },
+    {
+      "name": "DirectionLightErrorSta",
+      "type": "input_signal",
+      "description": "The parameter name indicating the direction light error status."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "No Error",
+      "type": "system_state",
+      "description": "Indicates that the direction light is functioning normally without any errors."
+    },
+    {
+      "name": "Error",
+      "type": "system_state",
+      "description": "Indicates that an error has occurred in the direction light system."
+    },
+    {
+      "name": "Unknown",
+      "type": "system_state",
+      "description": "Indicates that the status of the direction light is unknown or cannot be determined."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Network Fault Status",
+      "type": "fault_status",
+      "description": "Indicates whether there is a network fault affecting the communication of the direction light error status."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for subscribing to the error status of direction lights in different directions (right rear, left front, right front) and specifies the possible error states (No Error, Error, Unknown) for each instance. It is used to verify the correct functionality of the direction light error status subscription mechanism under normal and fault conditions.",
+  "uncertain_points": []
+}
+```

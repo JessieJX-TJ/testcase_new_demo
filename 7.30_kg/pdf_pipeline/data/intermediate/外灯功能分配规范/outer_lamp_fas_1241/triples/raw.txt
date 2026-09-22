@@ -1,0 +1,40 @@
+```json
+[
+  {
+    "head": "迎宾光毯灯渐亮",
+    "relation": "触发条件",
+    "tail": "后视镜为展开状态 && 任一车门（不含两盖）跳变为打开 && 进入展厅模式：VehMd = 0x5=VehMd_5_EXHIBITION",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "ExteriorRearviewMirrorDriver.OutsideMirrorFoldStatus.OutsideMirrorFoldSts==1",
+      "任一车门（不含两盖）跳变为打开",
+      "VehMd = 0x5=VehMd_5_EXHIBITION"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯渐亮",
+    "relation": "前提条件",
+    "tail": "车辆具备迎宾光毯灯功能:exlWelcomeGrandLampEnPrm==0x1 && 大屏使能开关开启:PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet==0x0=Enabled && 整车电源模式非休眠:UsG Md != 0x0=UsG Md_0_Sleep && 整车档位为P挡 && 光雨白天黑夜信号为黑夜:AutoLghtOnReq==1",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "exlWelcomeGrandLampEnPrm==0x1",
+      "PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet==0x0=Enabled",
+      "UsG Md != 0x0=UsG Md_0_Sleep",
+      "整车档位为P挡",
+      "AutoLghtOnReq==1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "迎宾光毯灯渐亮",
+    "relation": "超时约束",
+    "tail": "3秒内渐亮",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "WelcomeLamp_HSD 3s内渐亮"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,72 @@
+```json
+[
+  {
+    "head": "HMI子系统表征灯光开关处于Off档位",
+    "relation": "前提条件",
+    "tail": "服务接口反馈状态为0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "服务接口反馈状态",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI子系统表征灯光开关处于前雾灯档位",
+    "relation": "前提条件",
+    "tail": "服务接口反馈状态为0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "服务接口反馈状态",
+      "0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转发LIN信号 IFPFrontFoglghtOnSta_l=0x0",
+    "relation": "前提条件",
+    "tail": "服务接口反馈状态为0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "服务接口反馈状态",
+      "0x0",
+      "IFPFrontFoglghtOnSta_l"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转发LIN信号 IFPFrontFoglghtOnSta_l=0x1",
+    "relation": "前提条件",
+    "tail": "服务接口反馈状态为0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "服务接口反馈状态",
+      "0x1",
+      "IFPFrontFoglghtOnSta_l"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI子系统显示故障弹窗提醒",
+    "relation": "触发条件",
+    "tail": "前雾灯故障状态 (FrFogLghtFltSts_1=True)",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "FrFogLghtFltSts_1",
+      "HMI子系统"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI子系统显示故障弹窗提醒",
+    "relation": "前提条件",
+    "tail": "CAN信号故障状态",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "CAN信号",
+      "HMI子系统"
+    ],
+    "confidence_note": "medium"
+  }
+]
+```

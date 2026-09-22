@@ -1,0 +1,119 @@
+{
+  "table_type": "other",
+  "topic": "外灯功能 - 危险警告灯自动控制模块 (LHZCU) 的功能分配规范",
+  "row_semantics": "表格的每一行代表一个具体的控制逻辑或状态描述，涵盖了危险警告灯的开关控制、组合服务订阅、自动控制逻辑以及相关的系统状态反馈。",
+  "column_semantics": "表格包含多列信息，主要分为以下几类：左侧为序号和描述性标题（如 '20. [危险警报灯开关控制模块 LHZCU] 将状态/故障状态反馈至 ICB'），右侧为详细的控制逻辑代码或状态描述。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "危险警告灯自动控制模块"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller",
+      "description": "集成控制盒"
+    },
+    {
+      "name": "SDM",
+      "type": "Controller",
+      "description": "安全驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightSta",
+      "type": "Input Signal",
+      "description": "方向灯状态"
+    },
+    {
+      "name": "DirectionLightErrSta",
+      "type": "Input Signal",
+      "description": "方向灯错误状态"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "Input Signal",
+      "description": "外部灯光开关过程"
+    },
+    {
+      "name": "VehHzrdMdSta",
+      "type": "Input Signal",
+      "description": "车辆危险模式状态"
+    },
+    {
+      "name": "EDRDirnIndLampSwSts",
+      "type": "Input Signal",
+      "description": "紧急制动指示灯开关状态"
+    },
+    {
+      "name": "EmergencyBrakeActivation",
+      "type": "Trigger Condition",
+      "description": "紧急制动激活"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtCtrl",
+      "type": "Output Signal",
+      "description": "前左方向灯控制信号"
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "type": "Output Signal",
+      "description": "前右方向灯控制信号"
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "type": "Output Signal",
+      "description": "后左方向灯控制信号"
+    },
+    {
+      "name": "RRDircnLghtCtrl",
+      "type": "Output Signal",
+      "description": "后右方向灯控制信号"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "Fault Status",
+      "description": "无错误状态"
+    },
+    {
+      "name": "Flash",
+      "type": "Fault Status",
+      "description": "闪烁状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "3.33Hz Frequency",
+      "type": "Timing Constraint",
+      "description": "双闪频率为 3.33Hz",
+      "value": "3.33Hz"
+    },
+    {
+      "name": "150ms",
+      "type": "Timing Constraint",
+      "description": "每个闪烁周期发送时间为 150ms",
+      "value": "150ms"
+    },
+    {
+      "name": "50ms",
+      "type": "Timing Constraint",
+      "description": "图标闪烁频率与声音提醒的三者同步性最大延迟",
+      "value": "50ms"
+    },
+    {
+      "name": "40ms",
+      "type": "Timing Constraint",
+      "description": "危险警报灯同步性的最大延时周期",
+      "value": "40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了危险警告灯自动控制模块 (LHZCU) 在不同条件下的行为逻辑，包括开关控制、组合服务订阅、自动控制逻辑以及相关的系统状态反馈。可用于验证危险警告灯在紧急制动情况下的自动激活功能及其闪烁频率和同步性要求。",
+  "uncertain_points": []
+}

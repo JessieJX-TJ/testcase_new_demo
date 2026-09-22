@@ -1,0 +1,76 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "后备箱灯控制逻辑",
+  "row_semantics": "描述了后备箱灯从无故障状态到点亮、关闭以及异常处理的完整控制流程。",
+  "column_semantics": {
+    "前置条件": "触发后续控制逻辑前必须满足的系统状态或条件。",
+    "触发条件": "导致特定控制动作被执行的外部输入信号或事件。",
+    "执行动作": "在满足触发条件后，系统内部控制器执行的具体操作。",
+    "退出条件": "停止当前控制动作并恢复到初始或默认状态的条件。",
+    "异常处理": "当检测到特定故障时，系统采取的应对措施。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "后备箱灯",
+      "type": "功能部件",
+      "description": "车辆后部用于照明的灯光系统，由驱动模块控制其开关状态。"
+    },
+    {
+      "name": "LdSpclampCtrlCmdu0x1 (Open)",
+      "type": "输入信号",
+      "description": "应用控制模块发送的请求信号，值为0x1表示开启后备箱灯。"
+    },
+    {
+      "name": "LdSpclampCtrlCmdu0x0 (Close)",
+      "type": "输入信号",
+      "description": "应用控制模块发送的请求信号，值为0x0表示关闭后备箱灯。"
+    },
+    {
+      "name": "LdspcLamp_HSD",
+      "type": "输出信号",
+      "description": "后备箱灯驱动控制模块发出的高电平驱动信号，用于点亮后备箱灯。"
+    },
+    {
+      "name": "后备箱灯驱动控制模块",
+      "type": "控制器/模块",
+      "description": "负责接收指令并驱动后备箱灯亮灭的电子控制单元。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "后备箱灯无短路/开路故障，即系统处于正常工作状态。"
+    },
+    {
+      "condition": "触发条件",
+      "description": "接收到应用控制模块的请求信号 LdSpclampCtrlCmdu0x1 (Open)。"
+    },
+    {
+      "condition": "退出条件",
+      "description": "接收到应用控制模块的请求信号 LdSpclampCtrlCmdu0x0 (Close)，或者系统检测到故障。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "后备箱灯点亮",
+      "description": "通过发送驱动信号 LdspcLamp_HSD (高) 实现后备箱灯的点亮。"
+    },
+    {
+      "output": "后备箱灯关闭",
+      "description": "通过接收关闭信号 LdSpclampCtrlCmdu0x0 (Close) 实现后备箱灯的关闭。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "后备箱灯短路/开路故障",
+      "description": "当系统检测到后备箱灯存在电气故障时，触发异常处理机制。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了后备箱灯的控制逻辑，可用于验证后备箱灯在正常操作（开/关）和故障情况下的行为是否符合设计规范。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,112 @@
+{
+  "table_type": "logic_table",
+  "topic": "Emergency Warning Light (EWL) System Control Logic",
+  "row_semantics": "Each row represents a specific condition-action pair for the EWL system, detailing the prerequisites and resulting actions.",
+  "column_semantics": "The table has two main columns: 'Precondition Conditions' and 'Triggered Actions'. The 'Precondition Conditions' column lists the system states and configuration requirements that must be met before an action is triggered. The 'Triggered Actions' column describes the system responses and outputs when the conditions are satisfied.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Emergency Warning Light Control Module LHZCU",
+      "type": "controller_module",
+      "description": "The central module responsible for controlling the emergency warning lights."
+    },
+    {
+      "name": "ExtrLghtCtrlCmmntnTyp",
+      "type": "configuration_parameter",
+      "description": "Configuration parameter specifying the communication type for external light control (SOA or CAN)."
+    },
+    {
+      "name": "ExtrLghtStsCmmntnTyp",
+      "type": "configuration_parameter",
+      "description": "Configuration parameter specifying the communication type for external light status (SOA or CAN)."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsgMd",
+      "type": "system_state",
+      "description": "Usage mode setting, must be set to All."
+    },
+    {
+      "name": "UsgMdV",
+      "type": "system_state",
+      "description": "Usage mode validity, must be set to Valid."
+    },
+    {
+      "name": "VehMd",
+      "type": "system_state",
+      "description": "Vehicle mode setting, must be set to All."
+    },
+    {
+      "name": "VehMdV",
+      "type": "system_state",
+      "description": "Vehicle mode validity, must be set to Valid."
+    },
+    {
+      "name": "ExtrLghtCtrlCmmntnTyp",
+      "type": "communication_configuration",
+      "description": "Communication type for external light control, can be SOA or CAN."
+    },
+    {
+      "name": "ExtrLghtStsCmmntnTyp",
+      "type": "communication_configuration",
+      "description": "Communication type for external light status, can be SOA or CAN."
+    },
+    {
+      "name": "EmergencyBrakeInput",
+      "type": "input_signal",
+      "description": "Signal indicating the activation of the emergency brake."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtCtrl",
+      "type": "output_signal",
+      "description": "Control signal for the front left directional light."
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "type": "output_signal",
+      "description": "Control signal for the front right directional light."
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "type": "output_signal",
+      "description": "Control signal for the rear left directional light."
+    },
+    {
+      "name": "RRDircnLghtCtrl",
+      "type": "output_signal",
+      "description": "Control signal for the rear right directional light."
+    },
+    {
+      "name": "DircnLghtMdSts",
+      "type": "system_status",
+      "description": "Status of the directional light mode, indicating whether it is enabled or disabled."
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "event",
+      "description": "Event triggered by the exterior light switch process."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "3.33Hz Flashing Frequency",
+      "type": "timing_constraint",
+      "description": "The emergency warning lights flash at a frequency of 3.33Hz, corresponding to a 300ms cycle period."
+    },
+    {
+      "name": "50ms Cycle Duration",
+      "type": "timing_constraint",
+      "description": "Each cycle of the flashing pattern lasts 50ms."
+    }
+  ],
+  "engineering_interpretation": "This table defines the logic for activating the emergency warning lights in response to an emergency brake input, under various system configurations and modes. It specifies the required system states, configuration parameters, and the resulting actions on the directional lights, including their flashing patterns and modes.",
+  "uncertain_points": [
+    "The exact meaning of some configuration parameters like 'ExtrLghtCtrlCmmntnTyp' and 'ExtrLghtStsCmmntnTyp' beyond their SOA/CAN values is not explicitly defined in the table.",
+    "The specific timing details for the 'PPPV stage' and its relation to SOA communication are not elaborated further."
+  ]
+}

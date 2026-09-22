@@ -1,0 +1,105 @@
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform) - Sub System Technical Specification",
+  "row_semantics": "Each row represents a specific command or control signal for the interior lighting system, detailing its function, input sources, and associated parameters.",
+  "column_semantics": {
+    "Input": "The source or interface where the command is received (e.g., LIN bus, LHZCU module).",
+    "LIN": "Local Interconnect Network communication channel.",
+    "LHZCU": "Lighting and Hazard Control Unit, a central controller for lighting functions.",
+    "CnsoAmblampB_LH": "Command for ambient lamp brightness on the left-hand side.",
+    "LHZCU_LIN5": "Specific LIN channel within the LHZCU module.",
+    "内灯SSTS": "Internal Lighting Sub System Technical Specification reference."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "CnsoLHBLampColorCmd_1",
+      "type": "command",
+      "description": "Command to set the color of the left-hand side ambient lamp."
+    },
+    {
+      "name": "CnsoLHBLampBrtnsCmd_1",
+      "type": "command",
+      "description": "Command to adjust the brightness of the left-hand side ambient lamp."
+    },
+    {
+      "name": "CnsoLHBLampBrthngCmd_1",
+      "type": "command",
+      "description": "Command to control the breathing rate of the left-hand side ambient lamp."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit, responsible for processing and executing lighting commands."
+    },
+    {
+      "name": "LIN",
+      "type": "communication_interface",
+      "description": "Local Interconnect Network, used for transmitting commands between modules."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Color Value",
+      "description": "Range from 0x00 (no request) to 0xFF (various color values)."
+    },
+    {
+      "name": "Brightness Value",
+      "description": "Range from 0x00 (no request) to 0xFF (brightness percentage)."
+    },
+    {
+      "name": "Breathing Rate",
+      "description": "Defined by code values from 0x0 to 0xF, corresponding to different rates in milliseconds."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Ambient Lamp Color",
+      "description": "The selected color of the left-hand side ambient lamp."
+    },
+    {
+      "name": "Ambient Lamp Brightness",
+      "description": "The adjusted brightness level of the left-hand side ambient lamp."
+    },
+    {
+      "name": "Ambient Lamp Breathing Rate",
+      "description": "The rate at which the ambient lamp changes intensity in a breathing pattern."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate0",
+      "value": "No Request",
+      "description": "Indicates no change in the breathing rate."
+    },
+    {
+      "name": "Rate1",
+      "value": "500ms",
+      "description": "New breathing rate mode (0-100% intensity change every 500ms)."
+    },
+    {
+      "name": "Rate2",
+      "value": "1s",
+      "description": "Original breathing mode 2 (0-100% intensity change every 1 second)."
+    },
+    {
+      "name": "Rate3",
+      "value": "1s",
+      "description": "New breathing rate mode."
+    },
+    {
+      "name": "Rate4",
+      "value": "2s",
+      "description": "Original breathing mode 3."
+    },
+    {
+      "name": "Rate5",
+      "value": "2.4s",
+      "description": "New breathing rate mode."
+    }
+  ],
+  "engineering_interpretation": "This table defines the technical specifications for controlling the left-hand side ambient lighting system, including color, brightness, and breathing rate commands. It specifies the input sources, command codes, and timing constraints for each function, enabling detailed testing of the lighting system's response to various control signals.",
+  "uncertain_points": []
+}

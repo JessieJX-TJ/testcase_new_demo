@@ -1,0 +1,68 @@
+```json
+[
+  {
+    "head": "左制动灯短路故障处理功能",
+    "relation": "前提条件",
+    "tail": "BrkLghtFbkSOAEnPrm == 1 (Enable) 且 左制动灯处于输出状态",
+    "triple_type": "工程规则",
+    "evidence_terms": ["BrkLghtFbkSOAEnPrm", "左制动灯输出状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左制动灯短路故障处理功能",
+    "relation": "触发条件",
+    "tail": "检测到左制动灯短路到电源",
+    "triple_type": "工程规则",
+    "evidence_terms": ["触发条件", "左制动灯短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "停止驱动左制动灯 (BrkLamp_LH_HSD)",
+    "relation": "执行动作",
+    "tail": "【BrkLghtDrvMdl】",
+    "triple_type": "工程规则",
+    "evidence_terms": ["BrkLamp_LH_HSD", "BrkLghtDrvMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "持续发送 BrakeLightState. BrakeLightSta = 2 (Error)",
+    "relation": "执行动作",
+    "tail": "【BrkLghtDrvMdl】 至 【BrkLghtCtrlMd1】",
+    "triple_type": "工程规则",
+    "evidence_terms": ["BrakeLightState", "BrkLghtDrvMdl", "BrkLghtCtrlMd1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "置位 DTC B104112",
+    "relation": "执行动作",
+    "tail": "左制动灯短路故障处理功能",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DTCB104112", "左制动灯短路故障"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "退出左制动灯短路故障处理功能",
+    "relation": "退出条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "工程规则",
+    "evidence_terms": ["退出条件", "短路恢复"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "BrakeLightState. BrakeLightSta = 2 (Error)",
+    "relation": "输出为",
+    "tail": "【BrkLghtCtrlMd1】",
+    "triple_type": "工程规则",
+    "evidence_terms": ["BrakeLightState", "BrkLghtCtrlMd1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DTC B104112",
+    "relation": "诊断关联",
+    "tail": "左制动灯短路故障",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DTCB104112", "左制动灯短路故障"],
+    "confidence_note": "high"
+  }
+]
+```

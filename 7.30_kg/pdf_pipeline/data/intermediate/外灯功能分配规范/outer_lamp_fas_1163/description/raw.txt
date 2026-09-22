@@ -1,0 +1,53 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的状态与控制参数规范",
+  "row_semantics": "表格的每一行代表一个特定的接口或参数定义，描述了外灯系统的不同状态和控制逻辑。",
+  "column_semantics": "表格的列主要用于组织信息，包括参数名称、参数值定义、以及相关的模块/控制器分配信息（如SO A, LHZCU, ICB）。部分列用于标识参数所属的功能模块。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "CombLightSwStatus",
+      "type": "input_signal",
+      "description": "组合灯开关状态输入信号，表示当前外灯的开关模式。"
+    },
+    {
+      "name": "CombLightFucProStatus",
+      "type": "output_signal",
+      "description": "组合灯功能过程状态输出信号，表示外灯的实际工作状态。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "function_name",
+      "description": "外灯开关处理过程，是触发相关状态变化的外部事件或功能模块。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Local High-level Central Unit，本地高层中央单元，负责处理外灯相关的逻辑和控制。"
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "Integrated Control Box，集成控制盒，可能参与外灯控制的执行或辅助控制。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CombLightSwStatus",
+      "description": "定义了外灯的开关模式，包括OFF、SidePositionLight ON、DippedBeamLight ON、AUTO、Unknown等状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "CombLightFucProStatus",
+      "description": "定义了外灯的实际工作状态，包括ALL OFF、Only SidePositionLight ON、Only DippedBeamLight ON、SidePositionAndDippedBeam OFF、SidePositionAndDippedBeam ON、Unknown等状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证外灯系统在不同开关模式下的状态转换是否符合设计规范，特别是组合灯开关状态与实际功能过程状态之间的映射关系。",
+  "uncertain_points": []
+}
+```

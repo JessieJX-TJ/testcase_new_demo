@@ -1,0 +1,123 @@
+```json
+[
+  {
+    "head": "转向灯ON/OFF信号被接收",
+    "relation": "触发条件",
+    "tail": "[外灯组合服务ICB]调用基础服务",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "转向灯ON/OFF",
+      "ICB",
+      "基础服务"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "[外灯组合服务ICB]调用基础服务",
+    "relation": "前提条件",
+    "tail": "InstanceID=1到InstanceID=8的DirectionLightReq信号被设置",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "基础服务",
+      "InstanceID",
+      "DirectionLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB将服务接口或控制信号转换成灯控CAN信号",
+    "relation": "触发条件",
+    "tail": "控制双闪灯流水点亮",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "CAN信号",
+      "双闪灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB将寻车灯远程控制指令延时60ms分发",
+    "relation": "前提条件",
+    "tail": "[驱动模块LHZCU/RHZCU/RZCU]接收ICB服务接口或控制信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "60ms延时",
+      "驱动模块"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB接收控制信号",
+    "relation": "前提条件",
+    "tail": "FLDirenLightCtrl_HW等信号被设置为on状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "控制信号",
+      "FLDirenLightCtrl_HW"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯流水模式使能状态",
+    "relation": "前提条件",
+    "tail": "DirectionLightModeStatus.DircnLghtMdSts=0x0=Enabled",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "转向灯流水模式",
+      "DirectionLightModeStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "双闪灯图标指示灯显示及声音提醒",
+    "relation": "触发条件",
+    "tail": "{ExteriorLightSwitchProcess. DircnLightFucProStatus}=0x5=Both_Side_Direction_Light_On_With_1.25Hz",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "双闪灯",
+      "指示灯",
+      "声音提醒",
+      "1.25Hz"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动处理模块LHZCU/RHZCU/RZCU状态/故障状态反馈至LHZCU",
+    "relation": "触发条件",
+    "tail": "FLDirenLightSts_HW等信号被设置为On状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "驱动处理模块",
+      "状态反馈",
+      "FLDirenLightSts_HW"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FLDirenLightFltsts_HW信号为0x0",
+    "relation": "触发条件",
+    "tail": "FLDirenLightFltsts_HW_0_False",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "FLDirenLightFltsts_HW",
+      "故障状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FLDirenLightErrorSta信号为0x0",
+    "relation": "触发条件",
+    "tail": "FLDirenLightErrorSta=0x0=No Error",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "FLDirenLightErrorSta",
+      "无错误"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

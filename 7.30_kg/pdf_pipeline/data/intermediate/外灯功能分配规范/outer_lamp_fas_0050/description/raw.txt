@@ -1,0 +1,59 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Super ECO Lite 贯穿式前位置灯（日间行车灯）控制逻辑",
+  "row_semantics": "描述了在特定驾驶模式和车辆状态下，用户通过点击开关控制贯穿式前位置灯的开启或关闭时，系统执行的具体逻辑步骤。",
+  "column_semantics": "表格分为三个主要部分：前置条件、触发动作、执行动作。前置条件列出了满足该场景的所有必要状态；触发动作描述了用户的操作；执行动作则详细说明了系统内部的控制流程。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "贯穿式前位置灯",
+      "type": "功能",
+      "description": "一种日间行车灯，位于车辆前部，用于提高车辆在白天行驶时的可见性。"
+    },
+    {
+      "name": "外灯组合服务 ICB",
+      "type": "控制器/模块",
+      "description": "负责管理车辆外部灯光系统的控制接口，包括日间行车灯的开关控制。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "Light Harness Control Unit，灯光线束控制单元，负责执行具体的灯光控制指令。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "description": "用户驾驶模式，包括Normal Driving（正常驾驶）、AI Parking（自动驾驶泊车）、AI Pilot（自动驾驶辅助）、Comfortable（舒适模式）。"
+    },
+    {
+      "name": "VehMd",
+      "description": "车辆驾驶模式，包括TRANSPORT（运输模式）。"
+    },
+    {
+      "name": "InsdFnCfgAcrossFrtPosLght",
+      "description": "指示是否具备贯穿式前位置灯功能，值为0x1表示具备该功能。"
+    },
+    {
+      "name": "DayRunningLightReq",
+      "description": "日间行车灯请求信号，用于请求开启或关闭日间行车灯。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ExteriorLightSwitchProcess.DayRunningLightFucProStatus",
+      "description": "外部灯光开关处理过程中的日间行车灯功能状态，指示灯的状态（ON/OFF）。"
+    },
+    {
+      "name": "ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq",
+      "description": "外部灯光控制系统中日间行车灯的请求信号，用于向ICB发送开启或关闭请求。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在Super ECO Lite车型中，当用户点击贯穿式前位置灯开关时，系统如何根据当前的驾驶模式和车辆状态，通过外灯组合服务ICB和LHZCU协同工作，来控制日间行车灯的开启或关闭。可用于验证日间行车灯在不同驾驶模式下的响应逻辑是否符合设计要求。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,64 @@
+{
+  "table_type": "signal_table",
+  "topic": "转向灯开关预处理模块 LHZCU 的信号状态定义与故障逻辑",
+  "row_semantics": "描述了转向灯相关信号的状态定义、故障判断逻辑以及默认模式设置。",
+  "column_semantics": "无列结构，内容为按行组织的逻辑规则和状态定义。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "转向灯开关预处理模块 LHZCU",
+      "type": "module"
+    },
+    {
+      "name": "DircnLghtSwReq",
+      "type": "input_signal"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "type": "input_signal"
+    },
+    {
+      "name": "ExteriorLightControlSystem.DirectionLightErrSts",
+      "type": "output_signal"
+    },
+    {
+      "name": "DircnLghtMdSts",
+      "type": "output_signal"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DircnLghtSwReq == 0x0",
+      "effect": "DircnLghtSwReq_0_Off"
+    },
+    {
+      "condition": "DircnLghtFltsts == 0x0",
+      "effect": "No Error"
+    },
+    {
+      "condition": "DircnLghtFltsts != 0x0",
+      "effect": "Error"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "ExteriorLightControlSystem.DirectionLightErrSts",
+      "value": "0x0 (No Error) or 0x1 (Error)"
+    },
+    {
+      "signal": "DircnLghtMdSts",
+      "value": "0x0 (Enabled)"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "DirectionLightErrSts",
+      "description": "外部灯光控制系统中的方向灯错误状态",
+      "trigger_condition": "当 DircnLghtFltsts 不为 0x0 时触发"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了转向灯开关信号的状态跳变、故障状态的发送逻辑以及流水模式的默认状态，可用于验证转向灯控制模块在不同输入条件下的输出行为及故障检测功能。",
+  "uncertain_points": []
+}

@@ -1,0 +1,62 @@
+{
+  "table_type": "logic_table",
+  "topic": "后雾灯位置灯控制逻辑",
+  "row_semantics": "描述了后雾灯位置灯控制的前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": {
+    "Column1": "条件/动作类别（如前置条件、触发条件、执行动作等）",
+    "Column2": "对应类别的详细描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RearFogLghtCtrlMdl",
+      "type": "Controller/Module",
+      "description": "后雾灯控制模块，负责发送控制指令。"
+    },
+    {
+      "name": "RearFogLghtDrvMdl",
+      "type": "Controller/Module",
+      "description": "后雾灯驱动模块，负责执行具体的灯光输出控制。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ControlRearFogPositionLight",
+      "type": "Input Signal",
+      "description": "由 RearFogLghtCtrlMdl 发送的控制信号，用于请求后雾灯位置灯的状态。",
+      "value": "RearFogPositionLightReq==0 (Off)"
+    },
+    {
+      "name": "Exit Condition",
+      "type": "Condition",
+      "description": "当收到 RearFogLghtCtrlMdl 发送的 ControlRearFogPositionLight 且 RearFogPositionLightReq==1 (On) 时，退出当前逻辑。",
+      "value": "RearFogPositionLightReq==1 (On)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FogLamp_HSD",
+      "type": "Output Signal",
+      "description": "后雾灯的硬件开关驱动信号，当值为 Off 时，停止驱动后雾灯输出。",
+      "value": "Off"
+    },
+    {
+      "name": "RearFogPositionLightStatus",
+      "type": "Output Signal",
+      "description": "持续发送后雾灯位置灯的状态，值为 0 (Off)。",
+      "value": "RearFogPositionLightSta=0 (Off)"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Minimum Transmission Frames",
+      "type": "Timing Constraint",
+      "description": "在 RearFogPositionLightSta=0 (Off) 状态下，至少发送三帧 RearFogPositionLightStatus 信号。",
+      "value": "At least three frames"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了后雾灯位置灯的控制逻辑，主要用于验证 RearFogLghtCtrlMdl 和 RearFogLghtDrvMdl 模块在接收到特定控制信号时的行为是否符合预期，包括停止驱动后雾灯输出以及持续发送状态信号。",
+  "uncertain_points": []
+}

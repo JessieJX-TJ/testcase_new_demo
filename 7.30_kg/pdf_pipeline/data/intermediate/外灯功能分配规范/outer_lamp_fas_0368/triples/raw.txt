@@ -1,0 +1,145 @@
+```json
+[
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "触发条件",
+    "tail": "车辆防入侵信号 VehIntrusionPrevnHzrdLmpReq 被触发（值为0x3）",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehIntrusionPrevnHzrdLmpReq",
+      "0x3"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "前提条件",
+    "tail": "UsgMd=All 且 UsgMdV=Valid 且 VehMd=All 且 VehMdV=Valid",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsgMd",
+      "UsgMdV",
+      "VehMd",
+      "VehMdV"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "前提条件",
+    "tail": "ExtrLightCtrlCmmntnTyp 配置为 SOA 或 CAN",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExtrLightCtrlCmmntnTyp"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "前提条件",
+    "tail": "ExtrLightStsCmmntnTyp 配置为 SOA 或 CAN",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExtrLightStsCmmntnTyp"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "前提条件",
+    "tail": "PPV阶段及以后按照SOA通讯方式开发",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "PPV阶段",
+      "SOA"
+    ],
+    "confidence_note": "medium"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU 控制信号",
+    "relation": "输出为",
+    "tail": "FLDircnLghtCtrl=0x1, FRDircnLghtCtrl=0x1, RLDircnLghtCtrl=0x1, RRDircnLghtCtrl=0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "FLDircnLghtCtrl",
+      "FRDircnLghtCtrl",
+      "RLDircnLghtCtrl",
+      "RRDircnLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU 控制信号",
+    "relation": "输出为",
+    "tail": "FLDircnLghtCtrl=0x0, FRDircnLghtCtrl=0x0, RLDircnLghtCtrl=0x0, RRDircnLghtCtrl=0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "FLDircnLghtCtrl",
+      "FRDircnLghtCtrl",
+      "RLDircnLghtCtrl",
+      "RRDircnLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "控制对象",
+    "tail": "FLDircnLghtCtrl, FRDircnLghtCtrl, RLDircnLghtCtrl, RRDircnLghtCtrl",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "FLDircnLghtCtrl",
+      "FRDircnLghtCtrl",
+      "RLDircnLghtCtrl",
+      "RRDircnLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "输出到",
+    "tail": "ExteriorLightSwitchProcess",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ExteriorLightSwitchProcess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "状态保持条件",
+    "tail": "控制双闪灯按照1.25Hz频率闪烁（先on后off），即按照800ms一个闪烁周期发送",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "1.25Hz",
+      "800ms",
+      "闪烁周期"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "超时约束",
+    "tail": "发送400ms on，400ms off",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "400ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "超时约束",
+    "tail": "发送8个Cycle（每个Cycle 50ms）",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "8个Cycle",
+      "50ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

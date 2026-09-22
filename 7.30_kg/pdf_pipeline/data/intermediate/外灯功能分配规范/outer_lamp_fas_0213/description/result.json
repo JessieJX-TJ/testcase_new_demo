@@ -1,0 +1,53 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 - 左右前位置灯状态",
+  "row_semantics": "表格按功能点（左侧和右侧前位置灯）进行划分，每个功能点包含其状态定义及相关的接口信息。",
+  "column_semantics": "表格的列定义了与功能点相关的信息，包括：功能描述、消耗方（SOA）、控制器/模块名（如LHZCU、RHZCU、ICB）、以及该功能的状态定义（OFF, ON, Error, Unknown）。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SidePositionLight.SidePositionLightStatus",
+      "type": "功能名",
+      "description": "外灯功能中的左右前位置灯状态查询接口"
+    },
+    {
+      "name": "SOA",
+      "type": "输入信号",
+      "description": "Service-Oriented Architecture，表示服务调用方"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Left Hand Zone Control Unit，左侧区域控制单元"
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块名",
+      "description": "Right Hand Zone Control Unit，右侧区域控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "Integrated Circuit Board，集成电路板"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightStatus",
+      "type": "系统状态",
+      "description": "表示前位置灯的当前状态，包括OFF（关闭）、ON（开启）、Error（错误）、Unknown（未知）"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Error",
+      "type": "故障状态",
+      "description": "当灯的状态无法确定或出现异常时返回此值"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证车辆外灯系统中左右前位置灯的状态查询接口及其在不同控制器下的行为，确保各控制器能够正确上报灯的状态。",
+  "uncertain_points": []
+}

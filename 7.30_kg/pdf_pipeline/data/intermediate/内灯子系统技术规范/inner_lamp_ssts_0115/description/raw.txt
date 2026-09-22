@@ -1,0 +1,127 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "氛围灯亮度控制逻辑",
+  "row_semantics": "描述了氛围灯在不同条件下的状态转换和行为",
+  "column_semantics": {
+    "前置条件": "触发该状态转换的前提条件",
+    "触发条件": "导致状态转换的具体事件或信号变化",
+    "执行动作": "状态转换后系统执行的操作",
+    "退出条件": "维持当前状态不变的条件或退出当前状态的条件",
+    "异常处理": "发生异常时的处理逻辑"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "氛围灯",
+      "type": "功能模块",
+      "description": "车辆内部用于营造氛围的照明设备"
+    },
+    {
+      "name": "UpIPALampBrtnsCmd_l",
+      "type": "输入信号",
+      "description": "本地控制模块发送的亮度变化请求信号"
+    },
+    {
+      "name": "UpIPALampOnOff_l",
+      "type": "输入信号",
+      "description": "本地控制模块发送的开关请求信号"
+    },
+    {
+      "name": "UpIPALampFadeSpdCmd_l",
+      "type": "输入信号",
+      "description": "渐变速度设置信号"
+    },
+    {
+      "name": "ZCU LIN信号",
+      "type": "输入信号",
+      "description": "中央网关单元通过LIN总线发送的信号"
+    },
+    {
+      "name": "PWM驱动电流",
+      "type": "输出信号",
+      "description": "用于驱动氛围灯亮度变化的脉宽调制电流"
+    },
+    {
+      "name": "氛围灯驱动控制模块",
+      "type": "控制器/模块",
+      "description": "负责根据亮度设置调整PWM驱动电流的控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "氛围灯处于关闭状态",
+      "description": "前置条件，表明状态转换发生在氛围灯关闭时"
+    },
+    {
+      "condition": "接收到亮度变化请求信号 UpIPALampBrtnsCmd_l 变化为非0x00",
+      "description": "触发条件，表示亮度调节请求被激活"
+    },
+    {
+      "condition": "接收到开关请求信号 UpIPALampOnOff_l = 0x0",
+      "description": "触发条件，表示关闭请求被激活"
+    },
+    {
+      "condition": "接收到亮度变化请求信号 UpIPALampBrtnsCmd_l = 0x00",
+      "description": "退出条件，表示无亮度变化请求，保持当前状态"
+    },
+    {
+      "condition": "接收到开关请求信号 UpIPALampOnOff_l = 0x0",
+      "description": "退出条件，表示关闭请求被接收，退出当前状态"
+    },
+    {
+      "condition": "接收到亮度变化请求信号 UpIPALampBrtnsCmd_l 为 0x65-0xFF",
+      "description": "退出条件，表示亮度值在预留范围内，保持当前状态"
+    },
+    {
+      "condition": "超过6秒未接收到ZCU的LIN信号",
+      "description": "异常条件，表示通信超时"
+    },
+    {
+      "condition": "氛围灯模块出现过压、欠压故障",
+      "description": "异常条件，表示硬件故障"
+    },
+    {
+      "condition": "UpIPALampBrtnsCmd_l 异常",
+      "description": "异常条件，表示亮度控制信号异常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "PWM驱动电流",
+      "description": "根据亮度设置调整的驱动电流，用于控制氛围灯亮度"
+    },
+    {
+      "output": "氛围灯切换亮度",
+      "description": "根据PWM驱动电流的变化，氛围灯的实际亮度发生变化"
+    },
+    {
+      "output": "关闭氛围灯",
+      "description": "当接收到关闭请求时，氛围灯被关闭"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "过压、欠压故障",
+      "description": "氛围灯模块检测到电压异常时的状态"
+    },
+    {
+      "fault": "ZCU LIN信号丢失",
+      "description": "中央网关单元信号未在规定时间内到达的状态"
+    },
+    {
+      "fault": "UpIPALampBrtnsCmd_l 异常",
+      "description": "亮度控制信号超出正常范围或格式错误的状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "timing": "6秒",
+      "description": "未接收到ZCU LIN信号的超时时间"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了氛围灯亮度控制模块在不同输入信号和状态下的行为逻辑，包括正常操作流程、退出条件和异常处理机制，可用于验证氛围灯亮度调节、开关控制及异常情况下的系统响应。",
+  "uncertain_points": []
+}
+```

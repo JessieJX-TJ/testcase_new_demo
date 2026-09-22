@@ -1,0 +1,64 @@
+{
+  "table_type": "parameter_table",
+  "topic": "DIDs (Data Identifiers) for Rear Fog Light Control Reasons",
+  "row_semantics": "Each row represents a specific Data Identifier (DID) related to the rear fog light's open and close reasons.",
+  "column_semantics": {
+    "Short Name": "The abbreviated name of the DID, e.g., RrFogLghtOpenCtrlRsn.",
+    "Description": "A brief explanation of what the DID represents, such as '后雾灯开启原因' (Reason for rear fog light opening).",
+    "Value Table": "Lists the possible hexadecimal values and their corresponding meanings for the DID.",
+    "Default": "The default value of the DID when not actively updated.",
+    "Remark": "Additional information about how the data is stored and managed, such as storing the last 10 occurrences.",
+    "ECU": "The Electronic Control Unit responsible for this DID, in this case, LHZ CU."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RrFogLghtOpenCtrlRsn",
+      "type": "function_name",
+      "description": "Data Identifier for the reason behind the rear fog light being turned on."
+    },
+    {
+      "name": "RrFogLghtClsCtrlRsn",
+      "type": "function_name",
+      "description": "Data Identifier for the reason behind the rear fog light being turned off."
+    },
+    {
+      "name": "LHZ CU",
+      "type": "controller_module",
+      "description": "The Local Hardware Zone Central Unit, which manages the rear fog light control logic."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SOAResquestOn",
+      "type": "input_signal",
+      "description": "Signal indicating that a Start-Of-Arrival Request has been made to turn on the rear fog light."
+    },
+    {
+      "name": "SOAResquestOff",
+      "type": "input_signal",
+      "description": "Signal indicating that a Start-Of-Arrival Request has been made to turn off the rear fog light."
+    },
+    {
+      "name": "UsageMode Dissatisfaction",
+      "type": "mode_name",
+      "description": "A mode where dissatisfaction with usage conditions leads to the rear fog light being turned off."
+    },
+    {
+      "name": "VehicleMode Dissatisfaction",
+      "type": "mode_name",
+      "description": "A mode where dissatisfaction with vehicle operating conditions leads to the rear fog light being turned off."
+    },
+    {
+      "name": "DippedBeamLightAnd",
+      "type": "input_signal",
+      "description": "Signal indicating that dipped beam lights are on, which may influence the rear fog light's state."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the internal parameters used by the LHZ CU to log and track the reasons for turning the rear fog light on and off. It can be used to verify that the ECU correctly records and stores the most recent 10 instances of these events, along with their respective causes.",
+  "uncertain_points": []
+}

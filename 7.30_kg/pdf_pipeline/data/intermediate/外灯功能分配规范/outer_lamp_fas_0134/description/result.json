@@ -1,0 +1,56 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 屋顶射灯控制与状态",
+  "row_semantics": "表格按功能模块划分，每一行代表一个与屋顶射灯相关的控制或状态接口定义。",
+  "column_semantics": {
+    "功能名": "描述该行所涉及的具体功能或接口名称，如控制、状态查询等。",
+    "输入/输出": "指示信号的流向，即该信号是提供给系统（输入）还是由系统发出（输出）。",
+    "Provider": "信号的提供方，通常为某个控制器或模块。",
+    "Consume r": "信号的消费方，即哪个控制器或模块接收并使用该信号。",
+    "内部信号": "在系统内部使用的信号标识符。",
+    "InterfaceType": "接口类型，如Method（方法）、Field（字段）、Event（事件）。",
+    "Interface Name": "接口的名称。",
+    "Parameter Name": "参数名称及其取值范围。",
+    "详细描述": "对参数值的进一步说明，如0x0=OFF, 0x1=ON等。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RoofSpotLight",
+      "description": "屋顶射灯功能模块，负责控制和管理屋顶射灯的状态及错误信息。"
+    },
+    {
+      "name": "ICB_S32_GM",
+      "description": "车身控制器（ICB），型号S32，由GM（通用汽车）提供，作为屋顶射灯控制和状态信息的提供者。"
+    },
+    {
+      "name": "LHZCU",
+      "description": "车身控制单元（LHZCU），负责接收和处理来自ICB的信号，并执行相应的控制逻辑。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "ControlRoofSpotLight",
+      "description": "用于控制屋顶射灯开关的功能接口，参数包括0x0（关闭）和0x1（开启）。"
+    },
+    {
+      "name": "RoofSpotLightStatus",
+      "description": "返回屋顶射灯当前状态的接口，参数包括0x0（关闭）、0x1（开启）和0x2（未知）。"
+    },
+    {
+      "name": "RoofSpotLightErrorStatus",
+      "description": "报告屋顶射灯错误状态的接口，参数包括0x0（无错误）、0x1（有错误）和0x2（未知）。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RoofSpotLightErrorStatus",
+      "description": "当屋顶射灯出现故障时，通过此接口报告错误状态，包括具体错误类型（0x1）和未知错误（0x2）。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了Z-ONE-3.0平台下屋顶射灯的控制、状态查询和错误报告接口规范，可用于验证ICB与LHZCU之间关于屋顶射灯的通信协议是否正确实现，以及系统能否准确响应和报告射灯的状态和故障。",
+  "uncertain_points": []
+}

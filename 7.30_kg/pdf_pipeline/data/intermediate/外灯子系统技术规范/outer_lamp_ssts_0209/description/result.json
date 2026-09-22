@@ -1,0 +1,57 @@
+{
+  "table_type": "logic_table",
+  "topic": "侧位灯控制逻辑",
+  "row_semantics": "描述了侧位灯（Side Position Light）的控制流程，包括触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": {
+    "第一列": "定义了逻辑表中的不同阶段或状态，如前置条件、触发条件、执行动作、退出条件和异常处理。",
+    "第二列": "详细描述了每个阶段的具体内容，包括输入信号、输出信号、系统状态等信息。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SideLightCtrlMdl",
+      "type": "controller_module",
+      "description": "侧位灯控制模块，负责发送控制指令。"
+    },
+    {
+      "name": "FRSSideLghtDrvMdl",
+      "type": "controller_module",
+      "description": "侧位灯驱动模块，负责实际的灯光输出控制。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ControlSidePositionLight",
+      "description": "侧位灯控制命令，由 SideLightCtrlMdl 发送。",
+      "signal_type": "input_signal",
+      "value": {
+        "Off": "SidePositionLightReq == 0 (InstanceID=2)",
+        "On": "SidePositionLightReq == 1 (InstanceID=2)"
+      }
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "PosLamp_RH_HSD",
+      "description": "右前位置灯输出信号，由 FRSSideLghtDrvMdl 控制。",
+      "signal_type": "output_signal",
+      "action": "停止输出"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "description": "侧位灯状态反馈信号，由 FRSSideLghtDrvMdl 持续发送。",
+      "signal_type": "output_signal",
+      "value": "SidePositionLightSta = 0 (Off) (InstanceID=2)"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "condition": "至少发送三帧",
+      "description": "在执行动作中，SidePositionLightStatus 信号需要至少发送三帧以确保状态更新的可靠性。"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证侧位灯控制系统在接收到关闭请求时，是否能够正确停止右前位置灯输出，并持续发送正确的状态反馈；同时验证在接收到开启请求时，系统能否正确退出当前状态。",
+  "uncertain_points": []
+}

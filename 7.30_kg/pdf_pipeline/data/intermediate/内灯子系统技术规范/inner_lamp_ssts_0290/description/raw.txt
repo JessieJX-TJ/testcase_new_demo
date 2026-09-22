@@ -1,0 +1,74 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "车辆侧灯状态信号接口定义",
+  "row_semantics": "每行代表一个具体的信号接口定义，包括其名称、方向、类型、发送方/接收方、路径及来源。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，需与逻辑框图内容一致。",
+    "Direction": "信号的传输方向，如输入或输出。",
+    "Type": "信号的通信类型，如CAN/LIN总线或SOA服务。",
+    "Sender/Provider": "信号的提供方或服务提供方。",
+    "Receiver/Consumer": "信号的接收方或服务消费方。",
+    "Channel": "信号传输的指定通道。",
+    "Interface Source": "接口信号的来源。",
+    "Description": "对信号功能的简要描述。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehSideLghtSts_l_RZCU",
+      "type": "Signal Interface",
+      "description": "车辆侧灯状态信号接口，用于传输侧灯点亮状态信息。"
+    },
+    {
+      "name": "RZCU",
+      "type": "Controller/Module",
+      "description": "区域控制单元，负责处理和管理车辆侧灯的状态信号。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DoorPnlSeatFnSw_RL",
+      "type": "Output Signal",
+      "description": "右前门座椅风扇开关信号，表示右前座椅风扇开关状态。",
+      "value_ranges": {
+        "0": "OFF",
+        "1": "ON"
+      }
+    },
+    {
+      "name": "DoorPnlSeatFnSw_RR",
+      "type": "Output Signal",
+      "description": "右后门座椅风扇开关信号，表示右后座椅风扇开关状态。",
+      "value_ranges": {
+        "0": "OFF",
+        "1": "ON"
+      }
+    },
+    {
+      "name": "ThrdRowSeatSw_LH",
+      "type": "Output Signal",
+      "description": "第三排左侧座椅开关信号，表示第三排左侧座椅开关状态。",
+      "value_ranges": {
+        "0": "OFF",
+        "1": "ON"
+      }
+    },
+    {
+      "name": "ThrdRowSeatSw_RH",
+      "type": "Output Signal",
+      "description": "第三排右侧座椅开关信号，表示第三排右侧座椅开关状态。",
+      "value_ranges": {
+        "0": "OFF",
+        "1": "ON"
+      }
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆侧灯状态信号的接口规范，可用于验证RZCU与相关座椅开关之间的信号传输是否符合设计要求，确保侧灯状态信号能够正确地从座椅开关传递到RZCU。",
+  "uncertain_points": []
+}
+```

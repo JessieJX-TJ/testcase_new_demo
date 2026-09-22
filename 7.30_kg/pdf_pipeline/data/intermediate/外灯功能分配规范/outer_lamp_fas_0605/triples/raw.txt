@@ -1,0 +1,36 @@
+```json
+[
+  {
+    "head": "HMI子系统显示危险警报灯图标指示灯",
+    "relation": "触发条件",
+    "tail": "FLDircnLghtCtrl信号状态为0x1且FRDircnLghtCtrl信号状态为0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["FLDircnLghtCtrl", "FRDircnLghtCtrl", "HMI显示"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI子系统不显示危险警报灯图标指示灯",
+    "relation": "抑制条件",
+    "tail": "FLDircnLghtCtrl信号状态为0x0或FRDircnLghtCtrl信号状态为0x0",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["FLDircnLghtCtrl", "FRDircnLghtCtrl", "HMI显示"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI子系统显示危险警报灯图标指示灯",
+    "relation": "依赖于",
+    "tail": "ICB发出的危险警报灯控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ICB", "危险警报灯控制信号", "HMI显示"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI子系统弹窗提醒",
+    "relation": "故障响应",
+    "tail": "转向灯CAN信号故障状态为Both_Side_Direction_Light_Error",
+    "triple_type": "故障响应",
+    "evidence_terms": ["转向灯故障", "HMI显示", "DircnLghtFltsts"],
+    "confidence_note": "high"
+  }
+]
+```

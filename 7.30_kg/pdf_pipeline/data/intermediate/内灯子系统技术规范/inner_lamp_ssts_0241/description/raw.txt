@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "氛围灯呼吸亮度控制功能",
+  "row_semantics": "描述了氛围灯在特定前置条件下，接收到触发信号后执行的亮度调节逻辑。",
+  "column_semantics": {
+    "第一列": "条件分类（如前置条件、触发条件、执行动作）",
+    "第二列": "对应条件的具体描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "氛围灯",
+      "type": "功能模块",
+      "description": "车辆外部照明系统中的装饰性灯光，用于营造车内氛围。"
+    },
+    {
+      "name": "FtwlFLLampBrthngCmd_l",
+      "type": "输入信号",
+      "description": "本地控制模块发送的呼吸速度指令信号，用于控制氛围灯的亮度变化周期。"
+    },
+    {
+      "name": "AmbtLghtLHRollingCtr_l",
+      "type": "输入信号",
+      "description": "氛围灯同步信号，可能用于协调多个氛围灯的显示效果。"
+    },
+    {
+      "name": "FtwlFLLampBrthngCmd_l",
+      "type": "控制器/模块",
+      "description": "氛围灯驱动控制模块，负责根据指令调节氛围灯的亮度。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "氛围灯处于点亮状态"
+    },
+    {
+      "condition": "触发条件",
+      "description": "接收到FtwlFLLampBrthngCmd_l信号（非请求状态0x0）和AmbtLghtLHRollingCtr_l信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "执行动作",
+      "description": "驱动氛围灯进行亮度0%-100%-0%的周期性调节"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了氛围灯呼吸亮度控制功能的逻辑规则，可用于验证当氛围灯点亮且接收到特定控制信号时，其亮度是否能按照0%-100%-0%的周期进行正确调节。",
+  "uncertain_points": []
+}
+```

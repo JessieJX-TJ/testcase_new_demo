@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "左近光灯硬件控制信号被设置为ON",
+    "relation": "触发条件",
+    "tail": "LDipdBeamLightCtrl_HW = 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["LDipdBeamLightCtrl_HW", "0x1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右近光灯硬件控制信号被设置为ON",
+    "relation": "触发条件",
+    "tail": "RDipdBeamLightCtrl_HW = 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["RDipdBeamLightCtrl_HW", "0x1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Dipped Beam Light模块发出近光灯请求",
+    "relation": "触发条件",
+    "tail": "InstanceID = 1, DippedBeamLightReq = 0x1 = ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["InstanceID", "DippedBeamLightReq", "0x1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Dipped Beam Light模块发出近光灯请求",
+    "relation": "触发条件",
+    "tail": "InstanceID = 2, DippedBeamLightReq = 0x1 = ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["InstanceID", "DippedBeamLightReq", "0x1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯驱动处理模块硬线被激活",
+    "relation": "前提条件",
+    "tail": "LDipdBeamLightCtrl_HW_1_On, RDipdBeamLightCtrl_HW_1_On",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["近光灯驱动处理模块硬线", "LDipdBeamLightCtrl_HW_1_On", "RDipdBeamLightCtrl_HW_1_On"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外部灯光控制系统中的近光灯请求状态被设置为ON",
+    "relation": "输入为",
+    "tail": "{ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts} = 0x1 = ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["{ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts}", "0x1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Dipped Beam Light模块的近光灯请求被设置为ON",
+    "relation": "依赖于",
+    "tail": "InstanceID = 1, InstanceID = 2",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": ["InstanceID", "DippedBeamLightReq"],
+    "confidence_note": "high"
+  }
+]
+```

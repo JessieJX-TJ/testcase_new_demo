@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fault Root Cause Analysis · TestCase Agent</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/fault_diagnosis.css') }}?v=20260915-wf">
+</head>
+<body>
+  <header class="topbar">
+    <a class="icon-link" href="/#graph" title="Back to Workbench" aria-label="Back to Workbench">
+      <i data-lucide="arrow-left"></i>
+    </a>
+    <div class="title-block">
+      <span>Workflow / 05</span>
+      <h1>Fault Root Cause Analysis</h1>
+    </div>
+    <span class="service-state"><i></i>System Online</span>
+  </header>
+
+  <main class="workspace">
+    <section class="diagnosis-tool" aria-labelledby="problemLabel">
+      <form id="diagnosisForm">
+        <label id="problemLabel" for="problemInput">Fault Symptom</label>
+        <textarea id="problemInput" rows="4" maxlength="2000" placeholder="Example: Headlights will not turn on; no fault indication on the instrument cluster" required></textarea>
+        <div class="form-actions">
+          <span id="characterCount">0 / 2000</span>
+          <button id="submitBtn" type="submit">
+            <i data-lucide="scan-search"></i>
+            <span>Start Analysis</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section id="progressSection" class="progress-band" aria-live="polite" hidden>
+      <div class="progress-head">
+        <span class="spinner" aria-hidden="true"></span>
+        <strong id="progressCurrent">Preparing analysis</strong>
+      </div>
+      <ol id="progressLog"></ol>
+    </section>
+
+    <section id="errorSection" class="error-band" role="alert" hidden>
+      <i data-lucide="circle-alert"></i>
+      <span id="errorMessage"></span>
+    </section>
+
+    <section id="resultSection" class="results" hidden>
+      <header class="result-header">
+        <div>
+          <span class="section-label">Analysis Conclusion</span>
+          <h2 id="summaryText"></h2>
+        </div>
+        <div class="result-meta">
+          <span><b id="causeCount">0</b> possible causes</span>
+          <span><b id="evidenceCount">0</b> evidence items</span>
+          <span><b id="elapsedTime">0.0</b> sec</span>
+        </div>
+      </header>
+
+      <div id="evidenceWarning" class="warning-band" hidden>
+        <i data-lucide="triangle-alert"></i>
+        <span>Current retrieval evidence is limited. Causes not supported by evidence are marked as unverified hypotheses.</span>
+      </div>
+
+      <div class="result-layout">
+        <section class="cause-column" aria-labelledby="causesHeading">
+          <div class="section-heading">
+            <h2 id="causesHeading">Possible Causes</h2>
+            <span>Sorted by likelihood</span>
+          </div>
+          <div id="causeList" class="cause-list"></div>
+        </section>
+
+        <aside class="evidence-column" aria-labelledby="evidenceHeading">
+          <div class="section-heading">
+            <h2 id="evidenceHeading">Retrieval Evidence</h2>
+            <span id="evidenceSourceSummary"></span>
+          </div>
+          <div id="evidenceList" class="evidence-list"></div>
+        </aside>
+      </div>
+
+      <section id="nextStepsSection" class="next-steps" hidden>
+        <div class="section-heading"><h2>Next Investigation Steps</h2></div>
+        <ol id="nextStepsList"></ol>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="{{ url_for('static', filename='js/fault_diagnosis.js') }}?v=20260915-wf"></script>
+</body>
+</html>

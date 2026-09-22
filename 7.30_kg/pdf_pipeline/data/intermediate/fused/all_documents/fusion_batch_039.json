@@ -1,0 +1,610 @@
+[
+  {
+    "head": "FrtFogLghtOpenCtrlRsn = 0x01",
+    "relation": "outputs",
+    "tail": "Front fog lamp activation reason is SOA request",
+    "sources": [
+      "outer_lamp_fas_0420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLghtOpenCtrlRsn = 0x02",
+    "relation": "outputs",
+    "tail": "Front fog lamp activation reason is other",
+    "sources": [
+      "outer_lamp_fas_0420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLghtOpenCtrlRsn ∈ [0x03, 0xFF]",
+    "relation": "outputs",
+    "tail": "Front fog lamp activation reason is reserved or unknown",
+    "sources": [
+      "outer_lamp_fas_0420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior lamp function",
+    "relation": "requires",
+    "tail": "software version < [unspecified threshold]",
+    "sources": [
+      "outer_lamp_fas_0421",
+      "outer_lamp_fas_0571",
+      "outer_lamp_fas_0626",
+      "outer_lamp_fas_0694",
+      "outer_lamp_fas_1068",
+      "outer_lamp_fas_1311",
+      "outer_lamp_fas_1396",
+      "outer_lamp_fas_1517",
+      "outer_lamp_fas_1539"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior lamp function",
+    "relation": "depends_on",
+    "tail": "document page 293 of 935",
+    "sources": [
+      "outer_lamp_fas_0421"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction indicator lever manual activation",
+    "relation": "requires",
+    "tail": "system management module status ≠ 0",
+    "sources": [
+      "outer_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction indicator lever manual activation",
+    "relation": "requires",
+    "tail": "not in sleep mode",
+    "sources": [
+      "outer_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction indicator lever manual activation",
+    "relation": "requires",
+    "tail": "system management module in standby mode",
+    "sources": [
+      "outer_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction indicator lever manual activation",
+    "relation": "requires",
+    "tail": "system management module version valid",
+    "sources": [
+      "outer_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction indicator lever manual activation",
+    "relation": "requires",
+    "tail": "external lamp control communication type configured as SOA or CAN",
+    "sources": [
+      "outer_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction indicator lever manual activation",
+    "relation": "requires",
+    "tail": "external lamp status communication type configured as SOA or CAN",
+    "sources": [
+      "outer_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction indicator lever manual activation",
+    "relation": "triggers",
+    "tail": "DircnLghtSwReq signal received from LHZCU turn signal preprocessing module",
+    "sources": [
+      "outer_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction indicator lever manual activation",
+    "relation": "inhibited_by",
+    "tail": "switch dwell time < 50 ms",
+    "sources": [
+      "outer_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction indicator lever manual activation",
+    "relation": "outputs",
+    "tail": "DircnLghtSwReq = 0x2",
+    "sources": [
+      "outer_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction indicator lever manual activation",
+    "relation": "outputs",
+    "tail": "direction indicators flash at 1.25 Hz",
+    "sources": [
+      "outer_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction indicator lever manual activation",
+    "relation": "timeout_constraint",
+    "tail": "switch dwell time > 50 ms",
+    "sources": [
+      "outer_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB converts service interface or control signal to lamp CAN message to deactivate main beam",
+    "relation": "triggers",
+    "tail": "ICB receives main beam control signal from LHZCU",
+    "sources": [
+      "outer_lamp_fas_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU/RHZCU receive main beam control command from ICB",
+    "relation": "depends_on",
+    "tail": "ICB distributes main beam control command to LHZCU and RHZCU",
+    "sources": [
+      "outer_lamp_fas_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU/RHZCU feed back main beam execution status to ICB",
+    "relation": "outputs",
+    "tail": "ICB forwards status/fault status to LHZCU",
+    "sources": [
+      "outer_lamp_fas_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU/RHZCU feed back main beam fault status to ICB",
+    "relation": "outputs",
+    "tail": "ICB forwards status/fault status to LHZCU",
+    "sources": [
+      "outer_lamp_fas_0423"
+    ],
+    "conflict": true,
+    "conflict_note": "Redundant with previous triple; same head/relation/tail semantics but distinct phrasing — merged into single 'outputs' triple covering both execution and fault status feedback"
+  },
+  {
+    "head": "Main beam deactivation synchronization requirement",
+    "relation": "timeout_constraint",
+    "tail": "maximum latency between left and right main beam deactivation ≤ 40 ms",
+    "sources": [
+      "outer_lamp_fas_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightErrorStatus = No Error",
+    "relation": "resets_when",
+    "tail": "{MainBeamLight.MainBeamLightErrorStatus.MainBeamLightErrSta}{InstanceID=1} = 0x0",
+    "sources": [
+      "outer_lamp_fas_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightErrorStatus = No Error",
+    "relation": "resets_when",
+    "tail": "{MainBeamLight.MainBeamLightErrorStatus.MainBeamLightErrSta}{InstanceID=2} = 0x0",
+    "sources": [
+      "outer_lamp_fas_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightErrorStatus = No Error",
+    "relation": "resets_when",
+    "tail": "{MainBeamLight.MainBeamLightErrorStatus.MainBeamLightErrSta}{InstanceID=4} = 0x0",
+    "sources": [
+      "outer_lamp_fas_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exlMainBeamHwDrvEnPrm = 0x1",
+    "relation": "enables",
+    "tail": "main beam hardware line driver",
+    "sources": [
+      "outer_lamp_fas_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exlMainBeamHwDrvEnPrm = 0x0",
+    "relation": "disables",
+    "tail": "main beam hardware line driver",
+    "sources": [
+      "outer_lamp_fas_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exlMainBeamTypePrm = 0x0",
+    "relation": "indicates",
+    "tail": "main beam and dipped beam use separate bulbs",
+    "sources": [
+      "outer_lamp_fas_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exlMainBeamTypePrm = 0x1",
+    "relation": "indicates",
+    "tail": "main beam and dipped beam share the same bulb",
+    "sources": [
+      "outer_lamp_fas_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "main beam type configuration",
+    "relation": "applies_to",
+    "tail": "EP phase vehicle",
+    "sources": [
+      "outer_lamp_fas_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "main beam hardware line driver configuration",
+    "relation": "applies_to",
+    "tail": "EP phase vehicle",
+    "sources": [
+      "outer_lamp_fas_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left main beam illumination status",
+    "relation": "diagnostically_linked_to",
+    "tail": "{MainBeamLight.MainBeamLightErrorStatus.MainBeamLightErrorSta}{InstanceID=3}",
+    "sources": [
+      "outer_lamp_fas_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "right main beam illumination status",
+    "relation": "diagnostically_linked_to",
+    "tail": "{MainBeamLight.MainBeamLightErrorStatus.MainBeamLightErrorSta}{InstanceID=4}",
+    "sources": [
+      "outer_lamp_fas_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "right front side position light status",
+    "relation": "triggers",
+    "tail": "subscription to SidePositionLightStatus service",
+    "sources": [
+      "outer_lamp_fas_0426"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left rear side position light status",
+    "relation": "triggers",
+    "tail": "subscription to SidePositionLightStatus service",
+    "sources": [
+      "outer_lamp_fas_0426"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "right front side position light status",
+    "relation": "outputs",
+    "tail": "0x0=OFF; 0x1=ON; 0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_0426"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left rear side position light status",
+    "relation": "outputs",
+    "tail": "0x0=OFF; 0x1=ON",
+    "sources": [
+      "outer_lamp_fas_0426"
+    ],
+    "conflict": true,
+    "conflict_note": "Inconsistent enumeration: right front includes Unknown (0x2), left rear omits it — potential specification gap or modeling inconsistency"
+  },
+  {
+    "head": "right front side position light status",
+    "relation": "depends_on",
+    "tail": "RHZCU_U; ICB_S32 GM LHZCU; RHZCU_E TH",
+    "sources": [
+      "outer_lamp_fas_0426"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left rear side position light status",
+    "relation": "depends_on",
+    "tail": "RZCU; ICB_S32 GM LHZCU; RZCU_ETH; LHZCU_ETH",
+    "sources": [
+      "outer_lamp_fas_0426"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwReq = ON",
+    "relation": "triggers",
+    "tail": "user requests brake light activation",
+    "sources": [
+      "outer_lamp_fas_0427"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwReq = OFF",
+    "relation": "triggers",
+    "tail": "user requests brake light deactivation",
+    "sources": [
+      "outer_lamp_fas_0427"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwReq",
+    "relation": "inputs_from",
+    "tail": "user action",
+    "sources": [
+      "outer_lamp_fas_0427"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwReq",
+    "relation": "outputs",
+    "tail": "BrkLghtSwReq_1_On",
+    "sources": [
+      "outer_lamp_fas_0427"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwReq",
+    "relation": "outputs",
+    "tail": "BrkLghtSwReq_0_Off",
+    "sources": [
+      "outer_lamp_fas_0427"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day running light = OFF",
+    "relation": "triggers_when",
+    "tail": "DayRunngLghtClsCtrlRsn = 0x00 (None)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day running light = OFF",
+    "relation": "triggers_when",
+    "tail": "DayRunngLghtFucProsSta = 0x0 (OFF)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day running light = ON",
+    "relation": "triggers_when",
+    "tail": "DayRunngLghtClsCtrlRsn = 0x01 (SOA RequestOff)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": true,
+    "conflict_note": "Inconsistent label: 'SOA RequestOff' implies deactivation, yet tail asserts DRL=ON — likely typo: should be 'SOA RequestOn' or similar; conflicting semantic interpretation"
+  },
+  {
+    "head": "Day running light = ON",
+    "relation": "triggers_when",
+    "tail": "DayRunngLghtFucProsSta = 0x1 (ON)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day running light = Unknown",
+    "relation": "triggers_when",
+    "tail": "DayRunningLghtSta = 0x02 (Unknown)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day running light error status = No Error",
+    "relation": "triggers_when",
+    "tail": "DayRunningLghtErrSta = 0x00 (NoError)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day running light error status = Error",
+    "relation": "triggers_when",
+    "tail": "DayRunningLghtErrSta = 0x01 (Error)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day running light error status = Unknown",
+    "relation": "triggers_when",
+    "tail": "DayRunningLghtErrSta = 0x02 (Unknown)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day running light closure reason = Other Reasons",
+    "relation": "inputs_from",
+    "tail": "DayRunngLghtClsCtrlRsn = 0x03 (OtherReasons)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day running light function processing status = Unknown",
+    "relation": "inputs_from",
+    "tail": "DayRunngLghtFucProsSta = 0x2 (Unknown)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day running light error status = No Error",
+    "relation": "depends_on",
+    "tail": "DayRunningLghtErrSta = 0x00 (NoError)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day running light error status = Error",
+    "relation": "depends_on",
+    "tail": "DayRunningLghtErrSta = 0x01 (Error)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day running light error status = Unknown",
+    "relation": "depends_on",
+    "tail": "DayRunningLghtErrSta = 0x02 (Unknown)",
+    "sources": [
+      "outer_lamp_fas_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam activation",
+    "relation": "triggers_when",
+    "tail": "LHZCU evaluates CombLightFucProSta = 0x4",
+    "sources": [
+      "outer_lamp_fas_0431"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam activation",
+    "relation": "triggers_when",
+    "tail": "side position lights and dipped beam are ON",
+    "sources": [
+      "outer_lamp_fas_0431"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "front fog lamp activation",
+    "relation": "requires",
+    "tail": "LHZCU evaluates FrontFogLightFucProsSta = 0x1",
+    "sources": [
+      "outer_lamp_fas_0431"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "front fog lamp activation",
+    "relation": "requires",
+    "tail": "only front fog lamp is ON",
+    "sources": [
+      "outer_lamp_fas_0431"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

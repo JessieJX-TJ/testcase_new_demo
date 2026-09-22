@@ -1,0 +1,168 @@
+[
+  {
+    "head": "前雾灯关闭",
+    "relation": "触发条件",
+    "tail": "收到 SOA 服务 {FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq} {InstanceID=3} = 0x0 (OFF)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SOA 服务",
+      "FrontFogLightCtrReq",
+      "InstanceID=3",
+      "OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0237",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "关闭驱动左前雾灯输出 (FogLamp_LH_HSD)",
+    "relation": "输入为",
+    "tail": "【FrtFogLghtDrvMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FrtFogLghtDrvMdl",
+      "FogLamp_LH_HSD"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0237",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "持续发送 LFrtFogLghtSts=0x0 (OFF) 至 【RearFogLghtCtrlMdl】",
+    "relation": "输出为",
+    "tail": "【RearFogLghtCtrlMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LFrtFogLghtSts",
+      "RearFogLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0237",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "持续发送 {FrontFogLight.FrontFogLightState.FrontFogLightSta}{InstanceID=3} = 0x0 (OFF) 至 【RearFogLghtCtrlMdl】",
+    "relation": "输出为",
+    "tail": "【RearFogLghtCtrlMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FrontFogLightSta",
+      "InstanceID=3",
+      "RearFogLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0237",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "退出前雾灯关闭流程",
+    "relation": "前提条件",
+    "tail": "收到【FrtFogLghtCtrlMdl】发送的 LFrtFogLghtCtrl_HW == 0x1 (On)",
+    "triple_type": "退出条件",
+    "evidence_terms": [
+      "FrtFogLghtCtrlMdl",
+      "LFrtFogLghtCtrl_HW",
+      "On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0237",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "退出前雾灯关闭流程",
+    "relation": "前提条件",
+    "tail": "收到【RearFogLghtCtrlMdl】发送的 {FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq} {InstanceID=3} = 0x1 (On)",
+    "triple_type": "退出条件",
+    "evidence_terms": [
+      "RearFogLghtCtrlMdl",
+      "FrontFogLightCtrReq",
+      "InstanceID=3",
+      "On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0237",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "前雾灯关闭动作",
+    "relation": "包含子功能",
+    "tail": "【FrtFogLghtDrvMdl】关闭驱动左前雾灯输出 (FogLamp_LH_HSD)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "FrtFogLghtDrvMdl",
+      "FogLamp_LH_HSD"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0237",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "前雾灯关闭动作",
+    "relation": "包含子功能",
+    "tail": "【FrtFogLghtDrvMdl】持续发送 LFrtFogLghtSts=0x0 (OFF) 至 【RearFogLghtCtrlMdl】",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "FrtFogLghtDrvMdl",
+      "LFrtFogLghtSts",
+      "RearFogLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0237",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "前雾灯关闭动作",
+    "relation": "包含子功能",
+    "tail": "【FrtFogLghtDrvMdl】持续发送 {FrontFogLight.FrontFogLightState.FrontFogLightSta}{InstanceID=3} = 0x0 (OFF) 至 【RearFogLghtCtrlMdl】",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "FrtFogLghtDrvMdl",
+      "FrontFogLightSta",
+      "InstanceID=3",
+      "RearFogLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0237",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "持续发送 LFrtFogLghtSts=0x0 (OFF) 至 【RearFogLghtCtrlMdl】",
+    "relation": "状态保持条件",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "LFrtFogLghtSts",
+      "RearFogLghtCtrlMdl",
+      "三帧"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0237",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "持续发送 {FrontFogLight.FrontFogLightState.FrontFogLightSta}{InstanceID=3} = 0x0 (OFF) 至 【RearFogLghtCtrlMdl】",
+    "relation": "状态保持条件",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "FrontFogLightSta",
+      "InstanceID=3",
+      "RearFogLghtCtrlMdl",
+      "三帧"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0237",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

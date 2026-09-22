@@ -1,0 +1,148 @@
+[
+  {
+    "head": "AutoLightOnReq信号被转发",
+    "relation": "触发条件",
+    "tail": "阳光雨量传感器/ICB发送AutoLightOnReq_IlAutoLightOnReq_ICB信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AutoLightOnReq",
+      "阳光雨量传感器",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1464",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "日间行车灯开启",
+    "relation": "前提条件",
+    "tail": "接收到AutoLightOnReq信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DayRunningLight",
+      "AutoLightOnReq",
+      "InstanceID"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1464",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "日间行车灯开启",
+    "relation": "前提条件",
+    "tail": "InstanceID=1或2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DayRunningLight",
+      "AutoLightOnReq",
+      "InstanceID"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1464",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "位置灯开启",
+    "relation": "前提条件",
+    "tail": "接收到AutoLightOnReq信号且InstanceID=",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SidePositionLight",
+      "AutoLightOnReq",
+      "InstanceID"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1464",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "位置灯开启",
+    "relation": "前提条件",
+    "tail": "8",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SidePositionLight",
+      "AutoLightOnReq",
+      "InstanceID"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1464",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "日间行车灯状态为ON",
+    "relation": "输出为",
+    "tail": "DayRunningLightState信号值为0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DayRunningLightState",
+      "ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1464",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "位置灯状态为ON",
+    "relation": "输出为",
+    "tail": "SidePositionLightState信号值为0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "SidePositionLightState",
+      "ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1464",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "日间行车灯开关状态反馈",
+    "relation": "依赖于",
+    "tail": "LHZCU根据ExteriorLightSwitchProcess和DayRunningLightFucProStatus仲裁状态",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ExteriorLightSwitchProcess",
+      "DayRunningLightFucProStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1464",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "日间行车灯错误状态",
+    "relation": "故障响应",
+    "tail": "DayRunningLightErrorStatus信号值为0x0",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DayRunningLightErrorStatus",
+      "0x0"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1464",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "位置灯错误状态",
+    "relation": "故障响应",
+    "tail": "SidePositionLightErrorStatus信号值为0x0",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "SidePositionLightErrorStatus",
+      "0x0"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1464",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

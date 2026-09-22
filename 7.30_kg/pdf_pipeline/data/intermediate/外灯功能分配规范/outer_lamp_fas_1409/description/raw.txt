@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Side Position Light Control and Auto Light On Request Signals",
+  "row_semantics": "Each row represents a specific signal or interface related to side position light control and automatic lighting based on sunlight/rain sensor input.",
+  "column_semantics": "Columns define the signal name, its direction (input/output), associated interfaces (SOA, RZCU, ICB, LIN, RLSS, LHZCU), and detailed parameter definitions including instance ID and ON/OFF values.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ControlSidePositionLight",
+      "type": "function",
+      "description": "Interface for controlling the side position lights."
+    },
+    {
+      "name": "AutoLghtOnReq_1",
+      "type": "signal",
+      "description": "Signal from the sunlight/rain sensor to request automatic lighting."
+    },
+    {
+      "name": "AutoLghtOnReq_ICB",
+      "type": "signal",
+      "description": "Output signal sent via CAN/ICB for automatic lighting request."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightReq",
+      "type": "parameter",
+      "description": "Request parameter for side position light control with values 0x0 (OFF) and 0x1 (ON)."
+    },
+    {
+      "name": "AutoLghtOnReq_1_0_False",
+      "type": "value",
+      "description": "Value indicating automatic lighting request is false."
+    },
+    {
+      "name": "AutoLghtOnReq_1_1_True",
+      "type": "value",
+      "description": "Value indicating automatic lighting request is true."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "AutoLghtOnReq_ICB",
+      "type": "output_signal",
+      "description": "Signal output via CAN/ICB to control automatic lighting based on sensor input."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the communication interfaces and signal parameters for controlling side position lights and enabling automatic lighting based on environmental sensor inputs. It is used to verify that the system correctly interprets and responds to requests for turning side position lights on or off, as well as correctly processes automatic lighting requests from the sunlight/rain sensor.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,74 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "右前雾灯短路到地故障处理逻辑",
+  "row_semantics": "触发条件与执行动作的对应关系",
+  "column_semantics": {
+    "Column1": "前置条件",
+    "Column2": "触发条件",
+    "Column3": "执行动作"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FrtFogLghtDrvMdl",
+      "type": "controller_module",
+      "description": "右前雾灯驱动模块"
+    },
+    {
+      "name": "FrontFogLight",
+      "type": "system_component",
+      "description": "前雾灯系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "右前雾灯处于输出状态",
+      "signal": "FogLamp_RH_HSD",
+      "value": "Output"
+    },
+    {
+      "condition": "检测到右前雾灯短路到地",
+      "signal": "RFrtFogLghtSts",
+      "value": "0x0 (OFF)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "FrtFogLghtCtrlMdl",
+      "action": "停止驱动右前雾灯输出",
+      "value": "0x0 (OFF)"
+    },
+    {
+      "signal": "FrtFogLghtCtrlMdl",
+      "action": "设置右前雾灯闪烁状态",
+      "value": "0x1 (True)"
+    },
+    {
+      "signal": "FrontFogLightState.FrontFogLightSta{InstanceID=4}",
+      "action": "设置前雾灯状态为关闭",
+      "value": "0x1 (OFF)"
+    },
+    {
+      "signal": "FrontFogLightErrorStatus.FrontFogLightErrorSta{InstanceID=4}",
+      "action": "设置前雾灯错误状态为错误",
+      "value": "0x1 (Error)"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTC B1053 11",
+      "description": "右前雾灯短路到地故障代码"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "signal": "FrtFogLghtCtrlMdl",
+      "action": "至少发送三帧"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当右前雾灯发生短路到地故障时，系统应执行的诊断和控制动作，包括停止驱动、设置错误状态并记录故障代码，可用于验证车辆电子系统在特定故障情况下的响应行为。",
+  "uncertain_points": []
+}
+```

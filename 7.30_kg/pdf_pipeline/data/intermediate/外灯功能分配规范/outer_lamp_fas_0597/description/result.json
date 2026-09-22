@@ -1,0 +1,58 @@
+{
+  "table_type": "logic_table",
+  "topic": "远光灯驱动控制逻辑",
+  "row_semantics": "表示不同的远光灯控制请求及其对应的实例ID和状态（开/关）",
+  "column_semantics": "第一列是具体的控制请求语句，第二列是该请求的详细功能描述",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "MainBeamLight",
+      "type": "功能名",
+      "description": "主远光灯"
+    },
+    {
+      "name": "ControlMainBeamLight.MainBeamLightReq",
+      "type": "控制器/模块名",
+      "description": "远光灯驱动处理模块，负责接收并执行远光灯的控制请求"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Instance ID",
+      "type": "输入信号",
+      "description": "实例ID，用于区分不同的控制请求，值为3或4"
+    },
+    {
+      "name": "On/Off",
+      "type": "输入信号",
+      "description": "控制指令，表示远光灯开启或关闭"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLight. ControlMainBeamLight.MainBeamLightReq{Instance ID=3}=On",
+      "type": "输出信号",
+      "description": "左侧远光灯点亮或遮光结构开启"
+    },
+    {
+      "name": "MainBeamLight. ControlMainBeamLight.MainBeamLightReq{Instance ID=4}=On",
+      "type": "输出信号",
+      "description": "右侧远光灯点亮或遮光结构开启"
+    },
+    {
+      "name": "MainBeamLight. ControlMainBeamLight.MainBeamLightReq{Instance ID=3}=Off",
+      "type": "输出信号",
+      "description": "左侧远光灯熄灭或遮光结构关闭"
+    },
+    {
+      "name": "MainBeamLight. ControlMainBeamLight.MainBeamLightReq{Instance ID=4}=Off",
+      "type": "输出信号",
+      "description": "右侧远光灯熄灭或遮光结构关闭"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了远光灯驱动处理模块对左右两侧远光灯的控制逻辑，可用于验证不同实例ID下的远光灯开启/关闭功能是否符合预期。",
+  "uncertain_points": []
+}

@@ -1,0 +1,73 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Status Monitoring",
+  "row_semantics": "Each row represents a specific Direction Light status monitoring request for either the left or right front turn signal.",
+  "column_semantics": {
+    "Row Header": "Service interface name and instance ID for the direction light status request.",
+    "Consumption": "Indicates whether the service is consumed (e.g., via SOA, ICB, LHZCU).",
+    "SOA": "Service-Oriented Architecture interface usage.",
+    "ICB": "Internal Communication Bus interface usage.",
+    "LHZCU": "Local Host Control Unit interface usage.",
+    "Network Status": "Status of network communication related to the service."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "function",
+      "description": "Function related to the control and monitoring of direction lights."
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "service_interface",
+      "description": "Service interface used to subscribe to and retrieve the status of direction lights."
+    },
+    {
+      "name": "SOA",
+      "type": "communication_interface",
+      "description": "Service-Oriented Architecture interface for service communication."
+    },
+    {
+      "name": "ICB",
+      "type": "communication_interface",
+      "description": "Internal Communication Bus interface for internal system communication."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Local Host Control Unit responsible for local control and monitoring tasks."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "Unique identifier for each instance of the direction light status request. Different IDs are used for left and right turn signals."
+    },
+    {
+      "name": "Parameter Name",
+      "type": "parameter",
+      "description": "Name of the parameter being monitored, which is 'DirectionLightSta' in this case."
+    },
+    {
+      "name": "Status Values",
+      "type": "state",
+      "description": "Possible states of the direction light: OFF (0x0), ON (0x1), Unknown (0x2)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "output_signal",
+      "description": "The current status of the direction light as returned by the service interface."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and interfaces for subscribing to the status of front left and right turn signals in a vehicle's direction light system. It specifies how the system consumes the service via different communication interfaces and what the expected status values are.",
+  "uncertain_points": [
+    "The exact meaning of the 'Network Status' column is not explicitly defined in the table.",
+    "The purpose of the 'Consumption' column beyond indicating interface usage is not clarified."
+  ]
+}

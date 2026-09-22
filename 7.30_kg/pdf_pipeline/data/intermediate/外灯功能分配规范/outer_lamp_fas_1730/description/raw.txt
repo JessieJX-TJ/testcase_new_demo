@@ -1,0 +1,37 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯状态与故障信号定义",
+  "row_semantics": "表格按功能模块（如左前位置灯、左后位置灯等）逐项列出相关信号的状态定义和通信方式。",
+  "column_semantics": "第一列为功能模块名称，第二列详细描述了该模块的信号状态定义（如开/关、正常/故障），后续列为支持的通信协议或控制器模块。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "FRSideLghtSts", // 右前位置灯状态
+    "RLSideLghtSts", // 左后位置灯状态
+    "RRSideLghtSts", // 右后位置灯状态
+    "FLSideLghtFltsts", // 左前位置灯故障状态
+    "FRSideLghtFltsts" // 右前位置灯故障状态
+  ],
+  "core_conditions": [
+    "0x0", // Off 或 False 状态
+    "0x1"  // On 或 True 状态
+  ],
+  "core_outputs": [
+    "FRSideLghtSts",
+    "RLSideLghtSts",
+    "RRSideLghtSts",
+    "FLSideLghtFltsts",
+    "FRSideLghtFltsts"
+  ],
+  "core_faults": [
+    "FLSideLghtFltsts_0_False", // 左前位置灯正常状态
+    "FLSideLghtFltsts_1_True",  // 左前位置灯故障状态
+    "FRSideLghtFltsts_0_False", // 右前位置灯正常状态
+    "FRSideLghtFltsts_1_True"   // 右前位置灯故障状态
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯（包括位置灯和故障状态）在不同控制器（CANFD, ICB, LHZCU）下的信号状态值及其含义，可用于验证车辆外灯系统在各种工况下的信号输出是否符合规范。",
+  "uncertain_points": []
+}
+```

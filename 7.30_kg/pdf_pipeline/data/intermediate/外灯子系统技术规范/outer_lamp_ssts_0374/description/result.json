@@ -1,0 +1,38 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯控制逻辑验证",
+  "row_semantics": "定义了触发特定外灯控制行为的前置条件和触发条件",
+  "column_semantics": "左侧列为条件类别，右侧为具体条件描述",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FrtFogLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "前雾灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "1||2",
+      "type": "condition_code",
+      "description": "前置条件代码，表示满足条件1或条件2"
+    },
+    {
+      "name": "FrtFogLghtCtrlMdl",
+      "type": "input_signal",
+      "description": "前雾灯控制模块发送的信号"
+    },
+    {
+      "name": "LFrtFogLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "前雾灯控制硬件接口信号",
+      "value": "0x0 (Off)"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证当FrtFogLghtCtrlMdl模块发送的LFrtFogLghtCtrl_HW信号值为0x0（Off）时，系统是否正确响应并执行相应的外灯控制逻辑。",
+  "uncertain_points": []
+}

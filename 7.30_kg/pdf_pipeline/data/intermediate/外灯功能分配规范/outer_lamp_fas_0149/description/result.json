@@ -1,0 +1,58 @@
+{
+  "table_type": "parameter_table",
+  "topic": "车辆拖挂模式与后转向灯延迟硬编程参数配置",
+  "row_semantics": "表格中的每一行代表一个独立的配置参数，描述其功能、参数范围、默认值及备注信息。",
+  "column_semantics": {
+    "配置字名称": "参数的唯一标识符或名称。",
+    "功能": "该参数所控制的功能或作用。",
+    "参数": "参数的具体取值范围或可选值列表。",
+    "默认值": "系统启动或未配置时该参数的默认设置。",
+    "备注": "对该参数的补充说明，包括可能的特征代码、限制条件等。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "InsdFnCfgVehDragMd",
+      "type": "parameter",
+      "description": "车辆拖挂模式配置参数，用于定义车辆是否支持拖挂功能及其模式。"
+    },
+    {
+      "name": "RrDirLghtHardWireDrvDelayPrm",
+      "type": "parameter",
+      "description": "后转向灯延迟硬编程参数，用于调整后转向灯的延迟时间。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "parameter": "InsdFnCfgVehDragMd",
+      "condition": "0x0",
+      "description": "无拖挂模式，表示车辆不支持拖挂功能。"
+    },
+    {
+      "parameter": "InsdFnCfgVehDragMd",
+      "condition": "0x1",
+      "description": "有拖挂模式，表示车辆支持拖挂功能。"
+    },
+    {
+      "parameter": "RrDirLghtHardWireDrvDelayPrm",
+      "condition": "E=N*10",
+      "description": "后转向灯延迟时间由N决定，N的取值范围为0x0~0xF。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "parameter": "RrDirLghtHardWireDrvDelayPrm",
+      "timing": "E=N*10",
+      "description": "后转向灯延迟时间的计算公式，单位为10ms。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了车辆拖挂模式和后转向灯延迟时间的配置参数，可用于验证车辆在不同拖挂模式下的功能表现以及后转向灯延迟时间的正确性。",
+  "uncertain_points": [
+    "表格中未明确指出具体的控制器/模块名称。",
+    "未提供输入信号和输出信号的具体描述。",
+    "未涉及系统状态或故障状态的定义。"
+  ]
+}

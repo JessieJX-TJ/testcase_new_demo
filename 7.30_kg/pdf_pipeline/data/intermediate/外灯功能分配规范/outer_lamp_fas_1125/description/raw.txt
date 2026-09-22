@@ -1,0 +1,105 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Auto 开关下，用户通过大屏软开关触发后雾灯/近光灯/位置灯的开启逻辑",
+  "row_semantics": "前置条件列表，描述了触发特定灯光开启所需的系统状态和信号值",
+  "column_semantics": "两列：左侧为条件序号，右侧为具体的条件表达式",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Auto",
+      "type": "mode",
+      "description": "自动模式开关"
+    },
+    {
+      "name": "大屏软开关",
+      "type": "input_signal",
+      "description": "用户通过车载大屏幕软件界面触发的操作"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit (灯光与危险警示控制单元)"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外灯开关处理模块"
+    },
+    {
+      "name": "SOA",
+      "type": "communication_protocol",
+      "description": "Service-Oriented Architecture (面向服务的架构) 通信协议"
+    },
+    {
+      "name": "CAN",
+      "type": "communication_protocol",
+      "description": "Controller Area Network (控制器局域网) 通信协议"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "description": "用户模式，需处于睡眠、待机或XOTA模式",
+      "value": "0x0_Sleep | 0x1_Standby | 0x6_XOTA"
+    },
+    {
+      "name": "UsrMdV",
+      "description": "用户模式有效标志",
+      "value": "Valid"
+    },
+    {
+      "name": "VehMd",
+      "description": "车辆模式，需处于运输模式",
+      "value": "0x3_TRANSPORT"
+    },
+    {
+      "name": "VehMdV",
+      "description": "车辆模式有效标志",
+      "value": "Valid"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.CombLghtFucProSta",
+      "description": "组合灯功能状态，位置灯和近光灯均关闭",
+      "value": "0x0_ALL_OFF || 0x3_SidePositionAndDippedBeam OFF"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.CombLghtSwSta",
+      "description": "组合灯开关状态，设置为自动模式",
+      "value": "0x3_AUTO"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.FrontFogLghtFucProSta",
+      "description": "前雾灯功能状态，判断前雾灯未开启",
+      "value": "0x0_OFF"
+    },
+    {
+      "name": "ExtrLghtCtrlCmmntnTyp",
+      "description": "外部灯光控制通讯类型配置",
+      "value": "0x0_SOACAN"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "后雾灯",
+      "description": "在满足所有前置条件下被触发开启"
+    },
+    {
+      "name": "近光灯",
+      "description": "在满足所有前置条件下被触发开启"
+    },
+    {
+      "name": "位置灯",
+      "description": "在满足所有前置条件下被触发开启"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在 Auto 模式下，当用户通过大屏软开关操作时，系统需要满足的一系列前置条件，以确保后雾灯、近光灯和位置灯能够正确且安全地被开启。可用于验证相关灯光控制逻辑的功能性测试。",
+  "uncertain_points": [
+    "具体何时触发 '大屏软开关' 的细节未明确说明",
+    "LHZCU 判断 '前雾灯未开启' 的内部机制未详细描述"
+  ]
+}
+```

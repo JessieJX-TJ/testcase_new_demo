@@ -1,0 +1,95 @@
+{
+  "table_type": "signal_table",
+  "topic": "ThirdRowMapLamp control signals for LHZCU (Left Hand Zone Control Unit)",
+  "row_semantics": "Each row represents a distinct signal interface related to the third-row map lamp control, detailing its direction, type, sender, receiver, and specific signal values.",
+  "column_semantics": {
+    "Interface Name": "The name of the signal interface.",
+    "Direction": "Indicates whether the signal is an input or output.",
+    "Type": "Specifies the data type or nature of the signal (e.g., internal).",
+    "Sender/Provider": "The component/module that sends or provides the signal.",
+    "Receiver/Consumer": "The component/module that receives or consumes the signal.",
+    "Channel": "The communication path or channel used for the signal.",
+    "Interface Source": "The source or origin of the interface definition."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampLHSwReq",
+      "type": "Signal Interface",
+      "description": "Input signal from LHZCU to control the third-row map lamp switch request.",
+      "direction": "Input",
+      "sender": "LHZCU",
+      "receiver": "LHZCU"
+    },
+    {
+      "name": "ThirdRowMapLampLHBrtLvl",
+      "type": "Signal Interface",
+      "description": "Output signal from LHZCU to set the brightness level of the third-row map lamp.",
+      "direction": "Output",
+      "sender": "LHZCU",
+      "receiver": "LHZCU"
+    },
+    {
+      "name": "ThirdRowMapLampLHSts",
+      "type": "Signal Interface",
+      "description": "Input signal from LHZCU to report the status of the third-row map lamp.",
+      "direction": "Input",
+      "sender": "LHZCU",
+      "receiver": "LHZCU"
+    }
+  ],
+  "core_conditions": [
+    {
+      "interface": "ThirdRowMapLampLHSwReq",
+      "condition": "Idle",
+      "value": "0x0"
+    },
+    {
+      "interface": "ThirdRowMapLampLHSwReq",
+      "condition": "Press",
+      "value": "0x1"
+    },
+    {
+      "interface": "ThirdRowMapLampLHSwReq",
+      "condition": "Reserved",
+      "value": "0x2"
+    },
+    {
+      "interface": "ThirdRowMapLampLHSwReq",
+      "condition": "Error",
+      "value": "0x3"
+    }
+  ],
+  "core_outputs": [
+    {
+      "interface": "ThirdRowMapLampLHBrtLvl",
+      "level": "OFF",
+      "value": "0x0"
+    },
+    {
+      "interface": "ThirdRowMapLampLHBrtLvl",
+      "level": "Level 1",
+      "value": "0x1"
+    },
+    {
+      "interface": "ThirdRowMapLampLHBrtLvl",
+      "level": "Level 2",
+      "value": "0x2"
+    },
+    {
+      "interface": "ThirdRowMapLampLHBrtLvl",
+      "level": "Level 30",
+      "value": "0x1E"
+    },
+    {
+      "interface": "ThirdRowMapLampLHBrtLvl",
+      "level": "Reserved",
+      "value": "0x1F"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the control signals for the third-row map lamp within the LHZCU system, specifying how the lamp can be switched on/off, adjusted in brightness levels, and reported status. It is used for testing the correct mapping and response of these signals between the sending and receiving LHZCU modules.",
+  "uncertain_points": []
+}

@@ -1,0 +1,62 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Z-ONE-3.0平台内灯（Interior Light）的功能分配规范",
+  "row_semantics": "表格的每一行代表一个功能模块或信号定义，详细描述了其状态、输入/输出关系及控制逻辑。",
+  "column_semantics": "表格包含多级列结构，主要分为功能模块名、信号类型（如输入/输出）、通信方式（如CAN）、控制器/模块归属以及具体的状态值定义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "UsrMd",
+      "type": "mode",
+      "description": "用户模式定义，包括Sleep、Standby、Comfortable、NormalDriving、AIParking、AIPilot、XOTA等七种模式。"
+    },
+    {
+      "name": "UsrMdV",
+      "type": "signal",
+      "description": "用户模式验证信号，表示模式的有效性，包括Invalid和Valid两种状态。"
+    },
+    {
+      "name": "CnsoStorgLampRCtrlCmd",
+      "type": "command",
+      "description": "内灯存储灯遥控控制命令，用于控制内灯的开关，包括Close和Open两种状态。"
+    },
+    {
+      "name": "ZXD",
+      "type": "controller",
+      "description": "ZXD控制器，作为UsrMdV信号的输入来源之一。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "LHZCU控制器，作为UsrMdV信号的输入来源之一，并且是CnsoStorgLampRCtrlCmd命令的输出目标之一。"
+    },
+    {
+      "name": "VS_SST_S",
+      "type": "controller",
+      "description": "VS_SST_S控制器，作为UsrMdV信号的输入来源之一。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "description": "定义了车辆内灯在不同驾驶场景下的工作模式。"
+    },
+    {
+      "name": "UsrMdV",
+      "description": "验证当前UsrMd模式是否有效。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "CnsoStorgLampRCtrlCmd",
+      "description": "根据UsrMd和UsrMdV的状态，生成内灯的控制指令（开或关）。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证Z-ONE-3.0平台内灯系统在不同用户模式下的功能分配正确性，特别是验证用户模式（UsrMd）与模式验证信号（UsrMdV）之间的逻辑一致性，以及内灯控制命令（CnsoStorgLampRCtrlCmd）的生成是否符合预期。",
+  "uncertain_points": []
+}
+```

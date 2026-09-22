@@ -1,0 +1,582 @@
+[
+  {
+    "head": "倒车灯短路故障检测与处理功能被抑制",
+    "relation": "抑制条件",
+    "tail": "RevsLghtFbkSOAEnPrm == 0 (Disable)",
+    "sources": [
+      "outer_lamp_ssts_0240"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯短路故障检测与处理功能被抑制",
+    "relation": "抑制条件",
+    "tail": "倒车灯处于输出状态",
+    "sources": [
+      "outer_lamp_ssts_0240"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯及高位制动灯输出（RevsLamp_LH_HSD）",
+    "relation": "输出为",
+    "tail": "RevsLghtDrvMd1",
+    "sources": [
+      "outer_lamp_ssts_0240"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯状态信号输出",
+    "relation": "输出为",
+    "tail": "RevsLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0240"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1045_12",
+    "relation": "故障响应",
+    "tail": "检测到倒车灯短路到电源",
+    "sources": [
+      "outer_lamp_ssts_0240"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯短路故障检测与处理功能退出",
+    "relation": "复位条件",
+    "tail": "检测到短路恢复",
+    "sources": [
+      "outer_lamp_ssts_0240"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯子系统",
+    "relation": "输出到",
+    "tail": "97 of 114页",
+    "sources": [
+      "outer_lamp_ssts_0242"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯子系统",
+    "relation": "输出到",
+    "tail": "版本<0.1>",
+    "sources": [
+      "outer_lamp_ssts_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯子系统",
+    "relation": "连接到",
+    "tail": "2 of 114页",
+    "sources": [
+      "outer_lamp_ssts_0249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯被激活",
+    "relation": "触发条件",
+    "tail": "SidePositionLightReq == 1 (On), InstanceID = 1",
+    "sources": [
+      "outer_lamp_ssts_0243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前左位置灯输出",
+    "relation": "输出为",
+    "tail": "FLSideLghtDrvMdl 驱动 PosLamp_LH_HSD",
+    "sources": [
+      "outer_lamp_ssts_0243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯状态被发送",
+    "relation": "输出为",
+    "tail": "FLSideLghtDrvMdl 发送 SidePositionLightSta == 1 (On), InstanceID = 1 至 SideLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯状态发送至少三帧",
+    "relation": "前提条件",
+    "tail": "至少发送三帧 SidePositionLightSta",
+    "sources": [
+      "outer_lamp_ssts_0243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯被关闭",
+    "relation": "触发条件",
+    "tail": "SidePositionLightReq == 0 (Off), InstanceID = 1",
+    "sources": [
+      "outer_lamp_ssts_0243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制功能被触发",
+    "relation": "前提条件",
+    "tail": "DILghtSwSOAEnPrm == 0 (Disable)",
+    "sources": [
+      "outer_lamp_ssts_0244"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制功能被触发",
+    "relation": "触发条件",
+    "tail": "用户轻拨左转向拨杆，开关阻值为 2000 Ω (±5%)",
+    "sources": [
+      "outer_lamp_ssts_0244"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制功能执行动作",
+    "relation": "依赖于",
+    "tail": "转向灯控制功能被触发",
+    "sources": [
+      "outer_lamp_ssts_0244"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制功能执行动作",
+    "relation": "输出为",
+    "tail": "DircnLghtSwReq == 0x1 (Left_First)",
+    "sources": [
+      "outer_lamp_ssts_0244"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制功能执行动作",
+    "relation": "控制对象",
+    "tail": "DILghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0244"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左制动灯输出短路到电源",
+    "relation": "触发条件",
+    "tail": "检测到短路到电源",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左制动灯输出短路到电源",
+    "relation": "抑制条件",
+    "tail": "未检测到短路到电源",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": true,
+    "conflict_note": "同一实体‘左制动灯输出短路到电源’同时定义了‘触发条件’和互斥的‘抑制条件’：前者要求‘检测到短路’，后者要求‘未检测到短路’；二者逻辑矛盾，需确认是否应为不同层级条件（如‘抑制条件’实为‘故障诊断使能条件’）"
+  },
+  {
+    "head": "左制动灯输出开路",
+    "relation": "触发条件",
+    "tail": "检测到输出开路",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左制动灯输出开路",
+    "relation": "抑制条件",
+    "tail": "未检测到输出开路",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": true,
+    "conflict_note": "同左制动灯短路，存在逻辑冲突：‘触发’与‘抑制’条件互为否定，需澄清是否属于同一功能上下文"
+  },
+  {
+    "head": "右制动灯输出短路到地",
+    "relation": "触发条件",
+    "tail": "检测到短路到地",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右制动灯输出短路到地",
+    "relation": "抑制条件",
+    "tail": "未检测到短路到地",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": true,
+    "conflict_note": "同上，触发与抑制条件互为逻辑否命题，构成潜在冲突"
+  },
+  {
+    "head": "右制动灯输出短路到电源",
+    "relation": "触发条件",
+    "tail": "检测到短路到电源",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右制动灯输出短路到电源",
+    "relation": "抑制条件",
+    "tail": "未检测到短路到电源",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": true,
+    "conflict_note": "同上"
+  },
+  {
+    "head": "右制动灯输出开路",
+    "relation": "触发条件",
+    "tail": "检测到输出开路",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右制动灯输出开路",
+    "relation": "抑制条件",
+    "tail": "未检测到输出开路",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": true,
+    "conflict_note": "同上"
+  },
+  {
+    "head": "高位制动灯输出短路到地",
+    "relation": "触发条件",
+    "tail": "检测到短路到地",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "高位制动灯输出短路到地",
+    "relation": "抑制条件",
+    "tail": "未检测到短路到地",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": true,
+    "conflict_note": "同上"
+  },
+  {
+    "head": "高位制动灯输出短路到电源",
+    "relation": "触发条件",
+    "tail": "检测到短路到电源",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "高位制动灯输出短路到电源",
+    "relation": "抑制条件",
+    "tail": "未检测到短路到电源",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": true,
+    "conflict_note": "同上"
+  },
+  {
+    "head": "高位制动灯输出开路",
+    "relation": "触发条件",
+    "tail": "检测到输出开路",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "高位制动灯输出开路",
+    "relation": "抑制条件",
+    "tail": "未检测到输出开路",
+    "sources": [
+      "outer_lamp_ssts_0245"
+    ],
+    "conflict": true,
+    "conflict_note": "同上"
+  },
+  {
+    "head": "右远光灯短路故障处理功能被触发",
+    "relation": "触发条件",
+    "tail": "检测到右远光灯短路到电源",
+    "sources": [
+      "outer_lamp_ssts_0246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯短路故障处理功能被抑制",
+    "relation": "抑制条件",
+    "tail": "MainBeamLightFbkSOAEnPrm == 0 (Disable)",
+    "sources": [
+      "outer_lamp_ssts_0246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯短路故障处理功能被抑制",
+    "relation": "抑制条件",
+    "tail": "右远光灯处于输出状态",
+    "sources": [
+      "outer_lamp_ssts_0246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯驱动模块停止输出",
+    "relation": "输出为",
+    "tail": "MainBeamLamp_RH_HSD 关闭",
+    "sources": [
+      "outer_lamp_ssts_0246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯状态信号输出",
+    "relation": "输出为",
+    "tail": "RMainBeamLightSts == 0 (Off) 至 MainBeamLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B105C_12",
+    "relation": "故障响应",
+    "tail": "检测到右远光灯短路到电源",
+    "sources": [
+      "outer_lamp_ssts_0246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前雾灯停止输出",
+    "relation": "前提条件",
+    "tail": "左前雾灯处于输出状态",
+    "sources": [
+      "outer_lamp_ssts_0247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前雾灯短路到地故障被记录",
+    "relation": "前提条件",
+    "tail": "检测到左前雾灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1053_11",
+    "relation": "故障响应",
+    "tail": "检测到左前雾灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前雾灯状态设置为关闭",
+    "relation": "输出为",
+    "tail": "LFrtFogLghtSts == 0x0 (OFF)",
+    "sources": [
+      "outer_lamp_ssts_0247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前雾灯故障状态设置为正常",
+    "relation": "输出为",
+    "tail": "LFrtFogLghtFltSts == 0x1 (True)",
+    "sources": [
+      "outer_lamp_ssts_0247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前雾灯错误状态设置为错误",
+    "relation": "输出为",
+    "tail": "FrontFogLightErrorStatus.FrontFogLightErrorSta{InstanceID=3} == 0x1 (Error)",
+    "sources": [
+      "outer_lamp_ssts_0247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前雾灯恢复输出",
+    "relation": "复位条件",
+    "tail": "检测到短路恢复",
+    "sources": [
+      "outer_lamp_ssts_0247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前位置灯点亮或熄灭",
+    "relation": "触发条件",
+    "tail": "SidePositionLightReq == 0x1",
+    "sources": [
+      "outer_lamp_ssts_0248"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前位置灯熄灭",
+    "relation": "触发条件",
+    "tail": "SidePositionLightReq == 0x0",
+    "sources": [
+      "outer_lamp_ssts_0248"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前位置灯状态为亮",
+    "relation": "依赖于",
+    "tail": "SidePositionLightStatus == ON",
+    "sources": [
+      "outer_lamp_ssts_0248"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前位置灯状态为灭",
+    "relation": "依赖于",
+    "tail": "SidePositionLightStatus == OFF",
+    "sources": [
+      "outer_lamp_ssts_0248"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PosLamp_RH_HSD 接口输出",
+    "relation": "输出为",
+    "tail": "RHA (Right Headlamp Assembly)",
+    "sources": [
+      "outer_lamp_ssts_0248"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlSidePositionLight.SidePositionLightReq 接口输入",
+    "relation": "输入为",
+    "tail": "ICB/LHZCU (Integrated Control Box / Left Headlight Zone Control Unit)",
+    "sources": [
+      "outer_lamp_ssts_0248"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus 接口输出",
+    "relation": "输出为",
+    "tail": "ICB/LHZCU (Integrated Control Box / Left Headlight Zone Control Unit)",
+    "sources": [
+      "outer_lamp_ssts_0248"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "技术规范编制",
+    "relation": "前提条件",
+    "tail": "部门信息已填写",
+    "sources": [
+      "outer_lamp_ssts_0250"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "技术规范审核",
+    "relation": "前提条件",
+    "tail": "编制阶段已完成 且 信息完整",
+    "sources": [
+      "outer_lamp_ssts_0250"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "技术规范批准",
+    "relation": "前提条件",
+    "tail": "审核阶段已完成 且 信息完整",
+    "sources": [
+      "outer_lamp_ssts_0250"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

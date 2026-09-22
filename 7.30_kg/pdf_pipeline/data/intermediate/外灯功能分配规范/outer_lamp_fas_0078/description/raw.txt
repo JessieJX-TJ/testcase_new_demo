@@ -1,0 +1,46 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Control and Status Monitoring",
+  "row_semantics": "Each row represents a specific service interface for controlling or monitoring the status of direction lights (left front, right front).",
+  "column_semantics": {
+    "Column 1": "Function/Service Name (e.g., DirectionLight.ControlDirectionLight, DirectionLight.DirectionLightStatus)",
+    "Column 2": "Consumption Type (SOA - Service Oriented Architecture)",
+    "Column 3": "Controller/Module (LHZCU, RHZCU)",
+    "Column 4": "Unused/Reserved",
+    "Column 5": "Unused/Reserved",
+    "Column 6": "Hardware State"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ControlDirectionLight",
+      "type": "function",
+      "description": "Interface to control the right rear turn signal light (ON/OFF)"
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "function",
+      "description": "Interfaces to monitor the status of left front and right front turn signals"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightReq",
+      "type": "input_signal",
+      "description": "Parameter to control the direction light state (0x0=OFF, 0x1=ON)"
+    },
+    {
+      "name": "DirectionLightSta",
+      "type": "output_signal",
+      "description": "Parameter indicating the current status of the direction light (0x0=OFF, 0x1=ON, 0x2=Unknown)"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for controlling and monitoring the status of vehicle direction lights, enabling test cases to verify the correct activation/deactivation of lights and accurate status reporting.",
+  "uncertain_points": []
+}
+```

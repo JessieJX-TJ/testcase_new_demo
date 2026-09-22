@@ -1,0 +1,60 @@
+{
+  "table_type": "logic_table",
+  "topic": "右后转向灯控制逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，系统如何检测触发条件并执行相应动作，最终达到退出条件的过程。",
+  "column_semantics": {
+    "Column1": "条件/动作阶段（如前置条件、触发条件、执行动作、退出条件）",
+    "Column2": "具体的条件或动作描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RRDILghtDrvMdl",
+      "type": "Controller/Module",
+      "description": "右后转向灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlDircnLghtHwDrvEnPrm",
+      "value": "==1",
+      "description": "硬件驱动使能参数为1"
+    },
+    {
+      "name": "右后转向灯状态",
+      "value": "输出状态",
+      "description": "右后转向灯处于输出状态"
+    },
+    {
+      "name": "检测到开路恢复",
+      "description": "检测到右后转向灯开路故障已恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RRDircnLghtSts_HW",
+      "value": "0x0 (Off)",
+      "description": "发送指令关闭右后转向灯硬件状态"
+    },
+    {
+      "name": "RRDircnLghtFltsts_HW",
+      "value": "0x1 (True)",
+      "description": "反馈右后转向灯故障状态为真（即存在故障）"
+    },
+    {
+      "name": "DTC B104A 13",
+      "value": "",
+      "description": "置位诊断代码B104A 13，表示检测到转向灯相关故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC B104A 13",
+      "description": "右后转向灯开路故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证右后转向灯在特定前置条件下（如硬件使能、灯处于输出状态）的控制逻辑，包括检测开路故障、发送关闭指令、反馈故障状态以及置位诊断代码的功能。",
+  "uncertain_points": []
+}

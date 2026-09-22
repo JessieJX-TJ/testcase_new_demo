@@ -1,0 +1,54 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "整车电子系统中手套箱灯控制逻辑的功能描述与分配",
+  "row_semantics": "每行代表一个独立的逻辑模块或功能单元，描述其具体功能及其在系统中的归属。",
+  "column_semantics": {
+    "逻辑模块名称": "定义了具体的逻辑模块或功能单元的名称，包括其英文缩写和中文描述。",
+    "逻辑块功能描述": "详细说明了该逻辑模块的功能，即它如何响应输入并产生输出。",
+    "分配的子系统/物理模块": "指明了该逻辑模块所属的子系统或物理模块，通常是控制器或功能组的名称。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "GlvBxLampRHCtrl",
+      "type": "controller_module",
+      "description": "手套箱灯应用控制模块，负责接收开关信号并进行点亮熄灭控制。"
+    },
+    {
+      "name": "GlvBxLampDrv",
+      "type": "controller_module",
+      "description": "手套箱灯驱动模块，负责根据控制请求驱动灯的实际点亮和熄灭。"
+    },
+    {
+      "name": "RHZCU",
+      "type": "subsystem",
+      "description": "车身控制单元，分配给GlvBxLampRHCtrl模块，可能包含相关的控制逻辑和接口。"
+    },
+    {
+      "name": "内灯子系统 (RHZCU)",
+      "type": "subsystem",
+      "description": "内灯子系统，分配给GlvBxLampDrv模块，负责实际的灯光驱动和管理。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "手套箱灯开关信号",
+      "type": "input_signal",
+      "description": "来自手套箱灯开关的控制信号，用于触发点亮或熄灭操作。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "手套箱灯状态",
+      "type": "output_signal",
+      "description": "手套箱灯的实际点亮或熄灭状态，由GlvBxLampDrv模块驱动。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证手套箱灯控制逻辑的功能正确性，包括开关信号的识别、控制指令的生成以及灯光驱动的准确性。",
+  "uncertain_points": []
+}
+```

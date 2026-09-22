@@ -1,0 +1,97 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - Door Lamp Control Parameters",
+  "row_semantics": "Each row represents a specific control command or parameter setting for the door ambient lamp, including fade speed, on/off status, and color selection.",
+  "column_semantics": {
+    "Input": "The source of the control signal (e.g., LIN bus, RHZCU module).",
+    "LIN": "Signal from the Local Interconnect Network.",
+    "RHZCU": "Signal from the Right Hand Zone Control Unit.",
+    "DoorAmbtLampB_FR": "Signal for the front right door ambient lamp brightness.",
+    "RHZCU_LIN4": "Signal from RHZCU via LIN4.",
+    "内灯SSTS": "Internal lighting subsystem status."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorFR2LampFadeSpdCmd_1",
+      "type": "function",
+      "description": "Controls the fade speed of the front right door ambient lamp."
+    },
+    {
+      "name": "DoorFR3LampOnOff_1",
+      "type": "function",
+      "description": "Controls the on/off state of the front right door ambient lamp."
+    },
+    {
+      "name": "DoorFR3LampColCmd_1",
+      "type": "function",
+      "description": "Controls the color of the front right door ambient lamp."
+    },
+    {
+      "name": "Rate2 to Rate15",
+      "type": "mode",
+      "description": "Different breathing modes with varying cycle rates for the ambient lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Command Value",
+      "description": "Determines the action based on the value: 0 stops breathing, other values trigger mode changes."
+    },
+    {
+      "name": "Breathing Mode",
+      "description": "Defines the cycle rate and pattern of the ambient lamp's breathing effect."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorAmbtLampB_FR",
+      "type": "signal",
+      "description": "Output signal controlling the brightness of the front right door ambient lamp."
+    },
+    {
+      "name": "DoorAm btLampC_FR",
+      "type": "signal",
+      "description": "Output signal controlling the color of the front right door ambient lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Fade Speed",
+      "description": "Time required for the lamp to transition from current to target state.",
+      "values": {
+        "default": "2000ms",
+        "spd1": "300ms",
+        "spd2": "100ms (reserved)",
+        "spd3": "0 (reserved)"
+      }
+    },
+    {
+      "name": "Breathing Rates",
+      "description": "Cycle times for different breathing modes.",
+      "values": {
+        "Rate2": "1s",
+        "Rate3": "1s",
+        "Rate4": "2s",
+        "Rate5": "2.4s",
+        "Rate6": "3s",
+        "Rate7": "3.5s",
+        "Rate8": "4s",
+        "Rate9": "4.5s",
+        "Rate10": "5s",
+        "Rate11": "6s",
+        "Rate12": "7s",
+        "Rate13": "8s",
+        "Rate14": "10s",
+        "Rate15": "12s"
+      }
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters and commands for controlling the front right door ambient lamp's breathing modes, fade speeds, on/off states, and colors, which can be used to verify the correct implementation of interior lighting control logic in the vehicle's electronic system.",
+  "uncertain_points": [
+    "The exact timing behavior for spd2 and spd3 is not fully defined (only '能力预留' is mentioned for spd2).",
+    "The specific mapping between color codes (0x00-0xFF) and actual RGB coordinates is not provided."
+  ]
+}

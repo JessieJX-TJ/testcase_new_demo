@@ -1,0 +1,443 @@
+[
+  {
+    "head": "DoorFL3LampBrthngCmd_l",
+    "relation": "前提条件",
+    "tail": "不同呼吸模式切换时，立即停止当前呼吸，切换下一呼吸模式",
+    "sources": [
+      "inner_lamp_ssts_0029",
+      "inner_lamp_ssts_0030",
+      "inner_lamp_ssts_0034",
+      "inner_lamp_ssts_0041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampFadeSpdCmd_1",
+    "relation": "触发条件",
+    "tail": "RHZCU_LIN5通道接收到有效指令值（0x0–0x3）",
+    "sources": [
+      "inner_lamp_ssts_0030"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampFadeSpdCmd_1",
+    "relation": "抑制条件",
+    "tail": "指令值为0x0时停止呼吸/闪烁",
+    "sources": [
+      "inner_lamp_ssts_0030"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHBLampOnOff_1",
+    "relation": "触发条件",
+    "tail": "RHZCU_LIN5通道接收到0x1（ON）",
+    "sources": [
+      "inner_lamp_ssts_0030"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHBLampColorCmd_1",
+    "relation": "输入为",
+    "tail": "RHZCU_LIN5通道接收到有效颜色值（0x01–0xFF）",
+    "sources": [
+      "inner_lamp_ssts_0030"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHBLampColorCmd_1",
+    "relation": "状态保持条件",
+    "tail": "指令值为0x0或未定义颜色号时，保持当前颜色不变",
+    "sources": [
+      "inner_lamp_ssts_0030",
+      "inner_lamp_ssts_0034"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHBLampBrtnsCmd_1",
+    "relation": "输入为",
+    "tail": "RHZCU_LIN5通道接收到有效亮度值（0x01–0x64）",
+    "sources": [
+      "inner_lamp_ssts_0030"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHBLampBrtnsCmd_1",
+    "relation": "状态保持条件",
+    "tail": "指令值为0x0时，保持当前亮度不变",
+    "sources": [
+      "inner_lamp_ssts_0030",
+      "inner_lamp_ssts_0034"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHBLampBrthngCmd_1",
+    "relation": "触发条件",
+    "tail": "RHZCU_LIN5通道接收到0x1（Rate1）或0x2–0xF（RateX）",
+    "sources": [
+      "inner_lamp_ssts_0030",
+      "inner_lamp_ssts_0041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHBLampBrthngCmd_1",
+    "relation": "抑制条件",
+    "tail": "指令值为0x0（Rate0）时停止呼吸闪烁",
+    "sources": [
+      "inner_lamp_ssts_0030",
+      "inner_lamp_ssts_0041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHBLampBrthngCmd_1",
+    "relation": "输出为",
+    "tail": "RoofAmbtLamp_B_LH（呼吸亮度曲线输出）",
+    "sources": [
+      "inner_lamp_ssts_0041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHBLampFadeSpdCmd_1",
+    "relation": "输入为",
+    "tail": "RHZCU_LIN5通道接收到Spd0–Spd3（即0x0–0x3）",
+    "sources": [
+      "inner_lamp_ssts_0030",
+      "inner_lamp_ssts_0041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHBLampFadeSpdCmd_1",
+    "relation": "超时约束",
+    "tail": "默认速度Spd0对应切换时间为2000ms",
+    "sources": [
+      "inner_lamp_ssts_0035",
+      "inner_lamp_ssts_0041",
+      "inner_lamp_ssts_0072",
+      "inner_lamp_ssts_0392"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR3Lamp",
+    "relation": "前提条件",
+    "tail": "接收到对应的呼吸周期指令",
+    "sources": [
+      "inner_lamp_ssts_0034"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR3Lamp",
+    "relation": "抑制条件",
+    "tail": "指令值为0x0时停止呼吸",
+    "sources": [
+      "inner_lamp_ssts_0034"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR3Lamp",
+    "relation": "触发条件",
+    "tail": "不同呼吸模式切换时",
+    "sources": [
+      "inner_lamp_ssts_0034",
+      "inner_lamp_ssts_0041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4Lamp",
+    "relation": "触发条件",
+    "tail": "接收到DoorRR4LampOnOff_1_1_ON命令（ON）或DoorRR4LampOnOff_1_0_OFF命令（OFF）",
+    "sources": [
+      "inner_lamp_ssts_0034"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4Lamp",
+    "relation": "触发条件",
+    "tail": "门灯开启且接收到非0值的颜色/亮度指令",
+    "sources": [
+      "inner_lamp_ssts_0034"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4Lamp",
+    "relation": "状态保持条件",
+    "tail": "指令值为0x0或未定义颜色号时，保持当前颜色",
+    "sources": [
+      "inner_lamp_ssts_0034"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4LampBrtnsCmd_1",
+    "relation": "输入为",
+    "tail": "0x00表示无请求（No Request）",
+    "sources": [
+      "inner_lamp_ssts_0034"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowIPALampOnOff_1",
+    "relation": "触发条件",
+    "tail": "接收到0x0（OFF）或0x1（ON）",
+    "sources": [
+      "inner_lamp_ssts_0035"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowIPALampOnOff_1",
+    "relation": "前提条件",
+    "tail": "同时接收到非0值的颜色/亮度指令时，氛围灯点亮（ON）",
+    "sources": [
+      "inner_lamp_ssts_0035"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowIPALampColorCmd_1",
+    "relation": "输入为",
+    "tail": "0x00表示无请求（No Request），0x01–0xFF为有效颜色值",
+    "sources": [
+      "inner_lamp_ssts_0035"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowIPALampBrtnsCmd_1",
+    "relation": "输入为",
+    "tail": "0x00表示无请求（No Request），0x01–0x64为有效亮度值",
+    "sources": [
+      "inner_lamp_ssts_0035"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowIPALampBrthngCmd_1",
+    "relation": "输入为",
+    "tail": "0x00表示无请求（No Request），0x01–0x0B为有效呼吸速率值",
+    "sources": [
+      "inner_lamp_ssts_0035"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPCLampFadeSpdCmd_1",
+    "relation": "输入为",
+    "tail": "Spd0（0x0）至Spd3（0x3）",
+    "sources": [
+      "inner_lamp_ssts_0035"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头颜色切换",
+    "relation": "依赖于",
+    "tail": "氛围灯颜色指令（LowIPALampColorCmd_1）",
+    "sources": [
+      "inner_lamp_ssts_0035"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头亮度调节",
+    "relation": "依赖于",
+    "tail": "氛围灯亮度指令（LowIPALampBrtnsCmd_1）",
+    "sources": [
+      "inner_lamp_ssts_0035"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0 Platform",
+    "relation": "包含子功能",
+    "tail": "Interior Lighting Sub System",
+    "sources": [
+      "inner_lamp_ssts_0031",
+      "inner_lamp_ssts_0130",
+      "inner_lamp_ssts_0261",
+      "inner_lamp_ssts_0422",
+      "inner_lamp_ssts_0465"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SSTS-IBD10",
+    "relation": "控制对象",
+    "tail": "Interior Lighting Sub System",
+    "sources": [
+      "inner_lamp_ssts_0031",
+      "inner_lamp_ssts_0130",
+      "inner_lamp_ssts_0272",
+      "inner_lamp_ssts_0422",
+      "inner_lamp_ssts_0465"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智己汽车",
+    "relation": "包含子功能",
+    "tail": "Interior Lighting Sub System",
+    "sources": [
+      "inner_lamp_ssts_0032",
+      "inner_lamp_ssts_0086",
+      "inner_lamp_ssts_0225",
+      "inner_lamp_ssts_0260",
+      "inner_lamp_ssts_0283",
+      "inner_lamp_ssts_0320",
+      "inner_lamp_ssts_0330",
+      "inner_lamp_ssts_0354",
+      "inner_lamp_ssts_0420",
+      "inner_lamp_ssts_0445",
+      "inner_lamp_ssts_0457",
+      "inner_lamp_ssts_0518",
+      "inner_lamp_ssts_0551",
+      "inner_lamp_ssts_0040",
+      "inner_lamp_ssts_0070",
+      "inner_lamp_ssts_0194",
+      "inner_lamp_ssts_0313",
+      "inner_lamp_ssts_0369"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0 Platform",
+    "relation": "控制对象",
+    "tail": "Interior Lighting Sub System",
+    "sources": [
+      "inner_lamp_ssts_0040",
+      "inner_lamp_ssts_0070",
+      "inner_lamp_ssts_0101",
+      "inner_lamp_ssts_0162",
+      "inner_lamp_ssts_0194",
+      "inner_lamp_ssts_0313",
+      "inner_lamp_ssts_0369",
+      "inner_lamp_ssts_0434"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯、车身控制、电动尾门等功能模块",
+    "relation": "触发条件",
+    "tail": "供电电压处于正常范围（9V–16V）",
+    "sources": [
+      "inner_lamp_ssts_0038"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯、车身控制、电动尾门等功能模块",
+    "relation": "抑制条件",
+    "tail": "供电电压处于异常范围：低压（<6V）、欠压（6V–9V）、过压（16V–18V）、高压（>18V）",
+    "sources": [
+      "inner_lamp_ssts_0038"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯、车身控制、电动尾门等功能模块",
+    "relation": "输入为",
+    "tail": "供电电压状态",
+    "sources": [
+      "inner_lamp_ssts_0038"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯、车身控制、电动尾门等功能模块",
+    "relation": "输出为",
+    "tail": "使能或禁止",
+    "sources": [
+      "inner_lamp_ssts_0038"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数",
+    "relation": "前提条件",
+    "tail": "配置项（Item）、描述（Description）、参数范围（Range）、转换定义（Conversion）、默认值（Default）均为NA",
+    "sources": [
+      "inner_lamp_ssts_0039",
+      "inner_lamp_ssts_0244",
+      "inner_lamp_ssts_0297",
+      "inner_lamp_ssts_0340",
+      "inner_lamp_ssts_0376",
+      "inner_lamp_ssts_0475",
+      "inner_lamp_ssts_0535",
+      "inner_lamp_ssts_0573"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统状态保持",
+    "relation": "状态保持条件",
+    "tail": "保持源/原因：NA",
+    "sources": [
+      "inner_lamp_ssts_0036"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "备注信息处理",
+    "relation": "输入为",
+    "tail": "备注：NA",
+    "sources": [
+      "inner_lamp_ssts_0036"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

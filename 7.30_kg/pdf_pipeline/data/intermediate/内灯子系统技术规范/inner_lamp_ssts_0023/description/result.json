@@ -1,0 +1,71 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System (SSTS) - Z-ONE-3.0 Platform",
+  "row_semantics": "Each row represents a specific configuration or mode for the interior lighting system, including fade speed, on/off request, and color command parameters.",
+  "column_semantics": {
+    "Rate Columns": "Different rates define the breathing cycle period for the interior lights, ranging from 500ms to 12s.",
+    "Input Columns": "Indicate the communication interface (e.g., LIN, LHZCU, FtwlAmbtLamp_FR, LHZCU_LIN5) for each parameter.",
+    "Controller/Module Columns": "Identify the relevant controller/module responsible for processing the signal (e.g., LHZCU, IPAmbtLamp_M).",
+    "Description Column": "Provides a textual explanation of the parameter's function and behavior."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "FtwlIFRLampFadeSpdCmd_1",
+      "type": "Parameter",
+      "description": "Controls the fade speed of the interior ambient light during breathing cycles."
+    },
+    {
+      "name": "IPMLampOnOff_1",
+      "type": "Parameter",
+      "description": "Requests the on/off state of the interior perimeter lamp."
+    },
+    {
+      "name": "IPMLampColorCmd_1",
+      "type": "Parameter",
+      "description": "Specifies the color command for the interior perimeter lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Mode",
+      "description": "Various breathing modes are defined by different rate periods (e.g., Rate0 to Rate15)."
+    },
+    {
+      "name": "Fade Speed",
+      "description": "Defined by FtwlIFRLampFadeSpdCmd_1 with values from Spd0 to Spd3."
+    },
+    {
+      "name": "On/Off Request",
+      "description": "Defined by IPMLampOnOff_1 with values 0 (OFF) and 1 (ON)."
+    },
+    {
+      "name": "Color Command",
+      "description": "Defined by IPMLampColorCmd_1 with values indicating no request or specific color values."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Light Behavior",
+      "description": "The resulting light behavior based on the configured parameters, such as breathing cycle, fade speed, on/off state, and color."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Fade Time",
+      "description": "Default fade time is 2000ms (Spd0), with other speeds available (Spd1: 300ms, Spd2: 100ms).",
+      "unit": "ms"
+    },
+    {
+      "name": "Breathing Period",
+      "description": "Defined by various rates from 500ms to 12s.",
+      "unit": "s"
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters and configurations for the interior lighting system's breathing modes, fade speeds, on/off states, and color commands. It is used to verify that the system correctly interprets and executes these commands across different controllers and interfaces.",
+  "uncertain_points": [
+    "The exact implementation details of how the 'new' breathing modes differ from the original ones are not specified in the table."
+  ]
+}

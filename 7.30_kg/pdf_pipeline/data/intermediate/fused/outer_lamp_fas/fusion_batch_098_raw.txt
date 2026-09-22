@@ -1,0 +1,452 @@
+```json
+[
+  {
+    "head": "DippedBeamLight",
+    "relation": "depends_on",
+    "tail": "DippedBeamLight.DippedBeamLightStatus.DippedBeamLightSta",
+    "sources": ["outer_lamp_fas_1046", "outer_lamp_fas_1056"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight",
+    "relation": "depends_on",
+    "tail": "SidePositionLight.SidePositionLightStatus.SidePositionLightSta",
+    "sources": ["outer_lamp_fas_1046"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight",
+    "relation": "trigger_condition",
+    "tail": "RearFogLightSwStatus.RearFogLightSwSta = 0x1",
+    "sources": ["outer_lamp_fas_1047"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight",
+    "relation": "depends_on",
+    "tail": "RearFogLight.RearFogLightState.RearFogLightSta = 0x1",
+    "sources": ["outer_lamp_fas_1047"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightIndicatorDisplay",
+    "relation": "trigger_condition",
+    "tail": "RearFogLight indicator display enabled",
+    "sources": ["outer_lamp_fas_1047"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightStatusFeedbackToICB",
+    "relation": "trigger_condition",
+    "tail": "LHZCU sends RearFogLight status/fault status to ICB via SOA",
+    "sources": ["outer_lamp_fas_1047"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightSynchronization",
+    "relation": "trigger_condition",
+    "tail": "Left and right RearFogLight must illuminate synchronously; max delay ≤ 40 ms",
+    "sources": ["outer_lamp_fas_1047"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightRequestResend",
+    "relation": "trigger_condition",
+    "tail": "Resend up to 3 times at ≤50 ms interval",
+    "sources": ["outer_lamp_fas_1047"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightRequestResend",
+    "relation": "timeout_constraint",
+    "tail": "Resend up to 3 times at ≤50 ms interval",
+    "sources": ["outer_lamp_fas_1047"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightRequestResendStop",
+    "relation": "trigger_condition",
+    "tail": "Stop sending after 3 resends without success confirmation",
+    "sources": ["outer_lamp_fas_1047"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtFltsts",
+    "relation": "outputs",
+    "tail": "0x0 = RLSideLghtFltsts_0_False",
+    "sources": ["outer_lamp_fas_1048"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtFltsts",
+    "relation": "outputs",
+    "tail": "0x1 = RLSideLghtFltsts_1_True",
+    "sources": ["outer_lamp_fas_1048"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtFltsts",
+    "relation": "outputs",
+    "tail": "0x0 = RRSideLghtFltsts_0_False",
+    "sources": ["outer_lamp_fas_1048"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtFltsts",
+    "relation": "outputs",
+    "tail": "0x1 = RRSideLghtFltsts_1_True",
+    "sources": ["outer_lamp_fas_1048"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus",
+    "relation": "input",
+    "tail": "{DirectionLightErrorSta}",
+    "sources": ["outer_lamp_fas_1055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus",
+    "relation": "outputs",
+    "tail": "0x0 = No Error",
+    "sources": ["outer_lamp_fas_1055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus",
+    "relation": "outputs",
+    "tail": "0x1 = Error",
+    "sources": ["outer_lamp_fas_1055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus",
+    "relation": "outputs",
+    "tail": "0x2 = Unknown",
+    "sources": ["outer_lamp_fas_1055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "NetworkFaultStatus",
+    "relation": "depends_on",
+    "tail": "SOA",
+    "sources": ["outer_lamp_fas_1055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "NetworkFaultStatus",
+    "relation": "depends_on",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_1055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "NetworkFaultStatus",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_1055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightStatus",
+    "relation": "trigger_condition",
+    "tail": "{DippedBeamLight.DippedBeamLightStatus.DippedBeamLightSta} (InstanceID=3)",
+    "sources": ["outer_lamp_fas_1056"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightStatus",
+    "relation": "trigger_condition",
+    "tail": "{DippedBeamLight.DippedBeamLightStatus.DippedBeamLightSta} (InstanceID=4)",
+    "sources": ["outer_lamp_fas_1056"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightErrorStatus",
+    "relation": "trigger_condition",
+    "tail": "{DippedBeamLight.DippedBeamLightErrorStatus.DippedBeamLightErrorSta} (InstanceID=1)",
+    "sources": ["outer_lamp_fas_1056"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightErrorStatus",
+    "relation": "trigger_condition",
+    "tail": "{DippedBeamLight.DippedBeamLightErrorStatus.DippedBeamLightErrorSta} (InstanceID=2)",
+    "sources": ["outer_lamp_fas_1056"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightErrorStatus",
+    "relation": "trigger_condition",
+    "tail": "{DippedBeamLight.DippedBeamLightErrorStatus.DippedBeamLightErrorSta} (InstanceID=3)",
+    "sources": ["outer_lamp_fas_1056"],
+    "conflict": true,
+    "conflict_note": "InstanceID conflict: same signal DippedBeamLightErrorStatus mapped to InstanceID=1,2,3 — ambiguous mapping; likely indicates left/right/both or error type multiplexing not clarified"
+  },
+  {
+    "head": "DippedBeamLightErrorStatus",
+    "relation": "trigger_condition",
+    "tail": "{DippedBeamLight.DippedBeamLightErrorStatus.DippedBeamLightErrorSta} (InstanceID=4)",
+    "sources": ["outer_lamp_fas_1056"],
+    "conflict": true,
+    "conflict_note": "InstanceID conflict: same signal DippedBeamLightErrorStatus mapped to InstanceID=1,2,3,4 — ambiguous mapping; likely indicates left/right/both or error type multiplexing not clarified"
+  },
+  {
+    "head": "HMIHighBeamAssistEnableDisplay",
+    "relation": "depends_on",
+    "tail": "ICB personalization subsystem sends HighBeamAssistEnable signal",
+    "sources": ["outer_lamp_fas_1057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMISendHighBeamAssistEnableToICB",
+    "relation": "prerequisite",
+    "tail": "User enables High Beam Assist via HMI",
+    "sources": ["outer_lamp_fas_1057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMIRoofSpotLightFaultDisplay",
+    "relation": "depends_on",
+    "tail": "RoofSpotLightErrSta = 0x1 from LHZCU",
+    "sources": ["outer_lamp_fas_1057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DisclaimerPopup",
+    "relation": "trigger_condition",
+    "tail": "First-time user activation of High Beam Assist switch after vehicle power-on",
+    "sources": ["outer_lamp_fas_1057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DisclaimerPopupSuppression",
+    "relation": "suppression_condition",
+    "tail": "User selects 'Do not show again'",
+    "sources": ["outer_lamp_fas_1057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HighBeamAssistEnableOnlyInPRange",
+    "relation": "prerequisite",
+    "tail": "Enable/disable uses two separate buttons",
+    "sources": ["outer_lamp_fas_1057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HighBeamAssistEnableNoGearCheck",
+    "relation": "prerequisite",
+    "tail": "Enable/disable uses a single toggle button",
+    "sources": ["outer_lamp_fas_1057"],
+    "conflict": true,
+    "conflict_note": "Mutually exclusive prerequisites for same function: 'only in P' vs 'no gear check' depending on UI design — represents design variant, not logical conflict, but requires traceability to UI configuration"
+  },
+  {
+    "head": "RoofSpotLightErrSta = 0x1",
+    "relation": "fault_response",
+    "tail": "HMIRoofSpotLightFaultDisplay",
+    "sources": ["outer_lamp_fas_1057"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightStatus",
+    "relation": "input",
+    "tail": "RearFogLightSts = 0x1",
+    "sources": ["outer_lamp_fas_1058"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightStatus",
+    "relation": "input",
+    "tail": "RearFogLightSts = 0x0",
+    "sources": ["outer_lamp_fas_1058"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightStatus",
+    "relation": "input",
+    "tail": "RearFogLightSts = 0x2",
+    "sources": ["outer_lamp_fas_1058"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightErrorStatus",
+    "relation": "input",
+    "tail": "RearFogLightErrorSta = 0x0",
+    "sources": ["outer_lamp_fas_1058"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightErrorStatus",
+    "relation": "input",
+    "tail": "RearFogLightErrorSta = 0x1",
+    "sources": ["outer_lamp_fas_1058"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightErrorStatus",
+    "relation": "input",
+    "tail": "RearFogLightErrorSta = 0x2",
+    "sources": ["outer_lamp_fas_1058"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightErrorStatusSubscription",
+    "relation": "prerequisite",
+    "tail": "Access RearFogLightErrorStatus interface",
+    "sources": ["outer_lamp_fas_1058"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightStatusSubscription",
+    "relation": "prerequisite",
+    "tail": "Access RearFogLightStatus interface",
+    "sources": ["outer_lamp_fas_1058"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DaytimeRunningLightSwitchStatusDisplayOff",
+    "relation": "input",
+    "tail": "{ExteriorLightSwitchProcess.DayRunningLghtSwStatus.DayRunningLghtSwSta} = 0x0",
+    "sources": ["outer_lamp_fas_1059"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DaytimeRunningLightSwitchStatusDisplayOn",
+    "relation": "input",
+    "tail": "{ExteriorLightSwitchProcess.DayRunningLghtSwStatus.DayRunningLghtSwSta} = 0x1",
+    "sources": ["outer_lamp_fas_1059"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DaytimeRunningLightFaultPopup",
+    "relation": "prerequisite",
+    "tail": "DayTmRunngLghtFlsts = 0x0 (False)",
+    "sources": ["outer_lamp_fas_1059"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DaytimeRunningLightFaultPopup",
+    "relation": "depends_on",
+    "tail": "HMI reads DaytimeRunningLight fault status via service interface or CAN signal",
+    "sources": ["outer_lamp_fas_1059"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightErrSta = 0x1",
+    "relation": "trigger_condition",
+    "tail": "DaytimeRunningLightFaultPopup",
+    "sources": ["outer_lamp_fas_1059"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightSwitchOn",
+    "relation": "trigger_condition",
+    "tail": "Vehicle power-off while hazard warning light is active",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": true,
+    "conflict_note": "Same condition triggers three contradictory outcomes: 'keep function', 'exit function', and 'switch remains active' — suggests ambiguous state management during power-down; requires clarification of intended behavior (e.g., retain state vs. force deactivation)"
+  },
+  {
+    "head": "HazardWarningLightFunctionKeep",
+    "relation": "prerequisite",
+    "tail": "Vehicle power-off while hazard warning light is active",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": true,
+    "conflict_note": "Same condition triggers three contradictory outcomes: 'keep function', 'exit function', and 'switch remains active' — suggests ambiguous state management during power-down; requires clarification of intended behavior (e.g., retain state vs. force deactivation)"
+  },
+  {
+    "head": "HazardWarningLightFunctionExit",
+    "relation": "suppression_condition",
+    "tail": "Vehicle power-off while hazard warning light is active",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": true,
+    "conflict_note": "Same condition triggers three contradictory outcomes: 'keep function', 'exit function', and 'switch remains active' — suggests ambiguous state management during power-down; requires clarification of intended behavior (e.g., retain state vs. force deactivation)"
+  },
+  {
+    "head": "HazardWarningLightSource",
+    "relation": "outputs",
+    "tail": "LHZCU output illumination",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightSource",
+    "relation": "outputs",
+    "tail": "ZXD signal for HMI display",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightSource",
+    "relation": "outputs",
+    "tail": "VMCU drives lamp illumination",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightSource",
+    "relation": "outputs",
+    "tail": "RHZCU drives lamp illumination",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightSource",
+    "relation": "outputs",
+    "tail": "LHA drives lamp illumination",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

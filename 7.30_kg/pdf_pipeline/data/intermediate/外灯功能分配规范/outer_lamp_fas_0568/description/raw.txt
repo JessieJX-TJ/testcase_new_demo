@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯控制信号定义",
+  "row_semantics": "每行定义一个数字控制码及其对应的外灯控制状态",
+  "column_semantics": "无列，单列内容为控制码和对应的功能描述",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit，车身照明与危险警示控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DILampsCtrl_0_OFF",
+      "type": "input_signal",
+      "description": "数字输入外灯控制信号，值为0x0，表示关闭外灯"
+    },
+    {
+      "name": "DILampsCtrl_1_Left_ON",
+      "type": "input_signal",
+      "description": "数字输入外灯控制信号，值为0x1，表示左侧外灯开启"
+    },
+    {
+      "name": "DILampsCtrl_2_Right_ON",
+      "type": "input_signal",
+      "description": "数字输入外灯控制信号，值为0x2，表示右侧外灯开启"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "iHzrdLampsCtrl_0_No_Request",
+      "type": "internal_signal",
+      "description": "LHZCU内部信号，表示无危险警示灯请求状态"
+    },
+    {
+      "name": "iHzrdLampsCtrl_1_OFF",
+      "type": "internal_signal",
+      "description": "LHZCU内部信号，表示左侧危险警示灯关闭状态"
+    },
+    {
+      "name": "iHzrdLampsCtrl_2_ON",
+      "type": "internal_signal",
+      "description": "LHZCU内部信号，表示右侧危险警示灯开启状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了LHZCU控制器接收的数字外灯控制信号（DILampsCtrl）与内部危险警示灯控制信号（iHzrdLampsCtrl）之间的映射关系，可用于验证外灯控制信号输入到LHZCU后，其内部危险警示灯控制信号是否正确响应。",
+  "uncertain_points": []
+}
+```

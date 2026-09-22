@@ -1,0 +1,81 @@
+{
+  "table_type": "logic_table",
+  "topic": "车辆外灯控制模式切换逻辑",
+  "row_semantics": "表格定义了在特定前置条件满足时，触发特定动作以实现车辆外灯控制模式的切换。",
+  "column_semantics": "表格分为两列，左侧为条件描述和触发动作的分类标题，右侧为具体的条件和动作内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "车辆外灯控制模块",
+      "type": "controller",
+      "description": "负责管理车辆外部灯光状态的电子控制单元"
+    },
+    {
+      "name": "制动灯开关预处理模块",
+      "type": "module",
+      "description": "处理制动灯开关信号的子系统"
+    },
+    {
+      "name": "制动踏板位置监测子系统",
+      "type": "system",
+      "description": "监测制动踏板位置的传感器或子系统"
+    },
+    {
+      "name": "电动车辆再生制动系统",
+      "type": "system",
+      "description": "管理电动车辆再生制动功能的系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "制动灯激活状态",
+      "type": "input_signal",
+      "description": "表示制动灯当前是否处于点亮状态"
+    },
+    {
+      "name": "ExtrLghtCtrlCmmntnTyp",
+      "type": "configuration_parameter",
+      "description": "外部灯光控制通信类型配置参数"
+    },
+    {
+      "name": "ExtrLghtStsCmmntnTyp",
+      "type": "configuration_parameter",
+      "description": "外部灯光状态通信类型配置参数"
+    },
+    {
+      "name": "BrkLghtSwReq",
+      "type": "input_signal",
+      "description": "制动灯开关请求信号"
+    },
+    {
+      "name": "EPTBrkPdlDscrtInptSts_1_BrakeApplied",
+      "type": "input_signal",
+      "description": "制动踏板位置检测输入信号，表示刹车已踩下"
+    },
+    {
+      "name": "CstRgtinBrkLgtReq",
+      "type": "input_signal",
+      "description": "再生制动请求信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "UsrMd",
+      "type": "output_signal",
+      "description": "用户模式输出信号，指示当前车辆外灯控制模式"
+    },
+    {
+      "name": "VehMd",
+      "type": "output_signal",
+      "description": "车辆模式输出信号，指示车辆整体运行模式"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了在特定条件下（如制动灯激活、通信类型配置等），车辆外灯控制模块如何根据输入信号的变化，将车辆外灯控制模式从VS模式切换到休眠、待机或运输模式的逻辑规则。可用于验证车辆外灯控制模块在不同场景下的模式切换功能是否符合设计要求。",
+  "uncertain_points": [
+    "具体通信协议细节未明确说明",
+    "各输入信号的具体数值范围未给出"
+  ]
+}

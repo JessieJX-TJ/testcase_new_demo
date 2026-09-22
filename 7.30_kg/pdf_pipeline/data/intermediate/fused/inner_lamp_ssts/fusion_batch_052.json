@@ -1,0 +1,453 @@
+[
+  {
+    "head": "MapLampDimSpd_1 Output Speed 2 (Door Open, Slow)",
+    "relation": "trigger_condition",
+    "tail": "MapLampXXDimSpd_1 Input = 0x1",
+    "sources": [
+      "inner_lamp_ssts_0574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampDimSpd_1 Output OFF",
+    "relation": "trigger_condition",
+    "tail": "MapLampXXDimSpd_1 Input = 0x0",
+    "sources": [
+      "inner_lamp_ssts_0574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR6LampXX_1",
+    "relation": "output_of",
+    "tail": "Right Front Door Speaker Ambient Lamp",
+    "sources": [
+      "inner_lamp_ssts_0575"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorAmbtLampF_FR",
+    "relation": "depends_on",
+    "tail": "Right Front Door Speaker Ambient Lamp",
+    "sources": [
+      "inner_lamp_ssts_0575"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampXX_1",
+    "relation": "output_of",
+    "tail": "Right Front Door Upper Trim Ambient Lamp",
+    "sources": [
+      "inner_lamp_ssts_0575"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorAmbtLampA_FR",
+    "relation": "depends_on",
+    "tail": "Right Front Door Upper Trim Ambient Lamp",
+    "sources": [
+      "inner_lamp_ssts_0575"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Enable",
+    "relation": "prerequisite",
+    "tail": "Supply Voltage Normal (9V–16V)",
+    "sources": [
+      "inner_lamp_ssts_0576"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Disable",
+    "relation": "prerequisite",
+    "tail": "Supply Voltage Low (<6V)",
+    "sources": [
+      "inner_lamp_ssts_0576"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Disable",
+    "relation": "prerequisite",
+    "tail": "Supply Voltage Under-voltage (6V–9V)",
+    "sources": [
+      "inner_lamp_ssts_0576"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Disable",
+    "relation": "prerequisite",
+    "tail": "Supply Voltage Over-voltage (16V–18V)",
+    "sources": [
+      "inner_lamp_ssts_0576"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting System Disable",
+    "relation": "prerequisite",
+    "tail": "Supply Voltage High (>18V)",
+    "sources": [
+      "inner_lamp_ssts_0576"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp ON",
+    "relation": "trigger_condition",
+    "tail": "FtwlLampFRCtrlCmd = 0x1 (Open)",
+    "sources": [
+      "inner_lamp_ssts_0577"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp OFF",
+    "relation": "trigger_condition",
+    "tail": "FtwlLampFRCtrlCmd = 0x0 (Close)",
+    "sources": [
+      "inner_lamp_ssts_0577"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Fade-in",
+    "relation": "depends_on",
+    "tail": "FtwlAmbtLamp_FR_HSD PWM from 0% to 100%",
+    "sources": [
+      "inner_lamp_ssts_0577"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Fade-out",
+    "relation": "depends_on",
+    "tail": "FtwlAmbtLamp_FR_HSD PWM from 100% to 0%",
+    "sources": [
+      "inner_lamp_ssts_0577"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Fade-in",
+    "relation": "timeout_constraint",
+    "tail": "Duration = FtwlAmbtLampLightupDelayPrm (default 2s)",
+    "sources": [
+      "inner_lamp_ssts_0577"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Fade-out",
+    "relation": "timeout_constraint",
+    "tail": "Duration = FtwlAmbtLampLightupDelayPrm (default 2s)",
+    "sources": [
+      "inner_lamp_ssts_0577"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Driver",
+    "relation": "fault_response",
+    "tail": "Detect Short/Open Circuit in Passenger Laser Welcome Lamp",
+    "sources": [
+      "inner_lamp_ssts_0577"
+    ],
+    "conflict": true,
+    "conflict_note": "Same head/relation but conflicting tail semantics: 'fault_response' vs 'suppression_condition' for identical fault — indicates functional ambiguity in spec: whether fault triggers shutdown (response) or prevents activation (suppression). Both retained with conflict flag."
+  },
+  {
+    "head": "Passenger Footwell Lamp Driver",
+    "relation": "suppression_condition",
+    "tail": "Detect Short/Open Circuit in Passenger Laser Welcome Lamp",
+    "sources": [
+      "inner_lamp_ssts_0577"
+    ],
+    "conflict": true,
+    "conflict_note": "Same head/relation but conflicting tail semantics: 'fault_response' vs 'suppression_condition' for identical fault — indicates functional ambiguity in spec: whether fault triggers shutdown (response) or prevents activation (suppression). Both retained with conflict flag."
+  },
+  {
+    "head": "Exterior Lighting Function",
+    "relation": "prerequisite",
+    "tail": "Parameter Range",
+    "sources": [
+      "inner_lamp_ssts_0578"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Module",
+    "relation": "prerequisite",
+    "tail": "Parameter Factor (Resolution)",
+    "sources": [
+      "inner_lamp_ssts_0578"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate System",
+    "relation": "prerequisite",
+    "tail": "Parameter Default Value",
+    "sources": [
+      "inner_lamp_ssts_0578"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Control Circuit Short to Ground",
+    "relation": "trigger_condition",
+    "tail": "1) Passenger Footwell Lamp Driver Active; 2) Drive Current > Threshold (TBD) A for 100ms",
+    "sources": [
+      "inner_lamp_ssts_0579"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Control Circuit Open Circuit",
+    "relation": "trigger_condition",
+    "tail": "1) Passenger Footwell Lamp Driver Active; 2) Drive Current < Threshold (TBD) A for 100ms",
+    "sources": [
+      "inner_lamp_ssts_0579"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Control Circuit Short to Ground",
+    "relation": "output",
+    "tail": "RMS Current > Threshold (TBD) A for 100ms",
+    "sources": [
+      "inner_lamp_ssts_0579"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Control Circuit Open Circuit",
+    "relation": "output",
+    "tail": "RMS Current < Threshold (TBD) A for 100ms",
+    "sources": [
+      "inner_lamp_ssts_0579"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Control Circuit Short to Ground",
+    "relation": "timeout_constraint",
+    "tail": "100ms",
+    "sources": [
+      "inner_lamp_ssts_0579"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Passenger Footwell Lamp Control Circuit Open Circuit",
+    "relation": "timeout_constraint",
+    "tail": "100ms",
+    "sources": [
+      "inner_lamp_ssts_0579"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem Configuration",
+    "relation": "depends_on",
+    "tail": "Z-ONE-3.0 Platform",
+    "sources": [
+      "inner_lamp_ssts_0580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lighting Intensity/Level Output",
+    "relation": "output_of",
+    "tail": "Parameter ID (e.g., 0x4040, 0x4080)",
+    "sources": [
+      "inner_lamp_ssts_0580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lighting Mode System State",
+    "relation": "depends_on",
+    "tail": "Parameter Value (e.g., 99, 98)",
+    "sources": [
+      "inner_lamp_ssts_0580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Parameter Value Exceeds Threshold",
+    "relation": "trigger_condition",
+    "tail": "Threshold Value (e.g., 79)",
+    "sources": [
+      "inner_lamp_ssts_0580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem Fault Response",
+    "relation": "fault_response",
+    "tail": "Parameter Value Anomaly",
+    "sources": [
+      "inner_lamp_ssts_0580"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Parameter Configuration",
+    "relation": "prerequisite",
+    "tail": "Parameter Factor (Resolution) Meets Accuracy Requirement",
+    "sources": [
+      "inner_lamp_ssts_0582"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Parameter Configuration",
+    "relation": "prerequisite",
+    "tail": "Parameter Default Value Correctly Set",
+    "sources": [
+      "inner_lamp_ssts_0582"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lighting Performance Parameter Value",
+    "relation": "depends_on",
+    "tail": "Time Axis or Event Sequence",
+    "sources": [
+      "inner_lamp_ssts_0583"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Performance Parameter Value",
+    "relation": "depends_on",
+    "tail": "Time Axis or Event Sequence",
+    "sources": [
+      "inner_lamp_ssts_0583"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate Performance Parameter Value",
+    "relation": "depends_on",
+    "tail": "Time Axis or Event Sequence",
+    "sources": [
+      "inner_lamp_ssts_0583"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampOnOff_1 = 0x1 (ON)",
+    "sources": [
+      "inner_lamp_ssts_0584",
+      "inner_lamp_ssts_0585"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampColorCmd_1 != 0x00 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0584"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampBrtnsCmd_1 != 0x00 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0584"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "depends_on",
+    "tail": "Ambient Lamp Driver Control Module executes color (DoorFL1LampColorCmd_1), brightness (DoorFL1LampBrtnsCmd_1), and fade speed (DoorFL1LampFadeSpdCmd_1)",
+    "sources": [
+      "inner_lamp_ssts_0584"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Deactivation",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampOnOff_1 = 0x0 (OFF); fade speed = DoorFL1LampFadeSpdCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0584"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Deactivation",
+    "relation": "depends_on",
+    "tail": "DoorFL1LampDrvCtrlMod controls fade-out per DoorFL1LampFadeSpdCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0584"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "prerequisite",
+    "tail": "Ambient Lamp is OFF",
+    "sources": [
+      "inner_lamp_ssts_0585"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

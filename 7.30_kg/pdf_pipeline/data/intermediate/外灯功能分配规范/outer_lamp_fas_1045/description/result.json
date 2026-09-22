@@ -1,0 +1,101 @@
+{
+  "table_type": "logic_table",
+  "topic": "寻车灯远程控制功能需求",
+  "row_semantics": "表格按行描述了寻车灯功能的前置条件、触发动作和执行动作的详细逻辑。",
+  "column_semantics": "表格分为三列，分别对应场景描述（前置条件）、触发动作和执行动作。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "UsrMd",
+      "type": "mode",
+      "description": "用户模式，包括Sleep（睡眠）、Standby（待机）等状态"
+    },
+    {
+      "name": "VehMd",
+      "type": "mode",
+      "description": "车辆模式，包括2_FACTORY（工厂模式）、3_TRANSPORT（运输模式）等状态"
+    },
+    {
+      "name": "ExtrLghtCtrlCmmntnTyp",
+      "type": "parameter",
+      "description": "外部灯光控制通信类型，可配置为SOA或CAN"
+    },
+    {
+      "name": "ExtrLghtStsCmmntnTyp",
+      "type": "parameter",
+      "description": "外部灯光状态通信类型，可配置为SOA或CAN"
+    },
+    {
+      "name": "FMCLightReq",
+      "type": "signal",
+      "description": "寻车灯请求信号，用于触发双闪灯请求"
+    },
+    {
+      "name": "DircnLghtMdSts",
+      "type": "signal",
+      "description": "方向灯模式状态信号，用于使能流水模式"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "寻车灯远程控制模块，负责控制双闪灯和方向灯的闪烁逻辑"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsrMd = 0x0 (Sleep) OR UsrMd = 0x1 (Standby)",
+      "description": "用户模式必须处于睡眠或待机状态"
+    },
+    {
+      "condition": "VehMd != 0x2 (Factory) AND VehMd != 0x3 (Transport)",
+      "description": "车辆模式不能处于工厂或运输模式"
+    },
+    {
+      "condition": "ExtrLghtCtrlCmmntnTyp = 0x0 (SOA) OR ExtrLghtCtrlCmmntnTyp = 0x1 (CAN)",
+      "description": "外部灯光控制通信类型可以是SOA或CAN"
+    },
+    {
+      "condition": "ExtrLghtStsCmmntnTyp = 0x0 (SOA) OR ExtrLghtStsCmmntnTyp = 0x1 (CAN)",
+      "description": "外部灯光状态通信类型可以是SOA或CAN"
+    },
+    {
+      "condition": "收到[寻车灯请求模块 LHZCU]双闪灯请求",
+      "description": "接收到LHZCU模块发出的双闪灯请求信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "FMCLightReq = 0x1",
+      "description": "发送双闪灯请求信号给FMCLightReq接口"
+    },
+    {
+      "output": "DircnLghtMdSts = 0x0",
+      "description": "使能方向灯流水模式状态"
+    },
+    {
+      "output": "FLDircnLghtCtrl, FRDircnLghtCtrl, RLDircnLghtCtrl, RRDircnLghtCtrl",
+      "description": "控制四个方向灯按照1.25Hz频率进行先on后off的闪烁"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "timing": "1.25Hz 频率闪烁",
+      "description": "双闪灯按照1.25Hz频率闪烁，一个闪烁周期为800ms"
+    },
+    {
+      "timing": "400ms 发送间隔",
+      "description": "每400ms发送一次方向灯控制信号"
+    },
+    {
+      "timing": "8个Cycle (50ms) on",
+      "description": "方向灯流水模式持续8个周期，每个周期50ms"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在特定用户和车辆模式下，通过寻车灯请求模块触发双闪灯和方向灯流水模式的功能逻辑，可用于验证寻车灯远程控制功能在不同通信类型下的正确性。",
+  "uncertain_points": [
+    "具体通信协议细节未明确说明",
+    "PPV阶段及以后的开发细节未展开"
+  ]
+}

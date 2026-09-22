@@ -1,0 +1,85 @@
+{
+  "table_type": "parameter_table",
+  "topic": "DIDs (Data Identifiers) Internal Parameter Data Identifiers for Roof Spot Light Functionality",
+  "row_semantics": "Each row represents a specific internal parameter data identifier (DID) related to the roof spot light functionality, including its description, value table, default value, remarks, and associated ECU.",
+  "column_semantics": {
+    "Short Name": "The short name or identifier of the DID.",
+    "Description": "A brief description of the DID's purpose or function.",
+    "Value Table": "The possible values and their corresponding meanings for the DID.",
+    "Default": "The default value of the DID.",
+    "Remark": "Additional notes or remarks about the DID.",
+    "ECU": "The Electronic Control Unit responsible for this DID."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RoofSpotLghtFucProCtrlReq",
+      "type": "input_signal",
+      "description": "Request to control the functionality of the roof spot light."
+    },
+    {
+      "name": "RoofSpotLghtFucProSta",
+      "type": "internal_variable",
+      "description": "Internal variable representing the status of the roof spot light functionality before service assignment."
+    },
+    {
+      "name": "RoofSpotLightSta",
+      "type": "output_signal",
+      "description": "Status of the roof spot light after receiving the service request."
+    },
+    {
+      "name": "RoofSpotLghtErrSta",
+      "type": "fault_state",
+      "description": "Error status of the roof spot light functionality."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RoofSpotLghtFucProCtrlReq",
+      "values": [
+        {
+          "value": "0x00",
+          "meaning": "RoofSpotLghtFucProCtrlReq_0_OFF"
+        },
+        {
+          "value": "0x01",
+          "meaning": "RoofSpotLghtFucProCtrlReq_1_ON"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RoofSpotLightSta",
+      "values": [
+        {
+          "value": "0x00",
+          "meaning": "RoofSpotLightSta_0_OFF"
+        },
+        {
+          "value": "0x01",
+          "meaning": "RoofSpotLightSta_1_ON"
+        }
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RoofSpotLghtErrSta",
+      "values": [
+        {
+          "value": "0x00",
+          "meaning": "RoofSpotLghtErrSta_0_NoError"
+        },
+        {
+          "value": "0x01",
+          "meaning": "RoofSpotLghtErrSta_1_Error"
+        }
+      ]
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the internal parameters and their associated values for controlling and monitoring the roof spot light functionality within the LHZ CU (Controller Unit). It is used to verify that the controller correctly interprets service requests, updates internal states, reports current status, and handles errors appropriately.",
+  "uncertain_points": []
+}

@@ -1,0 +1,332 @@
+```json
+[
+  {
+    "head": "近光灯状态反馈至 ICB",
+    "relation": "依赖于",
+    "tail": "LHZCU 模块通过 Instance ID 1/2 获取近光灯状态",
+    "sources": ["outer_lamp_fas_1001"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯和后雾灯开启同步性要求",
+    "relation": "前提条件",
+    "tail": "CombLightFucProStatus 接口参数为 0x2=Only DippedBeamLight",
+    "sources": ["outer_lamp_fas_1001"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "输出为",
+    "tail": "RearFogLightState 输出为 0x1=ON",
+    "sources": ["outer_lamp_fas_1001"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "输出为",
+    "tail": "DippedBeamLightStatus 输出为 0x1=ON",
+    "sources": ["outer_lamp_fas_1001"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯错误状态反馈至 ICB",
+    "relation": "依赖于",
+    "tail": "LHZCU 模块将 RearFogLightErrorSta 状态反馈",
+    "sources": ["outer_lamp_fas_1001"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯错误状态反馈至 ICB",
+    "relation": "依赖于",
+    "tail": "LHZCU 模块通过 Instance ID 3/4 获取近光灯状态",
+    "sources": ["outer_lamp_fas_1001"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯点亮原因信息存储",
+    "relation": "前提条件",
+    "tail": "BrkLghtOpenCtrlRsn 参数值为 0x00~0x07",
+    "sources": ["outer_lamp_fas_1002"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯点亮原因信息存储",
+    "relation": "控制对象",
+    "tail": "BrkLghtOpenCtrlRsn 参数",
+    "sources": ["outer_lamp_fas_1002"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯点亮原因信息存储",
+    "relation": "由",
+    "tail": "TDM ECU 存储",
+    "sources": ["outer_lamp_fas_1002"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关请求信号输出为 Off",
+    "relation": "输出为",
+    "tail": "MainBeamLghtSwReq 输出为 MainBeamLghtSwReq_0_Off（即信号值 0x0）",
+    "sources": ["outer_lamp_fas_1003"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关请求信号输出为 On",
+    "relation": "输出为",
+    "tail": "MainBeamLghtSwReq 输出为 MainBeamLghtSwReq_1_On（即信号值 0x1）",
+    "sources": ["outer_lamp_fas_1003"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关请求信号",
+    "relation": "控制对象",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_1003"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关请求信号",
+    "relation": "输出到",
+    "tail": "CAN/LIN/SOA 服务",
+    "sources": ["outer_lamp_fas_1003"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯状态为开启",
+    "relation": "输入为",
+    "tail": "FLDircnLghtSts_HW 的值为 0x1",
+    "sources": ["outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯状态为关闭",
+    "relation": "输入为",
+    "tail": "FLDircnLghtSts_HW 的值为 0x0",
+    "sources": ["outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯状态为开启",
+    "relation": "输入为",
+    "tail": "FRDircnLghtSts_HW 的值为 0x1",
+    "sources": ["outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯状态为关闭",
+    "relation": "输入为",
+    "tail": "FRDircnLghtSts_HW 的值为 0x0",
+    "sources": ["outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制信号输出",
+    "relation": "依赖于",
+    "tail": "CANFD 通信协议、ICB 控制器模块、LHZCU 控制器模块",
+    "sources": ["outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯控制信号输出",
+    "relation": "依赖于",
+    "tail": "CANFD 通信协议、ICB 控制器模块、RHZCU 控制器模块",
+    "sources": ["outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯状态为开启或关闭",
+    "relation": "前提条件",
+    "tail": "订阅 RearFogLightState 接口",
+    "sources": ["outer_lamp_fas_1005"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯存在故障或故障状态未知",
+    "relation": "前提条件",
+    "tail": "订阅 RearFogLightErrorStatus 接口",
+    "sources": ["outer_lamp_fas_1005"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯控制信号",
+    "relation": "输出为",
+    "tail": "CANFD 接口",
+    "sources": ["outer_lamp_fas_1005"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯控制信号",
+    "relation": "控制对象",
+    "tail": "RZCU",
+    "sources": ["outer_lamp_fas_1005"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯主模式状态为手动模式",
+    "relation": "触发条件",
+    "tail": "手动远光灯开启",
+    "sources": ["outer_lamp_fas_1006"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯主模式状态为自动模式",
+    "relation": "触发条件",
+    "tail": "远光灯自动开启前置条件满足",
+    "sources": ["outer_lamp_fas_1006"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯主模式状态为无请求模式",
+    "relation": "触发条件",
+    "tail": "远光灯未手动开启且自动开启未使能（默认发送）",
+    "sources": ["outer_lamp_fas_1006"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯主模式状态为手动模式",
+    "relation": "依赖于",
+    "tail": "手动远光灯开启",
+    "sources": ["outer_lamp_fas_1006"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯主模式状态为自动模式",
+    "relation": "依赖于",
+    "tail": "远光灯自动开启前置条件满足",
+    "sources": ["outer_lamp_fas_1006"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯主模式状态为无请求模式",
+    "relation": "与...互斥",
+    "tail": "远光灯主模式状态为手动模式",
+    "sources": ["outer_lamp_fas_1006"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯主模式状态为无请求模式",
+    "relation": "与...互斥",
+    "tail": "远光灯主模式状态为自动模式",
+    "sources": ["outer_lamp_fas_1006"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "触发条件",
+    "tail": "车辆触发防入侵",
+    "sources": ["outer_lamp_fas_1009"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "前提条件",
+    "tail": "ExtrLghtCtrlCmmntnTyp 或 ExtrLghtStsCmmntnTyp = 0x0=SOA 或 0x1=CAN",
+    "sources": ["outer_lamp_fas_1009", "outer_lamp_fas_1363"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "前提条件",
+    "tail": "收到[车辆防入侵LHZCU]请求输入1或2",
+    "sources": ["outer_lamp_fas_1009"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯控制模式",
+    "relation": "输出为",
+    "tail": "VehIntrusionPrevnHzrdLmpReq_1_OneCycl 或 VehIntrusionPrevnHzrdLmpReq_2_ThreeCycl",
+    "sources": ["outer_lamp_fas_1009"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯闪烁频率",
+    "relation": "状态保持条件",
+    "tail": "25Hz 频率闪烁（先 on 后 off），即按 800ms 一个闪烁周期发送",
+    "sources": ["outer_lamp_fas_1009"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB 接收 LHZCU 发送的转向灯状态及故障状态",
+    "relation": "输入为",
+    "tail": "ExteriorLightControlSystem.DirectionLightSts.DirectionLghtSts = 0x0=No Flash；ExteriorLightControlSystem.DirectionLightErrSts.DirectionLghtErrSts = 0x0=No Error",
+    "sources": ["outer_lamp_fas_1010"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU 将实时危险警报灯状态发送至 ICB",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts = 0x0=VehHzrdMdSts_0_No_Request",
+    "sources": ["outer_lamp_fas_1010"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU 将转向灯控制状态反馈至 SDM",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts = 0x0=EDRDircnIndLampSwSts_0_off",
+    "sources": ["outer_lamp_fas_1010"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯同步性要求",
+    "relation": "前提条件",
+    "tail": "图标闪烁频率、声音提醒与实际危险警报灯闪烁频率需一致，三者同步性最大允许延时为 40–50 ms",
+    "sources": ["outer_lamp_fas_1010"],
+    "conflict": true,
+    "conflict_note": "outer_lamp_fas_1010 中出现两个不一致的延时要求：50ms 和 40ms；属同一语义范围下的数值冲突，保留并标记 conflict=true"
+  },
+  {
+    "head": "昼间行车灯上电自动开启",
+    "relation": "前提条件",
+    "tail": "VehMd != 0x3=VehMd_3_TRANSPORT 且 VehMdV = Valid 且 DayRunngLghtDsblSts = 0x0=False 且 CombLghtFucProSta = 0x0=ALL OFF 且 FrontFogLghtFucProSta = 0x0=OFF 且 MainBeamLghtFucProSta = 0x0=OFF 且 InsdFnCfgAcrossFrtPosLght = 0x1",
+    "sources": ["outer_lamp_fas_1012"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "日间行车灯开启",
+    "relation": "输入为",
+    "tail": "UsG Md != 0x0 = UsgMd_0_Sleep",
+    "sources": ["outer_lamp_fas_1012"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

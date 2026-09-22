@@ -1,0 +1,105 @@
+[
+  {
+    "head": "ICB 将服务接口或控制信号转换成 CAN 信号,控制远光灯点亮",
+    "relation": "触发条件",
+    "tail": "ICB 接收 [远光灯开关控制模块 LHZCU] 远光灯控制信号,并将远光灯控制指令分发至 LHZCU、RHZCU",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "RHZCU",
+      "MainBeamLight"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1550",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "LMainBeamLightCtrl_1_On",
+    "relation": "输出为",
+    "tail": "ControlMainBeamLight.MainBeamLightReq{InstanceID=1}=0x1 ON (或 0x0 OFF)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "LMainBeamLightCtrl_1_On",
+      "ControlMainBeamLight.MainBeamLightReq",
+      "InstanceID=1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1550",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "LMainBeamLightSts_1_On",
+    "relation": "输出为",
+    "tail": "[远光灯驱动处理模块LHZCU/RHZCU]将远光灯执行状态反馈至[远光灯开关控制模块LHZCU]",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "LMainBeamLightSts_1_On",
+      "LHZCU",
+      "RHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1550",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "MainBeamLight.MainBeamLightSta",
+    "relation": "输出为",
+    "tail": "MainBeamLight.MainBeamLightSts=0x1=MainBeamLightSts_1_On",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "MainBeamLight.MainBeamLightSta",
+      "MainBeamLight.MainBeamLightSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1550",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "MainBeamLight.MainBeamLightErrSta",
+    "relation": "输出为",
+    "tail": "MainBeamLight.MainBeamLightFitSts=0x0=MainBeamLightFitSts_0_False",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "MainBeamLight.MainBeamLightErrSta",
+      "MainBeamLight.MainBeamLightFitSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1550",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "ICB 接收控制信号",
+    "relation": "前提条件",
+    "tail": "LMainBeamLghtCtrl=0x1=LMainBeamLghtCtrl_1_On",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "ICB",
+      "LMainBeamLghtCtrl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1550",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "ICB 将状态/故障状态反馈至[远光灯开关控制模块 LHZCU]",
+    "relation": "前提条件",
+    "tail": "LMainBeamLghtFltSts=0x0=LMainBeamLghtFltSts_0_False",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "LMainBeamLghtFltSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1550",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

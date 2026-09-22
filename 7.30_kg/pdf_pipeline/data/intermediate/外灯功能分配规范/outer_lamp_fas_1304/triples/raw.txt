@@ -1,0 +1,79 @@
+```json
+[
+  {
+    "head": "获取转向灯故障状态",
+    "relation": "前提条件",
+    "tail": "调用ExteriorLightSwitchProcess模块的DirectionLightErrSta接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "DirectionLightErrSta",
+      "调用该服务接口,获取转向灯故障状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "订阅转向灯状态",
+    "relation": "前提条件",
+    "tail": "调用ExteriorLightControlSystem模块的DirectionLightSts接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightControlSystem",
+      "DirectionLightSts",
+      "调用该服务接口,订阅转向灯状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "返回转向灯故障状态",
+    "relation": "输出为",
+    "tail": "Parameter Name: {DircnLghtErrSta}，值为0x0（No Error）或0x1（Error）",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DirectionLightErrSta",
+      "DircnLghtErrSta",
+      "0x0=No Error",
+      "0x1=Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "返回转向灯闪烁状态",
+    "relation": "输出为",
+    "tail": "Parameter Name: {DirectionLghtSts}，值包括0x0（No Flash）、0x1（Left_Direction_Light_Flash）、0x2（Right_Direction_Light_Flash）、0x3（Both_Side_Direction_Light_Flash）和0x4（Unknown）",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DirectionLightSts",
+      "DirectionLghtSts",
+      "0x0=No Flash",
+      "0x1=Left_Direction_Light_Flash",
+      "0x2=Right_Direction_Light_Flash",
+      "0x3=Both_Side_Direction_Light_Flash",
+      "0x4=Unknown"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯故障状态为Error",
+    "relation": "依赖于",
+    "tail": "ExteriorLightSwitchProcess模块的DirectionLightErrSta接口返回值为0x1",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "DirectionLightErrSta",
+      "0x1=Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯闪烁状态为Both_Side_Direction_Light_Flash",
+    "relation": "依赖于",
+    "tail": "ExteriorLightControlSystem模块的DirectionLightSts接口返回值为0x3",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "DirectionLightSts",
+      "0x3=Both_Side_Direction_Light_Flash"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,84 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Control Interface Specifications",
+  "row_semantics": "Each row represents a specific control interface for direction lights, detailing the instance ID, parameter structure, and control logic for different light types.",
+  "column_semantics": {
+    "1": "Function Name (e.g., DirectionLight.ControlDirectionLight)",
+    "2": "Consumption Type (SOA, RZCU, ICB, etc.)",
+    "3": "Control Method (Hardline Control, Network Control)",
+    "4": "Description of the function's purpose and periodic invocation",
+    "5": "Interface Name and Parameter Structure"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DirectionLight.ControlDirectionLight",
+      "type": "function",
+      "description": "Control interface for direction lights."
+    },
+    {
+      "name": "ControlDirectionLight",
+      "type": "interface",
+      "description": "The interface name used for controlling direction lights."
+    },
+    {
+      "name": "DirectionLightReq",
+      "type": "parameter",
+      "description": "Parameter structure containing control commands for direction lights."
+    },
+    {
+      "name": "InstanceID",
+      "type": "identifier",
+      "description": "Unique identifier for each control instance."
+    },
+    {
+      "name": "SOA",
+      "type": "controller",
+      "description": "Service-Oriented Architecture controller."
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "Regional Central Control Unit."
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Circuit Board."
+    },
+    {
+      "name": "硬线控制 (Hardline Control)",
+      "type": "control_method",
+      "description": "Direct hardware-level control method."
+    },
+    {
+      "name": "网络控制 (Network Control)",
+      "type": "control_method",
+      "description": "Control method via network communication."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0=OFF",
+      "type": "command",
+      "description": "Command to turn off the direction light."
+    },
+    {
+      "name": "0x1=ON",
+      "type": "command",
+      "description": "Command to turn on the direction light."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "周期调用 (Periodic Invocation)",
+      "type": "timing_constraint",
+      "description": "The service interface is periodically invoked to control the direction lights."
+    }
+  ],
+  "engineering_interpretation": "This table defines the control interfaces for direction lights, specifying how different instances (InstanceID) can be used to turn on or off right rear and left front turning lights via various controllers and control methods. It is used for testing the correct implementation and behavior of these interfaces in the vehicle's electronic system.",
+  "uncertain_points": []
+}

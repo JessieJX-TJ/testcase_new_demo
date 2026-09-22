@@ -1,0 +1,71 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "整车外灯系统（OHCH）硬件错误检测与诊断",
+  "row_semantics": "表格按功能模块划分，主要关注外灯系统的硬件错误状态。",
+  "column_semantics": "第一列标识功能模块或信号名称，后续列为具体的输出信号或相关实体。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "OHCHwErr_l",
+      "type": "功能名",
+      "description": "外灯系统硬件错误标志"
+    },
+    {
+      "name": "MapLampThrdLErr_l",
+      "type": "控制器/模块名",
+      "description": "左侧地图灯第三级错误信号"
+    },
+    {
+      "name": "MapLampThrdRErr_l",
+      "type": "控制器/模块名",
+      "description": "右侧地图灯第三级错误信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0=No error",
+      "type": "阈值",
+      "description": "表示无错误状态"
+    },
+    {
+      "name": "0x1=Error",
+      "type": "阈值",
+      "description": "表示存在错误状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "OHCHwErr_l",
+      "type": "输出信号",
+      "description": "外灯系统硬件错误的总线输出信号"
+    },
+    {
+      "name": "LIN",
+      "type": "输出信号",
+      "description": "LIN总线接口相关的输出信号"
+    },
+    {
+      "name": "OHC",
+      "type": "输出信号",
+      "description": "外灯控制单元相关的输出信号"
+    },
+    {
+      "name": "LHZCU",
+      "type": "输出信号",
+      "description": "可能为特定区域控制单元相关的输出信号"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "OHCHwErr_l",
+      "type": "故障状态",
+      "description": "外灯系统硬件错误的总线输出信号，用于指示系统是否存在硬件故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯系统硬件错误（OHCHwErr_l）的检测逻辑及其在不同子模块（如LIN、OHC、LHZCU）中的输出映射关系，可用于验证外灯系统硬件错误检测功能的正确性。",
+  "uncertain_points": []
+}
+```

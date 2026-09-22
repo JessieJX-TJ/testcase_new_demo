@@ -1,0 +1,404 @@
+```json
+[
+  {
+    "head": "硬线故障状态",
+    "relation": "包含子功能",
+    "tail": "No Error",
+    "sources": ["outer_lamp_fas_0040"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "硬线故障状态",
+    "relation": "包含子功能",
+    "tail": "Error",
+    "sources": ["outer_lamp_fas_0040"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "硬线故障状态",
+    "relation": "包含子功能",
+    "tail": "Unknown",
+    "sources": ["outer_lamp_fas_0040"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右转向灯错误状态",
+    "relation": "前提条件",
+    "tail": "调用服务接口 DirectionLightErrorStatus",
+    "sources": ["outer_lamp_fas_0041"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右转向灯点亮模式",
+    "relation": "前提条件",
+    "tail": "调用服务接口 DirectionLightModeStatus",
+    "sources": ["outer_lamp_fas_0041"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右转向灯错误状态",
+    "relation": "映射为",
+    "tail": "DirectionLightErrorSta = 0x0 → No Error",
+    "sources": ["outer_lamp_fas_0041", "outer_lamp_fas_0045"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右转向灯错误状态",
+    "relation": "映射为",
+    "tail": "DirectionLightErrorSta = 0x1 → Error",
+    "sources": ["outer_lamp_fas_0041", "outer_lamp_fas_0045"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右转向灯错误状态",
+    "relation": "映射为",
+    "tail": "DirectionLightErrorSta = 0x2 → Unknown",
+    "sources": ["outer_lamp_fas_0041", "outer_lamp_fas_0045"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右转向灯点亮模式",
+    "relation": "映射为",
+    "tail": "DircnLghtMdSts = 0x0 → Enabled",
+    "sources": ["outer_lamp_fas_0041"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右转向灯点亮模式",
+    "relation": "映射为",
+    "tail": "DircnLghtMdSts = 0x1 → Disabled",
+    "sources": ["outer_lamp_fas_0041"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右转向灯点亮模式",
+    "relation": "映射为",
+    "tail": "DircnLghtMdSts = 0x2 → Unknown",
+    "sources": ["outer_lamp_fas_0041"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外锁解锁请求 (ExtrLckLghtRmndr)",
+    "relation": "触发条件",
+    "tail": "ExtrLckLghtRmndr = 0x1 → 触发外部锁提醒",
+    "sources": ["outer_lamp_fas_0042"],
+    "conflict": true,
+    "conflict_note": "与 'ExtrLckLghtRmndr = 0x2 → 触发外部解锁提醒' 存在语义冲突：同一信号不同值对应‘锁’与‘解锁’两种相反行为，但未明确是否互斥或分属不同子模式；需确认是否为笔误（如0x2应为0x0）或存在隐含上下文约束"
+  },
+  {
+    "head": "外锁解锁请求 (ExtrLckLghtRmndr)",
+    "relation": "触发条件",
+    "tail": "ExtrLckLghtRmndr = 0x2 → 触发外部解锁提醒",
+    "sources": ["outer_lamp_fas_0042"],
+    "conflict": true,
+    "conflict_note": "与 'ExtrLckLghtRmndr = 0x1 → 触发外部锁提醒' 存在语义冲突：同一信号不同值对应‘锁’与‘解锁’两种相反行为，但未明确是否互斥或分属不同子模式；需确认是否为笔误（如0x2应为0x0）或存在隐含上下文约束"
+  },
+  {
+    "head": "尾门双闪灯请求 (PwrLftgtDirIndcnLamp)",
+    "relation": "触发条件",
+    "tail": "PwrLftgtDirIndcnLamp = 0x1 → 一次闪烁",
+    "sources": ["outer_lamp_fas_0042"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "尾门双闪灯请求 (PwrLftgtDirIndcnLamp)",
+    "relation": "触发条件",
+    "tail": "PwrLftgtDirIndcnLamp = 0x2 → 两次闪烁",
+    "sources": ["outer_lamp_fas_0042"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "尾门双闪灯请求 (PwrLftgtDirIndcnLamp)",
+    "relation": "触发条件",
+    "tail": "PwrLftgtDirIndcnLamp = 0x3 → 三次闪烁",
+    "sources": ["outer_lamp_fas_0042"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "尾门双闪灯请求 (PwrLftgtDirIndcnLamp)",
+    "relation": "触发条件",
+    "tail": "PwrLftgtDirIndcnLamp = 0x4 → 四次闪烁",
+    "sources": ["outer_lamp_fas_0042"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "尾门双闪灯请求 (PwrLftgtDirIndcnLamp)",
+    "relation": "触发条件",
+    "tail": "PwrLftgtDirIndcnLamp = 0x5 → 五次闪烁",
+    "sources": ["outer_lamp_fas_0042"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车危险模式 (VehHzrdMdSts)",
+    "relation": "触发条件",
+    "tail": "VehHzrdMdSts = 0x1 → 进入手动模式",
+    "sources": ["outer_lamp_fas_0042"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV",
+    "relation": "输出为",
+    "tail": "UsgMdV = 0x0 → 无效状态",
+    "sources": ["outer_lamp_fas_0042"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV",
+    "relation": "输出为",
+    "tail": "UsgMdV = 0x1 → 有效状态",
+    "sources": ["outer_lamp_fas_0042"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制通讯类型 (ExtrLghtCtrlCmmntnTyp)",
+    "relation": "默认值为",
+    "tail": "0x0 → SOA",
+    "sources": ["outer_lamp_fas_0043"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态通讯类型 (ExtrLghtStsCmmntnTyp)",
+    "relation": "默认值为",
+    "tail": "0x0 → SOA",
+    "sources": ["outer_lamp_fas_0043"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯硬线驱动使能 (exlDipdBeamHwDrvEnPrm)",
+    "relation": "默认值为",
+    "tail": "0x2 → Only Drive",
+    "sources": ["outer_lamp_fas_0043"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制通讯类型 (ExtrLghtCtrlCmmntnTyp)",
+    "relation": "取值范围包含",
+    "tail": "CAN",
+    "sources": ["outer_lamp_fas_0043"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态通讯类型 (ExtrLghtStsCmmntnTyp)",
+    "relation": "取值范围包含",
+    "tail": "CAN",
+    "sources": ["outer_lamp_fas_0043"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯硬线驱动使能 (exlDipdBeamHwDrvEnPrm)",
+    "relation": "取值范围包含",
+    "tail": "DrvieAndFeedBack",
+    "sources": ["outer_lamp_fas_0043"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "包含子功能",
+    "tail": "Z-ONE-3.0 平台-FAS-IBD05",
+    "sources": ["outer_lamp_fas_0044", "outer_lamp_fas_0086", "outer_lamp_fas_0088", "outer_lamp_fas_0117", "outer_lamp_fas_0125", "outer_lamp_fas_0147", "outer_lamp_fas_0150", "outer_lamp_fas_0154", "outer_lamp_fas_0157", "outer_lamp_fas_0163", "outer_lamp_fas_0165", "outer_lamp_fas_0169", "outer_lamp_fas_0179", "outer_lamp_fas_0183", "outer_lamp_fas_0200", "outer_lamp_fas_0220", "outer_lamp_fas_0223", "outer_lamp_fas_0236", "outer_lamp_fas_0243", "outer_lamp_fas_0246", "outer_lamp_fas_0248", "outer_lamp_fas_0252", "outer_lamp_fas_0270", "outer_lamp_fas_0279", "outer_lamp_fas_0286", "outer_lamp_fas_0298", "outer_lamp_fas_0315", "outer_lamp_fas_0359", "outer_lamp_fas_0362", "outer_lamp_fas_0379", "outer_lamp_fas_0383", "outer_lamp_fas_0384", "outer_lamp_fas_0405", "outer_lamp_fas_0429", "outer_lamp_fas_0439", "outer_lamp_fas_0442", "outer_lamp_fas_0447", "outer_lamp_fas_0468", "outer_lamp_fas_0506", "outer_lamp_fas_0508", "outer_lamp_fas_0516", "outer_lamp_fas_0525", "outer_lamp_fas_0544", "outer_lamp_fas_0547", "outer_lamp_fas_0553", "outer_lamp_fas_0558", "outer_lamp_fas_0566", "outer_lamp_fas_0573", "outer_lamp_fas_0574", "outer_lamp_fas_0584", "outer_lamp_fas_0612", "outer_lamp_fas_0613", "outer_lamp_fas_0627", "outer_lamp_fas_0633", "outer_lamp_fas_0650", "outer_lamp_fas_0663", "outer_lamp_fas_0669", "outer_lamp_fas_0737", "outer_lamp_fas_0745", "outer_lamp_fas_0759", "outer_lamp_fas_0767", "outer_lamp_fas_0768", "outer_lamp_fas_0776", "outer_lamp_fas_0791", "outer_lamp_fas_0799", "outer_lamp_fas_0807", "outer_lamp_fas_0809", "outer_lamp_fas_0813", "outer_lamp_fas_0816", "outer_lamp_fas_0820", "outer_lamp_fas_0849", "outer_lamp_fas_0853", "outer_lamp_fas_0859", "outer_lamp_fas_0866", "outer_lamp_fas_0868", "outer_lamp_fas_0875", "outer_lamp_fas_0877", "outer_lamp_fas_0883", "outer_lamp_fas_0895", "outer_lamp_fas_0936", "outer_lamp_fas_0952", "outer_lamp_fas_0968", "outer_lamp_fas_0973", "outer_lamp_fas_0985", "outer_lamp_fas_1033", "outer_lamp_fas_1081", "outer_lamp_fas_1098", "outer_lamp_fas_1104", "outer_lamp_fas_1105", "outer_lamp_fas_1110", "outer_lamp_fas_1116", "outer_lamp_fas_1136", "outer_lamp_fas_1141", "outer_lamp_fas_1143", "outer_lamp_fas_1157", "outer_lamp_fas_1160", "outer_lamp_fas_1164", "outer_lamp_fas_1167", "outer_lamp_fas_1187", "outer_lamp_fas_1192", "outer_lamp_fas_1197", "outer_lamp_fas_1209", "outer_lamp_fas_1215", "outer_lamp_fas_1217", "outer_lamp_fas_1230", "outer_lamp_fas_1232", "outer_lamp_fas_1244", "outer_lamp_fas_1258", "outer_lamp_fas_1260", "outer_lamp_fas_1282", "outer_lamp_fas_1302", "outer_lamp_fas_1306", "outer_lamp_fas_1329", "outer_lamp_fas_1359", "outer_lamp_fas_1390", "outer_lamp_fas_1411", "outer_lamp_fas_1426", "outer_lamp_fas_1432", "outer_lamp_fas_1443", "outer_lamp_fas_1444", "outer_lamp_fas_1446", "outer_lamp_fas_1470", "outer_lamp_fas_1476", "outer_lamp_fas_1487", "outer_lamp_fas_1494", "outer_lamp_fas_1508", "outer_lamp_fas_1518", "outer_lamp_fas_1532", "outer_lamp_fas_1545", "outer_lamp_fas_1551", "outer_lamp_fas_1567", "outer_lamp_fas_1584", "outer_lamp_fas_1592", "outer_lamp_fas_1599", "outer_lamp_fas_1608", "outer_lamp_fas_1610", "outer_lamp_fas_1618", "outer_lamp_fas_1644", "outer_lamp_fas_1665", "outer_lamp_fas_1669", "outer_lamp_fas_1676", "outer_lamp_fas_1682", "outer_lamp_fas_1707", "outer_lamp_fas_1727", "outer_lamp_fas_1745"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "依赖于",
+    "tail": "Z-ONE-3.0 平台",
+    "sources": ["outer_lamp_fas_0044", "outer_lamp_fas_0226", "outer_lamp_fas_0231", "outer_lamp_fas_0236", "outer_lamp_fas_0243", "outer_lamp_fas_0246", "outer_lamp_fas_0286", "outer_lamp_fas_0335", "outer_lamp_fas_0442", "outer_lamp_fas_0600", "outer_lamp_fas_0613", "outer_lamp_fas_0627", "outer_lamp_fas_0669", "outer_lamp_fas_0737", "outer_lamp_fas_0745", "outer_lamp_fas_0936", "outer_lamp_fas_1104", "outer_lamp_fas_1139", "outer_lamp_fas_1230", "outer_lamp_fas_1258", "outer_lamp_fas_1260", "outer_lamp_fas_1306", "outer_lamp_fas_1432", "outer_lamp_fas_1487", "outer_lamp_fas_1508", "outer_lamp_fas_1608", "outer_lamp_fas_1665", "outer_lamp_fas_1669", "outer_lamp_fas_1676"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯错误状态 (MainBeamLightErrorStatus)",
+    "relation": "前提条件",
+    "tail": "调用该服务接口并订阅右侧远光灯故障状态",
+    "sources": ["outer_lamp_fas_0045"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯错误状态 (MainBeamLightErrorStatus)",
+    "relation": "依赖于",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_fas_0045"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯错误状态 (MainBeamLightErrorStatus)",
+    "relation": "依赖于",
+    "tail": "LHZCU_ETH",
+    "sources": ["outer_lamp_fas_0045"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯图标指示灯显示",
+    "relation": "触发条件",
+    "tail": "CAN信号状态 = 0x1 或 服务接口值 = 0x3",
+    "sources": ["outer_lamp_fas_0046"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯图标指示灯不显示",
+    "relation": "抑制条件",
+    "tail": "CAN信号状态 = 0x0 或 服务接口值 = 0x0",
+    "sources": ["outer_lamp_fas_0046"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯故障弹窗提醒",
+    "relation": "触发条件",
+    "tail": "危险警报灯发生故障时 (DircnLghtFltsts_1_True)",
+    "sources": ["outer_lamp_fas_0046"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯拨杆开关状态",
+    "relation": "触发条件",
+    "tail": "开关关闭 → DircnIndLampSwStsMntry = 0x0 (off)",
+    "sources": ["outer_lamp_fas_0048"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯拨杆开关状态",
+    "relation": "触发条件",
+    "tail": "左侧一档触发 (>50ms) → DircnIndLampSwStsMntry = 0x1 (Leftshortturnmode)",
+    "sources": ["outer_lamp_fas_0048"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯拨杆开关状态",
+    "relation": "触发条件",
+    "tail": "左侧二档触发 → DircnIndLampSwStsMntry = 0x2 (Leftlongturnmode)",
+    "sources": ["outer_lamp_fas_0048"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯拨杆开关状态",
+    "relation": "超时约束",
+    "tail": "导通后至少发送3帧，断开后跳转至 DircnIndLampSwStsMntry = 0x0",
+    "sources": ["outer_lamp_fas_0048"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制信号 (BrkLghtCtrl)",
+    "relation": "输出协议",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0049"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制信号 (BrkLghtCtrl)",
+    "relation": "控制对象",
+    "tail": "LHZCU模块",
+    "sources": ["outer_lamp_fas_0049"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制信号 (BrkLghtCtrl)",
+    "relation": "控制对象",
+    "tail": "ICB模块",
+    "sources": ["outer_lamp_fas_0049"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制信号 (BrkLghtCtrl)",
+    "relation": "状态映射",
+    "tail": "0x0 → Off",
+    "sources": ["outer_lamp_fas_0049"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制信号 (BrkLghtCtrl)",
+    "relation": "状态映射",
+    "tail": "0x1 → On",
+    "sources": ["outer_lamp_fas_0049"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯功能过程状态 (ReverseLightFucProStatus)",
+    "relation": "状态映射",
+    "tail": "0x0 → OFF",
+    "sources": ["outer_lamp_fas_0049"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯功能过程状态 (ReverseLightFucProStatus)",
+    "relation": "状态映射",
+    "tail": "0x1 → ON",
+    "sources": ["outer_lamp_fas_0049"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯功能过程状态 (ReverseLightFucProStatus)",
+    "relation": "状态映射",
+    "tail": "0x2 → Unknown",
+    "sources": ["outer_lamp_fas_0049"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯点亮或熄灭条件获取",
+    "relation": "前提条件",
+    "tail": "订阅服务接口 (Notifier)",
+    "sources": ["outer_lamp_fas_0049"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "贯穿式前位置灯",
+    "relation": "触发条件",
+    "tail": "用户点击开关进行开启或关闭",
+    "sources": ["outer_lamp_fas_0050"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 (ICB)",
+    "relation": "前提条件",
+    "tail": "UsgMd ∈ {0x2, 0x3, 0x4, 0x5} → Comfortable / NormalDriving / AIParking / AIPilot",
+    "sources": ["outer_lamp_fas_0050"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

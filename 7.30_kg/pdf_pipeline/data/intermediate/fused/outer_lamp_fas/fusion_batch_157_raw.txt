@@ -1,0 +1,468 @@
+```json
+[
+  {
+    "head": "右侧大灯高度调节故障状态",
+    "relation": "输出为",
+    "tail": "RHdlmpLvlingFItSts",
+    "sources": ["outer_lamp_fas_1702"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧大灯高度调节故障状态",
+    "relation": "依赖于",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_1702"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧大灯高度调节故障状态",
+    "relation": "依赖于",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_1702"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "依赖于",
+    "tail": "Z-ONE-3.0平台-FAS-IBD05模块",
+    "sources": ["outer_lamp_fas_1705"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "包含子功能",
+    "tail": "零束Z-ONE平台的外灯相关子功能",
+    "sources": ["outer_lamp_fas_1705"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯打开",
+    "relation": "前提条件",
+    "tail": "电动车辆再生制动系统有效",
+    "sources": ["outer_lamp_fas_1706"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯打开",
+    "relation": "前提条件",
+    "tail": "满足前置条件",
+    "sources": ["outer_lamp_fas_1706"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯打开",
+    "relation": "抑制条件",
+    "tail": "UsrMd == 0x0 (Sleep) 或 UsrMd == 0x3 (TRANSPORT)",
+    "sources": ["outer_lamp_fas_1706"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯打开",
+    "relation": "依赖于",
+    "tail": "UsgMdV = Valid",
+    "sources": ["outer_lamp_fas_1706"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯打开",
+    "relation": "依赖于",
+    "tail": "VehMdV = Valid",
+    "sources": ["outer_lamp_fas_1706"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯打开",
+    "relation": "依赖于",
+    "tail": "UsrMd != 0x0 (Sleep) 且 UsrMd != 0x6 (XOTA)",
+    "sources": ["outer_lamp_fas_1706"],
+    "conflict": true,
+    "conflict_note": "与 'UsrMd == 0x0 (Sleep) 或 UsrMd == 0x3 (TRANSPORT)' 抑制条件存在逻辑冲突：前者排除 Sleep(XOTA)，后者明确抑制 Sleep；需确认 XOTA 是否属于 Sleep 模式子集或独立模式"
+  },
+  {
+    "head": "日间行车灯自动开启",
+    "relation": "前提条件",
+    "tail": "车辆上电",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯激活",
+    "relation": "前提条件",
+    "tail": "车速大于40kph",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯激活",
+    "relation": "前提条件",
+    "tail": "IPD请求远光灯开启",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "辅助远光灯自动开启",
+    "relation": "前提条件",
+    "tail": "新增辅助远光灯(车顶射灯)自动开启功能",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "辅助远光灯手动开启",
+    "relation": "前提条件",
+    "tail": "新增辅助远光灯(车顶射灯)手动开启功能",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯点亮",
+    "relation": "前提条件",
+    "tail": "更新位置灯点亮CAN信号SideLightSts发送逻辑",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车转向灯指示器",
+    "relation": "前提条件",
+    "tail": "S31L新增拖车转向灯指示器",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IHC使能开关",
+    "relation": "前提条件",
+    "tail": "新增IHC使能开关,新增IHC工作状态指示",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯在展车模式下开启",
+    "relation": "抑制条件",
+    "tail": "删除车顶射灯在展车模式下禁止开启需求",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光增强使能记忆",
+    "relation": "依赖于",
+    "tail": "随账号",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制HMI描述",
+    "relation": "包含子功能",
+    "tail": "增加条件c",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开关控制",
+    "relation": "包含子功能",
+    "tail": "增加物理开关方案",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开关控制",
+    "relation": "包含子功能",
+    "tail": "增加物理开关方案",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "光雨传感器视觉方案信号",
+    "relation": "输入为",
+    "tail": "AutoLghtOnReq_ICB",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "自动灯光冷启动方案",
+    "relation": "前提条件",
+    "tail": "[FAS-IBD05-0088]",
+    "sources": ["outer_lamp_fas_1708"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "日行灯可被开启或关闭",
+    "relation": "触发条件",
+    "tail": "在Super ECO Lite模式下,用户点击日行灯软开关",
+    "sources": ["outer_lamp_fas_1709"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "日行灯可被开启或关闭",
+    "relation": "前提条件",
+    "tail": "满足前置条件1&2&3&4&5",
+    "sources": ["outer_lamp_fas_1709"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "日行灯可被开启或关闭",
+    "relation": "依赖于",
+    "tail": "具备日行灯功能 (InsdFnCfgDayRunngLght=0x1)",
+    "sources": ["outer_lamp_fas_1709"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "日行灯可被开启或关闭",
+    "relation": "与...互斥",
+    "tail": "车辆驾驶模式为TRANSPORT模式 (VehMd=0x3)",
+    "sources": ["outer_lamp_fas_1709"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "订阅左侧远光灯故障状态",
+    "relation": "前提条件",
+    "tail": "调用该服务接口,订阅左侧远光灯故障状态",
+    "sources": ["outer_lamp_fas_1710"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "订阅右侧远光灯故障状态",
+    "relation": "前提条件",
+    "tail": "调用该服务接口,订阅右侧远光灯故障状态",
+    "sources": ["outer_lamp_fas_1710"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoMainBeamLghtReq_0_NoRequest",
+    "relation": "输入为",
+    "tail": "{AutoMainBeamLghtReq}",
+    "sources": ["outer_lamp_fas_1710"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoMainBeamLghtReq_1_RequestOnFromCamera",
+    "relation": "输入为",
+    "tail": "{AutoMainBeamLghtReq}",
+    "sources": ["outer_lamp_fas_1710"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoMainBeamLghtReq_2_RequestOffFromCamera",
+    "relation": "输入为",
+    "tail": "{AutoMainBeamLghtReq}",
+    "sources": ["outer_lamp_fas_1710"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoMainBeamLghtReq_3_CannotDetectedTheEnvironment",
+    "relation": "输入为",
+    "tail": "{AutoMainBeamLghtReq}",
+    "sources": ["outer_lamp_fas_1710"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightErrorStatus_0x0_No Error",
+    "relation": "依赖于",
+    "tail": "MainBeamLight.MainBeamLightErrorStatus",
+    "sources": ["outer_lamp_fas_1710"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightErrorStatus_0x1_Error",
+    "relation": "依赖于",
+    "tail": "MainBeamLight.MainBeamLightErrorStatus",
+    "sources": ["outer_lamp_fas_1710"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightErrorStatus_0x2_Unknown",
+    "relation": "依赖于",
+    "tail": "MainBeamLight.MainBeamLightErrorStatus",
+    "sources": ["outer_lamp_fas_1710"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯故障状态",
+    "relation": "依赖于",
+    "tail": "FRDircnLghtFltsts_0_False",
+    "sources": ["outer_lamp_fas_1711"],
+    "conflict": true,
+    "conflict_note": "与 FRDircnLghtFltsts_1_True 同时作为依赖项，但二者语义互斥（False/True），应为枚举值不同状态，建议拆分为 '右前转向灯故障状态 = False' 和 '右前转向灯故障状态 = True' 两个三元组；当前合并保留，标记潜在建模歧义"
+  },
+  {
+    "head": "右前转向灯故障状态",
+    "relation": "依赖于",
+    "tail": "FRDircnLghtFltsts_1_True",
+    "sources": ["outer_lamp_fas_1711"],
+    "conflict": true,
+    "conflict_note": "与 FRDircnLghtFltsts_0_False 同时作为依赖项，但二者语义互斥（False/True），应为枚举值不同状态，建议拆分为 '右前转向灯故障状态 = False' 和 '右前转向灯故障状态 = True' 两个三元组；当前合并保留，标记潜在建模歧义"
+  },
+  {
+    "head": "左后转向灯故障状态",
+    "relation": "依赖于",
+    "tail": "RLDircnLghtFltsts_0_False",
+    "sources": ["outer_lamp_fas_1711"],
+    "conflict": true,
+    "conflict_note": "同右前转向灯，存在 False/True 枚举歧义"
+  },
+  {
+    "head": "左后转向灯故障状态",
+    "relation": "依赖于",
+    "tail": "RLDircnLghtFltsts_1_True",
+    "sources": ["outer_lamp_fas_1711"],
+    "conflict": true,
+    "conflict_note": "同右前转向灯，存在 False/True 枚举歧义"
+  },
+  {
+    "head": "右后转向灯故障状态",
+    "relation": "依赖于",
+    "tail": "RRDircnLghtFltsts_0_False",
+    "sources": ["outer_lamp_fas_1711"],
+    "conflict": true,
+    "conflict_note": "同右前转向灯，存在 False/True 枚举歧义"
+  },
+  {
+    "head": "右后转向灯故障状态",
+    "relation": "依赖于",
+    "tail": "RRDircnLghtFltsts_1_True",
+    "sources": ["outer_lamp_fas_1711"],
+    "conflict": true,
+    "conflict_note": "同右前转向灯，存在 False/True 枚举歧义"
+  },
+  {
+    "head": "控制左前转向灯",
+    "relation": "触发条件",
+    "tail": "周期调用ControlDirectionLight接口",
+    "sources": ["outer_lamp_fas_1711"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯点亮或熄灭",
+    "relation": "输出为",
+    "tail": "DirectionLightReq参数值为0x1或0x0",
+    "sources": ["outer_lamp_fas_1711"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯故障状态上报",
+    "relation": "输出为",
+    "tail": "CANFD, ICB, LHZCU模块",
+    "sources": ["outer_lamp_fas_1711"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯故障状态",
+    "relation": "依赖于",
+    "tail": "网络故障状态",
+    "sources": ["outer_lamp_fas_1711"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能处于碰撞模式",
+    "relation": "前提条件",
+    "tail": "VehMd = VehMd_1_CRASH",
+    "sources": ["outer_lamp_fas_1715"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能处于测功机测试模式",
+    "relation": "前提条件",
+    "tail": "VehMd = VehMd_4_DYNO",
+    "sources": ["outer_lamp_fas_1715"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能处于工程调试模式",
+    "relation": "前提条件",
+    "tail": "VehMd = VehMd_8_Engineering",
+    "sources": ["outer_lamp_fas_1715"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆模式验证为无效",
+    "relation": "前提条件",
+    "tail": "VehMdV = VehMdV_0_Invalid",
+    "sources": ["outer_lamp_fas_1715"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆模式验证为有效",
+    "relation": "前提条件",
+    "tail": "VehMdV = VehMdV_1_Valid",
+    "sources": ["outer_lamp_fas_1715"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能处于睡眠模式",
+    "relation": "前提条件",
+    "tail": "UsGmD = UsgMd_0_Sleep",
+    "sources": ["outer_lamp_fas_1715"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能处于待机模式",
+    "relation": "前提条件",
+    "tail": "UsGmD = UsgMd_1_Standby",
+    "sources": ["outer_lamp_fas_1715"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能处于舒适模式",
+    "relation": "前提条件",
+    "tail": "UsGmD = UsgMd_2_Comfortable",
+    "sources": ["outer_lamp_fas_1715"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "获取右侧位置灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用SidePositionLightErrorStatus服务接口",
+    "sources": ["outer_lamp_fas_1716"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

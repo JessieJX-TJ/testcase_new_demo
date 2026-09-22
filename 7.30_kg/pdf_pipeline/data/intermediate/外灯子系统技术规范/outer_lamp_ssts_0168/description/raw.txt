@@ -1,0 +1,50 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯控制系统中光雨信号的接口定义与状态描述",
+  "row_semantics": "定义了特定接口的详细属性及其在系统中的作用，包括数据流向、类型、提供方/消费方、路径及来源。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，标识该信号在系统中的唯一性。",
+    "Direction": "信号的数据流向，指示是输入还是输出。",
+    "Type": "信号的通信类型，如LIN（Local Interconnect Network）总线协议。",
+    "Sender/Provider": "信号的发送方或提供方，即产生该信号的模块或功能。",
+    "Receiver/Consumer": "信号的接收方或消费方，即使用该信号的模块或功能。",
+    "Channel": "信号传输的路径或通道，可能涉及网络拓扑或物理连接。",
+    "Interface Source": "信号的来源，具体到外部灯具的哪个部分或模块。",
+    "Signal Values": "信号的具体数值定义，包括逻辑值（True/False）对应的十六进制编码。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "AutoLghtOnReq_1",
+      "type": "Input Signal",
+      "description": "光雨信号，用于请求自动灯光开启的输入信号。",
+      "direction": "Input",
+      "interface_name": "光雨信号 AutoLghtOnReq_1",
+      "type": "LIN",
+      "sender_provider": "RLSS",
+      "receiver_consumer": "LHZCU",
+      "channel": "",
+      "interface_source": "外灯 SSTS"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "0x0",
+      "value": "False",
+      "description": "表示自动灯光请求信号未激活或关闭状态。"
+    },
+    {
+      "condition": "0x1",
+      "value": "True",
+      "description": "表示自动灯光请求信号已激活或开启状态。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车外灯控制系统中光雨信号（AutoLghtOnReq_1）的接口定义是否正确，包括其数据流向、通信类型、提供方/消费方、传输路径及来源，并确保信号值（0x0和0x1）的逻辑定义符合设计规范。",
+  "uncertain_points": []
+}
+```

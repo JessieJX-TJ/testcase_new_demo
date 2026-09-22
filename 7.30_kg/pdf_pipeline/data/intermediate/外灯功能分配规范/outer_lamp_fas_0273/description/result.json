@@ -1,0 +1,92 @@
+{
+  "table_type": "fault_table",
+  "topic": "整车外灯转向灯硬件故障状态定义",
+  "row_semantics": "表格按功能模块（左前、右前、左后、右后转向灯）逐项列出其硬件故障状态的定义。",
+  "column_semantics": {
+    "0": "功能模块名称 (如 FLDircnLghtFltsts_HW)",
+    "1": "输出信号类型 (CANFD)",
+    "2": "控制器/模块名 (RHZCU, RZCU, ICB等)",
+    "3": "控制器/模块名 (LHZCU)",
+    "4": "故障状态类型 (硬线故障状态, 网络故障状态)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FLDircnLghtFltsts_HW",
+      "type": "功能名",
+      "description": "左前转向灯故障状态"
+    },
+    {
+      "name": "FRDircnLghtFltsts_HW",
+      "type": "功能名",
+      "description": "右前转向灯故障状态"
+    },
+    {
+      "name": "RLDircnLghtFltsts_HW",
+      "type": "功能名",
+      "description": "左后转向灯故障状态"
+    },
+    {
+      "name": "RRDircnLghtFltsts_HW",
+      "type": "功能名",
+      "description": "右后转向灯故障状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtFltsts_HW_0_False",
+      "type": "输出信号",
+      "description": "左前转向灯无故障状态"
+    },
+    {
+      "name": "FLDircnLghtFltsts_HW_1_True",
+      "type": "输出信号",
+      "description": "左前转向灯有故障状态"
+    },
+    {
+      "name": "FRDircnLghtFltsts_HW_0_False",
+      "type": "输出信号",
+      "description": "右前转向灯无故障状态"
+    },
+    {
+      "name": "FRDircnLghtFltsts_HW_1_True",
+      "type": "输出信号",
+      "description": "右前转向灯有故障状态"
+    },
+    {
+      "name": "RLDircnLghtFltsts_HW_0_False",
+      "type": "输出信号",
+      "description": "左后转向灯无故障状态"
+    },
+    {
+      "name": "RLDircnLghtFltsts_HW_1_True",
+      "type": "输出信号",
+      "description": "左后转向灯有故障状态"
+    },
+    {
+      "name": "RRDircnLghtFltsts_HW_0_False",
+      "type": "输出信号",
+      "description": "右后转向灯无故障状态"
+    },
+    {
+      "name": "RRDircnLghtFltsts_HW_1_True",
+      "type": "输出信号",
+      "description": "右后转向灯有故障状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "硬线故障状态",
+      "description": "由硬件线路问题导致的故障"
+    },
+    {
+      "name": "网络故障状态",
+      "description": "由通信网络问题导致的故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车四个方向（左前、右前、左后、右后）转向灯的硬件故障状态，包括无故障（False）和有故障（True）两种状态，并指明了这些状态对应的输出信号、所属控制器以及故障类型（硬线或网络）。可用于验证各转向灯在不同故障状态下的信号输出是否符合规范。",
+  "uncertain_points": []
+}

@@ -1,0 +1,100 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "危险警报灯自动控制逻辑",
+  "row_semantics": "描述了在特定前置条件下，触发动作和执行动作的逻辑关系。",
+  "column_semantics": {
+    "场景描述": "对整个场景的简要说明。",
+    "前置条件": "触发危险警报灯自动控制的前提条件列表。",
+    "触发现象": "满足前置条件后，系统接收到的外部输入或内部信号。",
+    "执行动作": "根据前置条件和触发现象，系统执行的具体控制操作。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Local Hazard Control Unit，本地危险控制单元，负责判断紧急制动状态并控制危险警报灯。"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "Integrated Control Board，集成控制板，负责接收LHZCU发送的转向灯信号并进行转换控制。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UseMd=All",
+      "description": "使用模式为所有模式。"
+    },
+    {
+      "name": "UseMdV=Valid",
+      "description": "使用模式有效。"
+    },
+    {
+      "name": "VehMd=All",
+      "description": "车辆模式为所有模式。"
+    },
+    {
+      "name": "VehMdV=Valid",
+      "description": "车辆模式有效。"
+    },
+    {
+      "name": "LHZCU 判断紧急制动未激活",
+      "description": "本地危险控制单元判断紧急制动功能未被激活。"
+    },
+    {
+      "name": "RCWWrnng",
+      "description": "智驾后碰撞预警请求输入信号，包含两种条件值（0x1 和 0x2）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtCtrl",
+      "description": "前左方向灯控制信号，用于控制前左方向灯的亮灭。"
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "description": "前右方向灯控制信号，用于控制前右方向灯的亮灭。"
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "description": "后左方向灯控制信号，用于控制后左方向灯的亮灭。"
+    },
+    {
+      "name": "RRDircnLghtCtrl",
+      "description": "后右方向灯控制信号，用于控制后右方向灯的亮灭。"
+    },
+    {
+      "name": "DircnLghtMdSts",
+      "description": "方向灯模式状态，设置为禁用流水灯模式。"
+    },
+    {
+      "name": "FLDircnLghtCtrl/FRDircnLghtCtrl/RLDircnLghtCtrl/RRDircnLghtCtrl=ON/OFF",
+      "description": "通过ICB将转向灯信号转换为数字灯光控制，实现双闪灯点亮或熄灭。"
+    },
+    {
+      "name": "DircnLghtCtrlDelayPrm",
+      "description": "方向灯控制延迟参数，延时60ms后分发控制信号至LHZCU、RHZCU和RZCU。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal": "FLDircnLghtCtrl",
+      "timing": "3.33Hz 频率闪烁，即按照300ms一个闪烁周期发送；发送150ms on，150ms off。"
+    },
+    {
+      "signal": "DircnLghtMdSts",
+      "timing": "设置为 Disabled，禁用流水灯模式。"
+    },
+    {
+      "signal": "DircnLghtCtrlDelayPrm",
+      "timing": "延时60ms。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了在车辆出现碰撞危险时，危险警报灯自动控制的逻辑流程，包括前置条件、触发现象和具体的执行动作，可用于验证危险警报灯在特定场景下的正确响应和控制逻辑。",
+  "uncertain_points": []
+}
+```

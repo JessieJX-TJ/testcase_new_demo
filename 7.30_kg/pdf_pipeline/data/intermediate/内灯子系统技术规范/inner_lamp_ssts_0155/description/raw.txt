@@ -1,0 +1,43 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Ambient Lamp Breath Mode Holdoff Time Configuration",
+  "row_semantics": "Each row represents a specific parameter related to the holdoff time for different stages or rates of the ambient lamp's breath mode.",
+  "column_semantics": {
+    "标定项/Item": "The name of the calibration parameter, which uniquely identifies the specific holdoff time setting for a particular stage/rate of the ambient lamp's breath mode.",
+    "标定描述/Description": "A brief description of what the parameter controls, specifically the holdoff time in the context of the ambient lamp's breath mode.",
+    "参数范围/Range": "The valid numerical range within which the parameter can be set, indicating the minimum and maximum values allowed.",
+    "分辨率/Factor": "The resolution or granularity of the parameter, often expressed as a percentage (e.g., N*1%) or a hexadecimal value (e.g., 0xA), which defines how finely the parameter can be adjusted.",
+    "默认值/Default": "The default value that the parameter is set to if no custom calibration is applied."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp Breath Mode",
+      "type": "function",
+      "description": "A lighting feature that simulates a breathing effect, likely used for ambient illumination inside the vehicle."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Holdoff Percent",
+      "type": "parameter",
+      "description": "The percentage of time the ambient lamp remains in a steady state before transitioning to the next phase of the breath mode."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "AmbtLampBrthngRateXholdoffPercent",
+      "description": "Defines the holdoff time for each rate (X) of the ambient lamp's breath mode, with X ranging from 1 to 6.",
+      "range": "0 - 32",
+      "unit": "%",
+      "default_value": "0x0A (10%)"
+    }
+  ],
+  "engineering_interpretation": "This table specifies the calibration parameters for configuring the holdoff times at different rates of the ambient lamp's breath mode. It is used to verify that the ambient lamp operates according to the specified timing behavior during its breath mode, ensuring consistent and expected lighting performance across various settings.",
+  "uncertain_points": []
+}
+```

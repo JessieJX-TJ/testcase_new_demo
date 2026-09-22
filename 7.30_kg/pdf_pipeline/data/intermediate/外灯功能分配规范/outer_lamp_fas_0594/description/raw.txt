@@ -1,0 +1,46 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "后雾灯驱动处理模块的状态描述",
+  "row_semantics": "表示后雾灯在不同状态下的实际执行情况，包括关闭和开启两种状态。",
+  "column_semantics": "无明确列，表格内容为逐行定义的状态变量及其值。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RearFogLight",
+      "type": "module",
+      "description": "后雾灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RearFogLightSts",
+      "type": "state_variable",
+      "description": "后雾灯状态寄存器，用于表示当前后雾灯的实际状态（0x0=Off, 0x1=On）"
+    },
+    {
+      "name": "RearFogLightFlts",
+      "type": "fault_indicator",
+      "description": "后雾灯故障标志，当前为False（无故障）"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogLightState.RearFogLightSta",
+      "type": "output_signal",
+      "description": "后雾灯状态输出信号，反映当前后雾灯的开关状态（0x0=Off, 0x1=ON）"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RearFogLightErrorStatus.RearFogLightErrorSta",
+      "type": "fault_status",
+      "description": "后雾灯错误状态，当前为No Error（0x0）"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了后雾灯驱动模块在不同状态下的内部变量值，可用于验证后雾灯在开启和关闭时的状态是否正确，并检查是否存在故障。",
+  "uncertain_points": []
+}
+```

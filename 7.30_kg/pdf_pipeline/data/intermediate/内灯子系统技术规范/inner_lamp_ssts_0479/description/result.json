@@ -1,0 +1,55 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车电子电器系统接口规范",
+  "row_semantics": "描述特定接口的详细信息，包括其名称、方向、类型、发送方/提供方、接收方/消费方、路径及来源。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，需与逻辑框图内容一致。",
+    "Direction": "接口的数据流向，如输入/输出、提供/消费。",
+    "Type": "接口的类型，如CAN/LIN总线、SOA服务或硬线等。",
+    "Sender/Provider": "信号的发送方或服务提供方，可能是信号发送节点或SoA服务提供方。",
+    "Receiver/Consumer": "信号的接收方或服务消费方，可能是信号接收节点或SoA服务消费方。",
+    "Channel": "信号传输的路径，如指定信号通道。",
+    "Source": "接口的来源，如指定信号来源。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "接口名称 (Interface Name)",
+      "type": "功能名",
+      "description": "唯一标识一个接口的名称，需与逻辑框图保持一致。"
+    },
+    {
+      "name": "发送方/提供方 (Sender/Provider)",
+      "type": "控制器/模块名",
+      "description": "负责发送信号或提供服务的节点或模块。"
+    },
+    {
+      "name": "接收方/消费方 (Receiver/Consumer)",
+      "type": "控制器/模块名",
+      "description": "负责接收信号或消费服务的节点或模块。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "接口名称 (Interface Name)",
+      "type": "输出信号",
+      "description": "接口的名称，作为测试验证的目标。"
+    },
+    {
+      "name": "Channel",
+      "type": "输出信号",
+      "description": "信号传输的路径，用于验证信号路由是否正确。"
+    },
+    {
+      "name": "Source",
+      "type": "输出信号",
+      "description": "接口的来源，用于验证信号源是否正确。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子电器系统中各接口的定义是否正确，包括接口名称、数据流向、类型、发送方/接收方、传输路径及来源等信息，确保接口规范与逻辑设计一致。",
+  "uncertain_points": []
+}

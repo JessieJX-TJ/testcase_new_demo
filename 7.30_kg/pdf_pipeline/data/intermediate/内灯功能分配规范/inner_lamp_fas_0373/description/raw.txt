@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "车辆门锁状态接口定义",
+  "row_semantics": "描述特定接口的详细属性，包括其名称、方向、类型、发送方/接收方等信息。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，标识该信号的功能或用途。",
+    "Direction": "信号的数据流向，如输入、输出。",
+    "Type": "信号的类型，例如内部信号、外部信号等。",
+    "Sender/Provider": "提供该信号的模块或控制器。",
+    "Receiver/Consumer": "消费或使用该信号的模块或控制器。",
+    "Channel": "信号传输的路径或通道。",
+    "Interface Source": "接口的来源或归属功能模块。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VehLckSts",
+      "type": "Signal",
+      "description": "车辆门锁状态信号，表示车门的锁定或解锁状态。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "车身控制单元（Body Control Unit），负责处理车辆的车身相关控制逻辑。"
+    },
+    {
+      "name": "门锁 SSTS",
+      "type": "Function/Feature",
+      "description": "车辆门锁系统，具体指代与门锁相关的子系统或功能模块。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "VehLckSts",
+      "value": "0x0",
+      "description": "表示车门处于解锁状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆门锁状态信号（VehLckSts）的接口属性，用于验证LHZCU与门锁系统之间的信号交互是否符合设计规范，确保门锁状态信号能够正确地从发送方传递到接收方。",
+  "uncertain_points": []
+}
+```

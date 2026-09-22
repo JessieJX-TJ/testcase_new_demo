@@ -1,0 +1,57 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform - SSTSI-BD10)",
+  "row_semantics": "Each row represents a specific interface or signal definition within the Interior Lighting Sub System, detailing its properties and interactions.",
+  "column_semantics": {
+    "Interface Name": "The name of the interface or signal being defined.",
+    "Direction": "Indicates whether the signal is an input, output, or both (e.g., provide/consume).",
+    "Type": "The communication type or physical nature of the signal (e.g., CAN/LIN/SOA service, hardwire).",
+    "Sender/Provider": "The entity responsible for sending or providing the signal.",
+    "Receiver/Consumer": "The entity responsible for receiving or consuming the signal.",
+    "Channel": "The specific communication channel or path used for the signal.",
+    "Interface Source": "The origin or source of the interface definition."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Lighting Handling Control Unit, likely responsible for managing lighting functions."
+    },
+    {
+      "name": "SSTSI-BD10",
+      "type": "Sub System",
+      "description": "Interior Lighting Sub System on the Z-ONE-3.0 platform."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "ThirdRowMapLampLHSwReq",
+      "direction": "Output",
+      "type": "Internal Signal",
+      "description": "Signal indicating the state of the third-row left-side reading lamp switch.",
+      "values": {
+        "0x0": "Idle",
+        "0x1": "Press",
+        "0x2": "Reserved",
+        "0x3": "Error"
+      }
+    }
+  ],
+  "core_inputs": [
+    {
+      "name": "ThrdRowMapLamp_LH_Sw_SIG",
+      "direction": "Input",
+      "type": "Hardwire",
+      "description": "Signal采集第三排左侧阅读灯开关状态."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interface signals and their characteristics for the Interior Lighting Sub System, specifically focusing on the third-row left-side reading lamp switch feedback and collection signals. It is used to verify the correct signal transmission and interpretation between the LHZCU and the relevant components in the lighting system.",
+  "uncertain_points": []
+}
+```

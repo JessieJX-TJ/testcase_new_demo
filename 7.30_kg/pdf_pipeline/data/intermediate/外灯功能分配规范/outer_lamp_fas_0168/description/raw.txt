@@ -1,0 +1,94 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "后雾灯控制流程与状态反馈机制",
+  "row_semantics": "描述后雾灯从开关信号输入到最终点亮的完整控制流程，包括各模块间的交互、状态反馈及同步性要求。",
+  "column_semantics": "无明确列，表格内容为按步骤编号的文本描述，主要展示功能流程和相关参数赋值。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "系统/模块",
+      "description": "外部灯光开关处理模块，负责接收并处理外部灯光开关信号。"
+    },
+    {
+      "name": "HMI子系统ICB",
+      "type": "接口/控制器",
+      "description": "人机交互界面子系统中的ICB（Inter-Computer Bus）调用接口，用于通知后雾灯指示灯显示状态。"
+    },
+    {
+      "name": "外灯控制组合服务ICB",
+      "type": "服务/接口",
+      "description": "外灯控制组合服务通过ICB接口发送后雾灯控制请求。"
+    },
+    {
+      "name": "驱动处理模块RZCU",
+      "type": "控制器",
+      "description": "负责将控制指令转换为硬线输出，驱动后雾灯点亮。"
+    },
+    {
+      "name": "后雾灯控制模块LHZCU",
+      "type": "控制器",
+      "description": "专门负责后雾灯的状态管理和故障反馈。"
+    },
+    {
+      "name": "外灯组合服务ICB",
+      "type": "服务/接口",
+      "description": "订阅后雾灯状态信息，用于系统级状态监控。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RearFogLightSwStatus",
+      "type": "输入信号",
+      "description": "后雾灯开关状态信号，用于触发后雾灯控制流程。",
+      "value": "ON"
+    },
+    {
+      "name": "RearFogLightCtrlReq",
+      "type": "输入信号",
+      "description": "后雾灯控制请求信号，由外灯控制组合服务发出。",
+      "value": "0x1=ON"
+    },
+    {
+      "name": "RearFogLightFucProStatus",
+      "type": "系统状态",
+      "description": "后雾灯功能过程状态，用于指示后雾灯是否仅由后雾灯控制。",
+      "value": "0x1=Only RearFogLight Control"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogLightState",
+      "type": "输出信号",
+      "description": "后雾灯当前状态，表示后雾灯是否点亮。",
+      "value": "0x1=ON"
+    },
+    {
+      "name": "RearFogLightErrorStatus",
+      "type": "输出信号",
+      "description": "后雾灯故障状态，表示是否存在故障。",
+      "value": "0x0=No Error"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RearFogLightErrSta",
+      "type": "故障状态",
+      "description": "后雾灯错误状态，用于报告后雾灯系统中的任何异常。",
+      "value": "0x0=No Error"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步延时",
+      "type": "定时",
+      "description": "后雾灯开启时，左右两侧需保持同步点亮，最大延时不超过40ms。",
+      "value": "≤40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细描述了后雾灯从开关信号输入到最终点亮的整个控制流程，包括各模块间的交互逻辑、状态反馈机制以及关键的同步性要求，可用于验证后雾灯系统的控制逻辑、状态反馈准确性和点亮同步性。",
+  "uncertain_points": []
+}
+```

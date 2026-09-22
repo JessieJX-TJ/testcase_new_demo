@@ -1,0 +1,81 @@
+{
+  "table_type": "fault_table",
+  "topic": "左远光灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程分为前置条件、触发条件、执行动作、退出条件和异常处理五个阶段，描述了故障检测与响应的顺序。",
+  "column_semantics": "表格仅有一列，内容为各阶段的具体描述。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "主光灯反馈超时允许参数，用于控制是否启用相关保护机制。"
+    },
+    {
+      "name": "LMainBeamLightDrvMdl",
+      "type": "controller_module",
+      "description": "左远光灯驱动模块，负责控制左远光灯的输出状态。"
+    },
+    {
+      "name": "MainBeamLamp_LH_HSD",
+      "type": "output_signal",
+      "description": "左远光灯高压侧驱动信号，用于直接控制灯泡的点亮/熄灭。"
+    },
+    {
+      "name": "LMainBeamLghtSts",
+      "type": "input_signal",
+      "description": "左远光灯状态信号，反映当前灯的状态（如开启或关闭）。"
+    },
+    {
+      "name": "MainBeamLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "左远光灯控制模块，负责发送控制指令给驱动模块。"
+    },
+    {
+      "name": "DTC_B105C_14",
+      "type": "fault_status",
+      "description": "诊断故障代码，表示检测到左远光灯短路故障。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MainBeamLightFbkSOAEnPrm == 0 (Disable)",
+      "description": "主光灯反馈超时允许参数被禁用，意味着系统不启用相关的超时保护机制。"
+    },
+    {
+      "condition": "左远光灯处于输出状态",
+      "description": "在故障发生时，左远光灯正处于点亮或尝试点亮的状态。"
+    },
+    {
+      "condition": "检测到左远光灯短路到地",
+      "description": "系统检测到左远光灯电路存在短路至地的故障。"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "description": "系统检测到之前存在的短路故障已经恢复正常。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "action": "停止驱动左远光灯输出 (MainBeamLamp_LH_HSD)",
+      "description": "立即停止向左远光灯发送驱动信号，防止进一步损坏。"
+    },
+    {
+      "action": "持续发送 LMainBeamLghtSts = 0 (Off) 至 MainBeamLghtCtrlMdl",
+      "description": "持续发送左远光灯关闭状态信号，确保系统认为灯已熄灭，并至少发送三帧以保证可靠性。"
+    },
+    {
+      "action": "置位 DTC_B105C_14",
+      "description": "设置特定的诊断故障代码，记录此次短路故障以便后续诊断和维修。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "DTC_B105C_14",
+      "description": "左远光灯短路到地故障，由系统检测并记录。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了当左远光灯发生短路到地故障时，系统应如何检测、响应和记录故障的详细逻辑，可用于验证整车电子电器系统在类似故障情况下的保护机制和诊断能力。",
+  "uncertain_points": []
+}

@@ -1,0 +1,428 @@
+```json
+[
+  {
+    "head": "FtwlLampFROnOff",
+    "relation": "控制对象",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_fas_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PassengerSeatConfiguration",
+    "relation": "触发条件",
+    "tail": "SeatConfigurationValue = 0x0",
+    "sources": ["inner_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PassengerSeatConfiguration",
+    "relation": "触发条件",
+    "tail": "SeatConfigurationValue = 0x1",
+    "sources": ["inner_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SystemDefaultSeatConfiguration",
+    "relation": "输出为",
+    "tail": "DefaultValuesAndRelatedParameters",
+    "sources": ["inner_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PassengerSeatConfigurationParameter",
+    "relation": "依赖于",
+    "tail": "S32LM0",
+    "sources": ["inner_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FunctionStateRetention",
+    "relation": "状态保持条件",
+    "tail": "RetentionSourceAndRetentionReasonMeetSpecificConditions",
+    "sources": ["inner_lamp_fas_0544"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampDoorFollowEnabled",
+    "relation": "前提条件",
+    "tail": "MapLampDrEnbSet = 0x0",
+    "sources": ["inner_lamp_fas_0545"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampDoorFollowDisabled",
+    "relation": "前提条件",
+    "tail": "MapLampDrEnbSet = 0x1",
+    "sources": ["inner_lamp_fas_0545"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReadingLampPersonalizationServiceInvocation",
+    "relation": "触发条件",
+    "tail": "MapLampDoorFollowEnabled OR MapLampDoorFollowDisabled",
+    "sources": ["inner_lamp_fas_0545"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightFunctionAllocation",
+    "relation": "包含子功能",
+    "tail": "Z-ONE-3.0Platform",
+    "sources": ["inner_lamp_fas_0546", "inner_lamp_fas_0555"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightFunctionAllocation",
+    "relation": "依赖于",
+    "tail": "FAS-IBD02Specification",
+    "sources": ["inner_lamp_fas_0546", "inner_lamp_fas_0555", "inner_lamp_fas_0547"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunctionOperational",
+    "relation": "前提条件",
+    "tail": "VehiclePowerOn",
+    "sources": ["inner_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunctionOperational",
+    "relation": "前提条件",
+    "tail": "ExteriorLightControlSignalValid",
+    "sources": ["inner_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BodyControlModuleRespondsToDoorStatus",
+    "relation": "依赖于",
+    "tail": "DoorSwitchSignalInput",
+    "sources": ["inner_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PowerTailgateAutoOpen",
+    "relation": "触发条件",
+    "tail": "RemoteKeyUnlockSignalReceived",
+    "sources": ["inner_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PowerTailgateAutoOpen",
+    "relation": "触发条件",
+    "tail": "VehicleStationary",
+    "sources": ["inner_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunctionSuppressed",
+    "relation": "抑制条件",
+    "tail": "ParkingModeActive",
+    "sources": ["inner_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunctionSuppressed",
+    "relation": "抑制条件",
+    "tail": "AmbientLightIntensityAboveThreshold",
+    "sources": ["inner_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BodyControlModuleEnterPowerSavingMode",
+    "relation": "状态保持条件",
+    "tail": "EngineOff",
+    "sources": ["inner_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BodyControlModuleEnterPowerSavingMode",
+    "relation": "状态保持条件",
+    "tail": "AllDoorsClosedForSpecifiedTime",
+    "sources": ["inner_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckStsSignal",
+    "relation": "输入为",
+    "tail": "CANCommunicationProtocol",
+    "sources": ["inner_lamp_fas_0550"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckStsSignal",
+    "relation": "包含子功能",
+    "tail": "{0x0=VehLckSts_0_Unlocked; 0x1=VehLckSts_1_Signal_Position_Entry_Unlocked; 0x2=VehLckSts_2_Interior_Locked}",
+    "sources": ["inner_lamp_fas_0550"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampHMIModuleRequest",
+    "relation": "前提条件",
+    "tail": "S32LModelReadingLampCountConfigurationVaries",
+    "sources": ["inner_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampCtrlModuleRequest",
+    "relation": "前提条件",
+    "tail": "S32LModelReadingLampCountConfigurationVaries",
+    "sources": ["inner_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICBReadingLampBrightnessReception",
+    "relation": "超时约束",
+    "tail": "300ms",
+    "sources": ["inner_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICBSendNewBrightnessValue",
+    "relation": "前提条件",
+    "tail": "SixReadingLampsIlluminationStatusEvaluated",
+    "sources": ["inner_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ZCUDirectDriveInterference",
+    "relation": "故障响应",
+    "tail": "S32LFullVehicleReadingSoftSwitchBounceIssue",
+    "sources": ["inner_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrunkLampOptimization",
+    "relation": "前提条件",
+    "tail": "15MinuteTimerProcessing",
+    "sources": ["inner_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFloorLampLHCtrlModule",
+    "relation": "控制对象",
+    "tail": "LeftLaserWelcomeLamp",
+    "sources": ["inner_lamp_fas_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DrvrDoorFloorLampDrvModule",
+    "relation": "控制对象",
+    "tail": "DriverLaserWelcomeLamp",
+    "sources": ["inner_lamp_fas_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDoorFloorLampDrvModule",
+    "relation": "控制对象",
+    "tail": "RearLeftLaserWelcomeLamp",
+    "sources": ["inner_lamp_fas_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFloorLampRHCtrlModule",
+    "relation": "控制对象",
+    "tail": "RightLaserWelcomeLamp",
+    "sources": ["inner_lamp_fas_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtPsgnDoorFloorLampDrvModule",
+    "relation": "控制对象",
+    "tail": "FrontPassengerLaserWelcomeLamp",
+    "sources": ["inner_lamp_fas_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorFloorLampDrvModule",
+    "relation": "控制对象",
+    "tail": "RearRightLaserWelcomeLamp",
+    "sources": ["inner_lamp_fas_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFloorLampLHCtrlModule",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_fas_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DrvrDoorFloorLampDrvModule",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_fas_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDoorFloorLampDrvModule",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_fas_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFloorLampRHCtrlModule",
+    "relation": "依赖于",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_fas_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtPsgnDoorFloorLampDrvModule",
+    "relation": "依赖于",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_fas_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorFloorLampDrvModule",
+    "relation": "依赖于",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_fas_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReadingLampSwitchControlFunction",
+    "relation": "前提条件",
+    "tail": "VP3-25770ConstraintNotMet",
+    "sources": ["inner_lamp_fas_0553"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReadingLampSwitchControl",
+    "relation": "前提条件",
+    "tail": "PermissionID_VP3-62768Granted",
+    "sources": ["inner_lamp_fas_0554"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONEPlatformInteriorLightFunction",
+    "relation": "包含子功能",
+    "tail": "Z-ONE-3.0Platform-FAS-IBD02Module",
+    "sources": ["inner_lamp_fas_0555"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0Platform-FAS-IBD02Module",
+    "relation": "依赖于",
+    "tail": "Version < 0.2",
+    "sources": ["inner_lamp_fas_0555"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FunctionAllocationSpecificationDocument",
+    "relation": "包含子功能",
+    "tail": "Z-ONE-3.0Platform-FAS-IBD02Module",
+    "sources": ["inner_lamp_fas_0555"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFRSwReq_1",
+    "relation": "前提条件",
+    "tail": "FrontRightLampNoActionRequested",
+    "sources": ["inner_lamp_fas_0556"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFRSwReq_1",
+    "relation": "触发条件",
+    "tail": "FrontRightLampSwitchPressed",
+    "sources": ["inner_lamp_fas_0556"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFRSwReq_1",
+    "relation": "抑制条件",
+    "tail": "ReservedForFutureUseNoDefinedFunction",
+    "sources": ["inner_lamp_fas_0556"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFRSwReq_1",
+    "relation": "故障响应",
+    "tail": "FrontRightLampRequestErrorDetected",
+    "sources": ["inner_lamp_fas_0556"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRLSwReq_1",
+    "relation": "前提条件",
+    "tail": "RearLeftLampNoActionRequested",
+    "sources": ["inner_lamp_fas_0556"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRLSwReq_1",
+    "relation": "触发条件",
+    "tail": "RearLeftLampSwitchPressed",
+    "sources": ["inner_lamp_fas_0556"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRLSwReq_1",
+    "relation": "抑制条件",
+    "tail": "ReservedForFutureUseNoDefinedFunction",
+    "sources": ["inner_lamp_fas_0556"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRLSwReq_1",
+    "relation": "故障响应",
+    "tail": "RearLeftLampRequestErrorDetected",
+    "sources": ["inner_lamp_fas_0556"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

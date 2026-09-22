@@ -1,0 +1,92 @@
+```json
+[
+  {
+    "head": "后雾灯开启",
+    "relation": "触发条件",
+    "tail": "收到[大屏开关请求 ICB]输入后雾灯开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "收到[大屏开关请求 ICB]",
+      "后雾灯开启"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "组合开关挡位自动切换为 AUTO",
+    "relation": "前提条件",
+    "tail": "位置灯开关挡位为OFF，用户通过大屏点击后雾灯开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "位置灯开关挡位为OFF",
+      "收到[大屏开关请求 ICB]",
+      "组合开关挡位自动切换为 AUTO"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "组合开关挡位自动切换为 AUTO",
+    "relation": "依赖于",
+    "tail": "LHZCU 内部将 CombLghtSwStatus 设置为 0x3 (AUTO)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "CombLghtSwStatus",
+      "0x3"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "依赖于",
+    "tail": "LHZCU 将 RearFogLightReq 设置为 0x1 (ON)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RearFogLightReq",
+      "0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "组合开关挡位为关闭或位置灯",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CombLghtSwStatus = 0x0 (OFF)",
+      "CombLghtSwStatus = 0x1 (SidePositionLight ON)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "无前雾灯功能或前雾灯未开启",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "FrontFogLghtFucProStatus = 0x0 (OFF)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMd 状态满足特定条件",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsrMd != 0x0, 0x1, 0x6"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "VehMd 状态为TRANSPORT",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd = 0x3"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"signal_table\",\n  \"topic\": \"转向灯开关信号处理逻辑\",\n  \"row_semantics\": \"描述用户操作（转向灯开关接通）时，系统内部信号的赋值和状态转换。\",\n  \"column_semantics\": {\n    \"第一列\": \"用户动作：描述触发系统的外部事件或操作。\",\n    \"第二列\": \"信号赋值：详细说明在特定用户动作下，系统内部信号的具体赋值过程及逻辑处理模块。\",\n  },\n  \"has_merged_cells\": false,\n  \"header_levels\": 1,\n  \"core_entities\": [\n    {\n      \"name\": \"转向灯开关\",\n      \"type\": \"输入信号\",\n      \"description\": \"用户手动操作的物理开关，用于控制转向灯的开启与关闭。\"\n    },\n    {\n      \"name\": \"DircnIndLghtSwSts\",\n      \"type\": \"输出信号/系统状态\",\n      \"description\": \"转向灯开关状态变量，表示当前转向灯开关的位置或状态（例如左转、右转或关闭）。\"\n    },\n    {\n      \"name\": \"转向灯开关预处理模块\",\n      \"type\": \"控制器/模块\",\n      \"description\": \"负责检测转向灯开关状态并进行内部信号跳转的软件模块。\"\n    }\n  ],\n  \"core_conditions\": [\n    {\n      \"condition\": \"转向灯开关接通\",\n      \"description\": \"用户操作转向灯拨杆开关触发（硬线开关接通）。\"\n    }\n  ],\n  \"core_outputs\": [\n    {\n      \"signal\": \"DircnIndLghtSwSts\",\n      \"value\": \"0x1\",\n      \"description\": \"当转向灯开关接通时，系统将DircnIndLghtSwSts信号赋值为0x1，表示左转方向指示灯已激活。\"\n    }\n  ],\n  \"core_faults\": [],\n  \"core_timing_constraints\": [],\n  \"engineering_interpretation\": \"该表格定义了转向灯开关接通时，系统内部信号DircnIndLghtSwSts的赋值逻辑，可用于验证转向灯开关信号处理模块的功能正确性，确保在用户操作后，系统能够准确识别并响应转向灯状态。\",\n  \"uncertain_points\": []\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

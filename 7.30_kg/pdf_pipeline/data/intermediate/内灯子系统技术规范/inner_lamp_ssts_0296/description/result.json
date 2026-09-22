@@ -1,0 +1,86 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - Roof Lamp Fading and Color Control",
+  "row_semantics": "Different rates or commands for controlling the roof lamp's fading speed, on/off state, and color.",
+  "column_semantics": {
+    "Rate1-15": "Fading rate in seconds (e.g., 500ms, 1s, 2s, etc.)",
+    "新增/原呼吸模式": "Indicates whether a new mode is introduced or an existing breathing pattern is used",
+    "RoofRHALampFadeSpdCmd_1": "Input signal for setting the fading speed of the roof ambient light",
+    "LIN": "Local Interconnect Network communication interface",
+    "RHZCU": "Roof Light Control Unit",
+    "RoofAmbtLampA_RH": "Roof Ambient Lamp A Right Hand side",
+    "RHZCU_LIN5": "Roof Light Control Unit LIN network channel 5",
+    "内灯SSTS": "Interior Lighting Sub System Technical Specification"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "RoofRHALampFadeSpdCmd_1",
+      "type": "input_signal",
+      "description": "Command to set the fading speed of the roof ambient light. Values range from 0x0 to 0x3."
+    },
+    {
+      "name": "RoofRHBLampOnOff_1",
+      "type": "input_signal",
+      "description": "Command to turn the roof ambient light on or off. Values are 0x0 (OFF) or 0x1 (ON)."
+    },
+    {
+      "name": "RoofRHBLampColorCmd_1",
+      "type": "input_signal",
+      "description": "Command to set the color of the roof ambient light. Values include 0x00 (No Request) or 0x01-0xFF (various color values)."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller_module",
+      "description": "Roof Light Control Unit responsible for processing commands and controlling the roof lamps."
+    },
+    {
+      "name": "RoofAmbtLampA_RH",
+      "type": "output_signal",
+      "description": "The right-hand side roof ambient light output."
+    },
+    {
+      "name": "RoofAmbtLampB_RH",
+      "type": "output_signal",
+      "description": "The second right-hand side roof ambient light output (if applicable)."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Fading Rate",
+      "description": "Defined by Rate1 to Rate15, specifying the time interval for each fade step (e.g., 500ms, 1s, up to 12s)."
+    },
+    {
+      "name": "Breathing Mode",
+      "description": "Indicates whether a new breathing pattern is introduced or an existing one is used."
+    },
+    {
+      "name": "Command Value",
+      "description": "Specific values (e.g., 0x0, 0x1, etc.) determine the action or state of the roof lamp."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RoofAmbtLampA_RH",
+      "description": "The actual lighting output of the roof ambient light, controlled by the fading speed and color commands."
+    },
+    {
+      "name": "RoofAmbtLampB_RH",
+      "description": "The secondary roof ambient light output, if present."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Fading Speed",
+      "description": "Default speed is 2000ms; specific speeds can be set to 300ms (Spd1), 100ms (Spd2, reserved for future use), or 0 (Spd3)."
+    },
+    {
+      "name": "Mode Switching",
+      "description": "When switching between breathing modes, the current mode stops immediately, and the next mode begins."
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters and commands for controlling the roof ambient lights, including fading speed, on/off states, and color settings, as part of the Interior Lighting Sub System. It is used to verify that the RHZCU correctly interprets and executes commands related to roof lamp behavior.",
+  "uncertain_points": []
+}

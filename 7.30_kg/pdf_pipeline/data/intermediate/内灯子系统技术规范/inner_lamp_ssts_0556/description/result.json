@@ -1,0 +1,62 @@
+{
+  "table_type": "state_table",
+  "topic": "化妆镜灯驱动控制逻辑",
+  "row_semantics": "表格描述了化妆镜灯从开启到关闭的完整状态转换过程，包括前置条件、触发条件、执行动作、退出条件以及异常处理。",
+  "column_semantics": {
+    "第一列": "表示状态转换的不同阶段或条件类型（如前置条件、触发条件等）",
+    "第二列": "详细描述了对应阶段的具体条件或动作"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "化妆镜灯",
+      "type": "功能模块",
+      "description": "车辆内部用于照明化妆区域的灯光系统"
+    },
+    {
+      "name": "VatyMirLampCtrlCmd",
+      "type": "输入信号",
+      "description": "应用控制模块发送的请求信号，用于控制化妆镜灯的开关状态"
+    },
+    {
+      "name": "TmdDlyLamp_HSD",
+      "type": "输出信号",
+      "description": "化妆镜灯驱动控制模块发送的驱动信号，用于控制灯的亮度或状态"
+    },
+    {
+      "name": "化妆镜灯驱动控制模块",
+      "type": "控制器/模块",
+      "description": "负责接收控制指令并驱动化妆镜灯工作的电子控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "化妆镜灯无短路故障"
+    },
+    {
+      "condition": "触发条件",
+      "description": "接收到应用控制模块的请求信号 VatyMirLampCtrlCmd=0x1 (Open)"
+    },
+    {
+      "condition": "退出条件",
+      "description": "接收到 VatyMirLampCtrlCmd=0x0 (Close)，关闭化妆镜灯驱动"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "TmdDlyLamp_HSD",
+      "description": "发送驱动信号至高电平，激活化妆镜灯"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "化妆镜灯短路故障",
+      "description": "检测到短路故障时，系统将关闭化妆镜灯驱动以保护电路"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证化妆镜灯驱动控制模块在不同控制信号下的状态转换逻辑，确保其在正常操作和异常情况下的行为符合设计规范。",
+  "uncertain_points": []
+}

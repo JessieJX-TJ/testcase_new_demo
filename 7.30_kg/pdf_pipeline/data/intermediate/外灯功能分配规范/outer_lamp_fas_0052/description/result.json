@@ -1,0 +1,44 @@
+{
+  "table_type": "logic_table",
+  "topic": "后雾灯功能激活与退出逻辑",
+  "row_semantics": "描述了后雾灯在特定前置条件不满足时的退出行为，属于功能逻辑验证场景。",
+  "column_semantics": {
+    "第一列": "场景描述，说明触发条件和预期行为",
+    "第二列": "前置条件，详细列出使能该场景的前提"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "后雾灯",
+      "type": "功能名",
+      "description": "车辆后部用于警示的照明装置"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "后雾灯处于激活状态",
+      "type": "系统状态",
+      "description": "后雾灯当前处于点亮或工作模式"
+    },
+    {
+      "name": "前置条件不满足",
+      "type": "输入信号",
+      "description": "指导致后雾灯退出激活状态的外部或内部条件未达成"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "退出后雾灯",
+      "type": "输出信号",
+      "description": "后雾灯从激活状态切换到关闭或非激活状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了后雾灯在特定前置条件不满足时的退出逻辑，可用于验证后雾灯控制策略在不同通信模式（SOA/CAN）下的正确性。",
+  "uncertain_points": [
+    "具体通信协议（SOA/CAN）的实现细节未明确说明",
+    "PPV阶段及以后的开发要求未详细展开"
+  ]
+}

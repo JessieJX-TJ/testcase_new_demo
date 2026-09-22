@@ -1,0 +1,50 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "HMI (Human-Machine Interface) 显示状态信号描述",
+  "row_semantics": "表格描述了 HMI 子系统在接收到个性化设置子系统发出的 '伴我回家' 功能状态时，如何根据该状态来显示相应的指示灯（制动灯）状态。",
+  "column_semantics": "表格包含两列：第一列是标题 '制动灯状态描述'，第二列详细描述了 HMI 系统在特定条件下的行为逻辑。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "HMI 子系统",
+      "type": "controller",
+      "description": "负责处理用户界面显示的子系统"
+    },
+    {
+      "name": "个性化设置子系统",
+      "type": "controller",
+      "description": "负责提供用户个性化配置的子系统"
+    },
+    {
+      "name": "伴我回家功能",
+      "type": "function",
+      "description": "一种车辆安全功能，允许驾驶员在下车后，车灯保持开启一段时间"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "PersonalizationData.FollowMehomeSet.FollowMehomeSetInfo.FoMeHmEnableInfo",
+      "type": "input_signal",
+      "description": "个性化设置子系统发出的 '伴我回家' 功能使能状态信号",
+      "value": "0x0 = Enabled",
+      "uncertain_points": "未明确说明其他可能的值及其含义"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "制制动灯状态",
+      "type": "output_signal",
+      "description": "HMI 子系统根据 '伴我回家' 功能使能状态，控制制制动灯的开关和开启状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证 HMI 子系统是否正确响应个性化设置子系统发出的 '伴我回家' 功能使能状态，并准确控制制制动灯的显示状态。",
+  "uncertain_points": [
+    "未明确说明 'FoMeHmEnableInfo' 的其他可能值及其对应的系统行为",
+    "未明确说明 '伴我回家' 功能的具体时间参数或触发条件"
+  ]
+}
+```

@@ -1,0 +1,40 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "外灯功能 - 近光灯故障状态检测",
+  "row_semantics": "按近光灯位置（右侧、左侧）和故障类型（硬线故障、网络故障）划分的故障状态查询接口",
+  "column_semantics": {
+    "功能名": "DippedBeamLight.DippedBeamLightErrorStatus",
+    "消费方": "SOA (Service-Oriented Architecture)",
+    "控制器/模块名": [
+      "RHZCU",
+      "LHZCU",
+      "ICB"
+    ],
+    "系统状态/模式": "无明确模式，主要为故障状态查询",
+    "故障状态": "硬线故障状态或网络故障状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "DippedBeamLight.DippedBeamLightErrorStatus"
+  ],
+  "core_conditions": [
+    "Interface Name: DippedBeamLightErrorStatus",
+    "Parameter Name: {DippedBeamLightErrorSta}",
+    "InstanceID: 2 (右侧), InstanceID: 3 (左侧)"
+  ],
+  "core_outputs": [
+    "0x0=No Error",
+    "0x1=Error",
+    "0x2=Unknown"
+  ],
+  "core_faults": [
+    "硬线故障状态",
+    "网络故障状态"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了通过服务接口查询车辆右侧和左侧近光灯故障状态的规范，包括无错误、错误和未知三种状态，适用于验证外灯控制系统在不同故障场景下的状态反馈能力。",
+  "uncertain_points": []
+}
+```

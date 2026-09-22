@@ -1,0 +1,468 @@
+```json
+[
+  {
+    "head": "DTC Display Code",
+    "relation": "depends on",
+    "tail": "Fault Description",
+    "sources": ["inner_lamp_ssts_0267"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC Display Code",
+    "relation": "diagnostically associated with",
+    "tail": "Fault Recovery Condition",
+    "sources": ["inner_lamp_ssts_0267", "inner_lamp_ssts_0363"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "enters Breathing Mode when",
+    "tail": "UpIPALampBrthngCmd_1 ≠ 0x00",
+    "sources": ["inner_lamp_ssts_0268"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "exits Breathing Mode when",
+    "tail": "UpIPALampBrthngCmd_1 = 0x00 (No Request)",
+    "sources": ["inner_lamp_ssts_0268"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "displays Constant Brightness when",
+    "tail": "AmbtLghtRHRollingCtr_1 stops incrementing by 1",
+    "sources": ["inner_lamp_ssts_0268"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "displays Static Brightness when",
+    "tail": "AmbtLghtRHRollingCtr_1 is invalid or color/brightness signal is abnormal",
+    "sources": ["inner_lamp_ssts_0268"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "turns Off as fault response to",
+    "tail": "Overvoltage or Undervoltage fault in Ambient Lamp module",
+    "sources": ["inner_lamp_ssts_0268"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "turns Off due to timeout",
+    "tail": "LIN signal from ZCU not received for >6 s",
+    "sources": ["inner_lamp_ssts_0268", "inner_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IM Motors Z-ONE-3.0 Interior Lamp Subsystem",
+    "relation": "contains subsystem",
+    "tail": "SSTS-IBD10 Controller Module",
+    "sources": ["inner_lamp_ssts_0270"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IM Motors Z-ONE-3.0 Interior Lamp Subsystem",
+    "relation": "controls",
+    "tail": "SSTS-IBD10 Controller Module",
+    "sources": ["inner_lamp_ssts_0270"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Door Ambient Lamp",
+    "relation": "turns On when",
+    "tail": "DoorRR6LampOnOff_1_1 = ON and non-zero color/brightness command is present",
+    "sources": ["inner_lamp_ssts_0273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Door Ambient Lamp",
+    "relation": "changes color when",
+    "tail": "DoorRR6LampColorCmd_1_0 ∈ {0x01–0xFF} (excluding No Request)",
+    "sources": ["inner_lamp_ssts_0273", "inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Door Ambient Lamp",
+    "relation": "adjusts brightness when",
+    "tail": "DoorRR6LampBrtnsCmd_1_0 ∈ {0x65–0xFF} (non-zero, non-NoRequest range)",
+    "sources": ["inner_lamp_ssts_0273", "inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Door Ambient Lamp",
+    "relation": "enables Breathing Mode when",
+    "tail": "DoorRR6LampBrthngCmd_1_1–DoorRR6LampBrthngCmd_1_15 ∈ {Rate1–Rate15}",
+    "sources": ["inner_lamp_ssts_0273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Door Ambient Lamp",
+    "relation": "maintains current color when",
+    "tail": "DoorRR6LampColorCmd_1_0 = 0x00 (No Request) or undefined color code",
+    "sources": ["inner_lamp_ssts_0273", "inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Door Ambient Lamp",
+    "relation": "maintains current brightness when",
+    "tail": "DoorRR6LampBrtnsCmd_1_0 = 0x00 (No Request) or value = 0",
+    "sources": ["inner_lamp_ssts_0273", "inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Door Ambient Lamp",
+    "relation": "disables Breathing Mode when",
+    "tail": "DoorRR6LampBrthngCmd_1_0 = Rate0 (0x00)",
+    "sources": ["inner_lamp_ssts_0273", "inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lamp SSTS State Output",
+    "relation": "comprises",
+    "tail": "Right Rear Door Ambient Lamp On/Off, Color, Brightness, and Breathing Mode control results",
+    "sources": ["inner_lamp_ssts_0273"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Rear Door Ambient Lamp Breathing Cycle Duration",
+    "relation": "depends on",
+    "tail": "Breathing Mode command value (e.g., Rate1 → 500 ms)",
+    "sources": ["inner_lamp_ssts_0273", "inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampBrtnsCmd_1",
+    "relation": "controls right rear door ambient lamp color when",
+    "tail": "value ∈ {0x01–0xFF}",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampBrtnsCmd_1",
+    "relation": "maintains current color when",
+    "tail": "value = 0 or undefined color code",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampBrtnsCmd_1",
+    "relation": "controls right rear door ambient lamp brightness when",
+    "tail": "value ∈ {0x01–0x64} (excluding No Request and full-brightness range)",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": true,
+    "conflict_note": "Conflicts with inner_lamp_ssts_0273 which specifies brightness control only for 0x65–0xFF; this source implies lower values (0x01–0x64) also control brightness — requires clarification on valid brightness command range."
+  },
+  {
+    "head": "DoorRL2LampBrtnsCmd_1",
+    "relation": "maintains current brightness when",
+    "tail": "value = 0",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1",
+    "relation": "controls right rear door ambient lamp breathing rate when",
+    "tail": "value ∈ {0x01–0x0F} (Rate1–Rate15)",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1",
+    "relation": "leaves breathing mode unchanged when",
+    "tail": "value = 0x00 (No Request)",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1",
+    "relation": "breathing rate depends on",
+    "tail": "Code value (0x0–0xF)",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1",
+    "relation": "breathing cycle duration depends on",
+    "tail": "Code value mapping (e.g., Rate1 → 500 ms)",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1",
+    "relation": "breathing mode state depends on",
+    "tail": "original breathing mode value mapped by Code",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampBrtnsCmd_1",
+    "relation": "input interface",
+    "tail": "LIN",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1",
+    "relation": "input interface",
+    "tail": "LIN",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampBrtnsCmd_1",
+    "relation": "processed by",
+    "tail": "LHZCU_LIN4",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1",
+    "relation": "processed by",
+    "tail": "LHZCU_LIN4",
+    "sources": ["inner_lamp_ssts_0275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate6holdoffPercent",
+    "relation": "input formula",
+    "tail": "E = N × 1%",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate6holdoffPercent",
+    "relation": "output value",
+    "tail": "0x0A (10%)",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate7holdoffPercent",
+    "relation": "input formula",
+    "tail": "E = N × 1%",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate7holdoffPercent",
+    "relation": "output value",
+    "tail": "0x0A (10%)",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate8holdoffPercent",
+    "relation": "input formula",
+    "tail": "E = N × 1%",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate8holdoffPercent",
+    "relation": "output value",
+    "tail": "0x14 (20%)",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate9holdoffPercent",
+    "relation": "input formula",
+    "tail": "E = N × 1%",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate9holdoffPercent",
+    "relation": "output value",
+    "tail": "0x05 (5%)",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate10holdoffPercent",
+    "relation": "input formula",
+    "tail": "E = N × 1%",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate10holdoffPercent",
+    "relation": "output value",
+    "tail": "0x0A (10%)",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate11holdoffPercent",
+    "relation": "input formula",
+    "tail": "E = N × 1%",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate11holdoffPercent",
+    "relation": "output value",
+    "tail": "0x0A (10%)",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate12holdoffPercent",
+    "relation": "input formula",
+    "tail": "E = N × 1%",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate12holdoffPercent",
+    "relation": "output value",
+    "tail": "0x0A (10%)",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate13holdoffPercent",
+    "relation": "status",
+    "tail": "Reserved, not used",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate14holdoffPercent",
+    "relation": "input formula",
+    "tail": "E = N × 1%",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate14holdoffPercent",
+    "relation": "output value",
+    "tail": "0x0A (10%)",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate15holdoffPercent",
+    "relation": "status",
+    "tail": "Reserved, not used",
+    "sources": ["inner_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Driver Control Module",
+    "relation": "includes subfunction",
+    "tail": "Laser Welcome Light Control Logic",
+    "sources": ["inner_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Delay Logic",
+    "relation": "triggered in",
+    "tail": "Sleep, Standby, or XOTA mode",
+    "sources": ["inner_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode CODE Value",
+    "relation": "change triggers",
+    "tail": "update of ambient lamp breathing mode control logic",
+    "sources": ["inner_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ZCU LIN Signal Reception Timeout",
+    "relation": "triggers",
+    "tail": "immediate ambient lamp shutdown",
+    "sources": ["inner_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Seat LIN Switch Backlight",
+    "relation": "input source",
+    "tail": "LIN signal",
+    "sources": ["inner_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Center Console Physical Switch Backlight Signal Routing",
+    "relation": "includes subfunction",
+    "tail": "Center Console Physical Switch Backlight Driver Control",
+    "sources": ["inner_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU Backlight Signal Routing",
+    "relation": "includes subfunction",
+    "tail": "Additional LIN node assignment",
+    "sources": ["inner_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Default Timeout Duration",
+    "relation": "revised to",
+    "tail": "6 s",
+    "sources": ["inner_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

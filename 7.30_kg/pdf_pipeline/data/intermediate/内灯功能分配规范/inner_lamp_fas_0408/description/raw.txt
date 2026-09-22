@@ -1,0 +1,53 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "ThirdRowMapLampRHBrTvl信号接口定义与映射关系",
+  "row_semantics": "表格的每一行代表一个信号接口或其详细描述，包括接口名称、方向、类型、发送方/接收方、路径及接口来源。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，用于标识该信号。",
+    "Direction": "信号的传输方向，如输入或输出。",
+    "Type": "信号的类型，例如CAN/LIN/SOA服务或硬件线等。",
+    "Sender/Provider": "信号的提供方，可能是节点或SoA服务。",
+    "Receiver/Consumer": "信号的接收方，可能是节点或SoA服务消费方。",
+    "Channel": "信号传输的通道或路径。",
+    "Interface Source": "信号的来源，指定信号通道和来源。",
+    "Description": "对信号的详细描述，包括其值的含义（如Level 1, Level 2等）"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampRHBrTvl",
+      "type": "Signal",
+      "description": "第三排地图灯右侧亮度等级信号，用于控制地图灯的亮度级别。"
+    },
+    {
+      "name": "RHZCU",
+      "type": "Controller/Module",
+      "description": "Right Hand Zone Control Unit，右侧区域控制单元，负责处理与右侧相关的控制逻辑。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "ThirdRowMapLampRHBrTvl",
+      "value_range": [
+        "0x0 = OFF",
+        "0x1 = Level 1",
+        "0x2 = Level 2",
+        "...",
+        "0xE = Level 30",
+        "0xF = Reserved"
+      ],
+      "description": "表示地图灯的亮度等级，从关闭到最高亮度Level 30，以及保留值。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了ThirdRowMapLampRHBrTvl信号的接口属性及其在系统中的传输路径和来源，主要用于验证该信号在不同亮度等级下的正确传输和控制逻辑。",
+  "uncertain_points": [
+    "未明确说明该信号的具体应用场景或触发条件。",
+    "未提及该信号与其他相关模块（如照明系统、用户界面等）的交互细节。"
+  ]
+}
+```

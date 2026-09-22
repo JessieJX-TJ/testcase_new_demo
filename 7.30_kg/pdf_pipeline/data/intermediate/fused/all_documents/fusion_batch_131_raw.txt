@@ -1,0 +1,388 @@
+```json
+[
+  {
+    "head": "近光灯故障",
+    "relation": "诊断关联",
+    "tail": "ExteriorLightSwitchProcess.DippedBeamLightErrSta.DipdBeamLghtErrSta = 0x1 = Error",
+    "sources": ["outer_lamp_fas_1392"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启闪烁",
+    "relation": "触发条件",
+    "tail": "LHZCU模块接收到EDRDirclIndLampSwSts_3_hazard信号",
+    "sources": ["outer_lamp_fas_1393", "outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启闪烁",
+    "relation": "触发条件",
+    "tail": "危险警报灯开关控制模块LHZCU控制危险警报灯以25Hz频率闪烁",
+    "sources": ["outer_lamp_fas_1393"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯同步性要求",
+    "relation": "前提条件",
+    "tail": "危险警报灯图标闪烁频率、声音提醒与实际危险警报灯闪烁频率需保持一致；三者同步性允许的最大延时为50ms",
+    "sources": ["outer_lamp_fas_1393"],
+    "conflict": true,
+    "conflict_note": "与另一条同义三元组中'最大延时周期为40ms'存在数值冲突（50ms vs 40ms）"
+  },
+  {
+    "head": "危险警报灯同步性要求",
+    "relation": "前提条件",
+    "tail": "危险警报灯的同步性允许的最大延时周期为40ms",
+    "sources": ["outer_lamp_fas_1393"],
+    "conflict": true,
+    "conflict_note": "与另一条同义三元组中'最大延时为50ms'存在数值冲突（40ms vs 50ms）"
+  },
+  {
+    "head": "危险警报灯开关状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "HzrdLghtSwSts = 0x1 = HzrdLghtSwSts_1_On",
+    "sources": ["outer_lamp_fas_1393"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "双闪灯模式反馈至ICB",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts = 0x1 = VehHzrdMdSts_1_Manual_Mode",
+    "sources": ["outer_lamp_fas_1393"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制状态反馈至SDM",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts = 0x3 = EDRDircnIndLampSwSts_3_hazard",
+    "sources": ["outer_lamp_fas_1393", "outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "方向灯点亮及故障状态CAN信号透传",
+    "relation": "输入为",
+    "tail": "ICB接收LHZCU发送的转向灯点亮及故障状态CAN信号",
+    "sources": ["outer_lamp_fas_1393"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯状态/故障状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "LHZCU将危险警报灯开关状态及故障状态反馈至ICB",
+    "sources": ["outer_lamp_fas_1393"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "通过域控获取转向灯状态",
+    "relation": "前提条件",
+    "tail": "exlDircnLghtHwDrvEnPrm = 0x1",
+    "sources": ["outer_lamp_fas_1393"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "通过数字灯控获取转向灯状态",
+    "relation": "前提条件",
+    "tail": "exlDircnLghtHwDrvEnPrm = 0x0 | 0x2",
+    "sources": ["outer_lamp_fas_1393"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯输出信号 ReverseLight",
+    "relation": "依赖于",
+    "tail": "倒车灯状态信号 ReverseLightState",
+    "sources": ["outer_lamp_fas_1395"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯状态信号 ReverseLightState",
+    "relation": "输入为",
+    "tail": "0x0 = OFF | 0x1 = ON",
+    "sources": ["outer_lamp_fas_1395"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯错误状态 ReverseLightErrorStatus",
+    "relation": "输出为",
+    "tail": "0x0 = No Error",
+    "sources": ["outer_lamp_fas_1395"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯状态 RevsLghtSts",
+    "relation": "输出为",
+    "tail": "RevsLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_1395"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯故障状态 RevsLghtFltSts",
+    "relation": "输出为",
+    "tail": "RevsLghtFltSts_0_False",
+    "sources": ["outer_lamp_fas_1395"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "文档页码：267 of 935",
+    "sources": ["outer_lamp_fas_1396"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0平台-FAS-IBD05",
+    "relation": "输入为",
+    "tail": "外灯功能",
+    "sources": ["outer_lamp_fas_1398"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "文档页码：849 of 935",
+    "sources": ["outer_lamp_fas_1398"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯双闪灯熄灭",
+    "relation": "触发条件",
+    "tail": "ICB接收到FLDircnLghtCtrl_HW / FRDircnLghtCtrl_HW / RLDircnLghtCtrl_HW / RRDircnLghtCtrl_HW = 0x0",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯图标指示灯显示及声音提醒",
+    "relation": "触发条件",
+    "tail": "ICB接收到FLDircnLghtCtrl和FRDircnLghtCtrl = 0x0",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯点亮",
+    "relation": "触发条件",
+    "tail": "LHZCU模块接收到DirectionLightSts = 0x3",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯点亮",
+    "relation": "依赖于",
+    "tail": "LHZCU模块接收ICB发送的转向灯CAN信号",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯故障状态反馈",
+    "relation": "触发条件",
+    "tail": "LHZCU模块检测到DirectionLightErrSts = 0x0 = No Error",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯故障状态反馈",
+    "relation": "依赖于",
+    "tail": "LHZCU模块接收ICB发送的转向灯故障CAN信号",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模式",
+    "relation": "触发条件",
+    "tail": "LHZCU模块记忆本次双闪灯触发动作",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开关控制",
+    "relation": "触发条件",
+    "tail": "LHZCU模块接收到FLDircnLghtCtrl / FRDircnLghtCtrl / RLDircnLghtCtrl / RRDircnLghtCtrl = 0x0",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制状态反馈至SDM",
+    "relation": "触发条件",
+    "tail": "LHZCU模块将转向灯控制状态发送至SDM",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯熄灭",
+    "relation": "触发条件",
+    "tail": "ICB接收到FLDircnLghtCtrl / FRDircnLghtCtrl / RLDircnLghtCtrl / RRDircnLghtCtrl = OFF",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯熄灭",
+    "relation": "输出为",
+    "tail": "ICB模块发送FLDircnLghtCtrl / FRDircnLghtCtrl / RLDircnLghtCtrl / RRDircnLghtCtrl = OFF",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驱动处理模块控制双闪灯退出点亮",
+    "relation": "触发条件",
+    "tail": "ICB模块发送控制信号至驱动处理模块LHZCU / RHZCU / RZCU",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯双闪灯点亮",
+    "relation": "抑制条件",
+    "tail": "VehIntrusionPrevnHzrdLmpReq = 0x0 (防入侵解除)",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯双闪灯点亮",
+    "relation": "输出为",
+    "tail": "LHZCU模块发送VehHzrdMdSts_8_Alarm_trigger信号至ICB",
+    "sources": ["outer_lamp_fas_1399"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智驾双闪灯请求",
+    "relation": "输入为",
+    "tail": "HzrdLampsCtrl",
+    "sources": ["outer_lamp_fas_1404"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLampsCtrl",
+    "relation": "输出为",
+    "tail": "HzrdLampsCtrl_0_OFF | HzrdLampsCtrl_1_ON",
+    "sources": ["outer_lamp_fas_1404"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯状态",
+    "relation": "输入为",
+    "tail": "FLDircnLghtSts",
+    "sources": ["outer_lamp_fas_1404"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "输出为",
+    "tail": "FLDircnLghtSts_0_Off | FLDircnLghtSts_1_On",
+    "sources": ["outer_lamp_fas_1404"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯状态",
+    "relation": "输入为",
+    "tail": "FRDircnLghtSts",
+    "sources": ["outer_lamp_fas_1404"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtSts",
+    "relation": "输出为",
+    "tail": "FRDircnLghtSts_0_Off | FRDircnLghtSts_1_On",
+    "sources": ["outer_lamp_fas_1404"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯状态",
+    "relation": "输入为",
+    "tail": "RLDircnLghtSts",
+    "sources": ["outer_lamp_fas_1404"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtSts",
+    "relation": "输出为",
+    "tail": "RLDircnLghtSts_0_Off | RLDircnLghtSts_1_On",
+    "sources": ["outer_lamp_fas_1404"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯状态",
+    "relation": "输入为",
+    "tail": "RRDircnLghtSts",
+    "sources": ["outer_lamp_fas_1404"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtSts",
+    "relation": "输出为",
+    "tail": "RRDircnLghtSts_0_Off | RRDircnLghtSts_1_On",
+    "sources": ["outer_lamp_fas_1404"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "调用DirectionLightErrorStatus接口",
+    "relation": "触发条件",
+    "tail": "DirectionLightErrorStatus接口被调用（订阅左前/右前/左后/右后转向灯状态）",
+    "sources": ["outer_lamp_fas_1402"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus接口输出为",
+    "relation": "输出为",
+    "tail": "0x0 = No Error | 0x1 = Error | 0x2 = Unknown",
+    "sources": ["outer_lamp_fas_1402"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus接口被调用",
+    "relation": "依赖于",
+    "tail": "InstanceID = 2 | InstanceID = 3",
+    "sources": ["outer_lamp_fas_1402"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "硬线故障状态",
+    "relation": "诊断关联",
+    "tail": "DirectionLightErrorStatus接口输出为 0x1 = Error",
+    "sources": ["outer_lamp_fas_1402"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

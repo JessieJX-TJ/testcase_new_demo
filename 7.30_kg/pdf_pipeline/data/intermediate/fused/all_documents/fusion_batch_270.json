@@ -1,0 +1,602 @@
+[
+  {
+    "head": "Backrest Adjustment",
+    "relation": "trigger condition",
+    "tail": "DoorPnlSeatFnSw_RL",
+    "sources": [
+      "inner_lamp_ssts_0471"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backrest Adjustment",
+    "relation": "trigger condition",
+    "tail": "DoorPnlSeatFnSw_RR",
+    "sources": [
+      "inner_lamp_ssts_0471"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backrest Adjustment",
+    "relation": "trigger condition",
+    "tail": "ThrdRowSeatSw_LH",
+    "sources": [
+      "inner_lamp_ssts_0471"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backrest Adjustment",
+    "relation": "trigger condition",
+    "tail": "ThrdRowSeatSw_RH",
+    "sources": [
+      "inner_lamp_ssts_0471"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR5LampFadeSpdCmd_1",
+    "relation": "trigger condition",
+    "tail": "door lamp fade blinking",
+    "sources": [
+      "inner_lamp_ssts_0472"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR5LampFadeSpdCmd_1",
+    "relation": "input value",
+    "tail": "0x0 → default speed Spd0: 2000ms",
+    "sources": [
+      "inner_lamp_ssts_0472"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR6LampOnOff_1",
+    "relation": "trigger condition",
+    "tail": "door lamp ON",
+    "sources": [
+      "inner_lamp_ssts_0472"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR6LampOnOff_1",
+    "relation": "trigger condition",
+    "tail": "door lamp OFF",
+    "sources": [
+      "inner_lamp_ssts_0472"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR6LampColCmd_1",
+    "relation": "prerequisite",
+    "tail": "door lamp ON",
+    "sources": [
+      "inner_lamp_ssts_0472"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR5LampFadeSpdCmd_1",
+    "relation": "inhibition condition",
+    "tail": "door lamp fade blinking",
+    "sources": [
+      "inner_lamp_ssts_0472"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting relation: same head/tail pair appears as both 'trigger condition' (triple #5) and 'inhibition condition' (triple #10); implies conditional logic where 0x0 inhibits fading *only when fading is otherwise enabled* — requires contextual guard (e.g., 'if fade mode is active') but not explicitly stated. Retained with conflict flag."
+  },
+  {
+    "head": "DoorFR5LampFadeSpdCmd_1",
+    "relation": "depends on",
+    "tail": "door lamp fade speed",
+    "sources": [
+      "inner_lamp_ssts_0472"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp color/brightness transition",
+    "relation": "timeout constraint",
+    "tail": "default speed Spd0: 2000ms",
+    "sources": [
+      "inner_lamp_ssts_0472"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp fade-out",
+    "relation": "trigger condition",
+    "tail": "FtwlAmbtLamp_FL_HSD=0x0 (Close), PWM ramps from 100% to 0% over FtwlAmbtLampLightupDelayPrm (default 2s)",
+    "sources": [
+      "inner_lamp_ssts_0473"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp fade-out",
+    "relation": "output",
+    "tail": "progressive footwell lamp fade-out",
+    "sources": [
+      "inner_lamp_ssts_0473"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver-side footwell lamp driver",
+    "relation": "fault response",
+    "tail": "detect short circuit/open circuit fault",
+    "sources": [
+      "inner_lamp_ssts_0473"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver-side footwell lamp driver",
+    "relation": "output",
+    "tail": "immediate deactivation",
+    "sources": [
+      "inner_lamp_ssts_0473"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver-side footwell lamp driver",
+    "relation": "inhibition condition",
+    "tail": "no progressive fade-out",
+    "sources": [
+      "inner_lamp_ssts_0473"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "controls",
+    "tail": "Z-ONE-3.0 Platform-SSTS-IBD10",
+    "sources": [
+      "inner_lamp_ssts_0474"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "depends on",
+    "tail": "AmbtLampBrthngRate7holdoffPercent",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "depends on",
+    "tail": "AmbtLampBrthngRate8holdoffPercent",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "depends on",
+    "tail": "AmbtLampBrthngRate9holdoffPercent",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "depends on",
+    "tail": "AmbtLampBrthngRate10holdoffPercent",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "depends on",
+    "tail": "AmbtLampBrthngRate11holdoffPercent",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "depends on",
+    "tail": "AmbtLampBrthngRate12holdoffPercent",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "depends on",
+    "tail": "AmbtLampBrthngRate13holdoffPercent",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "depends on",
+    "tail": "AmbtLampBrthngRate14holdoffPercent",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "depends on",
+    "tail": "AmbtLampBrthngRate15holdoffPercent",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "input",
+    "tail": "N * 1%",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "output",
+    "tail": "0x5 (5%)",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "output",
+    "tail": "0xA (10%)",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "output",
+    "tail": "0x14 (20%)",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "inhibition condition",
+    "tail": "AmbtLampBrthngRate13holdoffPercent (reserved, not used)",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "inhibition condition",
+    "tail": "AmbtLampBrthngRate15holdoffPercent (reserved, not used)",
+    "sources": [
+      "inner_lamp_ssts_0476"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp color change",
+    "relation": "trigger condition",
+    "tail": "LowIPBLampColorCmd_1 = 0x01–0xFF",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp color hold",
+    "relation": "state retention condition",
+    "tail": "LowIPBLampColorCmd_1 = 0x00 or undefined color code",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp brightness adjustment",
+    "relation": "trigger condition",
+    "tail": "LowIPBLampBrtnsCmd_1 = 0x01–0x64",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp brightness hold",
+    "relation": "state retention condition",
+    "tail": "LowIPBLampBrtnsCmd_1 = 0x00",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate change",
+    "relation": "trigger condition",
+    "tail": "LowIPBLampBrthngCmd_1 = 0x01–0x1F",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate hold",
+    "relation": "state retention condition",
+    "tail": "LowIPBLampBrthngCmd_1 = 0x00",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x01 → Rate1 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x02 → Rate2 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x03 → Rate3 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x04 → Rate4 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x05 → Rate5 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x06 → Rate6 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x07 → Rate7 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x08 → Rate8 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x09 → Rate9 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x0A → Rate10 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x0B → Rate11 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x0C → Rate12 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x0D → Rate13 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x0E → Rate14 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Low IPB Lamp breathing rate",
+    "relation": "input mapping",
+    "tail": "0x0F → Rate15 mode",
+    "sources": [
+      "inner_lamp_ssts_0478"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "prerequisite",
+    "tail": "consistency with logical block diagram",
+    "sources": [
+      "inner_lamp_ssts_0479"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal sender / SOA service provider",
+    "relation": "input",
+    "tail": "Sender/Provider",
+    "sources": [
+      "inner_lamp_ssts_0479"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal receiver / SOA service consumer",
+    "relation": "input",
+    "tail": "Receiver/Consumer",
+    "sources": [
+      "inner_lamp_ssts_0479"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal channel",
+    "relation": "input",
+    "tail": "Channel",
+    "sources": [
+      "inner_lamp_ssts_0479"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal source",
+    "relation": "input",
+    "tail": "Source",
+    "sources": [
+      "inner_lamp_ssts_0479"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System wake-up/sleep execution",
+    "relation": "trigger condition",
+    "tail": "reception of valid wake-up source signal",
+    "sources": [
+      "inner_lamp_ssts_0480"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

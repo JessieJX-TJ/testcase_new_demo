@@ -1,0 +1,65 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 控制与状态",
+  "row_semantics": "表格按功能过程划分，主要描述了外灯控制接口和状态查询接口的参数定义。",
+  "column_semantics": "第一列为主功能过程名称；第二列及后续列为不同系统或模块（SOA, LHZCU, ICB）对该功能的支持情况。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "CombLightFucProCtrl",
+      "type": "Interface",
+      "description": "组合灯光功能控制接口"
+    },
+    {
+      "name": "CombLightSwStatus",
+      "type": "Interface",
+      "description": "组合灯光开关状态通知接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ControlSuccess",
+      "value": "0x0",
+      "description": "控制成功"
+    },
+    {
+      "name": "Failed",
+      "value": "0x1",
+      "description": "控制失败"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SidePositionLight",
+      "value": "0x1",
+      "description": "侧位灯开启"
+    },
+    {
+      "name": "DippedBeamLight",
+      "value": "0x2",
+      "description": "近光灯开启"
+    },
+    {
+      "name": "AUTO",
+      "value": "0x3",
+      "description": "自动模式"
+    },
+    {
+      "name": "OFF",
+      "value": "0x0",
+      "description": "关闭状态"
+    },
+    {
+      "name": "Unknown",
+      "value": "0x4",
+      "description": "未知状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯控制和状态查询的接口参数，可用于验证外灯控制命令的正确执行以及外灯状态反馈的准确性。",
+  "uncertain_points": []
+}
+```

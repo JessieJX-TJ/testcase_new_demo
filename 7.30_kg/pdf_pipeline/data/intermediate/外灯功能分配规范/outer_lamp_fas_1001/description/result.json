@@ -1,0 +1,89 @@
+{
+  "table_type": "signal_table",
+  "topic": "Exterior Light Control System (外灯控制系统) - ICB (Integrated Control Block) Service Interface Specifications",
+  "row_semantics": "Each row represents a specific service interface call or notification related to exterior lighting control, detailing the input parameters, expected states, and output signals for various light functions.",
+  "column_semantics": "The table does not have explicit columns; instead, it uses a structured text format where each line describes a function call or notification with its associated parameters and status indicators.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "Integrated Control Block, responsible for managing and coordinating various exterior light functions."
+    },
+    {
+      "name": "HMI",
+      "type": "System",
+      "description": "Human-Machine Interface, used for user interaction and displaying status information."
+    },
+    {
+      "name": "LHZCU",
+      "type": "Module",
+      "description": "Rear Fog Light Control Module, specifically handles rear fog light operations."
+    },
+    {
+      "name": "RHZCU",
+      "type": "Module",
+      "description": "Rear Headlight Control Module, manages rear headlight functions."
+    },
+    {
+      "name": "RZCU",
+      "type": "Module",
+      "description": "General Driving Control Module, provides general driving-related control services."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CombLightFucProStatus",
+      "type": "Input Signal",
+      "description": "Combined light function priority status, determining which light function has priority."
+    },
+    {
+      "name": "RearFogLightSwSta",
+      "type": "Input Signal",
+      "description": "Rear fog light switch status, indicating whether the rear fog light is on or off."
+    },
+    {
+      "name": "DippedBeamLightReqSts",
+      "type": "Output Signal",
+      "description": "Request status for dipped beam light, indicating if a request for dipped beam light is pending."
+    },
+    {
+      "name": "RearFogLightState",
+      "type": "System State",
+      "description": "Current state of the rear fog light, including on/off and error conditions."
+    },
+    {
+      "name": "RearFogLightErrSta",
+      "type": "Fault Status",
+      "description": "Error status of the rear fog light, indicating any faults or issues."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "Output Signal",
+      "description": "Status of the dipped beam light, indicating whether it is on or off."
+    },
+    {
+      "name": "RearFogLightSta",
+      "type": "Output Signal",
+      "description": "Status of the rear fog light, indicating whether it is on or off."
+    },
+    {
+      "name": "RearFogLightErrSta",
+      "type": "Output Signal",
+      "description": "Error status of the rear fog light, indicating any faults or issues."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RearFogLightErrorStatus",
+      "type": "Fault Status",
+      "description": "Indicates errors related to the rear fog light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interface specifications for various services related to exterior lighting control within the vehicle's ICB. It outlines how different modules interact with the ICB to control lights such as dipped beams, rear fog lights, and near lights, including their status, error conditions, and control signals. This information is crucial for testing the correct functionality and communication between the ICB and other modules in response to user inputs and system states.",
+  "uncertain_points": []
+}

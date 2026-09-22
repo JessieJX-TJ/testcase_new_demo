@@ -1,0 +1,70 @@
+{
+  "table_type": "signal_table",
+  "topic": "Daytime Running Light (DRL) Control and Status Signals",
+  "row_semantics": "Each row represents a specific control or status signal related to the Daytime Running Lights, including their control commands and current states for both left and right sides.",
+  "column_semantics": "The columns define the output type (e.g., CANFD), and the controllers/modules involved in processing or transmitting the signal (e.g., LHZCU, ICB).",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LDayTmRunngLghtCtrl",
+      "type": "control_signal",
+      "description": "Left Daytime Running Light Control Signal"
+    },
+    {
+      "name": "RDayTmRunngLghtCtrl",
+      "type": "control_signal",
+      "description": "Right Daytime Running Light Control Signal"
+    },
+    {
+      "name": "LDayTmRunngLghtSts",
+      "type": "status_signal",
+      "description": "Left Daytime Running Light Status"
+    },
+    {
+      "name": "RDayTmRunngLghtSts",
+      "type": "status_signal",
+      "description": "Right Daytime Running Light Status"
+    },
+    {
+      "name": "DayTmRunngLghtSts",
+      "type": "status_signal",
+      "description": "Overall Daytime Running Light Status"
+    },
+    {
+      "name": "LDayTmRunngLghtFaultSts",
+      "type": "fault_status",
+      "description": "Left Daytime Running Light Fault Status"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0",
+      "value": "0x0",
+      "description": "Signal state indicating 'off'"
+    },
+    {
+      "name": "0x1",
+      "value": "0x1",
+      "description": "Signal state indicating 'on'"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "CANFD",
+      "description": "Controller Area Network Flexible Data Rate, used for high-speed communication of the signals."
+    },
+    {
+      "name": "LHZCU",
+      "description": "Local Host Zone Control Unit, one of the modules responsible for processing the DRL signals."
+    },
+    {
+      "name": "ICB",
+      "description": "Integrated Circuit Board, another module involved in the signal processing."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the control and status signals for the vehicle's Daytime Running Lights, detailing how the left and right lights are controlled and monitored by various electronic control units (ECUs) via CANFD communication. It is primarily used for verifying the correct transmission and interpretation of DRL control commands and status updates across the vehicle's network.",
+  "uncertain_points": []
+}

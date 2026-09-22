@@ -1,0 +1,97 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯控制组合服务 ICB (ICB) 的调用基础服务与接口定义",
+  "row_semantics": "表格按功能模块和信号类型逐条列出外灯控制相关的输入、输出及状态信息，主要描述了近光灯（Dipped Beam Light）的控制逻辑、CAN信号转换、驱动模块状态以及伴我回家功能的状态接口。",
+  "column_semantics": "无明确列标题，内容为连续的功能描述和信号定义，分为多个编号段落，每段落描述一个特定的控制或状态接口。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "外灯控制组合服务 ICB",
+      "type": "service",
+      "description": "负责管理外灯（如近光灯）的控制逻辑和服务接口"
+    },
+    {
+      "name": "Dipped Beam Light",
+      "type": "function",
+      "description": "指车辆的近光灯功能"
+    },
+    {
+      "name": "LHZCU/RHZCU",
+      "type": "controller",
+      "description": "驱动处理模块，用于控制近光灯的硬件驱动"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "伴我回家控制模块，用于管理伴我回家功能的状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DippedBeamLightReq",
+      "type": "input_signal",
+      "description": "近光灯请求信号，值为0x0=OFF表示关闭请求"
+    },
+    {
+      "name": "FollowMehomeSetInfo",
+      "type": "input_signal",
+      "description": "获取伴我回家功能的开关状态"
+    },
+    {
+      "name": "exlDipdBeamHwDrvEnPrm",
+      "type": "input_signal",
+      "description": "通过Instance ID获取近光灯硬件驱动使能参数"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "output_signal",
+      "description": "近光灯当前状态，值为0x0=OFF表示熄灭"
+    },
+    {
+      "name": "DippedBeamLightErrorSta",
+      "type": "output_signal",
+      "description": "近光灯错误状态，值为0x0=No Error表示无错误"
+    },
+    {
+      "name": "LDipdBeamLightSts",
+      "type": "output_signal",
+      "description": "左侧近光灯状态"
+    },
+    {
+      "name": "RDipdBeamLightSts",
+      "type": "output_signal",
+      "description": "右侧近光灯状态"
+    },
+    {
+      "name": "LDipdBeamLightFltSts",
+      "type": "output_signal",
+      "description": "左侧近光灯故障状态"
+    },
+    {
+      "name": "RDipdBeamLightFltSts",
+      "type": "output_signal",
+      "description": "右侧近光灯故障状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DippedBeamLightErrorSta",
+      "type": "fault_status",
+      "description": "近光灯错误状态，指示是否存在硬件或软件故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "熄灭同步延时",
+      "type": "timing_constraint",
+      "description": "左侧和右侧近光灯需保持同步熄灭，最大延时不超过40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了外灯控制组合服务（ICB）在车辆中的功能实现，包括近光灯的控制请求、状态反馈、故障检测以及伴我回家功能的相关接口。可用于验证近光灯的控制逻辑、CAN信号转换、硬件驱动状态以及伴我回家功能的正确性。",
+  "uncertain_points": []
+}
+```

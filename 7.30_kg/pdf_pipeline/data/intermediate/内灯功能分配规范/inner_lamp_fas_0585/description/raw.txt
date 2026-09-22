@@ -1,0 +1,118 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Vehicle Mode and Status Specification for Interior Lighting",
+  "row_semantics": "Each row represents a specific vehicle-related status or mode parameter, detailing its possible states and associated CAN bus communication details.",
+  "column_semantics": {
+    "1": "Parameter Name (e.g., VehLckSts, VehMd, VehMdV)",
+    "2": "Input Type (e.g., CAN)",
+    "3": "Controller/Module (e.g., ICB/ZXD, LHZCU)",
+    "4": "System Component (e.g., VS, SST)",
+    "5": "State Definitions (e.g., Locked, Normal, Crash)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehLckSts",
+      "type": "status",
+      "description": "Vehicle Lock Status, indicating the locking state of exterior doors."
+    },
+    {
+      "name": "VehMd",
+      "type": "mode",
+      "description": "Vehicle Mode, representing different operational modes of the vehicle such as Normal, Crash, Factory, Transport, etc."
+    },
+    {
+      "name": "VehMdV",
+      "type": "validation",
+      "description": "Vehicle Mode Validation, indicating whether the vehicle mode is valid or invalid."
+    },
+    {
+      "name": "UsGmD",
+      "type": "unknown",
+      "description": "Unknown general module or status, possibly related to user settings or general diagnostics."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Exterior_Locked",
+      "value": "0x3",
+      "description": "Indicates that the exterior doors are locked."
+    },
+    {
+      "name": "Super_locked",
+      "value": "0x4",
+      "description": "Indicates that the exterior doors are in a super locked state."
+    },
+    {
+      "name": "Reserved",
+      "value": "0x5-0x6",
+      "description": "Reserved for future use."
+    },
+    {
+      "name": "Unknown",
+      "value": "0x7",
+      "description": "Indicates an unknown locking status."
+    },
+    {
+      "name": "Normal",
+      "value": "0x0",
+      "description": "Standard operational mode."
+    },
+    {
+      "name": "Crash",
+      "value": "0x1",
+      "description": "Mode activated during a crash event."
+    },
+    {
+      "name": "Factory",
+      "value": "0x2",
+      "description": "Factory test mode."
+    },
+    {
+      "name": "Transport",
+      "value": "0x3",
+      "description": "Transportation mode."
+    },
+    {
+      "name": "Dyno",
+      "value": "0x4",
+      "description": "Dyno testing mode."
+    },
+    {
+      "name": "Exhibition",
+      "value": "0x5",
+      "description": "Exhibition mode."
+    },
+    {
+      "name": "Engineering",
+      "value": "0x8",
+      "description": "Engineering development mode."
+    },
+    {
+      "name": "Service",
+      "value": "0x9",
+      "description": "Service mode."
+    },
+    {
+      "name": "Invalid",
+      "value": "0x0",
+      "description": "Indicates that the vehicle mode is not valid."
+    },
+    {
+      "name": "Valid",
+      "value": "0x1",
+      "description": "Indicates that the vehicle mode is valid."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the various states and modes of vehicle systems relevant to interior lighting, particularly focusing on vehicle lock status and operational modes. It can be used to verify that the vehicle's interior lighting system correctly responds to changes in these states and modes via CAN communication with specified controllers.",
+  "uncertain_points": [
+    "The exact function of 'UsGmD' is not clearly defined in this table.",
+    "The purpose of the 'VS' and 'SST' columns is not explicitly explained."
+  ]
+}
+```

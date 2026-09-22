@@ -1,0 +1,121 @@
+[
+  {
+    "head": "Dipped Beam Light is turned Off",
+    "relation": "触发条件",
+    "tail": "收到【DipdBeamLghtCtrlMdl】发送的ControlDippedBeamLight.DippedBeamLightReq==0(Off) (InstanceID=1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DipdBeamLghtCtrlMdl",
+      "ControlDippedBeamLight.DippedBeamLightReq",
+      "Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0218",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "Dipped Beam Light is turned On",
+    "relation": "触发条件",
+    "tail": "收到【DipdBeamLghtCtrlMdl】发送的ControlDippedBeamLight.DippedBeamLightReq==1(On) (InstanceID=1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DipdBeamLghtCtrlMdl",
+      "ControlDippedBeamLight.DippedBeamLightReq",
+      "On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0218",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "LDipdBeamLghtDrvMdl stops driving the left dipped beam light output",
+    "relation": "前提条件",
+    "tail": "Dipped Beam Light is turned Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LDipdBeamLghtDrvMdl",
+      "DipdBeamHdlmp_LH_HSD",
+      "Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0218",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "LDipdBeamLghtDrvMdl continuously sends DippedBeamLightStatus",
+    "relation": "前提条件",
+    "tail": "Dipped Beam Light is turned Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LDipdBeamLghtDrvMdl",
+      "DippedBeamLightStatus",
+      "Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0218",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "Dipped Beam Light Status is sent to DipdBeamCtrlMdl",
+    "relation": "输出为",
+    "tail": "LDipdBeamLghtDrvMdl continuously sends DippedBeamLightStatus",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DippedBeamLightStatus",
+      "LDipdBeamLghtDrvMdl",
+      "DipdBeamCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0218",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "Dipped Beam Light remains Off",
+    "relation": "状态保持条件",
+    "tail": "收到【DipdBeamLghtCtrlMdl】发送的ControlDippedBeamLight.DippedBeamLightReq==0(Off) (InstanceID=1)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "DipdBeamLghtCtrlMdl",
+      "ControlDippedBeamLight.DippedBeamLightReq",
+      "Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0218",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "Dipped Beam Light transitions to On",
+    "relation": "触发条件",
+    "tail": "收到【DipdBeamLghtCtrlMdl】发送的ControlDippedBeamLight.DippedBeamLightReq==1(On) (InstanceID=1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DipdBeamLghtCtrlMdl",
+      "ControlDippedBeamLight.DippedBeamLightReq",
+      "On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0218",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "Dipped Beam Light Status is sent at least three frames",
+    "relation": "超时约束",
+    "tail": "LDipdBeamLghtDrvMdl continuously sends DippedBeamLightStatus",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "LDipdBeamLghtDrvMdl",
+      "DippedBeamLightStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0218",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "state_table"
+  }
+]

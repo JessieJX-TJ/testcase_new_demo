@@ -1,0 +1,59 @@
+{
+  "table_type": "logic_table",
+  "topic": "转向灯控制逻辑验证",
+  "row_semantics": "表格定义了在特定前置条件下，触发转向灯控制动作的逻辑规则，包括执行条件、执行动作、退出条件和异常处理。",
+  "column_semantics": {
+    "Column1": "描述触发条件或动作类型（如前置条件、触发条件、执行动作、退出条件、异常处理）",
+    "Column2": "详细说明对应条件或动作的具体内容"
+  },
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "DILghtSwSOAEnPrm",
+      "type": "配置字",
+      "description": "用于启用或禁用转向灯相关功能的参数"
+    },
+    {
+      "name": "DircnLghtSwReq",
+      "type": "输出信号",
+      "description": "转向灯方向请求信号，值为0x2表示右转向"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "控制器/模块名",
+      "description": "负责处理转向灯控制逻辑的模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字DILghtSwSOAEnPrm设置为0（Disable），即转向灯功能被禁用"
+    },
+    {
+      "condition": "触发条件",
+      "description": "用户重拨右转向拨杆，开关阻值为1200Ω（±5%）"
+    },
+    {
+      "condition": "退出条件",
+      "description": "转向灯开关阻值变为非1200Ω（±5%）"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DircnLghtSwReq",
+      "value": "0x2 (Right_Second)",
+      "description": "持续发送右转向请求信号"
+    },
+    {
+      "module": "DILghtCtrlMdl",
+      "action": "持续发送",
+      "count": "至少三帧",
+      "description": "向DILghtCtrlMdl模块发送至少三帧右转向请求信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证当转向灯功能被禁用时，系统对用户右转向拨杆操作的响应逻辑，确保在特定条件下正确发送转向请求信号。",
+  "uncertain_points": []
+}

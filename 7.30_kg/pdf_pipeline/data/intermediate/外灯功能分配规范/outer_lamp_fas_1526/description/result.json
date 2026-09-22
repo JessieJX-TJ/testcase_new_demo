@@ -1,0 +1,36 @@
+{
+  "table_type": "state_table",
+  "topic": "危险警报灯（Hazard Warning Lamp）及其相关外灯组合服务的控制与状态反馈逻辑",
+  "row_semantics": "表格按编号顺序列出了不同模块对危险警报灯及外灯组合服务的状态、故障反馈和控制逻辑，涵盖了从ICB（集成控制盒）到LHZCU（危险警报灯控制单元）以及SDM（系统数据管理器）等控制器之间的交互。",
+  "column_semantics": "无明确的列，表格内容为多行独立的逻辑描述，每行代表一个特定的控制或反馈场景。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB (Integrated Control Box)",
+    "LHZCU (Hazard Warning Lamp Control Unit)",
+    "SDM (System Data Management)"
+  ],
+  "core_conditions": [
+    "DirectionLightSta (Direction Light Status)",
+    "DirectionLightErrSta (Direction Light Error Status)",
+    "DirenLightFlts (Direction Light Fault Status)",
+    "ExteriorLightSwitchProcess"
+  ],
+  "core_outputs": [
+    "DirenLightSts (Direction Light Status)",
+    "DirenLightFlts (Direction Light Fault Status)",
+    "VehHzrdMdSts_0_No_Request (Vehicle Hazard Mode Status)",
+    "EDRDirnIndLampSwSts_0_off (Emergency Direction Indicator Lamp Switch Status)"
+  ],
+  "core_faults": [
+    "No Error",
+    "False",
+    "No Flash"
+  ],
+  "core_timing_constraints": [
+    "50ms; // 三者同步性允许的最大延时",
+    "40ms; // 危险警报灯的同步性允许的最大延时周期"
+  ],
+  "engineering_interpretation": "该表格详细定义了危险警报灯系统在不同控制器间的状态流转、故障反馈机制以及相关的同步性要求，可用于验证危险警报灯系统的功能正确性和时序一致性。",
+  "uncertain_points": []
+}

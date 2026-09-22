@@ -1,0 +1,106 @@
+[
+  {
+    "head": "侧位灯(SidePositionLight)状态为ON",
+    "relation": "触发条件",
+    "tail": "ICB订阅的侧位灯状态反馈信号(SidePositionLightStatus)为ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SidePositionLightStatus",
+      "InstanceID=5,6,7,8",
+      "ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "前雾灯(FrontFogLight)状态为ON",
+    "relation": "触发条件",
+    "tail": "ICB订阅的前雾灯状态反馈信号(FrontFogLightSta)为ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "FrontFogLightSta",
+      "ExteriorLightSwitchProcess",
+      "ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "侧位灯(SidePositionLight)无错误",
+    "relation": "触发条件",
+    "tail": "ICB订阅的侧位灯错误状态反馈信号(SidePositionLightErrorSta)为No Error",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SidePositionLightErrorSta",
+      "InstanceID=5,6,7,8",
+      "No Error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "前雾灯(FrontFogLight)无错误",
+    "relation": "触发条件",
+    "tail": "ICB订阅的前雾灯错误状态反馈信号(FrontFogLightErrSta)为No Error",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "FrontFogLightErrSta",
+      "ExteriorLightSwitchProcess",
+      "No Error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "位置灯采用私有CAN通讯方案",
+    "relation": "前提条件",
+    "tail": "ICB订阅的侧位灯状态和错误状态反馈信号对应实例ID为5,6,7,8",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "exlSideLghtHwDrvEnPrm=0x0",
+      "InstanceID=5,6,7,8"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "位置灯采用炮筒灯方案",
+    "relation": "前提条件",
+    "tail": "ICB订阅的侧位灯状态和错误状态反馈信号对应实例ID为1,2,3,4",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "exlSideLghtHwDrvEnPrm=0x1",
+      "InstanceID=1,2,3,4"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "前雾灯和位置灯开启同步性要求",
+    "relation": "超时约束",
+    "tail": "左侧和右侧外灯(位置灯、前雾灯)开启时,最大延时不超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "前雾灯",
+      "位置灯",
+      "同步点亮",
+      "40ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1355",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

@@ -1,0 +1,68 @@
+{
+  "table_type": "logic_table",
+  "topic": "Main Beam Light Control Logic",
+  "row_semantics": "Each row represents a distinct condition-action pair in the control logic for the main beam light system.",
+  "column_semantics": {
+    "Column 1": "Condition Category (e.g., Precondition, Trigger Condition, Action, Exit Condition, Exception Handling)",
+    "Column 2": "Specific Condition or Action Description"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightCtrlMdl",
+      "type": "Controller/Module",
+      "description": "Main Beam Light Control Module responsible for managing the main beam light state."
+    },
+    {
+      "name": "RMainBeamLightDrvMdl",
+      "type": "Controller/Module",
+      "description": "Right Main Beam Light Driver Module that controls the physical output of the right main beam light."
+    },
+    {
+      "name": "MainBeamLamp_RH_HSD",
+      "type": "Output Signal",
+      "description": "Physical output signal controlling the right-hand side high-side driver for the main beam lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightFkSOAEnPrm",
+      "value": "1 (Enable)",
+      "description": "Precondition indicating that the main beam light function is enabled."
+    },
+    {
+      "name": "MainBeamLightCtrlMdl.MainBeamLightCtrReq",
+      "value": "0 (Off)",
+      "instanceID": "2",
+      "description": "Trigger condition where the main beam light request from the control module is set to 'Off'."
+    },
+    {
+      "name": "MainBeamLightCtrlMdl.MainBeamLightCtrReq",
+      "value": "1 (On)",
+      "instanceID": "2",
+      "description": "Exit condition where the main beam light request changes to 'On', indicating the end of the current logic sequence."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RMainBeamLightDrvMdl.MainBeamLamp_RH_HSD",
+      "action": "Stop Driving",
+      "description": "The action to stop driving the right main beam light output when the trigger condition is met."
+    },
+    {
+      "name": "MainBeamLghtDrvMdl.MainBeamLightState",
+      "value": "0 (Off)",
+      "instanceID": "2",
+      "description": "Continuous sending of the main beam light state as 'Off' by the driver module."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "description": "At least three frames of MainBeamLightState must be sent continuously after the trigger condition is met."
+    }
+  ],
+  "engineering_interpretation": "This table defines the logic for controlling the main beam light system, specifically detailing the conditions under which the right main beam light is turned off and how the system state is communicated. It is used to verify that the main beam light behaves correctly when receiving an 'Off' command and properly transitions to an 'On' state when requested.",
+  "uncertain_points": []
+}

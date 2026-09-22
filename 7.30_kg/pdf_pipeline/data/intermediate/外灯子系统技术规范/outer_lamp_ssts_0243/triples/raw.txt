@@ -1,0 +1,62 @@
+```json
+[
+  {
+    "head": "侧位灯被激活",
+    "relation": "触发条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==1(On)(InstanceID=1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前左位置灯输出",
+    "relation": "输出为",
+    "tail": "【FLSideLghtDrvMdl】持续驱动左前位置灯输出(PosLamp_LH_HSD)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FLSideLghtDrvMdl",
+      "PosLamp_LH_HSD"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位灯状态被发送",
+    "relation": "输出为",
+    "tail": "【FLSideLghtDrvMdl】持续发送 SidePositionLightStatus. SidePositionLightSta=1(On)(InstanceID=1)至【SideLghtCtrlMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FLSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "SideLghtCtrlMdl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位灯状态发送至少三帧",
+    "relation": "前提条件",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "SidePositionLightStatus",
+      "三帧"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位灯被关闭",
+    "relation": "触发条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==0(Off)(InstanceID=1)",
+    "triple_type": "功能退出条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,41 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "整车电子电器系统配置参数定义",
+  "row_semantics": "表格的每一行代表一个具体的配置项（Item），用于描述该配置项的功能、参数范围、定义/转换方式以及默认值。",
+  "column_semantics": {
+    "配置项/Item": "标识具体的配置参数名称，是后续测试验证的基准点。",
+    "配置描述/Description": "对该配置项的功能或作用进行简要说明。",
+    "参数范围/Range": "定义该配置项可接受的有效数值范围或取值集合。",
+    "定义/Conversion": "提供配置项的具体定义或其与实际物理量之间的转换关系。",
+    "默认值/Default": "当未指定具体值时，系统将采用的预设值。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "配置项/Item",
+      "type": "Parameter",
+      "description": "系统中需要配置的具体参数名称，如外灯亮度等级、车身控制模式等。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "参数范围/Range",
+      "type": "Condition",
+      "description": "配置项的有效取值范围，用于验证输入是否合法。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "默认值/Default",
+      "type": "Output",
+      "description": "在未指定配置时，系统自动采用的预设值，用于验证系统的默认行为。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子电器系统中各项配置参数的正确性，包括参数的有效范围、定义转换逻辑以及默认值设置是否符合设计规范。",
+  "uncertain_points": []
+}
+```

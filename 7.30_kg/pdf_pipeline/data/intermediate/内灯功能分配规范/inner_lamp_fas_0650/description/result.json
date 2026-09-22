@@ -1,0 +1,78 @@
+{
+  "table_type": "logic_table",
+  "topic": "整车背光灯功能逻辑框图",
+  "row_semantics": "输入信号来源",
+  "column_semantics": "信号流向与处理模块",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "VehBcklightngCtrl(LHZCU)",
+      "type": "controller",
+      "description": "左侧背光灯控制单元，负责接收外部信号并生成控制指令"
+    },
+    {
+      "name": "ExteriorLighting System(外灯子系统)",
+      "type": "system",
+      "description": "提供车辆外部灯光状态信息"
+    },
+    {
+      "name": "VehicleStateSystem(整车状态管理子系统)",
+      "type": "system",
+      "description": "提供车辆和用户模式状态信息"
+    },
+    {
+      "name": "VehBcklightngLHDrv(LHZCU)",
+      "type": "module",
+      "description": "左侧背光灯驱动模块，接收控制指令并执行"
+    },
+    {
+      "name": "VehBcklightngRHDrv(RHZCU)",
+      "type": "module",
+      "description": "右侧背光灯驱动模块，接收控制指令并执行"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehSideLightSts",
+      "type": "input_signal",
+      "description": "外部侧灯状态信号"
+    },
+    {
+      "name": "VehMd",
+      "type": "input_signal",
+      "description": "车辆模式信号"
+    },
+    {
+      "name": "VehMdV",
+      "type": "input_signal",
+      "description": "车辆模式有效信号"
+    },
+    {
+      "name": "UsG Md",
+      "type": "input_signal",
+      "description": "用户模式信号"
+    },
+    {
+      "name": "UsG MdV",
+      "type": "input_signal",
+      "description": "用户模式有效信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "VehBcklightngCtrlCmd",
+      "type": "output_signal",
+      "description": "发送给左侧背光灯驱动的控制命令"
+    },
+    {
+      "name": "VehIlluminateCtrlCmd",
+      "type": "output_signal",
+      "description": "发送给右侧背光灯驱动的控制命令"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该图表描述了整车背光灯系统的控制逻辑，展示了外部灯光系统和整车状态管理系统如何向左侧背光灯控制单元提供输入信号，以及该控制单元如何生成控制命令以驱动左右两侧的背光灯模块。可用于验证背光灯控制系统在不同车辆和用户模式下的响应逻辑。",
+  "uncertain_points": []
+}

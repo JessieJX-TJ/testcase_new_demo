@@ -1,0 +1,65 @@
+{
+  "table_type": "logic_table",
+  "topic": "右近光灯控制逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，触发条件满足时执行的动作序列。",
+  "column_semantics": "第一列定义了条件或动作的类别（如前置条件、触发条件、执行动作），第二列详细说明了具体内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "exlDipBeamHwDrvEnPrm",
+      "type": "parameter",
+      "description": "外灯近光灯硬件驱动使能参数"
+    },
+    {
+      "name": "RDipdBeamLghtDrvMdl",
+      "type": "module",
+      "description": "近光灯驱动模块"
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "signal",
+      "description": "近光灯状态信号"
+    },
+    {
+      "name": "DipdBeamLghtCtrlMdl",
+      "type": "module",
+      "description": "近光灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "exlDipBeamHwDrvEnPrm == 1",
+      "description": "外灯近光灯硬件驱动使能参数为1"
+    },
+    {
+      "condition": "右近光灯处于输出状态",
+      "description": "右近光灯当前处于输出状态"
+    },
+    {
+      "condition": "检测到右近光灯开路",
+      "description": "系统检测到右近光灯存在开路故障"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "RDipdBeamLghtDrvMdl",
+      "action": "持续发送 DippedBeamLightStatus",
+      "details": "DippedBeamLightStatus = 0 (Off) (InstanceID=2)"
+    },
+    {
+      "output": "DipdBeamLghtCtrlMdl",
+      "action": "至少发送三帧",
+      "details": "向近光灯控制模块发送信号"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "右近光灯开路",
+      "description": "右近光灯电路出现开路故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证右近光灯在开路故障情况下的系统响应逻辑，确保在检测到开路后，系统能够正确发送近光灯状态信号并进行相应的控制操作。",
+  "uncertain_points": []
+}

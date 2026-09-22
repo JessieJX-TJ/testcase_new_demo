@@ -1,0 +1,40 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "外灯（远光灯）状态与故障检测",
+  "row_semantics": "按功能模块和检测对象划分的行，描述了左侧和右侧远光灯的状态及故障信息。",
+  "column_semantics": "表格包含两列：第一列为功能描述或检测项，第二列为对应的反馈信号路径及实例ID。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "MainBeamLight",
+      "type": "功能名",
+      "description": "主远光灯功能"
+    },
+    {
+      "name": "MainBeamLightErrorStatus",
+      "type": "控制器/模块名",
+      "description": "主远光灯错误状态模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLight.MainBeamLightErrorStatus.MainBeamLightErrorSta",
+      "type": "输入信号",
+      "description": "主远光灯点亮状态反馈信号"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "MainBeamLight.MainBeamLightErrorStatus.MainBeamLightErrorSta",
+      "type": "故障状态",
+      "description": "主远光灯点亮状态异常"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证车辆两侧远光灯的点亮状态及其故障反馈逻辑，确保系统能够正确识别并报告远光灯的工作状态。",
+  "uncertain_points": []
+}
+```

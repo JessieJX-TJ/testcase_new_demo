@@ -1,0 +1,104 @@
+```json
+[
+  {
+    "head": "请求转向灯点亮或熄灭",
+    "relation": "触发条件",
+    "tail": "调用 ExteriorLightControlSystem.ControlDirectionLight 方法",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.ControlDirectionLight",
+      "Method",
+      "调用该服务接口,请求转向灯点亮或者熄灭"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯请求参数为 0x1=Left_Direction_Light_Flash",
+    "relation": "输入为",
+    "tail": "请求转向灯左转闪烁",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DirectionLightReq",
+      "0x1=Left_Direction_Light_Flash"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯请求参数为 0x2=Right_Direction_Light_Flash",
+    "relation": "输入为",
+    "tail": "请求转向灯右转闪烁",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DirectionLightReq",
+      "0x2=Right_Direction_Light_Flash"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯请求参数为 0x3=Both_Side_Direction_Light_Flash",
+    "relation": "输入为",
+    "tail": "请求转向灯双侧闪烁",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DirectionLightReq",
+      "0x3=Both_Side_Direction_Light_Flash"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯控制结果为 0x0=ControlSuccess",
+    "relation": "输出为",
+    "tail": "转向灯控制成功",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DirectionLightReq",
+      "0x0=ControlSuccess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯控制结果为 0x1=Failed",
+    "relation": "输出为",
+    "tail": "转向灯控制失败",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DirectionLightReq",
+      "0x1=Failed"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DircnLghtFltsts 状态为 0x1=DircnLghtFltsts_1_Left_Direction_Light_Error",
+    "relation": "诊断关联",
+    "tail": "检测到左转向灯错误",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DircnLghtFltsts",
+      "0x1=DircnLghtFltsts_1_Left_Direction_Light_Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DircnLghtFltsts 状态为 0x2=DircnLghtFltsts_2_Right_Direction_Light_Error",
+    "relation": "诊断关联",
+    "tail": "检测到右转向灯错误",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DircnLghtFltsts",
+      "0x2=DircnLghtFltsts_2_Right_Direction_Light_Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DircnLghtFltsts 状态为 0x3=DircnLghtFltsts_3_Both_Side_Direction_Light_Error",
+    "relation": "诊断关联",
+    "tail": "检测到双侧转向灯错误",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DircnLghtFltsts",
+      "0x3=DircnLghtFltsts_3_Both_Side_Direction_Light_Error"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "非展厅模式下关闭ADS灯的功能需求",
+  "row_semantics": "表格按功能描述、前置条件、触发条件、执行动作和备注的顺序组织，详细定义了在特定条件下ADS灯关闭的逻辑。",
+  "column_semantics": "表格分为两列，左侧为条件/动作类别（如前置条件、触发条件、执行动作），右侧为对应的具体内容描述。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "ADS灯 (ADS Lamp)",
+    "迎宾光毯灯 (Welcome Mat Light)",
+    "整车模式 (Vehicle Mode, VehMd)",
+    "智驾状态信号 (HWPSysAct_ADS)",
+    "ADS灯开关控制模块 LHZCU"
+  ],
+  "core_conditions": [
+    "迎宾光毯灯处于点亮状态",
+    "整车未处于展厅模式 (VehMd != 0x5 = VehMd_5_EXHIBITIO)",
+    "ADS使能开关关闭 (ADSMarkerLampSet == 0x1 = Disabled)",
+    "整车下电",
+    "收到智驾状态信号 (MemParkingReserveIPD5 == 0x0 或 0x3)"
+  ],
+  "core_outputs": [
+    "ADS灯开关控制模块 LHZCU 停止驱动硬线端口 ADSLamp_HSD",
+    "反馈状态 ADSLghtSts_HW = 0 (Off)"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在非展厅模式下，当满足特定前置条件和触发条件时，系统应如何控制ADS灯关闭的逻辑，可用于验证整车电子电器系统在特定场景下的功能行为。",
+  "uncertain_points": []
+}
+```

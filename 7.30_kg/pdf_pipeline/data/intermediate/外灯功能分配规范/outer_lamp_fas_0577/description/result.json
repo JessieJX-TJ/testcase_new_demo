@@ -1,0 +1,125 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的状态分配规范",
+  "row_semantics": "表格的每一行代表一个具体的测试用例或功能场景，描述了在特定条件下外灯系统的期望行为。",
+  "column_semantics": "表格没有明确的列标题，但内容按行组织，每行包含输入信号、系统状态和输出信号的组合，用于验证外灯功能在不同条件下的正确性。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Z-ONE-3.0 Platform",
+      "type": "platform",
+      "description": "车辆电子电气架构平台"
+    },
+    {
+      "name": "FAS-IBD05",
+      "type": "controller",
+      "description": "车身域控制器"
+    },
+    {
+      "name": "LHZZC1",
+      "type": "module",
+      "description": "左前组合灯控制模块"
+    },
+    {
+      "name": "RHZXC1",
+      "type": "module",
+      "description": "右前组合灯控制模块"
+    },
+    {
+      "name": "ExternalLightControlSystem",
+      "type": "system",
+      "description": "外灯控制系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Directional_lightStatus",
+      "type": "input_signal",
+      "description": "方向灯状态"
+    },
+    {
+      "name": "BalancedD",
+      "type": "input_signal",
+      "description": "平衡模式标识"
+    },
+    {
+      "name": "ExternalLightSwitchProcess",
+      "type": "input_signal",
+      "description": "外灯开关处理过程"
+    },
+    {
+      "name": "YedHodMilda",
+      "type": "input_signal",
+      "description": "远光灯/近光灯模式"
+    },
+    {
+      "name": "SDM",
+      "type": "mode",
+      "description": "安全驾驶模式"
+    },
+    {
+      "name": "ECU",
+      "type": "controller",
+      "description": "电子控制单元"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Directional_lightOn",
+      "type": "output_signal",
+      "description": "方向灯开启状态"
+    },
+    {
+      "name": "BalancedD_7",
+      "type": "output_signal",
+      "description": "平衡模式7"
+    },
+    {
+      "name": "ExternalLightSwitchState",
+      "type": "output_signal",
+      "description": "外灯开关状态"
+    },
+    {
+      "name": "Directional_lightErrorStatus",
+      "type": "output_signal",
+      "description": "方向灯错误状态"
+    },
+    {
+      "name": "LED_RearLamp",
+      "type": "output_signal",
+      "description": "后置LED灯状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "fault_status",
+      "description": "无错误状态"
+    },
+    {
+      "name": "Directional_lightErrorStatus",
+      "type": "fault_status",
+      "description": "方向灯错误状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "Max Delay",
+      "type": "timing_constraint",
+      "description": "最大延迟时间",
+      "value": "50ms"
+    },
+    {
+      "name": "Max Response Time",
+      "type": "timing_constraint",
+      "description": "最大响应时间",
+      "value": "40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了外灯系统在不同输入条件下的预期行为，可用于验证外灯控制逻辑的正确性，包括方向灯、危险警报灯、组合灯等的功能实现及其与相关模块（如ECU、LHZZC1）的交互。",
+  "uncertain_points": [
+    "具体信号值未在表格中明确列出，需参考上下文或相关文档。",
+    "部分术语（如'BalancedD'的具体含义）未在表格中详细解释。"
+  ]
+}

@@ -1,0 +1,68 @@
+```json
+[
+  {
+    "head": "侧位灯开启",
+    "relation": "触发条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==1(On)(InstanceID=4)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq",
+      "On",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右侧后位置灯输出",
+    "relation": "输出为",
+    "tail": "【RRSideLghtDrvMdl】持续驱动右后位置灯输出 (PosLamp_LH&RH_HSD)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RRSideLghtDrvMdl",
+      "PosLamp_LH&RH_HSD"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位灯状态反馈",
+    "relation": "输出为",
+    "tail": "【RRSideLghtDrvMdl】持续发送 SidePositionLightStatus. SidePositionLightSta=1(On)(InstanceID=4)至【SideLghtCtrlMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RRSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "SideLghtCtrlMdl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "至少发送三帧",
+    "relation": "超时约束",
+    "tail": "在触发条件下，RRSideLghtDrvMdl 至少需要向 SideLightCtrlMdl 发送三帧 SidePositionLightStatus 信号。",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RRSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "SideLghtCtrlMdl",
+      "三帧"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位灯关闭",
+    "relation": "退出条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==0(Off)(InstanceID=4)",
+    "triple_type": "功能退出条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq",
+      "Off",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

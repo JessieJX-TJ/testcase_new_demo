@@ -1,0 +1,86 @@
+[
+  {
+    "head": "请求昼间行车灯点亮或者熄灭",
+    "relation": "触发条件",
+    "tail": "调用ControlDayRunningLight接口",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "调用该服务接口,请求昼间行车灯点亮或者熄灭",
+      "Interface Name: ControlDayRunningLight"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0869",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayRunningLightReq参数为0x1",
+    "relation": "输入为",
+    "tail": "请求昼间行车灯点亮",
+    "triple_type": "输入关系",
+    "evidence_terms": [
+      "Parameter Name: {DayRunningLightReq}",
+      "0x1=On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0869",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayRunningLightReq参数为0x0",
+    "relation": "输入为",
+    "tail": "请求昼间行车灯熄灭",
+    "triple_type": "输入关系",
+    "evidence_terms": [
+      "Parameter Name: {DayRunningLightReq}",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0869",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayRunningLightResp参数为0x0",
+    "relation": "输出为",
+    "tail": "控制成功",
+    "triple_type": "输出关系",
+    "evidence_terms": [
+      "Parameter Name: {DayRunningLightResp}",
+      "0x0=ControlSuccess"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0869",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayRunningLightResp参数为0x1",
+    "relation": "输出为",
+    "tail": "控制失败",
+    "triple_type": "输出关系",
+    "evidence_terms": [
+      "Parameter Name: {DayRunningLightResp}",
+      "0x1=Failed"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0869",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "ExteriorLightControlSystem控制昼间行车灯",
+    "relation": "控制对象",
+    "tail": "ControlDayRunningLight",
+    "triple_type": "功能依赖",
+    "evidence_terms": [
+      "ExteriorLightControlSystem",
+      "ControlDayRunningLight"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0869",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  }
+]

@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Reverse Light Control Module Functionality",
+  "row_semantics": "Each row represents a distinct control command scenario for the reverse light system.",
+  "column_semantics": {
+    "输入": "Defines the specific input signal configuration required to trigger a control action.",
+    "执行动作": "Describes the resulting physical action or state change in the reverse light system.",
+    "备注": "Provides additional context or notes, which are currently empty."
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "header_row_count": 1,
+  "core_entities": [
+    {
+      "name": "ReverseLightControl",
+      "type": "module",
+      "description": "The main control module responsible for managing the reverse lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ReverseLightCtrlReq",
+      "type": "input_signal",
+      "description": "A request signal to control the reverse light state. It can be set to ON (0x1) or OFF (0x0)."
+    },
+    {
+      "name": "RevsLightCtrl_HW",
+      "type": "hardware_signal",
+      "description": "The hardware-level representation of the reverse light control signal, corresponding to the software request."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ReverseLight",
+      "type": "output_signal",
+      "description": "The physical state of the reverse lights, either on or off."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the functional behavior of the reverse light control system under different input conditions, specifically for turning the reverse lights on and off.",
+  "uncertain_points": []
+}
+```

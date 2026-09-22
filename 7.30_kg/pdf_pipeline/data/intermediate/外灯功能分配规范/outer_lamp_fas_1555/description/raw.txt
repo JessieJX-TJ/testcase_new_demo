@@ -1,0 +1,48 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "整车模式与用户模式的关联配置",
+  "row_semantics": "表示不同的系统状态或功能模式，如休眠、待机、舒适、正常驾驶等。",
+  "column_semantics": "表示整车模式下的不同场景或状态，如工厂、运输、转毂、展车等。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "用户模式",
+      "type": "mode",
+      "values": [
+        "休眠",
+        "待机",
+        "舒适",
+        "正常驾驶",
+        "智能泊车",
+        "智能驾驶",
+        "XOTA"
+      ]
+    },
+    {
+      "name": "整车模式",
+      "type": "mode",
+      "values": [
+        "工厂",
+        "运输",
+        "转毂",
+        "展车",
+        "碰撞",
+        "正常",
+        "维修"
+      ]
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在不同整车模式下，用户模式应处于的状态（有效或无效），可用于验证整车模式切换时用户模式的正确性及兼容性。",
+  "uncertain_points": [
+    "表格中未明确说明各模式的具体触发条件或转换逻辑。",
+    "未详细列出涉及的具体控制器/模块或信号名称。",
+    "未提供具体的阈值或定时约束信息。"
+  ]
+}
+```

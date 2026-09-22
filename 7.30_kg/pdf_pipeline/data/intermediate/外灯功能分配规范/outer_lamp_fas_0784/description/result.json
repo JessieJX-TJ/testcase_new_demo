@@ -1,0 +1,71 @@
+{
+  "table_type": "signal_table",
+  "topic": "Dipped Beam Light and Side Position Light Status and Error Reporting",
+  "row_semantics": "Each row represents a specific instance or status of a light system, including its operational state and error condition.",
+  "column_semantics": "The columns represent the InstanceID, the operational status (ON/OFF), and the error status (No Error/Specific Error).",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight",
+      "type": "function",
+      "description": "Low beam headlight system"
+    },
+    {
+      "name": "SidePositionLight",
+      "type": "function",
+      "description": "Side position light system"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Light Control Module for rear fog lights"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "input_signal",
+      "description": "Identifier for different instances of the light systems"
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "output_signal",
+      "description": "Current operational status of the dipped beam light"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "output_signal",
+      "description": "Current operational status of the side position light"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightSta",
+      "type": "output_signal",
+      "description": "Operational status of the dipped beam light (ON/OFF)"
+    },
+    {
+      "name": "SidePositionLightSta",
+      "type": "output_signal",
+      "description": "Operational status of the side position light (ON/OFF)"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DippedBeamLightErrorSta",
+      "type": "fault_status",
+      "description": "Error status of the dipped beam light"
+    },
+    {
+      "name": "SidePositionLightErrorSta",
+      "type": "fault_status",
+      "description": "Error status of the side position light"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the expected operational states and error conditions for the dipped beam light and side position light systems across different instances, which can be used to verify the correct functioning and fault reporting of these lighting systems in the vehicle.",
+  "uncertain_points": [
+    "The exact meaning of 'exIDipdBeamHwDrvEnPrm' and 'exlSideLightHwDrvEnPrm' is not explicitly defined in the table."
+  ]
+}

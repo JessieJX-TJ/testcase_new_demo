@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "内灯 (Interior Light) 功能分配规范",
+  "row_semantics": "表格的每一行代表一个具体的信号或功能项，描述其在系统中的作用和控制方式。",
+  "column_semantics": {
+    "第一列": "信号名称或功能标识符 (Signal Name/Function Identifier)",
+    "第二列": "信号类型或作用 (Output/Control Type)",
+    "第三列": "内部处理模块 (Internal Module)",
+    "第四列": "控制器/执行器 (Controller/Actuator)",
+    "第五列及以后": "预留或未定义的扩展列"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "RRWlcmPedlLghtCtrlCmd",
+      "type": "signal",
+      "description": "右前门踏板灯控制命令信号，用于控制车内踏板灯的开关状态。"
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Hand Zone Control Unit，右侧区域控制单元，负责接收并处理来自车辆其他系统的控制指令，并驱动相关执行器（如灯光）完成相应动作。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RRWlcmPedlLghtCtrlCmd",
+      "value_range": "0x0, 0x1",
+      "description": "该信号的值决定了踏板灯的状态：0x0 表示关闭 (Close)，0x1 表示打开 (Open)。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RRWlcmPedlLghtCtrlCmd",
+      "target": "RHZCU",
+      "action": "控制右前门踏板灯的开关状态。",
+      "description": "当 RRWlcmPedlLghtCtrlCmd 的值为 0x0 时，RHZCU 控制踏板灯关闭；当值为 0x1 时，控制踏板灯打开。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了右前门踏板灯的控制命令信号 (RRWlcmPedlLghtCtrlCmd) 的功能分配，明确了其输出类型、内部处理模块以及目标控制器 (RHZCU)，可用于验证 RHZCU 是否能够正确接收并执行 RRWlcmPedlLghtCtrlCmd 信号以控制踏板灯的开关状态。",
+  "uncertain_points": []
+}
+```

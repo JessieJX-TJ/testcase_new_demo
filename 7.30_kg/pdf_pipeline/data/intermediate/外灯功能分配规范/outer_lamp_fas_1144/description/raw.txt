@@ -1,0 +1,40 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "近光灯控制逻辑变更",
+  "row_semantics": "表格按行描述了触发条件、前置条件和触发动作，用于定义近光灯的激活与退出逻辑。",
+  "column_semantics": "表格包含三列：场景描述（Scene Description）、前置条件（Precondition Condition）和触发动作（Trigger Action），分别描述了触发逻辑的背景、前提和执行步骤。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "entity_name": "Near Headlamp (近光灯)",
+      "entity_type": "功能模块",
+      "description": "车辆外部照明系统中的近光灯模块，负责在特定条件下激活或退出近光灯状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition_name": "Near Headlamp Activation State (近光灯激活状态)",
+      "condition_type": "系统状态",
+      "description": "近光灯当前是否处于激活状态，是触发逻辑判断的关键前置条件。"
+    },
+    {
+      "condition_name": "Precondition Satisfaction (前置条件满足)",
+      "condition_type": "输入信号",
+      "description": "当近光灯处于激活状态时，判断前置条件是否满足，决定是否退出近光灯。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output_name": "Exit Near Headlamp (退出近光灯)",
+      "output_type": "输出信号",
+      "description": "当前置条件不满足时，系统将执行退出近光灯的操作。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了近光灯在特定前置条件不满足时退出的逻辑规则，可用于测试近光灯在不同前置条件下的激活与退出行为。",
+  "uncertain_points": []
+}
+```

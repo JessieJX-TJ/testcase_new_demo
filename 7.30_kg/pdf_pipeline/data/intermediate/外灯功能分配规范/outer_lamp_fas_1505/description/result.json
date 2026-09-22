@@ -1,0 +1,65 @@
+{
+  "table_type": "signal_table",
+  "topic": "Dipped Beam Light and Side Position Light Status Feedback from LHZCU to ICB",
+  "row_semantics": "Each row represents a specific instance of a light status or error status for either dipped beam lights or side position lights, identified by InstanceID.",
+  "column_semantics": "The table has two main columns: the first column lists the InstanceID and associated status/error status, while the second column provides the corresponding value (e.g., ON, Error).",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Light Headlamp Zone Control Unit, responsible for controlling and monitoring the status of dipped beam lights and side position lights."
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Control Box, which receives status and fault information from the LHZCU."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "input_signal",
+      "description": "Status of the dipped beam light, indicating whether it is ON or OFF."
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "input_signal",
+      "description": "Status of the side position light, indicating whether it is ON or OFF."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightSta",
+      "type": "output_signal",
+      "description": "Feedback status of the dipped beam light sent to the ICB."
+    },
+    {
+      "name": "SidePositionLightSta",
+      "type": "output_signal",
+      "description": "Feedback status of the side position light sent to the ICB."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DippedBeamLightErrSta",
+      "type": "fault_status",
+      "description": "Error status of the dipped beam light, indicating if there is an error."
+    },
+    {
+      "name": "SidePositionLightErrSta",
+      "type": "fault_status",
+      "description": "Error status of the side position light, indicating if there is an error."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步点亮延时",
+      "value": "40ms",
+      "description": "The maximum delay between the left and right dipped beam lights when they are turned on must not exceed 40 milliseconds."
+    }
+  ],
+  "engineering_interpretation": "This table defines the expected status and error feedback signals from the LHZCU to the ICB for dipped beam lights and side position lights. It specifies the InstanceIDs for each light type and their corresponding statuses (ON/OFF) and error states (Error/No Error). The table also includes timing constraints for synchronized lighting.",
+  "uncertain_points": []
+}

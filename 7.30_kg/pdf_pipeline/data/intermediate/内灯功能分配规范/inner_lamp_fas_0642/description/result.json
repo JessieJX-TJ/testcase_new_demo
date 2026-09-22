@@ -1,0 +1,35 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯控制功能的限制条件",
+  "row_semantics": "表格定义了特定功能（VP3-63070）的限制条件，即该功能在何种情况下被禁用或受限。",
+  "column_semantics": {
+    "ID": "功能或限制条件的唯一标识符，用于追踪和引用。",
+    "Restriction": "描述了与ID对应的限制条件的具体内容，表明该功能受哪些其他功能或状态的影响。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VP3-63070",
+      "type": "function",
+      "description": "主功能，可能涉及外灯的开关控制逻辑。"
+    },
+    {
+      "name": "VP3-25770",
+      "type": "function",
+      "description": "被引用的功能，可能是影响VP3-63070功能启用或禁用的条件之一。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Reading Lamp Switch Control",
+      "type": "input_signal",
+      "description": "阅读灯开关的状态，作为VP3-63070功能的输入条件。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证功能VP3-63070在特定条件下（如受控于VP3-25770）是否正确地被禁用或限制，确保其行为符合设计规范。",
+  "uncertain_points": []
+}

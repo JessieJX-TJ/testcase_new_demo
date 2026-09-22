@@ -1,0 +1,39 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的信号分配规范",
+  "row_semantics": "表格按接口名称 (Interface Name) 分组，每个接口名称下定义了其方向、类型、发送方/接收方、路径及接口来源等信息，并详细列出了该接口的具体信号值定义。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，如 VehMd, VehMdV, UsGmD",
+    "Direction": "信号的流向，如输入/输出",
+    "Type": "信号的类型，如 CAN/LIN/SOA 服务/硬线等",
+    "Sender/Provider": "信号的发送方或提供方，如信号发送节点或 SoA 服务提供方",
+    "Receiver/Consumer": "信号的接收方或消费方，如信号接收节点或 SoA 服务消费方",
+    "Channel": "信号传输的指定通道",
+    "Interface Source": "接口信号的来源"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "type": "signal",
+      "description": "车辆模式 (Vehicle Mode) 信号，定义了车辆的不同运行状态，如正常 (NORMAL)、碰撞 (CRASH)、工厂 (FACTORY)、运输 (TRANSPORT)、动态测试 (DYNO)、展览 (EXHIBITION)、工程 (Engineering)、服务 (Service)"
+    },
+    {
+      "name": "VehMdV",
+      "type": "signal",
+      "description": "车辆模式验证 (Vehicle Mode Validation) 信号，用于验证车辆模式的有效性，包括无效 (Invalid) 和有效 (Valid)"
+    },
+    {
+      "name": "UsGmD",
+      "type": "signal",
+      "description": "用户模式 (User Mode) 信号，定义了用户的特定操作模式"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证外灯功能中车辆模式 (VehMd) 和用户模式 (UsGmD) 信号的正确性，以及车辆模式验证 (VehMdV) 信号的有效性，确保在不同车辆运行状态下外灯功能能够正确响应。",
+  "uncertain_points": []
+}

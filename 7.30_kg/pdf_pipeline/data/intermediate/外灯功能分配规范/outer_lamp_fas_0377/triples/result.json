@@ -1,0 +1,152 @@
+[
+  {
+    "head": "伴我回家功能启用",
+    "relation": "前提条件",
+    "tail": "PersonalizationData.FollowMeHomeSet.Enable = 0x0=Enabled",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "PersonalizationData.FollowMeHomeSet.Enable"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0377",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "伴我回家功能启用",
+    "relation": "前提条件",
+    "tail": "PersonalizationData.FollowMeHomeSet.Info.FoMeHmEnableInfo = 0x0=Enabled",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "PersonalizationData.FollowMeHomeSet.Info.FoMeHmEnableInfo"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0377",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "伴我回家功能启用",
+    "relation": "前提条件",
+    "tail": "UsrMd = 0x2 Comfortable OR UsrMd = 0x3 NormalDriving OR UsrMd = 0x4 AIParking OR UsrMd = 0x5 AIPilot",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsrMd"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0377",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "伴我回家功能启用",
+    "relation": "前提条件",
+    "tail": "VehMd != 0x2 FACTORY AND VehMd != 0x3 TRANSPORT",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0377",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "伴我回家功能执行",
+    "relation": "触发条件",
+    "tail": "伴我回家功能启用",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "伴我回家功能启用"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0377",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "外灯控制信号发送",
+    "relation": "输出为",
+    "tail": "LDipdBeamLghtCtrl_0x1=LDipdBeamLghtCtrl_1_On; RDipdBeamLghtCtrl_0x1=RDipdBeamLghtCtrl_1_On",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU.Notifier",
+      "LDipdBeamLghtCtrl",
+      "RDipdBeamLghtCtrl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0377",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "依赖于",
+    "tail": "ICB调用DippedBeamLight基础服务",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "DippedBeamLight"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0377",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "CAN信号传输",
+    "relation": "输出为",
+    "tail": "ICB将服务接口或控制信号转换成灯控CAN信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "CAN信号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0377",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "灯光开启时长",
+    "relation": "超时约束",
+    "tail": "FlwMeHomeEnadTmePrm,默认值30S",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "FlwMeHomeEnadTmePrm",
+      "30S"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0377",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "默认延时时间",
+    "relation": "超时约束",
+    "tail": "FoMeHmTimeInfo = 30S",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "FoMeHmTimeInfo",
+      "30S"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0377",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "周期数据发送",
+    "relation": "状态保持条件",
+    "tail": "以500ms周期发送至[伴我回家控制模块LHZCU]",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "500ms",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0377",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

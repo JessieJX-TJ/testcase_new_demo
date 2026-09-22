@@ -1,0 +1,72 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯组合服务与危险警报灯自动控制模块的功能规范",
+  "row_semantics": "表格的每一行代表一个功能或状态的描述，包括信号的接收、发送、反馈以及相关的同步性要求。",
+  "column_semantics": "表格包含两列：第一列是功能编号和描述，第二列详细说明了该功能涉及的信号、状态或参数。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "Controller",
+      "description": "外灯组合服务控制器"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Module",
+      "description": "危险警报灯自动控制模块"
+    },
+    {
+      "name": "SDM",
+      "type": "System",
+      "description": "车身域控制器"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "转向灯点亮及故障状态 CAN 信号",
+      "description": "由 LHZCU 发送至 ICB 的 CAN 信号，用于指示转向灯的状态（是否闪烁）和故障状态（是否有错误）。"
+    },
+    {
+      "name": "实时状态",
+      "description": "LHZCU 将车辆危险报警灯的实时状态发送至 ICB。"
+    },
+    {
+      "name": "转向灯控制状态反馈",
+      "description": "LHZCU 将转向灯的控制状态反馈至 SDM。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ExteriorLightControlSystem.DirectionLightSts",
+      "description": "外部灯光控制系统中的转向灯状态，表示是否闪烁（0x0 = No Flash）。"
+    },
+    {
+      "name": "ExteriorLightControlSystem.DirectionLightErrSts",
+      "description": "外部灯光控制系统中的转向灯错误状态，表示是否有错误（0x0 = No Error）。"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "description": "车辆危险报警灯模式状态，表示当前请求状态（0x0 = VehHzrdMdSts_0_No_Request）。"
+    },
+    {
+      "name": "EDRDircnIndLampSwSts",
+      "description": "紧急危险指示灯开关状态，表示转向灯控制状态（0x0 = EDRDircnIndLampSwSts_0_off）。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "同步延时",
+      "description": "危险警报灯的图标闪烁频率和声音提醒与实际危险警报灯的闪烁频率需保持一致，三者同步性允许的最大延时为 50ms。",
+      "value": "50ms"
+    },
+    {
+      "name": "同步周期",
+      "description": "危险警报灯的同步性允许的最大延时周期为 40ms。",
+      "value": "40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了外灯组合服务（ICB）与危险警报灯自动控制模块（LHZCU）之间的信号交互规则，以及危险警报灯在不同系统（ICB 和 SDM）之间的状态反馈机制，并规定了危险警报灯同步性的定时约束，可用于验证危险警报灯系统的信号传输、状态反馈和同步性能。",
+  "uncertain_points": []
+}

@@ -1,0 +1,420 @@
+```json
+[
+  {
+    "head": "ExteriorLightControlSystem.SidePositionLightSts",
+    "relation": "outputs",
+    "tail": "0x0 = OFF",
+    "sources": ["outer_lamp_fas_0652"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight.EnableSynchronization",
+    "relation": "requires",
+    "tail": "Left and Right Side Position Lights must turn on/off simultaneously",
+    "sources": ["outer_lamp_fas_0652"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight.EnableSynchronization",
+    "relation": "max_delay",
+    "tail": "40 ms",
+    "sources": ["outer_lamp_fas_0652"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtSwStatus",
+    "relation": "required_for",
+    "tail": "acquiring SidePositionLight switch state",
+    "sources": ["outer_lamp_fas_0653"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtSwSta",
+    "relation": "encodes",
+    "tail": "0x0=OFF, 0x1=SidePositionLight ON, 0x2=DippedBeamLight ON, 0x3=AUTO, 0x4=Unknown",
+    "sources": ["outer_lamp_fas_0653"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtFucProStatus",
+    "relation": "required_for",
+    "tail": "determining SidePositionLight on/off conditions",
+    "sources": ["outer_lamp_fas_0653"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtFucProSta",
+    "relation": "encodes",
+    "tail": "0x0=ALL OFF, 0x1=Only SidePositionLight ON, 0x2=Only DippedBeamLight ON, 0x3=SidePositionAndDippedBeam OFF, 0x4=SidePositionAndDippedBeam ON, 0x5=Unknown",
+    "sources": ["outer_lamp_fas_0653"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLight",
+    "relation": "synchronized_with",
+    "tail": "HazardWarningIcon and HazardWarningSound (frequency consistency)",
+    "sources": ["outer_lamp_fas_0654"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLight",
+    "relation": "max_delay",
+    "tail": "40 ms (vs. icon/sound individually)",
+    "sources": ["outer_lamp_fas_0654"],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'three-element sync' max delay of 50ms; 40ms is stricter but applies only to light vs. icon/sound pair separately — may reflect different measurement points. Retained as distinct constraint."
+  },
+  {
+    "head": "HazardWarningLight, HazardWarningIcon, HazardWarningSound",
+    "relation": "max_delay",
+    "tail": "50 ms (end-to-end three-element synchronization)",
+    "sources": ["outer_lamp_fas_0654"],
+    "conflict": true,
+    "conflict_note": "Conflicts with light-vs-icon/sound 40ms constraint: 50ms allows greater tolerance across full signal chain. Both retained per rule #4 (do not delete unless clearly erroneous)."
+  },
+  {
+    "head": "Unlock/LockSignal",
+    "relation": "has_priority_over",
+    "tail": "processing order (i.e., timestamp-based sequencing)",
+    "sources": ["outer_lamp_fas_0654"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB (External Lamp Combination Service)",
+    "relation": "receives_input_from",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0655"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB (External Lamp Combination Service)",
+    "relation": "comprises_subfunction",
+    "tail": "LHA",
+    "sources": ["outer_lamp_fas_0655", "outer_lamp_fas_0760"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB (External Lamp Combination Service)",
+    "relation": "comprises_subfunction",
+    "tail": "RHA",
+    "sources": ["outer_lamp_fas_0655", "outer_lamp_fas_0760"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExternalLightController",
+    "relation": "receives_input",
+    "tail": "Light_Command = 0x4",
+    "sources": ["outer_lamp_fas_0656"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExternalLightStatus",
+    "relation": "value",
+    "tail": "unknown",
+    "sources": ["outer_lamp_fas_0656"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtCtrl",
+    "relation": "input_value",
+    "tail": "0x0 = FLDircnLghtCtrl_0_Off, 0x1 = FLDircnLghtCtrl_1_On",
+    "sources": ["outer_lamp_fas_0657"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtCtrl",
+    "relation": "input_value",
+    "tail": "0x0 = FRDircnLghtCtrl_0_Off, 0x1 = FRDircnLghtCtrl_1_On",
+    "sources": ["outer_lamp_fas_0657"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtCtrl",
+    "relation": "input_value",
+    "tail": "0x0 = RLDircnLghtCtrl_0_Off",
+    "sources": ["outer_lamp_fas_0657"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtCtrl",
+    "relation": "outputs_to",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0657"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtCtrl",
+    "relation": "outputs_to",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0657"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtCtrl",
+    "relation": "outputs_to",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0657"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtCtrl",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0657"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtCtrl",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0657"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtCtrl",
+    "relation": "connected_via",
+    "tail": "BKBCAN FD",
+    "sources": ["outer_lamp_fas_0657"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtCtrl",
+    "relation": "connected_via",
+    "tail": "BKBCAN FD",
+    "sources": ["outer_lamp_fas_0657"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearLeftPositionLight",
+    "relation": "controlled_by_service",
+    "tail": "service interface for ON/OFF control",
+    "sources": ["outer_lamp_fas_0658", "outer_lamp_fas_1070", "outer_lamp_fas_1353", "outer_lamp_fas_1480"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightReq.state",
+    "relation": "indicates",
+    "tail": "0x1 = SidePositionLight ON",
+    "sources": ["outer_lamp_fas_0658"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightReq.state",
+    "relation": "indicates",
+    "tail": "0x0 = SidePositionLight OFF",
+    "sources": ["outer_lamp_fas_0658"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontLeftPositionLight",
+    "relation": "instance_id",
+    "tail": "5",
+    "sources": ["outer_lamp_fas_0658"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontRightPositionLight",
+    "relation": "instance_id",
+    "tail": "6",
+    "sources": ["outer_lamp_fas_0658"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightSta",
+    "relation": "set_to_ON_when",
+    "tail": "RearFogLghtFuCProsSta = 0x1 (RearFogLghtFucProsSta_1_OnlyRearFogLghtON)",
+    "sources": ["outer_lamp_fas_0659"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightSta",
+    "relation": "set_to_OFF_when",
+    "tail": "RearFogLghtFuCProsSta = 0x0 (RearFogLghtFucProsSta_0_OFF)",
+    "sources": ["outer_lamp_fas_0659"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightErrSta",
+    "relation": "indicates_error_when",
+    "tail": "0x01 = RearFogLghtErrSta_1_Error",
+    "sources": ["outer_lamp_fas_0659"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightErrSta",
+    "relation": "indicates_no_error_when",
+    "tail": "0x00 = RearFogLghtErrSta_0_NoError",
+    "sources": ["outer_lamp_fas_0659"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightControl",
+    "relation": "receives_input",
+    "tail": "0x00 = RearFogLightControl_0_OFF",
+    "sources": ["outer_lamp_fas_0659"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLghtFuCProsSta",
+    "relation": "value_0x7_means",
+    "tail": "RearFogLghtFuCProsSta_7_Unknown",
+    "sources": ["outer_lamp_fas_0659"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLghtFuCProsSta",
+    "relation": "mutually_exclusive_with",
+    "tail": "values 0x0–0x3 (when values 0x4–0x6 are active)",
+    "sources": ["outer_lamp_fas_0659"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLight",
+    "relation": "turns_ON_when",
+    "tail": "RFRtFogLightCtrl_HW = 0x1 OR InstanceID=3 = 0x1 OR InstanceID=4 = 0x1",
+    "sources": ["outer_lamp_fas_0660"],
+    "conflict": true,
+    "conflict_note": "Multiple equivalent ON conditions across HW signal and instance IDs — semantically identical; merged into single logical condition."
+  },
+  {
+    "head": "FrontFogLight",
+    "relation": "turns_OFF_when",
+    "tail": "LFrtFogLightCtrl_HW = 0x0 OR RFRtFogLightCtrl_HW = 0x0 OR InstanceID=3 = 0x0 OR InstanceID=4 = 0x0",
+    "sources": ["outer_lamp_fas_0660"],
+    "conflict": true,
+    "conflict_note": "Multiple equivalent OFF conditions — merged into unified logical condition."
+  },
+  {
+    "head": "FrontFogLightCtrReq",
+    "relation": "output_of",
+    "tail": "Front Fog Light Control Request Signal",
+    "sources": ["outer_lamp_fas_0660"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightDriverModule",
+    "relation": "depends_on",
+    "tail": "hardwire-driven control",
+    "sources": ["outer_lamp_fas_0660"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WallProximityDimming",
+    "relation": "depends_on",
+    "tail": "Digital Lighting SSTS",
+    "sources": ["outer_lamp_fas_0661"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PedestrianCrossingAlert",
+    "relation": "depends_on",
+    "tail": "Digital Lighting SSTS",
+    "sources": ["outer_lamp_fas_0661"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IntersectionSupplementaryIllumination",
+    "relation": "depends_on",
+    "tail": "Digital Lighting SSTS",
+    "sources": ["outer_lamp_fas_0661"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CorneringAdaptiveIllumination",
+    "relation": "depends_on",
+    "tail": "Digital Lighting SSTS",
+    "sources": ["outer_lamp_fas_0661"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ParkingAssistIllumination",
+    "relation": "depends_on",
+    "tail": "Digital Lighting SSTS",
+    "sources": ["outer_lamp_fas_0661"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleMode",
+    "relation": "CRASH_mode_value",
+    "tail": "0x1",
+    "sources": ["outer_lamp_fas_0662"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleMode",
+    "relation": "FACTORY_mode_value",
+    "tail": "0x2",
+    "sources": ["outer_lamp_fas_0662"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleMode",
+    "relation": "TRANSPORT_mode_value",
+    "tail": "0x3",
+    "sources": ["outer_lamp_fas_0662"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleMode",
+    "relation": "DYNO_mode_value",
+    "tail": "0x4",
+    "sources": ["outer_lamp_fas_0662"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleMode",
+    "relation": "EXHIBITION_mode_value",
+    "tail": "0x5",
+    "sources": ["outer_lamp_fas_0662"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

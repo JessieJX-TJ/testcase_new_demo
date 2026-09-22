@@ -1,0 +1,59 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Side Position Light Status Monitoring",
+  "row_semantics": "Each row represents a specific side position light status monitoring service, differentiated by the InstanceID and the associated vehicle location (e.g., right front, left rear, right rear).",
+  "column_semantics": "The columns represent different system components or modules that consume the service, such as SOA (Service-Oriented Architecture), ICB (Integrated Control Board), and LHZCU (Local Headlight Zone Control Unit).",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SidePositionLightStatus",
+      "type": "service",
+      "description": "A service interface used to monitor the status of side position lights."
+    },
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "A unique identifier for each instance of the SidePositionLightStatus service, distinguishing between different light positions."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightSta",
+      "type": "input_signal",
+      "description": "The status parameter returned by the service, indicating the state of the side position light."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "0x0=OFF",
+      "type": "system_state",
+      "description": "The side position light is turned off."
+    },
+    {
+      "name": "0x1=ON",
+      "type": "system_state",
+      "description": "The side position light is turned on."
+    },
+    {
+      "name": "0x2=Error",
+      "type": "fault_state",
+      "description": "An error has occurred in the side position light system."
+    },
+    {
+      "name": "0x2=Unknown",
+      "type": "system_state",
+      "description": "The status of the side position light is unknown."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Error",
+      "type": "fault_condition",
+      "description": "Indicates a failure or abnormal condition in the side position light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and possible states for monitoring the status of side position lights in different locations of the vehicle. It is used to verify that the correct status (ON, OFF, Error, Unknown) is reported for each light based on its physical location and that the system responds appropriately to changes in light status.",
+  "uncertain_points": []
+}

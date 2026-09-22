@@ -1,0 +1,151 @@
+```json
+[
+  {
+    "head": "ICB将服务接口或控制信号转换成灯控CAN信号",
+    "relation": "触发条件",
+    "tail": "控制双闪灯熄灭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "DirectionLightReq",
+      "InstanceID=5",
+      "OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB将控制信号延时60ms分发至驱动模块LHZCU/RHZCU/RZCU",
+    "relation": "触发条件",
+    "tail": "信号分布至驱动模块",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "DirenLghtCtrlDelayPrm",
+      "60ms",
+      "LHZCU",
+      "RHZCU",
+      "RZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FLDirenLightCtrl_HW=0x0",
+    "relation": "输入为",
+    "tail": "FLDircnLghtCtrl_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FLDirenLightCtrl_HW",
+      "FLDircnLghtCtrl_0_off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRDirenLightCtrl_HW=0x0",
+    "relation": "输入为",
+    "tail": "FRDircnLghtCtrl_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FRDirenLightCtrl_HW",
+      "FRDircnLghtCtrl_0_off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RLDirenLightCtrl_HW=0x0",
+    "relation": "输入为",
+    "tail": "RLDircnLghtCtrl_HW_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RLDirenLightCtrl_HW",
+      "RLDircnLghtCtrl_HW_0_off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RRDirenLightCtrl_HW=0x0",
+    "relation": "输入为",
+    "tail": "RRDircnLghtCtrl_HW_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RRDirenLightCtrl_HW",
+      "RRDircnLghtCtrl_HW_0_off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "16. 驱动模块LHZCU/RHZCU/RZCU接收ICB服务接口或控制信号",
+    "relation": "触发条件",
+    "tail": "退出整车双闪灯点亮",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "RHZCU",
+      "RZCU",
+      "ICB",
+      "Dual Flash Light"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "17. ICB接收控制信号",
+    "relation": "触发条件",
+    "tail": "做退出危险警报灯图标指示灯显示以及声音提醒",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "ExteriorLightSwitchProcess",
+      "Dangerous Warning Light"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "18. 驱动处理模块LHZCU/RHZCU/RZCU状态/故障状态反馈至LHZCU",
+    "relation": "输出为",
+    "tail": "FLDircnLghtSts_HW_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RHZCU",
+      "RZCU",
+      "FLDircnLghtSts_HW_0_Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "19. ICB状态/故障状态反馈至LHZCU",
+    "relation": "输出为",
+    "tail": "FLDircnLghtSts_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "FLDircnLghtSts_0_Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "{DirectionLight. DirectionLightStatus. DirectionLightSta}{InstanceID=1}=0x0",
+    "relation": "依赖于",
+    "tail": "FLDircnLghtSts_HW_0_Off",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "DirectionLightStatus",
+      "InstanceID=1",
+      "FLDircnLghtSts_HW_0_Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "{DirectionLight. DirectionLightErrorStatus. DirectionLightErrorSta}{InstanceID=1}=0x0",
+    "relation": "依赖于",
+    "tail": "No Error",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DirectionLightErrorStatus",
+      "InstanceID=1",
+      "No Error"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

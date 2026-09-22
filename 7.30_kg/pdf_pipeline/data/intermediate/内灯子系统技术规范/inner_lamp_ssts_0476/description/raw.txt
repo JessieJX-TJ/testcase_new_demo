@@ -1,0 +1,53 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Ambient Lamp Breathing Mode Timing Parameters",
+  "row_semantics": "Each row represents a specific timing parameter for the ambient lamp breathing mode, defining the hold-off percentage of the breathing cycle.",
+  "column_semantics": {
+    "Column 1": "Parameter Name (e.g., AmbiLampBrthngRate7holdoffPercent)",
+    "Column 2": "Description (e.g., Ambient Lamp Breathing Mode Wait Time)",
+    "Column 3": "Range (e.g., 0 - 32)",
+    "Column 4": "Equation/Formula (e.g., E = N * 1%)",
+    "Column 5": "Example Value (e.g., 0xA (10%))"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "Controller/Module",
+      "description": "The ambient lighting system responsible for the breathing mode effect."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Rate Hold-Off Percentage",
+      "description": "Defines the proportion of time the ambient lamp remains in a steady state during each breathing cycle.",
+      "type": "Input Signal",
+      "range": "0 - 32",
+      "formula": "E = N * 1%",
+      "example_values": [
+        "0x5 (5%)",
+        "0xA (10%)",
+        "0x14 (20%)"
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Breathing Cycle Wait Time",
+      "description": "The duration the ambient lamp waits before transitioning to the next phase of the breathing cycle.",
+      "type": "Timing Constraint",
+      "unit": "percentage of the cycle",
+      "range": "0 - 32",
+      "formula": "E = N * 1%"
+    }
+  ],
+  "engineering_interpretation": "This table defines the timing parameters for the ambient lamp's breathing mode, specifically the hold-off percentage of the breathing cycle. It is used to configure the timing behavior of the ambient lighting system during its breathing effect.",
+  "uncertain_points": [
+    "The exact function of 'AmbiLampBrthngRate13holdoffPercent' and 'AmbiLampBrthngRate15holdoffPercent' is marked as reserved and not currently in use, indicating potential future expansion or undefined behavior."
+  ]
+}
+```

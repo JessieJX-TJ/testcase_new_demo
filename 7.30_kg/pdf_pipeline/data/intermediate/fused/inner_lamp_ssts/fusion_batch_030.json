@@ -1,0 +1,595 @@
+[
+  {
+    "head": "MapLampLocalCtrIRH(RHZCU)",
+    "relation": "输出到",
+    "tail": "ThirdRowMapLampRHDrv(RHZCU)",
+    "sources": [
+      "inner_lamp_ssts_0329"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFlorLampLHCtrl(LHZCU)",
+    "relation": "输入来自",
+    "tail": "LockingSystem",
+    "sources": [
+      "inner_lamp_ssts_0329"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFlorLampLHCtrl(LHZCU)",
+    "relation": "输入来自",
+    "tail": "VehicleStateSystem",
+    "sources": [
+      "inner_lamp_ssts_0329"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFlorLampLHCtrl(LHZCU)",
+    "relation": "输出到",
+    "tail": "DrvrDoorFlorLampDrv(LHZCU)",
+    "sources": [
+      "inner_lamp_ssts_0329"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFlorLampRHCtrl(RHZCU)",
+    "relation": "输入来自",
+    "tail": "LockingSystem",
+    "sources": [
+      "inner_lamp_ssts_0329"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFlorLampRHCtrl(RHZCU)",
+    "relation": "输入来自",
+    "tail": "VehicleStateSystem",
+    "sources": [
+      "inner_lamp_ssts_0329"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFlorLampRHCtrl(RHZCU)",
+    "relation": "输出到",
+    "tail": "FrtPsngDoorFlorLampDrv(RHZCU)",
+    "sources": [
+      "inner_lamp_ssts_0329"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PersonalizationData",
+    "relation": "包含子功能",
+    "tail": "MapLampService",
+    "sources": [
+      "inner_lamp_ssts_0329"
+    ],
+    "conflict": false,
+    "conflict_note": "原尾部'MapLampOnOm合服务)'疑似OCR/录入错误，'MapLampOnOm'应为'MapLampOnOff'或'MapLampOnMode'；但'OnOm合服务'语义不明且无上下文佐证，故仅保留标准功能名'MapLampService'"
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "依赖于",
+    "tail": "特定唤醒源",
+    "sources": [
+      "inner_lamp_ssts_0331",
+      "inner_lamp_ssts_0339"
+    ],
+    "conflict": false,
+    "conflict_note": "统一'特定的唤醒源'→'特定唤醒源'（去冗余助词）；'指定的唤醒源'语义等价，已合并"
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "依赖于",
+    "tail": "无有效唤醒源",
+    "sources": [
+      "inner_lamp_ssts_0331"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "进入休眠模式的前提条件",
+    "tail": "未检测到任何激活的唤醒源",
+    "sources": [
+      "inner_lamp_ssts_0331",
+      "inner_lamp_ssts_0339"
+    ],
+    "conflict": false,
+    "conflict_note": "将'系统休眠方式'→'依赖于'与'系统进入休眠模式'→'前提条件'融合为统一语义：休眠行为由'无有效唤醒源'触发，且需满足'未检测到任何激活的唤醒源'；二者实质等价，合并并规范关系名为'进入休眠模式的前提条件'"
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "唤醒行为输出",
+    "tail": "预定义的唤醒/休眠方式",
+    "sources": [
+      "inner_lamp_ssts_0339"
+    ],
+    "conflict": false,
+    "conflict_note": "关系名规范化：'系统唤醒行为'→'输出为' → 统一为'唤醒行为输出'；'预定义的唤醒/休眠方式'为系统级行为输出，保留"
+  },
+  {
+    "head": "ThirdRowMapLampRHSwReq",
+    "relation": "输出为",
+    "tail": "RHZCU",
+    "sources": [
+      "inner_lamp_ssts_0332"
+    ],
+    "conflict": false,
+    "conflict_note": "统一'信号反馈...'描述为实体+关系；'RHZCU 控制器' → 'RHZCU'（按工程惯例，控制器缩写即代表其自身）"
+  },
+  {
+    "head": "ThrdRowMapLamp_RH_Sw_SIG",
+    "relation": "输入为",
+    "tail": "RHZCU",
+    "sources": [
+      "inner_lamp_ssts_0332"
+    ],
+    "conflict": false,
+    "conflict_note": "统一命名：'ThrdRowMapLamp_RH_Sw_SIG'为标准信号名，优于'ThirdRowMapLampRHSwReq'（后者为Req，前者为SIG，属不同信号角色）；保留原始拼写，不改为'ThirdRow...'以符合技术文档实际用法"
+  },
+  {
+    "head": "ThirdRowMapLampRHSwReq",
+    "relation": "故障响应",
+    "tail": "Error (错误状态)",
+    "sources": [
+      "inner_lamp_ssts_0332"
+    ],
+    "conflict": false,
+    "conflict_note": "信号值0x3为非法值，触发Error；保留原始表述"
+  },
+  {
+    "head": "ThirdRowMapLampRHSwReq",
+    "relation": "前提条件",
+    "tail": "ThrdRowMapLamp_RH_Sw_SIG信号存在",
+    "sources": [
+      "inner_lamp_ssts_0332"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHSwReq",
+    "relation": "依赖于",
+    "tail": "信号类型 = 片内",
+    "sources": [
+      "inner_lamp_ssts_0332"
+    ],
+    "conflict": false,
+    "conflict_note": "规范化'Type = 片内' → '信号类型 = 片内'"
+  },
+  {
+    "head": "ThirdRowMapLampRHSwReq",
+    "relation": "依赖于",
+    "tail": "发送方 = RHZCU",
+    "sources": [
+      "inner_lamp_ssts_0332"
+    ],
+    "conflict": false,
+    "conflict_note": "规范化'Sender/Provider = RHZCU' → '发送方 = RHZCU'"
+  },
+  {
+    "head": "ThirdRowMapLampRHSwReq",
+    "relation": "依赖于",
+    "tail": "接收方 = RHZCU",
+    "sources": [
+      "inner_lamp_ssts_0332"
+    ],
+    "conflict": false,
+    "conflict_note": "规范化'Receiver/Consumer = RHZCU' → '接收方 = RHZCU'"
+  },
+  {
+    "head": "DoorFL4LampOnOff_1",
+    "relation": "触发条件",
+    "tail": "LIN输入信号 = 0x1 (ON)",
+    "sources": [
+      "inner_lamp_ssts_0333"
+    ],
+    "conflict": false,
+    "conflict_note": "合并两条ON/OFF触发条件：'0x1=DoorFL4LampOnOff_1_1_ON' → 'LIN输入信号 = 0x1 (ON)'；下条同理"
+  },
+  {
+    "head": "DoorFL4LampOnOff_1",
+    "relation": "触发条件",
+    "tail": "LIN输入信号 = 0x0 (OFF)",
+    "sources": [
+      "inner_lamp_ssts_0333"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL4LampOnOff_1",
+    "relation": "状态保持条件",
+    "tail": "同时接收到非零颜色/亮度指令",
+    "sources": [
+      "inner_lamp_ssts_0333"
+    ],
+    "conflict": false,
+    "conflict_note": "融合'点亮 ON 时...保持不变'与'同时接收到非 0 值的颜色亮度指令' → 提炼核心语义；'非 0 值'泛指颜色或亮度有效指令"
+  },
+  {
+    "head": "DoorFL4LampColorCmd_1",
+    "relation": "输入为",
+    "tail": "LIN输入信号 (0x00–0xFF)",
+    "sources": [
+      "inner_lamp_ssts_0333"
+    ],
+    "conflict": false,
+    "conflict_note": "统一格式：'0x00-0xFF' → '0x00–0xFF'（en dash），并加括号明确范围"
+  },
+  {
+    "head": "DoorFL4LampColorCmd_1",
+    "relation": "依赖于",
+    "tail": "灯头切换至对应色坐标",
+    "sources": [
+      "inner_lamp_ssts_0333"
+    ],
+    "conflict": false,
+    "conflict_note": "原'前左门氛围灯颜色切换'→'依赖于' → 主体统一为信号名；'灯头切换为色坐标对应的颜色' → 规范化为'灯头切换至对应色坐标'"
+  },
+  {
+    "head": "DoorFL4LampBrightnessCmd_1",
+    "relation": "输入为",
+    "tail": "LIN输入信号 (0x65–0xFF)",
+    "sources": [
+      "inner_lamp_ssts_0333"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL4LampBrightnessCmd_1",
+    "relation": "依赖于",
+    "tail": "灯头亮度调节至对应百分比值",
+    "sources": [
+      "inner_lamp_ssts_0333"
+    ],
+    "conflict": false,
+    "conflict_note": "融合'前左门氛围灯亮度调节到百分比值'与'灯头亮度调节到相应的百分比值'"
+  },
+  {
+    "head": "DoorFL4LampBreathingCmd_1",
+    "relation": "输入为",
+    "tail": "LIN输入信号 (0x0–0xF)",
+    "sources": [
+      "inner_lamp_ssts_0333"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL4LampBreathingCmd_1",
+    "relation": "输入为",
+    "tail": "Code = 0xA (Rate1, 周期500ms)",
+    "sources": [
+      "inner_lamp_ssts_0333"
+    ],
+    "conflict": false,
+    "conflict_note": "保留具体映射；'Rate1'为标准命名，优于'Rate13/Rate15'中数字编号（因Rate1在本上下文中独立出现）"
+  },
+  {
+    "head": "DoorFL4LampBreathingCmd_1",
+    "relation": "状态保持条件",
+    "tail": "指令值 = 0x0 (No Request) 或颜色号未定义",
+    "sources": [
+      "inner_lamp_ssts_0333"
+    ],
+    "conflict": false,
+    "conflict_note": "规范化'指令值为 0 (No Request) 或未定义颜色号时' → 明确十六进制及语义"
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "触发条件",
+    "tail": "UpIPALampBrthngCmd_1 = 0xD (Rate13)",
+    "sources": [
+      "inner_lamp_ssts_0334"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "触发条件",
+    "tail": "UpIPALampBrthngCmd_1 = 0xF (Rate15)",
+    "sources": [
+      "inner_lamp_ssts_0334"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rate13模式亮度输出",
+    "relation": "输入为",
+    "tail": "时间轴 (0–1360 ms)",
+    "sources": [
+      "inner_lamp_ssts_0334"
+    ],
+    "conflict": false,
+    "conflict_note": "统一单位空格、en dash；'时间 (0-1360ms)' → '时间轴 (0–1360 ms)'"
+  },
+  {
+    "head": "Rate15模式亮度输出",
+    "relation": "输入为",
+    "tail": "时间轴 (0–3400 ms)",
+    "sources": [
+      "inner_lamp_ssts_0334"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rate13模式亮度输出",
+    "relation": "依赖于",
+    "tail": "采样间隔 = 40 ms",
+    "sources": [
+      "inner_lamp_ssts_0334"
+    ],
+    "conflict": false,
+    "conflict_note": "规范化'Sample Interval 40ms' → '采样间隔 = 40 ms'"
+  },
+  {
+    "head": "Rate15模式亮度输出",
+    "relation": "依赖于",
+    "tail": "采样间隔 = 100 ms",
+    "sources": [
+      "inner_lamp_ssts_0334"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rate13模式亮度输出",
+    "relation": "包含子功能",
+    "tail": "120个数据点（周期8 s）",
+    "sources": [
+      "inner_lamp_ssts_0334"
+    ],
+    "conflict": false,
+    "conflict_note": "规范化'120 个数据点 over 8s' → '120个数据点（周期8 s）'"
+  },
+  {
+    "head": "Rate15模式亮度输出",
+    "relation": "包含子功能",
+    "tail": "200个数据点（周期12 s）",
+    "sources": [
+      "inner_lamp_ssts_0334"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHSts",
+    "relation": "输入为",
+    "tail": "0x0 = OFF",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHSts",
+    "relation": "输入为",
+    "tail": "0x1 = Level_1",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHSts",
+    "relation": "输入为",
+    "tail": "0x2 = Level_2",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHSts",
+    "relation": "输入为",
+    "tail": "0x1E = Level_30",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReadingLampStatus",
+    "relation": "输出为",
+    "tail": "0x0 = OFF",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": "统一实体名：'Reading Lamp Status' → 'ReadingLampStatus'（驼峰式，符合信号命名惯例）；与ThirdRowMapLampRHSts语义高度重叠，但来源不同、命名不同，暂不合并（宽泛vs特例：前者为通用阅读灯状态，后者为第三排右侧专用）"
+  },
+  {
+    "head": "ReadingLampStatus",
+    "relation": "输出为",
+    "tail": "0x1 = Level_1",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReadingLampStatus",
+    "relation": "输出为",
+    "tail": "0x2 = Level_2",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReadingLampStatus",
+    "relation": "输出为",
+    "tail": "0x1E = Level_30",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReadingLampStatus",
+    "relation": "触发条件",
+    "tail": "接收到阅读灯亮度等级请求 = 1",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReadingLampStatus",
+    "relation": "触发条件",
+    "tail": "阅读灯处于点亮状态",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": "规范化'阅读灯在点亮中' → '阅读灯处于点亮状态'"
+  },
+  {
+    "head": "ReadingLampStatus",
+    "relation": "触发条件",
+    "tail": "接收到阅读灯亮度等级请求 = 2",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReadingLampStatus",
+    "relation": "触发条件",
+    "tail": "接收到阅读灯亮度等级请求 = 30",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReadingLampStatus",
+    "relation": "抑制条件",
+    "tail": "阅读灯未处于驱动状态",
+    "sources": [
+      "inner_lamp_ssts_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IM Motors",
+    "relation": "控制对象",
+    "tail": "Interior Lighting Sub System",
+    "sources": [
+      "inner_lamp_ssts_0338",
+      "inner_lamp_ssts_0380"
+    ],
+    "conflict": false,
+    "conflict_note": "‘智己汽车’官方英文品牌名为‘IM Motors’，采用标准译名；'内灯子系统' → 'Interior Lighting Sub System'（全大写缩写+空格，符合AUTOSAR/ASPICE术语惯例）"
+  },
+  {
+    "head": "外灯控制功能",
+    "relation": "前提条件",
+    "tail": "配置项（Item）为有效参数",
+    "sources": [
+      "inner_lamp_ssts_0343"
+    ],
+    "conflict": false,
+    "conflict_note": "规范化'配置项/Item为有效参数' → '配置项（Item）为有效参数'（括号统一）"
+  },
+  {
+    "head": "车身控制功能",
+    "relation": "前提条件",
+    "tail": "配置描述（Description）为有效说明",
+    "sources": [
+      "inner_lamp_ssts_0343"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门功能",
+    "relation": "前提条件",
+    "tail": "分辨率（Factor）满足系统要求",
+    "sources": [
+      "inner_lamp_ssts_0343"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制功能",
+    "relation": "抑制条件",
+    "tail": "配置项（Item）超出参数范围（Range）",
+    "sources": [
+      "inner_lamp_ssts_0343"
+    ],
+    "conflict": false,
+    "conflict_note": "规范化'不在参数范围/Range内' → '超出参数范围（Range）'"
+  },
+  {
+    "head": "车身控制功能",
+    "relation": "依赖于",
+    "tail": "默认值（Default）正确设置",
+    "sources": [
+      "inner_lamp_ssts_0343"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHBLampBrtnsCmd_1",
+    "relation": "输入为",
+    "tail": "RoofRHBLampBrtnsCmd_1命令",
+    "sources": [
+      "inner_lamp_ssts_0344"
+    ],
+    "conflict": false,
+    "conflict_note": "保留原始拼写'Brtns'（疑似'Brightness'缩写），不强行修正为'Brtns'→'Brightness'，因多处一致且可能为项目约定缩写；与下条'Brthng'区分（二者不同信号）"
+  },
+  {
+    "head": "RoofRHBLampBrthngCmd_1",
+    "relation": "输入为",
+    "tail": "RoofRHBLampBrthngCmd_1命令",
+    "sources": [
+      "inner_lamp_ssts_0344"
+    ],
+    "conflict": false,
+    "conflict_note": "保留'Brthng'（Breathing缩写），与上条'Brtns'明确区分"
+  },
+  {
+    "head": "RoofRHBLampBrtnsCmd_1",
+    "relation": "依赖于",
+    "tail": "Code值",
+    "sources": [
+      "inner_lamp_ssts_0344"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

@@ -1,0 +1,572 @@
+[
+  {
+    "head": "DaytimeRunningLightControl",
+    "relation": "hasTimeoutConstraint",
+    "tail": "TimeoutModule",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutomaticLightControl",
+    "relation": "hasTimeoutConstraint",
+    "tail": "TimeoutModule",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightSwitchControl",
+    "relation": "hasTimeoutConstraint",
+    "tail": "TimeoutModule",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightFunctionActivation",
+    "relation": "hasPrerequisite",
+    "tail": "ICB.BrakeLightSwitchProcess.BrakeLightFrcSta == 0x1",
+    "sources": [
+      "outer_lamp_fas_1670"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightFunctionActivation",
+    "relation": "hasPrerequisite",
+    "tail": "RZCU receives ICB control signal",
+    "sources": [
+      "outer_lamp_fas_1670"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightFunctionActivation",
+    "relation": "hasPrerequisite",
+    "tail": "Braking system is functional",
+    "sources": [
+      "outer_lamp_fas_1670"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightFunctionActivation",
+    "relation": "hasPrerequisite",
+    "tail": "LHZCU.BrakeLightSwitchCtrl == 0x1",
+    "sources": [
+      "outer_lamp_fas_1670"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightFunctionActivation",
+    "relation": "hasTimeoutConstraint",
+    "tail": "Left, right and high-mount brake lights must illuminate synchronously with ≤40ms max delay across all three",
+    "sources": [
+      "outer_lamp_fas_1670"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightFunctionActivation",
+    "relation": "dependsOn",
+    "tail": "ICB provides brake light switch status feedback",
+    "sources": [
+      "outer_lamp_fas_1670"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightFunctionActivation",
+    "relation": "dependsOn",
+    "tail": "RZCU receives and processes ICB control signal",
+    "sources": [
+      "outer_lamp_fas_1670"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightFunctionActivation",
+    "relation": "dependsOn",
+    "tail": "LHZCU controls brake light switch activation",
+    "sources": [
+      "outer_lamp_fas_1670"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightFunctionActivation",
+    "relation": "hasInhibitionCondition",
+    "tail": "BrakeLight.BrkLightErrorStatus != 0x0",
+    "sources": [
+      "outer_lamp_fas_1670"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightAutoControlModule_LHZCU_FlashTransition",
+    "relation": "hasPrerequisite",
+    "tail": "Vehicle operation mode is 'All'",
+    "sources": [
+      "outer_lamp_fas_1672"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightAutoControlModule_LHZCU_FlashTransition",
+    "relation": "hasPrerequisite",
+    "tail": "Vehicle driving mode is 'All'",
+    "sources": [
+      "outer_lamp_fas_1672"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightAutoControlModule_LHZCU_FlashTransition",
+    "relation": "hasPrerequisite",
+    "tail": "Vehicle is not in Park (P) gear",
+    "sources": [
+      "outer_lamp_fas_1672"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightAutoControlModule_LHZCU_FlashTransition",
+    "relation": "hasTriggerCondition",
+    "tail": "Tire burst detected on any wheel",
+    "sources": [
+      "outer_lamp_fas_1672"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightAutoControlModule_LHZCU_FlashTransition",
+    "relation": "producesOutput",
+    "tail": "Hazard lights flash at 1.25Hz",
+    "sources": [
+      "outer_lamp_fas_1672"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightAutoControlModule_LHZCU_FlashTransition",
+    "relation": "producesOutput",
+    "tail": "Turn signal流水 mode enabled",
+    "sources": [
+      "outer_lamp_fas_1672"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_TurnSignalProcessing",
+    "relation": "dependsOn",
+    "tail": "HazardWarningLightAutoControlModule_LHZCU_FlashTransition",
+    "sources": [
+      "outer_lamp_fas_1672"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_TurnSignalProcessing",
+    "relation": "producesOutput",
+    "tail": "Controls turn signal illumination/extinction",
+    "sources": [
+      "outer_lamp_fas_1672"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_ControlInputProcessing",
+    "relation": "hasTimeoutConstraint",
+    "tail": "60ms delay before distributing control signals to LHZCU, RHZCU and RZCU",
+    "sources": [
+      "outer_lamp_fas_1672"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd",
+    "relation": "producesOutput",
+    "tail": "CAN/LIN/SoA services/hardwired signals",
+    "sources": [
+      "outer_lamp_fas_1673"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd",
+    "relation": "dependsOn",
+    "tail": "Signal sending node or SoA service provider",
+    "sources": [
+      "outer_lamp_fas_1673"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd",
+    "relation": "outputsTo",
+    "tail": "Signal receiving node or SoA service consumer",
+    "sources": [
+      "outer_lamp_fas_1673"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightStatusFeedback_BrkLghtSts_Off",
+    "relation": "producesOutput",
+    "tail": "Value = 0x0",
+    "sources": [
+      "outer_lamp_fas_1675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightStatusFeedback_BrkLghtSts_On",
+    "relation": "producesOutput",
+    "tail": "Value = 0x1",
+    "sources": [
+      "outer_lamp_fas_1675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightStatusFeedback_RevsLghtSts_Off",
+    "relation": "producesOutput",
+    "tail": "Value = 0x0",
+    "sources": [
+      "outer_lamp_fas_1675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightStatusFeedback_RevsLghtSts_On",
+    "relation": "producesOutput",
+    "tail": "Value = 0x1",
+    "sources": [
+      "outer_lamp_fas_1675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightStatusFeedback_BrkLghtSts",
+    "relation": "dependsOn",
+    "tail": "CANFD interface",
+    "sources": [
+      "outer_lamp_fas_1675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightStatusFeedback_BrkLghtSts",
+    "relation": "controls",
+    "tail": "RZCU controller",
+    "sources": [
+      "outer_lamp_fas_1675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightStatusFeedback_RevsLghtSts",
+    "relation": "dependsOn",
+    "tail": "CANFD interface",
+    "sources": [
+      "outer_lamp_fas_1675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightStatusFeedback_RevsLghtSts",
+    "relation": "controls",
+    "tail": "RZCU controller",
+    "sources": [
+      "outer_lamp_fas_1675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus_Off",
+    "relation": "dependsOn",
+    "tail": "Input from RZCU",
+    "sources": [
+      "outer_lamp_fas_1678"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus_On",
+    "relation": "dependsOn",
+    "tail": "Input from ICB_S32_GM",
+    "sources": [
+      "outer_lamp_fas_1678"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorStatus_NoError",
+    "relation": "dependsOn",
+    "tail": "Input from LHZCU",
+    "sources": [
+      "outer_lamp_fas_1678"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorStatus_Error",
+    "relation": "dependsOn",
+    "tail": "Input from ICB_S32_GM",
+    "sources": [
+      "outer_lamp_fas_1678"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightDriveControl",
+    "relation": "hasTriggerCondition",
+    "tail": "RevsLghtCtrl_HW_0_Off",
+    "sources": [
+      "outer_lamp_fas_1680"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightDriveControl",
+    "relation": "hasTriggerCondition",
+    "tail": "RevsLghtCtrl_HW_1_On",
+    "sources": [
+      "outer_lamp_fas_1680"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightStatusFeedback",
+    "relation": "hasInput",
+    "tail": "RevsLghtSts_0_off",
+    "sources": [
+      "outer_lamp_fas_1680"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightStatusFeedback",
+    "relation": "hasInput",
+    "tail": "RevsLghtSts_1_on",
+    "sources": [
+      "outer_lamp_fas_1680"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightFaultStatusFeedback",
+    "relation": "hasInput",
+    "tail": "RevsLghtFltSts",
+    "sources": [
+      "outer_lamp_fas_1680"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtCtrl_HW",
+    "relation": "producesOutput",
+    "tail": "TailLpAsmbA_RH",
+    "sources": [
+      "outer_lamp_fas_1680"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtCtrl_HW",
+    "relation": "dependsOn",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_1680"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtCtrl_HW",
+    "relation": "outputsTo",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_fas_1680"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtSts",
+    "relation": "producesOutput",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_1680"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtSts",
+    "relation": "outputsTo",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_1680"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtFltSts",
+    "relation": "producesOutput",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_1680"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtFltSts",
+    "relation": "outputsTo",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_1680"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalExitFunction",
+    "relation": "hasTriggerCondition",
+    "tail": "Turn signal is active in position 1 or 2",
+    "sources": [
+      "outer_lamp_fas_1684"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalExitFunction",
+    "relation": "hasPrerequisite",
+    "tail": "Left turn signal is activated",
+    "sources": [
+      "outer_lamp_fas_1684"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalDeactivation",
+    "relation": "dependsOn",
+    "tail": "LHZCU sends FLDircnLghtCtrl/RLDircnLghtCtrl = OFF",
+    "sources": [
+      "outer_lamp_fas_1684"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalVisualAuditoryIndication",
+    "relation": "hasTriggerCondition",
+    "tail": "ICB distributes control signal to LHZCU/RZCU after 60ms delay",
+    "sources": [
+      "outer_lamp_fas_1684"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalStatusFeedback",
+    "relation": "dependsOn",
+    "tail": "RZCU feeds back status/fault status to LHZCU",
+    "sources": [
+      "outer_lamp_fas_1684"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SingleSideTurnSignalDeactivationSynchronicity",
+    "relation": "hasTimeoutConstraint",
+    "tail": "Max delay tolerance: 40ms",
+    "sources": [
+      "outer_lamp_fas_1684"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightControlRequest",
+    "relation": "hasTriggerCondition",
+    "tail": "ControlRoofSpotLightReq == 0x1",
+    "sources": [
+      "outer_lamp_fas_1685"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightDisableRequest",
+    "relation": "hasTriggerCondition",
+    "tail": "ControlRoofSpotLightReq == 0x0",
+    "sources": [
+      "outer_lamp_fas_1685"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightStatus_Active",
+    "relation": "dependsOn",
+    "tail": "RoofSpotLightStatus == 0x1",
+    "sources": [
+      "outer_lamp_fas_1685"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

@@ -1,0 +1,141 @@
+```json
+[
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "整车模式为工厂模式 (VehMd=0x2) 且 VehMdV=0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "整车模式为工厂模式",
+      "VehMd=0x2",
+      "VehMdV=0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "大屏开关请求 ICB 输入 (FrontFogLightReq=0x0=OFF)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "大屏开关请求",
+      "ICB",
+      "FrontFogLightReq=0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯点亮",
+    "relation": "前提条件",
+    "tail": "前雾灯点亮条件 (a&&b&&c) 满足",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "前雾灯点亮条件",
+      "a&&b&&c"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯持续开启",
+    "relation": "超时约束",
+    "tail": "在工厂模式下持续 2min",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "工厂模式",
+      "2min"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯熄灭",
+    "relation": "触发条件",
+    "tail": "ICB 将服务接口或控制信号转换成灯控 CAN 信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "CAN信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯熄灭",
+    "relation": "触发条件",
+    "tail": "驱动处理模块 LHZCU/RHZCU 内部跳变为硬线输出",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "驱动处理模块",
+      "LHZCU/RHZCU",
+      "硬线输出"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯指示灯显示",
+    "relation": "抑制条件",
+    "tail": "HMI 子系统 ICB 调用接口退出",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "HMI子系统",
+      "ICB",
+      "退出前雾灯指示灯显示"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯状态/故障状态订阅",
+    "relation": "输入为",
+    "tail": "前雾灯控制模块 LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "前雾灯控制模块",
+      "LHZCU",
+      "状态/故障状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯功能状态 (FrontFogLightFucProStatus)",
+    "relation": "输出为",
+    "tail": "0x0=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "前雾灯功能状态",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯功能状态参数 (FrontFogLightFucProsSta)",
+    "relation": "输出为",
+    "tail": "0x0=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "前雾灯功能状态参数",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯点亮",
+    "relation": "依赖于",
+    "tail": "前雾灯点亮条件 (a&&b&&c)",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "前雾灯点亮条件",
+      "a&&b&&c"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯熄灭",
+    "relation": "依赖于",
+    "tail": "ICB 控制信号转换为 CAN 信号",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "ICB",
+      "CAN信号"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,98 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的功能分配规范",
+  "row_semantics": "表格的每一行代表一个与外灯控制相关的参数或状态定义，包括车辆模式 (VehMdV)、用户模式 (UsG Md) 及其值 (UsG MdV)，以及外灯控制系统组合灯控制接口 (ExteriorLightControlSystem.ControlCombinedLight) 的详细说明。",
+  "column_semantics": "表格包含两列：左侧列为参数/状态名称，右侧列为该参数/状态的具体定义和取值范围。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMdV",
+      "description": "车辆模式值，表示车辆当前模式的有效性。0x0 表示无效 (Invalid)，0x1 表示有效 (Valid)。",
+      "type": "input_signal"
+    },
+    {
+      "name": "UsG Md",
+      "description": "用户模式，定义了车辆的不同使用场景或驾驶模式。包括 Sleep (睡眠), Standby (待机), Comfortable (舒适), Normal Driving (正常驾驶), AI Parking (AI 停车), AIPilot (AI 驾驶), XOTA (远程升级)。",
+      "type": "mode_name"
+    },
+    {
+      "name": "UsG MdV",
+      "description": "用户模式值，表示用户模式的具体数值。0x0 表示无效 (Invalid)，0x1 表示有效 (Valid)。",
+      "type": "input_signal"
+    },
+    {
+      "name": "ExteriorLightControlSystem.ControlCombinedLight",
+      "description": "外灯控制系统组合灯控制接口，用于调用服务以请求点亮或熄灭特定位置的灯光。",
+      "type": "function_name"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMdV_Invalid",
+      "description": "当 VehMdV 为 0x0 时，表示车辆模式无效。",
+      "type": "condition"
+    },
+    {
+      "name": "VehMdV_Valid",
+      "description": "当 VehMdV 为 0x1 时，表示车辆模式有效。",
+      "type": "condition"
+    },
+    {
+      "name": "UsG Md_0_Sleep",
+      "description": "用户模式为睡眠模式。",
+      "type": "mode_state"
+    },
+    {
+      "name": "UsG Md_1_Standby",
+      "description": "用户模式为待机模式。",
+      "type": "mode_state"
+    },
+    {
+      "name": "UsG Md_2_Comfortable",
+      "description": "用户模式为舒适模式。",
+      "type": "mode_state"
+    },
+    {
+      "name": "UsG Md_3_NormalDriving",
+      "description": "用户模式为正常驾驶模式。",
+      "type": "mode_state"
+    },
+    {
+      "name": "UsG Md_4_AIParking",
+      "description": "用户模式为 AI 停车模式。",
+      "type": "mode_state"
+    },
+    {
+      "name": "UsG Md_5_AIPilot",
+      "description": "用户模式为 AI 驾驶模式。",
+      "type": "mode_state"
+    },
+    {
+      "name": "UsG Md_6_XOTA",
+      "description": "用户模式为远程升级模式。",
+      "type": "mode_state"
+    },
+    {
+      "name": "UsG MdV_Invalid",
+      "description": "当 UsG MdV 为 0x0 时，表示用户模式值无效。",
+      "type": "condition"
+    },
+    {
+      "name": "UsG MdV_Valid",
+      "description": "当 UsG MdV 为 0x1 时，表示用户模式值有效。",
+      "type": "condition"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ExteriorLightControlSystem.ControlCombinedLight",
+      "description": "通过该接口调用组合灯控制服务，请求点亮或熄灭指定位置的灯光。",
+      "type": "output_signal"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯功能中涉及的车辆模式、用户模式及其值的详细规范，并明确了外灯控制系统组合灯控制接口的功能和参数，可用于验证外灯在不同车辆模式和用户模式下的行为是否符合设计要求。",
+  "uncertain_points": []
+}

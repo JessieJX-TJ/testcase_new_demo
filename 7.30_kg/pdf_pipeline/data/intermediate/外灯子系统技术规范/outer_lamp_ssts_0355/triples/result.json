@@ -1,0 +1,77 @@
+[
+  {
+    "head": "倒车灯停止驱动",
+    "relation": "触发条件",
+    "tail": "收到【RevsLghtCtrlMdl】发送的RevsLghtCtrl_HW==0(Off)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RevsLghtCtrlMdl",
+      "RevsLghtCtrl_HW",
+      "Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0355",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "倒车灯状态信号为Off",
+    "relation": "输出为",
+    "tail": "【RevsLghtDrvMdl】持续发送RevsLghtSts=0(Off)至【RevsLghtCtrlMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RevsLghtDrvMdl",
+      "RevsLghtSts",
+      "Off",
+      "RevsLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0355",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "倒车灯控制逻辑退出",
+    "relation": "触发条件",
+    "tail": "收到【RevsLghtCtrlMdl】发送的RevsLghtCtrl_HW==1(On)",
+    "triple_type": "退出条件",
+    "evidence_terms": [
+      "RevsLghtCtrlMdl",
+      "RevsLghtCtrl_HW",
+      "On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0355",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "倒车灯控制逻辑被抑制",
+    "relation": "前提条件",
+    "tail": "RevsLghtFbkSOAEnPrm==0(Disable)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "RevsLghtFbkSOAEnPrm",
+      "Disable"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0355",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "倒车灯状态信号至少发送三帧",
+    "relation": "超时约束",
+    "tail": "至少发送三帧RevslghtSts=0(Off)至【RevsLghtCtrlMdl】",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RevsLghtSts",
+      "Off",
+      "RevsLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0355",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

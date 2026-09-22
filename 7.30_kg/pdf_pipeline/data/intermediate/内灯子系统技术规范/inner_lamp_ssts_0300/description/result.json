@@ -1,0 +1,48 @@
+{
+  "table_type": "fault_table",
+  "topic": "Reading Lamp Fault Status Signal",
+  "row_semantics": "Different fault status conditions for the reading lamp",
+  "column_semantics": {
+    "Column 1": "Reading Lamp Fault Status Signal (MapLampXXErr)",
+    "Column 2": "Status Bit Value (0x0=No error, 0x1=Error)",
+    "Column 3": "Judgment Condition Description",
+    "Column 4": "Notes"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MapLampXXErr",
+      "type": "signal",
+      "description": "Reading lamp fault status signal"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "Status bit is 0x0",
+      "description": "No short circuit or open circuit fault in the reading lamp"
+    },
+    {
+      "condition": "Status bit is 0x1",
+      "description": "Reading lamp is in one of the following error states:\n1. In on state, current exceeds 1.5 times the maximum current value\n2. In off state, current is below 0.1 times the minimum current value"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "fault_name": "Reading Lamp Short/Open Circuit Fault",
+      "status_bit": "0x0",
+      "description": "No short circuit or open circuit fault detected"
+    },
+    {
+      "fault_name": "Reading Lamp Current Abnormality Fault",
+      "status_bit": "0x1",
+      "description": "Current abnormality detected in either on or off state"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the fault status signals and corresponding judgment conditions for the reading lamp, which can be used to verify the reading lamp's fault detection functionality during system testing.",
+  "uncertain_points": [
+    "The exact threshold values for maximum and minimum current are not specified in the table."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车危险模式与转向灯控制信号定义",
+  "row_semantics": "表格按功能模块划分，每一行代表一个具体的控制或状态信号，详细定义了其硬件控制值、输出方式及关联的控制器。",
+  "column_semantics": "第一列为主功能分类；第二列为空白占位；第三列定义信号名称及其硬件控制值（0x0/0x1）；第四至第七列为信号的输出方式（如CANFD）和相关控制器（如ICB, RZCU, LHZCU）。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FRDircnLghtCtrl_HW",
+      "type": "功能名",
+      "description": "右前转向灯硬件控制信号"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW",
+      "type": "功能名",
+      "description": "左后转向灯硬件控制信号"
+    },
+    {
+      "name": "RRDircnLghtCtrl_HW",
+      "type": "功能名",
+      "description": "右后转向灯硬件控制信号"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "type": "系统状态",
+      "description": "整车危险模式状态信号"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FRDircnLghtCtrl_HW",
+      "output_to": "CANFD",
+      "controller": "RZCU",
+      "description": "右前转向灯控制输出"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW",
+      "output_to": "CANFD",
+      "controller": "ICB",
+      "description": "左后转向灯控制输出"
+    },
+    {
+      "name": "RRDircnLghtCtrl_HW",
+      "output_to": "CANFD",
+      "controller": "RZCU",
+      "description": "右后转向灯控制输出"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "output_to": "CANFD",
+      "controller": "LHZCU",
+      "description": "整车危险模式状态输出"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车危险模式和转向灯控制相关的硬件信号及其输出路径，可用于验证车辆在不同危险模式下转向灯是否正确响应，并确保各控制器间信号传输的正确性。",
+  "uncertain_points": []
+}

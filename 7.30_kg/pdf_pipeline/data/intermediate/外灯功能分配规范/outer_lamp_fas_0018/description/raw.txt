@@ -1,0 +1,81 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "拖车外灯控制与状态反馈机制",
+  "row_semantics": "描述了在特定条件下，拖车外灯（如位置灯）的状态、控制器行为及故障状态的逻辑关系。",
+  "column_semantics": "无明确列结构，内容为按行组织的功能描述和状态定义。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "拖车电子控制单元，负责判断前置条件并订阅拖车位置灯状态。"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "集成控制盒，接收并处理拖车外灯组合服务请求及状态反馈。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外部灯光开关处理模块，管理拖车位置灯的状态和错误状态。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "module",
+      "description": "外部灯光控制系统，负责订阅并透传拖车位置灯状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID=9",
+      "description": "实例ID为9时，表示无错误（SidePositionLightErrorStatus.SidePositionLightSta）。"
+    },
+    {
+      "name": "InstanceID=10",
+      "description": "实例ID为10时，表示无错误（SidePositionLightErrorStatus.SidePositionLightSta）。"
+    },
+    {
+      "name": "LHZCU判断前置条件满足",
+      "description": "LHZCU判断前置条件满足后，需订阅拖车位置灯状态，并结合拖车位置灯状态反馈位置灯状态给ICB。"
+    },
+    {
+      "name": "外灯组合服务ICB订阅并透传",
+      "description": "ICB订阅并透传拖车位置灯状态（ExteriorLightControlSystem.SidePositionLightStts.SidePosnLghtStts）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightSta",
+      "description": "拖车位置灯状态，值为0x0=OFF（关闭）。"
+    },
+    {
+      "name": "SidePositionLightErrSta",
+      "description": "拖车位置灯错误状态，值为0x0=No Error（无错误）。"
+    },
+    {
+      "name": "SidePosnLghtStts",
+      "description": "拖车位置灯状态，值为0x0=OFF（关闭）。"
+    },
+    {
+      "name": "SidePosnLghtErrStts",
+      "description": "拖车位置灯错误状态，值为0x0=No Error（无错误）。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SidePositionLightErrorStatus",
+      "description": "拖车位置灯错误状态，用于指示位置灯是否存在故障。"
+    },
+    {
+      "name": "SidePositionLightErrSta",
+      "description": "拖车位置灯错误状态，用于指示位置灯是否存在故障。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了拖车外灯（特别是位置灯）在不同控制器（LHZCU、ICB）之间的状态管理和错误反馈机制，可用于验证拖车外灯系统在前置条件满足时的状态订阅、透传及错误反馈功能是否符合设计规范。",
+  "uncertain_points": []
+}
+```

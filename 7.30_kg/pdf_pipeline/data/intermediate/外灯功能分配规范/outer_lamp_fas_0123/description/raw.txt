@@ -1,0 +1,87 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Dipped Beam Light Control Logic",
+  "row_semantics": "Each row represents a condition or action related to the control of dipped beam lights, including hardware and software-level requests.",
+  "column_semantics": {
+    "输入": "Input conditions or signals that trigger the logic.",
+    "执行动作": "The actions or commands executed based on the input conditions.",
+    "备注": "Additional information or context about the execution."
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LDipdBeamLightCtrl_HW",
+      "type": "input_signal",
+      "description": "Hardware control signal for left dipped beam light."
+    },
+    {
+      "name": "RDipdBeamLightCtrl_HW",
+      "type": "input_signal",
+      "description": "Hardware control signal for right dipped beam light."
+    },
+    {
+      "name": "DippedBeamLightReq",
+      "type": "output_signal",
+      "description": "Request signal for dipped beam light control from the Dipped Beam Light module."
+    },
+    {
+      "name": "ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts",
+      "type": "system_state",
+      "description": "Status of the dipped beam light request in the exterior light control system."
+    },
+    {
+      "name": "DippedBeamLight",
+      "type": "controller_module",
+      "description": "Module responsible for controlling the dipped beam lights."
+    },
+    {
+      "name": "Near Light Lamp Driver Processing Module",
+      "type": "controller_module",
+      "description": "Module handling the driver processing for near light lamps."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "LDipdBeamLightCtrl_HW = 0x1",
+      "description": "Left dipped beam light hardware control signal is set to ON."
+    },
+    {
+      "condition": "RDipdBeamLightCtrl_HW = 0x1",
+      "description": "Right dipped beam light hardware control signal is set to ON."
+    },
+    {
+      "condition": "InstanceID = 1",
+      "description": "Specific instance ID for the dipped beam light control logic."
+    },
+    {
+      "condition": "InstanceID = 2",
+      "description": "Another specific instance ID for the dipped beam light control logic."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "LDipdBeamLightCtrl_HW_1_On",
+      "description": "Signal indicating the left dipped beam light is turned ON at the hardware level."
+    },
+    {
+      "output": "RDipdBeamLightCtrl_HW_1_On",
+      "description": "Signal indicating the right dipped beam light is turned ON at the hardware level."
+    },
+    {
+      "output": "DippedBeamLightReq = 0x1 = ON",
+      "description": "Request signal for dipped beam light is set to ON."
+    },
+    {
+      "output": "ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts = 0x1 = ON",
+      "description": "Status of the dipped beam light request in the exterior light control system is set to ON."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the logic for controlling dipped beam lights, specifying how hardware and software signals interact to turn the lights ON. It is used to verify that the dipped beam light control logic correctly processes input signals and updates the appropriate status flags.",
+  "uncertain_points": []
+}
+```

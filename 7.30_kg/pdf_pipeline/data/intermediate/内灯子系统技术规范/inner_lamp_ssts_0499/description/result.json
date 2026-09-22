@@ -1,0 +1,87 @@
+{
+  "table_type": "logic_table",
+  "topic": "Ambient Lamp Breathing Control Logic",
+  "row_semantics": "Each row represents a condition-action pair for the ambient lamp breathing control logic.",
+  "column_semantics": {
+    "Column 1": "Preconditions or triggering conditions for the action.",
+    "Column 2": "The specific actions or behaviors executed when the conditions are met."
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "function",
+      "description": "The lighting system that provides ambient illumination inside the vehicle."
+    },
+    {
+      "name": "UpIPALampBrthngCmd_1",
+      "type": "input_signal",
+      "description": "Local control signal for the breathing speed of the ambient lamp."
+    },
+    {
+      "name": "AmbtLghtRHRollingCtr_1",
+      "type": "input_signal",
+      "description": "Ambient light synchronization signal."
+    },
+    {
+      "name": "UpIPALampBrtnsCmd_1",
+      "type": "output_signal",
+      "description": "Signal sent to the ambient lamp driving control module to adjust brightness."
+    },
+    {
+      "name": "ZCU",
+      "type": "controller",
+      "description": "Zone Control Unit, responsible for sending commands to the ambient lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "Ambient Lamp is in 'On' state",
+      "description": "The ambient lamp must be turned on for the breathing control logic to activate."
+    },
+    {
+      "condition": "UpIPALampBrthngCmd_1 != 0x0",
+      "description": "A breathing speed command must be received from the local control module."
+    },
+    {
+      "condition": "AmbtLghtRHRollingCtr_1",
+      "description": "The ambient light synchronization signal must be active."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "Brightness modulation between 0%-100%-0%",
+      "description": "The ambient lamp adjusts its brightness according to the breathing cycle."
+    },
+    {
+      "output": "LIN module controls brightness changes",
+      "description": "Brightness transitions are managed by the ambient lamp LIN module, independent of direct brightness signals."
+    },
+    {
+      "output": "Switching between breathing modes",
+      "description": "When switching modes, the current breathing pattern stops and the next mode begins."
+    },
+    {
+      "output": "ZCU sends UpIPALampBrthngCmd_1 = 0x1",
+      "description": "The ZCU sends a command to execute a 0%-100% jump change at a rate of 500ms."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "Rate1: 500ms",
+      "description": "For the 0x1 command, the brightness changes occur every 500ms."
+    },
+    {
+      "constraint": "Rate2: 1s",
+      "description": "For the 0x2 command, the brightness changes occur every 1 second."
+    },
+    {
+      "constraint": "250ms cycle",
+      "description": "The ZCU executes a 250ms cycle where the lamp is at 100% brightness for 250ms, then 0% brightness for 250ms."
+    }
+  ],
+  "engineering_interpretation": "This table defines the logic for controlling the breathing behavior of the ambient lamp based on input commands and synchronization signals. It specifies how the lamp's brightness should vary over time and under what conditions different breathing modes are activated or switched.",
+  "uncertain_points": []
+}

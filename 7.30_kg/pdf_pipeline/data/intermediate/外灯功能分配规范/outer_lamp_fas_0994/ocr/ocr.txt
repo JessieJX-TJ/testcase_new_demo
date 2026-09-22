@@ -1,0 +1,19 @@
+场景描述
+远光灯增强使能情况下,手动开启车顶射灯
+前置条件
+1&2&3&4&5&6&7
+UsgMd!=0x0=UsgMd_0_Sleep; & UsgMd!=0x1=UsgMd_1 Standby;& UsgMd!=0x6=UsgMd_6
+UsgMdV=Valid
+VehMd!=0x3=VehMd 3 TRANSPORT
+VehMdV=Valid:
+远光灯增强使能:{PersonalizationData.MainBeamEnhanceEnbSet.MainBeamEnhanceEnbSetInfo}
+LHZCU判断远光灯开启:
+具备车灯射灯功能:InsdFnCfgRoofSpotLght=0x1
+车顶射灯未开启:
+触发动作
+向外推灯光拨杆一次:
+MainBeamLghtOnReq=0x1=MainBeamLghtOnReq_1_On
+执行动作
+1、[车顶射灯控制模块LHZCU]内部软件保持有效请求:
+2、[车顶射灯控制模块LHZCU]发送车顶射灯控制仲裁状态:
+Notifier:

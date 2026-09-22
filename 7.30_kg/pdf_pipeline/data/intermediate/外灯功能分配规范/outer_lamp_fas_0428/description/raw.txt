@@ -1,0 +1,89 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Day Running Light (DRL) System Control and Status Parameters",
+  "row_semantics": "Each row represents a specific parameter related to the Day Running Light system, including its control reason, processing status, current state, and error status.",
+  "column_semantics": {
+    "1": "Parameter Name (e.g., DayRunngLghtClsCtrlRsn)",
+    "2": "Description in Chinese",
+    "3": "Definition of Parameter Values (e.g., 0x00=DayRunngLghtClsCtrlRsn_0_None)",
+    "4": "Default Value or Initial State",
+    "5": "Additional Information/Notes",
+    "6": "Controller/Module Name (LHZ CU)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DayRunngLghtClsCtrlRsn",
+      "type": "input_signal",
+      "description": "Reason for Day Running Light Closure"
+    },
+    {
+      "name": "DayRunngLghtFucProsSta",
+      "type": "internal_variable",
+      "description": "Internal variable before service assignment for DRL function processing status"
+    },
+    {
+      "name": "DayRunningLghtSta",
+      "type": "output_signal",
+      "description": "Current state of the Day Running Light"
+    },
+    {
+      "name": "DayRunningLghtErrSta",
+      "type": "fault_status",
+      "description": "Error status of the Day Running Light system"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DayRunngLghtClsCtrlRsn",
+      "values": [
+        "0x00=DayRunngLghtClsCtrlRsn_0_None",
+        "0x01=DayRunngLghtClsCtrlRsn_1_SOA RequestOff",
+        "0x02=DayRunngLghtClsCtrlRsn_2_FactoryModeTimeOver",
+        "0x03=DayRunngLghtClsCtrlRsn_3_OtherReasons",
+        "0x03~0xFF=Reversed"
+      ]
+    },
+    {
+      "name": "DayRunngLghtFucProsSta",
+      "values": [
+        "0x0=DayRunngLghtFucProsSta_0_OFF",
+        "0x1=DayRunngLghtFucProsSta_1_ON",
+        "0x2=DayRunngLghtFucProsSta_2_Unknown"
+      ]
+    },
+    {
+      "name": "DayRunningLghtSta",
+      "values": [
+        "0x00=DayRunningLghtSta_0_OFF",
+        "0x01=DayRunningLghtSta_1_ON",
+        "0x02=DayRunningLghtSta_2_Unknown"
+      ]
+    },
+    {
+      "name": "DayRunningLghtErrSta",
+      "values": [
+        "0x00=DayRunningLghtErrSta_0_NoError",
+        "0x01=DayRunningLghtErrSta_1_Error",
+        "0x02=DayRunningLghtErrSta_2_Unknown"
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DayRunningLghtErrSta",
+      "states": [
+        "0x00=DayRunningLghtErrSta_0_NoError",
+        "0x01=DayRunningLghtErrSta_1_Error",
+        "0x02=DayRunningLghtErrSta_2_Unknown"
+      ]
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters, their possible values, and associated states for the Day Running Light system, which can be used to verify the correct functioning and fault detection logic of the LHZ CU module in response to various operational conditions and error scenarios.",
+  "uncertain_points": []
+}
+```

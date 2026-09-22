@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "DoorFR5LampOnOff_1 命令生效",
+    "relation": "触发条件",
+    "tail": "接收到 LIN 输入信号且 RHZCU 模块发出 DoorFR5LampOnOff_1_0_OFF 或 DoorFR5LampOnOff_1_1_ON 命令",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFR5LampOnOff_1", "LIN", "RHZCU", "DoorAmbtLampE_FR"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门灯氛围灯点亮",
+    "relation": "前提条件",
+    "tail": "同时接收到非 0 值的颜色亮度指令",
+    "triple_type": "工程规则",
+    "evidence_terms": ["门灯氛围灯", "颜色亮度指令"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFR5LampColorCmd_1 命令生效",
+    "relation": "触发条件",
+    "tail": "接收到 LIN 输入信号且 RHZCU 模块发出 DoorFR5LampColorCmd_1_0_No Request 或 0x01-0xFF 的颜色值",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFR5LampColorCmd_1", "LIN", "RHZCU", "DoorAm btLampE_FR"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "灯头颜色切换",
+    "relation": "依赖于",
+    "tail": "接收到色坐标对应的颜色指令",
+    "triple_type": "工程规则",
+    "evidence_terms": ["灯头颜色切换", "色坐标"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFR5LampBrtnsCmd_1 命令生效",
+    "relation": "触发条件",
+    "tail": "接收到 LIN 输入信号且 RHZCU 模块发出 DoorFR5LampBrtnsCmd_1_0_No Request 或 0x65-0xFF 的保留值",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFR5LampBrtnsCmd_1", "LIN", "RHZCU", "DoorAm btLampE_FR"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "灯头亮度调节",
+    "relation": "状态保持条件",
+    "tail": "当指令值为 0 时保持亮度不变",
+    "triple_type": "工程规则",
+    "evidence_terms": ["灯头亮度调节", "指令值为 0"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFR5LampBrthngCmd_1 命令生效",
+    "relation": "触发条件",
+    "tail": "接收到 LIN 输入信号且 RHZCU 模块发出 0x0-0xF 的呼吸速率指令",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFR5LampBrthngCmd_1", "LIN", "RHZCU", "DoorAm btLampE_FR"],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,44 @@
+```json
+[
+  {
+    "head": "远光灯开关信号 MainBeamSw_SIG",
+    "relation": "输入为",
+    "tail": "通过采集远光灯开关模拟输入信号,判断当前远光灯开关档位请求。",
+    "triple_type": "输入关系",
+    "evidence_terms": ["MainBeamSw_SIG", "硬线", "开关"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯开关请求 MainBeamLghtSwReq",
+    "relation": "输出为",
+    "tail": "0x0=MainBeamLghtSwReq_0_Off; 0x1=MainBeamLghtSwReq_1_On; 0x2=MainBeamLghtSwReq_2_Flash;",
+    "triple_type": "输出关系",
+    "evidence_terms": ["MainBeamLghtSwReq", "片内", "LHZCU"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯主光灯开关状态 ExteriorLightSwitch.MainBeamLightSwitchStatus",
+    "relation": "输出为",
+    "tail": "0x0=MainBeamLight OFF; 0x1=MainBeamLight ON; 0x2=MainBeamLight Flash; 0x3=Error",
+    "triple_type": "输出关系",
+    "evidence_terms": ["ExteriorLightSwitch.MainBeamLightSwitchStatus", "SOA", "ICB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯开关请求 MainBeamLghtSwReq",
+    "relation": "依赖于",
+    "tail": "远光灯开关信号 MainBeamSw_SIG",
+    "triple_type": "依赖关系",
+    "evidence_terms": ["MainBeamLghtSwReq", "MainBeamSw_SIG"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯主光灯开关状态 ExteriorLightSwitch.MainBeamLightSwitchStatus",
+    "relation": "依赖于",
+    "tail": "远光灯开关请求 MainBeamLghtSwReq",
+    "triple_type": "依赖关系",
+    "evidence_terms": ["ExteriorLightSwitch.MainBeamLightSwitchStatus", "MainBeamLghtSwReq"],
+    "confidence_note": "high"
+  }
+]
+```

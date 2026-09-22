@@ -1,0 +1,96 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Front Door FR1 Lamp Color Control Logic",
+  "row_semantics": "Each row represents a specific condition or action related to the operation of the front door FR1 lamp's color control system.",
+  "column_semantics": {
+    "Column 1": "Condition/Action Category (e.g., Precondition, Trigger Condition, Execution Action, Exit Condition, Exception Handling)",
+    "Column 2": "Description of the corresponding condition or action"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DoorFR1LampColorCmd_l",
+      "type": "input_signal",
+      "description": "Local control module's request for color change."
+    },
+    {
+      "name": "DoorFR1LampOnOff_l",
+      "type": "input_signal",
+      "description": "Local control module's request to turn the lamp on/off."
+    },
+    {
+      "name": "DoorFR1LampFadeSpdCmd_l",
+      "type": "input_signal",
+      "description": "Speed command for fading transition when turning off the lamp."
+    },
+    {
+      "name": "ZCU_LIN_Signal",
+      "type": "input_signal",
+      "description": "LIN communication signal from Zone Control Unit (ZCU)."
+    },
+    {
+      "name": "Front Door FR1 Lamp",
+      "type": "output_signal",
+      "description": "The actual lighting output of the front door FR1 lamp."
+    },
+    {
+      "name": "PWM Driver",
+      "type": "controller_module",
+      "description": "Module responsible for driving the PWM signals to control the lamp's color and brightness."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Precondition",
+      "description": "The ambient light is in an enabled state."
+    },
+    {
+      "name": "Trigger Condition",
+      "description": "A change in the DoorFR1LampColorCmd_l signal from 'No Request' (0x00) to a non-zero value."
+    },
+    {
+      "name": "Exit Condition",
+      "description": "Either receiving a 'No Request' signal or an OFF command, or failing to receive LIN signal within a timeout period."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Color Change",
+      "description": "The lamp changes its color based on the requested color code."
+    },
+    {
+      "name": "Dimming/Fading",
+      "description": "The lamp dims or fades according to the specified speed when turned off."
+    },
+    {
+      "name": "Shutdown",
+      "description": "The lamp is turned off if certain conditions are met or faults occur."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Overvoltage/Undervoltage Fault",
+      "description": "If the lamp module experiences overvoltage or undervoltage, it will be immediately shut down."
+    },
+    {
+      "name": "LIN Communication Timeout",
+      "description": "If no LIN signal is received from ZCU within 6 seconds, the lamp will be shut down."
+    },
+    {
+      "name": "Invalid Color Command",
+      "description": "If the DoorFR1LampColorCmd_l signal is abnormal, the lamp will maintain its previous state."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "LIN Signal Timeout",
+      "value": "6 seconds",
+      "description": "The system expects to receive a LIN signal from ZCU within this time frame; otherwise, the lamp will be turned off."
+    }
+  ],
+  "engineering_interpretation": "This table defines the logic for controlling the color of the front door FR1 lamp, including how it responds to input commands, handles transitions, exits under specific conditions, and manages fault scenarios. It is primarily used for testing the correct implementation of the lamp's color control functionality and its response to various input signals and fault conditions.",
+  "uncertain_points": []
+}
+```

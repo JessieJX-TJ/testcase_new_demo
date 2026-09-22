@@ -1,0 +1,436 @@
+```json
+[
+  {
+    "head": "EmgcBrkA",
+    "relation": "trigger_condition",
+    "tail": "EmgcBrkA == true",
+    "sources": ["outer_lamp_fas_1225"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EmgcBrkA",
+    "relation": "trigger_condition",
+    "tail": "EmgcBrkA == false",
+    "sources": ["outer_lamp_fas_1225"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EmgcBrkAV",
+    "relation": "trigger_condition",
+    "tail": "EmgcBrkA == true",
+    "sources": ["outer_lamp_fas_1225"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EmgcBrkAV",
+    "relation": "trigger_condition",
+    "tail": "EmgcBrkA == false",
+    "sources": ["outer_lamp_fas_1225"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RCWWrnng",
+    "relation": "input_condition",
+    "tail": "collision_occurred",
+    "sources": ["outer_lamp_fas_1225"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManoeuvringLamp_HSD",
+    "relation": "output_state",
+    "tail": "manoeuvring_lamp_off",
+    "sources": ["outer_lamp_fas_1226"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManoeuvringLamp_HSD",
+    "relation": "fade_out_constraint",
+    "tail": "fade out within 0.8 s",
+    "sources": ["outer_lamp_fas_1226"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManoeuvringLamp_HSD",
+    "relation": "deactivation_condition",
+    "tail": "vehicle_speed > 9 km/h for 1 s",
+    "sources": ["outer_lamp_fas_1226"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManoeuvringLamp_HSD",
+    "relation": "deactivation_condition",
+    "tail": "manoeuvring_lamp_enable_switch == off",
+    "sources": ["outer_lamp_fas_1226"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManoeuvringLamp_HSD",
+    "relation": "deactivation_condition",
+    "tail": "vehicle_power_off",
+    "sources": ["outer_lamp_fas_1226"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManoeuvringLamp_HSD",
+    "relation": "deactivation_condition",
+    "tail": "gear_position == 'P'",
+    "sources": ["outer_lamp_fas_1226"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManoeuvringLamp_HSD",
+    "relation": "deactivation_condition",
+    "tail": "vehicle_speed >= 20 km/h",
+    "sources": ["outer_lamp_fas_1226"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManoeuvringLamp_HSD",
+    "relation": "deactivation_condition",
+    "tail": "headlamp_status == 'off' && high_beam_status == 'off'",
+    "sources": ["outer_lamp_fas_1226"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManoeuvringLamp_HSD",
+    "relation": "activation_prerequisite",
+    "tail": "manoeuvring_lamp_status == 'on'",
+    "sources": ["outer_lamp_fas_1226"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LDipdBeamLightSts_HW",
+    "relation": "input_state",
+    "tail": "LDipdBeamLightSts_HW == 0x0 (Off)",
+    "sources": ["outer_lamp_fas_1227"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RDipdBeamLightSts_HW",
+    "relation": "input_state",
+    "tail": "RDipdBeamLightSts_HW == 0x0 (Off)",
+    "sources": ["outer_lamp_fas_1227"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LDipdBeamLightFltSts_HW",
+    "relation": "input_state",
+    "tail": "LDipdBeamLightFltSts_HW == 0x0 (False)",
+    "sources": ["outer_lamp_fas_1227"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLamp",
+    "relation": "activation_prerequisite",
+    "tail": "collision_risk_detected",
+    "sources": ["outer_lamp_fas_1229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLamp",
+    "relation": "activation_prerequisite",
+    "tail": "emergency_braking_inactive (judged by LHZCU)",
+    "sources": ["outer_lamp_fas_1229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLamp",
+    "relation": "trigger_condition",
+    "tail": "RCWWrnng == 0x1 (RCWWrnng_condition1)",
+    "sources": ["outer_lamp_fas_1229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLamp",
+    "relation": "trigger_condition",
+    "tail": "RCWWrnng == 0x2 (RCWWrnng_condition2)",
+    "sources": ["outer_lamp_fas_1229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLamp",
+    "relation": "output_control",
+    "tail": "FLDircnLghtCtrl = 0x1, FRDircnLghtCtrl = 0x1, RLDircnLghtCtrl = 0x1, RRDircnLghtCtrl = 0x1; then set all to 0x0 in alternating 300 ms cycle (150 ms on / 150 ms off)",
+    "sources": ["outer_lamp_fas_1229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightFlowMode",
+    "relation": "suppression_condition",
+    "tail": "DircnLghtMdSts == 0x1 (Disabled)",
+    "sources": ["outer_lamp_fas_1229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "input_source",
+    "tail": "turn_signal_signals_from_LHZCU",
+    "sources": ["outer_lamp_fas_1229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "output_control",
+    "tail": "FLDircnLghtCtrl / FRDircnLghtCtrl / RLDircnLghtCtrl / RRDircnLghtCtrl = ON/OFF",
+    "sources": ["outer_lamp_fas_1229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "distribution_target",
+    "tail": "LHZCU, RHZCU, RZCU",
+    "sources": ["outer_lamp_fas_1229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "distribution_latency",
+    "tail": "60 ms",
+    "sources": ["outer_lamp_fas_1229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControlModule",
+    "relation": "dependency",
+    "tail": "brake_pedal_position_subsystem",
+    "sources": ["outer_lamp_fas_1236"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControlModule",
+    "relation": "dependency",
+    "tail": "integrated_braking_subsystem",
+    "sources": ["outer_lamp_fas_1236"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControlModule",
+    "relation": "dependency",
+    "tail": "regenerative_braking_subsystem",
+    "sources": ["outer_lamp_fas_1236"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControlModule",
+    "relation": "dependency",
+    "tail": "brake_light_switch_preprocessing_module",
+    "sources": ["outer_lamp_fas_1236"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControlModule",
+    "relation": "dependency",
+    "tail": "S32G_forwarded_brake_light_service_CAN_signal",
+    "sources": ["outer_lamp_fas_1236"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControlSignal",
+    "relation": "processing_latency",
+    "tail": "30 ms internal processing + signal transmission period",
+    "sources": ["outer_lamp_fas_1236"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeSystemSignal",
+    "relation": "transmission_period",
+    "tail": "brake_pedal_position_subsystem: 20 ms",
+    "sources": ["outer_lamp_fas_1236"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeSystemSignal",
+    "relation": "transmission_period",
+    "tail": "integrated_braking_subsystem: 10 ms",
+    "sources": ["outer_lamp_fas_1236"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeSystemSignal",
+    "relation": "transmission_period",
+    "tail": "regenerative_braking_subsystem: 100 ms",
+    "sources": ["outer_lamp_fas_1236"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSwitchRequestSignal",
+    "relation": "processing_latency",
+    "tail": "60 ms internal processing + 10 ms transmission period",
+    "sources": ["outer_lamp_fas_1236"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S32G_forwarded_brake_light_service_CAN_signal",
+    "relation": "transmission_period",
+    "tail": "20 ms",
+    "sources": ["outer_lamp_fas_1236"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightSta",
+    "relation": "trigger_condition",
+    "tail": "ReverseLightControl == 0x0 (OFF)",
+    "sources": ["outer_lamp_fas_1237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightSta",
+    "relation": "trigger_condition",
+    "tail": "ReverseLightControl == 0x1 (ON)",
+    "sources": ["outer_lamp_fas_1237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightErrSta",
+    "relation": "dependency",
+    "tail": "ReverseLightControl ∈ {0x0 (OFF), 0x1 (ON)}",
+    "sources": ["outer_lamp_fas_1237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightErrorSta",
+    "relation": "dependency",
+    "tail": "ReverseLightControl ∈ {0x0 (OFF), 0x1 (ON)}",
+    "sources": ["outer_lamp_fas_1237"],
+    "conflict": true,
+    "conflict_note": "ReverseLightErrSta and ReverseLightErrorSta appear to be duplicate signals with identical semantics and dependencies — likely naming inconsistency across document versions; both retained pending clarification"
+  },
+  {
+    "head": "interface_naming",
+    "relation": "prerequisite",
+    "tail": "interface_names_match_logical_diagram",
+    "sources": ["inner_lamp_fas_0594", "outer_lamp_fas_1239"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "signal_receiver_or_SoA_consumer",
+    "relation": "dependency",
+    "tail": "signal_sender_or_SoA_provider",
+    "sources": ["outer_lamp_fas_1239"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "signal_channel",
+    "relation": "input_source",
+    "tail": "signal_sender_or_SoA_provider",
+    "sources": ["outer_lamp_fas_1239"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightReq",
+    "relation": "trigger_condition",
+    "tail": "DirectionLightReq == 0x1 (left_turn)",
+    "sources": ["outer_lamp_fas_1240"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightReq",
+    "relation": "trigger_condition",
+    "tail": "DirectionLightReq == 0x2 (right_turn)",
+    "sources": ["outer_lamp_fas_1240"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightReq",
+    "relation": "trigger_condition",
+    "tail": "DirectionLightReq == 0x3 (hazard)",
+    "sources": ["outer_lamp_fas_1240"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFltsts",
+    "relation": "output_state",
+    "tail": "DircnLghtFltsts == 0x0 (No Error)",
+    "sources": ["outer_lamp_fas_1240"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFltsts",
+    "relation": "output_state",
+    "tail": "DircnLghtFltsts == 0x1 (Left Error)",
+    "sources": ["outer_lamp_fas_1240"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFltsts",
+    "relation": "output_state",
+    "tail": "DircnLghtFltsts == 0x2 (Right Error)",
+    "sources": ["outer_lamp_fas_1240"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFltsts",
+    "relation": "output_state",
+    "tail": "DircnLghtFltsts == 0x3 (Both Errors)",
+    "sources": ["outer_lamp_fas_1240"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlDirectionLight_interface",
+    "relation": "activation_prerequisite",
+    "tail": "ControlDirectionLight_invoked",
+    "sources": ["outer_lamp_fas_1240"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlDirectionLight_interface",
+    "relation": "deactivation_prerequisite",
+    "tail": "ControlDirectionLight_invoked",
+    "sources": ["outer_lamp_fas_1240"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

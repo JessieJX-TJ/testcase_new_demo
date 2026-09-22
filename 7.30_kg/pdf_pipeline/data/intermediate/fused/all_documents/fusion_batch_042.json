@@ -1,0 +1,544 @@
+[
+  {
+    "head": "Rear Fog Lamp Indicator Display",
+    "relation": "depends_on",
+    "tail": "HMI Subsystem ICB Invocation Interface",
+    "sources": [
+      "outer_lamp_fas_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Fog Lamp Deactivation",
+    "relation": "prerequisite",
+    "tail": "RZCU Internal State Transition to Hardwire Output",
+    "sources": [
+      "outer_lamp_fas_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Fog Lamp Status Feedback",
+    "relation": "has_subfunction",
+    "tail": "LHZCU Reports Status and Fault Status to ICB",
+    "sources": [
+      "outer_lamp_fas_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Fog Lamp Timeout Constraint",
+    "relation": "timeout_constraint",
+    "tail": "2 minutes in Factory Mode",
+    "sources": [
+      "outer_lamp_fas_0446"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn Signal Status = OFF",
+    "relation": "prerequisite",
+    "tail": "FLDircnLghtCtrl_HW = 0x0 OR RLDircnLghtCtrl_HW = 0x0 OR {DirectionLight.ControlDirectionLight.DirectionLightReq}{InstanceID=1} = 0x0=OFF OR {DirectionLight.ControlDirectionLight.DirectionLightReq}{InstanceID=3} = 0x0=OFF",
+    "sources": [
+      "outer_lamp_fas_0448"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn Signal Hardwire Control Exit by RZCU",
+    "relation": "depends_on",
+    "tail": "FLDircnLghtCtrl_HW = 0x0 OR RLDircnLghtCtrl_HW = 0x0 AND {DirectionLight.ControlDirectionLight.DirectionLightReq}{InstanceID=1 or 3} = 0x0=OFF",
+    "sources": [
+      "outer_lamp_fas_0448"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadLampLevelSet Interface Invocation",
+    "relation": "trigger_condition",
+    "tail": "Manual Headlamp Leveling Request Received",
+    "sources": [
+      "outer_lamp_fas_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LevelingAdjustFucProStatus Interface Invocation",
+    "relation": "trigger_condition",
+    "tail": "Check Whether Manual Headlamp Leveling Precondition Is Satisfied",
+    "sources": [
+      "outer_lamp_fas_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadLampLevelSetInfo Parameter",
+    "relation": "input_to",
+    "tail": "Manual Headlamp Leveling Request Level (0x1–0x4)",
+    "sources": [
+      "outer_lamp_fas_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LevelingAdjustFucProsSta Parameter",
+    "relation": "output_of",
+    "tail": "Manual Headlamp Leveling Function Status: NoRequest, Leveling1–Leveling4, Unknown",
+    "sources": [
+      "outer_lamp_fas_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LevelingAdjustFucProStatus Returns Leveling1",
+    "relation": "depends_on",
+    "tail": "Manual Headlamp Leveling Function Is in Leveling1 State",
+    "sources": [
+      "outer_lamp_fas_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LevelingAdjustFucProStatus Returns Leveling2",
+    "relation": "depends_on",
+    "tail": "Manual Headlamp Leveling Function Is in Leveling2 State",
+    "sources": [
+      "outer_lamp_fas_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LevelingAdjustFucProStatus Returns Leveling3",
+    "relation": "depends_on",
+    "tail": "Manual Headlamp Leveling Function Is in Leveling3 State",
+    "sources": [
+      "outer_lamp_fas_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LevelingAdjustFucProStatus Returns Leveling4",
+    "relation": "depends_on",
+    "tail": "Manual Headlamp Leveling Function Is in Leveling4 State",
+    "sources": [
+      "outer_lamp_fas_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LevelingAdjustFucProStatus Returns NoRequest",
+    "relation": "depends_on",
+    "tail": "No Manual Headlamp Leveling Request Active",
+    "sources": [
+      "outer_lamp_fas_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LevelingAdjustFucProStatus Returns Unknown",
+    "relation": "depends_on",
+    "tail": "Manual Headlamp Leveling Function Status Is Unknown",
+    "sources": [
+      "outer_lamp_fas_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day Running Light (DRL) Enabled",
+    "relation": "trigger_condition",
+    "tail": "ICB Reports DRL Function Status as OFF",
+    "sources": [
+      "outer_lamp_fas_0450"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day Running Light (DRL) Disabled",
+    "relation": "trigger_condition",
+    "tail": "ICB Reports DRL Function Status as ON",
+    "sources": [
+      "outer_lamp_fas_0450"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunngLghtDsblSts Variable",
+    "relation": "input_to",
+    "tail": "ICB External Light Switch Combination Service Status",
+    "sources": [
+      "outer_lamp_fas_0450"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunngLghtDsblSts Variable",
+    "relation": "reset_condition",
+    "tail": "Power-down Event",
+    "sources": [
+      "outer_lamp_fas_0450"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Maintenance Mode",
+    "relation": "prerequisite",
+    "tail": "User Mode = Any Value (mode-agnostic entry condition)",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Collision Mode",
+    "relation": "prerequisite",
+    "tail": "User Mode = Any Value (mode-agnostic entry condition)",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Dyno Mode",
+    "relation": "prerequisite",
+    "tail": "User Mode = XOTA",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Showroom Mode",
+    "relation": "prerequisite",
+    "tail": "User Mode = XOTA",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Normal Mode",
+    "relation": "prerequisite",
+    "tail": "User Mode ∈ {Comfort, Normal Driving, Smart Parking, Intelligent Driving}",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Engineering Mode",
+    "relation": "prerequisite",
+    "tail": "User Mode = Intelligent Driving",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Factory Mode",
+    "relation": "prerequisite",
+    "tail": "User Mode = Intelligent Driving",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Transport Mode",
+    "relation": "prerequisite",
+    "tail": "User Mode = Intelligent Driving",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in XOTA Mode",
+    "relation": "inhibition_condition",
+    "tail": "User Mode ∈ {Sleep, Standby}",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Maintenance Mode",
+    "relation": "output_as",
+    "tail": "User Mode = Maintenance",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Collision Mode",
+    "relation": "output_as",
+    "tail": "User Mode = Collision",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Dyno Mode",
+    "relation": "output_as",
+    "tail": "User Mode = XOTA",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Showroom Mode",
+    "relation": "output_as",
+    "tail": "User Mode = XOTA",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Normal Mode",
+    "relation": "output_as",
+    "tail": "User Mode ∈ {Comfort, Normal Driving, Smart Parking, Intelligent Driving}",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Engineering Mode",
+    "relation": "output_as",
+    "tail": "User Mode = Intelligent Driving",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Factory Mode",
+    "relation": "output_as",
+    "tail": "User Mode = Intelligent Driving",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle in Transport Mode",
+    "relation": "output_as",
+    "tail": "User Mode = Intelligent Driving",
+    "sources": [
+      "outer_lamp_fas_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Emergency Brake Light (IBS) System Activation",
+    "relation": "trigger_condition",
+    "tail": "Receives Emergency Braking (IBS) Request Input 1 & 2",
+    "sources": [
+      "outer_lamp_fas_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtCtrl Signal = 0x1",
+    "relation": "prerequisite",
+    "tail": "EmgcBrkA = 0x1 = EmgcBrkA_1_True",
+    "sources": [
+      "outer_lamp_fas_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Emergency Brake Light Flashing",
+    "relation": "depends_on",
+    "tail": "3.33 Hz Control Frequency Sent to ICB",
+    "sources": [
+      "outer_lamp_fas_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtFucProsSta = ON",
+    "relation": "output_as",
+    "tail": "Event: {ExteriorLightSwitchProcess.BrakeLightFucProStatus.BrakeLghtFucProsSta} = 0x1 = ON",
+    "sources": [
+      "outer_lamp_fas_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtCtrl Signal Delayed 60ms to RZCU",
+    "relation": "input_to",
+    "tail": "ICB Converts Service Interface or CAN Control Signal into Lamp Control CAN Signal",
+    "sources": [
+      "outer_lamp_fas_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Drive Emergency Brake Light Illumination",
+    "relation": "trigger_condition",
+    "tail": "RZCU Receives ICB Signal and Internally Transitions to Hardwire Output",
+    "sources": [
+      "outer_lamp_fas_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtFitSts = ON",
+    "relation": "output_as",
+    "tail": "BrkLghtSts = 0x1 = BrkLghtSts_1_On",
+    "sources": [
+      "outer_lamp_fas_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Light Status Feedback to LHZCU",
+    "relation": "output_as",
+    "tail": "RZCU Reports Status and Fault Status to LHZCU",
+    "sources": [
+      "outer_lamp_fas_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Subscribe to Right Rear Turn Signal Status",
+    "relation": "trigger_condition",
+    "tail": "Invoke DirectionLightStatus Service Interface",
+    "sources": [
+      "outer_lamp_fas_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Subscribe to Left Front Turn Signal Status",
+    "relation": "trigger_condition",
+    "tail": "Invoke DirectionLightErrorStatus Service Interface",
+    "sources": [
+      "outer_lamp_fas_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus = ON",
+    "relation": "output_as",
+    "tail": "0x1 = ON",
+    "sources": [
+      "outer_lamp_fas_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus = OFF",
+    "relation": "output_as",
+    "tail": "0x0 = OFF",
+    "sources": [
+      "outer_lamp_fas_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus = Unknown",
+    "relation": "output_as",
+    "tail": "0x2 = Unknown",
+    "sources": [
+      "outer_lamp_fas_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus = No Error",
+    "relation": "output_as",
+    "tail": "0x0 = No Error",
+    "sources": [
+      "outer_lamp_fas_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus = Error",
+    "relation": "output_as",
+    "tail": "0x1 = Error",
+    "sources": [
+      "outer_lamp_fas_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus = Unknown",
+    "relation": "output_as",
+    "tail": "0x2 = Unknown",
+    "sources": [
+      "outer_lamp_fas_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hardwire Fault Status",
+    "relation": "depends_on",
+    "tail": "DirectionLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_0454",
+      "outer_lamp_fas_0954",
+      "outer_lamp_fas_1570"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

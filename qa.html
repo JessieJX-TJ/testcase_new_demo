@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Knowledge Q&A</title>
+  <link rel="stylesheet" href="static/css/platform.css?v=20260915-qa">
+  <link rel="stylesheet" href="static/css/qa.css?v=20260915-qa">
+</head>
+<body class="qa-page">
+  <div class="qa-shell">
+    <header class="qa-topbar">
+      <a class="qa-brand" href="index.html">
+        <span class="qa-brand-text"><strong>Workbench</strong><small>Knowledge Q&A</small></span>
+      </a>
+      <a class="qa-back" href="index.html"><i data-lucide="arrow-left"></i><span>Back to Workbench</span></a>
+    </header>
+
+    <main class="qa-layout">
+      <section class="qa-chat-panel">
+        <div id="qaMessages" class="qa-messages" role="log" aria-live="polite"></div>
+        <form id="qaForm" class="qa-composer">
+          <textarea id="qaInput" rows="2" placeholder="Enter your question..." aria-label="Question input"></textarea>
+          <div id="qaMentions" class="qa-mentions" hidden></div>
+          <div class="qa-actions">
+            <button type="button" class="qa-chip" data-prompt="What test types exist in this knowledge graph?">Test Type</button>
+            <button type="button" class="qa-chip" data-prompt="What are the preconditions, actions, and expected behaviors of a given test case?">Case Structure</button>
+            <button type="button" class="qa-chip" data-prompt="Which test cases are related to seat heating?">Seat Heating</button>
+            <button type="submit" class="qa-send primary-button"><i data-lucide="arrow-up"></i><span>Send</span></button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="qa-sidepanel">
+        <section class="qa-sidecard">
+          <div class="qa-sidehead">
+            <h2>Evidence</h2>
+            <span id="qaEvidenceCount">0</span>
+          </div>
+          <div class="qa-evidence-scroll">
+            <div id="qaEvidence" class="qa-evidence-empty">Waiting for retrieval results</div>
+            <div id="qaEvidenceDetail" class="qa-evidence-detail" hidden></div>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="static/js/qa.js?v=20260915-qa"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+[
+  {
+    "head": "前雾灯状态为关闭",
+    "relation": "前提条件",
+    "tail": "外灯组合服务ICB订阅前雾灯状态接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.FrontFogLightSta FrontFogLghtSta",
+      "0x0=Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0141",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "前雾灯无故障",
+    "relation": "前提条件",
+    "tail": "外灯组合服务ICB订阅前雾灯故障状态接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.FrontFogLightErrSta FrontFogLghtErrSta",
+      "0x0=No Error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0141",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "前雾灯系统状态为关闭",
+    "relation": "前提条件",
+    "tail": "外灯组合服务ICB订阅前雾灯系统状态接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.FrontFogLightSts.FrontFogLghtSts",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0141",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "前雾灯系统无故障",
+    "relation": "前提条件",
+    "tail": "外灯组合服务ICB订阅前雾灯系统故障状态接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.FrontFogLightErrSts.FrontFogLghtErrSts",
+      "0x0=No Error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0141",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "前雾灯左侧熄灭",
+    "relation": "依赖于",
+    "tail": "前雾灯右侧熄灭",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "左侧和右侧需保持同步熄灭",
+      "最大延时不能超过40ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0141",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "前雾灯右侧熄灭",
+    "relation": "依赖于",
+    "tail": "前雾灯左侧熄灭",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "左侧和右侧需保持同步熄灭",
+      "最大延时不能超过40ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0141",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "前雾灯关闭",
+    "relation": "超时约束",
+    "tail": "左侧和右侧熄灭的最大延时不超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "最大延时不能超过40ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0141",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

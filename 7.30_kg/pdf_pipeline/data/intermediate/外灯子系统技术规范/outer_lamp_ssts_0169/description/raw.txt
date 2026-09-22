@@ -1,0 +1,86 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "右后转向灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件到异常处理的各个阶段。",
+  "column_semantics": "表格包含两列：左侧为阶段描述（如前置条件、触发条件等），右侧为该阶段的具体内容或动作。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "DILightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "转向灯反馈信号使能参数，值为1表示启用"
+    },
+    {
+      "name": "RRDILightDrvMdl",
+      "type": "controller_module",
+      "description": "转向灯驱动模块"
+    },
+    {
+      "name": "DILamp_RH_HSD",
+      "type": "output_signal",
+      "description": "右后转向灯输出信号"
+    },
+    {
+      "name": "DILightCtrlMdl",
+      "type": "controller_module",
+      "description": "转向灯控制模块"
+    },
+    {
+      "name": "DTCCB104A_11",
+      "type": "fault_status",
+      "description": "特定故障代码，表示右后转向灯短路故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILightFbkSOAEnPrm == 1 (Enable)",
+      "description": "转向灯反馈信号使能参数必须为1"
+    },
+    {
+      "condition": "右后转向灯处于输出状态",
+      "description": "系统检测到右后转向灯正在输出"
+    },
+    {
+      "condition": "检测到右后转向灯短路到地",
+      "description": "系统检测到右后转向灯存在短路故障"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "description": "系统检测到之前存在的短路故障已恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DILamp_RH_HSD",
+      "action": "停止驱动",
+      "description": "在检测到短路时，停止向右后转向灯输出信号"
+    },
+    {
+      "signal": "DirectionLightControl",
+      "action": "持续发送错误帧",
+      "description": "向转向灯控制模块发送错误帧，指示短路故障"
+    },
+    {
+      "signal": "DTCCB104A_11",
+      "action": "置位",
+      "description": "设置特定的故障代码以记录短路故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTCCB104A_11",
+      "description": "右后转向灯短路到地故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在检测到短路时，需要向转向灯控制模块发送至少三帧错误帧"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当右后转向灯发生短路到地故障时，系统应如何响应和处理的逻辑，包括停止输出、发送错误信号、设置故障代码以及故障恢复后的退出条件，可用于验证整车电子电器系统在转向灯短路故障情况下的正确诊断和保护机制。",
+  "uncertain_points": []
+}
+```

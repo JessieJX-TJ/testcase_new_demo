@@ -1,0 +1,57 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "车辆外灯控制接口定义与信号规范",
+  "row_semantics": "每行代表一个具体的接口或信号定义，描述其在系统中的角色和属性。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，用于标识该信号或数据流。",
+    "Direction": "信号的流向，指示是输入还是输出。",
+    "Type": "信号的通信类型，如CAN、LIN、SOA服务等。",
+    "Sender/Provider": "信号的发送方或提供方，通常是某个控制器或服务。",
+    "Receiver/Consumer": "信号的接收方或消费方，通常是另一个控制器或服务。",
+    "Channel": "信号传输的路径或通道，例如指定的信号通道。",
+    "Source": "信号的来源，指明信号的具体出处或来源模块。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VehSideLghtSts_1_DCMFL_LIN",
+      "type": "Signal",
+      "description": "车身侧灯状态信号，通过LIN总线传输。",
+      "direction": "Input",
+      "source": "内灯SSTS (Interior Lamp Subsystem)",
+      "provider": "LHZCU (Lighting Control Unit)",
+      "consumer": "DTSM_FL (Driver's Side Module Front Left)"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "VehSideLghtSts_1_DCMFL_LIN",
+      "values": [
+        {
+          "code": "0x0",
+          "description": "No_Side_Light_On; 车窗开关背光灯驱动请求，无侧灯点亮"
+        },
+        {
+          "code": "0x1",
+          "description": "Left_Side_Light_On_Only; 左侧灯单独点亮"
+        },
+        {
+          "code": "0x2",
+          "description": "Right_Side_Light_On_Only; 右侧灯单独点亮"
+        },
+        {
+          "code": "0x3",
+          "description": "All_Side_Light_And_License_Plate_Light_On; 所有侧灯及牌照灯点亮"
+        }
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车身侧灯状态信号（VehSideLghtSts_1_DCMFL_LIN）的接口规范，包括其通信类型、方向、提供方、消费方、传输通道和来源模块，以及具体的信号值含义，可用于验证LIN总线上的侧灯控制信号是否符合设计要求。",
+  "uncertain_points": []
+}
+```

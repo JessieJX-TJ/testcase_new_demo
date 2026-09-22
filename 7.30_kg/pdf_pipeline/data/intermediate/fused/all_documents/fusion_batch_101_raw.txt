@@ -1,0 +1,468 @@
+```json
+[
+  {
+    "head": "前车后雾灯功能禁用",
+    "relation": "抑制条件",
+    "tail": "前置条件满足",
+    "sources": ["outer_lamp_fas_1074"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightCtrReq",
+    "relation": "输出为",
+    "tail": "ON",
+    "sources": ["outer_lamp_fas_1074"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightCtrReq",
+    "relation": "输出为",
+    "tail": "OFF",
+    "sources": ["outer_lamp_fas_1074"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "抑制条件",
+    "tail": "前置条件满足（不响应前车后雾灯开启/关闭请求）",
+    "sources": ["outer_lamp_fas_1074"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "触发条件",
+    "tail": "DirectionLight.ControlDirectionLight.DirectionLightReq{InstanceID=1}=0x0=OFF（控制双闪灯熄灭）",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "前提条件",
+    "tail": "驱动模块 LHZCU/RHZCU/RZCU 已就绪",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU/RHZCU/RZCU",
+    "relation": "触发条件",
+    "tail": "接收 ICB 控制信号，执行退出整车双闪灯点亮",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "触发条件",
+    "tail": "接收控制信号，执行退出危险警报灯图标指示及声音提醒",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU/RHZCU/RZCU",
+    "relation": "输出为",
+    "tail": "FLDirenLghtSts_HW_0_Off, FRDircnLghtSts_HW_0_Off, RLDircnLghtSts_HW_0_Off, RRDircnLghtSts_HW_0_Off, FLDirenLghtFltsts_HW_0_False, FRDircnLghtFltsts_HW_0_False, RLDircnLghtFltsts_HW_0_False, RRDirenLghtFltsts_HW_0_False",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDirenLightCtrl_HW_0_off",
+    "relation": "依赖于",
+    "tail": "DirectionLight.ControlDirectionLight.DirectionLightReq{InstanceID=1}=0x0=OFF",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtCtrl_HW_0_off",
+    "relation": "依赖于",
+    "tail": "DirectionLight.ControlDirectionLight.DirectionLightReq{InstanceID=2}=0x0=OFF",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtCtrl_HW_0_off",
+    "relation": "依赖于",
+    "tail": "DirectionLight.ControlDirectionLight.DirectionLightReq{InstanceID=3}=0x0=OFF",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl_HW_0_off",
+    "relation": "依赖于",
+    "tail": "DirectionLight.ControlDirectionLight.DirectionLightReq{InstanceID=4}=0x0=OFF",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输出为",
+    "tail": "FLDirenLghtSts_0_Off, FRDirenLghtSts_0_Off, RLDirenLghtSts_0_Off, RRDirenLghtSts_0_Off, FLDirenLghtFltsts_0_False, FRDirenLghtFltsts_0_False, RLDirenLghtFltsts_0_False",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLight.DirectionLightStatus.DirectionLightSta{InstanceID=1}",
+    "relation": "依赖于",
+    "tail": "FLDirenLghtSts_HW_0_Off",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLight.DirectionLightStatus.DirectionLightSta{InstanceID=2}",
+    "relation": "依赖于",
+    "tail": "FRDircnLghtSts_HW_0_Off",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLight.DirectionLightStatus.DirectionLightSta{InstanceID=3}",
+    "relation": "依赖于",
+    "tail": "RLDircnLghtSts_HW_0_Off",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLight.DirectionLightStatus.DirectionLightSta{InstanceID=4}",
+    "relation": "依赖于",
+    "tail": "RRDircnLghtSts_HW_0_Off",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLight.DirectionLightErrorStatus.DirectionLightErrorSta{InstanceID=1}",
+    "relation": "依赖于",
+    "tail": "FLDirenLghtFltsts_HW_0_False",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLight.DirectionLightErrorStatus.DirectionLightErrorSta{InstanceID=2}",
+    "relation": "依赖于",
+    "tail": "FRDircnLghtFltsts_HW_0_False",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLight.DirectionLightErrorStatus.DirectionLightErrorSta{InstanceID=3}",
+    "relation": "依赖于",
+    "tail": "RLDircnLghtFltsts_HW_0_False",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLight.DirectionLightErrorStatus.DirectionLightErrorSta{InstanceID=4}",
+    "relation": "依赖于",
+    "tail": "RRDirenLghtFltsts_HW_0_False",
+    "sources": ["outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯熄灭同步性",
+    "relation": "超时约束",
+    "tail": "左右侧最大延时 ≤ 40ms",
+    "sources": ["outer_lamp_fas_1078"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "前提条件",
+    "tail": "车辆挡位 ≠ P档",
+    "sources": ["outer_lamp_fas_1079"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "前提条件",
+    "tail": "收到动力系统故障点灯请求",
+    "sources": ["outer_lamp_fas_1079"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "双闪灯闪烁频率",
+    "relation": "依赖于",
+    "tail": "LHZCU 信号跳变",
+    "sources": ["outer_lamp_fas_1079"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯流水模式使能",
+    "relation": "输出为",
+    "tail": "DirnLghtMdSts_0_Enabled",
+    "sources": ["outer_lamp_fas_1079"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输入为",
+    "tail": "LHZCU 发送的转向灯控制信号",
+    "sources": ["outer_lamp_fas_1079"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输出为",
+    "tail": "LHZCU（状态/故障状态反馈）",
+    "sources": ["outer_lamp_fas_1079"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU/RZCU",
+    "relation": "输入为",
+    "tail": "ICB 控制信号",
+    "sources": ["outer_lamp_fas_1079"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "双闪灯",
+    "relation": "控制对象",
+    "tail": "FLDirncLghtCtrl, FRDirncLghtCtrl, RLDirncLghtCtrl, RRDirncLghtCtrl",
+    "sources": ["outer_lamp_fas_1079"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态/故障状态",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_1079"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB 分发控制信号",
+    "relation": "超时约束",
+    "tail": "延时 60ms",
+    "sources": ["outer_lamp_fas_1079", "outer_lamp_fas_1077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧转向灯开启",
+    "relation": "触发条件",
+    "tail": "手动触发转向灯拨杆",
+    "sources": ["outer_lamp_fas_1080"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "输出为",
+    "tail": "转向灯开关状态 → ICB",
+    "sources": ["outer_lamp_fas_1080"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯图标与声音提醒",
+    "relation": "状态保持条件",
+    "tail": "闪烁频率与实际转向灯一致",
+    "sources": ["outer_lamp_fas_1080"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯同步性",
+    "relation": "超时约束",
+    "tail": "单侧最大延时 ≤ 40ms",
+    "sources": ["outer_lamp_fas_1080"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB 转向灯请求重发机制",
+    "relation": "超时约束",
+    "tail": "状态未变时按 ≤50ms 周期重发 3 次；失败则停止发送",
+    "sources": ["outer_lamp_fas_1080"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "超时约束",
+    "tail": "服务发现/控制请求后 500ms 内未获状态反馈时，应主动调用 Getter() 获取",
+    "sources": ["outer_lamp_fas_1080"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关信号",
+    "relation": "触发条件",
+    "tail": "DircnLghtSwReq = 0x0 = DircnLghtSwReq_0_Off",
+    "sources": ["outer_lamp_fas_1080"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后位置灯点亮状态",
+    "relation": "依赖于",
+    "tail": "SidePositionLight.SidePositionLightStatus.SidePositionLightSta{InstanceID=3}",
+    "sources": ["outer_lamp_fas_1083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后位置灯点亮状态",
+    "relation": "依赖于",
+    "tail": "SidePositionLight.SidePositionLightStatus.SidePositionLightSta{InstanceID=4}",
+    "sources": ["outer_lamp_fas_1083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前位置灯故障状态",
+    "relation": "依赖于",
+    "tail": "SidePositionLight.SidePositionLightErrorStatus.SidePositionLightErrorSta{InstanceID=1}",
+    "sources": ["outer_lamp_fas_1083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前位置灯故障状态",
+    "relation": "依赖于",
+    "tail": "SidePositionLight.SidePositionLightErrorStatus.SidePositionLightErrorSta{InstanceID=2}",
+    "sources": ["outer_lamp_fas_1083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "前提条件",
+    "tail": "UsgMd=All AND UsgMdV=Valid AND VehMd=All AND VehMdV=Valid AND (ExtrLghtCtrlCmmntnTyp ∈ {0x0, 0x1}) AND (ExtrLghtStsCmmntnTyp ∈ {0x0, 0x1})",
+    "sources": ["outer_lamp_fas_1084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess AND DirclnLghtFucProStatus=0x3=Both_Side_Direction_Light AND DirclnLghtFucProSta=0x3=Both_Side_Direction_Light",
+    "sources": ["outer_lamp_fas_1084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "紧急制动请求",
+    "relation": "触发条件",
+    "tail": "EmgcBrkA=0x1=True AND EmgcBrkAV=0x0=Valid",
+    "sources": ["outer_lamp_fas_1084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "输出为",
+    "tail": "FLDircnLghtCtrl=0x1/0x0, FRDircnLghtCtrl=0x1/0x0, RLDircnLghtCtrl=0x1/0x0, RRDircnLghtCtrl=0x1/0x0（双闪灯按 3.33Hz 闪烁）",
+    "sources": ["outer_lamp_fas_1084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "输出为",
+    "tail": "DircnLghtMdSts=0x1=DircnLghtMdSts_1_Disabled（转向灯流水模式使能状态）",
+    "sources": ["outer_lamp_fas_1084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "依赖于",
+    "tail": "Z-ONE-3.0 platform",
+    "sources": ["outer_lamp_fas_1085", "outer_lamp_fas_1623"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "包含子功能",
+    "tail": "Function Allocation Specification",
+    "sources": ["outer_lamp_fas_1085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "触发条件",
+    "tail": "收到车辆解闭锁模块请求（类型 1 或 2）",
+    "sources": ["outer_lamp_fas_1086"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLckLghtRmndr_1_ExteriorLockReminder",
+    "relation": "输出为",
+    "tail": "ExtrLckLghtRmndr = 0x1",
+    "sources": ["outer_lamp_fas_1086"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLckLghtRmndr_2_ExteriorUnlockReminder",
+    "relation": "输出为",
+    "tail": "ExtrLckLghtRmndr = 0x2",
+    "sources": ["outer_lamp_fas_1086"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "前提条件",
+    "tail": "UsrMd ∈ {Sleep, Standby, XOTA}",
+    "sources": ["outer_lamp_fas_1086"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "前提条件",
+    "tail": "VehMd ≠ TRANSPORT",
+    "sources": ["outer_lamp_fas_1086"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "双闪灯闪烁频率",
+    "relation": "输出为",
+    "tail": "1.25Hz",
+    "sources": ["outer_lamp_fas_1079"],
+    "conflict": true,
+    "conflict_note": "与 outer_lamp_fas_1084 中 '3.33Hz' 冲突：同一功能（双闪灯自动控制）在不同场景下指定不同频率，需确认是否为不同模式（如常规双闪 vs 紧急制动双闪）"
+  },
+  {
+    "head": "双闪灯闪烁频率",
+    "relation": "输出为",
+    "tail": "3.33Hz",
+    "sources": ["outer_lamp_fas_1084"],
+    "conflict": true,
+    "conflict_note": "与 outer_lamp_fas_1079 中 '1.25Hz' 冲突：同一功能（双闪灯自动控制）在不同场景下指定不同频率，需确认是否为不同模式（如常规双闪 vs 紧急制动双闪）"
+  }
+]
+```

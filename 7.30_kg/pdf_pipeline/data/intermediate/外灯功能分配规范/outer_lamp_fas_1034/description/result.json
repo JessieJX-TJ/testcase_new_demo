@@ -1,0 +1,86 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯组合服务请求制动灯点亮功能",
+  "row_semantics": "表格按功能描述、前置条件、触发动作、执行动作、备注的顺序组织，详细定义了制动灯点亮的逻辑流程。",
+  "column_semantics": "两列结构，第一列为功能描述或阶段名称，第二列为对应的具体内容或条件。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ICB_S32G MCU",
+      "type": "控制器/模块"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsgMd",
+      "description": "用户模式状态，需满足特定值（Sleep, Standby, XOTA）且有效",
+      "values": [
+        "0x0",
+        "0x1",
+        "0x6"
+      ]
+    },
+    {
+      "name": "VehMd",
+      "description": "车辆模式状态，需为TRANSPORT模式且有效",
+      "values": [
+        "0x3"
+      ]
+    },
+    {
+      "name": "BrakeLightReq",
+      "description": "制动灯请求信号，由组合服务请求设置",
+      "values": [
+        "0x1=ON",
+        "0x0=OFF"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLghtSrvcReq",
+      "description": "制动灯服务请求信号，发送给LHZCU以控制制动灯",
+      "values": [
+        "0x1=ON",
+        "0x0=OFF"
+      ]
+    },
+    {
+      "name": "制动灯点亮/熄灭",
+      "description": "LHZCU根据BrkLghtSrvcReq控制制动灯的实际状态",
+      "values": [
+        "点亮",
+        "熄灭"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "制动灯开启同步性",
+      "description": "左侧、右侧及高位制动灯需保持同步点亮，三侧最大延时不超过40ms",
+      "value": "≤40ms"
+    },
+    {
+      "name": "CAN信号周期",
+      "description": "制动灯服务请求CAN信号为周期发送，非仅发送3帧",
+      "value": "周期发送"
+    },
+    {
+      "name": "关闭制动灯条件",
+      "description": "当BrkLghtSrvcReq从ON变为OFF时，制动灯应关闭",
+      "value": "0x0=>0x0"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了通过外灯组合服务请求制动灯点亮的完整逻辑，包括前置条件、触发与执行动作以及相关的定时和同步要求，可用于验证制动灯控制系统在特定场景下的正确响应。",
+  "uncertain_points": []
+}

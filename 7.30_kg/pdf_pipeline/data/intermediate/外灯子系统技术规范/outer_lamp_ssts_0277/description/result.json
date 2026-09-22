@@ -1,0 +1,63 @@
+{
+  "table_type": "fault_table",
+  "topic": "左制动灯开路故障检测与处理",
+  "row_semantics": "表格按功能流程的顺序排列，从触发条件、执行动作到退出条件和异常处理。",
+  "column_semantics": "第一列定义了功能阶段（如触发条件、执行动作等），第二列详细描述了该阶段的具体内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLghtDrvMdl",
+      "type": "controller_module",
+      "description": "制动灯驱动模块"
+    },
+    {
+      "name": "BrkLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "制动灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "LeftBrakeLightOpenCircuitDetected",
+      "description": "检测到左制动灯开路"
+    },
+    {
+      "name": "OpenCircuitRecoveryDetected",
+      "description": "检测到开路恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLghtSts",
+      "type": "output_signal",
+      "description": "制动灯状态信号，值为0表示关闭",
+      "value": "0 (Off)"
+    },
+    {
+      "name": "BrkLghtFltSts_HW",
+      "type": "feedback_signal",
+      "description": "硬件故障状态反馈，值为0x1表示故障存在",
+      "value": "0x1 (BrkLghtFltSts_HW_1_True)"
+    },
+    {
+      "name": "DTC_B1041_13",
+      "type": "fault_code",
+      "description": "诊断故障代码，用于记录左制动灯开路故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "LeftBrakeLightOpenCircuit",
+      "description": "左制动灯电路开路故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "action": "持续发送 BrkLghtSts=0",
+      "duration": "至少三帧"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了整车电子系统中左制动灯开路故障的检测逻辑、控制器动作序列以及故障码设置规则，可用于验证制动灯控制系统在开路故障情况下的正确响应。",
+  "uncertain_points": []
+}

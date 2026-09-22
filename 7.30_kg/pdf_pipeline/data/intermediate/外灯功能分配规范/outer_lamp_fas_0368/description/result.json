@@ -1,0 +1,83 @@
+{
+  "table_type": "logic_table",
+  "topic": "车辆防入侵时危险警报灯自动激活功能需求",
+  "row_semantics": "表格按场景描述、前置条件、触发动作、执行动作的顺序组织，详细定义了在特定条件下系统应如何响应。",
+  "column_semantics": "表格包含两列：左侧为标题或分类，右侧为对应的具体内容或配置要求。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "危险警报灯自动控制模块 LHZCU",
+      "type": "controller",
+      "description": "负责控制危险警报灯（双闪灯）和转向灯状态的核心控制器"
+    },
+    {
+      "name": "车辆防入侵信号 VehIntrusionPrevnHzrdLmpReq",
+      "type": "input_signal",
+      "description": "表示车辆是否处于防入侵状态的输入信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsgMd",
+      "description": "使用模式，需设置为All"
+    },
+    {
+      "name": "VehMd",
+      "description": "车辆模式，需设置为Valid"
+    },
+    {
+      "name": "ExtrLightCtrlCmmntnTyp",
+      "description": "外部灯光控制通信类型，可配置为SOA或CAN"
+    },
+    {
+      "name": "ExtrLightStsCmmntnTyp",
+      "description": "外部灯光状态通信类型，可配置为SOA或CAN"
+    },
+    {
+      "name": "VehIntrusionPrevnHzrdLmpReq",
+      "description": "当该信号被触发（值为0x3）时，表示车辆防入侵事件发生"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtCtrl",
+      "description": "前左方向灯控制信号，用于控制闪烁状态"
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "description": "前右方向灯控制信号，用于控制闪烁状态"
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "description": "后左方向灯控制信号，用于控制闪烁状态"
+    },
+    {
+      "name": "RRDircnLghtCtrl",
+      "description": "后右方向灯控制信号，用于控制闪烁状态"
+    },
+    {
+      "name": "DircnLghtMdSts",
+      "description": "方向灯模式状态，用于使能流水模式"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "description": "外部灯光开关处理接口，用于发送控制指令"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal": "FLDircnLghtCtrl",
+      "condition": "当VehIntrusionPrevnHzrdLmpReq被触发时",
+      "timing": "按照1.25Hz频率闪烁（先on后off），即800ms一个闪烁周期发送；发送400ms on，400ms off"
+    },
+    {
+      "signal": "ExteriorLightSwitchProcess",
+      "condition": "当VehIntrusionPrevnHzrdLmpReq被触发时",
+      "timing": "发送8个Cycle（每个Cycle 50ms），共400ms on，然后OFF"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当车辆触发防入侵时，危险警报灯自动激活的逻辑规则，包括前置条件、触发信号、以及危险灯和转向灯的具体控制行为，可用于验证车辆防入侵状态下危险灯自动控制功能的正确性。",
+  "uncertain_points": []
+}

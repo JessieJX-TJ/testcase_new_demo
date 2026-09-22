@@ -1,0 +1,51 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Error Status Parameters",
+  "row_semantics": "Each row represents a specific direction light error status parameter for different instances and modules.",
+  "column_semantics": {
+    "Row Header": "Function/module name (e.g., DirectionLight.DirectionLightErrorStatus)",
+    "Consumption": "Indicates the service interface consumption type",
+    "SOA": "Service-Oriented Architecture interface",
+    "RHZCU": "Right Headlight Zone Control Unit",
+    "LHZCU": "Left Turn Signal Zone Control Unit",
+    "RZCU": "Right Turn Signal Zone Control Unit",
+    "Hard Line Fault Status": "Status of hard line faults"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightErrorSta",
+      "type": "Parameter",
+      "description": "Direction light error status parameter with values: No Error (0x0), Error (0x1), Unknown (0x2)"
+    },
+    {
+      "name": "InstanceID",
+      "type": "Identifier",
+      "description": "Unique instance identifier for each direction light error status parameter"
+    },
+    {
+      "name": "DirectionLight",
+      "type": "Module",
+      "description": "Module responsible for managing direction lights"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "Interface",
+      "description": "Service interface used to subscribe to direction light error status"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "HardLineFaultStatus",
+      "type": "Fault",
+      "description": "Status indicating any hard line faults related to direction lights"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and interfaces for monitoring the error status of right and left front and rear turn signals in a vehicle's direction light system, enabling verification of fault detection and status reporting across different control units.",
+  "uncertain_points": []
+}

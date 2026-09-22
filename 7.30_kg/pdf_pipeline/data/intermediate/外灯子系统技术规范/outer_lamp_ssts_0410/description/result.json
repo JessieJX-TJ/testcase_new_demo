@@ -1,0 +1,76 @@
+{
+  "table_type": "fault_table",
+  "topic": "危险报警灯异常状态检测与处理逻辑",
+  "row_semantics": "表格定义了在特定前置条件下，当触发条件满足时执行的故障处理动作、退出条件及异常处理规则。",
+  "column_semantics": {
+    "前置条件": "系统需要满足的初始配置或状态条件。",
+    "触发条件": "导致故障处理流程启动的具体事件或状态。",
+    "执行动作": "在触发条件满足后，系统应执行的具体操作序列。",
+    "退出条件": "使当前故障处理流程结束的条件。",
+    "异常处理": "针对未明确列出的异常情况的处理规则（本表中为空）"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "HzrdLghtSwSOAEnPrm",
+      "type": "parameter",
+      "description": "危险报警灯开关超时保护使能参数，值为0表示禁用。"
+    },
+    {
+      "name": "HzrdLghtSwMdl",
+      "type": "signal",
+      "description": "危险报警灯开关模块，用于发送控制请求信号。"
+    },
+    {
+      "name": "HzrdLghtCtrlMdl",
+      "type": "signal",
+      "description": "危险报警灯控制模块，接收来自HzrdLghtSwMdl的请求信号。"
+    },
+    {
+      "name": "DTC",
+      "type": "fault_status",
+      "description": "故障代码（Diagnostic Trouble Code），表示系统记录了特定故障。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "HzrdLghtSwSOAEnPrm 参数设置为 0 (Disable)，即危险报警灯开关超时保护功能被禁用。"
+    },
+    {
+      "condition": "触发条件",
+      "description": "危险报警灯开关持续接地时间超过 20 秒。"
+    },
+    {
+      "condition": "退出条件",
+      "description": "开关悬空，即危险报警灯开关不再处于接地状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "HzrdLghtSwReq",
+      "description": "HzrdLghtSwMdl 模块持续发送 HzrdLghtSwReq = 0x0 (Inactive) 至 HzrdLghtCtrlMdl 模块，至少发送三帧。",
+      "details": "该信号表示危险报警灯开关请求为非激活状态。"
+    },
+    {
+      "output": "DTC",
+      "description": "系统置位 DTC，记录故障信息。",
+      "details": "表明系统检测到并记录了危险报警灯开关异常状态。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "HzrdLghtSwTimeout",
+      "description": "危险报警灯开关超时故障，当开关持续接地时间超过设定阈值（20秒）时触发。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "20s",
+      "description": "危险报警灯开关持续接地的时间阈值，超过此时间将触发故障处理流程。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了危险报警灯开关超时保护功能禁用时，系统对开关持续接地异常状态的检测、处理和记录规则，可用于验证整车电子电器系统在危险报警灯开关异常情况下的故障诊断与处理功能。",
+  "uncertain_points": []
+}

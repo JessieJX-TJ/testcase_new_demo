@@ -1,0 +1,56 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "整车电子电器系统配置参数规范",
+  "row_semantics": "每一行代表一个具体的配置项，用于定义系统或功能的参数设置。",
+  "column_semantics": {
+    "配置项/Item": "参数的唯一标识符或名称，用于引用和配置。",
+    "配置描述/Description": "对配置项的详细说明，解释其功能和作用。",
+    "参数范围/Range": "该配置项可接受的有效值范围，包括最小值、最大值及单位。",
+    "分辨率/Factor": "参数调整时的最小变化步长或精度。",
+    "默认值/Default": "系统启动或未指定时使用的预设值。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "外灯控制模块",
+      "type": "controller",
+      "description": "负责车辆外部照明系统的控制与管理。"
+    },
+    {
+      "name": "车身控制单元 (BCM)",
+      "type": "controller",
+      "description": "集成多种车身功能的中央控制器，包括车门、尾门、灯光等。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "外灯亮度调节",
+      "description": "根据环境光线强度自动调整外灯亮度的条件。"
+    },
+    {
+      "name": "电动尾门开启权限",
+      "description": "基于车辆状态（如车速、钥匙位置）决定是否允许开启电动尾门的条件。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "外灯亮度输出",
+      "description": "外灯的实际亮度值，由控制模块输出并反馈给传感器。"
+    },
+    {
+      "name": "电动尾门状态输出",
+      "description": "电动尾门的当前位置（开/关）或运动状态（开启中/关闭中）。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子电器系统中各配置项的正确性，确保参数设置符合设计规范，并在不同工况下系统行为一致。",
+  "uncertain_points": [
+    "具体的功能名（如外灯控制、电动尾门）未在表格中明确列出，需结合上下文确定。",
+    "表格未提供详细的输入信号列表，仅通过参数范围间接反映输入影响。",
+    "未明确区分哪些是系统状态或模式名，可能需要进一步细化。"
+  ]
+}
+```

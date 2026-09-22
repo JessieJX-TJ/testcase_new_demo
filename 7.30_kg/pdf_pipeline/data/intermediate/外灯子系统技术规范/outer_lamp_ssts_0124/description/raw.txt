@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "Brake Light System Fault Detection and Handling",
+  "row_semantics": "Each row represents a specific fault condition, its triggering criteria, and the corresponding system response or exit condition.",
+  "column_semantics": {
+    "Column 1": "Description of the fault condition or action sequence",
+    "Column 2": "Exit condition for the fault state",
+    "Column 3": "Recommended abnormal handling procedure"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "BrkLightDrvMdl",
+      "type": "Controller/Module",
+      "description": "Brake Light Driver Module responsible for controlling the brake light output."
+    },
+    {
+      "name": "BrkLightCtrlMdl",
+      "type": "Controller/Module",
+      "description": "Brake Light Control Module that receives status information from the driver module."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "BrkLightDrvMdl continuously sends BrakeLightState = 2 (Error) to BrkLightCtrlMdl",
+      "details": "The error state is sent at least three times consecutively."
+    },
+    {
+      "condition": "Detection of short circuit recovery",
+      "details": "The exit condition for the fault state."
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DTC B1043-11",
+      "description": "Diagnostic Trouble Code indicating a specific fault in the brake light system."
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "B1043-11",
+      "description": "Indicates an error in the brake light system, likely related to a short circuit or incorrect signal state."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the fault detection logic for the brake light system, specifying when a Diagnostic Trouble Code (DTC) should be set and under what conditions the fault state can be exited. It is used to verify the system's ability to detect and handle brake light errors appropriately.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,484 @@
+```json
+[
+  {
+    "head": "外灯控制组合服务ICB调用接口发送近光灯请求状态给LHZCU",
+    "relation": "触发条件",
+    "tail": "近光灯控制模块LHZCU接口响应",
+    "sources": ["outer_lamp_fas_0641", "outer_lamp_fas_1024"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯控制模块LHZCU接口响应",
+    "relation": "触发条件",
+    "tail": "ICB将服务接口或控制信号转换成灯控CAN信号，并控制近光灯点亮",
+    "sources": ["outer_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB将服务接口或控制信号转换成灯控CAN信号，并控制近光灯点亮",
+    "relation": "触发条件",
+    "tail": "外灯控制组合服务ICB调用接口",
+    "sources": ["outer_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制组合服务ICB调用接口",
+    "relation": "触发条件",
+    "tail": "HMI子系统ICB调用接口获取近光灯指示灯显示",
+    "sources": ["outer_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制组合服务ICB调用基础服务",
+    "relation": "触发条件",
+    "tail": "驱动处理模块LHZCU/RHZCU订阅ICB发送的近光灯控制状态",
+    "sources": ["outer_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驱动处理模块LHZCU/RHZCU订阅ICB发送的近光灯控制状态",
+    "relation": "触发条件",
+    "tail": "近光灯点亮",
+    "sources": ["outer_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驱动模块LHZCU/RHZCU将状态/故障状态反馈至近光灯控制模块LHZCU",
+    "relation": "触发条件",
+    "tail": "ICB将状态/故障状态反馈至近光灯控制模块LHZCU",
+    "sources": ["outer_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB将状态/故障状态反馈至近光灯控制模块LHZCU",
+    "relation": "触发条件",
+    "tail": "近光灯控制模块LHZCU将状态/故障状态反馈至ICB",
+    "sources": ["outer_lamp_fas_0641"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车反光灯状态为开启",
+    "relation": "触发条件",
+    "tail": "TrlrRevsLghtSts = 0x1",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车反光灯故障状态为真",
+    "relation": "触发条件",
+    "tail": "TrlrRevsLghtFltSts = 0x1",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车后雾灯状态为开启",
+    "relation": "触发条件",
+    "tail": "TrlrRrFogLghtSts = 0x1",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车后雾灯故障状态为真",
+    "relation": "触发条件",
+    "tail": "TrlrRrFogLghtFltSts = 0x1",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车方向灯状态为左侧开启",
+    "relation": "触发条件",
+    "tail": "TrlrDirLghtSts = 0x1",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车方向灯状态为右侧开启",
+    "relation": "触发条件",
+    "tail": "TrlrDirLghtSts = 0x2",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车方向灯状态为左右侧同时开启",
+    "relation": "触发条件",
+    "tail": "TrlrDirLghtSts = 0x3",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车方向灯故障状态为无左侧转向灯",
+    "relation": "触发条件",
+    "tail": "TrlrDirLghtFltSts = 0x1",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车方向灯故障状态为无右侧转向灯",
+    "relation": "触发条件",
+    "tail": "TrlrDirLghtFltSts = 0x2",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车方向灯故障状态为左右侧转向灯均故障",
+    "relation": "触发条件",
+    "tail": "TrlrDirLghtFltSts = 0x3",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车侧灯状态为左侧开启",
+    "relation": "触发条件",
+    "tail": "TrlrSideLghtSts = 0x1",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车侧灯状态为右侧开启",
+    "relation": "触发条件",
+    "tail": "TrlrSideLghtSts = 0x2",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车侧灯状态为左右侧同时开启",
+    "relation": "触发条件",
+    "tail": "TrlrSideLghtSts = 0x3",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车反光灯状态输出",
+    "relation": "输出为",
+    "tail": "TrlrRevsLghtSts",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车反光灯故障状态输出",
+    "relation": "输出为",
+    "tail": "TrlrRevsLghtFltSts",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车后雾灯状态输出",
+    "relation": "输出为",
+    "tail": "TrlrRrFogLghtSts",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车后雾灯故障状态输出",
+    "relation": "输出为",
+    "tail": "TrlrRrFogLghtFltSts",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车方向灯状态输出",
+    "relation": "输出为",
+    "tail": "TrlrDirLghtSts",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车方向灯故障状态输出",
+    "relation": "输出为",
+    "tail": "TrlrDirLghtFltSts",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车侧灯状态输出",
+    "relation": "输出为",
+    "tail": "TrlrSideLghtSts",
+    "sources": ["outer_lamp_fas_0642"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "双闪灯同步性",
+    "relation": "超时约束",
+    "tail": "最大延时周期为40ms",
+    "sources": ["outer_lamp_fas_0644"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块LHZCU向ICB发送信号",
+    "relation": "触发条件",
+    "tail": "VehHldHazdMdSts = 0x0D",
+    "sources": ["outer_lamp_fas_0647"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块LHZCU向ICB发送信号",
+    "relation": "触发条件",
+    "tail": "VehHldHazdMdSts_0_No_Request",
+    "sources": ["outer_lamp_fas_0647"],
+    "conflict": true,
+    "conflict_note": "与'VehHldHazdMdSts = 0x0D'语义不一致：前者表示无请求（PPV），后者表示明确请求值；需确认是否为同一状态的不同表达或存在配置歧义"
+  },
+  {
+    "head": "危险警报灯自动控制模块LHZCU向ICB控制状态反馈",
+    "relation": "触发条件",
+    "tail": "ExteriorLightSwitchProcess",
+    "sources": ["outer_lamp_fas_0647"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块LHZCU向ICB控制状态反馈",
+    "relation": "触发条件",
+    "tail": "VehHldHazdMdSts",
+    "sources": ["outer_lamp_fas_0647"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块LHZCU向ICB控制状态反馈",
+    "relation": "触发条件",
+    "tail": "VehHldHazdMdSts = 0x0D",
+    "sources": ["outer_lamp_fas_0647"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块LHZCU向ICB控制状态反馈",
+    "relation": "触发条件",
+    "tail": "EDRDirendialLampSwSts = 0x0D",
+    "sources": ["outer_lamp_fas_0647"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯闪烁频率与声音提示一致性",
+    "relation": "前提条件",
+    "tail": "危险警报灯同步性要求",
+    "sources": ["outer_lamp_fas_0647"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯同步性",
+    "relation": "超时约束",
+    "tail": "最大延迟为50ms",
+    "sources": ["outer_lamp_fas_0647"],
+    "conflict": true,
+    "conflict_note": "与'双闪灯同步性：最大延时周期为40ms'存在数值冲突（40ms vs 50ms）；二者是否适用不同场景（如双闪灯 vs 危险警报灯）？需澄清标准依据"
+  },
+  {
+    "head": "危险警报灯同步性",
+    "relation": "超时约束",
+    "tail": "最大延时周期为40ms",
+    "sources": ["outer_lamp_fas_0647"],
+    "conflict": true,
+    "conflict_note": "与'最大延迟为50ms'冲突；同属危险警报灯同步性，但阈值不一致"
+  },
+  {
+    "head": "前雾灯大屏请求",
+    "relation": "输入来自",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0648"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输出到",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0648"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输出到",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_fas_0648"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输出到",
+    "tail": "LHA",
+    "sources": ["outer_lamp_fas_0648"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输出到",
+    "tail": "RHA",
+    "sources": ["outer_lamp_fas_0648"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输出到",
+    "tail": "TailL_pAsmbA_RH",
+    "sources": ["outer_lamp_fas_0648"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输出到",
+    "tail": "TailL_pAsmbA_LH",
+    "sources": ["outer_lamp_fas_0648"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输出到",
+    "tail": "TailL_pAsmbB",
+    "sources": ["outer_lamp_fas_0648"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "包含子功能",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0648"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "包含子功能",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_fas_0648"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智能驾驶功能被激活",
+    "relation": "前提条件",
+    "tail": "用户模式为智能驾驶",
+    "sources": ["outer_lamp_fas_0649", "outer_lamp_fas_1739"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "XOTA功能被激活",
+    "relation": "前提条件",
+    "tail": "用户模式为XOTA",
+    "sources": ["outer_lamp_fas_0649"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "工程模式功能被激活",
+    "relation": "前提条件",
+    "tail": "整车模式为工程",
+    "sources": ["outer_lamp_fas_0649"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "工厂模式功能被激活",
+    "relation": "前提条件",
+    "tail": "整车模式为工厂",
+    "sources": ["outer_lamp_fas_0649"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "运输模式功能被激活",
+    "relation": "前提条件",
+    "tail": "整车模式为运输",
+    "sources": ["outer_lamp_fas_0649"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转毂模式功能被激活",
+    "relation": "前提条件",
+    "tail": "整车模式为转毂",
+    "sources": ["outer_lamp_fas_0649"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "展车模式功能被激活",
+    "relation": "前提条件",
+    "tail": "整车模式为展车",
+    "sources": ["outer_lamp_fas_0649"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "碰撞模式功能被激活",
+    "relation": "前提条件",
+    "tail": "整车模式为碰撞",
+    "sources": ["outer_lamp_fas_0649"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "正常模式功能被激活",
+    "relation": "前提条件",
+    "tail": "整车模式为正常",
+    "sources": ["outer_lamp_fas_0649"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "维修模式功能被激活",
+    "relation": "前提条件",
+    "tail": "整车模式为维修",
+    "sources": ["outer_lamp_fas_0649"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智能驾驶功能被抑制",
+    "relation": "抑制条件",
+    "tail": "用户模式为休眠",
+    "sources": ["outer_lamp_fas_0649"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智能驾驶功能被抑制",
+    "relation": "抑制条件",
+    "tail": "用户模式为待机",
+    "sources": ["outer_lamp_fas_0649"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

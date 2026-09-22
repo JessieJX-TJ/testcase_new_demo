@@ -1,0 +1,603 @@
+[
+  {
+    "head": "Signal1.ColorOutput",
+    "relation": "outputs",
+    "tail": "R=255, G=71, B=20, reference_color=orange",
+    "sources": [
+      "inner_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal2.ColorOutput",
+    "relation": "outputs",
+    "tail": "R=255, G=18, B=136, reference_color=pink",
+    "sources": [
+      "inner_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal3.ColorOutput",
+    "relation": "outputs",
+    "tail": "R=255, G=0, B=6, reference_color=red",
+    "sources": [
+      "inner_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal4.ColorOutput",
+    "relation": "outputs",
+    "tail": "R=109, G=140, B=194, reference_color=light_blue",
+    "sources": [
+      "inner_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal5.ColorOutput",
+    "relation": "outputs",
+    "tail": "R=205, G=99, B=197, reference_color=purple",
+    "sources": [
+      "inner_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal6.ColorOutput",
+    "relation": "outputs",
+    "tail": "R=25, G=0, B=255, reference_color=dark_blue",
+    "sources": [
+      "inner_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal7.ColorOutput",
+    "relation": "outputs",
+    "tail": "R=124, G=2, B=255, reference_color=purple",
+    "sources": [
+      "inner_lamp_ssts_0432"
+    ],
+    "conflict": true,
+    "conflict_note": "Signal5 and Signal7 both map to 'purple', but with significantly different RGB values (205,99,197 vs 124,2,255) — perceptually distinct hues; may indicate inconsistent color definition or aliasing of 'purple' across signals"
+  },
+  {
+    "head": "Signal8.ColorOutput",
+    "relation": "outputs",
+    "tail": "R=77, G=157, B=48, reference_color=green",
+    "sources": [
+      "inner_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal9.ColorOutput",
+    "relation": "outputs",
+    "tail": "R=255, G=217, B=18, reference_color=yellow",
+    "sources": [
+      "inner_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal10.ColorOutput",
+    "relation": "precondition",
+    "tail": "signal_id=N/A, reserved_blank_signal",
+    "sources": [
+      "inner_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLight.BreathingControl",
+    "relation": "precondition",
+    "tail": "AmbientLight.State = ON",
+    "sources": [
+      "inner_lamp_ssts_0433",
+      "inner_lamp_ssts_0499"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLight.BreathingControl",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampBrthngCmd_1 != 0x0 (No Request) AND AmbtLghtLHRollingCtr_1 is active",
+    "sources": [
+      "inner_lamp_ssts_0433"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLight.BrightnessControl",
+    "relation": "depends_on",
+    "tail": "AmbientLight.LIN_Module",
+    "sources": [
+      "inner_lamp_ssts_0433"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLight.BrightnessControl",
+    "relation": "suppression_condition",
+    "tail": "ignores DoorFL1LampBrtnsCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0433"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLight.BreathingCommandCycle",
+    "relation": "has_subfunction",
+    "tail": "0%-100% step transition AND 0%-100% ramp transition",
+    "sources": [
+      "inner_lamp_ssts_0433"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0.InteriorLightingSubsystem",
+    "relation": "contains_module",
+    "tail": "SSTS-IBD10_ControlModule",
+    "sources": [
+      "inner_lamp_ssts_0435"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:5560 → value=58",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:5600 → value=57",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:5640 → value=56",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:5680 → value=55",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:5720 → value=54",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:5760 → value=53",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:5800 → value=52",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:5840 → value=51",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:5880 → value=50",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:5920 → value=49",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:5960 → value=48",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6000 → value=47",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6040 → value=46",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6080 → value=45",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6120 → value=44",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6160 → value=43",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6200 → value=42",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6240 → value=41",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6280 → value=40",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6320 → value=39",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6360 → value=38",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6400 → value=37",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6440 → value=36",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6480 → value=35",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6520 → value=34",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6560 → value=33",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6600 → value=32",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6640 → value=31",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6680 → value=30",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6720 → value=29",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6760 → value=28",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6800 → value=27",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6840 → value=26",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6880 → value=25",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6920 → value=24",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:6960 → value=23",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:7000 → value=22",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:7040 → value=21",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:7080 → value=20",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:7120 → value=19",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:7160 → value=18",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLighting.ParameterValue",
+    "relation": "is_set_by",
+    "tail": "ParameterIdentifier:7200 → value=17",
+    "sources": [
+      "inner_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DriverFootwellLamp.GradualIllumination",
+    "relation": "precondition",
+    "tail": "no short_circuit_or_open_circuit_fault",
+    "sources": [
+      "inner_lamp_ssts_0437"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DriverFootwellLamp.GradualIllumination",
+    "relation": "trigger_condition",
+    "tail": "FtwlLampFLCtrlCmd = 0x1 (Open)",
+    "sources": [
+      "inner_lamp_ssts_0437"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

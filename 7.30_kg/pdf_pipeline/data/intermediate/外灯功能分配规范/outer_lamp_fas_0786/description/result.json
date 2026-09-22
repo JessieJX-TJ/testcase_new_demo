@@ -1,0 +1,64 @@
+{
+  "table_type": "fault_table",
+  "topic": "远光灯和近光灯状态反馈",
+  "row_semantics": "表格按功能模块划分，每一行代表一个具体的灯光状态反馈接口或参数定义。",
+  "column_semantics": "列标题表示了不同系统或模块的参与情况（如SOA、ICB、LHZCU）以及网络状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MainBeamLightFltSts",
+      "type": "controller_module",
+      "description": "主远光灯故障状态反馈"
+    },
+    {
+      "name": "DippedBeamLight.DippedBeamLightStatus",
+      "type": "function",
+      "description": "左侧近光灯状态获取接口"
+    },
+    {
+      "name": "DippedBeamLight.DippedBeamLightStatus",
+      "type": "function",
+      "description": "右侧近光灯状态获取接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightFltSts_0_False",
+      "type": "input_signal",
+      "description": "主远光灯故障状态为假（未发生故障）"
+    },
+    {
+      "name": "MainBeamLightFltSts_1_True",
+      "type": "input_signal",
+      "description": "主远光灯故障状态为真（发生故障）"
+    },
+    {
+      "name": "DippedBeamLightSta",
+      "type": "input_signal",
+      "description": "近光灯状态参数，包括OFF、ON、Unknown"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "output_signal",
+      "description": "返回左侧近光灯的状态"
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "output_signal",
+      "description": "返回右侧近光灯的状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "MainBeamLightFltSts",
+      "type": "fault_status",
+      "description": "主远光灯的故障状态反馈"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中远光灯和近光灯的状态反馈机制，主要用于验证灯光状态接口的正确性及故障检测功能。",
+  "uncertain_points": []
+}

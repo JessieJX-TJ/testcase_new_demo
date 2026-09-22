@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Ambient Lamp Color Change Control Logic",
+  "row_semantics": "Each row represents a condition-action pair for controlling the ambient lamp color.",
+  "column_semantics": {
+    "Column 1": "Condition/Trigger Description",
+    "Column 2": "Signal/State Condition that Must Be Met"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "function",
+      "description": "The lighting feature that changes color based on control signals."
+    },
+    {
+      "name": "DoorFL1LampColorCmd_l",
+      "type": "input_signal",
+      "description": "Local control signal for the front left ambient lamp's color command."
+    },
+    {
+      "name": "PWM Driver",
+      "type": "controller_module",
+      "description": "Module responsible for driving the ambient lamp with Pulse Width Modulation to achieve desired colors."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "Ambient Lamp is Enabled",
+      "signal": "Ambient Lamp Status",
+      "value": "Enabled"
+    },
+    {
+      "condition": "Color Change Request Received",
+      "signal": "DoorFL1LampColorCmd_l",
+      "value": "0x00 (No Request) → != 0x00 (Request)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "Ambient Lamp Color Switched",
+      "action": "PWM Driver switches corresponding color based on color coordinate lookup table."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the logic for triggering a color change in the ambient lamp when a local control request is received, and specifies the action taken by the PWM driver to implement the new color.",
+  "uncertain_points": []
+}
+```

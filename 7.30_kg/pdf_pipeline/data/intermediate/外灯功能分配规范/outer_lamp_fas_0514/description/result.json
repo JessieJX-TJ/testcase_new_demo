@@ -1,0 +1,51 @@
+{
+  "table_type": "structure_table",
+  "topic": "整车外灯系统电气连接与功能分配",
+  "row_semantics": "表示不同的功能模块或控制单元，从左到右、从上到下依次为：中央网关（ICB）、左侧前照灯系统（LHA）、右侧前照灯系统（RHA）、前雾灯（FroSigLamp）、交叉路口灯（CrsPosLamp）、尾灯组（TailLamp AsmblA_LH, TailLamp AsmblB, TailLamp AsmblA_RH）、车顶灯（RoofSpotlight）以及相关的车身控制单元（RHZCU, LHZCU, RZCU）。",
+  "column_semantics": "表示各个功能模块之间的电气连接关系，包括CAN通信端口（CAN PORT）、电源线（KL30）、接地（GND）、信号输入/输出端口（如Headlighting CAN_H/L、DLPEnb等）以及具体的灯控信号（如DLPLamp_FL_HSD、BrkLamp_LH_HSD等）。绿色线条表示主要的控制信号路径，蓝色线条表示辅助或冗余信号路径。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB 1.2 (ICC+ICM +DLP)",
+    "LHA",
+    "RHA",
+    "FroSigLamp_LH",
+    "FroSigLamp_RH",
+    "CrsPosLamp_F",
+    "TailLamp AsmblA_LH",
+    "TailLamp AsmblB",
+    "TailLamp AsmblA_RH",
+    "RoofSpotlight_ht_LH",
+    "RoofSpotlight_ht_RH",
+    "RHZCU",
+    "LHZCU",
+    "RZCU"
+  ],
+  "core_conditions": [
+    "KL30 (常电)",
+    "DLPEnb (动态灯光启用信号)",
+    "Headlighting CAN_H/L (前照灯控制总线)",
+    "Backbone CANFD_H/L (骨干CAN总线)",
+    "ConnectedCANFD_H/L (连接CAN总线)",
+    "BackupCANFD_H/L (备份CAN总线)",
+    "CHMSL_HSD (高位刹车灯信号)",
+    "BrkLamp_LH_HSD (左侧刹车灯信号)",
+    "BrkLamp_RH_HSD (右侧刹车灯信号)"
+  ],
+  "core_outputs": [
+    "DLPLamp_FL_HSD (左前大灯动态信号)",
+    "DLPLamp_FR_HSD (右前大灯动态信号)",
+    "DipBeamDlmp_LH_HSD (左前近光灯信号)",
+    "DipBeamDlmp_RH_HSD (右前近光灯信号)",
+    "FroSigLamp_LH (左前雾灯信号)",
+    "FroSigLamp_RH (右前雾灯信号)",
+    "CrsPosLamp_F (交叉路口灯信号)",
+    "TailLamp CANFD_H/L (尾灯CAN信号)",
+    "RoofSpotlight_ht_LH (左车顶灯信号)",
+    "RoofSpotlight_ht_RH (右车顶灯信号)"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细描述了整车外灯系统的电气架构和信号流向，可用于验证各灯控模块与中央网关之间的通信功能、电源供应逻辑、信号传输路径以及不同灯控功能的正确实现。",
+  "uncertain_points": []
+}

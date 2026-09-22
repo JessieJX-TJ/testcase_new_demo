@@ -1,0 +1,91 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯控制系统 - 远光灯控制与状态反馈",
+  "row_semantics": "表格按功能模块（左侧远光灯和右侧远光灯）组织，每行描述一个信号的定义、控制方式及状态反馈。",
+  "column_semantics": {
+    "0": "信号名称/功能描述",
+    "1": "信号类型 (输出)",
+    "2": "通信协议/CANFD",
+    "3": "控制器/LHZCU",
+    "4": "控制器/ICB",
+    "5": "网络状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LMainBeamLghtCtrl",
+      "type": "功能名",
+      "description": "左侧远光灯控制信号"
+    },
+    {
+      "name": "RMainBeamLghtCtrl",
+      "type": "功能名",
+      "description": "右侧远光灯控制信号"
+    },
+    {
+      "name": "LMainBeamLghtSts",
+      "type": "功能名",
+      "description": "左侧远光灯状态反馈信号"
+    },
+    {
+      "name": "RMainBeamLghtSts",
+      "type": "功能名",
+      "description": "右侧远光灯状态反馈信号"
+    },
+    {
+      "name": "CANFD",
+      "type": "控制器/模块名",
+      "description": "支持CANFD通信协议的控制器"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Local Headlight Zone Control Unit (本地远光灯区域控制单元)"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "Integrated Control Box (集成控制盒)"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "LMainBeamLghtCtrl",
+      "direction": "输出",
+      "values": [
+        "0x0=Off",
+        "0x1=On"
+      ]
+    },
+    {
+      "name": "RMainBeamLghtCtrl",
+      "direction": "输出",
+      "values": [
+        "0x0=Off",
+        "0x1=On"
+      ]
+    },
+    {
+      "name": "LMainBeamLghtSts",
+      "direction": "输出",
+      "values": [
+        "0x0=Off",
+        "0x1=On"
+      ]
+    },
+    {
+      "name": "RMainBeamLghtSts",
+      "direction": "输出",
+      "values": [
+        "0x0=Off",
+        "0x1=On"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆两侧远光灯的控制信号（LMainBeamLghtCtrl, RMainBeamLghtCtrl）及其状态反馈信号（LMainBeamLghtSts, RMainBeamLghtSts）的通信规范，可用于验证远光灯控制逻辑、信号传输正确性及状态反馈一致性。",
+  "uncertain_points": []
+}

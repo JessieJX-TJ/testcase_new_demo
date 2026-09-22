@@ -1,0 +1,80 @@
+{
+  "table_type": "fault_table",
+  "topic": "右远光灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件、触发条件、执行动作、退出条件到异常处理。",
+  "column_semantics": "表格包含两列：左侧为功能阶段描述，右侧为该阶段的具体内容或参数。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "主光反馈超时允许参数，值为0表示禁用"
+    },
+    {
+      "name": "RMainBeamLightDrvMdl",
+      "type": "controller_module",
+      "description": "主光灯驱动模型，负责控制右远光灯的输出"
+    },
+    {
+      "name": "MainBeamLamp_RH_HSD",
+      "type": "output_signal",
+      "description": "右远光灯高压侧驱动信号"
+    },
+    {
+      "name": "RMainBeamLghtSts",
+      "type": "signal",
+      "description": "主光灯状态信号，用于指示灯的状态"
+    },
+    {
+      "name": "MainBeamLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "主光灯控制模型"
+    },
+    {
+      "name": "DTCB105C14",
+      "type": "fault_status",
+      "description": "特定的诊断故障代码（DTC），表示右远光灯短路故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "details": [
+        "MainBeamLightFbkSOAEnPrm == 0 (Disable)",
+        "右远光灯处于输出状态"
+      ]
+    },
+    {
+      "condition": "触发条件",
+      "details": "检测到右远光灯短路到地"
+    },
+    {
+      "condition": "退出条件",
+      "details": "检测到短路恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "action": "停止驱动右远光灯输出",
+      "details": "通过设置 MainBeamLamp_RH_HSD 信号为低电平实现"
+    },
+    {
+      "action": "持续发送 RMainBeamLghtSts = 0 (Off) 至 MainBeamLghtCtrlMdl",
+      "details": "至少发送三帧以确认灯已关闭"
+    },
+    {
+      "action": "置位 DTC B105C14",
+      "details": "记录故障代码以便后续诊断"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "DTCB105C14",
+      "description": "右远光灯短路到地故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了当右远光灯发生短路到地故障时，系统应如何响应和处理，包括停止灯的输出、发送状态信息并记录故障代码，以及在故障恢复后退出处理模式。",
+  "uncertain_points": []
+}

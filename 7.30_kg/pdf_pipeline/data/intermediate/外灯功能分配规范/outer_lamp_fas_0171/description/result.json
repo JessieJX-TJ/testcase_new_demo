@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"parameter_table\",\n  \"topic\": \"外灯硬线驱动延时与转向灯硬线驱动使能状态配置\",\n  \"row_semantics\": \"表格的每一行代表一个特定的外灯或转向灯功能模块的参数配置项，包括其延时时间或使能状态。\",\n  \"column_semantics\": {\n    \"1\": \"功能模块名称（如制动灯、倒车灯等）\",\n    \"2\": \"功能描述（如制动灯硬线驱动延时）\",\n    \"3\": \"参数计算公式及取值范围（如E=N*10，N取值0x0~0xF）\",\n    \"4\": \"当前默认值（以十六进制表示）\",\n    \"5\": \"备注信息（如预留、暂不开发）\"\n  },\n  \"has_merged_cells\": true,\n  \"header_levels\": 1,\n  \"core_entities\": [\n    \"BrkLghtHardWireDrvDelayPrm\",  // 制动灯硬线驱动延时参数\n    \"RevsLghtHardWireDrvDelayPrm\", // 倒车灯硬线驱动延时参数\n    \"RrSideLghtHardWireDrvDelayPrm\", // 后位置灯硬线驱动延时参数\n    \"exlDircnLghtHwDrvEnPrm\",       // 转向灯硬线驱动使能状态参数\n    \"exlSideLghtHwDrvEnPrm\"         // 位参数（可能与转向灯相关）\n  ],\n  \"core_conditions\": [\n    \"E = N * 10\",                  // 参数计算公式\n    \"N 取值 0x0~0xF\"               // 参数取值范围\n  ],\n  \"core_outputs\": [\n    \"0x0\",                         // 默认值\n    \"0x6\",                         // 默认值\n    \"0x2\"                          // 默认值\n  ],\n  \"core_faults\": [],\n  \"core_timing_constraints\": [\n    \"BrkLghtHardWireDrvDelayPrm: 延时时间由N决定，范围为0~150ms\",\n    \"RevsLghtHardWireDrvDelayPrm: 延时时间由N决定，范围为0~150ms\",\n    \"RrSideLghtHardWireDrvDelayPrm: 延时时间由N决定，范围为0~150ms\"\n  ],\n  \"engineering_interpretation\": \"该表格定义了车辆外灯（如制动灯、倒车灯、后位置灯）的硬线驱动延时参数以及转向灯硬线驱动使能状态的配置选项，可用于验证外灯系统在不同延时设置下的响应行为和转向灯驱动使能状态的有效性。\",\n  \"uncertain_points\": [\n    \"表格中未明确说明各参数的具体应用场景或触发条件。\",\n    \"对于 'exlSideLghtHwDrvEnPrm' 的具体功能和作用范围不明确。\"\n  ]\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "head": "Airbag_Deployed_Inversion",
+    "relation": "输入为",
+    "tail": "0x0=AirbagDplInvsn_0_AirbagDeployed",
+    "triple_type": "input_mapping",
+    "evidence_terms": [
+      "AirbagDplInvsn",
+      "AirbagDeployed"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0093",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "Airbag_Deployed_Inversion",
+    "relation": "输入为",
+    "tail": "0x1=AirbagDplInvsn_1_NoAirbagDeployed",
+    "triple_type": "input_mapping",
+    "evidence_terms": [
+      "AirbagDplInvsn",
+      "NoAirbagDeployed"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0093",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "VehCrashHazrdReq",
+    "relation": "输出为",
+    "tail": "0x0= VehCrashHazrdReq _0_Off",
+    "triple_type": "output_mapping",
+    "evidence_terms": [
+      "VehCrashHazrdReq",
+      "Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0093",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "VehCrashHazrdReq",
+    "relation": "输出为",
+    "tail": "0x1= VehCrashHazrdReq _1_On",
+    "triple_type": "output_mapping",
+    "evidence_terms": [
+      "VehCrashHazrdReq",
+      "On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0093",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "碰撞双闪请求",
+    "relation": "依赖于",
+    "tail": "Airbag_Deployed_Inversion",
+    "triple_type": "dependency",
+    "evidence_terms": [
+      "碰撞双闪请求",
+      "Airbag_Deployed_Inversion"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0093",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "碰撞双闪请求",
+    "relation": "触发条件",
+    "tail": "Airbag_Deployed_Inversion = 0x1",
+    "triple_type": "trigger_condition",
+    "evidence_terms": [
+      "碰撞双闪请求",
+      "Airbag_Deployed_Inversion",
+      "NoAirbagDeployed"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0093",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "碰撞双闪请求",
+    "relation": "前提条件",
+    "tail": "Airbag_Deployed_Inversion = 0x0",
+    "triple_type": "precondition",
+    "evidence_terms": [
+      "碰撞双闪请求",
+      "Airbag_Deployed_Inversion",
+      "AirbagDeployed"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0093",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  }
+]

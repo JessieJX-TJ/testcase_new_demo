@@ -1,0 +1,57 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "触摸灯面（LIN: MapLampXXS wReq_1）的亮度控制参数配置",
+  "row_semantics": "描述不同触发源下触摸灯面的亮度设置及渐亮渐灭速度的具体参数值",
+  "column_semantics": {
+    "触发源": "定义了触摸灯面被激活的条件或来源",
+    "开启时亮度值": "指明在触摸灯面被激活时，其亮度等级的具体配置信息，包括个性化记忆值和默认值逻辑",
+    "渐亮渐灭速度": "规定了触摸灯面从关闭到完全点亮或从点亮到完全熄灭的速度特性"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MapLampXXBrLtLvl_1",
+      "type": "input_signal",
+      "description": "个性化记忆亮度值，用于存储用户自定义的亮度等级"
+    },
+    {
+      "name": "PersonalizationData.MapLampSet.MapLampSetInfo",
+      "type": "controller_module",
+      "description": "个性化数据模块，负责管理地图灯设置信息"
+    },
+    {
+      "name": "MapLampXXDiSpd_1",
+      "type": "output_signal",
+      "description": "渐亮渐灭速度参数，控制灯光变化速率"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "初始化或刚上电未收到个性化记忆值",
+      "action": "使用默认值 Level 20"
+    },
+    {
+      "condition": "ECU断连",
+      "action": "使用默认值 Level 20"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "触摸灯面亮度等级",
+      "value": "Level 20 (默认)",
+      "description": "在特定条件下，触摸灯面将显示为默认亮度等级"
+    },
+    {
+      "output": "渐亮渐灭速度",
+      "value": "0x0 (Speed1, 手动, 快)",
+      "description": "灯光变化速率为最快手动模式"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了触摸灯面在不同触发条件下的亮度等级和渐亮渐灭速度的配置规则，可用于验证触摸灯面在系统初始化、个性化记忆缺失或ECU通信中断等场景下的行为是否符合设计规范。",
+  "uncertain_points": []
+}
+```

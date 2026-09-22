@@ -1,0 +1,582 @@
+[
+  {
+    "head": "昼间行车灯熄灭",
+    "relation": "触发条件",
+    "tail": "外部应用请求（如 SuperEco）调用外灯组合服务（ICB）",
+    "sources": [
+      "outer_lamp_fas_1040"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "昼间行车灯熄灭",
+    "relation": "触发条件",
+    "tail": "ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq = 0x0 (OFF)",
+    "sources": [
+      "outer_lamp_fas_1040"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "昼间行车灯处于激活状态",
+    "relation": "前提条件",
+    "tail": "昼间行车灯熄灭",
+    "sources": [
+      "outer_lamp_fas_1040"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务（ICB）",
+    "relation": "包含子功能",
+    "tail": "昼间行车灯控制模块（LHZCU）信号跳变：LDayTmRunngLghtCtrl = 0x0, RDayTmRunngLghtCtrl = 0x0",
+    "sources": [
+      "outer_lamp_fas_1040"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DRL状态反馈",
+    "relation": "输出为",
+    "tail": "ICB 将 DRL 状态/故障状态反馈至昼间行车灯控制模块（LHZCU）",
+    "sources": [
+      "outer_lamp_fas_1040"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DRL无错误",
+    "relation": "输出为",
+    "tail": "昼间行车灯控制模块（LHZCU）将 DRL 状态/故障状态反馈至 ICB",
+    "sources": [
+      "outer_lamp_fas_1040"
+    ],
+    "conflict": true,
+    "conflict_note": "与 'DRL状态反馈' 三元组方向相反（ICB→LHZCU vs LHZCU→ICB），构成双向反馈闭环；但二者语义不等价，属不同角色视角的输出定义，保留并标记潜在方向性冲突"
+  },
+  {
+    "head": "DRL熄灭",
+    "relation": "故障响应",
+    "tail": "ICB 将服务接口或控制信号转换为灯控 CAN 信号，控制昼间行车灯熄灭",
+    "sources": [
+      "outer_lamp_fas_1040"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLight.BrakeLightErrorStatus 接口调用",
+    "relation": "前提条件",
+    "tail": "订阅制动灯故障状态",
+    "sources": [
+      "outer_lamp_fas_1041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorSta 信号",
+    "relation": "输出为",
+    "tail": "No Error",
+    "sources": [
+      "outer_lamp_fas_1041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorSta 信号",
+    "relation": "输出为",
+    "tail": "Error",
+    "sources": [
+      "outer_lamp_fas_1041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorSta 信号",
+    "relation": "输出为",
+    "tail": "Unknown",
+    "sources": [
+      "outer_lamp_fas_1041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorSta 信号",
+    "relation": "包含子功能",
+    "tail": "No Error",
+    "sources": [
+      "outer_lamp_fas_1041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorSta 信号",
+    "relation": "包含子功能",
+    "tail": "Error",
+    "sources": [
+      "outer_lamp_fas_1041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorSta 信号",
+    "relation": "包含子功能",
+    "tail": "Unknown",
+    "sources": [
+      "outer_lamp_fas_1041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "硬线故障状态",
+    "relation": "依赖于",
+    "tail": "RZCU 控制器",
+    "sources": [
+      "outer_lamp_fas_1041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "网络故障状态",
+    "relation": "依赖于",
+    "tail": "ICB 控制器",
+    "sources": [
+      "outer_lamp_fas_1041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "伴我回家请求（B295）",
+    "relation": "输入来自",
+    "tail": "个性化设置模块（S32G）",
+    "sources": [
+      "outer_lamp_fas_1042"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "个性化设置模块（S32G）",
+    "relation": "输出到",
+    "tail": "外灯组合服务（ICB）",
+    "sources": [
+      "outer_lamp_fas_1042"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "阳光雨量传感器",
+    "relation": "输入来自",
+    "tail": "昼间行车灯控制模块（LHZCU）",
+    "sources": [
+      "outer_lamp_fas_1042"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "昼间行车灯控制模块（LHZCU）",
+    "relation": "输出到",
+    "tail": "左前大灯（LHA）",
+    "sources": [
+      "outer_lamp_fas_1042"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前大灯控制模块（RHZCU）",
+    "relation": "输出到",
+    "tail": "右前大灯（RHA）",
+    "sources": [
+      "outer_lamp_fas_1042"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务（ICB）",
+    "relation": "包含子功能",
+    "tail": "个性化设置模块（S32G）",
+    "sources": [
+      "outer_lamp_fas_1042"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启",
+    "relation": "触发条件",
+    "tail": "ICB 接收来自危险警报灯开关控制模块（LHZCU）的控制信号",
+    "sources": [
+      "outer_lamp_fas_1043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启",
+    "relation": "触发条件",
+    "tail": "ICB 根据 LHZCU 控制输入，延时 60 ms 并分发控制信号至 LHZCU、RHZCU 和 RZCU",
+    "sources": [
+      "outer_lamp_fas_1043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启",
+    "relation": "触发条件",
+    "tail": "执行危险警报灯图标显示及声音提醒",
+    "sources": [
+      "outer_lamp_fas_1043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启",
+    "relation": "前提条件",
+    "tail": "驱动处理模块（LHZCU/RHZCU/RZCU）接收 ICB 控制信号并驱动双闪灯点亮/熄灭",
+    "sources": [
+      "outer_lamp_fas_1043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯点亮状态反馈",
+    "relation": "输出为",
+    "tail": "DirclnLghtSts_HW",
+    "sources": [
+      "outer_lamp_fas_1043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "故障状态反馈",
+    "relation": "输出为",
+    "tail": "DirclnLghtFltsts_HW",
+    "sources": [
+      "outer_lamp_fas_1043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块（LHZCU）",
+    "relation": "依赖于",
+    "tail": "通过域控制器获取转向灯状态（exlDircnLghtHwDrvEnPrm = 0x1）",
+    "sources": [
+      "outer_lamp_fas_1043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块（LHZCU）",
+    "relation": "依赖于",
+    "tail": "通过数字灯控获取转向灯状态（exlDircnLghtHwDrvEnPrm = 0x0 或 0x2）",
+    "sources": [
+      "outer_lamp_fas_1043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块（LHZCU）",
+    "relation": "触发条件",
+    "tail": "记忆本次车辆碰撞触发双闪灯事件，并将模式信号发送至 VehHzrdMdSts_2_Collision_Mode",
+    "sources": [
+      "outer_lamp_fas_1043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯手动解除",
+    "relation": "触发条件",
+    "tail": "危险警报灯自动控制模块（LHZCU）检测到 a & b",
+    "sources": [
+      "outer_lamp_fas_1043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启",
+    "relation": "超时约束",
+    "tail": "CrashHazardTi（可配置为 5 s；计时期间检测到新碰撞事件需重置）",
+    "sources": [
+      "outer_lamp_fas_1043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯关闭",
+    "relation": "触发条件",
+    "tail": "用户手动关闭危险报警开关（HzrdLghtSwReq = 0x1）",
+    "sources": [
+      "outer_lamp_fas_1043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能处于有效状态",
+    "relation": "前提条件",
+    "tail": "VehMdV = 0x1（Valid）",
+    "sources": [
+      "outer_lamp_fas_1044"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能处于无效状态",
+    "relation": "前提条件",
+    "tail": "VehMdV = 0x0（Invalid）",
+    "sources": [
+      "outer_lamp_fas_1044"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能在自动驾驶泊车模式下",
+    "relation": "前提条件",
+    "tail": "UsG Md = 0x4（AIParking）",
+    "sources": [
+      "outer_lamp_fas_1044"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能在自动驾驶辅助模式下",
+    "relation": "前提条件",
+    "tail": "UsG Md = 0x5（AIPIlot）",
+    "sources": [
+      "outer_lamp_fas_1044"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能在 XOTA 模式下",
+    "relation": "前提条件",
+    "tail": "UsG Md = 0x6（XOTA）",
+    "sources": [
+      "outer_lamp_fas_1044"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能处于有效用户模式版本状态",
+    "relation": "前提条件",
+    "tail": "UsG MdV = 0x1（Valid）",
+    "sources": [
+      "outer_lamp_fas_1044"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能处于无效用户模式版本状态",
+    "relation": "前提条件",
+    "tail": "UsG MdV = 0x0（Invalid）",
+    "sources": [
+      "outer_lamp_fas_1044"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "寻车灯远程控制模块（LHZCU）控制信号跳变",
+    "relation": "前提条件",
+    "tail": "用户模式为 Sleep 或 Standby，且车辆模式非 Factory",
+    "sources": [
+      "outer_lamp_fas_1045"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "寻车灯远程控制模块（LHZCU）控制信号跳变",
+    "relation": "前提条件",
+    "tail": "非 Transport 模式，且外部灯光控制通信类型为 SOA 或 CAN，外部灯光状态通信类型为 SOA 或 CAN",
+    "sources": [
+      "outer_lamp_fas_1045"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "寻车灯远程控制模块（LHZCU）控制信号跳变",
+    "relation": "触发条件",
+    "tail": "收到寻车灯请求模块（LHZCU）双闪灯请求（FMCLightReq = 0x1）",
+    "sources": [
+      "outer_lamp_fas_1045"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "控制双闪灯闪烁",
+    "relation": "依赖于",
+    "tail": "寻车灯远程控制模块（LHZCU）控制信号跳变",
+    "sources": [
+      "outer_lamp_fas_1045"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "方向灯流水模式使能",
+    "relation": "输出为",
+    "tail": "DircnLghtMdSts = 0x0（Enabled）",
+    "sources": [
+      "outer_lamp_fas_1045"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "方向灯控制信号发送",
+    "relation": "输出为",
+    "tail": "FLDircnLghtCtrl, FRDircnLghtCtrl, RLDircnLghtCtrl, RRDircnLghtCtrl",
+    "sources": [
+      "outer_lamp_fas_1045"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "方向灯控制信号发送",
+    "relation": "超时约束",
+    "tail": "每 400 ms 发送一次",
+    "sources": [
+      "outer_lamp_fas_1045"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "方向灯流水模式持续",
+    "relation": "超时约束",
+    "tail": "8 个周期（每周期 50 ms）为 on",
+    "sources": [
+      "outer_lamp_fas_1045"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "Auto 开关下，用户通过大屏软开关触发",
+    "sources": [
+      "outer_lamp_fas_1046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMd ≠ 0x0",
+    "sources": [
+      "outer_lamp_fas_1046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMd ≠ 0x1",
+    "sources": [
+      "outer_lamp_fas_1046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMd ≠ 0x6",
+    "sources": [
+      "outer_lamp_fas_1046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "VehMd = 0x3",
+    "sources": [
+      "outer_lamp_fas_1046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "DippedBeamLight 状态为关闭",
+    "sources": [
+      "outer_lamp_fas_1046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "LHZCU 已判断仅位置灯开启、近光灯关闭",
+    "sources": [
+      "outer_lamp_fas_1046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯开启",
+    "relation": "前提条件",
+    "tail": "SidePositionLight 状态为开启",
+    "sources": [
+      "outer_lamp_fas_1046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "抑制条件",
+    "tail": "近光灯当前状态为开启",
+    "sources": [
+      "outer_lamp_fas_1046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

@@ -1,0 +1,420 @@
+```json
+[
+  {
+    "head": "驻车制动器释放",
+    "relation": "状态保持条件",
+    "tail": "驾驶员踩下油门踏板",
+    "sources": ["outer_lamp_fas_0203"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驻车制动器释放",
+    "relation": "状态保持条件",
+    "tail": "车速超过5 km/h",
+    "sources": ["outer_lamp_fas_0203"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd signal output",
+    "relation": "outputs",
+    "tail": "0x0 = VehMd_0_NORMAL",
+    "sources": ["outer_lamp_fas_0204", "outer_lamp_fas_1461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd signal output",
+    "relation": "outputs",
+    "tail": "0x1 = VehMd_1_CRASH",
+    "sources": ["outer_lamp_fas_0204", "outer_lamp_fas_1461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd signal output",
+    "relation": "outputs",
+    "tail": "0x2 = VehMd_2_FACTORY",
+    "sources": ["outer_lamp_fas_0204"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd signal output",
+    "relation": "outputs",
+    "tail": "0x3 = VehMd_3_TRANSPORT",
+    "sources": ["outer_lamp_fas_0204"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd signal output",
+    "relation": "outputs",
+    "tail": "0x4 = VehMd_4_DYNO",
+    "sources": ["outer_lamp_fas_0204"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd signal output",
+    "relation": "outputs",
+    "tail": "0x5 = VehMd_5_EXHIBITION",
+    "sources": ["outer_lamp_fas_0204"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd signal output",
+    "relation": "outputs",
+    "tail": "0x8 = VehMd_8_Engineering",
+    "sources": ["outer_lamp_fas_0204"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd signal output",
+    "relation": "outputs",
+    "tail": "0x9 = VehMd_9_Service",
+    "sources": ["outer_lamp_fas_0204"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd signal output",
+    "relation": "depends on",
+    "tail": "CAN/LIN/SOA service or hardwire interface definition",
+    "sources": ["outer_lamp_fas_0204"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorStatus service",
+    "relation": "triggered by",
+    "tail": "calling SidePositionLightErrorStatus with InstanceID=5 (left front)",
+    "sources": ["outer_lamp_fas_0206"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorStatus service",
+    "relation": "triggered by",
+    "tail": "calling SidePositionLightErrorStatus with InstanceID=6 (right front)",
+    "sources": ["outer_lamp_fas_0206"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorStatus signal",
+    "relation": "outputs",
+    "tail": "0x0 = No Error; 0x1 = Error; 0x2 = Unknown",
+    "sources": ["outer_lamp_fas_0206", "outer_lamp_fas_1716"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorStatus signal",
+    "relation": "depends on",
+    "tail": "SidePositionLight.SidePositionLightErrorStatus function",
+    "sources": ["outer_lamp_fas_0206"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left front turn signal activation",
+    "relation": "triggered by",
+    "tail": "ControlDirectionLight interface call with InstanceID=1 and DirectionLightReq=0x1",
+    "sources": ["outer_lamp_fas_0207"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left front turn signal deactivation",
+    "relation": "triggered by",
+    "tail": "ControlDirectionLight interface call with InstanceID=1 and DirectionLightReq=0x0",
+    "sources": ["outer_lamp_fas_0207"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right front turn signal activation",
+    "relation": "triggered by",
+    "tail": "ControlDirectionLight interface call with InstanceID=2 and DirectionLightReq=0x1",
+    "sources": ["outer_lamp_fas_0207"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right front turn signal deactivation",
+    "relation": "triggered by",
+    "tail": "ControlDirectionLight interface call with InstanceID=2 and DirectionLightReq=0x0",
+    "sources": ["outer_lamp_fas_0207"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlDirectionLight interface",
+    "relation": "requires",
+    "tail": "direction light control request (left front or right front)",
+    "sources": ["outer_lamp_fas_0207"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left front turn signal state",
+    "relation": "depends on",
+    "tail": "InstanceID=1 and DirectionLightReq value",
+    "sources": ["outer_lamp_fas_0207"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right front turn signal state",
+    "relation": "depends on",
+    "tail": "InstanceID=2 and DirectionLightReq value",
+    "sources": ["outer_lamp_fas_0207"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlDirectionLight interface",
+    "relation": "contains subfunction",
+    "tail": "control left front turn signal",
+    "sources": ["outer_lamp_fas_0207"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlDirectionLight interface",
+    "relation": "contains subfunction",
+    "tail": "control right front turn signal",
+    "sources": ["outer_lamp_fas_0207"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlDirectionLight interface",
+    "relation": "maintained by",
+    "tail": "periodic invocation to sustain turn signal state",
+    "sources": ["outer_lamp_fas_0207"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear fog lamp activation",
+    "relation": "triggered by",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta = 0x1 (ON)",
+    "sources": ["outer_lamp_fas_0208", "outer_lamp_fas_0949"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear fog lamp activation",
+    "relation": "depends on",
+    "tail": "RearFogLghtCtrl_0x1_RearFogLghtCtrl_1_On",
+    "sources": ["outer_lamp_fas_0208"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear fog lamp activation",
+    "relation": "requires",
+    "tail": "RearFogLghtFucProStatus = 0x1 (Only RearFogLght ON)",
+    "sources": ["outer_lamp_fas_0208"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear fog lamp activation",
+    "relation": "depends on",
+    "tail": "ICB distributes control signal to RZCU (RearFogLghtCtrl_HW = 0x1)",
+    "sources": ["outer_lamp_fas_0208"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear fog lamp status feedback",
+    "relation": "outputs",
+    "tail": "RearFogLghtSts_0x1_RearFogLghtSts_1_On",
+    "sources": ["outer_lamp_fas_0208"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear fog lamp fault status feedback",
+    "relation": "outputs",
+    "tail": "RearFogLghtFltsts_0x0_RearFogLghtFltsts_0_False",
+    "sources": ["outer_lamp_fas_0208"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear fog lamp indicator display",
+    "relation": "triggered by",
+    "tail": "HMI subsystem ICB invoking interface",
+    "sources": ["outer_lamp_fas_0208"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear fog lamp request retransmission",
+    "relation": "timeout constraint",
+    "tail": "If no feedback within 2 s and request unchanged, retransmit up to 3 times at ≤50 ms interval; stop after 3 failed attempts",
+    "sources": ["outer_lamp_fas_0208"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear fog lamp activation synchronization",
+    "relation": "state maintenance condition",
+    "tail": "Left and right rear fog lamps must activate synchronously, max delay ≤40 ms",
+    "sources": ["outer_lamp_fas_0208"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLghtSwStatus interface subscription",
+    "relation": "triggered by",
+    "tail": "subscribing to daytime running light switch status",
+    "sources": ["outer_lamp_fas_0210"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLghtSwStatus signal",
+    "relation": "outputs",
+    "tail": "0x0 = OFF; 0x1 = ON; 0x2 = Unknown",
+    "sources": ["outer_lamp_fas_0210"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU_ETH channel",
+    "relation": "connects to",
+    "tail": "ExteriorLightSwitchProcess.DayRunningLghtSwStatus interface",
+    "sources": ["outer_lamp_fas_0210"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior lamp function",
+    "relation": "depends on",
+    "tail": "Z-ONE-3.0 platform",
+    "sources": ["outer_lamp_fas_0212", "outer_lamp_fas_0299", "outer_lamp_fas_1206", "outer_lamp_fas_1455", "outer_lamp_fas_1469", "outer_lamp_fas_1511"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus interface subscription",
+    "relation": "requires",
+    "tail": "acquiring left front position lamp status",
+    "sources": ["outer_lamp_fas_0213"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus interface subscription",
+    "relation": "requires",
+    "tail": "acquiring right front position lamp status",
+    "sources": ["outer_lamp_fas_0213"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left front position lamp status",
+    "relation": "outputs",
+    "tail": "SidePositionLightStatus",
+    "sources": ["outer_lamp_fas_0213"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right front position lamp status",
+    "relation": "outputs",
+    "tail": "SidePositionLightStatus",
+    "sources": ["outer_lamp_fas_0213"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left front position lamp status",
+    "relation": "depends on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0213"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right front position lamp status",
+    "relation": "depends on",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_fas_0213"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left front position lamp status",
+    "relation": "contains subfunction",
+    "tail": "InstanceID=1",
+    "sources": ["outer_lamp_fas_0213"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right front position lamp status",
+    "relation": "contains subfunction",
+    "tail": "InstanceID=2",
+    "sources": ["outer_lamp_fas_0213"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear fog lamp status feedback to ICB",
+    "relation": "requires",
+    "tail": "RZCU sends RearFogLightSts=0x1 and RearFogLightFltsts=0x0 to LHZCU",
+    "sources": ["outer_lamp_fas_0216"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU subscription of dipped beam status",
+    "relation": "requires",
+    "tail": "LHZCU subscribes to LDipdBeamLghtSts and RDipdBeamLghtSts signals",
+    "sources": ["outer_lamp_fas_0216"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB subscription of rear fog lamp status",
+    "relation": "requires",
+    "tail": "ICB subscribes to ExteriorLightControlSystem.RearFogLightSts signal",
+    "sources": ["outer_lamp_fas_0216"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped beam and rear fog lamp synchronization",
+    "relation": "timeout constraint",
+    "tail": "Max delay between left/right dipped beams and rear fog lamps ≤40 ms",
+    "sources": ["outer_lamp_fas_0216"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear fog lamp triggers automatic dipped beam activation",
+    "relation": "requires",
+    "tail": "AutoDipdBeamLghtONbyRrFogLghtSts = True",
+    "sources": ["outer_lamp_fas_0216"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Clear automatic dipped beam request from rear fog lamp",
+    "relation": "requires",
+    "tail": "dipped beam status is OFF",
+    "sources": ["outer_lamp_fas_0216"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

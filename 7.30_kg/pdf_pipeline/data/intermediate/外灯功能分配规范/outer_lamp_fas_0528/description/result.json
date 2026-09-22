@@ -1,0 +1,136 @@
+{
+  "table_type": "structure_table",
+  "topic": "近光灯控制系统的功能与信号流程",
+  "row_semantics": "表示系统中的不同模块或控制器，按功能层级和信号流向排列。",
+  "column_semantics": "无明确列概念，整体为流程图结构，展示信号从输入到输出的传递路径。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "8295",
+      "type": "控制器/模块",
+      "description": "近光灯软开关，作为系统输入源"
+    },
+    {
+      "name": "S32G外灯组合服务基础服务",
+      "type": "控制器/模块",
+      "description": "处理外灯相关基础服务"
+    },
+    {
+      "name": "LHZCU近光灯控制模块",
+      "type": "控制器/模块",
+      "description": "核心控制单元，负责逻辑和信号处理"
+    },
+    {
+      "name": "S32G外灯SWC",
+      "type": "控制器/模块",
+      "description": "外灯软件组件，进行逻辑和异步发送"
+    },
+    {
+      "name": "LHZCU/RHZCU硬线驱动",
+      "type": "控制器/模块",
+      "description": "最终执行机构，驱动硬件输出"
+    },
+    {
+      "name": "ICB (近光灯大屏请求)",
+      "type": "控制器/模块",
+      "description": "外部请求接口，可能来自人机交互界面"
+    },
+    {
+      "name": "(LHZCU)",
+      "type": "控制器/模块",
+      "description": "左侧近光灯控制单元"
+    },
+    {
+      "name": "(RHZCU)",
+      "type": "控制器/模块",
+      "description": "右侧近光灯控制单元"
+    },
+    {
+      "name": "LHA",
+      "type": "输出信号/功能",
+      "description": "左侧近光灯激活信号"
+    },
+    {
+      "name": "RHA",
+      "type": "输出信号/功能",
+      "description": "右侧近光灯激活信号"
+    },
+    {
+      "name": "TailLpAsmbA_RH",
+      "type": "输出信号/功能",
+      "description": "右后尾灯总成信号"
+    },
+    {
+      "name": "TailLpAsmbA_LH",
+      "type": "输出信号/功能",
+      "description": "左后尾灯总成信号"
+    },
+    {
+      "name": "TailLpAsmbB",
+      "type": "输出信号/功能",
+      "description": "备用尾灯总成信号"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    "LHA",
+    "RHA",
+    "TailLpAsmbA_RH",
+    "TailLpAsmbA_LH",
+    "TailLpAsmbB"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "source": "8295 近光灯软开关",
+      "destination": "S32G 外灯组合服务基础服务",
+      "delay": "30ms"
+    },
+    {
+      "source": "S32G 外灯组合服务基础服务",
+      "destination": "LHZCU 近光灯控制模块",
+      "delay": "20ms"
+    },
+    {
+      "source": "LHZCU 近光灯控制模块",
+      "destination": "S32G 外灯SWC",
+      "delay": "50ms"
+    },
+    {
+      "source": "S32G 外灯SWC",
+      "destination": "LHZCU/RHZCU 硬线驱动",
+      "delay": "20ms"
+    },
+    {
+      "source": "LHZCU/RHZCU 硬线驱动",
+      "destination": "LHA, RHA",
+      "delay": "30ms"
+    },
+    {
+      "source": "ICB (近光灯大屏请求)",
+      "destination": "LHZCU/RHZCU",
+      "delay": "30ms"
+    },
+    {
+      "source": "ICB (近光灯大屏请求)",
+      "destination": "LHA, RHA",
+      "delay": "30ms"
+    },
+    {
+      "source": "LHZCU",
+      "destination": "LHA",
+      "delay": "uncertain"
+    },
+    {
+      "source": "RHZCU",
+      "destination": "RHA",
+      "delay": "uncertain"
+    }
+  ],
+  "engineering_interpretation": "该图表描述了近光灯控制系统中各模块间的信号传递路径及延迟约束，可用于验证近光灯从用户输入到硬件输出的完整控制链路的功能正确性和时序合理性。",
+  "uncertain_points": [
+    "LHZCU 到 LHA 的具体延迟时间不确定",
+    "RHZCU 到 RHA 的具体延迟时间不确定"
+  ]
+}

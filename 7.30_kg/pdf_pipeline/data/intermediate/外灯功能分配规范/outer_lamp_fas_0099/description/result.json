@@ -1,0 +1,39 @@
+{
+  "table_type": "structure_table",
+  "topic": "制动灯控制系统时序与模块交互",
+  "row_semantics": "流程步骤或系统组件",
+  "column_semantics": "时间线上的事件、模块或信号",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    "制动系统",
+    "LHZCU 制动灯控制模块",
+    "S32G 外灯SWC",
+    "S32G 数字灯光 SDK",
+    "TailLampAsmbl 制动灯驱动"
+  ],
+  "core_conditions": [
+    "CANFD通信",
+    "逻辑处理",
+    "信号处理",
+    "内部信号传递"
+  ],
+  "core_outputs": [
+    "制动灯点亮",
+    "数字灯光控制信号",
+    "尾灯驱动信号"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "制动系统 -> LHZCU: 20ms",
+    "LHZCU (逻辑+信号处理): 30ms",
+    "LHZCU -> S32G 外灯SWC: 20ms",
+    "S32G 外灯SWC (逻辑): 10ms",
+    "S32G 数字灯光 SDK: 40ms",
+    "S32G 数字灯光 SDK -> TailLampAsmbl: 40ms",
+    "TailLampAsmbl (制动灯驱动): 30ms",
+    "总时延: 190ms"
+  ],
+  "engineering_interpretation": "该图表描述了从制动系统触发到制动灯实际点亮的完整控制链路及其各环节的时间延迟，可用于验证制动灯系统的响应时序和模块间通信的正确性。",
+  "uncertain_points": []
+}

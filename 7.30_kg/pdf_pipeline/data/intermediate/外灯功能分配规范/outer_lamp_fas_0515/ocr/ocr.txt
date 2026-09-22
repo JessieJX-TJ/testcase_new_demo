@@ -1,0 +1,33 @@
+执行动作
+1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18&19
+&20&21&22:
+[寻车灯控制模块LHZCU]控制信号跳变为:
+控制双闪灯按照1.25Hz频率闪烁(先on后off),即按照800ms一个闪烁周期发送
+发送400ms:
+FLDircnLghtCtrl=0x1=FLDircnLghtCtrl_1_on
+FRDircnLghtCtrl=0x1=FRDircnLghtCtrl_1_on
+RLDircnLghtCtrl=0x1=RLDircnLghtCtrl_1_on
+RRDircnLghtCtrl=0x1=RRDircnLghtCtrl_1_on
+FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_off
+FRDircnLghtCtrl=0x0=FRDircnLghtCtrl_0_off
+RLDircnLghtCtrl=0x0=RLDircnLghtCtrl_0_off
+RRDircnLghtCtrl=0x0=RRDircnLghtCtrl_0_off
+发送转向灯流水模式使能状态:DircnLghtMdSts=0x0=DircnLghtMdSts_0_Enabled
+[寻车灯控制模块LHZCU]接口发送:
+发送8个Cycle(Cycle:50ms)on:
+Event:
+发送8个Cycle(Cycle:50ms)off:
+发送转向灯流水模式使能状态:{ExteriorLightSwitchProcess.
+DirectionLightModeStatus.DircnLghtMdSts}=0x0=Enabled
+备注:
+当LHZCU收到解锁信号0x1时,控制双闪灯持续3S点亮(配置需求:VehLckLghtActTme)
+当LHZCU收到闭锁信号0x2时,控制双闪灯按照1.25Hz频率点亮三个闪烁周期
+[外灯组合服务ICB]根据收到的LHZCU发送的双闪灯ON/OFF,调用基础服务,针对
+{InstanceID=1}{InstanceID=2}{InstanceID=3}{InstanceID=4},组合服务延时 60ms 调用(配置
+DircnLghtCtrlDelayPrm):
+ICB将服务接口或控制信号转换成灯控CAN信号,控制双闪灯流水点亮
+ICB 将寻车灯控制指令延时 60ms 分发至[驱动模块LHZCU/RHZCU/RZCU](配置需求:
+FLDircnLghtCtrl_HW=0x1=FLDircnLghtCtrl_HW_1_on
+FRDircnLghtCtrl_HW=0x1=FRDircnLghtCtrl_HW_1_on
+RLDircnLghtCtrl_HW=0x1=RLDircnLghtCtrl_HW_1_on
+RRDircnLghtCtrl_HW=0x1=RRDirenLghtCtrl_HW_1_on

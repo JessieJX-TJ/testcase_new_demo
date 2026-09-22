@@ -1,0 +1,91 @@
+[
+  {
+    "head": "转向灯开关档位信号 (TurnSigSw_SIG) 被 LHZCU 接收",
+    "relation": "输入为",
+    "tail": "转向灯开关档位模拟输入信号",
+    "triple_type": "输入关系",
+    "evidence_terms": [
+      "转向灯开关档位",
+      "LHZCU",
+      "TurnSigSw_SIG"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0026",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "LHZCU 判断当前转向灯开关档位",
+    "relation": "触发条件",
+    "tail": "转向灯开关档位信号 (TurnSigSw_SIG) 被采集",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "转向灯开关档位",
+      "TurnSigSw_SIG"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0026",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "转向灯开关请求信号 (DircnLghtSwReq) 输出至 ICB/LHZCU",
+    "relation": "输出为",
+    "tail": "CAN/片内通道",
+    "triple_type": "输出关系",
+    "evidence_terms": [
+      "DircnLghtSwReq",
+      "ICB/LHZCU",
+      "CAN/片内"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0026",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "转向灯开关请求信号 (DircnLghtSwReq) 的值由转向灯开关档位决定",
+    "relation": "依赖于",
+    "tail": "转向灯开关档位信号 (TurnSigSw_SIG)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DircnLghtSwReq",
+      "TurnSigSw_SIG"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0026",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "转向灯开关状态提供接口 (SOA ExteriorLightSwitch.DirectionLightSwitchStatus) 的值包含错误状态 (0x5)",
+    "relation": "包含子功能",
+    "tail": "Error",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SOA",
+      "ExteriorLightSwitch.DirectionLightSwitchStatus",
+      "0x5"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0026",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "转向灯开关状态提供接口 (SOA ExteriorLightSwitch.DirectionLightSwitchStatus) 的值包含未知状态 (0x6)",
+    "relation": "包含子功能",
+    "tail": "Unknown",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SOA",
+      "ExteriorLightSwitch.DirectionLightSwitchStatus",
+      "0x6"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0026",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  }
+]

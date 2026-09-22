@@ -1,0 +1,81 @@
+{
+  "table_type": "logic_table",
+  "topic": "阅读灯（Map Lamp）系统的逻辑模块功能描述及其与子系统/物理模块的分配关系",
+  "row_semantics": "每一行代表一个逻辑模块的功能定义及其在整车电子电器系统中的归属",
+  "column_semantics": {
+    "逻辑模块名称": "模块的唯一标识符，描述了其在系统中的具体功能",
+    "逻辑块功能描述": "详细说明该模块的功能、作用范围及与其他组件的交互方式",
+    "分配的子系统/物理模块": "指明该逻辑模块由哪个子系统或物理模块负责实现"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MapLampXXSnsr",
+      "type": "逻辑模块",
+      "description": "前两排阅读灯开关传感器采集模块，负责采集阅读灯触摸灯表面开关的状态"
+    },
+    {
+      "name": "MapLampHMI",
+      "type": "逻辑模块",
+      "description": "阅读灯大屏开关采集模块，负责采集通过HMI子系统（ICB/ZXD）的大屏开关信号"
+    },
+    {
+      "name": "MapLampDoorInteraction",
+      "type": "逻辑模块",
+      "description": "阅读灯随门动模块，负责根据车门开关状态控制阅读灯的点亮和熄灭"
+    },
+    {
+      "name": "MapLampCtrl",
+      "type": "逻辑模块",
+      "description": "阅读灯应用控制模块，负责对阅读灯功能进行仲裁后控制，支持每个阅读灯单独控制"
+    },
+    {
+      "name": "MapLampLocalCtrl",
+      "type": "逻辑模块",
+      "description": "阅读灯本地控制模块，负责阅读灯信号转换、基础服务提供以及本地开关控制与其他控制的仲裁"
+    },
+    {
+      "name": "MapLampXXDrv",
+      "type": "逻辑模块",
+      "description": "阅读灯驱动模块，负责驱动前两排阅读灯的点亮和熄灭，并反馈每个阅读灯的状态和故障信息"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "阅读灯开关状态",
+      "description": "包括触摸开关和大屏开关的输入信号"
+    },
+    {
+      "name": "车门开关状态",
+      "description": "用于触发MapLampDoorInteraction模块的动作"
+    },
+    {
+      "name": "本地开关控制",
+      "description": "MapLampLocalCtrl模块处理的基础输入信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "阅读灯点亮/熄灭",
+      "description": "由MapLampXXDrv模块驱动的实际输出动作"
+    },
+    {
+      "name": "阅读灯状态反馈",
+      "description": "MapLampXXDrv模块向其他系统反馈的阅读灯当前状态信息"
+    },
+    {
+      "name": "故障反馈",
+      "description": "MapLampXXDrv模块检测到的阅读灯故障信息"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "阅读灯故障",
+      "description": "可能由硬件损坏、电路断路或短路等原因引起"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证阅读灯系统各逻辑模块的功能正确性、模块间交互的时序合理性以及与子系统/物理模块的分配准确性，确保阅读灯能够根据开关信号、车门状态等条件正确点亮、熄灭并反馈状态。",
+  "uncertain_points": []
+}

@@ -1,0 +1,59 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯位置灯状态获取与控制",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的外灯位置灯状态查询或控制服务。",
+  "column_semantics": "列定义了服务的消费方（SOA、ICB、LHZCU等）以及对应的接口名称和参数信息。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SidePositionLightStatus",
+      "type": "功能名",
+      "description": "左侧位置灯状态查询服务"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "功能名",
+      "description": "右侧后位置灯状态查询服务"
+    },
+    {
+      "name": "SidePositionLightSta",
+      "type": "功能名",
+      "description": "通用位置灯状态查询服务"
+    },
+    {
+      "name": "SOA",
+      "type": "控制器/模块名",
+      "description": "Service-Oriented Architecture，服务导向架构，作为服务的消费者"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "Integrated Control Board，集成控制板"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Local Host Zone Control Unit，本地主机区域控制单元"
+    },
+    {
+      "name": "CS",
+      "type": "控制器/模块名",
+      "description": "Central System，中央系统"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightSta",
+      "type": "输出信号",
+      "description": "表示位置灯的状态，包括OFF（关闭）、ON（开启）、Error（错误）、Unknown（未知）"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯位置灯状态的查询接口及其参数，可用于验证不同控制器（如SOA、ICB、LHZCU）对位置灯状态查询请求的正确响应，确保各控制器能够准确获取并上报位置灯的当前状态。",
+  "uncertain_points": []
+}
+```

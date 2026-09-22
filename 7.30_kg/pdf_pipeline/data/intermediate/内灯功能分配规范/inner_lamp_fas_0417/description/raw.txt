@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Light Function Allocation Specification",
+  "row_semantics": "Each row represents a specific signal or parameter related to interior lighting and door status, detailing its function, data source, communication method, associated controllers/modules, and internal processing.",
+  "column_semantics": {
+    "1": "Signal/Parameter Name",
+    "2": "Data Source Type (e.g., Input, Consumption)",
+    "3": "Communication Method (e.g., CAN, SOA)",
+    "4": "Associated Controller/Module (LHZCU, RHZCU, ICB/ZXD)",
+    "5": "Additional Controller/Module Reference",
+    "6": "Internal Processing Status"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RLDoorOpenSts",
+      "type": "signal",
+      "description": "Status of the right rear door opening."
+    },
+    {
+      "name": "RRDoorOpenSts",
+      "type": "signal",
+      "description": "Status of the right rear door opening."
+    },
+    {
+      "name": "PersonalizationData.MapLampDrEnbSet",
+      "type": "parameter",
+      "description": "Configuration parameter for enabling/disabling map lamp functionality based on door movement."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Door Status Codes",
+      "description": "Various codes indicating the state of the door (e.g., Closed, Open, Ajar, Full Open)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MapLampDrEnbSetInfo",
+      "type": "output_parameter",
+      "description": "Output information regarding the enabled/disabled state of the map lamp based on door movement."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table specifies the allocation of signals and parameters related to interior lighting and door status within the vehicle's electronic system. It defines how different controllers interact with these signals via CAN communication and outlines the internal processing logic. This information is crucial for testing the correct functionality of interior lights in response to door movements and for verifying that personalized lighting settings are properly applied.",
+  "uncertain_points": []
+}
+```

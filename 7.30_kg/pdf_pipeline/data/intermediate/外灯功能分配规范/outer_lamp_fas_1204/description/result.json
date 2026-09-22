@@ -1,0 +1,60 @@
+{
+  "table_type": "state_table",
+  "topic": "Direction Light Error Status Subscription",
+  "row_semantics": "Each row represents a different direction light subscription request for error status monitoring.",
+  "column_semantics": {
+    "1": "Function Name (DirectionLight.DirectionLightErrorStatus)",
+    "2": "Consumption Type (SOA, ICB, LHZCU)",
+    "3": "Network Fault Status"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "Function",
+      "description": "Service interface to subscribe and monitor the error status of direction lights."
+    },
+    {
+      "name": "InstanceID",
+      "type": "Parameter",
+      "description": "Unique identifier for each subscription instance. Different InstanceIDs correspond to different direction lights."
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Local Host Control Unit, likely responsible for processing and forwarding direction light status information."
+    },
+    {
+      "name": "SOA",
+      "type": "Controller/Module",
+      "description": "Service-Oriented Architecture component, possibly involved in service registration and management."
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "Inter-Communication Bus component, likely facilitating communication between different ECUs."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightErrorSta",
+      "type": "Input Signal",
+      "description": "Parameter indicating the error status of the direction light. Possible values: 0x0=No Error, 0x1=Error, 0x2=Unknown."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "NetworkFaultStatus",
+      "type": "System State",
+      "description": "Indicates whether there is a network fault affecting the communication related to direction light error status."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interface for subscribing to and monitoring the error status of various direction lights (left front, right front, left rear). It specifies the parameters, controllers involved, and network fault conditions associated with each subscription instance.",
+  "uncertain_points": [
+    "The exact internal logic of how LHZCU processes and forwards direction light status information is not detailed.",
+    "The specific timing or frequency at which the error status is polled or updated is not specified."
+  ]
+}

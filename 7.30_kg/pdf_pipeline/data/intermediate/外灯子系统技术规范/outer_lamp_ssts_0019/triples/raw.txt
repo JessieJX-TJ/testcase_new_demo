@@ -1,0 +1,44 @@
+```json
+[
+  {
+    "head": "右后转向灯驱动与状态发送功能被激活",
+    "relation": "触发条件",
+    "tail": "收到【DILghtCtrlMdl】统一分发的 RRDircnLghtCtrl_HW ==1 (On)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DILghtCtrlMdl", "RRDircnLghtCtrl_HW", "On"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯驱动与状态发送功能被激活",
+    "relation": "前提条件",
+    "tail": "exlDircnLghtHwDrvEnPrm==1||2",
+    "triple_type": "工程规则",
+    "evidence_terms": ["exlDircnLghtHwDrvEnPrm", "1", "2"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【RRDILghtDrvMdl】持续驱动右后转向灯输出 (DILamp_RH_HSD)",
+    "relation": "依赖于",
+    "tail": "右后转向灯驱动与状态发送功能被激活",
+    "triple_type": "工程规则",
+    "evidence_terms": ["RRDILghtDrvMdl", "DILamp_RH_HSD", "DILghtCtrlMdl", "RRDircnLghtCtrl_HW"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【RRDILghtDrvMdl】持续发送 RRDILghtSts_HW=1 (On) 至 【DILghtCtrlMdl】，至少发送三帧",
+    "relation": "依赖于",
+    "tail": "右后转向灯驱动与状态发送功能被激活",
+    "triple_type": "工程规则",
+    "evidence_terms": ["RRDILghtDrvMdl", "RRDILghtSts_HW", "DILghtCtrlMdl", "DILghtCtrlMdl", "On"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯驱动与状态发送功能退出",
+    "relation": "退出条件",
+    "tail": "收到【DILghtCtrlMdl】发送的 RRDircnLghtCtrl_HW ==0 (Off)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DILghtCtrlMdl", "RRDircnLghtCtrl_HW", "Off"],
+    "confidence_note": "high"
+  }
+]
+```

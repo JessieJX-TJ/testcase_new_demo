@@ -1,0 +1,70 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Trailer Reverse and Direction Light States Configuration",
+  "row_semantics": "Each row represents a specific light state configuration parameter for trailer lights, detailing its input/output behavior, supported communication protocols, and associated controller/module.",
+  "column_semantics": {
+    "0": "Parameter Name (e.g., TrlrRevsLghtFltSts)",
+    "1": "Input/Output Type (CA N - CAN Network)",
+    "2": "Communication Protocol (TDM - Time Division Multiplexing)",
+    "3": "Supported Controller/Module (RZCU, RZCU LHZCU)",
+    "4": "Supported Communication Interface (SFCANF D, BKBCAN FD)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "TrlrRevsLghtFltSts",
+      "description": "Trailer Reverse Light Filter State"
+    },
+    {
+      "name": "TrlrRrFogLghtSts",
+      "description": "Trailer Rear Fog Light Status"
+    },
+    {
+      "name": "TrlrRrFogLghtFltSts",
+      "description": "Trailer Rear Fog Light Filter State"
+    },
+    {
+      "name": "TrlrDirLghtSts",
+      "description": "Trailer Directional Light Status"
+    },
+    {
+      "name": "TrlrDirLghtFltSts",
+      "description": "Trailer Directional Light Filter State"
+    },
+    {
+      "name": "TrlrSideLghtSts",
+      "description": "Trailer Side Light Status"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Input/Output Type",
+      "description": "Indicates whether the parameter is configured via input or output on the CAN network."
+    },
+    {
+      "name": "Communication Protocol",
+      "description": "Specifies the time-division multiplexing used for signal transmission."
+    },
+    {
+      "name": "Controller/Module",
+      "description": "Identifies the electronic control unit(s) responsible for processing the light states."
+    },
+    {
+      "name": "Communication Interface",
+      "description": "Lists the specific CAN interface types supported by the module."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Light State Values",
+      "description": "Numerical values (0x0 to 0x3) representing different operational states of the trailer lights, such as 'Off', 'On', 'LeOn' (Left On), 'RiOn' (Right On), and combinations thereof."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the configuration parameters for various trailer light states, including reverse lights, fog lights, directional lights, and side lights. It specifies how each light state is controlled (input/output), the communication protocol used, the supporting controller/module, and the compatible CAN interfaces. This information is crucial for verifying that the trailer lighting system operates correctly under different conditions and configurations.",
+  "uncertain_points": []
+}
+```

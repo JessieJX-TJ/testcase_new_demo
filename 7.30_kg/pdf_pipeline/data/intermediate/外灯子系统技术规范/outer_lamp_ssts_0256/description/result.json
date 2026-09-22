@@ -1,0 +1,62 @@
+{
+  "table_type": "signal_table",
+  "topic": "制动踏板开关信号处理与反馈机制",
+  "row_semantics": "表格按功能阶段划分，包括触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "两列结构，左侧为功能描述类别，右侧为具体定义或参数。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLghtSwMdl",
+      "type": "module",
+      "description": "制动灯开关模块"
+    },
+    {
+      "name": "BrkLghtCtrlMdl",
+      "type": "module",
+      "description": "制动灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "用户踩下制动踏板",
+      "signal": "用户操作",
+      "description": "触发条件，用户踩下制动踏板且开关信号有效"
+    },
+    {
+      "name": "制动手刹开关信号悬空",
+      "signal": "系统状态",
+      "description": "退出条件，当制动手刹开关信号无有效输入时退出"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLghtSwReq",
+      "type": "output_signal",
+      "value": "0x1 (On)",
+      "description": "持续发送的制动灯开关请求信号"
+    },
+    {
+      "name": "BrkLghtSwSts",
+      "type": "output_signal",
+      "value": "0x1=BrkLghtSwSts_1_On",
+      "description": "制动灯开关状态反馈信号"
+    },
+    {
+      "name": "BrkLghtSwStsV",
+      "type": "output_signal",
+      "value": "0x0=BrkLghtSwStsV_0_Valid",
+      "description": "制动灯开关状态有效性反馈信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "连续发送帧数",
+      "value": "至少三帧",
+      "description": "在触发条件下，BrkLghtSwReq信号需至少发送三帧"
+    }
+  ],
+  "engineering_interpretation": "该表用于验证制动踏板开关信号从触发到反馈的完整逻辑流程，确保在用户踩下制动踏板时，系统能够正确发送制动灯请求并反馈开关状态。",
+  "uncertain_points": []
+}

@@ -1,0 +1,131 @@
+{
+  "table_type": "structure_table",
+  "topic": "Reading Lamp Function Logic Diagram",
+  "row_semantics": "Functional blocks and their interactions within the reading lamp system",
+  "column_semantics": "Not applicable (diagram type, not tabular)",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "MapLampHRC(ZXCU)",
+      "type": "Controller/Module",
+      "description": "Main control unit for Map Lamp in Right Hand Configuration"
+    },
+    {
+      "name": "MapLampLHC(ZXCU)",
+      "type": "Controller/Module",
+      "description": "Main control unit for Map Lamp in Left Hand Configuration"
+    },
+    {
+      "name": "DoorFiorLampLHCtrl(LHZCU)",
+      "type": "Controller/Module",
+      "description": "Left Front Door Flower Lamp Controller"
+    },
+    {
+      "name": "DoorFiorLampRHCtrl(RHZCU)",
+      "type": "Controller/Module",
+      "description": "Right Front Door Flower Lamp Controller"
+    },
+    {
+      "name": "IntelligentCenter",
+      "type": "System",
+      "description": "Central intelligent processing unit"
+    },
+    {
+      "name": "PersonalizationData",
+      "type": "System",
+      "description": "User personalization data storage"
+    },
+    {
+      "name": "LockingSystem",
+      "type": "System",
+      "description": "Vehicle door locking system"
+    },
+    {
+      "name": "VehicleStateSystem",
+      "type": "System",
+      "description": "Overall vehicle state management system"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehLckSts",
+      "type": "Input Signal",
+      "description": "Vehicle lock status"
+    },
+    {
+      "name": "DrvDoorOpenSts",
+      "type": "Input Signal",
+      "description": "Driver door open status"
+    },
+    {
+      "name": "RLDoorOpenSts",
+      "type": "Input Signal",
+      "description": "Rear left door open status"
+    },
+    {
+      "name": "FrtPsgDoorOpenSts",
+      "type": "Input Signal",
+      "description": "Front passenger door open status"
+    },
+    {
+      "name": "RRDoorOpenSts",
+      "type": "Input Signal",
+      "description": "Rear right door open status"
+    },
+    {
+      "name": "VehMd",
+      "type": "Input Signal",
+      "description": "Vehicle mode"
+    },
+    {
+      "name": "VehMdV",
+      "type": "Input Signal",
+      "description": "Vehicle mode valid"
+    },
+    {
+      "name": "UsrMd",
+      "type": "Input Signal",
+      "description": "User mode"
+    },
+    {
+      "name": "UsrMdV",
+      "type": "Input Signal",
+      "description": "User mode valid"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DrvrDoorFlorLampDrv(LHZCU)",
+      "type": "Output Signal",
+      "description": "Driver front door flower lamp driver signal"
+    },
+    {
+      "name": "RLDoorFlorLampDrv(LHZCU)",
+      "type": "Output Signal",
+      "description": "Rear left door flower lamp driver signal"
+    },
+    {
+      "name": "FrtPsgDoorFlorLampDrv(RHZCU)",
+      "type": "Output Signal",
+      "description": "Front passenger door flower lamp driver signal"
+    },
+    {
+      "name": "RRDoorFlorLampDrv(RHZCU)",
+      "type": "Output Signal",
+      "description": "Rear right door flower lamp driver signal"
+    },
+    {
+      "name": "MapLampXXFlor_",
+      "type": "Output Signal",
+      "description": "Map lamp flower light output"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This diagram illustrates the functional logic and signal flow for the vehicle's reading lamps, including map lamps and door flower lamps. It shows how various inputs from the locking system, vehicle state system, and user personalization data are processed by different controllers to generate appropriate outputs for lamp activation.",
+  "uncertain_points": [
+    "The exact timing behavior of the lamp activation is not specified in this diagram.",
+    "The specific threshold values for mode validity (e.g., VehMdV, UsrMdV) are not provided."
+  ]
+}

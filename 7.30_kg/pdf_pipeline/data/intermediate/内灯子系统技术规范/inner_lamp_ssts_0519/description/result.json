@@ -1,0 +1,65 @@
+{
+  "table_type": "logic_table",
+  "topic": "Ambient Lamp Local Control Logic",
+  "row_semantics": "Trigger Conditions for Ambient Lamp Activation",
+  "column_semantics": {
+    "Column 1": "Preconditions for the Trigger Condition",
+    "Column 2": "Specific Signal Conditions Required to Trigger Ambient Lamp Activation"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "function",
+      "description": "The ambient lighting feature of the vehicle"
+    },
+    {
+      "name": "DoorFR1LampOnOff_1",
+      "type": "signal",
+      "description": "Local control signal for the front right door ambient lamp (ON/OFF)"
+    },
+    {
+      "name": "DoorFR1LampColorCmd_1",
+      "type": "signal",
+      "description": "Color command signal for the front right door ambient lamp"
+    },
+    {
+      "name": "DoorFR1LampBrtnsCmd_1",
+      "type": "signal",
+      "description": "Brightness command signal for the front right door ambient lamp"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "Ambient Lamp is in Closed State",
+      "signal": "Ambient Lamp Status",
+      "value": "Closed"
+    },
+    {
+      "condition": "DoorFR1LampOnOff_1 = 0x1 (ON)",
+      "signal": "DoorFR1LampOnOff_1",
+      "value": "0x1"
+    },
+    {
+      "condition": "DoorFR1LampColorCmd_1 = 0x00 (No Request)",
+      "signal": "DoorFR1LampColorCmd_1",
+      "value": "0x00"
+    },
+    {
+      "condition": "DoorFR1LampBrtnsCmd_1 = 0x00 (No Request)",
+      "signal": "DoorFR1LampBrtnsCmd_1",
+      "value": "0x00"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "Ambient Lamp Activated",
+      "description": "The ambient lamp turns on based on the local control request"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the specific conditions under which the ambient lamp can be activated locally via the DoorFR1LampOnOff_1 signal, ensuring that the lamp is currently closed and no conflicting color or brightness commands are present.",
+  "uncertain_points": []
+}

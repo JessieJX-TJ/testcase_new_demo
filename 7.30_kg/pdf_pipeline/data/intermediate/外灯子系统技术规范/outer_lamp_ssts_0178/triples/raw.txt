@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "Main Beam Light is turned off",
+    "relation": "触发条件",
+    "tail": "收到【MainBeamLghtCtrlMdl】发送的MainBeamLightControl. MainBeamLightCtrReq ==0(Off)InstanceID=2",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": ["MainBeamLightCtrlMdl", "MainBeamLightCtrReq", "Off"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RMainBeamLghtDrvMdl停止驱动右远光灯输出",
+    "relation": "执行动作",
+    "tail": "Main Beam Light is turned off",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": ["RMainBeamLghtDrvMdl", "MainBeamLamp_RH_HSD", "Off"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "MainBeamLghtDrvMdl持续发送MainBeamLightState",
+    "relation": "执行动作",
+    "tail": "Main Beam Light is turned off",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": ["MainBeamLghtDrvMdl", "MainBeamLightState", "Off"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Main Beam Light is turned on",
+    "relation": "退出条件",
+    "tail": "收到【MainBeamLghtCtrlMdl】发送的MainBeamLightControl. MainBeamLightCtrReq==1 (On)InstanceID=2",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": ["MainBeamLightCtrlMdl", "MainBeamLightCtrReq", "On"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Main Beam Light State is 'Off'",
+    "relation": "依赖于",
+    "tail": "Main Beam Light is turned off",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["MainBeamLightState", "Off"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "至少发送三帧MainBeamLightState",
+    "relation": "状态保持条件",
+    "tail": "Main Beam Light is turned off",
+    "triple_type": "时序约束",
+    "evidence_terms": ["MainBeamLightState", "three frames"],
+    "confidence_note": "high"
+  }
+]
+```

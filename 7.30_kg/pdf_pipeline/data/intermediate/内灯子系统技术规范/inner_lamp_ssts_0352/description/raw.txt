@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "other",
+  "topic": "唤醒源与唤醒/休眠方式的关联规则",
+  "row_semantics": "表格描述了不同唤醒源（Wake-up Source）对应的唤醒或休眠方式（Wake-up/Sleep Mode），以及相关的备注信息。",
+  "column_semantics": {
+    "唤醒源": "指触发系统唤醒的外部或内部信号、事件或条件。",
+    "唤醒/休眠方式": "指系统在接收到唤醒信号后所采取的具体唤醒模式，或者进入休眠状态的方式。",
+    "备注": "对唤醒源和唤醒/休眠方式的补充说明或特殊要求。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "唤醒源",
+      "type": "input_signal",
+      "description": "触发系统唤醒的信号或事件，例如CAN消息、按键输入、传感器信号等。"
+    },
+    {
+      "name": "唤醒/休眠方式",
+      "type": "output_signal",
+      "description": "系统根据唤醒源采取的具体唤醒模式或休眠策略，例如快速唤醒、低功耗休眠等。"
+    },
+    {
+      "name": "备注",
+      "type": "additional_info",
+      "description": "对唤醒源和唤醒/休眠方式的补充说明，可能包括限制条件、优先级或其他相关信息。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "唤醒/休眠方式",
+      "description": "系统响应唤醒源后执行的具体操作模式。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证系统在不同唤醒源触发下的唤醒/休眠行为是否符合设计规范，确保系统能够正确识别唤醒源并执行相应的唤醒或休眠模式。",
+  "uncertain_points": [
+    "具体唤醒源的定义未明确（如CAN消息ID、按键类型等）",
+    "唤醒/休眠方式的具体实现细节未详细说明"
+  ]
+}
+```

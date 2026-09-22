@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Vehicle Interior Light Function Allocation Specification",
+  "row_semantics": "Different vehicle usage modes and their associated validity states",
+  "column_semantics": "Input signal source (e.g., CAN, ICB/ZXD, LHZCU) and system/module names (e.g., VS, SST)",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "type": "mode",
+      "description": "Vehicle Mode, representing different operational states of the vehicle"
+    },
+    {
+      "name": "VehMdV",
+      "type": "state",
+      "description": "Vehicle Mode Validity, indicating whether the vehicle mode is valid or not"
+    },
+    {
+      "name": "UsrMd",
+      "type": "mode",
+      "description": "User Mode, representing different user-defined driving or usage scenarios"
+    },
+    {
+      "name": "UsrMdV",
+      "type": "state",
+      "description": "User Mode Validity, indicating whether the user mode is valid or not"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CAN",
+      "type": "input_signal",
+      "description": "Controller Area Network input signal"
+    },
+    {
+      "name": "ICB/ZXD",
+      "type": "input_signal",
+      "description": "Integrated Control Board / ZXD input signal"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Local Host Central Unit"
+    },
+    {
+      "name": "VS",
+      "type": "system_module",
+      "description": "Vehicle System"
+    },
+    {
+      "name": "SST",
+      "type": "system_module",
+      "description": "Safety System Technology"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the valid vehicle and user modes for interior lighting control, along with their validity states, across various input sources and system modules. It can be used to verify that the interior lighting system correctly interprets and responds to different vehicle and user modes as specified.",
+  "uncertain_points": []
+}
+```

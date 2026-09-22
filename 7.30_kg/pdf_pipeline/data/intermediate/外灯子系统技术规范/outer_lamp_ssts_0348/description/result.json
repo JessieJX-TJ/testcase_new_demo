@@ -1,0 +1,63 @@
+{
+  "table_type": "state_table",
+  "topic": "Reverse Light Control Logic",
+  "row_semantics": "Each row represents a distinct state or condition in the reverse light control process, including entry conditions, trigger events, actions taken, exit conditions, and fault handling.",
+  "column_semantics": "The table is structured into two main columns: the left column lists the different aspects of the state (e.g., Precondition, Trigger Condition, Execution Action, Exit Condition, Exception Handling), and the right column provides the detailed specifications for each aspect.",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RevsLghtFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "Enable parameter for reverse light feedback signal."
+    },
+    {
+      "name": "RevsLghtCtrlMdl",
+      "type": "controller",
+      "description": "Controller module responsible for sending reverse light control commands."
+    },
+    {
+      "name": "RevsLghtDrvMdl",
+      "type": "controller",
+      "description": "Driver module responsible for controlling the physical reverse lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RevsLghtFbkSOAEnPrm",
+      "value": "1",
+      "description": "Enable condition for the reverse light feedback signal."
+    },
+    {
+      "name": "RevsLghtCtrlMdl.RevsLghtCtrl_HW",
+      "value": "0",
+      "description": "Trigger condition when the reverse light control hardware command is set to 'Off'."
+    },
+    {
+      "name": "RevsLghtCtrlMdl.RevsLghtCtrl_HW",
+      "value": "1",
+      "description": "Exit condition when the reverse light control hardware command is set to 'On'."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RevsLamp_HSD",
+      "type": "output_signal",
+      "description": "Physical output signal for the reverse lamp."
+    },
+    {
+      "name": "RevsLghtDrvMdl.ReverseLightState",
+      "type": "output_signal",
+      "description": "Internal state signal indicating the reverse light status."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "action": "Continuous sending of ReverseLightState. ReverseLightSta = 0",
+      "description": "At least three frames must be sent to ReversLghtCtrlMdl."
+    }
+  ],
+  "engineering_interpretation": "This table defines the state machine logic for controlling the reverse lights in a vehicle, specifying how the system responds to commands from the ReversLghtCtrlMdl controller, including stopping the reverse lights when commanded off and ensuring they remain off until commanded on again.",
+  "uncertain_points": []
+}

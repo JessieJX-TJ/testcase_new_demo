@@ -1,0 +1,89 @@
+{
+  "table_type": "signal_table",
+  "topic": "Roof RH A Lamp (Roof Rear High Ambient Lamp) Control Specifications",
+  "row_semantics": "Each row represents a specific command or control signal for the roof rear high ambient lamp, detailing its input source, controller/module, and the corresponding command value.",
+  "column_semantics": {
+    "Input": "The source of the control signal (e.g., LIN bus).",
+    "LIN": "LIN communication interface.",
+    "RHZCU": "Right Hand Zone Control Unit.",
+    "RoofAmbtLampA_RH": "Roof Ambient Lamp Address Right Hand.",
+    "RHZCU_LIN5": "RHZCU LIN Interface 5.",
+    "内灯SSTS": "Interior Lighting Sub System Technical Specification."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "RoofRHALampOnOff_1",
+      "type": "function",
+      "description": "Control signal to turn the roof rear high ambient lamp on or off."
+    },
+    {
+      "name": "RoofRHALampColorCmd_1",
+      "type": "function",
+      "description": "Command signal to set the color of the roof rear high ambient lamp."
+    },
+    {
+      "name": "RoofRHALampBrtnsCmd_1",
+      "type": "function",
+      "description": "Command signal to adjust the brightness of the roof rear high ambient lamp."
+    },
+    {
+      "name": "RoofRHALampBrthngCmd_1",
+      "type": "function",
+      "description": "Command signal to control the breathing pattern of the roof rear high ambient lamp."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Hand Zone Control Unit responsible for processing commands related to the roof rear high ambient lamp."
+    },
+    {
+      "name": "RoofAmbtLampA_RH",
+      "type": "module",
+      "description": "Module addressing the right-hand side roof ambient lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Spd2:100ms",
+      "description": "Signal speed requirement of 100ms, indicating the timing constraint for signal updates."
+    },
+    {
+      "name": "Spd3: (预留0)",
+      "description": "Reserved speed parameter, currently set to 0."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RoofRHALampOnOff_1",
+      "type": "output_signal",
+      "description": "Output signal to control the on/off state of the lamp."
+    },
+    {
+      "name": "RoofRHALampColorCmd_1",
+      "type": "output_signal",
+      "description": "Output signal to set the color of the lamp."
+    },
+    {
+      "name": "RoofRHALampBrtnsCmd_1",
+      "type": "output_signal",
+      "description": "Output signal to adjust the brightness of the lamp."
+    },
+    {
+      "name": "RoofRHALampBrthngCmd_1",
+      "type": "output_signal",
+      "description": "Output signal to control the breathing pattern of the lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Spd2:100ms",
+      "value": "100ms",
+      "description": "The signal update rate must be at least every 100ms."
+    }
+  ],
+  "engineering_interpretation": "This table defines the technical specifications for controlling the roof rear high ambient lamp's on/off state, color, brightness, and breathing pattern. It is used to verify that the RHZCU correctly interprets and executes commands from the LIN bus for these functions, ensuring proper operation within the specified timing constraints.",
+  "uncertain_points": []
+}

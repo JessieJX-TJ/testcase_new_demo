@@ -1,0 +1,40 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外后雾灯控制功能需求",
+  "row_semantics": "表格按功能模块调用顺序列出外后雾灯的控制流程和接口交互，每行代表一个特定的系统或模块在特定条件下的行为。",
+  "column_semantics": "无明确列结构，内容为连续的功能描述和接口参数，主要分为方法（Req/Resp）和备注（Notes）两部分。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ExteriorLightSwitchProcess",
+    "RearFogLightFucProCtrl",
+    "LHZCU",
+    "ICB",
+    "HMI",
+    "RZCU",
+    "ICB_S32G_M"
+  ],
+  "core_conditions": [
+    "RearFogLightSwStatus.RearFogLightSwSta=0x1=ON",
+    "RearFogLightFucProStatus.RearFogLightFucProsSta=0x1=Only RearFogLight",
+    "RearFogLight.RearFogLightState.RearFogLightSta=0x1=ON",
+    "RearFogLight.RearFogLightErrorStatus.RearFogLightErrorSta=0x0=No Error"
+  ],
+  "core_outputs": [
+    "ControlSuccess",
+    "RearFogLight点亮",
+    "后雾灯指示灯显示",
+    "硬线输出"
+  ],
+  "core_faults": [
+    "RearFogLight.RearFogLightErrorSta=0x1=Error"
+  ],
+  "core_timing_constraints": [
+    "40ms",
+    "50ms"
+  ],
+  "engineering_interpretation": "该表格详细定义了外后雾灯的控制逻辑、各模块间的接口调用关系以及相关的重发机制和定时约束，可用于验证外后雾灯功能在不同系统状态下的正确性和鲁棒性。",
+  "uncertain_points": []
+}
+```

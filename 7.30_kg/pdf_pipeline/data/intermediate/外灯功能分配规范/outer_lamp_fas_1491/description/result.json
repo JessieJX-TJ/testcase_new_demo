@@ -1,0 +1,87 @@
+{
+  "table_type": "parameter_table",
+  "topic": "左侧转向灯关闭原因记录与解析",
+  "row_semantics": "表格按行列出不同的转向灯关闭原因代码及其对应的中文解释，每行代表一个特定的关闭事件。",
+  "column_semantics": "表格包含四列：第一列是功能模块名称（LDirLghtClsCtrlRsn），第二列是具体的关闭原因代码及其中文描述，第三列是存储信息的说明（如存储最近10次关闭原因），第四列是控制器/模块标识（LHZ CU）。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LDirLghtClsCtrlRsn",
+      "type": "function_name",
+      "description": "左侧转向灯关闭原因控制信号"
+    },
+    {
+      "name": "LHZ CU",
+      "type": "controller_module",
+      "description": "左侧转向灯控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightSwitchOff",
+      "type": "input_signal",
+      "description": "方向灯开关关闭"
+    },
+    {
+      "name": "HazardLightSwitchOff",
+      "type": "input_signal",
+      "description": "危险警示灯开关关闭"
+    },
+    {
+      "name": "VehicleCrashSignalNotActive",
+      "type": "system_state",
+      "description": "车辆碰撞信号未激活"
+    },
+    {
+      "name": "AirbagDeployedNotActive",
+      "type": "system_state",
+      "description": "安全气囊未部署"
+    },
+    {
+      "name": "ToffCrashNotActive",
+      "type": "system_state",
+      "description": "碰撞时间阈值未达到"
+    },
+    {
+      "name": "VehicleIntrusionPreventAlarmHazardLightNotRequested",
+      "type": "system_state",
+      "description": "车辆入侵预防警报危险灯未请求"
+    },
+    {
+      "name": "VCUBatteryThermalRunawayHazardLightNotRequested",
+      "type": "system_state",
+      "description": "VCU电池热失控危险灯未请求"
+    },
+    {
+      "name": "BMSBatteryThermalRunawayHazardLightNotRequested",
+      "type": "system_state",
+      "description": "BMS电池热失控危险灯未请求"
+    },
+    {
+      "name": "EmergencyBrakeHazardLightNotRequested",
+      "type": "system_state",
+      "description": "紧急制动危险灯未请求"
+    },
+    {
+      "name": "RCWWaringHazardLightNotRequested",
+      "type": "system_state",
+      "description": "RCW警告危险灯未请求"
+    },
+    {
+      "name": "IPDPilotHazardLightNotRequested",
+      "type": "system_state",
+      "description": "IPD辅助驾驶危险灯未请求"
+    },
+    {
+      "name": "ExteriorLockHazardLight",
+      "type": "system_state",
+      "description": "外部锁危险灯"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证左侧转向灯关闭原因记录的正确性，确保在不同条件下（如碰撞、电池热失控等）系统能够准确记录并存储转向灯关闭的原因代码。",
+  "uncertain_points": []
+}

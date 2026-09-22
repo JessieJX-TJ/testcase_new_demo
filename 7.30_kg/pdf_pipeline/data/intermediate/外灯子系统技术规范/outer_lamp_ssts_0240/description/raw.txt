@@ -1,0 +1,76 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "倒车灯短路故障检测与处理",
+  "row_semantics": "表格按功能流程顺序排列，描述了从前置条件到异常处理的完整逻辑。",
+  "column_semantics": "表格包含两列：左侧为阶段描述（如前置条件、触发条件等），右侧为该阶段的具体内容或动作。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RevsLghtFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "倒车灯反馈超时允许参数，用于控制是否启用倒车灯反馈监控。"
+    },
+    {
+      "name": "RevsLghtDrvMdl",
+      "type": "module",
+      "description": "倒车灯驱动模块，负责控制倒车灯的输出状态。"
+    },
+    {
+      "name": "RevsLghtCtrlMdl",
+      "type": "module",
+      "description": "倒车灯控制模块，负责发送倒车灯状态控制信号。"
+    },
+    {
+      "name": "DTC_B1045_12",
+      "type": "fault_code",
+      "description": "诊断故障代码，表示检测到倒车灯短路故障。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "RevsLghtFbkSOAEnPrm == 0 (Disable)",
+      "description": "倒车灯反馈超时允许参数被禁用，意味着不进行倒车灯反馈监控。"
+    },
+    {
+      "condition": "倒车灯处于输出状态",
+      "description": "系统当前正在输出倒车灯信号。"
+    },
+    {
+      "condition": "检测到倒车灯短路到电源",
+      "description": "系统检测到倒车灯电路存在短路至电源的情况。"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "description": "系统检测到之前存在的倒车灯短路故障已恢复正常。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "RevsLamp_LH_HSD",
+      "action": "停止驱动制动灯及高位制动灯",
+      "description": "在检测到短路后，系统停止驱动左侧高位制动灯（RevsLamp_LH_HSD）。"
+    },
+    {
+      "signal": "RevsLghtSts",
+      "action": "持续发送 RevsLghtSts = 0 (Off)",
+      "description": "系统持续发送倒车灯状态为关闭（Off）的信号，直至短路恢复。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTC_B1045_12",
+      "description": "当检测到倒车灯短路故障时，系统将置位此故障代码以记录问题。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在检测到短路后，系统需要持续发送至少三帧倒车灯状态为关闭的信号，以确保故障状态被正确识别和处理。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了倒车灯短路故障的检测、响应和恢复过程，可用于验证整车电子电器系统在倒车灯电路出现短路时的故障诊断与保护功能。",
+  "uncertain_points": []
+}
+```

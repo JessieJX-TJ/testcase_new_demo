@@ -1,0 +1,110 @@
+{
+  "table_type": "state_table",
+  "topic": "Vehicle Lock Status and Mode Management for Interior Lighting",
+  "row_semantics": "Each row represents a specific vehicle status or mode, detailing its associated lock states and operational modes.",
+  "column_semantics": "Columns represent different input sources (CAN, ZXD, LHZCU, VS SSTS) for the respective vehicle mode and usage mode signals.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehLckSts",
+      "type": "system_state",
+      "description": "Vehicle Lock Status, indicating the locking state of various vehicle components."
+    },
+    {
+      "name": "VehMd",
+      "type": "mode_name",
+      "description": "Vehicle Mode, representing the operational context of the vehicle (e.g., Normal, Crash, Factory)."
+    },
+    {
+      "name": "VehMdV",
+      "type": "input_signal",
+      "description": "Vehicle Mode Validity, indicating whether the vehicle mode is valid."
+    },
+    {
+      "name": "UsGmD",
+      "type": "usage_mode",
+      "description": "Usage Mode, likely related to user-specific settings or states (e.g., Sleep)."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehLckSts_1_Signal_Position_Unlocked",
+      "description": "Signal position unlocked."
+    },
+    {
+      "name": "VehLckSts_2_Interior_Locked",
+      "description": "Interior locked."
+    },
+    {
+      "name": "VehLckSts_3_Extérieur_Locked",
+      "description": "Exterior locked."
+    },
+    {
+      "name": "VehLckSts_4_Super_locked",
+      "description": "Super locked."
+    },
+    {
+      "name": "VehLckSts_5_Reserved",
+      "description": "Reserved status."
+    },
+    {
+      "name": "VehLckSts_6_Reserved",
+      "description": "Reserved status."
+    },
+    {
+      "name": "VehLckSts_7_Unknown",
+      "description": "Unknown status."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "VehMd_0_NORMAL",
+      "description": "Normal operation mode."
+    },
+    {
+      "name": "VehMd_1_CRASH",
+      "description": "Crash mode."
+    },
+    {
+      "name": "VehMd_2_FACTORY",
+      "description": "Factory mode."
+    },
+    {
+      "name": "VehMd_3_TRANSPORT",
+      "description": "Transport mode."
+    },
+    {
+      "name": "VehMd_4_DYNO",
+      "description": "Dyno (dynamometer) mode."
+    },
+    {
+      "name": "VehMd_5_EXHIBITION",
+      "description": "Exhibition mode."
+    },
+    {
+      "name": "VehMd_8_Engineering",
+      "description": "Engineering mode."
+    },
+    {
+      "name": "VehMd_9_Service",
+      "description": "Service mode."
+    },
+    {
+      "name": "VehMdV_0_Invalid",
+      "description": "Invalid vehicle mode."
+    },
+    {
+      "name": "VehMdV_1_Valid",
+      "description": "Valid vehicle mode."
+    },
+    {
+      "name": "UsGmD_0_Sleep",
+      "description": "Sleep usage mode."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the mapping between vehicle lock statuses and operational modes, which can be used to verify that the interior lighting system correctly responds to different vehicle states and modes as specified by various input sources.",
+  "uncertain_points": []
+}

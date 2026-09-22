@@ -1,0 +1,316 @@
+```json
+[
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "LHZCU判断FrontFogLightFucProsSta=0x3",
+    "sources": ["outer_lamp_fas_0431"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "FrontFogLightAndDippedLight ON || FrontFogLightAndSideLight ON",
+    "sources": ["outer_lamp_fas_0431"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开启且非闪烁",
+    "relation": "前提条件",
+    "tail": "LHZCU判断MainBeamLightFucProsSta=0x1",
+    "sources": ["outer_lamp_fas_0431"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开启且非闪烁",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtOnReq != 0x2",
+    "sources": ["outer_lamp_fas_0431"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开启且非闪烁",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtSwReq_2_Flash == 0x0",
+    "sources": ["outer_lamp_fas_0431"],
+    "conflict": false,
+    "conflict_note": "原'BrkLghtCtrl_HW: 0x1=BrkLghtCtrl_HW_1_On'等枚举值格式统一为'== 0xN'；'MainBeamLghtSwReq_2_Flash'语义为闪烁请求标志，需显式取反（=0）表示'非闪烁'；已标准化写法"
+  },
+  {
+    "head": "位置灯关闭请求",
+    "relation": "抑制条件",
+    "tail": "LHZCU判断外灯组合开关挡位为位置灯光档或近光灯档或近光灯Auto点亮",
+    "sources": ["outer_lamp_fas_0431"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯关闭请求",
+    "relation": "抑制条件",
+    "tail": "CombLightFucProStatus.CombLightFucProSta == 0x4",
+    "sources": ["outer_lamp_fas_0431"],
+    "conflict": false,
+    "conflict_note": "标准化枚举写法：'== 0x4'替代' =0x4=SidePositionAndDippedBeam ON'；语义等价，保留原始工程含义"
+  },
+  {
+    "head": "日间行车灯关闭",
+    "relation": "前提条件",
+    "tail": "LHZCU判断DayRunningLightFucProStatus.DayRunningLightFucProsSta == 0x0",
+    "sources": ["outer_lamp_fas_0431"],
+    "conflict": false,
+    "conflict_note": "标准化枚举写法：'== 0x0'替代' =0x0=OFF'"
+  },
+  {
+    "head": "位置灯控制请求",
+    "relation": "输入为",
+    "tail": "NumPltLampCtrlDelayPrm信号（延时60ms）",
+    "sources": ["outer_lamp_fas_0431"],
+    "conflict": false,
+    "conflict_note": "合并'输入为'与'超时约束'语义：二者均指向同一信号及延时参数，'超时约束'属实现细节，已融合进'输入为'描述中"
+  },
+  {
+    "head": "紧急制动灯闪烁",
+    "relation": "触发条件",
+    "tail": "收到紧急制动IBS请求：EmgcBrkA == 0x1",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": "标准化信号名与值写法；'EmgcBrkA_1_True'语义即'== 0x1'，已简化并统一"
+  },
+  {
+    "head": "紧急制动灯闪烁",
+    "relation": "前提条件",
+    "tail": "EmgcBrkAV == 0x0",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": "标准化枚举写法"
+  },
+  {
+    "head": "紧急制动灯闪烁",
+    "relation": "前提条件",
+    "tail": "UsgMd ∈ {0x3, 0x4, 0x5}",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": "合并UsgMd三行：'0x3=NormalDriving', '0x4=AIParking', '0x5=AIPilot' → 集合表达更准确、无歧义；避免冗余' || '连接符"
+  },
+  {
+    "head": "紧急制动灯闪烁",
+    "relation": "前提条件",
+    "tail": "VehMd ∈ {0x0, 0x1, 0x8, 0x9}",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": "合并VehMd四行：'0x0=Normal', '0x1=CRASH', '0x8=Engineering', '0x9=Service' → 集合表达；注意'0x5_EXHIBITIO'（展厅模式）在ADS条目中为排除项，此处未出现，不冲突"
+  },
+  {
+    "head": "紧急制动灯闪烁",
+    "relation": "前提条件",
+    "tail": "危险报警灯未开启：FLDircnLghtCtrl == 0x0 && FRDircnLghtCtrl == 0x0 && DircnLghtSts == 0x0",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": "标准化逻辑运算符（&&替代&），补全'=='，修复截断字段'FRDircnLghtC'→'FRDircnLghtCtrl'（依据上下文及命名惯例修正拼写）"
+  },
+  {
+    "head": "紧急制动灯闪烁",
+    "relation": "前提条件",
+    "tail": "车速高于50 km/h：VehSpdAvg > 50",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": "单位标准化为'km/h'，数值单位对齐；'VehSpdAvgV == 0x0'为有效性校验，与主条件强耦合，但属独立信号有效性前提，单独保留"
+  },
+  {
+    "head": "紧急制动灯闪烁",
+    "relation": "前提条件",
+    "tail": "VehSpdAvgV == 0x0",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "紧急制动灯闪烁",
+    "relation": "状态保持条件",
+    "tail": "触发后至少闪烁3个周期",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": "精炼表述，去除冗余'以上发送的闪烁周期在...'"
+  },
+  {
+    "head": "BrkLghtCtrl信号跳变",
+    "relation": "输出为",
+    "tail": "紧急制动灯控制模块（LHZCU）",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": "实体名标准化：'[紧急制动灯控制模块LHZCU]' → '紧急制动灯控制模块（LHZCU）'，符合术语规范"
+  },
+  {
+    "head": "BrkLghtCtrl信号跳变",
+    "relation": "依赖于",
+    "tail": "按3.33 Hz频率发送至ICB，控制紧急制动灯以先ON后OFF方式闪烁",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": "标准化单位'Hz'，明确控制逻辑'先ON后OFF'"
+  },
+  {
+    "head": "紧急制动灯点亮或熄灭",
+    "relation": "输入为",
+    "tail": "ICB接收LHZCU发送的BrkLghtCtrl信号（0x0=OFF, 0x1=ON）",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": "合并两行语义：原'输入为...BrkLghtCtrl=0x1=ON(或0x0=OFF)'与'输出为[RZCU]'属不同视角；此处聚焦ICB输入，故整合信号定义"
+  },
+  {
+    "head": "紧急制动灯点亮或熄灭",
+    "relation": "输出为",
+    "tail": "驱动处理模块（RZCU）",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": "实体名标准化"
+  },
+  {
+    "head": "制动灯点亮状态/故障状态反馈",
+    "relation": "输出到",
+    "tail": "制动灯开关控制模块（LHZCU）",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": "实体名标准化"
+  },
+  {
+    "head": "制动灯点亮状态/故障状态反馈",
+    "relation": "输出到",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0432"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EmgcBrkA 紧急制动请求",
+    "relation": "输出为",
+    "tail": "EmgcBrkAV ∈ {0x0, 0x1}",
+    "sources": ["outer_lamp_fas_0433"],
+    "conflict": true,
+    "conflict_note": "同一信号EmgcBrkAV被定义为既可输出Valid(0x0)又可输出Invalid(0x1)，属正常有效性状态枚举，非逻辑冲突；但'输出为'关系在此语境下易误解为单值输出。实际为信号定义：EmgcBrkAV是双态有效性标志。标记conflict=true以提示需在知识图谱中建模为'信号定义'而非'单次输出'，避免下游误用"
+  },
+  {
+    "head": "BrkLghtCtrl 制动灯控制",
+    "relation": "输出为",
+    "tail": "BrkLghtCtrl ∈ {0x0, 0x1}",
+    "sources": ["outer_lamp_fas_0433"],
+    "conflict": false,
+    "conflict_note": "合并两行，标准化为集合表达"
+  },
+  {
+    "head": "BrkLghtCtrl_HW 制动灯控制",
+    "relation": "输出为",
+    "tail": "BrkLghtCtrl_HW ∈ {0x0, 0x1}",
+    "sources": ["outer_lamp_fas_0433"],
+    "conflict": false,
+    "conflict_note": "合并两行，标准化为集合表达"
+  },
+  {
+    "head": "BrkLghtSts_HW 制动灯状态反馈",
+    "relation": "输出为",
+    "tail": "BrkLghtSts_HW ∈ {0x0, 0x1}",
+    "sources": ["outer_lamp_fas_0433"],
+    "conflict": false,
+    "conflict_note": "合并两行，标准化为集合表达"
+  },
+  {
+    "head": "BrkLghtSts 制动灯状态反馈",
+    "relation": "输出为",
+    "tail": "BrkLghtSts ∈ {0x0, 0x1}",
+    "sources": ["outer_lamp_fas_0433"],
+    "conflict": false,
+    "conflict_note": "合并两行，标准化为集合表达"
+  },
+  {
+    "head": "BrkLghtCtrl 制动灯控制",
+    "relation": "依赖于",
+    "tail": "CANFD, LHZCU, ICB, RZCU",
+    "sources": ["outer_lamp_fas_0433"],
+    "conflict": false,
+    "conflict_note": "合并四行依赖项为逗号分隔列表，符合工程文档习惯"
+  },
+  {
+    "head": "BrkLghtCtrl_HW 制动灯控制",
+    "relation": "依赖于",
+    "tail": "CANFD, ICB, RZCU",
+    "sources": ["outer_lamp_fas_0433"],
+    "conflict": false,
+    "conflict_note": "合并三行依赖项"
+  },
+  {
+    "head": "BrkLghtSts_HW 制动灯状态反馈",
+    "relation": "依赖于",
+    "tail": "CANFD, RZCU, LHZCU, 硬线状态",
+    "sources": ["outer_lamp_fas_0433"],
+    "conflict": false,
+    "conflict_note": "合并四行依赖项；'硬线状态'为必要物理层依赖，保留"
+  },
+  {
+    "head": "BrkLghtSts 制动灯状态反馈",
+    "relation": "依赖于",
+    "tail": "CANFD, ICB, LHZCU, 网络状态",
+    "sources": ["outer_lamp_fas_0433"],
+    "conflict": false,
+    "conflict_note": "合并四行依赖项；'网络状态'与'CANFD'存在层级关系，但作为独立依赖项保留（如网络管理模块）"
+  },
+  {
+    "head": "ADS灯关闭",
+    "relation": "前提条件",
+    "tail": "迎宾光毯灯处于点亮状态",
+    "sources": ["outer_lamp_fas_0434"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ADS灯关闭",
+    "relation": "前提条件",
+    "tail": "整车未处于展厅模式：VehMd != 0x5",
+    "sources": ["outer_lamp_fas_0434"],
+    "conflict": false,
+    "conflict_note": "标准化写法；'VehMd_5_EXHIBITIO'拼写不全，按标准命名'VehMd_5_EXHIBITION'推断，但此处仅需数值比较，故简写为'0x5'"
+  },
+  {
+    "head": "ADS灯关闭",
+    "relation": "触发条件",
+    "tail": "ADS使能开关关闭：ADSMarkerLampSet == 0x1",
+    "sources": ["outer_lamp_fas_0434"],
+    "conflict": false,
+    "conflict_note": "标准化写法；'Disabled'语义即'== 0x1'，已内化"
+  },
+  {
+    "head": "ADS灯关闭",
+    "relation": "触发条件",
+    "tail": "整车下电",
+    "sources": ["outer_lamp_fas_0434"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ADS灯关闭",
+    "relation": "触发条件",
+    "tail": "智驾系统未激活：MemParkingReserveIPD5 ∈ {0x0, 0x3}",
+    "sources": ["outer_lamp_fas_0434"],
+    "conflict": false,
+    "conflict_note": "标准化枚举集合表达；'HWPSysAct_ADS_0_NoActive'与'HWPSysAct_ADS_0_Reserved'对应0x0和0x3，语义明确"
+  },
+  {
+    "head": "VehMd信号",
+    "relation": "输入为",
+    "tail": "CAN/LIN/SOA服务/硬线",
+    "sources": ["outer_lamp_fas_0436"],
+    "conflict": false,
+    "conflict_note": "标准化表述：'CAN/LIN/SOA服务/硬线等' → 'CAN/LIN/SOA服务/硬线'（'等'字冗余）"
+  },
+  {
+    "head": "VehMd信号",
+    "relation": "输出为",
+    "tail": "VehMd ∈ {0x0}",
+    "sources": ["outer_lamp_fas_0436"],
+    "conflict": false,
+    "conflict_note": "仅给出0x0示例值，不能代表全集；但作为信号定义片段，保留其来源意图。注意与outer_lamp_fas_0432中VehMd多值使用不冲突——此处为单点定义，彼处为运行时判据"
+  }
+]
+```

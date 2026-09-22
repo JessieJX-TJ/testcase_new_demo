@@ -1,0 +1,121 @@
+[
+  {
+    "head": "HMI子系统显示后雾灯处于关闭状态",
+    "relation": "前提条件",
+    "tail": "反馈状态为0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "当反馈状态为0x0时",
+      "HMI子系统表征灯光开关处于Off档位"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0194",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "HMI子系统显示后雾灯处于开启状态",
+    "relation": "前提条件",
+    "tail": "反馈状态为0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "当反馈状态为0x1时",
+      "HMI子系统表征灯光开关处于后雾灯档位"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0194",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "转发LIN信号IFPRearFoglghtOnSta_1=0x0",
+    "relation": "前提条件",
+    "tail": "反馈状态为0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "当反馈状态为0x0时",
+      "转发LIN信号",
+      "IFPRearFoglghtOnSta_1=0x0"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0194",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "转发LIN信号IFPRearFoglghtOnSta_1=0x1",
+    "relation": "前提条件",
+    "tail": "反馈状态为0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "当反馈状态为0x1时",
+      "转发LIN信号",
+      "IFPRearFoglghtOnSta_1=0x1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0194",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "熄灭物理开关指示灯",
+    "relation": "前提条件",
+    "tail": "反馈状态为0x0",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "当反馈状态为0x0时",
+      "转发LIN信号",
+      "配置字exlRearFoglghtPrm=1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0194",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "熄灭物理开关指示灯",
+    "relation": "前提条件",
+    "tail": "配置字exlRearFoglghtPrm=1",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "当反馈状态为0x0时",
+      "转发LIN信号",
+      "配置字exlRearFoglghtPrm=1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0194",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "熄灭物理开关指示灯",
+    "relation": "前提条件",
+    "tail": "反馈状态为0x1",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "当反馈状态为0x1时",
+      "转发LIN信号",
+      "配置字exlRearFoglghtPrm=1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0194",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "后雾灯故障弹窗提醒",
+    "relation": "触发条件",
+    "tail": "RearFogLightAcFlts_1=True或ExteriorLightSwitchProcess.RearFogLightErrSta≠0x1或RearFogLightErrorSta≠0x1",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "后雾灯故障状态描述",
+      "RearFogLightAcFlts_1_True",
+      "ExteriorLightSwitchProcess.RearFogLightErrSta",
+      "RearFogLightErrorSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0194",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  }
+]

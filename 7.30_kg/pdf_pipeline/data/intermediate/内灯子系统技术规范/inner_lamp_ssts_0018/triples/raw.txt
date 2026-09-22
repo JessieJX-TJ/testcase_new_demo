@@ -1,0 +1,68 @@
+```json
+[
+  {
+    "head": "AmbtLghtRHRollingCtr_1 信号持续发送",
+    "relation": "前提条件",
+    "tail": "氛围灯同步信号 E=N*1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["AmbtLghtRHRollingCtr_1", "E=N*1", "0-255持续循环发送"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯呼吸停止",
+    "relation": "抑制条件",
+    "tail": "当该信号不再叠加时",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["AmbtLghtRHRollingCtr_1", "立即呼吸停止"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "UpIPALampOnOff_1 命令点亮 ON",
+    "relation": "触发条件",
+    "tail": "同时接收到非 0 值的颜色亮度指令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["UpIPALampOnOff_1", "0x1=UpIPALampOnOff_1_1_ON", "非 0 值的颜色亮度指令"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "UpIPALampColorCmd_1 指令值为 0",
+    "relation": "状态保持条件",
+    "tail": "保持颜色不变",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["UpIPALampColorCmd_1", "0x00=UpIPALampBrtnsCmd_1_0_No Request", "保持颜色不变"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "UpIPALampBrtnsCmd_1 指令值为 0",
+    "relation": "状态保持条件",
+    "tail": "保持亮度不变",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["UpIPALampBrtnsCmd_1", "0x00=UpIPALampBrtnsCmd_1_0_No Request", "保持亮度不变"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "UpIPALampBrthngCmd_1 命令 0x1_Rate1",
+    "relation": "输入为",
+    "tail": "UpIPALampBrthngCmd_1_1_Rate1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["UpIPALampBrthngCmd_1", "0x1=UpIPALampBrthngCmd_1_1_Rate1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "UpIPALampBrthngCmd_1 命令 0x2_Rate2",
+    "relation": "输入为",
+    "tail": "UpIPALampBrthngCmd_1_2_Rate2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["UpIPALampBrthngCmd_1", "0x2=UpIPALampBrthngCmd_1_2_Rate2"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "UpIPALampBrthngCmd_1 命令 0x3_Rate3",
+    "relation": "输入为",
+    "tail": "UpIPALampBrthngCmd_1_3_Rate3",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["UpIPALampBrthngCmd_1", "0x3=UpIPALampBrthngCmd_1_3_Rate3"],
+    "confidence_note": "high"
+  }
+]
+```

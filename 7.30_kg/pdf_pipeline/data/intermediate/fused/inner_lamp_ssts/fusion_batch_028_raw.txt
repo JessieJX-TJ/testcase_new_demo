@@ -1,0 +1,412 @@
+```json
+[
+  {
+    "head": "Interface Name",
+    "relation": "contains_subfunction",
+    "tail": "Direction",
+    "sources": ["inner_lamp_ssts_0303"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "contains_subfunction",
+    "tail": "Type",
+    "sources": ["inner_lamp_ssts_0303"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1",
+    "relation": "breathing_mode_rate13_dependency",
+    "tail": "Time (ms) and Brightness (100%)",
+    "sources": ["inner_lamp_ssts_0304"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1",
+    "relation": "breathing_mode_rate15_dependency",
+    "tail": "Time (ms) and Brightness (1000 → 100%)",
+    "sources": ["inner_lamp_ssts_0304"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1",
+    "relation": "breathing_mode_rate3_prerequisite",
+    "tail": "AmbiLampBrthngRate3holdoffPercent = 10%",
+    "sources": ["inner_lamp_ssts_0304"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1",
+    "relation": "breathing_mode_rate3_prerequisite",
+    "tail": "Hold-off delay = 100 ms (RoofLHALampBrthngCmd_1 × AmbiLampBrthngRate3holdoffPercent)",
+    "sources": ["inner_lamp_ssts_0304"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1",
+    "relation": "breathing_mode_rate3_timeout_constraint",
+    "tail": "Brightness transitions from 100% to 0% within 400 ms",
+    "sources": ["inner_lamp_ssts_0304"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1",
+    "relation": "breathing_mode_rate13_configuration",
+    "tail": "200 data points, 40 ms interval, total duration 8 s",
+    "sources": ["inner_lamp_ssts_0304"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1",
+    "relation": "breathing_mode_rate15_configuration",
+    "tail": "120 data points, 100 ms interval, total duration 12 s",
+    "sources": ["inner_lamp_ssts_0304"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DrvrDoorFlorLampCtrlCmd",
+    "relation": "input_to",
+    "tail": "Driver Laser Welcome Lamp Driver",
+    "sources": ["inner_lamp_ssts_0305"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver Laser Welcome Lamp Driver",
+    "relation": "output_hardware_signal",
+    "tail": "DoorFlorLamp_FL_HSD",
+    "sources": ["inner_lamp_ssts_0305"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DrvrDoorFlorLampCtrlCmd",
+    "relation": "depends_on_control_unit",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0305"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver Laser Welcome Lamp Driver",
+    "relation": "output_to_load",
+    "tail": "DoorFlorLamp_FL",
+    "sources": ["inner_lamp_ssts_0305"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DrvrDoorFlorLampCtrlCmd",
+    "relation": "input_from_control_unit",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0305"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver Laser Welcome Lamp Driver",
+    "relation": "hardware_connection_to",
+    "tail": "DoorFlorLamp_FL",
+    "sources": ["inner_lamp_ssts_0305"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp Head",
+    "relation": "periodic_breathing_activation_prerequisite",
+    "tail": "Breathing mode is Rate12–Rate15",
+    "sources": ["inner_lamp_ssts_0306", "inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Breathing Command Value = 0",
+    "relation": "immediate_stop_trigger",
+    "tail": "During breathing mode execution or mode switching",
+    "sources": ["inner_lamp_ssts_0306", "inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Breathing Mode Switching",
+    "relation": "immediate_stop_and_switch_trigger",
+    "tail": "Transition from one Rate to another (e.g., Rate3 → Rate13)",
+    "sources": ["inner_lamp_ssts_0306", "inner_lamp_ssts_0309", "inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR6LampFadeSpdCmd_1",
+    "relation": "input_source",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_ssts_0306"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp Head Color/Brightness Transition Time",
+    "relation": "depends_on",
+    "tail": "Fade speed codes Spd0–Spd3",
+    "sources": ["inner_lamp_ssts_0306", "inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampOnOff_1",
+    "relation": "input_source",
+    "tail": "LIN",
+    "sources": ["inner_lamp_ssts_0306"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampOnOff_1 = ON",
+    "relation": "prerequisite_for_activation",
+    "tail": "Non-zero color/brightness command must be received simultaneously",
+    "sources": ["inner_lamp_ssts_0306", "inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampColorCmd_1",
+    "relation": "input_source",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_ssts_0306"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp Head Color Switching",
+    "relation": "trigger_condition",
+    "tail": "DoorRL1LampColorCmd_1 ≠ 0 AND valid color coordinate value",
+    "sources": ["inner_lamp_ssts_0306"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampBrtnsCmd_1",
+    "relation": "input_source",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_ssts_0306"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp Head Brightness Adjustment",
+    "relation": "trigger_condition",
+    "tail": "DoorRL1LampBrtnsCmd_1 ≠ 0",
+    "sources": ["inner_lamp_ssts_0306"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehBacklightngLHCtrlCmd",
+    "relation": "backlight_activation_trigger",
+    "tail": "Value = 0x1 (Open)",
+    "sources": ["inner_lamp_ssts_0307"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehBacklightngLHCtrlCmd",
+    "relation": "backlight_deactivation_trigger",
+    "tail": "Value = 0x0 (Close)",
+    "sources": ["inner_lamp_ssts_0307"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU_BacklightLamp_HSD",
+    "relation": "input_source",
+    "tail": "Backlight Lamp Driver Module sends high-level drive signal",
+    "sources": ["inner_lamp_ssts_0307"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Floor Lamp Control Circuit Short to Battery",
+    "relation": "fault_detection_condition",
+    "tail": "Right Rear Laser Welcome Lamp Driver is active AND driver current < TBD A for 100 ms",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Floor Lamp Control Circuit Short to Ground",
+    "relation": "fault_detection_condition",
+    "tail": "Right Rear Laser Welcome Lamp Driver is active AND driver current > TBD A for 100 ms",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Floor Lamp Control Circuit Open Circuit",
+    "relation": "fault_detection_condition",
+    "tail": "Right Rear Laser Welcome Lamp Driver is active AND driver current < TBD A for 100 ms",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": true,
+    "conflict_note": "Same detection condition (low current < TBD A for 100 ms) used for both 'Short to Battery' and 'Open Circuit' — physically distinct fault types but identical electrical signature; requires clarification of threshold differentiation or diagnostic logic separation."
+  },
+  {
+    "head": "Rear Right Door Floor Lamp Control Circuit Short to Battery",
+    "relation": "prerequisite_for_diagnosis",
+    "tail": "Right Rear Laser Welcome Lamp Driver is active",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Floor Lamp Control Circuit Short to Ground",
+    "relation": "prerequisite_for_diagnosis",
+    "tail": "Right Rear Laser Welcome Lamp Driver is active",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Floor Lamp Control Circuit Open Circuit",
+    "relation": "prerequisite_for_diagnosis",
+    "tail": "Right Rear Laser Welcome Lamp Driver is active",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Floor Lamp Control Circuit Short to Battery",
+    "relation": "timeout_constraint",
+    "tail": "Driver current < TBD A for 100 ms",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Floor Lamp Control Circuit Short to Ground",
+    "relation": "timeout_constraint",
+    "tail": "Driver current > TBD A for 100 ms",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Floor Lamp Control Circuit Open Circuit",
+    "relation": "timeout_constraint",
+    "tail": "Driver current < TBD A for 100 ms",
+    "sources": ["inner_lamp_ssts_0308"],
+    "conflict": true,
+    "conflict_note": "Identical timeout constraint as 'Short to Battery'; ambiguous whether same threshold applies or if Open Circuit should use stricter/alternate criteria. Conflicts with fault discrimination intent."
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "prerequisite_for_breathing_execution",
+    "tail": "Receives CnsoLHALampBrthngCmd_1 code command",
+    "sources": ["inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp Head Periodic Breathing",
+    "relation": "depends_on",
+    "tail": "CnsoLHALampBrthngCmd_1 code value and corresponding breathing period mapping",
+    "sources": ["inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHALampFadeSpdCmd_1",
+    "relation": "input_source",
+    "tail": "CnsoLHALampFadeSpdCmd_1 code value",
+    "sources": ["inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Default Fade Speed Spd0",
+    "relation": "state_retention_condition",
+    "tail": "When no explicit Spd code is specified",
+    "sources": ["inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHBLampOn_Off_1",
+    "relation": "prerequisite_for_ambient_activation",
+    "tail": "Value = 0x0 (CnsoLHBLampOnOff_1_0_OFF)",
+    "sources": ["inner_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampBrthngCmd_1",
+    "relation": "breathing_activation_trigger",
+    "tail": "Code value ∈ {Rate1, ..., Rate15} OR Code ≠ Rate0",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampBrthngCmd_1",
+    "relation": "breathing_stop_trigger",
+    "tail": "Command value = 0",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampBrthngCmd_1",
+    "relation": "breathing_mode_switch_trigger",
+    "tail": "Mode transition between different Rate values",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampFadeSpdCmd_1",
+    "relation": "input_source",
+    "tail": "Spd0–Spd3",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR3LampOnOff_1",
+    "relation": "ambient_lamp_activation_trigger",
+    "tail": "Value = 0x1 (DoorRR3LampOnOff_1_1_ON)",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR3LampOnOff_1",
+    "relation": "ambient_lamp_deactivation_trigger",
+    "tail": "Value = 0x0 (DoorRR3LampOnOff_1_0_OFF)",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampBrthngCmd_1",
+    "relation": "breathing_mode_persistence_condition",
+    "tail": "Continuous periodic flashing within configured breathing cycle",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampFadeSpdCmd_1",
+    "relation": "fade_speed_timeout_constraint",
+    "tail": "Spd0 = 2000 ms, Spd1 = 300 ms, Spd2 = 100 ms",
+    "sources": ["inner_lamp_ssts_0310"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

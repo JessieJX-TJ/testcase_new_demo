@@ -1,0 +1,54 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯控制与碰撞模式相关配置参数",
+  "row_semantics": "每一行代表一个独立的配置参数，描述其功能、可选参数范围及默认值。",
+  "column_semantics": {
+    "配置字名称": "参数的唯一标识符或名称。",
+    "功能": "该参数的具体作用或控制目标。",
+    "参数": "该参数可设置的选项列表及其对应的数值含义。",
+    "默认值": "系统启动或未配置时该参数的预设值。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DircnLghtCtrlDelayPrm",
+      "type": "parameter",
+      "description": "转向灯控制延时参数，用于设置转向灯闪烁的间隔时间。"
+    },
+    {
+      "name": "ExtrLghtCtrlCmmntnTyp",
+      "type": "parameter",
+      "description": "外灯控制通讯类型参数，定义外灯控制信号的传输协议（如SOA或CAN）。"
+    },
+    {
+      "name": "ExtrLghtStsCmmntnTyp",
+      "type": "parameter",
+      "description": "外灯状态通讯类型参数，定义外灯状态反馈信号的传输协议。"
+    },
+    {
+      "name": "CrashHzrdTi",
+      "type": "parameter",
+      "description": "碰撞模式允许手动关闭延迟时间参数，设置在碰撞模式下手动关闭外灯的延迟时间。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "parameter": "DircnLghtCtrlDelayPrm",
+      "description": "转向灯控制延时，可设置为0ms至160ms之间的任意值，步长20ms。",
+      "unit": "ms"
+    },
+    {
+      "parameter": "CrashHzrdTi",
+      "description": "碰撞模式允许手动关闭延迟时间，可设置为0至15秒之间的任意值，单位为秒。",
+      "unit": "s"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了车辆外灯控制系统和碰撞模式相关的关键配置参数，可用于验证系统在不同延时、通讯协议和延迟时间下的行为是否符合设计规范。",
+  "uncertain_points": []
+}
+```

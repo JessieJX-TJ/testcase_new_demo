@@ -1,0 +1,40 @@
+{
+  "table_type": "state_table",
+  "topic": "Reading Lamp Work Status Signal",
+  "row_semantics": "Each row represents a specific state of the reading lamp, identified by its status code.",
+  "column_semantics": {
+    "阅读灯工作状态信号号": "The signal identifier for the reading lamp's operational status.",
+    "状态位": "The hexadecimal value representing the current state of the reading lamp.",
+    "判定条件说明": "The condition that triggers or defines the state, including input requests and lamp behavior.",
+    "备注": "Additional notes or comments related to the state."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampLHSts",
+      "type": "signal",
+      "description": "Signal indicating the status of the third-row map lamp on the left-hand side."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Brightness Level Request",
+      "description": "Received request for a specific brightness level (e.g., Level_1, Level_2, up to Level_30)."
+    },
+    {
+      "name": "Lamp Driving State",
+      "description": "Whether the reading lamp is in a driving (active) state or not."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Reading Lamp Status",
+      "description": "The current operational status of the reading lamp, represented by a hexadecimal code (e.g., 0x0=OFF, 0x1=Level_1)."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the various states of the third-row map lamp based on received brightness level requests and its current driving state. It can be used to verify that the reading lamp correctly transitions between states (e.g., OFF, Level_1, Level_2, etc.) in response to valid input requests.",
+  "uncertain_points": []
+}

@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"fault_table\",\n  \"topic\": \"诊断DTC需求清单\",\n  \"row_semantics\": \"故障记录条目，按序号排列，描述特定的故障现象及其触发条件。\",\n  \"column_semantics\": {\n    \"序号\": \"故障记录的唯一编号，用于标识和追踪。\",\n    \"DTC显示码\": \"诊断故障代码（Diagnostic Trouble Code）的显示编码，当前为TBD（To Be Determined）。\",\n    \"故障描述\": \"对故障现象的详细描述，本例中为“乘客侧脚部照明控制电路短路至电池”。\",\n    \"故障置位条件\": \"触发并记录该DTC故障的条件，包括激活状态和电流阈值及持续时间。\",\n    \"故障恢复条件\": \"清除或恢复该DTC故障所需的条件，本例中为电流有效值大于(TBD)A且持续100ms。\",\n  },\n  \"has_merged_cells\": true,\n  \"header_levels\": 2,\n  \"core_entities\": [\n    {\n      \"name\": \"The Passenger Footwell Lamp Control Circuit\",\n      \"type\": \"功能名\",\n      \"description\": \"乘客侧脚部照明灯的控制电路，是故障描述中的核心对象。\"\n    }\n  ],\n  \"core_conditions\": [\n    {\n      \"condition\": \"副驾侧照脚灯驱动激活状态\",\n      \"description\": \"副驾驶侧脚部照明灯的驱动电路处于激活状态，是故障置位的第一个条件。\",\n      \"uncertain_points\": []\n    },\n    {\n      \"condition\": \"驱动电流小于阈值 (TBD) A\",\n      \"description\": \"驱动该照明灯的电流低于预设阈值，具体数值待定。\",\n      \"uncertain_points\": [\n        \"阈值的具体数值未明确给出，标记为(TBD)A。\"\n      ]\n    },\n    {\n      \"condition\": \"持续100ms\",\n      \"description\": \"上述电流低于阈值的状态需要持续至少100毫秒，以确认故障发生。\",\n      \"uncertain_points\": []\n    }\n  ],\n  \"core_outputs\": [],\n  \"core_faults\": [\n    {\n      \"fault_code\": \"TBD\",\n      \"description\": \"当副驾驶侧脚部照明灯控制电路出现短路至电池的情况，并满足特定的电流和时间条件时，将触发此DTC故障。\",\n      \"uncertain_points\": [\n        \"具体的DTC显示码尚未确定，标记为TBD。\"\n      ]\n    }\n  ],\n  \"core_timing_constraints\": [\n    {\n      \"constraint\": \"持续100ms\",\n      \"description\": \"故障置位条件中提到的电流低于阈值的状态必须持续至少100毫秒。\",\n      \"uncertain_points\": []\n    }\n  ],\n  \"engineering_interpretation\": \"该表格定义了针对乘客侧脚部照明灯控制电路短路至电池故障的诊断需求，包括故障的触发条件（如电流阈值和持续时间）以及清除条件，可用于验证车辆电子系统在检测和记录此类电气故障时的行为是否符合设计规范。\",\n  \"uncertain_points\": [\n    \"DTC显示码(TBD)：具体编码尚未确定。\",\n    \"电流阈值(TBD)A：具体的电流阈值大小未明确给出。\"\n  ]\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

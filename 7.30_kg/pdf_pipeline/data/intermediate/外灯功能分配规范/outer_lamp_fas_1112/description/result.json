@@ -1,0 +1,120 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的功能分配规范",
+  "row_semantics": "表格的每一行代表一个具体的控制逻辑或状态转换规则，描述了在特定条件下，外灯系统如何响应输入信号并产生输出。",
+  "column_semantics": "由于是逻辑表，没有传统意义上的列。每行内容描述了一个独立的控制逻辑，包含条件、操作和结果。",
+  "has_merged_cells": false,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Z-ONE-3.0 Platform",
+      "type": "platform",
+      "description": "车辆电子电气架构平台"
+    },
+    {
+      "name": "FAS_IBD05",
+      "type": "module",
+      "description": "外灯功能分配规范模块"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "外灯组合服务控制器 (Lighting Hazard Control Unit)"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "集成控制盒 (Integrated Control Box)"
+    },
+    {
+      "name": "SDM",
+      "type": "controller",
+      "description": "安全气囊控制模块 (Supplemental Restraint System Module)"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "危险报警灯开关状态",
+      "type": "input_signal",
+      "description": "危险报警灯开关的开启/关闭状态"
+    },
+    {
+      "name": "转向灯驱动使能状态",
+      "type": "input_signal",
+      "description": "转向灯驱动是否使能的状态"
+    },
+    {
+      "name": "VehIntrusionPrevnHzrdLmpReq",
+      "type": "input_signal",
+      "description": "车辆入侵预警请求信号"
+    },
+    {
+      "name": "VehHrzdMdSts",
+      "type": "input_signal",
+      "description": "车辆危险模式状态"
+    },
+    {
+      "name": "EDRDirnIndLampSwSts",
+      "type": "input_signal",
+      "description": "紧急方向灯开关状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtFltsts_HW",
+      "type": "output_signal",
+      "description": "左前转向灯硬件闪烁状态"
+    },
+    {
+      "name": "FRDircnLghtFltsts_HW",
+      "type": "output_signal",
+      "description": "右前转向灯硬件闪烁状态"
+    },
+    {
+      "name": "RLDircnLghtFltsts_HW",
+      "type": "output_signal",
+      "description": "左后转向灯硬件闪烁状态"
+    },
+    {
+      "name": "RRDircnLghtFltsts_HW",
+      "type": "output_signal",
+      "description": "右后转向灯硬件闪烁状态"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "type": "output_signal",
+      "description": "方向灯闪烁状态"
+    },
+    {
+      "name": "DircnLghtCtrl",
+      "type": "output_signal",
+      "description": "方向灯控制信号"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Both_Side_Direction_Light_Flash",
+      "type": "fault_status",
+      "description": "双侧方向灯同时闪烁故障"
+    },
+    {
+      "name": "Direction_Light_Flash",
+      "type": "fault_status",
+      "description": "方向灯闪烁故障"
+    },
+    {
+      "name": "No_Error",
+      "type": "fault_status",
+      "description": "无错误状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "60ms延时",
+      "type": "timing_constraint",
+      "description": "ICB根据LHZCU控制输入，延时60ms将控制信号分发至LHZCU、RHZCU和RZCU"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了外灯系统（特别是危险报警灯和转向灯）在不同输入条件下的控制逻辑和状态转换规则，可用于验证外灯系统的功能正确性、故障处理逻辑以及与相关控制器（如LHZCU、ICB、SDM）之间的交互行为。",
+  "uncertain_points": []
+}

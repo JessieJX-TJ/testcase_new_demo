@@ -1,0 +1,87 @@
+{
+  "table_type": "logic_table",
+  "topic": "远光灯开启逻辑",
+  "row_semantics": "描述触发远光灯开启的条件和动作",
+  "column_semantics": {
+    "0": "场景描述",
+    "1": "位置条件"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Light Hazard Control Unit，负责处理灯光相关控制逻辑"
+    },
+    {
+      "name": "UsrMd",
+      "type": "mode",
+      "description": "用户模式，包括睡眠、待机、OTA等状态"
+    },
+    {
+      "name": "VehMd",
+      "type": "mode",
+      "description": "车辆模式，包括运输、展览等状态"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外部灯光开关处理模块"
+    },
+    {
+      "name": "CombLghtFucProSta",
+      "type": "status",
+      "description": "组合灯光功能状态"
+    },
+    {
+      "name": "MainBeamLghtOnReq",
+      "type": "signal",
+      "direction": "output",
+      "description": "主光灯开启请求信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsrMd != UsrMd_0_Sleep && UsrMd != UsrMd_1_Standby && UsrMd != UsrMd_6_XOTA",
+      "description": "用户模式不处于睡眠、待机或OTA状态"
+    },
+    {
+      "condition": "UsrMdV = Valid",
+      "description": "用户模式值有效"
+    },
+    {
+      "condition": "VehMd != VehMd_3_TRANSPORT && VehMd != VehMd_5_EXHIBITION",
+      "description": "车辆模式不处于运输或展览状态"
+    },
+    {
+      "condition": "VehMdV = Valid",
+      "description": "车辆模式值有效"
+    },
+    {
+      "condition": "LHZCU 已判断开启近光灯",
+      "subconditions": [
+        {
+          "condition": "ExteriorLightSwitchProcess.CombLghtFucProSta.CombLghtFucProSta = 0x4",
+          "description": "组合灯光功能状态为侧位且大灯下倾"
+        },
+        {
+          "condition": "0x2 = Only DippedBeamLight ON",
+          "description": "仅近光灯开启"
+        }
+      ],
+      "description": "LHZCU 判断近光灯已开启"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "MainBeamLghtOnReq",
+      "value": "MainBeamLghtOnReq_1_On",
+      "description": "发出主光灯开启请求"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定条件下（如用户和车辆模式、近光灯状态）触发远光灯开启的逻辑，可用于验证远光灯控制模块在不同场景下的正确行为。",
+  "uncertain_points": []
+}

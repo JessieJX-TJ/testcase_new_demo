@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "RevsLamp_HSD 停止输出",
+    "relation": "执行动作",
+    "tail": "RevsLghtFbkSOAEnPrm == 1 (Enable) 且 收到 ReversLghtCtrlMdl 发送的 RevsLghtCtrl_HW == 0 (Off)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": ["RevsLghtFbkSOAEnPrm", "RevsLghtCtrlMdl.RevsLghtCtrl_HW", "RevsLamp_HSD"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RevsLghtDrvMdl 持续发送 ReverseLightState. ReverseLightSta = 0",
+    "relation": "执行动作",
+    "tail": "RevsLghtFbkSOAEnPrm == 1 (Enable) 且 收到 ReversLghtCtrlMdl 发送的 RevsLghtCtrl_HW == 0 (Off)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": ["RevsLghtFbkSOAEnPrm", "RevsLghtCtrlMdl.RevsLghtCtrl_HW", "RevsLghtDrvMdl.ReverseLightState"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RevsLghtDrvMdl 至少发送三帧 ReverseLightState. ReverseLightSta = 0",
+    "relation": "状态保持条件",
+    "tail": "RevsLghtFbkSOAEnPrm == 1 (Enable) 且 收到 ReversLghtCtrlMdl 发送的 RevsLghtCtrl_HW == 0 (Off)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": ["RevsLghtFbkSOAEnPrm", "RevsLghtCtrlMdl.RevsLghtCtrl_HW", "RevsLghtDrvMdl.ReverseLightState"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统退出 Reverse Light 控制逻辑",
+    "relation": "退出条件",
+    "tail": "收到 ReversLghtCtrlMdl 发送的 RevsLghtCtrl_HW == 1 (On)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": ["RevsLghtCtrlMdl.RevsLghtCtrl_HW"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RevsLghtFbkSOAEnPrm == 1 (Enable)",
+    "relation": "前提条件",
+    "tail": "Reverse Light 控制逻辑生效",
+    "triple_type": "IF-THEN",
+    "evidence_terms": ["RevsLghtFbkSOAEnPrm"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RevsLghtCtrlMdl.RevsLghtCtrl_HW == 0 (Off)",
+    "relation": "触发条件",
+    "tail": "Reverse Light 控制逻辑进入倒车灯停止和持续发送 Off 状态",
+    "triple_type": "IF-THEN",
+    "evidence_terms": ["RevsLghtCtrlMdl.RevsLghtCtrl_HW"],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,89 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "DoorFR6LampFadeSpdCmd_1, DoorRL1LampOnOff_1, DoorRL1LampColorCmd_1, DoorRL1LampBrtnsCmd_1",
+  "row_semantics": "Each row represents a specific command or control signal for the rear left door ambient lamp, detailing its parameters, input sources, and associated behavior.",
+  "column_semantics": {
+    "Input": "The source of the command signal (e.g., LIN bus, RHZCU, DoorAmbtLampF_F_R).",
+    "LIN": "Signal from the LIN bus.",
+    "RHZCU": "Signal from the Rear Left Zone Control Unit.",
+    "DoorAmbtLampA_RL": "Signal related to the ambient lamp on the rear left door.",
+    "RHZCU_LIN4": "Signal from RHZCU via LIN4.",
+    "内灯SSTS": "Internal light status signal."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorFR6LampFadeSpdCmd_1",
+      "type": "command",
+      "description": "Controls the fade speed of the front right door ambient lamp."
+    },
+    {
+      "name": "DoorRL1LampOnOff_1",
+      "type": "command",
+      "description": "Controls the on/off state of the rear left door ambient lamp."
+    },
+    {
+      "name": "DoorRL1LampColorCmd_1",
+      "type": "command",
+      "description": "Controls the color of the rear left door ambient lamp."
+    },
+    {
+      "name": "DoorRL1LampBrtnsCmd_1",
+      "type": "command",
+      "description": "Controls the brightness of the rear left door ambient lamp."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Rear Left Zone Control Unit, responsible for processing commands and controlling the ambient lamp."
+    },
+    {
+      "name": "DoorAmbtLampF_F_R",
+      "type": "signal",
+      "description": "Signal related to the ambient lamp on the front/rear door."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Rate12-15",
+      "description": "Defines different breathing modes with specific time intervals (7s, 8s, 10s, 12s) for the ambient lamp."
+    },
+    {
+      "name": "Fade Speed",
+      "description": "Specifies the speed at which the lamp fades between states (0x0 to 0x3, corresponding to 2000ms, 300ms, 100ms, and reserved)."
+    },
+    {
+      "name": "Color Command",
+      "description": "Commands for setting the lamp color (0x00 for no request, 0x01-0xFF for specific colors)."
+    },
+    {
+      "name": "Brightness Command",
+      "description": "Commands for adjusting the lamp brightness (0x00 for no request, 0x65-0xFF for reserved values)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorAmbtLampA_RL",
+      "description": "Output signal controlling the ambient lamp on the rear left door."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Fade Speed Timing",
+      "description": "Time required for the lamp to transition between states when changing color/亮度, with default speed at 2000ms."
+    },
+    {
+      "name": "Breathing Mode Timing",
+      "description": "Defined intervals for each breathing mode (7s, 8s, 10s, 12s)."
+    }
+  ],
+  "engineering_interpretation": "This table defines the command signals and their parameters for controlling the ambient lighting functions on the vehicle's doors, specifically focusing on the rear left door. It details how the system handles fading speeds, on/off states, color changes, and brightness adjustments for the ambient lamps.",
+  "uncertain_points": [
+    "The exact mapping of color codes (0x01-0xFF) to specific RGB values is not provided.",
+    "The reserved range for brightness (0x65-0xFF) has unclear functionality."
+  ]
+}
+```

@@ -1,0 +1,53 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Exterior Light Switch Process Direction Light Switch Status",
+  "row_semantics": "The table defines the status codes for the direction light switch, including their meanings and associated states.",
+  "column_semantics": {
+    "1": "Function/Process Name (ExteriorLightSwitchProcess.DirectionLightSwitchStatus)",
+    "2": "Consumption Type (e.g., SOA, LHZCU, ICB)",
+    "3": "Description of the service interface and parameter name",
+    "4": "Detailed status definitions"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightSwitchStatus",
+      "type": "function",
+      "description": "Service interface to query the status of the direction light switch."
+    },
+    {
+      "name": "DirectionLightSwSts",
+      "type": "parameter",
+      "description": "Parameter used to return the status of the direction light switch."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DirectionLightSwSts",
+      "type": "output_signal",
+      "description": "Returns the current status of the direction light switch as a hexadecimal value.",
+      "values": {
+        "0x0": "off",
+        "0x1": "Left_First_gear_On",
+        "0x2": "Left_Second_gear_On",
+        "0x3": "Right_First_gear_On",
+        "0x4": "Right_Second_gear_On",
+        "0x5": "Unknown"
+      }
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Unknown",
+      "type": "fault_status",
+      "description": "Indicates an undefined or unexpected state of the direction light switch."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the expected behavior and status codes for the direction light switch within the vehicle's exterior lighting system. It is used to verify that the system correctly reports the switch's state under various conditions.",
+  "uncertain_points": []
+}
+```

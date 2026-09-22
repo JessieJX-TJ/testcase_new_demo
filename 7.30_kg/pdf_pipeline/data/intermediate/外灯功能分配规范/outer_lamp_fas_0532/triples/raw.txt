@@ -1,0 +1,89 @@
+```json
+[
+  {
+    "head": "前雾灯请求重发",
+    "relation": "前提条件",
+    "tail": "未收到反馈且请求状态未变",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.ControlFrontFogLight.FrontFogLightResp",
+      "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl.FrontFogLghtFucProCtrlResp",
+      "FrontFogLight.FrontFogLightControl.FrontFogLightCtrResp",
+      "ExteriorLightControlSystem.ControlFrontFogLight.FrontFogLightReq",
+      "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl.FrontFogLghtFucProCtrlReq",
+      "FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯请求重发",
+    "relation": "超时约束",
+    "tail": "超时2s未收到反馈",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "2s"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯请求重发",
+    "relation": "重发周期",
+    "tail": "<=50ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "50ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯请求重发",
+    "relation": "重发次数",
+    "tail": "最多3次",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "3次"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "停止发送",
+    "relation": "前提条件",
+    "tail": "尝试重发3次后仍未成功",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "3次"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "前提条件",
+    "tail": "未收到状态反馈",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "500ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "超时约束",
+    "tail": "500ms内未收到状态反馈",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "500ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "状态保持条件",
+    "tail": "左侧和右侧需保持同步点亮，两侧最大延时不能超过40ms",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,62 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯个性化数据通信接口规范",
+  "row_semantics": "描述了特定接口的详细参数和通信特性，包括接口名称、方向、类型、发送方/提供方、接收方/消费方、路径及接口来源。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，需与逻辑框图内容一致。",
+    "Direction": "接口的数据流向，如输入/输出。",
+    "Type": "接口的类型，如CAN/LIN/SOA服务或硬线等。",
+    "Sender/Provider": "信号的发送方或服务提供方，如信号发送节点或SoA服务提供方。",
+    "Receiver/Consumer": "信号的接收方或服务消费方，如信号接收节点或SoA服务消费方。",
+    "Channel": "通信路径，如指定信号通道。",
+    "Interface Source": "接口来源，如指定信号来源。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "PersonalizationData",
+      "type": "功能名",
+      "description": "组合服务，用于读取灯个性化服务和亮度，支持HMI或智能场景调用，实现个性化记忆亮度。"
+    },
+    {
+      "name": "MapLampSet",
+      "type": "控制器/模块名",
+      "description": "负责处理灯个性化设置的模块，通过MapLampSetInfo参数进行亮度等级配置。"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "作为服务提供方，可能涉及内部控制盒（Integrated Control Box）的功能。"
+    },
+    {
+      "name": "LHZCU/ICB",
+      "type": "控制器/模块名",
+      "description": "作为服务消费方，可能涉及本地区域控制单元（Local Zone Control Unit）或集成控制盒的功能。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "MapLampSetInfo",
+      "type": "输出信号",
+      "description": "包含多个亮度等级参数，如Level1至Level30，用于设置灯的亮度。",
+      "values": [
+        "0x1=Level1",
+        "0xA=Level10（柔和）",
+        "0x14=Level20（标准）",
+        "0X1E=Level30（明亮）"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯个性化数据通信接口的详细参数，主要用于验证MapLampSet模块在不同亮度等级下的正确设置和通信路径的有效性。",
+  "uncertain_points": [
+    "具体逻辑框图内容未明确说明。",
+    "接口来源的具体细节未详细展开。",
+    "未明确指出所有可能的故障状态和定时约束。"
+  ]
+}
+```

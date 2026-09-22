@@ -1,0 +1,133 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "ExtrLightStsCmmntnTyp=0x0=SOA (External Light Status Communication Type 0x0 = Start of Activation)",
+  "row_semantics": "Each row represents a specific trigger condition and its corresponding execution action for the external light system activation logic.",
+  "column_semantics": {
+    "Column1": "Trigger Condition Description",
+    "Column2": "Execution Action Description"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExtrLightStsCmmntnTyp",
+      "type": "parameter",
+      "description": "Communication type for external light status, set to 0x0 for SOA."
+    },
+    {
+      "name": "UsrMd",
+      "type": "mode",
+      "description": "User mode, indicating different operational states such as Sleep, Standby, Factory."
+    },
+    {
+      "name": "VehMd",
+      "type": "mode",
+      "description": "Vehicle mode, indicating modes like Factory or normal operation."
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "process",
+      "description": "Process controlling exterior lights."
+    },
+    {
+      "name": "CombLghtFucProStatus",
+      "type": "status",
+      "description": "Combined light function process status."
+    },
+    {
+      "name": "AutoSidePosnLghtONByRrFogLghtSts",
+      "type": "status",
+      "description": "Automatic side position light on by rear fog light status."
+    },
+    {
+      "name": "vehRlsType",
+      "type": "parameter",
+      "description": "Vehicle release type, possibly related to vehicle state or configuration."
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Control Box, responsible for controlling various vehicle systems including lights."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Zone Control Unit, interface for position light control."
+    },
+    {
+      "name": "HMI",
+      "type": "interface",
+      "description": "Human-Machine Interface, likely for user interaction with the system."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsrMd = 0x0 && UsrMd_0_Sleep; && UsrMdV = Valid",
+      "description": "User mode is in sleep state and valid."
+    },
+    {
+      "condition": "UsrMd = 0x1 && UsrMd_1_Standby && UsrMdV = Valid",
+      "description": "User mode is in standby state and valid."
+    },
+    {
+      "condition": "Position lamp turns on in factory mode for 2 minutes: a&&b&&c",
+      "description": "Conditions include: vehicle mode in factory, exterior light switch process, and continuous for 2 minutes."
+    },
+    {
+      "condition": "Position lamp点亮状态为后雾灯请求自动灯光的位置灯开启，且当前状态为白天，判断后雾灯即：AutoSidePosnLghtONByRrFogLghtSts == 0x1 = True",
+      "description": "Position lamp is on due to rear fog light request for automatic lighting, and current state is daytime."
+    },
+    {
+      "condition": "AutoLightOnReq_1 = 0x0 && AutoLightOnReq_0 = False && vehRlsType == 0",
+      "description": "Automatic light on request for level 1 is off, and vehicle release type is 0."
+    },
+    {
+      "condition": "AutoLightOnReq_ICB = 0x0 && AutoLightOnReq_ICB_0 = False && vehRlsType == 1",
+      "description": "Automatic light on request from ICB is off, and vehicle release type is 1."
+    },
+    {
+      "condition": "ExteriorLightSwitchProcess.RearFogLghtFucProStatus = 0x0 = OFF",
+      "description": "Rear fog light function process status is off."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "[Position Lamp Control Module LHZCU] Interface Response",
+      "description": "Response from the position lamp control module after receiving commands."
+    },
+    {
+      "output": "ICB converts service interface or control signal to CAN signal and controls position lamp熄灭",
+      "description": "ICB converts signals to CAN format and controls the extinguishing of position lamps."
+    },
+    {
+      "output": "[Exterior Light Control Combined Service ICB] Call Basic Service",
+      "description": "ICB calls basic services for exterior light control."
+    },
+    {
+      "output": "[HMI Subsystem ICB] Call Interface",
+      "description": "HMI subsystem ICB calls an interface for user interaction."
+    },
+    {
+      "output": "Exit position lamp indicator light display",
+      "description": "The position lamp indicator light is turned off."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "2min",
+      "description": "Duration for which the position lamp remains on in factory mode."
+    },
+    {
+      "constraint": "60ms",
+      "description": "Timing delay for configuring the NumPltLampCtrlIDelayPrm parameter."
+    }
+  ],
+  "engineering_interpretation": "This table defines the logic for activating and controlling external position lights based on various user, vehicle, and system conditions. It specifies how the system responds to different triggers, such as entering factory mode or receiving automatic light requests, and outlines the actions taken by controllers like LHZCU and ICB to manage the lights.",
+  "uncertain_points": [
+    "The exact meaning of 'vehRlsType' is not fully clear from the context provided.",
+    "The specific implementation details of the 'NumPltLampCtrlIDelayPrm' parameter are not elaborated."
+  ]
+}
+```

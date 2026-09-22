@@ -1,0 +1,33 @@
+{
+  "table_type": "signal_table",
+  "topic": "牌照灯控制策略",
+  "row_semantics": "描述了在不同通信通道下，牌照灯的控制逻辑和信号交互流程。",
+  "column_semantics": "无明确列，内容为文本描述，分为CAN通道和SOA通道两部分。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "LHZCU",
+    "ICB",
+    "RZCU",
+    "FLSideLightCtrl",
+    "FRSideLightCtrl",
+    "RLSideLightCtrl",
+    "RRSideLightCtrl",
+    "NumPltLampCtrlDelayPrm",
+    "SidePositionLight"
+  ],
+  "core_conditions": [
+    "位置灯请求点亮",
+    "位置灯请求关闭"
+  ],
+  "core_outputs": [
+    "牌照灯点亮",
+    "牌照灯熄灭"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "60ms调用(配置需求: NumPltLampCtrlDelayPrm)"
+  ],
+  "engineering_interpretation": "该表格定义了车辆中牌照灯在CAN和SOA两种通信通道下的控制逻辑，包括信号发送、接收及延时要求，可用于验证牌照灯在不同场景下的正确点亮与熄灭功能。",
+  "uncertain_points": []
+}

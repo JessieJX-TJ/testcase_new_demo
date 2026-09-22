@@ -1,0 +1,61 @@
+{
+  "table_type": "fault_table",
+  "topic": "右后转向灯输出异常检测与处理",
+  "row_semantics": "表格按功能流程的阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "表格包含两列：第一列为阶段描述（如前置条件、触发条件等），第二列为该阶段的具体内容或要求。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "DILightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "转向灯反馈超限允许参数，值为1表示启用"
+    },
+    {
+      "name": "RRDLightDrvMdl",
+      "type": "module",
+      "description": "转向灯驱动模型，负责发送控制信号"
+    },
+    {
+      "name": "DILightCtrlMdl",
+      "type": "module",
+      "description": "转向灯控制模型，接收错误状态信息"
+    },
+    {
+      "name": "DTCCB104A_13",
+      "type": "fault_code",
+      "description": "特定故障代码，用于标记转向灯系统错误"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILightFbkSOAEnPrm == 1 (Enable)",
+      "description": "转向灯反馈超限检测功能已启用"
+    },
+    {
+      "condition": "右后转向灯处于输出状态",
+      "description": "车辆右后侧转向灯正在工作"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DirectionLightControl.DirectionLightSta",
+      "value": "2 (Error)",
+      "description": "向DILightCtrlMdl模块发送方向灯控制错误状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTCCB104A_13",
+      "description": "当转向灯系统出现异常时，置位此故障代码"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "RRDLightDrvMdl持续发送错误状态信号，确保接收端能够正确识别"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在特定条件下（转向灯反馈超限检测启用且右后转向灯输出）系统如何检测并处理转向灯输出异常，包括发送错误信号至控制模块以及置位故障代码。",
+  "uncertain_points": []
+}

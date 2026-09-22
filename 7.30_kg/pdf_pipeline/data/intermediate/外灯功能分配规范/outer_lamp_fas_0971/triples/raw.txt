@@ -1,0 +1,143 @@
+```json
+[
+  {
+    "head": "RZCU 控制左右侧位置灯点亮",
+    "relation": "触发条件",
+    "tail": "拖车模式下，前置条件满足且 exlSideLghtHwDrvEnPrm = 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "拖车模式",
+      "前置条件满足",
+      "exlSideLghtHwDrvEnPrm=0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "TDM 反馈拖车位置灯状态和故障状态给 RZCU",
+    "relation": "输入为",
+    "tail": "TrlrSideLghtSts 和 TrlrSideLghtFltSts",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "TDM",
+      "RZCU",
+      "TrlrSideLghtSts",
+      "TrlrSideLghtFltSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RZCU 根据 TDM 反馈点亮位置灯及设置故障状态",
+    "relation": "依赖于",
+    "tail": "TDM 反馈的拖车位置灯状态和故障状态",
+    "triple_type": "功能依赖关系",
+    "evidence_terms": [
+      "RZCU",
+      "TDM",
+      "SidePositionLight.Sta",
+      "SidePositionLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU 判断前置条件满足并订阅拖车位置灯状态",
+    "relation": "前提条件",
+    "tail": "前置条件满足",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "前置条件满足"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU 结合拖车位置灯状态反馈位置灯状态给 ICB",
+    "relation": "输出为",
+    "tail": "ExteriorLightSwitchProcess.SidePositionLightSta 和 ExteriorLightSwitchProcess.SidePositionLightErrSta",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "ExteriorLightSwitchProcess.SidePositionLightSta",
+      "ExteriorLightSwitchProcess.SidePositionLightErrSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务 ICB 订阅并透传位置灯状态",
+    "relation": "输入为",
+    "tail": "ExteriorLightControlSystem.SidePositionLightSts",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "ExteriorLightControlSystem",
+      "SidePositionLightSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RZCU 订阅前车位置灯故障状态",
+    "relation": "前提条件",
+    "tail": "拖车模式下，前置条件满足且 exlSideLghtHwDrvEnPrm = 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RZCU",
+      "拖车模式",
+      "前置条件满足",
+      "exlSideLghtHwDrvEnPrm=0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FrtVehSideLghtFltSts 反馈给 TDM",
+    "relation": "输出为",
+    "tail": "RZCU 订阅的前车位置灯故障状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FrtVehSideLghtFltSts",
+      "TDM",
+      "RZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "当左侧任意一位置灯的状态为故障时",
+    "relation": "触发条件",
+    "tail": "FrtVehSideLghtFltSts = 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "FrtVehSideLghtFltSts_1_PosnLeFlr"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "当右侧任意一位置灯的状态为故障时",
+    "relation": "触发条件",
+    "tail": "FrtVehSideLghtFltSts = 0x2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "FrtVehSideLghtFltSts_2_PosnRiFlr"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "当左侧和右侧任意一位置灯的状态均为无故障时",
+    "relation": "触发条件",
+    "tail": "FrtVehSideLghtFltSts = 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "FrtVehSideLghtFltSts_0_NoFlr"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "当左侧和右侧任意一位置灯的状态均为故障时",
+    "relation": "触发条件",
+    "tail": "FrtVehSideLghtFltSts = 0x3",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "FrtVehSideLghtFltSts_3_PosnLeAndRiFlr"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

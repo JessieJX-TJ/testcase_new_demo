@@ -1,0 +1,62 @@
+{
+  "table_type": "logic_table",
+  "topic": "车辆外灯控制逻辑 - 昼间行车灯在Super Eco模式下的退出机制",
+  "row_semantics": "表格按功能执行的阶段划分，包括场景描述、前置条件、触发动作和执行动作。",
+  "column_semantics": "两列结构，第一列为阶段描述，第二列为该阶段的具体内容或参数。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Super Eco 模式",
+      "type": "mode",
+      "description": "一种驾驶节能模式"
+    },
+    {
+      "name": "DayRunningLightReq",
+      "type": "input_signal",
+      "description": "外部应用请求的日间行车灯状态"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "贯穿式前位置灯控制模块"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "system",
+      "description": "外灯控制系统"
+    },
+    {
+      "name": "ICB",
+      "type": "interface",
+      "description": "外灯组合服务接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "车辆昼间行车灯处于激活状态",
+      "signal": "DayRunningLightReq",
+      "value": "ON"
+    },
+    {
+      "condition": "驾驶模式为 Super Eco 模式",
+      "mode": "Super Eco"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "DayRunningLightFucProStatus",
+      "value": "OFF",
+      "action": "退出昼间行车灯功能"
+    },
+    {
+      "output": "Notifier",
+      "value": "DayRunningLightFucProStatus = OFF",
+      "action": "通知系统状态变化"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定驾驶模式下（Super Eco），当车辆外灯系统接收到外部请求时，如何处理并响应日间行车灯的关闭逻辑，可用于验证外灯控制系统在不同驾驶模式下的行为一致性。",
+  "uncertain_points": []
+}

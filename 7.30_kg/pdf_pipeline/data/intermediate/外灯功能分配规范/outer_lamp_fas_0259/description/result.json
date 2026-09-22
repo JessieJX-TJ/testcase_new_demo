@@ -1,0 +1,54 @@
+{
+  "table_type": "signal_table",
+  "topic": "制动灯开关控制模块的功能需求与同步性要求",
+  "row_semantics": "表格分为两行，第一行描述制动灯开关状态反馈至ICB的信号定义，第二行为备注，说明制动灯熄灭的同步性要求。",
+  "column_semantics": "表格仅有一列，内容为技术规范文本，未使用多列布局。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "BrkLghtSwSts",
+      "type": "input_signal",
+      "description": "制动灯开关状态信号"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "集成式车身控制器（Integrated Body Controller）"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "制动灯开关控制模块（Light Hazard Control Unit）"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "BrkLghtSwSts = 0x0",
+      "description": "当制动灯开关状态信号为0x0时，表示制动灯开关处于关闭状态（Off）"
+    },
+    {
+      "condition": "BrkLghtSwStsV = 0x0",
+      "description": "当制动灯开关状态有效信号为0x0时，表示制动灯开关状态无效（Invalid）"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "BrkLghtSwSts_0_Off",
+      "description": "制动灯开关状态信号为0x0时的输出值，表示制动灯关闭状态"
+    },
+    {
+      "output": "BrkLghtSwStsV_0_Valid",
+      "description": "制动灯开关状态有效信号为0x0时的输出值，表示制动灯开关状态有效"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "40ms",
+      "description": "左侧、右侧以及高位制动灯需保持同步熄灭，三侧最大延时不能超过40毫秒"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证制动灯开关控制模块（LHZCU）将开关状态反馈至ICB的信号逻辑是否正确，并确保制动灯在熄灭时满足同步性要求（最大延时不超过40ms）。可用于设计基于信号值的测试用例，验证制动灯开关状态的正确反馈及熄灭同步性。",
+  "uncertain_points": []
+}

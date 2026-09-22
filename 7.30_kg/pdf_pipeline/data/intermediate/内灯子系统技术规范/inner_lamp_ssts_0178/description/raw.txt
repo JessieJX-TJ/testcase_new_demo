@@ -1,0 +1,149 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System - DoorFR3 Lamp Brightness Control",
+  "row_semantics": "Each row represents a specific command or configuration for the door front right third lamp brightness and breathing rate.",
+  "column_semantics": {
+    "Input": "The source of the command (e.g., LIN bus, RHZCU module)",
+    "LIN": "Local Interconnect Network communication interface",
+    "RHZCU": "Right Hand Zone Control Unit",
+    "DoorAm btLampC_FR": "Door Ambient Lamp Controller for Front Right door",
+    "RHZCU_LIN4": "Specific LIN channel within RHZCU",
+    "内灯SSTS": "Internal Lighting Sub System Technical Specification"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorFR3LampBrt nsCmd_1",
+      "type": "Function",
+      "description": "Command for setting the brightness level of the door front right third lamp."
+    },
+    {
+      "name": "DoorFR3LampBrt hngCmd_1",
+      "type": "Function",
+      "description": "Command for setting the breathing rate of the door front right third lamp."
+    },
+    {
+      "name": "RHZCU",
+      "type": "Controller/Module",
+      "description": "Right Hand Zone Control Unit responsible for processing commands related to the right-hand zone lighting."
+    },
+    {
+      "name": "DoorAm btLampC_FR",
+      "type": "Controller/Module",
+      "description": "Door Ambient Lamp Controller for the front right door, handling ambient lighting functions."
+    },
+    {
+      "name": "LIN",
+      "type": "Input Signal",
+      "description": "Communication protocol used for sending commands from various controllers to the lighting system."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Brightness Command Value",
+      "description": "A hexadecimal value (0x00-0xFF) that specifies the desired brightness level. 0x00 indicates no request, and values between 0x65-0xFF are reserved."
+    },
+    {
+      "name": "Breathing Rate Command Value",
+      "description": "A hexadecimal value (0x0-0xF) that specifies the breathing rate of the lamp. Each value corresponds to a predefined rate in seconds."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Lamp Brightness",
+      "description": "The actual brightness level of the door front right third lamp, expressed as a percentage."
+    },
+    {
+      "name": "Breathing Rate",
+      "description": "The frequency at which the lamp's brightness changes in a breathing pattern, measured in seconds."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate0",
+      "value": "/",
+      "description": "No request; lamp remains unchanged."
+    },
+    {
+      "name": "Rate1",
+      "value": "500ms",
+      "description": "New mode: 0-100% fade-in/fade-out transition."
+    },
+    {
+      "name": "Rate2",
+      "value": "1s",
+      "description": "Original breathing mode 2: 0-100% fade-in/fade-out transition."
+    },
+    {
+      "name": "Rate3",
+      "value": "1s",
+      "description": "New mode."
+    },
+    {
+      "name": "Rate4",
+      "value": "2s",
+      "description": "Original breathing mode 3."
+    },
+    {
+      "name": "Rate5",
+      "value": "2.4s",
+      "description": "New mode."
+    },
+    {
+      "name": "Rate6",
+      "value": "3s",
+      "description": "Original breathing mode 5."
+    },
+    {
+      "name": "Rate7",
+      "value": "3.5s",
+      "description": "New mode."
+    },
+    {
+      "name": "Rate8",
+      "value": "4s",
+      "description": "Original breathing mode 6."
+    },
+    {
+      "name": "Rate9",
+      "value": "4.5s",
+      "description": "Original breathing mode 1."
+    },
+    {
+      "name": "Rate10",
+      "value": "5s",
+      "description": "New mode."
+    },
+    {
+      "name": "Rate11",
+      "value": "6s",
+      "description": "New mode."
+    },
+    {
+      "name": "Rate12",
+      "value": "7s",
+      "description": "New mode."
+    },
+    {
+      "name": "Rate13",
+      "value": "8s",
+      "description": "New mode."
+    },
+    {
+      "name": "Rate14",
+      "value": "10s",
+      "description": "New mode."
+    },
+    {
+      "name": "Rate15",
+      "value": "12s",
+      "description": "Original breathing mode 4."
+    }
+  ],
+  "engineering_interpretation": "This table defines the command structure and parameter values for controlling the brightness and breathing rate of the door front right third lamp in the Interior Lighting Sub System. It is used to verify that the RHZCU and DoorAmbientLampController correctly interpret and execute commands sent via LIN, resulting in the expected lamp behavior according to the specified rates.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,102 @@
+```json
+[
+  {
+    "head": "后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "RearFogLightCtrlReq = 0x0 = Off",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLightCtrlReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯熄灭",
+    "relation": "前提条件",
+    "tail": "RearFogLightCtrl = 0x0 = RearFogLightCtrl_0_Off",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLightCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯状态反馈至ICB",
+    "relation": "依赖于",
+    "tail": "后雾灯控制模块 LHZCU",
+    "triple_type": "输入输出关系",
+    "evidence_terms": [
+      "后雾灯控制模块 LHZCU",
+      "RearFogLghtSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯错误状态反馈至ICB",
+    "relation": "依赖于",
+    "tail": "后雾灯控制模块 LHZCU",
+    "triple_type": "输入输出关系",
+    "evidence_terms": [
+      "后雾灯控制模块 LHZCU",
+      "RearFogLghtFltsts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "抑制条件",
+    "tail": "驱动处理模块 RZCU 内部跳变为硬线输出",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "驱动处理模块 RZCU",
+      "RearFogLightCtrlReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "组合开关为 Auto 开关状态且白天模式下",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "组合开关状态",
+      "白天模式"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯/位置灯点亮",
+    "relation": "触发条件",
+    "tail": "后雾灯开启且组合开关为 Auto 开关状态且白天模式下",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "后雾灯开启",
+      "组合开关状态",
+      "白天模式"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯/位置灯熄灭",
+    "relation": "触发条件",
+    "tail": "后雾灯手动关闭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "后雾灯手动关闭"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯与近光灯同步熄灭",
+    "relation": "超时约束",
+    "tail": "左侧和右侧最大延时不超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "后雾灯",
+      "近光灯",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

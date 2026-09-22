@@ -1,0 +1,74 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "危险警报灯控制系统的信号周期描述",
+  "row_semantics": "表格列出了与危险警报灯控制系统相关的三个主要功能模块及其对应的信号处理周期。",
+  "column_semantics": {
+    "1": "序号，标识不同的功能模块或信号处理任务。",
+    "2": "功能模块描述，包括控制器/模块名称及其发送或接收的信号类型和处理周期。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "危险警报灯开关控制模块",
+      "type": "controller_module",
+      "description": "负责发送危险警报灯控制信号的模块。"
+    },
+    {
+      "name": "HMI子系统",
+      "type": "controller_module",
+      "description": "负责接收危险警报灯状态信号并进行HMI显示的模块。"
+    },
+    {
+      "name": "危险警报灯驱动处理模块",
+      "type": "controller_module",
+      "description": "负责发送转向灯状态信号的模块。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "危险警报灯控制信号",
+      "module": "危险警报灯开关控制模块",
+      "description": "由该模块发送的用于控制危险警报灯的信号。",
+      "timing": "内部处理时间30ms + 信号发送周期"
+    },
+    {
+      "name": "危险警报灯状态信号",
+      "module": "HMI子系统",
+      "description": "由该模块接收并用于HMI显示的危险警报灯状态信号。",
+      "timing": "40ms"
+    },
+    {
+      "name": "转向灯状态信号",
+      "module": "危险警报灯驱动处理模块",
+      "description": "由该模块发送的用于控制转向灯的信号。",
+      "timing": "30ms + 50ms"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "module": "危险警报灯开关控制模块",
+      "signal": "危险警报灯控制信号",
+      "constraint": "内部处理时间为30ms，信号发送周期未明确给出具体数值。"
+    },
+    {
+      "module": "HMI子系统",
+      "signal": "危险警报灯状态信号",
+      "constraint": "信号处理周期为40ms。"
+    },
+    {
+      "module": "危险警报灯驱动处理模块",
+      "signal": "转向灯状态信号",
+      "constraint": "信号周期为30ms + 50ms，可能表示两个连续的处理阶段或周期。"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证危险警报灯控制系统中各模块的信号处理周期是否符合设计要求，确保信号在规定时间内完成发送、接收和处理。",
+  "uncertain_points": [
+    "危险警报灯控制信号的具体发送周期未明确给出。",
+    "转向灯状态信号的30ms + 50ms周期的具体含义（是两个独立周期还是一个复合周期）未明确说明。"
+  ]
+}
+```

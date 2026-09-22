@@ -1,0 +1,73 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "External Light Control System Direction Light Status and Error Reporting",
+  "row_semantics": "Each row represents a specific service interface for querying the status or error state of the direction lights within the Exterior Light Control System.",
+  "column_semantics": {
+    "A": "Service Interface Name and Description",
+    "B": "Consumption Type (e.g., SOA, ICB)",
+    "C": "SOA",
+    "D": "ICB",
+    "E": "ICB",
+    "F": "Reserved/Unused",
+    "G": "Target Controller/Platform (S32G-8295)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "controller",
+      "description": "The main system responsible for controlling external vehicle lights."
+    },
+    {
+      "name": "DirectionLightSts",
+      "type": "function",
+      "description": "Service interface to query the current flashing status of the direction lights."
+    },
+    {
+      "name": "DirectionLightErrSta",
+      "type": "function",
+      "description": "Service interface to query the error status of the direction lights."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DirectionLightSts",
+      "type": "output_signal",
+      "description": "Indicates the current flashing state of the direction lights.",
+      "values": {
+        "0x0": "No Flash",
+        "0x1": "Left_Direction_Light_Flash",
+        "0x2": "Right_Direction_Light_Flash",
+        "0x3": "Both_Side_Direction_Light_Flash",
+        "0x4": "Unknown"
+      }
+    },
+    {
+      "name": "DirectionLightErrSta",
+      "type": "output_signal",
+      "description": "Indicates the error status of the direction lights.",
+      "values": {
+        "0x0": "No Error",
+        "0x1": "Error"
+      }
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrSts",
+      "type": "fault_state",
+      "description": "Reports whether there is an error in the direction light system.",
+      "values": {
+        "0x0": "No Error",
+        "0x1": "Error"
+      }
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for querying the status and error conditions of the direction lights in the Exterior Light Control System. It specifies the parameter names, their possible values, and the expected behavior when these interfaces are called.",
+  "uncertain_points": []
+}
+```

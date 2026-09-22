@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "请求 Combined Light 控制",
+    "relation": "触发条件",
+    "tail": "Parameter Name: {CombinedLightReq} 中包含有效控制指令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CombinedLightReq",
+      "SidePositionLight ON",
+      "DippedBeamLight ON",
+      "AUTO"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Combined Light 控制成功",
+    "relation": "输出为",
+    "tail": "Parameter Name: {CombLghtFucProCtrlResp} 中的 0x0=ControlSuccess",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CombLghtFucProCtrlResp",
+      "ControlSuccess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Combined Light 控制失败",
+    "relation": "输出为",
+    "tail": "Parameter Name: {CombLghtFucProCtrlResp} 中的 0x1=Failed",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CombLghtFucProCtrlResp",
+      "Failed"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "获取近光灯开关状态",
+    "relation": "前提条件",
+    "tail": "调用 ExteriorLightSwitchProcess.CombLghtFucProCtrl 方法",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.CombLghtFucProCtrl",
+      "Method"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Combined Light 控制请求",
+    "relation": "依赖于",
+    "tail": "Interface Name: CombLghtFucProCtrl",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CombLghtFucProCtrl"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

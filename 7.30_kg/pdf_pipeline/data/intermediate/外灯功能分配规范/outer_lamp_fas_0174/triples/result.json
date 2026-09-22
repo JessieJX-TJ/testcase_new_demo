@@ -1,0 +1,86 @@
+[
+  {
+    "head": "LHZCU 将组合开关挡位自动切换为 AUTO",
+    "relation": "前提条件",
+    "tail": "S32G 收到 [七键开关请求 IFP] 输入跳变",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "S32G",
+      "IFPRearFoglghtSwReq_1_0_No Press"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0174",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "LHZCU 将组合开关挡位自动切换为 AUTO",
+    "relation": "前提条件",
+    "tail": "IFPRearFoglghtSwReq_1_0_No Press 信号为 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "S32G",
+      "IFPRearFoglghtSwReq_1_0_No Press"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0174",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "组合开关显示状态切换为 Auto",
+    "relation": "前提条件",
+    "tail": "LHZCU 内部将组合开关挡位自动切换为 AUTO",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "LHZCU",
+      "CombLghtSwSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0174",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯及关联位置灯开启",
+    "relation": "前提条件",
+    "tail": "LHZCU 判断 AUTO 开关模式下,后雾灯开启前置条件满足",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "AUTO",
+      "RearFogLghtFucProsSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0174",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "后雾灯未开启",
+    "relation": "抑制条件",
+    "tail": "RearFogLghtFucProsSta=0x0",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "RearFogLghtFucProsSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0174",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "CombLghtSwSta=0x3=AUTO",
+    "relation": "输出为",
+    "tail": "LHZCU 内部将组合开关挡位自动切换为 AUTO",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "CombLghtSwSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0174",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

@@ -1,0 +1,196 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯系统功能需求与信号交互规范",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的外灯驱动或解析模块的功能描述，包括其响应控制请求、驱动信号、状态反馈及故障反馈。",
+  "column_semantics": "表格分为三列：左侧为功能模块名称，中间为该模块的具体功能点（如驱动、状态反馈、故障反馈等），右侧为所属的系统（均为外灯子系统）。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "制动灯驱动处理模块",
+      "type": "controller_module",
+      "description": "负责处理制动灯的驱动逻辑，包括响应开关控制请求、驱动制动灯、反馈制动灯状态及故障状态。"
+    },
+    {
+      "name": "后雾灯驱动处理模块",
+      "type": "controller_module",
+      "description": "负责处理后雾灯的驱动逻辑，包括响应开关控制请求、驱动后雾灯、反馈后雾灯状态及故障状态。"
+    },
+    {
+      "name": "左侧远光灯 ICB 解析模块",
+      "type": "controller_module",
+      "description": "负责解析左侧远光灯的控制请求，并驱动、反馈其状态及故障状态。"
+    },
+    {
+      "name": "右侧远光灯 ICB 解析模块",
+      "type": "controller_module",
+      "description": "负责解析右侧远光灯的控制请求，并驱动、反馈其状态及故障状态。"
+    },
+    {
+      "name": "左侧近光灯 ICB 解析模块",
+      "type": "controller_module",
+      "description": "负责解析左侧近光灯的控制请求，并驱动、反馈其状态及故障状态。"
+    },
+    {
+      "name": "右侧近光灯 ICB 解析模块",
+      "type": "controller_module",
+      "description": "负责解析右侧近光灯的控制请求，并驱动、反馈其状态及故障状态。"
+    },
+    {
+      "name": "左前位置灯 ICB 解析模块",
+      "type": "controller_module",
+      "description": "负责解析左前位置灯的控制请求，并驱动、反馈其状态及故障状态。"
+    },
+    {
+      "name": "右前位置灯 ICB 解析模块",
+      "type": "controller_module",
+      "description": "负责解析右前位置灯的控制请求，并驱动、反馈其状态及故障状态。"
+    },
+    {
+      "name": "左后位置灯 ICB 解析模块",
+      "type": "controller_module",
+      "description": "负责解析左后位置灯的控制请求，并驱动、反馈其状态及故障状态。"
+    },
+    {
+      "name": "右后位置灯 ICB 解析模块",
+      "type": "controller_module",
+      "description": "负责解析右后位置灯的控制请求，并驱动、反馈其状态及故障状态。"
+    },
+    {
+      "name": "制动灯 ICB 解析模块",
+      "type": "controller_module",
+      "description": "负责解析制动灯的控制请求，并驱动、反馈其状态及故障状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "响应开关控制请求",
+      "type": "input_signal",
+      "description": "接收来自车辆开关的控制指令，触发相应外灯模块的驱动逻辑。"
+    },
+    {
+      "name": "倒车灯驱动",
+      "type": "input_signal",
+      "description": "由车辆倒车信号触发，用于驱动倒车灯。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "倒车灯状态反馈",
+      "type": "output_signal",
+      "description": "反馈倒车灯当前的工作状态（如点亮或熄灭）。"
+    },
+    {
+      "name": "制动灯驱动",
+      "type": "output_signal",
+      "description": "根据控制请求驱动制动灯点亮或熄灭。"
+    },
+    {
+      "name": "后雾灯驱动",
+      "type": "output_signal",
+      "description": "根据控制请求驱动后雾灯点亮或熄灭。"
+    },
+    {
+      "name": "左侧远光灯驱动",
+      "type": "output_signal",
+      "description": "根据控制请求驱动左侧远光灯点亮或熄灭。"
+    },
+    {
+      "name": "右侧远光灯驱动",
+      "type": "output_signal",
+      "description": "根据控制请求驱动右侧远光灯点亮或熄灭。"
+    },
+    {
+      "name": "左侧近光灯驱动",
+      "type": "output_signal",
+      "description": "根据控制请求驱动左侧近光灯点亮或熄灭。"
+    },
+    {
+      "name": "右侧近光灯驱动",
+      "type": "output_signal",
+      "description": "根据控制请求驱动右侧近光灯点亮或熄灭。"
+    },
+    {
+      "name": "左前位置灯驱动",
+      "type": "output_signal",
+      "description": "根据控制请求驱动左前位置灯点亮或熄灭。"
+    },
+    {
+      "name": "右前位置灯驱动",
+      "type": "output_signal",
+      "description": "根据控制请求驱动右前位置灯点亮或熄灭。"
+    },
+    {
+      "name": "左后位置灯驱动",
+      "type": "output_signal",
+      "description": "根据控制请求驱动左后位置灯点亮或熄灭。"
+    },
+    {
+      "name": "右后位置灯驱动",
+      "type": "output_signal",
+      "description": "根据控制请求驱动右后位置灯点亮或熄灭。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "倒车灯状态故障反馈",
+      "type": "fault_signal",
+      "description": "当倒车灯出现异常时，反馈故障状态。"
+    },
+    {
+      "name": "制动灯状态故障反馈",
+      "type": "fault_signal",
+      "description": "当制动灯出现异常时，反馈故障状态。"
+    },
+    {
+      "name": "后雾灯状态故障反馈",
+      "type": "fault_signal",
+      "description": "当后雾灯出现异常时，反馈故障状态。"
+    },
+    {
+      "name": "左侧远光灯故障状态反馈",
+      "type": "fault_signal",
+      "description": "当左侧远光灯出现异常时，反馈故障状态。"
+    },
+    {
+      "name": "右侧远光灯故障状态反馈",
+      "type": "fault_signal",
+      "description": "当右侧远光灯出现异常时，反馈故障状态。"
+    },
+    {
+      "name": "左侧近光灯故障状态反馈",
+      "type": "fault_signal",
+      "description": "当左侧近光灯出现异常时，反馈故障状态。"
+    },
+    {
+      "name": "右侧近光灯故障状态反馈",
+      "type": "fault_signal",
+      "description": "当右侧近光灯出现异常时，反馈故障状态。"
+    },
+    {
+      "name": "左前位置灯故障状态反馈",
+      "type": "fault_signal",
+      "description": "当左前位置灯出现异常时，反馈故障状态。"
+    },
+    {
+      "name": "右前位置灯故障状态反馈",
+      "type": "fault_signal",
+      "description": "当右前位置灯出现异常时，反馈故障状态。"
+    },
+    {
+      "name": "左后位置灯故障状态反馈",
+      "type": "fault_signal",
+      "description": "当左后位置灯出现异常时，反馈故障状态。"
+    },
+    {
+      "name": "右后位置灯故障状态反馈",
+      "type": "fault_signal",
+      "description": "当右后位置灯出现异常时，反馈故障状态。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了车辆外灯系统各模块的功能需求，包括驱动、状态反馈及故障反馈机制，可用于验证外灯系统在不同驾驶场景下的功能正确性及故障诊断能力。",
+  "uncertain_points": []
+}
+```

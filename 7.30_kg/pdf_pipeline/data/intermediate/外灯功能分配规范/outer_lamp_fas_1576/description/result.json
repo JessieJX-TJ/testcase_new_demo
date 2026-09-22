@@ -1,0 +1,78 @@
+{
+  "table_type": "state_table",
+  "topic": "危险警报灯驱动处理模块的状态描述",
+  "row_semantics": "表格的每一行代表一个具体的系统状态或配置项，详细描述了危险警报灯（Hazard Warning Lights）在硬件（HW）层面的各项状态参数。",
+  "column_semantics": "表格没有明确的列，内容为连续的代码片段，描述了不同方向灯（FLDirnLghtSts, FRDirnLghtSts, RLDircnLghtSts, RRDircnLghtSts）的状态、闪烁状态以及错误状态。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "危险警报灯驱动处理模块",
+      "type": "controller_module",
+      "description": "负责控制车辆危险警报灯功能的电子控制单元或软件模块。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FLDirnLghtSts_HW",
+      "type": "input_signal",
+      "description": "左前方向灯硬件状态，表示当前是否点亮（On/Off）。"
+    },
+    {
+      "name": "FRDirnLghtSts_HW",
+      "type": "input_signal",
+      "description": "右前方向灯硬件状态，表示当前是否点亮（On/Off）。"
+    },
+    {
+      "name": "RLDircnLghtSts_HW",
+      "type": "input_signal",
+      "description": "左后方向灯硬件状态，表示当前是否点亮（On/Off）。"
+    },
+    {
+      "name": "RRDircnLghtSts_HW",
+      "type": "input_signal",
+      "description": "右后方向灯硬件状态，表示当前是否点亮（On/Off）。"
+    },
+    {
+      "name": "FLDirnLghtFltsts_HW",
+      "type": "input_signal",
+      "description": "左前方向灯闪烁状态，表示是否处于闪烁模式（True/False）。"
+    },
+    {
+      "name": "FRDirnLghtFltsts_HW",
+      "type": "input_signal",
+      "description": "右前方向灯闪烁状态，表示是否处于闪烁模式（True/False）。"
+    },
+    {
+      "name": "RLDircnLghtFltsts_HW",
+      "type": "input_signal",
+      "description": "左后方向灯闪烁状态，表示是否处于闪烁模式（True/False）。"
+    },
+    {
+      "name": "RRDircnLghtFltsts_HW",
+      "type": "input_signal",
+      "description": "右后方向灯闪烁状态，表示是否处于闪烁模式（True/False）。"
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "input_signal",
+      "description": "方向灯状态，包括四个实例（InstanceID 1-4），表示各个方向灯的当前状态（ON/OFF）。"
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "input_signal",
+      "description": "方向灯错误状态，包括四个实例（InstanceID 1-4），表示各个方向灯是否存在错误（No Error/Other Errors）。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "fault_status",
+      "description": "指示方向灯是否存在故障或异常状态，用于诊断和报警。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了危险警报灯驱动处理模块在不同场景下的硬件状态配置，可用于验证危险警报灯在启动、停止、闪烁及故障情况下的正确响应和状态管理。",
+  "uncertain_points": []
+}

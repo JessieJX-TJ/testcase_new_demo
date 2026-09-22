@@ -1,0 +1,73 @@
+```json
+[
+  {
+    "head": "订阅制动灯状态",
+    "relation": "前提条件",
+    "tail": "调用BrakeLightState服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "调用该服务接口,订阅制动灯状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯状态为OFF",
+    "relation": "输入为",
+    "tail": "BrakeLightSta参数值0x0",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {BrakeLightSta}",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯状态为ON",
+    "relation": "输入为",
+    "tail": "BrakeLightSta参数值0x1",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {BrakeLightSta}",
+      "0x1=ON"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯状态为Unknown",
+    "relation": "输入为",
+    "tail": "BrakeLightSta参数值0x2",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {BrakeLightSta}",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "硬线状态下的制动灯状态",
+    "relation": "依赖于",
+    "tail": "InstanceID=1",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "InstanceID=1",
+      "RZCU",
+      "LHZCU",
+      "硬线状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "网络状态下的制动灯状态",
+    "relation": "依赖于",
+    "tail": "InstanceID=2",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "InstanceID=2",
+      "ICB",
+      "LHZCU",
+      "网络状态"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

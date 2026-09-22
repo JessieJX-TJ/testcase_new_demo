@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车电子系统中HCE（Headlight Control Enable）功能的CAN通信接口规范",
+  "row_semantics": "描述了HCE功能相关的两个CAN通信信号：请求信号（IHCEnbSetReq）和状态信号（IHCEnbSetSts）的详细信息",
+  "column_semantics": {
+    "Interface Name": "信号/接口的名称",
+    "Direction": "信号的方向（输入/输出）",
+    "Type": "信号的类型（如CAN）",
+    "Sender/Provider": "信号的发送方或提供方控制器",
+    "Receiver/Consumer": "信号的接收方或消费方控制器",
+    "Channel": "信号传输的CAN通道",
+    "Interface Source": "接口的来源或定义"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "IHCEnbSetReq",
+      "type": "Signal",
+      "description": "HCE使能设置请求信号，由ICB发送给LHZCU"
+    },
+    {
+      "name": "IHCEnbSetSts",
+      "type": "Signal",
+      "description": "HCE使能设置状态信号，由LHZCU发送给ICB"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller",
+      "description": "集成控制盒（Integrated Control Box），负责发送HCE使能请求"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller",
+      "description": "前照明控制单元（Lighting Headlamp Zone Control Unit），负责接收HCE使能请求并返回状态"
+    },
+    {
+      "name": "BKBCAN FD",
+      "type": "Communication Channel",
+      "description": "车身区域CAN总线（Body Key Bus CAN）FD（Flexible Data-rate）通道"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "IHCEnbSetReq",
+      "condition": "0x0=NoRequest",
+      "description": "无请求状态"
+    },
+    {
+      "signal": "IHCEnbSetReq",
+      "condition": "0x1=Enable",
+      "description": "使能请求状态"
+    },
+    {
+      "signal": "IHCEnbSetReq",
+      "condition": "0x2=Disable",
+      "description": "禁用请求状态"
+    },
+    {
+      "signal": "IHCEnbSetReq",
+      "condition": "0x3=Reversed",
+      "description": "反转请求状态"
+    },
+    {
+      "signal": "IHCEnbSetSts",
+      "condition": "0x0=Enable",
+      "description": "使能状态"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车HCE功能在ICB和LHZCU之间通过BKBCAN FD通道进行通信的接口规范，可用于验证HCE使能请求与状态反馈的正确性及兼容性。",
+  "uncertain_points": []
+}
+```

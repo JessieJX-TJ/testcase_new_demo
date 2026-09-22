@@ -1,0 +1,111 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯开关状态反馈信号定义",
+  "row_semantics": "表格按接口名称分组，详细列出了每个信号的属性和状态定义。",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识信号所属的功能模块或逻辑单元。",
+    "Direction": "信号流向，指示是输入还是输出。",
+    "Type": "信号类型，如CAN/LIN总线、SOA服务等。",
+    "Sender/Provider": "信号发送方或提供方，通常是某个功能节点或服务。",
+    "Receiver/Consumer": "信号接收方或消费方，通常是另一个功能节点或服务。",
+    "Channel": "信号传输路径或通道名称。",
+    "Source": "信号来源，指明信号的具体物理或逻辑来源。",
+    "Signal Details": "信号的具体状态定义，包括Idle、Press、Reserved、Error等状态及其对应的数值。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MapLampXXSwReq_1",
+      "type": "function",
+      "description": "外灯开关状态请求信号集合，包含多个子信号的状态定义。"
+    },
+    {
+      "name": "OHC",
+      "type": "controller",
+      "description": "外灯控制单元（Outside Headlamp Controller），作为信号的发送方。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "车身控制单元（Lighting and Hazard Control Unit），作为信号的接收方。"
+    },
+    {
+      "name": "SSTS",
+      "type": "source",
+      "description": "内灯系统状态源，提供信号来源信息。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MapLampFLSwReq_1",
+      "states": [
+        "0x0=Idle",
+        "0x1=Press",
+        "0x2=Reserved",
+        "0x3=Error (预留)"
+      ]
+    },
+    {
+      "name": "MapLampFRSwReq_1",
+      "states": [
+        "0x0=Idle",
+        "0x1=Press",
+        "0x2=Reserved",
+        "0x3=Error (预留)"
+      ]
+    },
+    {
+      "name": "MapLampRLSwReq_1",
+      "states": [
+        "0x0=Idle",
+        "0x1=Press",
+        "0x2=Reserved",
+        "0x3=Error (预留)"
+      ]
+    },
+    {
+      "name": "MapLampRRSwReq_1",
+      "states": [
+        "0x0=Idle",
+        "0x1=Press",
+        "0x2=Reserved",
+        "0x3=Error (预留)"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MapLampFLSwReq_1",
+      "description": "前左外灯开关状态反馈信号。",
+      "type": "output"
+    },
+    {
+      "name": "MapLampFRSwReq_1",
+      "description": "前右外灯开关状态反馈信号。",
+      "type": "output"
+    },
+    {
+      "name": "MapLampRLSwReq_1",
+      "description": "后左外灯开关状态反馈信号。",
+      "type": "output"
+    },
+    {
+      "name": "MapLampRRSwReq_1",
+      "description": "后右外灯开关状态反馈信号。",
+      "type": "output"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Error",
+      "description": "信号状态为0x3时，表示错误状态，可能是信号异常或未正确配置。",
+      "type": "fault"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯开关状态反馈信号的详细属性和状态值，用于验证OHC与LHZCU之间外灯开关状态信号的正确传输和解析。",
+  "uncertain_points": []
+}
+```

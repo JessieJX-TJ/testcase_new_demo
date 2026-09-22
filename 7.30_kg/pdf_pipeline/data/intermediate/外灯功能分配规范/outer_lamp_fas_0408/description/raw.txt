@@ -1,0 +1,39 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior lamp function) specification for Z-ONE-3.0 platform",
+  "row_semantics": "Each row represents a specific state or condition of the exterior lighting system, including status feedback and error conditions for various direction lights.",
+  "column_semantics": "Columns represent different instances of direction lights (e.g., FLDirenLightSts, FRDirenLightSts, RLDirenLightSts, RRDirEnLightSts) and their associated statuses (On/Off), error statuses, and additional control parameters like turning light states.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "FLDirenLightSts",
+    "FRDirenLightSts",
+    "RLDirenLightSts",
+    "RRDirEnLightSts",
+    "DirectionLightStatus",
+    "DirectionLightErrorStatus",
+    "LHZCU",
+    "ICB"
+  ],
+  "core_conditions": [
+    "InstanceID",
+    "On/Off status",
+    "Turning light state",
+    "Flash mode"
+  ],
+  "core_outputs": [
+    "DirectionLightStatus",
+    "DirectionLightErrorStatus"
+  ],
+  "core_faults": [
+    "No Error"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the expected behavior and status feedback of the exterior directional lights under various operational modes, including normal operation, fault conditions, and specific states like turning lights, which can be used to verify the correct implementation of the external lighting control logic in the vehicle's electronic systems.",
+  "uncertain_points": [
+    "The exact timing relationships between different light states are not specified.",
+    "The specific thresholds or conditions triggering error states are not detailed."
+  ]
+}
+```

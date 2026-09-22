@@ -1,0 +1,110 @@
+```json
+[
+  {
+    "head": "氛围灯执行亮度0%-100%-0%调节",
+    "relation": "前提条件",
+    "tail": "接收到氛围灯本地控制模块的呼吸速度指令信号DoorFR1LampBrthngCmd_1=！0x0(No Request)和氛围灯同步信号AmbtLghtLHRollingCtr_1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR1LampBrthngCmd_1",
+      "AmbtLghtLHRollingCtr_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯执行亮度0%-100%-0%调节",
+    "relation": "依赖于",
+    "tail": "[氛围灯驱动控制模块]",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorFR1LampBrthngCmd_1",
+      "DoorFR1LampBrtnsCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "不同呼吸模式切换",
+    "relation": "前提条件",
+    "tail": "接收到ZCU发送的DoorFR1LampBrthngCmd_1中的0x1或0x2信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR1LampBrthngCmd_1",
+      "ZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯停止当前呼吸",
+    "relation": "前提条件",
+    "tail": "不同呼吸模式切换时",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR1LampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯切换下一呼吸模式",
+    "relation": "前提条件",
+    "tail": "不同呼吸模式切换时",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR1LampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯执行0%-100%跳变调节",
+    "relation": "前提条件",
+    "tail": "DoorFR1LampBrthngCmd_1 = 0x1(Rate1 500ms 0-100%跳变)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR1LampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯执行0%-100%渐变调节",
+    "relation": "前提条件",
+    "tail": "DoorFR1LampBrthngCmd_1 = 0x3-0xC、0xE (0-100%按照对应周期斜率渐变调节)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR1LampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯亮度调节周期为250ms",
+    "relation": "前提条件",
+    "tail": "接收到ZCU发送的DoorFR1LampBrthngCmd_1=0x1(Rate1 500ms 0-100%跳变)",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "DoorFR1LampBrthngCmd_1",
+      "ZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯亮度调节周期为500ms",
+    "relation": "前提条件",
+    "tail": "接收到ZCU发送的DoorFR1LampBrthngCmd_1=0x2(Rate2 1s 0-100%跳变)",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "DoorFR1LampBrthngCmd_1",
+      "ZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "时间A计算公式",
+    "relation": "前提条件",
+    "tail": "接收到ZCU发送的呼吸模式DoorFR1LampBrthngCmd_l=0x3-0x15时",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "DoorFR1LampBrthngCmd_1",
+      "ZCU"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

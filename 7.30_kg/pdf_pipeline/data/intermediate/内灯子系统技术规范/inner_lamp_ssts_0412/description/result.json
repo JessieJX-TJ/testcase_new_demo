@@ -1,0 +1,83 @@
+{
+  "table_type": "signal_table",
+  "topic": "Reading Lamp Switch State Handling Logic",
+  "row_semantics": "Each row represents a specific condition or action related to the reading lamp switch state, including trigger conditions, execution actions, exit conditions, and fault handling.",
+  "column_semantics": "The left column defines the condition/action type (e.g., Trigger Condition, Execution Action), while the right column provides the detailed specification for that type.",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MapLamp_XX_Sw_SIG",
+      "type": "input_signal",
+      "description": "Hardline signal indicating the on/off state of the reading lamp switch."
+    },
+    {
+      "name": "OHC",
+      "type": "controller_module",
+      "description": "On-Board Computer, responsible for processing the reading lamp switch signals and performing debounce and filtering."
+    },
+    {
+      "name": "MapLampXXSwReq_l",
+      "type": "output_signal",
+      "description": "Signal sent by the reading lamp switch sensor collection module to indicate the request status (Press, Idle, Error)."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MapLamp_XX_Sw_SIG is low level",
+      "description": "Trigger condition for activating the reading lamp switch state handling logic."
+    },
+    {
+      "condition": "MapLamp_XX_Sw_SIG is in suspended state",
+      "description": "Exit condition for deactivating the reading lamp switch state handling logic."
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "MapLampXXSwReq_l",
+      "value": "0x1",
+      "description": "Sent when the reading lamp switch is pressed, indicating a 'Press' request."
+    },
+    {
+      "signal": "MapLampXXSwReq_l",
+      "value": "0x0",
+      "description": "Sent when the reading lamp switch is idle, indicating an 'Idle' state."
+    },
+    {
+      "signal": "MapLampXXSwReq_l",
+      "value": "0x3",
+      "description": "Sent when a short circuit fault is detected in the reading lamp switch."
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "Reading Lamp Switch Short Circuit Fault",
+      "signal": "MapLampXXSwReq_l",
+      "value": "0x3",
+      "description": "Detected when the capacitive switch is continuously pressed, indicating a potential short circuit."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "timing_name": "Debounce Time",
+      "value": "50ms",
+      "description": "Anti-jitter time for the front-row reading lamp switch signal collected via capacitive switch."
+    },
+    {
+      "timing_name": "Filtering Time",
+      "value": "40ms",
+      "description": "Time for消抖处理 (debounce/filtering) of the后排阅读灯内部电容开关信号."
+    },
+    {
+      "timing_name": "Post-Processing Debounce Time",
+      "value": "30ms",
+      "description": "Additional anti-jitter processing time applied by OHC after receiving the rear-row reading lamp switch state."
+    }
+  ],
+  "engineering_interpretation": "This table specifies the logic for handling the reading lamp switch state, including trigger conditions, execution actions, exit conditions, and fault handling. It is used to verify the correct behavior of the reading lamp switch signal processing logic within the OHC system.",
+  "uncertain_points": [
+    {
+      "point": "The exact hardware implementation details of the防抖策略 (debounce strategy) are not specified and may vary based on the supplier's actual hardware status."
+    }
+  ]
+}

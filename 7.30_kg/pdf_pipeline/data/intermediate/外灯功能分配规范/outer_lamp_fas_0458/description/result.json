@@ -1,0 +1,94 @@
+{
+  "table_type": "logic_table",
+  "topic": "远光灯开关控制模块 LHZCU 的功能逻辑与接口响应",
+  "row_semantics": "表格按执行顺序列出了远光灯控制模块的逻辑步骤和对应的系统响应，描述了在特定条件下（如车辆档位、智驾摄像头请求、IHC 开关状态等）系统如何处理远光灯的开启、熄灭及状态反馈。",
+  "column_semantics": "表格包含两列：左侧为‘执行动作’，详细描述了每个逻辑步骤的具体操作；右侧为该步骤的系统响应或输出信号。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "远光灯开关控制模块，负责远光灯的逻辑控制和状态管理。"
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "外灯组合服务控制器，接收来自 LHZCU 的控制信号并驱动外灯。"
+    },
+    {
+      "name": "vehRlsType",
+      "type": "input_signal",
+      "description": "车辆释放类型信号，用于判断车辆是否处于 D 档状态。"
+    },
+    {
+      "name": "IPD",
+      "type": "input_signal",
+      "description": "智驾摄像头识别信息，用于触发远光灯请求。"
+    },
+    {
+      "name": "IHCEnbSetSts",
+      "type": "input_signal",
+      "description": "IHC 开关状态信号，用于禁用 IHC 功能。"
+    },
+    {
+      "name": "MainBeamLight",
+      "type": "output_signal",
+      "description": "主光灯（远光灯）的控制信号，包括请求、状态和错误状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "vehRlsType == 0",
+      "description": "车辆不在 D 档状态时，远光灯请求被禁用。"
+    },
+    {
+      "condition": "IPD 请求输入",
+      "description": "收到智驾摄像头识别信息 IPD 请求时，系统将发出远光灯请求。"
+    },
+    {
+      "condition": "IHCEnbSetSts == 0x1",
+      "description": "当 IHC 开关处于禁用状态时，远光灯控制信号将被转换为 CAN 信号并熄灭远光灯。"
+    },
+    {
+      "condition": "TrShftLvrPosV == 0x0",
+      "description": "车辆档位为 D 档且变速器换挡杆位置有效时，远光灯请求被激活。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "MainBeamLight.FucProStatus",
+      "description": "主光灯功能过程状态，指示远光灯的功能状态。"
+    },
+    {
+      "signal": "MainBeamLight.FucProsSta",
+      "description": "主光灯功能过程状态，指示远光灯的当前状态（ON/OFF）。"
+    },
+    {
+      "signal": "MainBeamLight.Sta",
+      "description": "主光灯状态，指示远光灯的实际物理状态。"
+    },
+    {
+      "signal": "MainBeamLight.ErrSta",
+      "description": "主光灯错误状态，指示远光灯是否存在故障。"
+    },
+    {
+      "signal": "ExteriorLightSwitchProcess.MainBeamLightMdSta",
+      "description": "外部灯光开关过程中的主光灯模式状态，用于指示远光灯的显示模式。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "MainBeamLight.ErrSta",
+      "description": "主光灯错误状态，表示远光灯可能存在硬件或软件故障。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "40ms",
+      "description": "远光灯熄灭时，左右两侧需保持同步熄灭，最大延时不能超过 40ms。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了远光灯开关控制模块 LHZCU 在不同条件下的逻辑行为，包括远光灯的请求、控制、状态反馈以及故障处理机制，可用于验证远光灯系统的正确控制逻辑和状态同步性。",
+  "uncertain_points": []
+}

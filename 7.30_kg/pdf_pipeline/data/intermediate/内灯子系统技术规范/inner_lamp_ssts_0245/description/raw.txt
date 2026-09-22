@@ -1,0 +1,88 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "氛围灯（DoorFL1Lamp）本地控制模块的退出条件与异常处理逻辑",
+  "row_semantics": "表格分为两个主要部分：'退出条件'和'异常处理'，描述了在不同情况下模块如何响应或关闭。",
+  "column_semantics": "左侧列为功能分类（退出条件、异常处理），右侧详细列出对应的具体条件或处理措施。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DoorFL1Lamp",
+      "type": "功能名",
+      "description": "前门左侧氛围灯"
+    },
+    {
+      "name": "DoorFL1LampColorCmd_1",
+      "type": "输入信号",
+      "description": "颜色控制命令信号，值为0x00表示无请求或未定义颜色号"
+    },
+    {
+      "name": "DoorFL1LampOnOff_1",
+      "type": "输入信号",
+      "description": "开关控制信号，值为0x0表示关闭"
+    },
+    {
+      "name": "DoorFL1LampFadeSpdCmd_1",
+      "type": "输入信号",
+      "description": "渐变速度控制信号"
+    },
+    {
+      "name": "ZCU",
+      "type": "控制器/模块名",
+      "description": "区域控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "接收到DoorFL1LampColorCmd_1 = 0x00 或未定义颜色号",
+      "effect": "维持当前颜色不变"
+    },
+    {
+      "condition": "接收到DoorFL1LampOnOff_1 = 0x0",
+      "effect": "按照DoorFL1LampFadeSpdCmd_1设定的渐变速度关闭氛围灯"
+    },
+    {
+      "condition": "氛围灯模块出现过压、欠压故障",
+      "effect": "直接关闭氛围灯"
+    },
+    {
+      "condition": "超过6秒未接收到ZCU的LIN信号",
+      "effect": "直接关闭氛围灯"
+    },
+    {
+      "condition": "DoorFL1LampColorCmd_1异常",
+      "effect": "维持上一时刻状态值"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "关闭氛围灯",
+      "description": "当满足特定退出条件或异常情况时，氛围灯将被关闭"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "过压、欠压故障",
+      "description": "由电源问题导致的故障，会触发直接关闭氛围灯的保护机制"
+    },
+    {
+      "fault": "LIN通信丢失",
+      "description": "ZCU与模块间通信中断，超过6秒未恢复"
+    },
+    {
+      "fault": "DoorFL1LampColorCmd_1异常",
+      "description": "颜色控制信号值异常，无法正确解析"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "signal": "ZCU LIN信号",
+      "timeout": "6秒",
+      "description": "若在此时间内未接收到ZCU的LIN信号，则触发异常处理"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证氛围灯本地控制模块在正常操作和异常情况下的行为，确保其能够正确响应控制信号并执行安全关闭策略。",
+  "uncertain_points": []
+}
+```

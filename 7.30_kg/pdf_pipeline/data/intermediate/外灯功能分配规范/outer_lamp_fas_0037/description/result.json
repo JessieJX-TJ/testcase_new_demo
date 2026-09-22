@@ -1,0 +1,39 @@
+{
+  "table_type": "structure_table",
+  "topic": "外灯控制流程与时间约束",
+  "row_semantics": "流程步骤或功能模块",
+  "column_semantics": "无明确列，信息按流程顺序组织",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    "8295 前雾灯软开关",
+    "S32G 外灯组合服务转基础服务",
+    "LHZCU 前雾灯控制模块",
+    "S32G 外灯 SWC",
+    "S32G 数字灯光 SDK",
+    "LHA/RHA 前雾灯驱动"
+  ],
+  "core_conditions": [
+    "Eth/Method",
+    "Eth/Event",
+    "内部通讯",
+    "CANFD"
+  ],
+  "core_outputs": [
+    "前雾灯开启",
+    "数字灯光信号",
+    "前雾灯驱动信号"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "8295 前雾灯软开关: 30ms",
+    "S32G 外灯组合服务转基础服务: 20ms",
+    "LHZCU 前雾灯控制模块: 30ms (逻辑+信号处理)",
+    "S32G 外灯 SWC: 10ms (逻辑)",
+    "S32G 数字灯光 SDK: 40ms",
+    "LHA/RHA 前雾灯驱动: 30ms",
+    "总时延: 250ms"
+  ],
+  "engineering_interpretation": "该表格描述了从前雾灯软开关触发到最终前雾灯驱动输出的完整控制流程及其各环节的时间约束，可用于验证外灯控制系统的响应时间和时序正确性。",
+  "uncertain_points": []
+}

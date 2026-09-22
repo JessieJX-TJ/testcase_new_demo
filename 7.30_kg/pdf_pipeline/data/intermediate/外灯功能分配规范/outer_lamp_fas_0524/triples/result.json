@@ -1,0 +1,112 @@
+[
+  {
+    "head": "制动灯故障状态 (BrakeLightErrorStatus) 被订阅",
+    "relation": "前提条件",
+    "tail": "调用 BrakeLightErrorStatus 服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "调用该服务接口,订阅制动灯故障状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0524",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "制动灯故障状态信号 (BrakeLightErrorStatus)",
+    "relation": "输出为",
+    "tail": "LHZCU 控制器",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "BrakeLightErrorStatus",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0524",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "制动灯故障状态信号值为 Error (0x1)",
+    "relation": "依赖于",
+    "tail": "制动灯存在错误",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "0x1=Error",
+      "BrakeLightErrorStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0524",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "制动灯故障状态信号值为 Unknown (0x2)",
+    "relation": "依赖于",
+    "tail": "制动灯状态未知",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "0x2=Unknown",
+      "BrakeLightErrorStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0524",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "制动灯开关状态 (BrakeLightSta) 被订阅",
+    "relation": "前提条件",
+    "tail": "调用 BrakeLightSta 服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "调用该服务接口,订阅制动灯状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0524",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "制动灯开关状态信号 (BrakeLightSta)",
+    "relation": "输出为",
+    "tail": "LHZCU 控制器",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess. BrakeLightSta",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0524",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "制动灯开关状态信号值为 ON (0X1)",
+    "relation": "依赖于",
+    "tail": "制动灯处于开启状态",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "0X1=ON",
+      "BrakeLightSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0524",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "制动灯开关状态信号值为 OFF (0x0)",
+    "relation": "依赖于",
+    "tail": "制动灯处于关闭状态",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "0x0=OFF",
+      "BrakeLightSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0524",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "fault_table"
+  }
+]

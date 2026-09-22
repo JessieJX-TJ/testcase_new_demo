@@ -1,0 +1,45 @@
+```json
+[
+  {
+    "head": "HMI 子系统触发故障弹窗提醒",
+    "relation": "触发条件",
+    "tail": "制动灯 CAN 信号发生故障",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "制动灯发生故障时",
+      "HMI子系统根据制动灯CAN信号故障状态做故障弹窗提醒"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "不做动画显示",
+    "relation": "抑制条件",
+    "tail": "当 CAN 信号反馈状态为 0x0 时",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "当CAN信号反馈状态为0x0时,不做动画显示"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "BrkLghtFltSta = 0x1",
+    "relation": "输入为",
+    "tail": "制动灯发生故障时",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "当制动灯发生故障时: BrkLghtFltSta=0x1=BrkLghtFltSta_1_True"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI 子系统弹窗提醒",
+    "relation": "故障响应",
+    "tail": "制动灯 CAN 信号故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "HMI子系统根据制动灯CAN信号故障状态做故障弹窗提醒"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

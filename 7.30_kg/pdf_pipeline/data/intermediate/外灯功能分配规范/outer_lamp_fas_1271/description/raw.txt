@@ -1,0 +1,31 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "拖挂模式下拖挂车倒车灯的开启/关闭逻辑",
+  "row_semantics": "表格按功能描述、前置条件、触发条件、执行动作的顺序展开，详细定义了在特定场景下系统行为的逻辑关系。",
+  "column_semantics": "表格包含两列：第一列为功能描述或条件类别（如‘场景描述’、‘前置条件’等），第二列为对应的具体内容或参数。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "拖挂车倒车灯",
+    "LHZCU (Light Headlamp Zone Control Unit)",
+    "ICB (Interior Control Box)",
+    "RZCU (Rear Zone Control Unit)"
+  ],
+  "core_conditions": [
+    "车辆具备拖车模式功能 (InsdFnCfgVehDragMd=0x1)",
+    "拖挂模式开启 (VehDragMdSts=0x1=VehDragMdSts_1_On)",
+    "外灯控制信号为倒车灯开启 (ExteriorLightSwitchProcess.ReverseLightFucProStatus.ReverseLghtFucProsSta=0x1=ON)"
+  ],
+  "core_outputs": [
+    "拖挂车倒车灯开启/关闭"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在拖挂模式下，拖挂车倒车灯的开启和关闭逻辑，主要用于验证LHZCU发送的外灯控制信号是否能正确触发拖挂车倒车灯的状态变化，并确保在满足前置条件时，ICB能够根据接收到的信号正确调用基础服务。",
+  "uncertain_points": [
+    "具体的基础服务名称未明确给出",
+    "未说明在异常情况下的默认行为或故障处理逻辑"
+  ]
+}
+```

@@ -1,0 +1,568 @@
+[
+  {
+    "head": "System Function Enabled",
+    "relation": "precondition",
+    "tail": "Voltage State Normal (9V–16V)",
+    "sources": [
+      "inner_lamp_ssts_0289",
+      "inner_lamp_ssts_0541"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disabled",
+    "relation": "precondition",
+    "tail": "Voltage State Overvoltage (16V–18V) OR High Voltage (>18V)",
+    "sources": [
+      "inner_lamp_ssts_0289",
+      "inner_lamp_ssts_0407",
+      "inner_lamp_ssts_0541"
+    ],
+    "conflict": false,
+    "conflict_note": "Merged 'Overvoltage (16V~18V)' and 'High Voltage (18V above)' as adjacent, non-overlapping voltage fault ranges; both lead to same functional outcome (disable). No conflict — they are complementary conditions."
+  },
+  {
+    "head": "VehSideLghtSts_l_RZCU",
+    "relation": "input_value_mapping",
+    "tail": "0x0 → VehSideLghtSts_1_0_OFF",
+    "sources": [
+      "inner_lamp_ssts_0290"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehSideLghtSts_l_RZCU",
+    "relation": "input_value_mapping",
+    "tail": "0x1 → VehSideLghtSts_1_1_ON",
+    "sources": [
+      "inner_lamp_ssts_0290"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "adjusts_brightness_via_parameter",
+    "tail": "Parameter ID 4040, Value 99",
+    "sources": [
+      "inner_lamp_ssts_0291"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "adjusts_brightness_via_parameter",
+    "tail": "Parameter ID 4080, Value 98",
+    "sources": [
+      "inner_lamp_ssts_0291"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "targets_brightness_level",
+    "tail": "Target Value 10100 for Parameter ID 4040",
+    "sources": [
+      "inner_lamp_ssts_0291"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "targets_brightness_level",
+    "tail": "Target Value 10200 for Parameter ID 4080",
+    "sources": [
+      "inner_lamp_ssts_0291"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "operates_within_threshold",
+    "tail": "Column 4 value = 79 for Parameter ID 4040",
+    "sources": [
+      "inner_lamp_ssts_0291"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "operates_within_threshold",
+    "tail": "Column 4 value = 79 for Parameter ID 4080",
+    "sources": [
+      "inner_lamp_ssts_0291"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Door Speaker Ambient Lamp",
+    "relation": "output_signal",
+    "tail": "DoorFL6LampXX_1",
+    "sources": [
+      "inner_lamp_ssts_0292"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Rear Door Speaker Ambient Lamp",
+    "relation": "output_signal",
+    "tail": "DoorRL6LampXX_1",
+    "sources": [
+      "inner_lamp_ssts_0292"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "outputs_correct_brightness_level",
+    "tail": "Input Signal Value 69 with Parameter Set Identifier 2840",
+    "sources": [
+      "inner_lamp_ssts_0293"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "outputs_correct_brightness_level",
+    "tail": "Input Signal Value 100 with Parameter Set Identifier 4000",
+    "sources": [
+      "inner_lamp_ssts_0293"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "outputs_correct_brightness_level",
+    "tail": "Input Signal Value 99 with Parameter Set Identifier 4040",
+    "sources": [
+      "inner_lamp_ssts_0293"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "outputs_correct_brightness_level",
+    "tail": "Input Signal Value 85 with Parameter Set Identifier 4480",
+    "sources": [
+      "inner_lamp_ssts_0293"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "operates_in_mode",
+    "tail": "Mode A ↔ Parameter Set Identifier 2840",
+    "sources": [
+      "inner_lamp_ssts_0293"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "operates_in_mode",
+    "tail": "Mode B ↔ Parameter Set Identifier 3000",
+    "sources": [
+      "inner_lamp_ssts_0293"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "operates_in_mode",
+    "tail": "Mode C ↔ Parameter Set Identifier 4000",
+    "sources": [
+      "inner_lamp_ssts_0293"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Control Parameter Resolution",
+    "relation": "precondition",
+    "tail": "Exterior Lamp Control Parameter Valid Configuration",
+    "sources": [
+      "inner_lamp_ssts_0295"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Parameter Default Value",
+    "relation": "precondition",
+    "tail": "Body Control Parameter Valid Configuration",
+    "sources": [
+      "inner_lamp_ssts_0295"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Control Parameter Range",
+    "relation": "precondition",
+    "tail": "Power Tailgate Control Parameter Valid Configuration",
+    "sources": [
+      "inner_lamp_ssts_0295"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "trigger_condition",
+    "tail": "0x0 → RoofAmbtLampA_RH breathes at Rate1 (500ms)",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting semantics: 'trigger condition' vs 'suppress condition' vs 'reset condition' vs 'prerequisite' all defined for same head/tail pair (0x0). These represent distinct behavioral roles — cannot be merged without loss of intent. Kept as separate logical constructs."
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "suppress_condition",
+    "tail": "0x0 → RoofAmbtLampA_RH does not breathe",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": true,
+    "conflict_note": "See conflict_note for 'trigger_condition' on same head/tail. This is a semantic contradiction in role assignment — same signal value simultaneously triggers AND suppresses breathing. Likely reflects different operational contexts (e.g., mode vs enable state); retained with conflict flag."
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "reset_condition",
+    "tail": "0x0 → RoofAmbtLampA_RH stops breathing",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": true,
+    "conflict_note": "Synonymous with 'suppress_condition'; retained separately due to distinct documentation intent (state transition vs static suppression). Conflict arises from overlapping behavioral implications without context disambiguation."
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "prerequisite",
+    "tail": "0x0 requires RoofRHBLampOnOff_1 = 0x1",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "trigger_condition",
+    "tail": "0x1 → RoofAmbtLampA_RH breathes at Rate2 (1s)",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "prerequisite",
+    "tail": "0x1 requires RoofRHBLampOnOff_1 = 0x1",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "trigger_condition",
+    "tail": "0x2 → RoofAmbtLampA_RH breathes at Rate4 (2s)",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "prerequisite",
+    "tail": "0x2 requires RoofRHBLampOnOff_1 = 0x1",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "trigger_condition",
+    "tail": "0x3 → RoofAmbtLampA_RH breathes at Rate15 (12s)",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "prerequisite",
+    "tail": "0x3 requires RoofRHBLampOnOff_1 = 0x1",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHBLampOnOff_1",
+    "relation": "trigger_condition",
+    "tail": "0x0 → RoofAmbtLampA_RH OFF",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHBLampOnOff_1",
+    "relation": "trigger_condition",
+    "tail": "0x1 → RoofAmbtLampA_RH ON",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHBLampColorCmd_1",
+    "relation": "trigger_condition",
+    "tail": "0x00 → No color request",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHBLampColorCmd_1",
+    "relation": "trigger_condition",
+    "tail": "0x01–0xFF → Apply specified color",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "state_maintenance_condition",
+    "tail": "0x1 → RoofAmbtLampA_RH maintains Rate2 (1s) breathing",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "state_maintenance_condition",
+    "tail": "0x2 → RoofAmbtLampA_RH maintains Rate4 (2s) breathing",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofRHALampFadeSpdCmd_1",
+    "relation": "state_maintenance_condition",
+    "tail": "0x3 → RoofAmbtLampA_RH maintains Rate15 (12s) breathing",
+    "sources": [
+      "inner_lamp_ssts_0296"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Performance Parameters",
+    "relation": "precondition",
+    "tail": "X-axis ∈ [200, 4400], Y-axis ∈ [0, 1200]",
+    "sources": [
+      "inner_lamp_ssts_0299"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Brightness Verification",
+    "relation": "depends_on",
+    "tail": "X-axis represents current or voltage value of exterior lamp brightness",
+    "sources": [
+      "inner_lamp_ssts_0299"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Module Response Time Verification",
+    "relation": "depends_on",
+    "tail": "X-axis represents response time performance metric",
+    "sources": [
+      "inner_lamp_ssts_0299"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Opening Torque Verification",
+    "relation": "depends_on",
+    "tail": "X-axis represents opening torque performance metric",
+    "sources": [
+      "inner_lamp_ssts_0299"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampXXErr",
+    "relation": "trigger_condition",
+    "tail": "0x1 → Map lamp ON & current > max current threshold",
+    "sources": [
+      "inner_lamp_ssts_0300"
+    ],
+    "conflict": true,
+    "conflict_note": "Multiple mutually exclusive physical conditions mapped to same error code 0x1: (1) lamp ON + overcurrent, (2) lamp OFF + undercurrent, (3) numeric literals '1' and '5'. Ambiguous mapping — likely indicates discrete fault subtypes. Retained with conflict flag pending clarification."
+  },
+  {
+    "head": "MapLampXXErr",
+    "relation": "trigger_condition",
+    "tail": "0x1 → Map lamp OFF & current < min current threshold",
+    "sources": [
+      "inner_lamp_ssts_0300"
+    ],
+    "conflict": true,
+    "conflict_note": "See conflict_note for other 'trigger_condition' entries. Same error code used for opposite electrical states — implies diagnostic aggregation without distinction. Confirmed conflict per rule IV."
+  },
+  {
+    "head": "MapLampXXErr",
+    "relation": "diagnostic_correlation",
+    "tail": "0x0 → No short-circuit or open-circuit fault in map lamp",
+    "sources": [
+      "inner_lamp_ssts_0300"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampXXErr",
+    "relation": "depends_on",
+    "tail": "Map lamp ON/OFF state",
+    "sources": [
+      "inner_lamp_ssts_0300"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC Display Code",
+    "relation": "precondition",
+    "tail": "Fault Recovery Condition",
+    "sources": [
+      "inner_lamp_ssts_0301",
+      "inner_lamp_ssts_0485",
+      "inner_lamp_ssts_0526"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Speed Level",
+    "relation": "output_response_time",
+    "tail": "Speed1 → ≤ 0.75s",
+    "sources": [
+      "inner_lamp_ssts_0302"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Speed Level",
+    "relation": "output_response_time",
+    "tail": "Speed2 → ≤ 3s",
+    "sources": [
+      "inner_lamp_ssts_0302"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Speed Level",
+    "relation": "output_response_time",
+    "tail": "Speed3 → Transient (instantaneous)",
+    "sources": [
+      "inner_lamp_ssts_0302"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Step Timing Specification",
+    "relation": "output_response_time",
+    "tail": "0.025s/step → ≤ 0.75s total",
+    "sources": [
+      "inner_lamp_ssts_0302"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Step Timing Specification",
+    "relation": "output_response_time",
+    "tail": "0.1s/step → ≤ 3s total",
+    "sources": [
+      "inner_lamp_ssts_0302"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "input_from",
+    "tail": "Sender/Provider",
+    "sources": [
+      "inner_lamp_ssts_0303"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "output_to",
+    "tail": "Receiver/Consumer",
+    "sources": [
+      "inner_lamp_ssts_0303"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "depends_on",
+    "tail": "Channel",
+    "sources": [
+      "inner_lamp_ssts_0303",
+      "inner_lamp_ssts_0486"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

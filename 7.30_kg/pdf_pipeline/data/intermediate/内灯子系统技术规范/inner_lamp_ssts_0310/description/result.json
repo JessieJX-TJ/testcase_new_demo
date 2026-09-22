@@ -1,0 +1,75 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - Door Rear Right Lamp Breath Mode and Fade Speed Control",
+  "row_semantics": "Each row represents a specific breathing mode or fade speed setting for the rear right door lamp, including its code value, period, and original breathing mode.",
+  "column_semantics": {
+    "Code Value": "Unique identifier for each breathing mode or fade speed setting.",
+    "Period": "Time interval between brightness changes in the breathing mode.",
+    "Original Breathing Mode Value": "Reference to the original breathing mode definition."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorRR2LampBrthngCmd_1",
+      "type": "function",
+      "description": "Control command for the breathing mode of the rear right door lamp."
+    },
+    {
+      "name": "DoorRR2LampFadeSpdCmd_1",
+      "type": "function",
+      "description": "Control command for the fade speed of the rear right door lamp."
+    },
+    {
+      "name": "DoorRR3LampOnOff_1",
+      "type": "function",
+      "description": "Control command for turning on/off the ambient lamp on the rear right door."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Rate0",
+      "description": "No request for breathing mode; stops current breathing."
+    },
+    {
+      "name": "Rate1 to Rate15",
+      "description": "Different breathing modes with varying periods from 500ms to 12s."
+    },
+    {
+      "name": "Spd0 to Spd3",
+      "description": "Fade speed settings for transitioning between color/brightness states."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Breathing Period",
+      "description": "The time interval between brightness changes in the breathing mode."
+    },
+    {
+      "name": "Fade Speed",
+      "description": "The speed at which the lamp fades between different brightness levels."
+    },
+    {
+      "name": "Ambient Lamp State",
+      "description": "On or Off state of the ambient lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Breathing Period",
+      "description": "Defined periods range from 500ms to 12s for different breathing modes.",
+      "unit": "seconds"
+    },
+    {
+      "name": "Fade Speed",
+      "description": "Default fade speed is 2000ms; other speeds are configurable (Spd1: 300ms, Spd2: 100ms).",
+      "unit": "milliseconds"
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameter settings for the breathing mode and fade speed of the rear right door lamp, as well as the on/off control for the ambient lamp. It can be used to verify that the lamp responds correctly to different breathing modes and fade speeds, and that the ambient lamp turns on/off as expected when receiving the appropriate commands.",
+  "uncertain_points": [
+    "The exact implementation details of 'original breathing mode' values are not specified.",
+    "The relationship between different breathing modes and their visual effects is not described."
+  ]
+}

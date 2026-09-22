@@ -1,0 +1,42 @@
+c.PPV阶段及以后按照SOA通讯方式开发:
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+触发动作
+再次请求危险警报灯开关:HzrdLghtSwReq=0x1=HzrdLghtSwReq_1_On
+执行动作
+1&2&3&4&5&6&7&8&9&10&11&12&13:
+[危险警报灯开关控制模块LHZCU]内部软件保持双闪灯有效请求跳变为无效退出:
+[危险警报灯开关控制模块LHZCU]信号跳变为:
+FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_Off
+FRDircnLghtCtrl=0x0=FRDircnLghtCtrl_0_Off
+RLDircnLghtCtrl=0x0=RLDircnLghtCtrl_0_Off
+RRDircnLghtCtrl=0x0=RRDircnLghtCtrl_0_Off
+[危险警报灯开关控制模块LHZCU]接口响应:
+Event:
+{ExteriorLightSwitchProcess. DircnLghtFucProStatus. DircnLghtFucProSta}=0x0=OFF
+[外灯组合服务ICB]调用基础服务,针对{InstanceID=1}{InstanceID=2}{InstanceID=3}{Instan
+合服务延时60ms 调用(配置需求:DircnLghtCtrlDelayPrm):
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=1}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=2}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=3}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=4}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=5}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=6}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=7}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=8}=0x0=OFF
+ICB将服务接口或控制信号转换成灯控CAN信号,控制双闪灯熄灭
+ICB 接收控制信号延时 60ms并分发至LHZCU、RHZCU和 RZCU(配置需求:DircnLghtCtrl
+FLDircnLghtCtrl_HW=0x0=FLDircnLghtCtrl_HW_0_Off
+FRDircnLghtCtrl_HW=0x0=FRDircnLghtCtrl_HW_0_Off
+RLDircnLghtCtrl_HW=0x0=RLDircnLghtCtrl_HW_0_Off
+RRDircnLghtCtrl_HW=0x0=RRDircnLghtCtrl_HW_0_Off
+[驱动处理模块LHZCU/RHZCU/RZCU]接收ICB服务接口或控制信号,控制危险警报灯退
+ICB接收控制信号:
+做退出危险警报灯图标指示灯显示以及声音提醒
+[驱动处理模块LHZCU/RHZCU/RZCU]将状态/故障状态反馈至[危险警报灯开关控制模块I
+FLDirenLghtSts_HW=0x0=FLDircnLghtSts_HW_0_Off
+FRDircnLghtSts_HW =0x0=FRDircnLghtSts_HW_0_Off
+RLDircnLghtSts_HW=0x0=RLDircnLghtSts_HW_0_Off
+RRDircnLghtSts_HW=0x0=RRDirenLghtSts_HW_0_Off
+FLDirenLghtFltsts_HW=0x0=FLDirenLghtFltsts_HW_0_False
+FRDirenLghtFltsts_HW =0x0=FRDirenLghtFltsts_HW_0_False

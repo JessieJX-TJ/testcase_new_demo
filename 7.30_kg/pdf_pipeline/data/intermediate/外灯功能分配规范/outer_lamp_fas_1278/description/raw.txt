@@ -1,0 +1,46 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "External Lighting Control Logic for Headlamp Modes",
+  "row_semantics": "Current state of the headlamp system (e.g., '近光灯' - Low Beam, 'Auto' - Automatic Mode)",
+  "column_semantics": "Transition conditions and resulting actions when switching between modes or executing requests",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Headlamp Mode",
+      "type": "mode",
+      "values": ["近光灯", "Auto"]
+    },
+    {
+      "name": "Request Status",
+      "type": "input_signal",
+      "values": ["Off"]
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Position Lamp Request",
+      "type": "input_signal"
+    },
+    {
+      "name": "Auto Request",
+      "type": "input_signal"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Headlamp State Transition",
+      "type": "output_signal"
+    },
+    {
+      "name": "Action Sequence",
+      "type": "output_signal"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the operational logic for transitioning between low beam and automatic headlamp modes, specifying the sequence of actions (e.g., exiting current mode before requesting a new one) based on input signals like position lamp or auto requests.",
+  "uncertain_points": []
+}
+```

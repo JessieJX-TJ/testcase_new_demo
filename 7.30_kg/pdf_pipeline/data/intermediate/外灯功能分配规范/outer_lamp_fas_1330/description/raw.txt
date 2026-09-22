@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 后雾灯控制与状态",
+  "row_semantics": "表格按功能模块划分，详细描述了后雾灯的控制接口、状态查询接口以及请求处理接口。",
+  "column_semantics": "列代表不同的系统或控制器（如SOA, LHZCU, ICB），用于说明每个接口在不同系统中的调用关系。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ControlRearFogLight",
+      "type": "function",
+      "description": "控制后雾灯点亮或熄灭的接口"
+    },
+    {
+      "name": "RearFogLightSwStatus",
+      "type": "function",
+      "description": "获取后雾灯开关状态的接口"
+    },
+    {
+      "name": "RearFogLightFueProStatus",
+      "type": "function",
+      "description": "请求后雾灯点亮或熄灭的接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RearFogLightReq",
+      "type": "input_parameter",
+      "description": "控制后雾灯的请求参数，0x0表示OFF，0x1表示ON"
+    },
+    {
+      "name": "RearFogLightSwSta",
+      "type": "output_parameter",
+      "description": "后雾灯开关状态，0x0表示OFF，0x1表示ON，0x2表示Unknown"
+    },
+    {
+      "name": "RearFogLightFueProSta",
+      "type": "input_parameter",
+      "description": "请求后雾灯状态的参数，0x0表示OFF"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogLightSwStatus",
+      "type": "output_signal",
+      "description": "后雾灯开关状态反馈信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了后雾灯的控制逻辑和状态查询机制，可用于验证后雾灯在不同请求下的实际点亮/熄灭行为及其状态反馈是否符合规范。",
+  "uncertain_points": []
+}
+```

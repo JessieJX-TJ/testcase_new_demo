@@ -1,0 +1,64 @@
+{
+  "table_type": "state_table",
+  "topic": "Dipped Beam Light Control Logic",
+  "row_semantics": "Each row represents a distinct state or condition in the control logic for dipped beam headlights, including entry conditions, actions taken, exit conditions, and exception handling.",
+  "column_semantics": "The left column categorizes the type of condition (e.g., Precondition, Trigger Condition, Execution Action, Exit Condition, Exception Handling), while the right column provides the detailed specification for that category.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControl",
+      "type": "module",
+      "description": "A module responsible for controlling exterior lighting functions, including dipped beam lights."
+    },
+    {
+      "name": "DipdBeamCtrlMdl",
+      "type": "controller",
+      "description": "The main controller module for dipped beam light control, which sends commands to enable or disable the dipped beam light."
+    },
+    {
+      "name": "RDipdBeamDrvMdl",
+      "type": "driver",
+      "description": "A driver module responsible for physically driving the dipped beam light output."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlDipBeamHwDrvEnPrm==1||2",
+      "type": "precondition",
+      "description": "Hardware driver enable parameter must be set to 1 or 2 for the system to proceed with dipped beam light control."
+    },
+    {
+      "name": "ControlDippedBeamLight.DippedBeamLightReq == 1 (On) (InstanceID=2)",
+      "type": "trigger_condition",
+      "description": "The system triggers the action when a request to turn on the dipped beam light is received from the DipdBeamCtrlMdl module for InstanceID=2."
+    },
+    {
+      "name": "ControlDippedBeamLight.DippedBeamLightReq == 0 (Off) (InstanceID=2)",
+      "type": "exit_condition",
+      "description": "The system exits the current state when a request to turn off the dipped beam light is received from the DipdBeamCtrlMdl module for InstanceID=2."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RDipdBeamDrvMdl.DipdBeamHdlmp_RH_HSD",
+      "type": "output_signal",
+      "description": "The physical output signal that drives the right-hand side dipped beam light."
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "system_state",
+      "description": "The status of the dipped beam light, which is sent back to the DipdBeamCtrlMdl module. It indicates whether the light is on (1) or off (0)."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "At least three frames",
+      "type": "timing_constraint",
+      "description": "The DippedBeamLightStatus must be sent at least three times to the DipdBeamCtrlMdl module during the execution phase."
+    }
+  ],
+  "engineering_interpretation": "This table defines the state machine logic for controlling the dipped beam headlights, specifying how the system responds to requests from the DipdBeamCtrlMdl module, what actions are taken by the RDipdBeamDrvMdl module, and under what conditions the system enters or exits the control state.",
+  "uncertain_points": []
+}

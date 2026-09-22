@@ -1,0 +1,114 @@
+```json
+[
+  {
+    "head": "订阅昼间行车灯故障状态",
+    "relation": "前提条件",
+    "tail": "调用ExteriorLightControlSystem.DayRunningLightErrSts服务接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.DayRunningLightErrSts",
+      "调用该服务接口,订阅昼间行车灯故障状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "请求昼间行车灯关灯",
+    "relation": "前提条件",
+    "tail": "调用ExteriorLightControlSystem.ControlDayRunningLight服务接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.ControlDayRunningLight",
+      "调用该服务接口,请求昼间行车灯关灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "日间行车灯控制响应为成功",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.ControlDayRunningLight服务接口的响应参数",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.ControlDayRunningLight",
+      "Resp:",
+      "Parameter Name: {DayRunningLightResp}",
+      "0x0=ControlSuccess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "日间行车灯控制响应为失败",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.ControlDayRunningLight服务接口的响应参数",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.ControlDayRunningLight",
+      "Resp:",
+      "Parameter Name: {DayRunningLightResp}",
+      "0x1=Failed"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "日间行车灯故障状态为无错误",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.DayRunningLightErrSts服务接口的参数",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.DayRunningLightErrSts",
+      "Parameter Name: {DayRunningLghtErrSts}",
+      "0x0=No Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "日间行车灯故障状态为有错误",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.DayRunningLightErrSts服务接口的参数",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.DayRunningLightErrSts",
+      "Parameter Name: {DayRunningLghtErrSts}",
+      "0x1=Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "日间行车灯故障状态为未知",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.DayRunningLightErrSts服务接口的参数",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.DayRunningLightErrSts",
+      "Parameter Name: {DayRunningLghtErrSts}",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "日间行车灯控制请求为关闭",
+    "relation": "输入为",
+    "tail": "ExteriorLightControlSystem.ControlDayRunningLight服务接口的请求参数",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.ControlDayRunningLight",
+      "Req:",
+      "Parameter Name: {DayRunningLightReq}",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "日间行车灯控制请求为开启",
+    "relation": "输入为",
+    "tail": "ExteriorLightControlSystem.ControlDayRunningLight服务接口的请求参数",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.ControlDayRunningLight",
+      "Req:",
+      "Parameter Name: {DayRunningLightReq}",
+      "0x1=On"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

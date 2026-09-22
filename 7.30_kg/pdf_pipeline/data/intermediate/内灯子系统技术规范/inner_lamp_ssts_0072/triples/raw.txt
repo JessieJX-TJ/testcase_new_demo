@@ -1,0 +1,100 @@
+```json
+[
+  {
+    "head": "DoorFR1LampBrthngCmd_1_x_Ratey 触发门灯呼吸模式",
+    "relation": "触发条件",
+    "tail": "Code值为0x5至0xF，且周期与原呼吸模式值匹配",
+    "triple_type": "工程规则",
+    "evidence_terms": ["Code Value", "周期", "原呼吸模式值"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门灯呼吸功能停止",
+    "relation": "前提条件",
+    "tail": "指令值为0",
+    "triple_type": "工程规则",
+    "evidence_terms": ["指令值为0时,立即停止呼吸"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "呼吸模式切换",
+    "relation": "前提条件",
+    "tail": "不同呼吸模式切换时",
+    "triple_type": "工程规则",
+    "evidence_terms": ["不同呼吸模式切换时,立即停止当前呼吸,切换下一呼吸模式"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门灯呼吸功能停止",
+    "relation": "抑制条件",
+    "tail": "指令值为0",
+    "triple_type": "工程规则",
+    "evidence_terms": ["指令值为0时,立即停止呼吸"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门灯呼吸功能状态",
+    "relation": "依赖于",
+    "tail": "DoorFR1LampBrthngCmd_1_x_Ratey 命令",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFR1LampBrthngCmd_1_x_Ratey"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门灯呼吸周期",
+    "relation": "依赖于",
+    "tail": "周期列定义的500ms至12s",
+    "triple_type": "工程规则",
+    "evidence_terms": ["周期"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorAm btLampA_FR 控制门灯呼吸",
+    "relation": "控制对象",
+    "tail": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorAm btLampA_FR", "DoorFR1LampBrthngCmd_1_x_Ratey"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RHZCU 控制门灯呼吸",
+    "relation": "控制对象",
+    "tail": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "triple_type": "工程规则",
+    "evidence_terms": ["RHZCU", "DoorFR1LampBrthngCmd_1_x_Ratey"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门灯呼吸功能复位",
+    "relation": "复位条件",
+    "tail": "指令值为0",
+    "triple_type": "工程规则",
+    "evidence_terms": ["指令值为0时,立即停止呼吸"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门灯呼吸功能状态保持",
+    "relation": "状态保持条件",
+    "tail": "在非指令值为0的情况下持续运行",
+    "triple_type": "工程规则",
+    "evidence_terms": ["灯头按照对应的呼吸周期指令进行周期闪烁"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFR1LampFadeSpdCmd_1_x_SpdY 输出渐变速度",
+    "relation": "输出为",
+    "tail": "氛围灯渐变速度指令",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFR1LampFadeSpdCmd_1_x_SpdY", "氛围灯渐变速度指令"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "灯头颜色/亮度切换时间",
+    "relation": "超时约束",
+    "tail": "默认速度Spd0: 2000ms",
+    "triple_type": "工程规则",
+    "evidence_terms": ["灯头颜色/亮度切换时从当前状态到目标状态切换的所需的时间", "默认速度Spd0: 2000ms"],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,484 @@
+```json
+[
+  {
+    "head": "Reading Lamp Brightness Adjustment",
+    "relation": "has timeout constraint",
+    "tail": "Usage Mode = Engineering",
+    "sources": ["inner_lamp_fas_0563"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Brightness Adjustment",
+    "relation": "has timeout constraint",
+    "tail": "Usage Mode = Transport",
+    "sources": ["inner_lamp_fas_0563"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Control",
+    "relation": "depends on",
+    "tail": "Usage Mode",
+    "sources": ["inner_lamp_fas_0563"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Brightness Adjustment",
+    "relation": "depends on",
+    "tail": "Usage Mode",
+    "sources": ["inner_lamp_fas_0563"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door-Responsive Interior Lighting",
+    "relation": "depends on",
+    "tail": "Usage Mode",
+    "sources": ["inner_lamp_fas_0563"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Control",
+    "relation": "is mutually exclusive with",
+    "tail": "Vehicle Mode = Dyno",
+    "sources": ["inner_lamp_fas_0563"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Brightness Adjustment",
+    "relation": "is mutually exclusive with",
+    "tail": "Vehicle Mode = Dyno",
+    "sources": ["inner_lamp_fas_0563"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Light Function Allocation",
+    "relation": "has prerequisite",
+    "tail": "Page 8 of 283",
+    "sources": ["inner_lamp_fas_0565"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Lamp Control Function",
+    "relation": "controls",
+    "tail": "VP3-25761",
+    "sources": ["inner_lamp_fas_0567"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Map Lamp Command = ON",
+    "relation": "has prerequisite",
+    "tail": "Door Map Lamp Command = 0x1",
+    "sources": ["inner_lamp_fas_0568"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Map Lamp Command = OFF",
+    "relation": "has prerequisite",
+    "tail": "Door Map Lamp Command = 0x2",
+    "sources": ["inner_lamp_fas_0568"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Dome Lamp in Active State",
+    "relation": "has prerequisite",
+    "tail": "Rear Dome Lamp Drive State = 0x1",
+    "sources": ["inner_lamp_fas_0568"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Tail Lamp Delay in Active State",
+    "relation": "has prerequisite",
+    "tail": "Tail Lamp Delay Drive State = 0x1",
+    "sources": ["inner_lamp_fas_0568"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Map Lamp Command = ON",
+    "relation": "results in",
+    "tail": "Door Map Lamp Turned ON",
+    "sources": ["inner_lamp_fas_0568"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Map Lamp Command = OFF",
+    "relation": "results in",
+    "tail": "Door Map Lamp Turned OFF",
+    "sources": ["inner_lamp_fas_0568"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Dome Lamp Drive State = 0x1",
+    "relation": "results in",
+    "tail": "Rear Dome Lamp Illuminated",
+    "sources": ["inner_lamp_fas_0568"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Tail Lamp Delay Drive State = 0x1",
+    "relation": "results in",
+    "tail": "Tail Lamp Delay Illuminated",
+    "sources": ["inner_lamp_fas_0568"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "User Mode Valid Flag = Invalid",
+    "relation": "suppresses",
+    "tail": "Door Map Lamp Command = No Request",
+    "sources": ["inner_lamp_fas_0568"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Map Lamp Command = No Request",
+    "relation": "has prerequisite",
+    "tail": "User Mode Valid Flag = Invalid",
+    "sources": ["inner_lamp_fas_0568"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Light OFF",
+    "relation": "triggered by",
+    "tail": "VehBcklghtngCtrlCmd = 0x0",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": true,
+    "conflict_note": "Conflicting trigger definitions: same head 'Interior Light OFF' maps to two different signals (VehBcklghtngCtrlCmd vs VehIlluminateCtrlCmd); both signals may coexist but require clarification on functional priority or domain scope (e.g., backlighting vs general illumination)."
+  },
+  {
+    "head": "Interior Light ON",
+    "relation": "triggered by",
+    "tail": "VehBcklghtngCtrlCmd = 0x1",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": true,
+    "conflict_note": "Conflicting trigger definitions: same head 'Interior Light ON' maps to two different signals (VehBcklghtngCtrlCmd vs VehIlluminateCtrlCmd); both signals may coexist but require clarification on functional priority or domain scope (e.g., backlighting vs general illumination)."
+  },
+  {
+    "head": "Interior Light OFF",
+    "relation": "triggered by",
+    "tail": "VehIlluminateCtrlCmd = 0x0",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": true,
+    "conflict_note": "Conflicting trigger definitions: same head 'Interior Light OFF' maps to two different signals (VehBcklghtngCtrlCmd vs VehIlluminateCtrlCmd); both signals may coexist but require clarification on functional priority or domain scope (e.g., backlighting vs general illumination)."
+  },
+  {
+    "head": "Interior Light ON",
+    "relation": "triggered by",
+    "tail": "VehIlluminateCtrlCmd = 0x1",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": true,
+    "conflict_note": "Conflicting trigger definitions: same head 'Interior Light ON' maps to two different signals (VehBcklghtngCtrlCmd vs VehIlluminateCtrlCmd); both signals may coexist but require clarification on functional priority or domain scope (e.g., backlighting vs general illumination)."
+  },
+  {
+    "head": "UsGmDV_Invalid",
+    "relation": "suppresses",
+    "tail": "Interior Light Control Function",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsGmDV_Valid",
+    "relation": "has prerequisite",
+    "tail": "Interior Light Control Function",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehBcklghtngCtrlCmd",
+    "relation": "controls",
+    "tail": "Interior Light",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehIlluminateCtrlCmd",
+    "relation": "controls",
+    "tail": "Interior Light",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehBcklghtngCtrlCmd",
+    "relation": "depends on",
+    "tail": "ICB/ZXD",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehBcklghtngCtrlCmd",
+    "relation": "depends on",
+    "tail": "LHZCU U",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehBcklghtngCtrlCmd",
+    "relation": "outputs to",
+    "tail": "VS SST S",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehIlluminateCtrlCmd",
+    "relation": "depends on",
+    "tail": "CAN",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehIlluminateCtrlCmd",
+    "relation": "depends on",
+    "tail": "LHZCU U",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehIlluminateCtrlCmd",
+    "relation": "depends on",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehIlluminateCtrlCmd",
+    "relation": "outputs to",
+    "tail": "VS SST S",
+    "sources": ["inner_lamp_fas_0569"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Brightness Adjustment Parameter",
+    "relation": "has prerequisite",
+    "tail": "Parameter Range = 0 to 100",
+    "sources": ["inner_lamp_fas_0570"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Door Delay Setting Parameter",
+    "relation": "has prerequisite",
+    "tail": "Resolution Factor = 1 second",
+    "sources": ["inner_lamp_fas_0570"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Safety Close Time Parameter",
+    "relation": "has prerequisite",
+    "tail": "Default Value = 3 seconds",
+    "sources": ["inner_lamp_fas_0570"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Welcome Step Lamp Availability in Normal Driving",
+    "relation": "has prerequisite",
+    "tail": "Welcome Step Lamp VS Modification Completed",
+    "sources": ["inner_lamp_fas_0571"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Laser Welcome Lamp Control",
+    "relation": "applies only to",
+    "tail": "IM Motors S31L Project",
+    "sources": ["inner_lamp_fas_0571"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch and Brightness Adjustment VS Update",
+    "relation": "has prerequisite",
+    "tail": "User Mode Restriction Not Applied",
+    "sources": ["inner_lamp_fas_0571"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU Local State Hold",
+    "relation": "state retention condition",
+    "tail": "Transition from Illuminated to Sleep/Standby State",
+    "sources": ["inner_lamp_fas_0571"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "XOTA Usage of Trunk Lamp",
+    "relation": "has prerequisite",
+    "tail": "Logic Fix VP3-62730",
+    "sources": ["inner_lamp_fas_0571"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VP3-87654",
+    "relation": "has sub-function",
+    "tail": "VP3-87651",
+    "sources": ["inner_lamp_fas_0571"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Handling of Invalid VS Validity Signals for All Lamps",
+    "relation": "has prerequisite",
+    "tail": "VP3-102932",
+    "sources": ["inner_lamp_fas_0571"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Brightness Adjustment Parameter",
+    "relation": "depends on",
+    "tail": "Resolution Factor",
+    "sources": ["inner_lamp_fas_0572"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Mode Switching",
+    "relation": "has prerequisite",
+    "tail": "Parameter Range",
+    "sources": ["inner_lamp_fas_0572"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Opening Angle",
+    "relation": "takes input as",
+    "tail": "Default Value",
+    "sources": ["inner_lamp_fas_0572"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Floor Lamp FL",
+    "relation": "outputs to",
+    "tail": "ODH",
+    "sources": ["inner_lamp_fas_0575"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Floor Lamp RL",
+    "relation": "outputs to",
+    "tail": "ODH",
+    "sources": ["inner_lamp_fas_0575"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ODH",
+    "relation": "connected to",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_fas_0575"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Floor Lamp FR",
+    "relation": "outputs to",
+    "tail": "ODH",
+    "sources": ["inner_lamp_fas_0575"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Floor Lamp RR",
+    "relation": "outputs to",
+    "tail": "ODH",
+    "sources": ["inner_lamp_fas_0575"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckSts Signal Transmitted",
+    "relation": "triggered by",
+    "tail": "LHZCU Controller as Transmitter",
+    "sources": ["inner_lamp_fas_0576"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckSts Signal Received",
+    "relation": "triggered by",
+    "tail": "RZCU/LHZCU Controller as Receiver",
+    "sources": ["inner_lamp_fas_0576"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckSts = 0x0",
+    "relation": "means",
+    "tail": "Vehicle Unlocked",
+    "sources": ["inner_lamp_fas_0576"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckSts = 0x1",
+    "relation": "means",
+    "tail": "Signal Position Entry Unlocked",
+    "sources": ["inner_lamp_fas_0576"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckSts = 0x2",
+    "relation": "means",
+    "tail": "Interior Locked",
+    "sources": ["inner_lamp_fas_0576"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckSts = 0x3",
+    "relation": "means",
+    "tail": "Exterior Locked",
+    "sources": ["inner_lamp_fas_0576"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckSts = 0x4",
+    "relation": "means",
+    "tail": "Super Locked",
+    "sources": ["inner_lamp_fas_0576"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehLckSts = 0x5",
+    "relation": "means",
+    "tail": "Reserved Value",
+    "sources": ["inner_lamp_fas_0576"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

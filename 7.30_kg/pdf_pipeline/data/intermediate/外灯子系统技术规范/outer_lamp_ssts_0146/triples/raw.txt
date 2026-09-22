@@ -1,0 +1,106 @@
+```json
+[
+  {
+    "head": "侧位灯开启",
+    "relation": "触发条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==1 (On) (InstanceID=3)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq",
+      "On",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RLSideLghtDrvMdl持续驱动左后位置灯输出",
+    "relation": "依赖于",
+    "tail": "侧位灯开启",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RLSideLghtDrvMdl",
+      "PosLamp_LH&RH_HSD",
+      "侧位灯开启"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RLSideLghtDrvMdl持续发送SidePositionLightStatus",
+    "relation": "依赖于",
+    "tail": "侧位灯开启",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RLSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "侧位灯开启"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统状态为侧位灯开启",
+    "relation": "状态保持条件",
+    "tail": "RLSideLghtDrvMdl持续驱动左后位置灯输出 (PosLamp_LH&RH_HSD)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "RLSideLghtDrvMdl",
+      "PosLamp_LH&RH_HSD",
+      "SidePositionLightSta",
+      "On"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统状态为侧位灯开启",
+    "relation": "状态保持条件",
+    "tail": "RLSideLghtDrvMdl持续发送SidePositionLightStatus. SidePositionLightSta=1(On)(InstanceID=3)至【SideLghtCtrlMdl】",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "RLSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "SidePositionLightSta",
+      "On",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位灯关闭",
+    "relation": "触发条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==0 (Off) (InstanceID=3)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq",
+      "Off",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统状态为侧位灯关闭",
+    "relation": "复位条件",
+    "tail": "侧位灯开启",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "侧位灯开启",
+      "侧位灯关闭"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RLSideLghtDrvMdl持续发送SidePositionLightStatus",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RLSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "三帧"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,464 @@
+[
+  {
+    "head": "RoofLHBLampFadeSpdCmd_1_X_SpdY的快速速度",
+    "relation": "超时约束",
+    "tail": "300ms",
+    "sources": [
+      "inner_lamp_ssts_0041"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统功能需求",
+    "relation": "前提条件",
+    "tail": "保持源为NA",
+    "sources": [
+      "inner_lamp_ssts_0042"
+    ],
+    "conflict": true,
+    "conflict_note": "语义等价项'保持原因为NA'与'备注为NA'存在措辞歧义，但'源（Source）'是标准工程术语（指信号/数据来源），'原因（Reason）'和'备注（Remark）'非等价；三者共现于同一文档编号，疑似原文笔误或字段映射不一致，需确认原始SSTS中对应字段定义"
+  },
+  {
+    "head": "内灯子系统",
+    "relation": "包含子功能",
+    "tail": "Z-ONE-3.0平台-SSTS-IBD10",
+    "sources": [
+      "inner_lamp_ssts_0043",
+      "inner_lamp_ssts_0044",
+      "inner_lamp_ssts_0054",
+      "inner_lamp_ssts_0055",
+      "inner_lamp_ssts_0057",
+      "inner_lamp_ssts_0062",
+      "inner_lamp_ssts_0110",
+      "inner_lamp_ssts_0143",
+      "inner_lamp_ssts_0162",
+      "inner_lamp_ssts_0180",
+      "inner_lamp_ssts_0224",
+      "inner_lamp_ssts_0228",
+      "inner_lamp_ssts_0236",
+      "inner_lamp_ssts_0298",
+      "inner_lamp_ssts_0326",
+      "inner_lamp_ssts_0365",
+      "inner_lamp_ssts_0384",
+      "inner_lamp_ssts_0400",
+      "inner_lamp_ssts_0408",
+      "inner_lamp_ssts_0451",
+      "inner_lamp_ssts_0452",
+      "inner_lamp_ssts_0488",
+      "inner_lamp_ssts_0489",
+      "inner_lamp_ssts_0525",
+      "inner_lamp_ssts_0558",
+      "inner_lamp_ssts_0566"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯子系统",
+    "relation": "依赖于",
+    "tail": "版本<1.2>",
+    "sources": [
+      "inner_lamp_ssts_0043"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "子系统技术规范",
+    "relation": "控制对象",
+    "tail": "内灯子系统",
+    "sources": [
+      "inner_lamp_ssts_0044",
+      "inner_lamp_ssts_0055",
+      "inner_lamp_ssts_0228",
+      "inner_lamp_ssts_0326",
+      "inner_lamp_ssts_0365"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆电子电器系统功能",
+    "relation": "前提条件",
+    "tail": "电压状态为正常(9V~16V)",
+    "sources": [
+      "inner_lamp_ssts_0045"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆电子电器系统功能",
+    "relation": "抑制条件",
+    "tail": "电压状态为低压(6V以下) 或 欠压(6V~9V) 或 过压(16V~18V) 或 高压(18V以上)",
+    "sources": [
+      "inner_lamp_ssts_0045"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆电子电器系统功能",
+    "relation": "输出为",
+    "tail": "使能 或 禁止",
+    "sources": [
+      "inner_lamp_ssts_0045"
+    ],
+    "conflict": true,
+    "conflict_note": "同一功能在相同条件下同时规定'使能'与'禁止'输出，逻辑矛盾；实际应为条件分支（如：正常电压→使能；异常电压→禁止），但原文未明确条件映射关系，需补充上下文"
+  },
+  {
+    "head": "氛围灯点亮",
+    "relation": "触发条件",
+    "tail": "前置条件为氛围灯处于关闭状态",
+    "sources": [
+      "inner_lamp_ssts_0046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯点亮",
+    "relation": "触发条件",
+    "tail": "接收到CnsoLHALampOnOff_1 = 0x1 (ON)",
+    "sources": [
+      "inner_lamp_ssts_0046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯点亮",
+    "relation": "触发条件",
+    "tail": "CnsoLHALampColorCmd_1 != 0x00 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯点亮",
+    "relation": "触发条件",
+    "tail": "CnsoLHALampBrtnsCmd_1 != 0x00 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "接收到CnsoLHALampOnOff_1 = 0x0 (OFF)，按渐变速度CnsoLHALampFadeSpdCmd_1执行",
+    "sources": [
+      "inner_lamp_ssts_0046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "接收到CnsoLHALampOnOff_1信号为0x00(OFF)",
+    "sources": [
+      "inner_lamp_ssts_0051"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "故障响应",
+    "tail": "氛围灯模块出现过压、欠压故障",
+    "sources": [
+      "inner_lamp_ssts_0046",
+      "inner_lamp_ssts_0051",
+      "inner_lamp_ssts_0052",
+      "inner_lamp_ssts_0067",
+      "inner_lamp_ssts_0069",
+      "inner_lamp_ssts_0139",
+      "inner_lamp_ssts_0348",
+      "inner_lamp_ssts_0497"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "超时约束",
+    "tail": "超过6秒未接收到ZCU的LIN信号",
+    "sources": [
+      "inner_lamp_ssts_0046",
+      "inner_lamp_ssts_0051",
+      "inner_lamp_ssts_0052",
+      "inner_lamp_ssts_0067",
+      "inner_lamp_ssts_0069",
+      "inner_lamp_ssts_0139",
+      "inner_lamp_ssts_0497"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "颜色值控制",
+    "relation": "依赖于",
+    "tail": "CnsoLHALampColorCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "亮度值控制",
+    "relation": "依赖于",
+    "tail": "CnsoLHALampBrtnsCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "渐变速度控制",
+    "relation": "依赖于",
+    "tail": "CnsoLHALampFadeSpdCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0046"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯调整亮度",
+    "relation": "触发条件",
+    "tail": "接收到CnsoLHALampBrtnsCmd_1信号从0x00变为非0x00",
+    "sources": [
+      "inner_lamp_ssts_0051"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯亮度保持不变",
+    "relation": "触发条件",
+    "tail": "接收到CnsoLHALampBrtnsCmd_1信号为0x65-0xFF",
+    "sources": [
+      "inner_lamp_ssts_0051"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯亮度保持不变",
+    "relation": "状态保持条件",
+    "tail": "接收到CnsoLHALampBrtnsCmd_1信号为0x00(No Request)",
+    "sources": [
+      "inner_lamp_ssts_0051"
+    ],
+    "conflict": true,
+    "conflict_note": "同一头实体'氛围灯亮度保持不变'下，'触发条件'与'状态保持条件'语义重叠但逻辑冲突：0x00应为'无请求→保持'，而0x65-0xFF属'有效请求值→不应保持'；此处'触发条件'项可能误标为'触发'，实为'无效区间'，建议修正为'抑制条件'"
+  },
+  {
+    "head": "氛围灯亮度设置",
+    "relation": "依赖于",
+    "tail": "[氛围灯驱动控制模块]按照亮度设置表对应亮度值的PWM",
+    "sources": [
+      "inner_lamp_ssts_0051"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate13holdoffPercent",
+    "relation": "抑制条件",
+    "tail": "氛围灯呼吸模式等待时间",
+    "sources": [
+      "inner_lamp_ssts_0048"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate14holdoffPercent",
+    "relation": "输入为",
+    "tail": "0xA (10%)",
+    "sources": [
+      "inner_lamp_ssts_0048"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate15holdoffPercent",
+    "relation": "抑制条件",
+    "tail": "氛围灯呼吸模式等待时间",
+    "sources": [
+      "inner_lamp_ssts_0048"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate13holdoffPercent",
+    "relation": "依赖于",
+    "tail": "E = N * 1%",
+    "sources": [
+      "inner_lamp_ssts_0048"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate14holdoffPercent",
+    "relation": "依赖于",
+    "tail": "E = N * 1%",
+    "sources": [
+      "inner_lamp_ssts_0048"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLampBrthngRate15holdoffPercent",
+    "relation": "依赖于",
+    "tail": "E = N * 1%",
+    "sources": [
+      "inner_lamp_ssts_0048"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制参数",
+    "relation": "前提条件",
+    "tail": "参数范围/Range为有效数值",
+    "sources": [
+      "inner_lamp_ssts_0049"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制参数",
+    "relation": "前提条件",
+    "tail": "分辨率/Factor为指定精度",
+    "sources": [
+      "inner_lamp_ssts_0049"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门参数",
+    "relation": "前提条件",
+    "tail": "默认值/Default为预设初始值",
+    "sources": [
+      "inner_lamp_ssts_0049"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智己汽车",
+    "relation": "包含子功能",
+    "tail": "内灯子系统",
+    "sources": [
+      "inner_lamp_ssts_0050"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0平台-SSTS-IBD10",
+    "relation": "控制对象",
+    "tail": "内灯子系统",
+    "sources": [
+      "inner_lamp_ssts_0050"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1Lamp退出呼吸模式",
+    "relation": "前提条件",
+    "tail": "接收到氛围灯控制模块的请求信号DoorFL1LampOnOff_1 = 0x00 (OFF)",
+    "sources": [
+      "inner_lamp_ssts_0052"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1Lamp退出呼吸模式",
+    "relation": "前提条件",
+    "tail": "DoorFL1LampBrthngCmd_1 = 0x00 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0052"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLightLHRollingCtrl_1不再按照1顺序叠加",
+    "relation": "前提条件",
+    "tail": "停止呼吸模式",
+    "sources": [
+      "inner_lamp_ssts_0052"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1Lamp静态点亮",
+    "relation": "前提条件",
+    "tail": "AmbtLightLHRollingCtrl_1不再按照1顺序叠加 且 颜色亮度信号异常",
+    "sources": [
+      "inner_lamp_ssts_0052"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1Lamp常亮显示",
+    "relation": "前提条件",
+    "tail": "AmbtLightLHRollingCtrl_1不再按照1顺序叠加 且 颜色亮度信号正常",
+    "sources": [
+      "inner_lamp_ssts_0052"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1Lamp关闭",
+    "relation": "故障响应",
+    "tail": "氛围灯模块出现过压、欠压故障",
+    "sources": [
+      "inner_lamp_ssts_0052"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1Lamp关闭",
+    "relation": "超时约束",
+    "tail": "超过6秒未接收到ZCU的LIN信号",
+    "sources": [
+      "inner_lamp_ssts_0052"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数验证",
+    "relation": "前提条件",
+    "tail": "配置项/Item、配置描述/Description、参数范围/Range、分辨率/Factor、默认值/Default均为NA",
+    "sources": [
+      "inner_lamp_ssts_0053"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

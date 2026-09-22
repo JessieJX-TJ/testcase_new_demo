@@ -1,0 +1,67 @@
+{
+  "table_type": "logic_table",
+  "topic": "车辆近光灯在隧道场景下的自动控制逻辑",
+  "row_semantics": "表格的行代表不同的描述维度，包括场景描述和前置条件。",
+  "column_semantics": "表格的列用于组织信息，第一列是描述标题，第二列是详细内容。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "近光灯",
+      "type": "功能",
+      "description": "车辆前照灯的一种，用于夜间或光线不足时提供照明。"
+    },
+    {
+      "name": "隧道",
+      "type": "环境状态",
+      "description": "指车辆行驶过程中进入的地下通道，光线较暗。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "白天室外光线较强",
+      "description": "车辆在室外行驶时，环境光照度较高。",
+      "signal": "LightIntensity_Outdoor_Day"
+    },
+    {
+      "name": "进入隧道",
+      "description": "车辆从室外进入地下隧道。",
+      "signal": "VehicleLocation_TunnelEntry"
+    },
+    {
+      "name": "近光灯开启状态为隧道变关开启",
+      "description": "系统预设的近光灯控制模式，在进入隧道时自动关闭近光灯。",
+      "signal": "HeadlightControlMode_TunnelTransition"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "近光灯关闭",
+      "description": "车辆进入隧道后，近光灯自动关闭以适应昏暗环境。",
+      "signal": "HeadlightStatus_Off"
+    },
+    {
+      "name": "近光灯开启",
+      "description": "车辆离开隧道后，近光灯重新开启以适应室外光线。",
+      "signal": "HeadlightStatus_On"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "进入隧道后关闭近光灯",
+      "description": "车辆进入隧道后，近光灯应在一定时间内关闭。",
+      "timing": "T_HL_CloseAfterTunnelEntry"
+    },
+    {
+      "name": "离开隧道后开启近光灯",
+      "description": "车辆离开隧道后，近光灯应在一定时间内开启。",
+      "timing": "T_HL_OpenAfterTunnelExit"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了车辆在特定场景（白天室外到隧道）下，近光灯的自动控制逻辑，可用于验证车辆在不同光照环境下近光灯的正确开关行为。",
+  "uncertain_points": [
+    "具体的时间阈值（T_HL_CloseAfterTunnelEntry, T_HL_OpenAfterTunnelExit）未明确给出。",
+    "SOA和CAN通讯的具体实现细节未在表格中说明。"
+  ]
+}

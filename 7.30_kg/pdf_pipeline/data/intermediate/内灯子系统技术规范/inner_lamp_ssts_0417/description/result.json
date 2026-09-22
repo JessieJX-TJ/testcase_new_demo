@@ -1,0 +1,50 @@
+{
+  "table_type": "signal_table",
+  "topic": "RZCU接收CAN信号与LIN接口信号的映射关系及通信故障处理",
+  "row_semantics": "描述RZCU模块接收的CAN信号及其对应的LIN信号赋值规则，以及当与LHZCU通信丢失时的位置灯状态维持机制。",
+  "column_semantics": {
+    "1": "RZCU接收的CAN信号名称",
+    "2": "LIN接口的信号赋值规则或对应关系"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "车身控制单元，负责接收CAN信号并进行处理。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "LIN总线控制单元，与RZCU进行通信以控制LIN信号。"
+    },
+    {
+      "name": "SideLghtSts",
+      "type": "input_signal",
+      "description": "RZCU接收的CAN信号，表示侧灯状态。"
+    },
+    {
+      "name": "VehSideLghtSts_1_RZCU",
+      "type": "output_signal",
+      "description": "LIN信号，由RZCU通过LIN接口输出，表示车辆侧灯状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "LHZCU与RZCU通信丢失",
+      "description": "当RZCU与LHZCU之间的通信中断时触发的条件。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "SideLghtSts",
+      "state": "上一次状态",
+      "description": "在通信丢失的情况下，侧灯状态信号维持最后一次接收到的状态值。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了RZCU如何将CAN信号SideLghtSts映射到LIN信号VehSideLghtSts_1_RZCU，并规定了在与LHZCU通信异常时，侧灯状态信号应保持不变，用于验证RZCU在通信故障下的信号处理逻辑。",
+  "uncertain_points": []
+}

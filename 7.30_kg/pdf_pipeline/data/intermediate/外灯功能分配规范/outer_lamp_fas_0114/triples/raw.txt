@@ -1,0 +1,92 @@
+```json
+[
+  {
+    "head": "ICB 接收寻车灯远程控制模块 LHZCU 的转向灯状态反馈",
+    "relation": "输入为",
+    "tail": "FLDircnLghtSts=0x0= FLDircnLghtSts_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["FLDircnLghtSts", "ICB", "LHZCU"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 接收寻车灯远程控制模块 LHZCU 的转向灯故障状态反馈",
+    "relation": "输入为",
+    "tail": "FLDircnLghtFltsts=0x0=FLDircnLghtFltsts_0_False",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["FLDircnLghtFltsts", "ICB", "LHZCU"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "寻车灯远程控制模块 LHZCU 将方向灯状态反馈至 ICB",
+    "relation": "输出为",
+    "tail": "DircnLghtSts=0x0=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DircnLghtSts", "LHZCU", "ICB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "寻车灯远程控制模块 LHZCU 将方向灯故障状态反馈至 ICB",
+    "relation": "输出为",
+    "tail": "DircnLghtFltsts=0x0=DircnLghtFltsts_0_No_Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DircnLghtFltsts", "LHZCU", "ICB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务 ICB 接收转向灯点亮及故障状态 CAN 信号",
+    "relation": "输入为",
+    "tail": "LHZCU 发送的转向灯点亮及故障状态 CAN 信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ICB", "LHZCU", "CAN"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务 ICB 将转向灯点亮状态转成对应的服务",
+    "relation": "输出为",
+    "tail": "{ExteriorLightControlSystem. DirectionLightSts. DirectionLghtSts}=0x0=No Flash",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ICB", "ExteriorLightControlSystem", "DirectionLghtSts"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务 ICB 将转向灯故障状态转成对应的服务",
+    "relation": "输出为",
+    "tail": "{ExteriorLightControlSystem.DirectionLightErrSts. DirectionLghtErrSts}=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ICB", "ExteriorLightControlSystem", "DirectionLghtErrSts"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "寻车灯远程控制模块 LHZCU 将双闪灯模式实时状态反馈至 ICB",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts=0x0=VehHzrdMdSts_0_No_Request",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["LHZCU", "ICB", "VehHzrdMdSts"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "寻车灯远程控制模块 LHZCU 将转向灯控制状态反馈至 SDM",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts=0x0=EDRDircnIndLampSwSts_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["LHZCU", "SDM", "EDRDircnIndLampSwSts"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "双闪灯处于激活状态时接收新请求",
+    "relation": "触发条件",
+    "tail": "立即打断，响应新的请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["双闪灯", "激活状态", "新请求", "打断"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "双闪灯同步性允许的最大延时周期",
+    "relation": "超时约束",
+    "tail": "40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": ["双闪灯", "同步性", "延时周期", "40ms"],
+    "confidence_note": "high"
+  }
+]
+```

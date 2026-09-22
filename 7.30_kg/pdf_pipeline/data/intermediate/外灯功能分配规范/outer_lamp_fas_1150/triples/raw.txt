@@ -1,0 +1,204 @@
+```json
+[
+  {
+    "head": "危险警灯开启",
+    "relation": "前提条件",
+    "tail": "未检测到新的碰撞事件",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["危险告警灯开启", "未检测到新的碰撞事件"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警灯开启",
+    "relation": "触发条件",
+    "tail": "开始计时 CrashHazardTi",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["危险告警灯开启", "CrashHazardTi"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "重新检测到新的碰撞事件",
+    "relation": "抑制条件",
+    "tail": "计时 CrashHazardTi",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["重新检测到新的碰撞事件", "CrashHazardTi"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "用户手动关闭危险报警开关",
+    "relation": "触发条件",
+    "tail": "HzrdLghtSwReq = 0x1 = HzrdLghtSwReq_1_On",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["用户手动关闭危险报警开关", "HzrdLghtSwReq"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "输出为",
+    "tail": "FLDircnLghtCtrl = 0x0 = FLDircnLghtCtrl_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["LHZCU", "FLDircnLghtCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "输出为",
+    "tail": "FRDircnLghtCtrl = 0x0 = FRDircnLghtCtrl_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["LHZCU", "FRDircnLghtCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "输出为",
+    "tail": "RLDircnLghtCtrl = 0x0 = RLDircnLghtCtrl_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["LHZCU", "RLDircnLghtCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU",
+    "relation": "输出为",
+    "tail": "RRDircnLghtCtrl = 0x0 = RRDircnLghtCtrl_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["LHZCU", "RRDircnLghtCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务 ICB",
+    "relation": "调用基础服务",
+    "tail": "InstanceID = 1 到 InstanceID = 8",
+    "triple_type": "包含子功能",
+    "evidence_terms": ["ICB", "InstanceID"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务 ICB",
+    "relation": "依赖于",
+    "tail": "DircnLghtCtrlDelayPrm",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["ICB", "DircnLghtCtrlDelayPrm"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务 ICB",
+    "relation": "超时约束",
+    "tail": "延时 60ms",
+    "triple_type": "时序约束",
+    "evidence_terms": ["ICB", "60ms"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB",
+    "relation": "输出为",
+    "tail": "CAN 信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ICB", "CAN 信号"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB",
+    "relation": "控制对象",
+    "tail": "双闪灯",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ICB", "双闪灯"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB",
+    "relation": "超时约束",
+    "tail": "延时 60ms",
+    "triple_type": "时序约束",
+    "evidence_terms": ["ICB", "60ms"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动模块 LHZCU/RHZCU/RZCU",
+    "relation": "接收",
+    "tail": "ICB 服务接口或控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["驱动模块", "ICB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动模块 LHZCU/RHZCU/RZCU",
+    "relation": "执行",
+    "tail": "退出整车双闪灯点亮",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["驱动模块", "双闪灯"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB",
+    "relation": "接收",
+    "tail": "控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ICB", "控制信号"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB",
+    "relation": "执行",
+    "tail": "做退出危险警报灯图标指示灯显示以及声音提醒",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["ICB", "危险警报灯图标", "声音提醒"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动处理模块 LHZCU/RHZCU/RZCU",
+    "relation": "反馈",
+    "tail": "LHZCU 状态/故障状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["驱动处理模块", "LHZCU"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FLDirenLghtSts_HW",
+    "relation": "输出为",
+    "tail": "0x0 = FLDirenLghtSts_HW_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["FLDirenLghtSts_HW"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRDirenLghtSts_HW",
+    "relation": "输出为",
+    "tail": "0x0 = FRDirenLghtSts_HW_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["FRDirenLghtSts_HW"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RLDirenLghtSts_HW",
+    "relation": "输出为",
+    "tail": "0x0 = RLDirenLghtSts_HW_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["RLDirenLghtSts_HW"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RRDirenLghtSts_HW",
+    "relation": "输出为",
+    "tail": "0x0 = RRDirenLghtSts_HW_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["RRDirenLghtSts_HW"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FLDirenLghtFlsts_HW",
+    "relation": "输出为",
+    "tail": "0x0 = FLDirenLghtFlsts_HW_0_False",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["FLDirenLghtFlsts_HW"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRDirenLghtFlsts_HW",
+    "relation": "输出为",
+    "tail": "0x0 = FRDirenLghtFlsts_HW_0_False",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["FRDirenLghtFlsts_HW"],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,68 @@
+```json
+[
+  {
+    "head": "系统触发方向灯控制逻辑",
+    "relation": "前提条件",
+    "tail": "配置字 DILghtSwSOAEnPrm == 1 (Enable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["DILghtSwSOAEnPrm"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统触发方向灯控制逻辑",
+    "relation": "触发条件",
+    "tail": "转向拨杆开关悬空",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["转向拨杆开关", "悬空"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统执行动作",
+    "relation": "依赖于",
+    "tail": "转向拨杆开关悬空",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["转向拨杆开关", "悬空"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统持续发送 DirectionLightSwitchStatus",
+    "relation": "输入为",
+    "tail": "【DILghtSwMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DILghtSwMdl", "DirectionLightSwitchStatus"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统持续发送 DirectionLightSwitchStatus",
+    "relation": "输出为",
+    "tail": "DirectionLightSwitchSta=0x0 (OFF)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DirectionLightSwitchSta", "0x0 (OFF)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统持续发送 DirectionLightSwitchStatus",
+    "relation": "输出为",
+    "tail": "【DILghtCtrlMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DILghtCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统持续发送 DirectionLightSwitchStatus",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": ["三帧"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统退出方向灯控制逻辑",
+    "relation": "退出条件",
+    "tail": "转向灯开关变为非悬空",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["转向灯开关", "非悬空"],
+    "confidence_note": "high"
+  }
+]
+```

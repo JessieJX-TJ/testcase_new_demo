@@ -1,0 +1,14 @@
+前置条件
+1.MainBeamLghtFbkSOAEnPrm==1(Enable)
+触发条件
+收到【MainBeamLghtCtrlMdl】发送的MainBeamLightControl.
+MainBeamLightCtrReq ==1(On)InstanceID=2
+执行动作
+【RMainBeamLghtDrvMdl】持续驱动右远光灯输出
+(MainBeamHdlmp_RH_HSD)
+【RMainBeamLghtDrvMdl】持续发送MainBeamLightState.
+MainBeamLightSta =1(On)InstanceID=2 至
+【MainBeamLghtCtrlMdl】,至少发送三帧
+退出条件
+MainBeamLightCtrReq ==0(Off)InstanceID=2
+异常处理

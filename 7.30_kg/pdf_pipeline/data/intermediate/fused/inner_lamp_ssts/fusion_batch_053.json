@@ -1,0 +1,92 @@
+[
+  {
+    "head": "AmbientLightIllumination",
+    "relation": "trigger_condition",
+    "tail": "UpIPALampOnOff_1 == 0x1 (ON)",
+    "sources": [
+      "inner_lamp_ssts_0585"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightIllumination",
+    "relation": "trigger_condition",
+    "tail": "UpIPALampColorCmd_1 != 0x00 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0585"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightIllumination",
+    "relation": "trigger_condition",
+    "tail": "UpIPALampBrtnsCmd_1 != 0x00 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0585"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightShutdown",
+    "relation": "trigger_condition",
+    "tail": "UpIPALampOnOff_1 == 0x0 (OFF), with fade speed controlled by UpIPALampFadeSpdCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0585"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightShutdown",
+    "relation": "fault_response",
+    "tail": "Overvoltage or undervoltage fault detected in ambient light module → immediate shutdown",
+    "sources": [
+      "inner_lamp_ssts_0585"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightShutdown",
+    "relation": "fault_response",
+    "tail": "LIN communication timeout (>6 s) with ZCU → immediate shutdown",
+    "sources": [
+      "inner_lamp_ssts_0585"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightColorControl",
+    "relation": "input_signal",
+    "tail": "UpIPALampColorCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0585"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightBrightnessControl",
+    "relation": "input_signal",
+    "tail": "UpIPALampBrtnsCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0585"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightFadeSpeedControl",
+    "relation": "input_signal",
+    "tail": "UpIPALampFadeSpdCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0585"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

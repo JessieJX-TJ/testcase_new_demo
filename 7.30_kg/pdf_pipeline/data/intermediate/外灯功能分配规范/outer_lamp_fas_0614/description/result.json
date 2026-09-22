@@ -1,0 +1,84 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 制动灯状态订阅",
+  "row_semantics": "表格按制动灯状态（BrakeLightState）的不同实例ID进行划分，分别描述了硬线状态和网络状态下的参数定义。",
+  "column_semantics": {
+    "1": "功能名：BrakeLight. BrakeLightState",
+    "2": "消费方：SOA (Service-Oriented Architecture)",
+    "3": "控制器/模块名：RZCU (可能为区域控制单元) 或 ICB (集成控制板)",
+    "4": "控制器/模块名：LHZCU (可能为本地区域控制单元)",
+    "5": "预留列",
+    "6": "状态类型：硬线状态或网络状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrakeLightState",
+      "type": "功能名",
+      "description": "制动灯状态服务接口，用于订阅车辆制动灯的工作状态。"
+    },
+    {
+      "name": "SOA",
+      "type": "控制器/模块名",
+      "description": "服务导向架构，作为制动灯状态的消费方。"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器/模块名",
+      "description": "区域控制单元，负责处理硬线状态下的制动灯信号。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "本地区域控制单元，与RZCU协同工作。"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "集成控制板，负责处理网络状态下的制动灯信号。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例标识符，区分不同状态订阅场景。",
+      "values": [
+        {
+          "value": "1",
+          "description": "硬线状态实例，对应RZCU和LHZCU模块。"
+        },
+        {
+          "value": "2",
+          "description": "网络状态实例，对应ICB和LHZCU模块。"
+        }
+      ]
+    },
+    {
+      "name": "BrakeLightSta",
+      "description": "制动灯状态参数，表示制动灯的具体状态。",
+      "values": [
+        {
+          "value": "0x0=OFF",
+          "description": "制动灯关闭。"
+        },
+        {
+          "value": "0x1=ON",
+          "description": "制动灯开启。"
+        },
+        {
+          "value": "0x2=Unknown",
+          "description": "制动灯状态未知。"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了制动灯状态在硬线和网络两种通信模式下的参数规范，可用于验证车辆制动灯状态信号在不同控制器间的正确传输与解析。",
+  "uncertain_points": [
+    "具体控制器功能细节未明确说明。",
+    "LHZCU在两种模式下均出现，其具体职责需进一步确认。"
+  ]
+}

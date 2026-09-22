@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior lamp function) 的状态定义与分配规范",
+  "row_semantics": "表格的行代表不同的状态或模式变量，包括车辆使用模式 (VehMd)、车辆使用模式验证 (VehMdV)、用户使用模式 (UsG Md)、用户使用模式验证 (UsG MdV)。",
+  "column_semantics": "表格的列主要分为两部分：左侧为状态变量名称，右侧为该变量的具体取值及其对应的中文含义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "description": "Vehicle Mode, 车辆使用模式，定义了车辆在不同场景下的运行状态。"
+    },
+    {
+      "name": "VehMdV",
+      "description": "Vehicle Mode Validation, 车辆使用模式验证状态，用于确认VehMd的有效性。"
+    },
+    {
+      "name": "UsG Md",
+      "description": "User Usage Mode, 用户使用模式，定义了驾驶员或乘客的偏好设置。"
+    },
+    {
+      "name": "UsG MdV",
+      "description": "User Usage Mode Validation, 用户使用模式验证状态，用于确认UsG Md的有效性。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "entity": "VehMd",
+      "values": [
+        "VehMd_2_FACTORY",
+        "VehMd_3_TRANSPORT",
+        "VehMd_4_DYNO",
+        "VehMd_5_EXHIBITION",
+        "VehMd_8_Engineering",
+        "VehMd_9_Service"
+      ],
+      "description": "定义了车辆在工厂、运输、动态测试、展览、工程开发和维修服务等不同场景下的外灯功能需求。"
+    },
+    {
+      "entity": "UsG Md",
+      "values": [
+        "UsG Md_0_Sleep",
+        "UsG Md_1_Standby",
+        "UsG Md_2_Comfortable",
+        "UsG Md_3_NormalDriving",
+        "UsG Md_4_AI_Parking",
+        "UsG Md_5_AI_Pilot",
+        "UsG Md_6_XOTA"
+      ],
+      "description": "定义了用户在睡眠、待机、舒适、正常驾驶、AI泊车、AI驾驶辅助和XOTA（远程升级）等不同使用场景下的外灯功能需求。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了外灯功能在不同车辆模式和用户模式下的状态取值，可用于验证外灯功能是否根据车辆和用户的当前状态正确启用或配置。",
+  "uncertain_points": [
+    "表格中未明确说明各模式之间的转换逻辑及触发条件。",
+    "未提供具体的CAN/LIN/SOA信号定义细节，仅指向具体条目。",
+    "未定义各模式下外灯的具体行为（如亮度、颜色、闪烁频率等）。"
+  ]
+}
+```

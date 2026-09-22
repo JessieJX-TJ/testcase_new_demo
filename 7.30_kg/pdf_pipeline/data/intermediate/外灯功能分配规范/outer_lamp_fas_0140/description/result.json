@@ -1,0 +1,70 @@
+{
+  "table_type": "logic_table",
+  "topic": "远光灯开启触发雾灯功能的技术规范",
+  "row_semantics": "表格按流程顺序分为四个主要阶段：场景描述、前置条件、触发动作和执行动作。",
+  "column_semantics": "两列结构，左侧为阶段名称（行标题），右侧为该阶段的具体内容描述。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "S32G",
+      "type": "控制器/模块",
+      "description": "车载中央计算单元，负责接收和处理外部请求。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "外灯控制组合服务（ICB）的执行单元，负责管理外灯状态。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "系统",
+      "description": "车身外部灯光控制系统，包含雾灯控制子系统。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "description": "用户模式，包括Sleep（睡眠）、Standby（待机）、XOTA（在线升级）等状态。",
+      "conditions": [
+        "UsrMd = 0x0 (Sleep)",
+        "UsrMd = 0x1 (Standby)",
+        "UsrMd = 0x6 (XOTA)"
+      ]
+    },
+    {
+      "name": "VehMd",
+      "description": "车辆模式，表示车辆当前的工作状态。",
+      "conditions": [
+        "VehMd = 0x3 (TRANSPORT - 运输模式)"
+      ]
+    },
+    {
+      "name": "MainBeamLightFucProStatus",
+      "description": "主大灯功能过程状态，用于判断远光灯是否已开启。",
+      "conditions": [
+        "MainBeamLightFucProStatus = 0x1 (ON)"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogLightReq",
+      "type": "输出信号",
+      "description": "后雾灯请求信号，由S32G发出，值为0x1=On表示请求开启后雾灯。",
+      "source": "S32G",
+      "target": "ExteriorLightControlSystem"
+    },
+    {
+      "name": "RearFogLightFucProCtrlResp",
+      "type": "响应信号",
+      "description": "后雾灯功能过程控制响应信号，值为0x0=ControlSuccess表示控制成功。",
+      "source": "LHZCU",
+      "target": "S32G"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定条件下（如车辆处于运输模式、用户模式非睡眠且有效、远光灯已开启），通过大屏软开关触发后，系统如何控制后雾灯开启的逻辑流程。可用于验证外灯控制系统在特定场景下的功能正确性。",
+  "uncertain_points": []
+}

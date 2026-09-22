@@ -1,0 +1,100 @@
+[
+  {
+    "head": "订阅转向灯状态",
+    "relation": "前提条件",
+    "tail": "调用服务接口 DirectionLightSts",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "调用该服务接口,订阅转向灯状态",
+      "Interface Name: DirectionLightSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0793",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "订阅转向灯故障状态",
+    "relation": "前提条件",
+    "tail": "调用服务接口 DirectionLightErrSts",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "调用该服务接口,订阅转向灯故障状态",
+      "Interface Name: DirectionLightErrSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0793",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "控制左前转向灯点亮或者熄灭",
+    "relation": "前提条件",
+    "tail": "周期调用服务接口 ControlDirectionLight",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "周期调用该服务接口,控制左前转向灯点亮或者熄灭",
+      "Interface Name: ControlDirectionLight"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0793",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "方向灯状态为未知 (0x4)",
+    "relation": "输入为",
+    "tail": "服务接口 DirectionLightSts",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Parameter Name: {DirectionLghtSts}",
+      "0x4=Unknown"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0793",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "方向灯故障状态为错误 (0x1)",
+    "relation": "输入为",
+    "tail": "服务接口 DirectionLightErrSts",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Parameter Name: {DirectionLghtErrSts}",
+      "0x1=Error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0793",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "控制左前转向灯",
+    "relation": "控制对象",
+    "tail": "服务接口 ControlDirectionLight",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ControlDirectionLight",
+      "Interface Name: ControlDirectionLight"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0793",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "订阅转向灯故障状态",
+    "relation": "依赖于",
+    "tail": "硬件平台 S32G-8295",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "S32G-8295",
+      "调用该服务接口,订阅转向灯故障状态"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "outer_lamp_fas_0793",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  }
+]

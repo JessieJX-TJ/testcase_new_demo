@@ -1,0 +1,82 @@
+```json
+[
+  {
+    "head": "订阅左前转向灯状态",
+    "relation": "触发条件",
+    "tail": "调用该服务接口,订阅左前转向灯状态",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "调用该服务接口,订阅左前转向灯状态",
+      "InstanceID=1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "订阅右前转向灯状态",
+    "relation": "触发条件",
+    "tail": "调用该服务接口,订阅右前转向灯状态",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "调用该服务接口,订阅右前转向灯状态",
+      "InstanceID=2"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "订阅左后转向灯状态",
+    "relation": "触发条件",
+    "tail": "调用该服务接口,订阅左后转向灯状态",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "调用该服务接口,订阅左后转向灯状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DirectionLightErrorStatus 接口",
+    "relation": "输入为",
+    "tail": "{DirectionLightErrorSta}",
+    "triple_type": "输入输出关系",
+    "evidence_terms": [
+      "Interface Name: DirectionLightErrorStatus",
+      "Parameter Name: {DirectionLightErrorSta}"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DirectionLightErrorStatus 接口",
+    "relation": "输出为",
+    "tail": "Error Status",
+    "triple_type": "输入输出关系",
+    "evidence_terms": [
+      "Error Status",
+      "0x0=No Error",
+      "0x1=Error",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Error Status",
+    "relation": "依赖于",
+    "tail": "InstanceID",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "InstanceID=1",
+      "InstanceID=2"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "硬线故障状态",
+    "relation": "诊断关联",
+    "tail": "DirectionLightErrorStatus",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "硬线故障状态",
+      "DirectionLightErrorStatus"
+    ],
+    "confidence_note": "medium"
+  }
+]
+```

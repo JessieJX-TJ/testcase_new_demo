@@ -1,0 +1,68 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "HMI (Human-Machine Interface) 转向灯状态显示与故障提示逻辑",
+  "row_semantics": "描述 HMI 子系统在不同 CAN 信号状态下的转向灯显示行为以及转向灯故障时的 HMI 提示逻辑。",
+  "column_semantics": "无明确列，内容为连续的文本描述，分为正常状态显示逻辑和故障状态显示逻辑两部分。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HMI 子系统",
+      "type": "controller",
+      "description": "负责处理并显示转向灯状态信息的子系统。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "车辆中央控制单元，发出转向灯控制信号。"
+    },
+    {
+      "name": "FLDirncLghtCtrl",
+      "type": "input_signal",
+      "description": "由 LHZCU 发出的转向灯控制信号，用于指示左侧或右侧转向灯的状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "CAN 信号状态为 0x1",
+      "description": "表示转向灯应被激活（例如，左侧转向灯亮起）。"
+    },
+    {
+      "condition": "CAN 信号状态为 0x0",
+      "description": "表示转向灯未被激活（例如，转向灯熄灭）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "指示灯显示",
+      "description": "根据 CAN 信号状态决定是否点亮转向指示灯。"
+    },
+    {
+      "output": "声音提醒",
+      "description": "当 CAN 信号状态为 0x1 时，提供声音提示。"
+    },
+    {
+      "output": "故障弹窗提醒",
+      "description": "当转向灯发生故障时，HMI 子系统会弹出相应的故障信息窗口。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "DircnLghtFltsts_1_Left_Direction_Light_Error",
+      "description": "左侧转向灯故障，对应 CAN 故障代码 0x1。"
+    },
+    {
+      "fault": "DircnLghtFltsts_2_Right_Direction_Light_Error",
+      "description": "右侧转向灯故障，对应 CAN 故障代码 0x2。"
+    },
+    {
+      "fault": "DircnLghtFltsts_3_Both_Side_Direction_Light_Error",
+      "description": "两侧转向灯同时故障，对应 CAN 故障代码 0x3。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了 HMI 子系统在接收 LHZCU 发出的转向灯控制信号后，如何根据 CAN 信号状态进行指示灯显示、声音提醒，并在转向灯发生故障时触发相应的故障弹窗提醒。可用于验证 HMI 系统在不同转向灯控制信号状态下的正确显示行为以及故障检测与提示功能。",
+  "uncertain_points": []
+}
+```

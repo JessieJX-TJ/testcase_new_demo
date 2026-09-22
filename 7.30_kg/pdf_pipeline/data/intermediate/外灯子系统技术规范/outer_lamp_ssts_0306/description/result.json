@@ -1,0 +1,78 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯转向灯控制逻辑",
+  "row_semantics": "表格定义了在特定前置条件下，触发条件满足时执行的动作，以及退出条件和异常处理。",
+  "column_semantics": {
+    "column_1": "条件/动作类型（如前置条件、触发条件、执行动作、退出条件、异常处理）",
+    "column_2": "对应的具体描述或规则"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "exlDirClnLghtHwDrvEnPrm",
+      "type": "parameter",
+      "description": "外灯转向灯硬件驱动使能参数"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "module",
+      "description": "外灯控制模块"
+    },
+    {
+      "name": "FLDILghtDrvMdl",
+      "type": "module",
+      "description": "前左外灯驱动模块"
+    },
+    {
+      "name": "FLDirClnLghtCtrl_HW",
+      "type": "signal",
+      "description": "外灯转向灯硬件控制信号"
+    },
+    {
+      "name": "FLDILghtSts_HW",
+      "type": "signal",
+      "description": "前左外灯状态硬件信号"
+    },
+    {
+      "name": "DILamp_LH_HSD",
+      "type": "output_signal",
+      "description": "左前转向灯输出信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "exlDirClnLghtHwDrvEnPrm == 1 || 2",
+      "description": "前置条件，表示外灯转向灯硬件驱动使能参数为1或2时触发"
+    },
+    {
+      "condition": "收到【DILghtCtrlMdl】经统一分发的 FLDirClnLghtCtrl_HW == 0 (Off)",
+      "description": "触发条件，当接收到外灯控制模块分发的转向灯硬件控制信号为关闭状态时触发"
+    },
+    {
+      "condition": "收到【DILghtCtrlMdl】发送的 FLDirClnLghtCtrl_HW == 1 (On)",
+      "description": "退出条件，当接收到外灯控制模块发送的转向灯硬件控制信号为开启状态时退出"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "DILamp_LH_HSD",
+      "action": "停止驱动左前转向灯输出",
+      "description": "执行动作1：停止左前转向灯的硬件输出"
+    },
+    {
+      "output": "FLDILghtSts_HW",
+      "action": "持续发送",
+      "description": "执行动作2：持续发送转向灯状态信号为关闭状态，至少发送三帧"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在执行动作2中，FLDILghtSts_HW信号需要至少发送三帧"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证外灯转向灯在硬件控制信号从关闭状态切换到开启状态时，是否能够正确停止左前转向灯输出，并持续发送关闭状态信号至少三帧。",
+  "uncertain_points": []
+}

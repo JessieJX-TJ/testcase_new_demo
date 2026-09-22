@@ -1,0 +1,68 @@
+```json
+[
+  {
+    "head": "倒车灯控制功能被禁用",
+    "relation": "前提条件",
+    "tail": "RevsLightFbkSOAEnPrm == 0 (Disable)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["RevsLightFbkSOAEnPrm"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统检测到倒车灯开路",
+    "relation": "触发条件",
+    "tail": "检测到倒车灯开路",
+    "triple_type": "工程规则",
+    "evidence_terms": ["倒车灯开路"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统持续发送倒车灯状态为关闭",
+    "relation": "执行动作",
+    "tail": "RevsLightDrvMdl 持续发送 RevsLightSts = 0 (Off) 至 RevsLightCtrlMdl",
+    "triple_type": "工程规则",
+    "evidence_terms": ["RevsLightDrvMdl", "RevsLightCtrlMdl", "RevsLightSts"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统置位故障代码 DTC B104513",
+    "relation": "执行动作",
+    "tail": "置位 DTC B104513",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DTCB104513"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯开路故障恢复",
+    "relation": "退出条件",
+    "tail": "检测到开路恢复",
+    "triple_type": "工程规则",
+    "evidence_terms": ["开路恢复"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统置位故障代码 DTC B104513",
+    "relation": "诊断关联",
+    "tail": "DTC B104513",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DTCB104513", "倒车灯开路"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RevsLightDrvMdl 控制 RevsLightCtrlMdl",
+    "relation": "控制对象",
+    "tail": "RevsLightCtrlMdl",
+    "triple_type": "工程规则",
+    "evidence_terms": ["RevsLightDrvMdl", "RevsLightCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "持续发送三帧数据",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "triple_type": "工程规则",
+    "evidence_terms": ["三帧"],
+    "confidence_note": "high"
+  }
+]
+```

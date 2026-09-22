@@ -1,0 +1,127 @@
+[
+  {
+    "head": "Headlamp System is On",
+    "relation": "触发条件",
+    "tail": "Driver Request is Headlamp Switch On AND Ambient Light Level is Low AND Vehicle Speed is Low",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Driver Request",
+      "Ambient Light Level",
+      "Vehicle Speed"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0201",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "Daytime Running Light (DRL) is On",
+    "relation": "触发条件",
+    "tail": "Time of Day is Day AND Ambient Light Level is Medium OR High",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Time of Day",
+      "Ambient Light Level"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0201",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "Headlamp System is Off",
+    "relation": "抑制条件",
+    "tail": "Driver Request is Headlamp Switch Off OR Sensor Fault (Light/Ambient)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "Driver Request",
+      "Sensor Fault"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0201",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "High Beam Status is On",
+    "relation": "依赖于",
+    "tail": "Headlamp System is On AND Driver Request is High Beam ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Headlamp System",
+      "Driver Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0201",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "Headlamp System transitions to On",
+    "relation": "状态保持条件",
+    "tail": "Headlamp System was previously Off AND Trigger Conditions Met",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "Headlamp System",
+      "Trigger Conditions"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_fas_0201",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "Headlamp System transitions to Off",
+    "relation": "复位条件",
+    "tail": "Headlamp System was previously On AND Reset Conditions Met",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "Headlamp System",
+      "Reset Conditions"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_fas_0201",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "Headlamp System status is maintained",
+    "relation": "状态保持条件",
+    "tail": "No Change in Input Conditions AND No Fault Detected",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "Input Conditions",
+      "Fault"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_fas_0201",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "Headlamp System responds to Headlamp Circuit Fault",
+    "relation": "故障响应",
+    "tail": "Headlamp Circuit Fault detected",
+    "triple_type": "故障响应与降级关系",
+    "evidence_terms": [
+      "Headlamp Circuit Fault"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0201",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "DRL Activation Delay is observed",
+    "relation": "超时约束",
+    "tail": "DRL is requested but not immediately activated",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "DRL Activation Delay"
+    ],
+    "confidence_note": "low",
+    "source_image_id": "inner_lamp_fas_0201",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "state_table"
+  }
+]

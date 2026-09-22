@@ -1,0 +1,168 @@
+[
+  {
+    "head": "危险警报灯退出",
+    "relation": "前提条件",
+    "tail": "危险警报灯处于激活状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "危险警报灯处于激活状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0487",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险警报灯退出",
+    "relation": "触发条件",
+    "tail": "再次请求危险警报灯开关:HzrdLghtSwReq=0x1=HzrdLghtSwReq_1_On",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "HzrdLghtSwReq=0x1=HzrdLghtSwReq_1_On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0487",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险警报灯开关控制模块 LHZCU 内部软件保持双闪灯有效请求跳变为无效退出",
+    "relation": "依赖于",
+    "tail": "危险警报灯处于激活状态",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "危险警报灯处于激活状态",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0487",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "FLDircnLghtCtrl信号设置为0x0=FLDircnLghtCtrl_0_Off",
+    "relation": "输出为",
+    "tail": "危险警报灯退出",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FLDircnLghtCtrl",
+      "危险警报灯退出"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0487",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "FRDircnLghtCtrl信号设置为0x0=FRDircnLghtCtrl_0_Off",
+    "relation": "输出为",
+    "tail": "危险警报灯退出",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FRDircnLghtCtrl",
+      "危险警报灯退出"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0487",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RLDircnLghtCtrl信号设置为0x0=RLDircnLghtCtrl_0_Off",
+    "relation": "输出为",
+    "tail": "危险警报灯退出",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RLDircnLghtCtrl",
+      "危险警报灯退出"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0487",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RRDircnLghtCtrl信号设置为0x0=RRDircnLghtCtrl_0_Off",
+    "relation": "输出为",
+    "tail": "危险警报灯退出",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RRDircnLghtCtrl",
+      "危险警报灯退出"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0487",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "ICB将服务接口或控制信号转换成灯控CAN信号,控制双闪灯熄灭",
+    "relation": "控制对象",
+    "tail": "危险警报灯",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "危险警报灯"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0487",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "ICB接收控制信号延时60ms",
+    "relation": "超时约束",
+    "tail": "ICB接收控制信号",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "60ms延时",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0487",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "ICB根据接收到的LHZCU发送的转向灯信号",
+    "relation": "输入来自",
+    "tail": "LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0487",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "驱动处理模块LHZCU/RHZCU/RZCU接收ICB控制信号",
+    "relation": "输入为",
+    "tail": "ICB控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "驱动处理模块",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0487",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "驱动处理模块LHZCU/RHZCU/RZCU将状态/故障状态反馈至危险警报灯开关控制模块LHZCU",
+    "relation": "诊断关联",
+    "tail": "危险警报灯开关控制模块LHZCU",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "驱动处理模块",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0487",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

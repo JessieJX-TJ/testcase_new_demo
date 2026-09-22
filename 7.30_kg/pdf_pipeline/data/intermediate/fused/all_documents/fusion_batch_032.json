@@ -1,0 +1,576 @@
+[
+  {
+    "head": "PL_DirectLightCtrl_1_on is triggered",
+    "relation": "触发条件",
+    "tail": "PL_DirectLightCtrl_1_on = ON",
+    "sources": [
+      "outer_lamp_fas_0348"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PRD_DirectLightCtrl_1_on is triggered",
+    "relation": "触发条件",
+    "tail": "PRD_DirectLightCtrl_1_on = ON",
+    "sources": [
+      "outer_lamp_fas_0348"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "KRK_DirectLightCtrl_1_on is triggered",
+    "relation": "触发条件",
+    "tail": "KRK_DirectLightCtrl_1_on = ON",
+    "sources": [
+      "outer_lamp_fas_0348"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExternalLightSwitchProcess is activated",
+    "relation": "触发条件",
+    "tail": "DimmableLightFncProStatus = ON AND (Side_Direction = Left OR Side_Direction = Right)",
+    "sources": [
+      "outer_lamp_fas_0348"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DimmableLightCtrl_Delay_Pulse is generated",
+    "relation": "输出为",
+    "tail": "PL_DirectLightCtrl_1_on = OFF",
+    "sources": [
+      "outer_lamp_fas_0348"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZC1_LightStatus is updated",
+    "relation": "输出为",
+    "tail": "LHZC1_LightStatus = DimmableLightCtrl_Delay_Pulse",
+    "sources": [
+      "outer_lamp_fas_0348"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DimmableLightCtrl_Delay_Pulse fault status is active",
+    "relation": "故障响应",
+    "tail": "PL_DirectLightCtrl_1_on = OFF",
+    "sources": [
+      "outer_lamp_fas_0348"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExternalLightSwitchProcess is inhibited",
+    "relation": "抑制条件",
+    "tail": "DimmableLightFncProStatus = OFF",
+    "sources": [
+      "outer_lamp_fas_0348"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DimmableLightCtrl_Delay_Pulse is generated",
+    "relation": "依赖于",
+    "tail": "AmbientLightLevel < Threshold",
+    "sources": [
+      "outer_lamp_fas_0348"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZC1_LightStatus is sent via CAN",
+    "relation": "输出到",
+    "tail": "ICM",
+    "sources": [
+      "outer_lamp_fas_0348"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Automatic dimming is activated",
+    "relation": "触发条件",
+    "tail": "AmbientLightLevel < Threshold",
+    "sources": [
+      "outer_lamp_fas_0348"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exlMainBeamHwDrvEnPrm is enabled",
+    "relation": "触发条件",
+    "tail": "exlMainBeamHwDrvEnPrm = 0x1",
+    "sources": [
+      "outer_lamp_fas_0350"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exlMainBeamHwDrvEnPrm is disabled",
+    "relation": "触发条件",
+    "tail": "exlMainBeamHwDrvEnPrm = 0x0",
+    "sources": [
+      "outer_lamp_fas_0350"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LDayTmRunngLightFltsts is reported",
+    "relation": "输出为",
+    "tail": "LDayTmRunngLightFltsts",
+    "sources": [
+      "outer_lamp_fas_0352"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RDayTmRunngLightFltsts is reported",
+    "relation": "输出为",
+    "tail": "RDayTmRunngLightFltsts",
+    "sources": [
+      "outer_lamp_fas_0352"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayTmRunngLightFltsts is reported",
+    "relation": "输出为",
+    "tail": "DayTmRunngLightFltsts",
+    "sources": [
+      "outer_lamp_fas_0352"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLightSwStatus is reported",
+    "relation": "输出为",
+    "tail": "CombLightSwStatus",
+    "sources": [
+      "outer_lamp_fas_0352"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLightSwStatus is derived from",
+    "relation": "依赖于",
+    "tail": "ExteriorLightSwitchProcess.CombLightSwStatus",
+    "sources": [
+      "outer_lamp_fas_0352"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightSta is ON",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.FrontFogLightSta = 0x1",
+    "sources": [
+      "outer_lamp_fas_0354"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightSta is reported to ICB",
+    "relation": "触发条件",
+    "tail": "LHZCU reports FrontFogLightSta/FltSts to ICB",
+    "sources": [
+      "outer_lamp_fas_0354"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB subscribes to FrontFogLightSts",
+    "relation": "触发条件",
+    "tail": "ExteriorLightControlSystem.FrontFogLightSts = 0x1",
+    "sources": [
+      "outer_lamp_fas_0354"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightSta synchronization requirement",
+    "relation": "状态保持条件",
+    "tail": "Left and right front fog lights must illuminate synchronously; max delay ≤ 40 ms",
+    "sources": [
+      "outer_lamp_fas_0354"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB sends ControlFrontFogLightReq",
+    "relation": "触发条件",
+    "tail": "ExteriorLightControlSystem.ControlFrontFogLightReq",
+    "sources": [
+      "outer_lamp_fas_0354"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlFrontFogLightReq retransmission mechanism",
+    "relation": "超时约束",
+    "tail": "If ControlSuccess not received within 2 s, retransmit up to 3 times at ≤50 ms interval; stop if still failed",
+    "sources": [
+      "outer_lamp_fas_0354"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Onchange exterior lamp status getter invocation",
+    "relation": "触发条件",
+    "tail": "Consumer calls Getter() within 500 ms after service discovery/subscription or control request",
+    "sources": [
+      "outer_lamp_fas_0354"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtSts is OFF",
+    "relation": "触发条件",
+    "tail": "ICB subscribes to DircnLghtSts interface",
+    "sources": [
+      "outer_lamp_fas_0355"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrSta is No Error",
+    "relation": "前提条件",
+    "tail": "DirectionLight status retrieved via Instance ID",
+    "sources": [
+      "outer_lamp_fas_0355"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU reports direction light status to ICB",
+    "relation": "输出为",
+    "tail": "ICB status/FltSts",
+    "sources": [
+      "outer_lamp_fas_0355"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU reports hazard status to ICB",
+    "relation": "触发条件",
+    "tail": "LHZCU sends VehHzrdMdSts_0_No_Request (hazard light real-time status) to ICB",
+    "sources": [
+      "outer_lamp_fas_0355"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU reports direction light control status to SDM",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts",
+    "sources": [
+      "outer_lamp_fas_0355"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSta is OFF",
+    "relation": "前提条件",
+    "tail": "DirectionLight status retrieved via Instance ID",
+    "sources": [
+      "outer_lamp_fas_0355"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightFucProStatus is OFF",
+    "relation": "触发条件",
+    "tail": "ICB receives MainBeamLightFucProStatus = 0x0",
+    "sources": [
+      "outer_lamp_fas_0356"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB reports MainBeamLightSta to LHZCU",
+    "relation": "输出为",
+    "tail": "MainBeamLightSta = 0x0",
+    "sources": [
+      "outer_lamp_fas_0356"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU receives MainBeamLightSta from RHZCU",
+    "relation": "输入来自",
+    "tail": "RHZCU",
+    "sources": [
+      "outer_lamp_fas_0356"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU reports MainBeamLightSta to ICB",
+    "relation": "输出到",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0356"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSta deactivation synchronization requirement",
+    "relation": "超时约束",
+    "tail": "Left and right main beam lights must extinguish synchronously; max delay ≤ 40 ms",
+    "sources": [
+      "outer_lamp_fas_0356"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU derives MainBeamLightSta from",
+    "relation": "依赖于",
+    "tail": "MainBeamHwDrvEnPrm",
+    "sources": [
+      "outer_lamp_fas_0356"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Subscribe to RearRightDirectionLightSta",
+    "relation": "触发条件",
+    "tail": "Call service interface to subscribe to rear right direction light status",
+    "sources": [
+      "outer_lamp_fas_0357",
+      "outer_lamp_fas_0485",
+      "outer_lamp_fas_0569",
+      "outer_lamp_fas_0608",
+      "outer_lamp_fas_0902",
+      "outer_lamp_fas_0989",
+      "outer_lamp_fas_1092",
+      "outer_lamp_fas_1266",
+      "outer_lamp_fas_1457",
+      "outer_lamp_fas_1570"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta is Error",
+    "relation": "诊断关联",
+    "tail": "Fault state",
+    "sources": [
+      "outer_lamp_fas_0357"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta is No Error",
+    "relation": "诊断关联",
+    "tail": "No fault state",
+    "sources": [
+      "outer_lamp_fas_0357"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta is Unknown",
+    "relation": "诊断关联",
+    "tail": "Unknown fault state",
+    "sources": [
+      "outer_lamp_fas_0357"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hardwire fault status is derived from",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0357"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Network fault status is derived from",
+    "relation": "依赖于",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0357",
+      "outer_lamp_fas_0608",
+      "outer_lamp_fas_0620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior lamp function",
+    "relation": "包含子功能",
+    "tail": "Z-ONE",
+    "sources": [
+      "outer_lamp_fas_0360",
+      "outer_lamp_fas_1051",
+      "outer_lamp_fas_1161"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlRightFrontSidePositionLight",
+    "relation": "触发条件",
+    "tail": "Call ControlSidePositionLight interface with InstanceID=5, SidePositionLightReq=0x1",
+    "sources": [
+      "outer_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnOffRightFrontSidePositionLight",
+    "relation": "触发条件",
+    "tail": "Call ControlSidePositionLight interface with InstanceID=5, SidePositionLightReq=0x0",
+    "sources": [
+      "outer_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlLeftRearSidePositionLight",
+    "relation": "触发条件",
+    "tail": "Call ControlSidePositionLight interface with InstanceID=7, SidePositionLightReq=0x1",
+    "sources": [
+      "outer_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnOffLeftRearSidePositionLight",
+    "relation": "触发条件",
+    "tail": "Call ControlSidePositionLight interface with InstanceID=7, SidePositionLightReq=0x0",
+    "sources": [
+      "outer_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlRightFrontSidePositionLight",
+    "relation": "依赖于",
+    "tail": "SOA service",
+    "sources": [
+      "outer_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlLeftRearSidePositionLight",
+    "relation": "依赖于",
+    "tail": "ICB service",
+    "sources": [
+      "outer_lamp_fas_0361"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "QueryRearRightDirectionLightErrorSta",
+    "relation": "触发条件",
+    "tail": "Call service interface to subscribe to rear right direction light status",
+    "sources": [
+      "outer_lamp_fas_0364"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "QueryFrontLeftDirectionLightErrorSta",
+    "relation": "触发条件",
+    "tail": "Call service interface to subscribe to front left direction light status",
+    "sources": [
+      "outer_lamp_fas_0364"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus is reported",
+    "relation": "输出为",
+    "tail": "DirectionLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_0364",
+      "outer_lamp_fas_1096"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus is reported",
+    "relation": "依赖于",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_0364"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus is reported",
+    "relation": "依赖于",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_fas_0364"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus is reported",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0364"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

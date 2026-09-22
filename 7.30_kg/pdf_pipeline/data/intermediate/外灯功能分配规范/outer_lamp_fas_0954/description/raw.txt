@@ -1,0 +1,91 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "DirectionLight DirectionLightErrorStatus",
+  "row_semantics": "Each row represents a specific direction light error status subscription interface for either the left or right front turn signal.",
+  "column_semantics": {
+    "1": "Functionality (DirectionLight)",
+    "2": "Consumption (SOA)",
+    "3": "Controller/Module (LHZCU)",
+    "4": "Controller/Module (RHZCU)",
+    "5": "Controller/Module (RZCU)",
+    "6": "Hard Line Fault Status"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "function",
+      "description": "Front turn lights on the vehicle."
+    },
+    {
+      "name": "SOA",
+      "type": "controller",
+      "description": "Service Oriented Architecture, likely a software layer or service."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Left Headlight Control Unit."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Headlight Control Unit."
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "Right Zone Control Unit."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "Unique identifier for the instance of the error status subscription.",
+      "values": [
+        {
+          "value": "1",
+          "description": "Subscription for left front turn light status."
+        },
+        {
+          "value": "2",
+          "description": "Subscription for right front turn light status."
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "signal",
+      "description": "Status of the direction light error.",
+      "values": [
+        {
+          "value": "0x0",
+          "description": "No Error"
+        },
+        {
+          "value": "0x1",
+          "description": "Error"
+        },
+        {
+          "value": "0x2",
+          "description": "Unknown"
+        }
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "HardLineFaultStatus",
+      "type": "fault",
+      "description": "Status indicating whether there is a hard line fault related to the direction light."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interfaces for subscribing to the error status of the left and right front turn lights, including the expected parameter names, instance IDs, and possible error status values. It is used to verify that the system correctly reports the error status of the direction lights and handles hard line faults appropriately.",
+  "uncertain_points": []
+}
+```

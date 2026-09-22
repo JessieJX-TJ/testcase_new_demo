@@ -1,0 +1,609 @@
+[
+  {
+    "head": "Exterior Light Subsystem",
+    "relation": "contains subfunction",
+    "tail": "3.0 Architecture - SSTTS-IBD02",
+    "sources": [
+      "outer_lamp_ssts_0091"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Lamp Activation",
+    "relation": "trigger condition",
+    "tail": "Brake Switch signal valid",
+    "sources": [
+      "outer_lamp_ssts_0092"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reverse Lamp Activation",
+    "relation": "trigger condition",
+    "tail": "Reverse Switch signal valid",
+    "sources": [
+      "outer_lamp_ssts_0092"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn Lamp Activation",
+    "relation": "trigger condition",
+    "tail": "Turn Switch signal valid",
+    "sources": [
+      "outer_lamp_ssts_0092"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Warning Lamp Activation",
+    "relation": "trigger condition",
+    "tail": "Hazard Warning Switch signal valid",
+    "sources": [
+      "outer_lamp_ssts_0092"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Lamp Control Module",
+    "relation": "depends on",
+    "tail": "Brake Switch signal",
+    "sources": [
+      "outer_lamp_ssts_0092"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reverse Lamp Control Module",
+    "relation": "depends on",
+    "tail": "Reverse Switch signal",
+    "sources": [
+      "outer_lamp_ssts_0092"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn Lamp Control Module",
+    "relation": "depends on",
+    "tail": "Turn Switch signal",
+    "sources": [
+      "outer_lamp_ssts_0092"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Warning Lamp Control Module",
+    "relation": "depends on",
+    "tail": "Hazard Warning Switch signal",
+    "sources": [
+      "outer_lamp_ssts_0092"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Airbag_Deployed_Inversion",
+    "relation": "input value",
+    "tail": "0x0 = AirbagDplInvsn_0_AirbagDeployed",
+    "sources": [
+      "outer_lamp_ssts_0093"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Airbag_Deployed_Inversion",
+    "relation": "input value",
+    "tail": "0x1 = AirbagDplInvsn_1_NoAirbagDeployed",
+    "sources": [
+      "outer_lamp_ssts_0093"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehCrashHazrdReq",
+    "relation": "output value",
+    "tail": "0x0 = VehCrashHazrdReq_0_Off",
+    "sources": [
+      "outer_lamp_ssts_0093"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehCrashHazrdReq",
+    "relation": "output value",
+    "tail": "0x1 = VehCrashHazrdReq_1_On",
+    "sources": [
+      "outer_lamp_ssts_0093"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Collision Hazard Flash Request",
+    "relation": "depends on",
+    "tail": "Airbag_Deployed_Inversion",
+    "sources": [
+      "outer_lamp_ssts_0093"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Collision Hazard Flash Request",
+    "relation": "trigger condition",
+    "tail": "Airbag_Deployed_Inversion == 0x1",
+    "sources": [
+      "outer_lamp_ssts_0093"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting with 'precondition: Airbag_Deployed_Inversion == 0x0' — same head/relation pair but mutually exclusive tail values; likely represents conditional branching (e.g., 'if deployed → request flash' vs 'if not deployed → suppress'), but 'precondition' label contradicts trigger semantics. Retained as conflict for domain validation."
+  },
+  {
+    "head": "Collision Hazard Flash Request",
+    "relation": "precondition",
+    "tail": "Airbag_Deployed_Inversion == 0x0",
+    "sources": [
+      "outer_lamp_ssts_0093"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting with 'trigger condition: Airbag_Deployed_Inversion == 0x1' — same head/relation pair but mutually exclusive tail values; likely represents conditional branching (e.g., 'if deployed → request flash' vs 'if not deployed → suppress'), but 'precondition' label contradicts trigger semantics. Retained as conflict for domain validation."
+  },
+  {
+    "head": "Exterior Light Control",
+    "relation": "depends on",
+    "tail": "Configuration Item",
+    "sources": [
+      "inner_lamp_fas_0194",
+      "inner_lamp_fas_0319",
+      "inner_lamp_ssts_0037",
+      "inner_lamp_ssts_0179",
+      "inner_lamp_ssts_0214",
+      "inner_lamp_ssts_0415",
+      "inner_lamp_ssts_0458",
+      "outer_lamp_ssts_0094",
+      "outer_lamp_ssts_0129",
+      "outer_lamp_ssts_0385",
+      "outer_lamp_ssts_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control",
+    "relation": "depends on",
+    "tail": "Configuration Item",
+    "sources": [
+      "inner_lamp_fas_0194",
+      "inner_lamp_ssts_0037",
+      "inner_lamp_ssts_0179",
+      "inner_lamp_ssts_0415",
+      "inner_lamp_ssts_0447",
+      "inner_lamp_ssts_0458",
+      "outer_lamp_ssts_0094",
+      "outer_lamp_ssts_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate",
+    "relation": "depends on",
+    "tail": "Configuration Item",
+    "sources": [
+      "inner_lamp_fas_0194",
+      "inner_lamp_ssts_0037",
+      "inner_lamp_ssts_0179",
+      "inner_lamp_ssts_0415",
+      "inner_lamp_ssts_0447",
+      "inner_lamp_ssts_0458",
+      "outer_lamp_ssts_0094",
+      "outer_lamp_ssts_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Function State Hold",
+    "relation": "precondition",
+    "tail": "Hold Reason satisfied",
+    "sources": [
+      "inner_lamp_fas_0220",
+      "outer_lamp_ssts_0095"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Function State Hold",
+    "relation": "depends on",
+    "tail": "Hold Reason",
+    "sources": [
+      "outer_lamp_ssts_0095"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Function State Hold",
+    "relation": "state hold condition",
+    "tail": "Hold Reason",
+    "sources": [
+      "inner_lamp_fas_0220",
+      "outer_lamp_ssts_0095"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Function",
+    "relation": "trigger condition",
+    "tail": "Door sensor detects door closed",
+    "sources": [
+      "outer_lamp_ssts_0096"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Control Function",
+    "relation": "inhibit condition",
+    "tail": "Vehicle in motion",
+    "sources": [
+      "outer_lamp_ssts_0096"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Light Control Function",
+    "relation": "output",
+    "tail": "Headlamp illuminated",
+    "sources": [
+      "outer_lamp_ssts_0096"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Function",
+    "relation": "depends on",
+    "tail": "Door sensor signal valid",
+    "sources": [
+      "outer_lamp_ssts_0096"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Control Function",
+    "relation": "priority over",
+    "tail": "Manual tailgate opening function",
+    "sources": [
+      "outer_lamp_ssts_0096"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High Beam Flash Function activation",
+    "relation": "trigger condition",
+    "tail": "High beam flash switch activated, resistance = 1200 Ω (±5%)",
+    "sources": [
+      "outer_lamp_ssts_0097"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High Beam Flash Action execution",
+    "relation": "precondition",
+    "tail": "MainBeamLghtSwSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0097",
+      "outer_lamp_ssts_0099"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwitchStatus signal output",
+    "relation": "output",
+    "tail": "MainBeamLghtSwMdl continuously sends MainBeamLightSwitchStatus = 0x3 (Flash) to MainBeamLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0097"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Turn Lamp output active",
+    "relation": "precondition",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0098",
+      "outer_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High Beam Light Switch fault detection",
+    "relation": "trigger condition",
+    "tail": "High beam switch shorted to power",
+    "sources": [
+      "outer_lamp_ssts_0099"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Light Subsystem",
+    "relation": "input from",
+    "tail": "Subsystem Technical Specification",
+    "sources": [
+      "outer_lamp_ssts_0100",
+      "outer_lamp_ssts_0109",
+      "outer_lamp_ssts_0177",
+      "outer_lamp_ssts_0328",
+      "outer_lamp_ssts_0329",
+      "outer_lamp_ssts_0397",
+      "outer_lamp_ssts_0459"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System wake-up state entry",
+    "relation": "trigger condition",
+    "tail": "Turn lamp switch activated",
+    "sources": [
+      "outer_lamp_ssts_0101"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System wake-up state entry",
+    "relation": "trigger condition",
+    "tail": "Defined resistance detected",
+    "sources": [
+      "outer_lamp_ssts_0101"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn Lamp Switch",
+    "relation": "input",
+    "tail": "Defined resistance detected",
+    "sources": [
+      "outer_lamp_ssts_0101"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Main Beam Light control exit",
+    "relation": "trigger condition",
+    "tail": "RMainBeamLghtCtrl_HW == 1 (On) received from MainBeamLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn Lamp System fault handling mode entry",
+    "relation": "trigger condition",
+    "tail": "Turn stalk switch shorted to ground",
+    "sources": [
+      "outer_lamp_ssts_0103"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn Lamp System error status reporting",
+    "relation": "output",
+    "tail": "DirectionLightSwitchStatus = 0x5 (Error)",
+    "sources": [
+      "outer_lamp_ssts_0103"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn Lamp System continuous status transmission",
+    "relation": "depends on",
+    "tail": "DILghtSwSOAEnPrm == 1",
+    "sources": [
+      "outer_lamp_ssts_0103"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Light Control brightness adjustment",
+    "relation": "precondition",
+    "tail": "Parameter range: 0 to 100",
+    "sources": [
+      "inner_lamp_fas_0474",
+      "outer_lamp_ssts_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control window lift/drop speed",
+    "relation": "precondition",
+    "tail": "Resolution set to 1 mm/s",
+    "sources": [
+      "inner_lamp_fas_0474",
+      "outer_lamp_ssts_0104",
+      "outer_lamp_ssts_0159"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate opening force",
+    "relation": "precondition",
+    "tail": "Default value set to 50 N",
+    "sources": [
+      "outer_lamp_ssts_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1061 13 setting",
+    "relation": "trigger condition",
+    "tail": "Left rear position lamp open circuit detected",
+    "sources": [
+      "outer_lamp_ssts_0105"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1061 13 setting",
+    "relation": "precondition",
+    "tail": "Left rear position lamp output active",
+    "sources": [
+      "outer_lamp_ssts_0105"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction Lamp System activation",
+    "relation": "precondition",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction Lamp System activation",
+    "relation": "trigger condition",
+    "tail": "DirectionLightControl.DirectionLightCtrReq == 1 (On), InstanceID=2 received from DILghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDILightDrvMdl driving right front turn lamp output (DILamp_RH_HSD)",
+    "relation": "depends on",
+    "tail": "Direction Lamp System activation",
+    "sources": [
+      "outer_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDILightDrvMdl sending DirectionLightControl.DirectionLightSta == 1 (On), InstanceID=2 to DILightCtrlMdl",
+    "relation": "depends on",
+    "tail": "Direction Lamp System activation",
+    "sources": [
+      "outer_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDILightDrvMdl sending DirectionLightControl.DirectionLightSta == 1 (On), InstanceID=2 to DILightCtrlMdl",
+    "relation": "state hold condition",
+    "tail": "Direction Lamp System activation",
+    "sources": [
+      "outer_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDILightDrvMdl sending DirectionLightControl.DirectionLightSta == 1 (On), InstanceID=2 to DILightCtrlMdl",
+    "relation": "timeout constraint",
+    "tail": "At least three frames transmitted",
+    "sources": [
+      "outer_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right high beam open circuit fault detection",
+    "relation": "trigger condition",
+    "tail": "Right high beam open circuit detected",
+    "sources": [
+      "outer_lamp_ssts_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Main Beam Light status reporting execution",
+    "relation": "precondition",
+    "tail": "MainBeamLghtFbkSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Main Beam Light status reporting execution",
+    "relation": "precondition",
+    "tail": "Right high beam output active",
+    "sources": [
+      "outer_lamp_ssts_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RMainBeamLghtDrvMdl continuously sending MainBeamLightState",
+    "relation": "input",
+    "tail": "MainBeamLightSta = 2 (Error), InstanceID=2",
+    "sources": [
+      "outer_lamp_ssts_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RMainBeamLghtDrvMdl continuously sending MainBeamLightState",
+    "relation": "output",
+    "tail": "MainBeamLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RMainBeamLghtDrvMdl continuously sending MainBeamLightState",
+    "relation": "timeout constraint",
+    "tail": "At least three frames transmitted",
+    "sources": [
+      "outer_lamp_ssts_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

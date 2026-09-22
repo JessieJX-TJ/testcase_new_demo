@@ -1,0 +1,95 @@
+```json
+[
+  {
+    "head": "DoorFR2LampFadeSpdCmd_1 控制门灯渐变速度",
+    "relation": "触发条件",
+    "tail": "输入信号为 DoorAm btLampB_FR 或 RHZCU_LIN4",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR2LampFadeSpdCmd_1",
+      "DoorAm btLampB_FR",
+      "RHZCU_LIN4"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门灯呼吸模式切换",
+    "relation": "前提条件",
+    "tail": "指令值不为0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "指令值",
+      "呼吸模式"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "停止门灯呼吸",
+    "relation": "触发条件",
+    "tail": "指令值为0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "指令值",
+      "停止呼吸"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门灯颜色/亮度切换",
+    "relation": "状态保持条件",
+    "tail": "从当前状态到目标状态切换所需时间，默认速度为2000ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "灯头颜色/亮度切换",
+      "默认速度Spd0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFR3LampOnOff_1 控制门灯开关",
+    "relation": "触发条件",
+    "tail": "输入信号为 DoorAmbtLampC_FR 或 RHZCU_LIN4",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR3LampOnOff_1",
+      "DoorAmbtLampC_FR",
+      "RHZCU_LIN4"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "点亮门灯",
+    "relation": "前提条件",
+    "tail": "同时接收到非0值的颜色亮度指令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "点亮ON",
+      "颜色亮度指令"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFR3LampColCmd_1 控制门灯颜色",
+    "relation": "触发条件",
+    "tail": "输入信号为 DoorAm btLampC_FR 或 RHZCU_LIN4",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR3LampColCmd_1",
+      "DoorAm btLampC_FR",
+      "RHZCU_LIN4"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "门灯呼吸模式切换",
+    "relation": "抑制条件",
+    "tail": "不同呼吸模式切换时，立即停止当前呼吸，切换下一呼吸模式",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "呼吸模式切换",
+      "停止当前呼吸"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,162 @@
+[
+  {
+    "head": "灯头按照对应的呼吸周期指令进行周期闪烁",
+    "relation": "前提条件",
+    "tail": "呼吸时忽略亮度信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "灯头",
+      "呼吸周期指令",
+      "呼吸模式"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0187",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "指令值为0时,立即停止呼吸",
+    "relation": "触发条件",
+    "tail": "灯头停止呼吸",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "指令值",
+      "灯头",
+      "停止呼吸"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0187",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "不同呼吸模式切换时,立即停止当前呼吸,切换下一呼吸模式",
+    "relation": "触发条件",
+    "tail": "灯头停止当前呼吸并切换模式",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "呼吸模式",
+      "灯头",
+      "停止呼吸",
+      "切换模式"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0187",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "CnsoLHBLampFadeSpdCmd_1参数设置",
+    "relation": "依赖于",
+    "tail": "LIN, LHZCU, CnsoAmbtLampB_LH, LHZCU_LIN5, 内灯SSTS",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CnsoLHBLampFadeSpdCmd_1",
+      "LIN",
+      "LHZCU",
+      "CnsoAmbtLampB_LH",
+      "LHZCU_LIN5",
+      "内灯SSTS"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0187",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "灯头颜色/亮度切换时从当前状态到目标状态切换的所需的时间",
+    "relation": "依赖于",
+    "tail": "默认速度 Spd0: 2000ms; Spd1:300ms; Spd2:100ms;(能力预留) Spd3:(预留0)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "灯头",
+      "颜色/亮度切换",
+      "时间",
+      "Spd"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0187",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "CnsoLHCLampOnOff_1命令执行",
+    "relation": "触发条件",
+    "tail": "氛围灯开启请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CnsoLHCLampOnOff_1",
+      "氛围灯",
+      "开启请求"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0187",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "点亮ON时需同时接收到非0值的颜色亮度指令",
+    "relation": "前提条件",
+    "tail": "CnsoLHCLampOnOff_1命令为ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "点亮ON",
+      "颜色亮度指令",
+      "非0值"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0187",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "CnsoLHCLampColorCmd_1参数设置",
+    "relation": "依赖于",
+    "tail": "LIN, LHZCU, CnsoAmbtLampC_LH, LHZCU_LIN5, 内灯SSTS",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CnsoLHCLampColorCmd_1",
+      "LIN",
+      "LHZCU",
+      "CnsoAmbtLampC_LH",
+      "LHZCU_LIN5",
+      "内灯SSTS"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0187",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "灯头切换为色坐标对应的颜色",
+    "relation": "前提条件",
+    "tail": "指令值为0或者未定义颜色号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "灯头",
+      "色坐标",
+      "颜色",
+      "指令值"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0187",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "指令值为0或者未定义颜色号时保持颜色不变",
+    "relation": "状态保持条件",
+    "tail": "灯头颜色",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "指令值",
+      "颜色号",
+      "灯头",
+      "保持颜色不变"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0187",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  }
+]

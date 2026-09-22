@@ -1,0 +1,104 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Vehicle Usage Mode and Exterior Light Control System Specifications",
+  "row_semantics": "Each row represents a specific system or mode parameter with its associated values and definitions.",
+  "column_semantics": "The table uses merged cells to define parameters, their possible values (in hexadecimal), and descriptive labels for each value. The first column lists the parameter names, while the subsequent columns provide detailed definitions and value mappings.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMdV",
+      "type": "system_state",
+      "description": "Vehicle Mode Validity status, indicating whether the vehicle mode is valid or invalid."
+    },
+    {
+      "name": "UsG Md",
+      "type": "mode_name",
+      "description": "User-Ground Mode, representing different operational modes of the vehicle such as Sleep, Standby, Comfortable, Normal Driving, AI Parking, AI Pilot, and XOTA."
+    },
+    {
+      "name": "UsG MdV",
+      "type": "system_state",
+      "description": "User-Ground Mode Validity status, similar to VehMdV but specific to user-ground modes."
+    },
+    {
+      "name": "ExteriorLightControlSystem.ControlCombinedLight",
+      "type": "function_name",
+      "description": "Function to control the combined light (near light) of the vehicle, including turning it on or off."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMdV_0_Invalid",
+      "type": "condition",
+      "description": "Indicates that the vehicle mode is not valid."
+    },
+    {
+      "name": "VehMdV_1_Valid",
+      "type": "condition",
+      "description": "Indicates that the vehicle mode is valid."
+    },
+    {
+      "name": "UsG Md_0_Sleep",
+      "type": "condition",
+      "description": "User-Ground Mode in Sleep state."
+    },
+    {
+      "name": "UsG Md_1_Standby",
+      "type": "condition",
+      "description": "User-Ground Mode in Standby state."
+    },
+    {
+      "name": "UsG Md_2_Comfortable",
+      "type": "condition",
+      "description": "User-Ground Mode in Comfortable driving state."
+    },
+    {
+      "name": "UsG Md_3_NormalDriving",
+      "type": "condition",
+      "description": "User-Ground Mode in Normal driving state."
+    },
+    {
+      "name": "UsG Md_4_AIParking",
+      "type": "condition",
+      "description": "User-Ground Mode in AI Parking state."
+    },
+    {
+      "name": "UsG Md_5_AIPilot",
+      "type": "condition",
+      "description": "User-Ground Mode in AI Pilot state."
+    },
+    {
+      "name": "UsG Md_6_XOTA",
+      "type": "condition",
+      "description": "User-Ground Mode in XOTA (eXtended Over-The-Air) update state."
+    },
+    {
+      "name": "UsG MdV_0_Invalid",
+      "type": "condition",
+      "description": "Indicates that the User-Ground Mode is not valid."
+    },
+    {
+      "name": "UsG MdV_1_Valid",
+      "type": "condition",
+      "description": "Indicates that the User-Ground Mode is valid."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ExteriorLightControlSystem.ControlCombinedLight",
+      "type": "output_signal",
+      "description": "Controls the activation or deactivation of the vehicle's near light."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the valid states and modes for vehicle usage and exterior light control, which can be used to verify the correct behavior of the vehicle's mode management system and the exterior light control function under various operational conditions.",
+  "uncertain_points": [
+    "The exact timing or sequence of mode transitions is not specified in this table.",
+    "The interaction between different modes (e.g., AI Parking and AI Pilot) is not detailed.",
+    "The specific implementation details of the CAN/LIN/SOA service/line are not provided."
+  ]
+}
+```

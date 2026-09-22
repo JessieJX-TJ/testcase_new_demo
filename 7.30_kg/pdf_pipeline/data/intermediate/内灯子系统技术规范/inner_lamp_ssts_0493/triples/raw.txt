@@ -1,0 +1,44 @@
+```json
+[
+  {
+    "head": "Ambient Lamp Exits Breathing Mode",
+    "relation": "前提条件",
+    "tail": "FtwlFLLampOnOff_1 = 0x00 (OFF)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["FtwlFLLampOnOff_1", "Breathing Mode", "熄灭氛围灯"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Exits Breathing Mode",
+    "relation": "前提条件",
+    "tail": "FtwlFLLampBrthngCmd_1 = 0x00 (No Request)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["FtwlFLLampBrthngCmd_1", "Breathing Mode", "亮度值", "颜色值", "渐变速度"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Stops Breathing Mode",
+    "relation": "前提条件",
+    "tail": "AmbtLghtLHRollingCtr_1不再按1顺序叠加",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["AmbtLghtLHRollingCtr_1", "Breathing Mode", "常亮显示", "静态点亮"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Turns Off",
+    "relation": "故障响应",
+    "tail": "Overvoltage or Undervoltage Fault in Ambient Lamp Module",
+    "triple_type": "故障响应",
+    "evidence_terms": ["过压", "欠压", "关闭氛围灯"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Turns Off",
+    "relation": "超时约束",
+    "tail": "No ZCU LIN Signal Received within 6 seconds",
+    "triple_type": "故障响应",
+    "evidence_terms": ["ZCU_LIN_Signal", "6s", "关闭氛围灯"],
+    "confidence_note": "high"
+  }
+]
+```

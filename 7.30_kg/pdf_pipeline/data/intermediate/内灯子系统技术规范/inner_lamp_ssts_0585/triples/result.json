@@ -1,0 +1,147 @@
+[
+  {
+    "head": "氛围灯点亮",
+    "relation": "触发条件",
+    "tail": "前置条件: 氛围灯处于关闭状态",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "氛围灯处于关闭状态",
+      "UpIPALampOnOff_1",
+      "UpIPALampColorCmd_1",
+      "UpIPALampBrtnsCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0585",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯点亮",
+    "relation": "触发条件",
+    "tail": "触发条件: 接收到氛围灯本地控制模块的开启请求信号 UpIPALampOnOff_1 = 0x1 (ON)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "氛围灯处于关闭状态",
+      "UpIPALampOnOff_1",
+      "UpIPALampColorCmd_1",
+      "UpIPALampBrtnsCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0585",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯点亮",
+    "relation": "触发条件",
+    "tail": "UpIPALampColorCmd_1 != 0x00 (No Request)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "氛围灯处于关闭状态",
+      "UpIPALampOnOff_1",
+      "UpIPALampColorCmd_1",
+      "UpIPALampBrtnsCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0585",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯点亮",
+    "relation": "触发条件",
+    "tail": "UpIPALampBrtnsCmd_1 != 0x00 (No Request)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "氛围灯处于关闭状态",
+      "UpIPALampOnOff_1",
+      "UpIPALampColorCmd_1",
+      "UpIPALampBrtnsCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0585",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "退出条件: 接收到氛围灯本地控制模块的请求信号 UpIPALampOnOff_1 = 0x0 (OFF), 按照对应渐变速度 UpIPALampFadeSpdCmd_1",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "UpIPALampOnOff_1",
+      "UpIPALampFadeSpdCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0585",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "故障响应",
+    "tail": "异常处理: 1、氛围灯模块出现过压、欠压故障,直接关闭氛围灯",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "过压故障",
+      "欠压故障"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0585",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "故障响应",
+    "tail": "异常处理: 2、超过一定时间(默认6s)未接收到ZCU的LIN信号,直接关闭氛围灯",
+    "triple_type": "超时约束",
+    "evidence_terms": [
+      "ZCU LIN信号",
+      "6s"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0585",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "颜色值驱动",
+    "relation": "输入为",
+    "tail": "UpIPALampColorCmd_1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "UpIPALampColorCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0585",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "亮度值驱动",
+    "relation": "输入为",
+    "tail": "UpIPALampBrtnsCmd_1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "UpIPALampBrtnsCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0585",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "渐变速度驱动",
+    "relation": "输入为",
+    "tail": "UpIPALampFadeSpdCmd_1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "UpIPALampFadeSpdCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0585",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

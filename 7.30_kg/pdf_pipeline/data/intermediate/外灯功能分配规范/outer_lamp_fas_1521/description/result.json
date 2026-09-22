@@ -1,0 +1,71 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯状态与故障反馈控制规范",
+  "row_semantics": "表格按功能模块和信号类型组织，每一行描述一个特定信号的状态或错误反馈。",
+  "column_semantics": "无明确列，信息通过行内嵌套结构表示，包含信号名称、实例ID、状态值及错误状态。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Control Box，集成控制盒，负责接收并处理外灯状态与故障信息。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "module",
+      "description": "贯穿式位置灯控制模块，负责管理日间行车灯和位置灯的控制逻辑。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DayRunningLight.Sta",
+      "type": "output_signal",
+      "description": "日间行车灯状态，指示灯是否开启（0x0=OFF）。",
+      "associated_with": "ICB"
+    },
+    {
+      "name": "SidePositionLight.Sta",
+      "type": "output_signal",
+      "description": "位置灯状态，指示灯是否开启（0x0=OFF）。",
+      "associated_with": "ICB"
+    },
+    {
+      "name": "DayRunningLight.ErrSta",
+      "type": "output_signal",
+      "description": "日间行车灯错误状态，指示是否存在错误（0x0=No Error）。",
+      "associated_with": "ICB"
+    },
+    {
+      "name": "SidePositionLight.ErrSta",
+      "type": "output_signal",
+      "description": "位置灯错误状态，指示是否存在错误（0x0=No Error）。",
+      "associated_with": "ICB"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DayRunningLightErrorStatus",
+      "type": "fault_status",
+      "description": "日间行车灯错误状态反馈。",
+      "associated_with": "ICB"
+    },
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "fault_status",
+      "description": "位置灯错误状态反馈。",
+      "associated_with": "ICB"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步性延时周期",
+      "value": "40ms",
+      "description": "贯穿式位置灯退出的同步性允许的最大延时周期为40毫秒。",
+      "associated_with": "LHZCU"
+    }
+  ],
+  "engineering_interpretation": "该技术规范用于验证ICB对外灯（日间行车灯和位置灯）状态及故障反馈的正确性，以及LHZCU模块对贯穿式位置灯控制的同步性要求。",
+  "uncertain_points": []
+}

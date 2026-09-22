@@ -1,0 +1,73 @@
+{
+  "table_type": "fault_table",
+  "topic": "右前位置灯短路到地故障检测与处理",
+  "row_semantics": "表格描述了在检测到右前位置灯短路到地时，系统应执行的动作、退出条件以及异常处理。",
+  "column_semematics": {
+    "触发条件": "触发该故障处理流程的条件，即检测到右前位置灯短路到地。",
+    "执行动作": "系统在触发条件满足时需要执行的具体操作列表。",
+    "退出条件": "故障处理流程结束的条件，即检测到短路恢复。",
+    "异常处理": "针对异常情况的处理规则，此处为空，表示无特殊异常处理。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FRSideLghtDrvMdl",
+      "type": "controller_module",
+      "description": "右侧位置灯驱动模块，负责控制右前位置灯的输出和状态发送。"
+    },
+    {
+      "name": "SideLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "侧灯控制模块，接收来自FRSideLghtDrvMdl的位置灯状态信息。"
+    },
+    {
+      "name": "PosLamp_RH_HSD",
+      "type": "output_signal",
+      "description": "右前位置灯的驱动输出信号，当短路时停止输出。"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "signal",
+      "description": "侧位置灯状态信号，包含灯的状态（如关闭）和实例ID。"
+    },
+    {
+      "name": "DTCB106111",
+      "type": "fault_status",
+      "description": "诊断故障代码，表示检测到右前位置灯短路到地故障。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "检测到右前位置灯短路到地",
+      "description": "触发故障处理流程的初始条件。"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "description": "退出故障处理流程的条件。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "action": "停止驱动右前位置灯输出 (PosLamp_RH_HSD)",
+      "description": "在检测到短路时，立即停止对该灯的驱动输出以防止进一步损坏。"
+    },
+    {
+      "action": "持续发送 SidePositionLightStatus",
+      "description": "持续发送侧位置灯状态信号，其中 SidePositionLightSta=0 (Off) (InstanceID=2)，至少发送三帧，以通知侧灯控制模块当前灯的状态。"
+    },
+    {
+      "action": "置位 DTC B106111",
+      "description": "记录诊断故障代码，用于后续故障诊断和维修。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTCB106111",
+      "description": "右前位置灯短路到地故障。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子电器系统中右前位置灯短路到地故障的检测、处理和恢复逻辑，可用于验证车辆在该故障发生时是否能正确停止驱动输出、持续发送状态信息并记录故障代码。",
+  "uncertain_points": []
+}

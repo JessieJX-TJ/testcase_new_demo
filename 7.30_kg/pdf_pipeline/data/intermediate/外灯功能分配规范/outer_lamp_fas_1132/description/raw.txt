@@ -1,0 +1,102 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "制动灯开关控制模块 (LHZCC) 的功能逻辑与交互验证",
+  "row_semantics": "表格按执行顺序列出了制动灯系统在不同场景下的逻辑判断和信号交互过程，描述了从输入触发到输出响应的完整流程。",
+  "column_semantics": "表格包含两列：左侧为‘触发动作’（Trigger Action），右侧为‘执行动作’（Execution Action），详细说明了每个步骤的具体操作和条件。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "制动灯开关控制模块 (LHZCC)",
+      "type": "controller_module",
+      "description": "负责接收制动灯开关信号并控制相应灯光输出的核心控制单元。"
+    },
+    {
+      "name": "ICB (Integrated Control Box)",
+      "type": "controller_module",
+      "description": "集成式制动控制系统，作为制动灯控制模块的外部接口，负责信号转发和状态反馈。"
+    },
+    {
+      "name": "BrkSysBrkLghtsReqd",
+      "type": "input_signal",
+      "description": "制动系统要求点亮刹车灯的请求信号，由0x1表示需要点亮。"
+    },
+    {
+      "name": "BrkL.ghtCtrl_0x1",
+      "type": "output_signal",
+      "description": "控制刹车灯点亮的信号，当值为1时，表示刹车灯应点亮。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "input_signal",
+      "description": "外部灯光开关处理信号，用于判断驾驶员是否手动操作刹车灯开关。"
+    },
+    {
+      "name": "BrakeLightFrcProSta",
+      "type": "system_state",
+      "description": "刹车灯强制指示状态，用于覆盖正常逻辑以强制点亮刹车灯。"
+    },
+    {
+      "name": "BrakeLightFrcProDta",
+      "type": "system_state",
+      "description": "刹车灯强制指示数据，提供强制点亮的具体参数。"
+    },
+    {
+      "name": "BalanceID",
+      "type": "parameter",
+      "description": "平衡ID，用于配置服务时间间隔，影响信号更新频率。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "BrkSysBrkLghtsReqd == 0x1",
+      "description": "当制动系统请求点亮刹车灯时，触发制动灯控制模块的激活。"
+    },
+    {
+      "condition": "ExteriorLightSwitchProcess == 1",
+      "description": "当外部灯光开关被激活时，触发相应的刹车灯控制逻辑。"
+    },
+    {
+      "condition": "BalanceID == 1",
+      "description": "当平衡ID为1时，触发特定的服务时间间隔配置。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "BrkL.ghtCtrl_0x1",
+      "action": "设置为1",
+      "description": "当满足刹车灯点亮条件时，输出信号设置为1，控制刹车灯点亮。"
+    },
+    {
+      "signal": "BrakeLightFrcProSta",
+      "action": "设置为0x1",
+      "description": "当需要强制点亮刹车灯时，设置强制指示状态为1。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "BrakeLightErrorSta",
+      "description": "刹车灯错误状态，当检测到异常时设置为非零值。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "parameter": "BalanceID",
+      "value": "1",
+      "description": "配置服务时间间隔为40ms。"
+    },
+    {
+      "parameter": "BalanceID",
+      "value": "2",
+      "description": "配置服务时间间隔为80ms。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细描述了制动灯开关控制模块在不同输入条件下的逻辑行为，包括与ICB的交互、信号处理、状态设置以及故障检测机制，可用于验证制动灯系统的功能正确性和响应及时性。",
+  "uncertain_points": [
+    "表格中未明确说明所有可能的故障模式及其处理逻辑。",
+    "未详细列出所有可能的输入信号组合及其对应的输出行为。",
+    "未明确说明ICB与LHZCC之间的具体通信协议细节。"
+  ]
+}
+```

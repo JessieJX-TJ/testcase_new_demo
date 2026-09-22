@@ -1,0 +1,70 @@
+{
+  "table_type": "signal_table",
+  "topic": "前雾灯状态与控制接口规范",
+  "row_semantics": "每行代表一个特定的信号或状态查询/订阅接口，描述了外灯组合服务 (ICB) 如何获取和处理前雾灯的状态信息。",
+  "column_semantics": "表格没有明确的列，但每一行都包含一个完整的信号路径、当前值以及相关的说明。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "FrontFogLight",
+      "type": "功能名",
+      "description": "前雾灯功能"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "控制器/模块名",
+      "description": "外部灯光开关处理模块"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "控制器/模块名",
+      "description": "外部灯光控制系统"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "外灯组合服务 (Integrated Control Block)"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FrontFogLightSta",
+      "type": "输入信号",
+      "description": "前雾灯状态"
+    },
+    {
+      "name": "FrontFogLightErrSta",
+      "type": "输入信号",
+      "description": "前雾灯错误状态"
+    },
+    {
+      "name": "FrontFogLightSts",
+      "type": "输出信号",
+      "description": "前雾灯系统状态"
+    },
+    {
+      "name": "FrontFogLightErrSts",
+      "type": "输出信号",
+      "description": "前雾灯系统错误状态"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "系统状态",
+      "description": "表示无故障状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步熄灭延时",
+      "type": "定时",
+      "description": "左侧和右侧前雾灯需保持同步熄灭，最大延时不超过 40ms",
+      "value": "40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了外灯组合服务 (ICB) 订阅前雾灯状态和故障状态的接口规范，并明确了前雾灯关闭时两侧同步熄灭的延时要求，可用于验证前雾灯状态获取接口的正确性和熄灭同步性的符合性。",
+  "uncertain_points": []
+}

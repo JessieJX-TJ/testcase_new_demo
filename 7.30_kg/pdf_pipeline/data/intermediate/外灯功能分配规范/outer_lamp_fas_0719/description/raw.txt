@@ -1,0 +1,61 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的信号分配规范",
+  "row_semantics": "每行代表一个与外灯控制相关的信号或状态参数，描述其输入/输出属性、提供者和消费者模块。",
+  "column_semantics": {
+    "功能名": "信号的全路径名称，表示其在系统中的具体功能。",
+    "输入/输出": "信号的方向性定义，即该信号是输入给某个模块还是由某个模块输出。",
+    "SOA": "Service-Oriented Architecture，表明该信号是否遵循服务导向架构。",
+    "S32G_MCU": "Signal 32-bit Microcontroller Unit，提供该信号的控制器模块。",
+    "LHZCU": "Left Headlamp Zone Control Unit，左侧大灯区域控制单元。",
+    "RHZCU": "Right Headlamp Zone Control Unit，右侧大灯区域控制单元。",
+    "LHZCU_ETH": "Ethernet interface of Left Headlamp Zone Control Unit，左侧大灯区域控制单元的以太网接口。",
+    "RHZCU_ETH": "Ethernet interface of Right Headlamp Zone Control Unit，右侧大灯区域控制单元的以太网接口。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControl.DippedBeamLightRequestStatus",
+      "type": "signal",
+      "description": "近光灯请求状态信号，用于指示近光灯的开关请求。",
+      "provider": "S32G_MCU",
+      "consumers": ["LHZCU", "RHZCU"]
+    },
+    {
+      "name": "ExteriorLightControl.CombLightFucProControlStatus",
+      "type": "signal",
+      "description": "组合灯功能优先级控制状态信号，用于控制侧位灯、近光灯等的优先级。",
+      "provider": "S32G_MCU",
+      "consumers": ["LHZCU", "RHZCU"]
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightReqSts",
+      "description": "近光灯请求状态参数，包含0x0=OFF和0x1=ON两个值。",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "ON"
+      }
+    },
+    {
+      "name": "CombLightFucProCtrlSts",
+      "description": "组合灯功能优先级控制状态参数，包含多种模式：0x0=OFF, 0x1=SidePositionLight ON, 0x2=DippedBeamLight ON, 0x3=AUTO, 0x4=unknown。",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "SidePositionLight ON",
+        "0x2": "DippedBeamLight ON",
+        "0x3": "AUTO",
+        "0x4": "unknown"
+      }
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了外灯控制系统中两个关键信号（近光灯请求状态和组合灯功能优先级控制状态）的输入/输出特性、提供者和消费者模块，以及每个信号的具体参数名称和可能的取值范围，可用于验证外灯控制逻辑的正确性和信号交互的准确性。",
+  "uncertain_points": []
+}
+```

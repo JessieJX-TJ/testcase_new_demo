@@ -1,0 +1,92 @@
+```json
+[
+  {
+    "head": "外灯开关控制模式 (LEIXCT) 设置为 BrakelightCtrl_0x1",
+    "relation": "前提条件",
+    "tail": "制动踏板信号 (EPTBrkPdlDscrtInptSts) = 0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["EPTBrkPdlDscrtInptSts", "LEIXCT"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯开关控制模式 (LEIXCT) 设置为 BrakelightCtrl_0x0",
+    "relation": "前提条件",
+    "tail": "制动踏板信号 (EPTBrkPdlDscrtInptSts) = 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["EPTBrkPdlDscrtInptSts", "LEIXCT"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制 (BrakeLightCtrl) 输出为 ON",
+    "relation": "触发条件",
+    "tail": "制动踏板信号 (EPTBrkPdlDscrtInptSts) = 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["EPTBrkPdlDscrtInptSts", "BrakeLightCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制 (BrakeLightCtrl) 输出为 OFF",
+    "relation": "触发条件",
+    "tail": "制动踏板信号 (EPTBrkPdlDscrtInptSts) = 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["EPTBrkPdlDscrtInptSts", "BrakeLightCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯配合服务请求 (ExtrLightCoopServiceReq) 输出为 ON",
+    "relation": "前提条件",
+    "tail": "制动踏板信号 (EPTBrkPdlDscrtInptSts) = 0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["EPTBrkPdlDscrtInptSts", "ExtrLightCoopServiceReq"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯配合服务请求 (ExtrLightCoopServiceReq) 输出为 OFF",
+    "relation": "前提条件",
+    "tail": "制动踏板信号 (EPTBrkPdlDscrtInptSts) = 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["EPTBrkPdlDscrtInptSts", "ExtrLightCoopServiceReq"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯控制命令类型 (ExtrLightCtrlCmmtnTyp) 配置为 SOA",
+    "relation": "依赖于",
+    "tail": "配置需求: ExtrLightCtrlCmmtnTyp=0x0=SOA",
+    "triple_type": "配置依赖关系",
+    "evidence_terms": ["ExtrLightCtrlCmmtnTyp", "SOA"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯控制命令类型 (ExtrLightCtrlCmmtnTyp) 配置为 CAN",
+    "relation": "依赖于",
+    "tail": "配置需求: ExtrLightCtrlCmmtnTyp=0x1=CAN",
+    "triple_type": "配置依赖关系",
+    "evidence_terms": ["ExtrLightCtrlCmmtnTyp", "CAN"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态命令类型 (ExtrLightStsCmmtnTyp) 配置为 SOA",
+    "relation": "依赖于",
+    "tail": "配置需求: ExtrLightStsCmmtnTyp=0x0=SOA",
+    "triple_type": "配置依赖关系",
+    "evidence_terms": ["ExtrLightStsCmmtnTyp", "SOA"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态命令类型 (ExtrLightStsCmmtnTyp) 配置为 CAN",
+    "relation": "依赖于",
+    "tail": "配置需求: ExtrLightStsCmmtnTyp=0x1=CAN",
+    "triple_type": "配置依赖关系",
+    "evidence_terms": ["ExtrLightStsCmmtnTyp", "CAN"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯配合服务请求 (ExtrLightCoopServiceReq) 在收到请求后应在10ms内返回响应",
+    "relation": "超时约束",
+    "tail": "外灯配合服务 (ExtrLightCoopService)",
+    "triple_type": "时序约束",
+    "evidence_terms": ["ExtrLightCoopServiceReq", "10ms"],
+    "confidence_note": "high"
+  }
+]
+```

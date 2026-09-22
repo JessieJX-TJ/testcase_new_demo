@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "左前位置灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件到异常处理的各个阶段。",
+  "column_semantics": "表格包含四列，分别描述了故障处理的不同阶段：前置条件、触发条件、执行动作和退出条件/异常处理。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FLSideLghtDrvMdl",
+      "type": "controller_module",
+      "description": "左侧位置灯驱动模块"
+    },
+    {
+      "name": "SideLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "侧灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "左前位置灯处于输出状态",
+      "source": "前置条件"
+    },
+    {
+      "condition": "检测到左前位置灯短路到电源",
+      "source": "触发条件"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "source": "退出条件"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "PosLamp_LH_HSD",
+      "action": "停止驱动左前位置灯输出",
+      "module": "FLSideLghtDrvMdl"
+    },
+    {
+      "signal": "SidePositionLightStatus",
+      "action": "持续发送侧位置灯状态（Off）",
+      "module": "FLSideLghtDrvMdl",
+      "instance_id": 1,
+      "count": "至少三帧"
+    },
+    {
+      "signal": "DTCC_B1061_12",
+      "action": "置位DTC（诊断故障代码）",
+      "module": "未知"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTCC_B1061_12",
+      "description": "左前位置灯短路到电源故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了当左前位置灯发生短路到电源故障时，系统应如何响应并记录故障代码的逻辑，可用于验证车辆电子系统在特定故障情况下的行为是否符合设计规范。",
+  "uncertain_points": []
+}
+```

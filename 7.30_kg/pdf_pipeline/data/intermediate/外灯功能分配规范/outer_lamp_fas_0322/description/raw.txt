@@ -1,0 +1,59 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Direction Light Status and Error Reporting",
+  "row_semantics": "Each row represents a specific service interface for querying the status or error state of direction lights, including right-turn and left-front turn lights.",
+  "column_semantics": {
+    "1": "Service Interface Name (e.g., DirectionLightStatus, DirectionLightErrorStatus)",
+    "2": "Consumers/Modules that use this interface (e.g., SOA, RZCU, LHZCU)",
+    "3": "Controller/Module providing the service (e.g., LHZCU)",
+    "4": "Hard Line Status or Hard Line Fault Status",
+    "5": "Uncertain"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "function",
+      "description": "Represents the direction light system, including right-turn and left-front turn lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "input_signal",
+      "description": "Queries the current status of the direction light.",
+      "values": [
+        "0x0=OFF",
+        "0x1=ON",
+        "0x2=Unknown"
+      ]
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "input_signal",
+      "description": "Queries the error status of the direction light.",
+      "values": [
+        "0x0=No Error",
+        "0x1=Error",
+        "0x2=Unknown"
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "HardLineFaultStatus",
+      "type": "fault_state",
+      "description": "Indicates the fault status of the hard line associated with the direction light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for querying the operational status and error conditions of direction lights in a vehicle. It is used to verify that the correct status or error information is returned by the relevant controllers (LHZCU) when queried by other modules (SOA, RZCU).",
+  "uncertain_points": [
+    "The exact timing behavior of these service interfaces is not specified.",
+    "The specific actions taken by the consuming modules upon receiving the status/error information are not detailed."
+  ]
+}
+```

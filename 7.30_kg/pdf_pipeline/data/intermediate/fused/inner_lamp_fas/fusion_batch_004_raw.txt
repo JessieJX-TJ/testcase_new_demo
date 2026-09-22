@@ -1,0 +1,420 @@
+```json
+[
+  {
+    "head": "语音支持4颗阅读灯的开启关闭控制",
+    "relation": "依赖于",
+    "tail": "Passenger=0x0(Five-seat)",
+    "sources": ["inner_lamp_fas_0055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "语音支持6颗阅读灯的开启关闭控制",
+    "relation": "依赖于",
+    "tail": "Passenger=0x1(Six-seat)",
+    "sources": ["inner_lamp_fas_0055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前阅读灯 (LampID=0x0, FL)",
+    "relation": "依赖于",
+    "tail": "Passenger=0x1(Six-seat)",
+    "sources": ["inner_lamp_fas_0055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前阅读灯 (LampID=0x1, FR)",
+    "relation": "依赖于",
+    "tail": "Passenger=0x1(Six-seat)",
+    "sources": ["inner_lamp_fas_0055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后阅读灯 (LampID=0x2, RL)",
+    "relation": "依赖于",
+    "tail": "Passenger=0x1(Six-seat)",
+    "sources": ["inner_lamp_fas_0055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后阅读灯 (LampID=0x3, RR)",
+    "relation": "依赖于",
+    "tail": "Passenger=0x1(Six-seat)",
+    "sources": ["inner_lamp_fas_0055"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车背光控制",
+    "relation": "依赖于",
+    "tail": "VP3-25751",
+    "sources": ["inner_lamp_fas_0056", "inner_lamp_fas_0057"],
+    "conflict": true,
+    "conflict_note": "同一 head-relation 对（'整车背光控制'-'依赖于'）对应不同 tail：VP3-25751 vs VP3-62739（后者在另一三元组中为'前提条件'，但此处语义冲突）；且存在抑制条件 VP3-62747，需确认 VP3-62739/62747 是否为同一模块或存在版本差异"
+  },
+  {
+    "head": "整车背光控制",
+    "relation": "抑制条件",
+    "tail": "VP3-62747",
+    "sources": ["inner_lamp_fas_0056"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车背光控制",
+    "relation": "前提条件",
+    "tail": "VP3-62739",
+    "sources": ["inner_lamp_fas_0057"],
+    "conflict": true,
+    "conflict_note": "与 '依赖于 VP3-25751' 及 '抑制条件 VP3-62747' 形成逻辑张力：同一功能同时依赖、前提、抑制不同控制器模块，可能反映多级使能逻辑，但当前表述未明确层级关系，存在设计意图歧义"
+  },
+  {
+    "head": "接口名称 (Interface Name)",
+    "relation": "依赖于",
+    "tail": "发送方/提供方 (Sender/Provider)",
+    "sources": ["inner_lamp_fas_0058"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "接口名称 (Interface Name)",
+    "relation": "依赖于",
+    "tail": "接收方/消费方 (Receiver/Consumer)",
+    "sources": ["inner_lamp_fas_0058"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "接口名称 (Interface Name)",
+    "relation": "依赖于",
+    "tail": "通信路径 (Channel)",
+    "sources": ["inner_lamp_fas_0058", "inner_lamp_fas_0093", "inner_lamp_fas_0318"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "接口名称 (Interface Name)",
+    "relation": "依赖于",
+    "tail": "接口来源 (Interface Source)",
+    "sources": ["inner_lamp_fas_0058"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统从休眠状态唤醒",
+    "relation": "触发条件",
+    "tail": "特定的唤醒源被激活",
+    "sources": ["inner_lamp_fas_0059"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统进入休眠状态",
+    "relation": "触发条件",
+    "tail": "未检测到任何唤醒源信号",
+    "sources": ["inner_lamp_fas_0072"],
+    "conflict": true,
+    "conflict_note": "与 inner_lamp_fas_0059 中 '触发条件：特定的唤醒/休眠方式被选择' 冲突——前者强调信号缺失（被动），后者强调主动选择（如用户操作或策略触发），二者逻辑不兼容，需澄清休眠触发机制是事件驱动还是策略驱动"
+  },
+  {
+    "head": "系统进入休眠状态",
+    "relation": "触发条件",
+    "tail": "满足休眠条件",
+    "sources": ["inner_lamp_fas_0072"],
+    "conflict": true,
+    "conflict_note": "同上，'满足休眠条件' 是泛化描述，与 '未检测到唤醒源' 或 '被选择' 存在定义模糊性，构成语义冲突"
+  },
+  {
+    "head": "唤醒/休眠方式",
+    "relation": "依赖于",
+    "tail": "唤醒源",
+    "sources": ["inner_lamp_fas_0059", "inner_lamp_fas_0081"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "唤醒/休眠方式",
+    "relation": "依赖于",
+    "tail": "特定的唤醒源(如遥控器信号)",
+    "sources": ["inner_lamp_fas_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "唤醒/休眠方式",
+    "relation": "依赖于",
+    "tail": "特定的唤醒源(如钥匙插入信号)",
+    "sources": ["inner_lamp_fas_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "阅读灯开关控制功能",
+    "relation": "抑制条件",
+    "tail": "VP3-25770",
+    "sources": ["inner_lamp_fas_0060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch Control",
+    "relation": "抑制条件",
+    "tail": "VP3-89737",
+    "sources": ["inner_lamp_fas_0063"],
+    "conflict": true,
+    "conflict_note": "与 '阅读灯开关控制功能 - 抑制条件 - VP3-25770' 冲突：同一功能（中英文命名等价）对应不同抑制ID，需确认是否为版本迭代、配置分支或文档错误"
+  },
+  {
+    "head": "Z-ONE-3.0平台-FAS-IBD02",
+    "relation": "包含子功能",
+    "tail": "内灯 (Interior Light)",
+    "sources": ["inner_lamp_fas_0061", "inner_lamp_fas_0131", "inner_lamp_fas_0139", "inner_lamp_fas_0185", "inner_lamp_fas_0238", "inner_lamp_fas_0547"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯 (Interior Light)",
+    "relation": "依赖于",
+    "tail": "Z-ONE-3.0平台-FAS-IBD02",
+    "sources": ["inner_lamp_fas_0061", "inner_lamp_fas_0131", "inner_lamp_fas_0139", "inner_lamp_fas_0238", "inner_lamp_fas_0547", "inner_lamp_fas_0067", "inner_lamp_fas_0488", "inner_lamp_fas_0069", "inner_lamp_fas_0119", "inner_lamp_fas_0331", "inner_lamp_fas_0370"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯 (Interior Light)",
+    "relation": "前提条件",
+    "tail": "Z-ONE-3.0平台-FAS-IBD02 版本 < 2",
+    "sources": ["inner_lamp_fas_0069", "inner_lamp_fas_0272", "inner_lamp_fas_0069", "inner_lamp_fas_0632"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampXXSnsr 模块",
+    "relation": "输入为",
+    "tail": "前两排阅读灯触摸开关状态",
+    "sources": ["inner_lamp_fas_0064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampHMI 模块",
+    "relation": "输入为",
+    "tail": "阅读灯大屏开关信号",
+    "sources": ["inner_lamp_fas_0064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampDoorInteraction 模块",
+    "relation": "触发条件",
+    "tail": "车门开关状态",
+    "sources": ["inner_lamp_fas_0064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampCtrl 模块",
+    "relation": "前提条件",
+    "tail": "MapLampLocalCtrl 模块提供本地开关控制与其它控制的仲裁",
+    "sources": ["inner_lamp_fas_0064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampLocalCtrl 模块",
+    "relation": "包含子功能",
+    "tail": "MapLampCtrl 模块",
+    "sources": ["inner_lamp_fas_0064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampXXDrv 模块",
+    "relation": "输出为",
+    "tail": "阅读灯点亮/熄灭",
+    "sources": ["inner_lamp_fas_0064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampXXDrv 模块",
+    "relation": "输出为",
+    "tail": "阅读灯状态反馈和故障反馈",
+    "sources": ["inner_lamp_fas_0064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampXXDrv 模块",
+    "relation": "依赖于",
+    "tail": "内灯子系统 (OHC)",
+    "sources": ["inner_lamp_fas_0064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampHMI 模块",
+    "relation": "依赖于",
+    "tail": "HMI 子系统 (ICB/ZXD)",
+    "sources": ["inner_lamp_fas_0064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampDoorInteraction 模块",
+    "relation": "依赖于",
+    "tail": "ICB/ZXD 子系统",
+    "sources": ["inner_lamp_fas_0064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampCtrl 模块",
+    "relation": "依赖于",
+    "tail": "ICB/ZXD 子系统",
+    "sources": ["inner_lamp_fas_0064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampLocalCtrl 模块",
+    "relation": "依赖于",
+    "tail": "LHZCU 子系统",
+    "sources": ["inner_lamp_fas_0064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制参数",
+    "relation": "前提条件",
+    "tail": "参数范围 (Range)",
+    "sources": ["inner_lamp_fas_0065"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制参数",
+    "relation": "前提条件",
+    "tail": "分辨率 (Factor)",
+    "sources": ["inner_lamp_fas_0065"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门参数",
+    "relation": "前提条件",
+    "tail": "默认值 (Default)",
+    "sources": ["inner_lamp_fas_0065"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "保持源",
+    "relation": "依赖于",
+    "tail": "备注",
+    "sources": ["inner_lamp_fas_0066"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯配置项",
+    "relation": "前提条件",
+    "tail": "参数范围 (Range) 为有效值",
+    "sources": ["inner_lamp_fas_0068"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制配置项",
+    "relation": "依赖于",
+    "tail": "定义/转换 (Conversion) 正确",
+    "sources": ["inner_lamp_fas_0068"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门配置项",
+    "relation": "输出为",
+    "tail": "默认值 (Default) 预设值",
+    "sources": ["inner_lamp_fas_0068"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯保持",
+    "relation": "状态保持条件",
+    "tail": "保持源为车辆电源系统",
+    "sources": ["inner_lamp_fas_0070"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制保持",
+    "relation": "状态保持条件",
+    "tail": "保持原因涉及安全法规要求",
+    "sources": ["inner_lamp_fas_0070"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门保持",
+    "relation": "状态保持条件",
+    "tail": "低温环境下需保持（见备注）",
+    "sources": ["inner_lamp_fas_0070"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "阅读灯亮度调节功能",
+    "relation": "控制对象",
+    "tail": "VP3-72532",
+    "sources": ["inner_lamp_fas_0071"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VP3-72532",
+    "relation": "包含子功能",
+    "tail": "阅读灯亮度调节 (VP3-25771)",
+    "sources": ["inner_lamp_fas_0071"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统根据唤醒源执行唤醒/休眠操作",
+    "relation": "前提条件",
+    "tail": "存在有效的唤醒源信号",
+    "sources": ["inner_lamp_fas_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统进入唤醒状态",
+    "relation": "触发条件",
+    "tail": "检测到指定的唤醒源信号",
+    "sources": ["inner_lamp_fas_0072"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "XSideLghtSts 位置灯状态信号",
+    "relation": "输入为",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_fas_0073"],
+    "conflict": true,
+    "conflict_note": "同一信号既定义为 '输入为 LHZCU' 又定义为 '输出为 LHZCU'，违反信号流向基本逻辑，存在严重矛盾，需核查信号方向定义（应为输入至某模块 or 输出自某模块）"
+  },
+  {
+    "head": "XSideLghtSts 位置灯状态信号",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_fas_0073"],
+    "conflict": true,
+    "conflict_note": "同上，方向冲突"
+  }
+]
+```

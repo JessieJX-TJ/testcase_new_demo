@@ -1,0 +1,43 @@
+{
+  "table_type": "logic_table",
+  "topic": "Vehicle External Lighting and Mode Control Logic",
+  "row_semantics": "Subfunctions of vehicle lighting systems, specifically focusing on the behavior of the Laser Welcome Lamp under different usage and vehicle modes.",
+  "column_semantics": "The table is divided into two main sections: 'Usage Mode' and 'Vehicle Mode'. The 'Usage Mode' section includes conditions such as 'Sleep', 'Standby', 'Comfort', 'Normal Driving', 'Smart Parking', 'Smart Driving', and 'XOTA'. The 'Vehicle Mode' section includes operational states like 'Engineering', 'Factory', 'Transport', 'Rotation', 'Trunk Lid', 'Collision', 'Normal', and 'Repair'. Each cell indicates whether a specific subfunction (Laser Welcome Lamp) is active ('√') or inactive ('×') under the corresponding combination of usage and vehicle modes.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Laser Welcome Lamp",
+      "type": "output_signal",
+      "description": "An external lighting feature that illuminates when the vehicle door is opened."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Subfunction",
+      "type": "input_signal",
+      "description": "Specifies the particular lighting function being controlled, in this case, the Laser Welcome Lamp."
+    },
+    {
+      "name": "Usage Mode",
+      "type": "mode_name",
+      "description": "Defines the context in which the vehicle is being used, such as 'Sleep', 'Normal Driving', or 'Smart Parking'."
+    },
+    {
+      "name": "Vehicle Mode",
+      "type": "mode_name",
+      "description": "Indicates the current operational state of the vehicle, such as 'Engineering', 'Transport', or 'Collision'."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Laser Welcome Lamp Activation",
+      "type": "output_signal",
+      "description": "Indicates whether the Laser Welcome Lamp is turned on ('√') or off ('×') based on the combination of usage and vehicle modes."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the activation logic for the Laser Welcome Lamp across various usage and vehicle modes, ensuring that the lamp behaves correctly depending on the vehicle's operational context. It can be used to verify that the lighting system activates only when appropriate, based on predefined conditions.",
+  "uncertain_points": []
+}

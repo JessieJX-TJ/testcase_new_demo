@@ -1,0 +1,90 @@
+{
+  "table_type": "state_table",
+  "topic": "Reverse Light System Status and Control",
+  "row_semantics": "Each row represents a specific state or control variable related to the reverse light system, including error states, control commands, and current operational status.",
+  "column_semantics": {
+    "1": "Variable Name (e.g., ReverseLightErrSta, ReverseLightControl)",
+    "2": "Description of the Variable's Role (e.g., Internal Variable Value Before Service Assignment, Received Service State)",
+    "3": "Possible Values and Definitions for the Variable",
+    "4": "Default Value",
+    "5": "Uncertain",
+    "6": "Controller/Module Name (e.g., LHZCU, RZCU)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ReverseLightErrSta",
+      "type": "system_state",
+      "description": "Internal variable value before service assignment, indicating the error status of the reverse light."
+    },
+    {
+      "name": "ReverseLightControl",
+      "type": "input_signal",
+      "description": "Received service state, controlling the on/off status of the reverse light."
+    },
+    {
+      "name": "ReverseLightSta",
+      "type": "output_signal",
+      "description": "Internal variable value before service assignment, representing the current operational status of the reverse light."
+    },
+    {
+      "name": "ReverseLightErrorSta",
+      "type": "fault_state",
+      "description": "Internal variable value before service assignment, indicating the error status of the reverse light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ReverseLightControl_0_OFF",
+      "description": "Command to turn off the reverse light."
+    },
+    {
+      "name": "ReverseLightControl_1_ON",
+      "description": "Command to turn on the reverse light."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ReverseLightSta_0_OFF",
+      "description": "Reverse light is in the OFF state."
+    },
+    {
+      "name": "ReverseLightSta_1_ON",
+      "description": "Reverse light is in the ON state."
+    },
+    {
+      "name": "ReverseLightSta_2_Unknown",
+      "description": "Reverse light status is unknown."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "ReverseLightErrSta_0_No Error",
+      "description": "No error detected in the reverse light system."
+    },
+    {
+      "name": "ReverseLightErrSta_1_Error",
+      "description": "An error has occurred in the reverse light system."
+    },
+    {
+      "name": "ReverseLightErrSta_2_Unknown",
+      "description": "The error status of the reverse light is unknown."
+    },
+    {
+      "name": "ReverseLightErrorSta_0_No Error",
+      "description": "No error detected in the reverse light error status."
+    },
+    {
+      "name": "ReverseLightErrorSta_1_Error",
+      "description": "An error has occurred in the reverse light error status."
+    },
+    {
+      "name": "ReverseLightErrorSta_2_Unknown",
+      "description": "The error status of the reverse light is unknown."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the internal states, control signals, and error conditions for the reverse light system, which can be used to verify the correct operation and fault handling of the reverse light under various control commands.",
+  "uncertain_points": []
+}

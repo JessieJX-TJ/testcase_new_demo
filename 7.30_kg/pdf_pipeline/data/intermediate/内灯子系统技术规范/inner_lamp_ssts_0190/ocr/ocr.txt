@@ -1,0 +1,16 @@
+退出条件
+满足以下任一条件
+1、接收到氛围灯控制模块的请求信DoorFR1LampOnOff_1=0x0
+(OFF),退出呼吸模式；按照接收的颜色值、渐变速度熄灭氛围
+灯
+2、DoorFR1LampBrthngCmd_1=0x00(No Request),退出呼吸模
+式；按照亮度值 DoorFR1LampBrtnsCmd_1、颜色值
+DoorFR1LampColorCmd_1、渐变速度DoorFR1LampFadeSpdCmd_1
+执行
+3、AmbtLghtLHRollingCtr_1不再按照1顺序叠加,停止呼吸模式
+氛围灯按照接收到的颜色亮度渐变信号常亮显示；如果颜色亮度
+信号也异常,按照最后时刻的状态静态点亮
+异常处理
+1、氛围灯模块出现过压、欠压故障,直接关闭氛围灯
+2、超过一定时间(默认6s)未接收到ZCU的LIN信号,直接关闭氛
+围灯

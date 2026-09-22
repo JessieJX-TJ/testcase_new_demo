@@ -1,0 +1,110 @@
+{
+  "table_type": "signal_table",
+  "topic": "后雾灯控制逻辑与状态反馈",
+  "row_semantics": "描述了后雾灯系统在不同模块间的控制流程、信号交互及状态反馈的顺序步骤",
+  "column_semantics": "无明确列，表格内容为按编号顺序排列的文本描述，主要展示控制流和信号赋值",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "Notifier",
+      "type": "system_interface",
+      "description": "外部灯光开关处理模块，负责获取后雾灯开关状态并触发相关控制"
+    },
+    {
+      "name": "HMI子系统ICB",
+      "type": "interface",
+      "description": "人机交互子系统接口，用于显示后雾灯指示灯状态"
+    },
+    {
+      "name": "外灯控制组合服务ICB",
+      "type": "service_interface",
+      "description": "提供外灯控制相关的服务接口"
+    },
+    {
+      "name": "驱动处理模块RZCU",
+      "type": "controller_module",
+      "description": "负责驱动后雾灯点亮，并进行内部状态管理"
+    },
+    {
+      "name": "后雾灯控制模块LHZCU",
+      "type": "controller_module",
+      "description": "专门负责后雾灯的状态控制和故障反馈"
+    },
+    {
+      "name": "外灯组合服务ICB",
+      "type": "service_interface",
+      "description": "订阅后雾灯状态信息的服务接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ExteriorLightSwitchProcess.RearFogLightSwStatus",
+      "type": "input_signal",
+      "description": "外部灯光开关处理模块中的后雾灯开关状态信号"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.RearFogLightFucProStatus",
+      "type": "input_signal",
+      "description": "外部灯光开关处理模块中的后雾灯功能优先级状态信号"
+    },
+    {
+      "name": "RearFogLightCtrl",
+      "type": "internal_signal",
+      "description": "后雾灯控制信号，由驱动模块内部生成"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ExteriorLightSwitchProcess.RearFogLightSwStatus.RearFogLightSwSta",
+      "type": "output_signal",
+      "description": "后雾灯开关状态输出，用于通知其他模块"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.RearFogLightFucProStatus.RearFogLightFucProsSta",
+      "type": "output_signal",
+      "description": "后雾灯功能优先级状态输出"
+    },
+    {
+      "name": "RearFogLightCtrl",
+      "type": "output_signal",
+      "description": "后雾灯控制信号，用于驱动后雾灯点亮"
+    },
+    {
+      "name": "RearFogLightSts",
+      "type": "output_signal",
+      "description": "后雾灯状态输出，表示后雾灯的实际点亮状态"
+    },
+    {
+      "name": "RearFogLightErrSta",
+      "type": "output_signal",
+      "description": "后雾灯错误状态输出，表示是否存在故障"
+    },
+    {
+      "name": "ExteriorLightControlSystem.RearFogLightSts.RearFogLightStts",
+      "type": "output_signal",
+      "description": "外灯控制系统中的后雾灯状态订阅信号"
+    },
+    {
+      "name": "ExteriorLightControlSystem.RearFogLightErrSta.RearFogLightErrStta",
+      "type": "output_signal",
+      "description": "外灯控制系统中的后雾灯错误状态订阅信号"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RearFogLightErrSta",
+      "type": "fault_status",
+      "description": "后雾灯错误状态，当值为0x1时，表示存在故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步点亮延时",
+      "type": "timing_constraint",
+      "description": "左侧和右侧后雾灯需保持同步点亮，最大延时不能超过40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了汽车后雾灯系统的控制逻辑、信号交互流程以及状态反馈机制，可用于验证后雾灯的正确控制、状态同步性和故障检测功能。",
+  "uncertain_points": []
+}

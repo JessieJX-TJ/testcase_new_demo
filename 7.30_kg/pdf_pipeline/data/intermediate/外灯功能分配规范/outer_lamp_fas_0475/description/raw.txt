@@ -1,0 +1,40 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "DIDs (Data Identifiers) Internal Parameter Data Identifiers for Near Beam Light Activation Reasons",
+  "row_semantics": "Each row represents a specific data identifier (DID) and its associated value table, which defines the possible reasons for the near beam light to be activated.",
+  "column_semantics": {
+    "Short Name": "The short name of the DID, which is 'DipdBeamLghtOpenCtrlRsn' in this case.",
+    "Description": "A brief description of the DID, indicating it relates to the 'reason for near beam light activation'.",
+    "Value Table": "A list of hexadecimal values and their corresponding meanings, detailing various reasons why the near beam light might be turned on (e.g., SOA request, auto light request, follow me home control, rear foglight switch, other reasons, or reserved values).",
+    "Default": "The default value for this DID, which is '0x00'.",
+    "Remark": "Additional notes about the DID, such as storing the last 10 near beam light activation reason information with the most recent at the lowest index.",
+    "ECU": "The Electronic Control Unit responsible for this parameter, which is 'LHZ CU' (Light Headlamp Zone Central Unit)."
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DipdBeamLghtOpenCtrlRsn",
+      "type": "DID",
+      "description": "Data Identifier for the reason behind the near beam light being activated."
+    },
+    {
+      "name": "LHZ CU",
+      "type": "ECU",
+      "description": "The central unit responsible for managing headlamp functions, including near beam light control."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Near Beam Light Activation Reason",
+      "description": "Various conditions that can trigger the near beam light to turn on, as defined by the value table."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table is used to verify the correct identification and storage of the reason for near beam light activation within the LHZ CU. It ensures that the system accurately records and reports the source of the activation, which is crucial for diagnosing issues related to headlamp control and ensuring compliance with vehicle lighting regulations.",
+  "uncertain_points": []
+}
+```

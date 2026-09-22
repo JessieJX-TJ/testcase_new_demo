@@ -1,0 +1,17 @@
+前置条件
+NA
+触发条件
+接收到对应阅读灯开关状态硬线信号
+ThrdRowMapLamp_LH_Sw_SIG 为低电平
+备注:LHZCU接收后排阅读灯开关状态,做30ms消抖处
+理,消除较长线束干扰
+执行动作
+[第三排左侧阅读灯开关传感采集模块]发送
+ThrdRowMapLampLHSwReq=0x1(Press)
+退出条件
+ThrdRowMapLamp_LH_Sw_SIG为悬空状态,[第三排左侧
+阅读灯开关传感采集模块]发送
+ThirdRowMapLampLHSwReq=0x0(Idle)
+异常处理
+LHZCU不做开关的短路故障处理,不发送0x3；如检测电
+容开关一直按下,一直发送0x1

@@ -1,0 +1,484 @@
+```json
+[
+  {
+    "head": "化妆镜灯开关控制",
+    "relation": "包含子功能",
+    "tail": "化妆镜灯状态控制",
+    "sources": ["inner_lamp_fas_0413"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手套箱灯开关控制",
+    "relation": "触发条件",
+    "tail": "手套箱灯开关信号",
+    "sources": ["inner_lamp_fas_0414"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手套箱灯点亮熄灭",
+    "relation": "依赖于",
+    "tail": "手套箱灯开关控制",
+    "sources": ["inner_lamp_fas_0414"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手套箱灯点亮熄灭",
+    "relation": "输出为",
+    "tail": "手套箱灯状态",
+    "sources": ["inner_lamp_fas_0414"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手套箱灯应用控制模块",
+    "relation": "控制对象",
+    "tail": "手套箱灯状态",
+    "sources": ["inner_lamp_fas_0414"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手套箱灯驱动模块",
+    "relation": "包含子功能",
+    "tail": "手套箱灯应用控制模块",
+    "sources": ["inner_lamp_fas_0414"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp is ON",
+    "relation": "前提条件",
+    "tail": "Vehicle Mode: Sleep, Standby, XOTA",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp is ON",
+    "relation": "前提条件",
+    "tail": "Vehicle Mode: Factory",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Mode: Sleep, Standby, XOTA",
+    "relation": "前提条件",
+    "tail": "Reading Lamp is ON",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "依赖于",
+    "tail": "Reading Lamp is ON and Vehicle Mode: Sleep, Standby, XOTA",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "依赖于",
+    "tail": "Reading Lamp is ON and Vehicle Mode: Factory",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SleepTimer or FactoryTimer",
+    "relation": "超时约束",
+    "tail": "Reading Lamp is ON",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "优先级高于",
+    "tail": "FactoryTimer",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": true,
+    "conflict_note": "与 'FactoryTimer 优先级高于 SleepTimer' 冲突；二者逻辑互斥，需确认设计意图（如是否为不同场景下的优先级策略）"
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "优先级高于",
+    "tail": "SleepTimer",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": true,
+    "conflict_note": "与 'SleepTimer 优先级高于 FactoryTimer' 冲突；二者逻辑互斥，需确认设计意图（如是否为不同场景下的优先级策略）"
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "复位条件",
+    "tail": "Reading Lamp turns OFF",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "复位条件",
+    "tail": "Reading Lamp turns OFF",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "包含子功能",
+    "tail": "15min duration",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "包含子功能",
+    "tail": "2min duration",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "抑制条件",
+    "tail": "Vehicle Mode: Factory",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "抑制条件",
+    "tail": "Vehicle Mode: Sleep, Standby, XOTA",
+    "sources": ["inner_lamp_fas_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtPsgDoorOpenSts",
+    "relation": "输入为",
+    "tail": "0x0 = FrtPsngDoorClosed",
+    "sources": ["inner_lamp_fas_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtPsgDoorOpenSts",
+    "relation": "输入为",
+    "tail": "0x1 = FrtPsngDoorOpen (for Latch Switch Can't Detect Door Ajar Status)",
+    "sources": ["inner_lamp_fas_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtPsgDoorOpenSts",
+    "relation": "输入为",
+    "tail": "0x2 = FrtPsngDoorAjar",
+    "sources": ["inner_lamp_fas_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtPsgDoorOpenSts",
+    "relation": "输入为",
+    "tail": "0x3 = FrtPsngDoorFullOpen",
+    "sources": ["inner_lamp_fas_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorOpenSts",
+    "relation": "输入为",
+    "tail": "0x0 = RRDoorClosed",
+    "sources": ["inner_lamp_fas_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorOpenSts",
+    "relation": "输入为",
+    "tail": "0x1 = RRDoorOpen (for Latch Switch Can't Detect Door Ajar Status)",
+    "sources": ["inner_lamp_fas_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorOpenSts",
+    "relation": "输入为",
+    "tail": "0x2 = RRDoorAjar",
+    "sources": ["inner_lamp_fas_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorOpenSts",
+    "relation": "输入为",
+    "tail": "0x3 = RRDoorFullOpen",
+    "sources": ["inner_lamp_fas_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtPsgWlcmPedLghtCtrlCmd",
+    "relation": "输入为",
+    "tail": "0x0 = Close",
+    "sources": ["inner_lamp_fas_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtPsgWlcmPedLghtCtrlCmd",
+    "relation": "输入为",
+    "tail": "0x1 = Open",
+    "sources": ["inner_lamp_fas_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV",
+    "relation": "输入为",
+    "tail": "0x0 = UsgMdV_0_Invalid",
+    "sources": ["inner_lamp_fas_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV",
+    "relation": "输入为",
+    "tail": "0x1 = UsgMdV_1_Valid",
+    "sources": ["inner_lamp_fas_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDoorOpenSts",
+    "relation": "输入为",
+    "tail": "CAN communication bus",
+    "sources": ["inner_lamp_fas_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorOpenSts",
+    "relation": "输入为",
+    "tail": "CAN communication bus",
+    "sources": ["inner_lamp_fas_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampDrEnbSetInfo",
+    "relation": "依赖于",
+    "tail": "PersonalizationData.MapLampDrEnbSet",
+    "sources": ["inner_lamp_fas_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampDrEnbSetInfo",
+    "relation": "输出为",
+    "tail": "0x0 = Enabled",
+    "sources": ["inner_lamp_fas_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampDrEnbSetInfo",
+    "relation": "输出为",
+    "tail": "0x1 = Disabled",
+    "sources": ["inner_lamp_fas_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯随门动功能",
+    "relation": "前提条件",
+    "tail": "PersonalizationData.MapLampDrEnbSet = Enabled",
+    "sources": ["inner_lamp_fas_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯随门动功能",
+    "relation": "前提条件",
+    "tail": "PersonalizationData.MapLampDrEnbSet = Disabled",
+    "sources": ["inner_lamp_fas_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver's side floor lamp",
+    "relation": "触发条件",
+    "tail": "UsrMdV mode in Standby, Comfortable, Normal Driving, AIParking, AIPilot, or XOTA",
+    "sources": ["inner_lamp_fas_0419"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontLeftDoorFullOpen",
+    "relation": "依赖于",
+    "tail": "Driver's side door is fully open",
+    "sources": ["inner_lamp_fas_0419"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDoorOpen",
+    "relation": "依赖于",
+    "tail": "Rear left door is partially open",
+    "sources": ["inner_lamp_fas_0419"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver's side floor lamp control command",
+    "relation": "触发条件",
+    "tail": "UsrMdV_1_Valid",
+    "sources": ["inner_lamp_fas_0419"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver's side floor lamp control command",
+    "relation": "触发条件",
+    "tail": "UsrMdV_0_Invalid",
+    "sources": ["inner_lamp_fas_0419"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "阅读灯开关控制功能",
+    "relation": "前提条件",
+    "tail": "VP3-143074",
+    "sources": ["inner_lamp_fas_0422"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "阅读灯开关控制功能",
+    "relation": "依赖于",
+    "tail": "VP3-25770",
+    "sources": ["inner_lamp_fas_0422"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车背光控制功能",
+    "relation": "依赖于",
+    "tail": "VP3-25751",
+    "sources": ["inner_lamp_fas_0423"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车背光控制功能",
+    "relation": "前提条件",
+    "tail": "VP3-62743",
+    "sources": ["inner_lamp_fas_0423"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VP3-62772",
+    "relation": "控制对象",
+    "tail": "VP3-25770",
+    "sources": ["inner_lamp_fas_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampThrdLDimSpd_1",
+    "relation": "输入为",
+    "tail": "LIN bus input signal",
+    "sources": ["inner_lamp_fas_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampThrdRDimSpd_1",
+    "relation": "输入为",
+    "tail": "OHC module input signal",
+    "sources": ["inner_lamp_fas_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampXXSts_1",
+    "relation": "输入为",
+    "tail": "LHZCU input signal",
+    "sources": ["inner_lamp_fas_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLSts_1",
+    "relation": "输出为",
+    "tail": "Front left lamp behavior",
+    "sources": ["inner_lamp_fas_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFRSts_1",
+    "relation": "输出为",
+    "tail": "Front right lamp behavior",
+    "sources": ["inner_lamp_fas_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampThrdLDimSpd_1",
+    "relation": "包含子功能",
+    "tail": "Speed 1 (Manual, Fast)",
+    "sources": ["inner_lamp_fas_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampThrdLDimSpd_1",
+    "relation": "包含子功能",
+    "tail": "Speed 2 (Door Open, Slow)",
+    "sources": ["inner_lamp_fas_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampThrdLDimSpd_1",
+    "relation": "包含子功能",
+    "tail": "Speed 3 (Transient)",
+    "sources": ["inner_lamp_fas_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampThrdLDimSpd_1",
+    "relation": "包含子功能",
+    "tail": "Reserved value 0x3",
+    "sources": ["inner_lamp_fas_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLSts_1",
+    "relation": "包含子功能",
+    "tail": "OFF state",
+    "sources": ["inner_lamp_fas_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLSts_1",
+    "relation": "包含子功能",
+    "tail": "Level 1 state",
+    "sources": ["inner_lamp_fas_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

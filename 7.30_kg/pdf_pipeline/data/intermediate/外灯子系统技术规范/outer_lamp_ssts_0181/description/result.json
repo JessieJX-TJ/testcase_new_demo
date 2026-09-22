@@ -1,0 +1,49 @@
+{
+  "table_type": "logic_table",
+  "topic": "高位制动灯驱动控制逻辑",
+  "row_semantics": "表格按功能流程分为前置条件、触发条件和执行动作三个阶段，描述了高位制动灯（BrkLght）的控制逻辑。",
+  "column_semantics": "表格包含两列：第一列为条件/动作描述，第二列为具体参数或状态说明。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLghtFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "高位制动灯反馈超时允许参数，用于启用相关控制逻辑。"
+    },
+    {
+      "name": "BrkLghtDrvMod",
+      "type": "signal",
+      "description": "高位制动灯驱动模式信号，指示当前驱动状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "BrkLghtFbkSOAEnPrm === 1 (Enable)",
+      "description": "高位制动灯反馈超时允许参数必须为1（启用状态），以激活控制逻辑。"
+    },
+    {
+      "condition": "高位制动灯处于输出状态",
+      "description": "高位制动灯当前处于输出状态，表明其已准备好接收控制指令。"
+    },
+    {
+      "condition": "检测到高位制动灯短路到地",
+      "description": "系统检测到高位制动灯存在短路到地的故障情况。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "【BrkLghtDrvMod】停止驱动高位制动灯 (CHMSL_HSD)",
+      "description": "当检测到高位制动灯短路到地时，系统将停止驱动该灯，并将其设置为熄灭状态（CHMSL_HSD）。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "高位制动灯短路到地",
+      "description": "高位制动灯电路发生短路到地的故障，可能导致灯具异常点亮或无法正常工作。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了高位制动灯在检测到短路到地故障时的控制逻辑，可用于验证车辆电子系统在制动灯故障情况下的安全保护机制。",
+  "uncertain_points": []
+}

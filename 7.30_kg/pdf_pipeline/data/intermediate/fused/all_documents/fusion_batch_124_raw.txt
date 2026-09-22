@@ -1,0 +1,420 @@
+```json
+[
+  {
+    "head": "前雾灯物理开关状态设置为开启",
+    "relation": "输出为",
+    "tail": "exlFrontFogLghtPrm = 1",
+    "sources": ["outer_lamp_fas_1322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "七键开关请求 IFP 的前雾灯物理开关信号设置为按下",
+    "relation": "输出为",
+    "tail": "IFPFrontFoglghtSwReq_l_1_Press = 1",
+    "sources": ["outer_lamp_fas_1322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯物理开关状态设置为开启",
+    "relation": "依赖于",
+    "tail": "七键开关请求 IFP 的前雾灯物理开关信号设置为按下",
+    "sources": ["outer_lamp_fas_1322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制组合服务 ICB 被调用",
+    "relation": "触发条件",
+    "tail": "S32G 收到大屏开关请求 ICB",
+    "sources": ["outer_lamp_fas_1322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制组合服务 ICB 被调用",
+    "relation": "触发条件",
+    "tail": "满足所有前置条件",
+    "sources": ["outer_lamp_fas_1322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯未开启",
+    "relation": "抑制条件",
+    "tail": "IFPFrontFoglghtSwReq_l_1_Press = 1",
+    "sources": ["outer_lamp_fas_1322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯未开启",
+    "relation": "抑制条件",
+    "tail": "ExteriorLightSwitchProcess.FrontFogLghtFucProStatus.FrontFogLghtFucProsSta = 0x0",
+    "sources": ["outer_lamp_fas_1322"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关控制模块 LHZCU 接口响应",
+    "relation": "前提条件",
+    "tail": "IHC 开关处于禁止状态 (iHCEnbSetSts = 0x1)",
+    "sources": ["outer_lamp_fas_1323"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 ICB 调用基础服务",
+    "relation": "前提条件",
+    "tail": "MainBeamHwDrvEnPrm = 0x0",
+    "sources": ["outer_lamp_fas_1323"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB 将服务接口或控制信号转换成灯控 CAN 信号",
+    "relation": "前提条件",
+    "tail": "远光灯开关控制模块 LHZCU 发送控制信号",
+    "sources": ["outer_lamp_fas_1323"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制模块 LHZCU 发送模式信号至 ICB",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtMdSts = 0x0 (No_Request)",
+    "sources": ["outer_lamp_fas_1323"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB 将状态/故障状态反馈至远光灯开关控制模块 LHZCU",
+    "relation": "前提条件",
+    "tail": "MainBeamLightStatus = OFF",
+    "sources": ["outer_lamp_fas_1323"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关控制模块 LHZCU 将状态/故障状态反馈至 ICB",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess",
+    "sources": ["outer_lamp_fas_1323"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 ICB 订阅接口",
+    "relation": "前提条件",
+    "tail": "ExteriorLightControlSystem",
+    "sources": ["outer_lamp_fas_1323"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯熄灭",
+    "relation": "触发条件",
+    "tail": "ICB 将服务接口或控制信号转换成灯控 CAN 信号",
+    "sources": ["outer_lamp_fas_1323"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "指示灯显示退出",
+    "relation": "触发条件",
+    "tail": "远光灯自动控制模块 LHZCU 发送模式信号至 ICB",
+    "sources": ["outer_lamp_fas_1323"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd 信号输出为 VehMd_0_NORMAL",
+    "relation": "输出为",
+    "tail": "车辆处于正常运行状态",
+    "sources": ["outer_lamp_fas_1326"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd 信号输出为 VehMd_1_CRASH",
+    "relation": "输出为",
+    "tail": "车辆检测到碰撞事件",
+    "sources": ["outer_lamp_fas_1326"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd 信号输出为 VehMd_2_FACTORY",
+    "relation": "输出为",
+    "tail": "车辆处于工厂测试或调试模式",
+    "sources": ["outer_lamp_fas_1326"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd 信号输出为 VehMd_3_TRANSPORT",
+    "relation": "输出为",
+    "tail": "车辆处于运输或拖车模式",
+    "sources": ["outer_lamp_fas_1326"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd 信号输出为 VehMd_4_DYNO",
+    "relation": "输出为",
+    "tail": "车辆处于测功机测试模式",
+    "sources": ["outer_lamp_fas_1326"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd 信号输出为 VehMd_5_EXHIBITION",
+    "relation": "输出为",
+    "tail": "车辆处于展览或展示模式",
+    "sources": ["outer_lamp_fas_1326"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd 信号输出为 VehMd_8_Engineering",
+    "relation": "输出为",
+    "tail": "车辆处于工程开发或调试模式",
+    "sources": ["outer_lamp_fas_1326"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd 信号输出为 VehMd_9_Service",
+    "relation": "输出为",
+    "tail": "车辆处于服务或维修模式",
+    "sources": ["outer_lamp_fas_1326"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMdV 信号输出为 VehMdV_0_Invalid",
+    "relation": "输出为",
+    "tail": "车辆模式验证失败或无效",
+    "sources": ["outer_lamp_fas_1326"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMdV 信号输出为 VehMdV_1_Valid",
+    "relation": "输出为",
+    "tail": "车辆模式验证成功或有效",
+    "sources": ["outer_lamp_fas_1326"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Directional Light 初始化",
+    "relation": "前提条件",
+    "tail": "ExternalLightControlSystem 已初始化",
+    "sources": ["outer_lamp_fas_1328"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Directional Light 开启",
+    "relation": "触发条件",
+    "tail": "DirectionalLight.gltStat = On",
+    "sources": ["outer_lamp_fas_1328"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Directional Light 关闭",
+    "relation": "触发条件",
+    "tail": "DirectionalLight.gltStat = Off",
+    "sources": ["outer_lamp_fas_1328"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "开路故障注入",
+    "relation": "触发条件",
+    "tail": "FaultType = Open Circuit",
+    "sources": ["outer_lamp_fas_1328"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "错误状态检测",
+    "relation": "依赖于",
+    "tail": "DirectionalLight.gltErrorSta",
+    "sources": ["outer_lamp_fas_1328"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "闪光模式激活",
+    "relation": "触发条件",
+    "tail": "ModeSwitchProcess = Flash Mode",
+    "sources": ["outer_lamp_fas_1328"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "警示模式激活",
+    "relation": "触发条件",
+    "tail": "ModeSwitchProcess = Warning Mode",
+    "sources": ["outer_lamp_fas_1328"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "无错误状态",
+    "relation": "输出为",
+    "tail": "DirectionalLight.gltErrorSta = No Error",
+    "sources": ["outer_lamp_fas_1328"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "错误已检测状态",
+    "relation": "输出为",
+    "tail": "DirectionalLight.gltErrorSta = Error Detected",
+    "sources": ["outer_lamp_fas_1328"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "闪光模式与警示模式",
+    "relation": "互斥",
+    "tail": "Flash Mode 和 Warning Mode 不可同时激活",
+    "sources": ["outer_lamp_fas_1328"],
+    "conflict": true,
+    "conflict_note": "语义上互斥关系明确，但需确认是否在系统设计中允许软切换或瞬态重叠；此处按规范原文保留互斥断言"
+  },
+  {
+    "head": "故障注入时序约束",
+    "relation": "超时约束",
+    "tail": "故障注入必须发生在 Instance ID 1234 序列内",
+    "sources": ["outer_lamp_fas_1328"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "文档第262页（共935页）",
+    "sources": ["outer_lamp_fas_1329"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "ControlRearFogLight 接口被调用 且 RearFogLightReq = 0x1",
+    "sources": ["outer_lamp_fas_1330"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯熄灭",
+    "relation": "触发条件",
+    "tail": "ControlRearFogLight 接口被调用 且 RearFogLightReq = 0x0",
+    "sources": ["outer_lamp_fas_1330"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开关状态为 ON",
+    "relation": "输出为",
+    "tail": "RearFogLightSwStatus = 0x1",
+    "sources": ["outer_lamp_fas_1330"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开关状态为 OFF",
+    "relation": "输出为",
+    "tail": "RearFogLightSwStatus = 0x0",
+    "sources": ["outer_lamp_fas_1330"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开关状态未知",
+    "relation": "输出为",
+    "tail": "RearFogLightSwStatus = 0x2",
+    "sources": ["outer_lamp_fas_1330"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯请求处理为 OFF",
+    "relation": "输入为",
+    "tail": "RearFogLightFueProSta = 0x0",
+    "sources": ["outer_lamp_fas_1330"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯（实例 1–4）点亮",
+    "relation": "触发条件",
+    "tail": "exlSideLghtHwDrvEnPrm = 0x1",
+    "sources": ["outer_lamp_fas_1332"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯（实例 1–4）无错误",
+    "relation": "触发条件",
+    "tail": "exlSideLghtHwDrvEnPrm = 0x1",
+    "sources": ["outer_lamp_fas_1332"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯左右同步",
+    "relation": "前提条件",
+    "tail": "exlSideLghtHwDrvEnPrm = 0x1",
+    "sources": ["outer_lamp_fas_1332"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯同步延迟约束",
+    "relation": "超时约束",
+    "tail": "同步延迟 ≤ 40 ms",
+    "sources": ["outer_lamp_fas_1332"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "ExteriorLightControlSystem.RearFogLightSts = 0x1",
+    "sources": ["outer_lamp_fas_1333"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯无错误状态",
+    "relation": "前提条件",
+    "tail": "ExteriorLightControlSystem.RearFogLightErrSta = 0x0",
+    "sources": ["outer_lamp_fas_1333"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧后雾灯点亮",
+    "relation": "依赖于",
+    "tail": "右侧后雾灯点亮",
+    "sources": ["outer_lamp_fas_1333"],
+    "conflict": true,
+    "conflict_note": "与'右侧后雾灯点亮依赖于左侧'构成双向依赖循环，逻辑上存在设计风险；需确认是否为冗余描述或隐含同步机制"
+  },
+  {
+    "head": "右侧后雾灯点亮",
+    "relation": "依赖于",
+    "tail": "左侧后雾灯点亮",
+    "sources": ["outer_lamp_fas_1333"],
+    "conflict": true,
+    "conflict_note": "与'左侧后雾灯点亮依赖于右侧'构成双向依赖循环，逻辑上存在设计风险；需确认是否为冗余描述或隐含同步机制"
+  }
+]
+```

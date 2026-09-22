@@ -1,0 +1,73 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "HMI子系统前雾灯及位置灯指示灯显示逻辑",
+  "row_semantics": "基于服务接口反馈状态的不同值，描述HMI子系统对前雾灯开关状态的表征以及LIN信号转发行为。",
+  "column_semantics": "无明确列，内容为按行组织的条件-动作描述。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HMI子系统",
+      "type": "controller",
+      "description": "负责处理和显示车辆外部灯光状态的子系统"
+    },
+    {
+      "name": "ICB",
+      "type": "interface",
+      "description": "内部通信总线接口，用于订阅和发布系统状态信息"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外部灯光开关处理模块，管理各种外部灯光的状态"
+    },
+    {
+      "name": "FrontFogLghtSwStatus",
+      "type": "signal",
+      "description": "前雾灯开关状态输入信号"
+    },
+    {
+      "name": "IFPFrontFoglghtOnSta_l",
+      "type": "signal",
+      "description": "LIN总线上的前雾灯状态信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FrontFogLghtSwStatus",
+      "description": "前雾灯开关状态，可能的值包括：0x0 (OFF), 0x1 (ON), 0x2 (Unknown)"
+    },
+    {
+      "name": "exlFrontFoglghtPrm",
+      "description": "配置参数，决定是使用大屏开关还是物理开关来控制前雾灯"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "HMI子系统表征灯光开关状态",
+      "description": "HMI子系统根据前雾灯开关状态在屏幕上显示相应的开关状态（Off, On）"
+    },
+    {
+      "name": "IFPFrontFoglghtOnSta_l信号转发",
+      "description": "根据配置参数，将前雾灯的开关状态通过LIN总线转发给其他系统"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "FrFogLghtFltSts",
+      "description": "前雾灯故障状态信号，当检测到故障时置位"
+    },
+    {
+      "name": "FrontFogLghtErrSta",
+      "description": "前雾灯错误状态，当发生错误时置位"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了HMI子系统在不同前雾灯开关状态下的显示行为和LIN信号转发规则，可用于验证HMI界面显示与实际开关状态的一致性，以及LIN信号是否正确反映了开关状态。",
+  "uncertain_points": [
+    "具体的CAN信号名称未在表格中明确列出，仅提及可以通过CAN信号获取故障状态。",
+    "表格中未详细说明0x2 (Unknown)状态的具体处理逻辑。"
+  ]
+}
+```

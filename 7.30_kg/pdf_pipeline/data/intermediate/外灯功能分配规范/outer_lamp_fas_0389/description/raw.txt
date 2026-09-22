@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 昼间行车灯 (Day Running Light) 状态与控制",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的接口或服务调用，描述其参数、状态及交互方式。",
+  "column_semantics": "列标题包括：功能模块名称、消费方（SOA）、ICB（Inter-Component Bus）交互类型、以及具体的接口定义（如参数名、状态枚举值等）。部分行包含多级嵌套结构以详细说明参数内容。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "controller",
+      "description": "车身外部灯光控制系统，负责管理各类外部照明设备的功能"
+    },
+    {
+      "name": "DayRunningLightSts",
+      "type": "function",
+      "description": "昼间行车灯状态查询接口"
+    },
+    {
+      "name": "DayRunningLightErrSts",
+      "type": "function",
+      "description": "昼间行车灯故障状态查询接口"
+    },
+    {
+      "name": "ControlDayRunningLight",
+      "type": "function",
+      "description": "控制昼间行车灯开关的接口"
+    },
+    {
+      "name": "LHZCU",
+      "type": "module",
+      "description": "可能是车身控制单元（Body Control Unit, BCU）或相关控制器"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DayRunningLightSts",
+      "type": "input_signal",
+      "description": "请求获取当前昼间行车灯的状态",
+      "values": [
+        "0x0=OFF",
+        "0X1=ON",
+        "0x2=Unknown"
+      ]
+    },
+    {
+      "name": "DayRunningLightErrSts",
+      "type": "input_signal",
+      "description": "请求获取昼间行车灯的故障状态",
+      "values": [
+        "0x0=No Error",
+        "0x1=Error",
+        "0x2=Unknown"
+      ]
+    },
+    {
+      "name": "DayRunningLightReq",
+      "type": "output_signal",
+      "description": "发送控制命令以关闭昼间行车灯",
+      "values": [
+        "0x0=OFF"
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "DayRunningLightErrSts",
+      "type": "fault_status",
+      "description": "指示昼间行车灯是否存在硬件或软件故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车身外部灯光控制系统中昼间行车灯的状态查询和控制接口，可用于验证系统在不同状态下（如正常、故障、未知）对昼间行车灯的响应能力，以及控制命令的正确执行。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,79 @@
+```json
+[
+  {
+    "head": "远光灯处于激活状态",
+    "relation": "前提条件",
+    "tail": "车辆模式为工厂模式",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "远光灯处于激活状态",
+      "VehMd=0x2 = VehMd_2_FACTORY"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯在工厂模式下开启2min",
+    "relation": "前提条件",
+    "tail": "整车模式为工厂模式",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "远光灯在工厂模式下开启2min",
+      "a、整车模式为工厂模式"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯点亮",
+    "relation": "前提条件",
+    "tail": "近光灯关闭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "b、远光灯点亮",
+      "6. LHZCU判断近光灯关闭"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯熄灭",
+    "relation": "触发条件",
+    "tail": "LHZCU判断近光灯关闭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "3、ICB将服务接口或控制信号转换成灯控CAN信号,控制远光灯熄灭",
+      "6. LHZCU判断近光灯关闭"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯熄灭",
+    "relation": "输出为",
+    "tail": "ICB发送控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "3、ICB将服务接口或控制信号转换成灯控CAN信号,控制远光灯熄灭"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯熄灭",
+    "relation": "依赖于",
+    "tail": "LHZCU接收控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "4、[远光灯驱动处理模块LHZCU/RHZCU]接收[远光灯开关控制模块LHZCU]控制信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯持续亮起2min",
+    "relation": "超时约束",
+    "tail": "车辆模式为工厂模式",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "c、持续2min",
+      "VehMd=0x2 = VehMd_2_FACTORY"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

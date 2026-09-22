@@ -1,0 +1,83 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 近光灯控制与状态",
+  "row_semantics": "表格按功能模块划分，每一行代表一个具体的外灯相关信号或驱动功能，描述其控制方式、通信协议及涉及的控制器。",
+  "column_semantics": "列标题从左到右依次为：功能描述、信号类型（输出）、通信接口（如CANFD）、内部通信总线（ICB）、硬件控制器单元（如LHZCU）以及其他相关信息。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LDipdBeamLghtCtrl_HW",
+      "type": "功能名",
+      "description": "左侧近光灯硬件控制信号"
+    },
+    {
+      "name": "RDipdBeamLghtCtrl_HW",
+      "type": "功能名",
+      "description": "右侧近光灯硬件控制信号"
+    },
+    {
+      "name": "LDipdBeamLghtSts_HW",
+      "type": "功能名",
+      "description": "左侧近光灯硬件状态信号"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "左侧近光灯控制单元"
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块名",
+      "description": "右侧近光灯控制单元"
+    },
+    {
+      "name": "CANFD",
+      "type": "输入信号",
+      "description": "通过CANFD总线传输的控制信号"
+    },
+    {
+      "name": "ICB",
+      "type": "输入信号",
+      "description": "内部通信总线（Inter-Cluster Bus）"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0",
+      "description": "表示关闭状态"
+    },
+    {
+      "name": "0x1",
+      "description": "表示开启状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LDipdBeamLghtCtrl_HW_0_Off",
+      "description": "左侧近光灯关闭指令"
+    },
+    {
+      "name": "LDipdBeamLghtCtrl_HW_1_On",
+      "description": "左侧近光灯开启指令"
+    },
+    {
+      "name": "RDipdBeamLghtCtrl_HW_0_Off",
+      "description": "右侧近光灯关闭指令"
+    },
+    {
+      "name": "RDipdBeamLghtCtrl_HW_1_On",
+      "description": "右侧近光灯开启指令"
+    },
+    {
+      "name": "LDipdBeamLghtSts_HW",
+      "description": "左侧近光灯硬件状态反馈"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了车辆近光灯的硬件控制信号及其状态反馈机制，包括通过CANFD和ICB总线进行的软件控制以及直接的硬线驱动。可用于验证近光灯在不同控制模式下的正确响应，确保信号传输的准确性和控制器间的协同工作。",
+  "uncertain_points": []
+}
+```

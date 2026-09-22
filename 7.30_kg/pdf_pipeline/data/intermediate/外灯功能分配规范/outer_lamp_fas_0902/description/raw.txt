@@ -1,0 +1,58 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Status and Error Monitoring",
+  "row_semantics": "Each row represents a specific direction light status or error condition that can be monitored via a service interface.",
+  "column_semantics": {
+    "Row Header": "The main function or status being described (e.g., Left Turn Light Status, Right Turn Light Status, Left Front Turn Light Error Status).",
+    "Consumption": Indicates the service is consumed by the system.",
+    "SOA": Service-Oriented Architecture component involved.",
+    "RZCU": Regional Zone Control Unit component involved.",
+    "LHZCU": Local Hub Zone Control Unit component involved.",
+    "Hard Line Status": Indicates monitoring of physical wiring status.",
+    "Hard Line Fault Status": Indicates monitoring of physical wiring fault status."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "function",
+      "description": "Represents the operational status of a direction light (e.g., left turn light, right turn light)."
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "function",
+      "description": "Represents the error status of a direction light (e.g., left front turn light)."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightSta",
+      "type": "input_parameter",
+      "description": "Parameter name for the direction light status, with values: OFF (0x0), ON (0x1), Unknown (0x2)."
+    },
+    {
+      "name": "InstanceID",
+      "type": "identifier",
+      "description": "Unique identifier for the instance of the direction light status being monitored (e.g., 3 for left turn light, 4 for right turn light)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "HardLineStatus",
+      "type": "output_signal",
+      "description": "Indicates the physical wiring status of the direction light."
+    },
+    {
+      "name": "HardLineFaultStatus",
+      "type": "output_signal",
+      "description": "Indicates the presence of a fault in the physical wiring of the direction light."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for monitoring the status and error conditions of various direction lights in a vehicle. It specifies the parameters, instance IDs, and the corresponding control units (SOA, RZCU, LHZCU) involved in each monitoring scenario.",
+  "uncertain_points": []
+}
+```

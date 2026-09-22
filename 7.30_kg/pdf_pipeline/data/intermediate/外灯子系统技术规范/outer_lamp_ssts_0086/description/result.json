@@ -1,0 +1,88 @@
+{
+  "table_type": "logic_table",
+  "topic": "前雾灯控制逻辑",
+  "row_semantics": "定义了前雾灯控制的触发条件、执行动作、退出条件以及异常处理规则",
+  "column_semantics": "第一列表示条件/动作类型，第二列详细描述了该类型的具体内容",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FrtFogLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "前雾灯控制模块"
+    },
+    {
+      "name": "FrtFogLghtDrvMdl",
+      "type": "controller_module",
+      "description": "前雾灯驱动模块"
+    },
+    {
+      "name": "RearFogLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "后雾灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RFrtFogLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "硬件开关信号，值为0x0表示关闭",
+      "conditions": [
+        "等于0x0 (Off)"
+      ]
+    },
+    {
+      "name": "SOA服务",
+      "type": "input_signal",
+      "description": "服务导向架构服务，用于控制前雾灯状态",
+      "conditions": [
+        "{FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq}{InstanceID=4} = 0x0 (OFF)"
+      ]
+    },
+    {
+      "name": "RFrtFogLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "硬件开关信号，值为0x0表示开启",
+      "conditions": [
+        "等于0x0 (On)"
+      ]
+    },
+    {
+      "name": "RearFogLghtCtrlMdl",
+      "type": "input_signal",
+      "description": "后雾灯控制模块发送的信号",
+      "conditions": [
+        "{FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq}{InstanceID=4} = 0x1 (On)"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FogLamp_RH_HSD",
+      "type": "output_signal",
+      "description": "右前雾灯输出信号",
+      "action": "持续驱动"
+    },
+    {
+      "name": "RFrtFogLghtSts",
+      "type": "output_signal",
+      "description": "前雾灯状态信号，值为0x0表示关闭",
+      "action": "持续发送"
+    },
+    {
+      "name": "FrontFogLightState.FrontFogLightSta",
+      "type": "output_signal",
+      "description": "前雾灯状态",
+      "action": "持续发送"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "condition": "至少发送三帧",
+      "description": "在执行动作和退出条件中，相关信号需要至少发送三帧以确保可靠性"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了前雾灯控制的逻辑规则，可用于验证车辆在不同输入条件下（如硬件开关状态、SOA服务请求）前雾灯的正确驱动、状态反馈以及退出机制。",
+  "uncertain_points": []
+}

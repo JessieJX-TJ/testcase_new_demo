@@ -1,0 +1,76 @@
+{
+  "table_type": "logic_table",
+  "topic": "近光灯开启触发雾灯功能的技术规范",
+  "row_semantics": "描述了在特定条件下，通过大屏开关触发雾灯开启的逻辑流程，包括前置条件、触发动作和执行动作。",
+  "column_semantics": {
+    "Column1": "场景描述或阶段划分",
+    "Column2": "详细的技术条件和逻辑描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "UsgMd",
+      "type": "mode",
+      "description": "用户使用模式，包括Sleep（睡眠）、Standby（待机）、XOTA（空中下载技术）等状态"
+    },
+    {
+      "name": "VehMd",
+      "type": "mode",
+      "description": "车辆模式，包括TRANSPORT（运输）等状态"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit，负责灯光控制的模块"
+    },
+    {
+      "name": "S32G",
+      "type": "controller",
+      "description": "汽车电子控制单元，用于接收和处理输入信号"
+    },
+    {
+      "name": "ICB",
+      "type": "service",
+      "description": "Interior Control Box，内部控制盒，外灯控制组合服务接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsgMd != 0x0 && UsgMd != 0x1 && UsgMd != 0x6",
+      "description": "用户使用模式不为睡眠、待机或XOTA模式"
+    },
+    {
+      "condition": "UsgMdV = Valid",
+      "description": "用户使用模式值有效"
+    },
+    {
+      "condition": "VehMd = 0x3",
+      "description": "车辆模式为TRANSPORT（运输）模式"
+    },
+    {
+      "condition": "VehMdV = Valid",
+      "description": "车辆模式值有效"
+    },
+    {
+      "condition": "LHZCU 判断近光灯已开启",
+      "description": "LHZCU模块判断侧位灯和近光灯已点亮"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "ExteriorLightControlSystem.ControlRearFogLight.RearFogLightReq",
+      "value": "0x1=On",
+      "description": "外部灯光控制系统请求开启后雾灯"
+    },
+    {
+      "output": "ICB调用接口",
+      "value": "外灯控制组合服务ICB调用接口",
+      "description": "通过ICB接口调用外灯控制组合服务"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定车辆和用户模式下，通过大屏开关触发雾灯开启的完整逻辑流程，可用于验证车辆在不同模式下对雾灯控制请求的正确响应。",
+  "uncertain_points": []
+}

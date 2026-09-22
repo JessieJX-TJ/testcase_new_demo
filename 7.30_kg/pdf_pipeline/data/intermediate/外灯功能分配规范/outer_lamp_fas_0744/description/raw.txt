@@ -1,0 +1,84 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Dipped Beam Light Control Logic for LHZCU/RHZCU Modules",
+  "row_semantics": "Each row represents a specific state or condition in the control logic of the dipped beam lights, including initialization, status updates, and fault handling.",
+  "column_semantics": "The table does not have explicit columns; instead, it uses a vertical list format where each numbered item describes a step or condition in the control process.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU/RHZCU",
+      "type": "controller_module",
+      "description": "Light Headlamp Zone Control Unit / Right Headlamp Zone Control Unit, responsible for controlling dipped beam lights."
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "Integrated Control Box, which subscribes to and sends control signals for dipped beam lights."
+    },
+    {
+      "name": "ExteriorLightControl",
+      "type": "system",
+      "description": "System responsible for overall exterior light management."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DippedBeamLightRequestStatus",
+      "type": "input_signal",
+      "description": "Status indicating whether a request for dipped beam light is active (ON/OFF)."
+    },
+    {
+      "name": "DippedBeamLightFltSts",
+      "type": "input_signal",
+      "description": "Fault status of the dipped beam light system."
+    },
+    {
+      "name": "DipdBeamHwDrvEnPrm",
+      "type": "input_signal",
+      "description": "Hardware driver enable parameter for dipped beam lights."
+    },
+    {
+      "name": "InstanceID",
+      "type": "mode_name",
+      "description": "Identifier for different instances of dipped beam light control (e.g., left/right, front/rear)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "output_signal",
+      "description": "Current status of the dipped beam light (ON/OFF)."
+    },
+    {
+      "name": "DippedBeamLightErrSta",
+      "type": "output_signal",
+      "description": "Error status of the dipped beam light system."
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "output_signal",
+      "description": "Signal indicating the switching process of exterior lights."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DippedBeamLightErrorStatus",
+      "type": "fault_status",
+      "description": "Indicates if there is an error in the dipped beam light system."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "40ms",
+      "type": "timing_constraint",
+      "description": "Maximum allowable delay for synchronized熄灭 (extinguishing) of left and right dipped beam lights."
+    }
+  ],
+  "engineering_interpretation": "This table defines the state-based control logic for dipped beam lights within the LHZCU/RHZCU modules, detailing how these systems interact with the ICB and handle various states such as initialization, normal operation, fault detection, and error recovery. It ensures that the dipped beam lights operate correctly and safely, with proper synchronization between left and right lights.",
+  "uncertain_points": [
+    "The exact timing relationship between the LHZCU/RHZCU and ICB during state transitions is not explicitly detailed beyond the 40ms synchronization requirement."
+  ]
+}
+```

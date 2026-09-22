@@ -1,0 +1,602 @@
+[
+  {
+    "head": "组合灯光开关状态为关闭",
+    "relation": "触发条件",
+    "tail": "ExteriorLightSwitchProcess.CombLightSwStatus接口返回0x0=OFF",
+    "sources": [
+      "outer_lamp_fas_1553"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "组合灯光开关状态为侧位灯开启",
+    "relation": "触发条件",
+    "tail": "ExteriorLightSwitchProcess.CombLightSwStatus接口返回0x1=SidePositionLight ON",
+    "sources": [
+      "outer_lamp_fas_1553"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "组合灯光开关状态为近光灯开启",
+    "relation": "触发条件",
+    "tail": "ExteriorLightSwitchProcess.CombLightSwStatus接口返回0x2=DippedBeamLight ON",
+    "sources": [
+      "outer_lamp_fas_1553"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "组合灯光开关状态为自动模式",
+    "relation": "触发条件",
+    "tail": "ExteriorLightSwitchProcess.CombLightSwStatus接口返回0x3=AUTO",
+    "sources": [
+      "outer_lamp_fas_1553"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "组合灯光开关状态为未知",
+    "relation": "触发条件",
+    "tail": "ExteriorLightSwitchProcess.CombLightSwStatus接口返回0x4=Unknown",
+    "sources": [
+      "outer_lamp_fas_1553"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "组合灯光开关状态获取",
+    "relation": "前提条件",
+    "tail": "调用ExteriorLightSwitchProcess.CombLightSwStatus服务接口",
+    "sources": [
+      "outer_lamp_fas_1553"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯状态",
+    "relation": "输出为",
+    "tail": "DippedBeamLight.DippedBeamLightStatus接口返回值",
+    "sources": [
+      "outer_lamp_fas_1553"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "用户模式为休眠",
+    "relation": "前提条件",
+    "tail": "整车模式为维修",
+    "sources": [
+      "outer_lamp_fas_1555"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "用户模式为待机",
+    "relation": "前提条件",
+    "tail": "整车模式为维修",
+    "sources": [
+      "outer_lamp_fas_1555"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "用户模式为舒适",
+    "relation": "前提条件",
+    "tail": "整车模式为工厂",
+    "sources": [
+      "outer_lamp_fas_1555"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "用户模式为正常驾驶",
+    "relation": "前提条件",
+    "tail": "整车模式为运输",
+    "sources": [
+      "outer_lamp_fas_1555"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "用户模式为智能泊车",
+    "relation": "前提条件",
+    "tail": "整车模式为转毂",
+    "sources": [
+      "outer_lamp_fas_1555"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "用户模式为智能驾驶",
+    "relation": "前提条件",
+    "tail": "整车模式为展车",
+    "sources": [
+      "outer_lamp_fas_1555"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "用户模式为工程",
+    "relation": "前提条件",
+    "tail": "整车模式为碰撞",
+    "sources": [
+      "outer_lamp_fas_1555"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "用户模式为XOTA",
+    "relation": "抑制条件",
+    "tail": "整车模式为维修",
+    "sources": [
+      "outer_lamp_fas_1555"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "用户模式为XOTA",
+    "relation": "抑制条件",
+    "tail": "整车模式为工厂",
+    "sources": [
+      "outer_lamp_fas_1555"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "用户模式为休眠",
+    "relation": "与整车模式互斥",
+    "tail": "整车模式为工厂",
+    "sources": [
+      "outer_lamp_fas_1555"
+    ],
+    "conflict": true,
+    "conflict_note": "同一用户模式（休眠）既要求整车模式为维修，又与整车模式为工厂互斥；但‘维修’与‘工厂’本身为不同整车模式，逻辑上可共存。此处互斥关系未构成直接矛盾，但需确认是否隐含‘整车模式唯一性’约束。暂标记为潜在语义冲突，建议核查规范原文是否意指‘休眠模式下整车模式不可为工厂’而非逻辑互斥。"
+  },
+  {
+    "head": "用户模式为待机",
+    "relation": "与整车模式互斥",
+    "tail": "整车模式为工厂",
+    "sources": [
+      "outer_lamp_fas_1555"
+    ],
+    "conflict": true,
+    "conflict_note": "同休眠模式，待机模式亦要求整车模式为维修，又声明与工厂模式互斥；若整车模式枚举为互斥单选，则‘维修’与‘工厂’天然互斥，该条属冗余约束；但若允许多模式并存（如工厂+维修），则存在潜在冲突。标记为潜在冲突，需领域确认。"
+  },
+  {
+    "head": "远光灯处于激活状态",
+    "relation": "前提条件",
+    "tail": "整车模式为工厂模式",
+    "sources": [
+      "outer_lamp_fas_1556"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯在工厂模式下开启2分钟",
+    "relation": "前提条件",
+    "tail": "整车模式为工厂模式",
+    "sources": [
+      "outer_lamp_fas_1556"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯点亮",
+    "relation": "前提条件",
+    "tail": "近光灯关闭",
+    "sources": [
+      "outer_lamp_fas_1556"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯熄灭",
+    "relation": "触发条件",
+    "tail": "LHZCU判断近光灯关闭",
+    "sources": [
+      "outer_lamp_fas_1556"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯熄灭",
+    "relation": "输出为",
+    "tail": "ICB发送控制信号",
+    "sources": [
+      "outer_lamp_fas_1556"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯熄灭",
+    "relation": "依赖于",
+    "tail": "LHZCU接收控制信号",
+    "sources": [
+      "outer_lamp_fas_1556"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯持续亮起2分钟",
+    "relation": "超时约束",
+    "tail": "整车模式为工厂模式",
+    "sources": [
+      "outer_lamp_fas_1556"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯按照1.25Hz频率闪烁",
+    "relation": "前提条件",
+    "tail": "LHZCU发送8个Cycle（50ms）的ON信号",
+    "sources": [
+      "outer_lamp_fas_1558"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯流水模式使能",
+    "relation": "前提条件",
+    "tail": "DirncLghtMdSts状态为Enable",
+    "sources": [
+      "outer_lamp_fas_1558"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB将服务接口或控制信号转换成灯控CAN信号",
+    "relation": "前提条件",
+    "tail": "外灯组合服务ICB接收到LHZCU的转向灯ON/OFF信号",
+    "sources": [
+      "outer_lamp_fas_1558"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯流水点亮",
+    "relation": "依赖于",
+    "tail": "ICB将控制信号延时60ms分发至LHZCU/RZCU",
+    "sources": [
+      "outer_lamp_fas_1558"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧转向灯图标指示灯显示及声音提醒",
+    "relation": "前提条件",
+    "tail": "驱动处理模块LHZCU/RZCU接收ICB控制信号",
+    "sources": [
+      "outer_lamp_fas_1558"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态反馈至LHZCU",
+    "relation": "前提条件",
+    "tail": "驱动处理模块LHZCU/RZCU将状态/故障状态反馈",
+    "sources": [
+      "outer_lamp_fas_1558"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯错误状态反馈至LHZCU",
+    "relation": "前提条件",
+    "tail": "ICB将状态/故障状态反馈",
+    "sources": [
+      "outer_lamp_fas_1558"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "方向灯功能状态为OFF",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess中DirncLghtFucProStatus为0x0",
+    "sources": [
+      "outer_lamp_fas_1558"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯闪烁周期保持",
+    "relation": "状态保持条件",
+    "tail": "LHZCU持续发送8个Cycle（400ms）",
+    "sources": [
+      "outer_lamp_fas_1558"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "检测左后位置灯故障状态",
+    "relation": "诊断关联",
+    "tail": "反馈左后位置灯故障状态: {SidePositionLight.SidePositionLightErrorStatus.SidePositionLightErrorSta}{InstanceID=3}",
+    "sources": [
+      "outer_lamp_fas_1559"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "检测右后位置灯故障状态",
+    "relation": "诊断关联",
+    "tail": "反馈右后位置灯故障状态: {SidePositionLight.SidePositionLightErrorStatus.SidePositionLightErrorSta}{InstanceID=3}",
+    "sources": [
+      "outer_lamp_fas_1559"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆启动功能",
+    "relation": "前提条件",
+    "tail": "点火开关处于ON位置",
+    "sources": [
+      "outer_lamp_fas_1560"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆启动功能",
+    "relation": "抑制条件",
+    "tail": "安全带未系好",
+    "sources": [
+      "outer_lamp_fas_1560"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车门未关闭指示灯",
+    "relation": "依赖于",
+    "tail": "任一车门未关闭",
+    "sources": [
+      "outer_lamp_fas_1560"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "发动机控制单元（ECU）",
+    "relation": "输出为",
+    "tail": "燃油喷射信号",
+    "sources": [
+      "outer_lamp_fas_1560"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "自动驻车功能",
+    "relation": "优先级高于",
+    "tail": "手动驻车功能",
+    "sources": [
+      "outer_lamp_fas_1560"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动系统",
+    "relation": "与电子稳定程序（ESP）功能互斥",
+    "tail": "电子稳定程序（ESP）功能",
+    "sources": [
+      "outer_lamp_fas_1560"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "空调压缩机",
+    "relation": "状态保持条件",
+    "tail": "车内温度高于设定值",
+    "sources": [
+      "outer_lamp_fas_1560"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电池管理系统（BMS）",
+    "relation": "复位条件",
+    "tail": "电池电压低于最低阈值",
+    "sources": [
+      "outer_lamp_fas_1560"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ABS防抱死系统",
+    "relation": "故障响应",
+    "tail": "检测到轮速传感器故障",
+    "sources": [
+      "outer_lamp_fas_1560"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "牌照灯点亮",
+    "relation": "触发条件",
+    "tail": "位置灯请求点亮",
+    "sources": [
+      "outer_lamp_fas_1561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "牌照灯熄灭",
+    "relation": "触发条件",
+    "tail": "位置灯请求关闭",
+    "sources": [
+      "outer_lamp_fas_1561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "牌照灯点亮",
+    "relation": "依赖于",
+    "tail": "LHZCU发出位置灯控制信号",
+    "sources": [
+      "outer_lamp_fas_1561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "牌照灯点亮",
+    "relation": "依赖于",
+    "tail": "ICB调用RZCU提供的基础服务",
+    "sources": [
+      "outer_lamp_fas_1561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "牌照灯点亮",
+    "relation": "超时约束",
+    "tail": "60ms调用（配置需求：NumPltLampCtrlDelayPrm）",
+    "sources": [
+      "outer_lamp_fas_1561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "牌照灯熄灭",
+    "relation": "依赖于",
+    "tail": "RZCU控制牌照灯熄灭",
+    "sources": [
+      "outer_lamp_fas_1561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯控制请求重发",
+    "relation": "前提条件",
+    "tail": "超时2s未收到RearFogLight.RearFogLightControl.RearFogLightCtrResp=0x0=ControlSuccess的反馈",
+    "sources": [
+      "outer_lamp_fas_1562"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯控制请求重发",
+    "relation": "触发条件",
+    "tail": "请求状态未变",
+    "sources": [
+      "outer_lamp_fas_1562"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯控制请求重发",
+    "relation": "触发条件",
+    "tail": "尝试按照≤50ms周期重发3次",
+    "sources": [
+      "outer_lamp_fas_1562"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "停止发送后雾灯控制请求",
+    "relation": "超时约束",
+    "tail": "尝试重发3次后仍未反馈请求成功",
+    "sources": [
+      "outer_lamp_fas_1562"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "前提条件",
+    "tail": "消费端在服务发现订阅或者外灯控制请求后的500ms内未收到状态反馈",
+    "sources": [
+      "outer_lamp_fas_1562"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "触发条件",
+    "tail": "针对发送类型为Onchange的外灯状态服务",
+    "sources": [
+      "outer_lamp_fas_1562"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "依赖于",
+    "tail": "状态服务Getter()方式",
+    "sources": [
+      "outer_lamp_fas_1562"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手动大灯高度调节功能故障状态获取",
+    "relation": "触发条件",
+    "tail": "调用ExteriorLightSwitchProcess.LevelingAdjustErrSta接口",
+    "sources": [
+      "outer_lamp_fas_1564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手动大灯高度调节功能状态获取",
+    "relation": "触发条件",
+    "tail": "调用ExteriorLightControlSystem.LevelingAdjustSts接口",
+    "sources": [
+      "outer_lamp_fas_1564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

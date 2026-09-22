@@ -1,0 +1,39 @@
+{
+  "table_type": "signal_table",
+  "topic": "后雾灯控制模块 LHZCU 的接口响应与交互逻辑",
+  "row_semantics": "表格按功能流程顺序排列，描述了后雾灯控制模块 LHZCU 在不同场景下的信号交互和状态更新过程。",
+  "column_semematics": "表格包含两列：左侧为序号和功能描述，右侧为具体的信号交互细节（Notifier: 后续的信号赋值或状态更新）。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "LHZCU (后雾灯控制模块)",
+    "ICB (外灯控制组合服务)",
+    "RZCU (驱动处理模块)",
+    "HMI子系统 (人机交互子系统)"
+  ],
+  "core_conditions": [
+    "ExteriorLightSwitchProcess.RearFogLghtSwStatus",
+    "RearFogLghtFucProStatus",
+    "RearFogLghtCtrl_HW_1_On",
+    "RearFogLghtCtrl_0x1_RearFogLghtCtrl_1_On",
+    "RearFogLghtFlits_0x0_RearFogLghtFlits_1_On",
+    "RearFogLghtAcSts_0x1_RearFogLghtAcSts_1_On"
+  ],
+  "core_outputs": [
+    "RearFogLghtCtrl",
+    "RearFogLghtSta",
+    "RearFogLghtErrorSta",
+    "ExteriorLightControlSystem.RearFogLghtReq",
+    "ExteriorLightSwitchProcess.RearFogLghtErrSts"
+  ],
+  "core_faults": [
+    "RearFogLghtErrorSta",
+    "ExteriorLightSwitchProcess.RearFogLghtErrSts"
+  ],
+  "core_timing_constraints": [
+    "两侧最大延时不能超过 40ms",
+    "如超时 2s 未收到反馈，尝试重发 3 次；尝试重发 3 次后仍未反馈请求成功，则停止发送"
+  ],
+  "engineering_interpretation": "该表格详细定义了后雾灯控制模块 LHZCU 在整车电子系统中的信号交互规则，包括与外灯控制组合服务 ICB、驱动处理模块 RZCU 以及 HMI 子系统的接口调用，用于验证后雾灯点亮、状态反馈及故障处理的正确性。",
+  "uncertain_points": []
+}

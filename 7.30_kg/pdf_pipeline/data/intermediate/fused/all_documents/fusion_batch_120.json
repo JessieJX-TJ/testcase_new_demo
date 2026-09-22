@@ -1,0 +1,432 @@
+[
+  {
+    "head": "危险警报灯开关状态 HrzdLghtSwSts_0_off",
+    "relation": "输入为",
+    "tail": "HzrdLghtSwReq_0_Off",
+    "sources": [
+      "outer_lamp_fas_1283"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开关状态 HrzdLghtSwSts_1_On",
+    "relation": "输入为",
+    "tail": "HzrdLghtSwReq_1_On",
+    "sources": [
+      "outer_lamp_fas_1283"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "寻车灯控制模块 LHZCU 信号跳变",
+    "relation": "触发双闪灯闪烁",
+    "tail": "前置条件：UsrMd=ALL, UsrMdV=Valid, VehMd=ALL, VehMdV=Valid",
+    "sources": [
+      "outer_lamp_fas_1284"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "寻车灯控制模块 LHZCU 信号跳变",
+    "relation": "触发转向灯流水模式使能",
+    "tail": "前置条件：UsrMd=ALL, UsrMdV=Valid, VehMd=ALL, VehMdV=Valid",
+    "sources": [
+      "outer_lamp_fas_1284"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU 接收闭锁信号 0x1",
+    "relation": "触发双闪灯动作",
+    "tail": "按 1.25 Hz 频率点亮三个闪烁周期",
+    "sources": [
+      "outer_lamp_fas_1284"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输入为",
+    "tail": "LHZCU 发送的转向灯信号",
+    "sources": [
+      "outer_lamp_fas_1284"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "处理输入",
+    "tail": "LHZCU 控制输入，延时 60 ms 并分发至 LHZCU/RHZCU/RZCU",
+    "sources": [
+      "outer_lamp_fas_1284"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU/RHZCU/RZCU",
+    "relation": "依赖于",
+    "tail": "ICB 控制信号",
+    "sources": [
+      "outer_lamp_fas_1284"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "接收输入",
+    "tail": "危险警报灯开关控制模块 LHZCU 的控制信号（用于图标显示与声音提醒）",
+    "sources": [
+      "outer_lamp_fas_1284"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手动危险报警灯点亮",
+    "relation": "前提条件",
+    "tail": "车辆发生碰撞",
+    "sources": [
+      "outer_lamp_fas_1285"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手动转向灯（单侧）点亮",
+    "relation": "前提条件",
+    "tail": "驾驶员手动操作转向灯",
+    "sources": [
+      "outer_lamp_fas_1285"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "服务请求转向灯（单侧）点亮",
+    "relation": "前提条件",
+    "tail": "服务系统发出转向灯请求",
+    "sources": [
+      "outer_lamp_fas_1285"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手动转向灯（单侧）点亮",
+    "relation": "优先级高于",
+    "tail": "服务请求转向灯（单侧）点亮",
+    "sources": [
+      "outer_lamp_fas_1285"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "紧急制动",
+    "relation": "前提条件",
+    "tail": "车辆进行紧急制动操作",
+    "sources": [
+      "outer_lamp_fas_1285"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆爆胎",
+    "relation": "前提条件",
+    "tail": "车辆轮胎突然爆裂",
+    "sources": [
+      "outer_lamp_fas_1285"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆热失控或动力系统故障",
+    "relation": "前提条件",
+    "tail": "车辆动力系统发生严重故障",
+    "sources": [
+      "outer_lamp_fas_1285"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后碰预警",
+    "relation": "前提条件",
+    "tail": "车辆后方碰撞预警系统激活",
+    "sources": [
+      "outer_lamp_fas_1285"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远程寻车",
+    "relation": "前提条件",
+    "tail": "用户发起远程寻车请求",
+    "sources": [
+      "outer_lamp_fas_1285"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用 DippedBeamLightErrorStatus 服务接口",
+    "sources": [
+      "outer_lamp_fas_1286"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightErrorStatus 接口输出",
+    "relation": "可能为",
+    "tail": "No Error / Error / Unknown（对应 InstanceID=1/2/3 查询结果）",
+    "sources": [
+      "outer_lamp_fas_1286"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯故障状态",
+    "relation": "依赖于",
+    "tail": "RHZCU 模块",
+    "sources": [
+      "outer_lamp_fas_1286"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯故障状态",
+    "relation": "依赖于",
+    "tail": "ICB 模块",
+    "sources": [
+      "outer_lamp_fas_1286"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯激活",
+    "relation": "触发条件",
+    "tail": "车辆存在碰撞危险",
+    "sources": [
+      "outer_lamp_fas_1288"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯激活",
+    "relation": "前提条件",
+    "tail": "UsgMd=ALL 且 UsgMdV=Valid 且 VehMd=ALL 且 VehMdV=Valid",
+    "sources": [
+      "outer_lamp_fas_1288"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯激活",
+    "relation": "前提条件",
+    "tail": "ExtrLghtCtrlCmmntnTyp ∈ {0x0 (SOA), 0x1 (CAN)} 且 ExtrLghtStsCmmntnTyp ∈ {0x0 (SOA), 0x1 (CAN)}",
+    "sources": [
+      "outer_lamp_fas_1288"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯激活",
+    "relation": "依赖于",
+    "tail": "通信类型（SOA 或 CAN）",
+    "sources": [
+      "outer_lamp_fas_1288"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯激活",
+    "relation": "抑制条件",
+    "tail": "UsgMd ≠ ALL 或 UsgMdV ≠ Valid 或 VehMd ≠ ALL 或 VehMdV ≠ Valid",
+    "sources": [
+      "outer_lamp_fas_1288"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯控制命令 RevsLghtCtrl_HW_0_Off",
+    "relation": "触发条件",
+    "tail": "倒车灯状态反馈为 RevsLghtSts_0_off",
+    "sources": [
+      "outer_lamp_fas_1289"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯控制命令 RevsLghtCtrl_HW_1_On",
+    "relation": "触发条件",
+    "tail": "倒车灯状态反馈为 RevsLghtSts_1_on",
+    "sources": [
+      "outer_lamp_fas_1289"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯故障状态 RevsLghtFltSts_0_False",
+    "relation": "触发条件",
+    "tail": "倒车灯状态反馈为 RevsLghtSts_0_off",
+    "sources": [
+      "outer_lamp_fas_1289"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯故障状态 RevsLghtFltSts_1_True",
+    "relation": "触发条件",
+    "tail": "倒车灯状态反馈为 RevsLghtSts_1_on",
+    "sources": [
+      "outer_lamp_fas_1289"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯控制命令 RevsLghtCtrl_HW_0_Off",
+    "relation": "抑制条件",
+    "tail": "倒车灯故障状态为 RevsLghtFltSts_1_True",
+    "sources": [
+      "outer_lamp_fas_1289"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯控制命令 RevsLghtCtrl_HW_1_On",
+    "relation": "抑制条件",
+    "tail": "倒车灯故障状态为 RevsLghtFltSts_0_False",
+    "sources": [
+      "outer_lamp_fas_1289"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI 显示制动灯动画",
+    "relation": "触发条件",
+    "tail": "CAN 信号或服务接口反馈状态为 0x1",
+    "sources": [
+      "outer_lamp_fas_1291"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI 不显示制动灯动画",
+    "relation": "抑制条件",
+    "tail": "CAN 信号或服务接口反馈状态为 0x0",
+    "sources": [
+      "outer_lamp_fas_1291"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI 显示制动灯故障错误信息",
+    "relation": "触发条件",
+    "tail": "制动灯发生故障",
+    "sources": [
+      "outer_lamp_fas_1291"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯故障",
+    "relation": "依赖于",
+    "tail": "ExteriorLightSwitchProcess 检测到异常",
+    "sources": [
+      "outer_lamp_fas_1291"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI 显示制动灯动画",
+    "relation": "输入为",
+    "tail": "CAN 信号或服务接口反馈状态为 0x1",
+    "sources": [
+      "outer_lamp_fas_1291"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI 显示制动灯故障错误信息",
+    "relation": "输入为",
+    "tail": "制动灯发生故障",
+    "sources": [
+      "outer_lamp_fas_1291"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左近光灯控制",
+    "relation": "输入为",
+    "tail": "LDipdBeamLghtCtrl_0_Off / LDipdBeamLghtCtrl_1_On",
+    "sources": [
+      "outer_lamp_fas_1292"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右近光灯控制",
+    "relation": "输入为",
+    "tail": "RDipdBeamLghtCtrl_0_Off / RDipdBeamLghtCtrl_1_On",
+    "sources": [
+      "outer_lamp_fas_1292"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "组合灯功能状态",
+    "relation": "输入为",
+    "tail": "CombLghtFucProSta_0_ALLOFF / CombLghtFucProSta_1_OnlySidePositionLightON",
+    "sources": [
+      "outer_lamp_fas_1292"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯关闭原因",
+    "relation": "包含子功能",
+    "tail": "DipdBeamLghtClsCtrlRsn_0_None / DipdBeamLghtClsCtrlRsn_1_SOARequestOff",
+    "sources": [
+      "outer_lamp_fas_1292"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

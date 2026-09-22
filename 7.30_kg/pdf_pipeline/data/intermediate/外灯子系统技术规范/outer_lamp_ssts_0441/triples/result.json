@@ -1,0 +1,126 @@
+[
+  {
+    "head": "左后转向灯持续驱动功能被激活",
+    "relation": "前提条件",
+    "tail": "exlDircnLghtHwDrvEnPrm == 1 || 2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "exlDircnLghtHwDrvEnPrm"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0441",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "左后转向灯持续驱动功能被激活",
+    "relation": "触发条件",
+    "tail": "收到【DILghtCtrlMdl】统一分发的 RLDircnLghtCtrl_HW == 1 (On)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DILghtCtrlMdl",
+      "RLDircnLghtCtrl_HW"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0441",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "左后转向灯持续驱动功能",
+    "relation": "输出为",
+    "tail": "DILamp_LH_HSD",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DILamp_LH_HSD",
+      "RLDILghtDrvMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0441",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "左后转向灯持续驱动功能",
+    "relation": "输出为",
+    "tail": "RLDILghtSts_HW = 1 (On)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RLDILghtSts_HW",
+      "RLDILghtDrvMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0441",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "左后转向灯持续驱动功能",
+    "relation": "依赖于",
+    "tail": "【RLDILghtDrvMdl】",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "RLDILghtDrvMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0441",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "左后转向灯持续驱动功能",
+    "relation": "包含子功能",
+    "tail": "【RLDILghtDrvMdl】持续驱动左后转向灯输出(DILamp_LH_HSD)",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "RLDILghtDrvMdl",
+      "DILamp_LH_HSD"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0441",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "左后转向灯持续驱动功能",
+    "relation": "包含子功能",
+    "tail": "【RLDILghtDrvMdl】持续发送 RLDILghtSts_HW = 1 (On) 至 【DILghtCtrlMdl】,至少发送三帧",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "RLDILghtDrvMdl",
+      "RLDILghtSts_HW",
+      "DILghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0441",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "左后转向灯持续驱动功能",
+    "relation": "复位条件",
+    "tail": "收到【DILghtCtrlMdl】发送的 RLDircnLghtCtrl_HW == 0 (Off)",
+    "triple_type": "复位条件",
+    "evidence_terms": [
+      "DILghtCtrlMdl",
+      "RLDircnLghtCtrl_HW"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0441",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "左后转向灯持续驱动功能",
+    "relation": "超时约束",
+    "tail": "RLDILghtSts_HW信号至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RLDILghtSts_HW"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0441",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

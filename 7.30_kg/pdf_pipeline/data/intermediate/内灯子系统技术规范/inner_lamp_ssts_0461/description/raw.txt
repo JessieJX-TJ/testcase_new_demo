@@ -1,0 +1,54 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "背光灯控制逻辑",
+  "row_semantics": "描述了背光灯从关闭到点亮，以及从点亮到关闭的整个状态转换过程及其触发条件和执行动作。",
+  "column_semantics": {
+    "第一列": "状态转换的阶段或条件类别（如前置条件、触发条件、执行动作等）",
+    "第二列": "对应阶段的具体描述或参数"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VehIlluminateCtrlCmd",
+      "type": "信号",
+      "description": "车辆照明控制命令信号，用于控制背光灯的开闭状态。"
+    },
+    {
+      "name": "RHZCU_BacklightLamp_HSD",
+      "type": "控制器/模块",
+      "description": "车身区域控制单元（RHZCU）中的背光灯驱动控制模块，负责驱动背光灯点亮。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "背光灯无短路/开路故障"
+    },
+    {
+      "condition": "触发条件",
+      "description": "接收到应用控制模块的请求信号 VehIlluminateCtrlCmd = 0x1 (Open)"
+    },
+    {
+      "condition": "退出条件",
+      "description": "接收到 VehIlluminateCtrlCmd = 0x0 (Close)，关闭背光灯"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "RHZCU_BacklightLamp_HSD",
+      "description": "发送驱动信号，将背光灯点亮至高亮度状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "背光灯短路/开路故障",
+      "description": "检测到背光灯存在短路或开路故障时，系统会关闭背光灯以确保安全"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆背光灯的控制逻辑，可用于验证在不同控制命令下，背光灯能否正确响应并点亮或关闭，同时验证系统对故障状态的处理能力。",
+  "uncertain_points": []
+}
+```

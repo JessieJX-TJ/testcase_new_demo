@@ -1,0 +1,80 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "转向灯开关短路到地故障处理逻辑",
+  "row_semantics": "表格定义了在特定前置条件下，当触发条件满足时执行的动作、退出条件以及异常处理规则。",
+  "column_semantics": {
+    "Column1": "描述触发或退出测试的条件类型（如前置条件、触发条件、退出条件）",
+    "Column2": "具体条件内容的描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "DILghtSwSOAEPrm",
+      "type": "parameter",
+      "description": "配置字，用于启用或禁用转向灯开关相关功能。值为0表示禁用。"
+    },
+    {
+      "name": "转向拨杆开关短路到地",
+      "type": "input_signal",
+      "description": "检测到转向拨杆开关存在短路到地的物理故障状态。"
+    },
+    {
+      "name": "DircnLghtSwReq",
+      "type": "output_signal",
+      "description": "方向指示灯开关请求信号，值为0x0表示关闭。"
+    },
+    {
+      "name": "DTC",
+      "type": "system_state",
+      "description": "诊断故障代码（Diagnostic Trouble Code），表示系统记录了故障信息。"
+    },
+    {
+      "name": "转向灯开关检测到未短路到地",
+      "type": "input_signal",
+      "description": "检测到转向灯开关恢复正常，不再处于短路到地状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILghtSwSOAEPrm == 0 (Disable)",
+      "description": "前置条件，表明该功能逻辑仅在禁用状态下生效。"
+    },
+    {
+      "condition": "转向拨杆开关短路到地",
+      "description": "触发条件，当检测到转向拨杆开关短路到地时，启动故障处理流程。"
+    },
+    {
+      "condition": "转向灯开关检测到未短路到地",
+      "description": "退出条件，当转向灯开关恢复正常时，退出当前故障处理流程。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DircnLghtSwReq",
+      "value": "0x0 (Off)",
+      "description": "持续发送关闭请求信号，确保转向灯处于关闭状态。"
+    },
+    {
+      "signal": "DTC",
+      "value": "置位",
+      "description": "系统记录并设置相应的诊断故障代码，用于故障诊断和维修。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "转向拨杆开关短路到地",
+      "description": "转向拨杆开关与地之间发生电气短路，导致信号异常。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "为了确保信号的可靠性和稳定性，在故障处理期间至少连续发送三帧关闭请求信号。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了整车电子系统中转向灯开关短路到地故障的检测、响应和恢复逻辑，可用于验证车辆在该故障情况下的安全保护机制和诊断功能。",
+  "uncertain_points": []
+}
+```

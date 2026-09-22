@@ -1,0 +1,70 @@
+```json
+[
+  {
+    "head": "位置灯开启",
+    "relation": "前提条件",
+    "tail": "LHZCU已判断仅位置灯开启，近光灯关闭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "SidePositionLightStatus",
+      "ExteriorLightSwitchProcess.CombLghtFucProStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "抑制条件",
+    "tail": "前雾灯未开启",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "FrontFogLight.FrontFogLightState",
+      "exlFrontFogLghtHwDrvEnPrm"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯请求为ON",
+    "relation": "输入为",
+    "tail": "S32G收到[大屏开关请求ICB]输入",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "S32G",
+      "ExteriorLightControlSystem.ControlRearFogLight.RearFogLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯状态为OFF",
+    "relation": "依赖于",
+    "tail": "后雾灯未开启",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.RearFogLghtFucProStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "七键开关请求跳变",
+    "relation": "触发条件",
+    "tail": "S32G收到[七键开关请求IFP]输入跳变",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "S32G",
+      "IFPRearFoglghtSwReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯控制组合服务ICB调用接口",
+    "relation": "输入来自",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtFucProCtrl.RearFogLghtFucProCtrlReq",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "RearFogLghtFucProCtrl"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

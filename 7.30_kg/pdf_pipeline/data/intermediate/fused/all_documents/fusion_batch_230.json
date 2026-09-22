@@ -1,0 +1,603 @@
+[
+  {
+    "head": "Vehicle Electrical and Electronic System Configuration Parameters",
+    "relation": "prerequisite",
+    "tail": "Conversion value is 'NA'",
+    "sources": [
+      "inner_lamp_ssts_0013"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical and Electronic System Configuration Parameters",
+    "relation": "prerequisite",
+    "tail": "Default value is 'NA'",
+    "sources": [
+      "inner_lamp_ssts_0013",
+      "inner_lamp_ssts_0015"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Switch",
+    "relation": "trigger condition",
+    "tail": "ZCU sends CnsoLHALampBrthngCmd_1 = 0x1 or 0x2",
+    "sources": [
+      "inner_lamp_ssts_0014"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Switch",
+    "relation": "suppression condition",
+    "tail": "Brightness control is delegated to the ambient lamp LIN module; brightness signals are ignored",
+    "sources": [
+      "inner_lamp_ssts_0014"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Step Change Mode (0x1)",
+    "relation": "input",
+    "tail": "ZCU sends CnsoLHALampBrthngCmd_1 = 0x1",
+    "sources": [
+      "inner_lamp_ssts_0014"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Step Change Mode (0x1)",
+    "relation": "output",
+    "tail": "Ambient lamp cycles between 100% and 0% brightness with 250ms duration per state",
+    "sources": [
+      "inner_lamp_ssts_0014"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Step Change Mode (0x2)",
+    "relation": "input",
+    "tail": "ZCU sends CnsoLHALampBrthngCmd_1 = 0x2",
+    "sources": [
+      "inner_lamp_ssts_0014"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Step Change Mode (0x2)",
+    "relation": "output",
+    "tail": "Ambient lamp cycles between 100% and 0% brightness with 500ms duration per state",
+    "sources": [
+      "inner_lamp_ssts_0014"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Gradual Change Mode (0x3–0xE)",
+    "relation": "input",
+    "tail": "ZCU sends CnsoLHALampBrthngCmd_1 ∈ {0x3, ..., 0xE}",
+    "sources": [
+      "inner_lamp_ssts_0014"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Gradual Change Mode",
+    "relation": "depends on",
+    "tail": "Breathing cycle rate (RateX) and AmbtLampBrthngRateXholdoffPercent parameter",
+    "sources": [
+      "inner_lamp_ssts_0014"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Gradual Change Mode",
+    "relation": "timeout constraint",
+    "tail": "Time A = RateX × (0.5 − AmbtLampBrthngRateXholdoffPercent)",
+    "sources": [
+      "inner_lamp_ssts_0014"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Gradual Change Mode",
+    "relation": "timeout constraint",
+    "tail": "Time B = RateX × AmbtLampBrthngRateXholdoffPercent",
+    "sources": [
+      "inner_lamp_ssts_0014"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Change",
+    "relation": "trigger condition",
+    "tail": "FtwlFLLampBrtnsCmd_l transitions from 0x00 to non-zero",
+    "sources": [
+      "inner_lamp_ssts_0015"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Hold",
+    "relation": "state hold condition",
+    "tail": "FtwlFLLampBrtnsCmd_l = 0x00",
+    "sources": [
+      "inner_lamp_ssts_0015"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Off",
+    "relation": "trigger condition",
+    "tail": "FtwlFLLampOnOff_l = 0x00 (OFF)",
+    "sources": [
+      "inner_lamp_ssts_0015"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Hold",
+    "relation": "trigger condition",
+    "tail": "FtwlFLLampBrtnsCmd_l is invalid or out-of-range",
+    "sources": [
+      "inner_lamp_ssts_0015"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'state hold condition' for same head: one defines it as a trigger (abnormal case), the other as a nominal hold condition (value = 0x00). Both describe brightness persistence but under different semantic conditions — require clarification whether '0x00' is valid neutral value or invalid state."
+  },
+  {
+    "head": "Ambient Lamp Off",
+    "relation": "trigger condition",
+    "tail": "No ZCU LIN signal received for ≥6 s (default timeout)",
+    "sources": [
+      "inner_lamp_ssts_0015"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Off",
+    "relation": "trigger condition",
+    "tail": "Ambient lamp module detects overvoltage or undervoltage fault",
+    "sources": [
+      "inner_lamp_ssts_0015"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PWM Signal Output",
+    "relation": "output",
+    "tail": "Ambient lamp driver control module outputs PWM duty cycle corresponding to configured brightness level",
+    "sources": [
+      "inner_lamp_ssts_0015"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Anomaly",
+    "relation": "diagnostic association",
+    "tail": "FtwlFLLampBrtnsCmd_l",
+    "sources": [
+      "inner_lamp_ssts_0015"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Function Operational",
+    "relation": "prerequisite",
+    "tail": "Configuration item 'Range' is within valid limits",
+    "sources": [
+      "inner_lamp_ssts_0016"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Function Operational",
+    "relation": "prerequisite",
+    "tail": "Configuration description complies with design specification",
+    "sources": [
+      "inner_lamp_ssts_0016"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Function Operational",
+    "relation": "prerequisite",
+    "tail": "Conversion definition is correct and unambiguous",
+    "sources": [
+      "inner_lamp_ssts_0016"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Default Configuration Active",
+    "relation": "prerequisite",
+    "tail": "Default value is applied when no explicit configuration is provided",
+    "sources": [
+      "inner_lamp_ssts_0016"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4LampFadeSpdCmd_1",
+    "relation": "input",
+    "tail": "LIN bus signal (fade speed command)",
+    "sources": [
+      "inner_lamp_ssts_0017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampOnOff_1",
+    "relation": "trigger condition",
+    "tail": "LIN bus signal = 0x0 (OFF) or 0x1 (ON)",
+    "sources": [
+      "inner_lamp_ssts_0017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampColorCmd_1",
+    "relation": "input",
+    "tail": "LIN bus signal, range 0x01–0xFF (color index)",
+    "sources": [
+      "inner_lamp_ssts_0017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampBrtnsCmd_1",
+    "relation": "input",
+    "tail": "LIN bus signal, range 0x00–0xFF (brightness level)",
+    "sources": [
+      "inner_lamp_ssts_0017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampBrthngCmd_1",
+    "relation": "input",
+    "tail": "LIN bus signal, range 0x01–0x05 (breathing frequency preset)",
+    "sources": [
+      "inner_lamp_ssts_0017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4LampFadeSpdCmd_1",
+    "relation": "depends on",
+    "tail": "RHZCU and RHZCU_LIN4 interface",
+    "sources": [
+      "inner_lamp_ssts_0017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampOnOff_1",
+    "relation": "depends on",
+    "tail": "RHZCU and RHZCU_LIN4 interface",
+    "sources": [
+      "inner_lamp_ssts_0017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampColorCmd_1",
+    "relation": "depends on",
+    "tail": "RHZCU and RHZCU_LIN4 interface",
+    "sources": [
+      "inner_lamp_ssts_0017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampBrtnsCmd_1",
+    "relation": "depends on",
+    "tail": "RHZCU and RHZCU_LIN4 interface",
+    "sources": [
+      "inner_lamp_ssts_0017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampBrthngCmd_1",
+    "relation": "depends on",
+    "tail": "RHZCU and RHZCU_LIN4 interface",
+    "sources": [
+      "inner_lamp_ssts_0017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR4LampFadeSpdCmd_1",
+    "relation": "state hold condition",
+    "tail": "When Spd3 = 0 (reserved), fade speed remains unchanged",
+    "sources": [
+      "inner_lamp_ssts_0017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampBrtnsCmd_1",
+    "relation": "state hold condition",
+    "tail": "When command value = 0x00, brightness remains unchanged",
+    "sources": [
+      "inner_lamp_ssts_0017"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLghtRHRollingCtr_1 Signal Transmission",
+    "relation": "prerequisite",
+    "tail": "Ambient lamp sync signal E = N × 1",
+    "sources": [
+      "inner_lamp_ssts_0018"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Stop",
+    "relation": "suppression condition",
+    "tail": "When breathing synchronization signal is no longer active",
+    "sources": [
+      "inner_lamp_ssts_0018"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPALampOnOff_1 = ON",
+    "relation": "trigger condition",
+    "tail": "Non-zero color and brightness commands are concurrently received",
+    "sources": [
+      "inner_lamp_ssts_0018"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPALampColorCmd_1 = 0x00",
+    "relation": "state hold condition",
+    "tail": "Color remains unchanged",
+    "sources": [
+      "inner_lamp_ssts_0018"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPALampBrtnsCmd_1 = 0x00",
+    "relation": "state hold condition",
+    "tail": "Brightness remains unchanged",
+    "sources": [
+      "inner_lamp_ssts_0018"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPALampBrthngCmd_1 = 0x1 (Rate1)",
+    "relation": "input",
+    "tail": "UpIPALampBrthngCmd_1_1_Rate1 signal",
+    "sources": [
+      "inner_lamp_ssts_0018"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPALampBrthngCmd_1 = 0x2 (Rate2)",
+    "relation": "input",
+    "tail": "UpIPALampBrthngCmd_1_2_Rate2 signal",
+    "sources": [
+      "inner_lamp_ssts_0018"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPALampBrthngCmd_1 = 0x3 (Rate3)",
+    "relation": "input",
+    "tail": "UpIPALampBrthngCmd_1_3_Rate3 signal",
+    "sources": [
+      "inner_lamp_ssts_0018"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Response Maximum",
+    "relation": "trigger condition",
+    "tail": "Input variable = 2000",
+    "sources": [
+      "inner_lamp_ssts_0019"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Response Increasing",
+    "relation": "depends on",
+    "tail": "Input variable < 2000",
+    "sources": [
+      "inner_lamp_ssts_0019"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Response Decreasing",
+    "relation": "depends on",
+    "tail": "Input variable > 2000",
+    "sources": [
+      "inner_lamp_ssts_0019"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Response Peak at Input = 2000",
+    "relation": "prerequisite",
+    "tail": "Input variable range is [1800, 2200]",
+    "sources": [
+      "inner_lamp_ssts_0019"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Brightness vs Time (Rate13)",
+    "relation": "depends on",
+    "tail": "Time (0–680 ms) and brightness (0–9, mapped to 0%–100%)",
+    "sources": [
+      "inner_lamp_ssts_0020"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Brightness vs Time (Rate15)",
+    "relation": "depends on",
+    "tail": "Time (0–1700 ms) and brightness (78–470, mapped to 0%–100%)",
+    "sources": [
+      "inner_lamp_ssts_0020"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Breathing Mode = Rate13",
+    "relation": "prerequisite",
+    "tail": "FtwlFLLampBrthngCmd_1 = 0xD",
+    "sources": [
+      "inner_lamp_ssts_0020"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Breathing Mode = Rate15",
+    "relation": "prerequisite",
+    "tail": "FtwlFLLampBrthngCmd_1 = 0xF",
+    "sources": [
+      "inner_lamp_ssts_0020"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rate13 Brightness Cycle",
+    "relation": "subfunction",
+    "tail": "40 ms period, 200 data points, total duration 8 s",
+    "sources": [
+      "inner_lamp_ssts_0020"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rate15 Brightness Cycle",
+    "relation": "subfunction",
+    "tail": "100 ms period, 120 data points, total duration 12 s",
+    "sources": [
+      "inner_lamp_ssts_0020"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LED Light Source — Red",
+    "relation": "input",
+    "tail": "R = 255, G = 71, B = 20",
+    "sources": [
+      "inner_lamp_ssts_0021"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LED Light Source — Pink",
+    "relation": "input",
+    "tail": "R = 255, G = 18, B = 136",
+    "sources": [
+      "inner_lamp_ssts_0021"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LED Light Source — Green",
+    "relation": "input",
+    "tail": "R = 77, G = 157, B = 48",
+    "sources": [
+      "inner_lamp_ssts_0021"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LED Light Source — Yellow",
+    "relation": "input",
+    "tail": "R = 255, G = 217, B = 18",
+    "sources": [
+      "inner_lamp_ssts_0021"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LED Light Source — Blue",
+    "relation": "input",
+    "tail": "R = 0, G = 0, B = 255",
+    "sources": [
+      "inner_lamp_ssts_0021"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LED Light Source — Purple",
+    "relation": "input",
+    "tail": "R = 0, G = 99, B = 197",
+    "sources": [
+      "inner_lamp_ssts_0021"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

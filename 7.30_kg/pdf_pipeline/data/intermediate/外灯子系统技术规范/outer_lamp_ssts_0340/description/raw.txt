@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "整车电子系统制动灯短路故障诊断需求",
+  "row_semantics": "定义了特定故障模式的诊断条件和退出条件",
+  "column_semantics": {
+    "名称": "故障模式的唯一标识符",
+    "描述": "对故障现象的简要说明",
+    "进入条件": "触发该故障诊断流程的前置条件",
+    "退出条件": "终止该故障诊断流程的条件"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B1041_11",
+      "type": "fault_code",
+      "description": "左制动灯输出短路到地故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "检测到短路到地",
+      "type": "entry_condition",
+      "description": "当系统检测到左制动灯存在短路到地的情况时，触发该故障诊断"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "未短路到地",
+      "type": "exit_condition",
+      "description": "当系统检测到左制动灯不再短路到地时，退出该故障诊断"
+    }
+  ],
+  "core_faults": [
+    {
+      "code": "B1041_11",
+      "description": "左制动灯输出短路到地"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证整车电子系统在检测到左制动灯短路到地故障时，是否能够正确进入诊断流程，并在故障消除后正确退出诊断状态。",
+  "uncertain_points": []
+}
+```

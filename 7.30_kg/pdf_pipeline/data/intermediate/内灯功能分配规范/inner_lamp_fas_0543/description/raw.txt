@@ -1,0 +1,48 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Passenger Seat Configuration Parameter",
+  "row_semantics": "Configuration parameters for passenger seat settings in a vehicle system",
+  "column_semantics": {
+    "Column 1": "Configure Passenger (Parameter Name)",
+    "Column 2": "Configure Passenger (Parameter Name)",
+    "Column 3": "Value Range (0-1)",
+    "Column 4": "Description of Value Interpretation (0x0=Five-seat, 0x1=Six-seat)",
+    "Column 5": "Default Values and Related Parameters"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Passenger Seat Configuration",
+      "type": "parameter",
+      "description": "Controls the configuration of passenger seating arrangement"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Seat Configuration Value",
+      "type": "input_parameter",
+      "description": "Binary value indicating seat configuration (0x0 for five seats, 0x1 for six seats)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "System Default Configuration",
+      "type": "output_parameter",
+      "description": "Default setting for passenger seat configuration (0x0)"
+    },
+    {
+      "name": "Related Parameters",
+      "type": "output_parameter",
+      "description": "Dependencies on other system parameters like P12LM1, S12LM2/T1, S31LM0, S32LM0"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameter settings for configuring passenger seating arrangements, specifically whether the vehicle is set to a five-seat or six-seat layout. It provides default values and related dependencies for this configuration parameter.",
+  "uncertain_points": [
+    "The exact relationship between 'S32LM0=x' and the overall system behavior is not clearly defined in the table."
+  ]
+}
+```

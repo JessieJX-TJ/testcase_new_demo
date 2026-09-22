@@ -1,0 +1,78 @@
+```json
+[
+  {
+    "head": "危险警报灯自动控制模块LHZCU将状态/故障状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "DircnLghtSts=0x0=OFF; DircnLghtFltsts=0x0=DircnLghtFltsts_0_No_Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "DircnLghtSts",
+      "DircnLghtFltsts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务ICB接收LHZCU发送的转向灯点亮及故障状态CAN信号转成对应的服务",
+    "relation": "输入为",
+    "tail": "{ExteriorLightControlSystem. DirectionLightSts. DirectionLghtSts}=0x0=No Flash; {ExteriorLightControlSystem.DirectionLightErrSts. DirectionLghtErrSts}=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "DirectionLightSts",
+      "DirectionLightErrSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯开关控制模块LHZCU将双闪灯模式实时状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts=0x0=VehHzrdMdSts_0_No_Request",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "VehHzrdMdSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯开关控制模块LHZCU将转向灯控制状态反馈至SDM",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts=0x0=EDRDircnIndLampSwSts_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "SDM",
+      "EDRDircnIndLampSwSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯同步性要求(a&b)",
+    "relation": "超时约束",
+    "tail": "危险警报灯图标闪烁频率与实际危险警报灯的闪烁频率需保持一致，三者同步性允许的最大延时为50ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "危险警报灯",
+      "同步性",
+      "50ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯同步性要求(a&b)",
+    "relation": "超时约束",
+    "tail": "危险警报灯的同步性允许的最大延时周期为40ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "危险警报灯",
+      "同步性",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

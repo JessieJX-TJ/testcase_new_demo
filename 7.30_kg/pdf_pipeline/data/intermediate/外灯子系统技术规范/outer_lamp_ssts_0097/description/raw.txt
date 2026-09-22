@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "远光灯闪烁功能的配置与触发逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，用户操作远光灯开关时，系统如何响应并执行闪烁动作的逻辑流程。",
+  "column_semantics": {
+    "0": "条件/动作类别（如前置条件、触发条件、执行动作等）",
+    "1": "对应的具体参数或描述"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightSwSOAEnPrm",
+      "type": "parameter",
+      "description": "主远光灯开关状态超限使能参数，值为1表示启用该功能。"
+    },
+    {
+      "name": "MainBeamLightSwMdl",
+      "type": "module",
+      "description": "主远光灯开关模型，负责处理开关信号。"
+    },
+    {
+      "name": "MainBeamLightSwitchStatus",
+      "type": "signal",
+      "description": "主远光灯开关的状态信息。"
+    },
+    {
+      "name": "MainBeamLightCtrlMdl",
+      "type": "module",
+      "description": "主远光灯控制模型，接收并处理闪烁指令。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字 MainBeamLightSwSOAEnPrm == 1 (Enable)，即功能已启用。"
+    },
+    {
+      "condition": "触发条件",
+      "description": "用户打开远光灯闪烁开关，且开关阻值为 1200 Ω (±5%)。"
+    },
+    {
+      "condition": "退出条件",
+      "description": "远光灯开关阻值变为非 1200 Ω (±5%)，即开关状态发生变化。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "MainBeamLightSwitchStatus",
+      "value": "0x3 (Flash)",
+      "description": "持续发送主远光灯开关状态为闪烁模式至主远光灯控制模型。"
+    },
+    {
+      "output": "执行动作",
+      "description": "至少发送三帧闪烁指令。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了远光灯闪烁功能的触发和执行逻辑，可用于验证当用户操作远光灯开关时，系统是否能够正确识别开关阻值，并按照预设规则发送闪烁指令。",
+  "uncertain_points": []
+}
+```

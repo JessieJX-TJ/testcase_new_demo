@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "制动灯开关状态为未知 (BrakeLightSwSts=Unknown)",
+    "relation": "前提条件",
+    "tail": "无法确定制动灯的实际开关状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["BrakeLightSwSts", "Unknown"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制请求成功 (BrakeLightResp=ControlSuccess)",
+    "relation": "输出为",
+    "tail": "制动灯状态已根据请求更新 (BrakeLightReq)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["BrakeLightReq", "BrakeLightResp", "ControlSuccess"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制请求失败 (BrakeLightResp=Failed)",
+    "relation": "输出为",
+    "tail": "制动灯状态未根据请求更新 (BrakeLightReq)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["BrakeLightReq", "BrakeLightResp", "Failed"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "调用 BrakeLightSwitchStatus 接口获取制动灯开关状态",
+    "relation": "触发条件",
+    "tail": "制动灯开关状态参数 (BrakeLightSwSts) 被更新",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["BrakeLightSwitchStatus", "BrakeLightSwSts"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开关状态为 ON (BrakeLightSwSts=ON)",
+    "relation": "依赖于",
+    "tail": "制动灯控制请求为 ON (BrakeLightReq=ON)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["BrakeLightReq", "BrakeLightSwSts", "ON"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开关状态为 OFF (BrakeLightSwSts=OFF)",
+    "relation": "依赖于",
+    "tail": "制动灯控制请求为 OFF (BrakeLightReq=OFF)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["BrakeLightReq", "BrakeLightSwSts", "OFF"],
+    "confidence_note": "high"
+  }
+]
+```

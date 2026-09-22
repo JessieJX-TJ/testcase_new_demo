@@ -1,0 +1,93 @@
+```json
+[
+  {
+    "head": "DoorFL1LampBrthngCmd_1 中的 0x1(Rate1 500ms 0-100%跳变)",
+    "relation": "触发条件",
+    "tail": "氛围灯按照250ms亮度100%, 250ms亮度0%循环执行",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DoorFL1LampBrthngCmd_1",
+      "0x1",
+      "Rate1",
+      "500ms",
+      "AmbiLamp"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL1LampBrthngCmd_1 中的 0x2(Rate2 1s 0-100%跳变)",
+    "relation": "触发条件",
+    "tail": "氛围灯按照500ms亮度100%, 500ms亮度0%循环执行",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DoorFL1LampBrthngCmd_1",
+      "0x2",
+      "Rate2",
+      "1s",
+      "AmbiLamp"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL1LampBrthngCmd_1 中的 0x3-0xC、0xE(0-100%按照对应周期斜率渐变调节)",
+    "relation": "触发条件",
+    "tail": "氛围灯按照一定时间A, 0%-100%渐亮, 在最高点维持一定时间B; 在按照时间A, 100%-0%渐灭, 在最低点维持一定时间B",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DoorFL1LampBrthngCmd_1",
+      "0x3-0xC",
+      "0xE",
+      "AmbiLamp",
+      "Time A",
+      "Time B"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "AmbiLampBrightness",
+    "relation": "依赖于",
+    "tail": "DoorFL1LampBrthngCmd_1",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "AmbiLampBrightness",
+      "DoorFL1LampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Time A",
+    "relation": "等于",
+    "tail": "接收到的呼吸模式周期 RateX * (0.5 - AmbtLampBrthngRateXholdoffPercent)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Time A",
+      "RateX",
+      "AmbtLampBrthngRateXholdoffPercent"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Time B",
+    "relation": "等于",
+    "tail": "接收到的呼吸模式周期 RateX * AmbtLampBrthngRateXholdoffPercent",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Time B",
+      "RateX",
+      "AmbtLampBrthngRateXholdoffPercent"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "AmbtLampBrthngRateXholdoffPercent",
+    "relation": "默认值为",
+    "tail": "10%",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "AmbtLampBrthngRateXholdoffPercent",
+      "default value"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

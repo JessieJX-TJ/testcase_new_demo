@@ -1,0 +1,45 @@
+述
+前置条件
+1&&2
+1、车辆具备拖车模式功能:InsdFnCfgVehDragMd=0x1
+2、拖挂模式开启:VehDragMdSts=0x1=VehDragMdSts_1_On
+注:LHZCU、RZCU需判断此前置条件
+触发条件
+[转向灯开关控制模块LHZCU]信号发送为:
+RLDircnLghtCtrl=0x1=RLDircnLghtCtrl_1_On(或
+0x0=RLDircnLghtCtrl_0_Off)
+执行动作
+1、RZCU判断前置条件满足,根据接收到的:
+0x0=RLDircnLghtCtrl_0_Off)；,对应发
+TrlrDirLghtOnReq=0x1=TrlrDirLghtOnReq_1_Left_direction_light_On
+(或 0x0=TrlrDirLghtOnReq_0_Off;)给TDM
+2、RZCU同时根据接收到的转向灯模式状态:
+DircnLghtMdSts= 0x0=DircnLghtMdSts_0_Enabled;(或
+0x1=DircnLghtMdSts_1_Disabled),对应转成
+TrlrDirLghtMdSts=0x0=Enable(或0x1=Disable)发给TDM
+3、TDM根据接收到的:
+1)
+(或 0x0=TrlrDirLghtOnReq_0_Off;) &&
+TrlrDirLghtMdSts=0x0=Enable,控制左侧转向灯按照流水效果点亮
+(或熄灭,无流水效果)
+2)
+TrlrDirLghtMdSts=0x1=Disable,仅控制左侧转向灯点亮(或熄
+灭),无流水效果
+4、TDM将拖车转向灯状态和故障状态反馈给LHZCU:
+TrlrDirLghtSts=0x1=TrlrDirLghtSts_1_LeOn；(或 0x0=TrlrDirLghtSts_0_Off)
+TrlrDirLghtFltSts=0x0=TrlrDirLghtFltSts_0_NoFlr
+5、LHZCU判断前置条件满足,需结合拖车转向灯状态反馈转向灯状态给
+ICB:
+DircnLghtSts=0x1=DircnLghtSts_1_Left_Direction_Light_On
+DircnLghtFltsts=0x0=DircnLghtFltsts_0_No_Error
+6、[外灯组合服务ICB]订阅并透传:
+{ExteriorLightControlSystem. DirectionLightSts.
+DirectionLghtSts}=0x1=Left_Direction_Light_Flash
+{ExteriorLightControlSystem. DirectionLightErrSts.
+DirectionLghtErrSts}=0x0=No Error
+备注
+1、拖车模式下,即前置条件满足:
+RZCU根据接收的左侧转向灯故障状态,DircnLghtFltsts,转发信号:
+当 DircnLghtFltsts=0x1=DircnLghtFltsts_1_Left_Direction_Light_Error,通过
+TurnlampFltSts=0x1=TurnlampFltSts_1_LeFlr 反馈给TDM
+当DircnLghtFltsts=0x0=DircnLghtFltsts_0_No_Error,通过

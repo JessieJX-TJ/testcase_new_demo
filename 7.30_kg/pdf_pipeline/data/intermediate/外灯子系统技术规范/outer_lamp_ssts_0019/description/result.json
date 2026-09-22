@@ -1,0 +1,68 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑 - 右后转向灯驱动与状态发送",
+  "row_semantics": "表格定义了基于前置条件、触发条件和退出条件的特定功能执行流程，包括执行动作和异常处理。",
+  "column_semantics": "第一列标识规则阶段（如前置条件、触发条件、执行动作等），第二列详细描述该阶段的条件或操作。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "模块/控制器",
+      "description": "统一外灯控制模型，负责接收指令并控制外灯状态。"
+    },
+    {
+      "name": "RRDircnLghtDrvEnPrm",
+      "type": "输入信号",
+      "description": "右方向灯驱动使能参数，值为1表示使能，2表示禁用。"
+    },
+    {
+      "name": "RRDircnLghtCtrl_HW",
+      "type": "输入信号",
+      "description": "硬件层面的方向灯控制信号，1表示开启，0表示关闭。"
+    },
+    {
+      "name": "RRDILghtDrvMdl",
+      "type": "模块/控制器",
+      "description": "右外灯驱动模型，负责持续驱动右后转向灯输出。"
+    },
+    {
+      "name": "DILamp_RH_HSD",
+      "type": "输出信号",
+      "description": "右后转向灯的硬件输出信号，用于实际点亮右后转向灯。"
+    },
+    {
+      "name": "RRDILghtSts_HW",
+      "type": "输出信号",
+      "description": "右外灯状态硬件信号，值为1表示开启。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "exlDircnLghtHwDrvEnPrm==1||2",
+      "description": "前置条件，当右方向灯驱动使能参数为1或2时满足。"
+    },
+    {
+      "condition": "收到【DILghtCtrlMdl】统一分发的 RRDircnLghtCtrl_HW ==1 (On)",
+      "description": "触发条件，当接收到DILghtCtrlMdl模块分发的HW信号为1（开启）时触发。"
+    },
+    {
+      "condition": "收到【DILghtCtrlMdl】发送的 RRDircnLghtCtrl_HW ==0 (Off)",
+      "description": "退出条件，当接收到DILghtCtrlMdl模块分发的HW信号为0（关闭）时退出该逻辑。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "【RRDILghtDrvMdl】持续驱动右后转向灯输出 (DILamp_RH_HSD)",
+      "description": "执行动作之一，持续驱动右后转向灯硬件输出信号。"
+    },
+    {
+      "output": "【RRDILghtDrvMdl】持续发送 RRDILghtSts_HW=1 (On) 至 【DILghtCtrlMdl】，至少发送三帧。",
+      "description": "执行动作之二，持续向DILghtCtrlMdl模块发送右外灯状态信号，确保至少发送三帧。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车外灯控制系统中右后转向灯的硬件驱动与状态反馈逻辑，确保在特定条件下正确执行驱动和状态发送，并在条件不满足时正确退出。",
+  "uncertain_points": []
+}

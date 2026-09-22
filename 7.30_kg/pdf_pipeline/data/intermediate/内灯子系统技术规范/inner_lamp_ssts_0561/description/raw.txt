@@ -1,0 +1,61 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "DoorRL3LampBrthngCmd_1 (Door Right Rear Lamp Breathing Command 1)",
+  "row_semantics": "Each row represents a specific breathing rate command for the door right rear lamp, defined by a hexadecimal code value.",
+  "column_semantics": {
+    "Code Value": "The hexadecimal command code that specifies the breathing rate.",
+    "Period": "The time period (in seconds) for one complete breathing cycle.",
+    "Original Breathing Mode Value": "The corresponding original breathing mode associated with the rate."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorRL3LampBrthngCmd_1",
+      "type": "function",
+      "description": "Command for controlling the breathing pattern of the right rear door lamp."
+    },
+    {
+      "name": "LHZCU_LIN4",
+      "type": "controller",
+      "description": "Local Zone Control Unit connected via LIN4 bus, responsible for processing and executing the breathing command."
+    },
+    {
+      "name": "DoorAmbtLampC_RL",
+      "type": "module",
+      "description": "Door Ambient Lamp Controller for the right side, which receives commands from LHZCU."
+    },
+    {
+      "name": "LIN",
+      "type": "input_signal",
+      "description": "Local Interconnect Network communication interface used to send commands to the LHZCU."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Code Value",
+      "description": "Specifies the breathing rate command using hexadecimal values from 0x0 to 0xF."
+    },
+    {
+      "name": "Period",
+      "description": "Defines the duration of one breathing cycle, ranging from 'No Request' to 12 seconds."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Breathing Mode",
+      "description": "The resulting breathing pattern of the lamp, which can be a new mode or an original mode depending on the rate."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Period",
+      "description": "Defines the timing for each breathing cycle, e.g., 500ms, 1s, up to 12s."
+    }
+  ],
+  "engineering_interpretation": "This table defines the mapping between hexadecimal command codes and their corresponding breathing rates for the door right rear lamp. It is used to verify that the lamp responds correctly to different breathing commands sent via LIN communication to the LHZCU, which then controls the DoorAmbtLampC_RL module.",
+  "uncertain_points": []
+}
+```

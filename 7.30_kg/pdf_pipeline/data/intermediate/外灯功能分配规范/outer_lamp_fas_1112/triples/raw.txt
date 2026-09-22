@@ -1,0 +1,86 @@
+```json
+[
+  {
+    "head": "危险报警灯开关控制模块LHZCU将危险报警灯状态反馈至ICB",
+    "relation": "触发条件",
+    "tail": "危险报警灯开关状态为开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "危险报警灯开关控制模块LHZCU",
+      "危险报警灯开关状态",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU将转向灯控制状态反馈至SDM",
+    "relation": "触发条件",
+    "tail": "紧急方向灯开关状态为3 (hazard)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "危险报警灯自动控制模块LHZCU",
+      "EDRDircnIndLampSwSts",
+      "SDM"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU根据VehIntrusionPrevnHzrdLmpReq取值控制闪烁",
+    "relation": "触发条件",
+    "tail": "车辆入侵预警请求信号有效",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "危险报警灯自动控制模块LHZCU",
+      "VehIntrusionPrevnHzrdLmpReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FLDircnLghtCtrl输出为0x0 (Off)",
+    "relation": "输出为",
+    "tail": "危险报警灯开关控制模块LHZCU信号跳变为0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FLDircnLghtCtrl",
+      "危险报警灯开关控制模块LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB根据接收到的LHZCU发送的转向灯状态，转换成数字灯控信号并发送至ICB",
+    "relation": "依赖于",
+    "tail": "LHZCU发送的转向灯状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB在接收到LHZCU控制输入后，延时60ms将控制信号分发至LHZCU、RHZCU和RZCU",
+    "relation": "超时约束",
+    "tail": "60ms延时",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "RHZCU",
+      "RZCU",
+      "60ms延时"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU记忆本次双闪灯触发动作",
+    "relation": "前提条件",
+    "tail": "危险报警灯自动控制模块LHZCU检测到双闪灯触发",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "危险报警灯自动控制模块LHZCU",
+      "VehHzrdMdSts"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

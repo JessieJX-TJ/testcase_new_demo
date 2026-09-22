@@ -1,0 +1,105 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Interior Lighting Sub System - Ambient Lamp Control Logic",
+  "row_semantics": "Each row represents a specific ambient lamp control command or status, with the first column indicating the command ID and the second column indicating its priority or parameter value.",
+  "column_semantics": "The first column is the command identifier (e.g., 7400), the second column is the associated parameter value (e.g., priority level), and subsequent columns are reserved for additional parameters or status indicators.",
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "RoofAmbtLampA_LH",
+      "type": "function",
+      "description": "Left front roof ambient lamp"
+    },
+    {
+      "name": "RoofAmbtLampB_LH",
+      "type": "function",
+      "description": "Left rear roof ambient lamp"
+    },
+    {
+      "name": "RoofAmbtLampA_RH",
+      "type": "function",
+      "description": "Right front roof ambient lamp"
+    },
+    {
+      "name": "RoofAmbtLampB_RH",
+      "type": "function",
+      "description": "Right rear roof ambient lamp"
+    },
+    {
+      "name": "ZCU",
+      "type": "controller",
+      "description": "Central Control Unit responsible for sending LIN signals to control ambient lamps"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RoofLHALampOnOff_1",
+      "type": "input_signal",
+      "description": "Control signal from ZCU to turn ambient lamps on/off"
+    },
+    {
+      "name": "RoofLHALampBrthngCmd_1",
+      "type": "input_signal",
+      "description": "Breathing mode command signal"
+    },
+    {
+      "name": "RoofLHALampBrtNsCmd_1",
+      "type": "input_signal",
+      "description": "Brightness adjustment command signal"
+    },
+    {
+      "name": "RoofLHALampColorCmd_1",
+      "type": "input_signal",
+      "description": "Color adjustment command signal"
+    },
+    {
+      "name": "RoofLHALampFadeSpdCmd_1",
+      "type": "input_signal",
+      "description": "Fade speed adjustment command signal"
+    },
+    {
+      "name": "AmbtLghtLHRollingCtr_1",
+      "type": "input_signal",
+      "description": "Rolling counter for ambient light commands"
+    },
+    {
+      "name": "LIN_Signal",
+      "type": "input_signal",
+      "description": "LIN bus signal from ZCU"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Ambient Lamp Status",
+      "type": "output_signal",
+      "description": "State of the ambient lamps (on/off, brightness, color)"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Overvoltage/Undervoltage",
+      "type": "fault_state",
+      "description": "Fault condition detected in the ambient lamp module"
+    },
+    {
+      "name": "LIN Signal Timeout",
+      "type": "fault_state",
+      "description": "No LIN signal received from ZCU within the expected time"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "LIN Signal Timeout",
+      "type": "timing_constraint",
+      "value": "6 seconds",
+      "description": "If no LIN signal is received from ZCU within 6 seconds, the ambient lamps should be turned off"
+    }
+  ],
+  "engineering_interpretation": "This table defines the control logic for the vehicle's roof ambient lamps, including command IDs, their priority levels, and the conditions under which different lighting modes (e.g., breathing, fade) are activated or deactivated. It also specifies fault detection criteria and actions to be taken in case of faults.",
+  "uncertain_points": [
+    "The exact mapping between the command IDs and their specific functions beyond what is described in the table is not fully detailed."
+  ]
+}
+```

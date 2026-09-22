@@ -1,0 +1,15 @@
+4、[HMI子系统ICB]调用接口:
+Notifier:
+获取后雾灯指示灯显示
+5、[外灯控制组合服务ICB]调用接口:{RearFogLight.RearFogLightControl.RearFogLightCtrReq}=0x1=
+6、[驱动处理模块RZCU]内部跳变为硬线输出,驱动后雾灯点亮
+7、[驱动处理模块RZCU]将状态/故障状态反馈至[后雾灯控制模块LHZCU]:
+{RearFogLight. RearFogLightState. RearFogLightSta}=0x1=ON
+{RearFogLight. RearFogLightErrorStatus. RearFogLightErrorSta}=Ox0=No Error
+8、[后雾灯控制模块LHZCU]将状态/故障状态反馈至ICB:
+{ExteriorLightSwitchProcess.RearFogLightSta.RearFogLghtSta}=0x1=ON
+9、[外灯组合服务ICB]订阅接口:
+{ExteriorLightControlSystem. RearFogLightSts. RearFogLghtSts}=0x1=On
+备注
+后雾灯开启同步性要求:
+左侧和右侧需保持同步点亮,两侧最大延时不能超过40ms

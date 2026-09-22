@@ -1,0 +1,44 @@
+ICB 根据LHZCU控制输入,延时 60ms并分发控制信号至 LHZCU、RHZCU 和 RZCU(配置需
+DircnLghtCtrlDelayPrm)
+FLDircnLghtCtrl_HW=0x1=FLDircnLghtCtrl_HW_1_on(或 0x0=FLDircnLghtCtrl_HW_0_OFF)
+FRDircnLghtCtrl_HW=0x1=FRDircnLghtCtrl_HW_1_on(或 0x0=FRDircnLghtCtrl_HW_0_OFF)
+RLDircnLghtCtrl_HW=0x1=RLDircnLghtCtrl_HW_1_on(或 0x0=RLDircnLghtCtrl_HW_0_OFF)
+RRDircnLghtCtrl_HW=0x1=RRDircnLghtCtrl_HW_1_on(或 0x0=RRDircnLghtCtrl_HW_0_OFF)
+5.[驱动处理模块LHZCU/RHZCU/RZCU]接收ICB控制信号,驱动双闪灯点亮/熄灭
+ICB接收[危险警报灯开关控制模块LHZCU]控制信号:
+FLDircnLghtCtrl=0x1=FLDircnLghtCtrl_1_on；&
+FRDircnLghtCtrl=0x1=FRDircnLghtCtrl_1_on
+做危险警报灯图标指示灯显示以及声音提醒
+7.[驱动处理模块RHZCU/RZCU]将转向灯点亮状态/故障状态反馈至[危险警报灯开关控制模块
+FRDircnLghtSts_HW =0x1=FRDircnLghtSts_HW_1_On(或 0x0=FRDircnLghtSts_HW _0_OFF)
+RLDircnLghtSts_HW =0x1=RLDircnLghtSts_HW_1_On(或 0x0=RLDircnLghtSts_HW_0_OFF)
+RRDircnLghtSts_HW =0x1=RRDircnLghtSts_HW _1_On(或 0x0=RRDircnLghtSts_HW _0_OFF)
+FRDircnLghtFltsts_HW =0x0=FRDircnLghtFltsts_HW_0_False
+RLDircnLghtFltsts_HW =0x0=RLDircnLghtFltsts_HW _0_False
+RRDircnLghtFltsts_HW =0x0=RRDircnLghtFltsts_HW_0_False
+(exlDircnLghtHwDrvEnPrm=0x1;通过域控获取转向灯状态；)
+8.ICB将状态/故障状态反馈至[危险警报灯开关控制模块LHZCU]:
+FLDircnLghtSts=0x1= FLDircnLghtSts _1_On(或 0x0= FLDircnLghtSts _0_OFF)
+FRDircnLghtSts=0x1=FRDircnLghtSts_1_On(或 0x0=FRDircnLghtSts_0_OFF)
+RLDircnLghtSts=0x1=RLDircnLghtSts_1_On(或 0x0=RLDircnLghtSts_0_OFF)
+RRDircnLghtSts=0x1=RRDircnLghtSts_1_On(或 0x0=RRDircnLghtSts_0_OFF)
+FLDircnLghtFltsts=0x0=FLDircnLghtFltsts_0_False
+FRDircnLghtFltsts=0x0=FRDircnLghtFltsts_0_False
+RLDircnLghtFltsts=0x0=RLDircnLghtFltsts_0_False
+RRDircnLghtFltsts=0x0=RRDircnLghtFltsts_0_False
+(exlDircnLghtHwDrvEnPrm=0x0||0x2;通过数字灯控获取转向灯状态;)
+9.[危险警报灯自动控制模块LHZCU]将状态/故障状态反馈至ICB:
+DircnLghtSts=0x3=Both_Side_Direction_Light_On
+DircnLghtFltsts=0x0=DircnLghtFltsts_0_No_Error
+10.[外灯组合服务ICB]接收LHZCU发送的转向灯点亮及故障状态CAN信号转成对应的服务透
+11.[危险警报灯自动控制模块LHZCU]记忆本次车辆碰撞触发双闪灯事件,并将模式信号发送至
+VehHzrdMdSts=0x2=VehHzrdMdSts_2_Collision_Mode
+12.[危险警报灯自动控制模块LHZCU]将转向灯控制状态反馈至SDM:
+EDRDircnIndLampSwSts=0x3=EDRDircnIndLampSwSts_3_hazard
+危险警报手动解除:[危险警报灯自动控制模块LHZCU]检测到:a&b
+a、危险告警灯开启&未检测到新的碰撞事件,则开始计时一段时间CrashHzardTi(可
+值为5s,计时期间检测到新的碰撞事件需重新计时)
+b、用户手动关闭危险报警开关:HzrdLghtSwReq=0x1=HzrdLghtSwReq_1_On
+1.[危险警报灯开关控制模块 LHZCU]信号跳变为:
+FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_Off
+FRDircnLghtCtrl=0x0=FRDircnLghtCtrl_0_Off

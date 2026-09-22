@@ -1,0 +1,44 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "氛围灯呼吸速度控制逻辑",
+  "row_semantics": "定义了触发氛围灯本地控制模块改变呼吸速度的条件",
+  "column_semantics": {
+    "前置条件": "系统或功能必须满足的前提状态",
+    "触发条件": "导致特定动作或状态改变的具体信号事件"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RoofLHLALampBrthngCmd_l",
+      "type": "input_signal",
+      "description": "氛围灯本地控制模块的呼吸速度指令信号"
+    },
+    {
+      "name": "AmbtLghtLHRollingCtr_l",
+      "type": "input_signal",
+      "description": "氛围灯同步信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "氛围灯处于点亮状态",
+      "source": "前置条件"
+    },
+    {
+      "condition": "接收到RoofLHLALampBrthngCmd_l != 0x0 (No Request)",
+      "source": "触发条件"
+    },
+    {
+      "condition": "接收到AmbtLghtLHRollingCtr_l信号",
+      "source": "触发条件"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证当氛围灯点亮时，是否能正确响应来自本地控制模块和同步信号的呼吸速度指令，确保灯光控制逻辑符合设计规范。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,83 @@
+```json
+[
+  {
+    "head": "方向灯系统开始工作",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DILightFbkSOAEnPrm"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯系统开始工作",
+    "relation": "触发条件",
+    "tail": "收到【DILghtCtrlMdl】发送的DirectionLightControl. DirectionLightCtrReq == 1 (On) InstanceID=2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DILghtCtrlMdl",
+      "DirectionLightCtrReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRDILightDrvMdl持续驱动右前转向灯输出 (DILamp_RH_HSD)",
+    "relation": "依赖于",
+    "tail": "方向灯系统开始工作",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FRDILightDrvMdl",
+      "DILamp_RH_HSD"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRDILightDrvMdl持续发送 DirectionLightControl. DirectionLightSta == 1 (On) InstanceID=2 至 DILightCtrlMdl",
+    "relation": "依赖于",
+    "tail": "方向灯系统开始工作",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FRDILightDrvMdl",
+      "DILightCtrlMdl",
+      "DirectionLightSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯系统停止工作",
+    "relation": "退出条件",
+    "tail": "收到【DILghtCtrlMdl】发送的DirectionLightControl. DirectionLightCtrReq == 0 (Off) InstanceID=2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DILghtCtrlMdl",
+      "DirectionLightCtrReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRDILightDrvMdl持续发送 DirectionLightControl. DirectionLightSta == 1 (On) InstanceID=2 至 DILightCtrlMdl",
+    "relation": "状态保持条件",
+    "tail": "方向灯系统开始工作",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "FRDILightDrvMdl",
+      "DILightCtrlMdl",
+      "DirectionLightSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRDILightDrvMdl持续发送 DirectionLightControl. DirectionLightSta == 1 (On) InstanceID=2 至 DILightCtrlMdl",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "FRDILightDrvMdl",
+      "DILightCtrlMdl",
+      "DirectionLightSta"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

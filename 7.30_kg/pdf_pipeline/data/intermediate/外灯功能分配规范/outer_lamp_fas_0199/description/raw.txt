@@ -1,0 +1,62 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "转向灯控制与故障状态监控",
+  "row_semantics": "表格按功能模块划分，每行描述一个具体的转向灯控制或状态订阅接口。",
+  "column_semantics": "第一列为主功能模块名称，后续列为该接口的调用方式（如SOA、LHZCU等）及硬线控制方式。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DirectionLightErrSts",
+      "type": "功能名",
+      "description": "订阅转向灯故障状态的服务接口"
+    },
+    {
+      "name": "ControlDirectionLight",
+      "type": "功能名",
+      "description": "控制转向灯亮灭的服务接口"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "左前转向灯控制单元"
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块名",
+      "description": "右前转向灯控制单元"
+    },
+    {
+      "name": "SOA",
+      "type": "输入信号",
+      "description": "Service-Oriented Architecture，面向服务的架构调用方式"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "集成控制盒"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightErrSts",
+      "description": "0x0=No Error; 0x1=Error"
+    },
+    {
+      "name": "DirectionLightReq",
+      "description": "0x0=OFF; 0x1=ON"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrSts",
+      "description": "指示转向灯是否存在故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆转向灯的控制接口和故障状态订阅接口，可用于验证转向灯控制逻辑（如左右转向灯的点亮与熄灭）以及转向灯故障状态的正确上报。",
+  "uncertain_points": []
+}
+```

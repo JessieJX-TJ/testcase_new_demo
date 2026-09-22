@@ -1,0 +1,102 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 制动灯状态与故障反馈",
+  "row_semantics": "表格按制动灯相关的不同信号进行分组，每行代表一个具体的信号或状态变量。",
+  "column_semantics": "列定义了信号的传输方式（如CANFD）、涉及的控制器模块（如LHZCU、ICB）以及信号的状态类型（如网络故障状态、硬线故障状态）。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrkLghtFltSts",
+      "type": "signal",
+      "description": "制动灯故障状态反馈"
+    },
+    {
+      "name": "BrkLghtFltSts_HW",
+      "type": "signal",
+      "description": "制动灯硬件故障状态反馈"
+    },
+    {
+      "name": "BrkLghtSta",
+      "type": "signal",
+      "description": "制动灯状态反馈"
+    },
+    {
+      "name": "BrkLghtFltSta",
+      "type": "signal",
+      "description": "制动灯故障状态反馈 (另一种表述)"
+    },
+    {
+      "name": "BrakeLight_BrakeLightState",
+      "type": "signal",
+      "description": "刹车灯状态 (消费信号)"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "BrkLghtFltSts",
+      "direction": "output",
+      "interface": "CANFD",
+      "controller": "ICB",
+      "state": "网络故障状态"
+    },
+    {
+      "name": "BrkLghtFltSts_HW",
+      "direction": "output",
+      "interface": "CANFD",
+      "controller": "RZCU",
+      "state": "硬线故障状态"
+    },
+    {
+      "name": "BrkLghtSta",
+      "direction": "output",
+      "interface": "CANFD",
+      "controller": "LHZCU",
+      "state": "无特定状态"
+    },
+    {
+      "name": "BrkLghtFltSta",
+      "direction": "output",
+      "interface": "CANFD",
+      "controller": "LHZCU",
+      "state": "无特定状态"
+    },
+    {
+      "name": "BrakeLight_BrakeLightState",
+      "direction": "consumption",
+      "interface": "SOA",
+      "controller": "RZCU",
+      "state": "硬线状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "BrkLghtFltSts",
+      "type": "fault_status",
+      "value_0": "False",
+      "value_1": "True"
+    },
+    {
+      "name": "BrkLghtFltSts_HW",
+      "type": "fault_status",
+      "value_0": "False",
+      "value_1": "True"
+    },
+    {
+      "name": "BrkLghtSta",
+      "type": "state_feedback",
+      "value_0": "Off",
+      "value_1": "On"
+    },
+    {
+      "name": "BrkLghtFltSta",
+      "type": "fault_status",
+      "value_0": "False",
+      "value_1": "True"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了制动灯系统的状态反馈和故障检测信号在不同控制器间的分配与交互，可用于验证制动灯系统在正常工作及故障情况下的信号传递正确性。",
+  "uncertain_points": []
+}

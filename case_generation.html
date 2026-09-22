@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Case Generation</title>
+    <link rel="stylesheet" href="static/css/case_generation.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Top navigation -->
+        <header class="header">
+            <h1>📦 Batch Case Generation</h1>
+            <nav class="nav-links">
+                <a href="./index.html" class="nav-link">Back to Home</a>
+                <a href="./type_expected_classification.html" class="nav-link">📊 Type–Expected Classification</a>
+            </nav>
+        </header>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="search-box">
+                <input type="text" id="searchBox" placeholder="🔍 Search case name, ID...">
+            </div>
+            <div class="filter-box">
+                <select id="filterType">
+                    <option value="all">All Cases</option>
+                    <option value="single">Single Expected Result</option>
+                    <option value="multiple">Multiple Expected Results</option>
+                </select>
+            </div>
+            <div class="batch-actions">
+                <button id="selectAll" class="btn-secondary">Select All Visible</button>
+                <button id="clearSelection" class="btn-secondary">Clear Selection</button>
+            </div>
+            <div class="stats-box">
+                <span id="statsText">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Left: test type and action classification -->
+            <aside class="action-sidebar">
+                <div class="sidebar-header">
+                    <h3>📋 Test Type Classification</h3>
+                    <span id="actionCount" class="count-badge">0</span>
+                </div>
+                <div id="actionList" class="action-list">
+                    <div class="loading">Loading...</div>
+                </div>
+            </aside>
+
+            <!-- Right: case list -->
+            <main class="case-list-panel">
+                <div class="panel-header">
+                    <div class="header-left">
+                        <h3 id="currentAction">Please select an action</h3>
+                        <span id="caseCount" class="count-badge">0 cases</span>
+                    </div>
+                    <div class="header-right">
+                        <span id="selectedCount" class="selected-count">Selected: 0</span>
+                    </div>
+                </div>
+
+                <div id="caseList" class="case-list">
+                    <div class="empty-state">
+                        <p>👈 Select an action from the left to view cases</p>
+                    </div>
+                </div>
+
+                <!-- Bottom action buttons -->
+                <div class="action-buttons">
+                    <button id="generateBtn" class="btn-primary" disabled>
+                        🚀 Generate Cases (<span id="generateCount">0</span>)
+                    </button>
+                    <button id="exportBtn" class="btn-secondary">
+                        📥 Export Selected Cases
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Generation progress modal -->
+    <div id="progressModal" class="modal">
+        <div class="modal-content">
+            <h3>⚙️ Generating reverse cases...</h3>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <p id="progressText" class="progress-text">0 / 0 (0%)</p>
+            </div>
+            <p class="progress-tip">Please wait; this may take a few minutes...</p>
+        </div>
+    </div>
+
+    <!-- Result modal -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>✅ Generation Results</h3>
+                <button id="closeResultModal" class="close-btn">&times;</button>
+            </div>
+            <div id="resultContent" class="result-content">
+                <!-- Results loaded dynamically -->
+            </div>
+            <div class="modal-footer">
+                <button id="downloadBtn" class="btn-primary">📊 Export Excel</button>
+                <button id="closeBtn" class="btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/js/case_generation.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+{
+  "table_type": "state_table",
+  "topic": "Ambient Lamp Local Control Module Functionality",
+  "row_semantics": "Each row represents a distinct state or condition of the ambient lamp control logic, including trigger conditions, execution actions, exit conditions, and fault handling.",
+  "column_semantics": {
+    "Column 1": "Condition/State Type (e.g., Trigger Condition, Execution Action, Exit Condition, Fault Handling)",
+    "Column 2": "Description of the specific condition, action, or fault handling rule"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "CnsoLHALampColorCmd_1",
+      "type": "input_signal",
+      "description": "Local control signal for ambient lamp color change request. Value 0x00 indicates no request."
+    },
+    {
+      "name": "CnsoLHALampOnOff_1",
+      "type": "input_signal",
+      "description": "Local control signal for turning the ambient lamp on/off. Value 0x0 indicates OFF."
+    },
+    {
+      "name": "CnsoLHALampFadeSpdCmd_1",
+      "type": "parameter",
+      "description": "Parameter defining the fade speed when turning off the ambient lamp."
+    },
+    {
+      "name": "ZCU_LIN",
+      "type": "system_signal",
+      "description": "LIN communication signal from Zone Control Unit (ZCU)."
+    },
+    {
+      "name": "Ambient Lamp Module",
+      "type": "controller_module",
+      "description": "Module responsible for driving and controlling the ambient lamps."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "CnsoLHALampColorCmd_1 != 0x00",
+      "description": "Trigger condition for initiating a color change request."
+    },
+    {
+      "condition": "CnsoLHALampColorCmd_1 = 0x00 OR undefined color code",
+      "description": "Exit condition for maintaining current color without change."
+    },
+    {
+      "condition": "CnsoLHALampOnOff_1 = 0x0",
+      "description": "Trigger condition for turning off the ambient lamp."
+    },
+    {
+      "condition": "Overvoltage or undervoltage fault in Ambient Lamp Module",
+      "description": "Fault condition requiring immediate shutdown of the ambient lamp."
+    },
+    {
+      "condition": "No ZCU LIN signal received for >6 seconds",
+      "description": "Timeout condition leading to automatic shutdown of the ambient lamp."
+    },
+    {
+      "condition": "CnsoLHALampColorCmd_1 abnormal value",
+      "description": "Fault condition where the color command signal is invalid."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "PWM Driving Signal",
+      "description": "Signal sent to the ambient lamp driver module to control its color based on the lookup table."
+    },
+    {
+      "output": "Ambient Lamp State",
+      "description": "State of the ambient lamp (on/off, color, fade speed) as controlled by the module."
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "Overvoltage/Undervoltage",
+      "description": "Fault detected in the ambient lamp module power supply."
+    },
+    {
+      "fault": "LIN Communication Timeout",
+      "description": "Failure to receive expected LIN signals from the ZCU within the defined timeout period."
+    },
+    {
+      "fault": "Invalid Color Command",
+      "description": "Abnormal value received in the CnsoLHALampColorCmd_1 signal."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "signal": "ZCU_LIN",
+      "constraint": "Must be received every 6 seconds",
+      "description": "If no LIN signal is received within 6 seconds, the ambient lamp is turned off."
+    }
+  ],
+  "engineering_interpretation": "This table defines the operational logic and fault handling behavior of the ambient lamp local control module, specifying how it responds to input signals, what actions it performs, under what conditions it exits states, and how it handles various faults.",
+  "uncertain_points": [
+    "The exact definition of 'undefined color code' is not specified in the table."
+  ]
+}

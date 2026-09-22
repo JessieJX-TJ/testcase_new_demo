@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "系统检测到Main Beam Light Switch故障",
+    "relation": "触发条件",
+    "tail": "远光灯开关短路到电源",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["远光灯开关短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统置位DTC B1077_15",
+    "relation": "执行动作",
+    "tail": "远光灯开关短路到电源",
+    "triple_type": "故障响应",
+    "evidence_terms": ["DTC B1077_15", "远光灯开关短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统持续发送MainBeamLightSwitchStatus",
+    "relation": "执行动作",
+    "tail": "远光灯开关短路到电源",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["MainBeamLightSwMdl", "MainBeamLightCtrlMdl", "远光灯开关短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统至少发送三帧MainBeamLightSwitchSta=0x2(Error)",
+    "relation": "执行动作",
+    "tail": "远光灯开关短路到电源",
+    "triple_type": "时序约束",
+    "evidence_terms": ["MainBeamLightSwitchSta", "0x2", "远光灯开关短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统检测Main Beam Light Switch故障过程终止",
+    "relation": "退出条件",
+    "tail": "远光灯开关非短路到电源",
+    "triple_type": "状态保持条件",
+    "evidence_terms": ["远光灯开关非短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前置条件满足",
+    "relation": "前提条件",
+    "tail": "配置字MainBeamLghtSwSOAEnPrm==1(Enable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["配置字MainBeamLghtSwSOAEnPrm==1(Enable)"],
+    "confidence_note": "high"
+  }
+]
+```

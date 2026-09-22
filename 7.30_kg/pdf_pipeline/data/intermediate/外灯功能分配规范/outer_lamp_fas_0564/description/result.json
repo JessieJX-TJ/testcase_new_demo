@@ -1,0 +1,95 @@
+{
+  "table_type": "logic_table",
+  "topic": "慢行灯开启功能逻辑",
+  "row_semantics": "表格按功能描述、前置条件、触发条件、执行动作和备注进行分段，详细定义了慢行灯开启的逻辑流程。",
+  "column_semantics": "表格分为两列，左侧为条件/动作类别（如前置条件、触发条件、执行动作），右侧为具体的条件或动作描述。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "慢行灯 (Manoeuvring Lamp)",
+      "type": "功能名"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名"
+    },
+    {
+      "name": "PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.ManoeuvringLampSet",
+      "type": "输入信号"
+    },
+    {
+      "name": "exlManoeuvringLampEnPrm",
+      "type": "输入信号"
+    },
+    {
+      "name": "AIparkngSts",
+      "type": "系统状态"
+    },
+    {
+      "name": "PT READY",
+      "type": "系统状态"
+    },
+    {
+      "name": "ManoeuvringLamp_HSD",
+      "type": "输出信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "description": "车辆具备慢行灯功能：exlManoeuvringLampEnPrm == 0x1",
+      "source": "前置条件"
+    },
+    {
+      "description": "大屏能使开关开启：PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.ManoeuvringLampSet == 0x0 = Enabled;",
+      "source": "前置条件"
+    },
+    {
+      "description": "整车档位为非 P 挡",
+      "source": "前置条件"
+    },
+    {
+      "description": "车辆行驶速度小于 20km/h",
+      "source": "前置条件"
+    },
+    {
+      "description": "车辆近光灯/远光灯点亮",
+      "source": "前置条件"
+    },
+    {
+      "description": "车辆上 PT READY 后第一次车速大于等于 1km/h",
+      "source": "触发条件"
+    },
+    {
+      "description": "整车档位跳变为 R 档",
+      "source": "触发条件"
+    },
+    {
+      "description": "处于自动泊车状态：AIparkngSts != (0x0 || 0x2D || 0xB || 0x36)",
+      "source": "触发条件"
+    }
+  ],
+  "core_outputs": [
+    {
+      "description": "[迎宾光毯灯开关控制模块 LHZCU]驱动硬线端口 ManoeuvringLamp_HSD 0.8 内渐亮。",
+      "target": "ManoeuvringLamp_HSD"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "description": "车辆行驶速度小于 20km/h",
+      "unit": "km/h"
+    },
+    {
+      "description": "车辆上 PT READY 后第一次车速大于等于 1km/h",
+      "unit": "km/h"
+    },
+    {
+      "description": "ManoeuvringLamp_HSD 0.8 内渐亮",
+      "unit": "秒"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了车辆慢行灯开启的完整逻辑，可用于验证在特定条件下（如档位、车速、灯光状态等）慢行灯是否能够正确触发并以预期方式点亮。",
+  "uncertain_points": []
+}

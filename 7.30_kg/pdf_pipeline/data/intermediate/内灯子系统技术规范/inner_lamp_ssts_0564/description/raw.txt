@@ -1,0 +1,79 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - Door Rear Right Lamp Blinking Command Rate Specification",
+  "row_semantics": "Each row represents a different blinking rate for the rear right door lamp, defined by a specific code value.",
+  "column_semantics": {
+    "Code Value": "The hexadecimal code that corresponds to a specific blinking rate.",
+    "Period": "The time interval between two consecutive blinks in seconds.",
+    "Original Breathing Mode Value": "The corresponding breathing mode pattern when the blinking rate is used."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorRR5LampBrthngCmd_l",
+      "type": "function",
+      "description": "Command for controlling the blinking behavior of the rear right door lamp."
+    },
+    {
+      "name": "SSTS",
+      "type": "controller_module",
+      "description": "Sub System Technical Specification controller for interior lighting."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Rate0",
+      "description": "No request for blinking; lamp remains off or in default state."
+    },
+    {
+      "name": "Rate1 - Rate15",
+      "description": "Different blinking rates ranging from 500ms to 12s per blink cycle."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorRR5LampFadSpdCmd_l",
+      "type": "signal",
+      "description": "Signal output to control the fading speed of the rear right door lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Blinking Period",
+      "description": "Defined by the 'Period' column, specifying the time interval between blinks for each rate.",
+      "values": [
+        "500ms (Rate1)",
+        "1s (Rate2)",
+        "1.5s (Rate3)",
+        "2s (Rate4)",
+        "2.4s (Rate5)",
+        "3s (Rate6)",
+        "3.5s (Rate7)",
+        "4s (Rate8)",
+        "4.5s (Rate9)",
+        "5s (Rate10)",
+        "6s (Rate11)",
+        "7s (Rate12)",
+        "8s (Rate13)",
+        "10s (Rate14)",
+        "12s (Rate15)"
+      ]
+    },
+    {
+      "name": "Fade Speed",
+      "description": "Defined by the 'DoorRR5LampFadSpdCmd_l' signal, with specific speeds for fading transitions.",
+      "values": [
+        "Spd0: 2000ms",
+        "Spd1: 300ms",
+        "Spd2: 100ms (reserved for future use)",
+        "Spd3: 0 (reserved)"
+      ]
+    }
+  ],
+  "engineering_interpretation": "This table defines the various blinking rates and fade speeds for the rear right door lamp within the Interior Lighting Sub System. It specifies how the lamp should respond to different command codes, including no request, specific blink intervals, and fade transitions. This information is crucial for testing the correct implementation of the lamp's blinking and fading behavior under different control signals.",
+  "uncertain_points": []
+}
+```

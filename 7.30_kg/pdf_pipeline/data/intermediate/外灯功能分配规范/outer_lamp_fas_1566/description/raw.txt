@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) - 近光灯控制信号定义",
+  "row_semantics": "表格按功能模块划分，每行代表一个具体的外灯控制信号或状态通知接口，详细定义了信号的名称、参数、取值含义及其在不同控制器中的输出方式。",
+  "column_semantics": "表格包含以下列：左侧为功能模块/信号名称，右侧为该信号的描述、接口信息、参数定义及具体取值含义。其中，右侧内容进一步细分为多个子列，如 '输出'、'CANFD'、'LHZCU'、'ICB' 等，表示该信号在不同通信协议或控制器中的实现细节。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Notifer",
+      "type": "功能名",
+      "description": "订阅服务接口，用于获取近光灯点亮或熄灭的条件是否满足。"
+    },
+    {
+      "name": "LDipdBeamLghtCtrl",
+      "type": "输出信号",
+      "description": "左侧近光灯控制信号，用于控制左侧近光灯的开关状态。"
+    },
+    {
+      "name": "RDipdBeamLghtCtrl",
+      "type": "输出信号",
+      "description": "右侧近光灯控制信号，用于控制右侧近光灯的开关状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CombLghtFucProStatus",
+      "type": "系统状态",
+      "description": "组合灯光功能状态参数，定义了近光灯的不同工作模式（如仅侧位灯亮、仅近光灯亮、侧位灯与近光灯同时亮等）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LDipdBeamLghtCtrl",
+      "type": "输出信号",
+      "description": "左侧近光灯控制信号，取值0x0表示关闭，0x1表示开启。",
+      "controller_interfaces": [
+        "CANFD",
+        "LHZCU",
+        "ICB"
+      ]
+    },
+    {
+      "name": "RDipdBeamLghtCtrl",
+      "type": "输出信号",
+      "description": "右侧近光灯控制信号，取值0x0表示关闭，0x1表示开启。",
+      "controller_interfaces": [
+        "CANFD",
+        "LHZCU",
+        "ICB"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证外灯控制系统中近光灯控制信号的正确性，包括信号的命名、参数定义、取值范围以及在不同控制器和通信协议中的实现一致性。",
+  "uncertain_points": []
+}
+```

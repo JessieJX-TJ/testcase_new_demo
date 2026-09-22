@@ -1,0 +1,146 @@
+{
+  "table_type": "signal_table",
+  "topic": "Roof RHBLamp brightness and breathing command specification for Interior Lighting Sub System",
+  "row_semantics": "Each row defines a specific command or mode for controlling the roof right-hand side ambient lamp (RHBLamp), including brightness level and breathing rate.",
+  "column_semantics": {
+    "Input": "The source of the command, typically a communication bus like LIN.",
+    "LIN": "Local Interconnect Network interface for signal transmission.",
+    "RHZCU": "Right Hand Zone Control Unit, responsible for processing commands.",
+    "RoofAmbtLampB_RH": "Signal for controlling the roof ambient lamp on the right side.",
+    "RHZCU_LIN5": "Specific LIN channel used by the RHZCU.",
+    "内灯SSTS": "Internal lighting subsystem status."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RoofRHBLampBrtnsCmd_1",
+      "type": "command",
+      "description": "Command for setting the brightness level of the roof RHBLamp."
+    },
+    {
+      "name": "RoofRHBLampBrthngCmd_1",
+      "type": "command",
+      "description": "Command for setting the breathing rate of the roof RHBLamp."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Hand Zone Control Unit, responsible for processing and executing commands related to the roof RHBLamp."
+    },
+    {
+      "name": "RoofAmbtLampB_RH",
+      "type": "output_signal",
+      "description": "Signal sent to control the brightness of the roof ambient lamp on the right side."
+    },
+    {
+      "name": "RoofRHBLampBrthngCmd_1",
+      "type": "output_signal",
+      "description": "Signal sent to control the breathing rate of the roof ambient lamp on the right side."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Brightness Level",
+      "description": "Defined by hexadecimal values (0x00-0xFF) where 0x00 means no request and 0x01-0x64 represent 1%-100% brightness.",
+      "type": "parameter"
+    },
+    {
+      "name": "Breathing Rate",
+      "description": "Defined by hexadecimal values (0x00-0x1F) where each value corresponds to a specific rate in seconds.",
+      "type": "parameter"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RoofAmbtLampB_RH",
+      "description": "Controls the brightness of the roof ambient lamp on the right side.",
+      "type": "signal"
+    },
+    {
+      "name": "RoofRHBLampBrthngCmd_1",
+      "description": "Controls the breathing rate of the roof ambient lamp on the right side.",
+      "type": "signal"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate0",
+      "value": "/",
+      "description": "No request, no timing constraint."
+    },
+    {
+      "name": "Rate1",
+      "value": "500ms",
+      "description": "Breathing rate of 500 milliseconds."
+    },
+    {
+      "name": "Rate2",
+      "value": "1s",
+      "description": "Breathing rate of 1 second."
+    },
+    {
+      "name": "Rate3",
+      "value": "1s",
+      "description": "Breathing rate of 1 second."
+    },
+    {
+      "name": "Rate4",
+      "value": "2s",
+      "description": "Breathing rate of 2 seconds."
+    },
+    {
+      "name": "Rate5",
+      "value": "2.4s",
+      "description": "Breathing rate of 2.4 seconds."
+    },
+    {
+      "name": "Rate6",
+      "value": "3s",
+      "description": "Breathing rate of 3 seconds."
+    },
+    {
+      "name": "Rate7",
+      "value": "3.5s",
+      "description": "Breathing rate of 3.5 seconds."
+    },
+    {
+      "name": "Rate8",
+      "value": "4s",
+      "description": "Breathing rate of 4 seconds."
+    },
+    {
+      "name": "Rate9",
+      "value": "4.5s",
+      "description": "Breathing rate of 4.5 seconds."
+    },
+    {
+      "name": "Rate10",
+      "value": "5s",
+      "description": "Breathing rate of 5 seconds."
+    },
+    {
+      "name": "Rate11",
+      "value": "6s",
+      "description": "Breathing rate of 6 seconds."
+    },
+    {
+      "name": "Rate12",
+      "value": "7s",
+      "description": "Breathing rate of 7 seconds."
+    },
+    {
+      "name": "Rate13",
+      "value": "8s",
+      "description": "Breathing rate of 8 seconds."
+    },
+    {
+      "name": "Rate14",
+      "value": "10s",
+      "description": "Breathing rate of 10 seconds."
+    }
+  ],
+  "engineering_interpretation": "This table specifies the command structure and parameter definitions for controlling the brightness and breathing rate of the roof right-hand side ambient lamp within the Interior Lighting Sub System. It is used to verify that the RHZCU correctly interprets and applies the specified brightness levels and breathing rates as defined by the hexadecimal commands.",
+  "uncertain_points": []
+}

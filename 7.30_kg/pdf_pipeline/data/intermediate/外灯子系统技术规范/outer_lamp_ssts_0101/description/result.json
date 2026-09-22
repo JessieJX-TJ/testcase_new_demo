@@ -1,0 +1,31 @@
+{
+  "table_type": "parameter_table",
+  "topic": "转向灯开关作为唤醒源的唤醒/休眠方式定义",
+  "row_semantics": "描述了特定唤醒源（转向灯开关）触发系统唤醒或休眠时所采用的方式及其相关参数。",
+  "column_semantics": {
+    "唤醒源": "指明了触发系统状态变化的输入信号或事件，这里是转向灯开关的状态。",
+    "唤醒/休眠方式": "详细说明了当该唤醒源被激活时，系统将采取的具体唤醒或休眠策略，例如检测到定义阻值。",
+    "备注": "提供额外的信息或上下文，可能包含对唤醒/休眠方式的补充说明或限制条件。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "entity_name": "转向灯开关",
+      "entity_type": "输入信号",
+      "description": "一个物理开关，用于控制车辆转向灯的开启与关闭，同时也是本规范中定义的唤醒源。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition_name": "检测到定义阻值",
+      "condition_type": "系统状态",
+      "description": "当转向灯开关被激活时，系统会检测其电路中的阻值是否符合预设的定义阻值，以此判断是否满足唤醒或休眠的条件。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证当转向灯开关作为唤醒源时，系统能否正确识别其状态并按照预定义的方式进行唤醒或休眠操作，特别是检测到定义阻值这一关键条件的实现情况。",
+  "uncertain_points": []
+}

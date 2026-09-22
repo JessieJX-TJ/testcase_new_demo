@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "车顶射灯控制逻辑与状态反馈",
+  "row_semantics": "描述了在特定输入条件下，系统执行的动作序列及其状态反馈流程。",
+  "column_semantics": "表格包含三列：条件/请求、执行动作、备注。其中‘执行动作’列详细列出了系统响应步骤。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ICB_S32G_M",
+      "type": "controller",
+      "description": "车身控制器，接收并转发IPD（集成动力域）的车顶射灯关闭请求。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "车顶射灯控制模块，负责处理车顶射灯的开启/关闭状态，并反馈给相关系统。"
+    },
+    {
+      "name": "数字灯光 APP_ICB",
+      "type": "application",
+      "description": "数字灯光应用程序，用于控制和反馈车顶射灯的状态及故障信息。"
+    },
+    {
+      "name": "外灯组合服务 ICB",
+      "type": "service",
+      "description": "外灯组合服务模块，负责将车顶射灯状态传递给外部应用。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "IPD 请求关闭",
+      "description": "来自IPD的车顶射灯关闭请求，触发系统响应流程。"
+    },
+    {
+      "name": "辅助远光使能情况下 LHZCU 判断远光灯关闭",
+      "description": "在辅助远光灯功能启用时，LHZCU判断远光灯是否关闭，影响车顶射灯状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RoofSpotLightFucProStatus",
+      "type": "signal",
+      "description": "车顶射灯功能状态，指示当前是否处于功能激活状态。"
+    },
+    {
+      "name": "RoofSpotLightReq",
+      "type": "signal",
+      "description": "车顶射灯请求信号，表示对车顶射灯的控制请求（如关闭）。"
+    },
+    {
+      "name": "RoofSpotLightSta",
+      "type": "signal",
+      "description": "车顶射灯状态信号，指示车顶射灯的实际状态（如关闭）。"
+    },
+    {
+      "name": "MainBeamFucProStatus",
+      "type": "signal",
+      "description": "主光束功能状态，指示主光束灯的功能状态。"
+    },
+    {
+      "name": "RoofSpotLightErrSta",
+      "type": "signal",
+      "description": "车顶射灯错误状态信号，指示是否存在故障。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "description": "系统正常运行，无故障状态。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车顶射灯从接收到关闭请求到最终状态反馈的完整控制逻辑和状态流转过程，可用于验证车顶射灯控制模块在不同输入条件下的正确响应和状态反馈功能。",
+  "uncertain_points": []
+}
+```

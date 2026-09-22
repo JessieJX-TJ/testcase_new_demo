@@ -1,0 +1,110 @@
+```json
+[
+  {
+    "head": "日间行车灯关闭",
+    "relation": "前提条件",
+    "tail": "ICB将服务接口或控制信号转换成RTE信号发给数字灯光SDK",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "RTE信号",
+      "数字灯光SDK"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "日间行车灯开关状态设置为OFF",
+    "relation": "触发条件",
+    "tail": "LHZCU根据日行灯控制仲裁状态{ExteriorLightSwitchProcess. DayRunningLightFucProStatus}=0x0=OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "DayRunningLightFucProStatus",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "位置灯开关状态设置为OFF",
+    "relation": "触发条件",
+    "tail": "Notifier获取位置灯开关状态{ExteriorLightSwitchProcess.CombLghtSwStatus.CombLghtSwSta}=0x0=OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Notifier",
+      "CombLghtSwStatus",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "位置灯开关状态设置为OFF",
+    "relation": "抑制条件",
+    "tail": "{ExteriorLightSwitchProcess.CombLghtFucProStatus.CombLghtFucProStatus}接口参数为0x0=ALL.OFF时",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "CombLghtFucProStatus",
+      "0x0=ALL.OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "日间行车灯状态反馈至LHZCU",
+    "relation": "输入为",
+    "tail": "{DayRunningLight.DayRunningLightState.DayRunningLightSta}{InstanceID=1}=0x0=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DayRunningLight",
+      "LHZCU",
+      "InstanceID=1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "位置灯状态反馈至LHZCU",
+    "relation": "输入为",
+    "tail": "{SidePositionLight.SidePositionLightStatus.SidePositionLightSta}{InstanceID=5}=0x0=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "SidePositionLight",
+      "LHZCU",
+      "InstanceID=5"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "日间行车灯错误状态反馈至LHZCU",
+    "relation": "输入为",
+    "tail": "{DayRunningLight.DayRunningLightErrorStatus}{InstanceID=1}=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DayRunningLight",
+      "LHZCU",
+      "InstanceID=1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "位置灯错误状态反馈至LHZCU",
+    "relation": "输入为",
+    "tail": "{SidePositionLight.SidePositionLightErrorStatus}{InstanceID=5}=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "SidePositionLight",
+      "LHZCU",
+      "InstanceID=5"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "位置灯私有CAN通讯方案",
+    "relation": "依赖于",
+    "tail": "(exlSideLghtHwDrvEnPrm=0x0;备注:位置灯私有CAN通讯方案,以instance3,4,5,6,7,8发送)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "CAN通讯方案",
+      "exlSideLghtHwDrvEnPrm"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

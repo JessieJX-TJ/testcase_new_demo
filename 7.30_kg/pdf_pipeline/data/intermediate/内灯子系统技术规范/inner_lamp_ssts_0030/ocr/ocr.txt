@@ -1,0 +1,65 @@
+子系统技术规范
+Sub System Technical Specification
+IM
+内灯子系统 Interior Lighting Sub System
+智己汽车
+Z-ONE-3.0平台-SSTS-
+版本<1.2>
+185 of 235 页
+IBD10
+灯头按照对应的呼吸亮度曲线进行周期闪烁,(呼吸时忽略亮度信
+号)
+指令值为0时,立即停止呼吸闪烁
+不同呼吸模式切换时,立即停止当前呼吸,切换下一呼吸模式
+RoofLHALampFa
+RoofAmb
+RHZCU
+内灯
+deSpdCmd_1
+输入
+LIN
+tLampA_
+LIN5
+SSTS
+LH
+氛围灯渐变速度指令
+0x0=RoofLHALampFadeSpdCmd_1_0_Spd0
+0x1=RoofLHALampFadeSpdCmd_1_1_Spd1
+0x2=RoofLHALampFadeSpdCmd_1_2_Spd2
+0x3=RoofLHALampFadeSpdCmd_1_3_Spd3
+灯头颜色/亮度切换时从当前状态到目标状态切换的所需的时间
+默认速度 Spd0: 2000ms
+Spd1:300ms
+Spd2:100ms;(能力预留)
+Spd3:(预留0)
+RoofLHBLampOn
+RoofAmbt
+Off_1
+ampBL
+LINS
+H
+氛围灯开启请求
+0x0=RoofLHBLampOnOff_1_0_OFF
+0x1=RoofLHBLampOnOff_1_1_ON
+点亮ON时需同时接收到非0值的颜色亮度指令
+RoofLHBLampCo
+lorCmd_1
+tLampB
+氛围灯颜色指令
+0x00= RoofLHBLampColorCmd_1_0_No_Request
+0x01-0xFF=各个颜色值
+灯头切换为色坐标对应的颜色
+指令值为0或者未定义颜色号时保持颜色不变
+RoofLHBLampBrt
+nsCmd_l
+氛围灯亮度指令
+0x00= RoofLHBLampBrtnsCmd_1_0_No_Request
+0x01-0x64=1%-100%
+0x65-0xFF=Reserved
+灯头亮度调节到相应的百分比值
+指令值为0时保持亮度不变
+hngCmd_1
+tLampB_
+氛围灯呼吸指令
+0x0=RoofLHBLampBrthngCmd_1_0_No_Request
+0x1=RoofLHBLampBrthngCmd_1_1_Rate1

@@ -1,0 +1,96 @@
+```json
+[
+  {
+    "head": "右后转向灯被控制点亮或熄灭",
+    "relation": "触发条件",
+    "tail": "周期调用ControlDirectionLight接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "周期调用该服务接口,控制右后转向灯点亮或者熄灭",
+      "Interface Name: ControlDirectionLight"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左前转向灯状态被订阅",
+    "relation": "触发条件",
+    "tail": "调用DirectionLightStatus接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "调用该服务接口,订阅左前转向灯状态",
+      "Interface Name: DirectionLightStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯状态被订阅",
+    "relation": "触发条件",
+    "tail": "调用DirectionLightStatus接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "调用该服务接口,订阅右前转向灯状态",
+      "Interface Name: DirectionLightStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯状态为OFF",
+    "relation": "输入为",
+    "tail": "DirectionLightReq参数值为0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Parameter Name: {DirectionLightReq}",
+      "InstanceID=8",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯状态为ON",
+    "relation": "输入为",
+    "tail": "DirectionLightReq参数值为0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Parameter Name: {DirectionLightReq}",
+      "InstanceID=8",
+      "0x1=ON"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左前转向灯状态为Unknown",
+    "relation": "输出为",
+    "tail": "DirectionLightSta参数值为0x2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "调用该服务接口,订阅左前转向灯状态",
+      "Parameter Name: {DirectionLightSta}",
+      "InstanceID=1",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU参与左前转向灯状态监控",
+    "relation": "依赖于",
+    "tail": "DirectionLightStatus接口(左前)",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "LHZCU",
+      "调用该服务接口,订阅左前转向灯状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RHZCU参与右前转向灯状态监控",
+    "relation": "依赖于",
+    "tail": "DirectionLightStatus接口(右前)",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "RHZCU",
+      "调用该服务接口,订阅右前转向灯状态"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

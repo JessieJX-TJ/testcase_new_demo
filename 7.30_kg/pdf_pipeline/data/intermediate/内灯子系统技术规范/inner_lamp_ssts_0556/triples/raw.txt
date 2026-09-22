@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "化妆镜灯开启",
+    "relation": "触发条件",
+    "tail": "接收到应用控制模块的请求信号 VatyMirLampCtrlCmd=0x1 (Open)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["VatyMirLampCtrlCmd", "0x1", "Open"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "化妆镜灯关闭",
+    "relation": "触发条件",
+    "tail": "接收到 VatyMirLampCtrlCmd=0x0 (Close)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["VatyMirLampCtrlCmd", "0x0", "Close"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "化妆镜灯驱动控制模块发送驱动 TmdDlyLamp_HSD (高)",
+    "relation": "前提条件",
+    "tail": "化妆镜灯无短路故障",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["化妆镜灯无短路故障", "TmdDlyLamp_HSD"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "化妆镜灯驱动关闭",
+    "relation": "故障响应",
+    "tail": "检测到化妆镜灯短路故障",
+    "triple_type": "故障响应",
+    "evidence_terms": ["化妆镜灯短路故障", "关闭化妆镜灯驱动"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "化妆镜灯驱动保持高电平",
+    "relation": "状态保持条件",
+    "tail": "接收到应用控制模块的请求信号 VatyMirLampCtrlCmd=0x1 (Open)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["VatyMirLampCtrlCmd=0x1", "TmdDlyLamp_HSD"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "化妆镜灯驱动关闭",
+    "relation": "退出条件",
+    "tail": "接收到 VatyMirLampCtrlCmd=0x0 (Close)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["VatyMirLampCtrlCmd=0x0", "关闭化妆镜灯驱动"],
+    "confidence_note": "high"
+  }
+]
+```

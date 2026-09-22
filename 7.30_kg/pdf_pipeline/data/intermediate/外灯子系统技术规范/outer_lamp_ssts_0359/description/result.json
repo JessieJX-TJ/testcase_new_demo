@@ -1,0 +1,57 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Control and Status of Side Position Lights (Left and Right Rear Position Lamps)",
+  "row_semantics": "Each row represents a specific interface or parameter related to the control and status of side position lights, including command requests and status feedback.",
+  "column_semantics": "The table is structured with two main sections: the left column lists the interface names and parameters, while the right column provides detailed descriptions, including parameter values and their meanings. The second section includes a horizontal header for system components involved in the process.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ControlSidePositionLight.SidePositionLightReq",
+      "type": "function",
+      "description": "Interface for requesting control of the side position light."
+    },
+    {
+      "name": "SidePositionLightStatus.SidePositionLightStatus",
+      "type": "function",
+      "description": "Interface for reporting the status of the side position light."
+    },
+    {
+      "name": "SOA",
+      "type": "controller",
+      "description": "System-on-a-Chip, likely responsible for processing control commands."
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "Regional Zone Control Unit, possibly managing regional lighting functions."
+    },
+    {
+      "name": "ICB/LHZCU",
+      "type": "controller",
+      "description": "Integrated Central Body/Light Head Zone Control Unit, likely handling central lighting control."
+    },
+    {
+      "name": "外灯SSTS",
+      "type": "system",
+      "description": "External Lighting System, the overall system responsible for external lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightReq",
+      "type": "input_signal",
+      "description": "Request signal to control the side position light, with values 0x0 (OFF) and 0x1 (ON)."
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "output_signal",
+      "description": "Status signal indicating the current state of the side position light, with values 0x0 (OFF), 0x1 (ON), and 0x2 (Unknown)."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interfaces and parameters for controlling and monitoring the side position lights in a vehicle's external lighting system. It specifies how commands are sent to control the lights and how their status is reported back, involving multiple controllers within the vehicle's architecture.",
+  "uncertain_points": []
+}

@@ -1,0 +1,69 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "外灯组合服务 (ICB) 的功能结构与信号流向",
+  "row_semantics": "表示系统中的不同控制器或模块，从下层控制器向上层服务汇聚，再由上层服务向下层控制器输出控制信号。",
+  "column_semantics": "无明确列概念，整体为流程图形式，展示信号和控制流的层级关系。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "外灯组合服务 (ICB)",
+      "type": "功能/服务",
+      "description": "核心外灯控制逻辑，负责整合和分配外灯相关控制指令。"
+    },
+    {
+      "name": "(LHZCU)",
+      "type": "控制器/模块",
+      "description": "左侧后组合单元，负责处理左侧外灯相关的输入信号。"
+    },
+    {
+      "name": "(RHZCU)",
+      "type": "控制器/模块",
+      "description": "右侧后组合单元，负责处理右侧外灯相关的输入信号。"
+    },
+    {
+      "name": "(RZCU)",
+      "type": "控制器/模块",
+      "description": "右侧中央组合单元，可能负责更复杂的右侧外灯控制逻辑。"
+    },
+    {
+      "name": "LHA",
+      "type": "输出信号",
+      "description": "左侧前大灯（Headlamp Assembly）的控制信号。"
+    },
+    {
+      "name": "RHA",
+      "type": "输出信号",
+      "description": "右侧前大灯（Headlamp Assembly）的控制信号。"
+    },
+    {
+      "name": "Tail_lpAsmbA_LH",
+      "type": "输出信号",
+      "description": "左侧尾灯总成（Tail Lamp Assembly Left Hand）的控制信号。"
+    },
+    {
+      "name": "Tail_lpAsmbA_RH",
+      "type": "输出信号",
+      "description": "右侧尾灯总成（Tail Lamp Assembly Right Hand）的控制信号。"
+    },
+    {
+      "name": "Tail_lpAsmbB",
+      "type": "输出信号",
+      "description": "另一种类型的尾灯总成（可能为高位刹车灯或倒车灯）的控制信号。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    "LHA",
+    "RHA",
+    "Tail_lpAsmbA_LH",
+    "Tail_lpAsmbA_RH",
+    "Tail_lpAsmbB"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该图用于验证外灯组合服务 (ICB) 的信号路由和控制逻辑，确保其能够正确地从各个组合单元接收输入，并向相应的外灯组件发送正确的控制信号。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,107 @@
+{
+  "table_type": "other",
+  "topic": "转向灯开关控制模块 LHZCU 的功能规范与状态反馈机制",
+  "row_semantics": "表格描述了转向灯开关控制模块 (LHZCU) 在不同操作场景下的状态反馈逻辑，包括与 ICB (Interior Control Box) 和 SDM (Smart Domain Module) 的交互，以及相关的系统状态、信号变化和定时要求。",
+  "column_semantics": "表格分为两列：左侧为备注信息，右侧为详细的技术规范描述，包含模块功能、信号交互、状态定义及定时约束。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "转向灯开关控制模块 LHZCU",
+      "type": "controller_module",
+      "description": "负责管理转向灯的开关状态，并将相关状态反馈至 ICB 和 SDM。"
+    },
+    {
+      "name": "ICB",
+      "type": "system_component",
+      "description": "内部控制盒，接收来自 LHZCU 的转向灯状态和故障信息。"
+    },
+    {
+      "name": "SDM",
+      "type": "system_component",
+      "description": "智能域控制器，接收来自 LHZCU 的转向灯控制状态反馈。"
+    },
+    {
+      "name": "DirectionLightSta",
+      "type": "signal",
+      "description": "方向灯状态信号，用于指示转向灯的工作状态（如开启、闪烁）。"
+    },
+    {
+      "name": "DirectionLightErrSta",
+      "type": "signal",
+      "description": "方向灯错误状态信号，用于指示转向灯是否存在故障。"
+    },
+    {
+      "name": "DircnLghtSwReq",
+      "type": "signal",
+      "description": "转向灯开关请求信号，表示驾驶员通过方向盘拨杆发出的转向灯请求。"
+    },
+    {
+      "name": "EDRDircnIndLampSwSts",
+      "type": "signal",
+      "description": "外部转向灯独立开关状态信号，用于记录外部转向灯的开关状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "转向灯开关控制模块 LHZCU 将状态/故障状态反馈至 ICB",
+      "details": "当 DirectionLightSta 或 DirectionLightErrSta 发生变化时，LHZCU 会将这些状态反馈给 ICB。例如，InstanceID=5 表示左转向灯开启，InstanceID=7 表示右转向灯开启；InstanceID=5 或 7 的 DirectionLightErrSta=0x0 表示无错误。"
+    },
+    {
+      "condition": "外灯组合服务 ICB 订阅接口",
+      "details": "ICB 订阅 ExteriorLightControlSystem 中的方向灯状态和错误状态信号，以便实时监控转向灯的工作情况。"
+    },
+    {
+      "condition": "转向灯开关控制模块 LHZCU 将转向灯开关状态反馈至 ICB",
+      "details": "LHZCU 根据 DircnLghtSwReq 信号的变化，将转向灯开关状态反馈给 ICB。例如，DircnLghtSwReq=0x2 表示左后第二档位开启。"
+    },
+    {
+      "condition": "转向灯开关控制模块 LHZCU 将转向灯控制状态反馈至 SDM",
+      "details": "LHZCU 将 EDRDircnIndLampSwSts 信号的变化反馈给 SDM，以实现对转向灯的精确控制。"
+    },
+    {
+      "condition": "转向灯驱动处理模块接收控制信号",
+      "details": "转向灯驱动处理模块接收来自 LHZCU 的控制信号，开启或关闭转向灯，直至转向灯开关预处理模块跳变为 Off 状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "DirectionLightSta",
+      "description": "输出方向灯的状态信号，指示转向灯是否开启或闪烁。"
+    },
+    {
+      "output": "DirectionLightErrSta",
+      "description": "输出方向灯的错误状态信号，指示转向灯是否存在故障。"
+    },
+    {
+      "output": "DircnLghtSwReq",
+      "description": "输出转向灯开关请求信号，表示驾驶员的操作意图。"
+    },
+    {
+      "output": "EDRDircnIndLampSwSts",
+      "description": "输出外部转向灯独立开关状态信号，记录外部转向灯的实际开关状态。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "DirectionLightErrSta",
+      "description": "当 DirectionLightErrSta=0x1 时，表示转向灯存在故障；当 DirectionLightErrSta=0x0 时，表示无错误。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "转向灯同步性要求",
+      "details": "转向灯的闪烁频率和声音提醒需与实际转向灯的闪烁频率保持一致，三者同步性允许的最大延时周期为 40ms。"
+    },
+    {
+      "constraint": "单侧转向灯的同步性",
+      "details": "单侧转向灯的同步性允许的最大延时周期为 40ms。"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证转向灯开关控制模块 (LHZCU) 在不同操作场景下的状态反馈逻辑，确保其与 ICB 和 SDM 的交互符合设计规范，并满足转向灯的同步性和定时要求。",
+  "uncertain_points": [
+    "具体的 'exlDircnLghtHwDrvEnPrm' 参数含义未明确说明。",
+    " 'ExteriorLightSwitchProcess' 的具体实现细节未在表格中给出。",
+    " '转向灯二档位' 的具体定义和应用场景未详细说明。"
+  ]
+}

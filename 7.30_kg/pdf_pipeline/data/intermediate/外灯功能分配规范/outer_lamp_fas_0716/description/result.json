@@ -1,0 +1,32 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑，特别是前雾灯和后雾灯的开关控制流程",
+  "row_semantics": "表格按时间顺序或事件触发顺序描述了外灯控制模块（LHZCU）在接收到不同输入信号时的处理流程和状态变化",
+  "column_semantics": "左侧列为步骤编号，右侧详细描述了每个步骤的触发条件、执行动作及相关的系统状态和接口调用",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "LHZCU (Lighting and Hazard Control Unit)",
+    "S32G (System-on-Chip processor)",
+    "ICB (Integrated Control Block)",
+    "RZCU (Rear Zone Control Unit)"
+  ],
+  "core_conditions": [
+    "ExteriorLightSwitchProcess.FrontFogLghtFucProsSta",
+    "ExteriorLightControlSystem.ControlRearFogLight.RearFogLightReq",
+    "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta"
+  ],
+  "core_outputs": [
+    "ExteriorLightSwitchProcess.RearFogLghtFucProCtrl.RearFogLghtFucProCtrlResp",
+    "ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta",
+    "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta",
+    "RearFogLight.RearFogLightState.RearFogLightSta",
+    "RearFogLight.RearFogLightErrorStatus.RearFogLightErrorSta"
+  ],
+  "core_faults": [
+    "No Error"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了车辆外灯（尤其是前雾灯和后雾灯）的控制逻辑，包括从用户输入（如大屏开关请求）到最终驱动执行器（如雾灯点亮）的完整流程，以及各阶段的状态反馈和错误处理机制，可用于验证外灯控制系统在不同场景下的功能正确性和鲁棒性。",
+  "uncertain_points": []
+}

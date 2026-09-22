@@ -1,0 +1,57 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车电子电器系统中CAN通信接口的定义与配置",
+  "row_semantics": "描述特定CAN信号的详细属性及其在系统中的角色",
+  "column_semantics": {
+    "Interface Name": "信号或接口的名称，标识其功能和用途",
+    "Direction": "信号的数据流向，指示是发送还是接收",
+    "Type": "信号的通信类型，如CAN总线",
+    "Sender/Provider": "信号的提供方或发送方，通常是某个控制器或模块",
+    "Receiver/Consumer": "信号的消费方或接收方，通常是另一个控制器或模块",
+    "Channel": "信号传输的物理通道或网络，如HDLTCAN",
+    "Interface Source": "信号的来源或定义出处"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "HdlmpLvlngReq",
+      "type": "signal",
+      "description": "外灯水平调节请求信号，用于控制外灯的水平位置调整"
+    },
+    {
+      "name": "ICB",
+      "type": "controller/module",
+      "description": "集成控制盒（Integrated Control Box），作为信号的提供方"
+    },
+    {
+      "name": "LHA/RHA",
+      "type": "controller/module",
+      "description": "左侧水平调节执行器（Left Horizontal Actuator）/右侧水平调节执行器（Right Horizontal Actuator），作为信号的消费方"
+    },
+    {
+      "name": "HDLTCAN",
+      "type": "communication channel",
+      "description": "高速数据链路总线（High Data Rate Link CAN），用于信号传输"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "HdlmpLvlngReq",
+      "direction": "output",
+      "type": "CAN",
+      "sender": "ICB",
+      "receiver": "LHA/RHA",
+      "channel": "HDLTCAN",
+      "value": "0x0 = HdlmpLvlngReq_L_0_NoRequest",
+      "description": "当值为0x0时，表示无请求状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯水平调节请求信号（HdlmpLvlngReq）的通信参数，包括其方向、类型、发送方、接收方、传输通道等信息，可用于验证ICB模块通过HDLTCAN总线向LHA/RHA模块发送水平调节请求信号的功能正确性。",
+  "uncertain_points": []
+}
+```

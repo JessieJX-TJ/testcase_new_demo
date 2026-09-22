@@ -1,0 +1,83 @@
+```json
+[
+  {
+    "head": "DoorFL1Lamp exits Breathing Mode",
+    "relation": "前提条件",
+    "tail": "接收到氛围灯控制模块的请求信DoorFL1LampOnOff_1=0x00 (OFF)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFL1LampOnOff_1",
+      "Breathing Mode"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL1Lamp exits Breathing Mode",
+    "relation": "前提条件",
+    "tail": "DoorFL1LampBrthngCmd_1=0x00 (No Request)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFL1LampBrthngCmd_1",
+      "Breathing Mode"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "AmbtLightLHRollingCtrl_1不再按照1顺序叠加",
+    "relation": "前提条件",
+    "tail": "停止呼吸模式",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AmbtLightLHRollingCtrl_1",
+      "Breathing Mode"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL1Lamp静态点亮",
+    "relation": "前提条件",
+    "tail": "AmbtLightLHRollingCtrl_1不再按照1顺序叠加且颜色亮度信号异常",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AmbtLightLHRollingCtrl_1",
+      "颜色亮度信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL1Lamp常亮显示",
+    "relation": "前提条件",
+    "tail": "AmbtLightLHRollingCtrl_1不再按照1顺序叠加且颜色亮度信号正常",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AmbtLightLHRollingCtrl_1",
+      "颜色亮度信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL1Lamp关闭",
+    "relation": "故障响应",
+    "tail": "氛围灯模块出现过压、欠压故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "过压",
+      "欠压",
+      "DoorFL1Lamp"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL1Lamp关闭",
+    "relation": "超时约束",
+    "tail": "超过6秒未接收到ZCU的LIN信号",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "6秒",
+      "ZCU_LIN",
+      "DoorFL1Lamp"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

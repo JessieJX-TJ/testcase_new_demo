@@ -1,0 +1,49 @@
+{
+  "table_type": "signal_table",
+  "topic": "前雾灯驱动控制逻辑",
+  "row_semantics": "描述特定输入信号组合下执行的动作及其相关模块",
+  "column_semantics": {
+    "输入": "定义触发动作的条件或信号",
+    "执行动作": "当输入条件满足时，系统将执行的具体操作",
+    "备注": "提供额外的上下文信息或说明"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LFrtFogLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "前雾灯硬件控制信号，可能为数字量（如0x1表示开启）"
+    },
+    {
+      "name": "LFrtFogLghtCtrl_HW_1_On",
+      "type": "input_signal",
+      "description": "前雾灯硬件控制信号的开启状态"
+    },
+    {
+      "name": "前雾灯驱动处理模块",
+      "type": "controller_module",
+      "description": "负责处理前雾灯控制逻辑的电子控制单元或软件模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "LFrtFogLghtCtrl_HW == 0x1",
+      "description": "当前雾灯硬件控制信号值为0x1"
+    },
+    {
+      "condition": "LFrtFogLghtCtrl_HW_1_On",
+      "description": "前雾灯硬件控制信号处于开启状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "执行动作",
+      "description": "根据输入条件，系统将执行相应的前雾灯驱动控制操作"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证前雾灯驱动处理模块在接收到特定硬件控制信号时，能否正确执行前雾灯的开启控制。",
+  "uncertain_points": []
+}

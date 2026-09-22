@@ -1,0 +1,66 @@
+{
+  "table_type": "other",
+  "topic": "转向灯开关控制模块状态反馈与同步性要求",
+  "row_semantics": "表格分为两个主要部分：上半部分描述了转向灯开关控制模块（LHZCU）向不同系统反馈的状态信息；下半部分为备注，详细说明了转向灯退出同步性的具体要求。",
+  "column_semantics": "表格包含两列，左侧为编号和备注区域，右侧为主要的技术规范内容。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "转向灯开关控制模块 LHZCU",
+      "type": "controller_module",
+      "description": "负责管理转向灯开关状态的控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "system_interface",
+      "description": "Interface Control Block，可能指车辆内部通信总线或接口模块"
+    },
+    {
+      "name": "SDM",
+      "type": "system_interface",
+      "description": "Safety Domain Module，安全域模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DircnLghtSwReq",
+      "type": "input_signal",
+      "description": "方向灯开关请求信号，表示用户对转向灯的操作意图"
+    },
+    {
+      "name": "EDRDircnIndLampSwSts",
+      "type": "input_signal",
+      "description": "电子数据记录器（EDR）中的方向指示灯开关状态信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightSwStatus",
+      "type": "output_signal",
+      "description": "转向灯开关状态反馈至ICB"
+    },
+    {
+      "name": "EDRDircnIndLampSwSts",
+      "type": "output_signal",
+      "description": "转向灯控制状态反馈至SDM"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "同步退出延时",
+      "type": "timing_constraint",
+      "description": "转向灯图标闪烁频率、声音提醒与实际转向灯闪烁频率需保持一致，三者同步性允许的最大延时为50ms",
+      "value": "50ms"
+    },
+    {
+      "name": "单侧熄灭延时",
+      "type": "timing_constraint",
+      "description": "单侧转向灯熄灭同步性允许的最大延时周期为40ms",
+      "value": "40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证转向灯开关控制模块（LHZCU）在不同系统间的状态反馈功能，以及转向灯在退出工作模式时的同步性表现，确保其符合规定的延时要求。",
+  "uncertain_points": []
+}

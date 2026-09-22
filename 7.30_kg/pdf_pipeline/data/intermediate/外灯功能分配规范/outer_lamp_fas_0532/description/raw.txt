@@ -1,0 +1,140 @@
+```json
+{
+  "table_type": "other",
+  "topic": "前雾灯控制请求重发机制及外灯状态主动获取规范",
+  "row_semantics": "表格按编号列出不同的前雾灯控制请求重发机制和外灯状态获取规则，每条规则描述了特定控制器（ICB）在不同系统中的行为要求。",
+  "column_semantics": "表格仅有一列，包含详细的文本描述，无横向分类。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "集成式车身控制器，负责发送前雾灯控制请求。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "module",
+      "description": "外部灯光控制系统，处理前雾灯的控制逻辑。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外部灯光开关流程模块，用于管理前雾灯的切换过程。"
+    },
+    {
+      "name": "FrontFogLightControl",
+      "type": "module",
+      "description": "前雾灯控制模块，负责前雾灯的具体控制功能。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "本地区域集中单元，与ICB协同工作以获取外灯状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "未收到反馈",
+      "description": "在规定时间内（2s）未接收到预期的反馈信号。",
+      "related_signals": [
+        "ExteriorLightControlSystem.ControlFrontFogLight.FrontFogLightResp",
+        "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl.FrontFogLghtFucProCtrlResp",
+        "FrontFogLight.FrontFogLightControl.FrontFogLightCtrResp"
+      ]
+    },
+    {
+      "condition": "请求状态未变",
+      "description": "在尝试重发后，请求的状态仍未发生变化。",
+      "related_signals": [
+        "ExteriorLightControlSystem.ControlFrontFogLight.FrontFogLightReq",
+        "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl.FrontFogLghtFucProCtrlReq",
+        "FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "前雾灯请求重发",
+      "description": "在满足重发条件时，按照周期（<=50ms）重发前雾灯请求。",
+      "related_signals": [
+        "ExteriorLightControlSystem.ControlFrontFogLight.FrontFogLightReq",
+        "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl.FrontFogLghtFucProCtrlReq",
+        "FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq"
+      ]
+    },
+    {
+      "output": "停止发送",
+      "description": "在尝试重发3次后仍未成功，则停止发送前雾灯请求。",
+      "related_signals": []
+    },
+    {
+      "output": "主动获取外灯状态",
+      "description": "在未收到状态反馈的情况下，通过状态服务 Getter() 方法主动获取外灯状态。",
+      "related_signals": []
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "前雾灯同步失败",
+      "description": "左侧和右侧前雾灯未能保持同步点亮，或延时超过40ms。",
+      "related_signals": []
+    },
+    {
+      "fault": "前雾灯请求未响应",
+      "description": "在规定时间内未收到前雾灯控制请求的反馈。",
+      "related_signals": [
+        "ExteriorLightControlSystem.ControlFrontFogLight.FrontFogLightResp",
+        "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl.FrontFogLghtFucProCtrlResp",
+        "FrontFogLight.FrontFogLightControl.FrontFogLightCtrResp"
+      ]
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "最大延时",
+      "value": "40ms",
+      "description": "左侧和右侧前雾灯需保持同步点亮，两者的最大延时不能超过40ms。",
+      "related_signals": []
+    },
+    {
+      "constraint": "超时时间",
+      "value": "2s",
+      "description": "在发送前雾灯请求后，若2秒内未收到反馈，则触发重发机制。",
+      "related_signals": [
+        "ExteriorLightControlSystem.ControlFrontFogLight.FrontFogLightResp",
+        "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl.FrontFogLghtFucProCtrlResp",
+        "FrontFogLight.FrontFogLightControl.FrontFogLightCtrResp"
+      ]
+    },
+    {
+      "constraint": "重发周期",
+      "value": "<=50ms",
+      "description": "在满足重发条件时，前雾灯请求应按照不超过50ms的周期进行重发。",
+      "related_signals": [
+        "ExteriorLightControlSystem.ControlFrontFogLight.FrontFogLightReq",
+        "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl.FrontFogLghtFucProCtrlReq",
+        "FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq"
+      ]
+    },
+    {
+      "constraint": "重发次数",
+      "value": "3次",
+      "description": "在超时且请求状态未变的情况下，最多尝试重发3次。",
+      "related_signals": [
+        "ExteriorLightControlSystem.ControlFrontFogLight.FrontFogLightReq",
+        "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl.FrontFogLghtFucProCtrlReq",
+        "FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq"
+      ]
+    },
+    {
+      "constraint": "状态反馈等待时间",
+      "value": "500ms",
+      "description": "针对 Onchange 类型的外灯状态服务，消费端在服务发现订阅或外灯控制请求后的500ms内若未收到状态反馈，则主动获取外灯状态。",
+      "related_signals": []
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了前雾灯控制请求的重发机制以及外灯状态的主动获取规则，主要用于验证车辆电子电器系统中前雾灯控制逻辑的正确性和可靠性，确保在异常情况下能够及时重发请求并主动获取外灯状态。",
+  "uncertain_points": []
+}
+```

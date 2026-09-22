@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "拖车制动灯控制逻辑与状态反馈机制",
+  "row_semantics": "描述了拖车制动灯的控制流程、状态反馈以及故障处理的步骤和条件",
+  "column_semantics": "无明确列，内容为按行组织的控制逻辑和状态定义",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "TDM", // Tractor Driver Module
+    "LHZCU", // Left Hand Zone Control Unit
+    "ICB", // Integrated Control Box
+    "RZCU" // Rear Zone Control Unit
+  ],
+  "core_conditions": [
+    "TrlrBrkLghtOnReq", // 拖车制动灯请求信号
+    "TrlrBrkLghtSts", // 拖车制动灯状态
+    "TrlrBrkLghtFltSts", // 拖车制动灯故障状态
+    "BrkLghtSta", // 制动灯状态
+    "BrkLghtFltSta", // 制动灯故障状态
+    "BrkLghtErrSts", // 制动灯错误状态
+    "RzcuBrakeLightFault", // RZCU制动灯故障状态
+    "BrkLghtFltSta", // 外灯组合服务中的制动灯故障状态
+    "ExteriorLightControlSystem.BrakeLightSts", // 外部灯光控制系统制动灯状态
+    "ExteriorLightControlSystem.BrakeLightErrSts" // 外部灯光控制系统制动灯错误状态
+  ],
+  "core_outputs": [
+    "TrlrBrkLghtOnReq_1_On", // 拖车制动灯点亮请求
+    "TrlrBrkLghtOnReq_0_Off", // 拖车制动灯熄灭请求
+    "TrlrBrkLghtSts_1_On", // 拖车制动灯点亮状态
+    "TrlrBrkLghtSts_0_Off", // 拖车制动灯熄灭状态
+    "TrlrBrkLghtFltSts_1_True", // 拖车制动灯故障状态真
+    "TrlrBrkLghtFltSts_0_False", // 拖车制动灯故障状态假
+    "BrkLghtSta_1_On", // 制动灯点亮状态
+    "BrkLghtSta_0_Off", // 制动灯熄灭状态
+    "BrkLghtFltSta_1_True", // 制动灯故障状态真
+    "BrkLghtFltSta_0_False", // 制动灯故障状态假
+    "ExteriorLightControlSystem.BrakeLightSts_ON", // 外部灯光控制系统制动灯点亮
+    "ExteriorLightControlSystem.BrakeLightSts_OFF", // 外部灯光控制系统制动灯熄灭
+    "ExteriorLightControlSystem.BrakeLightErrSts_No Error" // 外部灯光控制系统制动灯无错误
+  ],
+  "core_faults": [
+    "TrlrBrkLghtFltSts", // 拖车制动灯故障
+    "BrkLghtFltSta", // 制动灯故障
+    "ExteriorLightControlSystem.BrakeLightErrSts" // 外部灯光控制系统制动灯错误
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了拖车制动灯的控制逻辑、状态反馈机制以及故障处理规则，可用于验证拖车模式下制动灯的正确点亮/熄灭、状态反馈准确性及故障检测功能。",
+  "uncertain_points": []
+}
+```

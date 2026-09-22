@@ -1,0 +1,90 @@
+```json
+[
+  {
+    "head": "制动灯熄灭",
+    "relation": "前提条件",
+    "tail": "RZCU获取制动灯点亮及故障状态并反馈",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RZCU",
+      "BrkLghtSts_HW",
+      "BrkLghtFltSts_HW",
+      "exlBrkLghtHwDrvEnPrm"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯熄灭",
+    "relation": "前提条件",
+    "tail": "ICB反馈数字灯光SDK获取的制动灯点亮/故障状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "BrkLghtSts",
+      "BrkLghtFltSts",
+      "exlBrkLghtHwDrvEnPrm"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯熄灭",
+    "relation": "前提条件",
+    "tail": "LHZCU将制动灯点亮状态/故障状态反馈至ICB",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "BrkLghtSta",
+      "BrkLghtFltSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯熄灭",
+    "relation": "前提条件",
+    "tail": "ICB将接收到的LHZCU发送的制动灯点亮及故障状态CAN信号转化为服务透",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "ExteriorLightControlSystem.BrakeLightSts",
+      "ExteriorLightControlSystem.BrakeLightErrSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "紧急制动灯熄灭",
+    "relation": "超时约束",
+    "tail": "左侧、右侧以及高位制动灯需保持同步熄灭，三侧最大延时不能超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "紧急制动灯",
+      "同步熄灭",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "紧急制动灯退出",
+    "relation": "触发条件",
+    "tail": "当紧急制动灯处于激活状态，接收到IBS退出紧急制动灯信号时",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "紧急制动灯",
+      "激活状态",
+      "IBS信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "紧急制动灯退出",
+    "relation": "输出为",
+    "tail": "立即退出紧急制动灯",
+    "triple_type": "功能响应",
+    "evidence_terms": [
+      "紧急制动灯",
+      "退出"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

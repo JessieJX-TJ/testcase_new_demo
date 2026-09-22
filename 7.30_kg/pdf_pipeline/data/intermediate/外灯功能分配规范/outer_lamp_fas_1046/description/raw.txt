@@ -1,0 +1,98 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Auto 开关下，用户通过大屏软开关触发后雾灯/近光灯的开启逻辑",
+  "row_semantics": "表格中的每一行代表一个前置条件或状态判断，用于描述在特定条件下系统的行为。",
+  "column_semantics": "表格包含两列：第一列为场景描述和前置条件编号，第二列为具体的条件表达式或状态定义。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Auto",
+      "type": "功能名",
+      "description": "自动模式下的灯光控制功能"
+    },
+    {
+      "name": "UsrMd",
+      "type": "控制器/模块名",
+      "description": "用户模式控制器，管理不同的用户操作模式（如睡眠、待机、OTA等）"
+    },
+    {
+      "name": "VehMd",
+      "type": "控制器/模块名",
+      "description": "车辆模式控制器，管理车辆的不同运行模式（如运输模式）"
+    },
+    {
+      "name": "DippedBeamLight",
+      "type": "控制器/模块名",
+      "description": "近光灯控制器，负责近光灯的状态管理"
+    },
+    {
+      "name": "SidePositionLight",
+      "type": "控制器/模块名",
+      "description": "位置灯控制器，负责位置灯的状态管理"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Light Handling Zone Control Unit，灯光处理区域控制单元，负责灯光的综合控制"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "description": "用户模式必须处于非睡眠、非待机、非OTA模式",
+      "expression": "UsrMd != 0x0 && UsrMd != 0x1 && UsrMd != 0x6"
+    },
+    {
+      "name": "UsrMdV",
+      "description": "用户模式值有效",
+      "expression": "UsrMdV = Valid"
+    },
+    {
+      "name": "VehMd",
+      "description": "车辆模式必须处于运输模式",
+      "expression": "VehMd = 0x3"
+    },
+    {
+      "name": "VehMdV",
+      "description": "车辆模式值有效",
+      "expression": "VehMdV = Valid"
+    },
+    {
+      "name": "DippedBeamLight Status",
+      "description": "近光灯反馈状态为关闭，通过多个实例ID获取状态",
+      "expression": "近光灯反馈状态为关闭 (a&&b)||(c&d)"
+    },
+    {
+      "name": "LHZCU Judgment",
+      "description": "LHZCU已判断仅位置灯开启，近光灯关闭",
+      "expression": "LHZCU 已判断仅位置灯开启，近光灯关闭"
+    },
+    {
+      "name": "SidePositionLight Status",
+      "description": "位置灯反馈状态为开启",
+      "expression": "位置灯反馈状态为开启"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLight",
+      "description": "近光灯开启",
+      "action": "开启近光灯"
+    },
+    {
+      "name": "SidePositionLight",
+      "description": "位置灯开启",
+      "action": "开启位置灯"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了在Auto模式下，当用户通过大屏软开关触发时，系统如何根据一系列前置条件来判断并开启后雾灯和近光灯。主要用于验证在特定用户和车辆模式下，灯光系统的正确响应逻辑。",
+  "uncertain_points": [
+    "具体CAN通讯方案未明确说明",
+    "部分实例ID的具体含义未详细解释"
+  ]
+}
+```

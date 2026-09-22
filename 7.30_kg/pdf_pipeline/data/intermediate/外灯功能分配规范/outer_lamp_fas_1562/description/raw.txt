@@ -1,0 +1,38 @@
+```json
+{
+  "table_type": "other",
+  "topic": "外灯控制与状态获取的通信协议及重发机制",
+  "row_semantics": "描述了后雾灯控制请求的发送、接收反馈及重发机制，以及外灯状态主动获取的逻辑。",
+  "column_semantics": "无列结构，内容为连续的文本描述，分为三个主要部分：后雾灯控制请求的重发机制、ICB_S32G M控制器相关的后雾灯请求处理、以及外灯状态主动获取的逻辑。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "RearFogLightFucProCtrl",
+    "ExteriorLightSwitchProcess",
+    "ICB_S32G M",
+    "LHZCU",
+    "ICB_8295"
+  ],
+  "core_conditions": [
+    "超时2s未收到反馈",
+    "请求状态未变",
+    "尝试重发<=50ms周期3次"
+  ],
+  "core_outputs": [
+    "ControlSuccess",
+    "RearFogLightCtrlReq",
+    "RearFogLightCtrlResp",
+    "Getter()"
+  ],
+  "core_faults": [
+    "停止发送请求"
+  ],
+  "core_timing_constraints": [
+    "2s",
+    "50ms",
+    "500ms"
+  ],
+  "engineering_interpretation": "该技术规范定义了外灯（特别是后雾灯）控制请求的通信协议、重发机制以及外灯状态获取的逻辑，可用于验证外灯控制系统在通信失败情况下的重发机制和状态主动获取功能是否符合设计要求。",
+  "uncertain_points": []
+}
+```

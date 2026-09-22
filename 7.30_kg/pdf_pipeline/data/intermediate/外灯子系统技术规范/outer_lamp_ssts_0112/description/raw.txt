@@ -1,0 +1,66 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "Dipped Beam Light Driver Module Fault Detection and Handling",
+  "row_semantics": "Each row represents a specific fault condition or action related to the dipped beam light system, including fault generation, detection, and recovery.",
+  "column_semantics": "The first column describes the step or action in the process, while the second column provides detailed technical information about the action, such as signals, states, or conditions.",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RDipdBeamLghtDrvMdl",
+      "type": "controller_module",
+      "description": "The Dipped Beam Light Driver Module responsible for controlling the dipped beam light."
+    },
+    {
+      "name": "DipdBmLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "The Dipped Beam Light Control Module that receives commands from the driver module."
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "DippedBeamLightErrorStatus.DippedBeamLightSta",
+      "value": "0x1 (Error)",
+      "description": "An error status indicating a fault in the dipped beam light system."
+    },
+    {
+      "signal": "InstanceID",
+      "value": "2",
+      "description": "An instance identifier used to specify the particular dipped beam light being controlled."
+    },
+    {
+      "signal": "ExitCondition",
+      "value": "Short Circuit Recovery",
+      "description": "The condition under which the fault handling process exits, specifically when a short circuit is detected and recovered."
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DippedBeamLight",
+      "action": "Continuous sending",
+      "description": "The system continuously sends the dipped beam light signal to the control module."
+    },
+    {
+      "signal": "DTCClearance",
+      "action": "Set DTC",
+      "description": "A Diagnostic Trouble Code (DTC) is set in response to the detected fault."
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "Dipped Beam Light Error",
+      "status": "Error",
+      "description": "An error has occurred in the dipped beam light system, indicated by the error status."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "At least three frames",
+      "description": "The system must send at least three frames of the dipped beam light signal to the control module."
+    }
+  ],
+  "engineering_interpretation": "This table defines a test scenario for verifying the fault detection and handling logic of the dipped beam light system, specifically focusing on error status reporting, DTC setting, and recovery from a short circuit condition.",
+  "uncertain_points": []
+}
+```

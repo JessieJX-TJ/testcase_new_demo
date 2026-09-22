@@ -1,0 +1,63 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑 - 近光灯（Dipped Beam）功能",
+  "row_semantics": "表格定义了近光灯控制的触发条件、执行动作和退出条件，描述了一个状态转换或行为序列。",
+  "column_semantics": {
+    "1": "前置条件/触发条件",
+    "2": "执行动作/退出条件描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "exlDipBeamHwDrvEnPrm",
+      "type": "parameter",
+      "description": "近光灯硬件驱动使能参数，值为1表示启用"
+    },
+    {
+      "name": "DipdBeamLghtCtrlMdl",
+      "type": "controller",
+      "description": "近光灯控制模块，负责接收请求并发送状态"
+    },
+    {
+      "name": "RDipdBeamLghtDrvMdl",
+      "type": "controller",
+      "description": "近光灯驱动模块，负责实际输出控制"
+    },
+    {
+      "name": "ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts",
+      "type": "signal",
+      "description": "外部灯光控制器中的近光灯请求状态信号，值为0x0表示关闭"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "收到【DipdBeamLghtCtrlMdl】发送的 ControlDippedBeamLight. DippedBeamLightReq==0 (Off) (InstanceID=2)",
+      "description": "当近光灯控制模块发送关闭请求时触发"
+    },
+    {
+      "condition": "ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts == 0x0 == Off",
+      "description": "外部灯光控制器中的近光灯请求状态为关闭"
+    },
+    {
+      "condition": "收到【DipdBeamLghtCtrlMdl】发送的",
+      "description": "退出条件，当收到控制模块的特定消息时结束当前流程"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "RDipdBeamLghtDrvMdl 停止驱动右近光灯输出 (DipdBeamHdlmp_RH_HSD)",
+      "description": "停止向右近光灯输出信号"
+    },
+    {
+      "output": "RDipdBeamLghtDrvMdl 持续发送 DippedBeamLightStatus. DippedBeamLightSta == 0 (Off) (InstanceID=2) 至 DipdBeamLghtCtrlMdl",
+      "description": "持续向控制模块发送近光灯关闭状态，至少三帧"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证近光灯控制系统在接收到关闭请求时，是否能够正确停止驱动并持续发送正确的关闭状态反馈。",
+  "uncertain_points": []
+}
+```

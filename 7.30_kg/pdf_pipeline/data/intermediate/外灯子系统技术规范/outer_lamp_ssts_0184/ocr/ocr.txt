@@ -1,0 +1,13 @@
+前置条件
+1.DILghtFbkSOAEnPrm==1(Enable)
+触发条件
+收到【DILghtCtrlMdl】发送的DirectionLightControl. DirectionLightCtrReq
+==0(Off) InstanceID=4
+执行动作
+1.【RRDILghtDrvMd1】停止驱动右后转向灯输出(DILamp_RH_HSD)
+2.【RRDILghtDrvMdl】持续发送 DirectionLightControl. DirectionLightSta
+=0(Off)InstanceID=4至【DILghtCtrlMdl】,至少发送三帧
+退出条件
+1.收到【DILghtCtrlMdl】发送的DirectionLightControl.
+DirectionLightCtrReq==1(On) InstanceID=4
+异常处理

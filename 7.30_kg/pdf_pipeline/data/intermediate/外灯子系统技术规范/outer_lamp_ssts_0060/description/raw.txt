@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "左后转向灯控制逻辑",
+  "row_semantics": "表格按功能执行的阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "表格分为两列，左侧为条件/动作描述，右侧为具体条件或操作内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RLDILghtDrvMdl",
+      "type": "controller_module",
+      "description": "转向灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlDircnLghtHwDrvEnPrm",
+      "value": "1",
+      "description": "外部方向灯硬件驱动使能参数为1"
+    },
+    {
+      "name": "左后转向灯输出状态",
+      "value": "输出状态",
+      "description": "左后转向灯处于输出状态"
+    },
+    {
+      "name": "检测到左后转向灯开路",
+      "value": "检测到",
+      "description": "系统检测到左后转向灯存在开路故障"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RLDircnLghtSts_HW",
+      "value": "0x0 (Off)",
+      "description": "发送指令关闭左后转向灯硬件状态"
+    },
+    {
+      "name": "RLDircnLghtFltsts_HW",
+      "value": "0x1 (True)",
+      "description": "反馈左后转向灯硬件故障状态为真（存在故障）"
+    },
+    {
+      "name": "DTCB104A13",
+      "value": "置位",
+      "description": "置位DTC B104A13故障码"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTCB104A13",
+      "description": "左后转向灯开路故障代码"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定前置条件下，当检测到左后转向灯开路时，系统应如何通过RLDILghtDrvMdl模块发送关闭指令并反馈故障状态，同时置位相应的DTC故障码。可用于验证转向灯故障诊断与处理逻辑的正确性。",
+  "uncertain_points": []
+}
+```

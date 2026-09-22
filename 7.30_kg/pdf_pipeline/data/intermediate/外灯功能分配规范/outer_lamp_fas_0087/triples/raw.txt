@@ -1,0 +1,89 @@
+```json
+[
+  {
+    "head": "寻车灯控制模块 LHZCU 信号跳变为控制双闪灯按照 1.25Hz 频率闪烁",
+    "relation": "前提条件",
+    "tail": "尾门模块 RZCU 双闪灯请求 1||2||3||4||5",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "尾门模块 RZCU",
+      "双闪灯请求",
+      "1.25Hz 频率"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "寻车灯控制模块 LHZCU 发送转向灯流水模式使能状态",
+    "relation": "输出为",
+    "tail": "DircnLghtMdSts_0_Enabled",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "寻车灯控制模块 LHZCU",
+      "转向灯流水模式"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 根据接收到的 LHZCU 发送的转向灯控制双闪灯流水点亮/熄灭",
+    "relation": "依赖于",
+    "tail": "LHZCU 控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "双闪灯流水"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 根据 LHZCU 控制输入延时 60ms 并分发控制信号至 LHZCU、RHZCU 和 RZCU",
+    "relation": "输入为",
+    "tail": "LHZCU 控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "RHZCU",
+      "RZCU",
+      "60ms 延时"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动处理模块 LHZCU/RHZCU/RZCU 接收 ICB 控制信号，驱动双闪灯点亮/熄灭",
+    "relation": "输入为",
+    "tail": "ICB 控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "驱动处理模块",
+      "ICB",
+      "双闪灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯开关控制模块 LHZCU 控制信号做危险警报灯图标指示灯显示以及声音提醒",
+    "relation": "包含子功能",
+    "tail": "危险警报灯图标指示灯显示",
+    "triple_type": "功能包含关系",
+    "evidence_terms": [
+      "危险警报灯",
+      "LHZCU",
+      "图标指示灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动处理模块 RHZCU/RZCU 将转向灯点亮状态反馈至寻车灯控制模块 LHZCU",
+    "relation": "输出到",
+    "tail": "寻车灯控制模块 LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "驱动处理模块",
+      "转向灯点亮状态",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

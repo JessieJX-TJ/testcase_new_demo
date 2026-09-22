@@ -1,0 +1,51 @@
+```json
+[
+  {
+    "head": "远光灯左侧和右侧保持同步点亮",
+    "relation": "前提条件",
+    "tail": "两侧最大延时不能超过40ms",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "远光灯开启同步性要求",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB发送MainBeamLightReq请求",
+    "relation": "前提条件",
+    "tail": "未收到MainBeamLightResp反馈且请求状态未变",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB远光灯请求重发机制",
+      "MainBeamLightResp",
+      "请求状态未变"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "MainBeamLightReq请求重发",
+    "relation": "超时约束",
+    "tail": "尝试按照<=50ms周期重发3次",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "ICB远光灯请求重发机制",
+      "50ms",
+      "3次"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态通过Getter()方式获取",
+    "relation": "前提条件",
+    "tail": "服务发现订阅或者外灯控制请求后的500ms内未收到状态反馈",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "外灯状态主动获取",
+      "500ms",
+      "Getter()"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

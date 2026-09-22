@@ -1,0 +1,99 @@
+[
+  {
+    "head": "侧位灯停止驱动",
+    "relation": "前提条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==0(Off)(InstanceID=1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq",
+      "Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0085",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "FLSideLghtDrvMdl持续发送侧位灯状态",
+    "relation": "前提条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==0(Off)(InstanceID=1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq",
+      "Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0085",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "侧位灯状态为关闭",
+    "relation": "输出为",
+    "tail": "FLSideLghtDrvMdl持续发送SidePositionLightStatus. SidePositionLightSta=0(Off)(InstanceID=1)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FLSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "SidePositionLightSta",
+      "Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0085",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "至少发送三帧侧位灯状态",
+    "relation": "前提条件",
+    "tail": "FLSideLghtDrvMdl持续发送SidePositionLightStatus. SidePositionLightSta=0(Off)(InstanceID=1)至【SideLghtCtrlMdl】",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "FLSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "SidePositionLightSta",
+      "Off",
+      "SideLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0085",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "侧位灯保持关闭状态",
+    "relation": "状态保持条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==0(Off)(InstanceID=1)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq",
+      "Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0085",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "退出侧位灯关闭控制",
+    "relation": "前提条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==1(On)(InstanceID=1)",
+    "triple_type": "退出条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq",
+      "On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0085",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

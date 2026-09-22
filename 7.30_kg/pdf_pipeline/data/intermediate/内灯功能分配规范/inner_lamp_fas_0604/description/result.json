@@ -1,0 +1,58 @@
+{
+  "table_type": "signal_table",
+  "topic": "内灯（Interior Light）功能分配规范",
+  "row_semantics": "描述特定信号的输入/输出属性、通信方式、发送与接收节点、指定信号通道及来源。",
+  "column_semantics": {
+    "接口名称需与逻辑框图内容一致": "信号的名称，需与系统逻辑框图中的定义保持一致。",
+    "输入/输出/提供/消费": "信号的流向或作用类型（如输入信号、输出信号、提供方或消费方）。",
+    "CAN/LIN/SOA服务/硬线等": "信号的通信协议或传输方式（如CAN总线、LIN总线、SOA服务或硬线连接）。",
+    "信号发送节点或者SoA服务提供方": "负责发送该信号的节点或服务提供方。",
+    "信号接收节点或者SoA服务消费方": "负责接收该信号的节点或服务消费方。",
+    "指定信号通道": "信号在系统中传输的具体通道标识。",
+    "指定信号来源": "信号的原始来源或生成方。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "RRWlcmPedlLghtCtrlCmd",
+      "type": "功能名",
+      "description": "遥控车门灯控制命令信号，用于控制内灯的状态（开/关）。",
+      "details": {
+        "值0x0": "Close",
+        "值0x1": "Open"
+      }
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块名",
+      "description": "车身域控制器，负责接收和处理内灯控制命令。",
+      "role": "信号接收节点"
+    },
+    {
+      "name": "RHZC U",
+      "type": "控制器/模块名",
+      "description": "另一个车身域控制器，可能与RHZCU协同工作，负责发送内灯控制命令。",
+      "role": "信号发送节点"
+    },
+    {
+      "name": "内灯SST S",
+      "type": "信号来源",
+      "description": "内灯系统的状态信号源，提供内灯当前状态信息。",
+      "source_of": "RRWlcmPedlLghtCtrlCmd"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "RRWlcmPedlLghtCtrlCmd",
+      "type": "输出信号",
+      "description": "由RHZC U发送的内灯控制命令信号，用于控制内灯的开关状态。",
+      "direction": "从RHZC U到RHZCU"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了内灯控制系统中一个关键控制信号（RRWlcmPedlLghtCtrlCmd）的功能分配，包括其通信方式、发送与接收节点以及信号来源，可用于验证内灯控制命令在车身域控制器之间的正确传输与执行。",
+  "uncertain_points": []
+}

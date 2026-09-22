@@ -1,0 +1,115 @@
+```json
+[
+  {
+    "head": "[转向灯开关控制模块LHZCU]内部软件保持有效请求",
+    "relation": "前提条件",
+    "tail": "DircnLghtSwReq=0x1=DircnLghtSwReq_1_Left_First_gear_direction_light_on",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DircnLghtSwReq=0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "控制转向灯按照1.25Hz频率闪烁",
+    "relation": "触发条件",
+    "tail": "DircnLghtSwReq=0x1=DircnLghtSwReq_1_Left_First_gear_direction_light_on",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "1.25Hz 频率闪烁",
+      "800ms 周期"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "[转向灯开关控制模块LHZCU]信号发送为",
+    "relation": "依赖于",
+    "tail": "FLDircnLghtCtrl=0x1=FLDircnLghtCtrl_1_on; RLDircnLghtCtrl=0x1=RLDircnLghtCtrl_1_on",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FLDircnLghtCtrl",
+      "RLDircnLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "发送转向灯流水模式使能状态",
+    "relation": "输出为",
+    "tail": "DircnLghtMdSts=0x0=DircnLghtMdSts_0_Enabled",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DircnLghtMdSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB根据接收到的 LHZCU发送的转向灯 FLDircnLghtCtrl/RLDircnLghtCtrl=ON/OFF,转换成控CAN信号",
+    "relation": "输入为",
+    "tail": "FLDircnLghtCtrl/RLDircnLghtCtrl=ON/OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "CAN信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB同样根据 LHZCU控制输入,将控制信号延时60ms分发至LHZCU/RZCU",
+    "relation": "超时约束",
+    "tail": "60ms 分发延时",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "RZCU",
+      "60ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "[驱动处理模块LHZCU/RZCU]接收ICB发送的控制信号",
+    "relation": "输入来自",
+    "tail": "ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "驱动处理模块",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "[转向灯开关控制模块LHZCU]将状态/故障状态反馈至ICB",
+    "relation": "输出到",
+    "tail": "ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "做左侧转向灯图标指示灯显示以及声音提醒",
+    "relation": "包含子功能",
+    "tail": "[转向灯开关控制模块LHZCU]",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "左侧转向灯",
+      "图标指示灯",
+      "声音提醒"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "单侧转向灯的同步性允许的最大延时周期为40ms",
+    "relation": "超时约束",
+    "tail": "40ms 单侧转向灯同步性最大延时",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "转向灯同步性",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

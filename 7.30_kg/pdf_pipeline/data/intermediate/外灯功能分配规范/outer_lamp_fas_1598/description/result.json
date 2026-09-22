@@ -1,0 +1,65 @@
+{
+  "table_type": "signal_table",
+  "topic": "Exterior Light Switch Process and Direction Light Control",
+  "row_semantics": "Each row represents a specific function or process related to exterior lighting control, detailing the interface type, parameter name, and possible states or values for that parameter.",
+  "column_semantics": {
+    "Column1": "Function/Process Name (e.g., ExteriorLightSwitchProcess)",
+    "Column2": "Input/Output Type (e.g., SO - Signal Output)",
+    "Column3": "Controller/Module Name (e.g., LHZCU, ICB_S32G_M)",
+    "Column4": "Interface Type (e.g., Filed, Field, Method)",
+    "Column5": "Interface Name (e.g., CombLightFucProStatus)",
+    "Column6": "Parameter Name (e.g., {CombLightFucProSta})",
+    "Column7": "Possible Parameter Values and Descriptions"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "function",
+      "description": "Process controlling the status of various exterior lights based on switch inputs."
+    },
+    {
+      "name": "DirectionLightControl",
+      "type": "function",
+      "description": "Process controlling the direction light functionality."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CombLightFucProStatus",
+      "type": "parameter",
+      "description": "Combined light function status parameter for side position and dipped beam lights."
+    },
+    {
+      "name": "ReverseLightFucProStatus",
+      "type": "parameter",
+      "description": "Reverse light function status parameter."
+    },
+    {
+      "name": "RearFogLightFucProStatus",
+      "type": "parameter",
+      "description": "Rear fog light function status parameter."
+    },
+    {
+      "name": "ControlDirectionLightReq",
+      "type": "parameter",
+      "description": "Request parameter for controlling direction lights."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SO",
+      "type": "output",
+      "description": "Signal Output indicating the status of the controlled light functions."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interface parameters and their possible states for controlling exterior lights (side position, dipped beam, reverse, rear fog) and direction lights. It is used to verify the correct mapping and behavior of these light functions across different controllers/modules in response to system inputs.",
+  "uncertain_points": [
+    "The exact timing or sequence of state changes is not specified.",
+    "The interaction between different light functions (e.g., simultaneous activation) is not detailed.",
+    "The threshold values for switching between states are not provided."
+  ]
+}

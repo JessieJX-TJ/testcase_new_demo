@@ -1,0 +1,62 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Error Status",
+  "row_semantics": "Each row represents a specific direction light error status subscription interface for different instances (left or right turn signals).",
+  "column_semantics": {
+    "1": "Function Name (DirectionLight.DirectionLightErrorStatus)",
+    "2": "Consumption Type (SOA)",
+    "3": "Controller/Module (LHZCU, RHZCU)",
+    "4": "Controller/Module (LHZCU)",
+    "5": "Unused",
+    "6": "Hard Line Fault Status"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "function",
+      "description": "Service interface to subscribe to the error status of direction lights."
+    },
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "Unique identifier for each instance of the direction light error status subscription. InstanceID=1 for left turn signal, InstanceID=2 for right turn signal."
+    },
+    {
+      "name": "DirectionLightErrorSta",
+      "type": "input_signal",
+      "description": "Parameter name for the direction light error status."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "HardLineFaultStatus",
+      "type": "output_signal",
+      "description": "Indicates the hard line fault status of the subscribed direction light."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "code": "0x0",
+      "description": "No error detected in the direction light."
+    },
+    {
+      "name": "Error",
+      "code": "0x1",
+      "description": "An error has been detected in the direction light."
+    },
+    {
+      "name": "Unknown",
+      "code": "0x2",
+      "description": "The status of the direction light is unknown."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for subscribing to the error status of left and right front turn signals, including the parameter names, instance IDs, and possible error states.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,74 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "DoorFL1LampBrthngCmd_l 呼吸模式亮度调节参数表",
+  "row_semantics": "时间点 (ms) 或数据点 (个数)",
+  "column_semantics": "亮度百分比 (%)",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorFL1LampBrthngCmd_l",
+      "type": "signal",
+      "description": "门灯呼吸模式控制命令信号"
+    },
+    {
+      "name": "AmbiLampBrthng",
+      "type": "signal",
+      "description": "环境灯呼吸模式控制信号"
+    },
+    {
+      "name": "Rate3holdoffPercent",
+      "type": "parameter",
+      "description": "呼吸模式亮度变化的百分比阈值"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "呼吸周期",
+      "description": "DoorFL1LampBrthngCmd_l = 0x3 (Rate3 1s)"
+    },
+    {
+      "name": "亮度变化曲线",
+      "description": "y=x^2 (二次函数) 从 0% 到 100%"
+    },
+    {
+      "name": "等待时间",
+      "description": "100ms"
+    },
+    {
+      "name": "模式类型",
+      "description": "Rate13 和 Rate15"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "亮度百分比",
+      "description": "在指定时间点或数据点上的亮度值"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "呼吸周期",
+      "value": "1s",
+      "unit": "s",
+      "description": "呼吸模式的周期时间为 1 秒"
+    },
+    {
+      "name": "亮度变化时间",
+      "value": "400ms",
+      "unit": "ms",
+      "description": "亮度从 0% 变化到 100% 的时间"
+    },
+    {
+      "name": "等待时间",
+      "value": "100ms",
+      "unit": "ms",
+      "description": "在亮度变化前的等待时间"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了 DoorFL1LampBrthngCmd_l 信号在 Rate13 和 Rate15 呼吸模式下的亮度调节参数，可用于验证门灯在不同呼吸模式下亮度随时间变化的正确性。",
+  "uncertain_points": []
+}
+```

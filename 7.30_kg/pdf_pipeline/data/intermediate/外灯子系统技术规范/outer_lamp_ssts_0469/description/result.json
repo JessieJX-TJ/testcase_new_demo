@@ -1,0 +1,58 @@
+{
+  "table_type": "fault_table",
+  "topic": "右后位置灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件到异常处理的各个阶段。",
+  "column_semantics": "表格包含两列：左侧为阶段描述（如前置条件、触发条件等），右侧为该阶段的具体内容或动作。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RRSideLghtDrvMdl",
+      "type": "controller_module",
+      "description": "右侧位置灯驱动模块"
+    },
+    {
+      "name": "SideLightCtrlMdl",
+      "type": "controller_module",
+      "description": "侧灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "右后位置灯处于输出状态"
+    },
+    {
+      "condition": "触发条件",
+      "description": "检测到右后位置灯短路到电源"
+    },
+    {
+      "condition": "退出条件",
+      "description": "检测到短路恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "PosLamp_LH&RH_HSD",
+      "action": "停止驱动右后位置灯输出"
+    },
+    {
+      "signal": "SidePositionLightStatus",
+      "action": "持续发送 SidePositionLightStatus, 值为 0 (Off), InstanceID=4"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTC B1061 12",
+      "description": "置位 DTC B1061 12"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在触发条件下，持续发送 SidePositionLightStatus 至少三帧"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当右后位置灯发生短路到电源故障时，系统应如何响应（停止输出、发送状态信息、置位故障码）以及何时恢复正常（短路恢复）。可用于验证整车电子系统对位置灯短路故障的检测、处理和恢复能力。",
+  "uncertain_points": []
+}

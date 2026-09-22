@@ -1,0 +1,101 @@
+[
+  {
+    "head": "后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "外灯组合服务订阅状态为On (ExteriorLightControlSystem.RearFogLightSts = On)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外灯组合服务ICB订阅接口",
+      "ExteriorLightControlSystem.RearFogLightSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0280",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "前提条件",
+    "tail": "后雾灯点亮请求为1 (RearFogLightControl.RearFogLightCtrReq = 0x1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外灯控制组合服务ICB调用接口",
+      "RearFogLightControl.RearFogLightCtrReq"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0280",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "依赖于",
+    "tail": "驱动处理模块RZCU内部跳变为硬线输出",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "驱动处理模块RZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0280",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯指示灯显示",
+    "relation": "触发条件",
+    "tail": "后雾灯开关状态为ON (RearFogLightSwStatus = ON)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "HMI子系统ICB调用接口",
+      "ExteriorLightSwitchProcess.RearFogLightSwStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0280",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "后雾灯点亮状态为ON (ExteriorLightSwitchProcess.RearFogLightSta = ON)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "后雾灯控制模块LHZCU",
+      "ICB",
+      "ExteriorLightSwitchProcess.RearFogLightSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0280",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯错误状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "后雾灯错误状态为No Error (ExteriorLightSwitchProcess.RearFogLightErrSta = No Error)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "后雾灯控制模块LHZCU",
+      "ICB",
+      "ExteriorLightSwitchProcess.RearFogLightErrSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0280",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯开启同步性要求",
+    "relation": "超时约束",
+    "tail": "左侧和右侧后雾灯最大延时不能超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "备注",
+      "后雾灯开启同步性要求"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0280",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

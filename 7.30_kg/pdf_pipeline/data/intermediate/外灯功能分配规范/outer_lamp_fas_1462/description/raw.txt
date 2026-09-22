@@ -1,0 +1,122 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "右侧转向灯关闭原因及其相关控制信号的定义与映射",
+  "row_semantics": "表格的每一行代表一个特定的右侧转向灯关闭原因代码（RDirLghtClsCtrlRsn），并详细描述了该代码对应的中文含义、相关的控制信号状态以及在系统中的存储和优先级规则。",
+  "column_semantics": {
+    "Column1": "左侧为空白，可能为行号或分组标识。",
+    "Column2": "右侧转向灯关闭原因代码（RDirLghtClsCtrlRsn）及其对应的十六进制值。",
+    "Column3": "右侧转向灯关闭原因的中文解释。",
+    "Column4": "与该关闭原因相关的控制信号状态定义。",
+    "Column5": "存储规则说明，指出系统将存储最近10次右侧转向灯关闭原因信息，并按时间顺序排列，最近的一次原因放在序号最低位。",
+    "Column6": "控制器/模块名称（LHZ CU）"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RDirLghtClsCtrlRsn",
+      "type": "Parameter",
+      "description": "右侧转向灯关闭原因代码，用于标识转向灯关闭的具体原因。"
+    },
+    {
+      "name": "LDirLghtClsCtrlRsn",
+      "type": "Parameter",
+      "description": "左侧转向灯关闭原因代码，与右侧转向灯关闭原因代码类似，但针对左侧转向灯。"
+    },
+    {
+      "name": "LHZ CU",
+      "type": "Controller",
+      "description": "Local Hazard Control Unit (局部危险控制单元)，负责处理转向灯相关的控制逻辑和状态管理。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ExteriorUnlockHazardLight",
+      "type": "Condition",
+      "description": "外部解锁时的危险灯状态，可能导致转向灯关闭。"
+    },
+    {
+      "name": "PowerLiftgateHazardLightRequest",
+      "type": "Condition",
+      "description": "电动后备箱危险灯请求状态，可能影响转向灯关闭。"
+    },
+    {
+      "name": "FMCLightNotRequested",
+      "type": "Condition",
+      "description": "前方照明灯未被请求的状态，可能与转向灯关闭相关。"
+    },
+    {
+      "name": "SOARequestOff",
+      "type": "Condition",
+      "description": "安全操作区域请求关闭状态，可能导致转向灯关闭。"
+    },
+    {
+      "name": "UsageModeDissatisfaction",
+      "type": "Condition",
+      "description": "使用模式不满意度，可能触发转向灯关闭。"
+    },
+    {
+      "name": "VehicleModeDissatisfaction",
+      "type": "Condition",
+      "description": "车辆模式不满意度，可能导致转向灯关闭。"
+    },
+    {
+      "name": "FactoryModeOverTime",
+      "type": "Condition",
+      "description": "工厂模式超时，可能触发转向灯关闭。"
+    },
+    {
+      "name": "SteeringWheelOperation",
+      "type": "Condition",
+      "description": "方向盘操作状态，可能导致转向灯关闭。"
+    },
+    {
+      "name": "OtherReasons",
+      "type": "Condition",
+      "description": "其他原因导致的转向灯关闭。"
+    },
+    {
+      "name": "TireBlowoutSts",
+      "type": "Condition",
+      "description": "轮胎爆胎状态，可能导致转向灯关闭。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightSwitchOff",
+      "type": "Output",
+      "description": "方向灯开关关闭状态，表示转向灯已关闭。"
+    },
+    {
+      "name": "HazardLightSwitchOff",
+      "type": "Output",
+      "description": "危险灯开关关闭状态，表示危险灯已关闭。"
+    },
+    {
+      "name": "VehicleCrashSignalNotActive",
+      "type": "Output",
+      "description": "车辆碰撞信号未激活状态，可能与转向灯关闭相关。"
+    },
+    {
+      "name": "AirbagDeployedNotActive",
+      "type": "Output",
+      "description": "气囊未部署状态，可能触发转向灯关闭。"
+    },
+    {
+      "name": "ToffCrashNotActive",
+      "type": "Output",
+      "description": "碰撞后恢复时间未激活状态，可能导致转向灯关闭。"
+    },
+    {
+      "name": "VehicleIntrusionPreven",
+      "type": "Output",
+      "description": "车辆入侵预防状态，可能与转向灯关闭相关。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了右侧转向灯关闭的各种原因代码及其对应的控制信号状态，主要用于诊断和记录转向灯关闭的原因，以便进行故障分析和测试验证。",
+  "uncertain_points": []
+}
+```

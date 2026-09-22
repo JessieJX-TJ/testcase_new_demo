@@ -1,0 +1,50 @@
+{
+  "table_type": "signal_table",
+  "topic": "左侧转向灯控制请求与信号赋值关系",
+  "row_semantics": "用户对左侧转向灯的控制请求动作，包括开启（一档和二档）和关闭（一档和二档）",
+  "column_semantics": {
+    "left_column": "描述用户发出的具体操作指令",
+    "right_column": "对应指令下，系统内部信号的赋值结果"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DircnLghtSwReq",
+      "type": "signal",
+      "description": "左侧转向灯开关请求信号，用于指示转向灯的控制状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Left_First_gear_direction_light_on",
+      "description": "一档请求：左侧第一档转向灯开启"
+    },
+    {
+      "name": "Left_Second_gear_direction_light_on",
+      "description": "二档请求：左侧第二档转向灯开启"
+    },
+    {
+      "name": "Off",
+      "description": "关闭请求：转向灯完全关闭"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "0x1",
+      "description": "表示DircnLghtSwReq信号被赋值为0x1，对应一档转向灯开启"
+    },
+    {
+      "name": "0x2",
+      "description": "表示DircnLghtSwReq信号被赋值为0x2，对应二档转向灯开启"
+    },
+    {
+      "name": "0x0",
+      "description": "表示DircnLghtSwReq信号被赋值为0x0，对应转向灯关闭"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了用户对左侧转向灯进行不同档位（一档、二档）开启和关闭操作时，系统内部DircnLghtSwReq信号应被赋予的具体数值，可用于验证转向灯控制逻辑的正确性。",
+  "uncertain_points": []
+}

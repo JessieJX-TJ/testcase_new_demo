@@ -1,0 +1,118 @@
+```json
+[
+  {
+    "head": "危险警报灯开启闪烁",
+    "relation": "触发条件",
+    "tail": "危险警报灯开关控制模块LHZCU控制危险警报灯以1.25Hz频率闪烁",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "危险警报灯开关控制模块LHZCU",
+      "1.25Hz"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯同步性要求",
+    "relation": "前提条件",
+    "tail": "危险警报灯图标闪烁频率和声音提醒与实际危险警报灯的闪烁频率需保持一致，三者同步性允许的最大延时为50ms",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "危险警报灯",
+      "同步性",
+      "50ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯同步性要求",
+    "relation": "前提条件",
+    "tail": "危险警报灯的同步性允许的最大延时周期为40ms",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "危险警报灯",
+      "同步性",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯开关状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "HzrdLghtSwSts=0x1=HzrdLghtSwSts_1_On",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "危险警报灯开关控制模块LHZCU",
+      "ICB",
+      "HzrdLghtSwSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "双闪灯模式反馈至ICB",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts=0x1=VehHzrdMdSts_1_Manual_Mode",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "危险警报灯开关控制模块LHZCU",
+      "ICB",
+      "VehHzrdMdSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯控制状态反馈至SDM",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts=0x3=EDRDircnIndLampSwSts_3_hazard",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "危险警报灯开关控制模块LHZCU",
+      "SDM",
+      "EDRDircnIndLampSwSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯点亮及故障状态CAN信号透传",
+    "relation": "输入为",
+    "tail": "外灯组合服务ICB接收LHZCU发送的转向灯点亮及故障状态CAN信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "外灯组合服务ICB",
+      "LHZCU",
+      "CAN信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯状态/故障状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "危险警报灯开关控制模块LHZCU将状态/故障状态反馈至ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "危险警报灯开关控制模块LHZCU",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "通过域控获取转向灯状态",
+    "relation": "前提条件",
+    "tail": "exlDircnLghtHwDrvEnPrm=0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "exlDircnLghtHwDrvEnPrm"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "通过数字灯控获取转向灯状态",
+    "relation": "前提条件",
+    "tail": "exlDircnLghtHwDrvEnPrm=0x0|0x2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "exlDircnLghtHwDrvEnPrm"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

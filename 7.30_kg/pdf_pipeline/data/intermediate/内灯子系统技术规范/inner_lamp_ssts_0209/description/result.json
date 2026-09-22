@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"fault_table\",\n  \"topic\": \"诊断故障代码 (DTC) 需求清单\",\n  \"row_semantics\": \"每行代表一个具体的故障诊断需求，按序号排列。\",\n  \"column_semantics\": {\n    \"序号\": \"故障诊断需求的唯一编号。\",\n    \"DTC 显示码\": \"诊断故障代码的显示标识符，当前为 TBD（待定）。\",\n    \"故障描述\": \"对故障现象的详细描述，涉及驱动门地板灯控制电路的短路或开路问题。\",\n    \"故障置位条件\": \"触发该 DTC 的具体条件，包括系统状态和电流阈值/持续时间。\",\n    \"故障恢复条件\": \"清除该 DTC 的条件，主要基于电流有效值和持续时间。\",\n  },\n  \"has_merged_cells\": false,\n  \"header_levels\": 1,\n  \"core_entities\": [\n    {\n      \"name\": \"The Driver Door Floor Lamp Control Circuit\",\n      \"type\": \"功能模块\",\n      \"description\": \"主驾门地板灯控制电路，是故障描述中提及的核心功能模块。\"\n    }\n  ],\n  \"core_conditions\": [\n    {\n      \"name\": \"主驾激光迎宾灯驱动激活状态\",\n      \"type\": \"系统状态\",\n      \"description\": \"表示主驾激光迎宾灯驱动电路处于激活工作状态，是所有故障置位条件中的共同前提。\",\n      \"uncertain_points\": []\n    },\n    {\n      \"name\": \"驱动电流小于阈值 (TBD) A\",\n      \"type\": \"输入信号\",\n      \"description\": \"驱动电路中的电流值低于预设的阈值，用于判断电路短路至电池的情况。\",\n      \"uncertain_points\": [\n        \"阈值的具体数值未明确给出，标记为 TBD (A)。\"\n      ]\n    },\n    {\n      \"name\": \"驱动电流超过阈值 (TBD) A\",\n      \"type\": \"输入信号\",\n      \"description\": \"驱动电路中的电流值超过预设的阈值，用于判断电路短路至地的情况。\",\n      \"uncertain_points\": [\n        \"阈值的具体数值未明确给出，标记为 TBD (A)。\"\n      ]\n    },\n    {\n      \"name\": \"持续 100ms\",\n      \"type\": \"定时\",\n      \"description\": \"故障条件需要持续满足的时间长度，确保不是瞬时干扰导致的误报。\",\n      \"uncertain_points\": []\n    }\n  ],\n  \"core_outputs\": [],\n  \"core_faults\": [\n    {\n      \"code\": \"TBD\",\n      \"description\": \"Driver Door Floor Lamp Control Circuit Short to battery\",\n      \"condition\": \"主驾激光迎宾灯驱动激活状态 + 驱动电流小于阈值 (TBD) A, 持续 100ms\",\n      \"recovery\": \"电流有效值大于 (TBD) A, 持续 100ms\"\n    },\n    {\n      \"code\": \"TBD\",\n      \"description\": \"Driver Door Floor Lamp Control Circuit Short to ground\",\n      \"condition\": \"主驾激光迎宾灯驱动激活状态 + 驱动电流超过阈值 (TBD) A, 持续 100ms\",\n      \"recovery\": \"电流有效值小于 (TBD) A, 持续 100ms\"\n    },\n    {\n      \"code\": \"TBD\",\n      \"description\": \"Driver Door Floor Lamp Control Circuit Open Circuit\",\n      \"condition\": \"主驾激光迎宾灯驱动激活状态 + 驱动电流小于阈值 (TBD) A, 持续 100ms\",\n      \"recovery\": \"电流有效值大于 (TBD) A, 持续 100ms\"\n    }\n  ],\n  \"core_timing_constraints\": [\n    {\n      \"name\": \"持续 100ms\",\n      \"description\": \"故障条件必须持续至少 100 毫秒才能触发 DTC，以排除短暂波动的影响。\",\n      \"uncertain_points\": []\n    }\n  ],\n  \"engineering_interpretation\": \"该表格定义了主驾门地板灯控制电路可能出现的三种故障类型（短路至电池、短路至地、开路），并详细规定了触发这些故障诊断代码（DTC）的条件以及清除这些代码的条件，主要用于指导整车电子电器系统的故障诊断与测试验证。\",\n  \"uncertain_points\": [\n    \"TBD (A)：电流阈值的具体数值未在表格中明确给出，需要进一步确认。\",\n    \"TBD：DTC 显示码的具体编码规则和分配方案未在表格中明确说明，需要进一步确认。\"\n  ]\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

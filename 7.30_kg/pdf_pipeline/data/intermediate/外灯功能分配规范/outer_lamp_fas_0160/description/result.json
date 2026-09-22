@@ -1,0 +1,37 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Brake Light Control System Parameters and Status",
+  "row_semantics": "Each row represents a specific interface or parameter related to the brake light control system, including error states and control commands.",
+  "column_semantics": "The leftmost column categorizes the type of information (e.g., error status, control command), while subsequent columns indicate the service architecture (SOA) and relevant modules/controllers (RZCU, ICB).",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrakeLightErrSts",
+      "type": "status_parameter",
+      "description": "Represents the error status of the brake light system."
+    },
+    {
+      "name": "BrakeLightControl",
+      "type": "control_parameter",
+      "description": "Used to control the on/off state of the brake light."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "BrakeLightCtrlReq",
+      "type": "output_signal",
+      "description": "The request signal to control the brake light, with values indicating ON or OFF."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "BrakeLightErrSts",
+      "description": "Indicates the current error state of the brake light system, including 'No Error', 'Error', and 'Unknown'."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and interfaces for controlling and monitoring the brake light system, enabling tests to verify correct error reporting and control signal behavior under various conditions.",
+  "uncertain_points": []
+}

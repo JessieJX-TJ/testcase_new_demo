@@ -1,0 +1,71 @@
+{
+  "table_type": "logic_table",
+  "topic": "远光灯开关短路到电源时的MainBeamLight控制逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，当远光灯开关发生短路到电源故障时，系统如何通过持续发送信号来控制主大灯，并记录相关故障代码。",
+  "column_semantics": {
+    "前置条件": "触发该逻辑的前提条件，即配置字MainBeamLghtSwSOAEnPrm必须为0（Disable）。",
+    "触发条件": "导致该逻辑执行的具体事件或状态，即远光灯开关发生短路到电源故障。",
+    "执行动作": "在满足触发条件后，系统执行的具体操作序列，包括持续发送特定信号至指定模块，并置位故障代码。",
+    "退出条件": "停止执行该逻辑的条件，即远光灯开关不再短路到电源。",
+    "异常处理": "未明确列出具体异常处理措施，可能需要进一步补充。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLghtSwMdl",
+      "type": "控制器/模块名",
+      "description": "主大灯开关模块，负责接收和处理主大灯开关相关的请求信号。"
+    },
+    {
+      "name": "MainBeamLghtCtrlMdl",
+      "type": "控制器/模块名",
+      "description": "主大灯控制模块，负责根据接收到的请求信号控制主大灯的状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLghtSwSOAEnPrm",
+      "value": "0",
+      "description": "配置字，表示主大灯开关超范围保护功能被禁用。"
+    },
+    {
+      "name": "远光灯开关短路到电源",
+      "description": "触发条件，表示远光灯开关与电源之间发生短路故障。"
+    },
+    {
+      "name": "远光灯开关非短路到电源",
+      "description": "退出条件，表示远光灯开关恢复正常状态，不再短路到电源。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLghtSwReq",
+      "value": "0x0 (Off)",
+      "description": "输出信号，表示主大灯开关请求信号被设置为关闭状态。"
+    },
+    {
+      "name": "DTC B1077 15",
+      "value": "uncertain",
+      "description": "诊断故障代码，表示系统检测到远光灯开关短路到电源故障，并记录该代码。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC B1077 15",
+      "description": "远光灯开关短路到电源故障代码，由系统在检测到该故障时置位。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "action": "持续发送 MainBeamLghtSwReq = 0x0 (Off) 至 MainBeamLghtCtrlMdl",
+      "duration": "至少发送三帧",
+      "description": "在触发条件下，系统需要持续发送至少三帧关闭请求信号以确保主大灯正确关闭。"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证远光灯开关短路到电源故障时，系统是否能够正确响应并控制主大灯关闭，同时记录相应的故障代码。",
+  "uncertain_points": [
+    "异常处理部分未详细说明，可能需要进一步明确具体的异常处理流程。",
+    "DTC B1077 15的具体含义和影响未在表格中详细解释，可能需要参考相关标准或手册。"
+  ]
+}

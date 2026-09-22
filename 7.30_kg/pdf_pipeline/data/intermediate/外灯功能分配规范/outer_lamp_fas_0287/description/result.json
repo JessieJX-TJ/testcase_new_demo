@@ -1,0 +1,64 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能分配规范 - 近光灯控制",
+  "row_semantics": "表格的每一行代表一个独立的近光灯控制服务接口，分别用于控制右侧和左侧近光灯。",
+  "column_semantics": {
+    "A": "消费方 (Service Originator, SO)",
+    "B": "RHZCU (Right Headlamp Zone Control Unit, 右侧大灯区域控制单元)",
+    "C": "ICB (Integrated Control Box, 集成控制盒)",
+    "D": "BS→CS (Base Station to Central System, 基站到中央系统通信)",
+    "E": "备注/描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight.ControlDippedBeamLight",
+      "type": "function",
+      "description": "近光灯控制服务接口"
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "右侧近光灯区域控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "集成控制盒"
+    },
+    {
+      "name": "BS→CS",
+      "type": "communication",
+      "description": "基站到中央系统的通信路径"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例ID，区分不同近光灯（2为右侧，3为左侧）"
+    },
+    {
+      "name": "DippedBeamLightReq",
+      "description": "近光灯请求参数，包含开关状态"
+    },
+    {
+      "name": "0x0=OFF",
+      "description": "表示熄灭状态"
+    },
+    {
+      "name": "0x1=ON",
+      "description": "表示点亮状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLight",
+      "description": "近光灯的实际输出状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆近光灯（Dipped Beam Light）的控制逻辑，包括右侧和左侧近光灯的控制接口、参数格式及控制方式，可用于验证外灯控制系统在不同控制器间的通信与功能实现是否符合规范。",
+  "uncertain_points": []
+}

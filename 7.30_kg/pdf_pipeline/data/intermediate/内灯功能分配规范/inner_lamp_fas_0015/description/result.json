@@ -1,0 +1,79 @@
+{
+  "table_type": "signal_table",
+  "topic": "内灯 (Interior Light) 功能分配规范",
+  "row_semantics": "表格按接口名称（Interface Name）列出各个信号的详细信息，包括其方向、类型、发送方/提供方、接收方/消费方、路径及接口来源。",
+  "column_semantics": {
+    "Interface Name": "接口名称，即信号或数据流的标识符。",
+    "Direction": "信号的方向，如输入、输出、提供或消费。",
+    "Type": "信号的类型，如CAN/LIN/SOA服务或硬线等。",
+    "Sender/Provider": "信号的发送方或服务提供方，通常为节点或SoA服务。",
+    "Receiver/Consumer": "信号的接收方或服务消费方，通常为节点或SoA服务。",
+    "Channel": "信号传输的路径或通道，如指定信号通道。",
+    "Interface Source": "接口的来源，如指定信号来源。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorMapLampXX",
+      "type": "output_signal",
+      "description": "门映射灯输出信号，用于控制车内特定位置的灯光状态。"
+    },
+    {
+      "name": "DoorMapLampFL",
+      "type": "output_signal",
+      "description": "前左门映射灯输出信号，控制前左门区域的灯光状态。"
+    },
+    {
+      "name": "DoorMapLampFR",
+      "type": "output_signal",
+      "description": "前右门映射灯输出信号，控制前右门区域的灯光状态。"
+    },
+    {
+      "name": "DoorMapLampRL",
+      "type": "output_signal",
+      "description": "后左门映射灯输出信号，控制后左门区域的灯光状态。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DoorMapLampXX",
+      "values": [
+        "0x0=No request",
+        "0x1=ON",
+        "0x2=OFF",
+        "0x3=Reserved"
+      ]
+    },
+    {
+      "name": "DoorMapLampFL",
+      "values": [
+        "0x0=No request",
+        "0x1=ON",
+        "0x2=OFF",
+        "0x3=Reserved"
+      ]
+    },
+    {
+      "name": "DoorMapLampFR",
+      "values": [
+        "0x0=No request",
+        "0x1=ON",
+        "0x2=OFF",
+        "0x3=Reserved"
+      ]
+    },
+    {
+      "name": "DoorMapLampRL",
+      "values": [
+        "0x0=No request",
+        "0x1=ON"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了内灯系统中各个门映射灯信号的接口规范，包括信号名称、方向、类型、发送方、接收方、传输路径及来源。这些信息可用于验证内灯控制系统中各信号的正确配置和通信逻辑，确保在不同状态下（如开/关、请求/无请求）信号能够按照预期进行传输和处理。",
+  "uncertain_points": []
+}

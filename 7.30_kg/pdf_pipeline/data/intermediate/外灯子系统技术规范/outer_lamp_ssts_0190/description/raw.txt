@@ -1,0 +1,104 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Reverse Light Control System Interface Specifications",
+  "row_semantics": "Each row represents a specific interface signal related to the reverse light system, detailing its direction, type, sender/provider, receiver/consumer, channel, and source.",
+  "column_semantics": {
+    "Interface Name": "The name of the communication interface or signal.",
+    "Direction": "Indicates whether the signal is an input or output.",
+    "Type": "The communication protocol or signal type (e.g., CAN, hardwire).",
+    "Sender/Provider": "The module or component that sends or provides the signal.",
+    "Receiver/Consumer": "The module or component that receives or consumes the signal.",
+    "Channel": "The communication path or bus used for the signal.",
+    "Interface Source": "The physical location or system where the signal originates."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RevsLghtCtrl_HW",
+      "type": "Input Signal",
+      "direction": "Input",
+      "interface_type": "CAN",
+      "sender": "ICB",
+      "receiver": "RZCU",
+      "channel": "",
+      "source": "External Lamp FAS"
+    },
+    {
+      "name": "RevsLamp_HSD",
+      "type": "Output Signal",
+      "direction": "Output",
+      "interface_type": "Hardwire",
+      "sender": "RZCU",
+      "receiver": "Reverse Lamp",
+      "channel": "",
+      "source": "External Lamp SSTs"
+    },
+    {
+      "name": "RevsLghtSts",
+      "type": "Output Signal",
+      "direction": "Output",
+      "interface_type": "CAN",
+      "sender": "RZCU",
+      "receiver": "LHZCU",
+      "channel": "",
+      "source": "External Lamp SSTs"
+    },
+    {
+      "name": "ReverseLightStat",
+      "type": "SOA (Service Oriented Architecture) Signal",
+      "direction": "Provide",
+      "interface_type": "SOA",
+      "sender": "RZCU",
+      "receiver": "ICB/LHZCU",
+      "channel": "",
+      "source": "External Lamp SSTs"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "RevsLghtCtrl_HW",
+      "condition": "0x0 = Off",
+      "value": "0x0",
+      "description": "Reverse light control signal is off."
+    },
+    {
+      "signal": "RevsLghtCtrl_HW",
+      "condition": "0x1 = On",
+      "value": "0x1",
+      "description": "Reverse light control signal is on."
+    },
+    {
+      "signal": "RevsLghtSts",
+      "condition": "0x0 = Off",
+      "value": "0x0",
+      "description": "Reverse light status feedback is off."
+    },
+    {
+      "signal": "RevsLghtSts",
+      "condition": "0x1 = On",
+      "value": "0x1",
+      "description": "Reverse light status feedback is on."
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "RevsLamp_HSD",
+      "output": "High-side drive of the reverse lamp via hardwire."
+    },
+    {
+      "signal": "RevsLghtSts",
+      "output": "Status feedback of the reverse light over CAN."
+    },
+    {
+      "signal": "ReverseLightStat",
+      "output": "SOA-based status of the reverse light."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the communication interfaces and signal behavior for the vehicle's reverse light system, including control signals from the ICB to the RZCU, driver signals from the RZCU to the reverse lamp, and status feedback signals from the RZCU to the LHZCU. It is used to verify the correct signal flow, state transitions, and communication protocols in the reverse light control logic.",
+  "uncertain_points": []
+}
+```

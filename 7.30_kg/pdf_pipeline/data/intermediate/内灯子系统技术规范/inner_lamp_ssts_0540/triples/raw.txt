@@ -1,0 +1,137 @@
+```json
+[
+  {
+    "head": "IPMLampBrtnsCmd_1 命令控制内灯亮度",
+    "relation": "输入为",
+    "tail": "LIN, LHZCU, IPAmbtLamp_M, LHZCU_LIN5 接口",
+    "triple_type": "输入关系",
+    "evidence_terms": [
+      "IPMLampBrtnsCmd_1",
+      "LIN",
+      "LHZCU",
+      "IPAmbtLamp_M",
+      "LHZCU_LIN5",
+      "内灯 SSTS"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "IPMLampBrthngCmd_1 命令控制氛围灯呼吸率",
+    "relation": "输入为",
+    "tail": "LIN, LHZCU, IPAmbtLamp_M, LHZCU_LIN5 接口",
+    "triple_type": "输入关系",
+    "evidence_terms": [
+      "IPMLampBrthngCmd_1",
+      "LIN",
+      "LHZCU",
+      "IPAmbtLamp_M",
+      "LHZCU_LIN5",
+      "内灯 SSTS"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "当 IPMLampBrtnsCmd_1 指令值为 0 或未定义时",
+    "relation": "前提条件",
+    "tail": "内灯亮度保持不变",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "IPMLampBrtnsCmd_1",
+      "指令值为0",
+      "未定义颜色号",
+      "内灯亮度",
+      "保持不变"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "当 IPMLampBrthngCmd_1 指令值为 0 时",
+    "relation": "前提条件",
+    "tail": "氛围灯呼吸模式保持不变",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "IPMLampBrthngCmd_1",
+      "指令值为0",
+      "氛围灯呼吸模式",
+      "保持不变"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "IPMLampBrthngCmd_1 指令值为 0x1",
+    "relation": "输出为",
+    "tail": "Rate1 (500ms)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "IPMLampBrthngCmd_1",
+      "0x1",
+      "Rate1",
+      "500ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "IPMLampBrthngCmd_1 指令值为 0xF",
+    "relation": "输出为",
+    "tail": "Rate15 (12s)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "IPMLampBrthngCmd_1",
+      "0xF",
+      "Rate15",
+      "12s"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "IPMLampBrthngCmd_1 指令值为 0x0",
+    "relation": "抑制条件",
+    "tail": "不触发任何呼吸模式变化",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "IPMLampBrthngCmd_1",
+      "指令值为0x0",
+      "No Request"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "IPMLampBrthngCmd_1 指令值范围 0x1-0xE",
+    "relation": "依赖于",
+    "tail": "不同的呼吸速率模式 (Rate1-Rate14)",
+    "triple_type": "模式依赖关系",
+    "evidence_terms": [
+      "IPMLampBrthngCmd_1",
+      "指令值范围",
+      "呼吸速率模式"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "IPMLampBrthngCmd_1 指令值为 0xA",
+    "relation": "输出为",
+    "tail": "Rate10 (5s)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "IPMLampBrthngCmd_1",
+      "0xA",
+      "Rate10",
+      "5s"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "IPMLampBrthngCmd_1 指令值为 0xC",
+    "relation": "输出为",
+    "tail": "Rate12 (7s)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "IPMLampBrthngCmd_1",
+      "0xC",
+      "Rate12",
+      "7s"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,91 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform) - Roof Lamp Control Commands",
+  "row_semantics": "Each row represents a specific command or control signal for the roof ambient lighting system, detailing its parameters and effects.",
+  "column_semantics": {
+    "Input": "The communication interface used for sending the command (e.g., LIN bus).",
+    "LIN": "Local Interconnect Network communication channel.",
+    "RHZCU": "Right Hand Zone Control Unit, likely responsible for processing commands related to the right side of the vehicle.",
+    "RoofAmbtLampB_LH": "Roof Ambient Lamp B Left/Horizontal, indicating the specific lamp being controlled.",
+    "RHZCU_LIN5": "RHZCU's LIN channel 5, specifying the exact communication path within the RHZCU.",
+    "内灯SSTS": "Interior Lighting Sub System Technical Specification, indicating the subsystem this command belongs to."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "RoofLHALampFadeSpdCmd_1",
+      "type": "command",
+      "description": "Controls the fade speed of the roof ambient left-hand lamp during breathing mode."
+    },
+    {
+      "name": "RoofLHBLampOnOff_1",
+      "type": "command",
+      "description": "Enables or disables the roof ambient left-hand lamp."
+    },
+    {
+      "name": "RoofLHBLampColorCmd_1",
+      "type": "command",
+      "description": "Sets the color of the roof ambient left-hand lamp."
+    },
+    {
+      "name": "RoofLHBLampBrtnsCmd_1",
+      "type": "command",
+      "description": "Adjusts the brightness level of the roof ambient left-hand lamp."
+    },
+    {
+      "name": "RoofLHBLampBrthngCmd_1",
+      "type": "command",
+      "description": "Configures the breathing (pulsing) behavior of the roof ambient left-hand lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Fade Speed",
+      "description": "Specifies how quickly the lamp fades in or out during breathing mode, with values ranging from 0 to 3."
+    },
+    {
+      "name": "On/Off State",
+      "description": "Determines whether the lamp is turned on or off."
+    },
+    {
+      "name": "Color",
+      "description": "Sets the desired color of the lamp, with values from 0x00 (no request) to 0xFF (all colors)."
+    },
+    {
+      "name": "Brightness",
+      "description": "Adjusts the lamp's brightness as a percentage, from 1% to 100%."
+    },
+    {
+      "name": "Breathing Rate",
+      "description": "Sets the frequency of the breathing effect, with values 0 (no request) and 1 (Rate1)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RoofAmbtLampB_LH",
+      "type": "output",
+      "description": "The physical roof ambient left-hand lamp that responds to the commands."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Fade Duration",
+      "description": "Time required to transition from current state to target state during fade operations.",
+      "values": {
+        "default": "2000ms",
+        "Sspd1": "300ms",
+        "Sspd2": "100ms (capacity reserved)",
+        "Sspd3": "(reserved)"
+      }
+    }
+  ],
+  "engineering_interpretation": "This table defines the command set for controlling the roof ambient lighting system, including fade speed, on/off state, color, brightness, and breathing effects. It is used to verify that the system correctly interprets and executes these commands via the specified communication channels.",
+  "uncertain_points": [
+    "The exact timing behavior for Sspd3 is not clearly defined.",
+    "The meaning of 'No_Request' in the color command is not explicitly explained."
+  ]
+}
+```

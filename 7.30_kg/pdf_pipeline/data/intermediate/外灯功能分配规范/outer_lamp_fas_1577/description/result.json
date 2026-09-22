@@ -1,0 +1,66 @@
+{
+  "table_type": "logic_table",
+  "topic": "车辆碰撞时危险警报灯自动激活功能",
+  "row_semantics": "描述触发危险警报灯激活的前置条件",
+  "column_semantics": {
+    "Column1": "场景描述：当车辆发生碰撞时，危险警报灯会自动激活，以提醒周边行人或者车辆注意安全",
+    "Column2": "前置条件：列出触发该功能的所有必要条件"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "危险警报灯",
+      "type": "输出信号",
+      "description": "在特定条件下自动激活的外部照明设备"
+    },
+    {
+      "name": "UsrMd",
+      "type": "输入信号",
+      "description": "用户模式状态"
+    },
+    {
+      "name": "UsrMdV",
+      "type": "输入信号",
+      "description": "用户模式值"
+    },
+    {
+      "name": "VehMd",
+      "type": "输入信号",
+      "description": "车辆模式状态"
+    },
+    {
+      "name": "VehMdV",
+      "type": "输入信号",
+      "description": "车辆模式值"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsrMd = All",
+      "description": "用户模式为全范围模式"
+    },
+    {
+      "condition": "UsrMdV = Valid",
+      "description": "用户模式值有效"
+    },
+    {
+      "condition": "VehMd = All",
+      "description": "车辆模式为全范围模式"
+    },
+    {
+      "condition": "VehMdV = Valid",
+      "description": "车辆模式值有效"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "危险警报灯激活",
+      "description": "在满足所有前置条件时，危险警报灯将被激活"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在车辆发生碰撞时，危险警报灯自动激活的逻辑条件，可用于验证相关功能在不同模式下的正确性。",
+  "uncertain_points": []
+}

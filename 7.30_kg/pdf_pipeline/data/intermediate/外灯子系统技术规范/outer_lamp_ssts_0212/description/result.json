@@ -1,0 +1,60 @@
+{
+  "table_type": "logic_table",
+  "topic": "倒车灯控制逻辑",
+  "row_semantics": "表格按功能执行的阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "表格分为两列，左侧为条件/动作描述，右侧为具体的条件或动作内容。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RevsLghtFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "倒车灯反馈SOA使能参数，用于控制倒车灯功能是否启用。"
+    },
+    {
+      "name": "RevsLghtCtrlMdl",
+      "type": "module",
+      "description": "倒车灯控制模块，负责接收指令并控制倒车灯状态。"
+    },
+    {
+      "name": "RevsLghtDrvMdl",
+      "type": "module",
+      "description": "倒车灯驱动模块，负责实际驱动倒车灯输出。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "RevsLghtFbkSOAEnPrm == 0 (Disable)",
+      "description": "前置条件，表示倒车灯功能被禁用。"
+    },
+    {
+      "condition": "收到【RevsLghtCtrlMdl】发送的 RevsLghtCtrl_HW == 1 (On)",
+      "description": "触发条件，表示接收到倒车灯控制模块发出的开启指令。"
+    },
+    {
+      "condition": "收到【RevsLghtCtrlMdl】发送的 RevsLghtCtrl_HW == 0 (Off)",
+      "description": "退出条件，表示接收到倒车灯控制模块发出的关闭指令。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "RevsLamp_HSD",
+      "type": "output_signal",
+      "description": "倒车灯输出信号，由驱动模块持续驱动。"
+    },
+    {
+      "signal": "RevsLghtSts",
+      "type": "output_signal",
+      "description": "倒车灯状态信号，由驱动模块持续发送，值为1 (On)。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在倒车灯状态信号发送过程中，至少需要发送三帧数据以确保信号的稳定性和可靠性。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了倒车灯控制的详细逻辑，可用于验证倒车灯在不同控制指令下的正确响应，包括功能启用/禁用、开启/关闭以及信号传输的稳定性。",
+  "uncertain_points": []
+}

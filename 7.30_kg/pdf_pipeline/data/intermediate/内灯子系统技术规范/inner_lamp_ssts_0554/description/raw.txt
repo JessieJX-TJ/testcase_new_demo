@@ -1,0 +1,46 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Vehicle Illumination Control Signal Specifications",
+  "row_semantics": "Each row represents a specific signal interface involved in vehicle illumination control, detailing its direction, type, sender/receiver, and associated hardware or software components.",
+  "column_semantics": {
+    "Interface Name": "The name of the signal interface, which must align with the logic block diagram content.",
+    "Direction": "Indicates whether the signal is an input or output.",
+    "Type": "Specifies the communication type (e.g., CAN, LIN, SOA service, hardwire).",
+    "Sender/Provider": "The component or module that sends or provides the signal.",
+    "Receiver/Consumer": "The component or module that receives or consumes the signal.",
+    "Channel": "The designated communication channel for the signal.",
+    "Interface Source": "The source of the interface, often indicating the physical location or system component."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehIlluminateCtrl Cmd",
+      "type": "Signal Interface",
+      "description": "Command signal for vehicle illumination control."
+    },
+    {
+      "name": "RHZCU_BacklightLamp_HSD",
+      "type": "Signal Interface",
+      "description": "Hardwired signal for backlight lamp control from RHZCU."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Backlight Lamp Drive Request",
+      "description": "Control command for backlight lamp operation, with values 0x0 for Close and 0x1 for Open."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RHZCU_BacklightLamp_HSD",
+      "description": "Output signal controlling the backlight lamp, driven by RHZCU."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the signal interfaces and their characteristics for vehicle illumination control, specifically for backlight lamps. It is used to verify the correct signal flow and communication between the LHZCU (as provider) and RHZCU (as consumer) for commands and status related to backlight lamp operation.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,74 @@
+{
+  "table_type": "parameter_table",
+  "topic": "External Light Control System - Direction Light Status and Control",
+  "row_semantics": "Each row represents a distinct service interface related to direction lights, detailing its function, parameters, and associated components.",
+  "column_semantics": "Columns represent different aspects of the service interface: the first column is the service name, followed by consumption type (SOA/ICB), then specific system/module dependencies or control methods.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightSts",
+      "type": "service_interface",
+      "description": "Interface for subscribing to direction light status."
+    },
+    {
+      "name": "DirectionLightErrSts",
+      "type": "service_interface",
+      "description": "Interface for subscribing to direction light fault status."
+    },
+    {
+      "name": "ControlDirectionLight",
+      "type": "service_interface",
+      "description": "Interface for controlling direction lights."
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "controller_module",
+      "description": "Main controller responsible for exterior light management."
+    },
+    {
+      "name": "S32G-8295",
+      "type": "hardware_platform",
+      "description": "Specific hardware platform used in the system."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Another controller module involved in the system."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightSts",
+      "type": "input_signal",
+      "description": "Current status of the direction lights (e.g., no flash, left flash, right flash, both sides flash, unknown)."
+    },
+    {
+      "name": "DirectionLightErrSts",
+      "type": "input_signal",
+      "description": "Fault status of the direction lights (e.g., no error, error)."
+    },
+    {
+      "name": "DirectionLightReq",
+      "type": "input_signal",
+      "description": "Request signal for controlling direction lights (e.g., turn on, turn off)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ControlDirectionLight",
+      "type": "output_signal",
+      "description": "Command to control the left front direction light (turn on or off)."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrSts",
+      "type": "fault_status",
+      "description": "Indicates if there is an error in the direction light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interfaces for monitoring and controlling direction lights within the vehicle's exterior light control system. It specifies how to subscribe to the current state and fault status of direction lights, as well as how to send commands to control them. This information is crucial for testing the functionality and reliability of the direction light system under various conditions.",
+  "uncertain_points": []
+}

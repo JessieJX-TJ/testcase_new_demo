@@ -1,0 +1,88 @@
+[
+  {
+    "head": "日行灯开关状态被设置",
+    "relation": "触发条件",
+    "tail": "用户点击日行灯开关关闭或开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "触发动作",
+      "用户点击日行灯开关关闭或开启"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1535",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "外灯组合服务ICB调用",
+    "relation": "前提条件",
+    "tail": "{ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq}=0x0=OFF(或0x1=On)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "1、外灯组合服务ICB调用"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1535",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "LHZCU控制执行日行灯关闭/开启",
+    "relation": "依赖于",
+    "tail": "[外灯组合服务ICB]通过接口请求LHZCU",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "执行动作",
+      "2、[外灯组合服务ICB]通过接口请求LHZCU:",
+      "3、LHZCU控制执行日行灯关闭/开启"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1535",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "日行灯开关状态更新",
+    "relation": "输出为",
+    "tail": "{ExteriorLightSwitchProcess.DayRunningLghtSwStatus.DayRunningLghtSwSta}=0x0=OFF(或0x1=On)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "4、LHZCU根据日行灯控制仲裁状态:{ExteriorLightSwitchProcess.DayRunningLightFucProStatus. DayRunningLghtFucProsSta}=0x0=OFF(或0x1=On)",
+      "同步设置日行灯开关状态:"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1535",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "ICB_8295日行灯光请求重发机制",
+    "relation": "超时约束",
+    "tail": "如超时2s未收到{ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightResp}=0x0=ControlSuccess的反馈",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "备注",
+      "1、ICB_8295日行灯光请求重发机制:"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1535",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "ICB发送组合灯光请求",
+    "relation": "包含子功能",
+    "tail": "ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "备注",
+      "ICB 发送组合灯光请求"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1535",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

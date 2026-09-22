@@ -1,0 +1,33 @@
+场景描述
+拖挂模式下,拖挂车位置灯关闭
+前置条件
+1&&2
+1、车辆具备拖车模式功能:InsdFnCfgVehDragMd=0x1
+2、拖挂模式开启:VehDragMdSts=0x1=VehDragMdSts_1_On
+注:LHZCU、ICB、RZCU需判断此前置条件
+触发条件
+LHZCU发送的外灯控制信号为:
+{ExteriorLightSwitchProcess.
+CombLghtFucProStatus.CombLghtFucProSta}=0x0= ALL OFF;||
+CombLghtFucProStatus.CombLghtFucProSta}=0x3=
+SidePositionAndDippedBeam OFF
+执行动作
+1、[外灯组合服务ICB]判断前置条件满足,根据接收到的LHZCU发送的
+位置灯关闭请求,对应调用基础服务:
+{SidePositionLight.
+ControlSidePositionLight SidePositionLightReq}{InstanceID=9}=0x0=OFF
+ControlSidePositionLight SidePositionLightReq}{InstanceID=10}=0x0=OFF
+(注:无需延迟调用)
+2、RZCU判断前置条件满足,根据接收到的:
+ControlSidePositionLight SidePositionLightReq}{InstanceID=9}=0x0=OFF; &
+对应发送TrlrSideLghtOnReq=0x0=TrlrSideLghtOnReq_0_Off,给TDM
+4、TDM根据接收到的:
+TrlrSideLghtOnReq=0x0=TrlrSideLghtOnReq_0_Off；控制左右侧位置灯熄灭
+5、TDM将拖车位置灯状态和故障状态反馈给RZCU:
+TrlrSideLghtSts=0x0=TrlrSideLghtSts_0_Off
+TrlrSideLghtFltSts=0x0=TrlrSideLghtFltSts_0_NoFlr
+6、RZCU根据接收到的TDM反馈对应反馈位置灯点亮及故障状态:
+{SidePositionLight.SidePositionLightStatus. SidePositionLightSta}(InstanceID=9)
+=0x0=OFF
+{SidePositionLight.SidePositionLightStatus. SidePositionLightSta}(InstanceID=10)
+{SidePositionLight.SidePositionLightErrorStatus. SidePositionLightErrorSta}

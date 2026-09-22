@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "倒车灯功能被触发",
+    "relation": "触发条件",
+    "tail": "收到【RevsLghtCtrlMdl】发送的 RevsLghtCtrl_HW == 1 (On)",
+    "triple_type": "IF-THEN 规则",
+    "evidence_terms": [
+      "RevsLghtCtrlMdl",
+      "RevsLghtCtrl_HW",
+      "On"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯功能持续运行",
+    "relation": "前提条件",
+    "tail": "1.RevsLghtFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "IF-THEN 规则",
+    "evidence_terms": [
+      "RevsLghtFbkSOAEnPrm",
+      "Enable"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯驱动模块持续驱动倒车灯输出",
+    "relation": "执行动作",
+    "tail": "【RevsLghtDrvMdl】持续驱动倒车灯输出(RevsLamp_HSD)",
+    "triple_type": "IF-THEN 规则",
+    "evidence_terms": [
+      "RevsLghtDrvMdl",
+      "RevsLamp_HSD"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯驱动模块持续发送倒车灯状态",
+    "relation": "执行动作",
+    "tail": "【RevsLghtDrvMdl】持续发送 ReverseLightState.ReverseLightSta = 1 (On)至【RevsLghtCtrlMdl】",
+    "triple_type": "IF-THEN 规则",
+    "evidence_terms": [
+      "RevsLghtDrvMdl",
+      "ReverseLightState",
+      "ReverseLightSta",
+      "On",
+      "RevsLghtCtrlMdl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯功能退出",
+    "relation": "退出条件",
+    "tail": "收到【RevsLghtCtrlMdl】发送的 RevsLghtCtrl_HW == 0 (Off)",
+    "triple_type": "IF-THEN 规则",
+    "evidence_terms": [
+      "RevsLghtCtrlMdl",
+      "RevsLghtCtrl_HW",
+      "Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯驱动模块发送倒车灯状态",
+    "relation": "依赖于",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RevsLghtDrvMdl",
+      "ReverseLightState",
+      "三帧"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

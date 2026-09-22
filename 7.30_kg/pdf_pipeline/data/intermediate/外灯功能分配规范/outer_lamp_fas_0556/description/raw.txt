@@ -1,0 +1,79 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制系统中位置灯开关与后雾灯开启的逻辑交互",
+  "row_semantics": "表格按功能描述、前置条件、触发动作、执行动作和备注进行分段，详细定义了特定场景下的系统行为逻辑。",
+  "column_semantics": "两列结构，左侧为类别标题（如场景描述、前置条件等），右侧为对应的具体内容或代码表达式。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Light and Hazard Control Unit，负责处理灯光控制逻辑的核心控制器。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "module",
+      "description": "外部灯光控制系统，管理车辆外部灯光的显示状态。"
+    },
+    {
+      "name": "CombLghtSwStatus",
+      "type": "signal",
+      "description": "组合开关状态，指示当前组合开关的位置（如AUTO、OFF等）。"
+    },
+    {
+      "name": "FrontFogLghtFucProStatus",
+      "type": "signal",
+      "description": "前雾灯功能状态，指示前雾灯是否处于激活或待机状态。"
+    },
+    {
+      "name": "RearFogLightReq",
+      "type": "signal",
+      "description": "后雾灯请求信号，用于请求开启或关闭后雾灯。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "位置灯开关挡位为OFF",
+      "expression": "CombLghtSwStatus = 0x0 (OFF)"
+    },
+    {
+      "condition": "用户通过大屏点击后雾灯开启",
+      "expression": "收到[大屏开关请求 ICB]输入后雾灯开启"
+    },
+    {
+      "condition": "组合开关挡位为关闭或位置灯",
+      "expression": "CombLghtSwStatus = 0x0 (OFF) || CombLghtSwStatus = 0x1 (SidePositionLight ON)"
+    },
+    {
+      "condition": "无前雾灯功能或前雾灯未开启",
+      "expression": "FrontFogLghtFucProStatus = 0x0 (OFF)"
+    },
+    {
+      "condition": "UsrMd 状态满足特定条件",
+      "expression": "UsrMd != 0x0, 0x1, 0x6"
+    },
+    {
+      "condition": "VehMd 状态为TRANSPORT",
+      "expression": "VehMd = 0x3"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "组合开关挡位自动切换为 AUTO",
+      "action": "LHZCU 内部将 CombLghtSwStatus 设置为 0x3 (AUTO)",
+      "effect": "组合开关显示状态切换为 Auto"
+    },
+    {
+      "output": "后雾灯开启",
+      "action": "LHZCU 将 RearFogLightReq 设置为 0x1 (ON)",
+      "effect": "后雾灯及关联位置灯开启"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定条件下（位置灯关闭、用户通过大屏请求后雾灯开启），LHZCU 如何自动调整组合开关状态并开启后雾灯的逻辑规则，可用于验证外灯控制系统在特定场景下的正确行为。",
+  "uncertain_points": []
+}
+```

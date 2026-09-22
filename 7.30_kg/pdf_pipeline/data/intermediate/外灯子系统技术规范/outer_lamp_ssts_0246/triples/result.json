@@ -1,0 +1,88 @@
+[
+  {
+    "head": "右远光灯短路故障处理功能被触发",
+    "relation": "触发条件",
+    "tail": "检测到右远光灯短路到电源",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "触发条件",
+      "检测到右远光灯短路到电源"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0246",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "右远光灯短路故障处理功能被抑制",
+    "relation": "抑制条件",
+    "tail": "MainBeamLightFbkSOAEnPrm == 0 (Disable)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "前置条件",
+      "1.MainBeamLghtFbkSOAEnPrm==0(Disable)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0246",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "右远光灯短路故障处理功能被抑制",
+    "relation": "抑制条件",
+    "tail": "右远光灯处于输出状态",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "前置条件",
+      "2.右远光灯处于输出状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0246",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "RMainBeamLightDrvMdl模块停止驱动右远光灯输出",
+    "relation": "输出为",
+    "tail": "MainBeamLamp_RH_HSD信号被关闭",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "执行动作",
+      "1.【RMainBeamLghtDrvMdl】停止驱动右远光灯输出 (MainBeamLamp_RH_HSD)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0246",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "RMainBeamLightDrvMdl模块持续发送RMainBeamLightSts=0信号",
+    "relation": "输出为",
+    "tail": "MainBeamLghtCtrlMdl模块接收到Off状态信号",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "执行动作",
+      "2.【RMainBeamLghtDrvMdl】持续发送 RMainBeamLghtSts=0(Off)至 【MainBeamLghtCtrlMdl】,至少发送三帧"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0246",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "系统置位DTC B105C 12故障代码",
+    "relation": "故障响应",
+    "tail": "检测到右远光灯短路到电源",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "执行动作",
+      "3.置位DTC B105C 12",
+      "触发条件",
+      "检测到右远光灯短路到电源"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0246",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  }
+]

@@ -1,0 +1,557 @@
+[
+  {
+    "head": "VP3-142159 功能",
+    "relation": "依赖于",
+    "tail": "控制器 VP3-25770 的正常工作",
+    "sources": [
+      "inner_lamp_fas_0198"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0平台-FAS-IBD02模块",
+    "relation": "包含子功能",
+    "tail": "内灯 (Interior Light) 功能",
+    "sources": [
+      "inner_lamp_fas_0199",
+      "inner_lamp_fas_0377",
+      "inner_lamp_fas_0217",
+      "inner_lamp_fas_0392",
+      "inner_lamp_fas_0621",
+      "inner_lamp_fas_0673",
+      "inner_lamp_fas_0675"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯 (Interior Light) 功能",
+    "relation": "依赖于",
+    "tail": "Z-ONE-3.0平台-FAS-IBD02模块",
+    "sources": [
+      "inner_lamp_fas_0199",
+      "inner_lamp_fas_0377",
+      "inner_lamp_fas_0204",
+      "inner_lamp_fas_0234",
+      "inner_lamp_fas_0372",
+      "inner_lamp_fas_0670"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0平台-FAS-IBD02模块",
+    "relation": "控制对象",
+    "tail": "内灯 (Interior Light)",
+    "sources": [
+      "inner_lamp_fas_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch Control",
+    "relation": "控制对象",
+    "tail": "VP3-63065",
+    "sources": [
+      "inner_lamp_fas_0200"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch Control",
+    "relation": "前提条件",
+    "tail": "VP3-25770",
+    "sources": [
+      "inner_lamp_fas_0200"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Headlamp System is On",
+    "relation": "触发条件",
+    "tail": "Driver Request is Headlamp Switch On AND Ambient Light Level is Low AND Vehicle Speed is Low",
+    "sources": [
+      "inner_lamp_fas_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Daytime Running Light (DRL) is On",
+    "relation": "触发条件",
+    "tail": "Time of Day is Day AND Ambient Light Level is Medium OR High",
+    "sources": [
+      "inner_lamp_fas_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Headlamp System is Off",
+    "relation": "抑制条件",
+    "tail": "Driver Request is Headlamp Switch Off OR Sensor Fault (Light/Ambient)",
+    "sources": [
+      "inner_lamp_fas_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High Beam Status is On",
+    "relation": "依赖于",
+    "tail": "Headlamp System is On AND Driver Request is High Beam ON",
+    "sources": [
+      "inner_lamp_fas_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Headlamp System transitions to On",
+    "relation": "状态保持条件",
+    "tail": "Headlamp System was previously Off AND Trigger Conditions Met",
+    "sources": [
+      "inner_lamp_fas_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Headlamp System transitions to Off",
+    "relation": "复位条件",
+    "tail": "Headlamp System was previously On AND Reset Conditions Met",
+    "sources": [
+      "inner_lamp_fas_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Headlamp System status is maintained",
+    "relation": "状态保持条件",
+    "tail": "No Change in Input Conditions AND No Fault Detected",
+    "sources": [
+      "inner_lamp_fas_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Headlamp System responds to Headlamp Circuit Fault",
+    "relation": "故障响应",
+    "tail": "Headlamp Circuit Fault detected",
+    "sources": [
+      "inner_lamp_fas_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DRL Activation Delay is observed",
+    "relation": "超时约束",
+    "tail": "DRL is requested but not immediately activated",
+    "sources": [
+      "inner_lamp_fas_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯 (Interior Light) 功能",
+    "relation": "依赖于",
+    "tail": "软件版本 < 0.2",
+    "sources": [
+      "inner_lamp_fas_0203",
+      "inner_lamp_fas_0302",
+      "inner_lamp_fas_0443",
+      "inner_lamp_fas_0217"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯 (Interior Light) 功能",
+    "relation": "输入为",
+    "tail": "Z-ONE-3.0平台-FAS-IBD02模块的控制信号",
+    "sources": [
+      "inner_lamp_fas_0217"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯 (Interior Light) 功能",
+    "relation": "输出为",
+    "tail": "车辆内部照明效果",
+    "sources": [
+      "inner_lamp_fas_0217"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "逻辑块在FOTA过程中需要保持功能",
+    "relation": "前提条件",
+    "tail": "功能运行时禁止FOTA",
+    "sources": [
+      "inner_lamp_fas_0207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "功能运行时禁止FOTA",
+    "relation": "抑制条件",
+    "tail": "FOTA过程",
+    "sources": [
+      "inner_lamp_fas_0207",
+      "inner_lamp_fas_0647"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "功能运行时广播功能状态/相关信号",
+    "relation": "依赖于",
+    "tail": "逻辑块名称",
+    "sources": [
+      "inner_lamp_fas_0207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlLampFLCtrlCmd 信号",
+    "relation": "输入为",
+    "tail": "LHZCU 控制器",
+    "sources": [
+      "inner_lamp_fas_0209"
+    ],
+    "conflict": true,
+    "conflict_note": "与同信号的 '输出为' 关系冲突：同一信号不能同时仅为输入和仅为输出；需确认方向性（如是否为双向信号或存在文档歧义）"
+  },
+  {
+    "head": "FtwlLampFLCtrlCmd 信号",
+    "relation": "输出为",
+    "tail": "LHZCU 控制器",
+    "sources": [
+      "inner_lamp_fas_0209"
+    ],
+    "conflict": true,
+    "conflict_note": "与同信号的 '输入为' 关系冲突：同一信号不能同时仅为输入和仅为输出；需确认方向性（如是否为双向信号或存在文档歧义）"
+  },
+  {
+    "head": "FtwlLampFLCtrlCmd 信号",
+    "relation": "依赖于",
+    "tail": "CAN/LIN/SOA 服务/硬线等",
+    "sources": [
+      "inner_lamp_fas_0209"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlLampFLCtrlCmd 信号",
+    "relation": "控制对象",
+    "tail": "前雾灯 (Ftwl Lamp)",
+    "sources": [
+      "inner_lamp_fas_0209"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "充电照明灯点亮",
+    "relation": "依赖于",
+    "tail": "ChrgrFlapLampDrv模块的驱动",
+    "sources": [
+      "inner_lamp_fas_0210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "充电照明灯熄灭",
+    "relation": "依赖于",
+    "tail": "ChrgrFlapLampDrv模块的驱动",
+    "sources": [
+      "inner_lamp_fas_0210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ChrgrFlapLampCtrl模块",
+    "relation": "控制对象",
+    "tail": "充电照明灯开关控制（点亮/熄灭）",
+    "sources": [
+      "inner_lamp_fas_0210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ChrgrFlapLampDrv模块",
+    "relation": "包含子功能",
+    "tail": "响应控制请求，驱动充电照明灯点亮/熄灭",
+    "sources": [
+      "inner_lamp_fas_0210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ChrgrFlapLampDrv模块",
+    "relation": "输出到",
+    "tail": "充电照明灯",
+    "sources": [
+      "inner_lamp_fas_0210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "化妆镜灯点亮",
+    "relation": "依赖于",
+    "tail": "VatyMirLampDrv 化妆镜灯驱动模块",
+    "sources": [
+      "inner_lamp_fas_0211"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "化妆镜灯熄灭",
+    "relation": "依赖于",
+    "tail": "VatyMirLampDrv 化妆镜灯驱动模块",
+    "sources": [
+      "inner_lamp_fas_0211"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "化妆镜灯开关控制（点亮/熄灭）",
+    "relation": "包含子功能",
+    "tail": "化妆镜灯点亮",
+    "sources": [
+      "inner_lamp_fas_0211"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "化妆镜灯开关控制（点亮/熄灭）",
+    "relation": "包含子功能",
+    "tail": "化妆镜灯熄灭",
+    "sources": [
+      "inner_lamp_fas_0211"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampDrv 化妆镜灯驱动模块",
+    "relation": "控制对象",
+    "tail": "化妆镜灯",
+    "sources": [
+      "inner_lamp_fas_0211"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampLHCtrl 化妆镜灯应用控制模块",
+    "relation": "输入来自",
+    "tail": "化妆镜灯开关控制（点亮/熄灭）",
+    "sources": [
+      "inner_lamp_fas_0211"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampDrv 化妆镜灯驱动模块",
+    "relation": "输出到",
+    "tail": "化妆镜灯",
+    "sources": [
+      "inner_lamp_fas_0211"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "读取VP3-89422功能",
+    "relation": "前提条件",
+    "tail": "通过控制器 VP3-25770",
+    "sources": [
+      "inner_lamp_fas_0212"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "读取VP3-89422功能",
+    "relation": "依赖于",
+    "tail": "控制器 VP3-25770 具有访问权限",
+    "sources": [
+      "inner_lamp_fas_0212"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "诊断需求清单",
+    "relation": "包含子功能",
+    "tail": "Requirement List 中的具体测试项",
+    "sources": [
+      "inner_lamp_fas_0213"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制功能",
+    "relation": "前提条件",
+    "tail": "配置项的参数范围在有效区间内",
+    "sources": [
+      "inner_lamp_fas_0214"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制功能",
+    "relation": "前提条件",
+    "tail": "配置项的分辨率满足精度要求",
+    "sources": [
+      "inner_lamp_fas_0214"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门功能",
+    "relation": "前提条件",
+    "tail": "配置项的默认值为系统预设值",
+    "sources": [
+      "inner_lamp_fas_0214"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯处于关闭状态",
+    "relation": "触发条件",
+    "tail": "GlvBxLampCtrlCmd 的值为 0x0",
+    "sources": [
+      "inner_lamp_fas_0215"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯处于开启状态",
+    "relation": "触发条件",
+    "tail": "GlvBxLampCtrlCmd 的值为 0x1",
+    "sources": [
+      "inner_lamp_fas_0215"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV 信号有效",
+    "relation": "触发条件",
+    "tail": "UsgMdV 的值为 0x1",
+    "sources": [
+      "inner_lamp_fas_0215"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV 信号无效",
+    "relation": "触发条件",
+    "tail": "UsgMdV 的值为 0x0",
+    "sources": [
+      "inner_lamp_fas_0215"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯控制命令发送至 RHZCU",
+    "relation": "输出为",
+    "tail": "GlvBxLampCtrlCmd",
+    "sources": [
+      "inner_lamp_fas_0215"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV 信号的输入来源",
+    "relation": "输入为",
+    "tail": "CAN",
+    "sources": [
+      "inner_lamp_fas_0215"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV 信号的输入来源",
+    "relation": "输入为",
+    "tail": "ICB/ZXD",
+    "sources": [
+      "inner_lamp_fas_0215"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV 信号的输入来源",
+    "relation": "输入为",
+    "tail": "RHZCU",
+    "sources": [
+      "inner_lamp_fas_0215"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV 信号的输入来源",
+    "relation": "输入为",
+    "tail": "VS SST S",
+    "sources": [
+      "inner_lamp_fas_0215"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ChrgrFlapLampCtrlCmd 控制充电 flap 灯",
+    "relation": "输出为",
+    "tail": "Close/Open",
+    "sources": [
+      "inner_lamp_fas_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLChrgrFlapSts",
+    "relation": "输入为",
+    "tail": "Internal (内部信号)",
+    "sources": [
+      "inner_lamp_fas_0218"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

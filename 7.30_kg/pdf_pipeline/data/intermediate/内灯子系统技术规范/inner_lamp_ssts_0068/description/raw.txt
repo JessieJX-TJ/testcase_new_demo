@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯控制接口定义与信号流向",
+  "row_semantics": "每行代表一个具体的接口或信号交互点，描述其在系统中的角色和属性。",
+  "column_semantics": {
+    "Interface_Name": "接口名称，标识该信号的逻辑功能或物理连接点。",
+    "Direction": "信号流向，指示数据是输入还是输出。",
+    "Type": "信号类型，如CAN/LIN总线、SOA服务、硬线等。",
+    "Sender/Provider": "信号发送方或服务提供方，通常是某个控制器或模块。",
+    "Receiver/Consumer": "信号接收方或服务消费方，通常是另一个控制器或模块。",
+    "Channel": "信号传输路径或通道，指定通信方式或物理连接。",
+    "Source": "信号来源，指明信号的具体来源模块或节点。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FtwlLampFRCtrlCmd",
+      "type": "Internal Signal",
+      "role": "Input Signal",
+      "description": "副驾侧照脚灯驱动请求信号，由内部模块生成，值为0x0（Close）或0x1（Open）。"
+    },
+    {
+      "name": "FtwlAmbtLamp_FR_HSD",
+      "type": "Hard Line",
+      "role": "Output Signal",
+      "description": "副驾侧照脚灯驱动硬线信号，由控制器输出，用于直接驱动外部灯具。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FtwlAmbtLamp_FR_HSD",
+      "value": "0x0 (Close) / 0x1 (Open)",
+      "description": "控制副驾侧照脚灯的开关状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了整车外灯控制系统中关键信号的接口属性、流向、类型及来源，可用于验证外灯控制信号的正确配置与交互逻辑，确保信号在发送方、接收方及传输路径上的匹配性。",
+  "uncertain_points": [
+    "具体 'RHZCU' 模块的功能细节未明确说明。",
+    " 'SSTS' 的完整含义未在表中给出，可能需要进一步确认。"
+  ]
+}
+```

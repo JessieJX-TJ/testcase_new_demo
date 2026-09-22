@@ -1,0 +1,592 @@
+[
+  {
+    "head": "LeftFrontTurnSignalDriverModule",
+    "relation": "dependsOn",
+    "tail": "TurnSignalControlModule",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftRearTurnSignalDriverModule",
+    "relation": "dependsOn",
+    "tail": "TurnSignalControlModule",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontTurnSignalDriverModule",
+    "relation": "dependsOn",
+    "tail": "TurnSignalControlModule",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearTurnSignalDriverModule",
+    "relation": "dependsOn",
+    "tail": "TurnSignalControlModule",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSwitchPreprocessingModule",
+    "relation": "dependsOn",
+    "tail": "HazardLightSwitch",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightControlModule",
+    "relation": "dependsOn",
+    "tail": "HazardLightSwitchPreprocessingModule",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowBeamLightControlModule",
+    "relation": "dependsOn",
+    "tail": "LowBeamLightSwitch",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowBeamLightDriverModule",
+    "relation": "dependsOn",
+    "tail": "LowBeamLightControlModule",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalStopDriving",
+    "relation": "precondition",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalStopDriving",
+    "relation": "triggerCondition",
+    "tail": "DirectionLightControl.DirectionLightCtrlReq == 0 (Off), InstanceID = 1, received from DILightCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalContinuousStatusReporting",
+    "relation": "precondition",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalContinuousStatusReporting",
+    "relation": "triggerCondition",
+    "tail": "DirectionLightControl.DirectionLightCtrlReq == 0 (Off), InstanceID = 1, received from DILightCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalExitControl",
+    "relation": "triggerCondition",
+    "tail": "DirectionLightControl.DirectionLightCtrlReq == 1 (On), InstanceID = 1, received from DILightCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalStopDriving",
+    "relation": "outputs",
+    "tail": "FLDILightDrvMdl stops driving left-front turn signal output (DILamp_LH_HSD)",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalContinuousStatusReporting",
+    "relation": "outputs",
+    "tail": "FLDILightDrvMdl continuously sends DirectionLightControl.DirectionLightSta == 0 (Off), InstanceID = 1 to DILightCtrlMdl for at least 3 frames",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightFunctionActivated",
+    "relation": "precondition",
+    "tail": "HzrdLghtSwSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0408"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSwitchStatusSignalTransmission",
+    "relation": "triggerCondition",
+    "tail": "User manually presses hazard light switch (switch grounded)",
+    "sources": [
+      "outer_lamp_ssts_0408"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSwitchStatusSignalTransmission",
+    "relation": "dependsOn",
+    "tail": "HzrdLghtSwMdl",
+    "sources": [
+      "outer_lamp_ssts_0408"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSwitchStatusSignalTransmission",
+    "relation": "outputs",
+    "tail": "HazardLightSwitchStatus",
+    "sources": [
+      "outer_lamp_ssts_0408"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSwitchStatusSignalTransmission",
+    "relation": "inputs",
+    "tail": "HazardLightSwitchSta == 1 (Active)",
+    "sources": [
+      "outer_lamp_ssts_0408"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSwitchStatusSignalTransmission",
+    "relation": "outputsTo",
+    "tail": "HzrdLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0408"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightState",
+    "relation": "outputs",
+    "tail": "MainBeamLight.MainBeamLightState.MainBeamLightSta",
+    "sources": [
+      "outer_lamp_ssts_0409"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightState",
+    "relation": "inputs",
+    "tail": "0x0 = OFF",
+    "sources": [
+      "outer_lamp_ssts_0409"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightState",
+    "relation": "inputs",
+    "tail": "0x1 = ON",
+    "sources": [
+      "outer_lamp_ssts_0409"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightState",
+    "relation": "inputs",
+    "tail": "0x2 = Error",
+    "sources": [
+      "outer_lamp_ssts_0409"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightState",
+    "relation": "inputs",
+    "tail": "0x3 = Unknown",
+    "sources": [
+      "outer_lamp_ssts_0409"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightState",
+    "relation": "dependsOn",
+    "tail": "Interface Name: MainBeamLightState",
+    "sources": [
+      "outer_lamp_ssts_0409"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSwitchTimeoutFaultHandling",
+    "relation": "triggerCondition",
+    "tail": "Hazard light switch continuously grounded for > 20 s",
+    "sources": [
+      "outer_lamp_ssts_0410"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicts with precondition HzrdLghtSwSOAEnPrm == 0 (Disable) — fault handling is only active when feature is disabled, which contradicts typical safety design where timeout monitoring should be enabled regardless of functional enablement."
+  },
+  {
+    "head": "HazardLightSwitchTimeoutFaultHandling",
+    "relation": "precondition",
+    "tail": "HzrdLghtSwSOAEnPrm == 0 (Disable)",
+    "sources": [
+      "outer_lamp_ssts_0410"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicts with precondition HzrdLghtSwSOAEnPrm == 0 (Disable) — fault handling is only active when feature is disabled, which contradicts typical safety design where timeout monitoring should be enabled regardless of functional enablement."
+  },
+  {
+    "head": "DTCSet",
+    "relation": "outputs",
+    "tail": "HazardLightSwitchTimeoutFaultHandling",
+    "sources": [
+      "outer_lamp_ssts_0410"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtSwMdl",
+    "relation": "outputs",
+    "tail": "HzrdLghtSwReq == 0x0 (Inactive)",
+    "sources": [
+      "outer_lamp_ssts_0410"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSwitchTimeoutFaultHandling",
+    "relation": "timeoutConstraint",
+    "tail": "Hazard light switch continuously grounded for > 20 s",
+    "sources": [
+      "outer_lamp_ssts_0410"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSwitchStatusFeedback",
+    "relation": "triggerCondition",
+    "tail": "BrkLghtSwMdl continuously sends BrkLghtSwReq == 0x0 to BrkLghtCtrlMdl for at least 3 frames",
+    "sources": [
+      "outer_lamp_ssts_0411"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSwitchStatusOff",
+    "relation": "outputs",
+    "tail": "BrkLghtSwSts == 0x0 (BrkLghtSwSts_0_Off)",
+    "sources": [
+      "outer_lamp_ssts_0411"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSwitchStatusValidFlag",
+    "relation": "outputs",
+    "tail": "BrkLghtSwStsV == 0x0 (BrkLghtSwStsV_0_Valid)",
+    "sources": [
+      "outer_lamp_ssts_0411"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExitCurrentOperation",
+    "relation": "precondition",
+    "tail": "Brake pedal switch signal is high-active",
+    "sources": [
+      "outer_lamp_ssts_0411"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwitchShortToGroundDiagnosis",
+    "relation": "triggerCondition",
+    "tail": "Main beam light switch shorted to ground",
+    "sources": [
+      "outer_lamp_ssts_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwitchShortToGroundDiagnosis",
+    "relation": "precondition",
+    "tail": "MainBeamLghtSwSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwitchStatusWithError",
+    "relation": "outputs",
+    "tail": "MainBeamLightSwitchSta == 0x2 (Error)",
+    "sources": [
+      "outer_lamp_ssts_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightControlModule",
+    "relation": "outputsTo",
+    "tail": "MainBeamLightCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1077-11",
+    "relation": "diagnosisFor",
+    "tail": "Main beam light switch short to ground",
+    "sources": [
+      "outer_lamp_ssts_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSwitchStatus",
+    "relation": "triggerCondition",
+    "tail": "Software version V",
+    "sources": [
+      "outer_lamp_ssts_0414"
+    ],
+    "conflict": true,
+    "conflict_note": "Ambiguous and non-functional trigger; conflicts semantically with '2 updates to high-active' — likely refers to signal polarity change in version V2, but phrasing is inconsistent and incomplete."
+  },
+  {
+    "head": "BrakeLightSwitchStatus",
+    "relation": "triggerCondition",
+    "tail": "Signal updated to high-active in version V2",
+    "sources": [
+      "outer_lamp_ssts_0414"
+    ],
+    "conflict": true,
+    "conflict_note": "Ambiguous and non-functional trigger; conflicts semantically with '2 updates to high-active' — likely refers to signal polarity change in version V2, but phrasing is inconsistent and incomplete."
+  },
+  {
+    "head": "PositionLampHardwireDriverOutput",
+    "relation": "outputs",
+    "tail": "Version V1.3: PosLamp_LH & RH share same HSD output (PosLamp_LH&RH_HSD)",
+    "sources": [
+      "outer_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSwitchStickingFaultTimeout",
+    "relation": "timeoutConstraint",
+    "tail": "Updated to 600 s in version V1.4",
+    "sources": [
+      "outer_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightCollisionSwitchPreprocessing",
+    "relation": "precondition",
+    "tail": "Version V5 added",
+    "sources": [
+      "outer_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightTurnSignalMainBeamDriverSOAServiceChain",
+    "relation": "dependsOn",
+    "tail": "Updated in version V3.0",
+    "sources": [
+      "outer_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightAndTurnSignalCANCommunication",
+    "relation": "controlledBy",
+    "tail": "Updated from SOA to CAN communication in version V4.0",
+    "sources": [
+      "outer_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowBeamLightServiceMethod",
+    "relation": "controlledBy",
+    "tail": "Updated from Method to Notifier in version V4.0",
+    "sources": [
+      "outer_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ConfigurationItem",
+    "relation": "precondition",
+    "tail": "Parameter range specification",
+    "sources": [
+      "outer_lamp_ssts_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ConfigurationItem",
+    "relation": "precondition",
+    "tail": "Conversion definition",
+    "sources": [
+      "outer_lamp_ssts_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ConfigurationItem",
+    "relation": "outputs",
+    "tail": "Default value specification",
+    "sources": [
+      "outer_lamp_ssts_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightUnknownState",
+    "relation": "precondition",
+    "tail": "Signal value == 0x4",
+    "sources": [
+      "outer_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BodyControlModule",
+    "relation": "inputs",
+    "tail": "Signal value == 0x4 (Exterior light unknown state)",
+    "sources": [
+      "outer_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamSwitchSignal",
+    "relation": "inputs",
+    "tail": "Analog input signal used to determine main beam switch position request",
+    "sources": [
+      "outer_lamp_ssts_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwitchRequest",
+    "relation": "outputs",
+    "tail": "0x0 = Off; 0x1 = On; 0x2 = Flash",
+    "sources": [
+      "outer_lamp_ssts_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitch.MainBeamLightSwitchStatus",
+    "relation": "outputs",
+    "tail": "0x0 = OFF; 0x1 = ON; 0x2 = Flash; 0x3 = Error",
+    "sources": [
+      "outer_lamp_ssts_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwitchRequest",
+    "relation": "dependsOn",
+    "tail": "MainBeamSwitchSignal",
+    "sources": [
+      "outer_lamp_ssts_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitch.MainBeamLightSwitchStatus",
+    "relation": "dependsOn",
+    "tail": "MainBeamLightSwitchRequest",
+    "sources": [
+      "outer_lamp_ssts_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

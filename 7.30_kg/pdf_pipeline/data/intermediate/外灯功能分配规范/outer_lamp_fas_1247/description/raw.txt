@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 (Exterior lamp function) 的状态与故障信息",
+  "row_semantics": "表格的每一行代表一个特定的外灯控制或状态查询接口，描述了其参数名称、功能说明以及可能的状态值。",
+  "column_semantics": "表格包含两部分：左侧为接口名称（如 MainBeamLightSts, MainBeamLightErrSts），右侧为该接口的详细参数定义，包括参数名、接口名、以及具体的数值含义（如 ON/OFF 或 Error/Unknown）。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem.MainBeamLightSts",
+      "type": "function",
+      "description": "主远光灯状态查询接口"
+    },
+    {
+      "name": "ExteriorLightControlSystem.MainBeamLightErrSts",
+      "type": "function",
+      "description": "主远光灯故障状态查询接口"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "MainBeamLightSts",
+      "type": "signal",
+      "description": "主远光灯状态信号",
+      "values": [
+        "0x0=OFF",
+        "0x1=ON",
+        "0x2=Unknown"
+      ]
+    },
+    {
+      "name": "MainBeamLightErrSts",
+      "type": "signal",
+      "description": "主远光灯故障状态信号",
+      "values": [
+        "0x0=No Error",
+        "0x1=Error",
+        "0x2=Unknown"
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "MainBeamLightErrSts",
+      "type": "fault",
+      "description": "主远光灯故障状态信号，用于指示远光灯是否存在错误或未知状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子系统中主远光灯的状态（开启/关闭/未知）及其故障状态（无错误/错误/未知）的正确性，确保外灯控制系统能够准确地报告和响应远光灯的工作状态。",
+  "uncertain_points": []
+}
+```

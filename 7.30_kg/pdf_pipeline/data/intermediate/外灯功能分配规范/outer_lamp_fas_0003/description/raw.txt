@@ -1,0 +1,43 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "紧急制动灯故障状态描述",
+  "row_semantics": "表格描述了紧急制动灯发生故障时的系统行为和状态。",
+  "column_semantics": "第一列是状态描述的标题，第二列详细描述了故障发生时的具体条件和系统响应。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLghtFltSta",
+      "type": "signal",
+      "description": "紧急制动灯故障状态信号"
+    },
+    {
+      "name": "HMI子系统",
+      "type": "controller",
+      "description": "人机交互子系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "当紧急制动灯发生故障时",
+      "details": "BrkLghtFltSta=0x1=BrukLghtFltSta_1_True"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "HMI子系统根据紧急制动灯 CAN 信号故障状态做故障弹窗提醒",
+      "details": "系统通过CAN信号检测到故障后，在HMI界面上弹出故障提示窗口"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "紧急制动灯故障",
+      "description": "BrkLghtFltSta信号值为0x1，表示紧急制动灯存在故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证紧急制动灯故障时，HMI子系统能否正确接收CAN信号并触发故障弹窗提醒功能。",
+  "uncertain_points": []
+}
+```

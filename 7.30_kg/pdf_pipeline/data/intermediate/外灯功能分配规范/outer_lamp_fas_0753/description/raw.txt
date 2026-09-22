@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Daytime Running Light (DRL) System Control Requirements",
+  "row_semantics": "Each row represents a specific requirement or configuration parameter related to the DRL system, including initial states, control logic, and synchronization constraints.",
+  "column_semantics": "The table has two main columns: one for the technical specification details and another for additional notes or remarks.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "controller",
+      "description": "The main controller responsible for managing exterior lighting functions, including DRL."
+    },
+    {
+      "name": "LHZCU",
+      "type": "module",
+      "description": "A module that controls the Daytime Running Light function, setting internal variables based on external inputs."
+    },
+    {
+      "name": "ICB",
+      "type": "interface",
+      "description": "An interface for subscribing to the Exterior Light Combination Service, used to set and clear DRL-related status flags."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DayRunningLightSta",
+      "type": "input_signal",
+      "description": "Status of the Daytime Running Light, indicating whether it is ON or OFF."
+    },
+    {
+      "name": "DayRunningLghtErrSta",
+      "type": "output_signal",
+      "description": "Error status of the Daytime Running Light, indicating if there are any faults."
+    },
+    {
+      "name": "DayRunngLghtDsblSts",
+      "type": "system_state",
+      "description": "Internal variable that tracks whether the DRL is disabled."
+    },
+    {
+      "name": "DayRunningLghtFucProStatus",
+      "type": "mode_name",
+      "description": "Status flag indicating the functional progress of the DRL system."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DayTmRunngLightSts",
+      "type": "output_signal",
+      "description": "Overall status of the Daytime Running Light system."
+    },
+    {
+      "name": "DayTmRunngLightFlts",
+      "type": "output_signal",
+      "description": "Fault status of the Daytime Running Light system."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "fault_status",
+      "description": "Indicates that the DRL system is operating without any faults."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "Synchronization Period",
+      "type": "timing",
+      "description": "The maximum allowable delay period for DRL exit synchronization is 40ms."
+    }
+  ],
+  "engineering_interpretation": "This table defines the initialization, control logic, and synchronization requirements for the Daytime Running Light system, including how the system handles enable/disable states, error conditions, and interactions with other modules like LHZCU and ICB.",
+  "uncertain_points": []
+}
+```

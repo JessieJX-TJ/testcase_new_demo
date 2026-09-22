@@ -1,0 +1,46 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Ambient Lamp Breathing Mode Timing Parameters",
+  "row_semantics": "Each row represents a specific parameter related to the breathing mode timing of an ambient lamp, defining the hold-off percentage for different breathing rates.",
+  "column_semantics": {
+    "1": "Parameter Name (e.g., AmbtiLampBrthngRate6holdoffPercent)",
+    "2": "Description of the Parameter (e.g., Ambient Lamp Breathing Mode Hold-Off Time)",
+    "3": "Range of Values (e.g., 0 - 32)",
+    "4": "Equation or Formula (e.g., E = N*1%)",
+    "5": "Default Value or Example in Hexadecimal/Percentage (e.g., 0xA (10%))"
+  },
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "function",
+      "description": "A lighting feature that provides ambient illumination with a breathing mode effect."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Rate",
+      "description": "Different rates at which the ambient lamp changes intensity in a breathing pattern."
+    },
+    {
+      "name": "Hold-Off Percentage",
+      "description": "The percentage of time the lamp holds its current intensity before transitioning to the next level in the breathing cycle."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "AmbtiLampBrthngRateXholdoffPercent",
+      "description": "Defines the hold-off percentage for each breathing rate (X), determining the duration of each phase in the breathing cycle.",
+      "range": "0 - 32",
+      "formula": "E = N*1%",
+      "default_value": "0xA (10%)"
+    }
+  ],
+  "engineering_interpretation": "This table defines the hold-off percentage parameters for the breathing mode of an ambient lamp across different breathing rates. It is used to configure the timing behavior of the lamp's breathing effect, ensuring consistent and expected performance during testing.",
+  "uncertain_points": [
+    "The exact functional impact of the 'Reserved,暂不使用' entries on system behavior is not specified."
+  ]
+}

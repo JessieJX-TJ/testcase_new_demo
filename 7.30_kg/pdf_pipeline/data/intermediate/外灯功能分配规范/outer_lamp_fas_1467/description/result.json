@@ -1,0 +1,78 @@
+{
+  "table_type": "structure_table",
+  "topic": "转向灯控制系统的功能与时序规范",
+  "row_semantics": "流程步骤或系统层级",
+  "column_semantics": "时间点或阶段",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "转向灯开关",
+      "type": "输入信号"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块"
+    },
+    {
+      "name": "S32G",
+      "type": "控制器/模块"
+    },
+    {
+      "name": "LHA/RHA/TailLampAsmbl",
+      "type": "功能部件"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "转向灯开关状态",
+      "description": "指示转向灯是否被激活"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "转向灯驱动信号",
+      "description": "最终输出至转向灯的功能信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "LHZCU 开关预处理模块",
+      "duration": "60ms",
+      "description": "包括采样和信号处理"
+    },
+    {
+      "name": "LHZCU 转向灯控制模块",
+      "duration": "30ms",
+      "description": "逻辑和信号处理"
+    },
+    {
+      "name": "S32G 外灯 SWC",
+      "duration": "10ms",
+      "description": "逻辑处理"
+    },
+    {
+      "name": "S32G 数字灯光 SDK",
+      "duration": "40ms",
+      "description": "数字灯光处理"
+    },
+    {
+      "name": "LHA/RHA/TailLampAsmbl 转向灯驱动",
+      "duration": "30ms",
+      "description": "最终驱动输出"
+    },
+    {
+      "name": "CANFD 通信延迟",
+      "duration": "20ms",
+      "description": "LHZCU 和 S32G 之间的通信延迟"
+    },
+    {
+      "name": "总响应时间",
+      "duration": "230ms",
+      "description": "从转向灯开关动作到转向灯驱动完成的总时间"
+    }
+  ],
+  "engineering_interpretation": "该表格描述了整车转向灯控制系统从开关输入到最终驱动输出的完整功能流程与时序要求，可用于验证转向灯控制系统的响应时间和模块间通信性能。",
+  "uncertain_points": []
+}

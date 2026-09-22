@@ -1,0 +1,84 @@
+{
+  "table_type": "fault_table",
+  "topic": "诊断需求清单/Requirement List for远光灯开关相关故障检测",
+  "row_semantics": "每行代表一个具体的故障诊断需求，包含故障代码、描述、进入条件和退出条件。",
+  "column_semantics": {
+    "名称": "故障代码或诊断需求的唯一标识符。",
+    "描述": "对诊断需求的具体功能或故障现象的描述。",
+    "进入条件": "触发该诊断需求开始检测的条件。",
+    "退出条件": "停止该诊断需求检测的条件。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B1077_11",
+      "type": "fault_code",
+      "description": "远光灯开关短路到地的故障代码"
+    },
+    {
+      "name": "B1077_15",
+      "type": "fault_code",
+      "description": "远光灯开关短路到电源的故障代码"
+    },
+    {
+      "name": "B1077_1C",
+      "type": "fault_code",
+      "description": "远光灯开关阻值超范围的故障代码"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "开关检测到短路到地",
+      "description": "进入条件：远光灯开关检测到短路到地。",
+      "entity": "B1077_11"
+    },
+    {
+      "name": "开关检测到短路到电源",
+      "description": "进入条件：远光灯开关检测到短路到电源。",
+      "entity": "B1077_15"
+    },
+    {
+      "name": "检测到未定义的阻值",
+      "description": "进入条件：远光灯开关检测到未定义的阻值。",
+      "entity": "B1077_1C"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "检测到未短路到地",
+      "description": "退出条件：远光灯开关未检测到短路到地。",
+      "entity": "B1077_11"
+    },
+    {
+      "name": "检测到未短路到电源",
+      "description": "退出条件：远光灯开关未检测到短路到电源。",
+      "entity": "B1077_15"
+    },
+    {
+      "name": "检测到已知定义的阻值",
+      "description": "退出条件：远光灯开关检测到已知定义的阻值。",
+      "entity": "B1077_1C"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "远光灯开关短路到地",
+      "description": "远光灯开关存在短路到地的故障。",
+      "code": "B1077_11"
+    },
+    {
+      "name": "远光灯开关短路到电源",
+      "description": "远光灯开关存在短路到电源的故障。",
+      "code": "B1077_15"
+    },
+    {
+      "name": "远光灯开关阻值超范围",
+      "description": "远光灯开关的阻值超出预设范围。",
+      "code": "B1077_1C"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义远光灯开关在整车电子电器系统中的故障诊断需求，包括短路到地、短路到电源以及阻值超范围等故障的检测条件，是进行相关功能测试验证的基础依据。",
+  "uncertain_points": []
+}

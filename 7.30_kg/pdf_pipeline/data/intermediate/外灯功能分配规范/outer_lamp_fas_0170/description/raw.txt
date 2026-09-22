@@ -1,0 +1,121 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Exterior Lamp Function Logic Diagram",
+  "row_semantics": "Functional states or conditions, including system inputs, internal logic states, and output actions.",
+  "column_semantics": "Different stages or branches of the logic flow, often representing sequential steps or parallel conditions leading to specific outputs.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Exterior Lamp Functions",
+      "type": "function",
+      "description": "Core functionalities related to vehicle exterior lighting systems (e.g., headlamps, taillights, turn signals)."
+    },
+    {
+      "name": "BCM (Body Control Module)",
+      "type": "controller",
+      "description": "The central control unit responsible for managing various body-related functions, including lighting."
+    },
+    {
+      "name": "Lighting System",
+      "type": "system",
+      "description": "The overall system encompassing all exterior light sources and their associated controls."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Ignition Status",
+      "type": "input_signal",
+      "description": "Indicates whether the vehicle's ignition is ON or OFF."
+    },
+    {
+      "name": "Driver Command",
+      "type": "input_signal",
+      "description": "Commands from the driver, such as turning on headlights or activating turn signals."
+    },
+    {
+      "name": "Ambient Light Level",
+      "type": "input_signal",
+      "description": "Sensor input indicating the current brightness of the environment."
+    },
+    {
+      "name": "Vehicle Speed",
+      "type": "input_signal",
+      "description": "Speed of the vehicle, which can influence lighting behavior (e.g., automatic high beams)."
+    },
+    {
+      "name": "Mode Selection",
+      "type": "mode_name",
+      "description": "Selected operational mode of the lighting system (e.g., AUTO, MANUAL)."
+    },
+    {
+      "name": "Fault Detection",
+      "type": "fault_state",
+      "description": "Indication of any faults within the lighting system or its components."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Headlamp Status",
+      "type": "output_signal",
+      "description": "State of the headlamps (ON/OFF, high/low beam)."
+    },
+    {
+      "name": "Taillamp Status",
+      "type": "output_signal",
+      "description": "State of the taillights (ON/OFF, brake/running lights)."
+    },
+    {
+      "name": "Turn Signal Status",
+      "type": "output_signal",
+      "description": "State of the turn signals (blinking pattern)."
+    },
+    {
+      "name": "Warning Light Status",
+      "type": "output_signal",
+      "description": "Status of warning lights (e.g., hazard lights)."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Lamp Failure",
+      "type": "fault_state",
+      "description": "Failure of a specific lamp or group of lamps."
+    },
+    {
+      "name": "Sensor Malfunction",
+      "type": "fault_state",
+      "description": "Malfunction of ambient light sensor or other relevant sensors."
+    },
+    {
+      "name": "Control Circuit Fault",
+      "type": "fault_state",
+      "description": "Fault in the electrical circuit controlling the lighting system."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "Turn Signal Flash Rate",
+      "type": "timing_constraint",
+      "description": "Defined rate at which turn signals should flash (typically 60-120 times per minute)."
+    },
+    {
+      "name": "Automatic Headlamp Delay",
+      "type": "timing_constraint",
+      "description": "Delay before automatic headlamps turn off after the ignition is switched off."
+    },
+    {
+      "name": "Daytime Running Light Duration",
+      "type": "timing_constraint",
+      "description": "Duration for which daytime running lights remain active when activated."
+    }
+  ],
+  "engineering_interpretation": "This logic table defines the operational rules and conditional behaviors for various exterior lighting functions based on inputs from the driver, vehicle sensors, and system status. It outlines how the BCM processes these inputs to control the state of different lamps under various driving conditions and modes.",
+  "uncertain_points": [
+    "Specific threshold values for ambient light levels are not clearly defined in the diagram.",
+    "The exact timing parameters for some functions (e.g., automatic headlamp delay) are not numerically specified.",
+    "The detailed fault detection logic for each component is not fully elaborated in this high-level diagram."
+  ]
+}
+```

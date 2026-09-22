@@ -1,0 +1,68 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 转向灯控制",
+  "row_semantics": "表格按功能点（DirectionLight.ControlDirectionLight）分组，每组描述一个具体的转向灯控制接口及其参数配置。",
+  "column_semantics": {
+    "第一列": "功能模块名称",
+    "第二列": "功能消耗标识",
+    "第三列": "SOA (Service-Oriented Architecture) 接口类型",
+    "第四列": "ICB (Internal Communication Bus) 接口类型",
+    "第五列": "ICB (Internal Communication Bus) 接口类型",
+    "第六列": "预留/未使用",
+    "第七列": "网络控制方式"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight.ControlDirectionLight",
+      "type": "function",
+      "description": "转向灯控制功能接口"
+    },
+    {
+      "name": "ControlDirectionLight",
+      "type": "interface",
+      "description": "用于控制转向灯亮灭的服务接口"
+    },
+    {
+      "name": "DirectionLightReq",
+      "type": "parameter",
+      "description": "转向灯请求参数，包含开关状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例ID，区分不同转向灯（如右前、左后）",
+      "values": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "name": "DirectionLightReq",
+      "description": "转向灯请求参数，控制灯的开关状态",
+      "values": [
+        "0x0=OFF",
+        "0x1=ON"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "转向灯状态",
+      "description": "控制右前或左后转向灯点亮或熄灭"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "周期调用",
+      "description": "该服务接口需周期性调用以维持转向灯状态"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了Z-ONE-3.0平台下外灯功能中转向灯控制的具体参数和接口规范，可用于验证网络控制系统是否能正确周期性调用接口，并根据指定的InstanceID和DirectionLightReq参数准确控制相应转向灯的亮灭状态。",
+  "uncertain_points": []
+}
+```

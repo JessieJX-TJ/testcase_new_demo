@@ -1,0 +1,38 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "HMI (Human-Machine Interface) system behavior related to High Beam Enhancement function",
+  "row_semantics": "Different states and interactions of the HMI system concerning the High Beam Enhancement feature, including signal reception, user interaction, and fault detection.",
+  "column_semantics": "The table does not have explicit columns; instead, it uses a vertical structure to describe different aspects of the HMI state related to the High Beam Enhancement function.",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    "HMI子系统 (HMI Subsystem)",
+    "ICB个性化设置子系统 (ICB Personalization Subsystem)",
+    "LHZCU模块 (LHZCU Module)",
+    "外灯产品PRD定义 (External Lighting Product PRD Definition)"
+  ],
+  "core_conditions": [
+    "用户设置远光灯增强使能状态",
+    "HMI子系统接收来自ICB个性化设置子系统的信号",
+    "HMI子系统接收来自LHZCU模块的车顶射灯故障状态信号",
+    "8295中控屏操作逻辑"
+  ],
+  "core_outputs": [
+    "HMI显示远光灯增强使能状态",
+    "HMI发送远光灯增强使能状态给ICB个性化设置子系统",
+    "HMI显示车顶射灯故障状态",
+    "弹出免责声明文言（首次点击开启远光增加使能开关时）"
+  ],
+  "core_faults": [
+    "RoofSpotLightErrSta信号为0x1表示错误状态"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table describes the state transitions and interactions of the HMI system for the High Beam Enhancement function, including how the system receives and processes signals from other subsystems, handles user inputs, and displays relevant status information. It is primarily used for testing the correct display and handling of the High Beam Enhancement feature's enable/disable state and associated fault conditions.",
+  "uncertain_points": [
+    "具体的弹窗内容未明确说明。",
+    "P档置灰的具体条件和范围未详细描述。",
+    "外灯产品PRD定义的具体细节未在表格中给出。"
+  ]
+}
+```

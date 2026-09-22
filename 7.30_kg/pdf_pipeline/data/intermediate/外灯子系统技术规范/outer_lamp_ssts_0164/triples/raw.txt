@@ -1,0 +1,44 @@
+```json
+[
+  {
+    "head": "系统启动左侧方向灯控制流程",
+    "relation": "前提条件",
+    "tail": "配置字 DILghtSwSOAEnPrm == 1 (Enable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["前置条件", "DILghtSwSOAEnPrm"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统启动左侧方向灯控制流程",
+    "relation": "触发条件",
+    "tail": "用户轻拨左转向拨杆,开关阻值为2000Ω(±5%)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["触发条件", "用户轻拨左转向拨杆", "开关阻值"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统持续发送方向灯开关状态",
+    "relation": "执行动作",
+    "tail": "【DILghtSwMdl】持续发送DirectionLightSwitchStatus. DirectionLightSwitchSta=0x3(Left DirectionLlight On一档)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "DILghtSwMdl", "DirectionLightSwitchStatus", "DirectionLightSwitchSta"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统向控制模块发送控制信号",
+    "relation": "执行动作",
+    "tail": "【DILghtCtrlMdl】,至少发送三帧",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "DILghtCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧方向灯控制流程退出",
+    "relation": "退出条件",
+    "tail": "转向灯开关变为非2000Ω(±5%)",
+    "triple_type": "状态保持条件",
+    "evidence_terms": ["退出条件", "转向灯开关阻值"],
+    "confidence_note": "high"
+  }
+]
+```

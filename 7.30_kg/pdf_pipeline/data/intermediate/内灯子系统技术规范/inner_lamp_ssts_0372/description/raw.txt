@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "诊断DTC需求清单 (Diagnostic DTC Requirement List)",
+  "row_semantics": "每行代表一个具体的故障诊断代码 (DTC) 的需求，包括故障描述、触发条件和恢复条件。",
+  "column_semantics": {
+    "序号": "故障条目的编号，用于唯一标识每个DTC需求。",
+    "DTC 显示码": "故障诊断代码的显示码，用于在车辆诊断系统中识别特定故障。",
+    "故障描述": "对故障现象的详细描述，指明具体是哪个功能或电路出现问题。",
+    "故障置位条件": "触发并记录该DTC的条件，通常包括状态条件和持续时间要求。",
+    "故障恢复条件": "清除该DTC的条件，通常涉及参数值的变化。",
+    "TBD": "To Be Determined，表示该字段的具体内容尚未确定，需要进一步确认。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Loadspace Lamp Control Circuit",
+      "type": "功能名",
+      "description": "后备箱灯控制电路，负责控制后备箱灯的点亮与熄灭。"
+    },
+    {
+      "name": "TBD",
+      "type": "控制器/模块名",
+      "description": "待定，表示具体的控制器或模块名称尚未确定。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "后备箱灯驱动激活状态",
+      "type": "系统状态",
+      "description": "后备箱灯处于被驱动激活的状态，即电路中有电流流过以点亮后备箱灯。"
+    },
+    {
+      "name": "驱动电流小于阈值 (TBD) A",
+      "type": "输入信号",
+      "description": "驱动后备箱灯的电流值低于某个预设的阈值，单位为安培 (A)。"
+    },
+    {
+      "name": "驱动电流超过阈值 (TBD) A",
+      "type": "输入信号",
+      "description": "驱动后备箱灯的电流值超过某个预设的阈值，单位为安培 (A)。"
+    },
+    {
+      "name": "持续 100ms",
+      "type": "模式名",
+      "description": "条件必须持续至少100毫秒才能触发DTC。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "Loadspace Lamp Control Circuit Short to battery",
+      "type": "故障状态",
+      "description": "后备箱灯控制电路发生短路到电池的情况。"
+    },
+    {
+      "name": "Loadspace Lamp Control Circuit Short to ground",
+      "type": "故障状态",
+      "description": "后备箱灯控制电路发生短路到地的情况。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "持续 100ms",
+      "type": "定时",
+      "description": "故障条件必须持续至少100毫秒才能触发DTC的置位。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了后备箱灯控制电路可能出现的两种短路故障（短路到电池和短路到地）的诊断需求，包括触发DTC的条件（如电流值和持续时间）以及清除DTC的条件，可用于验证车辆电子控制系统在检测和处理此类电路故障时的行为是否符合设计规范。",
+  "uncertain_points": [
+    "DTC 显示码的具体内容未确定。",
+    "阈值 (TBD) A 的具体数值未确定。",
+    "控制器/模块名称未确定。"
+  ]
+}
+```

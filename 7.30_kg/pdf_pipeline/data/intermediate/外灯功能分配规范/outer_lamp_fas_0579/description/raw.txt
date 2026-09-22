@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车电子系统中EDR（Event Data Recorder）相关指示灯开关状态的通信接口定义",
+  "row_semantics": "描述一个特定接口的详细信息及其对应的信号值定义",
+  "column_semantics": {
+    "Interface Name": "接口的名称，标识该通信的具体功能点",
+    "Direction": "信号的传输方向，指示是发送还是接收",
+    "Type": "信号的数据类型或通信协议，如CAN总线",
+    "Sender/Provider": "提供该信号的模块或控制器名称",
+    "Receiver/Consumer": "消费或使用该信号的模块或控制器名称",
+    "Channel": "信号传输的物理或逻辑通道路径",
+    "Interface Source": "接口的来源或归属"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "EDRDircnIndLampSwSts",
+      "type": "Signal",
+      "description": "EDR指示灯开关状态信号，用于报告指示灯的工作模式"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Local Headlight Control Unit，本地大灯控制单元，负责生成指示灯状态信号"
+    },
+    {
+      "name": "SDM",
+      "type": "Controller/Module",
+      "description": "Safety Deployment Module，安全气囊控制模块，作为指示灯状态信号的接收方"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "EDRDircnIndLampSwSts_0_off",
+      "value": "0x0",
+      "description": "指示灯处于关闭状态"
+    },
+    {
+      "name": "EDRDircnIndLampSwSts_1_Left",
+      "value": "0x1",
+      "description": "指示灯处于左转向状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了EDR指示灯开关状态信号（EDRDircnIndLampSwSts）的通信接口规范，包括其传输方向、类型、提供方和接收方等信息，可用于验证LHZCU与SDM之间通过BKBCANFD-SFCANFD通道传输的CAN信号是否符合预期的状态定义。",
+  "uncertain_points": []
+}
+```

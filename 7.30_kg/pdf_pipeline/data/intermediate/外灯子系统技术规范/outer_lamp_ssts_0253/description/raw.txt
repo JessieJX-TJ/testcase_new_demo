@@ -1,0 +1,85 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "整车电子系统中左近关灯（Left Near Turn Signal Lamp）的故障诊断需求",
+  "row_semantics": "每行代表一个具体的故障诊断场景或测试用例，针对左近关灯的不同异常状态进行定义。",
+  "column_semantics": {
+    "名称": "故障诊断场景的唯一标识符，格式为B105A XX，其中XX表示具体故障类型编号。",
+    "描述": "对当前诊断场景的简要说明，指明了左近关灯的具体异常情况。",
+    "进入条件": "触发该故障诊断场景的检测条件，即系统需要满足的输入信号状态。",
+    "退出条件": "恢复到正常状态的检测条件，即故障诊断场景结束的条件。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B105A 11",
+      "type": "function_name",
+      "description": "左近关灯输出短路到地故障诊断场景"
+    },
+    {
+      "name": "B105A 12",
+      "type": "function_name",
+      "description": "左近关灯输出短路到电源故障诊断场景"
+    },
+    {
+      "name": "B105A 13",
+      "type": "function_name",
+      "description": "左近关灯输出开路故障诊断场景"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "检测到短路到地",
+      "description": "系统检测到左近关灯电路与地之间发生短路。",
+      "source": "输入信号"
+    },
+    {
+      "name": "检测到短路到电源",
+      "description": "系统检测到左近关灯电路与电源之间发生短路。",
+      "source": "输入信号"
+    },
+    {
+      "name": "检测到输出开路",
+      "description": "系统检测到左近关灯电路断开，无电流通过。",
+      "source": "输入信号"
+    },
+    {
+      "name": "检测到未短路到地",
+      "description": "系统确认左近关灯电路未与地之间发生短路。",
+      "source": "输入信号"
+    },
+    {
+      "name": "检测到未短路到电源",
+      "description": "系统确认左近关灯电路未与电源之间发生短路。",
+      "source": "输入信号"
+    },
+    {
+      "name": "检测到输出开路恢复",
+      "description": "系统确认左近关灯电路恢复正常，不再处于开路状态。",
+      "source": "输入信号"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "短路到地",
+      "description": "左近关灯电路与车辆接地系统之间发生异常连接。",
+      "impact": "可能导致灯光不亮或异常点亮，影响行车安全。"
+    },
+    {
+      "name": "短路到电源",
+      "description": "左近关灯电路与车辆电源系统之间发生异常连接。",
+      "impact": "可能导致灯光持续点亮或异常工作，增加电气负载风险。"
+    },
+    {
+      "name": "开路",
+      "description": "左近关灯电路完全断开，无法正常工作。",
+      "impact": "导致转向灯功能失效，严重影响驾驶安全。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了左近关灯在不同故障状态下的诊断逻辑，用于指导整车电子系统在发生短路到地、短路到电源或开路等故障时的检测、记录和恢复机制，确保故障能够被及时发现并处理。",
+  "uncertain_points": []
+}
+```

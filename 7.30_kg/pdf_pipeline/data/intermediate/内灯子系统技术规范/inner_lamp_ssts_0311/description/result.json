@@ -1,0 +1,112 @@
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform)",
+  "row_semantics": "Each row represents a specific command or control signal for the interior ambient lighting system, detailing how different parameters can be set or requested.",
+  "column_semantics": {
+    "Input": "The source of the command or signal.",
+    "LIN": "Signal transmitted via LIN bus.",
+    "RHZCU": "Signal related to the Right Hand Zone Control Unit.",
+    "UpIPAmbtLampB": "Signal related to the Upper Interior Ambient Lamp Body.",
+    "RHZCU_LIN5": "Specific LIN signal from RHZCU.",
+    "内灯SSTS": "Internal Light Sub System Test Signal."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "UpIPBLampOnOff_1",
+      "type": "function",
+      "description": "Command to turn the upper interior ambient lamp on or off."
+    },
+    {
+      "name": "UpIPBLampColor_Cmd_1",
+      "type": "function",
+      "description": "Command to set the color of the upper interior ambient lamp."
+    },
+    {
+      "name": "UpIPBLampBrtns_Cmd_1",
+      "type": "function",
+      "description": "Command to adjust the brightness of the upper interior ambient lamp."
+    },
+    {
+      "name": "UpIPBLampBrthngCmd_1",
+      "type": "function",
+      "description": "Command to set the breathing rate of the upper interior ambient lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0=UpIPBLampOnOff_1_0_OFF",
+      "description": "Turns the lamp off."
+    },
+    {
+      "name": "0x1=UpIPBLampOnOff_1_1_ON",
+      "description": "Turns the lamp on."
+    },
+    {
+      "name": "0x00=UpIPBLampColorCmd_1_0_No Request",
+      "description": "No color request is made."
+    },
+    {
+      "name": "0x01-0xFF=各个颜色值",
+      "description": "Specifies various color values for the lamp."
+    },
+    {
+      "name": "0x00=UpIPBLampBrtnsCmd_1_0_No Request",
+      "description": "No brightness request is made."
+    },
+    {
+      "name": "0x01-0x64=1%-100%",
+      "description": "Sets the brightness level as a percentage."
+    },
+    {
+      "name": "0x00-0xFF=Reserved",
+      "description": "Reserved range for future use."
+    },
+    {
+      "name": "0x0=UpIPBLampBrthngCmd_1_0_No Request",
+      "description": "No breathing rate request is made."
+    },
+    {
+      "name": "0x1-0xF=UpIPBLampBrthngCmd_1_x_RateX",
+      "description": "Sets the breathing rate to one of 15 predefined rates."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "内灯SSTS",
+      "type": "output_signal",
+      "description": "Test signal for the internal light sub system."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate0",
+      "value": "/",
+      "description": "No request for breathing rate."
+    },
+    {
+      "name": "Rate1",
+      "value": "500ms",
+      "description": "New breathing rate mode (0-100% fade in/out)."
+    },
+    {
+      "name": "Rate2",
+      "value": "1s",
+      "description": "Original breathing mode 2 (0-100% fade in/out)."
+    },
+    {
+      "name": "Rate3",
+      "value": "1s",
+      "description": "New breathing rate mode."
+    },
+    {
+      "name": "Rate4",
+      "value": "2s",
+      "description": "Original breathing mode 3."
+    }
+  ],
+  "engineering_interpretation": "This table defines the control signals and parameters for the upper interior ambient lighting system, including on/off commands, color selection, brightness adjustment, and breathing rate settings. It is used to verify that the system correctly interprets and executes these commands under various conditions.",
+  "uncertain_points": []
+}

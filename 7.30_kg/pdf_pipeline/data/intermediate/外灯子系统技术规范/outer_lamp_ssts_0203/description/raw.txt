@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "转向灯控制逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，用户操作转向拨杆时，系统如何触发并执行转向灯控制的逻辑流程，包括持续发送方向灯开关状态信号，直到满足退出条件。",
+  "column_semantics": {
+    "第一列": "逻辑步骤或条件类别（如前置条件、触发条件、执行动作、退出条件、异常处理）",
+    "第二列": "对应类别的详细描述"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILghtSwSOAEnPrm",
+      "type": "配置参数",
+      "description": "用于启用或禁用转向灯相关功能的配置字"
+    },
+    {
+      "name": "DILghtSwMdl",
+      "type": "控制器模块",
+      "description": "负责管理方向灯开关状态的模块"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "控制器模块",
+      "description": "负责控制方向灯实际动作的模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字 DILghtSwSOAEnPrm == 1 (Enable)"
+    },
+    {
+      "condition": "触发条件",
+      "description": "用户重拨右转向拨杆，开关阻值为 1200 Ω (±5%)"
+    },
+    {
+      "condition": "退出条件",
+      "description": "转向灯开关阻值变为非 1200 Ω (±5%)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DirectionLightSwitchStatus",
+      "description": "持续发送的方向灯开关状态信号",
+      "value": "0x2 (Right Direction Light On 二档)"
+    },
+    {
+      "module": "DILghtSwMdl",
+      "action": "持续发送 DirectionLightSwitchStatus",
+      "description": "至少发送三帧"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证转向灯控制逻辑在特定输入条件下是否正确触发，并确认系统在满足退出条件时能够正确停止相关控制动作。",
+  "uncertain_points": []
+}
+```

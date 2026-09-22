@@ -1,0 +1,100 @@
+{
+  "table_type": "signal_table",
+  "topic": "DoorRR6Lamp控制指令规范",
+  "row_semantics": "每行代表一个独立的灯光控制功能或模式指令，包括开关、颜色、亮度和呼吸频率等。",
+  "column_semantics": {
+    "输入": "信号来源类型，如LIN总线、RHZCU模块、DoorAmbtLampF RR控制器等。",
+    "LIN": "LIN总线信号输入。",
+    "RHZCU": "RHZCU模块信号输入。",
+    "DoorAmbtLampF RR": "DoorAmbtLampF RR控制器信号输入。",
+    "RHZCU_LIN4": "RHZCU模块通过LIN4通道的信号输入。",
+    "内灯 SSTS": "内灯SSTS（Status Signal Transmission System）状态信号输出。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorRR6LampOnOff_1",
+      "type": "功能名",
+      "description": "门右侧后部氛围灯开关控制指令。"
+    },
+    {
+      "name": "DoorRR6LampColorCmd_1",
+      "type": "功能名",
+      "description": "门右侧后部氛围灯颜色控制指令。"
+    },
+    {
+      "name": "DoorRR6LampBrtnsCmd_1",
+      "type": "功能名",
+      "description": "门右侧后部氛围灯亮度调节指令。"
+    },
+    {
+      "name": "DoorRR6LampBrthngCmd_1",
+      "type": "功能名",
+      "description": "门右侧后部氛围灯呼吸频率控制指令。"
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块名",
+      "description": "区域主机控制单元，负责处理相关控制逻辑。"
+    },
+    {
+      "name": "DoorAmbtLampF RR",
+      "type": "控制器/模块名",
+      "description": "门右侧后部氛围灯控制器。"
+    },
+    {
+      "name": "LIN",
+      "type": "输入信号",
+      "description": "本地互联网络总线信号，用于传输控制命令。"
+    },
+    {
+      "name": "RHZCU_LIN4",
+      "type": "输入信号",
+      "description": "RHZCU模块通过LIN4通道发送的信号。"
+    },
+    {
+      "name": "内灯 SSTS",
+      "type": "输出信号",
+      "description": "内灯状态信号传输系统输出，指示内灯状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DoorRR6LampOnOff_1_0_OFF",
+      "description": "关闭门右侧后部氛围灯的请求。"
+    },
+    {
+      "name": "DoorRR6LampOnOff_1_1_ON",
+      "description": "开启门右侧后部氛围灯的请求。"
+    },
+    {
+      "name": "DoorRR6LampColorCmd_1_0_No Request",
+      "description": "无颜色请求，保持当前颜色。"
+    },
+    {
+      "name": "DoorRR6LampBrtnsCmd_1_0_No Request",
+      "description": "无亮度请求，保持当前亮度。"
+    },
+    {
+      "name": "DoorRR6LampBrthngCmd_1_0_Rate0",
+      "description": "呼吸模式关闭或无请求。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "内灯 SSTS",
+      "description": "指示内灯的状态变化，例如是否点亮或熄灭。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate1",
+      "value": "500ms",
+      "description": "呼吸模式启用时，呼吸周期为500毫秒。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了门右侧后部氛围灯的各项控制指令及其对应的输入信号要求，可用于验证车辆灯光控制系统在不同控制模式下的信号交互和功能实现。",
+  "uncertain_points": []
+}

@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"fault_table\",\n  \"topic\": \"诊断 DTC 需求清单 (Diagnostic Trouble Code Requirement List)\",\n  \"row_semantics\": \"每行代表一个独立的故障诊断码 (DTC) 的需求，按序号排列。\",\n  \"column_semantics\": {\n    \"序号\": \"故障诊断码的顺序编号。\",\n    \"DTC 显示码\": \"待定的故障代码标识符，用于系统内部识别。\",\n    \"故障描述\": \"对故障现象的详细英文描述，指明了故障涉及的具体电路或功能。\",\n    \"故障置位条件\": \"触发该故障诊断码需要满足的条件，包括状态和阈值/定时要求。\",\n    \"故障恢复条件\": \"清除该故障诊断码所需的条件，通常是电流或电压等参数回到正常范围并持续一定时间。\",\n  },\n  \"has_merged_cells\": false,\n  \"header_levels\": 1,\n  \"core_entities\": [\n    {\n      \"name\": \"Third Row Left MapLamp Control Circuit\",\n      \"type\": \"功能模块\",\n      \"description\": \"第三排左侧阅读灯控制电路，是故障描述中提及的核心功能模块。\"\n    }\n  ],\n  \"core_conditions\": [\n    {\n      \"name\": \"MapLamp Driving Activation State\",\n      \"description\": \"阅读灯驱动激活状态，是所有故障置位条件中的共同前提。\",\n      \"type\": \"系统状态\"\n    },\n    {\n      \"name\": \"Driving Current Threshold\",\n      \"description\": \"驱动电流的阈值，用于判断电流是否异常。\",\n      \"type\": \"阈值\"\n    },\n    {\n      \"name\": \"Duration Condition\",\n      \"description\": \"持续时间条件，要求异常状态持续至少 100ms 才触发故障。\",\n      \"type\": \"定时\"\n    }\n  ],\n  \"core_outputs\": [],\n  \"core_faults\": [\n    {\n      \"name\": \"TBD\",\n      \"description\": \"待定的故障代码标识符，用于唯一标识特定的故障类型。\",\n      \"type\": \"故障状态\"\n    }\n  ],\n  \"core_timing_constraints\": [\n    {\n      \"name\": \"100ms\",\n      \"description\": \"持续时间约束，要求异常条件必须持续至少 100 毫秒。\",\n      \"type\": \"定时\"\n    }\n  ],\n  \"engineering_interpretation\": \"该表格定义了第三排左侧阅读灯控制电路可能出现的三种故障模式（短路到电池、短路到地、开路），并详细规定了每种故障的触发条件（如电流阈值和持续时间）以及清除条件，可用于验证车辆电子控制系统在检测和处理此类电路故障时的行为是否符合设计规范。\",\n  \"uncertain_points\": [\n    \"DTC 显示码 (TBD): 具体的故障代码标识符未明确给出。\",\n    \"Driving Current Threshold (TBD): 具体的电流阈值数值未明确给出。\",\n    \"Fault Recovery Condition Details: 故障恢复条件的具体实现细节未明确说明。\"\n  ]\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

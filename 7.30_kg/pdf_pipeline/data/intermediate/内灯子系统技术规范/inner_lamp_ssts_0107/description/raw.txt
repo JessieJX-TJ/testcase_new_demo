@@ -1,0 +1,81 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform)",
+  "row_semantics": "Each row represents a specific command or configuration parameter for the interior lighting system, detailing its function, input sources, and associated timing or value settings.",
+  "column_semantics": "Columns define the command name, its rate of execution, whether it's new or existing, and the input interfaces (LIN, RHZCU, LowIPAmbtLampB/C) from which the command can be received.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LowIPBLampFadeSpdCmd_1",
+      "type": "command",
+      "description": "Controls the fade speed of the ambient light."
+    },
+    {
+      "name": "LowIPCLampOnOff_1",
+      "type": "command",
+      "description": "Controls the on/off state of the ambient light."
+    },
+    {
+      "name": "LowIPCLampColorCmd_1",
+      "type": "command",
+      "description": "Sets the color of the ambient light."
+    },
+    {
+      "name": "LowIPCLampBrtnsCmd_1",
+      "type": "command",
+      "description": "Adjusts the brightness of the ambient light."
+    },
+    {
+      "name": "LowIPCLampBrthCmd_1",
+      "type": "command",
+      "description": "Controls the breathing effect of the ambient light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Rate11 to Rate15",
+      "description": "Execution rates for different commands, ranging from 6s to 12s, with some being new additions."
+    },
+    {
+      "name": "Command Value 0",
+      "description": "Indicates an immediate stop or no request for certain commands."
+    },
+    {
+      "name": "Color Values 0x00 to 0xFF",
+      "description": "Defines the range of available colors for the ambient light."
+    },
+    {
+      "name": "Brightness Values 0x01 to 0xFF",
+      "description": "Defines the range of brightness levels, with 0x01 representing 1% and 0xFF reserved."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Light Head Behavior",
+      "description": "The behavior of the light head based on the configured parameters, including fading, on/off, color change, and brightness adjustment."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Spd0",
+      "value": "2000ms",
+      "description": "Default speed for light head state transition."
+    },
+    {
+      "name": "Spd1",
+      "value": "300ms",
+      "description": "Speed for faster transitions."
+    },
+    {
+      "name": "Spd2",
+      "value": "100ms",
+      "description": "Reserved for future use."
+    }
+  ],
+  "engineering_interpretation": "This table defines the technical specifications for controlling the interior lighting system's behavior, including fade speed, on/off state, color, and brightness, across various input interfaces. It is used to verify that the system correctly interprets commands and applies the specified lighting effects according to the defined rates and timing constraints.",
+  "uncertain_points": []
+}
+```

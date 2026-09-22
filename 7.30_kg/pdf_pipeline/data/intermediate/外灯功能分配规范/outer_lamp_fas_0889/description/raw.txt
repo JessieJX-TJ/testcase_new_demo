@@ -1,0 +1,31 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "整车模式与功能状态的映射关系",
+  "row_semantics": "表格的第一行定义了不同的系统模式（如休眠、待机、舒适等），第二行则表示在这些模式下，特定功能或模块的状态（X表示不激活，√表示激活）。",
+  "column_semantics": "表格的列代表了不同的系统模式或功能状态，从左到右依次为：用户模式下的休眠、待机、舒适、正常驾驶、智能泊车、智能驾驶、XOTA；整车模式下的工程、工厂、运输、转毂、展车、碰撞、正常、维修。",
+  "has_merged_cells": false,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "User Mode",
+      "description": "用户模式，包括休眠、待机、舒适、正常驾驶、智能泊车、智能驾驶、XOTA"
+    },
+    {
+      "name": "Whole Vehicle Mode",
+      "description": "整车模式，包括工程、工厂、运输、转毂、展车、碰撞、正常、维修"
+    }
+  ],
+  "core_conditions": [
+    "User Mode",
+    "Whole Vehicle Mode"
+  ],
+  "core_outputs": [
+    "Function Activation Status (X/√)"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证在不同系统模式下，车辆各功能模块（如外灯、车身控制、电动尾门等）的激活状态是否符合设计规范。",
+  "uncertain_points": []
+}
+```

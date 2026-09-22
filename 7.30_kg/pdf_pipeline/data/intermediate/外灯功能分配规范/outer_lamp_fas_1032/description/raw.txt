@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车电子电器系统接口定义与通信规范",
+  "row_semantics": "每行代表一个具体的接口定义，描述了该接口的属性和通信路径。",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识该通信链路的逻辑名称。",
+    "Direction": "数据流向，指示信号是输入还是输出。",
+    "Type": "通信类型，如CAN或SOA（Service-Oriented Architecture）。",
+    "Sender/Provider": "信号的发送方或服务提供方，通常是某个控制器或模块。",
+    "Receiver/Consumer": "信号的接收方或服务消费方，通常是另一个控制器或模块。",
+    "Channel": "通信路径或通道，指明信号传输的具体总线或网络。",
+    "Source": "接口来源，可能用于追溯接口的定义出处或标准。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Lighting and Hazard Control Unit，负责外灯和危险警示灯控制的电子控制单元。"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "Instrument Cluster Board，仪表盘控制板，负责车辆信息显示和部分控制功能。"
+    },
+    {
+      "name": "ICB_S32G_M",
+      "type": "Controller/Module",
+      "description": "基于S32G微处理器的ICB版本，可能具有更高级的功能或更高的性能。"
+    },
+    {
+      "name": "BKBCANFD",
+      "type": "Communication Channel",
+      "description": "Backbone CAN Flexible Data Rate，骨干CAN总线，支持高速数据传输。"
+    },
+    {
+      "name": "LHZCU_ETH",
+      "type": "Communication Channel",
+      "description": "LHZCU Ethernet，LHZCU通过以太网进行通信的通道。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "CAN",
+      "description": "Controller Area Network，一种广泛应用于汽车领域的串行通信协议。"
+    },
+    {
+      "name": "SOA",
+      "description": "Service-Oriented Architecture，面向服务的架构，一种现代汽车电子电气架构范式。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了整车电子电器系统中不同控制器之间（如LHZCU与ICB）的通信接口，包括通信类型、方向、发送方、接收方及通信路径。可用于验证各控制器间通信接口的正确性、兼容性和数据传输的完整性。",
+  "uncertain_points": [
+    "接口来源（Source）列的具体内容未明确说明，可能需要进一步确认其含义。",
+    "部分行中'Provider'字段为空，具体原因未知，可能需要澄清是否为配置错误或特殊设计。",
+    "未明确说明各接口的具体功能或应用场景，需结合其他文档理解其在整车系统中的作用。"
+  ]
+}
+```

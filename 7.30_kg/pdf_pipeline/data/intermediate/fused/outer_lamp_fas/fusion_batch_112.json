@@ -1,0 +1,423 @@
+[
+  {
+    "head": "右侧前雾灯状态",
+    "relation": "输入来自",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_1198"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightState服务接口",
+    "relation": "提供",
+    "tail": "倒车灯状态",
+    "sources": [
+      "outer_lamp_fas_1199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightErrorStatus服务接口",
+    "relation": "提供",
+    "tail": "倒车灯故障状态",
+    "sources": [
+      "outer_lamp_fas_1199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightControl服务接口",
+    "relation": "提供",
+    "tail": "倒车灯点亮/熄灭控制",
+    "sources": [
+      "outer_lamp_fas_1199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightSta",
+    "relation": "取值范围",
+    "tail": "ON, OFF, Unknown",
+    "sources": [
+      "outer_lamp_fas_1199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightErrorSta",
+    "relation": "取值范围",
+    "tail": "No Error, Error, Unknown",
+    "sources": [
+      "outer_lamp_fas_1199",
+      "outer_lamp_fas_1204"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.DircnLghtFucProCtrl服务接口",
+    "relation": "提供",
+    "tail": "转向灯点亮/熄灭控制",
+    "sources": [
+      "outer_lamp_fas_1202"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightReq",
+    "relation": "取值含义",
+    "tail": "0x0=No Flash, 0x1=Left_Direction_Light_Flash, 0x2=Right_Direction_Light_Flash, 0x3=Both_Side_Direction_Light_Flash",
+    "sources": [
+      "outer_lamp_fas_1202"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFucProCtrlResp",
+    "relation": "取值含义",
+    "tail": "0x0=控制操作成功, 0x1=控制操作失败",
+    "sources": [
+      "outer_lamp_fas_1202"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制信号",
+    "relation": "输出自",
+    "tail": "转向灯开关控制模块",
+    "sources": [
+      "outer_lamp_fas_1203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态信号",
+    "relation": "输入至",
+    "tail": "HMI子系统",
+    "sources": [
+      "outer_lamp_fas_1203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态信号",
+    "relation": "输出自",
+    "tail": "转向灯驱动处理模块",
+    "sources": [
+      "outer_lamp_fas_1203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S32G转向灯服务请求CAN信号",
+    "relation": "输出为",
+    "tail": "CAN信号",
+    "sources": [
+      "outer_lamp_fas_1203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制信号",
+    "relation": "依赖于",
+    "tail": "转向灯开关控制模块",
+    "sources": [
+      "outer_lamp_fas_1203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态信号",
+    "relation": "依赖于",
+    "tail": "转向灯驱动处理模块",
+    "sources": [
+      "outer_lamp_fas_1203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CAN信号",
+    "relation": "依赖于",
+    "tail": "S32G",
+    "sources": [
+      "outer_lamp_fas_1203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制信号",
+    "relation": "超时约束",
+    "tail": "10ms",
+    "sources": [
+      "outer_lamp_fas_1203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态信号",
+    "relation": "超时约束",
+    "tail": "40ms",
+    "sources": [
+      "outer_lamp_fas_1203"
+    ],
+    "conflict": true,
+    "conflict_note": "存在另一来源标注为'30ms+50ms'（即80ms），与40ms不一致；需确认是否为不同链路（如采集链路vs反馈链路）或测量条件差异"
+  },
+  {
+    "head": "CAN信号",
+    "relation": "超时约束",
+    "tail": "20ms",
+    "sources": [
+      "outer_lamp_fas_1203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlDirectionLight服务接口",
+    "relation": "提供",
+    "tail": "左后/右后方向灯点亮/熄灭控制",
+    "sources": [
+      "outer_lamp_fas_1210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlDirectionLight服务接口",
+    "relation": "参数InstanceID",
+    "tail": "3=左后方向灯, 4=右后方向灯",
+    "sources": [
+      "outer_lamp_fas_1210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlDirectionLight服务接口",
+    "relation": "控制值",
+    "tail": "0x0=OFF, 0x1=ON",
+    "sources": [
+      "outer_lamp_fas_1210"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus",
+    "relation": "依赖于",
+    "tail": "InstanceID",
+    "sources": [
+      "outer_lamp_fas_1204"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus",
+    "relation": "输出为",
+    "tail": "DirectionLightErrorSta",
+    "sources": [
+      "outer_lamp_fas_1204"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta",
+    "relation": "取值含义",
+    "tail": "0x0=No Error, 0x1=Error, 0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_1204"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "NetworkFaultStatus",
+    "relation": "诊断关联",
+    "tail": "DirectionLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_1204"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightState.BrakeLightSta",
+    "relation": "映射自",
+    "tail": "BrkLghtSts_HW",
+    "sources": [
+      "outer_lamp_fas_1205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSts_HW",
+    "relation": "取值含义",
+    "tail": "0x0=关闭(OFF), 0x1=开启(ON)",
+    "sources": [
+      "outer_lamp_fas_1205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightState.BrakeLightSta",
+    "relation": "取值含义",
+    "tail": "OFF, ON",
+    "sources": [
+      "outer_lamp_fas_1205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrorStatus.BrakeLightErrorSta",
+    "relation": "取值含义",
+    "tail": "0x0=No Error → 制动灯系统正常运行",
+    "sources": [
+      "outer_lamp_fas_1205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl",
+    "relation": "触发条件",
+    "tail": "DirncLghtFucProStatus ∈ {Left_Direction_Light_On, Right_Direction_Light_On}",
+    "sources": [
+      "outer_lamp_fas_1207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl",
+    "relation": "输出值",
+    "tail": "RRDircnLghtCtrl_0_Off, RRDircnLghtCtrl_1_on",
+    "sources": [
+      "outer_lamp_fas_1207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightModeStatus",
+    "relation": "输入为",
+    "tail": "DirncLghtMdSts",
+    "sources": [
+      "outer_lamp_fas_1207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightModeStatus",
+    "relation": "取值含义",
+    "tail": "Enabled, Disabled, Unknown",
+    "sources": [
+      "outer_lamp_fas_1207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightFucProStatus",
+    "relation": "输入为",
+    "tail": "BrakeLghtFucProsSta",
+    "sources": [
+      "outer_lamp_fas_1207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightFucProStatus",
+    "relation": "取值含义",
+    "tail": "OFF, ON",
+    "sources": [
+      "outer_lamp_fas_1207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left_Direction_Light_On",
+    "relation": "依赖于",
+    "tail": "DirncLghtFucProStatus = Left_Direction_Light_On",
+    "sources": [
+      "outer_lamp_fas_1207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right_Direction_Light_On",
+    "relation": "依赖于",
+    "tail": "DirncLghtFucProStatus = Right_Direction_Light_On",
+    "sources": [
+      "outer_lamp_fas_1207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Both_Side_Direction_Light_On",
+    "relation": "依赖于",
+    "tail": "DirncLghtFucProStatus = Both_Side_Direction_Light_On",
+    "sources": [
+      "outer_lamp_fas_1207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightModeStatus = Enabled",
+    "relation": "依赖于",
+    "tail": "DirectionLightModeStatus 参数值为 Enabled",
+    "sources": [
+      "outer_lamp_fas_1207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightModeStatus = Disabled",
+    "relation": "依赖于",
+    "tail": "DirectionLightModeStatus 参数值为 Disabled",
+    "sources": [
+      "outer_lamp_fas_1207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "依赖于",
+    "tail": "Z-ONE-3.0平台",
+    "sources": [
+      "outer_lamp_fas_1208"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

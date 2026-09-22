@@ -1,0 +1,61 @@
+```json
+[
+  {
+    "head": "获取右后转向灯状态",
+    "relation": "前提条件",
+    "tail": "调用 DirectionLightErrorStatus 接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "调用该服务接口,订阅右后转向灯状态",
+      "Interface Name: DirectionLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "获取转向灯点亮模式",
+    "relation": "前提条件",
+    "tail": "调用 DirectionLightModeStatus 接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "调用该服务接口,获取转向灯点亮模式",
+      "Interface Name: DirectionLightModeStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DirectionLightErrorSta 参数值为 Error",
+    "relation": "依赖于",
+    "tail": "InstanceID=7 的 DirectionLightErrorStatus 接口",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Parameter Name: {DirectionLightErrorSta}",
+      "InstanceID=7",
+      "0x1=Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DircnLightMdSts 参数值为 Enabled",
+    "relation": "依赖于",
+    "tail": "InstanceID=8 的 DirectionLightErrorStatus 接口",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Parameter Name: {DircnLghtMdSts}",
+      "InstanceID=8",
+      "0x0=Enabled"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "网络故障状态",
+    "relation": "前提条件",
+    "tail": "调用 DirectionLightErrorStatus 接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "网络故障状态",
+      "调用该服务接口,订阅右后转向灯状态"
+    ],
+    "confidence_note": "medium"
+  }
+]
+```

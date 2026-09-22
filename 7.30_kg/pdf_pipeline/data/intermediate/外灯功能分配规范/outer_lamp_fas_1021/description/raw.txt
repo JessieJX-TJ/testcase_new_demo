@@ -1,0 +1,56 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的状态与控制信号规范",
+  "row_semantics": "表格按功能过程划分，每一行描述一个特定的外灯状态或控制信号接口。",
+  "column_semantics": {
+    "1": "功能过程名称 (Function Process Name)",
+    "2": "服务消费方 (Service Consumer, SOA)",
+    "3": "控制器/模块名 (Controller/Module Name, LHZCU)",
+    "4": "控制器/模块名 (Controller/Module Name, ICB)",
+    "5-8": "预留列，未使用"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess.CombLghtSwStatus",
+      "type": "功能过程",
+      "description": "组合近光灯开关状态获取接口"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.CombLghtFucProStatus",
+      "type": "功能过程",
+      "description": "组合近光灯功能过程状态订阅接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CombLghtSwStatus",
+      "description": "组合近光灯开关状态参数",
+      "values": [
+        "0x0=OFF",
+        "0X1=SidePositionLight ON",
+        "0X2=DippedBeamLight ON",
+        "0X3=AUTO",
+        "0x4=Unknown"
+      ]
+    },
+    {
+      "name": "CombLghtFucProSta",
+      "description": "组合近光灯功能过程状态参数",
+      "values": [
+        "0x0=ALL OFF",
+        "0X1=Only SidePositionLight ON",
+        "0X2=Only DippedBeamLight ON",
+        "0X3=SidePositionAndDippedBeam OFF"
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯系统中近光灯开关状态和功能过程状态的信号规范，可用于验证车辆外灯控制系统在不同驾驶模式下的状态响应是否符合设计要求。",
+  "uncertain_points": []
+}
+```

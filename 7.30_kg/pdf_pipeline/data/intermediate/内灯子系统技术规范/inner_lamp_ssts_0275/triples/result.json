@@ -1,0 +1,188 @@
+[
+  {
+    "head": "DoorRL2LampBrtnsCmd_1 命令控制右后门氛围灯颜色",
+    "relation": "触发条件",
+    "tail": "指令值为 0x01-0xFF(各个颜色值)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL2LampBrtnsCmd_1",
+      "0x01-0xFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorRL2LampBrtnsCmd_1 命令保持右后门氛围灯颜色不变",
+    "relation": "状态保持条件",
+    "tail": "指令值为 0 或未定义颜色号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL2LampBrtnsCmd_1",
+      "0",
+      "未定义颜色号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorRL2LampBrtnsCmd_1 命令控制右后门氛围灯亮度",
+    "relation": "触发条件",
+    "tail": "指令值为 0x00-0xFF(除 0x65-0xFF 外)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL2LampBrtnsCmd_1",
+      "0x00-0xFF",
+      "0x65-0xFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorRL2LampBrtnsCmd_1 命令保持右后门氛围灯亮度不变",
+    "relation": "状态保持条件",
+    "tail": "指令值为 0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL2LampBrtnsCmd_1",
+      "0"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1 命令控制右后门氛围灯呼吸速率",
+    "relation": "触发条件",
+    "tail": "指令值为 0x0-0xF(对应 Rate1-Rate15)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorRL2LampBrthngCmd_1",
+      "0x0-0xF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1 命令无请求时右后门氛围灯不改变呼吸模式",
+    "relation": "抑制条件",
+    "tail": "指令值为 0x0 (No Request)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "DoorRL2LampBrthngCmd_1",
+      "0x0"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1 命令的呼吸速率由 Code 值决定",
+    "relation": "依赖于",
+    "tail": "Code 值 (0x0-0xF)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorRL2LampBrthngCmd_1",
+      "Code 值"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1 命令的呼吸周期由 Code 值决定",
+    "relation": "依赖于",
+    "tail": "Code 值对应的周期 (如 Rate1 对应 500ms)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorRL2LampBrthngCmd_1",
+      "Code 值",
+      "周期"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1 命令的呼吸模式由 Code 值决定",
+    "relation": "依赖于",
+    "tail": "Code 值对应的原呼吸模式值",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorRL2LampBrthngCmd_1",
+      "Code 值",
+      "原呼吸模式值"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorRL2LampBrtnsCmd_1 命令通过 LIN 接口发送",
+    "relation": "输入来自",
+    "tail": "LIN",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorRL2LampBrtnsCmd_1",
+      "LIN"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1 命令通过 LIN 接口发送",
+    "relation": "输入来自",
+    "tail": "LIN",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorRL2LampBrthngCmd_1",
+      "LIN"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorRL2LampBrtnsCmd_1 命令由 LHZCU_LIN4 模块处理",
+    "relation": "控制对象",
+    "tail": "LHZCU_LIN4",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorRL2LampBrtnsCmd_1",
+      "LHZCU_LIN4"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorRL2LampBrthngCmd_1 命令由 LHZCU_LIN4 模块处理",
+    "relation": "控制对象",
+    "tail": "LHZCU_LIN4",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorRL2LampBrthngCmd_1",
+      "LHZCU_LIN4"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0275",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  }
+]

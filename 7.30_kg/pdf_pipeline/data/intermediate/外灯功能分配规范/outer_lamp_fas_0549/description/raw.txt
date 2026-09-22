@@ -1,0 +1,49 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "车顶射灯控制逻辑",
+  "row_semantics": "表示不同的控制请求信号及其对应的执行动作和备注信息",
+  "column_semantics": {
+    "输入": "描述了具体的控制信号输入，包括信号名称和值",
+    "执行动作": "描述了在接收到特定输入信号后，系统将执行的具体操作",
+    "备注": "提供了额外的说明信息，如参考模块或策略"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RoofSpotLight",
+      "type": "功能名",
+      "description": "车顶射灯功能"
+    },
+    {
+      "name": "ControlRoofSpotLight",
+      "type": "控制器/模块名",
+      "description": "负责控制车顶射灯的模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RoofSpotLightReq",
+      "type": "输入信号",
+      "description": "车顶射灯控制请求信号，用于指示开启或关闭状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "车顶射灯关闭",
+      "type": "输出信号",
+      "description": "当RoofSpotLightReq为0x0时，车顶射灯被关闭"
+    },
+    {
+      "name": "车顶射灯开启",
+      "type": "输出信号",
+      "description": "当RoofSpotLightReq为0x1时，车顶射灯被开启"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车顶射灯的控制逻辑，可用于验证在不同输入信号下，车顶射灯是否能够正确地开启或关闭。",
+  "uncertain_points": []
+}
+```

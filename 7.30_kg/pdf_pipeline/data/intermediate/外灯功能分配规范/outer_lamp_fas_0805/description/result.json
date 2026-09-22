@@ -1,0 +1,88 @@
+{
+  "table_type": "logic_table",
+  "topic": "近光灯开启功能逻辑",
+  "row_semantics": "描述用户通过大屏软开关触发近光灯开启的条件、动作和结果",
+  "column_semantics": {
+    "Column1": "前置条件 (Preconditions)",
+    "Column2": "触发动作 (Trigger Action)",
+    "Column3": "执行动作 (Execution Action)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "用户",
+      "type": "actor",
+      "description": "通过大屏软开关进行操作"
+    },
+    {
+      "name": "S32G",
+      "type": "controller",
+      "description": "整车域控制器，负责接收大屏开关请求并发送ICB输入"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "外灯控制组合服务模块，负责处理近光灯请求状态"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "system",
+      "description": "外部灯光控制系统，负责组合灯光请求"
+    },
+    {
+      "name": "SidePositionLight",
+      "type": "function",
+      "description": "侧位灯功能，作为近光灯开启的前置条件之一"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "type": "input_signal",
+      "description": "用户模式，要求为睡眠或待机状态",
+      "value": "0x0 = Sleep; 0x1 = Standby"
+    },
+    {
+      "name": "VehMd",
+      "type": "input_signal",
+      "description": "车辆模式，要求为运输模式",
+      "value": "0x3 = TRANSPORT"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "input_signal",
+      "description": "侧位灯状态反馈，要求所有实例（1-8）均为ON",
+      "value": "ON"
+    },
+    {
+      "name": "LHZCU_CombLightFucProStatus",
+      "type": "input_signal",
+      "description": "LHZCU组合灯光功能状态，要求为侧位灯与闪烁灯组合状态",
+      "value": "0x4 = SidePositionAndDippedBeamOnly"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "CombinedLightReq",
+      "type": "output_signal",
+      "description": "组合灯光请求，设置为DippedBeamLight ON",
+      "value": "0x2"
+    },
+    {
+      "name": "CombLightFucProCtrlSts",
+      "type": "output_signal",
+      "description": "组合灯光功能控制状态，设置为DippedBeamLight ON",
+      "value": "0x2"
+    },
+    {
+      "name": "ControlSuccess",
+      "type": "output_signal",
+      "description": "控制成功响应，表示近光灯开启成功"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定前置条件下，通过大屏软开关触发近光灯开启的功能逻辑，可用于验证用户界面交互与底层灯光控制模块之间的联动关系。",
+  "uncertain_points": []
+}

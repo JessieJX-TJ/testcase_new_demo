@@ -1,0 +1,516 @@
+```json
+[
+  {
+    "head": "RoofSpotLightStatus",
+    "relation": "represents",
+    "tail": "屋顶射灯状态",
+    "sources": ["outer_lamp_fas_1685"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightErrSta",
+    "relation": "represents",
+    "tail": "屋顶射灯错误状态",
+    "sources": ["outer_lamp_fas_1685"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightStatus",
+    "relation": "has_value",
+    "tail": "0x0 = OFF",
+    "sources": ["outer_lamp_fas_1685"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightErrSta",
+    "relation": "has_value",
+    "tail": "0x0 = No Error",
+    "sources": ["outer_lamp_fas_1685"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightErrSta",
+    "relation": "has_value",
+    "tail": "0x1 = Error",
+    "sources": ["outer_lamp_fas_1685"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightErrSta",
+    "relation": "has_value",
+    "tail": "0x2 = Unknown",
+    "sources": ["outer_lamp_fas_1685"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SO A",
+    "relation": "provides_input",
+    "tail": "ControlRoofSpotLightReq",
+    "sources": ["outer_lamp_fas_1685"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SO A",
+    "relation": "provides_output",
+    "tail": "RoofSpotLightStatus",
+    "sources": ["outer_lamp_fas_1685"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SO A",
+    "relation": "provides_output",
+    "tail": "RoofSpotLightErrSta",
+    "sources": ["outer_lamp_fas_1685"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Daytime Running Light (DRL)",
+    "relation": "activation_condition",
+    "tail": "vehicle power-on",
+    "sources": ["outer_lamp_fas_1686"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Daytime Running Light (DRL)",
+    "relation": "activation_condition",
+    "tail": "UsgMd = 0x6",
+    "sources": ["outer_lamp_fas_1686"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Daytime Running Light (DRL)",
+    "relation": "prerequisite",
+    "tail": "UsgMdV = Valid",
+    "sources": ["outer_lamp_fas_1686"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "depends_on",
+    "tail": "LHZCU sends DRL control signal to ICB",
+    "sources": ["outer_lamp_fas_1686"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "outputs_status_to",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_1686"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "outputs_signal",
+    "tail": "DayTmRunningLightSts, DayTmRunningLightFltsts",
+    "sources": ["outer_lamp_fas_1686"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "inputs_signal_from",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_1686"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "inputs_signal",
+    "tail": "LDayTmRunningLightSts, RDayTmRunningLightSts",
+    "sources": ["outer_lamp_fas_1686"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DRL synchronization",
+    "relation": "timing_constraint",
+    "tail": "max latency ≤ 40 ms",
+    "sources": ["outer_lamp_fas_1686"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "retransmission_policy",
+    "tail": "if no response within 2 s, retransmit up to 3 times at ≤ 50 ms interval",
+    "sources": ["outer_lamp_fas_1686"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "External Lamp Status Acquisition",
+    "relation": "involves_hardware",
+    "tail": "LHZCU, ICB_S32G M, ICB_8295",
+    "sources": ["outer_lamp_fas_1686"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Fog Light ICB Parsing Module",
+    "relation": "implements_subfunction",
+    "tail": "control request handling",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Fog Light ICB Parsing Module",
+    "relation": "implements_subfunction",
+    "tail": "left front fog light driving",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Fog Light ICB Parsing Module",
+    "relation": "implements_subfunction",
+    "tail": "left front fog light status feedback",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Fog Light ICB Parsing Module",
+    "relation": "implements_subfunction",
+    "tail": "left front fog light fault status feedback",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Fog Light ICB Parsing Module",
+    "relation": "outputs_to",
+    "tail": "External Lamp Subsystem",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Fog Light ICB Parsing Module",
+    "relation": "implements_subfunction",
+    "tail": "control request handling",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Fog Light ICB Parsing Module",
+    "relation": "implements_subfunction",
+    "tail": "right front fog light driving",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Fog Light ICB Parsing Module",
+    "relation": "implements_subfunction",
+    "tail": "right front fog light status feedback",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Fog Light ICB Parsing Module",
+    "relation": "implements_subfunction",
+    "tail": "right front fog light fault status feedback",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Fog Light ICB Parsing Module",
+    "relation": "outputs_to",
+    "tail": "External Lamp Subsystem",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trailer Lamp Control Module",
+    "relation": "inputs_from",
+    "tail": "Trailer Control Arbitration",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trailer Lamp Control Module",
+    "relation": "outputs_to",
+    "tail": "RZCU/TDM",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trailer Lamp Control Module",
+    "relation": "implements_subfunction",
+    "tail": "trailer lamp status feedback",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trailer Lamp Driving Module",
+    "relation": "implements_subfunction",
+    "tail": "trailer lamp driving",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trailer Lamp Driving Module",
+    "relation": "implements_subfunction",
+    "tail": "trailer lamp status detection",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trailer Lamp Driving Module",
+    "relation": "outputs_to",
+    "tail": "TDM",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Spot Light Switch Module",
+    "relation": "implements_subfunction",
+    "tail": "high-beam enhancement arbitration",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Spot Light Switch Module",
+    "relation": "implements_subfunction",
+    "tail": "roof spot light switch control",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Spot Light Switch Module",
+    "relation": "implements_subfunction",
+    "tail": "roof spot light fault status feedback",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Spot Light Switch Module",
+    "relation": "outputs_to",
+    "tail": "LHZCU/ICB",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Spot Light Driving Module",
+    "relation": "implements_subfunction",
+    "tail": "roof spot light driving",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Spot Light Driving Module",
+    "relation": "implements_subfunction",
+    "tail": "roof spot light status detection",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Roof Spot Light Driving Module",
+    "relation": "outputs_to",
+    "tail": "Digital Lighting Subsystem",
+    "sources": ["outer_lamp_fas_1687"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Light Control Signal",
+    "relation": "has_state",
+    "tail": "ON",
+    "sources": ["outer_lamp_fas_1689"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Light Control Signal",
+    "relation": "has_state",
+    "tail": "OFF",
+    "sources": ["outer_lamp_fas_1689"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Light Error Status",
+    "relation": "has_state",
+    "tail": "No Error",
+    "sources": ["outer_lamp_fas_1689"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Light Error Status",
+    "relation": "has_state",
+    "tail": "Error",
+    "sources": ["outer_lamp_fas_1689"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Light Error Status",
+    "relation": "has_state",
+    "tail": "Unknown",
+    "sources": ["outer_lamp_fas_1689"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Light Status",
+    "relation": "has_state",
+    "tail": "ON",
+    "sources": ["outer_lamp_fas_1689"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Light Status",
+    "relation": "has_state",
+    "tail": "Unknown",
+    "sources": ["outer_lamp_fas_1689"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Light Control Signal",
+    "relation": "controlled_by",
+    "tail": "Rear Fog Light Service",
+    "sources": ["outer_lamp_fas_1689"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Light Error Status",
+    "relation": "monitored_by",
+    "tail": "LHZCU, CU",
+    "sources": ["outer_lamp_fas_1689"],
+    "conflict": true,
+    "conflict_note": "Conflicting controller list: 'LHZCU, CU' vs 'LHZCU, RHZCU' — both appear in same source outer_lamp_fas_1689; may reflect different functional partitions or version inconsistency"
+  },
+  {
+    "head": "Front Fog Light Error Status",
+    "relation": "monitored_by",
+    "tail": "LHZCU, RHZCU",
+    "sources": ["outer_lamp_fas_1689"],
+    "conflict": true,
+    "conflict_note": "Conflicting controller list: 'LHZCU, CU' vs 'LHZCU, RHZCU' — both appear in same source outer_lamp_fas_1689; may reflect different functional partitions or version inconsistency"
+  },
+  {
+    "head": "Trunk Control Request",
+    "relation": "deactivation_prerequisite",
+    "tail": "trunk control active",
+    "sources": ["outer_lamp_fas_1691"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Intrusion Prevention",
+    "relation": "activation_trigger",
+    "tail": "trunk control request deactivation",
+    "sources": ["outer_lamp_fas_1691"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Emergency Braking",
+    "relation": "activation_trigger",
+    "tail": "emergency brake actuation request deactivation",
+    "sources": ["outer_lamp_fas_1691"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Battery Thermal Runaway",
+    "relation": "activation_trigger",
+    "tail": "battery thermal runaway request deactivation",
+    "sources": ["outer_lamp_fas_1691"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Collision",
+    "relation": "activation_trigger",
+    "tail": "vehicle collision request deactivation",
+    "sources": ["outer_lamp_fas_1691"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Collision Warning",
+    "relation": "activation_trigger",
+    "tail": "rear collision warning request deactivation",
+    "sources": ["outer_lamp_fas_1691"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Light (Driving/Parking Flash)",
+    "relation": "deactivation_prerequisite",
+    "tail": "hazard light active",
+    "sources": ["outer_lamp_fas_1691"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Intrusion Prevention",
+    "relation": "suppression_condition",
+    "tail": "no such scenario",
+    "sources": ["outer_lamp_fas_1691"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Emergency Braking",
+    "relation": "suppression_condition",
+    "tail": "no such scenario",
+    "sources": ["outer_lamp_fas_1691"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Battery Thermal Runaway",
+    "relation": "suppression_condition",
+    "tail": "no such scenario",
+    "sources": ["outer_lamp_fas_1691"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Collision",
+    "relation": "suppression_condition",
+    "tail": "no such scenario",
+    "sources": ["outer_lamp_fas_1691"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

@@ -1,0 +1,79 @@
+```json
+[
+  {
+    "head": "左前雾灯短路故障诊断被触发",
+    "relation": "前提条件",
+    "tail": "左前雾灯处于关闭状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "左前雾灯处于关闭状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左前雾灯短路故障诊断被触发",
+    "relation": "触发条件",
+    "tail": "检测到左前雾灯短路到电源",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "检测到左前雾灯短路到电源"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统发送LFrtFogLghtFltSts信号",
+    "relation": "输出为",
+    "tail": "0x1 (True)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LFrtFogLghtFltSts",
+      "0x1 (True)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统发送FrontFogLightErrorStatus信号",
+    "relation": "输出为",
+    "tail": "0x1 (Error)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FrontFogLightErrorStatus",
+      "0x1 (Error)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "置位DTC B1053 12",
+    "relation": "故障响应",
+    "tail": "左前雾灯短路故障诊断被触发",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DTC B1053 12",
+      "左前雾灯短路故障诊断"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【FrtFogLghtDrvMdl】持续发送信号",
+    "relation": "包含子功能",
+    "tail": "发送LFrtFogLghtFltSts信号",
+    "triple_type": "功能分解",
+    "evidence_terms": [
+      "FrtFogLghtDrvMdl",
+      "LFrtFogLghtFltSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【FrtFogLghtDrvMdl】持续发送信号",
+    "relation": "包含子功能",
+    "tail": "发送FrontFogLightErrorStatus信号",
+    "triple_type": "功能分解",
+    "evidence_terms": [
+      "FrtFogLghtDrvMdl",
+      "FrontFogLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

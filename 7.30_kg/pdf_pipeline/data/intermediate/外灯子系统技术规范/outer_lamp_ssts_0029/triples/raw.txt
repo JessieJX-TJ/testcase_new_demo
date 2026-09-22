@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "右前转向灯输出异常检测功能被激活",
+    "relation": "前提条件",
+    "tail": "DILghtFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DILghtFbkSOAEnPrm"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯输出异常检测功能被激活",
+    "relation": "前提条件",
+    "tail": "右前转向灯处于输出状态",
+    "triple_type": "工程规则",
+    "evidence_terms": ["右前转向灯"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统设置故障代码 DTC B104A13",
+    "relation": "触发条件",
+    "tail": "右前转向灯输出异常检测功能被激活",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DTCB104A13", "右前转向灯"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRDILghtDrvMdl 模块持续发送 DirectionLightSta == 2 (Error) 至 DILghtCtrlMdl",
+    "relation": "执行动作",
+    "tail": "右前转向灯输出异常检测功能被激活",
+    "triple_type": "工程规则",
+    "evidence_terms": ["FRDILghtDrvMdl", "DILghtCtrlMdl", "DirectionLightSta"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DTC B104A13 故障代码被置位",
+    "relation": "诊断关联",
+    "tail": "右前转向灯输出异常检测功能被激活",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DTCB104A13", "右前转向灯"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DirectionLightSta == 2 (Error) 信号至少发送三帧",
+    "relation": "超时约束",
+    "tail": "FRDILghtDrvMdl 模块持续发送 DirectionLightSta == 2 (Error) 至 DILghtCtrlMdl",
+    "triple_type": "工程规则",
+    "evidence_terms": ["FRDILghtDrvMdl", "DILghtCtrlMdl", "DirectionLightSta"],
+    "confidence_note": "high"
+  }
+]
+```

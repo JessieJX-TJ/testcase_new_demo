@@ -1,0 +1,111 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "DoorFR1 Lamp OnOff Control Logic",
+  "row_semantics": "State transitions or conditions for the DoorFR1 Lamp control module, indexed by a numerical state identifier.",
+  "column_semantics": [
+    "State Identifier (e.g., 7240, 7280)",
+    "Priority/Weight Value",
+    "Reserved Column 1",
+    "Reserved Column 2"
+  ],
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DoorFR1LampOnOff_l",
+      "type": "input_signal",
+      "description": "Control signal for turning the DoorFR1 lamp on or off."
+    },
+    {
+      "name": "DoorFR1LampBrthngCmd_l",
+      "type": "input_signal",
+      "description": "Breathing command signal for the DoorFR1 lamp."
+    },
+    {
+      "name": "DoorFR1LampBrtNsCmd_l",
+      "type": "input_signal",
+      "description": "Brightness command signal for the DoorFR1 lamp."
+    },
+    {
+      "name": "DoorFR1LampColorCmd_l",
+      "type": "input_signal",
+      "description": "Color command signal for the DoorFR1 lamp."
+    },
+    {
+      "name": "DoorFR1LampFadeSpdCmd_l",
+      "type": "input_signal",
+      "description": "Fade speed command signal for the DoorFR1 lamp."
+    },
+    {
+      "name": "AmbtLghtLHRollingCtr_l",
+      "type": "input_signal",
+      "description": "Ambient light rolling controller signal."
+    },
+    {
+      "name": "ZCU_LIN_Signal",
+      "type": "input_signal",
+      "description": "LIN communication signal from the ZCU (Zone Control Unit)."
+    },
+    {
+      "name": "DoorFR1 Lamp",
+      "type": "output_signal",
+      "description": "The actual status of the DoorFR1 lamp."
+    },
+    {
+      "name": "Respiration Mode",
+      "type": "system_state",
+      "description": "A mode where the lamp changes brightness in a breathing pattern."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DoorFR1LampOnOff_l == 0x0 (OFF)",
+      "effect": "Exit Respiration Mode; extinguish ambient lamp according to received color value and fade speed."
+    },
+    {
+      "condition": "DoorFR1LampBrthngCmd_l == 0x00 (No Request)",
+      "effect": "Exit Respiration Mode; execute commands based on DoorFR1LampBrtNsCmd_l, DoorFR1LampColorCmd_l, and DoorFR1LampFadeSpdCmd_l."
+    },
+    {
+      "condition": "AmbtLghtLHRollingCtr_l no longer increments by 1",
+      "effect": "Stop Respiration Mode; display ambient lamp at constant brightness based on received color; if brightness is abnormal, show last stable state."
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DoorFR1 Lamp",
+      "state": "Off",
+      "condition": "DoorFR1LampOnOff_l == 0x0 (OFF)"
+    },
+    {
+      "signal": "DoorFR1 Lamp",
+      "state": "Constant Brightness",
+      "condition": "AmbtLghtLHRollingCtr_l no longer increments by 1"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "Overvoltage or Undervoltage Fault",
+      "action": "Directly turn off ambient lamp"
+    },
+    {
+      "fault": "No LIN Signal from ZCU within 6 seconds",
+      "action": "Directly turn off ambient lamp"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "LIN Signal Timeout",
+      "value": "6 seconds",
+      "description": "If no LIN signal is received from the ZCU within 6 seconds, the ambient lamp will be turned off."
+    }
+  ],
+  "engineering_interpretation": "This table defines the state machine logic for controlling the DoorFR1 ambient lamp, including conditions for entering/exiting respiration mode, handling various control signals, and managing fault conditions. It is used to verify that the lamp control module correctly interprets input signals and responds with appropriate output states under different operational scenarios.",
+  "uncertain_points": [
+    "The exact meaning of the 'Priority/Weight Value' column is not explicitly defined in the table.",
+    "The purpose of the two reserved columns is unclear.",
+    "The specific implementation details of the 'Respiration Mode' are not provided."
+  ]
+}
+```

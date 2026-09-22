@@ -1,0 +1,61 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "副驾激光迎宾灯驱动控制逻辑",
+  "row_semantics": "表格按功能执行的阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "第一列定义了逻辑阶段，第二列详细描述了该阶段的具体内容。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FrtPsngDoorFlorLampCtrlCmd",
+      "type": "input_signal",
+      "description": "应用控制模块发送的请求信号，用于控制副驾激光迎宾灯的状态（0x1表示开，0x0表示关）"
+    },
+    {
+      "name": "DoorFlorLamp_FR_HSD",
+      "type": "output_signal",
+      "description": "副驾激光迎宾灯驱动控制模块发送的驱动信号，表示高电平状态"
+    },
+    {
+      "name": "副驾激光迎宾灯",
+      "type": "function_name",
+      "description": "车辆副驾驶侧的激光迎宾灯功能"
+    },
+    {
+      "name": "FrtPsngDoorFlorLampDrvCtrlMod",
+      "type": "controller_module",
+      "description": "副驾激光迎宾灯驱动控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "前置条件",
+      "description": "副驾激光迎宾灯无短路/开路故障"
+    },
+    {
+      "name": "触发条件",
+      "description": "接收到应用控制模块的请求信号 FrtPsngDoorFlorLampCtrlCmd = 0x1 (Open)"
+    },
+    {
+      "name": "退出条件",
+      "description": "接收到 FrtPsngDoorFlorLampCtrlCmd = 0x0 (Close)，关闭副驾激光迎宾灯驱动"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorFlorLamp_FR_HSD",
+      "description": "发送驱动信号 DoorFlorLamp_FR_HSD（高）"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "副驾激光迎宾灯短路/开路故障",
+      "description": "检测到副驾激光迎宾灯存在短路或开路故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了副驾激光迎宾灯的控制逻辑，可用于验证在不同控制信号输入下，系统是否能正确执行开启、关闭操作，并在检测到故障时进行异常处理。",
+  "uncertain_points": []
+}
+```

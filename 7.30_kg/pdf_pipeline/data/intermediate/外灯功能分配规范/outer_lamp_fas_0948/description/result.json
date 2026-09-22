@@ -1,0 +1,45 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 (Exterior Lamp Function) - 主远光灯控制与状态",
+  "row_semantics": "表格按功能模块划分，每一行代表一个独立的接口或服务，描述了对主远光灯（Main Beam Light）的控制和状态查询操作。",
+  "column_semantics": {
+    "功能名": "描述具体的操作或服务名称，如ControlMainBeamLight、MainBeamLightStatus",
+    "消费": "表示该功能是否被其他模块或系统消费",
+    "SOA": "Service-Oriented Architecture，表示该功能的服务接口类型",
+    "ICB": "Inter-Cluster Bus，表示跨集群通信接口",
+    "LHZCU": "Local High-level Zone Control Unit，表示本地高级区域控制单元",
+    "其他列": "预留或未使用的列"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MainBeamLight",
+      "type": "功能模块",
+      "description": "主远光灯系统，包括控制和状态查询功能"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightReq",
+      "type": "输入参数",
+      "description": "主远光灯请求参数，用于指定控制指令（ON/OFF）",
+      "details": {
+        "InstanceID": "实例ID，区分左右侧远光灯",
+        "0x0=OFF": "熄灭指令",
+        "0x1=ON": "点亮指令"
+      }
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLightStatus",
+      "type": "输出信号",
+      "description": "主远光灯状态信号，用于订阅左侧远光灯的状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了Z-ONE-3.0平台下主远光灯的控制接口和服务参数，可用于验证主远光灯的点亮/熄灭控制逻辑以及左侧远光灯状态的订阅功能。",
+  "uncertain_points": []
+}

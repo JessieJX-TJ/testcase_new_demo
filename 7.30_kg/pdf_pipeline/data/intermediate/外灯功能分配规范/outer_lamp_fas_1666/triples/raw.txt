@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "Front Fog Light is ON",
+    "relation": "触发条件",
+    "tail": "InstanceID1,2 的 FrontFogLightStatus = 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["FrontFogLight", "FrontFogLightStatus", "InstanceID"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Side Position Light is ON",
+    "relation": "触发条件",
+    "tail": "InstanceID5,6,7,8 的 SidePositionLightStatus = 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["SidePositionLight", "SidePositionLightStatus", "InstanceID"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Side Position Light has No Error",
+    "relation": "前提条件",
+    "tail": "InstanceID5,6,7,8 的 SidePositionLightErrorStatus = 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["SidePositionLight", "SidePositionLightErrorStatus", "InstanceID"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Side Position Light is ON",
+    "relation": "触发条件",
+    "tail": "InstanceID1,2,3,4 的 SidePositionLightStatus = 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["SidePositionLight", "SidePositionLightStatus", "InstanceID"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Side Position Light has No Error",
+    "relation": "前提条件",
+    "tail": "InstanceID1,2,3,4 的 SidePositionLightErrorStatus = 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["SidePositionLight", "SidePositionLightErrorStatus", "InstanceID"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Front Fog Light Error Status is No Error",
+    "relation": "前提条件",
+    "tail": "InstanceID2 的 FrontFogLightErrorStatus = 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["FrontFogLight", "FrontFogLightErrorStatus", "InstanceID"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Front Fog Light is controlled by CAN communication",
+    "relation": "依赖于",
+    "tail": "(exlFrontFogLghtHwDrvEnPrm=0x0; 通过 InstanceID1,2 获取状态)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["FrontFogLight", "CAN communication", "InstanceID"],
+    "confidence_note": "medium"
+  },
+  {
+    "head": "Side Position Light uses private CAN communication",
+    "relation": "依赖于",
+    "tail": "(exlSideLghtHwDrvEnPrm=0x0; 备注:位置灯私有CAN通讯方案,以instance5,6,7,8反馈状态,如 P12L M1 PPV)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["SidePositionLight", "CAN communication", "InstanceID"],
+    "confidence_note": "medium"
+  },
+  {
+    "head": "Side Position Light uses bulb lamp scheme",
+    "relation": "依赖于",
+    "tail": "(exlSideLghtHwDrvEnPrm=0x1;备注:位置灯炮筒灯方案,以instance1,2,3,4反馈状态,如 S31L EP)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["SidePositionLight", "bulb lamp scheme", "InstanceID"],
+    "confidence_note": "medium"
+  }
+]
+```

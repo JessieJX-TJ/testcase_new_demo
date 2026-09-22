@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Main Beam Light Error Status",
+  "row_semantics": "The row represents the error status of the main beam light, with different values indicating various states.",
+  "column_semantics": "The columns represent different system components or interfaces that can report the main beam light error status.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MainBeamLight.MainBeamLightErrorStatus",
+      "type": "function",
+      "description": "The main beam light error status function."
+    },
+    {
+      "name": "SOA",
+      "type": "controller",
+      "description": "System Onboard Architecture, likely a central control unit."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Hand Zone Control Unit."
+    },
+    {
+      "name": "ICB_S32G_M_LHZCU",
+      "type": "controller",
+      "description": "Integrated Circuit Board S32G Microcontroller in the Left Hand Zone Control Unit."
+    },
+    {
+      "name": "RHZCU_ETH",
+      "type": "controller",
+      "description": "Ethernet interface of the Right Hand Zone Control Unit."
+    },
+    {
+      "name": "LHZCU_ETH",
+      "type": "controller",
+      "description": "Ethernet interface of the Left Hand Zone Control Unit."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "MainBeamLightErrorStatus",
+      "type": "output_signal",
+      "description": "The error status of the main beam light, which can be 'No Error', 'Error', or 'Unknown'."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "MainBeamLightErrorStatus",
+      "type": "fault_state",
+      "description": "Indicates whether there is an error in the main beam light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the error status parameters for the main beam light system across various controllers and interfaces. It is used to verify that the correct error status is reported by each component when subscribing to the main beam light error status service.",
+  "uncertain_points": []
+}
+```

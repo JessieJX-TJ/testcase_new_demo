@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "诊断DTC需求清单",
+  "row_semantics": "每行代表一个具体的故障诊断码（DTC）及其相关条件，用于识别和定位特定电路的故障状态。",
+  "column_semantics": {
+    "序号": "故障条目的编号，用于唯一标识每个故障诊断项。",
+    "DTC 显示码": "故障诊断码的显示代码，通常为TBD（To Be Determined），表示待确定的具体代码。",
+    "故障描述": "对故障现象的详细描述，指明了故障涉及的具体功能或电路。",
+    "故障置位条件": "触发故障诊断码设置的条件，包括激活状态和驱动电流的阈值及持续时间。",
+    "故障恢复条件": "故障诊断码清除的条件，通常与置位条件相反，涉及电流有效值的阈值和持续时间。",
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "The Third Row Right MapLamp Control Circuit",
+      "type": "功能模块",
+      "description": "第三排右侧阅读灯控制电路，负责控制该区域的照明功能。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "激活状态",
+      "description": "指示阅读灯驱动电路处于激活状态，是故障判断的前提条件。",
+      "type": "系统状态"
+    },
+    {
+      "name": "驱动电流小于阈值 (TBD) A",
+      "description": "驱动电流低于预设阈值，持续时间超过100ms，触发短路至电池或开路故障。",
+      "type": "输入信号",
+      "threshold": "TBD A",
+      "timing": "持续100ms"
+    },
+    {
+      "name": "驱动电流超过阈值 (TBD) A",
+      "description": "驱动电流高于预设阈值，持续时间超过100ms，触发短路至地故障。",
+      "type": "输入信号",
+      "threshold": "TBD A",
+      "timing": "持续100ms"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "Circuit Short to battery",
+      "description": "电路短路至电池，导致电流异常增大。",
+      "detection_condition": "驱动电流大于阈值 (TBD) A，持续100ms。",
+      "clear_condition": "电流有效值小于阈值 (TBD) A，持续100ms。"
+    },
+    {
+      "name": "Circuit Short to ground",
+      "description": "电路短路至地，导致电流异常减小。",
+      "detection_condition": "驱动电流小于阈值 (TBD) A，持续100ms。",
+      "clear_condition": "电流有效值大于阈值 (TBD) A，持续100ms。"
+    },
+    {
+      "name": "Circuit Open",
+      "description": "电路开路，导致无电流或电流过小。",
+      "detection_condition": "驱动电流小于阈值 (TBD) A，持续100ms。",
+      "clear_condition": "电流有效值大于阈值 (TBD) A，持续100ms。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "condition": "持续时间",
+      "value": "100ms",
+      "description": "所有故障判断条件中，电流异常状态必须持续至少100ms才能触发故障诊断码。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了第三排右侧阅读灯控制电路在不同故障模式下的诊断逻辑，包括短路至电池、短路至地和开路三种故障类型，以及相应的故障置位和恢复条件，可用于验证整车电子电器系统的故障诊断功能。",
+  "uncertain_points": [
+    "DTC 显示码 (TBD)：具体故障代码尚未确定。",
+    "阈值 (TBD) A：电流阈值的具体数值尚未确定。"
+  ]
+}
+```

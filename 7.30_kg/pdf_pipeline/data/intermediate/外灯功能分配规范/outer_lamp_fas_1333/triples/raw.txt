@@ -1,0 +1,59 @@
+```json
+[
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "ExteriorLightControlSystem.RearFogLightSts = 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.RearFogLightSts",
+      "0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯无错误状态",
+    "relation": "前提条件",
+    "tail": "ExteriorLightControlSystem.RearFogLightErrSta = 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.RearFogLightErrSta",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧后雾灯点亮",
+    "relation": "依赖于",
+    "tail": "右侧后雾灯点亮",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "左侧后雾灯",
+      "右侧后雾灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右侧后雾灯点亮",
+    "relation": "依赖于",
+    "tail": "左侧后雾灯点亮",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "右侧后雾灯",
+      "左侧后雾灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯同步点亮",
+    "relation": "超时约束",
+    "tail": "最大延时不超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "后雾灯",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

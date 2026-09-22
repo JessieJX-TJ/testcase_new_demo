@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "左后转向灯短路故障诊断与处理逻辑",
+  "row_semantics": "表格按功能流程分为前置条件、触发条件和执行动作三个阶段",
+  "column_semantics": "表格包含两列，分别为条件描述和对应的动作/状态",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILghtFbkSOAEEnPrm",
+      "type": "parameter",
+      "description": "转向灯反馈信号使能参数"
+    },
+    {
+      "name": "RLDILghtDrvMdl",
+      "type": "module",
+      "description": "右后转向灯驱动模块"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "module",
+      "description": "转向灯控制模块"
+    },
+    {
+      "name": "DTCCtrl",
+      "type": "controller",
+      "description": "故障诊断控制器"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILghtFbkSOAEEnPrm == 1 (Enable)",
+      "description": "转向灯反馈信号使能参数必须为启用状态"
+    },
+    {
+      "condition": "左后转向灯处手输出状态",
+      "description": "检测到左后转向灯的手动输出状态"
+    },
+    {
+      "condition": "检测到左后转向灯短路",
+      "description": "系统检测到左后转向灯存在短路故障"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DirectionLightControl",
+      "value": "2",
+      "description": "向转向灯控制模块发送错误控制指令"
+    },
+    {
+      "signal": "DirectionLightSta",
+      "value": "2",
+      "description": "设置转向灯状态为错误状态"
+    },
+    {
+      "signal": "DTCCtrl",
+      "action": "置位 DTC B104A 13",
+      "description": "置位特定的故障代码（DTC）以记录故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "B104A 13",
+      "description": "左后转向灯短路故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在发送错误控制指令时，必须连续发送至少三帧数据"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当左后转向灯发生短路故障时，系统应如何进行诊断和响应的测试验证规则，包括前置条件、触发条件以及具体的执行动作（如发送错误控制指令和置位故障代码）。",
+  "uncertain_points": []
+}
+```

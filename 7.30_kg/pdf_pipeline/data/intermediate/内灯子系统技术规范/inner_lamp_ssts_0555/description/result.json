@@ -1,0 +1,62 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Vehicle Electrical System Voltage Operation Limits",
+  "row_semantics": "System Response to Different Voltage Levels",
+  "column_semantics": "Defined Voltage Ranges for System Operation",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Voltage Level",
+      "type": "parameter",
+      "values": [
+        "低压 (6V以下)",
+        "欠压 (6V~9V)",
+        "正常 (9V~16V)",
+        "过压 (16V~18V)",
+        "高压 (18V以上)"
+      ]
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Low Voltage",
+      "description": "Voltage below 6V",
+      "threshold": "< 6V"
+    },
+    {
+      "name": "Undervoltage",
+      "description": "Voltage between 6V and 9V",
+      "threshold": "6V ~ 9V"
+    },
+    {
+      "name": "Normal Voltage",
+      "description": "Voltage between 9V and 16V",
+      "threshold": "9V ~ 16V"
+    },
+    {
+      "name": "Overvoltage",
+      "description": "Voltage between 16V and 18V",
+      "threshold": "16V ~ 18V"
+    },
+    {
+      "name": "High Voltage",
+      "description": "Voltage above 18V",
+      "threshold": "> 18V"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "System Status",
+      "type": "state",
+      "values": [
+        "禁止",
+        "使能"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the operational status of vehicle electrical systems (e.g., exterior lights, body control, electric tailgate) under various voltage conditions, indicating whether functions are enabled or disabled based on voltage levels.",
+  "uncertain_points": []
+}

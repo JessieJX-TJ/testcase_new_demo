@@ -1,0 +1,113 @@
+```json
+[
+  {
+    "head": "Reading Lamp Switch State Handling Logic is triggered",
+    "relation": "触发条件",
+    "tail": "接收到对应阅读灯开关状态硬线信号 MapLamp_XX_Sw_SIG 为低电平",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": [
+      "MapLamp_XX_Sw_SIG",
+      "低电平"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Reading Lamp Switch State Handling Logic is exited",
+    "relation": "退出条件",
+    "tail": "接收到对应阅读灯开关状态硬线信号 MapLamp_XX_Sw_SIG 为悬空状态",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": [
+      "MapLamp_XX_Sw_SIG",
+      "悬空状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Reading Lamp Switch Sensor Collection Module sends MapLampXXSwReq_l = 0x1 (Press)",
+    "relation": "执行动作",
+    "tail": "Trigger Condition:接收到对应阅读灯开关状态硬线信号 MapLamp_XX_Sw_SIG 为低电平",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": [
+      "MapLamp_XX_Sw_SIG",
+      "低电平",
+      "MapLampXXSwReq_l",
+      "0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Reading Lamp Switch Sensor Collection Module sends MapLampXXSwReq_l = 0x0 (Idle)",
+    "relation": "输出为",
+    "tail": "Exit Condition:接收到对应阅读灯开关状态硬线信号 MapLamp_XX_Sw_SIG 为悬空状态",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": [
+      "MapLamp_XX_Sw_SIG",
+      "悬空状态",
+      "MapLampXXSwReq_l",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Reading Lamp Switch Short Circuit Fault is detected",
+    "relation": "异常处理",
+    "tail": "MapLampXXSwReq_l = 0x3 (Error)",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "Reading Lamp Switch Short Circuit Fault",
+      "MapLampXXSwReq_l",
+      "0x3"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Reading Lamp Switch Sensor Collection Module sends MapLampXXSwReq_l = 0x1 (Press)",
+    "relation": "输入为",
+    "tail": "MapLamp_XX_Sw_SIG is low level",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "MapLamp_XX_Sw_SIG",
+      "低电平",
+      "MapLampXXSwReq_l",
+      "0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Reading Lamp Switch Sensor Collection Module sends MapLampXXSwReq_l = 0x0 (Idle)",
+    "relation": "输入为",
+    "tail": "MapLamp_XX_Sw_SIG is in suspended state",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "MapLamp_XX_Sw_SIG",
+      "悬空状态",
+      "MapLampXXSwReq_l",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Reading Lamp Switch Sensor Collection Module sends MapLampXXSwReq_l = 0x3 (Error)",
+    "relation": "输入为",
+    "tail": "Reading Lamp Switch Short Circuit Fault",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "Reading Lamp Switch Short Circuit Fault",
+      "MapLampXXSwReq_l",
+      "0x3"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Reading Lamp Switch State Handling Logic performs debounce processing",
+    "relation": "依赖于",
+    "tail": "防抖策略依据供应商实际硬件状态进行设定",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "防抖策略",
+      "供应商实际硬件状态"
+    ],
+    "confidence_note": "medium"
+  }
+]
+```

@@ -1,0 +1,180 @@
+```json
+[
+  {
+    "head": "Body Control Performance Parameter Value",
+    "relation": "depends_on",
+    "tail": "time_sequence_or_event_sequence",
+    "sources": ["inner_lamp_ssts_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate Performance Parameter Value",
+    "relation": "depends_on",
+    "tail": "time_sequence_or_event_sequence",
+    "sources": ["inner_lamp_ssts_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampOnOff_1 == 0x1 (ON)",
+    "sources": ["inner_lamp_ssts_0584"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampColorCmd_1 != 0x00 (No Request)",
+    "sources": ["inner_lamp_ssts_0584"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampBrtnsCmd_1 != 0x00 (No Request)",
+    "sources": ["inner_lamp_ssts_0584"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "depends_on",
+    "tail": "DoorFL1LampDrvCtrlMod drives according to DoorFL1LampColorCmd_1, DoorFL1LampBrtnsCmd_1, and DoorFL1LampFadeSpdCmd_1",
+    "sources": ["inner_lamp_ssts_0584"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Deactivation",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampOnOff_1 == 0x0 (OFF), with fade speed controlled by DoorFL1LampFadeSpdCmd_1",
+    "sources": ["inner_lamp_ssts_0584"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Deactivation",
+    "relation": "depends_on",
+    "tail": "DoorFL1LampDrvCtrlMod controls deactivation using DoorFL1LampFadeSpdCmd_1",
+    "sources": ["inner_lamp_ssts_0584"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "Ambient lamp is in OFF state (precondition)",
+    "sources": ["inner_lamp_ssts_0585"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "UpIPALampOnOff_1 == 0x1 (ON)",
+    "sources": ["inner_lamp_ssts_0585"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "UpIPALampColorCmd_1 != 0x00 (No Request)",
+    "sources": ["inner_lamp_ssts_0585"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "UpIPALampBrtnsCmd_1 != 0x00 (No Request)",
+    "sources": ["inner_lamp_ssts_0585"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Deactivation",
+    "relation": "trigger_condition",
+    "tail": "UpIPALampOnOff_1 == 0x0 (OFF), with fade speed UpIPALampFadeSpdCmd_1",
+    "sources": ["inner_lamp_ssts_0585"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Deactivation",
+    "relation": "fault_response",
+    "tail": "Overvoltage or undervoltage fault in ambient lamp module → immediate deactivation",
+    "sources": ["inner_lamp_ssts_0585"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Deactivation",
+    "relation": "fault_response",
+    "tail": "LIN communication timeout (>6s) with ZCU → immediate deactivation",
+    "sources": ["inner_lamp_ssts_0585"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color Command Input",
+    "relation": "input_signal",
+    "tail": "UpIPALampColorCmd_1",
+    "sources": ["inner_lamp_ssts_0585"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Command Input",
+    "relation": "input_signal",
+    "tail": "UpIPALampBrtnsCmd_1",
+    "sources": ["inner_lamp_ssts_0585"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Fade Speed Command Input",
+    "relation": "input_signal",
+    "tail": "UpIPALampFadeSpdCmd_1",
+    "sources": ["inner_lamp_ssts_0585"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampOnOff_1 == 0x1 (ON) OR UpIPALampOnOff_1 == 0x1 (ON)",
+    "sources": ["inner_lamp_ssts_0584", "inner_lamp_ssts_0585"],
+    "conflict": true,
+    "conflict_note": "Two distinct physical signal paths (DoorFL1 vs UpIPA) for same logical function 'Ambient Lamp Illumination'; signals originate from different lamp zones (door vs upper IP). Not contradictory but reflects architectural segmentation — retained as merged disjunctive condition to preserve traceability and avoid loss of domain intent."
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampColorCmd_1 != 0x00 (No Request) OR UpIPALampColorCmd_1 != 0x00 (No Request)",
+    "sources": ["inner_lamp_ssts_0584", "inner_lamp_ssts_0585"],
+    "conflict": true,
+    "conflict_note": "Zone-specific color command signals used interchangeably for same logical illumination event; indicates multi-zone ambient system. Merged to reflect functional equivalence across zones without assuming signal co-occurrence."
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampBrtnsCmd_1 != 0x00 (No Request) OR UpIPALampBrtnsCmd_1 != 0x00 (No Request)",
+    "sources": ["inner_lamp_ssts_0584", "inner_lamp_ssts_0585"],
+    "conflict": true,
+    "conflict_note": "Zone-specific brightness command signals used interchangeably for same logical illumination event; reflects distributed zone control architecture. Merged to capture functional intent while preserving source diversity."
+  },
+  {
+    "head": "Ambient Lamp Deactivation",
+    "relation": "trigger_condition",
+    "tail": "DoorFL1LampOnOff_1 == 0x0 (OFF) OR UpIPALampOnOff_1 == 0x0 (OFF), each with respective fade speed command",
+    "sources": ["inner_lamp_ssts_0584", "inner_lamp_ssts_0585"],
+    "conflict": true,
+    "conflict_note": "Two independent deactivation triggers per zone; no conflict — represents parallel zone control logic. Merged disjunctively to avoid duplication and support unified functional requirement modeling."
+  }
+]
+```

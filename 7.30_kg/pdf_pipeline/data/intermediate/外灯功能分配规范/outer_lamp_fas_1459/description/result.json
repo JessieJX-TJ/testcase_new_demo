@@ -1,0 +1,77 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 (Exterior Lamp Function)",
+  "row_semantics": "表格按功能模块划分，每一行代表一个与外灯相关的服务接口或系统状态查询/订阅。",
+  "column_semantics": "列标题包括：功能模块名称、服务消费方 (SOA)、控制器/模块列表 (LHZCU, ICB, S32G-8295 等)，以及未命名的空白列。主要信息集中在右侧的功能描述区域。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外灯开关处理模块，负责管理转向灯的状态和故障检测。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "module",
+      "description": "外灯控制系统，负责控制转向灯的闪烁状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightErrSta",
+      "type": "input_signal",
+      "description": "获取转向灯故障状态的服务接口。",
+      "parameters": [
+        {
+          "name": "DirenLightErrSta",
+          "type": "parameter",
+          "description": "转向灯故障状态参数。",
+          "values": {
+            "0x0": "No Error",
+            "0x1": "Error",
+            "0x4": "Unknown"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DirectionLightSts",
+      "type": "input_signal",
+      "description": "订阅转向灯状态的服务接口。",
+      "parameters": {
+        "name": "DirectionLightSts",
+        "type": "parameter",
+        "description": "转向灯状态参数。",
+        "values": {
+          "0x0": "No Flash",
+          "0x1": "Left_Direction_Light_Flash",
+          "0x2": "Right_Direction_Light_Flash",
+          "0x3": "Both_Side_Direction_Light_Flash",
+          "0x4": "Unknown"
+        }
+      }
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightErrSts",
+      "type": "output_signal",
+      "description": "外灯控制系统输出的转向灯错误状态。",
+      "controller": "ICB"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrSta",
+      "type": "fault_state",
+      "description": "转向灯故障状态，可能为无错误、错误或未知。",
+      "values": {
+        "0x1": "Error"
+      }
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯系统中转向灯状态和故障的查询与订阅接口，可用于验证外灯控制系统在不同转向灯状态（如左转、右转、双侧、无闪烁）下的正确响应，以及在转向灯发生故障时能否准确上报故障状态。",
+  "uncertain_points": []
+}

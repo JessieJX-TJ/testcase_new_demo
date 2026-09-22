@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "紧急制动灯控制逻辑",
+  "row_semantics": "表格按功能描述、前置条件、触发动作、执行动作的顺序组织，详细定义了紧急制动灯在特定条件下的行为逻辑。",
+  "column_semantics": "表格包含两列：左侧为类别标题（如场景描述、前置条件等），右侧为对应的具体内容或配置要求。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "紧急制动灯 (Emergency Brake Light)",
+      "type": "功能",
+      "description": "车辆在紧急制动时自动触发闪烁的刹车灯，以增强对后方车辆的警示作用。"
+    },
+    {
+      "name": "ABS (Anti-lock Braking System)",
+      "type": "系统状态",
+      "description": "车辆的防抱死制动系统，用于防止车轮在紧急制动时锁死。"
+    },
+    {
+      "name": "LHZCU (Light and Hazard Control Unit)",
+      "type": "控制器/模块",
+      "description": "负责控制外部灯光（包括刹车灯）的电子控制单元。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "车辆紧急制动灯处于激活状态",
+      "type": "系统状态",
+      "description": "表示车辆已进入紧急制动模式，相关指示灯应被激活。"
+    },
+    {
+      "name": "ExtrLghtCtrlCmmntTyp配置",
+      "type": "参数",
+      "description": "外部灯光控制命令类型，涉及SOA和CAN两种通信方式的配置需求。"
+    },
+    {
+      "name": "[紧急制动 IBS]请求输入",
+      "type": "输入信号",
+      "description": "来自紧急制动系统的输入信号，触发紧急制动灯的控制逻辑。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLghtCtrl信号跳变",
+      "type": "输出信号",
+      "description": "紧急制动灯控制模块LHZCU发出的信号变化，指示刹车灯从开启状态变为关闭状态。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "输出信号",
+      "description": "外部灯光开关处理模块的状态反馈，表明刹车灯功能处理状态已更新。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆在紧急制动（ABS激活）时，紧急制动灯的控制逻辑，包括前置条件、触发机制和执行动作，可用于验证紧急制动灯在不同通信配置下的正确响应。",
+  "uncertain_points": [
+    "具体何时触发'收到[紧急制动 IBS]请求输入'信号未明确说明。",
+    "PPV阶段及以后按照SOA通讯方式开发的具体细节未展开。",
+    "表格中提及的'1&{[2|3]&[4|5]}:'和'1&2&3&4&5&6&7:'等逻辑表达式未详细解释其含义。"
+  ]
+}
+```

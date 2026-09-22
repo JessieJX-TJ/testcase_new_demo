@@ -1,0 +1,32 @@
+[[Allocated System], [SYS_VehicleType],远光灯开关控制#VP3-25638, Function
+Allocation Requirement]
+[预留不开发]:将触发条件中的灯光状态判断改为灯光请求判断
+通过切换车辆VS模式,退出远光灯
+远光灯处于激活状态
+(1&2)||(3&4)||5:
+UsgMd=0x0=UsgMd_0_Sleep;|
+UsgMd=0x1=UsgMd_1_Standby
+UsgMd=0x6=UsgMd_6_XOTA
+UsgMdV=Valid
+VehMd=0x3=VehMd_3 TRANSPORT; VehMd=0x5= VehMd 5 EXHIBITION
+VehMdV=Valid
+远光灯在工厂模式下开启2min:a&&b&&c
+a、整车模式为工厂模式:
+VehMd=0x2 = VehMd 2 FACTORY && VehMdV=0x1=VehMdV 1 Valid
+b、远光灯点亮:
+c、持续2min
+6. LHZCU判断近光灯关闭:
+SidePositionLight ON;| Ox3= SidePositionAndDippedBeam OFF
+1、[远光灯开关控制模块LHZCU]接口响应:
+Notifier:
+2、[外灯组合服务ICB]调用基础服务:
+{MainBeamLight. ControlMainBeamLight. MainBeamLightReq}{InstanceID=1}=0x0=OFF
+{MainBeamLight. ControlMainBeamLight. MainBeamLightReq}{InstanceID=2}=0x0=OFF
+(exlMainBeamHwDrvEnPrm=0x0时,通过 InstanceID1,2发送控制请求)
+{MainBeamLight. ControlMainBeamLight. MainBeamLightReq}{InstanceID=3}=0x0=OFF
+{MainBeamLight. ControlMainBeamLight. MainBeamLightReq}{InstanceID=4}=0x0=OFF
+(exlMainBeamHwDrvEnPrm=0x1时,通过InstanceID=3,4发送请求)
+3、ICB将服务接口或控制信号转换成灯控CAN信号,控制远光灯熄灭
+4、[远光灯驱动处理模块LHZCU/RHZCU]接收[远光灯开关控制模块LHZCU]控制信号,内部跳变为硬线
+远光灯
+(exlMainBeamTypePrm=0x1=Main beam and dipped beam are one bulb；即当远光灯与近光灯为一个灯泡,需

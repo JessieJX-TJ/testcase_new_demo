@@ -1,0 +1,52 @@
+{
+  "table_type": "parameter_table",
+  "topic": "转向灯驱动处理模块硬线控制退出转向灯功能",
+  "row_semantics": "表格列出了与转向灯控制相关的硬件寄存器参数及其配置值，描述了在特定实例ID下转向灯的状态（OFF）。",
+  "column_semantics": "第一列显示了具体的硬件寄存器参数名称及其值；第二列提供了对该参数的中文解释，说明其功能为‘转向灯驱动处理模块硬线控制退出转向灯’。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "FLDircnLghtCtrl_HW",
+      "type": "hardware_register",
+      "description": "转向灯控制硬件寄存器，用于设置转向灯的控制状态。"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW",
+      "type": "hardware_register",
+      "description": "右转向灯控制硬件寄存器，用于设置右转向灯的控制状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例ID，用于区分不同的转向灯实例。",
+      "values": [
+        {
+          "id": "1",
+          "description": "左转向灯实例"
+        },
+        {
+          "id": "3",
+          "description": "右转向灯实例"
+        }
+      ]
+    },
+    {
+      "name": "DirectionLightReq",
+      "type": "signal",
+      "description": "方向灯请求信号，指示转向灯的请求状态。",
+      "value": "0x0=OFF"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "转向灯状态",
+      "description": "根据配置，转向灯被设置为关闭状态（OFF）。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了转向灯驱动处理模块中硬线控制的参数配置，用于确保在指定实例ID下转向灯能够正确地退出并保持关闭状态。可用于验证转向灯控制模块在不同实例ID下的行为是否符合设计规范。",
+  "uncertain_points": []
+}

@@ -1,0 +1,59 @@
+{
+  "table_type": "logic_table",
+  "topic": "危险报警灯（Hazard Warning Light）功能逻辑",
+  "row_semantics": "表格描述了危险报警灯功能的触发、执行、退出条件及其相关信号交互逻辑。",
+  "column_semantics": {
+    "1": "条件/动作描述类别",
+    "2": "具体条件或动作内容"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HzrdLghtSwSOAEnPrm",
+      "type": "parameter",
+      "description": "危险报警灯开关安全防护使能参数，值为0表示禁用。"
+    },
+    {
+      "name": "HzrdLghtSwMdl",
+      "type": "module",
+      "description": "危险报警灯控制模块，负责处理报警灯相关的逻辑和信号发送。"
+    },
+    {
+      "name": "HzrdLghtCtrlMdl",
+      "type": "module",
+      "description": "危险报警灯控制模块，接收HzrdLghtSwMdl发送的请求信号。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字HzrdLghtSwSOAEnPrm=0（Disable），即危险报警灯的安全防护功能被禁用。"
+    },
+    {
+      "condition": "触发条件",
+      "description": "用户手动按下危险报警灯开关，并且开关接地。"
+    },
+    {
+      "condition": "退出条件",
+      "description": "开关悬空，即开关未被按下或未接地。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "HzrdLghtSwReq",
+      "value": "0x1 (Active)",
+      "description": "HzrdLghtSwMdl持续发送HzrdLghtSwReq=0x1（Active）信号至HzrdLghtCtrlMdl，表示请求激活危险报警灯。",
+      "timing": "至少发送三帧"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "HzrdLghtSwReq发送频率",
+      "description": "HzrdLghtSwMdl模块至少发送三帧HzrdLghtSwReq=0x1信号至HzrdLghtCtrlMdl模块。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在特定配置下，用户手动操作危险报警灯开关时，系统如何通过HzrdLghtSwMdl模块发送HzrdLghtSwReq信号来激活危险报警灯的功能逻辑，可用于验证危险报警灯的触发响应和信号交互。",
+  "uncertain_points": []
+}

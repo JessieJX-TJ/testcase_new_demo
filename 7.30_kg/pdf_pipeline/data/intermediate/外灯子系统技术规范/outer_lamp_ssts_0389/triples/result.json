@@ -1,0 +1,73 @@
+[
+  {
+    "head": "系统执行危险报警灯开关控制动作",
+    "relation": "前提条件",
+    "tail": "配置字HzrdLghtSwSOAEnPrm==0(Disable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "前置条件",
+      "配置字HzrdLghtSwSOAEnPrm==0(Disable)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0389",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "系统执行危险报警灯开关控制动作",
+    "relation": "触发条件",
+    "tail": "用户松开危险报警灯开关,开关悬空",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "触发条件",
+      "用户松开危险报警灯开关,开关悬空"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0389",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "系统持续发送HzrdLghtSwReq信号",
+    "relation": "依赖于",
+    "tail": "【HzrdLghtSwMdl】模块",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "HzrdLghtSwMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0389",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "HzrdLghtSwReq信号值为0x0(Inactive)",
+    "relation": "输出为",
+    "tail": "【HzrdLghtCtrlMdl】模块",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "HzrdLghtSwReq=0x0(Inactive)",
+      "HzrdLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0389",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "系统至少发送三帧数据",
+    "relation": "依赖于",
+    "tail": "【HzrdLghtSwMdl】模块",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "执行动作",
+      "至少发送三帧"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0389",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

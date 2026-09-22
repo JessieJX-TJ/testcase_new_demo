@@ -1,0 +1,95 @@
+{
+  "table_type": "signal_table",
+  "topic": "近光灯控制与状态反馈机制",
+  "row_semantics": "逐条定义了不同模块间近光灯（Dipped Beam Light）和侧位灯（Side Position Light）的状态、错误状态及其在驱动模块（LHZCU/RHZCU）、近光灯控制模块（LHZCU）以及外灯组合服务ICB之间的信号交互。",
+  "column_semantics": "无明确列，表格内容为按行组织的逻辑描述，每行包含一个功能点编号及对应的信号交互详情。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "近光灯控制模块"
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "右近光灯驱动模块"
+    },
+    {
+      "name": "ICB",
+      "type": "service",
+      "description": "外灯组合服务"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "system",
+      "description": "外部灯光开关处理模块"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "system",
+      "description": "外部灯光控制系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "input_signal",
+      "description": "近光灯状态，包括开启/关闭"
+    },
+    {
+      "name": "DippedBeamLightErrorStatus",
+      "type": "input_signal",
+      "description": "近光灯错误状态"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "input_signal",
+      "description": "侧位灯状态，包括开启/关闭"
+    },
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "input_signal",
+      "description": "侧位灯错误状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightSta",
+      "type": "output_signal",
+      "description": "近光灯状态输出"
+    },
+    {
+      "name": "DippedBeamLightErrSta",
+      "type": "output_signal",
+      "description": "近光灯错误状态输出"
+    },
+    {
+      "name": "SidePositionLightSta",
+      "type": "output_signal",
+      "description": "侧位灯状态输出"
+    },
+    {
+      "name": "SidePositionLightErrSta",
+      "type": "output_signal",
+      "description": "侧位灯错误状态输出"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Error",
+      "type": "fault_status",
+      "description": "表示信号交互过程中出现的错误状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步熄灭延时",
+      "type": "timing_constraint",
+      "description": "左侧和右侧近光灯需保持同步熄灭，最大延时不超过40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了车辆近光灯系统中各控制器和模块之间的信号交互规则，特别是近光灯和侧位灯的状态与错误状态反馈机制，以及对左右近光灯同步熄灭时间的要求，可用于验证近光灯系统的状态反馈逻辑和故障处理能力。",
+  "uncertain_points": []
+}

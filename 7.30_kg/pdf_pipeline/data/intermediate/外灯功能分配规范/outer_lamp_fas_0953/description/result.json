@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"signal_table\",\n  \"topic\": \"ICB (Instrument Cluster Board) 与远光灯控制模块之间的信号交互规范\",\n  \"row_semantics\": \"每一行描述了 ICB 与远光灯控制模块（LHZCU/RHZCU）之间特定的信号交互过程或状态反馈机制\",\n  \"column_semantics\": \"无明确列，内容为连续的文本描述，主要包含信号名称、值及其功能说明\",\n  \"has_merged_cells\": false,\n  \"header_levels\": 0,\n  \"core_entities\": [\n    {\n      \"name\": \"ICB\",\n      \"type\": \"controller\",\n      \"description\": \"仪表盘控制板，负责接收和发送远光灯相关的控制和状态信号\"\n    },\n    {\n      \"name\": \"LHZCU\",\n      \"type\": \"module\",\n      \"description\": \"远光灯开关控制模块，负责处理远光灯的开关逻辑并反馈状态\"\n    },\n    {\n      \"name\": \"RHZCU\",\n      \"type\": \"module\",\n      \"description\": \"右侧远光灯控制模块，负责驱动右侧远光灯并反馈其状态\"\n    }\n  ],\n  \"core_conditions\": [\n    \"MainBeamLightCtrl_0_Off\", // 主远光灯控制信号关闭\n    \"MainBeamLightSts_0_Off\",  // 主远光灯状态关闭\n    \"MainBeamLightFltSts_0_False\" // 主远光灯故障状态正常\n  ],\n  \"core_outputs\": [\n    \"MainBeamLightFucProStatus\", // 主远光灯功能指示状态\n    \"MainBeamLightFucProsSta\",   // 主远光灯功能指示状态值\n    \"MainBeamLightSta\",          // 主远光灯状态值\n    \"MainBeamLightErrorStatus\",  // 主远光灯错误状态\n    \"MainBeamLightErrorSta\",     // 主远光灯错误状态值\n    \"MainBeamHwDrvEnPrm\"         // 主远光灯硬件驱动使能参数\n  ],\n  \"core_faults\": [\n    \"MainBeamLightErrSta\",       // 主远光灯错误状态值\n    \"MainBeamLightFltSts\"        // 主远光灯故障状态标志\n  ],\n  \"core_timing_constraints\": [\n    \"远光灯熄灭同步性要求：左侧和右侧需保持同步熄灭，两侧最大延时不能超过 40ms\"\n  ],\n  \"engineering_interpretation\": \"该表格详细定义了 ICB 与远光灯控制模块之间的信号交互流程，包括控制信号的发送、状态反馈的接收以及故障状态的传递，主要用于验证远光灯系统的控制逻辑、状态同步性和故障检测功能。\",\n  \"uncertain_points\": []\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

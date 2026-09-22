@@ -1,0 +1,76 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "远光灯控制逻辑",
+  "row_semantics": "定义了在特定前置条件下，触发条件满足时执行的动作以及退出条件的控制流程。",
+  "column_semantics": {
+    "Column1": "描述控制逻辑的阶段或状态（如前置条件、触发条件、执行动作、退出条件）",
+    "Column2": "详细说明对应阶段的具体内容"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightSwSOAEnPrm",
+      "type": "parameter",
+      "description": "主光灯开关超范围检测使能参数，当前设置为0（禁用）"
+    },
+    {
+      "name": "MainBeamLghtSwMdl",
+      "type": "module",
+      "description": "主光灯开关模块"
+    },
+    {
+      "name": "MainBeamLghtCtrlMdl",
+      "type": "module",
+      "description": "主光灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightSwSOAEnPrm == 0 (Disable)",
+      "type": "condition",
+      "description": "前置条件，表示主光灯开关超范围检测功能被禁用"
+    },
+    {
+      "name": "远光灯开关短路到地",
+      "type": "condition",
+      "description": "触发条件，当远光灯开关发生短路到地故障时触发"
+    },
+    {
+      "name": "远光灯开关非短路到地",
+      "type": "condition",
+      "description": "退出条件，当远光灯开关恢复正常（非短路到地）时退出该逻辑"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLghtSwReq",
+      "type": "signal",
+      "description": "主光灯开关请求信号，持续发送0x0（Off）",
+      "value": "0x0 (Off)"
+    },
+    {
+      "name": "DTC B1077 11",
+      "type": "fault",
+      "description": "置位的诊断故障代码，表示远光灯开关短路到地故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "B1077 11",
+      "type": "fault",
+      "description": "远光灯开关短路到地故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "至少发送三帧",
+      "type": "timing_constraint",
+      "description": "在执行动作期间，必须至少发送三帧 MainBeamLghtSwReq 信号"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证远光灯开关短路到地故障时，系统是否能够正确识别故障并发送相应的关闭请求信号，同时记录对应的故障代码。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,75 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior Lamp Function) - 近光灯状态与控制",
+  "row_semantics": "表格定义了近光灯 (Dipped Beam Light) 的不同状态、控制请求、错误状态及其对应的内部变量值，以及这些状态在左侧前照灯 (LHZ CU) 和右侧前照灯 (RHZ CU) 上的映射。",
+  "column_semantics": {
+    "1": "功能描述或状态名称",
+    "2": "量值 (Value)",
+    "3": "给服务赋值前内部变量值 (Internal Variable Value Before Service Assignment)",
+    "4": "数值代码 (Numeric Code)",
+    "5": "控制器/模块 (Controller/Module)",
+    "6": "不确定列"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "DipdBeamLightSta",
+      "type": "系统状态",
+      "description": "近光灯当前状态，包括关闭 (OFF)、开启 (ON) 和未知 (Unknown)"
+    },
+    {
+      "name": "DipdBeamLightErrSta",
+      "type": "故障状态",
+      "description": "近光灯错误状态，包括无错误 (No Error)、错误 (Error) 和未知 (Unknown)"
+    },
+    {
+      "name": "DippedBeamLightReqSts",
+      "type": "输入信号",
+      "description": "接收来自外部的近光灯控制请求，包括关闭 (OFF) 和开启 (ON)"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DipdBeamLightSta",
+      "controller": "LHZ CU",
+      "description": "左侧前照灯模块报告的近光灯状态"
+    },
+    {
+      "name": "DipdBeamLightErrSta",
+      "controller": "LHZ CU",
+      "description": "左侧前照灯模块报告的近光灯错误状态"
+    },
+    {
+      "name": "DippedBeamLightReqSts",
+      "controller": "RHZ CU",
+      "description": "右侧前照灯模块接收的近光灯控制请求状态"
+    },
+    {
+      "name": "DipdBeamLightSta",
+      "controller": "RHZ CU",
+      "description": "右侧前照灯模块报告的近光灯状态"
+    },
+    {
+      "name": "DipdBeamLightErrSta",
+      "controller": "RHZ CU",
+      "description": "右侧前照灯模块报告的近光灯错误状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DipdBeamLightErrSta_1_Error",
+      "description": "近光灯发生错误时的状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证车辆外灯系统中近光灯的状态管理、控制请求处理以及错误检测功能，确保在不同状态下（如开启、关闭、未知）和不同控制器（LHZ CU, RHZ CU）之间的一致性。",
+  "uncertain_points": [
+    "表格中未明确说明具体的功能触发条件或逻辑流程。",
+    "未提供具体的测试用例或验证场景。",
+    "未明确指出哪些状态是正常状态，哪些是异常状态。"
+  ]
+}
+```

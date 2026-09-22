@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Ambient Light Control System Interface Specifications",
+  "row_semantics": "Each row represents a specific interface signal related to ambient lighting control, detailing its direction, type, sender/receiver, channel, and source.",
+  "column_semantics": {
+    "Interface Name": "Name of the communication interface or signal.",
+    "Direction": "Indicates whether the signal is an input or output.",
+    "Type": "Communication protocol or service type (e.g., CAN/LIN, SOA service).",
+    "Sender/Provider": "The entity that sends or provides the signal.",
+    "Receiver/Consumer": "The entity that receives or consumes the signal.",
+    "Channel": "Specific communication channel used for the signal.",
+    "Interface Source": "Source of the interface signal."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "AmbtLghtLHRolliingCtr_1",
+      "type": "Signal",
+      "description": "Ambient light rolling control signal, used for continuous dimming or brightness adjustment."
+    },
+    {
+      "name": "DoorFL1LampOnOff_1",
+      "type": "Signal",
+      "description": "Request signal for turning on/off the front left door ambient lamp."
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller",
+      "description": "Lighting Zone Control Unit, responsible for managing ambient lighting functions."
+    },
+    {
+      "name": "DoorAmbtLampX_FL",
+      "type": "Module",
+      "description": "Front Left Door Ambient Lamp, part of the vehicle's interior lighting system."
+    },
+    {
+      "name": "LHZCU_LIN4",
+      "type": "Communication Channel",
+      "description": "LIN bus channel 4 used for communication between LHZCU and other modules."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "E=N*1",
+      "description": "Expression indicating a continuous looped signal with values ranging from 0-255, used as a LIN heartbeat."
+    },
+    {
+      "name": "0x0=OFF",
+      "description": "Binary value 0x0 indicates the ambient lamp is turned off."
+    },
+    {
+      "name": "0x1=ON",
+      "description": "Binary value 0x1 indicates the ambient lamp is turned on."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorAmbtLampX_FL",
+      "description": "Output signal controlling the state of the front left door ambient lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "LIN Heartbeat",
+      "description": "Signal must continuously loop from 0-255; if no new value is received, the system should stop breathing (i.e., stop responding)."
+    }
+  ],
+  "engineering_interpretation": "This table defines the communication interfaces and signal specifications for controlling ambient lighting in a vehicle, specifically focusing on the interaction between the LHZCU and the front left door ambient lamp via the LIN bus. It details how the ambient light intensity is adjusted and how on/off requests are handled.",
+  "uncertain_points": [
+    "The exact timing relationship between the heartbeat signal and other system responses is not specified.",
+    "The specific non-zero color brightness commands required when the lamp is turned ON are not detailed."
+  ]
+}
+```

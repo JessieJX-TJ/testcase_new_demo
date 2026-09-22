@@ -1,0 +1,34 @@
+1、车辆上电自动开启:
+UsgMd!=0x0 = UsgMd_0_Sleep; &
+UsgMd!=0x1 = UsgMd_1_Standby; &
+UsgMd!=0x6=UsgMd_6_XOTA;&
+UsgMdV=Valid
+执行动作
+[昼间行车灯控制模块LHZCU]信号跳变为:
+LDayTmRunngLghtCtrl=0x1=LDayTmRunngLghtCtrl_1_on
+RDayTmRunngLghtCtrl=0x1=RDayTmRunngLghtCtrl_1_on
+并将控制信号发送至ICB
+[昼间行车灯控制模块LHZCU]接口响应:
+Notifier:
+[外灯组合服务ICB]调用基础服务:
+ICB将服务接口或控制信号转换成灯控CAN信号,控制昼间行车灯开启
+ICB将状态/故障状态反馈至[昼间行车灯控制模块LHZCU]:
+LDayTmRunngLghtSts=0x1=LDayTmRunngLghtSts_1_on
+RDayTmRunngLghtSts=0x1=RDayTmRunngLghtSts_1_on
+LDayTmRunngLghtFltsts=0x0=LDayTmRunngLghtFltsts_0_False
+RDayTmRunngLghtFltsts=0x0=RDayTmRunngLghtFltsts_0_False
+{DayRunningLight. DayRunningLightState. DayRunningLightSta}{InstanceID=1}=0x1=ON
+{DayRunningLight. DayRunningLightState. DayRunningLightSta}{InstanceID=2}=0x1=ON
+[昼间行车灯控制模块LHZCU]将状态/故障状态反馈至ICB:
+DayTmRunngLghtSts=0x1=DayTmRunngLghtSts_1_on
+DayTmRunngLghtFltsts=0x0=DayTmRunngLghtFltsts_0_False
+{ExteriorLightSwitchProcess. DayRunningLightSta. DayRunningLghtSta}=0X1=ON
+[外灯组合服务ICB]订阅接口:
+{ExteriorLightControlSystem.DayRunningLightSts. DayRunningLghtSts}=0X1=ON
+备注
+1、昼间行车灯同步性要求:
+昼间行车灯的同步性允许的最大延时周期为:40ms
+2、ICB_S32GM 日行灯请求重发机制:
+(对应InstanceID),且请求状态未变,应尝试按照<=50ms周期重发3次；尝试重发3次后仍未反
+则停止发送
+3、外灯状态主动获取:涉及LHZCU/ICBS32G M/ICB8295

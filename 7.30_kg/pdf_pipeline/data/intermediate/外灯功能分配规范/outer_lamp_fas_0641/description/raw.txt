@@ -1,0 +1,96 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制系统（特别是近光灯）的控制逻辑与状态反馈机制",
+  "row_semantics": "表格按执行动作顺序列出了系统在不同场景下的行为和交互，描述了从外部请求到内部模块响应、状态反馈的完整流程。",
+  "column_semantics": "表格包含两列：左侧为触发动作（Trigger Action），右侧为执行动作（Execute Action），详细描述了每个动作的具体内容和相关参数。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "S32G",
+      "type": "Controller",
+      "description": "整车控制器，负责接收大屏开关请求并触发ICB输入"
+    },
+    {
+      "name": "ICB",
+      "type": "Service Interface",
+      "description": "外灯控制组合服务接口，用于调用外灯控制模块并转换信号为CAN总线格式"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Module",
+      "description": "近光灯控制模块，负责处理近光灯的状态和故障反馈"
+    },
+    {
+      "name": "RHZCU",
+      "type": "Module",
+      "description": "驱动模块，负责将状态/故障反馈至近光灯控制模块"
+    },
+    {
+      "name": "HMI子系统",
+      "type": "System",
+      "description": "人机交互子系统，用于调用外灯控制组合服务并显示近光灯指示灯"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "Subsystem",
+      "description": "外部灯光控制系统，包含组合灯光控制功能"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DippedBeamLight ON",
+      "type": "Input Signal",
+      "description": "表示近光灯开启的状态"
+    },
+    {
+      "name": "CombinedLightReq",
+      "type": "Input Signal",
+      "description": "组合灯光请求信号，值为0x2时触发近光灯开启"
+    },
+    {
+      "name": "CombLightFucProStatus",
+      "type": "Internal Status",
+      "description": "组合灯光功能过程状态，用于判断当前灯光模式"
+    },
+    {
+      "name": "DippedBeamLightRequestStatus",
+      "type": "Input Signal",
+      "description": "近光灯请求状态，用于订阅ICB发送的控制状态"
+    },
+    {
+      "name": "InstanceID",
+      "type": "Parameter",
+      "description": "实例ID，用于区分不同的状态或错误反馈实例"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Notifier",
+      "type": "Output Signal",
+      "description": "通知机制，用于向相关模块或系统反馈状态或控制指令"
+    },
+    {
+      "name": "DippedBeamLightSta",
+      "type": "Output Signal",
+      "description": "近光灯状态信号，表示近光灯的当前状态（ON/OFF）"
+    },
+    {
+      "name": "DippedBeamLightErrSta",
+      "type": "Output Signal",
+      "description": "近光灯错误状态信号，表示近光灯是否存在错误"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DippedBeamLightErrorStatus",
+      "type": "Fault State",
+      "description": "近光灯错误状态，当检测到近光灯异常时触发"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证外灯控制系统中近光灯的控制逻辑，包括从外部请求到内部模块响应、状态反馈的完整流程，以及近光灯状态和错误状态的正确反馈机制。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "远光灯控制逻辑与状态定义",
+  "row_semantics": "表格按编号顺序描述了远光灯相关的不同状态及其触发条件，包括灯光开关状态、近光灯状态、环境光状态、车档位状态、自动远光灯功能状态、IHCE（智能前大灯）使能状态等。",
+  "column_semantics": "无明确列，表格内容为逐行描述的文本信息，主要包含状态定义、条件表达式和相关参数值。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "MainBeamLight", // 主远光灯
+    "DippedBeamLight", // 近光灯
+    "ExteriorLightSwitchProcess", // 外部灯光开关过程
+    "CombLghtSwStatus", // 组合灯光开关状态
+    "CombLghtFucProStatus", // 组合灯光功能过程状态
+    "TrShftLvrPos", // 换挡杆位置
+    "TrShftLvrPosV", // 换挡杆位置验证
+    "AutoMaiBeamLghtCtrlIDsblSts", // 自动主远光灯控制禁用状态
+    "InsdFnCfgIntlgtMaiBeamLght", // 内置前大灯智能控制
+    "iHCEnbSetSts", // IHCE使能设置状态
+    "vehRIsType" // 车辆类型
+  ],
+  "core_conditions": [
+    "VehSpdAvg>20Km/h", // 平均车速大于20公里/小时
+    "VehSpdV=0x0=VehSpdAvgV_Valid", // 车速有效
+    "InstanceID / 4 获取近光灯状态", // 通过实例ID获取近光灯状态
+    "Instance ID 1/2 获取近光灯状态", // 通过实例ID获取近光灯状态
+    "vehRIsType==0", // 车辆类型为SOA
+    "vehRIsType==1", // 车辆类型为CAN
+    "TrShftLvrPos=0x4", // 换挡杆位置为D档
+    "TrShftLvrPosV=0x0", // 换挡杆位置验证有效
+    "VehSpdAvg>40Km/h", // 平均车速大于40公里/小时
+    "IPD 请求远光灯开启" // IPD请求开启远光灯
+  ],
+  "core_outputs": [
+    "MainBeamLight={InstanceID=1}=OFF", // 主远光灯关闭
+    "MainBeamLight={InstanceID=2}=OFF", // 主远光灯关闭
+    "CombLghtSwStatus=0x3=AUTO", // 组合灯光开关状态为自动
+    "CombLghtFucProStatus=0x4=SidePositionAndDippedBe", // 组合灯光功能过程状态为侧位灯和近光灯
+    "AutoMaiBeamLghtCtrlIDsblSts=0x0=False", // 自动主远光灯控制禁用状态为False
+    "InsdFnCfgIntlgtMaiBeamLght=0x1", // 内置前大灯智能控制启用
+    "iHCEnbSetSts=0x0=Enable", // IHCE使能设置状态为启用
+    "ExtrLightCtrlCmmntnTyp=0x0=SOA", // 外部灯光控制通信类型为SOA
+    "ExtrLightStsCmmntnTyp=0x0=SOA" // 外部灯光状态通信类型为SOA
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "车速大于等于 40km/h 超过两秒且 IPD 请求远光灯开启: a&b" // 条件满足后激活远光灯开启动作
+  ],
+  "engineering_interpretation": "该表格详细定义了车辆远光灯系统的各种状态及其触发条件，可用于验证远光灯在不同驾驶场景下的正确行为，包括手动/自动模式切换、近光灯反馈、环境光感应、换挡杆位置关联以及智能前大灯功能的启用。",
+  "uncertain_points": []
+}
+```

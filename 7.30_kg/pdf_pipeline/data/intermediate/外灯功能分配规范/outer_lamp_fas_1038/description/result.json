@@ -1,0 +1,115 @@
+{
+  "table_type": "signal_table",
+  "topic": "自动灯光控制模块 LHZCU 的外灯状态与故障监控需求",
+  "row_semantics": "表格按功能模块和信号类型组织，详细定义了不同外灯（如近光灯、位置灯、侧位灯）的状态变量及其错误状态，并列出了相关的配置参数和故障处理逻辑。",
+  "column_semantics": "无明确的多列结构，主要通过行分组来表达不同信号或模块的状态定义及关联信息。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller",
+      "description": "Lighting and Hazard Control Unit, 自动灯光控制模块"
+    },
+    {
+      "name": "DippedBeamLight",
+      "type": "Function",
+      "description": "近光灯功能"
+    },
+    {
+      "name": "SidePositionLight",
+      "type": "Function",
+      "description": "位置灯/侧位灯功能"
+    },
+    {
+      "name": "RLSS",
+      "type": "Subsystem",
+      "description": "Road Light Sensor System, 道路照明传感器系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例标识符，用于区分同一信号的不同实例（如左前、右前等）"
+    },
+    {
+      "name": "Status",
+      "description": "信号的当前状态（如ON/OFF）"
+    },
+    {
+      "name": "ErrorStatus",
+      "description": "信号的错误状态"
+    },
+    {
+      "name": "Flits",
+      "description": "闪烁状态"
+    },
+    {
+      "name": "AutoLightOnReq",
+      "description": "自动灯光开启请求信号"
+    },
+    {
+      "name": "vehRlsType",
+      "description": "车辆释放类型，影响自动灯光请求的默认行为"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLSideLightSts",
+      "description": "左前侧位灯状态"
+    },
+    {
+      "name": "FRSideLightSts",
+      "description": "右前侧位灯状态"
+    },
+    {
+      "name": "RLSideLightSts",
+      "description": "右后侧位灯状态"
+    },
+    {
+      "name": "RRSideLightSts",
+      "description": "左后侧位灯状态"
+    },
+    {
+      "name": "AutoLightOnReq_1",
+      "description": "自动近光灯开启请求"
+    },
+    {
+      "name": "AutoLightOnReq_ICB",
+      "description": "自动位置灯开启请求"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "LHSCU_Detection",
+      "description": "LHZCU 检测到的故障类型，包括 RLSS 节点丢失和 LIN 通讯故障"
+    },
+    {
+      "name": "RLSS_Fault",
+      "description": "RLSS 发生故障时的默认发送行为"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步延时",
+      "description": "位置灯和近光灯开启需保持同步点亮，最大延时不超过 40ms",
+      "value": "≤ 40ms"
+    },
+    {
+      "name": "故障持续时间",
+      "description": "LHZCU 检测到 RLSS LIN 通讯丢失或故障持续 3min",
+      "value": "≥ 3min"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了自动灯光控制模块 LHZCU 对外灯（近光灯、位置灯）状态的订阅接口、错误监控机制以及在 RLSS 故障时的默认行为。可用于验证 LHZCU 在不同场景下对外灯状态的正确响应、故障检测与处理逻辑，以及与 RLSS 系统的协同工作能力。",
+  "uncertain_points": [
+    {
+      "point": "表格中未明确说明所有 InstanceID 的具体含义和范围",
+      "context": "例如 InstanceID=5,6,7,8 反馈状态的具体触发条件未详细描述"
+    },
+    {
+      "point": "表格中未列出所有可能的外部输入信号",
+      "context": "如未提及具体的光照强度阈值或环境温度对灯光控制的影响"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车电子系统接口信号定义与通信规范",
+  "row_semantics": "每行代表一个具体的接口或信号定义，描述其在系统中的角色和属性。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，需与逻辑框图内容一致。",
+    "Direction": "信号的传输方向（输入/输出）。",
+    "Type": "信号的类型（如CAN/LIN/SOA服务/硬线等）。",
+    "Sender/Provider": "信号的发送方或提供方（节点或SoA服务）。",
+    "Receiver/Consumer": "信号的接收方或消费方（节点或SoA服务）。",
+    "Channel": "信号传输的路径或通道。",
+    "Source": "接口的来源（指定信号通道或来源）"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehIlluminateCtrlCmd",
+      "type": "signal",
+      "description": "车辆照明控制命令信号"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "左后区域控制单元"
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "右后区域控制单元"
+    },
+    {
+      "name": "SST",
+      "type": "system",
+      "description": "内灯系统"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "VehIlluminateCtrlCmd",
+      "direction": "output",
+      "from": "LHZCU",
+      "to": "RHZCU",
+      "type": "CAN",
+      "channel": "uncertain",
+      "source": "SST"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证车辆照明控制系统中CAN通信信号的接口规范，确保信号发送方、接收方、传输路径及来源的正确性。",
+  "uncertain_points": [
+    "Channel: 未明确指定具体通信通道（如CAN总线ID或LIN节点地址）",
+    "Source: 未详细说明SST内部的具体信号源或触发机制"
+  ]
+}

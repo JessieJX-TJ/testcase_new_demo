@@ -1,0 +1,57 @@
+{
+  "table_type": "logic_table",
+  "topic": "转向灯控制逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，当触发条件满足时，系统执行的动作、退出条件以及异常处理。",
+  "column_semantics": {
+    "Column1": "条件或动作的描述类别（如前置条件、触发条件、执行动作等）",
+    "Column2": "具体的条件、动作或参数值"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILghtSwOAEnPrm",
+      "type": "配置字",
+      "description": "用于启用或禁用转向灯开关相关功能的配置参数"
+    },
+    {
+      "name": "DILghtSwMdl",
+      "type": "控制器/模块名",
+      "description": "负责发送转向灯方向请求信号的模块"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "控制器/模块名",
+      "description": "负责控制转向灯实际动作的模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字 DILghtSwOAEnPrm == 0 (Disable) - 表示转向灯开关功能被禁用"
+    },
+    {
+      "condition": "触发条件",
+      "description": "用户重拨左转向拨杆，开关阻值为 300 Ω (±5%) - 表示用户操作并检测到拨杆阻值在规定范围内"
+    },
+    {
+      "condition": "退出条件",
+      "description": "转向灯开关变为非 300 Ω (±5%) - 表示拨杆状态发生变化，不再符合触发条件"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DircnLghtSwReq",
+      "value": "0x2 (Left_Second)",
+      "description": "持续发送左转向请求信号，表示车辆将进行左转向操作"
+    },
+    {
+      "action": "至少发送三帧",
+      "description": "确保信号传输的可靠性"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证转向灯开关功能在特定配置下的行为逻辑，包括用户操作触发转向灯请求信号的发送，以及转向灯状态变化后的退出机制。",
+  "uncertain_points": []
+}

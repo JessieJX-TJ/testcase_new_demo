@@ -1,0 +1,88 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯功能分配规范",
+  "row_semantics": "描述触发动作和执行动作的逻辑流程，包括输入条件、处理步骤和输出结果。",
+  "column_semantics": "第一列定义了触发条件或执行步骤的编号，第二列详细描述了相应的逻辑操作。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ZgMdV",
+      "type": "signal",
+      "description": "车辆档位信号有效性"
+    },
+    {
+      "name": "VehMd",
+      "type": "signal",
+      "description": "车辆模式信号"
+    },
+    {
+      "name": "TrShiftLvrPos",
+      "type": "signal",
+      "description": "倒车灯控制模块LHZCU的信号跳变"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "集成控制盒"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "倒车灯控制模块"
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "驱动处理模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsGmDV=Valid",
+      "description": "车辆档位信号有效"
+    },
+    {
+      "name": "VehMd!=0x3",
+      "description": "车辆模式不为运输模式"
+    },
+    {
+      "name": "TrShiftLvrPos=0x2",
+      "description": "收到车辆档位信号输入"
+    },
+    {
+      "name": "TrShiftLvrPosV=0x0",
+      "description": "车辆档位信号有效"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RevsLightCtrl",
+      "type": "signal",
+      "description": "倒车灯控制信号"
+    },
+    {
+      "name": "ReverseLightFucProStatus",
+      "type": "signal",
+      "description": "倒车灯功能过程状态"
+    },
+    {
+      "name": "ReverseLightState",
+      "type": "signal",
+      "description": "倒车灯状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RevsLightFltSts",
+      "type": "signal",
+      "description": "倒车灯故障状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证外灯（特别是倒车灯）在不同车辆档位和模式下的正确控制逻辑，确保信号输入、处理和输出符合功能分配规范。",
+  "uncertain_points": [
+    "具体通信协议细节未明确说明",
+    "PPV阶段及以后的SOA通讯方式开发细节未详述"
+  ]
+}

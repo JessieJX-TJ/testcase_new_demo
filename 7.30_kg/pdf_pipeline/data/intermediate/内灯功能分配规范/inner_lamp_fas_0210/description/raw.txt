@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "充电照明灯控制逻辑模块的功能描述与分配",
+  "row_semantics": "表格的每一行代表一个独立的逻辑模块，描述其功能和所属的子系统或物理模块。",
+  "column_semantics": {
+    "逻辑模块名称": "标识逻辑模块的名称及其功能描述。",
+    "逻辑块功能描述": "详细说明该逻辑模块的具体功能。",
+    "分配的子系统/物理模块": "指出该逻辑模块所属的子系统或物理控制器（如RZCU）。",
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ChrgrFlapLampCtrl",
+      "type": "逻辑模块",
+      "description": "充电照明灯应用控制模块，负责开关控制点亮熄灭。",
+      "controller": "RZCU"
+    },
+    {
+      "name": "ChrgrFlapLampDrv",
+      "type": "逻辑模块",
+      "description": "充电照明灯驱动模块，负责响应控制请求并驱动点亮熄灭。",
+      "controller": "内灯子系统 (RZCU)"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "充电照明灯点亮",
+      "description": "由ChrgrFlapLampDrv模块驱动实现。",
+      "source": "ChrgrFlapLampDrv"
+    },
+    {
+      "name": "充电照明灯熄灭",
+      "description": "由ChrgrFlapLampDrv模块驱动实现。",
+      "source": "ChrgrFlapLampDrv"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证充电照明灯控制逻辑模块的功能正确性，包括开关控制、点亮熄灭动作以及与RZCU控制器的交互。",
+  "uncertain_points": []
+}
+```

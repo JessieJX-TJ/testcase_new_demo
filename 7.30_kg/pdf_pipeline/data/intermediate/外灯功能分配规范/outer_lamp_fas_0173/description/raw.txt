@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Control Interface Specifications",
+  "row_semantics": "Each row represents a specific configuration or instance of the Direction Light control interface, detailing how to control different directional lights (left front, right front, left rear) with ON/OFF commands.",
+  "column_semantics": {
+    "Column 1": "Function/module name (DirectionLight.ControlDirectionLight)",
+    "Column 2": "Consumption type (SOA)",
+    "Column 3": "Interface communication bus (ICB)",
+    "Column 4": "Interface communication bus (ICB)",
+    "Column 5": "Reserved/unused",
+    "Column 6": "Control method (Network Control)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "function",
+      "description": "Controls the direction lights of the vehicle."
+    },
+    {
+      "name": "ControlDirectionLight",
+      "type": "interface",
+      "description": "The service interface used to control the direction lights."
+    },
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "Unique identifier for each light control instance (e.g., 5 for left front, 6 for right front, 7 for left rear)."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightReq",
+      "type": "input_signal",
+      "description": "Request parameter specifying the direction light state (0x0=OFF, 0x1=ON)."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Periodic Call",
+      "description": "The service interface should be called periodically to maintain the desired light state."
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters and configurations for controlling various direction lights in a vehicle using a standardized service interface. It is used to verify that the correct InstanceID and DirectionLightReq values are passed to the interface to achieve the desired lighting behavior.",
+  "uncertain_points": [
+    "The exact timing interval for periodic calls is not specified.",
+    "The meaning of the 'Consumption' column (SOA) is not clearly defined in this context.",
+    "The purpose of the two 'ICB' columns is ambiguous; it is unclear if they represent different buses or if one is redundant."
+  ]
+}
+```

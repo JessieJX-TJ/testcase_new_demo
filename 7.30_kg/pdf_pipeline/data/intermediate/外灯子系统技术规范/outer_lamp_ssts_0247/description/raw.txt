@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "左前雾灯短路故障处理逻辑",
+  "row_semantics": "表格按功能执行步骤列出，每一行代表一个具体的动作或状态设置。",
+  "column_semantics": "表格分为前置条件、触发条件、执行动作、退出条件和异常处理五列，其中执行动作列详细描述了六个连续的控制指令。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FrtFogLghtDrvMdl",
+      "type": "controller_module",
+      "description": "左前雾灯驱动模块"
+    },
+    {
+      "name": "DTC B1053 11",
+      "type": "fault_code",
+      "description": "特定的诊断故障代码，用于记录左前雾灯短路故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "左前雾灯处于输出状态"
+    },
+    {
+      "condition": "触发条件",
+      "description": "检测到左前雾灯短路到地"
+    },
+    {
+      "condition": "退出条件",
+      "description": "检测到短路恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "FogLamp_LH_HSD",
+      "action": "停止驱动左前雾灯输出",
+      "value": "OFF (0x0)"
+    },
+    {
+      "signal": "LFrtFogLghtSts",
+      "action": "持续发送左前雾灯状态为关闭",
+      "value": "OFF (0x0)"
+    },
+    {
+      "signal": "LFrtFogLghtFltSts",
+      "action": "持续发送左前雾灯故障状态为正常",
+      "value": "Ture (0x1)"
+    },
+    {
+      "signal": "FrontFogLightState.FrontFogLightSta{InstanceID=3}",
+      "action": "持续发送左前雾灯状态为关闭",
+      "value": "OFF (0x1)"
+    },
+    {
+      "signal": "FrontFogLightErrorStatus.FrontFogLightErrorSta{InstanceID=3}",
+      "action": "持续发送左前雾灯错误状态为错误",
+      "value": "Error (0x1)"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTC B1053 11",
+      "description": "左前雾灯短路到地故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在执行每个控制指令时，需要至少发送三帧数据以确保信号的可靠性"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当左前雾灯发生短路到地故障时，系统应如何响应的详细逻辑，包括停止驱动、设置相关状态和记录故障代码。可用于验证整车电子电器系统在左前雾灯短路故障情况下的正确响应和故障处理能力。",
+  "uncertain_points": []
+}
+```

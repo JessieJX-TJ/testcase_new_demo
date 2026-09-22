@@ -1,0 +1,50 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "近光灯驱动控制逻辑",
+  "row_semantics": "描述了近光灯（Dipped Beam Light）在不同实例下的硬件控制信号和软件请求状态的设置逻辑。",
+  "column_semantics": "表格分为两列，左侧为具体的控制逻辑代码或配置，右侧为对该行逻辑的功能描述。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight",
+      "type": "功能名",
+      "description": "指车辆的近光灯功能"
+    },
+    {
+      "name": "ExteriorLightControl",
+      "type": "控制器/模块名",
+      "description": "外部灯光控制系统，负责管理包括近光灯在内的各种外部照明"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例标识符，用于区分不同的控制实例（如左近光灯和右近光灯）"
+    },
+    {
+      "name": "DippedBeamLightReq",
+      "description": "近光灯请求状态，指示是否需要开启或关闭近光灯"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LDipdBeamLightCtrl_HW_0_Off",
+      "description": "左近光灯硬件控制信号，设置为关闭状态"
+    },
+    {
+      "name": "RDipdBeamLightCtrl_HW_0_Off",
+      "description": "右近光灯硬件控制信号，设置为关闭状态"
+    },
+    {
+      "name": "ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts",
+      "description": "外部灯光控制系统中近光灯请求状态的软件表示，设置为关闭"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了近光灯在特定条件下的驱动控制逻辑，可用于验证近光灯在不同实例下的硬件控制信号和软件请求状态是否按照预期进行设置。",
+  "uncertain_points": []
+}
+```

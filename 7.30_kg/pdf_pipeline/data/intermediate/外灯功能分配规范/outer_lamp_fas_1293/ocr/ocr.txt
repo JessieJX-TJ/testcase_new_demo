@@ -1,0 +1,30 @@
+SidePositionAndDippedBeam OFF
+6、S32G收到[大屏开关请求ICB]输入
+{ExteriorLightControlSystem.ControlFrontFogLight FrontFogLightReq}=0x0=OFF
+7、前雾灯在工厂模式下开启2min:a&&b&&c
+a、整车模式为工厂模式:VehMd=0x2= VehMd 2 FACTORY
+&& VehMdV=0x1=VehMdV_1 Valid
+b、前雾灯点亮:
+||0x3||0x4
+c、持续2min
+执行动作
+1、[前雾灯控制模块LHZCU]接口响应:
+Notifier:
+2、[外灯控制组合服务ICB]调用接口:
+3、[HMI子系统ICB]调用接口:
+退出前雾灯指示灯显示:
+4、[外灯控制组合服务ICB]调用基础服务:
+{FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq}{InstanceID=1}=0x0=Off
+{FrontFogLight. FrontFogLightControl.FrontFogLightCtrReq}{InstanceID=2}=0x0=Off
+(exlFrontFogLghtHwDrvEnPrm=0x0; 通过 InstanceID1,2 发送控制请求)
+{FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq}{InstanceID=3}=0x0=Off
+{FrontFogLight. FrontFogLightControl.FrontFogLightCtrReq}{InstanceID=4}=0x0=Off
+(exlFrontFogLghtHwDrvEnPrm=0x1; 通过 InstanceID3,4 发送控制请求)
+5、ICB将服务接口或控制信号转换成灯控CAN信号,并控制前雾灯熄灭:
+6、[驱动处理模块LHZCU/RHZCU]内部跳变为硬线输出,退出前雾灯点亮:
+7、[前雾灯控制模块LHZCU]订阅前雾灯状态/故障状态接口:
+{FrontFogLight. FrontFogLightState.FrontFogLightSta}{InstanceID=3}=0x0=Off
+{FrontFogLight. FrontFogLightState FrontFogLightSta}{InstanceID=4} =0x0=Off
+(exlFrontFogLghtHwDrvEnPrm=0x1; 通过 InstanceID3,4 获取状态)
+{FrontFogLight. FrontFogLightState FrontFogLightSta}{InstanceID=1} =0x0=Off
+{FrontFogLight. FrontFogLightState FrontFogLightSta}{InstanceID=2}=0x0=Off

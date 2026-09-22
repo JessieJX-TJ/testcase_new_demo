@@ -1,0 +1,53 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯控制系统接口定义与信号流向",
+  "row_semantics": "每行代表一个具体的接口或信号交互点，描述其在系统中的角色和属性。",
+  "column_semantics": {
+    "InterfaceName": "接口名称，标识该信号或数据流的逻辑名称。",
+    "Direction": "信号的方向，指示是输入还是输出。",
+    "Type": "信号类型，如CAN/LIN总线、SOA服务、硬线等。",
+    "Sender/Provider": "信号的发送方或提供方，通常是某个控制器或模块。",
+    "Receiver/Consumer": "信号的接收方或消费方，通常是另一个控制器或模块。",
+    "Channel": "信号传输的路径或通道，如指定的CAN ID或LIN节点。",
+    "Source": "信号的来源，通常指内部系统或外部环境。",
+    "Details": "对信号的具体描述，包括功能说明和可能的值范围。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FtwlLampFLCtrlCmd",
+      "type": "Internal Signal",
+      "role": "Input Signal",
+      "description": "主驾侧脚灯驱动请求信号，用于控制左前脚灯的开关状态（0x0=Close; 0x1=Open）。",
+      "source": "SSTS (Internal System)",
+      "channel": "LHZCU",
+      "direction": "Input",
+      "type_detail": "Internal Signal"
+    },
+    {
+      "name": "FtwlAmbtLamp_FL_HSD",
+      "type": "Hardwire Signal",
+      "role": "Output Signal",
+      "description": "主驾侧照脚灯驱动硬线信号，直接连接到灯具执行器。",
+      "source": "SSTS (Internal System)",
+      "channel": "FtwlAmbtLamp_FL",
+      "direction": "Output",
+      "type_detail": "Hardwire"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FtwlAmbtLamp_FL_HSD",
+      "description": "输出信号，用于驱动主驾侧脚灯的实际点亮或熄灭。",
+      "value_range": "0x0 (Close), 0x1 (Open)"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了整车外灯控制系统中脚灯控制相关的信号接口，包括信号名称、方向、类型、发送方、接收方、传输通道及来源，主要用于验证脚灯控制信号的正确性及其在不同状态下的行为。",
+  "uncertain_points": []
+}
+```

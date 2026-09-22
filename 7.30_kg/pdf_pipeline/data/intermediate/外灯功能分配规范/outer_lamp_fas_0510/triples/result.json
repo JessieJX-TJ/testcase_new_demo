@@ -1,0 +1,91 @@
+[
+  {
+    "head": "前雾灯功能控制请求",
+    "relation": "输入为",
+    "tail": "Parameter Name: {FrontFogLghtFucProCtrlReq}",
+    "triple_type": "输入关系",
+    "evidence_terms": [
+      "FrontFogLghtFucProCtrlReq",
+      "0x0=OFF",
+      "0X1=ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0510",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "前雾灯功能控制响应",
+    "relation": "输出为",
+    "tail": "Parameter Name: {FrontFogLghtFucProCtrlResp}",
+    "triple_type": "输出关系",
+    "evidence_terms": [
+      "FrontFogLghtFucProCtrlResp",
+      "0x0=ControlSuccess",
+      "0x1=Failed"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0510",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "前雾灯功能状态通知",
+    "relation": "依赖于",
+    "tail": "Parameter Name: {FrontFogLghtFucProsSta}",
+    "triple_type": "依赖关系",
+    "evidence_terms": [
+      "FrontFogLghtFucProsSta",
+      "0x1=Only FrontFogLght ON",
+      "0x2=FrontFogLghtAndRearFogLght ON",
+      "0x3=FrontFogLghtAndDippedLight ON",
+      "0x4=FrontFogLghtAndSideLight ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0510",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "前雾灯功能控制请求发送",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess. FrontFogLghtFucProStatus",
+    "triple_type": "触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "FrontFogLghtFucProStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0510",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "前雾灯功能控制响应返回",
+    "relation": "前提条件",
+    "tail": "前雾灯功能控制请求发送",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "前雾灯功能控制请求",
+      "前雾灯功能控制响应"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0510",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "前雾灯功能状态获取",
+    "relation": "前提条件",
+    "tail": "Notifier 订阅该服务接口,通过该基础服务获取前雾灯点亮或者熄灭的条件是否满足",
+    "triple_type": "触发条件",
+    "evidence_terms": [
+      "Notifier",
+      "FrontFogLghtFucProStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0510",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  }
+]

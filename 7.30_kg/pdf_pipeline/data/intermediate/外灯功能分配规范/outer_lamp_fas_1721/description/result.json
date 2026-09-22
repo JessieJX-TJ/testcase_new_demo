@@ -1,0 +1,88 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Exterior Light Control System Parameters and Interfaces",
+  "row_semantics": "Each row represents a specific parameter or interface related to the exterior light control system, including usage modes, validity states, and control functions for front fog lights.",
+  "column_semantics": "The first column categorizes the parameter or interface type. The second column specifies the consumption type (e.g., SOA, ICB). The remaining columns provide detailed definitions, parameters, and interface names for each entry.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "system",
+      "description": "The overall system responsible for controlling exterior lights, including front fog lights."
+    },
+    {
+      "name": "ControlFrontFogLight",
+      "type": "function",
+      "description": "Function to control the on/off state of the front fog lights."
+    },
+    {
+      "name": "FrontFogLightFucProCtrl",
+      "type": "function",
+      "description": "Function to subscribe and control the front fog light functionality."
+    },
+    {
+      "name": "UsrMdB",
+      "type": "mode",
+      "description": "User mode definition for various driving and operational states."
+    },
+    {
+      "name": "UsrMdV",
+      "type": "state",
+      "description": "Validity state of the user mode."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMdB_Standby",
+      "type": "mode",
+      "description": "Standby mode for the user."
+    },
+    {
+      "name": "UsrMdB_2_Comfortable",
+      "type": "mode",
+      "description": "Comfortable driving mode."
+    },
+    {
+      "name": "UsrMdB_3_NormalDriving",
+      "type": "mode",
+      "description": "Normal driving mode."
+    },
+    {
+      "name": "UsrMdB_4_AIParking",
+      "type": "mode",
+      "description": "AI parking mode."
+    },
+    {
+      "name": "UsrMdB_5_AIPilot",
+      "type": "mode",
+      "description": "AI pilot mode."
+    },
+    {
+      "name": "UsrMdB_6_XOTA",
+      "type": "mode",
+      "description": "XOTA (eXtended Over-The-Air) mode."
+    },
+    {
+      "name": "UsrMdV_0_Invalid",
+      "type": "state",
+      "description": "Invalid state of the user mode."
+    },
+    {
+      "name": "UsrMdV_1_Valid",
+      "type": "state",
+      "description": "Valid state of the user mode."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FrontFogLightReq",
+      "type": "signal",
+      "description": "Request signal for front fog light control, with values 0x0 (OFF) and 0x1 (ON)."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and interfaces for controlling the front fog lights in an exterior light control system, including various user modes and their validity states. It is used to verify the correct implementation and behavior of the front fog light control logic under different driving modes and user inputs.",
+  "uncertain_points": []
+}

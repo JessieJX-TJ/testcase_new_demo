@@ -1,0 +1,83 @@
+{
+  "table_type": "fault_table",
+  "topic": "外灯位置灯故障状态查询与订阅服务",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的外部灯光控制相关服务或接口。",
+  "column_semantics": "第一列定义了服务/接口名称；后续列为该服务涉及的通信角色（如SOA、LHZCU、ICB等）及其交互关系。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "功能模块",
+      "description": "外部灯光开关处理过程"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "功能模块",
+      "description": "外部灯光控制系统"
+    },
+    {
+      "name": "SidePositionLightErrSta",
+      "type": "接口/服务",
+      "description": "用于查询侧位灯故障状态的服务"
+    },
+    {
+      "name": "SidePositionLightErrSts",
+      "type": "接口/服务",
+      "description": "用于订阅侧位灯故障状态的服务"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "Local Headlight Zone Control Unit (局部大灯区域控制单元)"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块",
+      "description": "Integrated Control Box (集成控制盒)"
+    },
+    {
+      "name": "SOA",
+      "type": "通信机制",
+      "description": "Service-Oriented Architecture (面向服务的架构)"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "SidePosnLightErrSta",
+      "type": "输出信号",
+      "description": "侧位灯故障状态返回值",
+      "values": [
+        "0x0=No Error",
+        "0x1=Error",
+        "0x2=Unknown"
+      ]
+    },
+    {
+      "name": "SidePosnLightErrSts",
+      "type": "输出信号",
+      "description": "侧位灯故障状态订阅值",
+      "values": [
+        "0x0=No Error",
+        "0x1=Error",
+        "0x2=Unknown"
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SidePositionLightErrSta",
+      "type": "故障状态",
+      "description": "侧位灯故障状态查询结果"
+    },
+    {
+      "name": "SidePositionLightErrSts",
+      "type": "故障状态",
+      "description": "侧位灯故障状态订阅结果"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外部灯光系统中侧位灯故障状态的查询和订阅接口规范，包括接口名称、参数类型及可能的返回值（无错误、错误、未知）。可用于验证外部灯光控制模块与相关控制器之间关于侧位灯故障状态信息交互的正确性。",
+  "uncertain_points": []
+}

@@ -1,0 +1,132 @@
+[
+  {
+    "head": "远光灯开关控制模块LHZCU接口响应",
+    "relation": "前提条件",
+    "tail": "IHC开关处于禁止状态 (iHCEnbSetSts=0x1=Disable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "IHC开关禁止状态",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1323",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "外灯组合服务ICB调用基础服务",
+    "relation": "前提条件",
+    "tail": "MainBeamHwDrvEnPrm=0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外灯组合服务ICB",
+      "MainBeamHwDrvEnPrm"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1323",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "ICB将服务接口或控制信号转换成灯控CAN信号",
+    "relation": "前提条件",
+    "tail": "远光灯开关控制模块LHZCU发送控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "CAN信号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1323",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "远光灯自动控制模块LHZCU发送模式信号至ICB",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtMdSts_0_No_Request",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "MainBeamLghtMdSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1323",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "ICB将状态/故障状态反馈至远光灯开关控制模块LHZCU",
+    "relation": "前提条件",
+    "tail": "MainBeamLightStatus=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "MainBeamLightStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1323",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "远光灯开关控制模块LHZCU将状态/故障状态反馈至ICB",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "ExteriorLightSwitchProcess"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1323",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "外灯组合服务ICB订阅接口",
+    "relation": "前提条件",
+    "tail": "ExteriorLightControlSystem",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "ExteriorLightControlSystem"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1323",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "远光灯熄灭",
+    "relation": "触发条件",
+    "tail": "ICB将服务接口或控制信号转换成灯控CAN信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "CAN信号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1323",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "指示灯显示退出",
+    "relation": "触发条件",
+    "tail": "远光灯自动控制模块LHZCU发送模式信号至ICB",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1323",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

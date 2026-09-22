@@ -1,0 +1,91 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior lamp function) 的信号分配规范",
+  "row_semantics": "表格的每一行代表一个具体的信号或信号组合，描述了外灯系统中不同信号的状态、控制逻辑或反馈信息。",
+  "column_semantics": "表格没有明确的列，而是通过逐行描述不同的信号及其属性（如实例ID、状态值等）来组织信息。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "AutoLightOnReq",
+      "type": "signal",
+      "description": "自动大灯请求信号，由阳光雨量传感器/ICB发送给ICB，用于触发外灯组合服务ICB的基础服务。"
+    },
+    {
+      "name": "DayRunningLight",
+      "type": "function",
+      "description": "日间行车灯功能，包括开启和状态反馈。"
+    },
+    {
+      "name": "SidePositionLight",
+      "type": "function",
+      "description": "位置灯功能，包括开启和状态反馈。"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "集成控制盒 (Integrated Control Box)，负责接收和转发外灯相关信号，并控制外灯的开关状态。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "贯穿式前位置灯控制模块 (Longitudinal Headlamp Zone Control Unit)，负责接收ICB的状态反馈并控制日间行车灯的开关状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "实例ID，用于区分同一信号的不同实例，例如不同位置的侧位灯。"
+    },
+    {
+      "name": "DayRunningLightCtrlReq",
+      "type": "input_signal",
+      "description": "日间行车灯控制请求信号，由ICB发送给外灯组合服务ICB。"
+    },
+    {
+      "name": "NumPltLampCtrlDelayPrm",
+      "type": "parameter",
+      "description": "位置灯控制延迟参数，用于设置组合服务延时。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DayRunningLightState",
+      "type": "output_signal",
+      "description": "日间行车灯的状态反馈，表示灯是否开启（ON/OFF）。"
+    },
+    {
+      "name": "SidePositionLightState",
+      "type": "output_signal",
+      "description": "位置灯的状态反馈，表示灯是否开启（ON/OFF）。"
+    },
+    {
+      "name": "DayRunningLightErrorStatus",
+      "type": "output_signal",
+      "description": "日间行车灯的错误状态反馈。"
+    },
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "output_signal",
+      "description": "位置灯的错误状态反馈。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DayRunningLightErrorStatus",
+      "type": "fault_state",
+      "description": "日间行车灯的故障状态，可能由硬件或软件问题引起。"
+    },
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "fault_state",
+      "description": "位置灯的故障状态，可能由硬件或软件问题引起。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了外灯系统的信号交互逻辑，包括自动大灯请求的转发、日间行车灯和位置灯的开启控制以及状态反馈机制，可用于验证外灯系统在不同场景下的信号传递和功能实现是否符合设计规范。",
+  "uncertain_points": []
+}
+```

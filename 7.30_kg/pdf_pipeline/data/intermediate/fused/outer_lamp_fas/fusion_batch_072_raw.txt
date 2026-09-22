@@ -1,0 +1,460 @@
+```json
+[
+  {
+    "head": "WelcomeLamp_HSD",
+    "relation": "depends_on",
+    "tail": "WelcomeLamp_Enable",
+    "sources": ["outer_lamp_fas_0766"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WelcomeLamp_HSD",
+    "relation": "depends_on",
+    "tail": "WelcomeLamp_Disable",
+    "sources": ["outer_lamp_fas_0766"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WelcomeLamp_Enable",
+    "relation": "timeout_constraint",
+    "tail": "fade_in_within_3s",
+    "sources": ["outer_lamp_fas_0766"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WelcomeLamp_Enable",
+    "relation": "timeout_constraint",
+    "tail": "remain_lit_for_3s",
+    "sources": ["outer_lamp_fas_0766"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WelcomeLamp_Disable",
+    "relation": "timeout_constraint",
+    "tail": "fade_out_within_3s",
+    "sources": ["outer_lamp_fas_0766"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "GearShiftPositionValidity",
+    "relation": "depends_on",
+    "tail": "TrShftLvrPosV",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_0_Between_Ranges",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_1_Park_Range",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_2_Reverse_Range",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_3_Neutral_Range",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_4_Forward_Range_A",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_5_Forward_Range_B",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_6_Forward_Range_C",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_7_Forward_Range_D",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_8_Forward_Range_E",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_9_Forward_Range_F",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_10_Forward_Range_G",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_11_Forward_Range_H",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos_15_Lever_Position_Unknown",
+    "relation": "prerequisite",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPosV_1_Invalid",
+    "relation": "inhibiting_condition",
+    "tail": "GearShiftPositionValidity",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILampsCtrl",
+    "relation": "input_from",
+    "tail": "CAN",
+    "sources": ["outer_lamp_fas_0769", "outer_lamp_fas_0770"],
+    "conflict": true,
+    "conflict_note": "Conflicting input sources: CAN (0769, 0770) vs TDM (0770) vs SOA (0770) vs BKPCANFD/BKBCANFD/SFCANFD/RZCU_ETH/LHZCU_E_TH (0770). These represent distinct physical or logical transport layers; no direct contradiction but architectural coexistence requires resolution."
+  },
+  {
+    "head": "DILampsCtrl",
+    "relation": "input_from",
+    "tail": "IPD",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILampsCtrl",
+    "relation": "input_from",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0769", "outer_lamp_fas_0770"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILampsCtrl",
+    "relation": "input_from",
+    "tail": "BKPCANFD",
+    "sources": ["outer_lamp_fas_0769"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "processed_by",
+    "tail": "RZCU",
+    "sources": ["outer_lamp_fas_0770"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "depends_on",
+    "tail": "SFCANFD",
+    "sources": ["outer_lamp_fas_0770"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "depends_on",
+    "tail": "BKBCANFD",
+    "sources": ["outer_lamp_fas_0770"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0770"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "depends_on",
+    "tail": "RZCU_ETH",
+    "sources": ["outer_lamp_fas_0770"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "depends_on",
+    "tail": "LHZCU_E_TH",
+    "sources": ["outer_lamp_fas_0770"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "input_from",
+    "tail": "SOA",
+    "sources": ["outer_lamp_fas_0770"],
+    "conflict": true,
+    "conflict_note": "Conflicting transport mechanisms: SOA (logical service interface) vs CAN/TDM/ETH/CANFD (physical/link-layer buses). Represents architectural layering — not contradictory per se, but requires traceability between SOA services and underlying bus protocols."
+  },
+  {
+    "head": "ExtrLghtStsCmmntnTyp",
+    "relation": "configured_as",
+    "tail": "SOA",
+    "sources": ["outer_lamp_fas_0774"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtStsCmmntnTyp",
+    "relation": "configured_as",
+    "tail": "CAN",
+    "sources": ["outer_lamp_fas_0774"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtStsCmmntnTyp",
+    "relation": "reserved_values",
+    "tail": "0x2–0x7",
+    "sources": ["outer_lamp_fas_0774"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts_HW",
+    "relation": "output_encoding",
+    "tail": "0x0=Off; 0x1=On",
+    "sources": ["outer_lamp_fas_0775"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtSts_HW",
+    "relation": "output_encoding",
+    "tail": "0x0=Off; 0x1=On",
+    "sources": ["outer_lamp_fas_0775"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtSts_HW",
+    "relation": "output_encoding",
+    "tail": "0x0=Off; 0x1=On",
+    "sources": ["outer_lamp_fas_0775"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtSts_HW",
+    "relation": "output_encoding",
+    "tail": "0x0=Off; 0x1=On",
+    "sources": ["outer_lamp_fas_0775"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "output_encoding",
+    "tail": "0x0=Off; 0x1=On",
+    "sources": ["outer_lamp_fas_0775"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "output_to",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0775"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "controlled_by",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0775"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0775"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "connected_to",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0775"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLampAutoCtrl",
+    "relation": "triggered_by",
+    "tail": "VehCrshTyp_1_Front_Crash",
+    "sources": ["outer_lamp_fas_0777"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLampAutoCtrl",
+    "relation": "triggered_by",
+    "tail": "AirbagDpl_1_True",
+    "sources": ["outer_lamp_fas_0777"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLampAutoCtrl",
+    "relation": "triggered_by",
+    "tail": "VehCrshTyp_2_Side_Crash",
+    "sources": ["outer_lamp_fas_0777"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMdV_Valid",
+    "relation": "prerequisite",
+    "tail": "UsGmMd_Valid",
+    "sources": ["outer_lamp_fas_0773"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EmgcBrkA_True",
+    "relation": "trigger_condition",
+    "tail": "EmgcBrkA",
+    "sources": ["outer_lamp_fas_0773"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EmgcBrkA_False",
+    "relation": "trigger_condition",
+    "tail": "EmgcBrkA",
+    "sources": ["outer_lamp_fas_0773"],
+    "conflict": true,
+    "conflict_note": "Mutually exclusive trigger conditions for same signal EmgcBrkA: both True and False are listed as triggers. Likely indicates edge-case handling (e.g., rising/falling edge), but semantic conflict without temporal qualification."
+  },
+  {
+    "head": "UsGmMd_Sleep",
+    "relation": "depends_on",
+    "tail": "VehMdV_Valid",
+    "sources": ["outer_lamp_fas_0773"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsGmMd_Standby",
+    "relation": "depends_on",
+    "tail": "VehMdV_Valid",
+    "sources": ["outer_lamp_fas_0773"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsGmMd_Comfortable",
+    "relation": "depends_on",
+    "tail": "VehMdV_Valid",
+    "sources": ["outer_lamp_fas_0773"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsGmMd_NormalDriving",
+    "relation": "depends_on",
+    "tail": "VehMdV_Valid",
+    "sources": ["outer_lamp_fas_0773"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsGmMd_AIParking",
+    "relation": "depends_on",
+    "tail": "VehMdV_Valid",
+    "sources": ["outer_lamp_fas_0773"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsGmMd_AIPilot",
+    "relation": "depends_on",
+    "tail": "VehMdV_Valid",
+    "sources": ["outer_lamp_fas_0773"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsGmMd_XOTA",
+    "relation": "depends_on",
+    "tail": "VehMdV_Valid",
+    "sources": ["outer_lamp_fas_0773"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsGmMdV_Invalid",
+    "relation": "inhibiting_condition",
+    "tail": "UsGmMd_Valid",
+    "sources": ["outer_lamp_fas_0773"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

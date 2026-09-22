@@ -1,0 +1,68 @@
+```json
+[
+  {
+    "head": "右前转向灯短路故障处理功能",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DILightFbkSOAEnPrm"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯短路故障处理功能",
+    "relation": "前提条件",
+    "tail": "右前转向灯处于输出状态",
+    "triple_type": "工程规则",
+    "evidence_terms": ["右前转向灯", "输出状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯短路故障处理功能",
+    "relation": "触发条件",
+    "tail": "检测到右前转向灯短路到地",
+    "triple_type": "工程规则",
+    "evidence_terms": ["右前转向灯", "短路到地"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRDILightDrvMdl模块",
+    "relation": "输出为",
+    "tail": "停止驱动右前转向灯输出 (DILamp_RH_HSD)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["FRDILightDrvMdl", "DILamp_RH_HSD"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRDILightDrvMdl模块",
+    "relation": "输出为",
+    "tail": "持续发送 DirectionLightControl. DirectionLightState = 2 (Error) InstanceID=2 至 DILightCtrlMdl",
+    "triple_type": "工程规则",
+    "evidence_terms": ["FRDILightDrvMdl", "DirectionLightControl", "DILightCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRDILightDrvMdl模块",
+    "relation": "包含子功能",
+    "tail": "至少发送三帧 DirectionLightControl 信号",
+    "triple_type": "工程规则",
+    "evidence_terms": ["FRDILightDrvMdl", "DirectionLightControl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "置位 DTC_B104A_11",
+    "relation": "诊断关联",
+    "tail": "右前转向灯短路至地故障",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DTC_B104A_11", "右前转向灯", "短路至地"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯短路故障处理功能",
+    "relation": "退出条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "工程规则",
+    "evidence_terms": ["短路恢复"],
+    "confidence_note": "high"
+  }
+]
+```

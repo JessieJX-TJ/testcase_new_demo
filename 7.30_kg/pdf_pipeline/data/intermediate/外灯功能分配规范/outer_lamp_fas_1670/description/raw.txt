@@ -1,0 +1,86 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "External Brake Light System Control Logic",
+  "row_semantics": "Each row represents a sequential step in the control logic for activating the external brake lights based on inputs from the ICB (Integrated Control Box) and feedback from the Brake Light Switch Process.",
+  "column_semantics": "The table does not have explicit columns; instead, each row contains a set of conditions and actions related to the brake light system control process.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Control Box, responsible for sending control signals and receiving status feedback."
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "Remote Zone Control Unit, which receives ICB control signals and controls the brake lights."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting Zone Control Unit, responsible for controlling the brake light switch."
+    },
+    {
+      "name": "BrakeLightSwitchProcess",
+      "type": "module",
+      "description": "Module that processes the brake light switch input and provides status information."
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "ExteriorLightSwitchProcess.BrakeLightFrcProSta",
+      "value": "0x1=ON",
+      "description": "Indicates that the brake light is forced to be ON by the exterior light switch process."
+    },
+    {
+      "signal": "BrakeLightFrcProSta",
+      "value": "0x1=ON",
+      "description": "Indicates that the brake light is forced to be ON by the brake light force control process."
+    },
+    {
+      "signal": "BrakeLightSwitchProcess.BrakeLightFrcSta",
+      "value": "0x1=ON",
+      "description": "Indicates that the brake light is forced to be ON by the brake light switch process."
+    },
+    {
+      "signal": "BrakeLight.BrkLightState",
+      "value": "0x1=ON",
+      "description": "Indicates that the brake light state is ON."
+    },
+    {
+      "signal": "BrakeLight.BrkLightErrorStatus",
+      "value": "0x0=No Error",
+      "description": "Indicates that there is no error in the brake light system."
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "BrakeLight.BrkLightState",
+      "value": "0x1=ON",
+      "description": "Output signal indicating that the brake light is turned ON."
+    },
+    {
+      "signal": "LHZCU.BrakeLightSwitchCtrl",
+      "value": "0x1=ON",
+      "description": "Control signal sent to the LHZCU to turn on the brake light switch."
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "BrakeLight.BrkLightErrorStatus",
+      "condition": "Not equal to 0x0=No Error",
+      "description": "Indicates an error condition in the brake light system."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "All three brake lights (left, right, and high-position) must remain synchronized.",
+      "timing": "Maximum delay between any two brake lights should not exceed 40ms."
+    }
+  ],
+  "engineering_interpretation": "This table defines the control logic for activating the external brake lights in response to various inputs from the ICB and the Brake Light Switch Process. It ensures that the brake lights are turned on when necessary and remain synchronized across all positions with a maximum delay of 40ms.",
+  "uncertain_points": []
+}
+```

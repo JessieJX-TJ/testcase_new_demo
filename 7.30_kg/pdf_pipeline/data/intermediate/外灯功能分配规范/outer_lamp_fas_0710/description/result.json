@@ -1,0 +1,99 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 远光灯开启与关闭控制原因的功能分配规范",
+  "row_semantics": "表格按远光灯的开启和关闭控制原因进行分类，每行代表一种具体的控制触发条件及其对应的代码值。",
+  "column_semantics": {
+    "Column1": "功能名 (Function Name): 表示该行描述的具体功能或控制原因，如'MaiBeamLghtOpenCtrlRsn'表示远光灯开启控制原因。",
+    "Column2": "中文描述 (Chinese Description): 对功能名的详细解释，说明其具体含义。",
+    "Column3": "控制原因代码及描述 (Control Reason Code and Description): 列出了不同代码值（如0x00, 0x01等）所代表的具体控制触发条件，例如'SwitchON'表示开关开启导致远光灯点亮。",
+    "Column4": "存储信息 (Storage Information): 描述了控制器如何存储这些控制原因信息，例如'存储最近10次远光灯点亮原因信息'。",
+    "Column5": "控制器/模块名 (Controller/Module Name): 指明了执行该功能的控制器或模块名称，如'LHZ CU'。",
+    "Column6": "未使用 (Unused): 该列内容为'0x00 0'，可能是一个预留字段或未使用的标识。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MaiBeamLghtOpenCtrlRsn",
+      "type": "功能名",
+      "description": "远光灯开启控制原因"
+    },
+    {
+      "name": "MaiBeamLghtClsCtrlRsn",
+      "type": "功能名",
+      "description": "远光灯关闭控制原因"
+    },
+    {
+      "name": "LHZ CU",
+      "type": "控制器/模块名",
+      "description": "负责处理远光灯开启和关闭控制原因的中央控制器"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SwitchON",
+      "type": "输入信号",
+      "description": "开关开启导致远光灯点亮"
+    },
+    {
+      "name": "FlashSwitchON",
+      "type": "输入信号",
+      "description": "闪光开关开启导致远光灯点亮"
+    },
+    {
+      "name": "SRequestOn",
+      "type": "模式名",
+      "description": "系统请求开启远光灯"
+    },
+    {
+      "name": "AuMainBeamLight",
+      "type": "模式名",
+      "description": "自动主远光灯模式"
+    },
+    {
+      "name": "ControlRequested",
+      "type": "模式名",
+      "description": "控制请求已发出"
+    },
+    {
+      "name": "OtherReasons",
+      "type": "模式名",
+      "description": "其他原因导致远光灯开启"
+    },
+    {
+      "name": "SwitchOff",
+      "type": "输入信号",
+      "description": "开关关闭导致远光灯熄灭"
+    },
+    {
+      "name": "FlashOff",
+      "type": "输入信号",
+      "description": "闪光开关关闭导致远光灯熄灭"
+    },
+    {
+      "name": "SRequestOff",
+      "type": "模式名",
+      "description": "系统请求关闭远光灯"
+    },
+    {
+      "name": "UsageMode",
+      "type": "模式名",
+      "description": "使用模式"
+    },
+    {
+      "name": "Dissatisfaction",
+      "type": "模式名",
+      "description": "不满意度模式"
+    },
+    {
+      "name": "VehicleMode",
+      "type": "模式名",
+      "description": "车辆模式"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了远光灯开启和关闭时可能的控制原因及其对应的代码值，并指明了这些信息由LHZ CU控制器存储，可用于验证控制器是否正确记录和管理远光灯的开启和关闭事件。",
+  "uncertain_points": []
+}

@@ -1,0 +1,39 @@
+发送转向灯流水模式使能状态:
+DircnLghtMdSts=0x1=DircnLghtMdSts_1_Disabled
+2、ICB根据接收到的LHZCU发送的转向灯
+制双闪灯点亮/熄灭
+4、ICB根据LHZCU控制输入,延时60ms并分发控制信号至LHZCU、RHZCU和RZCU(配置需求:
+DircnLghtCtrlDelayPrm)
+FLDircnLghtCtrl_HW=0x1=FLDircnLghtCtrl_HW_1_on (或 0x0=FLDircnLghtCtrl_HW_0_OFF)
+FRDircnLghtCtrl_HW=0x1=FRDircnLghtCtrl_HW_1_on(或 0x0=FRDircnLghtCtrl_HW_0_OFF)
+RLDircnLghtCtrl_HW=0x1=RLDircnLghtCtrl_HW_1_on(或 0x0=RLDircnLghtCtrl_HW_0_OFF)
+RRDircnLghtCtrl_HW=0x1=RRDircnLghtCtrl HW_1_on(或 0x0=RRDircnLghtCtrl HW_0_OFF)
+5、[驱动处理模块LHZCU/RHZCU/RZCU]接收ICB控制信号,驱动双闪灯点亮/熄灭:
+6、ICB接收[危险警报灯开关控制模块LHZCU]控制信号:
+FLDircnLghtCtrl=0x1=FLDircnLghtCtrl_1_on;&
+FRDircnLghtCtrl=0x1=FRDircnLghtCtrl 1 on
+做危险警报灯图标指示灯显示以及声音提醒
+7、[驱动处理模块RHZCU/RZCU]将转向灯点亮状态/故障状态反馈至[危险警报灯开关控制模块LHZ
+FRDircnLghtSts_HW =0x1=FRDircnLghtSts_HW_1_On (或 0x0=FRDircnLghtSts_HW 0_OFF)
+RLDircnLghtSts_HW =0x1=RLDircnLghtSts_HW_1_On(或 0x0=RLDircnLghtSts_HW_0_OFF)
+RRDircnLghtSts HW =0x1=RRDircnLghtSts HW_1 On(或 0x0=RRDircnLghtSts HW 0_OFF)
+FRDircnLghtFltsts_HW =0x0=FRDircnLghtFltsts_HW_0_False
+RLDircnLghtFltsts_HW =0x0=RLDircnLghtFltsts_HW_0_False
+RRDircnLghtFltsts_HW =0x0=RRDircnLghtFltsts_HW_0_False
+(exlDircnLghtHwDrvEnPrm=0x1;通过域控获取转向灯状态；)
+8、ICB将状态/故障状态反馈至[危险警报灯开关控制模块LHZCU]:
+FLDircnLghtSts=0x1= FLDircnLghtSts_1_On(或 0x0= FLDircnLghtSts_0_OFF)
+FRDircnLghtSts=0x1=FRDircnLghtSts_1_On(或 0x0=FRDircnLghtSts_0_OFF)
+RLDircnLghtSts=0x1=RLDircnLghtSts_1_On(或 0x0=RLDircnLghtSts_0_OFF)
+RRDircnLghtSts=0x1=RRDircnLghtSts_1_On(或 0x0=RRDircnLghtSts_0_OFF)
+FLDircnLghtFltsts=0x0=FLDircnLghtFltsts_0_False
+FRDircnLghtFltsts=0x0=FRDircnLghtFltsts_0_False
+RLDircnLghtFltsts=0x0=RLDircnLghtFltsts_0_False
+RRDircnLghtFltsts=0x0=RRDircnLghtFltsts_0_False
+(exlDircnLghtHwDrvEnPrm=0x0|0x2;通过数字灯控获取转向灯状态;)
+9、[危险警报灯自动控制模块LHZCU]将状态/故障状态反馈至ICB:
+DircnLghtSts=0x3=Both_Side_Direction_Light_On
+DircnLghtFltsts=0x0=DircnLghtFltsts_0_No_Error
+10、外灯组合服务ICB]接收LHZCU发送的转向灯点亮及故障状态CAN信号转成对应的服务透传:
+11、危险警报灯自动控制模块LHZCU]记忆本次双闪灯触发动作,并将模式状态实时发送至ICB::
+VehHzrdMdSts=0x7=VehHzrdMdSts_7_Emergency_Brake

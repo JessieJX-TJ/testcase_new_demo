@@ -1,0 +1,59 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Main Beam Light Status and Error Reporting",
+  "row_semantics": "Each row represents a specific service interface or system related to the main beam light, detailing its parameters and associated states.",
+  "column_semantics": "Columns represent different entities involved in the communication or control process, such as consumers (SOA), controllers/modules (LHZCU, ICB), and other unspecified participants.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess.MainBeamLightErrSta",
+      "type": "function",
+      "description": "Service interface for querying the error status of the main beam light."
+    },
+    {
+      "name": "ExteriorLightControlSystem.MainBeamLightSts",
+      "type": "function",
+      "description": "Service interface for querying the operational status of the main beam light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightSta",
+      "description": "Status parameter for the main beam light, indicating whether it is OFF, ON, or in an unknown state."
+    },
+    {
+      "name": "MainBeamLightErrSta",
+      "description": "Error status parameter for the main beam light, indicating no error, an error, or an unknown state."
+    },
+    {
+      "name": "MainBeamLightSts",
+      "description": "Operational status parameter for the main beam light, indicating whether it is OFF or ON."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLightSta",
+      "description": "Output status of the main beam light (OFF, ON, Unknown)."
+    },
+    {
+      "name": "MainBeamLightErrSta",
+      "description": "Output error status of the main beam light (No Error, Error, Unknown)."
+    },
+    {
+      "name": "MainBeamLightSts",
+      "description": "Output operational status of the main beam light (OFF, ON)."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "MainBeamLightErrSta",
+      "description": "Indicates if there is an error in the main beam light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and their possible values for querying the status and error conditions of the main beam light, which can be used to verify the correct operation and fault detection logic of the exterior lighting system.",
+  "uncertain_points": []
+}
+```

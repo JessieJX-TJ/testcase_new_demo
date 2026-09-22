@@ -1,0 +1,50 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "External Light Control System - Direction Light Status and Error Monitoring",
+  "row_semantics": "Each row represents a specific service interface for querying or subscribing to the status of direction lights (including error states and operational modes).",
+  "column_semantics": "The columns represent different aspects of the service interface: the first column is the service name, followed by consumption type (SOA/ICB), and finally the hardware platform (S32G-8295).",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "controller/module",
+      "description": "The main system responsible for controlling external lights, including direction lights."
+    },
+    {
+      "name": "DirectionLightSts",
+      "type": "function",
+      "description": "Service interface to query the current operational status of direction lights."
+    },
+    {
+      "name": "DirectionLightErrSta",
+      "type": "function",
+      "description": "Service interface to query the fault status of direction lights."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DirectionLightSts",
+      "type": "output signal",
+      "description": "Indicates the current operational mode of the direction lights (e.g., no flash, left flash, right flash, both sides flash, unknown)."
+    },
+    {
+      "name": "DirectionLightErrSta",
+      "type": "output signal",
+      "description": "Indicates whether there is an error in the direction light system (0x0 = No Error, 0x1 = Error)."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrSta",
+      "type": "fault status",
+      "description": "Represents the fault state of the direction light system, with values indicating either no error or an error condition."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for querying the status and fault conditions of direction lights within the Exterior Light Control System. It can be used to verify that the system correctly reports the operational mode and fault status of direction lights under various conditions.",
+  "uncertain_points": []
+}
+```

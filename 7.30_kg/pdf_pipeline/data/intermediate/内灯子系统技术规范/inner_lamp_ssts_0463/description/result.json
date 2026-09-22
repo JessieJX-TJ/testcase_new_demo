@@ -1,0 +1,74 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - Lamp Breathing and Fade Control Parameters",
+  "row_semantics": "Each row represents a specific breathing or fade rate configuration for the interior lamp, including its code value, periodic interval, and associated original breathing mode.",
+  "column_semantics": {
+    "Code Value": "A hexadecimal identifier for a specific breathing or fade rate setting.",
+    "周期": "The time interval (in seconds) at which the breathing or fade effect occurs.",
+    "原呼吸模式值": "The corresponding original breathing mode that this rate setting is mapped to or replaces."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "UpIPALampBrethngCmd",
+      "type": "function",
+      "description": "Command for controlling the breathing pattern of the interior lamp."
+    },
+    {
+      "name": "UpIPALampFadeSpdCmd",
+      "type": "function",
+      "description": "Command for controlling the fade speed of the interior lamp."
+    },
+    {
+      "name": "SSTS",
+      "type": "controller",
+      "description": "Sub System Technical Specification controller responsible for managing interior lighting functions."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Rate0",
+      "description": "No request; stops breathing animation."
+    },
+    {
+      "name": "Rate1 - Rate15",
+      "description": "Different breathing rates ranging from 500ms to 12s, each mapping to a specific original breathing mode."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "灯头按照对应的呼吸亮度曲线进行周期闪烁",
+      "description": "The lamp head flashes periodically according to the corresponding breathing brightness curve."
+    },
+    {
+      "name": "不同呼吸模式切换时，立即停止当前呼吸，切换下一呼吸模式",
+      "description": "When switching between breathing modes, the current breathing stops immediately and switches to the next mode."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Spd0",
+      "value": "2000ms",
+      "description": "Default speed for color/brightness switching when changing from current state to target state."
+    },
+    {
+      "name": "Spd1",
+      "value": "300ms",
+      "description": "Speed for the first step in the fade process."
+    },
+    {
+      "name": "Spd2",
+      "value": "100ms",
+      "description": "Reserved speed for potential future use."
+    },
+    {
+      "name": "Spd3",
+      "value": "0",
+      "description": "Reserved speed for potential future use."
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameter settings for the interior lamp's breathing and fade effects, specifying how the lamp should behave under different rate configurations. It is used to verify that the SSTS controller correctly implements the specified breathing and fade behaviors as per the defined rate codes.",
+  "uncertain_points": []
+}

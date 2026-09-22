@@ -1,0 +1,59 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System (SSTS) - Z-ONE-3.0 Platform",
+  "row_semantics": "Each row represents a specific command or parameter related to interior lighting control, including brightness and breathing rate settings.",
+  "column_semantics": "Columns represent different communication interfaces (LIN, LHZCU, IPAmbLamp_M, LHZCU_LIN5) and the target system/module (内灯 SSTS).",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "IPMLampBrtnsCmd_1",
+      "type": "command",
+      "description": "Brightness control command for interior lamps."
+    },
+    {
+      "name": "IPMLampBrthngCmd_1",
+      "type": "command",
+      "description": "Breathing rate control command for ambient lighting."
+    },
+    {
+      "name": "Lamp_Brightness",
+      "type": "parameter",
+      "description": "Percentage value for lamp brightness adjustment."
+    },
+    {
+      "name": "Breathing_Rate",
+      "type": "parameter",
+      "description": "Rate of breathing effect for ambient lighting in seconds."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Command_Value",
+      "description": "Numeric value indicating the specific command or setting."
+    },
+    {
+      "name": "No_Request",
+      "description": "Indicates no request is made or the default state."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Lighting_Status",
+      "description": "Current status of the interior lighting system."
+    },
+    {
+      "name": "Breathing_Mode",
+      "description": "Active breathing mode of the ambient lighting."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Period",
+      "description": "Time interval for breathing rate commands, ranging from 500ms to 12s."
+    }
+  ],
+  "engineering_interpretation": "This table defines the command parameters and their corresponding values for controlling the brightness and breathing rate of interior lamps and ambient lighting within the Z-ONE-3.0 platform's Interior Lighting Sub System (SSTS). It is used to verify that the system correctly interprets and applies these commands across different communication interfaces.",
+  "uncertain_points": []
+}

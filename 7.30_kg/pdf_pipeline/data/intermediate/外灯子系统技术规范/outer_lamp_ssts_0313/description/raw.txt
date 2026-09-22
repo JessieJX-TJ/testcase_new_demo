@@ -1,0 +1,85 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "诊断需求清单",
+  "row_semantics": "每行代表一个具体的故障诊断需求，按编号顺序排列。",
+  "column_semantics": {
+    "名称": "故障代码或诊断需求的唯一标识符。",
+    "描述": "对诊断需求的具体描述，说明检测的故障类型。",
+    "进入条件": "触发该诊断需求的条件，即系统需要满足什么状态才能开始检测。",
+    "退出条件": "停止该诊断需求检测的条件，即系统需要满足什么状态才能结束检测。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B1053_11",
+      "type": "故障代码",
+      "description": "左前雾灯输出短路到地"
+    },
+    {
+      "name": "B1053_12",
+      "type": "故障代码",
+      "description": "左前雾灯输出短路到电源"
+    },
+    {
+      "name": "B1053_13",
+      "type": "故障代码",
+      "description": "左前雾灯输出开路"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "检测到短路到地",
+      "description": "进入条件：检测到左前雾灯输出短路到地时触发诊断。",
+      "related_entity": "B1053_11"
+    },
+    {
+      "name": "检测到短路到电源",
+      "description": "进入条件：检测到左前雾灯输出短路到电源时触发诊断。",
+      "related_entity": "B1053_12"
+    },
+    {
+      "name": "检测到输出开路",
+      "description": "进入条件：检测到左前雾灯输出开路时触发诊断。",
+      "related_entity": "B1053_13"
+    },
+    {
+      "name": "检测到未短路到地",
+      "description": "退出条件：当不再检测到短路到地时，结束诊断。",
+      "related_entity": "B1053_11"
+    },
+    {
+      "name": "检测到未短路到电源",
+      "description": "退出条件：当不再检测到短路到电源时，结束诊断。",
+      "related_entity": "B1053_12"
+    },
+    {
+      "name": "检测到输出开路恢复",
+      "description": "退出条件：当检测到输出开路恢复时，结束诊断。",
+      "related_entity": "B1053_13"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "左前雾灯输出短路到地",
+      "description": "左前雾灯电路出现短路并连接到地线的故障。",
+      "related_entity": "B1053_11"
+    },
+    {
+      "name": "左前雾灯输出短路到电源",
+      "description": "左前雾灯电路出现短路并连接到电源的故障。",
+      "related_entity": "B1053_12"
+    },
+    {
+      "name": "左前雾灯输出开路",
+      "description": "左前雾灯电路出现断开或开路的故障。",
+      "related_entity": "B1053_13"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了左前雾灯电路可能出现的三种故障（短路到地、短路到电源、开路）的诊断需求，包括触发检测的条件和停止检测的条件，可用于验证整车电子电器系统中雾灯电路的故障诊断功能。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,594 @@
+[
+  {
+    "head": "Cluster_LH",
+    "relation": "contains_subfunction",
+    "tail": "Cluster_Beacon",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Cluster_LH",
+    "relation": "contains_subfunction",
+    "tail": "Cluster_Brake",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Cluster_LH",
+    "relation": "contains_subfunction",
+    "tail": "Cluster_DRL",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Cluster_RH",
+    "relation": "contains_subfunction",
+    "tail": "Cluster_FogLamp_1",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Cluster_RH",
+    "relation": "contains_subfunction",
+    "tail": "Cluster_FogLamp_2",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Cluster_RH",
+    "relation": "contains_subfunction",
+    "tail": "Cluster_ParkingLamp_1",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Cluster_RH",
+    "relation": "contains_subfunction",
+    "tail": "Cluster_ParkingLamp_2",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Cluster_RH",
+    "relation": "contains_subfunction",
+    "tail": "Cluster_ReversingLamp",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Cluster_RH",
+    "relation": "contains_subfunction",
+    "tail": "Cluster_TurnSignal",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Tail_LampAssembly_LH",
+    "relation": "connects_to",
+    "tail": "Lighting_System",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Tail_LampAssembly_RH",
+    "relation": "connects_to",
+    "tail": "Lighting_System",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Cluster_LH",
+    "relation": "outputs_to",
+    "tail": "Lighting_System",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Cluster_RH",
+    "relation": "outputs_to",
+    "tail": "Lighting_System",
+    "sources": [
+      "outer_lamp_ssts_0142"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight",
+    "relation": "trigger_condition",
+    "tail": "DipdBeamLghtCtrlMdl.ControlDippedBeamLight.DippedBeamLightReq == 0x1 (On), InstanceID=1, ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts == 0x1",
+    "sources": [
+      "outer_lamp_ssts_0143"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightStatus",
+    "relation": "output_as",
+    "tail": "LDipdBeamLghtDrvMdl sends DippedBeamLightStatus",
+    "sources": [
+      "outer_lamp_ssts_0143"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightStatus",
+    "relation": "state_maintenance_condition",
+    "tail": "DippedBeamLight is turned On (requires ≥3 consecutive frames)",
+    "sources": [
+      "outer_lamp_ssts_0143"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamFlashFunction",
+    "relation": "prerequisite",
+    "tail": "MainBeamLghtSwSOAEnPrm == 0x0 (Disable)",
+    "sources": [
+      "outer_lamp_ssts_0144"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamFlashFunction",
+    "relation": "trigger_condition",
+    "tail": "User activates main beam flash switch with resistance ≈ 1200 Ω (±5%)",
+    "sources": [
+      "outer_lamp_ssts_0144"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamFlashFunction",
+    "relation": "execution_dependency",
+    "tail": "MainBeamLghtSwMdl sends MainBeamLghtSwReq == 0x2 (Flash) to MainBeamLghtCtrlMdl for ≥3 frames",
+    "sources": [
+      "outer_lamp_ssts_0144"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamFlashFunction",
+    "relation": "exit_condition",
+    "tail": "Main beam flash switch resistance deviates from 1200 Ω (±5%)",
+    "sources": [
+      "outer_lamp_ssts_0144"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight_LH_Status",
+    "relation": "trigger_condition",
+    "tail": "ControlSidePositionLight.SidePositionLightReq == 0x1",
+    "sources": [
+      "outer_lamp_ssts_0145",
+      "outer_lamp_ssts_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight_LH_Status",
+    "relation": "trigger_condition",
+    "tail": "ControlSidePositionLight.SidePositionLightReq == 0x0",
+    "sources": [
+      "outer_lamp_ssts_0145"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight_LH_Status",
+    "relation": "trigger_condition",
+    "tail": "SidePositionLightStatus.SidePositionLightSta == 0x2 (Unknown)",
+    "sources": [
+      "outer_lamp_ssts_0145"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PosLamp_LH&RHS_D_Interface",
+    "relation": "depends_on",
+    "tail": "ControlSidePositionLight.SidePositionLightReq signal",
+    "sources": [
+      "outer_lamp_ssts_0145"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus",
+    "relation": "output_as",
+    "tail": "SidePositionLightStatus.SidePositionLightSta signal",
+    "sources": [
+      "outer_lamp_ssts_0145"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlSidePositionLight.SidePositionLightReq",
+    "relation": "input_from",
+    "tail": "ICB/LHZCU module",
+    "sources": [
+      "outer_lamp_ssts_0145"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PosLamp_LH&RHS_D_Interface",
+    "relation": "outputs_to",
+    "tail": "Rear Lamp",
+    "sources": [
+      "outer_lamp_ssts_0145"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight_Enable",
+    "relation": "trigger_condition",
+    "tail": "SideLghtCtrlMdl.ControlSidePositionLight.SidePositionLightReq == 0x1 (On), InstanceID=3",
+    "sources": [
+      "outer_lamp_ssts_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight_Disable",
+    "relation": "trigger_condition",
+    "tail": "SideLghtCtrlMdl.ControlSidePositionLight.SidePositionLightReq == 0x0 (Off), InstanceID=3",
+    "sources": [
+      "outer_lamp_ssts_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight_Enable",
+    "relation": "state_maintenance_condition",
+    "tail": "RLSideLghtDrvMdl drives PosLamp_LH&RH_HSD output continuously",
+    "sources": [
+      "outer_lamp_ssts_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight_Enable",
+    "relation": "state_maintenance_condition",
+    "tail": "RLSideLghtDrvMdl sends SidePositionLightStatus.SidePositionLightSta == 0x1 (On), InstanceID=3 to SideLghtCtrlMdl continuously",
+    "sources": [
+      "outer_lamp_ssts_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight_Enable",
+    "relation": "reset_condition",
+    "tail": "SidePositionLight_Disable",
+    "sources": [
+      "outer_lamp_ssts_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus",
+    "relation": "transmission_constraint",
+    "tail": "≥3 consecutive frames",
+    "sources": [
+      "outer_lamp_ssts_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLamp_RF_OpenCircuitDiagnosis",
+    "relation": "prerequisite",
+    "tail": "Right front fog lamp is in active output state",
+    "sources": [
+      "outer_lamp_ssts_0147"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLamp_RF_OpenCircuitDiagnosis",
+    "relation": "trigger_condition",
+    "tail": "Open circuit detected on right front fog lamp",
+    "sources": [
+      "outer_lamp_ssts_0147"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC_B1053_13",
+    "relation": "contains_subfunction",
+    "tail": "FrtFogLamp_RF_OpenCircuitDiagnosis",
+    "sources": [
+      "outer_lamp_ssts_0147"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLamp_RF_OpenCircuitDiagnosis",
+    "relation": "fault_response",
+    "tail": "DTC_B1053_13 is set",
+    "sources": [
+      "outer_lamp_ssts_0147"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLghtDrvMdl",
+    "relation": "outputs_to",
+    "tail": "FrtFogLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0147"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLghtDrvMdl.RFrtFogLghtFltSts",
+    "relation": "output_as",
+    "tail": "0x1 (True)",
+    "sources": [
+      "outer_lamp_ssts_0147"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLghtDrvMdl.FrontFogLightErrorStatus",
+    "relation": "output_as",
+    "tail": "0x1 (Error), InstanceID=4",
+    "sources": [
+      "outer_lamp_ssts_0147"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightStatus",
+    "relation": "prerequisite",
+    "tail": "BrakeLightState == 0x2 (Error)",
+    "sources": [
+      "outer_lamp_ssts_0148",
+      "outer_lamp_ssts_0152"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting prerequisite vs. normal operation: outer_lamp_ssts_0148 states BrakeLightState==2 is prerequisite for fault reporting; outer_lamp_ssts_0152 states BrakeLightState==1 is normal operational state and requires ≥3 frames. No contradiction in value ranges, but 'BrakeLightState==2' is fault condition while '==1' is nominal — both valid under different contexts. Kept separately with conflict flag due to semantic divergence in state interpretation across specs."
+  },
+  {
+    "head": "BrakeLightCtrlMdl",
+    "relation": "depends_on",
+    "tail": "BrakeLightDrvMdl sends BrakeLightState continuously",
+    "sources": [
+      "outer_lamp_ssts_0148"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC_B1041_13",
+    "relation": "trigger_condition",
+    "tail": "BrakeLightState == 0x2 (Error)",
+    "sources": [
+      "outer_lamp_ssts_0148"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FaultHandlingFlow",
+    "relation": "exit_condition",
+    "tail": "Open circuit recovery detected",
+    "sources": [
+      "outer_lamp_ssts_0148"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLight_Enable",
+    "relation": "trigger_condition",
+    "tail": "MainBeamLghtCtrlMd1.RMainBeamLghtCtrl_HW == 0x1 (On)",
+    "sources": [
+      "outer_lamp_ssts_0149"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLight_ControlLogic",
+    "relation": "prerequisite",
+    "tail": "MainBeamLghtFbkSOAEnPrm == 0x0 (Disable)",
+    "sources": [
+      "outer_lamp_ssts_0149"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLight_RH_Output",
+    "relation": "output_as",
+    "tail": "RMainBeamLghtDrvMd1 drives MainBeamHdlmp_RH_HSD",
+    "sources": [
+      "outer_lamp_ssts_0149"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightStatus",
+    "relation": "output_as",
+    "tail": "RMainBeamLghtDrvMd1 sends RMainBeamLghtSts == 0x1 (On) to MainBeamLghtCtrlMdl for ≥3 frames",
+    "sources": [
+      "outer_lamp_ssts_0149"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSubSystem",
+    "relation": "contains_subfunction",
+    "tail": "3.0 Architecture - SSTS-IBD02",
+    "sources": [
+      "outer_lamp_ssts_0150"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSubSystem",
+    "relation": "controls",
+    "tail": "Subsystem Technical Specification",
+    "sources": [
+      "outer_lamp_ssts_0150"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight_LF_ShortToPowerFault",
+    "relation": "trigger_condition",
+    "tail": "Short-to-power detected on left front position lamp",
+    "sources": [
+      "outer_lamp_ssts_0151"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight_LF_ShortToPowerFault",
+    "relation": "fault_response",
+    "tail": "Stop driving left front position lamp output",
+    "sources": [
+      "outer_lamp_ssts_0151"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight_LF_ShortToPowerFault",
+    "relation": "fault_response",
+    "tail": "Continuously send SidePositionLightStatus = Off",
+    "sources": [
+      "outer_lamp_ssts_0151"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC_B1061_12",
+    "relation": "fault_response",
+    "tail": "SidePositionLight_LF_ShortToPowerFault",
+    "sources": [
+      "outer_lamp_ssts_0151"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightDrvMdl",
+    "relation": "controls",
+    "tail": "BrakeLightCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0152"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightState",
+    "relation": "output_as",
+    "tail": "BrakeLightDrvMdl",
+    "sources": [
+      "outer_lamp_ssts_0152"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightState",
+    "relation": "input_from",
+    "tail": "BrkLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0152"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightState",
+    "relation": "state_maintenance_condition",
+    "tail": "≥3 consecutive frames",
+    "sources": [
+      "outer_lamp_ssts_0152"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLamp_RF_Enable",
+    "relation": "trigger_condition",
+    "tail": "RFrtFogLghtCtrl_HW == 0x1",
+    "sources": [
+      "outer_lamp_ssts_0153"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

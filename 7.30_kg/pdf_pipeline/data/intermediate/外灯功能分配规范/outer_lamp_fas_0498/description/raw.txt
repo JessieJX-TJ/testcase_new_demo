@@ -1,0 +1,72 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的信号分配规范",
+  "row_semantics": "表格的每一行代表一个特定的外灯相关信号或状态，描述其在系统中的定义和属性。",
+  "column_semantics": "表格的列用于定义信号的属性，包括信号名称、数据类型（如输出）、通信协议（CANFD, ICB, LHZCU）以及对信号的详细说明。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RLSideLghtFltsts",
+      "type": "signal",
+      "description": "左后位置灯故障状态"
+    },
+    {
+      "name": "RRSideLghtFltsts",
+      "type": "signal",
+      "description": "右后位置灯故障状态"
+    },
+    {
+      "name": "SideLghtSts",
+      "type": "signal",
+      "description": "位置灯状态"
+    },
+    {
+      "name": "SideLghtFltsts",
+      "type": "signal",
+      "description": "位置灯故障状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "RLSideLghtFltsts",
+      "value": "0x0 = False; 0x1 = True",
+      "description": "表示左后位置灯是否发生故障"
+    },
+    {
+      "name": "RRSideLghtFltsts",
+      "value": "0x0 = False; 0x1 = True",
+      "description": "表示右后位置灯是否发生故障"
+    },
+    {
+      "name": "SideLghtSts",
+      "value": "0x0 = Off; 0x1 = On",
+      "description": "表示位置灯当前的点亮状态"
+    },
+    {
+      "name": "SideLghtFltsts",
+      "value": "0x0 = False",
+      "description": "表示位置灯是否存在故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RLSideLghtFltsts",
+      "description": "左后位置灯的故障状态信号"
+    },
+    {
+      "name": "RRSideLghtFltsts",
+      "description": "右后位置灯的故障状态信号"
+    },
+    {
+      "name": "SideLghtFltsts",
+      "description": "位置灯的故障状态信号"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯系统中关键信号的状态和故障检测逻辑，可用于验证车辆外灯系统在不同工况下的信号输出正确性，特别是位置灯及其故障状态的监测与报告功能。",
+  "uncertain_points": []
+}
+```

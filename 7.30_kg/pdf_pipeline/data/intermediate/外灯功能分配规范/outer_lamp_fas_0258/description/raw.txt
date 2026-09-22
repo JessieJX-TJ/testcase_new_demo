@@ -1,0 +1,92 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Automatic Lighting System Control Logic",
+  "row_semantics": "Each row represents a condition-action pair for the automatic lighting system, detailing when to exit the automatic lighting mode based on specific conditions.",
+  "column_semantics": {
+    "left": "Condition Description or Action Step",
+    "right": "Detailed Condition or Action Specification"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "AutoLightOnReq_1",
+      "type": "input_signal",
+      "description": "Request signal for automatic lighting activation."
+    },
+    {
+      "name": "vehRLsType",
+      "type": "input_signal",
+      "description": "Vehicle rear light status type, used to determine if rear fog lights are active."
+    },
+    {
+      "name": "UsrMd",
+      "type": "output_signal",
+      "description": "User mode setting, indicating different operational states such as Sleep, Standby, or XOTA."
+    },
+    {
+      "name": "VehMd",
+      "type": "output_signal",
+      "description": "Vehicle mode setting, indicating transportation-related states."
+    },
+    {
+      "name": "SunRainSensorMode",
+      "type": "input_signal",
+      "description": "Mode of the sunlight and rain sensor, switching between night and day modes."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "AutoLightOnReq_1 == 0x1 && vehRLsType == 0",
+      "description": "Automatic lighting is requested (AutoLightOnReq_1 = 0x1) and rear fog lights are not active (vehRLsType = 0)."
+    },
+    {
+      "condition": "SunRainSensorMode == Day",
+      "description": "The sunlight and rain sensor has switched from night mode to day mode."
+    },
+    {
+      "condition": "Rear Fog Lights are Off",
+      "description": "The rear fog lights are explicitly turned off."
+    },
+    {
+      "condition": "System Mode Conditions",
+      "description": "Specific combinations of user and vehicle modes must be met: [1&2]||[3&4]||5."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "UsrMd = 0x0 Sleep",
+      "description": "User mode set to Sleep."
+    },
+    {
+      "output": "UsrMd = 0x1 Standby",
+      "description": "User mode set to Standby."
+    },
+    {
+      "output": "UsrMd = 0x6 XOTA",
+      "description": "User mode set to XOTA (eXtended Over-The-Air update)."
+    },
+    {
+      "output": "VehMd = 0x3 TRANSPORT",
+      "description": "Vehicle mode set to TRANSPORT."
+    },
+    {
+      "output": "UsrMdV = Valid",
+      "description": "User mode value is valid."
+    },
+    {
+      "output": "VehMdV = Valid",
+      "description": "Vehicle mode value is valid."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the logic for exiting the automatic lighting mode under specific conditions, ensuring that the system appropriately responds to changes in vehicle state, sensor inputs, and communication protocols.",
+  "uncertain_points": [
+    "The exact meaning of 'SOA' and 'CAN' in the context of this requirement is not fully explained in the table.",
+    "The specific values and meanings of 'ExtrLghtCtrlCmmntnTyp' and 'ExtrLghtStsCmmntnTyp' beyond their configuration to SOA are not detailed.",
+    "The precise behavior of the 'SunRainSensorMode' during transition between night and day is not elaborated."
+  ]
+}
+```

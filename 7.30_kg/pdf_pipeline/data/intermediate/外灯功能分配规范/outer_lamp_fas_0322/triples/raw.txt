@@ -1,0 +1,103 @@
+```json
+[
+  {
+    "head": "查询右后转向灯状态",
+    "relation": "触发条件",
+    "tail": "调用DirectionLightStatus服务接口",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": [
+      "调用该服务接口,订阅右后转向灯状态",
+      "Interface Name: DirectionLightStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "查询左前转向灯状态",
+    "relation": "触发条件",
+    "tail": "调用DirectionLightErrorStatus服务接口",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": [
+      "调用该服务接口,订阅左前转向灯状态",
+      "Interface Name: DirectionLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯状态为OFF",
+    "relation": "输出为",
+    "tail": "DirectionLightStatus服务接口返回0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "0x0=OFF",
+      "Interface Name: DirectionLightStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯状态为ON",
+    "relation": "输出为",
+    "tail": "DirectionLightStatus服务接口返回0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "0x1=ON",
+      "Interface Name: DirectionLightStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯状态未知",
+    "relation": "输出为",
+    "tail": "DirectionLightStatus服务接口返回0x2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "0x2=Unknown",
+      "Interface Name: DirectionLightStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左前转向灯无错误",
+    "relation": "输出为",
+    "tail": "DirectionLightErrorStatus服务接口返回0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "0x0=No Error",
+      "Interface Name: DirectionLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左前转向灯有错误",
+    "relation": "输出为",
+    "tail": "DirectionLightErrorStatus服务接口返回0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "0x1=Error",
+      "Interface Name: DirectionLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左前转向灯错误状态未知",
+    "relation": "输出为",
+    "tail": "DirectionLightErrorStatus服务接口返回0x2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "0x2=Unknown",
+      "Interface Name: DirectionLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "硬线故障状态",
+    "relation": "依赖于",
+    "tail": "DirectionLightErrorStatus服务接口",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "硬线故障状态",
+      "DirectionLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

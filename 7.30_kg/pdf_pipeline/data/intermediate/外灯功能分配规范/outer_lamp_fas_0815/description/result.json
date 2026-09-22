@@ -1,0 +1,86 @@
+{
+  "table_type": "parameter_table",
+  "topic": "整车电子系统接口参数定义",
+  "row_semantics": "每行代表一个特定的系统功能或控制接口，详细描述其参数属性和通信路径。",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识具体的控制或数据交换功能。",
+    "Direction": "接口的数据流向，如输入/输出。",
+    "Type": "接口类型，如Filed（字段）或Method（方法）。",
+    "Sender/Provider": "提供方控制器或模块。",
+    "Consumer/Receiver": "接收方控制器或模块。",
+    "Channel": "通信路径或总线类型，如ETH（以太网）、ADAS_ETH等。",
+    "Source": "接口来源，通常与提供方一致。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "PersonalizationData.MainBeamEnhanceEnbSet",
+      "type": "功能名",
+      "description": "主光束增强功能的启用/禁用设置接口。"
+    },
+    {
+      "name": "ExteriorLightControlSystem.ControlRoofSpotLight",
+      "type": "功能名",
+      "description": "车顶射灯控制接口。"
+    },
+    {
+      "name": "ExteriorLightControlSystem.RoofSpotLightSts",
+      "type": "功能名",
+      "description": "车顶射灯状态反馈接口。"
+    },
+    {
+      "name": "ICB_S32_GM",
+      "type": "控制器/模块名",
+      "description": "提供方控制器，可能为车身域控制器。"
+    },
+    {
+      "name": "ICB_82_95_LHZCU",
+      "type": "控制器/模块名",
+      "description": "接收方控制器，可能为区域控制单元。"
+    },
+    {
+      "name": "IPD",
+      "type": "控制器/模块名",
+      "description": "集成电源分配器，作为接收方。"
+    },
+    {
+      "name": "ADAS_ETH",
+      "type": "通信路径",
+      "description": "高级驾驶辅助系统以太网通信通道。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "interface_name": "PersonalizationData.MainBeamEnhanceEnbSet",
+      "condition": "MainBeamEnhanceEnbSetInfo",
+      "values": {
+        "0x0": "Enabled",
+        "0x1": "Disabled"
+      },
+      "initial_value": "0x1=Disabled"
+    },
+    {
+      "interface_name": "ExteriorLightControlSystem.ControlRoofSpotLight",
+      "condition": "RoofSpotLightReq",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "On"
+      }
+    },
+    {
+      "interface_name": "ExteriorLightControlSystem.RoofSpotLightSts",
+      "condition": "RoofSpotLightSts",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "ON",
+        "0x2": "Unknown"
+      }
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯控制系统中关键接口的参数属性、数据流向及通信路径，主要用于验证不同控制器之间关于主光束增强功能和车顶射灯控制的信号交互是否符合设计规范。",
+  "uncertain_points": []
+}

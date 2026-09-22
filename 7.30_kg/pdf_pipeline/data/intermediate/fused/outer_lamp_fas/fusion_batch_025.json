@@ -1,0 +1,457 @@
+[
+  {
+    "head": "前雾灯状态反馈",
+    "relation": "输出为",
+    "tail": "前雾灯控制模块LHZCU订阅前雾灯状态/故障状态接口",
+    "sources": [
+      "outer_lamp_fas_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯故障状态",
+    "relation": "输出为",
+    "tail": "前雾灯控制模块LHZCU订阅前雾灯状态/故障状态接口",
+    "sources": [
+      "outer_lamp_fas_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯控制信号",
+    "relation": "输入为",
+    "tail": "外灯控制组合服务ICB调用基础服务",
+    "sources": [
+      "outer_lamp_fas_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯点亮",
+    "relation": "复位条件",
+    "tail": "前雾灯开关状态为OFF",
+    "sources": [
+      "outer_lamp_fas_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯控制",
+    "relation": "前提条件",
+    "tail": "周期调用该服务接口",
+    "sources": [
+      "outer_lamp_fas_0256",
+      "outer_lamp_fas_0894",
+      "outer_lamp_fas_1413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制",
+    "relation": "输入为",
+    "tail": "0x0=OFF; 0x1=ON",
+    "sources": [
+      "outer_lamp_fas_0256"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯控制",
+    "relation": "输入为",
+    "tail": "0x0=OFF; 0x1=ON",
+    "sources": [
+      "outer_lamp_fas_0256"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯控制",
+    "relation": "输入为",
+    "tail": "0x0=OFF; 0x1=ON",
+    "sources": [
+      "outer_lamp_fas_0256"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯控制",
+    "relation": "输入为",
+    "tail": "0x0=OFF; 0x1=ON",
+    "sources": [
+      "outer_lamp_fas_0256"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "依赖于",
+    "tail": "Z-ONE-3.0 平台 FAS-IBD05",
+    "sources": [
+      "outer_lamp_fas_0257",
+      "outer_lamp_fas_0378"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "退出自动灯光",
+    "relation": "前提条件",
+    "tail": "自动灯光处于激活状态",
+    "sources": [
+      "outer_lamp_fas_0258"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "退出自动灯光",
+    "relation": "抑制条件",
+    "tail": "前置条件不满足",
+    "sources": [
+      "outer_lamp_fas_0258"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsrMd = 0x0 Sleep",
+    "relation": "触发条件",
+    "tail": "AutoLightOnReq_1 == 0x1 || vehRLsType == 0",
+    "sources": [
+      "outer_lamp_fas_0258"
+    ],
+    "conflict": false,
+    "conflict_note": "合并两条相同head+relation的触发条件，逻辑或连接"
+  },
+  {
+    "head": "UsrMd = 0x1 Standby",
+    "relation": "触发条件",
+    "tail": "AutoLightOnReq_1 == 0x1 || vehRLsType == 0",
+    "sources": [
+      "outer_lamp_fas_0258"
+    ],
+    "conflict": false,
+    "conflict_note": "合并两条相同head+relation的触发条件，逻辑或连接"
+  },
+  {
+    "head": "UsrMd = 0x6 XOTA",
+    "relation": "触发条件",
+    "tail": "AutoLightOnReq_1 == 0x1 || vehRLsType == 0",
+    "sources": [
+      "outer_lamp_fas_0258"
+    ],
+    "conflict": false,
+    "conflict_note": "合并两条相同head+relation的触发条件，逻辑或连接"
+  },
+  {
+    "head": "VehMd = 0x3 TRANSPORT",
+    "relation": "触发条件",
+    "tail": "SunRainSensorMode == Day || Rear Fog Lights are Off",
+    "sources": [
+      "outer_lamp_fas_0258"
+    ],
+    "conflict": true,
+    "conflict_note": "同一模式（VehMd = 0x3 TRANSPORT）对应两个互斥性弱的独立触发条件（光照模式 vs 后雾灯状态），语义上二者非互斥但未说明是否需同时满足；技术规范中未明确逻辑关系（AND/OR），存在解释歧义风险"
+  },
+  {
+    "head": "UsrMdV = Valid",
+    "relation": "触发条件",
+    "tail": "System Mode Conditions [1&2]||[3&4]||5",
+    "sources": [
+      "outer_lamp_fas_0258"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMdV = Valid",
+    "relation": "触发条件",
+    "tail": "System Mode Conditions [1&2]||[3&4]||5",
+    "sources": [
+      "outer_lamp_fas_0258"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "退出自动灯光",
+    "relation": "依赖于",
+    "tail": "SunRainSensorMode == Day && Rear Fog Lights are Off",
+    "sources": [
+      "outer_lamp_fas_0258"
+    ],
+    "conflict": true,
+    "conflict_note": "与同head的另一条'依赖于'三元组（仅SunRainSensorMode）及'前提条件'（自动灯光激活）构成多依赖链；此处尾部含两个条件但未说明逻辑关系，默认按AND处理，但原始数据中二者是分离条目，存在隐式耦合风险"
+  },
+  {
+    "head": "制动灯开关状态信号(BrkLghtSwSts)",
+    "relation": "输入为",
+    "tail": "BrkLghtSwSts = 0x0",
+    "sources": [
+      "outer_lamp_fas_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开关状态有效信号(BrkLghtSwStsV)",
+    "relation": "输入为",
+    "tail": "BrkLghtSwStsV = 0x0",
+    "sources": [
+      "outer_lamp_fas_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯熄灭",
+    "relation": "前提条件",
+    "tail": "BrkLghtSwSts = 0x0 && BrkLghtSwStsV = 0x0",
+    "sources": [
+      "outer_lamp_fas_0259"
+    ],
+    "conflict": false,
+    "conflict_note": "合并两条相同head+relation的条件，逻辑与连接"
+  },
+  {
+    "head": "制动灯同步熄灭",
+    "relation": "超时约束",
+    "tail": "左侧、右侧及高位制动灯最大延时 ≤ 40ms",
+    "sources": [
+      "outer_lamp_fas_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "获取自动灯光开关状态",
+    "relation": "前提条件",
+    "tail": "调用ExteriorLightSwitchProcess.CombLghtSwStatus服务接口",
+    "sources": [
+      "outer_lamp_fas_0260"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "获取自动灯光开关状态",
+    "relation": "依赖于",
+    "tail": "当前前置条件",
+    "sources": [
+      "outer_lamp_fas_0260"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "自动灯光开关状态",
+    "relation": "输出为",
+    "tail": "通过ExteriorLightSwitchProcess.CombLghtSwStatus服务接口获取",
+    "sources": [
+      "outer_lamp_fas_0260"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯状态获取",
+    "relation": "触发条件",
+    "tail": "InstanceID = 3",
+    "sources": [
+      "outer_lamp_fas_0261"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯状态获取",
+    "relation": "触发条件",
+    "tail": "InstanceID = 4",
+    "sources": [
+      "outer_lamp_fas_0261"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯状态",
+    "relation": "输出为",
+    "tail": "0x0=OFF; 0x1=ON; 0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_0261"
+    ],
+    "conflict": false,
+    "conflict_note": "合并三条等价枚举值三元组"
+  },
+  {
+    "head": "右侧前雾灯状态",
+    "relation": "输出为",
+    "tail": "0x0=OFF; 0x1=ON; 0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_0261"
+    ],
+    "conflict": false,
+    "conflict_note": "合并三条等价枚举值三元组"
+  },
+  {
+    "head": "左侧前雾灯状态获取",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0261"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯状态获取",
+    "relation": "依赖于",
+    "tail": "RHZCU",
+    "sources": [
+      "outer_lamp_fas_0261"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯故障状态获取",
+    "relation": "触发条件",
+    "tail": "调用服务接口 DippedBeamLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_0262",
+      "outer_lamp_fas_0778",
+      "outer_lamp_fas_1602"
+    ],
+    "conflict": false,
+    "conflict_note": "合并左右侧共用接口描述"
+  },
+  {
+    "head": "近光灯状态",
+    "relation": "输出为",
+    "tail": "0x0=OFF; 0x1=ON",
+    "sources": [
+      "outer_lamp_fas_0262"
+    ],
+    "conflict": false,
+    "conflict_note": "合并左右侧状态定义"
+  },
+  {
+    "head": "近光灯故障状态",
+    "relation": "输出为",
+    "tail": "0x0=No Error; 0x1=Error; 0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_0262"
+    ],
+    "conflict": false,
+    "conflict_note": "合并三条等价枚举值三元组"
+  },
+  {
+    "head": "左侧前雾灯控制",
+    "relation": "输入为",
+    "tail": "LFrtFogLghtCtrl_1_On / LFrtFogLghtCtrl_0_Off",
+    "sources": [
+      "outer_lamp_fas_0263"
+    ],
+    "conflict": false,
+    "conflict_note": "合并开启/关闭信号"
+  },
+  {
+    "head": "右侧前雾灯控制",
+    "relation": "输入为",
+    "tail": "RFrtFogLghtCtrl_1_On / RFrtFogLghtCtrl_0_Off",
+    "sources": [
+      "outer_lamp_fas_0263"
+    ],
+    "conflict": false,
+    "conflict_note": "合并开启/关闭信号"
+  },
+  {
+    "head": "左侧前雾灯硬件版本控制",
+    "relation": "输入为",
+    "tail": "LFrtFogLghtCtrl_HW_1_On / LFrtFogLghtCtrl_HW_0_Off",
+    "sources": [
+      "outer_lamp_fas_0263"
+    ],
+    "conflict": false,
+    "conflict_note": "合并开启/关闭信号"
+  },
+  {
+    "head": "右侧前雾灯硬件版本控制",
+    "relation": "输入为",
+    "tail": "RFrtFogLghtCtrl_HW_1_On / RFrtFogLghtCtrl_HW_0_Off",
+    "sources": [
+      "outer_lamp_fas_0263"
+    ],
+    "conflict": false,
+    "conflict_note": "合并开启/关闭信号"
+  },
+  {
+    "head": "左侧前雾灯控制信号",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0263"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯控制信号",
+    "relation": "依赖于",
+    "tail": "RHZCU",
+    "sources": [
+      "outer_lamp_fas_0263"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯硬件版本控制信号",
+    "relation": "依赖于",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0263"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯硬件版本控制信号",
+    "relation": "依赖于",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0263"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯控制信号",
+    "relation": "输出为",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_0263"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯控制信号",
+    "relation": "输出为",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_0263"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

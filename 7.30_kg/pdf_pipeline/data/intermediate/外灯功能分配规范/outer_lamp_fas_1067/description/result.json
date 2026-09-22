@@ -1,0 +1,57 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制策略 - 转向灯与危险警报灯的仲裁逻辑",
+  "row_semantics": "描述了在特定条件下，转向灯与危险警报灯之间的优先级和响应行为。",
+  "column_semantics": {
+    "1": "功能优先级描述，列出了具体的控制策略规则",
+    "2": "详细的功能描述文本"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "转向灯",
+      "type": "输出信号"
+    },
+    {
+      "name": "危险警报灯",
+      "type": "输出信号"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名"
+    },
+    {
+      "name": "SOA",
+      "type": "系统状态/模式名"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "危险警报灯处于激活状态",
+      "description": "当危险警报灯被激活时，应立即响应并退出转向灯状态"
+    },
+    {
+      "condition": "危险警报灯被退出或被打断",
+      "description": "当危险警报灯从激活状态退出或被打断时，应立即响应并退出"
+    },
+    {
+      "condition": "接收到来自LHZCU的硬开关控制及SOA控制请求",
+      "description": "在接收到危险灯硬线开关控制及SOA控制请求时，优先级为：关 > SOA 控制请求"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "转向灯状态",
+      "description": "根据危险警报灯的状态和控制请求，决定转向灯是否保持点亮或熄灭"
+    },
+    {
+      "output": "危险警报灯状态",
+      "description": "根据外部控制信号（如硬开关）和系统状态（如SOA），决定危险警报灯的开启或关闭"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中转向灯与危险警报灯之间的仲裁逻辑，用于验证在不同控制输入下，两个灯光系统的正确响应行为，确保在危险警报灯激活时转向灯能够及时退出，以及在危险警报灯退出时能够恢复正常转向灯功能。",
+  "uncertain_points": []
+}

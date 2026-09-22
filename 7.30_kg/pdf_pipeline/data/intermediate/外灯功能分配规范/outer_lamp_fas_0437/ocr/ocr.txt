@@ -1,0 +1,26 @@
+[1&2]|[3&4]||5||6||7||8||9||10:
+1、UsgMd！=0x3=UsgMd_3_NormalDriving;&
+UsgMd!=0x4=UsgMd_4_AIParking;&
+UsgMd!=0x5=UsgMd_5_AIPilot
+2、UsgMdV=Valid
+3、VehMd=0x3=VehMd_3_TRANSPORT;|
+VehMd=0x5= VehMd_5 EXHIBITION
+4、VehMdV=Valid
+5、车速信号:
+VehSpdAvg≤20Km/h(可配置,AutoMaiBeamLghtDsblVehSpd)
+VehSpdAvgV=0x0=VehSpdAvgV_0_Valid;&&且持续2S
+6、灯光开关状态:
+{ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta}!=0x3=AUTO
+7、LHZCU判断近光灯关闭:
+SidePositionLight ON; | Ox3= SidePositionAndDippedBeam OFF
+8、环境光状态:
+AutoLghtOnReq_l=0x0=AutoLghtOnReq_0_False (vehRlsType==0)
+AutoLghtOnReq_ICB=0x0=AutoLghtOnReq_ICB_0_False (vehRlsType==1)
+9、车辆档位状态非D档:
+TrShftLvrPos!=0x4=TrShftLvrPos_ 4 Forward Range A(车辆档位为 D 档)&&
+TrShftLvrPosV=0x0=TrShftLvrPosV_0_Valid:
+10、收到[智驾摄像头识别信息IPD]请求输入:
+(ALMainBeamLghtCtrl=0x2=ALMainBeamLghtCtrl_2 RequestOffFromCamera;; &&
+ARMainBeamLghtCtrl=0x2=ARMainBeamLghtCtrl_2_RequestOffFromCamera;)
+(PPV阶段LHZCU接收此信号判断)
+AutoMainBeamLghtReq=0x2=AutoMainBeamLghtReq_2_RequestOffFromCamera

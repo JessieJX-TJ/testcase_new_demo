@@ -1,0 +1,56 @@
+{
+  "table_type": "logic_table",
+  "topic": "制动灯开启逻辑",
+  "row_semantics": "表格描述了在特定条件下，通过制动踏板开关开启制动灯的逻辑规则。",
+  "column_semantics": {
+    "left": "场景描述或条件分类",
+    "right": "具体的逻辑表达式或条件说明"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "制动踏板开关",
+      "type": "输入信号",
+      "description": "驾驶员操作的物理开关，用于检测是否踩下制动踏板。"
+    },
+    {
+      "name": "制动灯",
+      "type": "输出信号",
+      "description": "车辆后部的灯光，用于在制动时向后方车辆发出警示信号。"
+    },
+    {
+      "name": "UsrMd",
+      "type": "系统状态",
+      "description": "用户模式（User Mode）的状态变量，表示车辆当前的运行模式。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsrMd != 0x0",
+      "description": "用户模式不为睡眠模式（Sleep）。"
+    },
+    {
+      "condition": "UsrMd != 0x1",
+      "description": "用户模式不为待机模式（Standby）。"
+    },
+    {
+      "condition": "[1&2&3&4]",
+      "description": "条件1、2、3、4同时满足。"
+    },
+    {
+      "condition": "[[5||6]&[7||8]]",
+      "description": "条件5或6，并且条件7或8同时满足。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "制动灯开启",
+      "description": "当所有前置条件满足时，制动灯将被激活。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定用户模式和多个条件组合下，制动踏板开关如何触发制动灯开启的逻辑，可用于验证制动灯控制功能在不同驾驶模式下的正确性。",
+  "uncertain_points": []
+}

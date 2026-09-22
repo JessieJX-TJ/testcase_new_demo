@@ -1,0 +1,117 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior lamp function) 配置与触发逻辑",
+  "row_semantics": "表格按行描述了外灯功能的配置需求、触发动作和执行动作，详细定义了在特定条件下外灯的行为。",
+  "column_semantics": "表格分为三列，分别描述了配置需求（Configuration Requirements）、触发动作（Trigger Actions）和执行动作（Execution Actions）。其中触发动作和执行动作部分包含多级子项。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Z-ONE Platform",
+      "type": "Platform",
+      "description": "车辆电子电气架构平台"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "危险报警灯自动控制模块"
+    },
+    {
+      "name": "ExtrLightCtrlCmmntnTyp",
+      "type": "Signal",
+      "description": "外灯控制通信类型配置参数"
+    },
+    {
+      "name": "ExtrLightStsCmmntnTyp",
+      "type": "Signal",
+      "description": "外灯状态通信类型配置参数"
+    },
+    {
+      "name": "VehCrshTyp",
+      "type": "Input Signal",
+      "description": "车辆碰撞类型输入信号"
+    },
+    {
+      "name": "AirbagDpl",
+      "type": "Input Signal",
+      "description": "安全气囊展开状态输入信号"
+    },
+    {
+      "name": "FLDircnLghtCtrl",
+      "type": "Output Signal",
+      "description": "左前灯方向控制信号"
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "type": "Output Signal",
+      "description": "右前灯方向控制信号"
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "type": "Output Signal",
+      "description": "左后灯方向控制信号"
+    },
+    {
+      "name": "RRDircnLghtCtrl",
+      "type": "Output Signal",
+      "description": "右后灯方向控制信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Vehicle Collision Type",
+      "description": "根据VehCrshTyp判断碰撞类型（正面、侧面、后部、行人）"
+    },
+    {
+      "name": "Airbag Deployment Status",
+      "description": "根据AirbagDpl判断安全气囊是否展开"
+    },
+    {
+      "name": "Collision Detection Timing",
+      "description": "碰撞检测时序要求（Toff_Crash = 16ms ±2ms, Ton_Crash = 4ms ±2ms）"
+    },
+    {
+      "name": "PWM Characteristics",
+      "description": "碰撞检测时的PWM信号波形特性（20% duty cycle）"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Hazard Light Flashing",
+      "description": "危险报警灯按照1.25Hz频率闪烁（800ms一个周期），输出400ms亮/400ms灭"
+    },
+    {
+      "name": "Directional Lamp Control",
+      "description": "根据方向控制信号（FLDircnLghtCtrl等）控制相应车灯的亮灭"
+    },
+    {
+      "name": "Water Flow Mode Enable",
+      "description": "发送转向灯流水模式使能状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Tofc_Crash",
+      "value": "16ms ±2ms",
+      "description": "碰撞检测关闭时间"
+    },
+    {
+      "name": "Ton_Crash",
+      "value": "4ms ±2ms",
+      "description": "碰撞检测开启时间"
+    },
+    {
+      "name": "Hazard Light Period",
+      "value": "800ms",
+      "description": "危险报警灯闪烁周期"
+    },
+    {
+      "name": "Hazard Light Duration",
+      "value": "400ms",
+      "description": "危险报警灯单次亮或灭持续时间"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证车辆在发生碰撞时，外灯系统（特别是危险报警灯）是否能够按照规范正确响应，包括碰撞检测的时序、安全气囊状态以及危险报警灯的闪烁频率和方向灯控制。",
+  "uncertain_points": []
+}

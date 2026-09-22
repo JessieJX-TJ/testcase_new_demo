@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "other",
+  "topic": "External Light Control System - Brake Light Functionality",
+  "row_semantics": "The table describes the conditions under which the brake light is activated and the synchronization requirements for its operation.",
+  "column_semantics": "The table has two main columns: one for the system condition (in the orange header row) and another for detailed notes and specifications.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExternalLightControlSystem",
+      "type": "system",
+      "description": "The overall system responsible for controlling external lights, including brake lights."
+    },
+    {
+      "name": "BrakeLightEnableSignals",
+      "type": "input_signal",
+      "description": "Signals that enable the brake light function, such as switch input or sensor inputs."
+    },
+    {
+      "name": "BrakeLightOutput",
+      "type": "output_signal",
+      "description": "The activation signal for the brake light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "BrakeLightEnableSignals",
+      "description": "The brake light can be enabled by various signals, including the brake light switch, brake pedal position monitoring, electric vehicle regenerative braking, and integrated braking system."
+    },
+    {
+      "condition": "Synchronization Requirement",
+      "description": "The left, right, and high-mounted brake lights must illuminate simultaneously, with a maximum delay of 40ms between any two lights."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "BrakeLightOutput",
+      "description": "The brake light turns on when any of the enabling conditions are met."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "40ms",
+      "description": "The maximum allowable delay between the illumination of the left, right, and high-mounted brake lights to ensure they appear synchronized to the observer."
+    }
+  ],
+  "engineering_interpretation": "This table specifies the functional requirements for the brake light system, detailing the conditions under which the brake light should be activated and the synchronization timing requirements. It is used to verify that the brake light system behaves correctly under various driving conditions and meets the required response time for simultaneous illumination.",
+  "uncertain_points": []
+}
+```

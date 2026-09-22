@@ -1,0 +1,69 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯系统中右前转向灯的控制与状态信号规范",
+  "row_semantics": "表格详细定义了右前转向灯（FRDircnLghtCtrl_HW）相关的控制信号、状态信号及其对应的发送方、接收方、传输类型和路径信息。",
+  "column_semantics": {
+    "Interface Name": "接口名称，即信号或数据流的标识符。",
+    "Direction": "信号的方向，指示是输入还是输出。",
+    "Type": "信号的传输类型，如CAN总线、硬线等。",
+    "Sender/Provider": "信号的提供方或发送方控制器。",
+    "Receiver/Consumer": "信号的消费方或接收方控制器。",
+    "Channel": "信号传输的路径或通道。",
+    "Interface Source": "信号的来源模块或功能单元。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FRDircnLghtCtrl_HW",
+      "type": "Input Signal",
+      "description": "右前转向灯硬件控制信号，由ICB提供，RHZCU接收。",
+      "source": "外灯 FAS"
+    },
+    {
+      "name": "DILamp_RH_HSD",
+      "type": "Output Signal",
+      "description": "右前转向灯硬线驱动信号，由RHZCU提供，RHA/后视镜转向灯接收。",
+      "source": "外灯 SSTS"
+    },
+    {
+      "name": "FRDircnLghtSts",
+      "type": "Output Signal",
+      "description": "右前转向灯状态信号，由RHZCU提供，LHZCU接收。",
+      "source": "外灯 SSTS"
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "type": "Input Signal",
+      "description": "右前转向灯控制信号，由SOA提供，ICB/LHZCU处理，RHZCU接收。",
+      "source": "外灯 FAS"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "FRDircnLghtCtrl_HW",
+      "value": "0x0",
+      "condition": "转向灯关闭"
+    },
+    {
+      "signal": "FRDircnLghtCtrl_HW",
+      "value": "0x1",
+      "condition": "转向灯开启"
+    },
+    {
+      "signal": "FRDircnLghtSts",
+      "value": "0x0",
+      "condition": "转向灯关闭"
+    },
+    {
+      "signal": "FRDircnLghtSts",
+      "value": "0x1",
+      "condition": "转向灯开启"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车外灯系统中右前转向灯的控制逻辑和状态反馈是否符合设计规范，确保信号在不同控制器间的正确传递和响应。",
+  "uncertain_points": []
+}

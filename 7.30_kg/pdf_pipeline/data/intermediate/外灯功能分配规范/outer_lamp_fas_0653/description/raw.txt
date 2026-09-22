@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的状态与控制信号分配",
+  "row_semantics": "表格按功能过程 (Process) 列出了不同的外灯相关服务接口，每个过程描述了其通知器 (Notifier) 的作用、接口名称及参数定义。",
+  "column_semantics": {
+    "功能过程": "列出了具体的外灯控制或状态获取过程，如组合灯开关状态 (CombLghtSwStatus) 和组合灯功能状态 (CombLghtFucProStatus)。",
+    "消费": "表示该过程是否被其他模块消费或调用。",
+    "SOA": "Service-Oriented Architecture，表示该过程是否通过面向服务架构提供。",
+    "LHZCU": "Local Host Control Unit，表示该过程是否由本地主机控制单元处理。",
+    "ICB": "Integrated Circuit Board，表示该过程是否与集成电路板相关。",
+    "其他列": "未使用或预留"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "process",
+      "description": "外灯开关过程，用于管理外灯的开关状态。"
+    },
+    {
+      "name": "CombLghtSwStatus",
+      "type": "function",
+      "description": "组合灯开关状态函数，用于获取位置灯的开关状态。"
+    },
+    {
+      "name": "CombLghtFucProStatus",
+      "type": "function",
+      "description": "组合灯功能状态函数，用于获取位置灯点亮或熄灭的条件。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CombLghtSwSta",
+      "type": "input_signal",
+      "description": "组合灯开关状态参数，包含位置灯的当前状态（如OFF, SidePositionLight ON, DippedBeamLight ON等）。"
+    },
+    {
+      "name": "CombLghtFucProSta",
+      "type": "input_signal",
+      "description": "组合灯功能状态参数，包含位置灯的点亮或熄灭条件（如ALL OFF, Only SidePositionLight ON等）。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证外灯开关状态和功能状态的服务接口是否正确实现，包括状态参数的返回值是否符合规范，以及不同灯状态之间的逻辑转换是否正确。",
+  "uncertain_points": []
+}
+```

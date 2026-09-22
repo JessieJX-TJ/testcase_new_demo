@@ -1,0 +1,575 @@
+[
+  {
+    "head": "SecRowSeatAmrstSw_RH",
+    "relation": "input_signal",
+    "tail": "S31LMO",
+    "sources": [
+      "inner_lamp_ssts_0196"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThrdRowUSB_RH",
+    "relation": "input_signal",
+    "tail": "S31LMO",
+    "sources": [
+      "inner_lamp_ssts_0196"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBreathingMode",
+    "relation": "trigger_condition",
+    "tail": "CnsoLHALampBrthngCmd_l != 0x0 AND AmbtLghtLHRollingCtr_1 is valid",
+    "sources": [
+      "inner_lamp_ssts_0197"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBreathingMode",
+    "relation": "prerequisite",
+    "tail": "AmbientLampIsLit",
+    "sources": [
+      "inner_lamp_ssts_0197"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampDriverModule",
+    "relation": "input_signal",
+    "tail": "CnsoLHALampBrthngCmd_l",
+    "sources": [
+      "inner_lamp_ssts_0197"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampDriverModule",
+    "relation": "depends_on",
+    "tail": "AmbtLghtLHRollingCtr_1",
+    "sources": [
+      "inner_lamp_ssts_0197"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBreathingModeRate13",
+    "relation": "depends_on",
+    "tail": "CnsoLHALampBrthngCmd_l == 0x3",
+    "sources": [
+      "inner_lamp_ssts_0198"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBreathingModeRate15",
+    "relation": "depends_on",
+    "tail": "CnsoLHALampBrthngCmd_l == 0xF",
+    "sources": [
+      "inner_lamp_ssts_0198"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBrightnessLevelRate13",
+    "relation": "input_profile",
+    "tail": "Time-based progression from 0 to 8 over 640ms",
+    "sources": [
+      "inner_lamp_ssts_0198"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBrightnessLevelRate15",
+    "relation": "input_profile",
+    "tail": "Time-based progression from 0 to 8 over 1600ms",
+    "sources": [
+      "inner_lamp_ssts_0198"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampHoldOffPhase",
+    "relation": "timeout_constraint",
+    "tail": "400ms at peak brightness before fading",
+    "sources": [
+      "inner_lamp_ssts_0198"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBreathingModeRate13Timing",
+    "relation": "timeout_constraint",
+    "tail": "40ms per step over 200 data points",
+    "sources": [
+      "inner_lamp_ssts_0198"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBreathingModeRate15Timing",
+    "relation": "timeout_constraint",
+    "tail": "100ms per step over 120 data points",
+    "sources": [
+      "inner_lamp_ssts_0198"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampFadeSpdCmd_1",
+    "relation": "trigger_condition",
+    "tail": "Signal value received",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampFadeSpdCmd_1",
+    "relation": "state_hold_condition",
+    "tail": "Value == 0x0",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampFadeSpdCmd_1",
+    "relation": "mode_transition_condition",
+    "tail": "Value changes between non-zero codes",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampOnOff_1",
+    "relation": "trigger_condition",
+    "tail": "Signal value received",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampOnOff_1",
+    "relation": "prerequisite",
+    "tail": "Non-zero color/brightness command present",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampColorCmd_1",
+    "relation": "trigger_condition",
+    "tail": "Signal value received",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampColorCmd_1",
+    "relation": "state_hold_condition",
+    "tail": "Value == 0x0 OR undefined color code",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrtnsCmd_1",
+    "relation": "trigger_condition",
+    "tail": "Signal value received",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrtnsCmd_1",
+    "relation": "state_hold_condition",
+    "tail": "Value == 0x0",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampFadeSpdCmd_1",
+    "relation": "fade_speed_mapping",
+    "tail": "0x1 → 300ms",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampFadeSpdCmd_1",
+    "relation": "fade_speed_mapping",
+    "tail": "0x2 → 100ms",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampOnOff_1",
+    "relation": "on_off_mapping",
+    "tail": "0x1 → ON request",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampOnOff_1",
+    "relation": "on_off_mapping",
+    "tail": "0x0 → OFF request",
+    "sources": [
+      "inner_lamp_ssts_0199"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EEAConfigurationValidation",
+    "relation": "prerequisite",
+    "tail": "Parameter Range is within valid interval",
+    "sources": [
+      "inner_lamp_ssts_0200",
+      "inner_lamp_ssts_0207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EEAConfigurationValidation",
+    "relation": "prerequisite",
+    "tail": "Resolution (Factor) is minimum step size",
+    "sources": [
+      "inner_lamp_ssts_0200",
+      "inner_lamp_ssts_0207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EEAConfigurationValidation",
+    "relation": "prerequisite",
+    "tail": "Default value is initial setting",
+    "sources": [
+      "inner_lamp_ssts_0200",
+      "inner_lamp_ssts_0207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EEAConfigurationValidation",
+    "relation": "prerequisite",
+    "tail": "Item, Description, Range, Factor, Default all comply with design spec",
+    "sources": [
+      "inner_lamp_ssts_0207"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "applies_dimming_level",
+    "tail": "Lighting Parameter Code ∈ [5720, 7360]",
+    "sources": [
+      "inner_lamp_ssts_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "outputs_brightness_level",
+    "tail": "Value ∈ [7, 54]",
+    "sources": [
+      "inner_lamp_ssts_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LightingParameterCode5720",
+    "relation": "maps_to",
+    "tail": "Maximum Brightness Level = 54",
+    "sources": [
+      "inner_lamp_ssts_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LightingParameterCode7360",
+    "relation": "maps_to",
+    "tail": "Minimum Brightness Level = 7",
+    "sources": [
+      "inner_lamp_ssts_0201"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBrightnessCommand",
+    "relation": "trigger_condition",
+    "tail": "CnsoLHCLampBrthngCmd_1 ∈ [0x00, 0xFF]",
+    "sources": [
+      "inner_lamp_ssts_0203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBreathingCommand",
+    "relation": "trigger_condition",
+    "tail": "CnsoLHCLampBrthngCmd_1 ∈ [0x0, 0xF]",
+    "sources": [
+      "inner_lamp_ssts_0203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrtnsCmd_1",
+    "relation": "depends_on",
+    "tail": "CnsoLHCLampBrthngCmd_1 value",
+    "sources": [
+      "inner_lamp_ssts_0203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrtnsCmd_1",
+    "relation": "breathing_rate_dependency",
+    "tail": "CnsoLHCLampBrthngCmd_1 Rate code",
+    "sources": [
+      "inner_lamp_ssts_0203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrtnsCmd_1",
+    "relation": "state_hold_condition",
+    "tail": "CnsoLHCLampBrthngCmd_1 == 0x0 → immediate breathing stop",
+    "sources": [
+      "inner_lamp_ssts_0203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "parameter_id_214",
+    "tail": "BrightnessParam=0.4819, IntensityParam=0.4160, MaxBrightness=255, TargetBrightness=153, Priority=15",
+    "sources": [
+      "inner_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "parameter_id_215",
+    "tail": "BrightnessParam=0.4419, IntensityParam=0.3829, MaxBrightness=255, TargetBrightness=156, Priority=55",
+    "sources": [
+      "inner_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "parameter_id_226",
+    "tail": "BrightnessParam=0.4619, IntensityParam=0.3499, MaxBrightness=255, TargetBrightness=108, Priority=61",
+    "sources": [
+      "inner_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "parameter_id_244",
+    "tail": "BrightnessParam=0.4219, IntensityParam=0.2361, MaxBrightness=255, TargetBrightness=20, Priority=159",
+    "sources": [
+      "inner_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "dynamic_skin_signal_trigger",
+    "tail": "Parameter IDs 247–255 configured",
+    "sources": [
+      "inner_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "dynamic_skin_signal_dependency",
+    "tail": "Parameter IDs 247–255 configured",
+    "sources": [
+      "inner_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "fault_state_prerequisite",
+    "tail": "Parameter ID 233 Priority == 14",
+    "sources": [
+      "inner_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "fault_state_prerequisite",
+    "tail": "Parameter ID 235 Priority == 62",
+    "sources": [
+      "inner_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InteriorLightingSubsystem",
+    "relation": "fault_state_prerequisite",
+    "tail": "Parameter ID 236 Priority == 0",
+    "sources": [
+      "inner_lamp_ssts_0205"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WindowSwitchBacklightRequest",
+    "relation": "trigger_condition",
+    "tail": "VehSideLghtSts_l_DCMFL_LIN ∈ {0, 1, 2, 3}",
+    "sources": [
+      "inner_lamp_ssts_0206"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehSideLghtSts_l_DCMFL_LIN",
+    "relation": "input_interface",
+    "tail": "LIN",
+    "sources": [
+      "inner_lamp_ssts_0206"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehSideLghtSts_l_DCMFL_LIN",
+    "relation": "output_signal",
+    "tail": "DOTSM_FL",
+    "sources": [
+      "inner_lamp_ssts_0206"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehSideLghtSts_l_DCMFL_LIN",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": [
+      "inner_lamp_ssts_0206"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehSideLghtSts_l_DCMFL_LIN",
+    "relation": "input_source",
+    "tail": "Interior Lighting SSTS",
+    "sources": [
+      "inner_lamp_ssts_0206"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLSwReq_1",
+    "relation": "state_mapping",
+    "tail": "0x0 → Idle",
+    "sources": [
+      "inner_lamp_ssts_0208"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLSwReq_1",
+    "relation": "state_mapping",
+    "tail": "0x1 → Press",
+    "sources": [
+      "inner_lamp_ssts_0208"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLSwReq_1",
+    "relation": "state_mapping",
+    "tail": "0x2 → Reserved",
+    "sources": [
+      "inner_lamp_ssts_0208"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLSwReq_1",
+    "relation": "state_mapping",
+    "tail": "0x3 → Error",
+    "sources": [
+      "inner_lamp_ssts_0208"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

@@ -1,0 +1,51 @@
+```json
+[
+  {
+    "head": "制动灯关闭原因被存储",
+    "relation": "前提条件",
+    "tail": "制动灯关闭原因代码为0x00至0x07",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "BrkLghtCls CtrlRsn",
+      "0x00=BrkLghtOpenCtrlRsn_0_None",
+      "0x01=BrkLghtOpenCtrlRsn_1_CANSignal",
+      "0x02=BrkLghtOpenCtrlRsn_1_HardWireSignal",
+      "0x03~0x07=Reversed"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯关闭原因信息",
+    "relation": "存储于",
+    "tail": "地址0x00",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "存储",
+      "0x00"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯关闭原因信息",
+    "relation": "包含子功能",
+    "tail": "最近10次制动灯点亮原因信息",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "存储",
+      "最近10次",
+      "制动灯点亮原因信息"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯关闭原因信息",
+    "relation": "依赖于",
+    "tail": "时间最近的一次原因放在序号最低位",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "时间最近的一次原因放在序号最低位"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

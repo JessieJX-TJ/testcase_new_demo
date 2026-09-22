@@ -1,0 +1,87 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯组合服务 ICB 与制动灯控制功能的逻辑交互",
+  "row_semantics": "表格描述了外灯组合服务 (ICB)、驱动处理模块 (RZCU) 和制动灯开关控制模块 (LHZCU) 之间在紧急制动灯控制方面的信号交互和状态流转逻辑。",
+  "column_semantics": "表格包含一个编号列，用于标识不同的逻辑步骤或交互点；右侧内容详细描述了每个步骤中涉及的控制器、信号名称、状态值及其相互作用。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "外灯组合服务 (Integrated Control Block)，负责基础服务调用和信号转换。"
+    },
+    {
+      "name": "RZCU",
+      "type": "Controller/Module",
+      "description": "驱动处理模块 (Rear Zone Control Unit)，接收 ICB 控制信号并反馈状态。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "制动灯开关控制模块 (Light Hazard Control Unit)，负责制动灯状态的最终控制和反馈。"
+    },
+    {
+      "name": "BrakeLightCtrlDelayPrm",
+      "type": "Parameter",
+      "description": "制动灯控制延时参数，配置为 60ms。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrakeLightCtrlReq",
+      "type": "Input Signal",
+      "description": "制动灯控制请求信号，由 ICB 发送至 RZCU。"
+    },
+    {
+      "name": "BrakeLightFucProStatus",
+      "type": "System State",
+      "description": "制动灯功能过程状态，由 ICB 接收。"
+    },
+    {
+      "name": "BrakeLightErrSta",
+      "type": "Fault Status",
+      "description": "制动灯错误状态，由 RZCU 反馈至 LHZCU。"
+    },
+    {
+      "name": "BrakeLightDrvEnPrm",
+      "type": "Parameter",
+      "description": "制动灯驱动使能参数，用于获取制动灯状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrakeLightCtrl",
+      "type": "Output Signal",
+      "description": "制动灯控制信号，由 ICB 转换后发送至 RZCU。"
+    },
+    {
+      "name": "BrakeLightSta",
+      "type": "System State",
+      "description": "制动灯状态，由 RZCU 和 LHZCU 共同控制和反馈。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "Fault Status",
+      "description": "制动灯错误状态，指示制动灯系统是否存在故障。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "BrakeLightCtrlDelayPrm",
+      "value": "60ms",
+      "description": "制动灯控制信号的延时时间，确保组合服务延时 60ms 后调用。"
+    },
+    {
+      "name": "Emergency Brake Light Extinguishing Delay",
+      "value": "≤40ms",
+      "description": "紧急制动灯熄灭的最大延时，要求左侧、右侧及高位制动灯需保持同步熄灭，三侧最大延时不能超过 40ms。"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证外灯组合服务 (ICB)、驱动处理模块 (RZCU) 和制动灯开关控制模块 (LHZCU) 在紧急制动灯控制场景下的信号交互逻辑、状态流转以及定时约束是否符合设计要求。",
+  "uncertain_points": []
+}
+```

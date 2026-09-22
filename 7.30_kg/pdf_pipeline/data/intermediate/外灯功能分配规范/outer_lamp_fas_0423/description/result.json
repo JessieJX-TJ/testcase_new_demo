@@ -1,0 +1,42 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 远光灯控制模块的功能分配规范",
+  "row_semantics": "逐条描述ICB（集成控制盒）与LHZCU/RHZCU（远光灯/近光灯控制单元）之间关于远光灯控制的信号交互、状态反馈及故障处理逻辑。",
+  "column_semantics": "无明确列，内容为按编号顺序排列的文本描述，主要包含功能描述、信号名称、状态值及其含义。",
+  "has_merged_cells": false,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "description": "Integrated Control Box，集成控制盒，负责接收服务接口或控制信号，并转发至LHZCU/RHZCU进行远光灯控制。"
+    },
+    {
+      "name": "LHZCU",
+      "description": "Left Headlight Zone Control Unit，左远光灯控制单元，负责接收ICB指令并执行远光灯相关操作。"
+    },
+    {
+      "name": "RHZCU",
+      "description": "Right Headlight Zone Control Unit，右远光灯控制单元，负责接收ICB指令并执行远光灯相关操作。"
+    }
+  ],
+  "core_conditions": [
+    "ICB接收来自[远光灯开关控制模块]的控制信号",
+    "LHZCU/RHZCU接收来自ICB的控制指令",
+    "LHZCU/RHZCU将执行状态反馈给ICB",
+    "LHZCU/RHZCU将故障状态反馈给ICB"
+  ],
+  "core_outputs": [
+    "远光灯的开启/关闭状态",
+    "远光灯图标指示灯的状态",
+    "远光灯的故障状态"
+  ],
+  "core_faults": [
+    "MainBeamLightErrorStatus",
+    "MainBeamLightErrSta"
+  ],
+  "core_timing_constraints": [
+    "远光灯熄灭同步性要求：左右侧需保持同步熄灭，两侧最大延时不能超过40ms。"
+  ],
+  "engineering_interpretation": "该技术规范用于验证整车外灯系统中远光灯的控制逻辑，包括信号传输、状态反馈、故障诊断以及熄灭同步性的正确性。",
+  "uncertain_points": []
+}

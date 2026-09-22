@@ -1,0 +1,123 @@
+```json
+[
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "触发条件",
+    "tail": "当车辆处于Normal Driving、AI Parking或AI Pilot模式，且车辆模式为TRANSPORT或EXHIBITION，车速低于或等于20Km/h并持续2秒，灯光开关设置为AUTO，近光灯反馈状态为关闭，LHZCU判断近光灯关闭，环境光状态满足条件时",
+    "triple_type": "if-then rule",
+    "evidence_terms": [
+      "UsrMd_3_NormalDriving",
+      "UsrMd_4_AIParking",
+      "UsrMd_5_AIPilot",
+      "VehMd_3_TRANSPORT",
+      "VehMd_5_EXHIBITION",
+      "VehSpdAvg≤20Km/h",
+      "CombLghtSwSta=AUTO",
+      "DippedBeamLightStatus=Off",
+      "LHZCU判断近光灯关闭"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "前提条件",
+    "tail": "远光灯自动控制功能处于激活状态",
+    "triple_type": "precondition",
+    "evidence_terms": [
+      "远光灯自动控制功能处于激活状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "抑制条件",
+    "tail": "当灯光开关状态不为AUTO时",
+    "triple_type": "suppression condition",
+    "evidence_terms": [
+      "CombLghtSwSta≠AUTO"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "抑制条件",
+    "tail": "当车速信号不满足≤20Km/h且持续2秒时",
+    "triple_type": "suppression condition",
+    "evidence_terms": [
+      "VehSpdAvg>20Km/h",
+      "持续时间<2S"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "抑制条件",
+    "tail": "当近光灯反馈状态为开启时",
+    "triple_type": "suppression condition",
+    "evidence_terms": [
+      "DippedBeamLightStatus=On"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "抑制条件",
+    "tail": "当LHZCU未判断近光灯关闭时",
+    "triple_type": "suppression condition",
+    "evidence_terms": [
+      "LHZCU未判断近光灯关闭"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "车辆模式（VehMd）",
+    "triple_type": "dependency",
+    "evidence_terms": [
+      "VehMd"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "车速信号（VehSpdAvg）",
+    "triple_type": "dependency",
+    "evidence_terms": [
+      "VehSpdAvg"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "灯光开关状态（CombLghtSwSta）",
+    "triple_type": "dependency",
+    "evidence_terms": [
+      "CombLghtSwSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "近光灯状态（DippedBeamLightStatus）",
+    "triple_type": "dependency",
+    "evidence_terms": [
+      "DippedBeamLightStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "LHZCU的近光灯判断结果",
+    "triple_type": "dependency",
+    "evidence_terms": [
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

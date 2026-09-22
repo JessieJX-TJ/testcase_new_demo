@@ -1,0 +1,75 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯（氛围灯）控制逻辑",
+  "row_semantics": "表格按功能流程划分，描述了氛围灯从关闭到点亮的触发条件、执行动作、退出条件以及异常处理。",
+  "column_semantics": "第一列定义了不同阶段的条件或动作类型（如前置条件、触发条件、执行动作等），第二列详细描述了该阶段的具体内容。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DoorFL1Lamp",
+      "type": "功能模块",
+      "description": "前门左侧氛围灯"
+    },
+    {
+      "name": "DoorFL1LampDrvCtrlMod",
+      "type": "控制器/模块",
+      "description": "氛围灯驱动控制模块"
+    },
+    {
+      "name": "ZCU",
+      "type": "控制器/模块",
+      "description": "区域控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DoorFL1LampOnOff_1",
+      "type": "输入信号",
+      "description": "氛围灯开关信号，0x1表示开启，0x0表示关闭"
+    },
+    {
+      "name": "DoorFL1LampColorCmd_1",
+      "type": "输入信号",
+      "description": "氛围灯颜色控制命令，0x00表示无请求"
+    },
+    {
+      "name": "DoorFL1LampBrtNsCmd_1",
+      "type": "输入信号",
+      "description": "氛围灯亮度控制命令，0x00表示无请求"
+    },
+    {
+      "name": "DoorFL1LampFadeSpdCmd_1",
+      "type": "输入信号",
+      "description": "氛围灯渐变速度控制命令"
+    },
+    {
+      "name": "ZCU_LIN_Signal",
+      "type": "输入信号",
+      "description": "ZCU通过LIN总线发送的信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorFL1Lamp",
+      "type": "输出信号",
+      "description": "前门左侧氛围灯的实际状态（点亮或关闭）"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "过压/欠压故障",
+      "type": "故障状态",
+      "description": "DoorFL1Lamp模块检测到电压异常"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "6s",
+      "type": "阈值/定时",
+      "description": "默认超时时间，若超过此时间未接收到ZCU的LIN信号，则关闭氛围灯"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证氛围灯在特定控制信号下的点亮和关闭逻辑，包括正常操作流程和异常情况下的安全处理机制。",
+  "uncertain_points": []
+}

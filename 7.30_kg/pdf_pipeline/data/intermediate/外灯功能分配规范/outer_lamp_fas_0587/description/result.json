@@ -1,0 +1,115 @@
+{
+  "table_type": "signal_table",
+  "topic": "转向灯开关控制模块 (LHZCU) 的信号交互与功能规范",
+  "row_semantics": "表格按编号顺序描述了转向灯控制系统中不同模块之间的信号交互、控制逻辑及状态反馈流程。",
+  "column_semantics": "表格仅有一列，内容为详细的文本描述，涵盖了信号定义、控制逻辑、状态反馈和定时要求。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "转向灯开关控制模块，负责接收转向灯控制输入并发送控制信号至RZCU"
+    },
+    {
+      "name": "RZCU",
+      "type": "Controller/Module",
+      "description": "驱动处理模块，负责根据ICB的控制信号驱动转向灯，并反馈状态信息"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "外灯组合服务模块，负责接收LHZCU的信号并转换为CAN总线信号，同时反馈状态信息"
+    },
+    {
+      "name": "DirnLghtCtrl",
+      "type": "Signal",
+      "description": "方向灯控制信号，用于控制转向灯的开启和关闭"
+    },
+    {
+      "name": "DirnLghtSts",
+      "type": "Signal",
+      "description": "方向灯状态信号，表示转向灯的实际工作状态"
+    },
+    {
+      "name": "DirnLghtFltsts",
+      "type": "Signal",
+      "description": "方向灯故障状态信号，指示转向灯是否存在故障"
+    },
+    {
+      "name": "DirnLghtSwReq",
+      "type": "Signal",
+      "description": "方向灯开关请求信号，由转向灯驱动处理模块发出"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "1.25Hz 频率闪烁",
+      "description": "转向灯按照1.25Hz频率闪烁（先on后off），一个闪烁周期为800ms，持续发送400ms"
+    },
+    {
+      "name": "60ms 分发延时",
+      "description": "ICB将接收到的LHZCU控制输入延时60ms分发至LHZCU/RZCU"
+    },
+    {
+      "name": "50ms 同步性最大延时",
+      "description": "三者（图标闪烁频率、声音提醒、实际转向灯闪烁频率）同步性允许的最大延时周期为50ms"
+    },
+    {
+      "name": "40ms 单侧转向灯同步性最大延时",
+      "description": "单侧转向灯的同步性允许的最大延时周期为40ms"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirnLghtCtrl_HW",
+      "description": "硬件方向灯控制信号，用于直接控制转向灯的亮灭"
+    },
+    {
+      "name": "DirnLghtSts_1_On",
+      "description": "左侧转向灯点亮状态反馈"
+    },
+    {
+      "name": "DirnLghtSts_1_Off",
+      "description": "左侧转向灯熄灭状态反馈"
+    },
+    {
+      "name": "DirnLghtFltsts_HW_0_False",
+      "description": "硬件方向灯故障状态反馈，表示无故障"
+    },
+    {
+      "name": "DirnLghtSwReq_2_Left_Second_gear_On",
+      "description": "左侧转向灯开关请求信号，第二档位开启"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirnLghtErrSts",
+      "description": "方向灯错误状态，当值为0x0时，表示无错误"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "800ms 闪烁周期",
+      "description": "转向灯闪烁的一个完整周期为800ms"
+    },
+    {
+      "name": "400ms 发送持续时间",
+      "description": "在每个闪烁周期内，信号发送持续时间为400ms"
+    },
+    {
+      "name": "60ms 延时",
+      "description": "ICB将控制信号从LHZCU接收后延时60ms再分发给LHZCU/RZCU"
+    },
+    {
+      "name": "50ms 同步延时",
+      "description": "图标闪烁频率、声音提醒与实际转向灯闪烁频率之间的最大允许延时为50ms"
+    },
+    {
+      "name": "40ms 单侧转向灯同步延时",
+      "description": "单侧转向灯之间的最大允许延时为40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了转向灯控制系统中各模块之间的信号交互逻辑、控制流程及关键性能指标，可用于验证转向灯系统的功能正确性、信号时序一致性以及故障反馈机制的有效性。",
+  "uncertain_points": []
+}

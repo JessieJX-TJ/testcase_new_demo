@@ -1,0 +1,36 @@
+{
+  "table_type": "other",
+  "topic": "远光灯开启同步性及ICB请求重发机制",
+  "row_semantics": "表格描述了远光灯开启的同步性要求、ICB（集成控制盒）发送转向灯请求后的重发机制，以及外灯状态主动获取的逻辑。",
+  "column_semantics": "无列结构，内容为多行文本描述，每行代表一个独立的技术规范点。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "MainBeamLight",
+    "ICB",
+    "LHZCU",
+    "Onchange"
+  ],
+  "core_conditions": [
+    "远光灯左侧和右侧需保持同步点亮",
+    "未收到MainBeamLight.ControlMainBeamLight.MainBeamLightResp反馈",
+    "请求状态未变",
+    "尝试重发3次后仍未反馈请求成功"
+  ],
+  "core_outputs": [
+    "MainBeamLightReq发送",
+    "MainBeamLightResp反馈",
+    "外灯状态通过Getter()方式获取"
+  ],
+  "core_faults": [
+    "MainBeamLightResp反馈缺失",
+    "外灯状态未及时反馈"
+  ],
+  "core_timing_constraints": [
+    "两侧最大延时不能超过40ms",
+    "尝试重发按照<=50ms周期重发3次",
+    "服务发现订阅或者外灯控制请求后的500ms内应获取状态"
+  ],
+  "engineering_interpretation": "该技术规范可用于验证远光灯开启的同步性、ICB请求重发机制的有效性，以及外灯状态获取的及时性和正确性。",
+  "uncertain_points": []
+}

@@ -1,0 +1,48 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Reverse Light Control Function Specification",
+  "row_semantics": "The row represents the ReverseLightControl function, detailing its interface name, parameter, and control logic.",
+  "column_semantics": "The columns represent different aspects of the function: the first column is the function name, the second column lists the consuming components (SOA, RZCU, ICB), and the third column provides detailed parameter information including the interface name, parameter name, and possible values for controlling the reverse light.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ReverseLightControl",
+      "type": "function",
+      "description": "The core function responsible for controlling the reverse light."
+    },
+    {
+      "name": "SOA",
+      "type": "controller",
+      "description": "Service Oriented Architecture component that consumes the ReverseLightControl service."
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "Regional Central Control Unit that consumes the ReverseLightControl service."
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Instrument Cluster Board that consumes the ReverseLightControl service."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ReverseLightCtrlReq",
+      "type": "input_parameter",
+      "description": "The parameter used to control the reverse light, with values indicating ON or OFF states."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ReverseLight",
+      "type": "output_signal",
+      "description": "The physical reverse light signal that turns on or off based on the control request."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table specifies the ReverseLightControl function's interface and parameter requirements, enabling verification of the system's ability to correctly interpret and execute commands to turn the reverse light on or off.",
+  "uncertain_points": []
+}

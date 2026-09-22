@@ -1,0 +1,49 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "LHZCU (Lighting and Hazard Control Unit) 外灯控制逻辑与接口响应规范",
+  "row_semantics": "表格按功能模块和执行动作进行组织，详细描述了LHZCU在不同场景下对外灯（包括日间行车灯、位置灯、前雾灯、远光灯等）的控制逻辑及对外接口的响应。",
+  "column_semantics": "表格包含两列：左侧为功能描述或执行动作分类，右侧为具体的控制逻辑或接口响应细节。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "LHZCU",
+    "ExteriorLightSwitchProcess",
+    "DayRunningLightFucProStatus",
+    "CombLightFucProSta",
+    "FrontFogLightFucProsSta",
+    "MainBeamLightFucProsSta",
+    "NumPltLampCtrlDelayPrm"
+  ],
+  "core_conditions": [
+    "CombLightFucProSta=0x4",
+    "FrontFogLightFucProsSta=0x1",
+    "MainBeamLightFucProsSta=0x1",
+    "MainBeamLghtOnReq!=0x2",
+    "CombLightSwSta=0x0",
+    "CombLightSwSta=0x3=AUTO",
+    "InsdFnCfgFrtFogLght=0x1"
+  ],
+  "core_outputs": [
+    "SidePositionAndDippedBeam ON",
+    "Only FrontFogLight ON",
+    "FrontFogLightAndDippedLight ON",
+    "FrontFogLightAndSideLight ON",
+    "MainBeamLghtSwReq_2_Flash",
+    "DayRunningLight OFF",
+    "SidePositionLight ON",
+    "DippedBeamLight ON",
+    "NumPltLampCtrlDelayPrm"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "60ms delay for NumPltLampCtrlDelayPrm"
+  ],
+  "engineering_interpretation": "该表格定义了LHZCU在不同驾驶场景和外部开关状态下的外灯控制逻辑，以及其对外部系统（如ICB）的接口响应。可用于验证LHZCU在各种条件下对外灯的正确控制行为，包括灯光组合、状态切换、延迟响应等。",
+  "uncertain_points": [
+    "具体的功能实现细节未在表格中明确说明，例如某些逻辑的具体触发条件。",
+    "表格中未提及所有可能的故障状态及其处理逻辑。",
+    "对于某些信号的状态值（如0x0, 0x1等），未明确其在不同上下文中的具体含义。"
+  ]
+}
+```

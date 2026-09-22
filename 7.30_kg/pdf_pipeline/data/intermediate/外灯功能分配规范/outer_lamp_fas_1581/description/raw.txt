@@ -1,0 +1,72 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯开关状态与自动灯光请求信号定义",
+  "row_semantics": "表格按接口名称（Interface Name）列出不同的信号或服务接口，每个接口描述了其方向、类型、提供方、接收方、路径及来源。",
+  "column_semantics": {
+    "接口名称": "信号或服务的名称",
+    "方向": "信号的传输方向（输入/输出）",
+    "类型": "信号的数据类型",
+    "发送方/提供方": "信号的发送端或服务的提供者",
+    "接收方/消费方": "信号的接收端或服务的消费者",
+    "路径": "信号传输的通道或路径",
+    "接口来源": "信号的来源模块或控制器"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess.DayRunningLghtSwStatus",
+      "type": "Service Interface",
+      "description": "订阅昼间行车灯开关状态的服务接口",
+      "direction": "Input",
+      "provider": "LHZ CU",
+      "consumer": "S32G MCU",
+      "channel": "RHZCU_ETH",
+      "parameters": [
+        {
+          "name": "DayRunningLghtSwSta",
+          "values": [
+            {"value": "0x0", "description": "OFF"},
+            {"value": "0x1", "description": "ON"},
+            {"value": "0x2", "description": "Unknown"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AutoLghtOnReq",
+      "type": "Signal",
+      "description": "自动灯光开启请求信号",
+      "direction": "Output",
+      "provider": "LHZ CU",
+      "consumer": "ICB",
+      "channel": "BKBCA_NFD",
+      "values": [
+        {"value": "0x0", "description": "AutoLghtOnReq_0_False"},
+        {"value": "0x1", "description": "AutoLghtOnReq_1_True"}
+      ]
+    },
+    {
+      "name": "TrShiftLvrPosV",
+      "type": "Signal",
+      "description": "变速杆位置电压信号",
+      "values": [
+        {"value": "0x0", "description": "Valid"},
+        {"value": "0x1", "description": "Invalid"}
+      ]
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "AutoLghtOnReq",
+      "description": "控制自动灯光是否开启的请求信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯开关状态服务接口和自动灯光请求信号的详细参数，可用于验证车辆在不同驾驶模式下外灯开关状态的正确传递以及自动灯光功能的正确响应。",
+  "uncertain_points": []
+}
+```

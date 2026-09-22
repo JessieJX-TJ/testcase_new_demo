@@ -1,0 +1,436 @@
+```json
+[
+  {
+    "head": "HzrdLghtCtrlMdl",
+    "relation": "receives_input_from",
+    "tail": "HzrdLghtSwReq",
+    "sources": ["outer_lamp_ssts_0408"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightState",
+    "relation": "has_value_mapping",
+    "tail": "0x0=OFF; 0x1=ON; 0x2=Error; 0x3=Unknown",
+    "sources": ["outer_lamp_ssts_0409"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightState",
+    "relation": "is_provided_by_interface",
+    "tail": "Interface Name: MainBeamLightState",
+    "sources": ["outer_lamp_ssts_0409"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtSwMdl",
+    "relation": "triggers_fault_handling",
+    "tail": "HzrdLghtSwTimeoutFaultHandling",
+    "sources": ["outer_lamp_ssts_0410"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtSwTimeoutFaultHandling",
+    "relation": "has_activation_condition",
+    "tail": "HzrdLghtSw grounded continuously for ≥20s",
+    "sources": ["outer_lamp_ssts_0410"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtSwTimeoutFaultHandling",
+    "relation": "has_prerequisite",
+    "tail": "HzrdLghtSwSOAEnPrm == 0 (Disable)",
+    "sources": ["outer_lamp_ssts_0410"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC",
+    "relation": "is_set_for",
+    "tail": "HzrdLghtSwTimeoutFaultHandling",
+    "sources": ["outer_lamp_ssts_0410"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtSwMdl",
+    "relation": "outputs_request",
+    "tail": "HzrdLghtSwReq = 0x0 (Inactive) during fault handling",
+    "sources": ["outer_lamp_ssts_0410"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwMdl",
+    "relation": "triggers_status_feedback",
+    "tail": "BrkLghtSwSts feedback activation",
+    "sources": ["outer_lamp_ssts_0411"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwSts feedback activation",
+    "relation": "has_activation_condition",
+    "tail": "BrkLghtSwMdl sends BrkLghtSwReq = 0x0 to BrkLghtCtrlMdl for ≥3 frames",
+    "sources": ["outer_lamp_ssts_0411"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwSts",
+    "relation": "has_value_mapping",
+    "tail": "0x0 = BrkLghtSwSts_0_Off",
+    "sources": ["outer_lamp_ssts_0411"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwStsV",
+    "relation": "has_value_mapping",
+    "tail": "0x0 = BrkLghtSwStsV_0_Valid",
+    "sources": ["outer_lamp_ssts_0411"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwSts feedback activation",
+    "relation": "has_prerequisite",
+    "tail": "Brake pedal switch signal is high-active",
+    "sources": ["outer_lamp_ssts_0411"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtSwSOAEnPrm",
+    "relation": "enables_diagnosis",
+    "tail": "MainBeamLghtSwShortToGroundDiagnosis",
+    "sources": ["outer_lamp_ssts_0413"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtSwShortToGroundDiagnosis",
+    "relation": "has_activation_condition",
+    "tail": "MainBeamLghtSw shorted to ground",
+    "sources": ["outer_lamp_ssts_0413"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwitchSta",
+    "relation": "has_error_value",
+    "tail": "0x2 = Error",
+    "sources": ["outer_lamp_ssts_0413"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightCtrlMdl",
+    "relation": "receives_input_from",
+    "tail": "MainBeamLightSwitchSta",
+    "sources": ["outer_lamp_ssts_0413"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1077-11",
+    "relation": "diagnoses",
+    "tail": "MainBeamLghtSw shorted to ground",
+    "sources": ["outer_lamp_ssts_0413"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwSts",
+    "relation": "has_activation_condition",
+    "tail": "Version V",
+    "sources": ["outer_lamp_ssts_0414"],
+    "conflict": true,
+    "conflict_note": "Conflicting with '2 updated to high-active' — version identifier 'V' is ambiguous and inconsistent with numeric versioning (e.g., V2.0). Requires clarification whether 'V' refers to same or different version."
+  },
+  {
+    "head": "BrkLghtSwSts",
+    "relation": "has_activation_condition",
+    "tail": "Updated to high-active in Version V2.0",
+    "sources": ["outer_lamp_ssts_0414"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PosLamp_LH&RH_HSD",
+    "relation": "is_output_of",
+    "tail": "Position lamp hard-wired driver (V1.3+)",
+    "sources": ["outer_lamp_ssts_0414"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwStuckFaultTimeout",
+    "relation": "has_timeout_value",
+    "tail": "600s (V1.4+)",
+    "sources": ["outer_lamp_ssts_0414"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtCrashSwPreprocessing",
+    "relation": "has_prerequisite",
+    "tail": "Version V5+ enabled",
+    "sources": ["outer_lamp_ssts_0414"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SOA service chain for brake/turn/main beam lights",
+    "relation": "updated_in_version",
+    "tail": "V3.0",
+    "sources": ["outer_lamp_ssts_0414"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake/turn light communication",
+    "relation": "changed_from",
+    "tail": "SOA → CAN (V4.0)",
+    "sources": ["outer_lamp_ssts_0414"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowBeamLight control method",
+    "relation": "changed_from",
+    "tail": "Method → Notifier (V4.0)",
+    "sources": ["outer_lamp_ssts_0414"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ConfigurationItem",
+    "relation": "has_range_constraint",
+    "tail": "Parameter range / Range",
+    "sources": ["inner_lamp_fas_0494", "inner_lamp_ssts_0008", "inner_lamp_ssts_0166", "inner_lamp_ssts_0259", "inner_lamp_ssts_0264", "inner_lamp_ssts_0371", "inner_lamp_ssts_0431", "inner_lamp_ssts_0513", "inner_lamp_ssts_0527", "outer_lamp_ssts_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ConfigurationItem",
+    "relation": "has_conversion_definition",
+    "tail": "Definition / Conversion",
+    "sources": ["inner_lamp_ssts_0264", "inner_lamp_ssts_0371", "inner_lamp_ssts_0431", "outer_lamp_ssts_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ConfigurationItem",
+    "relation": "has_default_value",
+    "tail": "Default value / Default",
+    "sources": ["inner_lamp_fas_0494", "inner_lamp_ssts_0071", "inner_lamp_ssts_0166", "inner_lamp_ssts_0513", "outer_lamp_ssts_0415"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightStatus",
+    "relation": "has_unknown_state_value",
+    "tail": "0x4 = Unknown",
+    "sources": ["outer_lamp_ssts_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BCU",
+    "relation": "outputs_status",
+    "tail": "ExteriorLightStatus = 0x4 (Unknown)",
+    "sources": ["outer_lamp_ssts_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamSw_SIG",
+    "relation": "is_analog_input_for",
+    "tail": "MainBeamLghtSwReq derivation",
+    "sources": ["outer_lamp_ssts_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtSwReq",
+    "relation": "has_value_mapping",
+    "tail": "0x0=Off; 0x1=On; 0x2=Flash",
+    "sources": ["outer_lamp_ssts_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitch.MainBeamLightSwitchStatus",
+    "relation": "has_value_mapping",
+    "tail": "0x0=OFF; 0x1=ON; 0x2=Flash; 0x3=Error",
+    "sources": ["outer_lamp_ssts_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitch.MainBeamLightSwitchStatus",
+    "relation": "depends_on",
+    "tail": "MainBeamLghtSwReq",
+    "sources": ["outer_lamp_ssts_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtCtrlMdl",
+    "relation": "triggers_control_signal",
+    "tail": "MainBeamLightControl signal",
+    "sources": ["outer_lamp_ssts_0418"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightControl signal",
+    "relation": "has_activation_condition",
+    "tail": "MainBeamLightCtrReq == 0 (Off), InstanceID == 1",
+    "sources": ["outer_lamp_ssts_0418"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightControl signal",
+    "relation": "has_prerequisite",
+    "tail": "MainBeamLghtFbkSOAEnPrm == 1 (Enable)",
+    "sources": ["outer_lamp_ssts_0418"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtOpenCircuitDetection_Left",
+    "relation": "has_activation_condition",
+    "tail": "BrkLghtFbkSOAEnPrm == 1 (Enable) AND left brake light is in output state",
+    "sources": ["outer_lamp_ssts_0420"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl_HW",
+    "relation": "has_prerequisite",
+    "tail": "RRDircnLghtSts is output-enabled",
+    "sources": ["outer_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl_HW",
+    "relation": "controls_state",
+    "tail": "RRDircnLghtSts",
+    "sources": ["outer_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl_HW",
+    "relation": "has_value_semantics",
+    "tail": "0x0 = RRDircnLght OFF; 0x1 = RRDircnLght ON",
+    "sources": ["outer_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtSts",
+    "relation": "depends_on",
+    "tail": "RRDircnLghtCtrl_HW",
+    "sources": ["outer_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILamp_RH_HSD",
+    "relation": "drives",
+    "tail": "Rear right turn lamp (tail lamp)",
+    "sources": ["outer_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightControl_DirectionLightCtReq",
+    "relation": "is_input_from",
+    "tail": "RZCU",
+    "sources": ["outer_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightControl_DirectionLightCtReq",
+    "relation": "triggers_action",
+    "tail": "Control right rear turn lamp ON/OFF",
+    "sources": ["outer_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDILghtDrvMdl",
+    "relation": "drives_output",
+    "tail": "DILamp_LH_HSD",
+    "sources": ["outer_lamp_ssts_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDILghtDrvMdl",
+    "relation": "sends_status_feedback",
+    "tail": "FLDILghtSts_HW = 1 (On) to DILghtCtrlMdl",
+    "sources": ["outer_lamp_ssts_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDILghtSts_HW status feedback",
+    "relation": "has_activation_condition",
+    "tail": "FLDircnLghtCtrl_HW == 1 (On)",
+    "sources": ["outer_lamp_ssts_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDILghtSts_HW status feedback",
+    "relation": "has_persistence_requirement",
+    "tail": "At least 3 consecutive frames",
+    "sources": ["outer_lamp_ssts_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDILghtDrvMdl",
+    "relation": "exits_driving_mode",
+    "tail": "FLDircnLghtCtrl_HW == 0 (Off)",
+    "sources": ["outer_lamp_ssts_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exlDircnLghtHwDrvEnPrm",
+    "relation": "enables_hardware_driving",
+    "tail": "FLDILghtDrvMdl driving DILamp_LH_HSD",
+    "sources": ["outer_lamp_ssts_0425"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PosLamp_LH_OpenCircuitFault",
+    "relation": "has_activation_condition",
+    "tail": "Left front position lamp is in output state",
+    "sources": ["outer_lamp_ssts_0426"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1061-13",
+    "relation": "diagnoses",
+    "tail": "PosLamp_LH_OpenCircuitFault",
+    "sources": ["outer_lamp_ssts_0426"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

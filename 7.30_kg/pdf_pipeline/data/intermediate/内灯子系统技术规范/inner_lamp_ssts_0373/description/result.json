@@ -1,0 +1,66 @@
+{
+  "table_type": "signal_table",
+  "topic": "Ambient Lamp Control System Interface Specifications",
+  "row_semantics": "Each row represents a specific interface signal related to ambient lamp control, detailing its properties and communication characteristics.",
+  "column_semantics": {
+    "Interface Name": "The name of the communication interface or signal.",
+    "Direction": "Indicates whether the signal is an input or output.",
+    "Type": "The communication protocol type (e.g., CAN, LIN, SOA service).",
+    "Sender/Provider": "The entity responsible for sending or providing the signal.",
+    "Receiver/Consumer": "The entity responsible for receiving or consuming the signal.",
+    "Channel": "The specific communication channel used for the signal.",
+    "Interface Source": "The source of the interface, often indicating internal or external origin."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RHZCU",
+      "type": "Controller",
+      "description": "Right Hand Zone Control Unit, responsible for ambient lamp control."
+    },
+    {
+      "name": "RoofAmbtLampA_LH",
+      "type": "Module",
+      "description": "Roof Ambient Lamp A Left Hand side module."
+    },
+    {
+      "name": "RoofAmbtLampB_RH",
+      "type": "Module",
+      "description": "Roof Ambient Lamp B Right Hand side module."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "AmbtLghtRHRollingCtr_1",
+      "description": "Ambient light rolling control signal, continuously sent in a loop from 0-255."
+    },
+    {
+      "name": "RoofLHALampOnOff_1",
+      "description": "Request to turn on/off the roof ambient lamp, with ON/OFF states defined by specific values."
+    },
+    {
+      "name": "RoofLHALampColorCmd_1",
+      "description": "Command signal for setting the color of the roof ambient lamp, with values ranging from 0x00 to 0xFF."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RoofAmbtLampA_LH",
+      "description": "Output signal controlling the left-hand roof ambient lamp."
+    },
+    {
+      "name": "RoofAmbtLampB_RH",
+      "description": "Output signal controlling the right-hand roof ambient lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "AmbtLghtRHRollingCtr_1",
+      "description": "Must be continuously sent in a loop from 0-255; if not updated, breathing stops."
+    }
+  ],
+  "engineering_interpretation": "This table defines the communication interfaces and signal specifications for controlling ambient lamps in a vehicle, primarily involving the RHZCU controller and roof ambient lamp modules. It specifies how signals are sent and received, their types, and the conditions under which they operate, such as continuous rolling signals and color commands.",
+  "uncertain_points": []
+}

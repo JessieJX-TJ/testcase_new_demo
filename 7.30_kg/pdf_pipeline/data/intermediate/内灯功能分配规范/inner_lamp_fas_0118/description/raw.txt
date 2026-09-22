@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "内灯（Interior Light）功能分配规范",
+  "row_semantics": "表格的每一行代表一个接口或信号的具体定义，包括其名称、方向、类型、发送方/提供方、接收方/消费方、路径及接口来源。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，用于标识该信号的功能。",
+    "Direction": "信号的方向，如输入、输出或双向。",
+    "Type": "信号的类型，如CAN/LIN/SOA服务或硬件线等。",
+    "Sender/Provider": "信号的发送方或提供方，通常是某个控制器或服务。",
+    "Receiver/Consumer": "信号的接收方或消费方，通常是另一个控制器或服务。",
+    "Channel": "信号传输的路径或通道。",
+    "Interface Source": "接口的来源，即信号的出处或来源模块。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "CnsoStorgLampRCtrlCmd",
+      "type": "Signal",
+      "description": "内灯控制命令信号，用于控制内灯的开关状态。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "LHZCU（Lighting and Hazard Control Unit），内灯控制单元，负责处理内灯相关的控制逻辑。"
+    },
+    {
+      "name": "LHZC U",
+      "type": "Controller/Module",
+      "description": "LHZC U（Lighting and Hazard Control Unit），内灯控制单元，可能是LHZCU的另一种表述或相关模块。"
+    },
+    {
+      "name": "SST S",
+      "type": "Controller/Module",
+      "description": "SST S（System Sub-Unit），系统子单元，作为内灯控制命令信号的来源模块。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "CnsoStorgLampRCtrlCmd",
+      "value": "0x0=Close; 0x1=Open;",
+      "description": "内灯控制命令信号的值定义，0x0表示关闭，0x1表示打开。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了内灯控制命令信号（CnsoStorgLampRCtrlCmd）的接口规范，包括其方向、类型、发送方、接收方、路径及来源模块，可用于验证内灯控制命令信号在不同控制器之间的正确传输和功能实现。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,18 @@
+前置条件
+1. exlDipBeamHwDrvEnPrm==1
+2. 右近光灯未输出状态
+触发条件
+检测到右近光灯短路到电源
+执行动作
+1.【RDipdBeamLghtDrvMdl】停止驱动右近光灯输出
+(DipdBeamHdlmp_RH_HSD)
+2.【RDipdBeamLghtDrvMdl】持续发送DippedBeamLightStatus.
+DippedBeamLightSta=0(Off)InstanceID=2)至
+【DipdBeamLghtCtrlMdl】,至少发送三帧
+【RDipdBeamLghtDrvMdl】持续发送{DippedBeamLight.
+DippedBeamLightErrorStatus.DippedBeamLightErrorSta}=0x1(Error)
+(InstanceID=2)至【DipdBeamLghtCtrlMdl】,至少发送三帧
+4. 置位 DTC
+退出条件
+检测到短路恢复
+异常处理

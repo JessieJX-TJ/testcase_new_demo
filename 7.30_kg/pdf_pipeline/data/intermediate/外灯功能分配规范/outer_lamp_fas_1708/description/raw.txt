@@ -1,0 +1,82 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "整车外灯系统功能需求与更新规范",
+  "row_semantics": "按版本号（V7.x）和发布日期组织的逐项功能需求或更新内容，每行代表一个具体的开发任务或需求变更。",
+  "column_semantics": "表格包含以下列：版本号、发布日期、负责人、以及详细的功能描述（包括新增、修改、删除的需求）。部分行还包含S31L P阶段和S31L SOP阶段的具体实现细节。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "外灯系统",
+      "description": "包括日间行车灯、转向灯、危险报警灯、远光灯、近光灯、辅助远光灯、位置灯、拖车转向灯、IHC使能开关等"
+    },
+    {
+      "name": "车身控制模块 (BCM)",
+      "description": "负责接收外部信号并控制相关灯光的开启/关闭逻辑"
+    },
+    {
+      "name": "智己 S31L",
+      "description": "特定车型平台，定义了该车型的灯光系统功能和配置"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "上电开启条件",
+      "description": "日间行车灯在车辆上电时自动开启"
+    },
+    {
+      "name": "车速条件",
+      "description": "远光灯激活需车速大于40kph"
+    },
+    {
+      "name": "模式切换条件",
+      "description": "Autohold关闭大灯开关退出日间行车灯的需求"
+    },
+    {
+      "name": "物理开关状态",
+      "description": "前雾灯和后雾灯开关控制增加物理开关方案"
+    },
+    {
+      "name": "环境感知条件",
+      "description": "光雨传感器触发自动灯光冷启动"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "灯光状态输出",
+      "description": "如转向灯开关瞬态操作状态输出、远光灯开启状态"
+    },
+    {
+      "name": "信号发送",
+      "description": "位置灯点亮CAN信号SideLightSts发送逻辑"
+    },
+    {
+      "name": "指示器状态",
+      "description": "拖车转向灯指示器、IHC工作状态指示"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "动力系统故障点",
+      "description": "双闪灯需求由动力系统故障点触发"
+    },
+    {
+      "name": "IPD请求",
+      "description": "远光灯开启由IPD（智能泊车辅助）请求触发"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "远光灯退出条件",
+      "description": "辅助远光灯退出条件为车顶射灯在展车模式下禁止开启"
+    }
+  ],
+  "engineering_interpretation": "该表格详细记录了智己S31L车型外灯系统在不同版本迭代中的功能需求、逻辑变更和实现细节，可用于验证各版本外灯系统的功能正确性、逻辑一致性以及与整车其他系统的交互是否符合设计要求。",
+  "uncertain_points": [
+    "具体CAN信号的详细定义未在表格中给出",
+    "部分功能描述中的'根据产品需求'未明确说明具体需求内容",
+    "表格中未提及具体的硬件接口或电气参数"
+  ]
+}
+```

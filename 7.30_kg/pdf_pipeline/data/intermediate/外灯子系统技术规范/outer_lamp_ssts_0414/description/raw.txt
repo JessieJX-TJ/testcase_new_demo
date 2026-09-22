@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "other",
+  "topic": "外灯控制逻辑版本更新记录",
+  "row_semantics": "每次软件版本更新的详细变更内容，按时间顺序排列。",
+  "column_semantics": {
+    "Version": "软件版本号，标识不同迭代。",
+    "Change Date": "版本更新日期。",
+    "Name": "本次更新的负责人或团队名称（在此表中为空）。",
+    "Change Log": "本次更新的具体内容描述。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    "LHZCU", // 外灯主控单元
+    "RZCU",  // 制动灯驱动处理模块
+    "PosLamp_LH&RH_HSD", // 位置灯硬线驱动输出
+    "SOA",   // Service-Oriented Architecture (面向服务架构)
+    "Method",// CAN通讯中的方法名
+    "Notifer" // CAN通讯中的通知器
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    "制动灯开关状态",
+    "转向灯状态",
+    "远光灯状态",
+    "危险告警灯状态",
+    "倒车灯状态",
+    "左前雾灯状态",
+    "右前雾灯状态"
+  ],
+  "core_faults": [
+    "制动灯粘连故障"
+  ],
+  "core_timing_constraints": [
+    "制动灯开关粘连故障时间为 600s"
+  ],
+  "engineering_interpretation": "该表格记录了外灯控制系统软件版本的迭代更新历史，可用于验证各版本间功能变更的正确性，特别是制动灯、转向灯、远光灯等核心外灯功能的逻辑实现与性能要求。",
+  "uncertain_points": [
+    "Name列未填写具体人员或团队信息，无法追溯变更责任人。",
+    "部分变更内容（如'适配更新'、'细化开关处理'）描述较为模糊，缺乏具体的实现细节。",
+    "未明确列出所有涉及的输入信号和系统状态，需结合其他文档补充完整。"
+  ]
+}
+```

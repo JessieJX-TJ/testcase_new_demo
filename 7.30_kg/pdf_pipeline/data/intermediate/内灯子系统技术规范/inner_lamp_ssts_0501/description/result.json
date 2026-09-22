@@ -1,0 +1,148 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - Door Rear Right Lamp Fade Speed Command",
+  "row_semantics": "Each row represents a different fade speed rate for the rear right door lamp, defined by its duration (e.g., 1s, 2s) and associated breathing mode.",
+  "column_semantics": {
+    "Column1": "Fade Rate Identifier (e.g., Rate2, Rate3)",
+    "Column2": "Duration of the Fade Cycle in Seconds",
+    "Column3": "Associated Breathing Mode (e.g., Original Breathing Mode 2)",
+    "Column4": "Description/Status (e.g., New, Original)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorRR6LampFadeSpdCmd_1",
+      "type": "Function",
+      "description": "Controls the fade speed of the rear right door lamp."
+    },
+    {
+      "name": "RHZCU",
+      "type": "Controller/Module",
+      "description": "Body Control Module responsible for processing lighting commands."
+    },
+    {
+      "name": "DoorAmbtLampF_RR",
+      "type": "Output Signal",
+      "description": "Signal sent to control the ambient lighting of the rear right door lamp."
+    },
+    {
+      "name": "LIN",
+      "type": "Input Signal",
+      "description": "Local Interconnect Network communication bus used for sending commands."
+    },
+    {
+      "name": "RHZCU_LIN4",
+      "type": "Input Signal",
+      "description": "Specific LIN channel used for this lighting command."
+    },
+    {
+      "name": "SSTS",
+      "type": "System",
+      "description": "Sub System Technical Specification, indicating this is part of a larger vehicle system specification."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Mode",
+      "description": "Different modes define how the lamp fades in and out, with some being new additions.",
+      "values": [
+        "Original Breathing Mode 1",
+        "Original Breathing Mode 2",
+        "Original Breathing Mode 3",
+        "Original Breathing Mode 4",
+        "Original Breathing Mode 5",
+        "Original Breathing Mode 6"
+      ]
+    },
+    {
+      "name": "Fade Duration",
+      "description": "Time taken for one complete fade cycle (on/off or vice versa).",
+      "values": [
+        "1s",
+        "2s",
+        "2.4s",
+        "3s",
+        "3.5s",
+        "4s",
+        "4.5s",
+        "5s",
+        "6s",
+        "7s",
+        "8s",
+        "10s",
+        "12s"
+      ]
+    },
+    {
+      "name": "Command Value",
+      "description": "Value sent via LIN to control the fade behavior.",
+      "values": [
+        "0x0",
+        "0x1",
+        "0x2",
+        "0x3"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorRR6LampFadeSpdCmd_1_0_Spd0",
+      "type": "Output Signal",
+      "description": "Command to set the fade speed to the slowest mode (2000ms)."
+    },
+    {
+      "name": "DoorRR6LampFadeSpdCmd_1_1_Spd1",
+      "type": "Output Signal",
+      "description": "Command to set the fade speed to a medium-slow mode (300ms)."
+    },
+    {
+      "name": "DoorRR6LampFadeSpdCmd_1_2_Spd2",
+      "type": "Output Signal",
+      "description": "Command to set the fade speed to a medium-fast mode (100ms). This is marked as capability reserved."
+    },
+    {
+      "name": "DoorRR6LampFadeSpdCmd_1_3_Spd3",
+      "type": "Output Signal",
+      "description": "Command to set the fade speed to the fastest mode (reserved for future use)."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Fade Speed",
+      "description": "Time required for the lamp to transition from current state to target state.",
+      "values": {
+        "Spd0": "2000ms",
+        "Spd1": "300ms",
+        "Spd2": "100ms",
+        "Spd3": "(Reserved 0)"
+      }
+    },
+    {
+      "name": "Breathing Cycle",
+      "description": "Duration of each breathing cycle (fade in/out).",
+      "values": [
+        "1s",
+        "2s",
+        "2.4s",
+        "3s",
+        "3.5s",
+        "4s",
+        "4.5s",
+        "5s",
+        "6s",
+        "7s",
+        "8s",
+        "10s",
+        "12s"
+      ]
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters for controlling the fade speed and breathing modes of the rear right door lamp in the Interior Lighting Sub System. It specifies how different commands map to specific fade durations and breathing patterns, which can be used to verify that the lamp responds correctly to various input signals from the Body Control Module over the LIN network.",
+  "uncertain_points": [
+    "The exact behavior of 'Spd2' and 'Spd3' when they are reserved or not yet implemented.",
+    "The specific timing relationship between the breathing mode and the fade speed command.",
+    "The detailed implementation of the 'New' breathing modes compared to the original ones."
+  ]
+}

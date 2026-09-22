@@ -1,0 +1,108 @@
+```json
+[
+  {
+    "head": "近光灯控制信号发出",
+    "relation": "前提条件",
+    "tail": "用户模式不满足: UsgMd=0x0=UsgMd_0_Sleep;& UsgMd=0x1=UsgMd_1_Standby;& UsgMd=0x6=UsgMd_6_XOTA;& UsgMdV=Valid",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["用户模式不满足", "UsgMd"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制信号发出",
+    "relation": "前提条件",
+    "tail": "整车模式不满足: VehMd=0x3=VehMd_3_TRANSPORT;&VehMdV=Valid",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["整车模式不满足", "VehMd"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制信号发出",
+    "relation": "前提条件",
+    "tail": "灯光开关状态为非Auto:{ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta}!=0x3=AUTO",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["灯光开关状态", "ExteriorLightSwitchProcess", "CombLghtSwStatus"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制信号发出",
+    "relation": "前提条件",
+    "tail": "智慧场景灯光设置为禁止:PersonalizationData.DLPSceneLightSet.DLPSceneLightSetInfo=0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["智慧场景灯光设置", "PersonalizationData", "DLPSceneLightSet"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制信号发出",
+    "relation": "前提条件",
+    "tail": "车辆已进入隧道且环境光检测状态为True:NaviRoadInfoService.CurRoadRmndInfo.CurRoadInfo.RoadType=Ox2-LinkTypeTunnel && AutoLghtOnReq_1=0x1=AutoLghtOnReq_1_True",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["车辆进入隧道", "环境光检测", "NaviRoadInfoService", "RoadType", "AutoLghtOnReq"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制信号发出",
+    "relation": "前提条件",
+    "tail": "双闪灯开启:(a&b)(c&d)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["双闪灯开启", "a", "b", "c", "d"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB将服务接口或控制信号转换成CAN信号,并控制近光灯熄灭",
+    "relation": "前提条件",
+    "tail": "近光灯手动关闭:ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta=0x0=OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["近光灯手动关闭", "ExteriorLightSwitchProcess", "CombLghtSwStatus"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制信号发出",
+    "relation": "抑制条件",
+    "tail": "双闪灯开启:(a&b)(c&d)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["双闪灯开启", "a", "b", "c", "d"],
+    "confidence_note": "medium"
+  },
+  {
+    "head": "ICB将服务接口或控制信号转换成CAN信号,并控制近光灯熄灭",
+    "relation": "前提条件",
+    "tail": "近光灯控制模块LHZCU]同时发出控制信号给ICB:LDipdBeamLghtCtrl=0x0=LDipdBeamLghtCtrl_0_Off; RDipdBeamLghtCtrl=0x0=RDipdBeamLghtCtrl_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["近光灯控制模块", "LHZCU", "ICB", "LDipdBeamLghtCtrl", "RDipdBeamLghtCtrl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB将服务接口或控制信号转换成CAN信号,并控制近光灯熄灭",
+    "relation": "依赖于",
+    "tail": "近光灯控制模块LHZCU]接口发送:SidePositionAndDippedBeam OFF;;给 ICB",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": ["近光灯控制模块", "LHZCU", "ICB", "SidePositionAndDippedBeam"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "[外灯控制组合服务ICB]调用接口:",
+    "relation": "前提条件",
+    "tail": "ICB将服务接口或控制信号转换成CAN信号,并控制近光灯熄灭",
+    "triple_type": "包含子功能",
+    "evidence_terms": ["外灯控制组合服务", "ICB", "CAN信号", "近光灯"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "[HMI子系统ICB]调用接口:",
+    "relation": "前提条件",
+    "tail": "[外灯控制组合服务ICB]调用接口:",
+    "triple_type": "包含子功能",
+    "evidence_terms": ["HMI子系统", "ICB", "外灯控制组合服务"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "灯指示灯显示",
+    "relation": "前提条件",
+    "tail": "[HMI子系统ICB]调用接口:",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["灯指示灯", "HMI子系统", "ICB"],
+    "confidence_note": "high"
+  }
+]
+```

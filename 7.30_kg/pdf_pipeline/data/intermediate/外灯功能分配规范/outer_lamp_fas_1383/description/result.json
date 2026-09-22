@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"logic_table\",\n  \"topic\": \"外灯控制逻辑 - 近光灯与后雾灯联动功能\",\n  \"row_semantics\": \"描述特定条件下触发的动作及执行结果的逻辑规则\",\n  \"column_semantics\": {\n    \"1\": \"条件列表，定义触发动作的前提\",\n    \"2\": \"触发动作列表，描述在满足条件时执行的操作\",\n    \"3\": \"执行动作列表，详细说明动作的实现方式和参数\"\n  },\n  \"has_merged_cells\": true,\n  \"header_levels\": 1,\n  \"core_entities\": [\n    \"UsrMd\", // 用户模式\n    \"VehMd\", // 车辆模式\n    \"DippedBeamLight\", // 近光灯\n    \"ExteriorLightSwitchProcess\", // 外灯开关处理模块\n    \"S32G\", // 汽车电子控制单元\n    \"ICB\", // 集成控制盒\n    \"RearFogLight\" // 后雾灯\n  ],\n  \"core_conditions\": [\n    \"UsrMd = Sleep || Standby || XOTA\", // 用户模式为睡眠、待机或OTA更新\n    \"VehMd = TRANSPORT\", // 车辆模式为运输模式\n    \"近光灯反馈状态为开启\", // 近光灯实际状态为开启\n    \"LHZCU 已判断开启近光灯\", // LHZCU（Local Headlight Zone Control Unit）已判断应开启近光灯\n    \"大开关请求 ICB 输入\", // S32G 收到大开关请求 ICB 输入\n    \"七键开关请求 IFP 输入跳变\" // S32G 收到七键开关请求 IFP 输入跳变\n  ],\n  \"core_outputs\": [\n    \"ExteriorLightControlSystem.ControlRearFogLight.RearFogLightReq = ON\", // 请求后雾灯开启\n    \"ExteriorLightSwitchProcess.RearFogLightFucProStatus.RearFogLghtFucProsSta = OFF\", // 后雾灯功能状态关闭\n    \"[外灯控制组合服务 ICB]调用接口: RearFogLightFucProCtrl.RearFogLightFucProCtrlReq = ON; Resp: RearFogLightFucProCtrl.RearFogLightFucProCtrlResp = ControlSuccess;\" // 外灯控制组合服务调用成功\n  ],\n  \"core_faults\": [],\n  \"core_timing_constraints\": [],\n  \"engineering_interpretation\": \"该表格定义了在车辆处于运输模式且近光灯已开启的情况下，如何根据用户输入（如大开关或七键开关）来控制后雾灯的开启与关闭，并调用外灯控制组合服务完成相应操作。\",\n  \"uncertain_points\": [\n    \"具体 InstanceID 的含义未明确说明\",\n    \"exlDipdBeamHwDrvEnPrm 的具体作用和取值范围未详细解释\",\n    \"配置字 exlRearFoglightPrm 的具体数值含义未明确\"\n  ]\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

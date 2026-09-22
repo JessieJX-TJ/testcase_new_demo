@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "停止驱动左前转向灯输出(DILamp_LH_HSD)",
+    "relation": "执行动作",
+    "tail": "前置条件 exlDirClnLghtHwDrvEnPrm == 1 || 2 且 触发条件 收到【DILghtCtrlMdl】经统一分发的 FLDircnLghtCtrl_HW == 0 (Off)",
+    "triple_type": "IF-THEN rule",
+    "evidence_terms": ["exlDirClnLghtHwDrvEnPrm", "FLDircnLghtCtrl_HW", "DILamp_LH_HSD"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "持续发送 FLDILghtSts_HW == 0 (Off) 至 【DILghtCtrlMdl】",
+    "relation": "执行动作",
+    "tail": "前置条件 exlDirClnLghtHwDrvEnPrm == 1 || 2 且 触发条件 收到【DILghtCtrlMdl】经统一分发的 FLDircnLghtCtrl_HW == 0 (Off)",
+    "triple_type": "IF-THEN rule",
+    "evidence_terms": ["FLDILghtSts_HW", "FLDircnLghtCtrl_HW", "DILghtCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "退出条件",
+    "relation": "触发条件",
+    "tail": "收到【DILghtCtrlMdl】发送的 FLDircnLghtCtrl_HW == 1 (On)",
+    "triple_type": "IF-THEN rule",
+    "evidence_terms": ["FLDircnLghtCtrl_HW", "DILghtCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FLDILghtSts_HW == 0 (Off)",
+    "relation": "输出为",
+    "tail": "模块 【FLDILghtDrvMdl】",
+    "triple_type": "input-output mapping",
+    "evidence_terms": ["FLDILghtSts_HW", "FLDILghtDrvMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DILamp_LH_HSD",
+    "relation": "输出为",
+    "tail": "模块 【FLDILghtDrvMd1】",
+    "triple_type": "input-output mapping",
+    "evidence_terms": ["DILamp_LH_HSD", "FLDILghtDrvMd1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FLDILghtSts_HW == 0 (Off)",
+    "relation": "依赖于",
+    "tail": "信号 FLDircnLghtCtrl_HW == 0 (Off)",
+    "triple_type": "state dependency",
+    "evidence_terms": ["FLDILghtSts_HW", "FLDircnLghtCtrl_HW"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "至少发送三帧",
+    "relation": "超时约束",
+    "tail": "信号 FLDILghtSts_HW == 0 (Off)",
+    "triple_type": "timing constraint",
+    "evidence_terms": ["FLDILghtSts_HW"],
+    "confidence_note": "high"
+  }
+]
+```

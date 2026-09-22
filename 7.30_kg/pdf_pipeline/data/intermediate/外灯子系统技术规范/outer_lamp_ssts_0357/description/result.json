@@ -1,0 +1,53 @@
+{
+  "table_type": "fault_table",
+  "topic": "高位制动灯短路故障诊断与处理逻辑",
+  "row_semantics": "表格按功能阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "两列结构，左侧为阶段描述，右侧为该阶段的具体内容或参数。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "BrkLghtDrvMdl",
+      "type": "controller_module",
+      "description": "制动灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlCHMSLHwDrvEnPrm",
+      "value": "1",
+      "description": "高位制动灯未输出状态"
+    },
+    {
+      "name": "检测到高位制动灯短路到电源",
+      "description": "触发条件"
+    },
+    {
+      "name": "检测到短路恢复",
+      "description": "退出条件"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLghtFltSts_HW",
+      "value": "0x1 (BrkLghtFltSts_HW_1_True)",
+      "description": "反馈制动灯故障状态信号"
+    },
+    {
+      "name": "DTC B1043 12",
+      "value": "uncertain_points",
+      "description": "置位的故障代码（DTC），具体含义需参考车辆故障代码手册"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "BrkLghtShortToPower",
+      "description": "高位制动灯短路到电源故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了高位制动灯短路到电源故障的诊断逻辑，包括触发条件、执行的动作（设置故障状态和故障代码）以及退出条件，可用于验证车辆电子系统在该故障情况下的正确响应。",
+  "uncertain_points": [
+    "DTC B1043 12 的具体含义和影响需要进一步确认。"
+  ]
+}

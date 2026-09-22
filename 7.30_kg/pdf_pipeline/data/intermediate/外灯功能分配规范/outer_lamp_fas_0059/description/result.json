@@ -1,0 +1,95 @@
+{
+  "table_type": "other",
+  "topic": "外灯控制系统 - 日间行车灯状态与控制接口规范",
+  "row_semantics": "表格定义了两个外部灯光控制系统相关的服务接口：一个用于订阅日间行车灯故障状态，另一个用于控制日间行车灯的开关。",
+  "column_semantics": {
+    "1": "功能模块/服务名称",
+    "2": "消费方 (Consumer)",
+    "3": "SOA (Service-Oriented Architecture)",
+    "4": "ICB (Internal Communication Bus)",
+    "5": "ICB (Internal Communication Bus) - 第二个ICB列可能表示不同的通信路径或角色",
+    "6": "不确定 (Uncertain)",
+    "7": "不确定 (Uncertain)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem.DayRunningLightErrSts",
+      "type": "功能名",
+      "description": "订阅并获取日间行车灯的故障状态信息"
+    },
+    {
+      "name": "ExteriorLightControlSystem.ControlDayRunningLight",
+      "type": "功能名",
+      "description": "发送指令以控制日间行车灯的开启或关闭"
+    },
+    {
+      "name": "SOA",
+      "type": "控制器/模块名",
+      "description": "服务导向架构，作为服务提供者和消费者之间的中间层"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "内部通信总线，用于系统内部组件间的通信"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "可能是车身控制单元 (Body Control Unit) 的缩写，负责执行具体的控制命令"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DayRunningLightErrSts",
+      "type": "输入信号",
+      "description": "日间行车灯的错误状态参数，包含无错误、有错误和未知三种状态"
+    },
+    {
+      "name": "DayRunningLightReq",
+      "type": "输入信号",
+      "description": "日间行车灯的控制请求参数，包含关闭和开启两种状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DayRunningLightResp",
+      "type": "输出信号",
+      "description": "日间行车灯控制响应参数，包含控制成功和失败两种状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "系统状态",
+      "description": "0x0, 表示日间行车灯无故障"
+    },
+    {
+      "name": "Error",
+      "type": "系统状态",
+      "description": "0x1, 表示日间行车灯存在故障"
+    },
+    {
+      "name": "Unknown",
+      "type": "系统状态",
+      "description": "0x2, 表示日间行车灯故障状态未知"
+    },
+    {
+      "name": "ControlSuccess",
+      "type": "系统状态",
+      "description": "0x0, 表示日间行车灯控制操作成功"
+    },
+    {
+      "name": "Failed",
+      "type": "系统状态",
+      "description": "0x1, 表示日间行车灯控制操作失败"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证外灯控制系统中日间行车灯的状态订阅功能以及开关控制功能的正确性，包括故障检测和控制响应的成功/失败状态。",
+  "uncertain_points": [
+    "第6列和第7列的具体含义未明确说明，可能为预留字段或特定场景下的通信路径。",
+    "表格中未明确指出具体的触发条件或事件流，仅描述了接口的功能和参数。"
+  ]
+}

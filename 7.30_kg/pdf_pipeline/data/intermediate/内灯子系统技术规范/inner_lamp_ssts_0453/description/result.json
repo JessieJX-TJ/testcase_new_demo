@@ -1,0 +1,58 @@
+{
+  "table_type": "state_table",
+  "topic": "背光灯控制逻辑",
+  "row_semantics": "描述了背光灯在不同条件下的状态变化，包括触发、执行、退出和异常处理。",
+  "column_semantics": {
+    "0": "条件/动作描述的类别（如前置条件、触发条件、执行动作等）",
+    "1": "具体的条件或动作内容"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "DOTSM_FL",
+      "type": "控制器/模块",
+      "description": "驱动背光灯点亮的模块"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "发送请求信号的控制器"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehSideLghtSts_1_DCMFL_LIN",
+      "type": "输入信号",
+      "description": "车辆侧灯状态LIN总线信号",
+      "values": [
+        "0x3 (All_Side_Light_And_License_Plate_Light_On)",
+        "0x0 (No_Side_Light_On)",
+        "0x1 (Left_Side_Light_On_Only)",
+        "0x2 (Right_Side_Light_On_Only)"
+      ]
+    },
+    {
+      "name": "背光灯无短路/开路故障",
+      "type": "系统状态",
+      "description": "前置条件，表示背光灯电路正常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DOTSM_FL 驱动背光灯点亮",
+      "type": "输出信号",
+      "description": "执行动作，控制背光灯点亮"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "背光灯短路/开路故障",
+      "type": "故障状态",
+      "description": "检测到的异常情况"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆背光灯在不同侧灯状态下的控制逻辑，可用于验证背光灯在正常及异常情况下的正确点亮、关闭和故障响应行为。",
+  "uncertain_points": []
+}

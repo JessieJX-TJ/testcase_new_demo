@@ -1,0 +1,100 @@
+```json
+[
+  {
+    "head": "后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta = 0x1 = ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "依赖于",
+    "tail": "RearFogLghtCtrl_0x1_RearFogLghtCtrl_1_On",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯状态反馈",
+    "relation": "输出为",
+    "tail": "RearFogLghtSts_0x1_RearFogLghtSts_1_On",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLghtSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯故障状态反馈",
+    "relation": "输出为",
+    "tail": "RearFogLghtFltsts_0x0_RearFogLghtFltsts_0_False",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLghtFltsts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "前提条件",
+    "tail": "RearFogLghtFucProStatus = 0x1 = Only RearFogLght ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLghtFucProStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "依赖于",
+    "tail": "ICB分发控制信号至RZCU (RearFogLghtCtrl_HW=0x1=RearFogLghtCtrl_HW_1_On)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "RZCU",
+      "RearFogLghtCtrl_HW"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯指示灯显示",
+    "relation": "触发条件",
+    "tail": "HMI子系统ICB调用接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "HMI子系统ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯请求重发",
+    "relation": "超时约束",
+    "tail": "如超时2s未收到反馈，且请求状态未变，应尝试按照<=50ms周期重发3次；尝试重发3次后仍未反馈请求成功，则停止发送",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB_8295",
+      "ExteriorLightControlSystem",
+      "2s",
+      "50ms",
+      "3次"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯开启同步性要求",
+    "relation": "状态保持条件",
+    "tail": "左侧和右侧需保持同步点亮，两侧最大延时不能超过40ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

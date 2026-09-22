@@ -1,0 +1,56 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的功能分配规范",
+  "row_semantics": "表格按功能模块划分，每一行代表一个具体的外灯相关控制请求或状态。",
+  "column_semantics": "列定义了信号的属性，包括信号类型（输出）、通信方式（CAN/LIN/SOA）、以及涉及的控制器/模块。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExtrLckLghtRmndr",
+      "description": "外锁解锁请求 (Exterior Lock Reminder Request)",
+      "type": "功能名"
+    },
+    {
+      "name": "PwrLftgtDirIndcnLamp",
+      "description": "尾门双闪灯请求 (Power Liftgate Direction Indicator Lamp Request)",
+      "type": "功能名"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "description": "整车危险模式 (Vehicle Hazard Mode Status)",
+      "type": "模式名"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "UsgMdV",
+      "description": "使用模式值 (Usage Mode Value)",
+      "type": "输出信号",
+      "details": "表示外锁解锁请求的有效性，0x0为无效，0x1为有效。"
+    },
+    {
+      "name": "ExtrLckLghtRmndr",
+      "description": "外锁解锁提醒 (Exterior Lock Reminder)",
+      "type": "输出信号",
+      "details": "具体值包括无请求、外部锁提醒、外部解锁提醒和保留值。"
+    },
+    {
+      "name": "PwrLftgtDirIndcnLamp",
+      "description": "尾门方向指示灯闪烁请求",
+      "type": "输出信号",
+      "details": "请求一次、两次、三次、四次、五次闪烁，以及保留值。"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "description": "整车危险模式状态",
+      "type": "输出信号",
+      "details": "0x0为无请求，0x1为手动模式。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了外灯相关功能的信号分配和交互逻辑，可用于验证各控制器（如LHZCU, RZCU, CANFD）在不同请求下的正确响应行为。",
+  "uncertain_points": []
+}

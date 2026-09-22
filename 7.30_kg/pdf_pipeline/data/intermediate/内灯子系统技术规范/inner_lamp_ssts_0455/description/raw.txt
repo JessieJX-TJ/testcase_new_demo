@@ -1,0 +1,66 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "异常处理",
+  "row_semantics": "描述了在特定异常情况下，系统对氛围灯模块的处理逻辑。",
+  "column_semantics": "第一列列出异常类型或条件，第二列详细说明对应的处理措施。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "氛围灯模块",
+      "type": "功能名"
+    },
+    {
+      "name": "ZCU",
+      "type": "控制器/模块名"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "过压、欠压故障",
+      "description": "氛围灯模块出现电压异常（过压或欠压）"
+    },
+    {
+      "condition": "未接收LIN信号",
+      "description": "超过6秒未接收到ZCU的LIN信号"
+    },
+    {
+      "condition": "亮度值异常",
+      "description": "DoorFR1LampBrtnsCmd_1信号值异常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "关闭氛围灯",
+      "description": "直接关闭氛围灯模块"
+    },
+    {
+      "output": "维持上一时刻状态",
+      "description": "当亮度值异常时，维持上一时刻的状态值"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "过压、欠压故障",
+      "description": "氛围灯模块电压异常"
+    },
+    {
+      "fault": "LIN信号丢失",
+      "description": "ZCU与氛围灯模块间通信中断"
+    },
+    {
+      "fault": "亮度值异常",
+      "description": "DoorFR1LampBrtnsCmd_1信号值超出正常范围"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "6s",
+      "description": "默认超时时间为6秒，用于判断是否未接收到ZCU的LIN信号"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了氛围灯模块在遇到电气故障、通信故障或亮度控制信号异常时的自动保护和恢复策略，可用于验证系统在异常情况下的安全性和鲁棒性。",
+  "uncertain_points": []
+}
+```

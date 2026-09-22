@@ -1,0 +1,524 @@
+[
+  {
+    "head": "DirectionLightErrorSta",
+    "relation": "输入为",
+    "tail": "InstanceID=6",
+    "sources": [
+      "outer_lamp_fas_0620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta",
+    "relation": "输出为",
+    "tail": "No Error",
+    "sources": [
+      "outer_lamp_fas_0620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta",
+    "relation": "输出为",
+    "tail": "Error",
+    "sources": [
+      "outer_lamp_fas_0620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta",
+    "relation": "输出为",
+    "tail": "Unknown",
+    "sources": [
+      "outer_lamp_fas_0620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "NetworkFaultStatus",
+    "relation": "依赖于",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_0620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "NetworkFaultStatus",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0620"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleMode",
+    "relation": "与...互斥",
+    "tail": "UserMode",
+    "sources": [
+      "outer_lamp_fas_0621"
+    ],
+    "conflict": true,
+    "conflict_note": "同一系统状态‘整车模式’与‘用户模式’被同时声明为前提条件（outer_lamp_fas_0621）和互斥关系（outer_lamp_fas_0621），逻辑矛盾：若‘整车模式’是‘用户模式’的前提，则二者应兼容；若互斥，则不能同时成立。需确认文档本意是‘整车模式’与‘用户模式’为正交枚举项，或存在术语混淆（如‘整车模式’实指‘工程/测试模式’）"
+  },
+  {
+    "head": "ExteriorLampSwitchingControlRequest",
+    "relation": "前提条件",
+    "tail": "LampControlParameter in [0x0, 0x1, 0x2, 0x3]",
+    "sources": [
+      "outer_lamp_fas_0622"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampSwitchingControlResponse",
+    "relation": "输出为",
+    "tail": "0x0=ControlSuccess",
+    "sources": [
+      "outer_lamp_fas_0622"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampSwitchingControlResponse",
+    "relation": "输出为",
+    "tail": "0x1=Failed",
+    "sources": [
+      "outer_lamp_fas_0622"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampSwitchingControlService",
+    "relation": "触发条件",
+    "tail": "GetAutoLampSwitchStatusRequest",
+    "sources": [
+      "outer_lamp_fas_0622"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FMCFunctionActivation",
+    "relation": "前提条件",
+    "tail": "UserMode in [Sleep, Standby]",
+    "sources": [
+      "outer_lamp_fas_0623"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FMCFunctionActivation",
+    "relation": "前提条件",
+    "tail": "UserModeValidity=Valid",
+    "sources": [
+      "outer_lamp_fas_0623"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FMCFunctionActivation",
+    "relation": "前提条件",
+    "tail": "VehicleMode not in [FACTORY, TRANSPORT]",
+    "sources": [
+      "outer_lamp_fas_0623"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FMCFunctionActivation",
+    "relation": "前提条件",
+    "tail": "VehicleModeValidity=Valid",
+    "sources": [
+      "outer_lamp_fas_0623"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FMCFunctionActivation",
+    "relation": "触发条件",
+    "tail": "LHZCU.FMCLightReq=0x1",
+    "sources": [
+      "outer_lamp_fas_0623"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FMCFunctionActivation",
+    "relation": "触发条件",
+    "tail": "LHZCU.FMCLightReq_1_Ative",
+    "sources": [
+      "outer_lamp_fas_0623"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU.FMCLightReq_1_Ative",
+    "relation": "输出为",
+    "tail": "HazardLightBlinking@1.25Hz",
+    "sources": [
+      "outer_lamp_fas_0623"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightBlinking",
+    "relation": "依赖于",
+    "tail": "LHZCU.FMCLightReq_1_Ative",
+    "sources": [
+      "outer_lamp_fas_0623"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightBlinking",
+    "relation": "包含子功能",
+    "tail": "ON→OFF sequence",
+    "sources": [
+      "outer_lamp_fas_0623"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightBlinking",
+    "relation": "包含子功能",
+    "tail": "800ms period",
+    "sources": [
+      "outer_lamp_fas_0623"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightBlinking",
+    "relation": "包含子功能",
+    "tail": "ON duration=400ms",
+    "sources": [
+      "outer_lamp_fas_0623"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "GetDippedBeamLightStatusService",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.DippedBeamLightSta",
+    "sources": [
+      "outer_lamp_fas_0624"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightSta",
+    "relation": "输入为",
+    "tail": "DipdBeamLightSta",
+    "sources": [
+      "outer_lamp_fas_0624"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightSta",
+    "relation": "输出为",
+    "tail": "InterfaceName: DippedBeamLightSta",
+    "sources": [
+      "outer_lamp_fas_0624"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "GetDippedBeamLightErrorStatusService",
+    "relation": "前提条件",
+    "tail": "DippedBeamLight.DippedBeamLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_0624"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightErrorSta",
+    "relation": "输入为",
+    "tail": "DippedBeamLightErrorSta",
+    "sources": [
+      "outer_lamp_fas_0624"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightErrorSta",
+    "relation": "输出为",
+    "tail": "InterfaceName: DippedBeamLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_0624"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightSta",
+    "relation": "抑制条件",
+    "tail": "DippedBeamLightSta in [OFF, ON]",
+    "sources": [
+      "outer_lamp_fas_0624"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightErrorSta",
+    "relation": "诊断关联",
+    "tail": "DippedBeamLight has fault",
+    "sources": [
+      "outer_lamp_fas_0624"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "前提条件",
+    "tail": "FAS-IBD05 module (Platform 0)",
+    "sources": [
+      "outer_lamp_fas_0625"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampControlSignal",
+    "relation": "前提条件",
+    "tail": "DutyCycle=20%",
+    "sources": [
+      "outer_lamp_fas_0628"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampControlSignal.HighTime",
+    "relation": "超时约束",
+    "tail": "16ms ±2ms",
+    "sources": [
+      "outer_lamp_fas_0628"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampControlSignal.LowTime",
+    "relation": "超时约束",
+    "tail": "4ms ±2ms",
+    "sources": [
+      "outer_lamp_fas_0628"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightActivation",
+    "relation": "触发条件",
+    "tail": "UserTriggered via HMI soft switch",
+    "sources": [
+      "outer_lamp_fas_0629"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightActivation",
+    "relation": "前提条件",
+    "tail": "UsgMd != Sleep (0x0)",
+    "sources": [
+      "outer_lamp_fas_0629"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightActivation",
+    "relation": "前提条件",
+    "tail": "UsgMd != Standby (0x1)",
+    "sources": [
+      "outer_lamp_fas_0629"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightActivation",
+    "relation": "前提条件",
+    "tail": "UsgMd != XOTA (0x6)",
+    "sources": [
+      "outer_lamp_fas_0629"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLSideLghtSts",
+    "relation": "输出为",
+    "tail": "0x0=Off",
+    "sources": [
+      "outer_lamp_fas_0630"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLSideLghtSts",
+    "relation": "输出为",
+    "tail": "0x1=On",
+    "sources": [
+      "outer_lamp_fas_0630"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLghtSts",
+    "relation": "输出为",
+    "tail": "0x0=Off",
+    "sources": [
+      "outer_lamp_fas_0630",
+      "outer_lamp_fas_1730"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLghtSts",
+    "relation": "输出为",
+    "tail": "0x1=On",
+    "sources": [
+      "outer_lamp_fas_0630",
+      "outer_lamp_fas_1730"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLSideLghtFltsts",
+    "relation": "输出为",
+    "tail": "0x0=NoFault",
+    "sources": [
+      "outer_lamp_fas_0630"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLSideLghtFltsts",
+    "relation": "输出为",
+    "tail": "0x1=FaultDetected",
+    "sources": [
+      "outer_lamp_fas_0630"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStreamingEnable",
+    "relation": "前提条件",
+    "tail": "DirnLghtMdSts=Disabled (0x1)",
+    "sources": [
+      "outer_lamp_fas_0631"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "触发条件",
+    "tail": "LHZCU.DirnLghtCtrl_HW_1_on/off",
+    "sources": [
+      "outer_lamp_fas_0631"
+    ],
+    "conflict": true,
+    "conflict_note": "同一信号LHZCU.DirnLghtCtrl_HW_1_on/off被多条三元组列为不同主语的触发条件（ICB接收、ICB延时分发、ICB反馈等），但未明确各环节时序/责任边界；且‘ICB根据LHZCU控制输入,延时60ms并分发控制信号’与‘ICB接收危险警报灯开关控制模块LHZCU的控制信号’语义高度重叠，存在冗余与职责模糊风险"
+  },
+  {
+    "head": "LHZCU/RHZCU/RZCU",
+    "relation": "触发条件",
+    "tail": "HazardLight ON/OFF",
+    "sources": [
+      "outer_lamp_fas_0631"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "触发条件",
+    "tail": "DirnLghtSts=0x1",
+    "sources": [
+      "outer_lamp_fas_0631"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "触发条件",
+    "tail": "DirnLghtSts in [0x0, 0x1] OR DirnLghtFltsts=0x0",
+    "sources": [
+      "outer_lamp_fas_0631"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "触发条件",
+    "tail": "DirnLghtSts=0x3 OR DirnLghtFltsts=0x0",
+    "sources": [
+      "outer_lamp_fas_0631"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "前提条件",
+    "tail": "VehHzrdMdSts=EmergencyBrake (0x7)",
+    "sources": [
+      "outer_lamp_fas_0631"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampAndBodyControlFunction",
+    "relation": "前提条件",
+    "tail": "VehicleMode in [Engineering, RollTest, ShowCar, CrashTest]",
+    "sources": [
+      "outer_lamp_fas_0632"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

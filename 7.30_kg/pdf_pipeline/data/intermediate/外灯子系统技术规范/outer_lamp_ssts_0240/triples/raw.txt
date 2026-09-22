@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "倒车灯短路故障检测与处理功能被触发",
+    "relation": "触发条件",
+    "tail": "检测到倒车灯短路到电源",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["触发条件", "检测到倒车灯短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯短路故障检测与处理功能被抑制",
+    "relation": "抑制条件",
+    "tail": "RevsLghtFbkSOAEnPrm == 0 (Disable)",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["前置条件", "RevsLghtFbkSOAEnPrm == 0 (Disable)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯短路故障检测与处理功能被抑制",
+    "relation": "抑制条件",
+    "tail": "倒车灯处于输出状态",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["前置条件", "倒车灯处于输出状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "停止驱动制动灯及高位制动灯 (RevsLamp_LH_HSD)",
+    "relation": "输出为",
+    "tail": "【RevsLghtDrvMd1】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "RevsLamp_LH_HSD", "【RevsLghtDrvMd1】"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "持续发送 RevsLghtSts = 0 (Off)",
+    "relation": "输出为",
+    "tail": "【RevsLghtCtrlMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "RevsLghtSts = 0 (Off)", "【RevsLghtCtrlMdl】"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "置位 DTC B1045_12",
+    "relation": "故障响应",
+    "tail": "检测到倒车灯短路到电源",
+    "triple_type": "故障响应",
+    "evidence_terms": ["执行动作", "DTC_B1045_12", "检测到倒车灯短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "退出倒车灯短路故障检测与处理功能",
+    "relation": "复位条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "时序约束",
+    "evidence_terms": ["退出条件", "检测到短路恢复"],
+    "confidence_note": "high"
+  }
+]
+```

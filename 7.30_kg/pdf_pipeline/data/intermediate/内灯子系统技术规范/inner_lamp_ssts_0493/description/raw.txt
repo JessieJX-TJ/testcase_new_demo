@@ -1,0 +1,93 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform-SSTS-IBD10) - Ambient Lamp Control Logic",
+  "row_semantics": "Each row represents a specific parameter or condition related to the ambient lamp control module, including thresholds, states, and configuration values.",
+  "column_semantics": "The first column lists parameter identifiers (e.g., 7440, 7480), the second column provides their corresponding values, and subsequent columns are reserved for additional attributes or descriptions that are not populated in this table.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp Control Module",
+      "type": "controller",
+      "description": "Responsible for managing the operation of interior ambient lamps based on various inputs and system states."
+    },
+    {
+      "name": "FtwlFLLampOnOff_1",
+      "type": "input_signal",
+      "description": "Control signal for turning the ambient lamp on or off."
+    },
+    {
+      "name": "FtwlFLLampBrthngCmd_1",
+      "type": "input_signal",
+      "description": "Command signal for initiating breathing mode of the ambient lamp."
+    },
+    {
+      "name": "FtwlFLLampBrtNsCmd_1",
+      "type": "input_signal",
+      "description": "Brightness command signal for the ambient lamp."
+    },
+    {
+      "name": "FtwlFLLampColorCmd_1",
+      "type": "input_signal",
+      "description": "Color command signal for the ambient lamp."
+    },
+    {
+      "name": "FtwlFLLampFadeSpdCmd_1",
+      "type": "input_signal",
+      "description": "Fade speed command signal for the ambient lamp."
+    },
+    {
+      "name": "AmbtLghtLHRollingCtr_1",
+      "type": "input_signal",
+      "description": "Rolling counter for the ambient light left-hand side."
+    },
+    {
+      "name": "ZCU_LIN_Signal",
+      "type": "input_signal",
+      "description": "LIN bus signal from the Zone Control Unit (ZCU)."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "FtwlFLLampOnOff_1 = 0x00 (OFF)",
+      "effect": "Exit breathing mode;熄灭氛围灯"
+    },
+    {
+      "condition": "FtwlFLLampBrthngCmd_1 = 0x00 (No Request)",
+      "effect": "Exit breathing mode;按照亮度值 FtwlFLLampBrtNsCmd_1、颜色值 FtwlFLLampColorCmd_1、渐变速度 FtwlFLLampFadeSpdCmd_1 执行"
+    },
+    {
+      "condition": "AmbtLghtLHRollingCtr_1 不再按 1 顺序叠加",
+      "effect": "停止呼吸模式; 按照接收到的颜色亮度渐变信号常亮显示; 如果颜色亮度信号也异常，按照最后时刻的状态静态点亮"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "Ambient Lamp State",
+      "description": "The operational state of the ambient lamp, including on/off, brightness, color, and breathing mode."
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "Overvoltage or Undervoltage Fault in Ambient Lamp Module",
+      "action": "Directly close the ambient lamp"
+    },
+    {
+      "fault": "No ZCU LIN Signal Received within 6 seconds",
+      "action": "Directly close the ambient lamp"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "6 seconds",
+      "description": "If no ZCU LIN signal is received within 6 seconds, the ambient lamp should be directly closed."
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameter settings and control logic for the ambient lighting system, particularly focusing on the conditions under which the breathing mode is exited and how the lamp responds to various input commands. It also specifies fault handling procedures for power-related issues and communication timeouts.",
+  "uncertain_points": [
+    "The exact meaning and function of some parameter identifiers (e.g., 7520, 7560) beyond their numerical values are not explicitly described in the table.",
+    "The specific behavior of the ambient lamp when multiple conditions are simultaneously met is not detailed."
+  ]
+}
+```

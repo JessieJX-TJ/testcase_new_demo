@@ -1,0 +1,81 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯转向灯点亮模式状态查询",
+  "row_semantics": "表格定义了获取外灯转向灯点亮模式的服务接口及其参数状态。",
+  "column_semantics": "表格分为两部分：上半部分描述服务接口的返回状态码，下半部分详细说明该服务接口的功能、参数及状态值。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "功能模块",
+      "description": "外灯开关处理模块"
+    },
+    {
+      "name": "DirectionLightModeStatus",
+      "type": "功能名",
+      "description": "获取转向灯点亮模式状态的服务接口"
+    },
+    {
+      "name": "SOA",
+      "type": "控制器/模块",
+      "description": "Service-Oriented Architecture，服务导向架构"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "Local Hardware Control Unit，本地硬件控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块",
+      "description": "Integrated Circuit Board，集成电路板"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DirectionLightModeStatus",
+      "type": "输出信号",
+      "description": "转向灯点亮模式状态",
+      "values": [
+        {
+          "code": "0x0",
+          "meaning": "Enabled (使能)"
+        },
+        {
+          "code": "0x1",
+          "meaning": "Disabled (禁用)"
+        },
+        {
+          "code": "0x2",
+          "meaning": "Unknown (未知)"
+        }
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "InstanceID=8",
+      "type": "故障状态",
+      "description": "实例ID为8时的状态码定义",
+      "values": [
+        {
+          "code": "0x0",
+          "meaning": "No Error (无错误)"
+        },
+        {
+          "code": "0x1",
+          "meaning": "Error (错误)"
+        },
+        {
+          "code": "0x2",
+          "meaning": "Unknown (未知)"
+        }
+      ]
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证外灯转向灯点亮模式状态查询服务接口的功能，包括其参数状态和可能的错误代码。",
+  "uncertain_points": []
+}

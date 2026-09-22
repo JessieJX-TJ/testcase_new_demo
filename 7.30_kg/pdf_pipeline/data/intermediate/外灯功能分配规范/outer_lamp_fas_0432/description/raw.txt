@@ -1,0 +1,44 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Emergency Braking Light Control Logic",
+  "row_semantics": "Each row represents a condition-action pair for triggering and controlling the emergency braking lights.",
+  "column_semantics": {
+    "Column 1": "Precondition Conditions (logical AND of multiple conditions)",
+    "Column 2": "Trigger Actions (input request to IBS)",
+    "Column 3": "Execution Actions (sequence of control signals and animations)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "LHZCU (Lighting Hazard Control Unit)",
+    "ICB (Integrated Control Box)",
+    "RZCU (Rear Zone Control Unit)"
+  ],
+  "core_conditions": [
+    "UsrMd (User Mode) = Normal Driving, AI Parking, or AI Pilot",
+    "VehMd (Vehicle Mode) = Engineering, CRASH, NORMAL, or Service",
+    "FLDirnLghtCtrl and FRDirnLghtCtrl = 0x0 (off)",
+    "DircnLghtSts = 0x0 (OFF)",
+    "VehSpdAvg > 50Km/h",
+    "EmgcBrkA_1_True and EmgcBrkAV_Valid"
+  ],
+  "core_outputs": [
+    "BrkLghtCtrl signal toggling ON/OFF",
+    "Emergency braking light animation display",
+    "Feedback of brake light status/fault state to LHZCU and ICB"
+  ],
+  "core_faults": [
+    "BrkLghtSts_HW_1_On (点亮状态反馈)",
+    "BrkLghtFlt_Sts_HW_0_False (故障状态反馈)"
+  ],
+  "core_timing_constraints": [
+    "3.33Hz control frequency",
+    "300ms flashing cycle",
+    "150ms ON/OFF intervals",
+    "60ms delay for RZCU feedback"
+  ],
+  "engineering_interpretation": "This table defines the logic for activating and controlling the emergency braking lights during specific driving modes and vehicle conditions, ensuring proper illumination and system feedback.",
+  "uncertain_points": []
+}
+```

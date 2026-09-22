@@ -1,0 +1,97 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - Door Lamp Fading and Blinking Control",
+  "row_semantics": "Each row represents a specific blinking rate or fading speed command for the front right door ambient lamp.",
+  "column_semantics": {
+    "Code Value": "Identifier for the specific blinking rate or fading speed command.",
+    "Period": "The time interval for the blinking cycle or fading duration.",
+    "Original Breathing Mode Value": "The corresponding breathing mode value from the original system specification."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorFR5LampFadeSpdCmd_1",
+      "type": "signal",
+      "description": "Command to set the fading speed of the front right door ambient lamp."
+    },
+    {
+      "name": "DoorFR6LampOnOff_1",
+      "type": "signal",
+      "description": "Command to turn the front right door ambient lamp on or off."
+    },
+    {
+      "name": "DoorFR6LampColCmd_1",
+      "type": "signal",
+      "description": "Command to set the color of the front right door ambient lamp."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Hand Zone Control Unit, responsible for controlling the ambient lighting functions."
+    },
+    {
+      "name": "DoorAmbtLampF_FR",
+      "type": "module",
+      "description": "Front Right Door Ambient Lamp Function module."
+    },
+    {
+      "name": "RHZCU_LIN4",
+      "type": "communication_interface",
+      "description": "LIN bus interface for communication with the RHZCU."
+    },
+    {
+      "name": "内灯SSTS",
+      "type": "system",
+      "description": "Interior Lighting Sub System Specification, part of the overall vehicle lighting control system."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Blinking Rate",
+      "description": "Defined by the 'Code Value' and 'Period' columns, specifying how fast the lamp blinks."
+    },
+    {
+      "name": "Fading Speed",
+      "description": "Defined by the 'DoorFR5LampFadeSpdCmd_1' signal values (0x0 to 0x3), specifying how quickly the lamp fades in or out."
+    },
+    {
+      "name": "On/Off State",
+      "description": "Defined by the 'DoorFR6LampOnOff_1' signal values (0x0 for OFF, 0x1 for ON)."
+    },
+    {
+      "name": "Color Command",
+      "description": "Defined by the 'DoorFR6LampColCmd_1' signal, specifying the desired color of the lamp when turned on."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorAmbtLampF_FR",
+      "description": "The actual blinking and fading behavior of the front right door ambient lamp as controlled by the RHZCU."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Blinking Period",
+      "description": "Defined in the 'Period' column, ranging from 500ms to 12s for different blinking rates.",
+      "unit": "seconds"
+    },
+    {
+      "name": "Fading Speed",
+      "description": "Defined by the 'DoorFR5LampFadeSpdCmd_1' signal, with default speed at 2000ms and options for faster speeds.",
+      "unit": "milliseconds"
+    },
+    {
+      "name": "Transition Time",
+      "description": "Time required for the lamp to transition from current state to target state during color or brightness change.",
+      "default_value": "2000ms",
+      "unit": "milliseconds"
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters and commands for controlling the blinking and fading behavior of the front right door ambient lamp within the Interior Lighting Sub System. It specifies various blinking rates, fading speeds, and on/off states that can be commanded via the RHZCU through the LIN bus interface.",
+  "uncertain_points": [
+    "The exact mapping between the 'Original Breathing Mode Value' and the new blinking rates is not fully explained.",
+    "The specific timing relationship between the blinking rate and the fading speed is not detailed."
+  ]
+}

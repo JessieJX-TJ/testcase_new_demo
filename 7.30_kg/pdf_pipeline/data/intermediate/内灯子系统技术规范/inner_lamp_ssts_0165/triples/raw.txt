@@ -1,0 +1,36 @@
+```json
+[
+  {
+    "head": "Interior Lighting Sub System operates at Target Value",
+    "relation": "Input为",
+    "tail": "Parameter Set Identifier = 1400, Secondary Setting Index = 33",
+    "triple_type": "input_output_mapping",
+    "evidence_terms": ["Parameter Set Identifier", "Secondary Setting Index", "Target Value"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Interior Lighting Sub System measures Actual Value",
+    "relation": "Output为",
+    "tail": "Measured/Threshold Value = 884 for Parameter Set Identifier = 1400, Secondary Setting Index = 33",
+    "triple_type": "input_output_mapping",
+    "evidence_terms": ["Parameter Set Identifier", "Secondary Setting Index", "Measured/Threshold Value"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Interior Lighting Sub System operates within Threshold",
+    "relation": "依赖于",
+    "tail": "Measured/Threshold Value <= Target Value",
+    "triple_type": "functional_constraint",
+    "evidence_terms": ["Target Value", "Measured/Threshold Value"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Interior Lighting Sub System maintains State",
+    "relation": "状态保持条件",
+    "tail": "Measured/Threshold Value remains constant for a given Parameter Set Identifier and Secondary Setting Index",
+    "triple_type": "state_dependency",
+    "evidence_terms": ["Parameter Set Identifier", "Secondary Setting Index", "Measured/Threshold Value"],
+    "confidence_note": "medium"
+  }
+]
+```

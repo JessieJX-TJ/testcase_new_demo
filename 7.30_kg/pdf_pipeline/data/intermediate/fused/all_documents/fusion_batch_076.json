@@ -1,0 +1,536 @@
+[
+  {
+    "head": "远光灯开启同步性要求",
+    "relation": "超时约束",
+    "tail": "左侧和右侧需保持同步点亮，两侧最大延时不能超过40ms",
+    "sources": [
+      "outer_lamp_fas_0811"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSts接口调用",
+    "relation": "触发条件",
+    "tail": "订阅转向灯状态",
+    "sources": [
+      "outer_lamp_fas_0812"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrSts接口调用",
+    "relation": "触发条件",
+    "tail": "订阅转向灯故障状态",
+    "sources": [
+      "outer_lamp_fas_0812"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSts输出",
+    "relation": "输出为",
+    "tail": "0x0 = NoFlash",
+    "sources": [
+      "outer_lamp_fas_0812"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSts输出",
+    "relation": "输出为",
+    "tail": "0x1 = LeftDirectionLightFlash",
+    "sources": [
+      "outer_lamp_fas_0812"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSts输出",
+    "relation": "输出为",
+    "tail": "0x2 = RightDirectionLightFlash",
+    "sources": [
+      "outer_lamp_fas_0812"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSts输出",
+    "relation": "输出为",
+    "tail": "0x3 = BothSideDirectionLightFlash",
+    "sources": [
+      "outer_lamp_fas_0812"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSts输出",
+    "relation": "输出为",
+    "tail": "0x4 = Unknown",
+    "sources": [
+      "outer_lamp_fas_0812"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrSts输出",
+    "relation": "输出为",
+    "tail": "0x0 = NoError",
+    "sources": [
+      "outer_lamp_fas_0812"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrSts输出",
+    "relation": "输出为",
+    "tail": "0x1 = Error",
+    "sources": [
+      "outer_lamp_fas_0812"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "文档页码：584 of 935",
+    "sources": [
+      "outer_lamp_fas_0813"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯状态订阅",
+    "relation": "触发条件",
+    "tail": "调用 DirectionLightErrSts 接口，InstanceID = 6",
+    "sources": [
+      "outer_lamp_fas_0814"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯状态订阅",
+    "relation": "触发条件",
+    "tail": "调用 DirectionLightErrSts 接口，InstanceID = 7",
+    "sources": [
+      "outer_lamp_fas_0814"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrSts = 0x1 (Error)",
+    "relation": "映射为",
+    "tail": "NetworkFaultStatus",
+    "sources": [
+      "outer_lamp_fas_0814"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrSts = 0x2 (Unknown)",
+    "relation": "映射为",
+    "tail": "NetworkFaultStatus",
+    "sources": [
+      "outer_lamp_fas_0814"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrSts = 0x0 (NoError)",
+    "relation": "映射为",
+    "tail": "NetworkFaultStatus",
+    "sources": [
+      "outer_lamp_fas_0814"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主光束增强功能启用",
+    "relation": "触发条件",
+    "tail": "MainBeamEnhanceEnbSetInfo = 0x0",
+    "sources": [
+      "outer_lamp_fas_0815"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主光束增强功能禁用",
+    "relation": "触发条件",
+    "tail": "MainBeamEnhanceEnbSetInfo = 0x1",
+    "sources": [
+      "outer_lamp_fas_0815"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯关闭",
+    "relation": "触发条件",
+    "tail": "RoofSpotLightReq = 0x0",
+    "sources": [
+      "outer_lamp_fas_0815"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "触发条件",
+    "tail": "RoofSpotLightReq = 0x1",
+    "sources": [
+      "outer_lamp_fas_0815"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯状态关闭",
+    "relation": "输入为",
+    "tail": "RoofSpotLightSts = 0x0",
+    "sources": [
+      "outer_lamp_fas_0815"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯状态开启",
+    "relation": "输入为",
+    "tail": "RoofSpotLightSts = 0x1",
+    "sources": [
+      "outer_lamp_fas_0815"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯状态未知",
+    "relation": "输入为",
+    "tail": "RoofSpotLightSts = 0x2",
+    "sources": [
+      "outer_lamp_fas_0815"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主光束增强功能初始状态",
+    "relation": "复位条件",
+    "tail": "MainBeamEnhanceEnbSetInfo 初始值 = 0x1",
+    "sources": [
+      "outer_lamp_fas_0815"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightSts = OFF",
+    "relation": "输出为",
+    "tail": "右前位置灯处于关闭状态",
+    "sources": [
+      "outer_lamp_fas_0817"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightSts = ON",
+    "relation": "输出为",
+    "tail": "右前位置灯处于开启状态",
+    "sources": [
+      "outer_lamp_fas_0817"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightSts = Error",
+    "relation": "输出为",
+    "tail": "右前位置灯存在错误状态",
+    "sources": [
+      "outer_lamp_fas_0817"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightSts = Unknown",
+    "relation": "输出为",
+    "tail": "右前位置灯状态未知",
+    "sources": [
+      "outer_lamp_fas_0817"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightSts = OFF",
+    "relation": "输出为",
+    "tail": "左后位置灯处于关闭状态",
+    "sources": [
+      "outer_lamp_fas_0817"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightSts = ON",
+    "relation": "输出为",
+    "tail": "左后位置灯处于开启状态",
+    "sources": [
+      "outer_lamp_fas_0817"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightSts = Error",
+    "relation": "输出为",
+    "tail": "左后位置灯存在错误状态",
+    "sources": [
+      "outer_lamp_fas_0817"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightSts = Unknown",
+    "relation": "输出为",
+    "tail": "左后位置灯状态未知",
+    "sources": [
+      "outer_lamp_fas_0817"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SOA模块",
+    "relation": "依赖于",
+    "tail": "DirectionLightSts",
+    "sources": [
+      "outer_lamp_fas_0819"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB模块",
+    "relation": "依赖于",
+    "tail": "DirectionLightSts",
+    "sources": [
+      "outer_lamp_fas_0819"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU模块",
+    "relation": "依赖于",
+    "tail": "DirectionLightSts",
+    "sources": [
+      "outer_lamp_fas_0819"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启请求",
+    "relation": "前提条件",
+    "tail": "UsrMd ≠ 0x0 ∧ UsrMd ≠ 0x1 ∧ UsrMd ≠ 0x6 ∧ UsrMdV = Valid ∧ VehMd = 0x3 ∧ VehMdV = Valid ∧ PersonalizationData.MainBeamEnhanceEnbSet.MainBeamEnhanceEnbSetInfo = 0x1 ∧ LHZCU 已判断远光灯开启 ∧ InsdFnCfgRoofSpotLght = 0x1",
+    "sources": [
+      "outer_lamp_fas_0821"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_S32G_M",
+    "relation": "触发条件",
+    "tail": "车顶射灯开启请求",
+    "sources": [
+      "outer_lamp_fas_0821"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "状态保持条件",
+    "tail": "车顶射灯开启请求",
+    "sources": [
+      "outer_lamp_fas_0821"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "输出为",
+    "tail": "RoofSpotLightFucProSta = 0x1",
+    "sources": [
+      "outer_lamp_fas_0821"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输出为",
+    "tail": "RoofSpotLightReq = 0x1",
+    "sources": [
+      "outer_lamp_fas_0821"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "用户模式 = 正常驾驶",
+    "sources": [
+      "outer_lamp_fas_0822",
+      "outer_lamp_fas_0977"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制功能",
+    "relation": "前提条件",
+    "tail": "用户模式 = 智能泊车",
+    "sources": [
+      "outer_lamp_fas_0822"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门功能",
+    "relation": "前提条件",
+    "tail": "用户模式 = 智能驾驶",
+    "sources": [
+      "outer_lamp_fas_0822"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "抑制条件",
+    "tail": "用户模式 = 休眠",
+    "sources": [
+      "outer_lamp_fas_0822"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制功能",
+    "relation": "抑制条件",
+    "tail": "用户模式 = 待机",
+    "sources": [
+      "outer_lamp_fas_0822"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门功能",
+    "relation": "抑制条件",
+    "tail": "用户模式 = 舒适",
+    "sources": [
+      "outer_lamp_fas_0822"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "整车模式 = 维修",
+    "sources": [
+      "outer_lamp_fas_0822"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制功能",
+    "relation": "前提条件",
+    "tail": "整车模式 = 工程",
+    "sources": [
+      "outer_lamp_fas_0822",
+      "outer_lamp_fas_0977"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门功能",
+    "relation": "抑制条件",
+    "tail": "整车模式 = XOTA",
+    "sources": [
+      "outer_lamp_fas_0822"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "整车模式 = 工厂",
+    "sources": [
+      "outer_lamp_fas_0822"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "状态 = √限时",
+    "sources": [
+      "outer_lamp_fas_0822"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制功能",
+    "relation": "前提条件",
+    "tail": "整车模式 = 运输",
+    "sources": [
+      "outer_lamp_fas_0822",
+      "outer_lamp_fas_0977"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "用户模式 = 正常驾驶 ∧ 整车模式 ∈ {维修, 工厂, 运输, 工程} ∧ 状态 = √限时",
+    "sources": [
+      "outer_lamp_fas_0822",
+      "outer_lamp_fas_0977"
+    ],
+    "conflict": true,
+    "conflict_note": "多源定义存在组合逻辑不一致：'正常驾驶'与'维修/工厂/工程/运输'属互斥用户模式与整车模式范畴；'√限时'语义模糊（可能指License时效或配置使能），需澄清是否为并列前提或独立使能条件。"
+  }
+]

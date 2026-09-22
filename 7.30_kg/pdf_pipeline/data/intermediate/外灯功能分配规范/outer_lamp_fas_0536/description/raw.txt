@@ -1,0 +1,71 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯控制与状态监控",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的外灯相关信号或状态，包括前雾灯状态、前雾灯故障状态以及左右前位置灯控制信号。",
+  "column_semantics": {
+    "0": "功能/信号名称",
+    "1": "信号类型 (输出)",
+    "2": "通信协议 (CANFD)",
+    "3": "控制器/模块 (LHZCU)",
+    "4": "接口/子系统 (ICB)",
+    "5": "备注/详细定义"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FrtFogLghtSts",
+      "type": "signal",
+      "description": "前雾灯状态信号",
+      "values": [
+        {"code": "0x0", "value": "Off"},
+        {"code": "0x1", "value": "On"}
+      ]
+    },
+    {
+      "name": "FrtFogLghtFltSts",
+      "type": "signal",
+      "description": "前雾灯故障状态信号",
+      "values": [
+        {"code": "0x0", "value": "False"},
+        {"code": "0x1", "value": "True"}
+      ]
+    },
+    {
+      "name": "FLSideLghtCtrl",
+      "type": "signal",
+      "description": "左前位置灯控制信号",
+      "values": [
+        {"code": "0x0", "value": "Off"},
+        {"code": "0x1", "value": "On"}
+      ]
+    },
+    {
+      "name": "FRSideLghtCtrl",
+      "type": "signal",
+      "description": "右前位置灯控制信号",
+      "values": [
+        {"code": "0x0", "value": "Off"},
+        {"code": "0x1", "value": "On"}
+      ]
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    "FrtFogLghtSts",
+    "FrtFogLghtFltSts",
+    "FLSideLghtCtrl",
+    "FRSideLghtCtrl"
+  ],
+  "core_faults": [
+    {
+      "name": "FrtFogLghtFltSts",
+      "description": "前雾灯故障状态，用于检测前雾灯是否发生故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯（前雾灯、前位置灯）的状态和控制信号，以及前雾灯的故障状态，可用于验证外灯系统的状态监控、故障诊断及控制逻辑是否符合设计规范。",
+  "uncertain_points": []
+}
+```

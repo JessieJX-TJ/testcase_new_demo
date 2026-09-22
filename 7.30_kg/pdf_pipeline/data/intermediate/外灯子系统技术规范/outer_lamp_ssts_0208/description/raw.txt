@@ -1,0 +1,65 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "侧位灯控制逻辑",
+  "row_semantics": "表格定义了侧位灯（Side Position Light）的控制流程，包括触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "第一列描述了流程阶段（前置条件、执行动作、退出条件、异常处理），第二列详细说明了每个阶段的具体内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SideLightCtrlMdl",
+      "type": "模块/控制器",
+      "description": "发送控制侧位灯请求的主控模块"
+    },
+    {
+      "name": "RLSideLghtDrvMdl",
+      "type": "模块/控制器",
+      "description": "负责驱动侧位灯的子模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ControlSidePositionLight",
+      "type": "输入信号",
+      "description": "由 SideLightCtrlMdl 发送的控制信号",
+      "conditions": [
+        {
+          "condition": "SidePositionLightReq == 0 (Off)",
+          "instanceID": 3,
+          "description": "当请求关闭侧位灯时触发"
+        },
+        {
+          "condition": "SidePositionLightReq == 1 (On)",
+          "instanceID": 3,
+          "description": "当请求开启侧位灯时作为退出条件"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "PosLamp_LH&RH_HSD",
+      "type": "输出信号",
+      "description": "左后和右后位置灯的实际输出状态",
+      "action": "停止驱动"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "系统状态",
+      "description": "侧位灯当前的状态信息",
+      "value": "0 (Off)",
+      "action": "持续发送"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "至少发送三帧",
+      "description": "在退出条件满足前，SidePositionLightStatus 至少需要发送三帧数据"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证整车电子系统中侧位灯的控制逻辑，确保在接收到关闭请求时正确停止灯光输出，并在接收到开启请求时恢复灯光功能。",
+  "uncertain_points": []
+}
+```

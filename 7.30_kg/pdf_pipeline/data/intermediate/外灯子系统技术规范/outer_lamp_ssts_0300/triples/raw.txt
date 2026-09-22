@@ -1,0 +1,85 @@
+```json
+[
+  {
+    "head": "Main Beam Light is activated",
+    "relation": "触发条件",
+    "tail": "收到【MainBeamLghtCtrlMdl】发送的 MainBeamLightControl. MainBeamLightCtrReq ==1(On)InstanceID=1",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "MainBeamLghtCtrlMdl",
+      "MainBeamLightControl",
+      "MainBeamLightCtrReq",
+      "On",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Main Beam Light is deactivated",
+    "relation": "退出条件",
+    "tail": "收到【MainBeamLghtCtrlMdl】发送的 MainBeamLightControl. MainBeamLightCtrReq==0(Off)InstanceID=1",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "MainBeamLghtCtrlMdl",
+      "MainBeamLightControl",
+      "MainBeamLightCtrReq",
+      "Off",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【LMmainBeamLightDrvMdl】持续驱动左远光灯输出",
+    "relation": "前提条件",
+    "tail": "1.MainBeamLghtFbkSOAEnPrm==1(Enable)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "LMmainBeamLightDrvMdl",
+      "MainBeamLghtFbkSOAEnPrm",
+      "Enable"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【LMmainBeamLightDrvMdl】持续发送 MainBeamLightState",
+    "relation": "执行动作",
+    "tail": "MainBeamLightCtrReq ==1(On)InstanceID=1 至 【MainBeamLghtCtrlMdl】,至少发送三帧",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "LMmainBeamLightDrvMdl",
+      "MainBeamLightCtrReq",
+      "On",
+      "InstanceID",
+      "MainBeamLghtCtrlMdl",
+      "three frames"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Main Beam Light State is 'on'",
+    "relation": "输出为",
+    "tail": "MainBeamLightSta =1(On)InstanceID=1",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "MainBeamLightSta",
+      "On",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Main Beam Light State is sent at least three times",
+    "relation": "状态保持条件",
+    "tail": "MainBeamLightCtrReq ==1(On)InstanceID=1 至 【MainBeamLghtCtrlMdl]",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "MainBeamLightCtrReq",
+      "On",
+      "InstanceID",
+      "MainBeamLghtCtrlMdl",
+      "three times"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,63 @@
+{
+  "table_type": "logic_table",
+  "topic": "前雾灯控制逻辑",
+  "row_semantics": "描述在特定前置条件下，触发的动作序列",
+  "column_semantics": {
+    "left": "条件/动作描述",
+    "right": "具体条件或执行动作"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "前雾灯",
+      "type": "功能名",
+      "description": "车辆的前雾灯系统"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Light and Hazard Zone Control Unit, 负责处理外部灯光开关状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "type": "系统状态",
+      "description": "用户模式状态，包括Sleep、Standby、Comfortable、XOTA等",
+      "values": [
+        "0x0_Sleep",
+        "0x1_Standby",
+        "0x2_Comfortable",
+        "0x6_XOTA"
+      ]
+    },
+    {
+      "name": "VehMd",
+      "type": "系统状态",
+      "description": "车辆模式状态，当前为TRANSPORT（运输模式）",
+      "values": [
+        "0x3_TRANSPORT"
+      ]
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.CombLightFucProStatus",
+      "type": "输入信号",
+      "description": "外部灯光开关处理过程中的组合灯光功能状态",
+      "values": [
+        "0x0_ALL_OFF"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "前雾灯退出激活状态",
+      "type": "输出信号",
+      "description": "当前置条件不满足时，前雾灯从激活状态退出"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定用户模式、车辆模式以及外部灯光开关状态下，前雾灯退出激活状态的逻辑规则，可用于验证前雾灯在不同场景下的正确行为。",
+  "uncertain_points": []
+}

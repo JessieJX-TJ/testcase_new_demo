@@ -1,0 +1,56 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "后排储物灯控制逻辑与功能分配",
+  "row_semantics": "表格的每一行代表一个独立的逻辑模块及其功能描述和所属子系统/物理模块。",
+  "column_semantics": {
+    "逻辑模块名称": "定义了具体的逻辑控制模块的名称，包括其英文缩写和中文功能描述。",
+    "逻辑块功能描述": "详细说明了该逻辑模块的功能，即它如何响应输入并产生输出。",
+    "分配的子系统/物理模块": "指明了该逻辑模块所归属的子系统或物理硬件模块。",
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "CnsoStorgLampRCtrl",
+      "type": "逻辑模块",
+      "description": "后排储物灯应用控制模块，负责接收开关信号并控制灯的点亮和熄灭。"
+    },
+    {
+      "name": "CnsoStorgLampRDrv",
+      "type": "逻辑模块",
+      "description": "后排储物灯驱动模块，负责根据控制请求实际驱动后储物灯的点亮和熄灭。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/物理模块",
+      "description": "后排储物灯相关的控制器单元，可能包含开关信号处理和部分逻辑控制功能。"
+    },
+    {
+      "name": "内灯子系统 (LHZCU)",
+      "type": "子系统",
+      "description": "一个更广泛的子系统，包含了后排储物灯的驱动模块以及可能的其他内部照明功能。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "开关信号",
+      "type": "输入信号",
+      "description": "来自后排储物灯开关的控制信号，用于触发灯的点亮或熄灭。",
+      "source": "CnsoStorgLampRCtrl"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "灯状态",
+      "type": "输出信号",
+      "description": "后排储物灯的实际点亮或熄灭状态，由驱动模块控制。",
+      "target": "CnsoStorgLampRDrv"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证后排储物灯系统的控制逻辑是否正确实现，包括开关信号的识别、应用控制模块的响应以及驱动模块的实际执行效果。",
+  "uncertain_points": []
+}
+```

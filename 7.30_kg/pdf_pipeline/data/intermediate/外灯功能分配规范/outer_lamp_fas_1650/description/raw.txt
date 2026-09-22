@@ -1,0 +1,89 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "DirectionLightStatus",
+  "row_semantics": "Each row represents a specific service interface call for subscribing to the status of a direction light (left or right front turn signal).",
+  "column_semantics": {
+    "1": "Function Name: DirectionLight.DirectionLightStatus",
+    "2": "Consumption Type (e.g., SOA, ICB)",
+    "3": "Controller/Module (SOA, ICB, LHZCU)",
+    "4": "Uncertain",
+    "5": "Network Status"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "function",
+      "description": "Represents the direction light system."
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "service_interface",
+      "description": "Service interface for subscribing to the status of direction lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "Unique identifier for each instance of the parameter.",
+      "values": [
+        {
+          "value": "4",
+          "description": "Instance for left front turn light status."
+        },
+        {
+          "value": "5",
+          "description": "Instance for left front turn light status (repeated entry)."
+        },
+        {
+          "value": "6",
+          "description": "Instance for right front turn light status."
+        }
+      ]
+    },
+    {
+      "name": "Parameter Name",
+      "description": "Name of the parameter being passed in the service interface.",
+      "values": [
+        {
+          "value": "{DirectionLightSta}",
+          "description": "Generic parameter name for direction light status."
+        }
+      ]
+    },
+    {
+      "name": "Status Values",
+      "description": "Possible values for the direction light status.",
+      "values": [
+        {
+          "value": "0x0=OFF",
+          "description": "Light is turned off."
+        },
+        {
+          "value": "0x1=ON",
+          "description": "Light is turned on."
+        },
+        {
+          "value": "0x2=Unknown",
+          "description": "Status of the light is unknown."
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Light Status",
+      "description": "The current status (OFF, ON, Unknown) of the subscribed direction light."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for subscribing to the status of left and right front turn lights. It specifies the parameter names, instance IDs, and possible status values for each light. This information can be used to verify that the system correctly subscribes to and reports the status of direction lights under different conditions.",
+  "uncertain_points": [
+    "The purpose of the fourth column is not clearly defined.",
+    "The repeated InstanceID '5' for the left front turn light status may indicate an error or redundancy."
+  ]
+}
+```

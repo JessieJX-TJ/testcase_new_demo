@@ -1,0 +1,75 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "用户通过大屏软开关触发大灯关闭的有效场景",
+  "row_semantics": "描述了从用户操作到系统响应的完整逻辑流程，包括前置条件、触发动作和执行动作。",
+  "column_semantics": "第一列定义了流程中的阶段或类别（如前置条件、触发动作、执行动作），第二列详细描述了每个阶段的具体内容。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "大屏软开关",
+      "type": "输入信号",
+      "description": "用户通过大屏上的软开关进行操作"
+    },
+    {
+      "name": "S32G",
+      "type": "控制器/模块",
+      "description": "接收大灯关闭请求的主控单元"
+    },
+    {
+      "name": "ICB",
+      "type": "接口/服务",
+      "description": "外灯控制组合服务接口"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "位置灯控制模块"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "系统",
+      "description": "外部灯光控制系统"
+    },
+    {
+      "name": "CombinedLightReq",
+      "type": "输出信号",
+      "description": "组合灯请求状态"
+    },
+    {
+      "name": "CombinedLightSts",
+      "type": "系统状态",
+      "description": "组合灯状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "位置灯处于激活状态",
+      "description": "在触发大灯关闭前，位置灯必须处于激活状态"
+    },
+    {
+      "name": "SOA通讯方式",
+      "description": "配置要求使用SOA通讯方式"
+    },
+    {
+      "name": "PPV阶段及以后",
+      "description": "PPV阶段及以后按照SOA通讯方式进行开发"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "CombinedLightReq = 0x0=OFF",
+      "description": "S32G发送大灯关闭请求给ICB"
+    },
+    {
+      "name": "CombinedLightFucProCtrlSts = 0x0=OFF",
+      "description": "LHZCU响应位置灯关闭请求"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证用户通过大屏软开关触发大灯关闭功能的有效性，确保在特定前置条件下，系统能够正确响应并完成大灯关闭操作。",
+  "uncertain_points": []
+}
+```

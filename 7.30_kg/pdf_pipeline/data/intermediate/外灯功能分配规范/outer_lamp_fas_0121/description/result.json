@@ -1,0 +1,40 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯组合服务 ICB 的功能逻辑与控制流程",
+  "row_semantics": "每行描述一个具体的控制逻辑或状态转换步骤，包含触发条件、执行动作和结果反馈。",
+  "column_semantics": "无明确列结构，内容为连续的文本描述，主要分为事件触发、控制逻辑、信号发送/接收、状态反馈等。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB (Interior Control Box)",
+    "LHZCU (Light Hazard Control Unit)",
+    "SDM (Safety Deployment Module)",
+    "FRDircnLghtCtrl (Front Right Direction Light Control)",
+    "RLDircnLghtCtrl (Rear Left Direction Light Control)",
+    "RRDircnLghtCtrl (Rear Right Direction Light Control)"
+  ],
+  "core_conditions": [
+    "ExteriorLightSwitchProcess",
+    "DirectionLightErrSta",
+    "VehHzrdMdSts_9_Find_my_car",
+    "FDirncnLghtCtrl=0x0",
+    "InstanceID"
+  ],
+  "core_outputs": [
+    "DirncnLghtFucProStatus",
+    "DirncnLghtFucProSta",
+    "FLDircnLghtCtrl_HW_0_off",
+    "RLDircnLghtCtrl_HW_0_off",
+    "RRDircnLghtCtrl_HW_0_off"
+  ],
+  "core_faults": [
+    "DirectionLightErrSts",
+    "EDRDircnIndLampSwSts"
+  ],
+  "core_timing_constraints": [
+    "60ms延调用",
+    "3S/闪烁三个周期"
+  ],
+  "engineering_interpretation": "该表格详细定义了外灯组合服务 ICB 在处理寻车灯、双闪灯等功能时的控制逻辑、信号交互和状态反馈流程，可用于验证 ICB 在不同场景下对外部输入信号的响应是否符合设计规范。",
+  "uncertain_points": []
+}

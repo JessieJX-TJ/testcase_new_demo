@@ -1,0 +1,44 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制系统（包括后雾灯、侧位灯等）的控制逻辑与信号交互规范",
+  "row_semantics": "描述了在特定触发条件下，系统执行的动作序列及其对应的信号交互过程",
+  "column_semantics": "第一列表示动作的阶段或模块，第二列详细描述了该阶段的动作内容和涉及的接口/信号",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "ExtrtLightStsCmmntnTyp=0x0=SOA",
+    "S32G",
+    "ICB (Integrated Control Block)",
+    "LHZCU (Light and Hazard Control Unit)",
+    "HMI (Human-Machine Interface)子系统",
+    "ExteriorLightSwitchProcess",
+    "RearFogLightFucProCtrl",
+    "CombLightFucProStatus",
+    "SidePositionLight"
+  ],
+  "core_conditions": [
+    "S32G收到[大屏开关请求]",
+    "ExtrtLightStsCmmntnTyp=0x0=SOA",
+    "RearFogLightReq=0x1=On",
+    "CombLightFucProStatus=0x4=SidePositionAndDippedBeam",
+    "CombLightFucProStatus=0x1=Only RearFogLight",
+    "InstanceID"
+  ],
+  "core_outputs": [
+    "ControlRearFogLight.RearFogLightReq=0x1=ON",
+    "ControlSuccess",
+    "Notifier:先发送...后发送...",
+    "CAN信号转换与近光灯点亮",
+    "SidePositionLight, RearFogLight, PositionLight指示灯显示",
+    "ControlSidePositionLight.SidePositionLightReq=0x1=ON"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯控制系统中，从前端请求到最终灯光点亮的完整控制流程，包括ECU间通信、信号状态更新、指示灯显示及CAN总线信号转换等关键步骤，可用于验证外灯控制功能的正确性和信号交互的时序性。",
+  "uncertain_points": [
+    "具体实例ID对应的灯光类型细节未完全明确",
+    "部分信号的具体作用范围和边界条件未详细说明"
+  ]
+}
+```

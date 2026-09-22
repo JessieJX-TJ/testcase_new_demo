@@ -1,0 +1,69 @@
+[
+  {
+    "head": "倒车灯控制功能被禁用",
+    "relation": "前提条件",
+    "tail": "RevsLightFbkSOAEnPrm == 0 (Disable)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "RevsLightFbkSOAEnPrm"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0039",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "系统检测到倒车灯开路",
+    "relation": "触发条件",
+    "tail": "检测到倒车灯开路",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "倒车灯开路"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0039",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "系统置位故障代码 DTC B104513",
+    "relation": "诊断关联",
+    "tail": "DTC B104513",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DTCB104513",
+      "倒车灯开路"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0039",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RevsLightDrvMdl 控制 RevsLightCtrlMdl",
+    "relation": "控制对象",
+    "tail": "RevsLightCtrlMdl",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "RevsLightDrvMdl",
+      "RevsLightCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0039",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "持续发送三帧数据",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "三帧"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0039",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

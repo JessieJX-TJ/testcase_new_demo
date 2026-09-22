@@ -1,0 +1,50 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Light Function Allocation Specification",
+  "row_semantics": "Mapping of hexadecimal values to specific light levels or states for different interior lamp functions.",
+  "column_semantics": "The table does not have explicit columns; instead, it lists a series of hexadecimal values (from 0x0 to 0x1F) and their corresponding meanings, which are grouped under different function maps.",
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "MapLampFRSts_l",
+      "type": "function_map",
+      "description": "Function map for front left interior lamp status."
+    },
+    {
+      "name": "MapLampRLSts_l",
+      "type": "function_map",
+      "description": "Function map for rear left interior lamp status."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Hexadecimal Value",
+      "description": "Input parameter representing the control value for the interior lamp.",
+      "type": "input_parameter"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Light Level",
+      "description": "Output state indicating the brightness level of the interior lamp.",
+      "type": "output_state"
+    },
+    {
+      "name": "OFF",
+      "description": "Output state indicating the lamp is turned off.",
+      "type": "output_state"
+    },
+    {
+      "name": "Reserved",
+      "description": "Indicates a reserved value that should not be used for normal operation.",
+      "type": "output_state"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the mapping between hexadecimal control values and the corresponding light levels or states for interior lamps (front left and rear left). It is used to verify that the correct light level or state is output when a specific hexadecimal value is sent to the relevant lamp controller/module.",
+  "uncertain_points": []
+}
+```

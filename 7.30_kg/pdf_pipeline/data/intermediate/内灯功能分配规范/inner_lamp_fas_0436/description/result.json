@@ -1,0 +1,39 @@
+{
+  "table_type": "logic_table",
+  "topic": "Map Lamp Service SOA (Service Oriented Architecture) for Reading Lamp Control",
+  "row_semantics": "Each row represents a specific control command or function related to reading lamps in a vehicle, including individual lamp control and global control.",
+  "column_semantics": {
+    "left": "Function Description (e.g., 'Open/Close Rear Left Reading Lamp')",
+    "middle": "SOA Command Details (Service Call with Lamp ID and ON/OFF State)",
+    "right": "Human-Readable Explanation of the Command"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MapLampService",
+      "type": "Controller/Module",
+      "description": "The service responsible for managing map and reading lamps in the vehicle."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "LampID",
+      "description": "Identifier for the specific lamp being controlled (e.g., RL - Rear Left, RR - Rear Right, FL - Front Left, FR - Front Right)."
+    },
+    {
+      "name": "LampOnOff",
+      "description": "State of the lamp, either ON or OFF."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MapLampOnOff.MapLampOnOffSts",
+      "description": "Status update indicating the current on/off state of the specified lamp(s)."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the API calls required to control individual and all reading lamps in a vehicle, providing a clear mapping between human-readable commands and their corresponding service-oriented architecture (SOA) calls. It is used for testing the functionality of the MapLampService in responding to requests to turn reading lamps on or off.",
+  "uncertain_points": []
+}

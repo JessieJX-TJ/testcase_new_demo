@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "整车电子电器系统中后雾灯输出电路的故障诊断需求",
+  "row_semantics": "每行代表一个具体的故障诊断场景，针对后雾灯输出电路的不同异常状态进行描述。",
+  "column_semantics": {
+    "名称": "故障诊断场景的唯一标识符，格式为B1053 XX，其中XX表示具体故障类型编号。",
+    "描述": "对当前故障诊断场景的简要文字说明，指明了故障的具体表现形式。",
+    "进入条件": "触发该故障诊断场景的检测条件，即系统检测到何种异常状态时进入此诊断流程。",
+    "退出条件": "离开该故障诊断场景的检测条件，即系统检测到何种正常状态时退出此诊断流程。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "后雾灯",
+      "type": "功能模块",
+      "description": "车辆外部照明系统的一部分，用于在低能见度条件下提供辅助照明。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "短路到地",
+      "description": "后雾灯输出电路与车身接地之间发生意外连接，导致电流直接流向地面。"
+    },
+    {
+      "name": "短路到电源",
+      "description": "后雾灯输出电路与电源正极之间发生意外连接，可能导致电路过载或损坏。"
+    },
+    {
+      "name": "开路",
+      "description": "后雾灯输出电路中断，无法形成完整的电流回路。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "B1053 11",
+      "description": "后雾灯输出短路到地故障",
+      "entry_condition": "检测到短路到地",
+      "exit_condition": "检测到未短路到地"
+    },
+    {
+      "name": "B1053 12",
+      "description": "后雾灯输出短路到电源故障",
+      "entry_condition": "检测到短路到电源",
+      "exit_condition": "检测到未短路到电源"
+    },
+    {
+      "name": "B1053 13",
+      "description": "后雾灯输出开路故障",
+      "entry_condition": "检测到输出开路",
+      "exit_condition": "检测到输出开路恢复"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子电器系统中后雾灯输出电路的三种主要故障诊断场景及其触发和解除条件，可用于验证车辆电气系统的故障诊断逻辑是否正确实现。",
+  "uncertain_points": []
+}
+```

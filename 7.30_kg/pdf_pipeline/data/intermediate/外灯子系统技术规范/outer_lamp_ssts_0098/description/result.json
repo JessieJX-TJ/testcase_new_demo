@@ -1,0 +1,40 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯功能验证 - 左前转向灯输出状态",
+  "row_semantics": "前置条件列表",
+  "column_semantics": "条件描述",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "外灯反馈安全开启参数，值为1表示启用"
+    },
+    {
+      "name": "左前转向灯",
+      "type": "signal",
+      "description": "车辆左侧前部的转向灯"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILightFbkSOAEnPrm == 1 (Enable)",
+      "description": "外灯反馈安全开启参数必须处于启用状态"
+    },
+    {
+      "condition": "左前转向灯处于输出状态",
+      "description": "左前转向灯应处于点亮或闪烁的输出状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "左前转向灯输出状态",
+      "description": "验证左前转向灯是否按预期输出"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证在特定前置条件下（外灯反馈安全开启参数启用且左前转向灯应输出），左前转向灯是否能够正确输出。",
+  "uncertain_points": []
+}

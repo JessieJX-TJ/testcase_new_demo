@@ -1,0 +1,74 @@
+{
+  "table_type": "state_table",
+  "topic": "前雾灯控制与状态管理",
+  "row_semantics": "表格的每一行代表一个与前雾灯相关的变量或状态，包括其内部变量值、赋值前的状态、以及接收的服务控制状态。",
+  "column_semantics": {
+    "1": "变量/状态名称",
+    "2": "赋值前内部变量值（描述变量的当前状态或值）",
+    "3": "具体数值定义（如0x0表示无错误，0x1表示开启等）",
+    "4": "默认值或初始值",
+    "5": "相关控制器/模块"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FrontFogLightControl",
+      "type": "功能名",
+      "description": "前雾灯的控制信号，用于接收后雾灯服务的控制指令。"
+    },
+    {
+      "name": "FrontFogLightErrStatus",
+      "type": "功能名",
+      "description": "前雾灯的错误状态，记录了前雾灯的工作异常情况。"
+    },
+    {
+      "name": "FrontFogLightStatus_1",
+      "type": "系统状态",
+      "description": "前雾灯1的状态，可能指示其是否开启或关闭。"
+    },
+    {
+      "name": "FrontFogLightStatus_2",
+      "type": "系统状态",
+      "description": "前雾灯2的状态，可能指示其未知或异常状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FrontFogLightControl_0_OFF",
+      "type": "输入信号",
+      "description": "前雾灯控制信号为关闭状态。"
+    },
+    {
+      "name": "FrontFogLightControl_1_ON",
+      "type": "输入信号",
+      "description": "前雾灯控制信号为开启状态。"
+    },
+    {
+      "name": "FrontFogLightErrStatus_0_NoError",
+      "type": "系统状态",
+      "description": "前雾灯无错误状态。"
+    },
+    {
+      "name": "FrontFogLightErrStatus_1_Error",
+      "type": "故障状态",
+      "description": "前雾灯存在错误状态。"
+    },
+    {
+      "name": "FrontFogLightErrStatus_2_Unknown",
+      "type": "系统状态",
+      "description": "前雾灯状态未知。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "FrontFogLightErrStatus_1_Error",
+      "type": "故障状态",
+      "description": "当前雾灯出现错误时触发的故障状态。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了前雾灯系统的控制信号、状态变量及其在不同控制器（CU）中的映射关系，可用于验证前雾灯控制逻辑、状态反馈以及错误检测功能的正确性。",
+  "uncertain_points": []
+}

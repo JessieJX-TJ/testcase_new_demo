@@ -1,0 +1,24 @@
+Notifier:
+[驱动处理模块LHZCU/RHZCU]订阅ICB发送的近光灯控制状态
+线输出,退出驱动近光灯点亮
+[驱动模块LHZCU/RHZCU]将状态/故障状态反馈至[近光灯控制模块LHZCU]:
+LDipdBeamLghtSts_HW =0x0=LDipdBeamLghtSts_HW_0_Off
+RDipdBeamLghtSts_HW=0x0=RDipdBeamLghtSts_HW_0_Off
+LDipdBeamLghtFltSts_HW =0x0=LDipdBeamLghtFltsts_HW_0_False
+RDipdBeamLghtFltSts_HW =0x0=RDipdBeamLghtFltsts_HW_0_False
+(exlDipdBeamHwDrvEnPrm=0x1；通过InstanceID1/2 获取近光灯状态)
+ICB 将状态/故障状态反馈至[近光灯控制模块 LHZCU]:
+LDipdBeamLghtSts=0x0=LDipdBeamLghtSts_0_Off
+RDipdBeamLghtSts=0x0=RDipdBeamLghtSts_0_Off
+LDipdBeamLghtFltSts=0x0=LDipdBeamLghtFltsts_0_False
+RDipdBeamLghtFltSts=0x0=RDipdBeamLghtFltsts_0_False
+(exlDipdBeamHwDrvEnPrm=0x0||0x2；通过 Instance ID 3/4获取近光灯状态)
+[近光灯控制模块LHZCU]将状态/故障状态反馈至ICB:
+DipdBeamLghtSts=0x0=DipdBeamLghtSts_0_Off
+DipdBeamLghtFltSts=0x0=DipdBeamLghtFltsts_0_False
+{ExteriorLightSwitchProcess. DippedBeamLightSta. DipdBeamLghtSta}= 0x0=OFF
+10.[外灯组合服务ICB]订阅接口:
+{ExteriorLightControlSystem. DippedBeamLightSts. DipdBeamLghtSts}= 0x0=OFF
+备注
+近光灯和位置灯退出同步性要求:
+左侧和右侧需保持同步熄灭,两侧最大延时不能超过40ms

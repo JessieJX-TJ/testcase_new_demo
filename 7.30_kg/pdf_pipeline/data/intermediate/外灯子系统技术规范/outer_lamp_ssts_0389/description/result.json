@@ -1,0 +1,57 @@
+{
+  "table_type": "logic_table",
+  "topic": "危险报警灯开关控制逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，用户操作危险报警灯开关时，系统执行的触发条件、动作序列及退出条件。",
+  "column_semantics": {
+    "1": "前置条件：系统配置状态",
+    "2": "触发条件：用户操作行为"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "HzrdLghtSwSOAEnPrm",
+      "type": "parameter",
+      "description": "危险报警灯开关安全防护使能参数，当前设置为0（禁用）"
+    },
+    {
+      "name": "HzrdLghtSwMdl",
+      "type": "module",
+      "description": "危险报警灯开关模块"
+    },
+    {
+      "name": "HzrdLghtCtrlMdl",
+      "type": "module",
+      "description": "危险报警灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "HzrdLghtSwSOAEnPrm == 0 (Disable)",
+      "description": "系统危险报警灯开关安全防护功能被禁用"
+    },
+    {
+      "condition": "用户松开危险报警灯开关，开关悬空",
+      "description": "用户操作危险报警灯开关后释放，开关处于非闭合状态"
+    },
+    {
+      "condition": "开关接地",
+      "description": "危险报警灯开关完成操作并接地"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "HzrdLghtSwReq",
+      "value": "0x0 (Inactive)",
+      "description": "持续发送危险报警灯开关请求信号，值为0x0（ inactive）"
+    },
+    {
+      "action": "至少发送三帧",
+      "description": "HzrdLghtSwMdl 模块向 HzrdLghtCtrlMdl 模块发送至少三帧数据"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了危险报警灯开关在特定配置下（HzrdLghtSwSOAEnPrm=0）的操作逻辑，可用于验证当用户松开开关时，系统是否正确地持续发送HzrdLghtSwReq=0x0信号至HzrdLghtCtrlMdl模块，并确保至少发送三帧。",
+  "uncertain_points": []
+}

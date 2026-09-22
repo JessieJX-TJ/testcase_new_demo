@@ -1,0 +1,154 @@
+[
+  {
+    "head": "氛围灯退出呼吸模式",
+    "relation": "前提条件",
+    "tail": "接收到CnsoLHALampOnOff_1 = 0x00的关闭请求信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CnsoLHALampOnOff_1",
+      "0x00"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0065",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯退出呼吸模式",
+    "relation": "前提条件",
+    "tail": "CnsoLHALampBrthngCmd_1 = 0x00(无请求)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CnsoLHALampBrthngCmd_1",
+      "0x00"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0065",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯停止呼吸模式",
+    "relation": "前提条件",
+    "tail": "AmbtLghtLHRollingCtrl_1不再按顺序叠加",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AmbtLghtLHRollingCtrl_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0065",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯直接关闭",
+    "relation": "前提条件",
+    "tail": "氛围灯模块出现过压、欠压故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "过压/欠压故障"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0065",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯直接关闭",
+    "relation": "前提条件",
+    "tail": "超过6秒未接收到ZCU的LIN信号",
+    "triple_type": "超时约束",
+    "evidence_terms": [
+      "ZCU_LIN",
+      "6秒"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0065",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯状态保持",
+    "relation": "状态保持条件",
+    "tail": "在正常工作模式下,根据CnsoLHALampColorCmd_",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "CnsoLHALampColorCmd_1",
+      "CnsoLHALampFadeSpdCmd_1"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_ssts_0065",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯状态保持",
+    "relation": "状态保持条件",
+    "tail": "CnsoLHALampFadeSpdCmd_1等信号调节颜色和渐变速度",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "CnsoLHALampColorCmd_1",
+      "CnsoLHALampFadeSpdCmd_1"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_ssts_0065",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯常亮显示",
+    "relation": "前提条件",
+    "tail": "AmbtLghtLHRollingCtrl_1不再按顺序叠加",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AmbtLghtLHRollingCtrl_1",
+      "颜色亮度信号"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_ssts_0065",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯常亮显示",
+    "relation": "前提条件",
+    "tail": "颜色亮度信号正常",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AmbtLghtLHRollingCtrl_1",
+      "颜色亮度信号"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_ssts_0065",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯静态点亮",
+    "relation": "前提条件",
+    "tail": "AmbtLghtLHRollingCtrl_1不再按顺序叠加",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AmbtLghtLHRollingCtrl_1",
+      "颜色亮度信号异常"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_ssts_0065",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯静态点亮",
+    "relation": "前提条件",
+    "tail": "颜色亮度信号异常",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AmbtLghtLHRollingCtrl_1",
+      "颜色亮度信号异常"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_ssts_0065",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

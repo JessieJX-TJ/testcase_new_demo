@@ -1,0 +1,89 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Automatic Lighting HMI Requirements",
+  "row_semantics": "Different states and conditions of the automatic lighting system as described in the HMI display status, switch status, and fault status sections.",
+  "column_semantics": "The table does not have explicit columns; instead, it uses a structured text format to describe various signal states and their corresponding meanings.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "HMI子系统ICB",
+      "type": "controller",
+      "description": "Human-Machine Interface sub-system Internal Control Block, responsible for processing and displaying lighting status."
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "Module responsible for processing exterior light switching logic."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CombLghtFucProSta",
+      "type": "input_signal",
+      "description": "Combined light function process status, indicating the current state of the combined lights (e.g., side position light, dipped beam)."
+    },
+    {
+      "name": "CombLghtSwSta",
+      "type": "input_signal",
+      "description": "Combined light switch status, indicating the current switch position of the automatic lighting system."
+    },
+    {
+      "name": "SideLightFlts",
+      "type": "input_signal",
+      "description": "Side light faults status, indicating if there is an error in the side position light."
+    },
+    {
+      "name": "DipdBeamLghtFlts",
+      "type": "input_signal",
+      "description": "Dipped beam light faults status, indicating if there is an error in the dipped beam light."
+    },
+    {
+      "name": "LDipdBeamLghtCtrl",
+      "type": "output_signal",
+      "description": "Left dipped beam light control signal."
+    },
+    {
+      "name": "FLSideLghtCtrl",
+      "type": "output_signal",
+      "description": "Front left side light control signal."
+    },
+    {
+      "name": "FRSideLghtCtrl",
+      "type": "output_signal",
+      "description": "Front right side light control signal."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "HMI Display Status",
+      "type": "output_signal",
+      "description": "Status displayed on the HMI screen based on the current lighting conditions."
+    },
+    {
+      "name": "Switch Position",
+      "type": "mode",
+      "description": "Current position of the automatic lighting switch (OFF, SidePositionLight ON, DippedBeamLight ON, AUTO)."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SidePositionLightErrSta",
+      "type": "fault_status",
+      "description": "Error status for the side position light."
+    },
+    {
+      "name": "DipdBeamLightErrSta",
+      "type": "fault_status",
+      "description": "Error status for the dipped beam light."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the behavior and status of the automatic lighting system as perceived by the HMI, including how different lighting states are represented, how the switch positions affect the system, and how faults in the lighting system are reported. It is used to verify that the HMI correctly displays the lighting status and responds appropriately to changes in the lighting system's state and faults.",
+  "uncertain_points": [
+    "The exact timing or sequence of CAN signal feedback is not specified.",
+    "The specific actions taken by the HMI when transitioning between states (e.g., from OFF to AUTO) are not detailed."
+  ]
+}
+```

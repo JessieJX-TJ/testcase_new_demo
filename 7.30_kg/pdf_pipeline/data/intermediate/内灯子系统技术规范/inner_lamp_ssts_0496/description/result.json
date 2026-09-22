@@ -1,0 +1,103 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform-SSTS-IBD10)",
+  "row_semantics": "Each row represents a specific configuration or command for the interior lighting system, including breathing modes, fade speeds, on/off states, color commands, and brightness settings.",
+  "column_semematics": "The columns represent different input sources (LIN, RHZCU, UpIPAmbtLampB, RHZCU_LIN5) and the corresponding parameter values or commands for the Interior Lighting Sub System (SSTS).",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "UpIPBLampFadeSpdCmd_1",
+      "type": "command",
+      "description": "Controls the fade speed of the ambient lamp."
+    },
+    {
+      "name": "UpIPCLampOnOff_1",
+      "type": "command",
+      "description": "Controls the on/off state of the ambient lamp."
+    },
+    {
+      "name": "UpIPCLampColorCmd_1",
+      "type": "command",
+      "description": "Sets the color of the ambient lamp."
+    },
+    {
+      "name": "UpIPCLampBrtnsCmd_1",
+      "type": "command",
+      "description": "Adjusts the brightness of the ambient lamp."
+    },
+    {
+      "name": "Rate5",
+      "type": "mode",
+      "description": "Breathing mode 5 with a cycle time of 2.4 seconds."
+    },
+    {
+      "name": "Rate6",
+      "type": "mode",
+      "description": "Original breathing mode 5 with a cycle time of 3 seconds."
+    },
+    {
+      "name": "Rate7",
+      "type": "mode",
+      "description": "New breathing mode with a cycle time of 3.5 seconds."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Regional Zone Control Unit, one of the input sources for commands."
+    },
+    {
+      "name": "UpIPAmbtLampB",
+      "type": "controller",
+      "description": "Ambient Lamp Controller, another input source for commands."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Modes",
+      "description": "Various breathing modes (e.g., Rate5, Rate6) define the cycle time and behavior of the lamp's breathing effect."
+    },
+    {
+      "name": "Fade Speeds",
+      "description": "Different fade speeds (Spd0, Spd1, Spd2, Spd3) determine how quickly the lamp changes from one state to another."
+    },
+    {
+      "name": "On/Off States",
+      "description": "Commands to turn the ambient lamp on or off."
+    },
+    {
+      "name": "Color Commands",
+      "description": "Commands to set the color of the ambient lamp, ranging from no request to all possible color values."
+    },
+    {
+      "name": "Brightness Commands",
+      "description": "Commands to adjust the brightness level of the ambient lamp."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Interior Lighting SSTS",
+      "type": "system",
+      "description": "The Interior Lighting Sub System, which receives commands and parameters to control the ambient lamp's behavior."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Cycle Time",
+      "description": "Defines the duration of each breathing cycle for different modes (e.g., 2.4s for Rate5, 12s for Rate15)."
+    },
+    {
+      "name": "Fade Duration",
+      "description": "Specifies the time required for the lamp to transition between states (e.g., 2000ms for default speed, 300ms for faster transitions)."
+    },
+    {
+      "name": "Command Execution",
+      "description": "Commands are executed immediately upon receipt, except when switching breathing modes, which requires stopping the current mode first."
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters and commands for controlling the interior ambient lighting system, including breathing modes, fade speeds, on/off states, color settings, and brightness levels. It is used to verify that the system correctly interprets and executes these commands according to the specified timing and behavior.",
+  "uncertain_points": [
+    "The exact implementation details of how the 'RHZCU' and 'UpIPAmbtLampB' controllers interact with the 'Interior Lighting SSTS' are not fully detailed in this table."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "table_type": "parameter_table",
+  "topic": "MapLampService接口定义与参数规范",
+  "row_semantics": "表格的每一行代表一个接口或功能的详细定义，包括其名称、方向、类型、发送方/接收方、路径及接口来源。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，需与逻辑框图内容一致。",
+    "Direction": "接口的方向，如输入/输出、提供/消费。",
+    "Type": "接口的类型，如CAN/LIN/SOA服务/硬线等。",
+    "Sender/Provider": "信号发送方或SoA服务提供方。",
+    "Receiver/Consumer": "信号接收方或SoA服务消费方。",
+    "Channel": "路径，指定信号通道。",
+    "Source": "接口来源，指定信号来源。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MapLampService",
+      "type": "功能名",
+      "description": "组合服务，用于读取灯服务，具体包括阅读灯全局开关和单独开关功能。"
+    },
+    {
+      "name": "ICB/ZXD",
+      "type": "控制器/模块名",
+      "description": "作为MapLampService的发送方和接收方，可能代表内部通信总线或特定控制单元。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MapLampLazyOnOffSts",
+      "type": "输入信号",
+      "description": "表示阅读灯全局开关的状态，值为0x0=OFF或0x1=ON。",
+      "details": "该参数用于控制阅读灯的整体开启或关闭状态。"
+    },
+    {
+      "name": "MapLampOnOffSts",
+      "type": "输入信号",
+      "description": "表示阅读灯单独开关的状态，用于控制单个灯的开启或关闭。",
+      "details": "该参数允许对每个灯进行独立控制。"
+    },
+    {
+      "name": "LampID",
+      "type": "输入信号",
+      "description": "标识具体的灯，如FL（前左）、FR（前右）、RL（后左）、RR（后右）。",
+      "details": "通过LampID可以精确控制车辆上不同位置的灯。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了MapLampService接口的详细参数及其交互方式，可用于验证车辆外部灯光（如阅读灯）的控制逻辑是否符合设计规范，特别是全局开关与单独开关的功能实现。",
+  "uncertain_points": [
+    "表格中未明确说明具体的硬件接口类型（如CAN、LIN）的具体参数配置。",
+    "未提及异常情况下的处理逻辑或故障模式。",
+    "未明确说明接口的优先级或冲突处理机制。"
+  ]
+}

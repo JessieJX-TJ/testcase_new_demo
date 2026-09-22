@@ -1,0 +1,180 @@
+[
+  {
+    "head": "危险报警灯自动控制模块LHZCU 控制信号跳变为双闪模式",
+    "relation": "触发条件",
+    "tail": "收到[车辆碰撞SDM]请求输入VehCrshTyp为0x1=VehCrshTyp_1_Front_Crash",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehCrshTyp",
+      "AirbagDpl",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0777",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU 控制信号跳变为双闪模式",
+    "relation": "触发条件",
+    "tail": "AirbagDpl=0x1=AirbagDpl_1_True",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehCrshTyp",
+      "AirbagDpl",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0777",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU 控制信号跳变为双闪模式",
+    "relation": "触发条件",
+    "tail": "收到[车辆碰撞SDM]请求输入VehCrshTyp为0x2=VehCrshTyp_2_Side_Crash",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehCrshTyp",
+      "AirbagDpl",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0777",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU 控制信号跳变为双闪模式",
+    "relation": "触发条件",
+    "tail": "收到[车辆碰撞SDM]请求输入VehCrshTyp为0x3=VehCrshTyp_3_Rear_Crash",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehCrshTyp",
+      "AirbagDpl",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0777",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU 控制信号跳变为双闪模式",
+    "relation": "触发条件",
+    "tail": "收到[车辆碰撞SDM]请求输入VehCrshTyp为0x4=VehCrshTyp_4_Pedestrian_Crash",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehCrshTyp",
+      "AirbagDpl",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0777",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU 控制信号跳变为双闪模式",
+    "relation": "前提条件",
+    "tail": "碰撞发生时,占空比为20%,监测到碰撞的PWM信号波形特性为Toff_Crash=16ms±2ms,Ton_Crash=4ms±2ms",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "PWM Characteristics",
+      "Toff_Crash",
+      "Ton_Crash"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0777",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU 控制信号跳变为双闪模式",
+    "relation": "输出为",
+    "tail": "控制双闪灯按照1.25Hz频率闪烁(800ms一个周期),发送400ms亮/400ms灭",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Hazard Light Period",
+      "Hazard Light Duration",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0777",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU 控制信号跳变为双闪模式",
+    "relation": "状态保持条件",
+    "tail": "持续按照",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "Hazard Light Period",
+      "Collision Event",
+      "System Reset"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "outer_lamp_fas_0777",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU 控制信号跳变为双闪模式",
+    "relation": "状态保持条件",
+    "tail": "25Hz频率闪烁,直到碰撞事件结束或系统复位",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "Hazard Light Period",
+      "Collision Event",
+      "System Reset"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "outer_lamp_fas_0777",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU 控制信号跳变为双闪模式",
+    "relation": "超时约束",
+    "tail": "若在800ms周期内未检测到碰撞信号变化,则保持当前闪烁状态",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "Hazard Light Period",
+      "Collision Signal",
+      "Timeout"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "outer_lamp_fas_0777",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU 控制信号跳变为双闪模式",
+    "relation": "依赖于",
+    "tail": "ExtrLightCtrlCmmntnTyp配置为SOA或CAN",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExtrLightCtrlCmmntnTyp",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0777",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险报警灯自动控制模块LHZCU 控制信号跳变为双闪模式",
+    "relation": "依赖于",
+    "tail": "ExtrLightStsCmmntnTyp配置为SOA或CAN",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExtrLightStsCmmntnTyp",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0777",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

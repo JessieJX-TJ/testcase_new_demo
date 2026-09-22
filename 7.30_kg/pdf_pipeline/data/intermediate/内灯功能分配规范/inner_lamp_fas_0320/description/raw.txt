@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Passenger compartment reading lamp configuration for different seat configurations",
+  "row_semantics": "Different passenger seat configurations (Five-seat and Six-seat)",
+  "column_semantics": {
+    "1": "Configuration parameter and associated reading lamps for each seat position",
+    "2": "Description of the reading lamps including their LampID and physical location",
+    "3": "Behavioral rules for下发 requests related to reading lamps"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Passenger Configuration",
+      "description": "Defines the vehicle's seating layout, either five seats or six seats."
+    },
+    {
+      "name": "Reading Lamps",
+      "description": "Individual reading lamps located in the passenger compartment, identified by LampID and physical location (e.g., FL - Front Left)."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Seat Configuration",
+      "description": "The specific seating arrangement (0x0 for Five-seat, 0x1 for Six-seat) determines which reading lamps are active."
+    },
+    {
+      "name": "Request Type",
+      "description": "下发 requests specify whether to turn on/off lamps or retrieve their status."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Lamp Status",
+      "description": "The on/off state of individual reading lamps based on the request and configuration."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the behavior of passenger compartment reading lamps under different seat configurations. It specifies which lamps are activated for a given request type (e.g., turning on/off or retrieving status) and how the system handles requests for third-row lamps in five-seat configurations.",
+  "uncertain_points": [
+    "The exact implementation details of '下发请求' (下发 request) behavior are not fully specified in the table.",
+    "The meaning of 'default' in the context of ignoring third-row lamp status is not explicitly defined."
+  ]
+}
+```

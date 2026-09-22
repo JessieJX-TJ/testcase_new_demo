@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Brake Light Control Logic",
+  "row_semantics": "Each row describes a specific condition or state related to the Brake Light system, including its activation, deactivation, and abnormal handling.",
+  "column_semantics": "The left column categorizes the type of information (e.g., activation logic, exit condition, abnormal handling), while the right column provides the detailed specification for that category.",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "BrkLightDrvMdl",
+      "type": "controller_module",
+      "description": "The Brake Light Driving Module responsible for controlling the brake light."
+    },
+    {
+      "name": "BrkLightCtrlMdl",
+      "type": "controller_module",
+      "description": "The Brake Light Control Module that sends commands to control the brake light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrakeLightState",
+      "type": "signal",
+      "direction": "output",
+      "description": "The state of the brake light, where '1' indicates 'On' and '0' indicates 'Off'."
+    },
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "An identifier used to specify a particular instance of the BrakeLightState signal."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrakeLightState",
+      "type": "signal",
+      "direction": "output",
+      "description": "The controlled output signal that turns the brake light on or off."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "condition": "At least three frames must be sent by BrkLightDrvMdl when setting BrakeLightState to '1'.",
+      "description": "This ensures reliable transmission of the brake light activation command."
+    }
+  ],
+  "engineering_interpretation": "This table defines the logic for controlling the brake light, specifying how the BrkLightDrvMdl activates the brake light by sending BrakeLightState=1 and how it exits this state upon receiving a command from BrkLightCtrlMdl indicating BrakeLightState=0. It is primarily used for testing the correct activation and deactivation behavior of the brake light system.",
+  "uncertain_points": []
+}
+```

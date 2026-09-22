@@ -1,0 +1,72 @@
+```json
+[
+  {
+    "head": "前雾灯点亮或熄灭",
+    "relation": "触发条件",
+    "tail": "ControlFrontFogLight 接口被调用",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightControlSystem.ControlFrontFogLight",
+      "调用该服务接口,通过该组合服务请求前雾灯点亮或者熄灭"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯点亮或熄灭",
+    "relation": "触发条件",
+    "tail": "FrontFogLghtFucProCtrl 接口被订阅",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl",
+      "Method",
+      "订阅该服务接口,通过该基础服务请求前雾灯点亮或者熄灭"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯控制请求 (FrontFogLightReq)",
+    "relation": "输入为",
+    "tail": "0x0=OFF 或 0x1=ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Parameter Name: {FrontFogLightReq}",
+      "0x0=OFF",
+      "0x1=On"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "用户模式有效性 (UsrMdV)",
+    "relation": "依赖于",
+    "tail": "CAN/LIN/SOA服务/硬线的详细定义",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "UsgMdV",
+      "CAN/LIN/SOA服务/硬线的详细定义,亦可指向具体条目"
+    ],
+    "confidence_note": "medium"
+  },
+  {
+    "head": "用户模式有效性 (UsrMdV_1_Valid)",
+    "relation": "前提条件",
+    "tail": "前雾灯控制功能可用",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsgMdV_1_Valid",
+      "ControlFrontFogLight"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "用户模式有效性 (UsrMdV_0_Invalid)",
+    "relation": "抑制条件",
+    "tail": "前雾灯控制功能不可用",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "UsgMdV_0_Invalid",
+      "ControlFrontFogLight"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

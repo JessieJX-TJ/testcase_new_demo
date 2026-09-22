@@ -1,0 +1,76 @@
+{
+  "table_type": "fault_table",
+  "topic": "外灯功能 - 近光灯故障状态检测",
+  "row_semantics": "表格通过两行分别定义了右侧近光灯和左侧近光灯的故障状态查询接口，每行描述一个独立的故障状态检测逻辑。",
+  "column_semantics": {
+    "DippedBeamLight.DippedBeamLightErrorStatus": "功能模块名称及故障状态查询接口",
+    "消费 SO A": "服务调用类型（Service Operation）",
+    "RHZCU": "控制器/模块名称（Right Headlight Zone Control Unit）",
+    "LHZCU": "控制器/模块名称（Left Headlight Zone Control Unit）",
+    "硬线故障状态": "物理连接故障状态（针对右侧近光灯）",
+    "网络故障状态": "通信网络故障状态（针对左侧近光灯）"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight",
+      "type": "功能模块",
+      "description": "外灯系统中的近光灯控制模块"
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块",
+      "description": "右侧近光灯区域控制单元"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "左侧近光灯区域控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Interface Name",
+      "value": "DippedBeamLightErrorStatus",
+      "description": "服务接口名称，用于查询近光灯故障状态"
+    },
+    {
+      "name": "Parameter Name",
+      "value": "{DippedBeamLightErrorSta}",
+      "description": "参数名称，表示返回的故障状态值"
+    },
+    {
+      "name": "InstanceID",
+      "value": "2 or 3",
+      "description": "实例ID，区分右侧和左侧近光灯"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "0x0=No Error",
+      "description": "无错误状态"
+    },
+    {
+      "name": "0x1=Error",
+      "description": "存在错误状态"
+    },
+    {
+      "name": "0x2=Unknown",
+      "description": "未知状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "硬线故障状态",
+      "description": "物理线路连接故障状态（仅适用于右侧近光灯）"
+    },
+    {
+      "name": "网络故障状态",
+      "description": "通信网络故障状态（仅适用于左侧近光灯）"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯系统中近光灯故障状态的查询接口，可用于验证车辆在不同工况下，近光灯控制器（RHZCU/LHZCU）是否能正确上报右侧和左侧近光灯的故障状态。",
+  "uncertain_points": []
+}

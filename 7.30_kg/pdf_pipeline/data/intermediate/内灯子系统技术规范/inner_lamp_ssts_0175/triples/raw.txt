@@ -1,0 +1,68 @@
+```json
+[
+  {
+    "head": "DoorFL1LampFadeSpdCmd_1 命令触发灯头周期闪烁",
+    "relation": "触发条件",
+    "tail": "接收到 DoorFL1LampFadeSpdCmd_1 命令且呼吸模式已定义",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["DoorFL1LampFadeSpdCmd_1", "呼吸周期指令", "周期闪烁"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "灯头停止呼吸",
+    "relation": "抑制条件",
+    "tail": "指令值为 0",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["指令值为0", "立即停止呼吸"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "不同呼吸模式切换",
+    "relation": "触发条件",
+    "tail": "接收到新的呼吸模式指令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["不同呼吸模式切换", "立即停止当前呼吸", "切换下一呼吸模式"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL2LampOnOff_1 命令控制灯头开关",
+    "relation": "输入为",
+    "tail": "DoorFL2LampOnOff_1 命令 (0x0=OFF, 0x1=ON)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DoorFL2LampOnOff_1", "开启请求", "点亮ON"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL2LampColCmd_1 命令控制灯头颜色",
+    "relation": "输入为",
+    "tail": "DoorFL2LampColCmd_1 命令 (0x00=No Request, 0x01-0xFF=颜色值)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DoorFL2LampColCmd_1", "颜色指令", "色坐标对应的颜色"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL2LampBrtnsCmd_1 命令控制灯头亮度",
+    "relation": "输入为",
+    "tail": "DoorFL2LampBrtnsCmd_1 命令 (0x00=No Request)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DoorFL2LampBrtnsCmd_1", "亮度指令"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "灯头颜色/亮度切换时间",
+    "relation": "超时约束",
+    "tail": "默认速度 Spd0: 2000ms; Spd1: 300ms; Spd2: 100ms; Spd3: 预留 0",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": ["灯头颜色/亮度切换", "所需的时间", "默认速度"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL2LampOn_1 命令点亮 ON",
+    "relation": "前提条件",
+    "tail": "同时接收到非 0 值的颜色亮度指令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["点亮ON", "颜色亮度指令"],
+    "confidence_note": "high"
+  }
+]
+```

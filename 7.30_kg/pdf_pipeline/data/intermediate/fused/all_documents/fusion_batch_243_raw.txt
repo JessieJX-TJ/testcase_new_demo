@@ -1,0 +1,436 @@
+```json
+[
+  {
+    "head": "整车电子电器系统功能",
+    "relation": "抑制条件",
+    "tail": "电源电压欠压（6 V ~ 9 V）",
+    "sources": ["inner_lamp_ssts_0145", "inner_lamp_ssts_0271", "inner_lamp_ssts_0288", "inner_lamp_ssts_0567"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统功能",
+    "relation": "抑制条件",
+    "tail": "电源电压过压（16 V ~ 18 V）",
+    "sources": ["inner_lamp_ssts_0145", "inner_lamp_ssts_0271", "inner_lamp_ssts_0288", "inner_lamp_ssts_0567"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统功能",
+    "relation": "抑制条件",
+    "tail": "电源电压高压（> 18 V）",
+    "sources": ["inner_lamp_ssts_0145", "inner_lamp_ssts_0271", "inner_lamp_ssts_0288", "inner_lamp_ssts_0567"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统功能",
+    "relation": "输出状态",
+    "tail": "使能",
+    "sources": ["inner_lamp_ssts_0145", "inner_lamp_ssts_0271", "inner_lamp_ssts_0288", "inner_lamp_ssts_0567"],
+    "conflict": true,
+    "conflict_note": "与'输出状态=禁止'构成逻辑互斥对，共存于同一功能上下文，需确认是否为不同条件分支下的输出；当前未提供条件区分依据，标记为潜在冲突"
+  },
+  {
+    "head": "整车电子电器系统功能",
+    "relation": "输出状态",
+    "tail": "禁止",
+    "sources": ["inner_lamp_ssts_0145", "inner_lamp_ssts_0271", "inner_lamp_ssts_0288", "inner_lamp_ssts_0567"],
+    "conflict": true,
+    "conflict_note": "与'输出状态=使能'构成逻辑互斥对，共存于同一功能上下文，需确认是否为不同条件分支下的输出；当前未提供条件区分依据，标记为潜在冲突"
+  },
+  {
+    "head": "氛围灯亮度周期性切换（500 ms 100% ↔ 500 ms 0%）",
+    "relation": "触发条件",
+    "tail": "UpIPALampBrthngCmd_1 = 0x2（Rate2：1 s 呼吸周期，0%↔100%跳变）",
+    "sources": ["inner_lamp_ssts_0146"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯亮度保持100%",
+    "relation": "状态保持条件",
+    "tail": "UpIPALampBrthngCmd_1 = 1000（标定值，对应100%亮度）",
+    "sources": ["inner_lamp_ssts_0146"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯亮度保持0%",
+    "relation": "状态保持条件",
+    "tail": "UpIPALampBrthngCmd_1 = 0（标定值，对应0%亮度）",
+    "sources": ["inner_lamp_ssts_0146"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯亮度周期性切换",
+    "relation": "依赖于",
+    "tail": "UpIPALampBrthngCmd_1信号的Rate2模式（1 s 呼吸周期）",
+    "sources": ["inner_lamp_ssts_0146"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智己汽车 Z-ONE-3.0 平台内灯子系统技术规范",
+    "relation": "控制对象",
+    "tail": "智己汽车 Z-ONE-3.0 平台内灯子系统",
+    "sources": ["inner_lamp_ssts_0147", "inner_lamp_ssts_0572"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆电子系统唤醒状态",
+    "relation": "触发条件",
+    "tail": "至少一个唤醒源信号有效",
+    "sources": ["inner_lamp_ssts_0148"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆电子系统休眠状态",
+    "relation": "触发条件",
+    "tail": "无任何有效唤醒源信号",
+    "sources": ["inner_lamp_ssts_0148"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统唤醒/休眠操作",
+    "relation": "触发条件",
+    "tail": "唤醒源标识为 NA（无效/未配置）",
+    "sources": ["inner_lamp_ssts_0157", "inner_lamp_ssts_0352", "inner_lamp_ssts_0361"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统唤醒/休眠操作",
+    "relation": "输入来源",
+    "tail": "唤醒源标识为 NA（无效/未配置）",
+    "sources": ["inner_lamp_ssts_0157"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统唤醒/休眠操作",
+    "relation": "输出结果",
+    "tail": "唤醒/休眠方式为 NA（未执行/无效）",
+    "sources": ["inner_lamp_ssts_0157"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯呼吸速度改变",
+    "relation": "触发条件",
+    "tail": "RoofLHLALampBrthngCmd_l ≠ 0x0（非No Request）且AmbtLghtLHRollingCtr_l有效",
+    "sources": ["inner_lamp_ssts_0150"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯呼吸速度改变",
+    "relation": "前提条件",
+    "tail": "氛围灯处于点亮状态",
+    "sources": ["inner_lamp_ssts_0150"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHBrTlvl",
+    "relation": "输入来源",
+    "tail": "RHZCU（第三排右侧控制器）",
+    "sources": ["inner_lamp_ssts_0152"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHDimSpd",
+    "relation": "输入来源",
+    "tail": "RHZCU（第三排右侧控制器）",
+    "sources": ["inner_lamp_ssts_0152"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHBrTlvl",
+    "relation": "输出主体",
+    "tail": "RHZCU（第三排右侧控制器）",
+    "sources": ["inner_lamp_ssts_0152"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHDimSpd",
+    "relation": "输出主体",
+    "tail": "RHZCU（第三排右侧控制器）",
+    "sources": ["inner_lamp_ssts_0152"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHBrTlvl",
+    "relation": "接口来源",
+    "tail": "Internal Light SSTS",
+    "sources": ["inner_lamp_ssts_0152"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHDimSpd",
+    "relation": "接口来源",
+    "tail": "Internal Light SSTS",
+    "sources": ["inner_lamp_ssts_0152"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHBrTlvl",
+    "relation": "亮度等级定义",
+    "tail": "0x0=OFF; 0x1=Level_1; …; 0x1F=Reserved",
+    "sources": ["inner_lamp_ssts_0152"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampRHDimSpd",
+    "relation": "渐亮渐灭速度控制定义",
+    "tail": "ThirdRowMapLampRHDimSpd（具体数值映射见SSTS文档）",
+    "sources": ["inner_lamp_ssts_0152"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数",
+    "relation": "前提条件",
+    "tail": "分辨率/Factor = 'NA'",
+    "sources": ["inner_lamp_ssts_0153"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输出目标",
+    "tail": "目标亮度等级",
+    "sources": ["inner_lamp_ssts_0154"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入控制量",
+    "tail": "控制变量值（如PWM占空比、电流等级）",
+    "sources": ["inner_lamp_ssts_0154"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输出测量量",
+    "tail": "实测输出信号值（如电压、电流）",
+    "sources": ["inner_lamp_ssts_0154"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "运行依赖",
+    "tail": "内部状态或模式标识符",
+    "sources": ["inner_lamp_ssts_0154"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "状态保持条件",
+    "tail": "控制变量值 ≥ 1600",
+    "sources": ["inner_lamp_ssts_0154"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breath Mode Holdoff Time",
+    "relation": "配置前提",
+    "tail": "参数 'AmbtLampBrthngRateXholdoffPercent' 取值范围为 0–32",
+    "sources": ["inner_lamp_ssts_0155"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breath Mode Holdoff Time",
+    "relation": "分辨率定义",
+    "tail": "Resolution/Factor = E=N×1% 或 0xA/0x00",
+    "sources": ["inner_lamp_ssts_0155"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breath Mode Holdoff Time",
+    "relation": "默认值应用前提",
+    "tail": "参数 'AmbtLampBrthngRateXholdoffPercent' 未显式配置",
+    "sources": ["inner_lamp_ssts_0155"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breath Mode Holdoff Time (Rate 3)",
+    "relation": "配置值",
+    "tail": "AmbtLampBrthngRate3holdoffPercent = 0xA（10%）",
+    "sources": ["inner_lamp_ssts_0155"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breath Mode Holdoff Time (Rate 4)",
+    "relation": "配置值",
+    "tail": "AmbtLampBrthngRate4holdoffPercent = 0x00（0%）",
+    "sources": ["inner_lamp_ssts_0155"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breath Mode Holdoff Time (Rate 5)",
+    "relation": "配置值",
+    "tail": "AmbtLampBrthngRate5holdoffPercent = 0xA（10%）",
+    "sources": ["inner_lamp_ssts_0155"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breath Mode Holdoff Time (Rate 6)",
+    "relation": "配置值",
+    "tail": "AmbtLampBrthngRate6holdoffPercent = 0xA（10%）",
+    "sources": ["inner_lamp_ssts_0155"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统参数配置验证",
+    "relation": "前提条件",
+    "tail": "参数范围/Range、分辨率/Factor、默认值/Default 均符合设计规范",
+    "sources": ["inner_lamp_ssts_0156"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "标定项",
+    "relation": "有效性依赖",
+    "tail": "标定描述/Description、参数范围/Range、分辨率/Factor、默认值/Default",
+    "sources": ["inner_lamp_ssts_0156"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "参数范围/Range",
+    "relation": "前提条件",
+    "tail": "参数设置在有效取值范围内",
+    "sources": ["inner_lamp_ssts_0158"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "分辨率/Factor",
+    "relation": "前提条件",
+    "tail": "参数调节的最小可调整单位",
+    "sources": ["inner_lamp_ssts_0158"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "默认值/Default",
+    "relation": "前提条件",
+    "tail": "参数未被修改时的初始值",
+    "sources": ["inner_lamp_ssts_0158"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯点亮（ON）",
+    "relation": "前提条件",
+    "tail": "CnsoLHBLampOnOff_1_1_ON 有效且颜色/亮度指令非零",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯颜色指令",
+    "relation": "输入信号",
+    "tail": "CnsoLHBLampColorCmd_1",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯亮度指令",
+    "relation": "输入信号",
+    "tail": "CnsoLHBLampBrtnsCmd_1",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯呼吸指令",
+    "relation": "输入信号",
+    "tail": "CnsoLHBLampBrthngCmd_1",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHBLampColorCmd_1",
+    "relation": "触发条件",
+    "tail": "0x0 = No Request（无颜色请求）",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHBLampBrtnsCmd_1",
+    "relation": "触发条件",
+    "tail": "0x0 = No Request（无亮度请求）",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHBLampBrthngCmd_1",
+    "relation": "触发条件",
+    "tail": "0x0 = No Request（无呼吸率请求）",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHBLampColorCmd_1",
+    "relation": "状态保持条件",
+    "tail": "指令值为0或未定义颜色号时，颜色保持不变",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHBLampBrtnsCmd_1",
+    "relation": "状态保持条件",
+    "tail": "指令值为0时，亮度保持不变",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHBLampBrthngCmd_1",
+    "relation": "输入映射",
+    "tail": "0x0 = No Request；0x1 = Rate1（500 ms）；0x2 = Rate2（1 s）；0x3 = Rate3（新增）；0x4 = Rate4（2 s）；0x5 = Rate5（2.4 s）",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统唤醒操作",
+    "relation": "前提条件",
+    "tail": "接收到有效的唤醒源信号",
+    "sources": ["inner_lamp_ssts_0160", "inner_lamp_ssts_0231", "inner_lamp_ssts_0339", "inner_lamp_ssts_0534"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

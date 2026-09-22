@@ -1,0 +1,56 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "后雾灯驱动模块（RearFogLightDrvMdl）与控制模块（RearFogLightCtrlMdl）之间的信号交互规范",
+  "row_semantics": "表格的每一行代表一个功能或状态的描述，包括持续发送行为、退出条件和异常处理。",
+  "column_semantics": "表格包含两列：第一列为空白，用于分组；第二列详细描述了相关的行为和条件。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RearFogLightDrvMdl",
+      "type": "controller_module",
+      "description": "后雾灯驱动模块，负责持续发送后雾灯位置灯状态信号。"
+    },
+    {
+      "name": "RearFogLightCtrlMdl",
+      "type": "controller_module",
+      "description": "后雾灯控制模块，负责发送控制后雾灯位置灯的指令。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RearFogPositionLightSta",
+      "type": "input_signal",
+      "description": "后雾灯位置灯状态，值为1表示开启（On）。"
+    },
+    {
+      "name": "ControlRearFogPositionLight",
+      "type": "input_signal",
+      "description": "来自RearFogLightCtrlMdl的控制信号，用于控制后雾灯位置灯的状态。"
+    },
+    {
+      "name": "RearFogPositionLightReq",
+      "type": "input_signal",
+      "description": "后雾灯位置灯请求状态，值为0表示关闭（Off），触发退出条件。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogPositionLightStatus",
+      "type": "output_signal",
+      "description": "后雾灯位置灯状态信号，由RearFogLightDrvMdl持续发送。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "condition": "RearFogPositionLightSta = 1 (On)",
+      "action": "至少发送三帧 RearFogPositionLightStatus",
+      "description": "在后雾灯位置灯开启状态下，RearFogLightDrvMdl必须至少发送三帧位置灯状态信号。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了后雾灯系统中驱动模块与控制模块之间的信号交互规则，主要用于验证后雾灯位置灯状态的正确发送以及根据控制指令正确响应开关状态。",
+  "uncertain_points": []
+}
+```

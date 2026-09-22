@@ -1,0 +1,114 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Vehicle Hazard Light Request Conditions",
+  "row_semantics": "Each row represents a specific condition or reason that may trigger or prevent a hazard light request.",
+  "column_semantics": "The table lists hexadecimal codes (0x07 to 0x14) corresponding to various system conditions or reasons related to hazard light requests.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HazardLightRequest",
+      "type": "function",
+      "description": "The overall function that determines whether a hazard light should be activated based on various system conditions."
+    },
+    {
+      "name": "VCUBatteryThermalRunaway",
+      "type": "system_condition",
+      "description": "A thermal runaway condition in the Vehicle Control Unit (VCU) battery."
+    },
+    {
+      "name": "BMSBatteryThermalRunaway",
+      "type": "system_condition",
+      "description": "A thermal runaway condition in the Battery Management System (BMS) battery."
+    },
+    {
+      "name": "EmergencyBrakeHazardLightNotRequested",
+      "type": "system_condition",
+      "description": "An emergency brake situation where the hazard light is not requested."
+    },
+    {
+      "name": "RCWWaringHazardLightNotRequested",
+      "type": "system_condition",
+      "description": "A Road Curve Warning System (RCW) warning situation where the hazard light is not requested."
+    },
+    {
+      "name": "IPDPilotHazardLightNotRequested",
+      "type": "system_condition",
+      "description": "An Intelligent Parking Distance Pilot (IPD) situation where the hazard light is not requested."
+    },
+    {
+      "name": "ExteriorLockHazardLightRequestFinish",
+      "type": "system_condition",
+      "description": "An exterior lock situation where the hazard light request has finished."
+    },
+    {
+      "name": "ExteriorUnlockHazardLightRequestFinish",
+      "type": "system_condition",
+      "description": "An exterior unlock situation where the hazard light request has finished."
+    },
+    {
+      "name": "PowerLiftgateHazardLightRequestFinish",
+      "type": "system_condition",
+      "description": "A power liftgate situation where the hazard light request has finished."
+    },
+    {
+      "name": "FMCLightNotRequested",
+      "type": "system_condition",
+      "description": "A Front Mid-Range Camera (FMC) light situation where the light is not requested."
+    },
+    {
+      "name": "SOARequestOff",
+      "type": "system_condition",
+      "description": "A Safe Operating Area (SOA) request off situation."
+    },
+    {
+      "name": "UsageModeDissatisfaction",
+      "type": "system_condition",
+      "description": "A dissatisfaction with the usage mode."
+    },
+    {
+      "name": "VehicleModeDissatisfaction",
+      "type": "system_condition",
+      "description": "A dissatisfaction with the vehicle mode."
+    },
+    {
+      "name": "FactoryModeOverTime",
+      "type": "system_condition",
+      "description": "A factory mode over time situation."
+    },
+    {
+      "name": "SteeringWheelOperation",
+      "type": "system_condition",
+      "description": "A steering wheel operation situation."
+    }
+  ],
+  "core_conditions": [
+    "VCUBatteryThermalRunaway",
+    "BMSBatteryThermalRunaway",
+    "EmergencyBrakeHazardLightNotRequested",
+    "RCWWaringHazardLightNotRequested",
+    "IPDPilotHazardLightNotRequested",
+    "ExteriorLockHazardLightRequestFinish",
+    "ExteriorUnlockHazardLightRequestFinish",
+    "PowerLiftgateHazardLightRequestFinish",
+    "FMCLightNotRequested",
+    "SOARequestOff",
+    "UsageModeDissatisfaction",
+    "VehicleModeDissatisfaction",
+    "FactoryModeOverTime",
+    "SteeringWheelOperation"
+  ],
+  "core_outputs": [
+    {
+      "name": "HazardLightNotRequested",
+      "type": "output_signal",
+      "description": "Indicates that a hazard light request is not being made under the specified condition."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines various conditions and their corresponding hexadecimal codes that either trigger or prevent a hazard light request in a vehicle. It can be used for testing the logic of the hazard light control system under different scenarios, ensuring that the system responds correctly to each condition.",
+  "uncertain_points": []
+}
+```

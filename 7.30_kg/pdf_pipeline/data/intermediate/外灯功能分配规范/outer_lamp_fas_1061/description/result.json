@@ -1,0 +1,114 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑与触发条件",
+  "row_semantics": "定义了在特定条件下触发的外灯控制动作序列",
+  "column_semantics": "分为两列：左侧为触发条件（Conditions），右侧为执行动作（Actions）",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "User Mode (UsrMd)",
+      "description": "用户操作模式，包括Sleep、Standby、XOTA Valid等"
+    },
+    {
+      "name": "Vehicle Mode (VehMd)",
+      "description": "车辆运行模式，如TRANSPORT、Valid等"
+    },
+    {
+      "name": "Exterior Light Switch Process",
+      "description": "外部灯光开关处理模块"
+    },
+    {
+      "name": "CombLightSwStatus",
+      "description": "组合灯光开关状态"
+    },
+    {
+      "name": "DLPSceSceneLightSet",
+      "description": "DLPS场景灯光设置"
+    },
+    {
+      "name": "NaviRoadInfoService",
+      "description": "导航道路信息服务平台"
+    },
+    {
+      "name": "AutoLightOnReq",
+      "description": "自动灯光开启请求"
+    },
+    {
+      "name": "DirectionLight",
+      "description": "方向灯"
+    },
+    {
+      "name": "LHZCU",
+      "description": "近光灯控制模块"
+    },
+    {
+      "name": "ICB",
+      "description": "集成控制盒"
+    },
+    {
+      "name": "HMI ICB",
+      "description": "人机交互集成控制盒"
+    },
+    {
+      "name": "SidePositionLight",
+      "description": "侧位灯"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "User Mode Conditions",
+      "description": "用户模式不满足特定条件（如Sleep、Standby、XOTA Valid等）"
+    },
+    {
+      "name": "Vehicle Mode Conditions",
+      "description": "整车模式不满足特定条件（如TRANSPORT、Valid等）"
+    },
+    {
+      "name": "Exterior Light Switch Status",
+      "description": "灯光开关状态非Auto"
+    },
+    {
+      "name": "Smart Scene Lighting Disabled",
+      "description": "智慧场景灯光设置为禁止"
+    },
+    {
+      "name": "Tunnel and Ambient Light Detection",
+      "description": "车辆已进入隧道且环境光检测状态为True"
+    },
+    {
+      "name": "Flasher Light Activation",
+      "description": "双闪灯开启条件（a&&b||e&&d）"
+    },
+    {
+      "name": "High Beam Manual Off",
+      "description": "近光灯手动关闭"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Near Beam Control Signals",
+      "description": "向ICB发送近光灯控制信号（LHZCU发出）"
+    },
+    {
+      "name": "ICB Signal Conversion",
+      "description": "ICB将服务接口或控制信号转换成CAN信号，并控制近光灯熄灭"
+    },
+    {
+      "name": "External Light Control Interface",
+      "description": "调用外灯控制组合服务ICB接口"
+    },
+    {
+      "name": "HMI ICB Interface",
+      "description": "调用HMI子系统ICB接口"
+    },
+    {
+      "name": "Side Position Light Control",
+      "description": "控制侧位灯熄灭"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细描述了在多种用户和车辆模式下，以及特定环境和功能状态下，外灯控制系统如何根据预设逻辑触发相应的控制动作，主要用于验证外灯在不同场景下的正确响应和控制逻辑。",
+  "uncertain_points": []
+}

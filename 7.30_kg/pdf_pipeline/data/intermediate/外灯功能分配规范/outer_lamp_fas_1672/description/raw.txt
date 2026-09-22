@@ -1,0 +1,43 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "危险警报灯系统在轮胎爆胎情况下的自动激活功能",
+  "row_semantics": "描述了触发危险警报灯激活的前置条件、触发动作以及执行动作（输出信号控制）",
+  "column_semantics": "第一列是场景描述，第二列详细列出了前置条件、触发动作和执行动作的具体内容",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "危险警报灯模块 LHZCU",
+    "ICB (Integrated Control Board)",
+    "FLDirnLghtCtrl (Front Left Directional Light Control)",
+    "FRDirnLghtCtrl (Front Right Directional Light Control)",
+    "RLDirnLghtCtrl (Rear Left Directional Light Control)",
+    "RRDirnLghtCtrl (Rear Right Directional Light Control)"
+  ],
+  "core_conditions": [
+    "车辆使用模式为All",
+    "车辆使用模式有效",
+    "车辆行驶模式为All",
+    "车辆行驶模式有效",
+    "车辆处于非P档且挡位位置有效"
+  ],
+  "core_outputs": [
+    "危险警报灯信号跳变至闪烁状态",
+    "双闪灯按照1.25Hz频率闪烁",
+    "转向灯流水模式使能",
+    "ICB根据LHZCU发送的转向灯信号控制转向灯点亮/熄灭",
+    "延时60ms并分发控制信号至LHZCU、RHZCU和RZCU"
+  ],
+  "core_faults": [
+    "四轮任意一轮轮胎爆胎 (iFLTireBlowoutSts, iFRTireBlowoutSts, iRLTireBlowoutSts, iRRTireBlowoutSts)"
+  ],
+  "core_timing_constraints": [
+    "双闪灯闪烁周期：800ms (1.25Hz)",
+    "危险警报灯闪烁持续时间：400ms on, 400ms off",
+    "转向灯流水模式使能状态保持",
+    "ICB控制信号延时60ms并分发"
+  ],
+  "engineering_interpretation": "该表格定义了当车辆检测到轮胎爆胎时，危险警报灯系统应如何自动激活并控制相关灯光输出，以提醒周边行人或车辆注意安全。可用于验证危险警报灯在轮胎爆胎故障下的正确响应逻辑。",
+  "uncertain_points": []
+}
+```

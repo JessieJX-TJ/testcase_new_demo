@@ -1,0 +1,44 @@
+{
+  "table_type": "logic_table",
+  "topic": "自动灯光视觉方案下的LHZCU冷启动逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从场景描述、前置条件、触发动机到执行动作和备注，详细定义了在特定条件下系统的行为逻辑。",
+  "column_semantics": "表格包含两列：左侧为功能阶段或类别（如场景描述、前置条件等），右侧为对应的具体内容或参数。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit，负责处理自动灯光的视觉触发和冷启动逻辑。"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Instrument Cluster Board，座舱芯片，负责发送与自动灯光相关的信号给LHZCU。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "自动灯光视觉方案",
+      "description": "车辆采用基于视觉识别的自动灯光控制方案。",
+      "source": "LHZCU"
+    },
+    {
+      "name": "ICB未完全唤醒",
+      "description": "车辆启动时，座舱芯片（ICB）尚未完成完全唤醒状态。",
+      "source": "ICB"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "low_beams_status",
+      "type": "signal",
+      "description": "LHZCU内部信号，表示低光束灯的状态，用于指示冷启动逻辑处理结果。",
+      "destination": "LHZCU"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在自动灯光采用视觉方案且ICB未完全唤醒时，LHZCU如何通过接收ICB信号进行冷启动逻辑处理并输出低光束灯状态的测试验证规则。",
+  "uncertain_points": []
+}

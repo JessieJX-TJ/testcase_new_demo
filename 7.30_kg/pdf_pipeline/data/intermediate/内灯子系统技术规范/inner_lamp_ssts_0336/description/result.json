@@ -1,0 +1,34 @@
+{
+  "table_type": "parameter_table",
+  "topic": "电压状态与系统功能限制",
+  "row_semantics": "描述不同电压状态下系统的功能执行权限",
+  "column_semantics": {
+    "低压(6V以下)": "电压低于6V的状态",
+    "欠压(6V~9V)": "电压在6V到9V之间的状态",
+    "正常(9V~16V)": "电压在9V到16V之间的正常工作状态",
+    "过压(16V~18V)": "电压在16V到18V之间的异常状态",
+    "高压(18V以上)": "电压高于18V的危险状态"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    "外灯",
+    "车身控制",
+    "电动尾门"
+  ],
+  "core_conditions": [
+    "低压(6V以下)",
+    "欠压(6V~9V)",
+    "正常(9V~16V)",
+    "过压(16V~18V)",
+    "高压(18V以上)"
+  ],
+  "core_outputs": [
+    "禁止",
+    "使能"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证整车电子电器系统在不同电压状态下的功能限制，确保在异常电压条件下（如低压、过压、高压）相关功能（如外灯、车身控制、电动尾门）被正确禁止，仅在正常电压范围内允许功能使能。",
+  "uncertain_points": []
+}

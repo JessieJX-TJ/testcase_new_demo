@@ -1,0 +1,59 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "整车外灯系统右远光灯输出电路的故障诊断需求",
+  "row_semantics": "列出具体的故障诊断场景，每个场景对应一个故障类型及其检测条件和退出条件",
+  "column_semantics": {
+    "名称": "故障诊断场景的唯一标识符，通常包含功能模块编号和故障类型代码",
+    "描述": "对故障诊断场景的简要文字说明，指明是哪种类型的故障",
+    "进入条件": "触发该故障诊断流程开始的条件，通常是检测到某种异常状态",
+    "退出条件": "结束该故障诊断流程的条件，通常是异常状态恢复或满足特定判断"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B105C",
+      "type": "controller_module",
+      "description": "车身控制器（Body Control Module, BCM）中的一个功能模块，负责管理外灯系统的电气控制"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "短路到地",
+      "description": "电路中出现短路并连接到车辆接地的情况"
+    },
+    {
+      "name": "短路到电源",
+      "description": "电路中出现短路并连接到车辆电源的情况"
+    },
+    {
+      "name": "开路",
+      "description": "电路中断开，电流无法流通"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "输出",
+      "description": "右远光灯的电气输出状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "B105C_11",
+      "description": "右远光灯输出短路到地故障"
+    },
+    {
+      "name": "B105C_12",
+      "description": "右远光灯输出短路到电源故障"
+    },
+    {
+      "name": "B105C_13",
+      "description": "右远光灯输出开路故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯系统中右远光灯输出电路的三种主要故障诊断规则：短路到地、短路到电源和开路。测试时，可通过模拟这些故障条件来验证BCM是否能够正确检测并记录相应的故障代码，并在故障消除后正确清除故障。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,91 @@
+{
+  "table_type": "logic_table",
+  "topic": "Automated Homecoming Lighting Function Activation Logic",
+  "row_semantics": "Each row represents a specific condition or requirement that must be met for the '伴我回家' (Follow Me Home) lighting function to activate automatically when the user turns off the vehicle.",
+  "column_semantics": {
+    "Column 1": "Condition Description or Requirement Name",
+    "Column 2": "Detailed Condition Specification"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "伴我回家灯光 (Follow Me Home Light)",
+      "type": "function",
+      "description": "An automated lighting feature that activates upon vehicle power-off, providing illumination along the path of the user returning to the vehicle."
+    },
+    {
+      "name": "S32G",
+      "type": "controller",
+      "description": "A central processing unit/module responsible for managing and enabling the '伴我回家' lighting function based on various inputs and settings."
+    },
+    {
+      "name": "阳光雨量传感器 (Sunlight and Rain Sensor)",
+      "type": "sensor",
+      "description": "Detects environmental light and precipitation conditions to determine if automatic lighting is necessary."
+    },
+    {
+      "name": "灯光开关档位状态 (Light Switch Position Status)",
+      "type": "system_state",
+      "description": "Indicates the current setting of the vehicle's exterior light switch, typically set to AUTO for automatic operation."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "AutoLghtOnReq_1",
+      "description": "Request for automatic lighting activation based on sunlight sensor input when vehicle roof type is 0 (non-convertible).",
+      "signal": "AutoLghtOnReq_1",
+      "condition": "AutoLghtOnReq_1 == True && vehRlsType == 0"
+    },
+    {
+      "name": "AutoLghtOnReq_ICB",
+      "description": "Request for automatic lighting activation based on sunlight sensor input when vehicle roof type is 1 (convertible).",
+      "signal": "AutoLghtOnReq_ICB",
+      "condition": "AutoLghtOnReq_ICB_1 == True && vehRlsType == 1"
+    },
+    {
+      "name": "CombLightSwStatus",
+      "description": "Combined status of the vehicle's exterior light switch, indicating it is set to AUTO mode.",
+      "signal": "ExteriorLightSwitchProcess.CombLightSwStatus.CombLightSwSta",
+      "condition": "CombLightSwSta == 0x3"
+    },
+    {
+      "name": "S32G Enable Request",
+      "description": "Signal from S32G module requesting the activation of the '伴我回家' function.",
+      "signal": "PersonalizationData.FollowMehomeSet.FollowMehomeSetInfo.FoMeHmEnableInfo",
+      "condition": "FoMeHmEnableInfo == Enabled"
+    },
+    {
+      "name": "Time Setting",
+      "description": "Default time duration for which the '伴我回家' lights remain on if not manually set by the user.",
+      "signal": "PersonalizationData.FollowMehomeSet.FollowMehomeSetInfo.FoMeHmTimeInfo",
+      "value": "30S"
+    },
+    {
+      "name": "Function Mode",
+      "description": "Default lighting mode for the '伴我回家' function if not manually set by the user.",
+      "signal": "PersonalizationData.FollowMehomeSet.FollowMehomeSetInfo.FoMeHmFuncInfo",
+      "value": "DippedLight"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Automatic Lighting Activation",
+      "description": "The '伴我回家' lights are automatically turned on to illuminate the area around the vehicle.",
+      "trigger": "All prerequisite conditions are met"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Default Time Duration",
+      "signal": "FoMeHmTimeInfo",
+      "value": "30 seconds"
+    }
+  ],
+  "engineering_interpretation": "This table defines the logical conditions required for the '伴我回家' lighting function to automatically activate when the vehicle is powered off. It specifies the necessary inputs from sensors, system states, and controller settings, as well as default parameters for timing and lighting mode.",
+  "uncertain_points": [
+    "The exact behavior of the 'vehRlsType' parameter in different vehicle configurations is not fully detailed.",
+    "The specific interface through which the S32G module communicates with other systems is not described in detail."
+  ]
+}

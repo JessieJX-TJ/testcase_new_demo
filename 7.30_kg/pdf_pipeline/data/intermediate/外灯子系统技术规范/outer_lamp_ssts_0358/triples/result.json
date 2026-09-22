@@ -1,0 +1,100 @@
+[
+  {
+    "head": "【RRSideLghtDrvMdl】停止驱动右后位置灯输出",
+    "relation": "前提条件",
+    "tail": "执行动作",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "执行动作",
+      "【RRSideLghtDrvMdl】停止驱动右后位置灯输出"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0358",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "【RRSideLghtDrvMdl】持续发送 SidePositionLightStatus",
+    "relation": "前提条件",
+    "tail": "执行动作",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "执行动作",
+      "【RRSideLghtDrvMdl】持续发送 SidePositionLightStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0358",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "SidePositionLightSta=0(Off)(InstanceID=4)",
+    "relation": "输出为",
+    "tail": "【RRSideLghtDrvMdl】持续发送 SidePositionLightStatus",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "【RRSideLghtDrvMdl】持续发送 SidePositionLightStatus",
+      "SidePositionLightSta=0(Off)(InstanceID=4)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0358",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "【SideLghtCtrlMdl】发送的ControlSidePositionLight",
+    "relation": "前提条件",
+    "tail": "退出条件",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "退出条件",
+      "【SideLghtCtrlMdl】发送的ControlSidePositionLight"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0358",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "SidePositionLightReq==1(On)(InstanceID=4)",
+    "relation": "前提条件",
+    "tail": "退出条件",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "退出条件",
+      "SidePositionLightReq==1(On)(InstanceID=4)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0358",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "【RRSideLghtDrvMdl】停止驱动右后位置灯输出",
+    "relation": "抑制条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight.SidePositionLightReq==1(On)(InstanceID=4)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "【RRSideLghtDrvMdl】停止驱动右后位置灯输出",
+      "退出条件"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0358",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "至少发送三帧",
+    "relation": "状态保持条件",
+    "tail": "【RRSideLghtDrvMdl】持续发送 SidePositionLightStatus",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "【RRSideLghtDrvMdl】持续发送 SidePositionLightStatus",
+      "至少发送三帧"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0358",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

@@ -1,0 +1,484 @@
+```json
+[
+  {
+    "head": "HMI subsystem displays high-beam icon",
+    "relation": "trigger condition",
+    "tail": "Service interface or CAN signal feedback status is 0x1",
+    "sources": ["outer_lamp_fas_0455"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI subsystem does not display high-beam icon",
+    "relation": "suppression condition",
+    "tail": "Service interface or CAN signal feedback status is 0x0",
+    "sources": ["outer_lamp_fas_0455"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI subsystem triggers fault pop-up alert",
+    "relation": "trigger condition",
+    "tail": "MainBeamLightFltSts == 0x1",
+    "sources": ["outer_lamp_fas_0455"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightErrSta",
+    "relation": "depends on",
+    "tail": "MainBeamLightFltSts == 0x1",
+    "sources": ["outer_lamp_fas_0455"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI subsystem displays high-beam icon",
+    "relation": "input from",
+    "tail": "LHZCU high-beam control signal (LMainBeamLghtCtrl)",
+    "sources": ["outer_lamp_fas_0455"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI subsystem displays high-beam icon",
+    "relation": "depends on",
+    "tail": "ExteriorLightSwitchProcess.MainBeamLightFucProStatus",
+    "sources": ["outer_lamp_fas_0455"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High-beam request activated",
+    "relation": "prerequisite",
+    "tail": "Vehicle gear position is Drive (D) gear",
+    "sources": ["outer_lamp_fas_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High-beam request activated",
+    "relation": "prerequisite",
+    "tail": "TrShftLvrPosV is valid",
+    "sources": ["outer_lamp_fas_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High-beam request disabled",
+    "relation": "suppression condition",
+    "tail": "vehRlsType == 0 (vehicle not in D gear)",
+    "sources": ["outer_lamp_fas_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High-beam request issued",
+    "relation": "trigger condition",
+    "tail": "IPD request input received from ADAS camera",
+    "sources": ["outer_lamp_fas_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High-beam lamp extinguished",
+    "relation": "trigger condition",
+    "tail": "IHC switch disabled (iIHCEnbSetSts == 0x1)",
+    "sources": ["outer_lamp_fas_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High-beam control signal sent to ICB",
+    "relation": "output as",
+    "tail": "ICB converts service interface or control signal into lamp-control CAN signal",
+    "sources": ["outer_lamp_fas_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High-beam status feedback to ICB",
+    "relation": "output as",
+    "tail": "LHZCU feeds back status/fault status to ICB",
+    "sources": ["outer_lamp_fas_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High-beam extinction synchronization requirement",
+    "relation": "timeout constraint",
+    "tail": "Left and right high-beam lamps must extinguish synchronously; maximum inter-lamp delay ≤ 40 ms",
+    "sources": ["outer_lamp_fas_0458"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtCtrl (left rear side lamp control signal)",
+    "relation": "input encoding",
+    "tail": "0x0 = RLSideLghtCtrl_0_Off; 0x1 = RLSideLghtCtrl_1_On",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtCtrl (right rear side lamp control signal)",
+    "relation": "input encoding",
+    "tail": "0x0 = RRSideLghtCtrl_0_Off; 0x1 = RRSideLghtCtrl_1_On",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLSideLghtSts (left front side lamp status signal)",
+    "relation": "input encoding",
+    "tail": "0x0 = FLSideLghtSts_0_Off; 0x1 = FLSideLghtSts_1_On",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLghtSts (right front side lamp status signal)",
+    "relation": "input encoding",
+    "tail": "0x0 = FRSideLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtCtrl (left rear side lamp control signal)",
+    "relation": "output value",
+    "tail": "RLSideLghtCtrl_0_Off",
+    "sources": ["outer_lamp_fas_0459", "outer_lamp_fas_1261"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtCtrl (left rear side lamp control signal)",
+    "relation": "output value",
+    "tail": "RLSideLghtCtrl_1_On",
+    "sources": ["outer_lamp_fas_0459", "outer_lamp_fas_1261"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtCtrl (right rear side lamp control signal)",
+    "relation": "output value",
+    "tail": "RRSideLghtCtrl_0_Off",
+    "sources": ["outer_lamp_fas_0459", "outer_lamp_fas_1261"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtCtrl (right rear side lamp control signal)",
+    "relation": "output value",
+    "tail": "RRSideLghtCtrl_1_On",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLSideLghtSts (left front side lamp status signal)",
+    "relation": "output value",
+    "tail": "FLSideLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLSideLghtSts (left front side lamp status signal)",
+    "relation": "output value",
+    "tail": "FLSideLghtSts_1_On",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLghtSts (right front side lamp status signal)",
+    "relation": "output value",
+    "tail": "FRSideLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtCtrl (left rear side lamp control signal)",
+    "relation": "depends on",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtCtrl (left rear side lamp control signal)",
+    "relation": "depends on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtCtrl (left rear side lamp control signal)",
+    "relation": "depends on",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtCtrl (right rear side lamp control signal)",
+    "relation": "depends on",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtCtrl (right rear side lamp control signal)",
+    "relation": "depends on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtCtrl (right rear side lamp control signal)",
+    "relation": "depends on",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLSideLghtSts (left front side lamp status signal)",
+    "relation": "depends on",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLSideLghtSts (left front side lamp status signal)",
+    "relation": "depends on",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLSideLghtSts (left front side lamp status signal)",
+    "relation": "depends on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLghtSts (right front side lamp status signal)",
+    "relation": "depends on",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLghtSts (right front side lamp status signal)",
+    "relation": "depends on",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLghtSts (right front side lamp status signal)",
+    "relation": "depends on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0459"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right rear turn signal controlled ON/OFF",
+    "relation": "trigger condition",
+    "tail": "ControlDirectionLight interface invoked periodically",
+    "sources": ["outer_lamp_fas_0460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left front turn signal status subscribed",
+    "relation": "trigger condition",
+    "tail": "DirectionLightStatus interface invoked",
+    "sources": ["outer_lamp_fas_0460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right front turn signal status subscribed",
+    "relation": "trigger condition",
+    "tail": "DirectionLightStatus interface invoked",
+    "sources": ["outer_lamp_fas_0460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right rear turn signal status OFF",
+    "relation": "input as",
+    "tail": "DirectionLightReq == 0x0",
+    "sources": ["outer_lamp_fas_0460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right rear turn signal status ON",
+    "relation": "input as",
+    "tail": "DirectionLightReq == 0x1",
+    "sources": ["outer_lamp_fas_0460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left front turn signal status Unknown",
+    "relation": "output as",
+    "tail": "DirectionLightSta == 0x2",
+    "sources": ["outer_lamp_fas_0460", "outer_lamp_fas_0530"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU monitors left front turn signal status",
+    "relation": "depends on",
+    "tail": "DirectionLightStatus interface (left front)",
+    "sources": ["outer_lamp_fas_0460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU monitors right front turn signal status",
+    "relation": "depends on",
+    "tail": "DirectionLightStatus interface (right front)",
+    "sources": ["outer_lamp_fas_0460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrSideLghtFltSts_0_NoFlr",
+    "relation": "output as",
+    "tail": "TrlrSideLghtFltSts",
+    "sources": ["outer_lamp_fas_0461", "outer_lamp_fas_1607"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrSideLghtFltSts_1_PosnLeFlr",
+    "relation": "output as",
+    "tail": "TrlrSideLghtFltSts",
+    "sources": ["outer_lamp_fas_0461", "outer_lamp_fas_1607"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrSideLghtFltSts_2_PosnRiFlr",
+    "relation": "output as",
+    "tail": "TrlrSideLghtFltSts",
+    "sources": ["outer_lamp_fas_0461", "outer_lamp_fas_1607"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrSideLghtFltSts_3_PosnLeAndFlr",
+    "relation": "output as",
+    "tail": "TrlrSideLghtFltSts",
+    "sources": ["outer_lamp_fas_0461", "outer_lamp_fas_1607"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrLampChkSts_0_Idle",
+    "relation": "output as",
+    "tail": "TrlrLampChkSts",
+    "sources": ["outer_lamp_fas_0461", "outer_lamp_fas_1607"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrLampChkSts_1_TrlrLampChkStrtd",
+    "relation": "output as",
+    "tail": "TrlrLampChkSts",
+    "sources": ["outer_lamp_fas_0461", "outer_lamp_fas_1607"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrLampChkSts_2_TrlrLampChkCmpl",
+    "relation": "output as",
+    "tail": "TrlrLampChkSts",
+    "sources": ["outer_lamp_fas_0461", "outer_lamp_fas_1607"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrLampChkSts_3_CnlOper",
+    "relation": "output as",
+    "tail": "TrlrLampChkSts",
+    "sources": ["outer_lamp_fas_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrLampChkSts_4_TrlrLampEngOffReqd",
+    "relation": "output as",
+    "tail": "TrlrLampChkSts",
+    "sources": ["outer_lamp_fas_0461", "outer_lamp_fas_1607"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus",
+    "relation": "output as",
+    "tail": "DirectionLight.DirectionLightStatus",
+    "sources": ["outer_lamp_fas_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus",
+    "relation": "output as",
+    "tail": "DirectionLight.DirectionLightErrorStatus",
+    "sources": ["outer_lamp_fas_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightState",
+    "relation": "output as",
+    "tail": "BrakeLight.BrakeLightState",
+    "sources": ["outer_lamp_fas_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus",
+    "relation": "depends on",
+    "tail": "SOA",
+    "sources": ["outer_lamp_fas_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus",
+    "relation": "depends on",
+    "tail": "RZCU",
+    "sources": ["outer_lamp_fas_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus",
+    "relation": "depends on",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0461"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

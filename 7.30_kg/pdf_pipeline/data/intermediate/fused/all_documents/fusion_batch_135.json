@@ -1,0 +1,433 @@
+[
+  {
+    "head": "雾灯开启",
+    "relation": "触发条件",
+    "tail": "近光灯开启",
+    "sources": [
+      "outer_lamp_fas_1440"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "雾灯开启",
+    "relation": "触发条件",
+    "tail": "用户通过大屏软开关触发",
+    "sources": [
+      "outer_lamp_fas_1440"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "雾灯开启",
+    "relation": "前提条件",
+    "tail": "1&2&3&4&5",
+    "sources": [
+      "outer_lamp_fas_1440"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智能泊车功能被激活",
+    "relation": "前提条件",
+    "tail": "用户模式为智能泊车",
+    "sources": [
+      "outer_lamp_fas_1442"
+    ],
+    "conflict": true,
+    "conflict_note": "与'用户模式为正常驾驶'冲突：同一功能（智能泊车被激活）在相同语义下（前提条件）对应互斥用户模式；'智能泊车'是功能激活的直接模式，'正常驾驶'可能是误标或指系统就绪态，需澄清"
+  },
+  {
+    "head": "智能泊车功能被激活",
+    "relation": "前提条件",
+    "tail": "用户模式为正常驾驶",
+    "sources": [
+      "outer_lamp_fas_1442",
+      "outer_lamp_fas_1739"
+    ],
+    "conflict": true,
+    "conflict_note": "与'用户模式为智能泊车'冲突：同一功能（智能泊车被激活）在相同语义下（前提条件）对应互斥用户模式；'智能泊车'是功能激活的直接模式，'正常驾驶'可能是误标或指系统就绪态，需澄清"
+  },
+  {
+    "head": "XOTA功能被抑制",
+    "relation": "抑制条件",
+    "tail": "用户模式为休眠",
+    "sources": [
+      "outer_lamp_fas_1442"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "XOTA功能被抑制",
+    "relation": "抑制条件",
+    "tail": "用户模式为待机",
+    "sources": [
+      "outer_lamp_fas_1442"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "工程限时功能被激活",
+    "relation": "前提条件",
+    "tail": "用户模式为工程",
+    "sources": [
+      "outer_lamp_fas_1442"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转毂模式下功能被激活",
+    "relation": "前提条件",
+    "tail": "整车模式为转毂",
+    "sources": [
+      "outer_lamp_fas_1442",
+      "outer_lamp_fas_1739"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "展车模式下功能被激活",
+    "relation": "前提条件",
+    "tail": "整车模式为展车",
+    "sources": [
+      "outer_lamp_fas_1442",
+      "outer_lamp_fas_1739"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "碰撞模式下功能被激活",
+    "relation": "前提条件",
+    "tail": "整车模式为碰撞",
+    "sources": [
+      "outer_lamp_fas_1442",
+      "outer_lamp_fas_1739"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "维修模式下功能被激活",
+    "relation": "前提条件",
+    "tail": "整车模式为维修",
+    "sources": [
+      "outer_lamp_fas_1442",
+      "outer_lamp_fas_1739"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开关控制模块",
+    "relation": "输出为",
+    "tail": "危险警报灯控制信号",
+    "sources": [
+      "outer_lamp_fas_1445"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开关控制模块",
+    "relation": "依赖于",
+    "tail": "内部处理时间30ms + 信号发送周期",
+    "sources": [
+      "outer_lamp_fas_1445"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统",
+    "relation": "输入为",
+    "tail": "危险警报灯状态信号",
+    "sources": [
+      "outer_lamp_fas_1445"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统",
+    "relation": "依赖于",
+    "tail": "信号处理周期: 40ms",
+    "sources": [
+      "outer_lamp_fas_1445"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯驱动处理模块",
+    "relation": "输出为",
+    "tail": "转向灯状态信号",
+    "sources": [
+      "outer_lamp_fas_1445"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯驱动处理模块",
+    "relation": "依赖于",
+    "tail": "信号周期: 30ms + 50ms",
+    "sources": [
+      "outer_lamp_fas_1445"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯",
+    "relation": "触发条件",
+    "tail": "ControlSidePositionLight.SidePositionLightReq信号值为0x1",
+    "sources": [
+      "outer_lamp_fas_1447"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯",
+    "relation": "触发条件",
+    "tail": "ControlSidePositionLight.SidePositionLightReq信号值为0x0",
+    "sources": [
+      "outer_lamp_fas_1447"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯",
+    "relation": "输入为",
+    "tail": "ControlSidePositionLight.SidePositionLightReq信号值",
+    "sources": [
+      "outer_lamp_fas_1447"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯",
+    "relation": "依赖于",
+    "tail": "ControlSidePositionLight.SidePositionLightReq信号",
+    "sources": [
+      "outer_lamp_fas_1447"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "0 平台 FAS-IBD05 模块",
+    "sources": [
+      "outer_lamp_fas_1448",
+      "outer_lamp_fas_1454",
+      "outer_lamp_fas_1642"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "双闪灯功能响应退出",
+    "relation": "前提条件",
+    "tail": "双闪灯在激活中退出/被打断",
+    "sources": [
+      "outer_lamp_fas_1449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "双闪灯功能响应退出",
+    "relation": "输出为",
+    "tail": "立即响应退出",
+    "sources": [
+      "outer_lamp_fas_1449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯故障状态",
+    "relation": "输入为",
+    "tail": "订阅FrontFogLightErrorStatus服务以获取左侧前雾灯故障状态",
+    "sources": [
+      "outer_lamp_fas_1450",
+      "outer_lamp_fas_1452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯故障状态",
+    "relation": "输入为",
+    "tail": "订阅FrontFogLightErrorStatus服务以获取右侧前雾灯故障状态",
+    "sources": [
+      "outer_lamp_fas_1450",
+      "outer_lamp_fas_1452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯故障状态",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_1450"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯故障状态",
+    "relation": "依赖于",
+    "tail": "RHZCU",
+    "sources": [
+      "outer_lamp_fas_1450"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯故障状态",
+    "relation": "输出为",
+    "tail": "FrontFogLightErrorStatus信号，取值：0x0=No Error, 0x1=Error, 0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_1450",
+      "outer_lamp_fas_1452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯故障状态",
+    "relation": "包含子功能",
+    "tail": "左侧前雾灯故障状态",
+    "sources": [
+      "outer_lamp_fas_1452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯故障状态",
+    "relation": "包含子功能",
+    "tail": "右侧前雾灯故障状态",
+    "sources": [
+      "outer_lamp_fas_1452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "包含子功能",
+    "tail": "零束 Z-ONE",
+    "sources": [
+      "outer_lamp_fas_1456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "方向灯状态",
+    "relation": "输入为",
+    "tail": "InstanceID=4",
+    "sources": [
+      "outer_lamp_fas_1457"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯状态",
+    "relation": "包含子功能",
+    "tail": "右后转向灯状态(仅OFF状态)",
+    "sources": [
+      "outer_lamp_fas_1457"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态",
+    "relation": "输出为",
+    "tail": "DirectionLightSts参数值：0x0=无闪烁, 0x1=左转闪烁, 0x2=右转闪烁, 0x3=双侧闪烁",
+    "sources": [
+      "outer_lamp_fas_1459"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯故障状态",
+    "relation": "输出为",
+    "tail": "DirectionLightErrSta参数值：0x0=无错误, 0x1=错误, 0x4=未知",
+    "sources": [
+      "outer_lamp_fas_1458",
+      "outer_lamp_fas_1459"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用ExteriorLightSwitchProcess模块的DirectionLightErrSta服务接口",
+    "sources": [
+      "outer_lamp_fas_1459"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态",
+    "relation": "触发条件",
+    "tail": "调用ExteriorLightControlSystem模块的DirectionLightSts服务接口",
+    "sources": [
+      "outer_lamp_fas_1459"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯",
+    "relation": "触发条件",
+    "tail": "调用DippedBeamLight.ControlDippedBeamLight服务接口，InstanceID=1，值为0x1",
+    "sources": [
+      "outer_lamp_fas_1460"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯",
+    "relation": "触发条件",
+    "tail": "调用DippedBeamLight.ControlDippedBeamLight服务接口，InstanceID=1，值为0x0",
+    "sources": [
+      "outer_lamp_fas_1460"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯",
+    "relation": "触发条件",
+    "tail": "调用DippedBeamLight.ControlDippedBeamLight服务接口，InstanceID=2，值为0x1",
+    "sources": [
+      "outer_lamp_fas_1460"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

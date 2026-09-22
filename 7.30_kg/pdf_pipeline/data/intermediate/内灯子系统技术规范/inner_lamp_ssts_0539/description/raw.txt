@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (DoorFL1 Lamp Control Commands)",
+  "row_semantics": "Each row represents a specific command or control signal for the DoorFL1 (Front Left Door) ambient lamp, including color, brightness, and breathing rate.",
+  "column_semantics": {
+    "Input": "The communication interface used for sending the command (e.g., LIN bus).",
+    "LIN": "Indicates the use of the LIN (Local Interconnect Network) protocol.",
+    "LHZCU": "Controller responsible for processing the command (Lighting and Hazard Control Unit).",
+    "DoorAmbtLampA_FL": "Specific signal name for the front left door ambient lamp.",
+    "LHZCU_LIN4": "Internal identifier within the LHZCU for this specific LIN channel.",
+    "内灯SSTS": "Subsystem abbreviation for Interior Lighting Sub System Technical Specification."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "DoorFL1LampColor_Cmd_1",
+      "type": "command",
+      "description": "Controls the color of the front left door ambient lamp."
+    },
+    {
+      "name": "DoorFL1LampBrtns_Cmd_1",
+      "type": "command",
+      "description": "Controls the brightness level of the front left door ambient lamp."
+    },
+    {
+      "name": "DoorFL1LampBrthng_Cmd_1",
+      "type": "command",
+      "description": "Controls the breathing rate pattern of the front left door ambient lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Color Command Values",
+      "description": "0x00: No request; 0x01-0xFF: Various color values based on RGB coordinates."
+    },
+    {
+      "name": "Brightness Command Values",
+      "description": "0x00: No request; 0x00-0xFF: Reserved range; other values represent percentage brightness."
+    },
+    {
+      "name": "Breathing Rate Command Values",
+      "description": "0x00: No request; 0x01-0x0F: Different breathing rates from Rate1 to Rate15."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorAmbtLampA_FL",
+      "type": "output_signal",
+      "description": "Signal sent to the actual front left door ambient lamp to execute the commanded color, brightness, and breathing pattern."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Breathing Rates",
+      "description": "Defined rates include: Rate0 (No Request), Rate1 (500ms), Rate2 (1s), Rate3 (1s), Rate4 (2s), Rate5 (2.4s), Rate6 (3s), Rate7 (3.5s), Rate8 (4s), and additional rates up to Rate15."
+    }
+  ],
+  "engineering_interpretation": "This table defines the command structure and parameter ranges for controlling the ambient lighting features of the front left door in the vehicle's interior lighting system. It is used to verify that the LHZCU correctly interprets and applies commands for lamp color, brightness, and breathing patterns via the LIN bus.",
+  "uncertain_points": []
+}
+```

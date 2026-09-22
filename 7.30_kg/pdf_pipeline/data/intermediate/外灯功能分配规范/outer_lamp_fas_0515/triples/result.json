@@ -1,0 +1,152 @@
+[
+  {
+    "head": "寻车灯控制模块 LHZCU 控制双闪灯闪烁",
+    "relation": "前提条件",
+    "tail": "接收到解锁信号 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "解锁信号 0x1",
+      "双闪灯"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0515",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "寻车灯控制模块 LHZCU 控制双闪灯闪烁",
+    "relation": "前提条件",
+    "tail": "接收到闭锁信号 0x2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "闭锁信号 0x2",
+      "双闪灯"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0515",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "寻车灯控制模块 LHZCU 发送转向灯信号",
+    "relation": "前提条件",
+    "tail": "转向灯流水模式使能状态为 Enabled",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "DircnLightMdSts",
+      "Enabled"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0515",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "外灯组合服务 ICB 调用基础服务",
+    "relation": "前提条件",
+    "tail": "接收到 LHZCU 发送的双闪灯 ON/OFF 信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "双闪灯 ON/OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0515",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "外灯组合服务 ICB 调用基础服务",
+    "relation": "超时约束",
+    "tail": "调用延时 60ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "60ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0515",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "寻车灯控制模块 LHZCU 控制双闪灯持续点亮",
+    "relation": "输出为",
+    "tail": "双闪灯持续 3S 点亮",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "双闪灯",
+      "3S"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0515",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "寻车灯控制模块 LHZCU 控制双闪灯闪烁",
+    "relation": "输出为",
+    "tail": "按照 1.25Hz 频率闪烁 (800ms 周期)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "双闪灯",
+      "1.25Hz",
+      "800ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0515",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "外灯组合服务 ICB 控制双闪灯流水点亮",
+    "relation": "控制对象",
+    "tail": "双闪灯",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "双闪灯"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0515",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "寻车灯控制模块 LHZCU 的转向灯信号发送周期",
+    "relation": "超时约束",
+    "tail": "50ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "LHZCU",
+      "转向灯",
+      "50ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0515",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "寻车灯控制模块 LHZCU 的双闪灯信号发送周期",
+    "relation": "超时约束",
+    "tail": "800ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "LHZCU",
+      "双闪灯",
+      "800ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0515",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

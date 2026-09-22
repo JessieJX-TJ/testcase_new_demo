@@ -1,0 +1,59 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "转向灯控制逻辑",
+  "row_semantics": "描述了在特定前置条件下，用户操作触发转向灯控制的执行动作、退出条件及异常处理。",
+  "column_semantics": {
+    "Column1": "条件/动作类别",
+    "Column2": "具体描述"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILghtSwSOAEnPrm",
+      "type": "配置参数",
+      "description": "转向灯开关方向辅助功能使能参数"
+    },
+    {
+      "name": "DILghtSwMdl",
+      "type": "控制器模块",
+      "description": "转向灯控制模块"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "控制器模块",
+      "description": "转向灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字 DILghtSwSOAEnPrm == 1 (Enable)"
+    },
+    {
+      "condition": "触发条件",
+      "description": "用户重拨左转向拨杆，开关阻值为 300 Ω (±5%)"
+    },
+    {
+      "condition": "退出条件",
+      "description": "转向灯开关变为非 300 Ω (±5%)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DirectionLightSwitchStatus",
+      "value": "持续发送 0x1 (Left Direction Light On 二档)",
+      "description": "表示左转向灯开启状态"
+    },
+    {
+      "signal": "至少发送三帧",
+      "description": "确保信号传输的可靠性"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定配置和用户操作下，车辆转向灯控制模块的逻辑行为，可用于验证转向灯在指定条件下的正确响应和信号输出。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,65 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯转向灯控制与状态查询服务接口规范",
+  "row_semantics": "表格内容按功能模块和接口类型组织，详细描述了请求（Req）和响应（Resp）参数，以及事件触发条件。",
+  "column_semantics": "表格分为两大部分：上半部分为请求/响应参数定义，下半部分为事件触发条件及状态返回参数。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DircnLghtFucProCtrl",
+      "type": "Interface",
+      "description": "外灯转向灯控制服务接口"
+    },
+    {
+      "name": "DircnLghtFucProStatus",
+      "type": "Interface",
+      "description": "外灯转向灯状态查询服务接口"
+    },
+    {
+      "name": "SOA",
+      "type": "Controller/Module",
+      "description": "Service-Oriented Architecture，服务架构层"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Local Hardware Control Unit，本地硬件控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "Integrated Circuit Board，集成电路板"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DircnLghtFucProCtrlReq",
+      "type": "Input Signal",
+      "description": "转向灯控制请求参数，包括无闪烁、左转向、右转向、双侧转向等模式"
+    },
+    {
+      "name": "DircnLghtFucProStatus",
+      "type": "Event",
+      "description": "转向灯状态查询事件，用于获取当前转向灯的工作状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DircnLghtFucProCtrlResp",
+      "type": "Output Signal",
+      "description": "转向灯控制响应参数，表示控制成功或失败"
+    },
+    {
+      "name": "DircnLghtFucProSta",
+      "type": "Output Signal",
+      "description": "转向灯状态返回参数，包括熄灭和左转向灯点亮状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯转向灯控制与状态查询的接口规范，可用于验证控制器对转向灯控制请求的正确响应，以及在不同条件下转向灯状态的准确反馈。",
+  "uncertain_points": []
+}
+```

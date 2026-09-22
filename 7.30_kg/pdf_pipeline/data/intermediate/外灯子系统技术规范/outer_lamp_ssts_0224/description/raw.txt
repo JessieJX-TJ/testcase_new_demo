@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "转向灯控制逻辑",
+  "row_semantics": "描述了在特定前置条件下，触发转向灯开关悬空时执行的动作、退出条件及异常处理。",
+  "column_semantics": {
+    "Column1": "条件或动作的描述类别",
+    "Column2": "具体的条件或动作内容"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILghtSwSOAEEnPrm",
+      "type": "parameter",
+      "description": "配置字，用于启用或禁用转向灯相关功能。值为0表示禁用。"
+    },
+    {
+      "name": "DILghtSwMdl",
+      "type": "module",
+      "description": "转向灯模块，负责处理转向灯相关的控制逻辑。"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "module",
+      "description": "转向灯控制模块，接收来自DILghtSwMdl的请求并执行实际的转向灯控制。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字 DILghtSwSOAEEnPrm == 0 (Disable) - 表示转向灯功能被禁用。"
+    },
+    {
+      "condition": "触发条件",
+      "description": "转向拨杆开关悬空 - 表示转向灯开关处于非操作状态（悬空）。"
+    },
+    {
+      "condition": "退出条件",
+      "description": "转向灯开关变为非悬空 - 表示转向灯开关恢复到正常操作状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DircnLghtSwReq",
+      "value": "0x0 (Off)",
+      "description": "持续发送方向灯开关请求信号，值为0x0表示关闭方向灯。"
+    },
+    {
+      "module": "DILghtCtrlMdl",
+      "action": "至少发送三帧",
+      "description": "确保转向灯控制模块接收到足够的关闭指令以完成操作。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在转向灯功能被禁用且转向灯开关悬空时，系统应如何持续发送关闭请求信号至转向灯控制模块，并在转向灯开关恢复正常后退出该逻辑。可用于验证转向灯在特定配置下的行为是否符合设计规范。",
+  "uncertain_points": []
+}
+```

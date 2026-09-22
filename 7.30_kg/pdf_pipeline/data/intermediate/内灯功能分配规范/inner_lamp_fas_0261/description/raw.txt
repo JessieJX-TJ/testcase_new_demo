@@ -1,0 +1,63 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "整车阅读灯亮度调节功能",
+  "row_semantics": "描述不同阅读灯亮度设置下的整车阅读灯亮度调整行为",
+  "column_semantics": {
+    "left_column": "用户侧阅读灯亮度设置（如最暗、最亮等）",
+    "right_column": "整车阅读灯亮度调整后的目标状态或等级"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "Reading_Lamp_Brightness_Setting",
+      "description": "用户对阅读灯亮度的设定，包括最暗、最亮、中等、柔和等模式"
+    },
+    {
+      "name": "Overall_Reading_Lamp_Brightness_Adjustment",
+      "description": "基于用户设定，整车阅读灯亮度的实际调整结果"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "User_Read_Light_Dim",
+      "description": "阅读灯被调至最暗"
+    },
+    {
+      "name": "User_Read_Light_Bright",
+      "description": "所有阅读灯调至最亮"
+    },
+    {
+      "name": "User_Read_Light_Medium",
+      "description": "所有阅读灯调至中等亮度"
+    },
+    {
+      "name": "User_Read_Light_Soft",
+      "description": "所有阅读灯调至最暗柔和模式"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Overall_Read_Light_Dim",
+      "description": "整车阅读灯亮度减少一档"
+    },
+    {
+      "name": "Overall_Read_Light_Bright",
+      "description": "整车阅读灯亮度调整到明亮（Level 30）"
+    },
+    {
+      "name": "Overall_Read_Light_Medium",
+      "description": "整车阅读灯亮度调整到标准（Level 20）"
+    },
+    {
+      "name": "Overall_Read_Light_Soft",
+      "description": "整车阅读灯亮度调整到柔和（Level 10）"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了当用户调整阅读灯亮度时，整车阅读灯亮度如何根据当前档位进行相应调整的规则，可用于验证整车阅读灯亮度调节功能的正确性。",
+  "uncertain_points": []
+}
+```

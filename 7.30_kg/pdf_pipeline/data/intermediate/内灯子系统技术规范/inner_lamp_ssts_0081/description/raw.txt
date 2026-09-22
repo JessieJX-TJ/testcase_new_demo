@@ -1,0 +1,82 @@
+```json
+{
+  "table_type": "other",
+  "topic": "RoofLHALampBrthngCmd_1 驱动控制模块的功能规范",
+  "row_semantics": "描述了 RoofLHALampBrthngCmd_1 指令信号在不同呼吸模式下的亮度调节逻辑，包括跳变调节和渐变调节两种模式。",
+  "column_semantics": "无明确列结构，内容为连续的文本描述，主要分为两个功能块：0%-100%跳变调节和0%-100%渐变调节。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RoofLHALampBrthngCmd_1",
+      "type": "signal",
+      "description": "氛围灯呼吸指令周期信号，用于驱动氛围灯进行亮度调节。"
+    },
+    {
+      "name": "RoofLHALampBrthngCmd_1_0x1",
+      "type": "mode",
+      "description": "0%-100%跳变调节模式，亮度在100%和0%之间快速切换。"
+    },
+    {
+      "name": "RoofLHALampBrthngCmd_1_0x2",
+      "type": "mode",
+      "description": "0%-100%渐变调节模式，亮度在100%和0%之间平滑过渡。"
+    },
+    {
+      "name": "ZCU",
+      "type": "controller",
+      "description": "Zone Control Unit，发送 RoofLHALampBrthngCmd_1 信号以控制氛围灯。"
+    },
+    {
+      "name": "AmbtLampBrthngRateXholdoffPercent",
+      "type": "parameter",
+      "description": "呼吸模式周期等待时间百分比，默认值为10%。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "RoofLHALampBrthngCmd_1_0x1",
+      "description": "接收到 ZCU 发送的 RoofLHALampBrthngCmd_1=0x1 时，氛围灯按照 250ms 亮度 100%，250ms 亮度 0% 循环执行。"
+    },
+    {
+      "condition": "RoofLHALampBrthngCmd_1_0x2",
+      "description": "接收到 ZCU 发送的 RoofLHALampBrthngCmd_1=0x2 时，氛围灯按照 500ms 亮度 100%，500ms 亮度 0% 循环执行。"
+    },
+    {
+      "condition": "RoofLHALampBrthngCmd_1_0x3-0xC, 0xE",
+      "description": "接收到 ZCU 发送的 RoofLHALampBrthngCmd_1=0x3-0xC 或 0xE 时，氛围灯按照 0%-100% 渐变亮，在最高点维持一定时间 B；在按照时间 A，100%-0% 渐灭，在最低点维持一定时间 B。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "RoofLHALampBrthngCmd_1",
+      "description": "输出信号，用于控制氛围灯的亮度变化。"
+    },
+    {
+      "output": "AmbtLampBrthngRateXholdoffPercent",
+      "description": "参数，定义呼吸模式周期等待时间百分比。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "timing": "250ms",
+      "description": "在 RoofLHALampBrthngCmd_1_0x1 模式下，亮度从100%到0%或从0%到100%的切换时间为250ms。"
+    },
+    {
+      "timing": "500ms",
+      "description": "在 RoofLHALampBrthngCmd_1_0x2 模式下，亮度从100%到0%或从0%到100%的切换时间为500ms。"
+    },
+    {
+      "timing": "A",
+      "description": "接收收到的呼吸模式周期 RateX* (0.5-AmbtLampBrthngRateXholdoffPercent)。"
+    },
+    {
+      "timing": "B",
+      "description": "接收收到的呼吸模式周期。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了 RoofLHALampBrthngCmd_1 信号在不同呼吸模式下的亮度调节行为，可用于验证氛围灯在接收到特定指令信号时是否能正确执行亮度跳变或渐变调节，并满足相应的定时要求。",
+  "uncertain_points": []
+}
+```

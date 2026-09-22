@@ -1,0 +1,100 @@
+```json
+[
+  {
+    "head": "Headlamp Status is ON",
+    "relation": "触发条件",
+    "tail": "Driver Command is Headlights ON and Ambient Light Level is Low",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["Driver Command", "Ambient Light Level"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Taillamp Status is ON",
+    "relation": "触发条件",
+    "tail": "Driver Command is Brake Pedal Pressed or Taillight Manual Switch ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["Driver Command", "Brake Pedal", "Taillight Switch"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Turn Signal Status is Blinking",
+    "relation": "触发条件",
+    "tail": "Driver Command is Turn Signal Activated and Vehicle Speed is Low",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["Driver Command", "Vehicle Speed"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Headlamp Status is OFF",
+    "relation": "抑制条件",
+    "tail": "Ambient Light Level is High and Driver Command is Headlights OFF",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["Ambient Light Level", "Driver Command"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Automatic Headlamp Delay",
+    "relation": "超时约束",
+    "tail": "Ignition Status is OFF",
+    "triple_type": "时序约束",
+    "evidence_terms": ["Ignition Status"],
+    "confidence_note": "medium"
+  },
+  {
+    "head": "Daytime Running Light Duration",
+    "relation": "超时约束",
+    "tail": "Driver Command is Daytime Running Lights ON",
+    "triple_type": "时序约束",
+    "evidence_terms": ["Driver Command"],
+    "confidence_note": "medium"
+  },
+  {
+    "head": "Headlamp Status is Controlled by BCM",
+    "relation": "控制对象",
+    "tail": "BCM receives Driver Command and Ambient Light Sensor Input",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["BCM", "Driver Command", "Ambient Light Sensor"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Turn Signal Status is Blinking",
+    "relation": "依赖于",
+    "tail": "Vehicle Speed is Low and Turn Signal Mode is Active",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": ["Vehicle Speed", "Turn Signal Mode"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Headlamp Status is ON",
+    "relation": "优先级高于",
+    "tail": "Daytime Running Light Status is ON",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": ["Headlamp Status", "Daytime Running Light Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Headlamp Status is OFF",
+    "relation": "与...互斥",
+    "tail": "Daytime Running Light Status is ON",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": ["Headlamp Status", "Daytime Running Light Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Warning Light Status is ON",
+    "relation": "触发条件",
+    "tail": "Fault Detection is Lamp Failure or Sensor Malfunction",
+    "triple_type": "故障响应",
+    "evidence_terms": ["Fault Detection", "Lamp Failure", "Sensor Malfunction"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Exterior Lamp Functions are Disabled",
+    "relation": "复位条件",
+    "tail": "Ignition Status is OFF",
+    "triple_type": "复位相关约束",
+    "evidence_terms": ["Ignition Status"],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,136 @@
+[
+  {
+    "head": "远光灯退出",
+    "relation": "触发条件",
+    "tail": "用户通过操作远光灯拨杆开关控制",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "用户通过操作远光灯拨杆开关控制",
+      "退出远光灯"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0804",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯处于激活状态",
+    "relation": "前提条件",
+    "tail": "远光灯退出",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "远光灯处于激活状态",
+      "远光灯退出"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0804",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯开关控制模块 LHZCU 内部软件跳变为退出",
+    "relation": "触发条件",
+    "tail": "收到[远光灯开关预处理模块LHZCU]输入 MainBeamLghtOnReq=0x1=MainBeamLghtSwReq_1_On",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "触发动作",
+      "执行动作"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0804",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯开关控制模块 LHZCU 信号跳变为关闭",
+    "relation": "触发条件",
+    "tail": "收到[远光灯开关预处理模块LHZCU]输入 MainBeamLghtOnReq=0x1=MainBeamLghtSwReq_1_On",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "触发动作",
+      "执行动作"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0804",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "外灯组合服务 ICB 调用基础服务",
+    "relation": "触发条件",
+    "tail": "远光灯开关控制模块 LHZCU 信号跳变为关闭",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "执行动作"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0804",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "ICB 将服务接口或控制信号转换成灯控 CAN 信号",
+    "relation": "触发条件",
+    "tail": "外灯组合服务 ICB 调用基础服务",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "执行动作"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0804",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "ICB 接收远光灯开关控制模块 LHZCU 远光灯控制信号",
+    "relation": "触发条件",
+    "tail": "ICB 将服务接口或控制信号转换成灯控 CAN 信号",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "执行动作"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0804",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯驱动处理模块 LHZCU/RHZCU 接收远光灯开关控制模块 LHZCU 控制信号",
+    "relation": "触发条件",
+    "tail": "ICB 接收远光灯开关控制模块 LHZCU 远光灯控制信号",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "执行动作"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0804",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "远光灯驱动处理模块 LHZCU/RHZCU 内部跳变为硬远光灯",
+    "relation": "触发条件",
+    "tail": "远光灯驱动处理模块 LHZCU/RHZCU 接收远光灯开关控制模块 LHZCU 控制信号",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "执行动作"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0804",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "做退出远光灯图标指示灯显示",
+    "relation": "触发条件",
+    "tail": "远光灯驱动处理模块 LHZCU/RHZCU 内部跳变为硬远光灯",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "执行动作"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0804",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

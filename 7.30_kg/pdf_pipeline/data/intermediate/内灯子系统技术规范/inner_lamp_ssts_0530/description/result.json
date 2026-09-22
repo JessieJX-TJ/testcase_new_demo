@@ -1,0 +1,67 @@
+{
+  "table_type": "logic_table",
+  "topic": "氛围灯亮度控制逻辑",
+  "row_semantics": "描述了氛围灯亮度控制的前置条件、触发条件、执行动作和退出条件，是一个典型的控制逻辑流程表。",
+  "column_semantics": {
+    "Column1": "条件/动作阶段（如前置条件、触发条件、执行动作、退出条件）",
+    "Column2": "对应阶段的具体描述或规则"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DoorFR1LampBrtnsCmd_1",
+      "type": "input_signal",
+      "description": "门侧前部氛围灯本地控制模块亮度变化请求信号，用于设置亮度值。"
+    },
+    {
+      "name": "DoorFR1LampOnOff_1",
+      "type": "input_signal",
+      "description": "门侧前部氛围灯本地控制模块开关请求信号，用于开启或关闭氛围灯。"
+    },
+    {
+      "name": "DoorFR1LampFadeSpdCmd_1",
+      "type": "input_signal",
+      "description": "门侧前部氛围灯渐变速度请求信号，用于控制关闭时的渐变速度。"
+    },
+    {
+      "name": "PWM",
+      "type": "output_signal",
+      "description": "脉冲宽度调制信号，用于驱动氛围灯改变亮度。"
+    },
+    {
+      "name": "氛围灯",
+      "type": "function",
+      "description": "车辆外部装饰性照明系统，提供环境光效。"
+    },
+    {
+      "name": "氛围灯本地控制模块",
+      "type": "controller",
+      "description": "负责接收用户输入并控制氛围灯亮度和开关的电子控制单元。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "氛围灯处于关闭状态。"
+    },
+    {
+      "condition": "触发条件",
+      "description": "接收到DoorFR1LampBrtnsCmd_1信号从0x00（无请求）变为非0x00（有请求）。"
+    },
+    {
+      "condition": "退出条件",
+      "description": "接收到DoorFR1LampBrtnsCmd_1信号为0x00（无请求），或接收到DoorFR1LampOnOff_1信号为0x00（关闭请求），或接收到DoorFR1LampBrtnsCmd_1信号在0x65-0xFF范围内（保留值）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "PWM信号",
+      "description": "根据亮度设置表生成对应的PWM信号，驱动氛围灯切换亮度。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了门侧前部氛围灯的亮度控制逻辑，可用于验证氛围灯在不同控制信号输入下的亮度响应、开关行为以及退出条件下的状态保持功能。",
+  "uncertain_points": []
+}

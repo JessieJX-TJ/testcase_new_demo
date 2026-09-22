@@ -1,0 +1,62 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "倒车灯控制逻辑",
+  "row_semantics": "表格描述了倒车灯（Reverse Light）控制的前置条件、触发条件、执行动作、退出条件以及异常处理。",
+  "column_semantics": "表格包含四列，分别定义了控制逻辑的不同阶段和相关参数。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RevsLghtFbkSOAEEnPrm",
+      "type": "parameter",
+      "description": "倒车灯反馈系统开环使能参数"
+    },
+    {
+      "name": "RevsLghtCtrlMdl",
+      "type": "controller",
+      "description": "倒车灯控制模块"
+    },
+    {
+      "name": "RevsLghtDrvMdl",
+      "type": "controller",
+      "description": "倒车灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Precondition",
+      "description": "RevsLghtFbkSOAEEnPrm == 0 (Disable)"
+    },
+    {
+      "name": "Trigger Condition",
+      "description": "收到【RevsLghtCtrlMdl】发送的 RevsLghtCtrl_HW == 0 (Off)"
+    },
+    {
+      "name": "Exit Condition",
+      "description": "收到【RevsLghtCtrlMdl】发送的 RevsLghtCtrl_HW == 1 (On)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RevsLamp_HSD",
+      "type": "signal",
+      "description": "倒车灯硬件状态输出"
+    },
+    {
+      "name": "RevsLghtSts",
+      "type": "signal",
+      "description": "倒车灯状态信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Timing Constraint",
+      "description": "至少发送三帧 RevsLghtSts=0 (Off) 至【RevsLghtCtrlMdl】"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证倒车灯控制系统在特定输入条件下（如接收到HW Off信号）的正确行为，包括停止驱动输出并持续发送状态信号，直到接收到HW On信号时退出。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,78 @@
+[
+  {
+    "head": "侧位灯(Side Position Light)被关闭",
+    "relation": "触发条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==0(Off)(InstanceID=3)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq==0"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0208",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "【RLSideLghtDrvMdl】停止驱动左后位置灯输出 (PosLamp_LH&RH_HSD)",
+    "relation": "前提条件",
+    "tail": "侧位灯(Side Position Light)被关闭",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RLSideLghtDrvMdl",
+      "PosLamp_LH&RH_HSD",
+      "SidePositionLightReq==0"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0208",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "【RLSideLghtDrvMdl】持续发送SidePositionLightStatus. SidePositionLightSta=0(Off)(InstanceID=3)至【SideLghtCtrlMdl】",
+    "relation": "前提条件",
+    "tail": "侧位灯(Side Position Light)被关闭",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RLSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "SidePositionLightSta=0"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0208",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "退出条件",
+    "relation": "前提条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==1(On)(InstanceID=3)",
+    "triple_type": "退出条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq==1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0208",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "【RLSideLghtDrvMdl】持续发送SidePositionLightStatus. SidePositionLightSta=0(Off)(InstanceID=3)至【SideLghtCtrlMdl】",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RLSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "SidePositionLightSta=0",
+      "三帧"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0208",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

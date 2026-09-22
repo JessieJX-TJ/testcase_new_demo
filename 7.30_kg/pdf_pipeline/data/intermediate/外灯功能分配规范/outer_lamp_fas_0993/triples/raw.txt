@@ -1,0 +1,73 @@
+```json
+[
+  {
+    "head": "订阅制动灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用BrakeLightErrorStatus服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "调用该服务接口,订阅制动灯故障状态",
+      "Interface Name: BrakeLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "订阅制动灯状态",
+    "relation": "触发条件",
+    "tail": "调用BrakeLightSta服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "调用该服务接口,订阅制动灯状态",
+      "Interface Name: BrakeLightSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "BrakeLightErrorSta输出信号",
+    "relation": "输出为",
+    "tail": "0x0=No Error; 0x1=Error; 0x2=Unknown",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {BrakeLightErrorSta}",
+      "InstanceID=1",
+      "0x0=No Error",
+      "0x1=Error",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "BrakeLightSta输出信号",
+    "relation": "输出为",
+    "tail": "0x0=OFF",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {BrakeLightSta}",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "BrakeLightErrorSta参数",
+    "relation": "依赖于",
+    "tail": "BrakeLightErrorStatus服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {BrakeLightErrorSta}",
+      "Interface Name: BrakeLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "BrakeLightSta参数",
+    "relation": "依赖于",
+    "tail": "BrakeLightSta服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {BrakeLightSta}",
+      "Interface Name: BrakeLightSta"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

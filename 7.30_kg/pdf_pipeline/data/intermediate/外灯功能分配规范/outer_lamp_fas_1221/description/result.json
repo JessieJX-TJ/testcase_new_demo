@@ -1,0 +1,70 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 近光灯状态获取接口",
+  "row_semantics": "表格按功能模块和接口类型组织，每行描述一个特定的近光灯状态查询接口及其参数定义。",
+  "column_semantics": "表格包含功能描述、接口名称、参数定义、实例ID及状态值列表，以及与控制器相关的消费信息（SOA, ICB, LHZCU）和网络状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "function",
+      "description": "获取近光灯状态的服务接口"
+    },
+    {
+      "name": "DippedBeamLight.DippedBeamLightStatus",
+      "type": "module",
+      "description": "车身控制单元中的近光灯状态模块"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Local Host Control Unit (本地主机控制单元)"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例标识符，区分左右侧近光灯状态查询",
+      "values": [
+        {
+          "value": "2",
+          "description": "右侧近光灯状态查询"
+        },
+        {
+          "value": "3",
+          "description": "左侧近光灯状态查询"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightSta",
+      "type": "signal",
+      "description": "近光灯状态信号",
+      "values": [
+        {
+          "value": "0x0=OFF",
+          "description": "近光灯关闭"
+        },
+        {
+          "value": "0x1=ON",
+          "description": "近光灯开启"
+        },
+        {
+          "value": "0x2=Error",
+          "description": "错误状态"
+        },
+        {
+          "value": "0x2=Unknown",
+          "description": "未知状态"
+        }
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中近光灯状态查询的接口规范，可用于验证车身控制单元（LHZCU）是否能正确响应并返回左右侧近光灯的当前状态（开/关/错误/未知）。",
+  "uncertain_points": []
+}

@@ -1,0 +1,98 @@
+{
+  "table_type": "structure_table",
+  "topic": "整车电子电器系统功能架构与信号连接",
+  "row_semantics": "系统模块或功能单元的层级划分与内部组成",
+  "column_semantics": "各模块的功能分区（如IO抽象、逻辑控制、设备管理等）",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "左侧车身控制单元，负责左侧车门、车顶及外部照明相关控制"
+    },
+    {
+      "name": "RHZCU",
+      "type": "Controller/Module",
+      "description": "右侧车身控制单元，负责右侧车门、外部照明及相关接口控制"
+    },
+    {
+      "name": "RZCU",
+      "type": "Controller/Module",
+      "description": "后部车身控制单元，负责后备箱、尾灯及相关功能控制"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "智能控制盒，核心逻辑处理单元，包含多种服务和管理功能"
+    },
+    {
+      "name": "OHC",
+      "type": "Controller/Module",
+      "description": "地图灯控制模块，负责车内地图灯的控制"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DoorAmisLampA_FL",
+      "type": "Input Signal",
+      "description": "左侧前门氛围灯开关状态"
+    },
+    {
+      "name": "RoofSw",
+      "type": "Input Signal",
+      "description": "车顶开关状态"
+    },
+    {
+      "name": "IterDoorOpenSw_FL",
+      "type": "Input Signal",
+      "description": "左侧内门打开开关状态"
+    },
+    {
+      "name": "PwrLftgClsSw",
+      "type": "Input Signal",
+      "description": "左后行李箱关闭开关状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MapLamp_FL",
+      "type": "Output Signal",
+      "description": "左侧地图灯输出信号"
+    },
+    {
+      "name": "MapLamp_FR",
+      "type": "Output Signal",
+      "description": "右侧地图灯输出信号"
+    },
+    {
+      "name": "LdspcLamp_LH",
+      "type": "Output Signal",
+      "description": "左后行李箱灯输出信号"
+    },
+    {
+      "name": "TrunkFnclSwAccry",
+      "type": "Output Signal",
+      "description": "后备箱功能开关激活信号"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "FOTA",
+      "type": "Fault Status",
+      "description": "固件空中升级故障"
+    },
+    {
+      "name": "ROTA",
+      "type": "Fault Status",
+      "description": "旋转天线故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该图用于验证整车电子电器系统中各车身控制单元（LHZCU, RHZCU, RZCU）与智能控制盒（ICB）之间的功能分配、信号流向及接口定义，确保外灯、车身控制、电动尾门等功能的正确实现。",
+  "uncertain_points": [
+    "具体信号传输协议未明确说明",
+    "各模块间的通信速率和时序细节未给出",
+    "部分功能的具体实现逻辑未详细描述"
+  ]
+}

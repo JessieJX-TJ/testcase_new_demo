@@ -1,0 +1,82 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯组合服务 ICB (Integrated Control Box) 的调用基础服务与远光灯控制逻辑",
+  "row_semantics": "表格按功能模块和控制流程顺序排列，每一行描述一个特定的控制或反馈过程。",
+  "column_semantics": "无明确列，内容为连续的文本描述，主要包含功能描述、信号名称、实例ID、状态值等信息。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "集成控制盒，负责接收外部信号并发送控制指令"
+    },
+    {
+      "name": "LHZCU/RHZCU",
+      "type": "module",
+      "description": "远光灯驱动处理模块和远光灯开关控制模块，负责远光灯的驱动和状态反馈"
+    },
+    {
+      "name": "MainBeamLight",
+      "type": "function",
+      "description": "主光灯（远光灯）控制功能"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "function",
+      "description": "外灯开关控制过程"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例标识符，用于区分不同的控制请求或状态反馈"
+    },
+    {
+      "name": "MainBeamHwDrvEnPrm",
+      "description": "主光灯硬件驱动使能参数，用于判断是否启用硬件驱动"
+    },
+    {
+      "name": "PP",
+      "description": "模式参数，可能表示手动模式或自动模式"
+    },
+    {
+      "name": "Auto_Mai_Beam_Light_Ctrl_Dsb_Ist_Sts",
+      "description": "自动远光灯控制内部禁止状态标志"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ControlMainBeamLight.MainBeamLightReq",
+      "description": "主光灯控制请求信号，用于发送控制指令"
+    },
+    {
+      "name": "MainBeamLight.MainBeamLightStatus.MainBeamLightSta",
+      "description": "主光灯状态反馈信号"
+    },
+    {
+      "name": "MainBeamLight.MainBeamLightErrorStatus.MainBeamLightErrorSta",
+      "description": "主光灯错误状态反馈信号"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.MainBeamLightSta",
+      "description": "外灯开关控制过程中主光灯的状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "description": "表示系统正常，无故障发生"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "40ms",
+      "description": "远光灯开启同步性要求，左右侧需保持同步点亮，两侧最大延时不能超过 40 毫秒"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了外灯组合服务 ICB 的调用基础服务以及远光灯的控制逻辑，包括控制信号的发送、状态反馈、故障检测和同步性要求。可用于验证 ICB 对远光灯的控制功能是否符合设计规范，确保在不同模式下（如手动模式、自动模式）以及在出现故障时系统的响应正确。",
+  "uncertain_points": []
+}
+```

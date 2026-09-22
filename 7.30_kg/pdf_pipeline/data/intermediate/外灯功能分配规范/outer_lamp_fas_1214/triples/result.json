@@ -1,0 +1,102 @@
+[
+  {
+    "head": "拖挂车制动灯开启",
+    "relation": "触发条件",
+    "tail": "LHZCU发送的外灯控制信号为BrkLghtCtrl_1_On",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "LHZCU",
+      "BrkLghtCtrl_1_On"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1214",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "拖挂车制动灯关闭",
+    "relation": "触发条件",
+    "tail": "LHZCU发送的外灯控制信号为BrkLghtCtrl_0_Off",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "LHZCU",
+      "BrkLghtCtrl_0_Off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1214",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU发送制动灯控制信号",
+    "relation": "前提条件",
+    "tail": "车辆具备拖车模式功能(InsdFnCfgVehDragMd = 0x1)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "RZCU",
+      "InsdFnCfgVehDragMd"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1214",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU发送制动灯控制信号",
+    "relation": "前提条件",
+    "tail": "拖挂模式开启(VehDragMdSts = 0x1 = VehDragMdSts_1_On)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "RZCU",
+      "VehDragMdSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1214",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU发送制动灯控制信号",
+    "relation": "依赖于",
+    "tail": "接收到的LHZCU发送的外灯控制信号(BrkLghtCtrl)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "RZCU",
+      "LHZCU",
+      "BrkLghtCtrl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1214",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "拖挂车制动灯状态",
+    "relation": "输入为",
+    "tail": "LHZCU发送的外灯控制信号(BrkLghtCtrl)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "BrkLghtCtrl",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1214",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU输出制动灯控制信号",
+    "relation": "输出为",
+    "tail": "LHZCU发送的外灯控制信号(BrkLghtCtrl)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "RZCU",
+      "LHZCU",
+      "BrkLghtCtrl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1214",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

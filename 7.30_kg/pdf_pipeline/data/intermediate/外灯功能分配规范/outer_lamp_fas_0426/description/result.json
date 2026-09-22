@@ -1,0 +1,47 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 侧位灯状态",
+  "row_semantics": "表格按外灯功能中的侧位灯（Side Position Light）进行分类，分别描述了右前位置灯和左后位置灯的状态信息。",
+  "column_semantics": {
+    "功能名": "描述具体的外灯功能，如 'SidePositionLight.SidePositionLightStatus'。",
+    "输入": "表示该信号的来源或类型，如 'SO A'、'RHZCU_E TH' 等。",
+    "控制器/模块名": "涉及的电子控制单元（ECU），如 'RHZCU_U'、'ICB_S32 GM LHZCU' 等。",
+    "系统状态": "灯的具体状态值，如 '0x0=OFF;'、'0x1=ON;'、'0x2=Unknown;'。",
+    "其他": "可能包含接口名称、参数名称、实例ID等辅助信息。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SidePositionLight.SidePositionLightStatus",
+      "description": "外灯功能中的侧位灯状态，包括右前位置灯和左后位置灯的状态获取接口。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightSta",
+      "description": "侧位灯状态参数，用于标识灯的当前状态（开、关或未知）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "0x0=OFF;",
+      "description": "灯处于关闭状态。",
+      "type": "system_state"
+    },
+    {
+      "name": "0x1=ON;",
+      "description": "灯处于开启状态。",
+      "type": "system_state"
+    },
+    {
+      "name": "0x2=Unknown;",
+      "description": "灯的状态未知。",
+      "type": "system_state"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了通过特定接口获取车辆侧位灯（右前和左后位置灯）状态的功能规范，可用于验证相关ECU是否能正确上报灯的状态信息。",
+  "uncertain_points": []
+}

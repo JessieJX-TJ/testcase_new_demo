@@ -1,0 +1,68 @@
+{
+  "table_type": "parameter_table",
+  "topic": "MapLamp (Reading Lamp) Function Allocation Specification",
+  "row_semantics": "Each row represents a specific parameter or configuration related to the MapLamp system, including its usage mode, brightness, and dimming speed.",
+  "column_semantics": "Columns define the scope of application for each parameter, such as internal components (ICB/ZXD, ICB/ZXD D), vehicle systems (SOA, LHZCU, ICB/ZXD), and communication interfaces (Ethernet, VS SST).",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MapLamp",
+      "type": "function",
+      "description": "The reading lamp function within the vehicle's interior lighting system."
+    },
+    {
+      "name": "UsgMdV",
+      "type": "signal",
+      "description": "Usage Mode Valid signal indicating whether the MapLamp usage mode is valid."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsgMdV_0_Invalid",
+      "description": "Indicates that the MapLamp usage mode is invalid."
+    },
+    {
+      "name": "UsgMdV_1_Valid",
+      "description": "Indicates that the MapLamp usage mode is valid."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MapLampBrightness",
+      "type": "parameter",
+      "description": "Controls the brightness level of the MapLamp.",
+      "details": {
+        "parameter_name": "MapLampBrt.SubMapLampBrt.SubMapLampBrtType.LampID",
+        "values": {
+          "FL": "Front Left",
+          "FR": "Front Right",
+          "RL": "Rear Left",
+          "RR": "Rear Right",
+          "ThirdRowLeft": "Third Row Left",
+          "ThirdRowRight": "Third Row Right"
+        }
+      }
+    },
+    {
+      "name": "MapLampDimSpeed",
+      "type": "parameter",
+      "description": "Controls the dimming speed of the MapLamp.",
+      "details": {
+        "parameter_name": "MapLampDimSpd.SubMapLampDimSpd.SubMapLampDimSpdType.LampID",
+        "values": {
+          "FL": "Front Left",
+          "FR": "Front Right",
+          "RL": "Rear Left",
+          "RR": "Rear Right",
+          "ThirdRowLeft": "Third Row Left",
+          "ThirdRowRight": "Third Row Right"
+        }
+      }
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table specifies the functional allocation and parameter definitions for the MapLamp (reading lamp) system, detailing how its usage mode, brightness, and dimming speed can be configured across various vehicle components and communication interfaces. It is used for validating the correct configuration and behavior of the MapLamp system under different conditions.",
+  "uncertain_points": []
+}

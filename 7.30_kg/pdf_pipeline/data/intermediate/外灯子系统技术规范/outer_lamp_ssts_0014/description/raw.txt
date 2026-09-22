@@ -1,0 +1,61 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Brake Light Function Enable Logic",
+  "row_semantics": "Each row represents a condition-action step in the logic flow for enabling brake lights.",
+  "column_semantics": {
+    "1": "Precondition: System-level enable condition for brake light function.",
+    "2": "Trigger Condition: Specific signal received to activate the brake light function.",
+    "3": "Execution Action: Output signals driven by the controller when conditions are met."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "System-level enable parameter for brake light feedback."
+    },
+    {
+      "name": "BrkLightCtrlMdl",
+      "type": "module",
+      "description": "Controller module responsible for brake light control."
+    },
+    {
+      "name": "BrkLightDrvMdl",
+      "type": "module",
+      "description": "Driver module that controls the physical brake lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrkLightFbkSOAEnPrm",
+      "value": "1",
+      "description": "Enable condition for the brake light function."
+    },
+    {
+      "name": "BrkLightCtrlMdl.BrakeLight.BrakeLightState.BrakeLightSta[InstanceID=1]",
+      "value": "0x1 (On)",
+      "description": "Received signal indicating brake light state is on."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLamp_LH_HSD",
+      "description": "Left-hand side high-speed driver output for brake lamp."
+    },
+    {
+      "name": "BrkLamp_RH_HSD",
+      "description": "Right-hand side high-speed driver output for brake lamp."
+    },
+    {
+      "name": "CHMSL_HSD",
+      "description": "Center High-Mounted Stop Lamp high-speed driver output."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the logic for enabling and driving the vehicle's brake lights based on system parameters and received signals, ensuring proper illumination of left, right, and center brake lamps when conditions are met.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,81 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 倒车灯控制与状态反馈",
+  "row_semantics": "表格按功能模块划分，每一行代表一个具体的信号交互或控制逻辑，包含信号名称、方向、类型、提供方、消费方、通道及来源等信息。",
+  "column_semantics": {
+    "Interface Name": "接口名称，描述信号的功能或控制对象。",
+    "Direction": "信号流向，指示是输入还是输出。",
+    "Type": "信号类型，如CAN/LIN/SOA服务、硬线信号等。",
+    "Provide r": "信号的提供方，通常是控制器或服务。",
+    "Receiver/ Consumer": "信号的接收方或消费方。",
+    "Channel": "信号传输的通道或指定信号通道。",
+    "口来源": "指定信号来源。",
+    "指定信号通道": "指定信号通道的具体描述。",
+    "指定信号来源": "指定信号来源的具体描述。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RZCU",
+      "type": "Controller/Module",
+      "description": "区域控制单元，负责倒车灯的驱动控制和状态反馈。"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "集成控制盒，作为倒车灯控制的提供方。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "局部区域控制单元，参与倒车灯的状态反馈和故障状态反馈。"
+    },
+    {
+      "name": "TailLpAsmb_A_RH",
+      "type": "Signal",
+      "description": "硬线驱动信号，用于控制右后倒车灯的点亮。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "RevsLghtCtrl_HW",
+      "type": "Output Signal",
+      "description": "倒车灯硬件控制信号，通过CANFD通信，值为0x0表示关闭，0x1表示开启。",
+      "direction": "Output",
+      "provider": "ICB",
+      "consumer": "RZCU",
+      "channel": "CANFD"
+    },
+    {
+      "name": "RevsLghtSts",
+      "type": "Output Signal",
+      "description": "倒车灯状态反馈信号，通过CANFD通信，值为0x0表示关闭，0x1表示开启。",
+      "direction": "Output",
+      "provider": "RZCU",
+      "consumer": "LHZCU",
+      "channel": "CANFD"
+    },
+    {
+      "name": "RevsLghtFltSts",
+      "type": "Output Signal",
+      "description": "倒车灯故障状态反馈信号，通过CANFD通信，用于报告倒车灯系统的故障状态。",
+      "direction": "Output",
+      "provider": "RZCU",
+      "consumer": "LHZCU",
+      "channel": "CANFD"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RevsLghtFltSts",
+      "description": "倒车灯故障状态反馈信号，用于检测和报告倒车灯系统中的故障情况。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了倒车灯系统的信号交互规范，包括控制信号的生成与传输、状态反馈以及故障检测机制，可用于验证倒车灯控制系统在不同工况下的信号传递正确性、状态响应及时性和故障诊断准确性。",
+  "uncertain_points": []
+}
+```

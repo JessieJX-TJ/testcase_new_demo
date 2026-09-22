@@ -1,0 +1,44 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Front Fog Light Feedback and Control Logic",
+  "row_semantics": "Each row represents a specific condition or action related to the front fog light system, including feedback status, activation logic, and control signal exchanges.",
+  "column_semantics": "The table is structured into two main sections: 'Triggered Actions' and 'Execution Actions', detailing the sequence of events and system responses for front fog light operation.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "UsgMdV",
+    "VehMd",
+    "FrontFogLight",
+    "ExteriorLightSwitchProcess",
+    "LHZCU",
+    "S32G",
+    "ICB",
+    "RZCU"
+  ],
+  "core_conditions": [
+    "UsgMdV=Valid",
+    "VehMd!=0x3",
+    "VehMd=VehMd_3_TRANSPORT",
+    "FrontFogLight.State=ON",
+    "ExteriorLightSwitchProcess.FrontFogLightFucProStatus=Only FrontFogLight",
+    "S32G.Received[Big Switch Request ICB]",
+    "S32G.Received[Seven-key Switch Request IFP]"
+  ],
+  "core_outputs": [
+    "FrontFogLightCtrl.CmmntnTyp=SOA",
+    "ExtrLightStsCmmntnTyp=SOA",
+    "ExteriorLightControlSystem.ControlRearFogLight.RearFogLightReq=On",
+    "ExteriorLightSwitchProcess.RearFogLightFucProCtrl.RearFogLightFucProCtrlReq=On",
+    "RearFogLightCtrl.CmmntnTyp=1_On",
+    "RearFogLightCtrl_HW=1_On"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the logic for front fog light feedback and control, including how the system responds to switch inputs and communicates with various modules (e.g., S32G, LHZCU, ICB) to ensure proper lighting operation under different vehicle states.",
+  "uncertain_points": [
+    "The exact timing relationship between S32G input and subsequent module responses is not explicitly defined.",
+    "The behavior of the system when multiple inputs occur simultaneously is not detailed."
+  ]
+}
+```

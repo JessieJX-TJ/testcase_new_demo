@@ -1,0 +1,62 @@
+{
+  "table_type": "logic_table",
+  "topic": "侧位灯控制逻辑",
+  "row_semantics": "表格按功能执行的阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "表格包含两列，第一列为阶段描述（如前置条件、触发条件等），第二列为该阶段的具体内容或规则。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SideLghtCtrlMdl",
+      "type": "controller",
+      "description": "侧位灯控制模块，负责接收控制请求并发送状态反馈。"
+    },
+    {
+      "name": "FLSideLghtDrvMdl",
+      "type": "controller",
+      "description": "前左位置灯驱动模块，负责实际驱动灯光输出。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ControlSidePositionLight",
+      "type": "input_signal",
+      "description": "来自 SideLghtCtrlMdl 的控制信号，用于启动侧位灯控制流程。",
+      "details": {
+        "SidePositionLightReq": {
+          "value_on": 1,
+          "value_off": 0,
+          "instance_id": 1
+        }
+      }
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "output_signal",
+      "description": "FLSideLghtDrvMdl 发送给 SideLghtCtrlMdl 的状态反馈信号。",
+      "details": {
+        "SidePositionLightSta": {
+          "value_on": 1,
+          "value_off": 0,
+          "instance_id": 1
+        }
+      }
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "PosLamp_LH_HSD",
+      "type": "output_signal",
+      "description": "前左位置灯的实际输出信号，由 FLSideLghtDrvMdl 驱动。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "condition": "至少发送三帧",
+      "description": "在 SidePositionLightSta=1 的状态下，SideLghtDrvMdl 至少向 SideLghtCtrlMdl 发送三帧 SidePositionLightStatus 信号。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了侧位灯控制的逻辑流程，可用于验证 SideLghtCtrlMdl 和 FLSideLghtDrvMdl 之间的交互是否符合预期，特别是控制请求的响应、状态反馈的发送以及灯光输出的正确性。",
+  "uncertain_points": []
+}

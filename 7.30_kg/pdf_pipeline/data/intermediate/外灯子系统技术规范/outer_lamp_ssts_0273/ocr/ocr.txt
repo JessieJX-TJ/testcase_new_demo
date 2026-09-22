@@ -1,0 +1,14 @@
+前置条件
+1.BrkLghtFbkSOAEnPrm==1(Enable)
+触发条件
+收到【BrkLghtCtrlMd1】发送的(BrakeLight. BrakeLightState.
+BrakeLightSta)(InstanceID=1)==0x0(Off)
+执行动作
+1.【BrkLghtDrvMdl】停止驱动制动灯及高位制动灯
+(BrkLamp_LH_HSD&BrkLamp_RH_HSD& CHMSL_HSD)
+2.【BrkLghtDrvMdl】持续发送 BrakeLightState. BrakeLightSta=0(Off)
+至【BrkLghtCtrlMd1】,至少发送三帧
+退出条件
+收到【BrkLghtCtrlMdl】发送的(BrakeLight. BrakeLightState.
+BrakeLightSta}(InstanceID=1)=0x1(On)
+异常处理

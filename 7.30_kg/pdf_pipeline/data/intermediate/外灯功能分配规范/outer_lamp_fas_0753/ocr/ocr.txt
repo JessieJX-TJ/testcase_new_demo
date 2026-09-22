@@ -1,0 +1,15 @@
+DayTmRunngLghtSts=0x0=DayTmRunngLghtSts_0_off
+DayTmRunngLghtFltsts=0x0=DayTmRunngLghtFltsts_0_False
+{ExteriorLightSwitchProcess. DayRunningLightSta. DayRunningLghtSta}=0x0=OFF
+[外灯组合服务ICB]订阅接口:
+{ExteriorLightControlSystem. DayRunningLightSts. DayRunningLghtSts}=0x0=OFF
+备注
+1、昼间行车灯同步性要求:
+昼间行车灯退出的同步性允许的最大延时周期为:40ms
+2、[昼间行车灯控制模块LHZCU]设置日行灯开启使能状态内部变量,DayRunngLghtDsblSts:
+1)默认 DayRunngLghtDsblSts=0x0=False
+DayRunningLghtFucProsSta}=0x0=OFF；则设置:
+DayRunngLghtDsblSts=0x1=True
+3)下电清除DayRunngLghtDsblSts 置位
+4)检测到[外灯组合服务ICB]Setter:{ExteriorLightSwitchProcess. DayRunningLightFucProStatus.
+DayRunningLghtFucProsSta}=0x1=ON；则清除DayRunngLghtDsblSts 置位

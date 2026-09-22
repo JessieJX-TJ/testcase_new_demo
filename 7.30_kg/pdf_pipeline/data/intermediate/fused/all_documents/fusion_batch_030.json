@@ -1,0 +1,592 @@
+[
+  {
+    "head": "FRSideLghtFltsts",
+    "relation": "depends_on",
+    "tail": "CAN_LIN_SOA_Hardwire_Definition",
+    "sources": [
+      "outer_lamp_fas_0312"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightStatusQueryService",
+    "relation": "prerequisite",
+    "tail": "BrakeLightIlluminationConditionSatisfied",
+    "sources": [
+      "outer_lamp_fas_0314"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControlRequestService",
+    "relation": "prerequisite",
+    "tail": "BrakeLightControlRequest",
+    "sources": [
+      "outer_lamp_fas_0314"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightStatusParameter",
+    "relation": "input_to",
+    "tail": "BrakeLightStatusQueryService",
+    "sources": [
+      "outer_lamp_fas_0314"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControlRequestParameter",
+    "relation": "input_to",
+    "tail": "BrakeLightControlService",
+    "sources": [
+      "outer_lamp_fas_0314"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControlResponseParameter",
+    "relation": "output_of",
+    "tail": "BrakeLightControlService",
+    "sources": [
+      "outer_lamp_fas_0314"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExecutionAction",
+    "relation": "prerequisite",
+    "tail": "Input",
+    "sources": [
+      "outer_lamp_fas_0316",
+      "outer_lamp_fas_0666"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "outputs_to",
+    "tail": "DircnLghtSwReq_0_off",
+    "sources": [
+      "outer_lamp_fas_0319"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "outputs_to",
+    "tail": "EDRDircnIndLampSwSts_0_off",
+    "sources": [
+      "outer_lamp_fas_0319"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSynchronization",
+    "relation": "timeout_constraint",
+    "tail": "max_delay_50ms",
+    "sources": [
+      "outer_lamp_fas_0319",
+      "outer_lamp_fas_0897",
+      "outer_lamp_fas_1684"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SingleSideDirectionLightDeactivationSynchronization",
+    "relation": "timeout_constraint",
+    "tail": "max_delay_40ms",
+    "sources": [
+      "outer_lamp_fas_0319",
+      "outer_lamp_fas_0897"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatusService",
+    "relation": "triggered_by",
+    "tail": "query_right_rear_direction_light_status",
+    "sources": [
+      "outer_lamp_fas_0322"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatusService",
+    "relation": "triggered_by",
+    "tail": "query_left_front_direction_light_status",
+    "sources": [
+      "outer_lamp_fas_0322"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearDirectionLightStatus_OFF",
+    "relation": "output_of",
+    "tail": "DirectionLightStatusService_returns_0x0",
+    "sources": [
+      "outer_lamp_fas_0322"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearDirectionLightStatus_ON",
+    "relation": "output_of",
+    "tail": "DirectionLightStatusService_returns_0x1",
+    "sources": [
+      "outer_lamp_fas_0322"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearDirectionLightStatus_UNKNOWN",
+    "relation": "output_of",
+    "tail": "DirectionLightStatusService_returns_0x2",
+    "sources": [
+      "outer_lamp_fas_0322"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontDirectionLightNoError",
+    "relation": "output_of",
+    "tail": "DirectionLightErrorStatusService_returns_0x0",
+    "sources": [
+      "outer_lamp_fas_0322"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontDirectionLightWithError",
+    "relation": "output_of",
+    "tail": "DirectionLightErrorStatusService_returns_0x1",
+    "sources": [
+      "outer_lamp_fas_0322"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontDirectionLightErrorStatus_UNKNOWN",
+    "relation": "output_of",
+    "tail": "DirectionLightErrorStatusService_returns_0x2",
+    "sources": [
+      "outer_lamp_fas_0322"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HardwireFaultStatus",
+    "relation": "depends_on",
+    "tail": "DirectionLightErrorStatusService",
+    "sources": [
+      "outer_lamp_fas_0322"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontFogLightFaultStatus",
+    "relation": "output_of",
+    "tail": "FrontFogLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_0324"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontFogLightFaultStatus",
+    "relation": "output_of",
+    "tail": "FrontFogLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_0324"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontFogLightFaultStatus",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0324"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontFogLightFaultStatus",
+    "relation": "depends_on",
+    "tail": "RHZCU",
+    "sources": [
+      "outer_lamp_fas_0324"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontFogLightFaultStatus",
+    "relation": "input_to",
+    "tail": "FrontFogLightErrorSta",
+    "sources": [
+      "outer_lamp_fas_0324"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontFogLightFaultStatus",
+    "relation": "input_to",
+    "tail": "FrontFogLightErrorSta",
+    "sources": [
+      "outer_lamp_fas_0324"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontFogLightFaultStatus",
+    "relation": "triggered_by",
+    "tail": "subscription_to_FrontFogLightErrorStatus_service",
+    "sources": [
+      "outer_lamp_fas_0324"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontFogLightFaultStatus",
+    "relation": "triggered_by",
+    "tail": "subscription_to_FrontFogLightErrorStatus_service",
+    "sources": [
+      "outer_lamp_fas_0324"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "triggers",
+    "tail": "DirenLghtSts_0x0_OFF",
+    "sources": [
+      "outer_lamp_fas_0326"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "triggers",
+    "tail": "DirenLghtFltsts_0x0_NoFault",
+    "sources": [
+      "outer_lamp_fas_0326"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "subscribes_to",
+    "tail": "ExteriorLightControlSystem_DirectionLightSts_NoFlash",
+    "sources": [
+      "outer_lamp_fas_0326"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "subscribes_to",
+    "tail": "ExteriorLightControlSystem_DirectionLightErrSts_NoError",
+    "sources": [
+      "outer_lamp_fas_0326"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "triggers",
+    "tail": "VehHzrdMdSts_0x0_NoRequest",
+    "sources": [
+      "outer_lamp_fas_0326"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "triggers",
+    "tail": "PPV",
+    "sources": [
+      "outer_lamp_fas_0326"
+    ],
+    "conflict": true,
+    "conflict_note": "PPV is ambiguous: likely 'Parking Position Verification' or 'Powertrain Parameter Vector'; conflicts with concrete status codes (e.g., VehHzrdMdSts_0x0_NoRequest) as both are listed as triggers under same head/tail relation — requires domain clarification"
+  },
+  {
+    "head": "LHZCU",
+    "relation": "triggers",
+    "tail": "EDRDircnIndLampSwSts_0x0_off",
+    "sources": [
+      "outer_lamp_fas_0326"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightActivated",
+    "relation": "prerequisite",
+    "tail": "HazardLightInterruptStrategyActive",
+    "sources": [
+      "outer_lamp_fas_0326"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSynchronization",
+    "relation": "timeout_constraint",
+    "tail": "max_delay_40ms",
+    "sources": [
+      "outer_lamp_fas_0326"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatusService",
+    "relation": "triggered_by",
+    "tail": "subscription_to_right_rear_direction_light_status",
+    "sources": [
+      "outer_lamp_fas_0328"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "depends_on",
+    "tail": "DirectionLightErrorStatusService",
+    "sources": [
+      "outer_lamp_fas_0328"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "depends_on",
+    "tail": "DirectionLightErrorStatusService",
+    "sources": [
+      "outer_lamp_fas_0328"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleEEArchitectureFunction",
+    "relation": "depends_on",
+    "tail": "GB_4785_2019",
+    "sources": [
+      "outer_lamp_fas_0331"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleEEArchitectureFunction",
+    "relation": "contains_subfunction",
+    "tail": "ALL",
+    "sources": [
+      "outer_lamp_fas_0331"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunction",
+    "relation": "depends_on",
+    "tail": "version_lt_1.0",
+    "sources": [
+      "outer_lamp_fas_0333",
+      "outer_lamp_fas_0343",
+      "outer_lamp_fas_0762",
+      "outer_lamp_fas_0880",
+      "outer_lamp_fas_1023",
+      "outer_lamp_fas_1129",
+      "outer_lamp_fas_1606"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDirectionLightIlluminated",
+    "relation": "triggered_by",
+    "tail": "DirectionLightSwitchActivated",
+    "sources": [
+      "outer_lamp_fas_0334"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDirectionLightIlluminationReason",
+    "relation": "input_to",
+    "tail": "LDirLghtOpenCtrlRsn",
+    "sources": [
+      "outer_lamp_fas_0334"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDirectionLightIlluminationReason",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0334"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunction",
+    "relation": "prerequisite",
+    "tail": "VehMd_state_Valid",
+    "sources": [
+      "outer_lamp_fas_0336"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunction",
+    "relation": "suppressed_by",
+    "tail": "VehMd_state_Invalid",
+    "sources": [
+      "outer_lamp_fas_0336"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunction",
+    "relation": "depends_on",
+    "tail": "VehMd_values",
+    "sources": [
+      "outer_lamp_fas_0336"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunction",
+    "relation": "depends_on",
+    "tail": "UsrMd_values",
+    "sources": [
+      "outer_lamp_fas_0336"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd_validity",
+    "relation": "input_to",
+    "tail": "CAN_LIN_SOA_Hardwire_Definition",
+    "sources": [
+      "outer_lamp_fas_0336"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsrMd_definition",
+    "relation": "input_to",
+    "tail": "CAN_LIN_SOA_Hardwire_Definition",
+    "sources": [
+      "outer_lamp_fas_0336"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightPriority",
+    "relation": "higher_priority_than",
+    "tail": "BrakeLight",
+    "sources": [
+      "outer_lamp_fas_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSynchronization",
+    "relation": "timeout_constraint",
+    "tail": "max_delay_40ms",
+    "sources": [
+      "outer_lamp_fas_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BasicLightingMainControlLogic",
+    "relation": "depends_on",
+    "tail": "BasicLightingDiagnosticRequirements",
+    "sources": [
+      "outer_lamp_fas_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightLogicBlockDiagram",
+    "relation": "contains_subfunction",
+    "tail": "LowBeamLogicDescription",
+    "sources": [
+      "outer_lamp_fas_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "prerequisite",
+    "tail": "ZCUStateSignalReceptionLogic",
+    "sources": [
+      "outer_lamp_fas_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ServiceRelatedFunctionInterface",
+    "relation": "suppressed_by",
+    "tail": "LightExitDescription",
+    "sources": [
+      "outer_lamp_fas_0337"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

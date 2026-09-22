@@ -1,0 +1,54 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "语音指令控制阅读灯及前排侧阅读灯的开关逻辑",
+  "row_semantics": "每行代表一个独立的语音控制功能及其对应的执行结果",
+  "column_semantics": {
+    "语音指令": "用户通过语音发出的控制命令，如'开阅读灯'或'关闭前排左侧阅读灯'",
+    "指令值": "语音指令对应的系统内部服务调用参数，包括服务名称、灯具ID和开关状态",
+    "执行结果": "系统接收到语音指令后，实际执行的操作描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MapLampService",
+      "type": "controller_module",
+      "description": "地图灯具服务模块，负责处理与灯具相关的操作"
+    },
+    {
+      "name": "MapLampOnOffSts",
+      "type": "service_interface",
+      "description": "地图灯具开关状态服务接口，用于传递灯具ID和开关状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "LampID",
+      "type": "input_signal",
+      "description": "灯具标识符，用于指定要控制的具体灯具，如XX（通用阅读灯）、FL（前排左侧阅读灯）、FR（前排右侧阅读灯）"
+    },
+    {
+      "name": "LampOnOff",
+      "type": "input_signal",
+      "description": "灯具开关状态，取值为ON或OFF，表示开启或关闭"
+    },
+    {
+      "name": "VoiceCommand",
+      "type": "input_signal",
+      "description": "语音指令，如'开阅读灯'或'关闭前排左侧阅读灯'"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ReadingLampControl",
+      "type": "output_signal",
+      "description": "执行后的阅读灯控制结果，如'根据发声用户位置，打开/关闭该用户所在位置阅读灯'"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆中控系统对语音指令的响应逻辑，特别是针对阅读灯和前排侧阅读灯的开关控制。可用于验证语音控制系统在不同灯具ID和开关状态下是否能正确解析并执行用户的语音命令。",
+  "uncertain_points": []
+}
+```

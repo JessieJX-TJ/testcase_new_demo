@@ -1,0 +1,76 @@
+[
+  {
+    "head": "ICB发送后雾灯请求",
+    "relation": "前提条件",
+    "tail": "RearFogLightCtrlResp=0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB发送后雾灯请求",
+      "RearFogLightCtrlResp=0x0"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0021",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "RearFogLightCtrlResp未变",
+    "relation": "触发条件",
+    "tail": "尝试按照<=50ms周期重发3次",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLightCtrlResp未变",
+      "<=50ms",
+      "重发3次"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0021",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "尝试重发3次后仍未反馈请求成功",
+    "relation": "触发条件",
+    "tail": "停止发送",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "尝试重发3次",
+      "未反馈请求成功",
+      "停止发送"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0021",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "外灯状态服务为Onchange类型",
+    "relation": "前提条件",
+    "tail": "消费端在服务发现订阅或外灯控制请求后500ms内未收到状态反馈",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Onchange类型的外灯状态服务",
+      "500ms",
+      "未收到状态反馈"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0021",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "消费端在服务发现订阅或外灯控制请求后500ms内未收到状态反馈",
+    "relation": "超时约束",
+    "tail": "主动通过Getter()方式获取外灯状态",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "500ms",
+      "未收到状态反馈",
+      "Getter()"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0021",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  }
+]

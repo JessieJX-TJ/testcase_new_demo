@@ -1,0 +1,107 @@
+{
+  "table_type": "logic_table",
+  "topic": "氛围灯控制逻辑",
+  "row_semantics": "描述了氛围灯从关闭到点亮，以及从点亮到关闭的完整控制流程，包括触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": {
+    "前置条件": "氛围灯当前所处的状态或系统条件。",
+    "触发条件": "导致氛围灯状态改变的具体输入信号要求。",
+    "执行动作": "在满足触发条件时，控制器执行的具体操作。",
+    "退出条件": "导致氛围灯状态改变并退出当前模式的输入信号要求。",
+    "异常处理": "当发生特定故障或超时情况时的应对措施。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "氛围灯",
+      "type": "功能",
+      "description": "车辆内部用于营造特定氛围的照明设备。"
+    },
+    {
+      "name": "UpIPALampOnOff_1",
+      "type": "输入信号",
+      "description": "本地控制模块发送的开关请求信号，0x1表示开启，0x0表示关闭。"
+    },
+    {
+      "name": "UpIPALampColorCmd_1",
+      "type": "输入信号",
+      "description": "本地控制模块发送的颜色指令信号，0x00表示无请求。"
+    },
+    {
+      "name": "UpIPALampBrtnsCmd_1",
+      "type": "输入信号",
+      "description": "本地控制模块发送的亮度指令信号，0x00表示无请求。"
+    },
+    {
+      "name": "UpIPALampFadeSpdCmd_1",
+      "type": "输入信号",
+      "description": "本地控制模块发送的渐变速度指令信号。"
+    },
+    {
+      "name": "氛围灯驱动控制模块",
+      "type": "控制器/模块",
+      "description": "负责接收指令并驱动氛围灯实际工作的控制单元。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件: 氛围灯处于关闭状态",
+      "description": "表明该逻辑适用于氛围灯当前为关闭的情况。"
+    },
+    {
+      "condition": "触发条件: 接收到氛围灯本地控制模块的开启请求信号",
+      "description": "具体信号包括 UpIPALampOnOff_1 = 0x1 (ON), UpIPALampColorCmd_1 != 0x00, UpIPALampBrtnsCmd_1 != 0x00。",
+      "signal_dependencies": [
+        "UpIPALampOnOff_1",
+        "UpIPALampColorCmd_1",
+        "UpIPALampBrtnsCmd_1"
+      ]
+    },
+    {
+      "condition": "退出条件: 接收到氛围灯本地控制模块的请求信号 UpIPALampOnOff_1 = 0x0 (OFF)",
+      "description": "表明当接收到关闭请求时，氛围灯将退出点亮状态。",
+      "signal_dependencies": [
+        "UpIPALampOnOff_1"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "执行动作: 驱动氛围灯点亮",
+      "description": "根据颜色值、亮度值和渐变速度驱动氛围灯点亮。",
+      "signal_dependencies": [
+        "UpIPALampColorCmd_1",
+        "UpIPALampBrtnsCmd_1",
+        "UpIPALampFadeSpdCmd_1"
+      ]
+    },
+    {
+      "output": "退出条件: 关闭氛围灯",
+      "description": "按照对应渐变速度关闭氛围灯。",
+      "signal_dependencies": [
+        "UpIPALampFadeSpdCmd_1"
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "过压、欠压故障",
+      "description": "氛围灯模块出现过压或欠压时，直接关闭氛围灯。",
+      "impact": "保护电路，防止损坏。"
+    },
+    {
+      "fault": "ZCU LIN信号超时",
+      "description": "超过一定时间（默认6s）未接收到ZCU的LIN信号，直接关闭氛围灯。",
+      "impact": "确保系统在通信中断时的安全性。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "ZCU LIN信号超时时间",
+      "value": "6s",
+      "description": "默认超时时间为6秒，超过此时间未接收到ZCU的LIN信号，将触发异常处理。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了氛围灯从关闭到点亮，以及从点亮到关闭的详细控制逻辑，包括触发条件、执行动作、退出条件和异常处理规则，可用于验证氛围灯控制模块在不同输入信号下的行为是否符合设计规范。",
+  "uncertain_points": []
+}

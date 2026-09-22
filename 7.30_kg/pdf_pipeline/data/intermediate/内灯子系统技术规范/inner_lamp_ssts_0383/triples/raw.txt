@@ -1,0 +1,84 @@
+```json
+[
+  {
+    "head": "Ambient Lamp Color Change Request is Received",
+    "relation": "触发条件",
+    "tail": "FtwlFLLampColorCmd_1 != 0x00 (No Request) or FtwlFLLampColorCmd_1 has changed from 0x00",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["FtwlFLLampColorCmd_1", "trigger condition"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp is Controlled to Turn Off",
+    "relation": "触发条件",
+    "tail": "FtwlFLLampOnOff_1 == 0x0 (OFF)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["FtwlFLLampOnOff_1", "trigger condition"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Continues Current Color",
+    "relation": "抑制条件",
+    "tail": "FtwlFLLampColorCmd_1 == 0x00 (No Request) or undefined color code",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["FtwlFLLampColorCmd_1", "suppress condition"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp is Turned Off",
+    "relation": "触发条件",
+    "tail": "FtwlFLLampOnOff_1 == 0x0 (OFF) and FtwlFLLampFadeSpdCmd_1 specifies fade speed",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["FtwlFLLampOnOff_1", "FtwlFLLampFadeSpdCmd_1", "trigger condition"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "PWM Signal Corresponds to Requested Color",
+    "relation": "输出为",
+    "tail": "FtwlFLLampColorCmd_1 specifies a valid color",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["FtwlFLLampColorCmd_1", "PWM", "output mapping"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Module Shuts Down Due to Fault",
+    "relation": "故障响应",
+    "tail": "Overvoltage or undervoltage detected in the ambient lamp module",
+    "triple_type": "故障响应",
+    "evidence_terms": ["overvoltage", "undervoltage", "fault response"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Maintains Previous State",
+    "relation": "故障响应",
+    "tail": "FtwlFLLampColorCmd_1 has an abnormal value",
+    "triple_type": "故障响应",
+    "evidence_terms": ["abnormal FtwlFLLampColorCmd_1", "fault response"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp is Turned Off",
+    "relation": "故障响应",
+    "tail": "ZCU_LIN_Signal not received within 6 seconds",
+    "triple_type": "故障响应",
+    "evidence_terms": ["timeout", "LIN signal", "fault response"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp State is Maintained",
+    "relation": "状态保持条件",
+    "tail": "FtwlFLLampColorCmd_1 == 0x00 (No Request) or undefined color code",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["state maintenance", "color command", "condition"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp is Turned Off",
+    "relation": "超时约束",
+    "tail": "ZCU_LIN_Signal not received within 6 seconds",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": ["timeout", "LIN signal", "constraint"],
+    "confidence_note": "high"
+  }
+]
+```

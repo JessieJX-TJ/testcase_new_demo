@@ -1,0 +1,602 @@
+[
+  {
+    "head": "Outer Lamp Control Parameters",
+    "relation": "depends_on",
+    "tail": "Default Value",
+    "sources": [
+      "inner_lamp_fas_0409"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Backlight Control Function",
+    "relation": "prerequisite",
+    "tail": "VP3-62741",
+    "sources": [
+      "inner_lamp_fas_0410"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch Control (VP3-231484)",
+    "relation": "inhibition_condition",
+    "tail": "Reading Lamp Switch Control #VP3-25770 is active",
+    "sources": [
+      "inner_lamp_fas_0411"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity Mirror Lamp Switch Control",
+    "relation": "prerequisite",
+    "tail": "VP3-64021",
+    "sources": [
+      "inner_lamp_fas_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity Mirror Lamp Switch Control",
+    "relation": "depends_on",
+    "tail": "Controller VP3-64021",
+    "sources": [
+      "inner_lamp_fas_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity Mirror Lamp Switch Control",
+    "relation": "has_subfunction",
+    "tail": "Vanity Mirror Lamp State Control",
+    "sources": [
+      "inner_lamp_fas_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Glovebox Lamp Switch Control",
+    "relation": "trigger_condition",
+    "tail": "Glovebox Lamp Switch Signal",
+    "sources": [
+      "inner_lamp_fas_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Glovebox Lamp On/Off",
+    "relation": "depends_on",
+    "tail": "Glovebox Lamp Switch Control",
+    "sources": [
+      "inner_lamp_fas_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Glovebox Lamp On/Off",
+    "relation": "outputs",
+    "tail": "Glovebox Lamp State",
+    "sources": [
+      "inner_lamp_fas_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Glovebox Lamp Application Control Module",
+    "relation": "controls",
+    "tail": "Glovebox Lamp State",
+    "sources": [
+      "inner_lamp_fas_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Glovebox Lamp Driver Module",
+    "relation": "has_subfunction",
+    "tail": "Glovebox Lamp Application Control Module",
+    "sources": [
+      "inner_lamp_fas_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Is ON",
+    "relation": "prerequisite",
+    "tail": "Vehicle Mode: Sleep, Standby, XOTA",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Is ON",
+    "relation": "prerequisite",
+    "tail": "Vehicle Mode: Factory",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "User Mode: XOTA or Sleep or Standby",
+    "relation": "prerequisite",
+    "tail": "Reading Lamp Is ON",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "depends_on",
+    "tail": "Reading Lamp Is ON and Vehicle Mode: Sleep, Standby, XOTA",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "depends_on",
+    "tail": "Reading Lamp Is ON and Vehicle Mode: Factory",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SleepTimer or FactoryTimer",
+    "relation": "timeout_constraint",
+    "tail": "Reading Lamp Is ON",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "priority_over",
+    "tail": "FactoryTimer",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting priority assertion: 'SleepTimer priority_over FactoryTimer' (source inner_lamp_fas_0415) contradicts 'FactoryTimer priority_over SleepTimer' (same source). Likely documentation inconsistency."
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "priority_over",
+    "tail": "SleepTimer",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting priority assertion: 'FactoryTimer priority_over SleepTimer' (source inner_lamp_fas_0415) contradicts 'SleepTimer priority_over FactoryTimer' (same source). Likely documentation inconsistency."
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "reset_condition",
+    "tail": "Reading Lamp turns OFF",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "reset_condition",
+    "tail": "Reading Lamp turns OFF",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "has_subfunction",
+    "tail": "15-minute duration",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "has_subfunction",
+    "tail": "2-minute duration",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "inhibition_condition",
+    "tail": "Vehicle Mode: Factory",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "inhibition_condition",
+    "tail": "Vehicle Mode: Sleep, Standby, XOTA",
+    "sources": [
+      "inner_lamp_fas_0415"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Passenger Door Open Status (FrtPsgDoorOpenSts)",
+    "relation": "input_value",
+    "tail": "0x0 = FrtPsngDoorClosed",
+    "sources": [
+      "inner_lamp_fas_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Passenger Door Open Status (FrtPsgDoorOpenSts)",
+    "relation": "input_value",
+    "tail": "0x1 = FrtPsngDoorOpen (for latch switch can't detect door ajar status)",
+    "sources": [
+      "inner_lamp_fas_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Passenger Door Open Status (FrtPsgDoorOpenSts)",
+    "relation": "input_value",
+    "tail": "0x2 = FrtPsngDoorAjar",
+    "sources": [
+      "inner_lamp_fas_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Passenger Door Open Status (FrtPsgDoorOpenSts)",
+    "relation": "input_value",
+    "tail": "0x3 = FrtPsngDoorFullOpen",
+    "sources": [
+      "inner_lamp_fas_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Open Status (RRDoorOpenSts)",
+    "relation": "input_value",
+    "tail": "0x0 = RRDoorClosed",
+    "sources": [
+      "inner_lamp_fas_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Open Status (RRDoorOpenSts)",
+    "relation": "input_value",
+    "tail": "0x1 = RRDoorOpen (for latch switch can't detect door ajar status)",
+    "sources": [
+      "inner_lamp_fas_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Open Status (RRDoorOpenSts)",
+    "relation": "input_value",
+    "tail": "0x2 = RRDoorAjar",
+    "sources": [
+      "inner_lamp_fas_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Right Door Open Status (RRDoorOpenSts)",
+    "relation": "input_value",
+    "tail": "0x3 = RRDoorFullOpen",
+    "sources": [
+      "inner_lamp_fas_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Passenger Welcome Light Control Command (FrtPsgWlcmPedLghtCtrlCmd)",
+    "relation": "input_value",
+    "tail": "0x0 = Close",
+    "sources": [
+      "inner_lamp_fas_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Passenger Welcome Light Control Command (FrtPsgWlcmPedLghtCtrlCmd)",
+    "relation": "input_value",
+    "tail": "0x1 = Open",
+    "sources": [
+      "inner_lamp_fas_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "User Mode Validity (UsgMdV)",
+    "relation": "input_value",
+    "tail": "0x0 = UsgMdV_0_Invalid",
+    "sources": [
+      "inner_lamp_fas_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "User Mode Validity (UsgMdV)",
+    "relation": "input_value",
+    "tail": "0x1 = UsgMdV_1_Valid",
+    "sources": [
+      "inner_lamp_fas_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDoorOpenSts Signal",
+    "relation": "input_source",
+    "tail": "CAN Bus",
+    "sources": [
+      "inner_lamp_fas_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorOpenSts Signal",
+    "relation": "input_source",
+    "tail": "CAN Bus",
+    "sources": [
+      "inner_lamp_fas_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampDrEnbSetInfo Configuration",
+    "relation": "depends_on",
+    "tail": "PersonalizationData.MapLampDrEnbSet Parameter",
+    "sources": [
+      "inner_lamp_fas_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampDrEnbSetInfo Output",
+    "relation": "outputs",
+    "tail": "0x0 (Enabled)",
+    "sources": [
+      "inner_lamp_fas_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampDrEnbSetInfo Output",
+    "relation": "outputs",
+    "tail": "0x1 (Disabled)",
+    "sources": [
+      "inner_lamp_fas_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door-Linked Lamp Function",
+    "relation": "prerequisite",
+    "tail": "PersonalizationData.MapLampDrEnbSet = Enabled",
+    "sources": [
+      "inner_lamp_fas_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door-Linked Lamp Function",
+    "relation": "prerequisite",
+    "tail": "PersonalizationData.MapLampDrEnbSet = Disabled",
+    "sources": [
+      "inner_lamp_fas_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver's Side Floor Lamp Activation",
+    "relation": "trigger_condition",
+    "tail": "User Mode: Standby, Comfortable, Normal Driving, AIParking, AIPilot, or XOTA",
+    "sources": [
+      "inner_lamp_fas_0419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver's Side Front Door Full Open Status",
+    "relation": "depends_on",
+    "tail": "FrontLeftDoorFullOpen Status",
+    "sources": [
+      "inner_lamp_fas_0419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Left Door Partially Open Status",
+    "relation": "depends_on",
+    "tail": "RLDoorOpen Status",
+    "sources": [
+      "inner_lamp_fas_0419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver's Side Floor Lamp Control Command Validity",
+    "relation": "trigger_condition",
+    "tail": "UsrMdV_1_Valid Status",
+    "sources": [
+      "inner_lamp_fas_0419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Driver's Side Floor Lamp Control Command Validity",
+    "relation": "trigger_condition",
+    "tail": "UsrMdV_0_Invalid Status",
+    "sources": [
+      "inner_lamp_fas_0419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch Control Function",
+    "relation": "prerequisite",
+    "tail": "VP3-143074 Restriction Condition",
+    "sources": [
+      "inner_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch Control Function",
+    "relation": "depends_on",
+    "tail": "Controller Module VP3-25770",
+    "sources": [
+      "inner_lamp_fas_0422"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Backlight Control Function",
+    "relation": "depends_on",
+    "tail": "VP3-25751 Restriction Condition",
+    "sources": [
+      "inner_lamp_fas_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Backlight Control Function",
+    "relation": "prerequisite",
+    "tail": "VP3-62743",
+    "sources": [
+      "inner_lamp_fas_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Controller VP3-62772",
+    "relation": "controls",
+    "tail": "Reading Lamp Switch Control #VP3-25770",
+    "sources": [
+      "inner_lamp_fas_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampThrdLDimSpd_1 (Left Lamp Third-Level Dimming Speed)",
+    "relation": "input_source",
+    "tail": "LIN Bus Input Signal",
+    "sources": [
+      "inner_lamp_fas_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampThrdRDimSpd_1 (Right Lamp Third-Level Dimming Speed)",
+    "relation": "input_source",
+    "tail": "OHC Module Input Signal",
+    "sources": [
+      "inner_lamp_fas_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampXXSts_1 (Generic Lamp Status Mapping)",
+    "relation": "input_source",
+    "tail": "LHZCU Input Signal",
+    "sources": [
+      "inner_lamp_fas_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLSts_1 (Front Left Lamp Status Mapping)",
+    "relation": "outputs",
+    "tail": "Front Left Lamp Behavior",
+    "sources": [
+      "inner_lamp_fas_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFRSts_1 (Front Right Lamp Status Mapping)",
+    "relation": "outputs",
+    "tail": "Front Right Lamp Behavior",
+    "sources": [
+      "inner_lamp_fas_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampThrdLDimSpd_1 Parameter Definition",
+    "relation": "has_subfunction",
+    "tail": "Speed 1 (Manual, Fast)",
+    "sources": [
+      "inner_lamp_fas_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

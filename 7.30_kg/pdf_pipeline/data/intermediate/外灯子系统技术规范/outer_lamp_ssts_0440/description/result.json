@@ -1,0 +1,83 @@
+{
+  "table_type": "fault_table",
+  "topic": "高位制动灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件、触发条件、执行动作、退出条件到异常处理。",
+  "column_semantics": "表格分为两列，左侧为功能阶段描述（如前置条件、触发条件等），右侧为该阶段的具体内容或参数。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "CHMSL_HSD",
+      "type": "controller_module",
+      "description": "高位制动灯驱动模块"
+    },
+    {
+      "name": "BrkLghtDrvMdl",
+      "type": "controller_module",
+      "description": "制动灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlCHMSLHwDrvEnPrm",
+      "type": "input_signal",
+      "description": "高位制动灯硬件驱动使能参数",
+      "condition": "exlCHMSLHwDrvEnPrm == 1"
+    },
+    {
+      "name": "CHMSL_HSD_Output_State",
+      "type": "system_state",
+      "description": "高位制动灯输出状态",
+      "condition": "高位制动灯处于输出状态"
+    },
+    {
+      "name": "BrkLght_ShortToGround_Detection",
+      "type": "input_signal",
+      "description": "检测到高位制动灯短路到地",
+      "condition": "检测到高位制动灯短路到地"
+    },
+    {
+      "name": "ShortToGround_Recovery_Detection",
+      "type": "input_signal",
+      "description": "检测到短路恢复",
+      "condition": "检测到短路恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLghtDrvMdl_Stop",
+      "type": "output_signal",
+      "description": "停止驱动高位制动灯",
+      "action": "【BrkLghtDrvMdl】停止驱动高位制动灯（CHMSL_HSD）"
+    },
+    {
+      "name": "BrkLghtDrvMdl_Send_Off",
+      "type": "output_signal",
+      "description": "持续发送 BrkLghtSts=0（Off）",
+      "action": "【BrkLghtDrvMdl】持续发送 BrkLghtSts=0（Off）至 【BrkLghtCtrlMdl】，至少发送三帧。"
+    },
+    {
+      "name": "BrkLghtDrvMdl_Feedback",
+      "type": "output_signal",
+      "description": "反馈硬件浮动状态",
+      "action": "【BrkLghtDrvMdl】反馈 BrkLghtFltSts_HW=0x1（BrkLghtFltSts_HW_1_True）"
+    },
+    {
+      "name": "DTC_B1043_11_Set",
+      "type": "output_signal",
+      "description": "设置故障码 DTC B1043 11",
+      "action": "置位 DTC B1043 11"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "CHMSL_HSD_ShortToGround",
+      "type": "fault_status",
+      "description": "高位制动灯短路到地故障",
+      "detection": "检测到高位制动灯短路到地"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了高位制动灯（CHMSL_HSD）发生短路到地故障时的系统响应逻辑，包括停止驱动、发送关闭信号、反馈硬件状态以及设置故障码，可用于验证高位制动灯故障诊断与保护功能。",
+  "uncertain_points": []
+}

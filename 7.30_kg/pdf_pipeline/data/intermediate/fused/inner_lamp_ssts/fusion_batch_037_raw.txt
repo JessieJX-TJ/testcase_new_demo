@@ -1,0 +1,460 @@
+```json
+[
+  {
+    "head": "ThirdRowMapLampLHDimSpd = 0x1",
+    "relation": "enables",
+    "tail": "Third-row left-hand reading lamp dimming speed 2 (off)",
+    "sources": ["inner_lamp_ssts_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHDimSpd",
+    "relation": "default_value_on_missing_signal",
+    "tail": "0x0 (speed 1)",
+    "sources": ["inner_lamp_ssts_0416"],
+    "conflict": false,
+    "conflict_note": "Applies to both illumination and extinction logic; no conflict detected as 'speed 1' is consistently defined as default dimming level for activation/deactivation"
+  },
+  {
+    "head": "ThirdRowMapLampLHDimSpd",
+    "relation": "default_behavior_for_illumination",
+    "tail": "Default illumination at speed 1 when dimming command signal is missing",
+    "sources": ["inner_lamp_ssts_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHDimSpd",
+    "relation": "default_behavior_for_extinction",
+    "tail": "Default extinction at speed 1 when dimming command signal is missing",
+    "sources": ["inner_lamp_ssts_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHDrv",
+    "relation": "disabled_on_fault",
+    "tail": "Short-circuit or open-circuit fault in third-row left-hand reading lamp",
+    "sources": ["inner_lamp_ssts_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHDrv",
+    "relation": "disabled_on_fault",
+    "tail": "Missing brightness request signal from reading lamp control module",
+    "sources": ["inner_lamp_ssts_0416"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "receives_input_via_can",
+    "tail": "SideLghtSts",
+    "sources": ["inner_lamp_ssts_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "maps_can_to_lin",
+    "tail": "VehSideLghtSts_1_RZCU (LIN interface signal)",
+    "sources": ["inner_lamp_ssts_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Position lamps",
+    "relation": "state_retention_condition",
+    "tail": "Loss of communication between LHZCU and RZCU",
+    "sources": ["inner_lamp_ssts_0417"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IP upper trim ambient lamp #1",
+    "relation": "output_signal",
+    "tail": "UpIPALampXX_1",
+    "sources": ["inner_lamp_ssts_0418"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IP upper trim ambient lamp #2",
+    "relation": "output_signal",
+    "tail": "UpIPBLampXX_1",
+    "sources": ["inner_lamp_ssts_0418"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IP upper trim ambient lamp #3",
+    "relation": "output_signal",
+    "tail": "UpIPCLampXX_1",
+    "sources": ["inner_lamp_ssts_0418"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IP lower trim ambient lamp #1",
+    "relation": "output_signal",
+    "tail": "LowIPALampXX_1",
+    "sources": ["inner_lamp_ssts_0418"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IP lower trim ambient lamp #2",
+    "relation": "output_signal",
+    "tail": "LowIPBLampXX_1",
+    "sources": ["inner_lamp_ssts_0418"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IP lower trim ambient lamp #3",
+    "relation": "output_signal",
+    "tail": "LowIPCLampXX_1",
+    "sources": ["inner_lamp_ssts_0418"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC display code",
+    "relation": "prerequisite_for_fault_setting",
+    "tail": "Fault condition met",
+    "sources": ["inner_lamp_ssts_0419"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC display code",
+    "relation": "prerequisite_for_fault_clearing",
+    "tail": "Fault condition resolved",
+    "sources": ["inner_lamp_ssts_0419"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp breathing mode switch",
+    "relation": "trigger_condition",
+    "tail": "FtwlFLLampBrtnsCmd_1 mode change",
+    "sources": ["inner_lamp_ssts_0421"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp breathing mode switch",
+    "relation": "inhibition_condition",
+    "tail": "Current breathing mode stopped",
+    "sources": ["inner_lamp_ssts_0421"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp brightness control",
+    "relation": "depends_on",
+    "tail": "FtwlFLLampBrthngCmd_1 command signal",
+    "sources": ["inner_lamp_ssts_0421"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp brightness control",
+    "relation": "input_signal",
+    "tail": "FtwlFLLampBrthngCmd_1 (sent by ZCU)",
+    "sources": ["inner_lamp_ssts_0421"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp breathing mode (step change)",
+    "relation": "input_from",
+    "tail": "FtwlFLLampBrthngCmd_1 = 0x1 or 0x2 (ZCU-sent)",
+    "sources": ["inner_lamp_ssts_0421"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp breathing mode (gradual change)",
+    "relation": "input_from",
+    "tail": "FtwlFLLampBrthngCmd_1 ∈ {0x3–0xC, 0xE} (ZCU-sent)",
+    "sources": ["inner_lamp_ssts_0421"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp brightness cycle (step change)",
+    "relation": "state_retention_condition",
+    "tail": "Rate1 or Rate2 period duration active",
+    "sources": ["inner_lamp_ssts_0421"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient lamp brightness cycle (gradual change)",
+    "relation": "state_retention_condition",
+    "tail": "Time A and Time B duration active",
+    "sources": ["inner_lamp_ssts_0421"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left console ambient lamp execution module",
+    "relation": "controls",
+    "tail": "Left console ambient lamp driver controller",
+    "sources": ["inner_lamp_ssts_0423"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left footwell ambient lamp execution module",
+    "relation": "controls",
+    "tail": "Left footwell ambient lamp driver controller",
+    "sources": ["inner_lamp_ssts_0423"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right front/rear door ambient lamp execution module",
+    "relation": "controls",
+    "tail": "Right front/rear door ambient lamp driver controller",
+    "sources": ["inner_lamp_ssts_0423"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right roof ambient lamp execution module",
+    "relation": "controls",
+    "tail": "Right roof ambient lamp driver controller",
+    "sources": ["inner_lamp_ssts_0423"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right IP ambient lamp execution module",
+    "relation": "controls",
+    "tail": "Right IP ambient lamp driver controller",
+    "sources": ["inner_lamp_ssts_0423"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity mirror lamp drive request",
+    "relation": "input_signal",
+    "tail": "VatyMirLampCtrlCmd",
+    "sources": ["inner_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity mirror lamp drive request",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity mirror lamp drive hardwire",
+    "relation": "output_signal",
+    "tail": "TmdDlyLamp_HSD",
+    "sources": ["inner_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity mirror lamp drive hardwire",
+    "relation": "drives",
+    "tail": "VatyMirLamp_LH/RH",
+    "sources": ["inner_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity mirror lamp drive request",
+    "relation": "controls",
+    "tail": "Vanity mirror lamp drive hardwire",
+    "sources": ["inner_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity mirror lamp drive request",
+    "relation": "activation_condition",
+    "tail": "0x0 = Close",
+    "sources": ["inner_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vanity mirror lamp drive request",
+    "relation": "activation_condition",
+    "tail": "0x1 = Open",
+    "sources": ["inner_lamp_ssts_0424"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLghtLHRolliingCtr_1",
+    "relation": "inhibition_condition",
+    "tail": "Signal no longer cycles (ceases rolling overlay)",
+    "sources": ["inner_lamp_ssts_0426"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHALampOnOff_1",
+    "relation": "activation_condition",
+    "tail": "Non-zero color/brightness command received simultaneously",
+    "sources": ["inner_lamp_ssts_0426"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHALampColorCmd_1",
+    "relation": "state_retention_condition",
+    "tail": "Command value = 0 or undefined color ID",
+    "sources": ["inner_lamp_ssts_0426"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHALampBrtnsCmd_1",
+    "relation": "state_retention_condition",
+    "tail": "Command value = 0",
+    "sources": ["inner_lamp_ssts_0426"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHALampBrthngCmd_1",
+    "relation": "input_mapping",
+    "tail": "0x1 → Rate1, ..., 0x8 → Rate8",
+    "sources": ["inner_lamp_ssts_0426"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHALampBrtnsCmd_1",
+    "relation": "input_mapping",
+    "tail": "0x65–0xFF = Reserved",
+    "sources": ["inner_lamp_ssts_0426"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk lamp drive hardwire signal",
+    "relation": "input_signal",
+    "tail": "LdspcLamp_HSD",
+    "sources": ["inner_lamp_ssts_0427"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E system configuration parameters",
+    "relation": "includes_subfunction",
+    "tail": "Resolution / Factor",
+    "sources": ["inner_lamp_ssts_0428"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHALamp (right headlamp)",
+    "relation": "breathing_blinking_prerequisite",
+    "tail": "Code ∈ {0x5–0xF}",
+    "sources": ["inner_lamp_ssts_0429"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHALamp (right headlamp)",
+    "relation": "breathing_stop_trigger",
+    "tail": "Code = Rate0 (No Request)",
+    "sources": ["inner_lamp_ssts_0429"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHALamp (right headlamp)",
+    "relation": "breathing_mode_switch_trigger",
+    "tail": "Code changes between breathing modes",
+    "sources": ["inner_lamp_ssts_0429"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHALamp (right headlamp)",
+    "relation": "breathing_mode_persistence_condition",
+    "tail": "Code set to specific Rate value → sustained blinking at that period",
+    "sources": ["inner_lamp_ssts_0429"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHALamp (right headlamp)",
+    "relation": "input_signal",
+    "tail": "CnsoRHALampFadeSpdCmd_1_x_Spdy",
+    "sources": ["inner_lamp_ssts_0429"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHALamp (right headlamp)",
+    "relation": "fade_timeout_constraint",
+    "tail": "Default speed Spd0: 2000 ms",
+    "sources": ["inner_lamp_ssts_0429"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSts",
+    "relation": "state_value",
+    "tail": "0x0 = OFF (reading lamp not driven)",
+    "sources": ["inner_lamp_ssts_0430"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSts",
+    "relation": "state_value",
+    "tail": "0x1 = Level_1 (brightness level 1 requested & lamp illuminated)",
+    "sources": ["inner_lamp_ssts_0430"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSts",
+    "relation": "state_value",
+    "tail": "0x2 = Level_2 (brightness level 2 requested & lamp illuminated)",
+    "sources": ["inner_lamp_ssts_0430"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSts",
+    "relation": "state_value",
+    "tail": "0x1E = Level_30 (brightness level 30 requested & lamp illuminated)",
+    "sources": ["inner_lamp_ssts_0430"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHSts",
+    "relation": "output_assignment",
+    "tail": "Assigned value matches requested level (0x1, 0x2, or 0x1E) when lamp is on",
+    "sources": ["inner_lamp_ssts_0430"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Configuration item",
+    "relation": "depends_on",
+    "tail": "Configuration description",
+    "sources": ["inner_lamp_ssts_0431"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

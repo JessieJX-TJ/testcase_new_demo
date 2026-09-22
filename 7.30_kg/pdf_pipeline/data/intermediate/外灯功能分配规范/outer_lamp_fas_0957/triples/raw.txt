@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "制动灯点亮",
+    "relation": "触发条件",
+    "tail": "ICB接收信号BrkLghtCtrl=0x1=BrkLghtCtrl_1_On",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["ICB", "BrkLghtCtrl", "BrkLghtCtrl_1_On"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "触发条件",
+    "tail": "RZCU接收ICB控制信号BrkLghtCtrl_HW=0x1=BrkLghtCtrl_HW_1_On",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["RZCU", "ICB", "BrkLghtCtrl_HW", "BrkLghtCtrl_HW_1_On"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "触发条件",
+    "tail": "外灯组合服务ICB将接收到的LHZCU发送的制动灯点亮状态及故障状态CAN信号转为服务状态{ExteriorLightControlSystem. BrakeLightSts. BrakeLghtSts}=01=ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["ICB", "LHZCU", "BrakeLightSts", "ON"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "依赖于",
+    "tail": "制动灯开关控制模块LHZCU将开关状态反馈至ICB[BrkLghtSwSts=0x1=BrkLghtSwSts_1_On]",
+    "triple_type": "功能依赖关系",
+    "evidence_terms": ["LHZCU", "ICB", "BrkLghtSwSts", "BrkLghtSwSts_1_On"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "超时约束",
+    "tail": "左侧、右侧以及高位制动灯需保持同步点亮，三侧最大延时不超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": ["制动灯", "同步点亮", "40ms"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "前提条件",
+    "tail": "制动灯处于激活状态",
+    "triple_type": "前提条件",
+    "evidence_terms": ["制动灯", "激活状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯点亮",
+    "relation": "抑制条件",
+    "tail": "用户模式不满足(UsgMd=0x0=UsgMd_0_Sleep;∥UsgMd=0x1 =UsgMd_1_Standby;∥UsgMd=0x6=UsgMd_6_XOTA)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["用户模式", "Sleep", "Standby", "XOTA"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯状态反馈",
+    "relation": "输出为",
+    "tail": "RZCU将状态/故障状态反馈至LHZCU[BrkLghtSts_HW=0x1=BrkLghtSts_HW_1_On; BrkLghtFltSts_HW=0x0=BrkLghtFltSts_HW_0_False]",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["RZCU", "LHZCU", "BrkLghtSts", "BrkLghtFltSts"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯状态反馈",
+    "relation": "输出为",
+    "tail": "LHZCU将状态/故障状态反馈至ICB[BrkLghtSta=0x1=BrkLghtSta_1_On; BrkLghtFltSta=0x0=BrkLghtFltSta_0_False]",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["LHZCU", "ICB", "BrkLghtSta", "BrkLghtFltSta"],
+    "confidence_note": "high"
+  }
+]
+```

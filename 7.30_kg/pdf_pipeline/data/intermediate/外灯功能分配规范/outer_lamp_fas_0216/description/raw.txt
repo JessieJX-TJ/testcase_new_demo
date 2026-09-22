@@ -1,0 +1,93 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯与后雾灯控制模块的状态反馈与订阅接口定义",
+  "row_semantics": "每一行代表一个特定的控制模块或服务对某个灯光状态（包括正常状态和故障状态）的反馈或订阅行为，详细描述了信号名称、值及其对应的系统状态。",
+  "column_semantics": "表格没有明确的列标题，但内容按照行组织，每行包含模块/服务名称、信号名称、信号值以及对应的系统状态描述。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "驱动处理模块，负责处理后雾灯的状态和故障反馈。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "后雾灯控制模块，负责管理后雾灯的状态、故障反馈及近光灯状态订阅。"
+    },
+    {
+      "name": "ICB",
+      "type": "service",
+      "description": "外灯组合服务，负责订阅外灯相关状态信息。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RearFogLightSts",
+      "type": "input_signal",
+      "description": "后雾灯状态信号，指示后雾灯当前是否开启（0x1=On, 0x0=Off）。"
+    },
+    {
+      "name": "RearFogLightAcFlts",
+      "type": "input_signal",
+      "description": "后雾灯活动故障信号，指示是否存在活动故障（0x1=Active Fault, 0x0=No Active Fault）。"
+    },
+    {
+      "name": "DippedBeamLightSts",
+      "type": "input_signal",
+      "description": "近光灯状态信号，指示近光灯当前是否开启（0x1=On, 0x0=Off）。"
+    },
+    {
+      "name": "exlDipdBeamHwDrvEnPrm",
+      "type": "input_signal",
+      "description": "近光灯硬件驱动使能参数，用于获取近光灯状态（0x0=通过Instance ID 3/4获取，0x1=通过Instance ID 1/2获取）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogLightState",
+      "type": "output_signal",
+      "description": "后雾灯系统状态，表示后雾灯的实际工作状态（ON/OFF）。"
+    },
+    {
+      "name": "RearFogLightErrorStatus",
+      "type": "output_signal",
+      "description": "后雾灯故障状态，表示后雾灯是否存在错误（0x0=No Error）。"
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "output_signal",
+      "description": "近光灯系统状态，表示近光灯的实际工作状态（ON/OFF）。"
+    },
+    {
+      "name": "DippedBeamLightErrorStatus",
+      "type": "output_signal",
+      "description": "近光灯故障状态，表示近光灯是否存在错误（0x0=No Error）。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RearFogLightErrSta",
+      "type": "fault_status",
+      "description": "后雾灯故障状态，当值为0x0时，表示无错误；当值为0x1时，表示存在活动故障。"
+    },
+    {
+      "name": "DippedBeamLightErrorSta",
+      "type": "fault_status",
+      "description": "近光灯故障状态，当值为0x0时，表示无错误；当值为0x1时，表示存在活动故障。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步点亮延时",
+      "description": "左侧和右侧近光灯及后雾灯需保持同步点亮，两侧最大延时不能超过40ms。",
+      "unit": "ms",
+      "value": "≤40"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了外灯和后雾灯控制模块（如RZCU、LHZCU）与外部服务（如ICB）之间关于灯光状态（包括正常状态和故障状态）的信号交互规则，可用于验证灯光系统的状态反馈、故障检测以及灯光同步功能。",
+  "uncertain_points": []
+}
+```

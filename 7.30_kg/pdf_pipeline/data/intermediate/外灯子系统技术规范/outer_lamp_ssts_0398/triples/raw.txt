@@ -1,0 +1,53 @@
+```json
+[
+  {
+    "head": "主大灯驱动模块（MainBeamLightDrvMdl）持续发送 MainBeamLightState",
+    "relation": "前提条件",
+    "tail": "MainBeamLightSta = 2 (Error), InstanceID = 2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "MainBeamLightDrvMdl",
+      "MainBeamLightState",
+      "MainBeamLightSta",
+      "Error",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主大灯控制模块（MainBeamLightCtrlMdl）至少发送三帧",
+    "relation": "前提条件",
+    "tail": "MainBeamLightDrvMdl 持续发送 MainBeamLightState",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "MainBeamLightCtrlMdl",
+      "MainBeamLightDrvMdl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "置位 DTC B105C 12",
+    "relation": "故障响应",
+    "tail": "MainBeamLightDrvMdl 持续发送 MainBeamLightState 且 MainBeamLightSta = 2 (Error)",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DTC B105C 12",
+      "MainBeamLightDrvMdl",
+      "MainBeamLightState",
+      "MainBeamLightSta",
+      "Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "退出条件",
+    "relation": "前提条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "功能退出条件",
+    "evidence_terms": [
+      "短路恢复"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

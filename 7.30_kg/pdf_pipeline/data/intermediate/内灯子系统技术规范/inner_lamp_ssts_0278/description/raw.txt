@@ -1,0 +1,58 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯控制系统中迎宾灯（FlorLamp）的接口信号定义与控制逻辑",
+  "row_semantics": "每行代表一个具体的信号接口或功能描述，包含信号名称、方向、类型、发送方/接收方、路径及来源等信息。",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识信号的功能或用途。",
+    "Direction": "信号流向，指示是输入还是输出。",
+    "Type": "信号类型，如CAN/LIN总线信号、SOA服务、硬线信号等。",
+    "Sender/Provider": "信号的提供方或服务提供者，通常是控制器或模块。",
+    "Receiver/Consumer": "信号的接收方或服务消费者，通常是控制器或模块。",
+    "Channel": "信号传输的通道或路径，如指定信号通道。",
+    "Interface Source": "信号的来源，如指定信号来源或内灯SSTS（System Status and Signal Tracking System）"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RLDoorFlorLampCtrlCmd",
+      "type": "Input Signal",
+      "description": "左后激光迎宾灯驱动请求信号，由LHZCU提供，作为输入信号被LHZCU消费。"
+    },
+    {
+      "name": "DoorFlorLamp_RL_HSD",
+      "type": "Output Signal",
+      "description": "左后激光迎宾灯驱动硬线信号，由LHZCU提供，作为输出信号驱动DoorFlorLamp_RL_HSD。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "车身控制单元，负责处理迎宾灯相关的控制逻辑和信号交互。"
+    },
+    {
+      "name": "DoorFlorLamp_RL",
+      "type": "System Component",
+      "description": "左后激光迎宾灯组件，接收来自LHZCU的驱动信号以实现开闭控制。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "RLDoorFlorLampCtrlCmd",
+      "condition": "0x0=Close; 0x1=Open;",
+      "description": "该信号用于控制迎宾灯的开关状态，其中0x0表示关闭，0x1表示打开。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DoorFlorLamp_RL_HSD",
+      "action": "Drive DoorFlorLamp_RL",
+      "description": "根据RLDoorFlorLampCtrlCmd信号的状态，LHZCU通过DoorFlorLamp_RL_HSD输出相应的驱动信号来控制迎宾灯的开闭。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了整车外灯系统中左后激光迎宾灯的控制信号接口及其交互逻辑，可用于验证LHZCU对DoorFlorLamp_RL_HSD信号的正确驱动以及RLDoorFlorLampCtrlCmd信号的有效性测试。",
+  "uncertain_points": []
+}
+```

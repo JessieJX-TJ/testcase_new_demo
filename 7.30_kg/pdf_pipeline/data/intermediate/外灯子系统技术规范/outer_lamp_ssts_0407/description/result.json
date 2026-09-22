@@ -1,0 +1,58 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯转向灯控制逻辑",
+  "row_semantics": "表格按功能执行的阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "表格为两列结构，左侧为阶段描述，右侧为该阶段的具体条件或动作定义。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "转向灯反馈安全监控使能参数"
+    },
+    {
+      "name": "FLDILightDrvMdl",
+      "type": "controller",
+      "description": "前灯转向灯驱动模块"
+    },
+    {
+      "name": "DILightCtrlMdl",
+      "type": "controller",
+      "description": "转向灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DILightFbkSOAEnPrm==1 (Enable)",
+      "type": "condition",
+      "description": "前置条件：转向灯反馈安全监控使能参数必须为1（启用）"
+    },
+    {
+      "name": "收到【DILightCtrlMdl】发送的 DirectionLightControl. DirectionLightCtrlReq ==0 (Off) InstanceID=1",
+      "type": "trigger",
+      "description": "触发条件：接收到转向灯控制模块发送的方向灯控制请求为关闭状态（InstanceID=1）"
+    },
+    {
+      "name": "收到【DILightCtrlMdl】发送的 DirectionLightControl. DirectionLightCtrlReq ==1 (On) InstanceID=1",
+      "type": "exit_condition",
+      "description": "退出条件：接收到转向灯控制模块发送的方向灯控制请求为开启状态（InstanceID=1）"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "【FLDILightDrvMdl】停止驱动左前转向灯输出 (DILamp_LH_HSD)",
+      "type": "output",
+      "description": "执行动作：停止驱动左前转向灯输出"
+    },
+    {
+      "name": "【FLDILightDrvMdl】持续发送 DirectionLightControl. DirectionLightSta ==0 (Off) InstanceID=1 至【DILightCtrlMdl】，至少发送三帧。",
+      "type": "output",
+      "description": "执行动作：持续发送方向灯状态为关闭的信息至转向灯控制模块，至少发送三帧"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子电器系统中转向灯控制模块与驱动模块之间的交互逻辑，确保在特定条件下转向灯能够正确响应控制指令并进行状态反馈。",
+  "uncertain_points": []
+}

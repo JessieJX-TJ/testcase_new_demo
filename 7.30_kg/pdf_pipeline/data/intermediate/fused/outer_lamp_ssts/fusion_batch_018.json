@@ -1,0 +1,543 @@
+[
+  {
+    "head": "Exterior Light Subsystem",
+    "relation": "input_from",
+    "tail": "IM Motors",
+    "sources": [
+      "outer_lamp_ssts_0251"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Dipped Beam Output Open Circuit Fault Diagnosis",
+    "relation": "trigger_condition",
+    "tail": "Left dipped beam output open circuit detected",
+    "sources": [
+      "outer_lamp_ssts_0264"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Dipped Beam Output Short-to-Ground Fault Diagnosis",
+    "relation": "trigger_condition",
+    "tail": "Left dipped beam output short-to-ground detected",
+    "sources": [
+      "outer_lamp_ssts_0253"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Dipped Beam Output Short-to-Power Fault Diagnosis",
+    "relation": "trigger_condition",
+    "tail": "Left dipped beam output short-to-power detected",
+    "sources": [
+      "outer_lamp_ssts_0253"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Turn Signal Request",
+    "relation": "trigger_condition",
+    "tail": "Right turn stalk re-actuated; switch resistance = 1200 Ω (±5%)",
+    "sources": [
+      "outer_lamp_ssts_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction Light Switch Module (DILghtSwMdl)",
+    "relation": "outputs",
+    "tail": "DircnLghtSwReq = 0x2 (Right_Second)",
+    "sources": [
+      "outer_lamp_ssts_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction Light Switch Module (DILghtSwMdl)",
+    "relation": "contains_subfunction",
+    "tail": "DILghtSwMdl continuously transmits DircnLghtSwReq = 0x2 (Right_Second)",
+    "sources": [
+      "outer_lamp_ssts_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Direction Light Switch Module (DILghtSwMdl)",
+    "relation": "transmits_at_least_three_frames",
+    "tail": "DILghtSwMdl continuously transmits DircnLghtSwReq = 0x2 (Right_Second)",
+    "sources": [
+      "outer_lamp_ssts_0254"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Headlamp Brightness Parameter",
+    "relation": "prerequisite_condition",
+    "tail": "Range: 0–100%",
+    "sources": [
+      "outer_lamp_ssts_0255"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Window Lift Speed Parameter",
+    "relation": "prerequisite_condition",
+    "tail": "Resolution: 1 mm/s",
+    "sources": [
+      "outer_lamp_ssts_0255"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Opening Delay Time Parameter",
+    "relation": "prerequisite_condition",
+    "tail": "Default value: 500 ms",
+    "sources": [
+      "outer_lamp_ssts_0255"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Light Switch Activation",
+    "relation": "prerequisite_condition",
+    "tail": "Brake pedal depressed; switch signal high-active",
+    "sources": [
+      "outer_lamp_ssts_0256"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwReq Signal",
+    "relation": "depends_on",
+    "tail": "Brake Light Switch Module",
+    "sources": [
+      "outer_lamp_ssts_0256"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Light Control Module",
+    "relation": "input",
+    "tail": "BrkLghtSwReq Signal",
+    "sources": [
+      "outer_lamp_ssts_0256"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Light Switch Status Feedback",
+    "relation": "output",
+    "tail": "BrkLghtSwSts Signal",
+    "sources": [
+      "outer_lamp_ssts_0256"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Light Switch Status Validity Feedback",
+    "relation": "output",
+    "tail": "BrkLghtSwStsV Signal",
+    "sources": [
+      "outer_lamp_ssts_0256"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDirnLghtCtrlMdl_HW",
+    "relation": "trigger_condition",
+    "tail": "RLDircnLghtCtrl_HW == 0 (Off) received from DILghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0257"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDirnLghtCtrlMdl_HW",
+    "relation": "prerequisite_condition",
+    "tail": "exlDircnLghtHwDrvEnPrm ∈ {1, 2}",
+    "sources": [
+      "outer_lamp_ssts_0257"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Wake-up from Sleep State",
+    "relation": "prerequisite_condition",
+    "tail": "Valid wake-up source present",
+    "sources": [
+      "outer_lamp_ssts_0258",
+      "outer_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Sleep Entry",
+    "relation": "prerequisite_condition",
+    "tail": "No valid wake-up source remains active",
+    "sources": [
+      "outer_lamp_ssts_0258"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Light Activation",
+    "relation": "trigger_condition",
+    "tail": "HzrdSw_SIG == 1 (Active)",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Light Request Signal Transmission",
+    "relation": "trigger_condition",
+    "tail": "HzrdLightSwReq == 0x1 (On)",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Light Active State",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightSwitch.HazardLightSwitchStatus == On",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Crash Safety System Response",
+    "relation": "trigger_condition",
+    "tail": "CrashOut signal detected",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Crash Type Identification and Safety Response Activation",
+    "relation": "trigger_condition",
+    "tail": "VehCrshTyp == specific type",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Airbag Deployment",
+    "relation": "trigger_condition",
+    "tail": "AirbagDpl == 1 (True)",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Light Request Signal",
+    "relation": "output",
+    "tail": "HzrdLightSwReq",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Light Switch Status Feedback",
+    "relation": "output",
+    "tail": "ExteriorLightSwitch.HazardLightSwitchStatus",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Airbag Deployment Status Feedback",
+    "relation": "output",
+    "tail": "AirbagDpl",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdSw_SIG",
+    "relation": "depends_on",
+    "tail": "Exterior Light SSTS",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CrashOut Signal",
+    "relation": "depends_on",
+    "tail": "SDM",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehCrshTyp Signal",
+    "relation": "depends_on",
+    "tail": "SDM",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AirbagDpl Signal",
+    "relation": "depends_on",
+    "tail": "SDM",
+    "sources": [
+      "outer_lamp_ssts_0259"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightFbkSOAEnPrm",
+    "relation": "trigger_condition",
+    "tail": "MainBeamLightFbkSOAEnPrm == 1",
+    "sources": [
+      "outer_lamp_ssts_0260"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightFbkSOAEnPrm",
+    "relation": "suppression_condition",
+    "tail": "MainBeamLightFbkSOAEnPrm == 0",
+    "sources": [
+      "outer_lamp_ssts_0260"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightFbkSOAEnPrm",
+    "relation": "input",
+    "tail": "Value in range [0, 1]",
+    "sources": [
+      "outer_lamp_ssts_0260"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightFbkSOAEnPrm",
+    "relation": "default_value",
+    "tail": "0",
+    "sources": [
+      "outer_lamp_ssts_0260"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Light Control Parameters",
+    "relation": "depends_on",
+    "tail": "Configuration Description",
+    "sources": [
+      "outer_lamp_ssts_0262"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Parameters",
+    "relation": "contains_subfunction",
+    "tail": "Power Tailgate Control Parameters",
+    "sources": [
+      "outer_lamp_ssts_0262"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Rear Turn Signal Control",
+    "relation": "trigger_condition",
+    "tail": "DirectionLightCtrlReq ∈ {0x0, 0x1}",
+    "sources": [
+      "outer_lamp_ssts_0263"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Rear Turn Signal Status",
+    "relation": "output",
+    "tail": "DirectionLightSta ∈ {0x0, 0x1, 0x2, 0x3}",
+    "sources": [
+      "outer_lamp_ssts_0263"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Rear Turn Signal Control",
+    "relation": "depends_on",
+    "tail": "ICB/LHZCU",
+    "sources": [
+      "outer_lamp_ssts_0263"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Rear Turn Signal Status",
+    "relation": "depends_on",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_ssts_0263"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LDipdBeamLghtDrvMdl",
+    "relation": "outputs",
+    "tail": "DippedBeamLightStatus.DippedBeamLightSta = 0 (Off) (InstanceID = 1)",
+    "sources": [
+      "outer_lamp_ssts_0264"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LDipdBeamLghtDrvMdl",
+    "relation": "outputs",
+    "tail": "DTC set",
+    "sources": [
+      "outer_lamp_ssts_0264"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Dipped Beam Output Open Circuit Fault Diagnosis",
+    "relation": "prerequisite_condition",
+    "tail": "exlDipBeamHwDrvEnPrm == 1",
+    "sources": [
+      "outer_lamp_ssts_0264"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Dipped Beam Output Open Circuit Fault Diagnosis",
+    "relation": "prerequisite_condition",
+    "tail": "Left dipped beam is in output state",
+    "sources": [
+      "outer_lamp_ssts_0264"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Dipped Beam Driver Processing Module",
+    "relation": "controls",
+    "tail": "RHZCU",
+    "sources": [
+      "outer_lamp_ssts_0265"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High Beam Switch Preprocessing Module",
+    "relation": "controls",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_ssts_0265"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "High Beam Control Processing Module",
+    "relation": "controls",
+    "tail": "ICB/LHZCU",
+    "sources": [
+      "outer_lamp_ssts_0265"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left High Beam Driver Processing Module",
+    "relation": "controls",
+    "tail": "ICB/LHZCU",
+    "sources": [
+      "outer_lamp_ssts_0265"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right High Beam Driver Processing Module",
+    "relation": "controls",
+    "tail": "RHZCU",
+    "sources": [
+      "outer_lamp_ssts_0265"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Automatic Light Control Processing Module",
+    "relation": "controls",
+    "tail": "ICB/LHZCU",
+    "sources": [
+      "outer_lamp_ssts_0265"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reverse Light Control Processing Module",
+    "relation": "controls",
+    "tail": "ICB/LHZCU",
+    "sources": [
+      "outer_lamp_ssts_0265"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

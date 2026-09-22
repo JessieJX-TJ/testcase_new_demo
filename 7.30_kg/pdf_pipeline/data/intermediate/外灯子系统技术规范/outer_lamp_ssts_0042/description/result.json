@@ -1,0 +1,53 @@
+{
+  "table_type": "logic_table",
+  "topic": "Direction Light Control Logic",
+  "row_semantics": "Each row represents a distinct condition-action sequence for the direction light control system.",
+  "column_semantics": "The first column defines the condition type (e.g., precondition, trigger condition), and the second column provides the detailed specification for that condition.",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "Enable parameter for Direction Light Feedback System On-Board Assessment."
+    },
+    {
+      "name": "FRDILightDrvMdl",
+      "type": "controller",
+      "description": "Front Right Direction Indicator Light Driver Module."
+    },
+    {
+      "name": "DILightCtrlMdl",
+      "type": "module",
+      "description": "Direction Light Control Module."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition_type": "precondition",
+      "description": "DILightFbkSOAEnPrm == 1 (Enable)"
+    },
+    {
+      "condition_type": "trigger_condition",
+      "description": "Received [DILightCtrlMdl] sending DirectionLightControl.DirectionLightCtrReq == 0 (Off) InstanceID=2"
+    },
+    {
+      "condition_type": "exit_condition",
+      "description": "Received [DILightCtrlMdl] sending DirectionLightControl.DirectionLightCtrReq == 1 (On) InstanceID=2"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output_type": "action",
+      "description": "FRDILightDrvMdl stops driving right front turn signal output (DILamp_RH_HSD)"
+    },
+    {
+      "output_type": "action",
+      "description": "FRDILightDrvMdl continuously sends DirectionLightControl.DirectionLightSta == 0 (Off) InstanceID=2 to [DILightCtrlMdl], at least three frames."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table specifies the logic for controlling the right front turn signal lamp based on commands from the Direction Light Control Module. It defines when the lamp should be turned off (via FRDILightDrvMdl) and under what conditions this action is triggered or exited.",
+  "uncertain_points": []
+}

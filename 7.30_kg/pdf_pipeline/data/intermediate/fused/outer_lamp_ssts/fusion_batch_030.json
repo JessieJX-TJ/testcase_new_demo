@@ -1,0 +1,574 @@
+[
+  {
+    "head": "左近光灯状态为 Unknown",
+    "relation": "输出为",
+    "tail": "DippedBeamLightStatus.DippedBeamLightSta = 0x2",
+    "sources": [
+      "outer_lamp_ssts_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左近光灯硬线驱动",
+    "relation": "控制对象",
+    "tail": "LHA",
+    "sources": [
+      "outer_lamp_ssts_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左近光灯控制请求",
+    "relation": "依赖于",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_ssts_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左近光灯状态查询",
+    "relation": "依赖于",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_ssts_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯短路到地故障处理功能",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtFbkSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯短路到地故障处理功能",
+    "relation": "前提条件",
+    "tail": "右远光灯处于输出状态",
+    "sources": [
+      "outer_lamp_ssts_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯短路到地故障处理功能",
+    "relation": "触发条件",
+    "tail": "检测到右远光灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RMainBeamLghtDrvMdl",
+    "relation": "故障响应",
+    "tail": "停止驱动右远光灯输出 (MainBeamLamp_RH_HSD)",
+    "sources": [
+      "outer_lamp_ssts_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RMainBeamLghtDrvMdl",
+    "relation": "故障响应",
+    "tail": "持续发送 MainBeamLightState.MainBeamLightSta = 2 (Error), InstanceID=2 至 MainBeamLghtCtrlMdl（至少三帧）",
+    "sources": [
+      "outer_lamp_ssts_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯短路到地故障处理功能",
+    "relation": "故障响应",
+    "tail": "置位 DTC B105C 11",
+    "sources": [
+      "outer_lamp_ssts_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制",
+    "relation": "依赖于",
+    "tail": "参数范围/Range",
+    "sources": [
+      "outer_lamp_ssts_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门",
+    "relation": "依赖于",
+    "tail": "分辨率/Factor",
+    "sources": [
+      "outer_lamp_ssts_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制",
+    "relation": "输出为",
+    "tail": "默认值/Default",
+    "sources": [
+      "outer_lamp_ssts_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯短路到地故障处理功能",
+    "relation": "触发条件",
+    "tail": "检测到右前转向灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0455",
+      "outer_lamp_ssts_0463"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯短路到地故障处理功能",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0463"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯短路到地故障处理功能",
+    "relation": "前提条件",
+    "tail": "右前转向灯处于输出状态",
+    "sources": [
+      "outer_lamp_ssts_0455",
+      "outer_lamp_ssts_0463"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDILightDrvMdl",
+    "relation": "输出为",
+    "tail": "停止驱动右前转向灯输出 (DILamp_RH_HSD)",
+    "sources": [
+      "outer_lamp_ssts_0463"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDILightDrvMdl",
+    "relation": "输出为",
+    "tail": "持续发送 DirectionLightControl.DirectionLightState = 2 (Error), InstanceID=2 至 DILightCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0463"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lighting System 大灯开关",
+    "relation": "触发条件",
+    "tail": "钥匙遥控信号有效",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lighting System 大灯开关",
+    "relation": "触发条件",
+    "tail": "车门未开启",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lighting System 尾灯开关",
+    "relation": "触发条件",
+    "tail": "点火状态为 ON 或 钥匙遥控信号有效",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lights On/Off",
+    "relation": "触发条件",
+    "tail": "车门开启 或 钥匙遥控信号有效",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate Operation",
+    "relation": "触发条件",
+    "tail": "钥匙遥控信号有效",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate Operation",
+    "relation": "触发条件",
+    "tail": "尾门未锁定",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lighting System 大灯开关",
+    "relation": "抑制条件",
+    "tail": "驾驶员安全带未系紧",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate System",
+    "relation": "抑制条件",
+    "tail": "灯光系统故障",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BCM 输出信号",
+    "relation": "输出为",
+    "tail": "Exterior Lighting System 大灯开关、Taillights On/Off、Interior Lights On/Off 及 Electric Tailgate System 电动尾门操作 的综合控制结果",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Tailgate Operation",
+    "relation": "依赖于",
+    "tail": "钥匙遥控信号有效",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lights On/Off",
+    "relation": "依赖于",
+    "tail": "车门开启",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯光系统故障",
+    "relation": "故障响应",
+    "tail": "Exterior Lighting System 大灯开关、Taillights On/Off 停止工作",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "尾门电机故障",
+    "relation": "故障响应",
+    "tail": "Electric Tailgate System 电动尾门操作 停止工作",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左制动灯短路到地故障",
+    "relation": "触发条件",
+    "tail": "检测到左制动灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0457"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯驱动模块",
+    "relation": "前提条件",
+    "tail": "BrkLghtFbkSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0457"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制模块",
+    "relation": "超时约束",
+    "tail": "持续发送错误状态（至少三帧）",
+    "sources": [
+      "outer_lamp_ssts_0457"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制模块",
+    "relation": "诊断关联",
+    "tail": "DTC_B1041_11",
+    "sources": [
+      "outer_lamp_ssts_0457"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯短路到地故障处理功能",
+    "relation": "触发条件",
+    "tail": "检测到倒车灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0458"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯短路到地故障处理功能",
+    "relation": "抑制条件",
+    "tail": "RevsLghtFbkSOAEnPrm == 0 (Disable)",
+    "sources": [
+      "outer_lamp_ssts_0458"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯短路到地故障处理功能",
+    "relation": "抑制条件",
+    "tail": "倒车灯处于输出状态",
+    "sources": [
+      "outer_lamp_ssts_0458"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯短路到地故障处理功能",
+    "relation": "输出为",
+    "tail": "停止驱动制动灯及高位制动灯 (RevsLamp_LH_HSD)",
+    "sources": [
+      "outer_lamp_ssts_0458"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯短路到地故障处理功能",
+    "relation": "输出为",
+    "tail": "持续发送 RevsLghtSts = 0 (Off) 至 RevsLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0458"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯短路到地故障处理功能",
+    "relation": "输出为",
+    "tail": "置位 DTC B1045_11",
+    "sources": [
+      "outer_lamp_ssts_0458"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯短路到地故障处理功能",
+    "relation": "触发条件",
+    "tail": "检测到短路恢复",
+    "sources": [
+      "outer_lamp_ssts_0458"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电平跳变沿触发唤醒",
+    "relation": "依赖于",
+    "tail": "唤醒源",
+    "sources": [
+      "outer_lamp_ssts_0460"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制功能",
+    "relation": "触发条件",
+    "tail": "驾驶员侧车门打开",
+    "sources": [
+      "outer_lamp_ssts_0461"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制功能",
+    "relation": "触发条件",
+    "tail": "车辆处于静止状态",
+    "sources": [
+      "outer_lamp_ssts_0461"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制模块",
+    "relation": "抑制条件",
+    "tail": "电池电压低于 10 V",
+    "sources": [
+      "outer_lamp_ssts_0461"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门开启",
+    "relation": "输入为",
+    "tail": "遥控器发出开启信号且车速为 0 km/h",
+    "sources": [
+      "outer_lamp_ssts_0461"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "空调系统制冷模式",
+    "relation": "依赖于",
+    "tail": "发动机已启动且环境温度高于 25 ℃",
+    "sources": [
+      "outer_lamp_ssts_0461"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "紧急制动辅助系统",
+    "relation": "优先级高于",
+    "tail": "自适应巡航控制系统",
+    "sources": [
+      "outer_lamp_ssts_0461"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "安全气囊系统",
+    "relation": "故障响应",
+    "tail": "检测到碰撞传感器异常",
+    "sources": [
+      "outer_lamp_ssts_0461"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动助力转向系统",
+    "relation": "状态保持条件",
+    "tail": "方向盘角度在 ±10 度范围内",
+    "sources": [
+      "outer_lamp_ssts_0461"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动助力转向系统",
+    "relation": "状态保持条件",
+    "tail": "车速低于 60 km/h",
+    "sources": [
+      "outer_lamp_ssts_0461"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制参数",
+    "relation": "依赖于",
+    "tail": "标定项/Item",
+    "sources": [
+      "outer_lamp_ssts_0462"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门控制参数",
+    "relation": "依赖于",
+    "tail": "标定项/Item",
+    "sources": [
+      "outer_lamp_ssts_0462"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "标定项/Item",
+    "relation": "前提条件",
+    "tail": "参数范围/Range",
+    "sources": [
+      "outer_lamp_ssts_0462"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "标定项/Item",
+    "relation": "前提条件",
+    "tail": "分辨率/Factor",
+    "sources": [
+      "outer_lamp_ssts_0462"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "标定项/Item",
+    "relation": "前提条件",
+    "tail": "默认值/Default",
+    "sources": [
+      "outer_lamp_ssts_0462"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

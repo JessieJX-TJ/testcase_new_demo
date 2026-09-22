@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"fault_table\",\n  \"topic\": \"诊断 DTC 需求清单 (Diagnostic Trouble Code Requirement List)\",\n  \"row_semantics\": \"表格的每一行代表一个独立的故障诊断码 (DTC) 及其相关的故障描述、触发条件和恢复条件。\",\n  \"column_semantics\": {\n    \"序号\": \"故障诊断码的编号，用于唯一标识每个故障条目。\",\n    \"DTC 显示码\": \"待定 (TBD)，表示具体的故障代码尚未确定。\",\n    \"故障描述\": \"对故障现象的简要描述，指明是背光灯控制电路的短路或开路故障。\",\n    \"故障置位条件\": \"触发并记录该 DTC 的具体条件，包括背光灯驱动激活状态以及驱动电流与阈值的关系和持续时间。\",\n    \"故障恢复条件\": \"清除该 DTC 的条件，通常是驱动电流回到正常范围并持续一定时间。\",\n  },\n  \"has_merged_cells\": false,\n  \"header_levels\": 1,\n  \"core_entities\": [\n    {\n      \"name\": \"Back lighting Control Circuit\",\n      \"type\": \"function\",\n      \"description\": \"背光灯控制电路，负责控制车辆背光灯的点亮和亮度调节。\"\n    }\n  ],\n  \"core_conditions\": [\n    {\n      \"name\": \"Backlight driving activation state\",\n      \"description\": \"背光灯驱动电路处于激活状态，即背光灯正在被控制点亮。\",\n      \"type\": \"system_state\"\n    },\n    {\n      \"name\": \"Driving current\",\n      \"description\": \"流经背光灯控制电路的驱动电流。\",\n      \"type\": \"input_signal\"\n    },\n    {\n      \"name\": \"Threshold value (TBD) A\",\n      \"description\": \"驱动电流的阈值，用于判断电流是否异常。\",\n      \"type\": \"threshold\"\n    },\n    {\n      \"name\": \"Duration 100ms\",\n      \"description\": \"故障条件需要持续的时间长度为 100 毫秒。\",\n      \"type\": \"timing_constraint\"\n    }\n  ],\n  \"core_outputs\": [],\n  \"core_faults\": [\n    {\n      \"code\": \"TBD\",\n      \"description\": \"Back lighting Control Circuit Short to battery\",\n      \"conditions\": [\n        \"Backlight driving activation state\",\n        \"Driving current < Threshold value (TBD) A,持续 100ms\"\n      ],\n      \"recovery\": \"Driving current > Threshold value (TBD) A,持续 100ms\"\n    },\n    {\n      \"code\": \"TBD\",\n      \"description\": \"Back lighting Control Circuit Short to ground\",\n      \"conditions\": [\n        \"Backlight driving activation state\",\n        \"Driving current > Threshold value (TBD) A,持续 100ms\"\n      ],\n      \"recovery\": \"Driving current < Threshold value (TBD) A,持续 100ms\"\n    },\n    {\n      \"code\": \"TBD\",\n      \"description\": \"Back lighting Control Circuit Open Circuit\",\n      \"conditions\": [\n        \"Backlight driving activation state\",\n        \"Driving current < Threshold value (TBD) A,持续 100ms\"\n      ],\n      \"recovery\": \"Driving current > Threshold value (TBD) A,持续 100ms\"\n    }\n  ],\n  \"core_timing_constraints\": [\n    {\n      \"name\": \"100ms\",\n      \"description\": \"故障条件需要持续至少 100 毫秒才能触发 DTC。\",\n      \"type\": \"timing_constraint\"\n    }\n  ],\n  \"engineering_interpretation\": \"该表格定义了背光灯控制电路可能出现的三种故障类型（短路到电池、短路到地、开路），并详细规定了触发这些故障诊断码（DTC）的具体条件（如驱动电流低于或高于阈值且持续时间达到 100ms）以及清除 DTC 的条件。可用于验证车辆背光灯控制系统在异常情况下的故障检测和记录功能。\",\n  \"uncertain_points\": [\n    \"DTC 显示码 (TBD)：具体的故障代码尚未确定。\",\n    \"阈值 (TBD) A：具体的电流阈值尚未确定。\",\n    \"控制器/模块名：未明确指出涉及哪个具体的电子控制单元 (ECU) 或模块。\"\n  ]\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

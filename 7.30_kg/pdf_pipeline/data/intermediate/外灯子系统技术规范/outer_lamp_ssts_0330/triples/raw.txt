@@ -1,0 +1,80 @@
+```json
+[
+  {
+    "head": "侧位灯开启",
+    "relation": "触发条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==1(On)(InstanceID=2)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq",
+      "On",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRSideLghtDrvMdl持续驱动右前位置灯输出",
+    "relation": "依赖于",
+    "tail": "侧位灯开启",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FRSideLghtDrvMdl",
+      "PosLamp_RH_HSD",
+      "SideLghtCtrlMdl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRSideLghtDrvMdl持续发送SidePositionLightStatus",
+    "relation": "依赖于",
+    "tail": "侧位灯开启",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FRSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "SideLghtCtrlMdl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位灯状态为开启",
+    "relation": "输出为",
+    "tail": "FRSideLghtDrvMdl持续发送SidePositionLightStatus. SidePositionLightSta=1(On)(InstanceID=2)至【SideLghtCtrlMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "SidePositionLightStatus",
+      "SidePositionLightSta",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "至少发送三帧SidePositionLightStatus",
+    "relation": "超时约束",
+    "tail": "FRSideLghtDrvMdl持续发送SidePositionLightStatus. SidePositionLightSta=1(On)(InstanceID=2)至【SideLghtCtrlMdl】",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "FRSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位灯关闭",
+    "relation": "退出条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==0(Off)(InstanceID=2)",
+    "triple_type": "功能退出条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq",
+      "Off",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

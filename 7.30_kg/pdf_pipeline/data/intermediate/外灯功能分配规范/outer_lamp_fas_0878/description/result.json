@@ -1,0 +1,55 @@
+{
+  "table_type": "logic_table",
+  "topic": "车辆电池热失控时危险警报灯激活逻辑",
+  "row_semantics": "描述在特定前置条件下，危险警报灯自动激活的场景",
+  "column_semantics": {
+    "left": "场景描述或前置条件分类",
+    "right": "具体描述或条件表达式"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "危险警报灯",
+      "type": "output_signal",
+      "description": "当电池热失控时自动激活的外部指示灯"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsgMd",
+      "value": "All",
+      "description": "用户模式为全模式"
+    },
+    {
+      "name": "UsgMdV",
+      "value": "Valid",
+      "description": "用户模式有效"
+    },
+    {
+      "name": "VehMd",
+      "value": "All",
+      "description": "车辆模式为全模式"
+    },
+    {
+      "name": "VehMdV",
+      "value": "Valid",
+      "description": "车辆模式有效"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "危险警报灯",
+      "state": "激活"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "电池热失控",
+      "description": "车辆电池温度异常升高，存在安全隐患"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在车辆电池发生热失控时，危险警报灯自动激活的触发逻辑，用于测试验证系统在异常情况下的安全警示功能是否正常工作。",
+  "uncertain_points": []
+}

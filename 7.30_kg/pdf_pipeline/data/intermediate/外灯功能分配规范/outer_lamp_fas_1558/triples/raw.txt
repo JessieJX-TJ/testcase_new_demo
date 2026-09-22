@@ -1,0 +1,115 @@
+```json
+[
+  {
+    "head": "转向灯按照1.25Hz频率闪烁",
+    "relation": "前提条件",
+    "tail": "LHZCU发送8个Cycle (50ms)的ON信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "1.25Hz",
+      "8个Cycle",
+      "50ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯流水模式使能",
+    "relation": "前提条件",
+    "tail": "DirncLghtMdSts状态为Enable",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "DirncLghtMdSts",
+      "Enable"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB将服务接口或控制信号转换成灯控CAN信号",
+    "relation": "前提条件",
+    "tail": "外灯组合服务ICB接收到LHZCU的转向灯ON/OFF信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "转向灯ON/OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯流水点亮",
+    "relation": "依赖于",
+    "tail": "ICB将控制信号延时60ms分发至LHZCU/RZCU",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "RZCU",
+      "60ms",
+      "DircnLghtCtrlDelayPrm"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧转向灯图标指示灯显示及声音提醒",
+    "relation": "前提条件",
+    "tail": "驱动处理模块LHZCU/RZCU接收ICB控制信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "RZCU",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态反馈至LHZCU",
+    "relation": "前提条件",
+    "tail": "驱动处理模块LHZCU/RZCU将状态/故障状态反馈",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RZCU",
+      "FLDircnLghtSts_HW",
+      "RLDircnLghtSts_HW"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯错误状态反馈至LHZCU",
+    "relation": "前提条件",
+    "tail": "ICB将状态/故障状态反馈",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "FLDirenLghtFltsts",
+      "RLDirenLghtFltsts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯功能状态为OFF",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess中DirncLghtFucProStatus为0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "DirncLghtFucProStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯闪烁周期保持",
+    "relation": "状态保持条件",
+    "tail": "LHZCU持续发送8个Cycle (400ms)",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "LHZCU",
+      "8个Cycle",
+      "400ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

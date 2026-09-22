@@ -1,0 +1,460 @@
+```json
+[
+  {
+    "head": "BrkLghtSwReq",
+    "relation": "outputs",
+    "tail": "BrakeLightState = 0x0 (Off)",
+    "sources": ["outer_lamp_ssts_0223"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwReq",
+    "relation": "outputs",
+    "tail": "BrakeLightState = 0x1 (On)",
+    "sources": ["outer_lamp_ssts_0223"],
+    "conflict": true,
+    "conflict_note": "同一信号 BrkLghtSwReq 在相同 context 下既输出 Off 又输出 On，属正常二值控制行为，非逻辑冲突；但需明确该信号为状态请求输入（非直接驱动输出），实际输出由驱动模块根据此请求及使能条件决定。此处保留两值以反映完整功能语义。"
+  },
+  {
+    "head": "BrkLghtSwReq",
+    "relation": "depends_on",
+    "tail": "BrkLghtSW_SIG",
+    "sources": ["outer_lamp_ssts_0223"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwReq",
+    "relation": "controls",
+    "tail": "SSTS",
+    "sources": ["outer_lamp_ssts_0223"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSW_SIG",
+    "relation": "inputs_from",
+    "tail": "SSTS",
+    "sources": ["outer_lamp_ssts_0223"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILghtCtrlLogic",
+    "relation": "triggered_when",
+    "tail": "DILghtSwSOAEEnPrm == 0 (Disable)",
+    "sources": ["outer_lamp_ssts_0224"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILghtCtrlLogic",
+    "relation": "triggered_when",
+    "tail": "TurnSignalStalk == Floating",
+    "sources": ["outer_lamp_ssts_0224"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILghtSwMdl",
+    "relation": "sends",
+    "tail": "DircnLghtSwReq = 0x0 (Off) to DILghtCtrlMdl",
+    "sources": ["outer_lamp_ssts_0224"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILghtSwMdl",
+    "relation": "sends_condition",
+    "tail": "DILghtSwSOAEEnPrm == 0 (Disable)",
+    "sources": ["outer_lamp_ssts_0224"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILghtSwMdl",
+    "relation": "sends_condition",
+    "tail": "TurnSignalStalk == Floating",
+    "sources": ["outer_lamp_ssts_0224"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILghtCtrlLogic",
+    "relation": "exits_when",
+    "tail": "TurnSignalStalk != Floating",
+    "sources": ["outer_lamp_ssts_0224"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILghtCtrlLogic",
+    "relation": "suppressed_when",
+    "tail": "DILghtSwSOAEEnPrm != 0 (Enable)",
+    "sources": ["outer_lamp_ssts_0224"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLamp_LH_OpenCircuit",
+    "relation": "detected_when",
+    "tail": "MainBeamLamp_LH_OpenCircuit == Detected",
+    "sources": ["outer_lamp_ssts_0226"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLampSystem",
+    "relation": "enters_error_state_when",
+    "tail": "MainBeamLghtFbkSOAEnPrm == 1 (Enable) AND MainBeamLamp_LH_OutputActive == true",
+    "sources": ["outer_lamp_ssts_0226"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalSwitch",
+    "relation": "fault_detected_when",
+    "tail": "TurnSignalSwitchResistance == Undefined",
+    "sources": ["outer_lamp_ssts_0227"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalSwitch",
+    "relation": "fault_detected_when",
+    "tail": "TurnSignalSwitch == ShortToGround",
+    "sources": ["outer_lamp_ssts_0227"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RainLightSensor",
+    "relation": "offline_diagnosis_triggered_when",
+    "tail": "NodeLostDuration > 2s",
+    "sources": ["outer_lamp_ssts_0228"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RainLightSensor",
+    "relation": "diagnostic_code",
+    "tail": "B1066 73",
+    "sources": ["outer_lamp_ssts_0228"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SSTS",
+    "relation": "state_retention_requirement",
+    "tail": "Remains operational after ignition-off to comply with regulatory requirements",
+    "sources": ["outer_lamp_ssts_0229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BCM",
+    "relation": "state_retention_requirement",
+    "tail": "Maintains critical functions (e.g., door lock) during battery power loss for safety",
+    "sources": ["outer_lamp_ssts_0229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HVAC",
+    "relation": "state_retention_requirement",
+    "tail": "Enters low-power mode during engine start failure to prevent excessive battery discharge",
+    "sources": ["outer_lamp_ssts_0229"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSwitchStatus",
+    "relation": "transmission_enabled_when",
+    "tail": "DILghtSwSOAEnPrm == 1 (Enable)",
+    "sources": ["outer_lamp_ssts_0230"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSwitchStatus",
+    "relation": "triggered_when",
+    "tail": "TurnSignalStalkRight == 4020Ω (±5%)",
+    "sources": ["outer_lamp_ssts_0230"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSwitchStatus",
+    "relation": "outputs",
+    "tail": "0x4 (RightDirectionLightOn_FirstGear)",
+    "sources": ["outer_lamp_ssts_0230"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSwitchStatus",
+    "relation": "produced_by",
+    "tail": "DILghtSwMdl",
+    "sources": ["outer_lamp_ssts_0230"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSwitchStatus",
+    "relation": "sent_to",
+    "tail": "DILghtCtrlMdl",
+    "sources": ["outer_lamp_ssts_0230"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSwitchStatus",
+    "relation": "transmission_duration_requirement",
+    "tail": "At least 3 consecutive frames",
+    "sources": ["outer_lamp_ssts_0230"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CHMSL_ShortToBattery",
+    "relation": "detected_when",
+    "tail": "CHMSL_ShortToBattery == Detected",
+    "sources": ["outer_lamp_ssts_0231"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "stops_driving_CHMSL_when",
+    "tail": "BrkLghtFbkSOAEnPrm == 1 (Enable) AND CHMSL_OutputActive == true",
+    "sources": ["outer_lamp_ssts_0231"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "reports_error_when",
+    "tail": "CHMSL_ShortToBattery == Detected",
+    "sources": ["outer_lamp_ssts_0231"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "sets_DTC",
+    "tail": "B1043-12",
+    "sources": ["outer_lamp_ssts_0231"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "outputs",
+    "tail": "CHMSL_HSD = Off",
+    "sources": ["outer_lamp_ssts_0231"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "outputs",
+    "tail": "BrakeLightState.BrakeLightSta = 2 (Error)",
+    "sources": ["outer_lamp_ssts_0231"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "sends_to",
+    "tail": "BrkLghtCtrlMdl",
+    "sources": ["outer_lamp_ssts_0231"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightFbkSOAEnPrm",
+    "relation": "enables_SOA_function",
+    "tail": "MainBeamLightFeedbackSOA",
+    "sources": ["outer_lamp_ssts_0232"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightFbkSOAEnPrm",
+    "relation": "disables_SOA_function",
+    "tail": "MainBeamLightFeedbackSOA",
+    "sources": ["outer_lamp_ssts_0232"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightFbkSOAEnPrm",
+    "relation": "depends_on",
+    "tail": "MainBeamLightFbkSOAEnPrm",
+    "sources": ["outer_lamp_ssts_0232"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightFbkSOAEnPrm",
+    "relation": "input_value_domain",
+    "tail": "[0, 1]",
+    "sources": ["outer_lamp_ssts_0232"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RMainBeamLghtDrvMdl",
+    "relation": "stops_driving_when",
+    "tail": "MainBeamLghtFbkSOAEnPrm == 1 (Enable) AND MainBeamLamp_RH_OutputActive == true AND MainBeamLamp_RH_ShortToBattery == Detected",
+    "sources": ["outer_lamp_ssts_0233"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLamp_RH_HSD",
+    "relation": "output_state",
+    "tail": "Stopped",
+    "sources": ["outer_lamp_ssts_0233"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLight",
+    "relation": "turns_off_when",
+    "tail": "FrontFogLightControl.FrontFogLightCtrReq (InstanceID=3) == 0x0 (OFF)",
+    "sources": ["outer_lamp_ssts_0237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLghtDrvMdl",
+    "relation": "drives_output",
+    "tail": "FogLamp_LH_HSD = Off",
+    "sources": ["outer_lamp_ssts_0237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLghtDrvMdl",
+    "relation": "sends",
+    "tail": "LFrtFogLghtSts = 0x0 (OFF) to RearFogLghtCtrlMdl",
+    "sources": ["outer_lamp_ssts_0237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtFogLghtDrvMdl",
+    "relation": "sends",
+    "tail": "FrontFogLightState.FrontFogLightSta (InstanceID=3) == 0x0 (OFF) to RearFogLghtCtrlMdl",
+    "sources": ["outer_lamp_ssts_0237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightShutdownSequence",
+    "relation": "exits_when",
+    "tail": "FrtFogLghtCtrlMdl.LFrtFogLghtCtrl_HW == 0x1 (On)",
+    "sources": ["outer_lamp_ssts_0237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightShutdownSequence",
+    "relation": "exits_when",
+    "tail": "RearFogLghtCtrlMdl.FrontFogLightControl.FrontFogLightCtrReq (InstanceID=3) == 0x1 (On)",
+    "sources": ["outer_lamp_ssts_0237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightShutdownSequence",
+    "relation": "comprises",
+    "tail": "FrtFogLghtDrvMdl drives FogLamp_LH_HSD = Off",
+    "sources": ["outer_lamp_ssts_0237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightShutdownSequence",
+    "relation": "comprises",
+    "tail": "FrtFogLghtDrvMdl sends LFrtFogLghtSts = 0x0 (OFF) to RearFogLghtCtrlMdl",
+    "sources": ["outer_lamp_ssts_0237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightShutdownSequence",
+    "relation": "comprises",
+    "tail": "FrtFogLghtDrvMdl sends FrontFogLightState.FrontFogLightSta (InstanceID=3) == 0x0 (OFF) to RearFogLghtCtrlMdl",
+    "sources": ["outer_lamp_ssts_0237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LFrtFogLghtSts",
+    "relation": "transmission_duration_requirement",
+    "tail": "At least 3 consecutive frames",
+    "sources": ["outer_lamp_ssts_0237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightState.FrontFogLightSta",
+    "relation": "transmission_duration_requirement",
+    "tail": "At least 3 consecutive frames",
+    "sources": ["outer_lamp_ssts_0237"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtLeftShortToBatteryHandling",
+    "relation": "enabled_when",
+    "tail": "BrkLghtFbkSOAEnPrm == 1 (Enable)",
+    "sources": ["outer_lamp_ssts_0239"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtLeftShortToBatteryHandling",
+    "relation": "active_when",
+    "tail": "BrkLghtLeft_OutputActive == true",
+    "sources": ["outer_lamp_ssts_0239"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtLeftShortToBatteryHandling",
+    "relation": "triggered_when",
+    "tail": "BrkLghtLeft_ShortToBattery == Detected",
+    "sources": ["outer_lamp_ssts_0239"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightState.BrakeLightSta",
+    "relation": "outputs",
+    "tail": "2 (Error) to BrkLghtCtrlMd1",
+    "sources": ["outer_lamp_ssts_0239"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "B104112",
+    "relation": "diagnostic_code_for",
+    "tail": "BrkLghtLeft_ShortToBattery",
+    "sources": ["outer_lamp_ssts_0239"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightShortToBattery",
+    "relation": "detected_when",
+    "tail": "ReverseLight_ShortToBattery == Detected",
+    "sources": ["outer_lamp_ssts_0240"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

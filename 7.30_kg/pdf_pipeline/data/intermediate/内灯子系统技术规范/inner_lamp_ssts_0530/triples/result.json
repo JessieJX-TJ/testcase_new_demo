@@ -1,0 +1,58 @@
+[
+  {
+    "head": "氛围灯切换亮度",
+    "relation": "触发条件",
+    "tail": "接收到DoorFR1LampBrtnsCmd_1信号从0x00(无请求)变为非0x00(有请求)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR1LampBrtnsCmd_1",
+      "亮度变化请求"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0530",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯保持当前亮度",
+    "relation": "状态保持条件",
+    "tail": "接收到DoorFR1LampBrtnsCmd_1信号为0x00(无请求)",
+    "triple_type": "退出条件",
+    "evidence_terms": [
+      "DoorFR1LampBrtnsCmd_1",
+      "亮度不变"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0530",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "接收到DoorFR1LampOnOff_1信号为0x00(关闭请求)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR1LampOnOff_1",
+      "关闭请求"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0530",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "依赖于",
+    "tail": "接收到DoorFR1LampFadeSpdCmd_1信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorFR1LampFadeSpdCmd_1",
+      "渐变速度"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_ssts_0530",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

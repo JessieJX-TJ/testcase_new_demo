@@ -1,0 +1,476 @@
+```json
+[
+  {
+    "head": "制动灯控制延时",
+    "relation": "输出为",
+    "tail": "BrkLghtCtrlDelayPrm参数值",
+    "sources": ["outer_lamp_fas_0576"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启",
+    "relation": "前提条件",
+    "tail": "ExternalLightSwitchProcess = On",
+    "sources": ["outer_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启",
+    "relation": "依赖于",
+    "tail": "LHZZC1",
+    "sources": ["outer_lamp_fas_0577", "outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启",
+    "relation": "输出为",
+    "tail": "ExternalLightSwitchState = Flashing",
+    "sources": ["outer_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启",
+    "relation": "状态保持条件",
+    "tail": "SDM = Off",
+    "sources": ["outer_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务激活",
+    "relation": "前提条件",
+    "tail": "ExternalLightControlSystem = Active",
+    "sources": ["outer_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务激活",
+    "relation": "输入为",
+    "tail": "Directional_lightOn",
+    "sources": ["outer_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务激活",
+    "relation": "输出为",
+    "tail": "Directional_lightErrorStatus = No Error",
+    "sources": ["outer_lamp_fas_0577", "outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块激活",
+    "relation": "前提条件",
+    "tail": "YedHodMilda = Request (PPW)",
+    "sources": ["outer_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块激活",
+    "relation": "输出为",
+    "tail": "LED_RearLamp = Off",
+    "sources": ["outer_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "方向灯错误状态",
+    "relation": "故障响应",
+    "tail": "Directional_lightErrorStatus = No Error",
+    "sources": ["outer_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯最大响应时间",
+    "relation": "超时约束",
+    "tail": "Max Response Time = 40ms",
+    "sources": ["outer_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯最大延迟时间",
+    "relation": "超时约束",
+    "tail": "Max Delay = 50ms",
+    "sources": ["outer_lamp_fas_0577"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EDRDircnIndLampSwSts信号",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts_0_off 或 EDRDircnIndLampSwSts_1_Left",
+    "sources": ["outer_lamp_fas_0579", "outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EDRDircnIndLampSwSts信号",
+    "relation": "输入来自",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0579", "outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EDRDircnIndLampSwSts信号",
+    "relation": "输出到",
+    "tail": "SDM",
+    "sources": ["outer_lamp_fas_0579", "outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EDRDircnIndLampSwSts信号",
+    "relation": "连接到",
+    "tail": "BKBCANFD→SFCANFD",
+    "sources": ["outer_lamp_fas_0579"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯左右侧同步点亮",
+    "relation": "前提条件",
+    "tail": "两侧最大延时不能超过40ms",
+    "sources": ["outer_lamp_fas_0582", "outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB发送MainBeamLightReq请求",
+    "relation": "前提条件",
+    "tail": "未收到MainBeamLightResp反馈",
+    "sources": ["outer_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB发送MainBeamLightReq请求",
+    "relation": "前提条件",
+    "tail": "请求状态未变",
+    "sources": ["outer_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightReq请求重发",
+    "relation": "超时约束",
+    "tail": "尝试按照≤50ms周期重发3次",
+    "sources": ["outer_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态通过Getter()方式获取",
+    "relation": "前提条件",
+    "tail": "服务发现订阅或外灯控制请求后500ms内未收到状态反馈",
+    "sources": ["outer_lamp_fas_0582"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧远光灯点亮",
+    "relation": "触发条件",
+    "tail": "MainBeamLight.ControlMainBeamLight接口调用，Parameter Name: MainBeamLightReq = ON (0x1)",
+    "sources": ["outer_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧远光灯熄灭",
+    "relation": "触发条件",
+    "tail": "MainBeamLight.ControlMainBeamLight接口调用，Parameter Name: MainBeamLightReq = OFF (0x0)",
+    "sources": ["outer_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧远光灯点亮",
+    "relation": "触发条件",
+    "tail": "MainBeamLight.ControlMainBeamLight接口调用，Parameter Name: MainBeamLightReq = ON (0x1)，InstanceID = 2",
+    "sources": ["outer_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧远光灯熄灭",
+    "relation": "触发条件",
+    "tail": "MainBeamLight.ControlMainBeamLight接口调用，Parameter Name: MainBeamLightReq = OFF (0x0)，InstanceID = 2",
+    "sources": ["outer_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightFucProStatus参数值为ON (0x1)",
+    "relation": "输出为",
+    "tail": "MainBeamLight.ControlMainBeamLight接口成功执行后，控制对象为左侧远光灯",
+    "sources": ["outer_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightFucProStatus参数值为OFF (0x0)",
+    "relation": "输出为",
+    "tail": "MainBeamLight.ControlMainBeamLight接口成功执行后，控制对象为左侧远光灯",
+    "sources": ["outer_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightFucProStatus参数值为Unknown (0x2)",
+    "relation": "输出为",
+    "tail": "MainBeamLight.ControlMainBeamLight接口执行后，状态无法确定",
+    "sources": ["outer_lamp_fas_0583"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯闪烁频率",
+    "relation": "前提条件",
+    "tail": "DirnLghtCtrl信号以0x1和0x0交替发送，每个状态持续400ms（即1.25Hz）",
+    "sources": ["outer_lamp_fas_0587", "outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯流水模式使能",
+    "relation": "触发条件",
+    "tail": "DircnLghtMdSts信号 = 0x0 = DircnLghtMdSts_0_Enable",
+    "sources": ["outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB转换CAN信号控制转向灯",
+    "relation": "输入为",
+    "tail": "LHZCU发送的FLDircnLghtCtrl/RLDircnLghtCtrl ON/OFF信号",
+    "sources": ["outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关控制模块LHZCU",
+    "relation": "输出为",
+    "tail": "DirnLghtCtrl_HW信号（ON/OFF）",
+    "sources": ["outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关控制模块LHZCU",
+    "relation": "输出为",
+    "tail": "DirnLghtSts信号（Left_Direction_Light_On）",
+    "sources": ["outer_lamp_fas_0587", "outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关控制模块LHZCU",
+    "relation": "输出为",
+    "tail": "DirnLghtFltsts信号（No_Error）",
+    "sources": ["outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关控制模块LHZCU",
+    "relation": "输出为",
+    "tail": "DirnLghtSwReq信号（Left_Second_gear_On）",
+    "sources": ["outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关控制模块LHZCU",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts信号（Left）",
+    "sources": ["outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB接收LHZCU控制信号",
+    "relation": "依赖于",
+    "tail": "LHZCU发送的DirnLghtCtrl_HW信号",
+    "sources": ["outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB将状态反馈至LHZCU",
+    "relation": "输入为",
+    "tail": "LHZCU发送的DirnLghtSts和DirnLghtFltsts信号",
+    "sources": ["outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关控制模块LHZCU",
+    "relation": "超时约束",
+    "tail": "ICB将控制信号延时60ms分发至LHZCU/RZCU",
+    "sources": ["outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯同步性要求",
+    "relation": "超时约束",
+    "tail": "图标闪烁频率、声音提醒与实际转向灯闪烁频率最大延时50ms",
+    "sources": ["outer_lamp_fas_0587"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "单侧转向灯同步性要求",
+    "relation": "超时约束",
+    "tail": "单侧转向灯最大延时周期40ms",
+    "sources": ["outer_lamp_fas_0587", "outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "依赖于",
+    "tail": "版本 < 1.0",
+    "sources": ["outer_lamp_fas_0589", "outer_lamp_fas_1340", "outer_lamp_fas_1433"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆解闭锁模块触发外饰解锁提醒功能",
+    "relation": "前提条件",
+    "tail": "前置条件1 & 2 & 3 & 4同时满足",
+    "sources": ["outer_lamp_fas_0591"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆解闭锁模块触发外饰解锁提醒功能",
+    "relation": "触发条件",
+    "tail": "收到车辆解闭锁模块LHZCU的请求",
+    "sources": ["outer_lamp_fas_0591"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆解闭锁模块触发外饰解锁提醒功能",
+    "relation": "输出为",
+    "tail": "ExtrLckLghtRmndr_2_ExteriorUnlockReminder",
+    "sources": ["outer_lamp_fas_0591"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆解闭锁模块触发外饰解锁提醒功能",
+    "relation": "依赖于",
+    "tail": "用户模式为全部有效且值有效",
+    "sources": ["outer_lamp_fas_0591"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆解闭锁模块触发外饰解锁提醒功能",
+    "relation": "依赖于",
+    "tail": "车辆模式为全部有效且值有效",
+    "sources": ["outer_lamp_fas_0591"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启闪烁",
+    "relation": "触发条件",
+    "tail": "危险警报灯开关控制模块LHZCU将开关状态反馈至ICB",
+    "sources": ["outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开启闪烁",
+    "relation": "触发条件",
+    "tail": "HzrdLghtSwSts = 0x1 = HzrdLghtSwSts_1_On",
+    "sources": ["outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯闪烁频率",
+    "relation": "前提条件",
+    "tail": "危险警报灯开关控制模块LHZCU控制危险警报灯",
+    "sources": ["outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态设置为On",
+    "relation": "输入为",
+    "tail": "InstanceID = 3或4时，DirectionLight.DirectionLightStatus.DirectionLightSta = 0x1 = On",
+    "sources": ["outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态设置为Off",
+    "relation": "输入为",
+    "tail": "InstanceID = 5/6/7/8时，通过外部灯光开关处理过程获取转向灯状态且DircnLghtSts = 0x0 = DircnLghtSts_0_False",
+    "sources": ["outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯同步性要求",
+    "relation": "前提条件",
+    "tail": "危险警报灯开启闪烁",
+    "sources": ["outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯同步性要求",
+    "relation": "前提条件",
+    "tail": "危险警报灯开关控制模块LHZCU将转向灯控制状态反馈至SDM",
+    "sources": ["outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯同步性允许的最大延时周期",
+    "relation": "超时约束",
+    "tail": "40ms",
+    "sources": ["outer_lamp_fas_0592"],
+    "conflict": true,
+    "conflict_note": "与outer_lamp_fas_0577中'危险警报灯最大延迟时间=50ms'存在数值冲突；二者同属'危险警报灯同步性'范畴但数值不一致（40ms vs 50ms）"
+  },
+  {
+    "head": "危险警报灯同步性允许的最大延时",
+    "relation": "超时约束",
+    "tail": "50ms",
+    "sources": ["outer_lamp_fas_0592", "outer_lamp_fas_0577"],
+    "conflict": true,
+    "conflict_note": "与outer_lamp_fas_0592中'危险警报灯同步性允许的最大延时周期=40ms'存在数值冲突；二者同属'危险警报灯同步性'范畴但数值不一致（50ms vs 40ms）"
+  },
+  {
+    "head": "危险警报灯双闪模式",
+    "relation": "触发条件",
+    "tail": "危险警报灯开关控制模块LHZCU将双闪灯模式反馈至ICB",
+    "sources": ["outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯双闪模式",
+    "relation": "触发条件",
+    "tail": "VehHzrdMdSts = 0x1 = VehHzrdMdSts_1_Manual_Mode",
+    "sources": ["outer_lamp_fas_0592"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

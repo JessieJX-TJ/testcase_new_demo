@@ -1,0 +1,66 @@
+{
+  "table_type": "logic_table",
+  "topic": "近光灯开启功能的前置条件分析",
+  "row_semantics": "表格逐行描述了触发近光灯开启所需的各项前置条件，包括用户操作、系统状态、信号值等。",
+  "column_semantics": "表格包含两列：左侧为条件序号和描述，右侧为具体的条件表达式或说明。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "UsrMd",
+      "type": "controller_module",
+      "description": "用户模式模块，表示用户的操作状态。"
+    },
+    {
+      "name": "VehMd",
+      "type": "controller_module",
+      "description": "车辆模式模块，表示车辆当前的运行模式。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Light Handling and Zone Control Unit，灯光处理与区域控制单元，负责判断位置灯的状态。"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "signal",
+      "description": "侧位灯状态，指示各个侧位灯的开关状态。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "signal",
+      "description": "外部灯光开关处理过程，包含组合灯功能状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "1&2&3&4&5",
+      "description": "所有五个前置条件必须同时满足。"
+    },
+    {
+      "condition": "UsrMd = 0x0 Sleep || UsrMd = 0x1 Standby || UsrMd = 0x6 XOTA",
+      "description": "用户模式必须处于睡眠、待机或XOTA（远程升级）状态之一。"
+    },
+    {
+      "condition": "UsrMdV = Valid",
+      "description": "用户模式值有效。"
+    },
+    {
+      "condition": "VehMd = 0x3 TRANSPORT",
+      "description": "车辆模式必须处于运输模式。"
+    },
+    {
+      "condition": "VehMdV = Valid",
+      "description": "车辆模式值有效。"
+    },
+    {
+      "condition": "位置灯状态为关闭",
+      "description": "所有侧位灯（InstanceID 1-8）均处于关闭状态，且没有CAN通讯方案的私有灯反馈为开启状态。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了在何种条件下可以触发近光灯的开启功能，主要用于验证在特定用户操作（大屏软开关）下，系统是否能够正确响应并开启近光灯。",
+  "uncertain_points": []
+}

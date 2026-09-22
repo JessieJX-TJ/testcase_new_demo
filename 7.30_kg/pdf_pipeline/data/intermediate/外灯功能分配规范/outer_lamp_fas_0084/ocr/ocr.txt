@@ -1,0 +1,23 @@
+4、[数字灯光APP_ICB]控制驱动车顶射灯点亮,具体参考数字灯光子系统
+5、[数字灯光APP_ICB]反馈车顶射灯状态及故障状态
+6、ICB将车顶射灯状态及故障状态反馈给LHZCU:
+{RoofSpotLight.RoofSpotLightStatus.RoofSpotLightSta}=0x1=On
+{RoofSpotLight. RoofSpotLightErrorStatus.RoofSpotLightErrorSta}=0x0=No Error
+7、[车顶射灯控制模块LHZCU]将车顶射灯状态及故障状态反馈给ICB:
+{ExteriorLightSwitchProcess.RoofSpotLightSta.RoofSpotLghtSta}=0x1=ON
+{ExteriorLightSwitchProcess.RoofSpotLightErrSta.RoofSpotLghtErrSta}=0x0=No Error
+8、[外灯组合服务ICB]订阅并透传:
+{ExteriorLightControlSystem.RoofSpotLightSts.RoofSpotLghtSts}=0x1=ON
+{ExteriorLightControlSystem.RoofSpotLightErrSts.RoofSpotLghtErrSts}=0x0=No Error
+备注
+1、车顶射灯驱动控制参考数字灯光SSTS
+2、ICB8295车顶射灯光请求重发机制:
+尝试按照<=50ms周期重发3次；尝试重发3次后仍未反馈请求成功,则停止发送
+3、ICB_S32GM车顶射灯光请求重发机制:
+且请求状态未变,应尝试按照<=50ms周期重发3次；尝试重发3次后仍未反馈请求成功,则停止发送
+4、ICB_S32GM车顶射灯请求重发机制:
+未变,应尝试按照<=50ms周期重发3次；尝试重发3次后仍未反馈请求成功,则停止发送
+5、外灯状态主动获取:涉及LHZCU/ICB_S32G M/ICB_8295
+针对发送类型为Onchange的外灯状态服务,消费端在服务发现订阅或者外灯控制请求后的500ms(待
+未收到状态反馈,应主动通过状态服务Getter()方式获取外灯状态
+6、远光灯增强使能开关状态随账号记忆

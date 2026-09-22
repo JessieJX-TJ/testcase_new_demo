@@ -1,0 +1,186 @@
+[
+  {
+    "head": "S32G 收到大屏开关请求 ICB",
+    "relation": "触发条件",
+    "tail": "UsrMd != 0x0 (UsgMd_0_Sleep), UsrMd != 0x1 (UsgMd_1_Standby), UsrMd != 0x2 (UsgMd_2_Comfortable), UsrMd != 0x6 (UsgMd_6_XOTA)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsrMd",
+      "VehMd",
+      "SidePositionLightStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "S32G 收到大屏开关请求 ICB",
+    "relation": "触发条件",
+    "tail": "VehMd = 0x3 (VehMd_3_TRANSPORT)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsrMd",
+      "VehMd",
+      "SidePositionLightStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "S32G 收到大屏开关请求 ICB",
+    "relation": "触发条件",
+    "tail": "UsgMdV = Valid",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsrMd",
+      "VehMd",
+      "SidePositionLightStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "S32G 收到大屏开关请求 ICB",
+    "relation": "触发条件",
+    "tail": "VehMdV = Valid",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsrMd",
+      "VehMd",
+      "SidePositionLightStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "S32G 收到大屏开关请求 ICB",
+    "relation": "触发条件",
+    "tail": "所有侧位灯状态为关闭 (InstanceID=1-8 均 OFF)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsrMd",
+      "VehMd",
+      "SidePositionLightStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.ControlFrontFogLight.FrontFogLightReq = 0x1 (On)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FrontFogLightReq"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "前雾灯物理开关状态设置为开启",
+    "relation": "输出为",
+    "tail": "exlFrontFogLghtPrm = 1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "exlFrontFogLghtPrm"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "七键开关请求 IFP 的前雾灯物理开关信号设置为按下",
+    "relation": "输出为",
+    "tail": "IFPFrontFoglghtSwReq_l_1_Press = 1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "IFPFrontFoglghtSwReq_l_1_Press"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "外灯控制组合服务 ICB 被调用",
+    "relation": "触发条件",
+    "tail": "S32G 收到大屏开关请求 ICB",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "S32G",
+      "ExteriorLightSwitchProcess",
+      "FrontFogLightFucProCtrl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "外灯控制组合服务 ICB 被调用",
+    "relation": "触发条件",
+    "tail": "满足所有前置条件",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "S32G",
+      "ExteriorLightSwitchProcess",
+      "FrontFogLightFucProCtrl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "前雾灯未开启",
+    "relation": "抑制条件",
+    "tail": "IFPFrontFoglghtSwReq_l_1_Press = 1",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "FrontFogLghtFucProStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "前雾灯未开启",
+    "relation": "抑制条件",
+    "tail": "ExteriorLightSwitchProcess.FrontFogLghtFucProStatus.FrontFogLghtFucProsSta = 0x0 (Off)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "FrontFogLghtFucProStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "前雾灯物理开关状态设置为开启",
+    "relation": "依赖于",
+    "tail": "七键开关请求 IFP 的前雾灯物理开关信号设置为按下",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "exlFrontFogLghtPrm",
+      "IFPFrontFoglghtSwReq_l_1_Press"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1322",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

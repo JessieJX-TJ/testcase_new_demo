@@ -1,0 +1,98 @@
+[
+  {
+    "head": "Ambient Lamp enters Breathing Mode",
+    "relation": "触发条件",
+    "tail": "UpIPALampBrthngCmd_1 不等于 0x00",
+    "triple_type": "IF-THEN 风格规则",
+    "evidence_terms": [
+      "UpIPALampBrthngCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0268",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp exits Breathing Mode",
+    "relation": "前提条件",
+    "tail": "UpIPALampBrthngCmd_1 等于 0x00 (No Request)",
+    "triple_type": "IF-THEN 风格规则",
+    "evidence_terms": [
+      "UpIPALampBrthngCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0268",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp displays Constant Brightness",
+    "relation": "触发条件",
+    "tail": "AmbtLghtRHRollingCtr_1 不再按照 1 顺序叠加",
+    "triple_type": "IF-THEN 风格规则",
+    "evidence_terms": [
+      "AmbtLghtRHRollingCtr_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0268",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp displays Static Brightness",
+    "relation": "触发条件",
+    "tail": "AmbtLghtRHRollingCtr_1 异常",
+    "triple_type": "IF-THEN 风格规则",
+    "evidence_terms": [
+      "AmbtLghtRHRollingCtr_1",
+      "颜色亮度信号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0268",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp displays Static Brightness",
+    "relation": "触发条件",
+    "tail": "颜色亮度信号异常",
+    "triple_type": "IF-THEN 风格规则",
+    "evidence_terms": [
+      "AmbtLghtRHRollingCtr_1",
+      "颜色亮度信号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0268",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp turns Off",
+    "relation": "故障响应",
+    "tail": "Ambient Lamp 模块出现过压、欠压故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "过压",
+      "欠压",
+      "Ambient Lamp"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0268",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp turns Off",
+    "relation": "超时约束",
+    "tail": "超过 6s 未接收到 ZCU 的 LIN 信号",
+    "triple_type": "超时约束",
+    "evidence_terms": [
+      "6s",
+      "LIN Signal from ZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0268",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  }
+]

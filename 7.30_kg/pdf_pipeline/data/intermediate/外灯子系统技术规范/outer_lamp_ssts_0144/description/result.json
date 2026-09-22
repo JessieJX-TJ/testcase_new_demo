@@ -1,0 +1,58 @@
+{
+  "table_type": "logic_table",
+  "topic": "远光灯闪烁功能的配置与触发逻辑",
+  "row_semantics": "表格定义了远光灯闪烁功能的前置条件、触发条件、执行动作、退出条件以及异常处理规则。",
+  "column_semantics": {
+    "Column1": "描述功能的各个阶段或状态，如前置条件、触发条件等。",
+    "Column2": "详细说明对应阶段的具体参数、信号或状态要求。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLghtSwSOAEnPrm",
+      "type": "配置字",
+      "description": "用于启用或禁用远光灯开关超范围检测的配置参数。"
+    },
+    {
+      "name": "MainBeamLghtSwMdl",
+      "type": "控制器/模块名",
+      "description": "主控模块，负责发送远光灯闪烁请求信号。"
+    },
+    {
+      "name": "MainBeamLghtCtrlMdl",
+      "type": "控制器/模块名",
+      "description": "远光灯控制模块，接收并处理闪烁请求信号。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "details": "配置字 MainBeamLghtSwSOAEnPrm 必须设置为 Disable（禁用）状态。"
+    },
+    {
+      "condition": "触发条件",
+      "details": "用户打开远光灯开关，并且开关阻值为 1200 Ω（±5%）。"
+    },
+    {
+      "condition": "退出条件",
+      "details": "远光灯开关阻值变为非 1200 Ω（±5%）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "MainBeamLghtSwReq",
+      "type": "输出信号",
+      "details": "持续发送值为 0x2 的信号，表示 Flash（闪烁）模式。"
+    },
+    {
+      "output": "至少发送三帧",
+      "type": "定时/数量约束",
+      "details": "在触发条件下，必须至少发送三帧闪烁请求信号。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证远光灯闪烁功能在特定配置和输入条件下的正确行为，确保系统在满足触发条件时能够按预期发送闪烁请求信号，并在条件变化时正确退出。",
+  "uncertain_points": []
+}

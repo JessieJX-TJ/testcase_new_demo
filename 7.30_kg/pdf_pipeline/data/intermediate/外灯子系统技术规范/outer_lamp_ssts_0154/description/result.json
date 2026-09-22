@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"logic_table\",\n  \"topic\": \"Firmware Over-The-Air (FOTA) 过程中功能保持与运行时 FOTA 禁止的逻辑规则\",\n  \"row_semantics\": \"每行代表一个具体的逻辑块（功能模块）在 FOTA 过程中的行为要求，包括是否需要在 FOTA 期间保持该功能以及在功能运行时是否禁止 FOTA 操作。\",\n  \"column_semantics\": {\n    \"逻辑块名称\": \"指代系统中的具体功能模块或子系统名称，如外灯控制、车身控制等。\",\n    \"FOTA 过程中需要保持的功能 (Y/N)\": 表示在 FOTA 升级过程中，该功能是否必须保持正常运行状态。\",\n    \"功能运行时禁止 FOTA\": 表示当该功能正在运行时，是否应禁止进行 FOTA 升级操作。\",\n    \"功能运行时是否广播功能状态/相关信号\": 描述在功能运行时，系统是否会广播与该功能相关的状态信息或信号。\",\n  },\n  \"has_merged_cells\": false,\n  \"header_levels\": 1,\n  \"core_entities\": [\n    {\n      \"name\": \"逻辑块名称\",\n      \"type\": \"function_module\",\n      \"description\": \"系统中的各个功能模块或子系统，例如外灯控制、车身控制、电动尾门等。\"\n    }\n  ],\n  \"core_conditions\": [\n    {\n      \"name\": \"FOTA 过程中需要保持的功能 (Y/N)\",\n      \"type\": \"condition\",\n      \"description\": \"指示在 FOTA 升级过程中，对应逻辑块的功能是否必须保持激活状态。\"\n    },\n    {\n      \"name\": \"功能运行时禁止 FOTA\",\n      \"type\": \"condition\",\n      \"description\": \"指示当对应逻辑块的功能正在运行时，是否应阻止 FOTA 升级操作。\"\n    }\n  ],\n  \"core_outputs\": [\n    {\n      \"name\": \"功能运行时是否广播功能状态/相关信号\",\n      \"type\": \"output\",\n      \"description\": \"描述在功能运行时，系统是否会输出与该功能相关的状态信号或信息。\"\n    }\n  ],\n  \"core_faults\": [],\n  \"core_timing_constraints\": [],\n  \"engineering_interpretation\": \"该表格用于定义和验证整车电子电器系统中各功能模块在 FOTA 升级过程中的行为规范，确保关键功能在升级期间的连续性和安全性，并防止因功能运行而导致 FOTA 失败。\",\n  \"uncertain_points\": []\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

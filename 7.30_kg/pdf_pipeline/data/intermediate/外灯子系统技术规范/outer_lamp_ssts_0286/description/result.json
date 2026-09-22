@@ -1,0 +1,59 @@
+{
+  "table_type": "fault_table",
+  "topic": "右前位置灯电路故障诊断与处理",
+  "row_semantics": "表格按功能流程顺序排列，描述了触发条件、执行动作、退出条件及异常处理。",
+  "column_semantics": {
+    "1": "功能阶段或状态描述",
+    "2": "对应阶段的详细说明"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "右前位置灯",
+      "type": "output_signal",
+      "description": "车辆外部照明系统的一部分，用于指示车辆右前方位置。"
+    },
+    {
+      "name": "DTC B1061 13",
+      "type": "fault_code",
+      "description": "诊断故障代码，表示右前位置灯电路存在开路故障。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "右前位置灯处于输出状态（点亮）。",
+      "trigger": "触发条件",
+      "trigger_description": "检测到右前位置灯开路故障。",
+      "exit_condition": "退出条件",
+      "exit_description": "检测到短路恢复，即故障已排除。",
+      "action": "执行动作",
+      "action_description": "置位 DTC B1061 13 故障代码。",
+      "exception_handling": "异常处理",
+      "exception_description": "未明确指定，可能需要进一步定义。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DTC B1061 13",
+      "state": "置位",
+      "description": "当检测到右前位置灯开路时，系统将记录此故障代码以供诊断使用。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "DTC B1061 13",
+      "description": "右前位置灯电路开路故障。",
+      "severity": "中等",
+      "impact": "可能导致车辆在夜间或低能见度条件下无法正确显示其位置，影响行车安全。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了右前位置灯电路开路故障的诊断逻辑，可用于验证车辆电子控制单元（ECU）是否能够正确检测并记录此类故障。",
+  "uncertain_points": [
+    "异常处理的具体内容未明确，可能需要补充。",
+    "未提及具体的控制器/模块名称，如 ECU 或 BCM。",
+    "未明确说明故障检测的时间窗口或频率。"
+  ]
+}

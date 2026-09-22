@@ -1,0 +1,53 @@
+{
+  "table_type": "structure_table",
+  "topic": "制动灯系统信号流程与时间约束",
+  "row_semantics": "流程步骤或系统模块",
+  "column_semantics": "无列，为单列流程图",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "制动系统",
+    "LHZCU 制动灯控制模块",
+    "S32G 外灯SWC",
+    "S32G 数字灯光SDK",
+    "TailLampAsmbl 制动灯驱动"
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    "CANFD",
+    "内部信号"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "module": "制动系统",
+      "signal": "CANFD",
+      "delay": "10ms"
+    },
+    {
+      "module": "LHZCU 制动灯控制模块",
+      "signal": "逻辑+信号处理",
+      "duration": "30ms"
+    },
+    {
+      "module": "S32G 外灯SWC",
+      "signal": "CANFD",
+      "delay": "20ms"
+    },
+    {
+      "module": "S32G 数字灯光SDK",
+      "signal": "内部信号",
+      "delay": "40ms"
+    },
+    {
+      "module": "TailLampAsmbl 制动灯驱动",
+      "signal": "CANFD",
+      "delay": "40ms"
+    },
+    {
+      "total_system_latency": "180ms"
+    }
+  ],
+  "engineering_interpretation": "该图表描述了从制动系统触发到制动灯点亮的完整信号路径及其时间延迟约束，可用于验证制动灯系统的响应时间和信号传递时序。",
+  "uncertain_points": []
+}

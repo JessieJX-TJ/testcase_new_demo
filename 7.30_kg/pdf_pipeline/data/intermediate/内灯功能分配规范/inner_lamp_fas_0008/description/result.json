@@ -1,0 +1,123 @@
+{
+  "table_type": "logic_table",
+  "topic": "激光迎宾灯功能逻辑框图",
+  "row_semantics": "输入信号来源系统",
+  "column_semantics": "输出控制信号目标模块",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "DoorFlorLampLHCtrl(LHZCU)",
+      "type": "controller",
+      "description": "左侧激光迎宾灯控制器"
+    },
+    {
+      "name": "DoorFlorLampRHCtrl(RHZCU)",
+      "type": "controller",
+      "description": "右侧激光迎宾灯控制器"
+    },
+    {
+      "name": "LockingSystem(门锁子系统)",
+      "type": "system",
+      "description": "车辆门锁状态管理系统"
+    },
+    {
+      "name": "VehicleStateSystem(整车状态管理子系统)",
+      "type": "system",
+      "description": "车辆整体状态信息管理系统"
+    },
+    {
+      "name": "DrvDoorFlorLampDrv(LHZCU)",
+      "type": "module",
+      "description": "驾驶员侧激光迎宾灯驱动模块"
+    },
+    {
+      "name": "RLDoorFlorLampDrv(LHZCU)",
+      "type": "module",
+      "description": "右前门激光迎宾灯驱动模块"
+    },
+    {
+      "name": "FrtPsgDoorFlorLampDrv(RHZCU)",
+      "type": "module",
+      "description": "前乘客侧激光迎宾灯驱动模块"
+    },
+    {
+      "name": "RRDoorFlorLampDrv(RHZCU)",
+      "type": "module",
+      "description": "后右门激光迎宾灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehLckSts",
+      "type": "input_signal",
+      "description": "车辆锁止状态"
+    },
+    {
+      "name": "DrvrDoorOpenSts",
+      "type": "input_signal",
+      "description": "驾驶员车门开启状态"
+    },
+    {
+      "name": "RLDoorOpenSts",
+      "type": "input_signal",
+      "description": "右前门开启状态"
+    },
+    {
+      "name": "FrtPsgnDoorOpenSts",
+      "type": "input_signal",
+      "description": "前乘客侧车门开启状态"
+    },
+    {
+      "name": "RRDoorOpenSts",
+      "type": "input_signal",
+      "description": "后右门开启状态"
+    },
+    {
+      "name": "VehMd",
+      "type": "input_signal",
+      "description": "车辆模式"
+    },
+    {
+      "name": "VehMdV",
+      "type": "input_signal",
+      "description": "车辆模式值"
+    },
+    {
+      "name": "UsrMd",
+      "type": "input_signal",
+      "description": "用户模式"
+    },
+    {
+      "name": "UsrMdV",
+      "type": "input_signal",
+      "description": "用户模式值"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DrvDoorFlorLampCtrlCmd",
+      "type": "output_signal",
+      "description": "驾驶员侧激光迎宾灯控制命令"
+    },
+    {
+      "name": "RLDoorFlorLampCtrlCmd",
+      "type": "output_signal",
+      "description": "右前门激光迎宾灯控制命令"
+    },
+    {
+      "name": "FrtPsgDoorFlorLampCtrlCmd",
+      "type": "output_signal",
+      "description": "前乘客侧激光迎宾灯控制命令"
+    },
+    {
+      "name": "RRDoorFlorLampCtrlCmd",
+      "type": "output_signal",
+      "description": "后右门激光迎宾灯控制命令"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该逻辑框图描述了车辆激光迎宾灯功能的控制逻辑，展示了不同车身状态和门锁状态如何影响左右两侧激光迎宾灯的控制命令生成，可用于验证激光迎宾灯在不同驾驶场景下的正确点亮与熄灭行为。",
+  "uncertain_points": []
+}

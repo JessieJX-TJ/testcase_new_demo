@@ -1,0 +1,348 @@
+```json
+[
+  {
+    "head": "危险警报灯按照 1.25 Hz 频率闪烁",
+    "relation": "依赖于",
+    "tail": "危险警报灯自动控制模块 LHZCU 信号跳变",
+    "sources": ["outer_lamp_fas_1741"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "双闪灯流水点亮/熄灭",
+    "relation": "输入来自",
+    "tail": "ICB 根据接收到的 LHZCU 发送的转向灯信号",
+    "sources": ["outer_lamp_fas_1741"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "控制信号延时 60 ms 并分发",
+    "relation": "超时约束",
+    "tail": "ICB 根据 LHZCU 控制输入",
+    "sources": ["outer_lamp_fas_1741", "outer_lamp_fas_1749"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯点亮状态反馈至危险警报灯开关控制模块 LHZCU",
+    "relation": "包含子功能",
+    "tail": "驱动处理模块 RZCU",
+    "sources": ["outer_lamp_fas_1741"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆外部灯光系统进入 1 号模式",
+    "relation": "触发条件",
+    "tail": "转向信号激活",
+    "sources": ["outer_lamp_fas_1743"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆外部灯光系统进入 1 号模式",
+    "relation": "触发条件",
+    "tail": "车速低于阈值",
+    "sources": ["outer_lamp_fas_1743"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左转向灯亮起",
+    "relation": "输出为",
+    "tail": "1 号模式下转向信号激活",
+    "sources": ["outer_lamp_fas_1743"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右转向灯亮起",
+    "relation": "输出为",
+    "tail": "1 号模式下转向信号激活",
+    "sources": ["outer_lamp_fas_1743"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "示廓灯保持点亮",
+    "relation": "状态保持条件",
+    "tail": "1 号模式下大灯开关处于开启状态",
+    "sources": ["outer_lamp_fas_1743"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "1 号模式被抑制",
+    "relation": "抑制条件",
+    "tail": "车速信号超过设定阈值",
+    "sources": ["outer_lamp_fas_1743"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "文档第 536 页（共 935 页）",
+    "sources": ["outer_lamp_fas_1745"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "获取右侧后位置灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用服务接口 SidePositionLight.SidePositionLightErrorStatus",
+    "sources": ["outer_lamp_fas_1746"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧后位置灯故障状态",
+    "relation": "输出为",
+    "tail": "SidePositionLight.SidePositionLightErrorStatus",
+    "sources": ["outer_lamp_fas_1746"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯故障状态",
+    "relation": "输出为",
+    "tail": "SidePositionLight.SidePositionLightErrorStatus",
+    "sources": ["outer_lamp_fas_1746"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU 与 ICB 之间的 CAN 通信",
+    "relation": "输入为",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_1748"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU 与 ICB 之间的 CAN 通信",
+    "relation": "输出为",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_1748"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU 与 ICB 之间的 CAN 通信",
+    "relation": "依赖于",
+    "tail": "BKBCANFD",
+    "sources": ["outer_lamp_fas_1748"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开关控制模块 LHZCU 发送 BrkLghtCtrl_0_off",
+    "relation": "触发条件",
+    "tail": "收到制动灯服务请求 BrkLghtSrvcReq = OFF",
+    "sources": ["outer_lamp_fas_1749"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯熄灭",
+    "relation": "前提条件",
+    "tail": "ICB 将 CAN 控制信号转换为数字灯光灯控 CAN 信号，控制制动灯熄灭",
+    "sources": ["outer_lamp_fas_1749"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯点亮状态反馈至制动灯开关控制模块 LHZCU",
+    "relation": "依赖于",
+    "tail": "驱动处理模块 RZCU 接收 ICB 控制信号并输出制动灯点亮状态",
+    "sources": ["outer_lamp_fas_1749"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开关控制模块 LHZCU 反馈状态至 ICB",
+    "relation": "依赖于",
+    "tail": "外灯组合服务 ICB 将接收到的制动灯点亮状态及故障状态 CAN 信号转为服务状态",
+    "sources": ["outer_lamp_fas_1749"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "整车模式不满足 VehMd != TRANSPORT 或 VehMdV != Valid",
+    "sources": ["outer_lamp_fas_1749"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "BrkLghtSwReq != Off",
+    "sources": ["outer_lamp_fas_1749"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "EPTBrkPdlDscrtInptSts != BrakeApplied",
+    "sources": ["outer_lamp_fas_1749"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "CstRgtnBrkLgtReq != NoRequest",
+    "sources": ["outer_lamp_fas_1749"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "BrkSysBrkLghtsReqd != False",
+    "sources": ["outer_lamp_fas_1749"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "EmgcBrkA = False 或 EmgcBrkAV = Invalid",
+    "sources": ["outer_lamp_fas_1749"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯点亮状态反馈超时",
+    "relation": "超时约束",
+    "tail": "ICB 将控制信号延时 60 ms 分发至 RZCU",
+    "sources": ["outer_lamp_fas_1749"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "触发条件",
+    "tail": "集成式制动系统有效",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "触发条件",
+    "tail": "前置条件满足",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMd 状态为 0x1=Standby 或 0x6=XOTA",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "前提条件",
+    "tail": "UsgMdV = Valid",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "前提条件",
+    "tail": "VehMd 状态为 0x3=TRANSPORT",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "前提条件",
+    "tail": "VehMdV = Valid",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "前提条件",
+    "tail": "ExtrLghtCtrlCmmntnTyp 配置为 SOA 或 CAN，且 ExtrLghtStsCmmntnTyp 配置为 SOA 或 CAN",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "抑制条件",
+    "tail": "集成式制动系统无效",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "依赖于",
+    "tail": "UsrMd 控制器的状态",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "依赖于",
+    "tail": "VehMd 控制器的状态",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "依赖于",
+    "tail": "ExtrLghtCtrlCmmntnTyp 通信类型配置",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "依赖于",
+    "tail": "ExtrLghtStsCmmntnTyp 通信类型配置",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "优先级高于",
+    "tail": "PPV 阶段及以后按照 SOA 通讯方式开发",
+    "sources": ["outer_lamp_fas_1750"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "UsrMd 状态非 Standby/XOTA 或 UsgMdV 无效",
+    "sources": ["outer_lamp_fas_1749", "outer_lamp_fas_1750"],
+    "conflict": true,
+    "conflict_note": "outer_lamp_fas_1749 中 '制动灯不点亮' 抑制条件强调整车模式、制动请求、踏板状态等运行时信号；outer_lamp_fas_1750 中 '制动灯开启' 前提条件明确要求 UsrMd/VehMd 等控制器状态有效。二者逻辑互补而非矛盾，但'不点亮'未显式覆盖 UsrMd/VehMd 失效场景，存在隐含覆盖缺口，建议补充为完整抑制集。"
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "VehMd 状态非 TRANSPORT 或 VehMdV 无效",
+    "sources": ["outer_lamp_fas_1749", "outer_lamp_fas_1750"],
+    "conflict": true,
+    "conflict_note": "outer_lamp_fas_1749 的抑制条件 'VehMd != TRANSPORT 或 VehMdV != Valid' 与 outer_lamp_fas_1750 的开启前提 'VehMd = TRANSPORT 且 VehMdV = Valid' 语义严格对偶，属同一逻辑轴的正反表述，无实质冲突，但建议统一为 'VehMd ≠ TRANSPORT 或 VehMdV ≠ Valid' 以增强一致性。"
+  }
+]
+```

@@ -1,0 +1,49 @@
+{
+  "table_type": "parameter_table",
+  "topic": "整车电子系统中个性化数据映射灯随门动功能的接口规范",
+  "row_semantics": "表格中的每一行代表一个接口或服务定义，详细描述了该接口的功能、类型、方向、提供方/消费方以及路径信息。",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识具体的通信或服务功能。",
+    "Direction": "接口的方向，指示数据流或控制流的提供方和消费方。",
+    "Type": "接口的类型，如CAN/LIN/SOA等，表示通信协议或服务架构。",
+    "Sender/Provider": "发送方或服务提供方，负责发起或提供服务。",
+    "Receiver/Consumer": "接收方或服务消费方，负责接收或使用服务。",
+    "Channel": "通信路径或通道，指定信号传输的具体通道。",
+    "Interface Source": "接口来源，说明信号的来源或服务的提供者。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "PersonalizationData.MapLampDrEnbSet",
+      "type": "Service Interface",
+      "description": "个性化数据映射灯随门动使能设置服务，用于控制灯随门动功能的开启或关闭。"
+    },
+    {
+      "name": "MapLampDrEnbSetInfo",
+      "type": "Parameter",
+      "description": "灯随门动功能使能状态参数，可设置为启用（0x0）或禁用（0x1）。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FollowUpSetInfo",
+      "type": "Parameter",
+      "description": "灯随门动功能使能状态参数，用于控制灯随门动功能的启用或禁用。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MapLampDrEnbSet",
+      "type": "Service Output",
+      "description": "灯随门动功能使能状态的输出，由ICB/ZXD控制器提供。",
+      "details": "当参数设置为Enabled时，灯随门动功能启用；当设置为Disabled时，功能禁用。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子系统中个性化数据映射灯随门动功能的接口规范，主要用于测试验证灯随门动功能的使能与禁用状态是否按照预期在HMI或智能场景下正确调用，并确保ICB/ZXD控制器能够正确提供和接收相关服务。",
+  "uncertain_points": [
+    "具体逻辑框图内容未明确说明，需参考最新版本文档《3.0_CS_PersonalizationData_SOMEIP_Communication_Matrix_yy2_Vx.x.x_xxx》以获取完整信息。"
+  ]
+}

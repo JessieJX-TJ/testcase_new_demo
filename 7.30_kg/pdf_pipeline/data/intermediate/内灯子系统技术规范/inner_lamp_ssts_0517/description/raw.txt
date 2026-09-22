@@ -1,0 +1,53 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "后排阅读灯开关状态信号处理与控制逻辑",
+  "row_semantics": "表格按功能流程顺序排列，描述了触发条件、执行动作和退出条件。",
+  "column_semantics": "第一列定义了条件或动作的类别（如前置条件、触发条件等），第二列详细说明了对应的信号或操作。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "后排阅读灯控制单元，负责接收和处理阅读灯开关状态信号，并进行消抖处理。"
+    },
+    {
+      "name": "ThrdRowMapLamp_RH_Sw_SIG",
+      "type": "input_signal",
+      "description": "后排阅读灯开关状态硬线信号，用于检测开关的开/关状态。"
+    },
+    {
+      "name": "ThrdRowMapLampRHSwReq",
+      "type": "output_signal",
+      "description": "发送给第三排右侧阅读灯开关传感采集模块的请求信号，表示按下动作。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "触发条件",
+      "description": "接收到对应阅读灯开关状态硬线信号 ThrdRowMapLamp_RH_Sw_SIG 为低电平；备注：RHZCU 接收后排阅读灯开关状态，做 30ms 消抖处理，消除较长线束干扰。"
+    },
+    {
+      "condition": "退出条件",
+      "description": "接收到对应阅读灯开关状态硬线信号 ThrdRowMapLamp_RH_Sw_SIG 为悬空状态，[第三排右侧]"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "ThrdRowMapLampRHSwReq",
+      "description": "当触发条件满足时，发送 ThrdRowMapLampRHSwReq=0x1 (Press) 信号，表示按下动作。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal": "ThrdRowMapLamp_RH_Sw_SIG",
+      "timing": "30ms",
+      "description": "在接收到开关信号后，RHZCU 进行 30ms 的消抖处理，以消除线束干扰。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了后排阅读灯开关状态信号的处理逻辑，包括信号的接收、消抖处理以及根据信号状态发送控制请求，可用于验证 RHZCU 对阅读灯开关信号的正确响应和控制输出。",
+  "uncertain_points": []
+}
+```

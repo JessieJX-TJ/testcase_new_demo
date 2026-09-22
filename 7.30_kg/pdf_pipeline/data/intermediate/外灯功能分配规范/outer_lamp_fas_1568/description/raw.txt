@@ -1,0 +1,91 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能分配规范",
+  "row_semantics": "表格按外灯功能的各个控制项进行分组，每一行代表一个具体的外灯驱动或控制功能。",
+  "column_semantics": {
+    "功能名": "描述了具体的外灯控制功能，如左前转向灯驱动控制、右前转向灯驱动控制等。",
+    "输出": "指明了该功能的输出类型，例如硬线驱动或CANFD信号。",
+    "硬线信号": "对于硬线驱动的输出，列出了具体的硬线信号名称。",
+    "控制器/模块名": "列出了与该功能相关的控制器或模块名称，如LHZC U、RHZC U等。",
+    "系统状态/模式名": "部分功能（如FLDircnLghtCtrl_HW）详细说明了其控制模式（0x0=Off, 0x1=On）。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "左前转向灯驱动控制",
+      "type": "function",
+      "description": "控制车辆左前转向灯的驱动逻辑。"
+    },
+    {
+      "name": "右前转向灯驱动控制",
+      "type": "function",
+      "description": "控制车辆右前转向灯的驱动逻辑。"
+    },
+    {
+      "name": "左后转向灯驱动控制",
+      "type": "function",
+      "description": "控制车辆左后转向灯的驱动逻辑。"
+    },
+    {
+      "name": "右后转向灯驱动控制",
+      "type": "function",
+      "description": "控制车辆右后转向灯的驱动逻辑。"
+    },
+    {
+      "name": "FLDircnLghtCtrl_HW",
+      "type": "function",
+      "description": "左前转向灯硬件控制接口，支持通过CANFD信号进行模式切换（Off/On）。"
+    },
+    {
+      "name": "FRDircnLghtCtrl_HW",
+      "type": "function",
+      "description": "右前转向灯硬件控制接口，支持通过CANFD信号进行模式切换（Off/On）。"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW",
+      "type": "function",
+      "description": "右后转向灯硬件控制接口，支持通过CANFD信号进行模式切换（Off/On）。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FLDircnLghtCtrl_HW_0_Off",
+      "type": "mode",
+      "description": "左前转向灯硬件控制处于关闭模式。"
+    },
+    {
+      "name": "FLDircnLghtCtrl_HW_1_on",
+      "type": "mode",
+      "description": "左前转向灯硬件控制处于开启模式。"
+    },
+    {
+      "name": "FRDircnLghtCtrl_HW_0_Off",
+      "type": "mode",
+      "description": "右前转向灯硬件控制处于关闭模式。"
+    },
+    {
+      "name": "FRDircnLghtCtrl_HW_1_on",
+      "type": "mode",
+      "description": "右前转向灯硬件控制处于开启模式。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "硬线驱动",
+      "type": "output",
+      "description": "直接通过硬线信号驱动外灯。"
+    },
+    {
+      "name": "CANFD",
+      "type": "output",
+      "description": "通过CANFD总线发送控制信号。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯（如转向灯）的功能分配和控制方式，包括硬线驱动和CANFD通信两种模式，以及具体的控制器模块和信号名称，可用于验证外灯控制功能的正确性和信号交互的准确性。",
+  "uncertain_points": []
+}
+```

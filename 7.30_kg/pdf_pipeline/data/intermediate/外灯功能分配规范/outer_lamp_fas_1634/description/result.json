@@ -1,0 +1,33 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯组合服务 ICB (Integrated Control Block) 的功能逻辑与状态交互",
+  "row_semantics": "描述了外灯组合服务 ICB 在不同场景下的控制逻辑、信号转换、状态反馈以及与相关模块的交互流程。",
+  "column_semantics": "无明确列，表格内容为按行顺序描述的逻辑步骤和状态信息，每行代表一个独立的逻辑环节或状态。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB (Integrated Control Block)",
+    "LHZCU/RZCU (Driving Processing Module)",
+    "DirectionLight (转向灯模块)",
+    "ExteriorLightSwitchProcess (外部灯光开关处理模块)"
+  ],
+  "core_conditions": [
+    "InstanceID",
+    "DirectionLightReq",
+    "DirectionLightCtrlDelayPrm",
+    "DirectionLightErrorStatus"
+  ],
+  "core_outputs": [
+    "DirectionLightSta",
+    "DirectionLightFlts",
+    "DirectionLightErrSta"
+  ],
+  "core_faults": [
+    "DirectionLightErrorStatus"
+  ],
+  "core_timing_constraints": [
+    "60ms延时"
+  ],
+  "engineering_interpretation": "该表格详细定义了外灯组合服务 ICB 如何响应外部灯光开关指令，进行转向灯的控制、信号转换，并与驱动处理模块及转向灯开关控制模块进行状态交互和故障反馈，可用于验证 ICB 在不同 InstanceID 下对转向灯的控制逻辑及其与相关模块的接口一致性。",
+  "uncertain_points": []
+}

@@ -1,0 +1,592 @@
+[
+  {
+    "head": "转向灯控制接口请求转向灯熄灭",
+    "relation": "前提条件",
+    "tail": "DirectionLightReq == 0x0",
+    "sources": [
+      "outer_lamp_fas_1240"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "迎宾光毯灯渐亮",
+    "relation": "触发条件",
+    "tail": "后视镜为展开状态",
+    "sources": [
+      "outer_lamp_fas_1241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "迎宾光毯灯渐亮",
+    "relation": "触发条件",
+    "tail": "任一车门（不含发动机舱盖和行李舱盖）跳变为打开",
+    "sources": [
+      "outer_lamp_fas_1241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "迎宾光毯灯渐亮",
+    "relation": "触发条件",
+    "tail": "车辆进入展厅模式（VehMd == 0x5）",
+    "sources": [
+      "outer_lamp_fas_1241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "迎宾光毯灯渐亮",
+    "relation": "前提条件",
+    "tail": "车辆具备迎宾光毯灯功能（exlWelcomeGrandLampEnPrm == 0x1）",
+    "sources": [
+      "outer_lamp_fas_1241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "迎宾光毯灯渐亮",
+    "relation": "前提条件",
+    "tail": "大屏迎宾灯使能开关开启（PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet == 0x0）",
+    "sources": [
+      "outer_lamp_fas_1241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "迎宾光毯灯渐亮",
+    "relation": "前提条件",
+    "tail": "整车电源模式非休眠（UsG Md != 0x0）",
+    "sources": [
+      "outer_lamp_fas_1241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "迎宾光毯灯渐亮",
+    "relation": "前提条件",
+    "tail": "整车档位为P挡",
+    "sources": [
+      "outer_lamp_fas_1241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "迎宾光毯灯渐亮",
+    "relation": "前提条件",
+    "tail": "环境光信号为黑夜（AutoLghtOnReq == 1）",
+    "sources": [
+      "outer_lamp_fas_1241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "迎宾光毯灯渐亮",
+    "relation": "超时约束",
+    "tail": "3秒内完成渐亮",
+    "sources": [
+      "outer_lamp_fas_1241"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "基于0平台",
+    "sources": [
+      "outer_lamp_fas_1242"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "依赖于",
+    "tail": "Function Allocation Specification",
+    "sources": [
+      "outer_lamp_fas_1242"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "包含子功能",
+    "tail": "详见文档第437页（共935页）",
+    "sources": [
+      "outer_lamp_fas_1242"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "牌照灯控制延时",
+    "relation": "输入为",
+    "tail": "NumPltLampCtrlDelayPrm",
+    "sources": [
+      "outer_lamp_fas_1243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "牌照灯控制延时",
+    "relation": "超时约束",
+    "tail": "60 ms（0x3）",
+    "sources": [
+      "outer_lamp_fas_1243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯硬线驱动使能",
+    "relation": "输入为",
+    "tail": "exlSideLghtHwDrvEnPrm",
+    "sources": [
+      "outer_lamp_fas_1243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯硬线驱动使能",
+    "relation": "输出为",
+    "tail": "{0x0: Disable, 0x1: Enable}",
+    "sources": [
+      "outer_lamp_fas_1243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制通讯类型",
+    "relation": "前提条件",
+    "tail": "ExtrLghtCtrlCmmtnTyp",
+    "sources": [
+      "outer_lamp_fas_1243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态通讯类型",
+    "relation": "前提条件",
+    "tail": "ExtrLghtStsCmmntnTyp",
+    "sources": [
+      "outer_lamp_fas_1243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯硬线驱动使能",
+    "relation": "依赖于",
+    "tail": "EP阶段（0x1）：支持硬线驱动（P12L M1 EP除外，涉及S31L/S12L M2/S12L T1）",
+    "sources": [
+      "outer_lamp_fas_1243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯硬线驱动使能",
+    "relation": "依赖于",
+    "tail": "PPV阶段（0x0）：不支持硬线驱动",
+    "sources": [
+      "outer_lamp_fas_1243"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧昼间行车灯控制信号 LDayTmRunngLghtCtrl_1",
+    "relation": "触发条件",
+    "tail": "左侧昼间行车灯状态 LDayTmRunngLghtSts == 0x1",
+    "sources": [
+      "outer_lamp_fas_1245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧昼间行车灯控制信号 LDayTmRunngLghtCtrl_1",
+    "relation": "触发条件",
+    "tail": "左侧昼间行车灯状态 LDayTmRunngLghtSts == 0x0",
+    "sources": [
+      "outer_lamp_fas_1245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧昼间行车灯控制信号 RDayTmRunngLghtCtrl_1",
+    "relation": "触发条件",
+    "tail": "右侧昼间行车灯状态 RDayTmRunngLghtSts == 0x1",
+    "sources": [
+      "outer_lamp_fas_1245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧昼间行车灯控制信号 RDayTmRunngLghtCtrl_1",
+    "relation": "触发条件",
+    "tail": "右侧昼间行车灯状态 RDayTmRunngLghtSts == 0x0",
+    "sources": [
+      "outer_lamp_fas_1245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧昼间行车灯控制信号 LDayTmRunngLghtCtrl_1",
+    "relation": "输入为",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_1245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧昼间行车灯控制信号 RDayTmRunngLghtCtrl_1",
+    "relation": "输入为",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_1245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧昼间行车灯状态 LDayTmRunngLghtSts",
+    "relation": "输出为",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_1245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧昼间行车灯状态 RDayTmRunngLghtSts",
+    "relation": "输出为",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_1245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV",
+    "relation": "前提条件",
+    "tail": "UsgMdV == 0x1（Valid），用于使能左侧昼间行车灯控制信号 LDayTmRunngLghtCtrl_1",
+    "sources": [
+      "outer_lamp_fas_1245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV",
+    "relation": "前提条件",
+    "tail": "UsgMdV == 0x1（Valid），用于使能右侧昼间行车灯控制信号 RDayTmRunngLghtCtrl_1",
+    "sources": [
+      "outer_lamp_fas_1245"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "触发条件",
+    "tail": "车辆处于Normal Driving、AI Parking或AI Pilot模式",
+    "sources": [
+      "outer_lamp_fas_1246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "触发条件",
+    "tail": "车辆处于TRANSPORT或EXHIBITION模式，且满足：车速 ≤ 20 km/h持续2秒、灯光开关为AUTO、近光灯反馈关闭、LHZCU判断近光灯关闭、环境光条件满足",
+    "sources": [
+      "outer_lamp_fas_1246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "抑制条件",
+    "tail": "灯光开关状态 ≠ AUTO",
+    "sources": [
+      "outer_lamp_fas_1246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "抑制条件",
+    "tail": "车速 > 20 km/h",
+    "sources": [
+      "outer_lamp_fas_1246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "抑制条件",
+    "tail": "近光灯反馈状态为开启",
+    "sources": [
+      "outer_lamp_fas_1246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "抑制条件",
+    "tail": "LHZCU未判断近光灯关闭",
+    "sources": [
+      "outer_lamp_fas_1246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "车辆模式（VehMd）",
+    "sources": [
+      "outer_lamp_fas_1246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "平均车速（VehSpdAvg）",
+    "sources": [
+      "outer_lamp_fas_1246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "灯光开关状态（CombLghtSwSta）",
+    "sources": [
+      "outer_lamp_fas_1246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "近光灯状态（DippedBeamLightStatus）",
+    "sources": [
+      "outer_lamp_fas_1246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能退出",
+    "relation": "依赖于",
+    "tail": "LHZCU的近光灯判断结果",
+    "sources": [
+      "outer_lamp_fas_1246"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.MainBeamLightSts 接口",
+    "relation": "触发条件",
+    "tail": "订阅远光灯状态信号",
+    "sources": [
+      "outer_lamp_fas_1247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.MainBeamLightSts 接口",
+    "relation": "输出为",
+    "tail": "MainBeamLightSts 信号",
+    "sources": [
+      "outer_lamp_fas_1247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSts 信号",
+    "relation": "依赖于",
+    "tail": "ExteriorLightControlSystem.MainBeamLightSts 接口",
+    "sources": [
+      "outer_lamp_fas_1247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSts",
+    "relation": "输入为",
+    "tail": "0x0 → OFF",
+    "sources": [
+      "outer_lamp_fas_1247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSts",
+    "relation": "输入为",
+    "tail": "0x1 → ON",
+    "sources": [
+      "outer_lamp_fas_1247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSts",
+    "relation": "输入为",
+    "tail": "0x2 → Unknown",
+    "sources": [
+      "outer_lamp_fas_1247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.MainBeamLightErrSts 接口",
+    "relation": "触发条件",
+    "tail": "订阅远光灯故障状态信号",
+    "sources": [
+      "outer_lamp_fas_1247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.MainBeamLightErrSts 接口",
+    "relation": "输出为",
+    "tail": "MainBeamLightErrSts 信号",
+    "sources": [
+      "outer_lamp_fas_1247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightErrSts 信号",
+    "relation": "依赖于",
+    "tail": "ExteriorLightControlSystem.MainBeamLightErrSts 接口",
+    "sources": [
+      "outer_lamp_fas_1247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightErrSts",
+    "relation": "输入为",
+    "tail": "0x0 → No Error",
+    "sources": [
+      "outer_lamp_fas_1247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightErrSts",
+    "relation": "输入为",
+    "tail": "0x1 → Error",
+    "sources": [
+      "outer_lamp_fas_1247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightErrSts",
+    "relation": "输入为",
+    "tail": "0x2 → Unknown",
+    "sources": [
+      "outer_lamp_fas_1247"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯开启",
+    "relation": "前提条件",
+    "tail": "LHZCU已判断仅位置灯开启且近光灯关闭",
+    "sources": [
+      "outer_lamp_fas_1249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启",
+    "relation": "抑制条件",
+    "tail": "前雾灯未开启",
+    "sources": [
+      "outer_lamp_fas_1249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯请求",
+    "relation": "输入为",
+    "tail": "S32G收到大屏开关请求（ICB）",
+    "sources": [
+      "outer_lamp_fas_1249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯状态",
+    "relation": "依赖于",
+    "tail": "后雾灯未开启",
+    "sources": [
+      "outer_lamp_fas_1249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "七键开关请求",
+    "relation": "触发条件",
+    "tail": "S32G收到七键开关请求（IFP）跳变",
+    "sources": [
+      "outer_lamp_fas_1249"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

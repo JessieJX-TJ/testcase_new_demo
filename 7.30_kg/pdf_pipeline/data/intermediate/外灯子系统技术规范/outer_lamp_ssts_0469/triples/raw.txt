@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "右后位置灯短路故障处理功能",
+    "relation": "触发条件",
+    "tail": "检测到右后位置灯短路到电源",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["触发条件", "检测到右后位置灯短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后位置灯短路故障处理功能",
+    "relation": "前提条件",
+    "tail": "右后位置灯处于输出状态",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["前置条件", "右后位置灯处于输出状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后位置灯短路故障处理功能",
+    "relation": "故障响应",
+    "tail": "置位 DTC B1061 12",
+    "triple_type": "故障响应",
+    "evidence_terms": ["执行动作", "置位 DTC B1061 12"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【RRSideLghtDrvMdl】停止驱动右后位置灯输出",
+    "relation": "依赖于",
+    "tail": "右后位置灯短路到电源",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "触发条件", "PosLamp_LH&RH_HSD"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【RRSideLghtDrvMdl】持续发送 SidePositionLightStatus",
+    "relation": "依赖于",
+    "tail": "右后位置灯短路到电源",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "触发条件", "SidePositionLightStatus"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【RRSideLghtDrvMdl】持续发送 SidePositionLightStatus",
+    "relation": "包含子功能",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": ["执行动作", "至少发送三帧"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后位置灯短路故障处理功能",
+    "relation": "退出条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["退出条件", "检测到短路恢复"],
+    "confidence_note": "high"
+  }
+]
+```

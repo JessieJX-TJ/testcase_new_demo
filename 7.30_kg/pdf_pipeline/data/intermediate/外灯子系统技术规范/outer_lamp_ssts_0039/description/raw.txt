@@ -1,0 +1,73 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "倒车灯控制逻辑",
+  "row_semantics": "表格按功能流程顺序排列，描述了从前置条件到异常处理的完整逻辑分支。",
+  "column_semantics": {
+    "0": "条件/动作阶段（如前置条件、触发条件、执行动作等）",
+    "1": "对应阶段的具体描述"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RevsLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "倒车灯反馈超范围使能参数，值为0表示禁用"
+    },
+    {
+      "name": "RevsLightDrvMdl",
+      "type": "controller",
+      "description": "倒车灯驱动模块"
+    },
+    {
+      "name": "RevsLightCtrlMdl",
+      "type": "controller",
+      "description": "倒车灯控制模块"
+    },
+    {
+      "name": "DTCB104513",
+      "type": "fault_code",
+      "description": "特定故障代码，表示系统置位该故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "RevsLightFbkSOAEnPrm == 0 (Disable)",
+      "description": "前置条件：倒车灯反馈超范围使能参数被设置为0，即功能被禁用"
+    },
+    {
+      "condition": "检测到倒车灯开路",
+      "description": "触发条件：系统检测到倒车灯电路存在开路故障"
+    },
+    {
+      "condition": "检测到开路恢复",
+      "description": "退出条件：系统检测到之前存在的开路故障已恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "RevsLightSts = 0 (Off)",
+      "description": "执行动作：持续发送倒车灯状态为关闭"
+    },
+    {
+      "output": "DTCB104513",
+      "description": "异常处理：系统置位故障代码 DTC B104513"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "DTC B104513",
+      "description": "由倒车灯开路故障触发的诊断故障代码"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在执行动作中，RevsLightDrvMdl 至 RevsLightCtrlMdl 的通信需要至少发送三帧数据"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当倒车灯电路发生开路故障时，系统如何通过禁用相关参数、持续发送关闭状态并记录故障代码来响应和处理该故障的逻辑。可用于验证倒车灯开路故障检测、状态控制及故障记录功能的正确性。",
+  "uncertain_points": []
+}
+```

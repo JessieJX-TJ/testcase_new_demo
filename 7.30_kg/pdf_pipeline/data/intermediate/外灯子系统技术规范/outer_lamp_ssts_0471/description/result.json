@@ -1,0 +1,51 @@
+{
+  "table_type": "logic_table",
+  "topic": "阳光雨量传感器控制自动灯光功能的触发与退出逻辑",
+  "row_semantics": "表格按功能流程的不同阶段进行划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "表格包含两列，第一列为功能描述的类别（如触发条件、执行动作等），第二列为具体的描述内容。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "AutoLghtSwMdl",
+      "type": "controller_module",
+      "description": "自动灯光开关模块，负责发送LIN信号控制灯光"
+    },
+    {
+      "name": "AutoLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "自动灯光控制模块，接收来自AutoLghtSwMdl的LIN信号"
+    },
+    {
+      "name": "阳光雨量传感器",
+      "type": "sensor",
+      "description": "检测环境光线和雨水的传感器，输出LIN信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "AutoLghtOnReq_l",
+      "type": "input_signal",
+      "description": "阳光雨量传感器通过LIN总线发送的自动灯光请求信号，值为1表示请求开启，0表示请求关闭。",
+      "value_range": "0 or 1"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "AutoLghtOnReq",
+      "type": "output_signal",
+      "description": "AutoLghtSwMdl模块持续发送的LIN信号，值为0x1表示请求开启自动灯光。",
+      "value_range": "0x1"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "condition": "执行动作",
+      "description": "至少发送三帧LIN信号",
+      "unit": "frames"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了阳光雨量传感器如何通过LIN信号触发和退出自动灯光功能的逻辑，可用于验证车辆在不同光照和天气条件下自动灯光系统的正确响应。",
+  "uncertain_points": []
+}

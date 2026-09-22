@@ -1,0 +1,73 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform-SSTS-IBD10) - Door Lamp Brightness Control",
+  "row_semantics": "Different control modes and their corresponding parameters for door lamp brightness adjustment",
+  "column_semantics": "Control mode description, parameter settings, and timing details",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorFL1LampBrthngCmd_1",
+      "type": "signal",
+      "description": "Command signal for door lamp brightness control"
+    },
+    {
+      "name": "ZCU",
+      "type": "controller",
+      "description": "Zone Control Unit responsible for sending commands to the lighting system"
+    },
+    {
+      "name": "AmbiLamp",
+      "type": "function",
+      "description": "Ambient lamp functionality"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0%-100%跳变调节",
+      "type": "mode",
+      "description": "Step change regulation from 0% to 100% brightness"
+    },
+    {
+      "name": "0%-100%渐变调节",
+      "type": "mode",
+      "description": "Smooth transition regulation from 0% to 100% brightness"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorFL1LampBrthngCmd_1",
+      "type": "signal",
+      "description": "Output command signal for door lamp brightness"
+    },
+    {
+      "name": "AmbiLampBrightness",
+      "type": "output",
+      "description": "Brightness level of the ambient lamp"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate1",
+      "type": "timing_parameter",
+      "description": "Time interval for 0%-100% step change (500ms)",
+      "unit": "ms"
+    },
+    {
+      "name": "Rate2",
+      "type": "timing_parameter",
+      "description": "Time interval for 0%-100% step change (1s)",
+      "unit": "s"
+    },
+    {
+      "name": "AmbiLampBrthngRateXholdoffPercent",
+      "type": "timing_parameter",
+      "description": "Hold-off percentage of the ambient lamp brightness cycle",
+      "unit": "%",
+      "default_value": "10%"
+    }
+  ],
+  "engineering_interpretation": "This table defines the technical specifications for controlling the brightness of interior door lamps, including both step change and smooth transition modes. It specifies the command signals, timing parameters, and behavior of the ambient lamp during these operations.",
+  "uncertain_points": []
+}

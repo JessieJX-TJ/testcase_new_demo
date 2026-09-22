@@ -1,0 +1,82 @@
+{
+  "table_type": "signal_table",
+  "topic": "Reverse Light Control and Status Feedback",
+  "row_semantics": "Each row represents a specific signal or status related to the reverse light system, including control commands, operational states, and fault conditions.",
+  "column_semantics": "Columns represent different communication interfaces (CANFD, ICB, RZCU, LHZCU) and hardware status feedback. The last column indicates 'Hard Line Status' for direct hardware feedback.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RevsLghtCtrl_HW",
+      "type": "controller_command",
+      "description": "Hardware-level command for controlling the reverse light."
+    },
+    {
+      "name": "RevsLghtSts",
+      "type": "status_feedback",
+      "description": "Status feedback of the reverse light."
+    },
+    {
+      "name": "RevsLghtFltSts",
+      "type": "fault_status",
+      "description": "Fault status feedback of the reverse light."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "RevsLghtCtrl_HW",
+      "signals": [
+        {
+          "name": "RevsLghtCtrl_HW_0_Off",
+          "value": "0x0",
+          "description": "Reverse light is off."
+        },
+        {
+          "name": "RevsLghtCtrl_HW_1_On",
+          "value": "0x1",
+          "description": "Reverse light is on."
+        }
+      ]
+    },
+    {
+      "name": "RevsLghtSts",
+      "signals": [
+        {
+          "name": "RevsLghtSts_0_off",
+          "value": "0x0",
+          "description": "Reverse light is off."
+        },
+        {
+          "name": "RevsLghtSts_1_on",
+          "value": "0x1",
+          "description": "Reverse light is on."
+        }
+      ]
+    },
+    {
+      "name": "RevsLghtFltSts",
+      "signals": [
+        {
+          "name": "RevsLghtFltSts_0_False",
+          "value": "0x0",
+          "description": "No fault detected."
+        },
+        {
+          "name": "RevsLghtFltSts_1_True",
+          "value": "0x1",
+          "description": "Fault detected."
+        }
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RevsLghtFltSts",
+      "description": "Indicates whether a fault condition exists in the reverse light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the control and status signals for the reverse light system, detailing how the system should respond to commands and report its operational and fault states across various communication interfaces.",
+  "uncertain_points": []
+}

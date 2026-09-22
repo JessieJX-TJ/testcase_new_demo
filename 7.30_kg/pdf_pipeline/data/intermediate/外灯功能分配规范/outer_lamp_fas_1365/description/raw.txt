@@ -1,0 +1,49 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Direction Light Control Logic and Status Feedback for ICB and LHZCU/RHZCU/RZCU Modules",
+  "row_semantics": "Each row represents a specific control or status feedback operation related to direction lights, including signal conversion, control logic, and fault/error status reporting.",
+  "column_semantics": "The table does not have explicit columns; instead, each row contains a detailed description of a specific function or status update involving direction light signals and their associated parameters.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB (Intelligent Control Box)",
+    "LHZCU (Left Front Direction Light Control Unit)",
+    "RHZCU (Right Front Direction Light Control Unit)",
+    "RZCU (Right Rear Direction Light Control Unit)"
+  ],
+  "core_conditions": [
+    "Signal Conversion from Service Interface/Control Signal to CAN Signal",
+    "Signal Delay Distribution (60ms)",
+    "Double Flashing Light Extinguishing",
+    "Exterior Light Switch Process",
+    "Exit Double Flash Indicator Display and Sound Reminder"
+  ],
+  "core_outputs": [
+    "FLDirenLightCtrl_HW_0_off",
+    "FRDirenLightCtrl_HW_0_off",
+    "RLDirenLightCtrl_HW_0_off",
+    "RRDirenLightCtrl_HW_0_off",
+    "FLDirenLightSts_HW_0_Off",
+    "FRDirenLightSts_HW_0_Off",
+    "RLDirenLightSts_HW_0_Off",
+    "RRDirenLightSts_HW_0_Off",
+    "FLDirenLightFlits_HW_0_False",
+    "FRDirenLightFlits_HW_0_False",
+    "RLDirenLightFlits_HW_0_False",
+    "RRDirenLightFlits_HW_0_False",
+    "DirectionLightStatus",
+    "DirectionLightErrorStatus"
+  ],
+  "core_faults": [
+    "No Error",
+    "InstanceID 1/2/3/4 Fault/Error Status"
+  ],
+  "core_timing_constraints": [
+    "Signal延时 60ms 分发至[驱动模块 LHZCU/RHZCU/RZCU]",
+    "通过 Instance ID 1/2/3/4 获取转向灯状态"
+  ],
+  "engineering_interpretation": "This table defines the control logic and status feedback mechanisms for direction lights between the ICB and various direction light control units (LHZCU, RHZCU, RZCU). It specifies how control signals are converted to CAN signals, timing distributions, and the status/error reporting of direction lights. This is primarily used for testing the correct signal conversion, timing behavior, and error handling of direction light systems in vehicle electronics.",
+  "uncertain_points": []
+}
+```

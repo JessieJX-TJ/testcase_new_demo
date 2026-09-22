@@ -1,0 +1,46 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Brake Light Control System Parameters",
+  "row_semantics": "Each row represents a specific service interface or control function related to the brake light system, detailing its parameters and operational states.",
+  "column_semantics": "The first column lists the functional modules or interfaces. The subsequent columns indicate the communication types (SOA, ICB, RZCU) and their respective roles in the system. The main content area provides detailed parameter definitions and their possible values for each interface.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem.BrakeLightErrSts",
+      "type": "function",
+      "description": "Service interface for subscribing to brake light fault status."
+    },
+    {
+      "name": "BrakeLight.BrakeLightControl",
+      "type": "function",
+      "description": "Basic service interface for controlling the on/off state of the brake light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrakeLightSts",
+      "description": "Current status of the brake light (OFF, ON, Unknown)."
+    },
+    {
+      "name": "BrakeLightErrSts",
+      "description": "Fault status of the brake light (No Error, Error, Unknown)."
+    },
+    {
+      "name": "BrakeLightCtrlReq",
+      "description": "Request to control the brake light (OFF, ON)."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "BrakeLightErrSts",
+      "description": "Indicates whether there is an error in the brake light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and operational states for the brake light control system, including how to subscribe to fault statuses and how to control the brake light's on/off state. It is used for testing the correct functionality and fault detection of the brake light system.",
+  "uncertain_points": []
+}
+```

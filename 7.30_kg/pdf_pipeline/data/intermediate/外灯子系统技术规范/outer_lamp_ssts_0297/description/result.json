@@ -1,0 +1,59 @@
+{
+  "table_type": "logic_table",
+  "topic": "主远光灯控制逻辑",
+  "row_semantics": "表格按功能执行阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "表格分为两列，左侧为阶段描述，右侧为该阶段的具体内容或条件。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightCtrlMdl",
+      "type": "controller_module",
+      "description": "主远光灯控制模块，负责接收指令并下发控制命令。"
+    },
+    {
+      "name": "RMainBeamLightDrvMdl",
+      "type": "driver_module",
+      "description": "主远光灯驱动模块，负责实际的灯光输出驱动。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightFbkSOAEnPrm==1 (Enable)",
+      "type": "input_signal",
+      "description": "主远光灯反馈安全操作区域使能参数，值为1时表示启用。"
+    },
+    {
+      "name": "MainBeamLightCtrlReq == 1 (On) InstanceID=2",
+      "type": "input_signal",
+      "description": "主远光灯控制请求信号，值为1表示开启，实例ID为2。"
+    },
+    {
+      "name": "MainBeamLightCtrlReq == 0 (Off) InstanceID=2",
+      "type": "input_signal",
+      "description": "主远光灯控制请求信号，值为0表示关闭，实例ID为2。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamHdlmp_RH_HSD",
+      "type": "output_signal",
+      "description": "右远光灯输出信号，由驱动模块持续驱动。"
+    },
+    {
+      "name": "MainBeamLightState",
+      "type": "output_signal",
+      "description": "主远光灯状态信号，值为1表示开启。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "condition": "MainBeamLightCtrlReq == 1 (On) InstanceID=2",
+      "action": "至少发送三帧 MainBeamLightCtrlMdl",
+      "description": "当接收到开启请求时，需要至少发送三帧控制消息以确保可靠性。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了主远光灯从开启到关闭的完整控制逻辑，可用于验证车辆在不同控制请求下主远光灯的行为是否符合设计规范。",
+  "uncertain_points": []
+}

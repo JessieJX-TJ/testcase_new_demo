@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "转向灯输出异常检测功能被触发",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DILightFbkSOAEnPrm", "Enable"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯输出异常检测功能被触发",
+    "relation": "前提条件",
+    "tail": "右后转向灯处于输出状态",
+    "triple_type": "工程规则",
+    "evidence_terms": ["右后转向灯", "输出状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统执行发送错误信号动作",
+    "relation": "触发条件",
+    "tail": "转向灯输出异常检测功能被触发",
+    "triple_type": "工程规则",
+    "evidence_terms": ["RRDLightDrvMdl", "DirectionLightControl.DirectionLightSta", "DILightCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统置位故障代码",
+    "relation": "触发条件",
+    "tail": "转向灯输出异常检测功能被触发",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DTCCB104A_13"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RRDLightDrvMdl持续发送错误信号",
+    "relation": "输入为",
+    "tail": "DILightCtrlMdl",
+    "triple_type": "工程规则",
+    "evidence_terms": ["RRDLightDrvMdl", "DILightCtrlMdl", "DirectionLightControl.DirectionLightSta"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "置位DTCCB104A_13",
+    "relation": "故障响应",
+    "tail": "转向灯输出异常检测功能被触发",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DTCCB104A_13", "转向灯输出异常检测功能"],
+    "confidence_note": "high"
+  }
+]
+```

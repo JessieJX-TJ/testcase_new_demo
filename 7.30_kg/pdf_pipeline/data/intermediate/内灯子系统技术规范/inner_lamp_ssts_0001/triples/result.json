@@ -1,0 +1,72 @@
+[
+  {
+    "head": "氛围灯颜色切换动作被执行",
+    "relation": "触发条件",
+    "tail": "接收到氛围灯本地控制模块的颜色变化请求信号 DoorFL1LampColorCmd_l=0x00 (No Request) 变化为 != 0x00 (No Request)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFL1LampColorCmd_l",
+      "0x00",
+      "No Request",
+      "!= 0x00"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0001",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯处于开启状态",
+    "relation": "前提条件",
+    "tail": "氛围灯颜色切换动作被执行",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "氛围灯"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0001",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "[氛围灯驱动控制模块]按照色坐标切换对应颜色",
+    "relation": "依赖于",
+    "tail": "氛围灯处于开启状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "氛围灯驱动控制模块",
+      "色坐标"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0001",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "[氛围灯驱动控制模块]按照色坐标切换对应颜色",
+    "relation": "输入为",
+    "tail": "DoorFL1LampColorCmd_l 的变化信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorFL1LampColorCmd_l"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0001",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "查表对应色值的PWM驱动氛围灯切换对应颜色",
+    "relation": "包含子功能",
+    "tail": "[氛围灯驱动控制模块]按照色坐标切换对应颜色",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "PWM 驱动",
+      "查表"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0001",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  }
+]

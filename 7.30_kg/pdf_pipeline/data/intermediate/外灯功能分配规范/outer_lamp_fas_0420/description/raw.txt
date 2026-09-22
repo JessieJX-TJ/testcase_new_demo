@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "DIDs (Data Identifiers) Internal Parameter Data Identifiers for Front Fog Light Control Reason",
+  "row_semantics": "Each row represents a specific internal parameter data identifier related to the front fog light control reason.",
+  "column_semantics": {
+    "Short Name": "The short name of the data identifier, which is 'FrtFogLghtOpenCtrlRsn' in this case.",
+    "Description": "A brief description of the parameter, indicating it relates to the 'reason for front fog light opening'.",
+    "Value Table": "Lists the possible values and their corresponding meanings for the parameter. These values are hexadecimal codes that represent different reasons for the fog light to be turned on.",
+    "Default": "The default value for the parameter, which is '0x00'.",
+    "Remark": "Additional information about the parameter, such as how the data is stored and the significance of the most recent entry.",
+    "ECU": "The Electronic Control Unit responsible for this parameter, which is 'LHZ CU' (likely a specific module or controller in the vehicle's electronic system)."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FrtFogLghtOpenCtrlRsn",
+      "type": "parameter",
+      "description": "Internal parameter data identifier for the reason why the front fog light is being controlled to open."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FrtFogLghtOpenCtrlRsn_0_None",
+      "value": "0x00",
+      "description": "No specific reason for the fog light to be turned on."
+    },
+    {
+      "name": "FrtFogLghtOpenCtrlRsn_1_SOARequestOn",
+      "value": "0x01",
+      "description": "The fog light is turned on due to a Start-Of-Arrival (SOA) request."
+    },
+    {
+      "name": "FrtFogLghtOpenCtrlRsn_2_OtherReasons",
+      "value": "0x02",
+      "description": "The fog light is turned on for other unspecified reasons."
+    },
+    {
+      "name": "Reversed",
+      "value": "0x03~0xFF",
+      "description": "Reserved range for future use or other unspecified reasons."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the internal parameter data identifiers for tracking the reasons behind the activation of the front fog lights. It can be used to verify that the ECU correctly logs and stores the most recent 10 instances of fog light activation reasons, with the latest reason always placed at the top of the list.",
+  "uncertain_points": []
+}
+```

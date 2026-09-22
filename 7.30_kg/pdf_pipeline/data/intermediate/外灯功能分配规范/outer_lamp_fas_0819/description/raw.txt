@@ -1,0 +1,79 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 (Exterior lamp function)",
+  "row_semantics": "表格的每一行代表一个具体的外灯状态查询或订阅服务接口，分别针对左前转向灯和右前转向灯的状态。",
+  "column_semantics": {
+    "1": "功能模块名称 (DirectionLight. DirectionLightStatus)",
+    "2": "消费方 (SOA)",
+    "3": "控制器/模块名 (ICB)",
+    "4": "控制器/模块名 (LHZCU)",
+    "5": "网络状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "功能名",
+      "description": "外灯状态查询或订阅服务接口"
+    },
+    {
+      "name": "SOA",
+      "type": "控制器/模块名",
+      "description": "Service-Oriented Architecture，表示服务调用方"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "Integrated Control Board，集成控制板"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Local High-level Zone Control Unit，本地高层区域控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "参数名",
+      "description": "实例ID，用于区分不同的灯状态查询接口",
+      "values": [
+        {
+          "value": "5",
+          "description": "左前转向灯状态查询"
+        },
+        {
+          "value": "6",
+          "description": "右前转向灯状态查询"
+        }
+      ]
+    },
+    {
+      "name": "DirectionLightSta",
+      "type": "参数名",
+      "description": "转向灯状态参数",
+      "values": [
+        {
+          "value": "0x0=OFF",
+          "description": "灯关闭"
+        },
+        {
+          "value": "0x1=ON",
+          "description": "灯开启"
+        },
+        {
+          "value": "0x2=Unknown",
+          "description": "状态未知"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯转向灯状态的查询和订阅接口，可用于验证车辆在不同状态下（如左转、右转）转向灯是否能正确上报其状态（OFF, ON, Unknown），以及相关控制器（SOA, ICB, LHZCU）之间的通信是否正常。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,57 @@
+{
+  "table_type": "signal_table",
+  "topic": "Exterior Light Control System Requirements",
+  "row_semantics": "Each row represents a specific control or status condition related to the exterior lighting system, including signal conversions, timing delays, and fault feedback.",
+  "column_semantics": "The table does not have explicit columns; instead, each row contains a detailed description of a specific requirement or condition involving various parameters and instances.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB (Integrated Control Box)",
+    "LHZCU/RHZCU/RZCU (Driving Modules)",
+    "DirectionLightCtrlDelayPrm (Turn Signal Delay Parameter)",
+    "ExteriorLightSwitchProcess",
+    "DircnLightFucProStatus",
+    "DirectionLightModeStatus"
+  ],
+  "core_conditions": [
+    "ExternalLightSwitchProcess",
+    "DircnLightFucProStatus",
+    "DirectionLightModeStatus",
+    "InstanceID",
+    "DirectionLightReq",
+    "DirectionLightSta",
+    "DirectionLightFlits_HW",
+    "DirectionLightErrorSta"
+  ],
+  "core_outputs": [
+    "FLDirenLightCtrl_HW",
+    "FRDirenLightCtrl_HW",
+    "RLDirenLightCtrl_HW",
+    "RRDirenLightCtrl_HW",
+    "FLDirenLightSts_HW",
+    "FRDirenLightSts_HW",
+    "RLDirenLightSts_HW",
+    "RRDirenLightSts_HW",
+    "FLDirenLightFlits_HW",
+    "FRDirenLightFlits_HW",
+    "RLDirenLightFlits_HW",
+    "RRDirenLightFlits_HW",
+    "FLDirenLightErrorSta",
+    "FRDirenLightErrorSta",
+    "RLDirenLightErrorSta",
+    "RRDirenLightErrorSta"
+  ],
+  "core_faults": [
+    "DirectionLightFlits_HW_0_False",
+    "DirectionLightErrorSta"
+  ],
+  "core_timing_constraints": [
+    "50ms Cycle",
+    "60ms Delay for Remote Control Command"
+  ],
+  "engineering_interpretation": "This table defines the requirements for controlling and monitoring the exterior lighting system, including signal conversions between ICB and driving modules, timing delays for remote commands, and fault detection mechanisms. It is used to verify that the system correctly handles turn signals, double flash indicators, and fault conditions according to specified parameters.",
+  "uncertain_points": [
+    "The exact configuration of DirectionLightCtrlDelayPrm is not fully detailed in the image.",
+    "The specific implementation details of the ICB service interface are not provided."
+  ]
+}

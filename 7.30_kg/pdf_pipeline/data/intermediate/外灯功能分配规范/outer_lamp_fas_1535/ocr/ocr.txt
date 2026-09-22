@@ -1,0 +1,22 @@
+触发动作
+用户点击日行灯开关关闭或开启
+执行动作
+1、外灯组合服务ICB调用
+{ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq}=0x0=OFF(或
+0x1=On)
+2、[外灯组合服务ICB]通过接口请求LHZCU:
+Setter:
+{ExteriorLightSwitchProcess. DayRunningLightFucProStatus.
+DayRunningLghtFucProsSta}=0x0=OFF(或0x1=On)
+3、LHZCU控制执行日行灯关闭/开启
+4、LHZCU根据日行灯控制仲裁状态:{ExteriorLightSwitchProcess.
+DayRunningLightFucProStatus. DayRunningLghtFucProsSta}=0x0=OFF(或0x1=On)
+同步设置日行灯开关状态:
+备注
+1、ICB_8295日行灯光请求重发机制:
+ICB 发送组合灯光请求
+ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq,如超时
+2s 未
+ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightResp=0x0=Cont
+rolSuccess的反馈,且请求状态未变,应尝试按照<=50ms周期重发3次；尝试重发
+3次后仍未反馈请求成功,则停止发送

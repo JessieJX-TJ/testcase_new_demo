@@ -1,0 +1,450 @@
+[
+  {
+    "head": "系统唤醒/休眠方式",
+    "relation": "触发条件",
+    "tail": "唤醒源为NA",
+    "sources": [
+      "inner_lamp_ssts_0495"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头呼吸闪烁行为",
+    "relation": "前提条件",
+    "tail": "呼吸模式已启用",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "呼吸闪烁停止",
+    "relation": "触发条件",
+    "tail": "指令值为0",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "呼吸模式切换",
+    "relation": "触发条件",
+    "tail": "不同呼吸模式切换时",
+    "sources": [
+      "inner_lamp_ssts_0496",
+      "inner_lamp_ssts_0499",
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPBLampFadeSpdCmd_1命令执行",
+    "relation": "依赖于",
+    "tail": "输入来源：LIN / RHZCU / UpIPAmbtLampB / RHZCU_LIN5",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯渐变速度指令",
+    "relation": "依赖于",
+    "tail": "氛围灯渐变速度指令信号",
+    "sources": [
+      "inner_lamp_ssts_0496",
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPCLampOnOff_1命令执行",
+    "relation": "依赖于",
+    "tail": "输入来源：LIN / RHZCU / UpIPAmbtLampC / RHZCU_LIN5",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯开启请求",
+    "relation": "前提条件",
+    "tail": "接收到非0值的颜色亮度指令",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPCLampColorCmd_1命令执行",
+    "relation": "依赖于",
+    "tail": "输入来源：LIN / RHZCU / UpIPAmbtLampC / RHZCU_LIN5",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头颜色切换",
+    "relation": "前提条件",
+    "tail": "氛围灯颜色指令有效",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头颜色切换",
+    "relation": "抑制条件",
+    "tail": "指令值为0或未定义颜色号",
+    "sources": [
+      "inner_lamp_ssts_0496",
+      "inner_lamp_ssts_0497"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPCLampBrtnsCmd_1命令执行",
+    "relation": "依赖于",
+    "tail": "输入来源：LIN / RHZCU / UpIPAmbtLampC / RHZCU_LIN5",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯颜色切换",
+    "relation": "触发条件",
+    "tail": "RoofLHALampColorCmd_1信号由0x00变为非0x00",
+    "sources": [
+      "inner_lamp_ssts_0497"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "RoofLHALampOnOff_1信号值为0x0",
+    "sources": [
+      "inner_lamp_ssts_0497"
+    ],
+    "conflict": true,
+    "conflict_note": "与'抑制条件'语义冲突：同一条件（RoofLHALampOnOff_1=0x0）在同文档中既被定义为触发关闭，又被定义为抑制关闭；需确认逻辑意图（是否应为'使能禁止'而非'触发关闭'）"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "抑制条件",
+    "tail": "RoofLHALampOnOff_1信号值为0x0",
+    "sources": [
+      "inner_lamp_ssts_0497"
+    ],
+    "conflict": true,
+    "conflict_note": "与'触发条件'语义冲突：同一条件（RoofLHALampOnOff_1=0x0）在同文档中既被定义为触发关闭，又被定义为抑制关闭；需确认逻辑意图（是否应为'使能禁止'而非'触发关闭'）"
+  },
+  {
+    "head": "氛围灯颜色保持不变",
+    "relation": "抑制条件",
+    "tail": "RoofLHALampColorCmd_1信号值为0x00或未定义颜色号",
+    "sources": [
+      "inner_lamp_ssts_0497"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯颜色切换",
+    "relation": "依赖于",
+    "tail": "RoofLHALampColorCmd_1信号值",
+    "sources": [
+      "inner_lamp_ssts_0497"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "依赖于",
+    "tail": "RoofLHALampOnOff_1信号值",
+    "sources": [
+      "inner_lamp_ssts_0497"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯状态维持",
+    "relation": "故障响应",
+    "tail": "RoofLHALampColorCmd_1信号异常",
+    "sources": [
+      "inner_lamp_ssts_0497"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯系统使能",
+    "relation": "触发条件",
+    "tail": "供电电压正常（9V～16V）",
+    "sources": [
+      "inner_lamp_ssts_0498",
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯系统禁止",
+    "relation": "前提条件",
+    "tail": "供电电压异常",
+    "sources": [
+      "inner_lamp_ssts_0498",
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": "已合并低压(＜6V)、欠压(6V～9V)、过压(16V～18V)、高压(＞18V)四类异常区间为统一术语'供电电压异常'"
+  },
+  {
+    "head": "外灯系统禁止",
+    "relation": "输入为",
+    "tail": "供电电压异常",
+    "sources": [
+      "inner_lamp_ssts_0498",
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": "已合并低压(＜6V)、欠压(6V～9V)、过压(16V～18V)、高压(＞18V)四类异常区间为统一术语'供电电压异常'"
+  },
+  {
+    "head": "氛围灯呼吸控制执行",
+    "relation": "触发条件",
+    "tail": "UpIPALampBrthngCmd_1 ≠ 0x0（No Request）且 AmbtLghtRHRollingCtr_1有效",
+    "sources": [
+      "inner_lamp_ssts_0499"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯亮度控制",
+    "relation": "依赖于",
+    "tail": "UpIPALampBrtnsCmd_1信号",
+    "sources": [
+      "inner_lamp_ssts_0499"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "停止当前呼吸模式",
+    "relation": "触发条件",
+    "tail": "不同呼吸模式切换时",
+    "sources": [
+      "inner_lamp_ssts_0499",
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPALampBrthngCmd_1呼吸指令信号",
+    "relation": "包含子功能",
+    "tail": "0%-100%跳变调节（对应0x1：Rate1, 500ms）",
+    "sources": [
+      "inner_lamp_ssts_0499"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPALampBrthngCmd_1呼吸指令信号",
+    "relation": "包含子功能",
+    "tail": "0%-100%渐变调节（对应0x2：Rate2, 1s）",
+    "sources": [
+      "inner_lamp_ssts_0499"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯呼吸模式（500ms周期）",
+    "relation": "输入为",
+    "tail": "UpIPALampBrthngCmd_1 = 0x1",
+    "sources": [
+      "inner_lamp_ssts_0499"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯呼吸模式（1s周期）",
+    "relation": "输入为",
+    "tail": "UpIPALampBrthngCmd_1 = 0x2",
+    "sources": [
+      "inner_lamp_ssts_0499"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯子系统（Interior Lighting Sub System）",
+    "relation": "控制对象",
+    "tail": "Z-ONE-3.0 Platform-SSTS-IBD10",
+    "sources": [
+      "inner_lamp_ssts_0500"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR6LampFadeSpdCmd_1功能",
+    "relation": "触发条件",
+    "tail": "RHZCU_LIN4输入信号为有效值（0x0～0x3）",
+    "sources": [
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR6LampFadeSpdCmd_1功能",
+    "relation": "抑制条件",
+    "tail": "指令值为0",
+    "sources": [
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR6LampFadeSpdCmd_1输出",
+    "relation": "输出为",
+    "tail": "DoorAmbtLampF_RR信号",
+    "sources": [
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头闪烁行为",
+    "relation": "依赖于",
+    "tail": "呼吸周期指令",
+    "sources": [
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头闪烁行为",
+    "relation": "超时约束",
+    "tail": "呼吸模式下忽略亮度信号",
+    "sources": [
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯渐变速度指令",
+    "relation": "输入为",
+    "tail": "LIN总线信号",
+    "sources": [
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "渐变速度Spd0",
+    "relation": "状态保持条件",
+    "tail": "默认响应时间：2000ms",
+    "sources": [
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "渐变速度Spd1",
+    "relation": "状态保持条件",
+    "tail": "响应时间：300ms",
+    "sources": [
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "渐变速度Spd2",
+    "relation": "状态保持条件",
+    "tail": "响应时间：100ms（能力预留）",
+    "sources": [
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "渐变速度Spd3",
+    "relation": "状态保持条件",
+    "tail": "响应时间：预留（0）",
+    "sources": [
+      "inner_lamp_ssts_0501"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统功能使能",
+    "relation": "前提条件",
+    "tail": "供电电压正常（9V～16V）",
+    "sources": [
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统功能禁止",
+    "relation": "抑制条件",
+    "tail": "供电电压异常",
+    "sources": [
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": "已合并低压(＜6V)、欠压(6V～9V)、过压(16V～18V)、高压(＞18V)四类异常区间为统一术语'供电电压异常'"
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输出为",
+    "tail": "橙色光（Parameter Code = 213）",
+    "sources": [
+      "inner_lamp_ssts_0503"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "output as",
+    "tail": "橙红色光（Parameter Code = 214）",
+    "sources": [
+      "inner_lamp_ssts_0503"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

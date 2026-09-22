@@ -1,0 +1,444 @@
+```json
+[
+  {
+    "head": "LHZCU 将远光灯开关状态反馈至 ICB",
+    "relation": "触发条件",
+    "tail": "MainBeamLghtSwSts = 0x0 (MainBeamLghtSwSts_0_Off)",
+    "sources": ["outer_lamp_fas_1382"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯熄灭",
+    "relation": "超时约束",
+    "tail": "左侧和右侧远光灯需在 40 ms 内同步熄灭",
+    "sources": ["outer_lamp_fas_1382"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "S32G 收到 [大屏开关请求 ICB] 输入",
+    "sources": ["outer_lamp_fas_1383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "exlRearFoglghtPrm = 0 (大屏开关)",
+    "sources": ["outer_lamp_fas_1383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "S32G 收到 [七键开关请求 IFP] 输入跳变",
+    "sources": ["outer_lamp_fas_1383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "exlRearFoglghtPrm = 1 (物理开关)",
+    "sources": ["outer_lamp_fas_1383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯关闭",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta = 0x0 (OFF)",
+    "sources": ["outer_lamp_fas_1383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制组合服务 ICB 调用成功",
+    "relation": "前提条件",
+    "tail": "RearFogLightFucProCtrl.RearFogLightFucProCtrlReq = 0x1 (ON)",
+    "sources": ["outer_lamp_fas_1383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯状态为开启",
+    "relation": "前提条件",
+    "tail": "DippedBeamLight.DippedBeamLightStatus.DippedBeamLightSta (InstanceID=3 or 4) = 0x1 (ON)",
+    "sources": ["outer_lamp_fas_1383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯状态为开启",
+    "relation": "前提条件",
+    "tail": "CombLghtFucProStatus.CombLghtFucProSta ∈ {0x2 (Only DippedBeamLight ON), 0x4 (SidePositionAndDippedBeam ON)}",
+    "sources": ["outer_lamp_fas_1383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "依赖于",
+    "tail": "近光灯状态为开启",
+    "sources": ["outer_lamp_fas_1383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制组合服务 ICB 调用接口",
+    "relation": "输出为",
+    "tail": "RearFogLightFucProCtrl.RearFogLightFucProCtrlResp = 0x0 (ControlSuccess)",
+    "sources": ["outer_lamp_fas_1383"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开关控制",
+    "relation": "前提条件",
+    "tail": "车辆模式 ∈ {Engineering, NormalDriving, SmartParking, AutonomousDriving, XOTA, ShowCar, Collision, NormalOperation, Maintenance}",
+    "sources": ["outer_lamp_fas_1384"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关控制",
+    "relation": "前提条件",
+    "tail": "车辆模式 ∈ {Engineering, NormalDriving, SmartParking, AutonomousDriving, Transportation, RollerTest, ShowCar, Collision, NormalOperation, Maintenance}",
+    "sources": ["outer_lamp_fas_1384"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开关控制",
+    "relation": "前提条件",
+    "tail": "车辆模式 ∈ {Engineering, NormalDriving, SmartParking, AutonomousDriving, Transportation, RollerTest, ShowCar, Collision, NormalOperation, Maintenance}",
+    "sources": ["outer_lamp_fas_1384"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯开关控制",
+    "relation": "前提条件",
+    "tail": "车辆模式 ∈ {Engineering, NormalDriving, SmartParking, AutonomousDriving, Transportation, RollerTest, ShowCar, Collision, NormalOperation, Maintenance}",
+    "sources": ["outer_lamp_fas_1384"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开关控制",
+    "relation": "前提条件",
+    "tail": "车辆模式 ∈ {Engineering, NormalDriving, SmartParking, AutonomousDriving, Transportation, RollerTest, ShowCar, Collision, NormalOperation, Maintenance}",
+    "sources": ["outer_lamp_fas_1384"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开关控制",
+    "relation": "抑制条件",
+    "tail": "车辆模式 ∈ {Sleep, Standby, Comfort}",
+    "sources": ["outer_lamp_fas_1384"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关控制",
+    "relation": "抑制条件",
+    "tail": "车辆模式 ∈ {Sleep, Standby, Comfort}",
+    "sources": ["outer_lamp_fas_1384"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开关控制",
+    "relation": "抑制条件",
+    "tail": "车辆模式 ∈ {Sleep, Standby, Comfort}",
+    "sources": ["outer_lamp_fas_1384"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯开关控制",
+    "relation": "抑制条件",
+    "tail": "车辆模式 ∈ {Sleep, Standby, Comfort}",
+    "sources": ["outer_lamp_fas_1384"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开关控制",
+    "relation": "抑制条件",
+    "tail": "车辆模式 ∈ {Sleep, Standby, Comfort}",
+    "sources": ["outer_lamp_fas_1384"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "获取左后位置灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用 SidePositionLight.SidePositionLightErrorStatus 服务接口",
+    "sources": ["outer_lamp_fas_1385", "outer_lamp_fas_1692"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "获取右后位置灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用 SidePositionLight.SidePositionLightErrorStatus 服务接口",
+    "sources": ["outer_lamp_fas_1385", "outer_lamp_fas_1692"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorSta = 0x1",
+    "relation": "输出为",
+    "tail": "存在侧位灯错误状态",
+    "sources": ["outer_lamp_fas_1385"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorSta = 0x2",
+    "relation": "输出为",
+    "tail": "侧位灯状态未知",
+    "sources": ["outer_lamp_fas_1385"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorSta = 0x0",
+    "relation": "输出为",
+    "tail": "无侧位灯错误",
+    "sources": ["outer_lamp_fas_1385"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外部智能场景功能调用外灯灯光控制",
+    "relation": "触发条件",
+    "tail": "外部功能",
+    "sources": ["outer_lamp_fas_1388"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外部智能场景功能调用外灯灯光控制",
+    "relation": "控制对象",
+    "tail": "外灯对应控制接口",
+    "sources": ["outer_lamp_fas_1388"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车制动灯点亮",
+    "relation": "触发条件",
+    "tail": "TDM 接收到 TrlrBrkLghtOnReq = 0x1 (TrlrBrkLghtOnReq_1_On)",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车制动灯熄灭",
+    "relation": "触发条件",
+    "tail": "TDM 接收到 TrlrBrkLghtOnReq = 0x0 (TrlrBrkLghtOnReq_0_Off)",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车制动灯状态反馈",
+    "relation": "输出为",
+    "tail": "TrlrBrkLghtSts ∈ {0x1 (TrlrBrkLghtSts_1_On), 0x0 (TrlrBrkLghtSts_0_Off)}",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车制动灯故障状态反馈",
+    "relation": "输出为",
+    "tail": "TrlrBrkLghtFltSts ∈ {0x1 (TrlrBrkLghtFltSts_1_True), 0x0 (TrlrBrkLghtFltSts_0_False)}",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB 接收制动灯状态",
+    "relation": "依赖于",
+    "tail": "LHZCU 判断前置条件满足且结合拖车制动灯状态反馈",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 ICB 透传制动灯状态",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.BrakeLightSts ∈ {ON, OFF}",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯组合服务 ICB 透传制动灯错误状态",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.BrakeLightErrSts = NoError",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车制动灯点亮",
+    "relation": "抑制条件",
+    "tail": "RZCU 检测到前车制动灯故障状态 BrkLghtFltSta = 0x1 (BrkLghtFltSta_1_True)",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车制动灯熄灭",
+    "relation": "抑制条件",
+    "tail": "RZCU 检测到前车制动灯故障状态 BrkLghtFltSta = 0x0 (BrkLghtFltSta_0_False)",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车制动灯状态反馈给 TDM",
+    "relation": "输入为",
+    "tail": "BrkFltSts ∈ {0x1 (BrkFltSts_1_True), 0x0 (BrkFltSts_0_False)}",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车制动灯故障状态",
+    "relation": "诊断关联",
+    "tail": "TrlrBrkLghtFltSts ∈ {0x1 (TrlrBrkLghtFltSts_1_True), 0x0 (TrlrBrkLghtFltSts_0_False)}",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车制动灯状态",
+    "relation": "诊断关联",
+    "tail": "TrlrBrkLghtSts ∈ {0x1 (TrlrBrkLghtSts_1_On), 0x0 (TrlrBrkLghtSts_0_Off)}",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车制动灯点亮",
+    "relation": "复位条件",
+    "tail": "TDM 检测到与 RZCU CAN 通讯链路故障",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "拖车制动灯熄灭",
+    "relation": "复位条件",
+    "tail": "TDM 检测到与 RZCU CAN 通讯链路故障",
+    "sources": ["outer_lamp_fas_1389"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯全链路通讯方式",
+    "relation": "前提条件",
+    "tail": "外灯组合服务除外",
+    "sources": ["outer_lamp_fas_1391"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯全链路通讯方式",
+    "relation": "前提条件",
+    "tail": "外灯组合服务除外",
+    "sources": ["outer_lamp_fas_1391"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯基础服务",
+    "relation": "包含子功能",
+    "tail": "Dipped Beam Light 控制逻辑变更",
+    "sources": ["outer_lamp_fas_1391"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯模式切换",
+    "relation": "前提条件",
+    "tail": "展厅模式 PRD",
+    "sources": ["outer_lamp_fas_1391"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险告警灯开启模式",
+    "relation": "前提条件",
+    "tail": "尾门系统输入",
+    "sources": ["outer_lamp_fas_1391"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯自动退出逻辑",
+    "relation": "前提条件",
+    "tail": "1.0 项目策略",
+    "sources": ["outer_lamp_fas_1391"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险告警灯优先级关系",
+    "relation": "前提条件",
+    "tail": "法规要求",
+    "sources": ["outer_lamp_fas_1391"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "紧急制动灯 ON/OFF 周期调用异常",
+    "relation": "故障响应",
+    "tail": "尝试重发 3 次",
+    "sources": ["outer_lamp_fas_1391"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯请求发送未收到反馈",
+    "relation": "故障响应",
+    "tail": "尝试重发 3 次",
+    "sources": ["outer_lamp_fas_1391"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI 子系统显示位置灯和近光灯故障弹窗",
+    "relation": "触发条件",
+    "tail": "ExteriorLightSwitchProcess.DippedBeamLightErrSta.DipdBeamLghtErrSta = 0x1 (Error)",
+    "sources": ["outer_lamp_fas_1392"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI 子系统订阅位置灯和近光灯服务接口或 CAN 信号",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.DippedBeamLightErrSta.DipdBeamLghtErrSta = 0x1 (Error)",
+    "sources": ["outer_lamp_fas_1392"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯故障",
+    "relation": "诊断关联",
+    "tail": "ExteriorLightSwitchProcess.DippedBeamLightErrSta.DipdBeamLghtErrSta = 0x1 (Error)",
+    "sources": ["outer_lamp_fas_1392"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

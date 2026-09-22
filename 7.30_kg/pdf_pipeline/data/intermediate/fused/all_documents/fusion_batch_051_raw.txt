@@ -1,0 +1,500 @@
+```json
+[
+  {
+    "head": "SidePositionLightErrorSta",
+    "relation": "outputs",
+    "tail": "SidePositionLightErrorStatus",
+    "sources": ["outer_lamp_fas_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorSta",
+    "relation": "has_value",
+    "tail": "No Error",
+    "sources": ["outer_lamp_fas_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorSta",
+    "relation": "has_value",
+    "tail": "Error",
+    "sources": ["outer_lamp_fas_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorSta",
+    "relation": "has_value",
+    "tail": "Unknown",
+    "sources": ["outer_lamp_fas_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to_gear_state",
+    "tail": "Park (0x1_Park_Range)",
+    "sources": ["outer_lamp_fas_0541"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to_gear_state",
+    "tail": "Reverse (0x2_Reverse_Range)",
+    "sources": ["outer_lamp_fas_0541"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to_gear_state",
+    "tail": "Neutral (0x3_Neutral_Range)",
+    "sources": ["outer_lamp_fas_0541"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to_gear_state",
+    "tail": "Forward_A (0x4_Forward_Range_A)",
+    "sources": ["outer_lamp_fas_0541"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPosV",
+    "relation": "indicates_validity_of",
+    "tail": "TrShftLvrPos",
+    "sources": ["outer_lamp_fas_0541"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPosV",
+    "relation": "has_value",
+    "tail": "Valid (0x0_Valid)",
+    "sources": ["outer_lamp_fas_0541"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPosV",
+    "relation": "has_value",
+    "tail": "Invalid (0x1_Invalid)",
+    "sources": ["outer_lamp_fas_0541"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtCtrl",
+    "relation": "activates_when",
+    "tail": "TrShftLvrPos = 0x2_Reverse_Range",
+    "sources": ["outer_lamp_fas_0541"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtCtrl",
+    "relation": "deactivates_when",
+    "tail": "TrShftLvrPos ≠ 0x2_Reverse_Range",
+    "sources": ["outer_lamp_fas_0541"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLight",
+    "relation": "deactivation_prerequisite",
+    "tail": "FrontFogLight is currently active",
+    "sources": ["outer_lamp_fas_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLight",
+    "relation": "deactivation_suppression_condition",
+    "tail": "[1&2]||[3&4]||5||6||7:",
+    "sources": ["outer_lamp_fas_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLight",
+    "relation": "deactivation_dependency",
+    "tail": "UsgMd ∈ {0x0_Sleep, 0x1_Standby, 0x2_Comfortable, 0x6_XOTA}",
+    "sources": ["outer_lamp_fas_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLight",
+    "relation": "deactivation_dependency",
+    "tail": "VehMd = 0x3_TRANSPORT",
+    "sources": ["outer_lamp_fas_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLight",
+    "relation": "deactivation_dependency",
+    "tail": "ExteriorLightSwitchProcess.CombLightFucProStatus = 0x0_ALL_OFF",
+    "sources": ["outer_lamp_fas_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunction",
+    "relation": "activation_prerequisite",
+    "tail": "UsgMd = 0x2_Comfortable",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunction",
+    "relation": "activation_prerequisite",
+    "tail": "VehMd = 0x1_NORMAL_MAINTENANCE",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BodyControlFunction",
+    "relation": "activation_prerequisite",
+    "tail": "UsgMd = 0x1_NormalDriving",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BodyControlFunction",
+    "relation": "activation_prerequisite",
+    "tail": "VehMd = 0x0_ENGINEERING",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PowerTailgateFunction",
+    "relation": "activation_prerequisite",
+    "tail": "UsgMd = 0x5_SmartParking",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PowerTailgateFunction",
+    "relation": "activation_prerequisite",
+    "tail": "VehMd = 0x3_TRANSPORT",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunction",
+    "relation": "suppression_condition",
+    "tail": "UsgMd = 0x0_Sleep",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunction",
+    "relation": "suppression_condition",
+    "tail": "VehMd = 0x0_ENGINEERING",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BodyControlFunction",
+    "relation": "suppression_condition",
+    "tail": "UsgMd = 0x1_Standby",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BodyControlFunction",
+    "relation": "suppression_condition",
+    "tail": "VehMd = 0x4_FACTORY",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PowerTailgateFunction",
+    "relation": "suppression_condition",
+    "tail": "UsgMd = 0x4_AutonomousDriving",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PowerTailgateFunction",
+    "relation": "suppression_condition",
+    "tail": "VehMd = 0x5_ROLLOUT",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunction",
+    "relation": "timed_activation_prerequisite",
+    "tail": "UsgMd = 0x0_ENGINEERING",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunction",
+    "relation": "timed_activation_prerequisite",
+    "tail": "VehMd = 0x3_TRANSPORT",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BodyControlFunction",
+    "relation": "mutually_exclusive_with",
+    "tail": "VehMd = 0x5_ROLLOUT",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PowerTailgateFunction",
+    "relation": "mutually_exclusive_with",
+    "tail": "VehMd = 0x2_COLLISION",
+    "sources": ["outer_lamp_fas_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlCombinedLight",
+    "relation": "activation_trigger",
+    "tail": "CombinedLightReq ∈ {0x1_SidePositionLight_ON, 0x2_DippedBeamLight_ON, 0x3_AUTO}",
+    "sources": ["outer_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlRearFogLight",
+    "relation": "activation_trigger",
+    "tail": "RearFogLightReq = 0x1_ON",
+    "sources": ["outer_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlCombinedLight",
+    "relation": "deactivation_trigger",
+    "tail": "CombinedLightReq = 0x0_OFF",
+    "sources": ["outer_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlRearFogLight",
+    "relation": "deactivation_trigger",
+    "tail": "RearFogLightReq = 0x0_OFF",
+    "sources": ["outer_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlCombinedLight",
+    "relation": "depends_on_service",
+    "tail": "SOA",
+    "sources": ["outer_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlRearFogLight",
+    "relation": "depends_on_service",
+    "tail": "SOA",
+    "sources": ["outer_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlCombinedLight",
+    "relation": "controls",
+    "tail": "SidePositionLight, DippedBeamLight, AutoLight",
+    "sources": ["outer_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlRearFogLight",
+    "relation": "controls",
+    "tail": "RearFogLight",
+    "sources": ["outer_lamp_fas_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlRoofSpotLight",
+    "relation": "deactivation_trigger",
+    "tail": "RoofSpotLightReq = 0x0_OFF",
+    "sources": ["outer_lamp_fas_0549"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlRoofSpotLight",
+    "relation": "activation_trigger",
+    "tail": "RoofSpotLightReq = 0x1_ON",
+    "sources": ["outer_lamp_fas_0549"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlRoofSpotLight",
+    "relation": "input_source",
+    "tail": "RTE interface signal RoofSpotLightReq",
+    "sources": ["outer_lamp_fas_0549"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LDipdBeamLghtCtrl_HW",
+    "relation": "activation_trigger",
+    "tail": "LDipdBeamLghtCtrl_HW_1_On",
+    "sources": ["outer_lamp_fas_0550"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LDipdBeamLghtCtrl_HW",
+    "relation": "deactivation_trigger",
+    "tail": "LDipdBeamLghtCtrl_HW_0_Off",
+    "sources": ["outer_lamp_fas_0550"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RDipdBeamLghtCtrl_HW",
+    "relation": "activation_trigger",
+    "tail": "RDipdBeamLghtCtrl_HW_1_On",
+    "sources": ["outer_lamp_fas_0550"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RDipdBeamLghtCtrl_HW",
+    "relation": "deactivation_trigger",
+    "tail": "RDipdBeamLghtCtrl_HW_0_Off",
+    "sources": ["outer_lamp_fas_0550"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LDipdBeamLghtCtrl_HW",
+    "relation": "output_target",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0550"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RDipdBeamLghtCtrl_HW",
+    "relation": "output_target",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_fas_0550"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LDipdBeamLghtSts",
+    "relation": "output_target",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0550"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LDipdBeamLghtCtrl_HW",
+    "relation": "depends_on_bus_or_service",
+    "tail": "CAN/LIN/SOA/Hardwire",
+    "sources": ["outer_lamp_fas_0550"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RDipdBeamLghtCtrl_HW",
+    "relation": "depends_on_bus_or_service",
+    "tail": "CAN/LIN/SOA/Hardwire",
+    "sources": ["outer_lamp_fas_0550"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.DippedBeamLightSts",
+    "relation": "invocation_trigger",
+    "tail": "Read DipdBeamLightSts parameter",
+    "sources": ["outer_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.DippedBeamLightSta",
+    "relation": "invocation_trigger",
+    "tail": "Read DipdBeamLightSta parameter",
+    "sources": ["outer_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DipdBeamLightSts",
+    "relation": "has_values",
+    "tail": "0x0_OFF; 0x1_ON; 0x2_Unknown",
+    "sources": ["outer_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DipdBeamLightSta",
+    "relation": "has_values",
+    "tail": "0x0_OFF; 0x1_ON; 0x2_Unknown",
+    "sources": ["outer_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.DippedBeamLightSts",
+    "relation": "depends_on_service_type",
+    "tail": "SOA consumer",
+    "sources": ["outer_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.DippedBeamLightSta",
+    "relation": "depends_on_service_type",
+    "tail": "SOA consumer",
+    "sources": ["outer_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.DippedBeamLightSta",
+    "relation": "depends_on_controller",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0551"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrorSta",
+    "relation": "maps_to_interface",
+    "tail": "SidePositionLightErrorStatus",
+    "sources": ["outer_lamp_fas_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

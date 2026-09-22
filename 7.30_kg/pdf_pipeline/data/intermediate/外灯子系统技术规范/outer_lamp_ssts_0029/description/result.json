@@ -1,0 +1,64 @@
+{
+  "table_type": "fault_table",
+  "topic": "右前转向灯输出异常检测与处理",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件、触发条件、执行动作、退出条件到异常处理。",
+  "column_semantics": "两列结构，左侧为条件/动作描述，右侧为具体参数或状态定义。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "DILghtFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "方向灯反馈SOA使能参数"
+    },
+    {
+      "name": "FRDILghtDrvMdl",
+      "type": "module",
+      "description": "右前方向灯驱动模块"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "module",
+      "description": "方向灯控制模块"
+    },
+    {
+      "name": "DTCB104A13",
+      "type": "fault_code",
+      "description": "特定故障代码"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILghtFbkSOAEnPrm == 1 (Enable)",
+      "description": "方向灯反馈SOA使能参数必须为启用状态"
+    },
+    {
+      "condition": "右前转向灯处于输出状态",
+      "description": "系统检测到右前转向灯正在输出信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "【FRDILghtDrvMdl】持续发送 DirectionLightControl. DirectionLightSta ==2 (Error) 至【DILghtCtrlMdl】",
+      "description": "驱动模块持续发送错误状态至控制模块"
+    },
+    {
+      "output": "置位 DTC B104A13",
+      "description": "设置特定的故障代码以记录错误"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "DTC B104A13",
+      "description": "右前转向灯输出异常故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "错误状态信号需要连续发送至少三帧以确认故障"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在特定条件下（如方向灯使能且右前转向灯输出），系统如何检测并处理转向灯输出异常的故障逻辑，包括发送错误信号和设置故障代码。",
+  "uncertain_points": []
+}

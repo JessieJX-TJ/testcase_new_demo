@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯个性化服务接口规范",
+  "row_semantics": "表格的每一行代表一个具体的接口定义，描述了该接口的功能、数据类型、通信方式及参数信息。",
+  "column_semantics": {
+    "Interface Name": "接口名称，需与逻辑框图内容一致。",
+    "Direction": "数据流向，如输入/输出、提供/消费。",
+    "Type": "接口类型，如CAN/LIN/SOA服务或硬线等。",
+    "Sender/Provider": "信号发送方或SoA服务提供方。",
+    "Receiver/Consumer": "信号接收方或SoA服务消费方。",
+    "Channel": "路径通道，指定信号通道。",
+    "Source": "接口来源，指定信号来源。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "PersonalizationData.MapLampSet",
+      "type": "功能名",
+      "description": "组合服务，用于读取灯个性化服务，控制灯随门动使能开关。"
+    },
+    {
+      "name": "MapLampSet",
+      "type": "控制器/模块名",
+      "description": "执行灯随门动功能的控制器模块。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MapLampSetInfo",
+      "type": "输入信号",
+      "description": "控制灯随门动功能的参数信息，包含启用、禁用和无效三种状态。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证外灯个性化服务中灯随门动功能的接口参数配置是否正确，包括参数值（Enabled/Disabled/Invalid）的设置及其在系统中的传递路径。",
+  "uncertain_points": [
+    "具体信号通道的详细定义未明确说明。",
+    "接口来源的具体实现细节未在表格中体现。"
+  ]
+}
+```

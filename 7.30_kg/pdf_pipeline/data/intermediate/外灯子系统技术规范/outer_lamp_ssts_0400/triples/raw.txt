@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "右制动灯短路故障诊断功能被触发",
+    "relation": "触发条件",
+    "tail": "检测到右制动灯短路到电源",
+    "triple_type": "逻辑规则",
+    "evidence_terms": ["触发条件", "检测到右制动灯短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯驱动模块停止驱动右制动灯",
+    "relation": "执行动作",
+    "tail": "BrkLamp_RH_HSD",
+    "triple_type": "输入输出关系",
+    "evidence_terms": ["执行动作", "BrkLamp_RH_HSD"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制模块持续发送错误状态",
+    "relation": "执行动作",
+    "tail": "BrakeLightState.BrakeLightSta = 2 (Error)",
+    "triple_type": "输入输出关系",
+    "evidence_terms": ["执行动作", "BrakeLightState.BrakeLightSta = 2 (Error)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统置位故障代码DTCB104212",
+    "relation": "执行动作",
+    "tail": "DTCB104212",
+    "triple_type": "故障响应",
+    "evidence_terms": ["执行动作", "DTCB104212"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右制动灯短路故障诊断功能退出",
+    "relation": "退出条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "逻辑规则",
+    "evidence_terms": ["退出条件", "检测到短路恢复"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯驱动模块停止驱动右制动灯",
+    "relation": "前提条件",
+    "tail": "BrkLghtFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "BrkLghtFbkSOAEnPrm == 1 (Enable)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯驱动模块停止驱动右制动灯",
+    "relation": "前提条件",
+    "tail": "右制动灯处于输出状态",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "右制动灯处于输出状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制模块持续发送错误状态",
+    "relation": "依赖于",
+    "tail": "BrkLghtDrvMdl",
+    "triple_type": "输入输出关系",
+    "evidence_terms": ["执行动作", "BrkLghtDrvMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制模块持续发送错误状态",
+    "relation": "包含子功能",
+    "tail": "至少发送三帧数据",
+    "triple_type": "时序约束",
+    "evidence_terms": ["执行动作", "至少发送三帧数据"],
+    "confidence_note": "high"
+  }
+]
+```

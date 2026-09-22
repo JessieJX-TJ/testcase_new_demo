@@ -1,0 +1,75 @@
+{
+  "table_type": "state_table",
+  "topic": "后雾灯（Rear Fog Light）控制逻辑与故障状态描述",
+  "row_semantics": "不同反馈状态下的系统行为和信号转发规则",
+  "column_semantics": "无明显列，内容为行内嵌套的条件描述",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HMI子系统",
+      "type": "controller",
+      "description": "人机交互界面子系统，负责显示灯光开关状态"
+    },
+    {
+      "name": "IFPRearFoglightOnSta_1",
+      "type": "signal",
+      "description": "后雾灯物理开关状态信号"
+    },
+    {
+      "name": "exlRearFoglghtPrm",
+      "type": "parameter",
+      "description": "后雾灯配置参数，用于控制指示灯行为"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "Feedback Status = 0x0",
+      "description": "当反馈状态为0x0时，表示后雾灯处于关闭状态"
+    },
+    {
+      "condition": "Feedback Status = 0x1",
+      "description": "当反馈状态为0x1时，表示后雾灯处于开启状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "HMI显示状态",
+      "description": "根据反馈状态更新HMI上后雾灯的显示状态"
+    },
+    {
+      "output": "LIN信号转发",
+      "description": "将后雾灯的物理开关状态通过LIN总线转发给其他模块"
+    },
+    {
+      "output": "物理开关指示灯状态",
+      "description": "根据配置参数决定是否熄灭物理开关上的指示灯"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "RearFogLightAcFlts_1",
+      "description": "后雾灯交流电路故障标志位",
+      "related_signals": [
+        "RearFogLightAcFlts_1"
+      ]
+    },
+    {
+      "fault": "RearFogLightErrSta",
+      "description": "后雾灯错误状态",
+      "related_signals": [
+        "ExteriorLightSwitchProcess.RearFogLightErrSta"
+      ]
+    },
+    {
+      "fault": "RearFogLightErrorSta",
+      "description": "后雾灯错误状态",
+      "related_signals": [
+        "RearFogLightErrorSta"
+      ]
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了后雾灯在不同反馈状态下的控制逻辑，包括HMI显示、LIN信号转发以及物理开关指示灯的行为，并描述了后雾灯故障状态的检测与提示机制，可用于验证后雾灯控制逻辑的正确性和故障检测功能。",
+  "uncertain_points": []
+}

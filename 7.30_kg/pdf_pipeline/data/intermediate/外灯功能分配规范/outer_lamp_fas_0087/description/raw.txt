@@ -1,0 +1,36 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "尾门模块 RZCU 双闪灯请求与寻车灯控制模块 LHZCU 信号交互逻辑",
+  "row_semantics": "表格按触发动作和执行动作的顺序描述了系统行为，每一行代表一个具体的控制流程或状态转换。",
+  "column_semantics": "表格包含两列：左侧为触发条件或执行步骤的描述，右侧为对应的详细操作或代码实现。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "RZCU (尾门模块)",
+    "LHZCU (寻车灯控制模块)",
+    "ICB (集成控制盒)",
+    "RHZCU (右驱动处理模块)",
+    "RZCU (右尾门模块)"
+  ],
+  "core_conditions": [
+    "PwrLftgtDirIndcnLamp 请求次数 (1-5次)",
+    "UsrMd=ALL; UsrMdV=Valid;",
+    "VehMd=ALL; VehMdV=Valid;"
+  ],
+  "core_outputs": [
+    "FLDirnLghtCtrl, FRDirnLghtCtrl, RLDircnLghtCtrl, RRDirncLghtCtrl (灯光控制信号)",
+    "DirncLghtMdSts_0_Enabled (转向灯流水模式使能状态)",
+    "DirncLghtCtrl_HW (延时并分发控制信号)",
+    "FLDirnLghtSts_HW, FRDirnLghtSts_HW, RLDircnLghtSts_HW, RRDirncLghtSts_HW (转向灯点亮状态反馈)"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "1.25Hz 频率闪烁 (800ms 周期)",
+    "400ms 发送间隔",
+    "60ms 延时"
+  ],
+  "engineering_interpretation": "该表格定义了尾门模块 RZCU 发出双闪灯请求时，寻车灯控制模块 LHZCU 如何响应并控制灯光闪烁模式，以及相关模块间的信号交互逻辑，可用于验证车辆在特定尾门操作下的灯光系统功能。",
+  "uncertain_points": []
+}
+```

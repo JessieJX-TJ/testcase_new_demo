@@ -1,0 +1,476 @@
+```json
+[
+  {
+    "head": "Main Beam Light is activated",
+    "relation": "触发条件",
+    "tail": "收到【MainBeamLghtCtrlMdl】发送的 MainBeamLightControl.MainBeamLightCtrReq == 1 (On) InstanceID = 1",
+    "sources": ["outer_lamp_ssts_0300"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Main Beam Light is deactivated",
+    "relation": "触发条件",
+    "tail": "收到【MainBeamLghtCtrlMdl】发送的 MainBeamLightControl.MainBeamLightCtrReq == 0 (Off) InstanceID = 2",
+    "sources": ["outer_lamp_ssts_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Main Beam Light State is 'on'",
+    "relation": "输出为",
+    "tail": "MainBeamLightSta = 1 (On) InstanceID = 1",
+    "sources": ["outer_lamp_ssts_0300"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Main Beam Light State is 'off'",
+    "relation": "输出为",
+    "tail": "MainBeamLightSta = 0 (Off) InstanceID = 2",
+    "sources": ["outer_lamp_ssts_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Main Beam Light activation state is maintained",
+    "relation": "状态保持条件",
+    "tail": "至少发送三帧 MainBeamLightControl.MainBeamLightCtrReq == 1 (On) InstanceID = 1 至 【MainBeamLghtCtrlMdl】",
+    "sources": ["outer_lamp_ssts_0300", "outer_lamp_ssts_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Subsystem",
+    "relation": "控制对象",
+    "tail": "IM (Zhiji Automotive)",
+    "sources": ["outer_lamp_ssts_0298", "outer_lamp_ssts_0419"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "3.0 Architecture - SSTS - IBD02",
+    "relation": "输入来自",
+    "tail": "Exterior Lamp Subsystem",
+    "sources": ["outer_lamp_ssts_0298"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Subsystem",
+    "relation": "控制对象",
+    "tail": "Sub System Technical Specification",
+    "sources": ["outer_lamp_ssts_0310"],
+    "conflict": true,
+    "conflict_note": "语义冲突：'控制对象'关系中，同一主语（Exterior Lamp Subsystem）指向两个不同范畴的客体——'IM (Zhiji Automotive)'（整车实体）与'Sub System Technical Specification'（文档规范）。二者非等价，需确认是‘被控对象’还是‘规范载体’。建议拆分为：(Exterior Lamp Subsystem, implements, SSTS) 和 (Exterior Lamp Subsystem, controls, IM)"
+  },
+  {
+    "head": "Exterior Lamp Subsystem",
+    "relation": "输出到",
+    "tail": "78 of 114 page",
+    "sources": ["outer_lamp_ssts_0310"],
+    "conflict": true,
+    "conflict_note": "术语不规范且语义模糊：'78 of 114 page' 非标准工程实体，疑似页码引用错误或文档锚点缺失；与知识图谱实体建模原则不符，建议标记为待澄清项"
+  },
+  {
+    "head": "LMmainBeamLightDrvMdl drives left main beam lamp output",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtFbkSOAEnPrm == 1 (Enable)",
+    "sources": ["outer_lamp_ssts_0300", "outer_lamp_ssts_0304"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LMmainBeamLightDrvMdl drives left main beam lamp output",
+    "relation": "前提条件",
+    "tail": "Left main beam lamp is in active output state",
+    "sources": ["outer_lamp_ssts_0304"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left main beam lamp short-to-power fault handling is triggered",
+    "relation": "触发条件",
+    "tail": "Detected short-to-power on left main beam lamp",
+    "sources": ["outer_lamp_ssts_0304"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLightDrvMdl stops driving left rear side position lamp output",
+    "relation": "触发条件",
+    "tail": "Detected short-to-power on left rear side position lamp",
+    "sources": ["outer_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLightDrvMdl continuously sends SidePositionLightStatus",
+    "relation": "触发条件",
+    "tail": "Detected short-to-power on left rear side position lamp",
+    "sources": ["outer_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1061 12 is set",
+    "relation": "触发条件",
+    "tail": "Detected short-to-power on left rear side position lamp",
+    "sources": ["outer_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1061 12",
+    "relation": "诊断关联",
+    "tail": "Left rear side position lamp short-to-power",
+    "sources": ["outer_lamp_ssts_0309"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right main beam lamp short-to-ground fault is detected",
+    "relation": "触发条件",
+    "tail": "Detected short-to-ground on right main beam lamp",
+    "sources": ["outer_lamp_ssts_0314"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System stops driving right main beam lamp output",
+    "relation": "故障响应",
+    "tail": "Right main beam lamp short-to-ground fault is detected",
+    "sources": ["outer_lamp_ssts_0314"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLamp_RH_HSD signal is set to low level",
+    "relation": "输出为",
+    "tail": "System stops driving right main beam lamp output",
+    "sources": ["outer_lamp_ssts_0314"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RMainBeamLghtSts = 0 (Off) status signal is continuously sent",
+    "relation": "输出为",
+    "tail": "System stops driving right main beam lamp output",
+    "sources": ["outer_lamp_ssts_0314"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Diagnostic requirement B1053_11 is triggered",
+    "relation": "触发条件",
+    "tail": "Detected short-to-ground on left front fog lamp output",
+    "sources": ["outer_lamp_ssts_0313"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Diagnostic requirement B1053_11 is suppressed",
+    "relation": "抑制条件",
+    "tail": "Left front fog lamp output is no longer short-to-ground",
+    "sources": ["outer_lamp_ssts_0313"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Diagnostic requirement B1053_12 is triggered",
+    "relation": "触发条件",
+    "tail": "Detected short-to-power on left front fog lamp output",
+    "sources": ["outer_lamp_ssts_0313"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Diagnostic requirement B1053_12 is suppressed",
+    "relation": "抑制条件",
+    "tail": "Left front fog lamp output is no longer short-to-power",
+    "sources": ["outer_lamp_ssts_0313"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Diagnostic requirement B1053_13 is triggered",
+    "relation": "触发条件",
+    "tail": "Detected open circuit on left front fog lamp output",
+    "sources": ["outer_lamp_ssts_0313"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Diagnostic requirement B1053_13 is suppressed",
+    "relation": "抑制条件",
+    "tail": "Open circuit on left front fog lamp output is recovered",
+    "sources": ["outer_lamp_ssts_0313"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right main beam lamp control signal RMainBeamLghtCtrl_HW",
+    "relation": "输入为",
+    "tail": "ICB",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right main beam lamp control signal RMainBeamLghtCtrl_HW",
+    "relation": "输出为",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right main beam lamp control signal RMainBeamLghtCtrl_HW",
+    "relation": "依赖于",
+    "tail": "Exterior Lamp FAS",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right main beam lamp control signal MainBeamLightControl_CtrReq",
+    "relation": "输入为",
+    "tail": "ICB",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": true,
+    "conflict_note": "实体冲突：RMainBeamLghtCtrl_HW 与 MainBeamLightControl_CtrReq 在同一来源（outer_lamp_ssts_0302）中均被定义为‘右远光灯控制信号’，但命名不一致（HW vs CtrReq），且未说明是否为同一信号的不同别名或不同实例。需确认是否冗余或存在版本/通道差异"
+  },
+  {
+    "head": "Right main beam lamp control signal MainBeamLightControl_CtrReq",
+    "relation": "输出为",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": true,
+    "conflict_note": "同上：与 RMainBeamLghtCtrl_HW 输出目标一致，构成潜在信号命名歧义"
+  },
+  {
+    "head": "Right main beam lamp control signal MainBeamLightControl_CtrReq",
+    "relation": "依赖于",
+    "tail": "Exterior Lamp FAS",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right main beam lamp control signal MainBeamLightControl_CtrReq",
+    "relation": "触发条件",
+    "tail": "Invoke service interface to control left main beam lamp ON/OFF",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": true,
+    "conflict_note": "逻辑冲突：信号名为‘右远光灯’（RMainBeam / Right），但触发条件描述为‘控制左侧远光灯’，明显矛盾。属严重数据错误，需原始文档复核"
+  },
+  {
+    "head": "Right main beam lamp hardwire drive MainBeamHdlmp_LH_HSD",
+    "relation": "输出为",
+    "tail": "RHA",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": true,
+    "conflict_note": "命名不一致：信号名含 'LH'（Left Hand），但上下文明确指‘右远光灯’；'MainBeamHdlmp_LH_HSD' 应规范化为 'MainBeamHdlmp_RH_HSD'。当前命名与功能严重不符，属实体命名错误"
+  },
+  {
+    "head": "Right main beam lamp hardwire drive MainBeamHdlmp_LH_HSD",
+    "relation": "输入为",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": true,
+    "conflict_note": "同上：信号名 LH 与输入源 RHZCU（Right Headlamp Zone Control Unit）矛盾，需修正为 RH 命名"
+  },
+  {
+    "head": "Right main beam lamp hardwire drive MainBeamHdlmp_LH_HSD",
+    "relation": "依赖于",
+    "tail": "Exterior Lamp SSTS",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right main beam lamp status LMainBeamLghtSts",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": true,
+    "conflict_note": "命名与功能矛盾：信号名 'LMainBeamLghtSts'（Left）但上下文为右远光灯；且输出至 LHZCU（Left HZCU），与前述 RHZCU 不一致。极可能为文档笔误，应统一为 'RMainBeamLghtSts' → 'RHZCU'"
+  },
+  {
+    "head": "Right main beam lamp status LMainBeamLghtSts",
+    "relation": "输入为",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": true,
+    "conflict_note": "同上：信号名 Left，输入源 Right，逻辑冲突"
+  },
+  {
+    "head": "Right main beam lamp status LMainBeamLghtSts",
+    "relation": "依赖于",
+    "tail": "Exterior Lamp SSTS",
+    "sources": ["outer_lamp_ssts_0302"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "控制对象",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_ssts_0303"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "控制对象",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_ssts_0303"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "控制对象",
+    "tail": "RZCU",
+    "sources": ["outer_lamp_ssts_0303"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHA",
+    "relation": "包含子功能",
+    "tail": "TailLpAsmbA_LH",
+    "sources": ["outer_lamp_ssts_0303"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHA",
+    "relation": "包含子功能",
+    "tail": "TailLpAsmbA_RH",
+    "sources": ["outer_lamp_ssts_0303"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Control Function is maintained",
+    "relation": "状态保持条件",
+    "tail": "Vehicle is stationary",
+    "sources": ["outer_lamp_ssts_0305"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Control Function is maintained",
+    "relation": "状态保持条件",
+    "tail": "All doors are closed",
+    "sources": ["outer_lamp_ssts_0305"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Function is maintained",
+    "relation": "前提条件",
+    "tail": "Vehicle power system supplies normal voltage",
+    "sources": ["outer_lamp_ssts_0305"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Function is maintained",
+    "relation": "依赖于",
+    "tail": "Battery state of charge > 30%",
+    "sources": ["outer_lamp_ssts_0305"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Lamp Control System exit",
+    "relation": "前提条件",
+    "tail": "Received RFrtFogLghtCtrl_HW == 0x0 (Off) from 【FrtFogLghtCtrlMdl】",
+    "sources": ["outer_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Fog Lamp Control System exit",
+    "relation": "前提条件",
+    "tail": "Received FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq.InstanceID = 4 == 0x0 (Off) from 【RearFogLghtCtrlMdl】",
+    "sources": ["outer_lamp_ssts_0308"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exit condition for DILamp function",
+    "relation": "触发条件",
+    "tail": "Received FLDircnLghtCtrl_HW == 1 (On) from 【DILghtCtrlMdl】",
+    "sources": ["outer_lamp_ssts_0306"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDILghtSts_HW == 0 (Off)",
+    "relation": "输出为",
+    "tail": "Module 【FLDILghtDrvMdl】",
+    "sources": ["outer_lamp_ssts_0306"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILamp_LH_HSD",
+    "relation": "输出为",
+    "tail": "Module 【FLDILghtDrvMdl】",
+    "sources": ["outer_lamp_ssts_0306"],
+    "conflict": true,
+    "conflict_note": "模块名拼写不一致：'FLDILghtDrvMd1'（数字1）出现在原始数据中，应统一为 'FLDILghtDrvMdl'（字母L）。属拼写错误，已规范化"
+  },
+  {
+    "head": "FLDILghtSts_HW == 0 (Off)",
+    "relation": "依赖于",
+    "tail": "FLDircnLghtCtrl_HW == 0 (Off)",
+    "sources": ["outer_lamp_ssts_0306"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal FLDILghtSts_HW == 0 (Off) transmission timeout constraint",
+    "relation": "超时约束",
+    "tail": "At least three frames must be sent",
+    "sources": ["outer_lamp_ssts_0306"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle wakes up from sleep state",
+    "relation": "前提条件",
+    "tail": "Valid wake-up source exists",
+    "sources": ["outer_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle remains in run state",
+    "relation": "前提条件",
+    "tail": "Valid keep-alive source exists",
+    "sources": ["outer_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Wake-up / Sleep mechanism",
+    "relation": "依赖于",
+    "tail": "Wake-up source",
+    "sources": ["inner_lamp_fas_0059", "inner_lamp_fas_0081", "inner_lamp_ssts_0231", "inner_lamp_ssts_0232", "inner_lamp_ssts_0370", "inner_lamp_ssts_0569", "outer_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Keep-alive reason",
+    "relation": "依赖于",
+    "tail": "Keep-alive source",
+    "sources": ["inner_lamp_ssts_0210", "outer_lamp_ssts_0311"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

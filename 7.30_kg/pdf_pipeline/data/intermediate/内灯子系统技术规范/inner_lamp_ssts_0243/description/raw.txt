@@ -1,0 +1,72 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Door Rear Left Lamp Brightness Command and Fade Speed Command for Interior Lighting System",
+  "row_semantics": "Each row represents a specific command value (Code Value) for controlling the breathing or fading behavior of the door rear left lamp, including its rate and associated original breathing mode.",
+  "column_semantics": {
+    "Input": "The source of the command signal, which is 'LIN' (Local Interconnect Network).",
+    "LIN": "The LIN bus interface used for communication.",
+    "RHZCU": "The Right Hand Zone Control Unit, which processes the command.",
+    "DoorAmbtLampA_RL": "The Door Ambient Lamp A signal for the right-left side.",
+    "RHZCU_LIN4": "Specific LIN channel (LIN4) within the RHZCU for this signal.",
+    "内灯SSTS": "Internal lighting Sub-System Technical Specification, indicating the subsystem context."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "DoorRL1LampBrthngCmd_1",
+      "type": "function",
+      "description": "Command for controlling the brightness breathing rate of the door rear left lamp."
+    },
+    {
+      "name": "DoorRR1LampFadeSpdCmd_1",
+      "type": "function",
+      "description": "Command for controlling the fade speed of the door rear right lamp."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Hand Zone Control Unit, responsible for processing and executing lighting commands."
+    },
+    {
+      "name": "LIN",
+      "type": "communication_bus",
+      "description": "Local Interconnect Network, used for transmitting control signals between modules."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Code Value",
+      "description": "The hexadecimal code that specifies the desired breathing rate or fade speed."
+    },
+    {
+      "name": "Rate",
+      "description": "The time interval between each step in the breathing or fading sequence."
+    },
+    {
+      "name": "Original Breathing Mode",
+      "description": "The default breathing pattern associated with each rate."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorRL1LampBrthngCmd_1",
+      "description": "Controls the brightness breathing rate of the door rear left lamp."
+    },
+    {
+      "name": "DoorRR1LampFadeSpdCmd_1",
+      "description": "Controls the fade speed of the door rear right lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Period",
+      "description": "The time interval between each step in the breathing or fading sequence, ranging from 500ms to 12s."
+    }
+  ],
+  "engineering_interpretation": "This table defines the mapping between hexadecimal command codes and their corresponding breathing rates or fade speeds for interior lighting lamps, specifically for the door rear left and right lamps. It is used to verify that the RHZCU correctly interprets and applies these commands over the LIN bus to achieve the desired lighting effects.",
+  "uncertain_points": []
+}
+```

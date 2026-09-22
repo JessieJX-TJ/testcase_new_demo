@@ -1,0 +1,41 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车电子系统接口定义与信号流向",
+  "row_semantics": "每行代表一个具体的接口或信号定义，描述其在系统中的角色和属性。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，需与逻辑框图内容一致。",
+    "Direction": "信号的传输方向，如输入/输出。",
+    "Type": "接口的类型，如CAN/LIN/SOA服务/硬线等。",
+    "Sender/Provider": "信号的发送方或提供方，可以是节点或SoA服务。",
+    "Receiver/Consumer": "信号的接收方或消费方，可以是节点或SoA服务。",
+    "Channel": "信号传输的路径或通道。",
+    "Interface Source": "接口信号的来源，如指定信号通道或来源。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "CotsyRoofLampDrv",
+      "type": "片内",
+      "description": "外灯控制驱动功能，具体为车顶灯驱动。",
+      "controller": "LHZCU",
+      "direction": "输入",
+      "channel": "内部",
+      "source": "内灯SST"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "CotsyRoofLampDrv",
+      "description": "车顶灯驱动信号，用于控制车顶灯的状态。",
+      "value_range": "{0x0=停止驱动;}",
+      "unit": "无",
+      "source": "LHZCU"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子系统中车顶灯驱动（CotsyRoofLampDrv）功能的接口规范，包括其信号类型、传输方向、提供方和消费方、传输通道及来源，可用于验证车顶灯驱动信号的正确配置和传输。",
+  "uncertain_points": []
+}

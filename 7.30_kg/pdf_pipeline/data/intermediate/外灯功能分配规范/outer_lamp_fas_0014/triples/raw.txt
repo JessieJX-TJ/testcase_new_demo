@@ -1,0 +1,92 @@
+```json
+[
+  {
+    "head": "查询左侧昼间行车灯状态",
+    "relation": "前提条件",
+    "tail": "调用 DayRunningLightFucProStatus 接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DayRunningLightFucProStatus",
+      "Notifier"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "控制左侧昼间行车灯点亮",
+    "relation": "触发条件",
+    "tail": "调用 DayRunningLightControl 接口，参数为 {DayRunningLightCtrReq}，值为 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DayRunningLightControl",
+      "InstanceID=1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "控制左侧昼间行车灯熄灭",
+    "relation": "触发条件",
+    "tail": "调用 DayRunningLightControl 接口，参数为 {DayRunningLightCtrReq}，值为 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DayRunningLightControl",
+      "InstanceID=1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "控制右侧昼间行车灯点亮",
+    "relation": "触发条件",
+    "tail": "调用 DayRunningLightControl 接口，参数为 {DayRunningLightCtrReq}，值为 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DayRunningLightControl",
+      "InstanceID=2"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "控制右侧昼间行车灯熄灭",
+    "relation": "触发条件",
+    "tail": "调用 DayRunningLightControl 接口，参数为 {DayRunningLightCtrReq}，值为 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DayRunningLightControl",
+      "InstanceID=2"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧昼间行车灯状态为 ON",
+    "relation": "输出为",
+    "tail": "DayRunningLghtFucProsSta 参数值为 0X1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DayRunningLghtFucProsSta",
+      "0X1=ON"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧昼间行车灯状态为 OFF",
+    "relation": "输出为",
+    "tail": "DayRunningLghtFucProsSta 参数值为 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DayRunningLghtFucProsSta",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧昼间行车灯状态为 Unknown",
+    "relation": "输出为",
+    "tail": "DayRunningLghtFucProsSta 参数值为 0x2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DayRunningLghtFucProsSta",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

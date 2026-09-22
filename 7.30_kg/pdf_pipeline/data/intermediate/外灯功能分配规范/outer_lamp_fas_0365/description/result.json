@@ -1,0 +1,49 @@
+{
+  "table_type": "signal_table",
+  "topic": "Directional Light Service Request Signal Definition",
+  "row_semantics": "Each row represents a specific signal or its value definition related to directional light service requests.",
+  "column_semantics": {
+    "first_column": "Signal Name or Value Identifier",
+    "second_column": "Input/Output Type",
+    "third_column": "Communication Protocol (CAN)",
+    "fourth_column": "Microcontroller (S32G MCU)",
+    "fifth_column": "Central Unit (LHZCU)",
+    "sixth_column": "Controller Area Network Filter Descriptor (BKBCANFD)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DirLghtSrvReq",
+      "type": "Signal",
+      "description": "Directional Light Service Request signal, indicating the desired direction light operation."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DirLghtSrvReq_0_No_Flash",
+      "value": "0x0",
+      "description": "No flash request for directional lights."
+    },
+    {
+      "name": "DirLghtSrvReq_1_Left_Direction_Light_Flash",
+      "value": "0x1",
+      "description": "Request for left direction light flash."
+    },
+    {
+      "name": "DirLghtSrvReq_2_Right_Direction_Light_Flash",
+      "value": "0x2",
+      "description": "Request for right direction light flash."
+    },
+    {
+      "name": "DirLghtSrvReq_3_Both_Side_Direction_Light_Flash",
+      "value": "0x3",
+      "description": "Request for both side direction light flash."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the encoding and meaning of the DirLghtSrvReq signal used in CAN communication for requesting directional light operations. It is used to verify that the correct signal value is transmitted by the S32G MCU via LHZCU through BKBCANFD filter, corresponding to the intended direction light behavior (no flash, left flash, right flash, or both sides flash).",
+  "uncertain_points": []
+}

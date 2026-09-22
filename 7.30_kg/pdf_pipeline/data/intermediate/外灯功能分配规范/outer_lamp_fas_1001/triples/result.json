@@ -1,0 +1,128 @@
+[
+  {
+    "head": "后雾灯开启",
+    "relation": "触发条件",
+    "tail": "RearFogLightSwSta 接口参数赋值为 0x1=ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLightSwSta",
+      "0x1=ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1001",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "触发条件",
+    "tail": "DippedBeamLightReqSts 输出为 0x1=ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DippedBeamLightReqSts",
+      "0x1=ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1001",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯状态反馈至 ICB",
+    "relation": "依赖于",
+    "tail": "LHZCU 模块将 RearFogLightSta 状态反馈",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RearFogLightSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1001",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "近光灯状态反馈至 ICB",
+    "relation": "依赖于",
+    "tail": "LHZCU 模块通过 Instance ID 1/2 获取近光灯状态",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "LHZCU",
+      "Instance ID 1/2"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1001",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "近光灯和后雾灯开启同步性要求",
+    "relation": "前提条件",
+    "tail": "CombLightFucProStatus 接口参数为 0x2=Only DippedBeamLight",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CombLightFucProStatus",
+      "0x2=Only DippedBeamLight"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1001",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "输出为",
+    "tail": "RearFogLightState 输出为 0x1=ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLightState",
+      "0x1=ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1001",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "输出为",
+    "tail": "DippedBeamLightStatus 输出为 0x1=ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DippedBeamLightStatus",
+      "0x1=ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1001",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯错误状态反馈至 ICB",
+    "relation": "依赖于",
+    "tail": "LHZCU 模块将 RearFogLightErrorSta 状态反馈",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RearFogLightErrorSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1001",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "近光灯错误状态反馈至 ICB",
+    "relation": "依赖于",
+    "tail": "LHZCU 模块通过 Instance ID 3/4 获取近光灯状态",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "LHZCU",
+      "Instance ID 3/4"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1001",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

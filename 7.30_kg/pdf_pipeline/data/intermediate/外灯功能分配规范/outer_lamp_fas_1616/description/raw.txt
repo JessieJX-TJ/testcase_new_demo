@@ -1,0 +1,68 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 制动灯状态与故障状态",
+  "row_semantics": "表格按制动灯（BrakeLight）的两种状态类型（BrakeLightState 和 BrakeLightErrorStatus）进行划分，每种状态描述了其对应的接口、参数及实例ID。",
+  "column_semantics": "列标题从左到右依次为：功能分类（如BrakeLight.BreakLightState）、服务消费方（SOA）、内部通信总线（ICB/LHZCU/RZCU）、网络状态/硬线故障状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrakeLight",
+      "type": "功能模块",
+      "description": "制动灯系统"
+    },
+    {
+      "name": "SOA",
+      "type": "服务提供者",
+      "description": "面向服务架构中的服务消费者"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块",
+      "description": "内部通信总线控制器"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "车身控制单元"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器/模块",
+      "description": "区域控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrakeLightState",
+      "type": "输入信号",
+      "description": "制动灯当前状态，包括OFF、ON和Unknown三种值",
+      "values": [
+        "0x0=OFF",
+        "0x1=ON",
+        "0x2=Unknown"
+      ]
+    },
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "输入信号",
+      "description": "制动灯故障状态，仅包含No Error一种值",
+      "values": [
+        "0x0=No Error"
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "故障状态",
+      "description": "指示制动灯是否存在硬件故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了制动灯状态（BrakeLightState）和制动灯故障状态（BrakeLightErrorStatus）的接口规范，可用于验证车辆制动灯系统的状态上报功能及其故障检测机制。",
+  "uncertain_points": []
+}
+```

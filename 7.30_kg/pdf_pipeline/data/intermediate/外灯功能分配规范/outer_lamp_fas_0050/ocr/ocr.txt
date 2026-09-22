@@ -1,0 +1,24 @@
+场景描述
+Super ECO Lite 下可通过点击贯穿式前位置灯软开关关闭或开启贯穿式前位置灯日间行车
+灯场景应用
+前置条件
+1&2&3&4&5
+1、UsgMd=0x3=UsgMd_3_NormalDriving;∥UsgMd=0x4=UsgMd_4_AIParking;∥
+UsgMd=0x5=UsgMd_5_AIPilot; ∥UsgMd=0x2=UsgMd_2_Comfortable
+2、UsgMdV=Valid
+3、VehMd!=0x3=VehMd3TRANSPORT
+4、VehMdV=Valid
+5、具备贯穿式前位置灯功能:InsdFnCfgAcrossFrtPosLght=0x1
+触发动作
+用户点击贯穿式前位置灯开关关闭或开启
+执行动作
+1、外灯组合服务ICB调用
+{ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq}=0x0=OFF(或
+0x1=On)
+2、[外灯组合服务ICB]通过接口请求LHZCU:
+Setter:
+{ExteriorLightSwitchProcess. DayRunningLightFucProStatus.
+DayRunningLghtFucProsSta}=0x0=OFF(或0x1=On)
+3、LHZCU控制执行贯穿式前位置灯(日行灯应用场景)关闭/开启
+4、LHZCU根据日行灯控制仲裁状态:{ExteriorLightSwitchProcess.
+DayRunningLightFucProStatus. DayRunningLghtFucProsSta}=0x0=OFF(或 0x1=On)

@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "制动灯驱动控制逻辑",
+  "row_semantics": "表格按行定义了控制逻辑的前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "表格分为两列，左侧为条件/动作描述，右侧为具体的条件或动作内容。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "BrkLghtDrvMdl",
+      "type": "controller_module",
+      "description": "制动灯驱动模块，负责控制制动灯的点亮与熄灭。"
+    },
+    {
+      "name": "BrkLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "制动灯控制模块，发送制动灯控制指令。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlBrkLghtHwDrvEnPrm",
+      "type": "input_signal",
+      "description": "外部硬件驱动使能参数，值为1或2时满足前置条件。",
+      "range": "[1, 2]"
+    },
+    {
+      "name": "BrkLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "制动灯硬件控制信号，值为0时触发条件满足。",
+      "range": "0"
+    },
+    {
+      "name": "BrkLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "制动灯硬件控制信号，值为1时退出条件满足。",
+      "range": "1"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLamp_LH_HSD",
+      "type": "output_signal",
+      "description": "左后高位制动灯状态，关闭（Off）。",
+      "value": "0"
+    },
+    {
+      "name": "BrkLamp_RH_HSD",
+      "type": "output_signal",
+      "description": "右后高位制动灯状态，关闭（Off）。",
+      "value": "0"
+    },
+    {
+      "name": "CHMSL_HSD",
+      "type": "output_signal",
+      "description": "中央高位制动灯状态，关闭（Off）。",
+      "value": "0"
+    },
+    {
+      "name": "BrkLghtSts",
+      "type": "output_signal",
+      "description": "制动灯状态，持续发送0（Off）。",
+      "value": "0"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "action": "持续发送 BrkLghtSts=0",
+      "condition": "至 BrkLghtCtrlMdl",
+      "duration": "至少发送三帧"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了制动灯驱动模块在接收到制动灯控制模块发送的HW信号为0时，停止驱动制动灯及高位制动灯，并持续发送制动灯状态为0，直到接收到HW信号为1时退出该逻辑。可用于验证制动灯控制逻辑的正确性。",
+  "uncertain_points": []
+}
+```

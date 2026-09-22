@@ -1,0 +1,41 @@
+{ExteriorLightSwitchProcess. DirectionLightErrSta. DircnLghtErrSta}=0x0=No Error
+10.[外灯组合服务ICB]订阅接口:
+11.[寻车灯控制模块LHZCU]记忆本次双闪灯触发动作,并将触发状态实时发送至ICB:
+ExteriorLightSwitchProcess.VehHzrdMdSta.VehHzrdMdSta=0xA(PP)
+[寻车灯控制模块LHZCU]将转向灯控制状态反馈至SDM:
+EDRDircnIndLampSwSts=0x3=EDRDircnIndLampSwSts_3_hazard
+12.[寻车灯控制模块LHZCU]控制[持续点亮3S/闪烁三个周期]后,退出当前寻车灯闪烁,控制
+FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_Off
+FRDircnLghtCtrl=0x0=FRDircnLghtCtrl_0_Off
+RLDircnLghtCtrl=0x0=RLDircnLghtCtrl_0_Off
+RRDircnLghtCtrl=0x0=RRDircnLghtCtrl_0_Off
+并将该控制信号发送至ICB
+[寻车灯控制模块LHZCU]接口响应:
+Event:
+{ExteriorLightSwitchProcess. DircnLghtFucProStatus. DircnLghtFucProSta}=0x0=OFF
+13.[外灯组合服务ICB]调用基础服务,针对{InstanceID=1}{InstanceID=2}{InstanceID=3}{Instano
+服务延时60ms 调用(配置需求:DircnLghtCtrlDelayPrm):
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=1}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=2}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=3}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=4}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=5}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=6}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=7}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=8}=0x0=OFF
+14.ICB将服务接口或控制信号转换成灯控CAN信号,控制双闪灯熄灭
+15.ICB 将控制信号延时 60ms 分发至[驱动模块 LHZCU/RHZCU/RZCU](配置需求:DircnLghtCt
+FLDircnLghtCtrl_HW=0x0-FLDirenLghtCtrl_HW_0_off
+FRDircnLghtCtrl_HW=0x0=FRDircnLghtCtrl_HW_0_off
+RLDircnLghtCtrl_HW=0x0=RLDircnLghtCtrl_HW_0_off
+RRDircnLghtCtrl_HW=0x0=RRDircnLghtCtrl_HW_0_off
+16.[驱动模块LHZCU/RHZCU/RZCU]接收ICB 服务接口或控制信号,做退出整车双闪灯点亮
+17.ICB接收控制信号:
+FLDirenLghtCtrl=0x0=FLDirenLghtCtrl_0_off
+FRDirenLghtCtrl=0x0=FRDirenLghtCtrl_0_off
+{ExteriorLightSwitehProcess. DirenLghtFucProStatus. DirenLghtFucProSta}=0x0=OFF
+做退出双闪灯图标指示灯显示以及声音提醒
+18.[驱动处理模块LHZCU/RHZCU/RZCU]状态/故障状态反馈至 LHZCU:
+FLDirenLghtSts_HW=0x0=FLDirenLghtSts_HW_0_Off
+FRDirenLghtSts_HW=0x0=FRDirenLghtSts_HW_0_Off
+RLDircnLghtSts_HW=0x0=RLDirenLghtSts_HW_0_Off

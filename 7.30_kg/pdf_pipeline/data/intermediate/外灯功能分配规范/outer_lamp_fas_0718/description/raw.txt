@@ -1,0 +1,38 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "拖挂模式下拖挂车位置灯关闭功能规范",
+  "row_semantics": "表格按逻辑流程顺序排列，描述了在特定前置条件下触发的动作序列及其结果。",
+  "column_semantics": "表格包含三列：场景描述、前置条件、触发条件和执行动作。其中'执行动作'部分进一步细分了不同控制器（LHZCU, ICB, RZCU, TDM）的具体操作。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "拖挂模式 (VehDragMdSts)",
+    "拖挂车位置灯 (SidePositionLight)",
+    "外灯组合服务 (ICB)",
+    "LHZCU (Light Headlamp Zone Control Unit)",
+    "RZCU (Rear Zone Control Unit)",
+    "TDM (Trailer Diagnostic Module)"
+  ],
+  "core_conditions": [
+    "车辆具备拖车模式功能 (InsdFnCfgVehDragMd=0x1)",
+    "拖挂模式开启 (VehDragMdSts=0x1=VehDragMdSts_1_On)",
+    "LHZCU发送的外灯控制信号为ALL OFF或SidePositionAndDippedBeam OFF"
+  ],
+  "core_outputs": [
+    "ICB调用基础服务关闭侧位灯 (SidePositionLightReq=0x0=OFF)",
+    "RZCU判断前置条件满足并发送TrlrSideLightOnReq_0_Off给TDM",
+    "TDM控制左右侧位置灯熄灭 (TrlrSideLightOnReq=0x0)",
+    "TDM将拖车位置灯状态和故障状态反馈给RZCU (TrlrSideLghtSts, TrlrSideLghtFltSts)"
+  ],
+  "core_faults": [
+    "SidePositionLightErrorStatus"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在拖挂模式下，当拖挂车位置灯应关闭时，各控制器之间的交互逻辑和状态转换，可用于验证拖挂模式下位置灯控制功能的正确性。",
+  "uncertain_points": [
+    "具体实例ID (InstanceID) 的含义未明确说明",
+    "TrlrSideLightOnReq_0_Off信号的具体作用和上下文未详细解释"
+  ]
+}
+```

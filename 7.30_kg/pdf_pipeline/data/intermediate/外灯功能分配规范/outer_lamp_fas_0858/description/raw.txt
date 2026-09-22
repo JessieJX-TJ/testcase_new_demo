@@ -1,0 +1,88 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "制动灯系统功能与状态控制",
+  "row_semantics": "表格按编号列出不同的功能模块或测试场景，每个场景描述了特定的信号状态或控制逻辑。",
+  "column_semantics": "表格没有明确的列，内容为多行文本描述，每行代表一个独立的功能或测试项。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Intelligent Control Box, 智能控制盒，负责接收和处理来自不同传感器和开关的信号，并控制相关执行器（如制动灯）的动作。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit, 照明与危险警示控制单元，负责控制车辆外部灯光系统的运行，包括制动灯、示廓灯等。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "system",
+      "description": "外部灯光控制系统，管理车辆外部所有灯光的点亮与熄灭逻辑。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrakeLightState",
+      "type": "input_signal",
+      "description": "制动灯状态信号，表示制动灯当前是否点亮（ON/OFF）。"
+    },
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "system_state",
+      "description": "制动灯错误状态，指示制动灯系统是否存在故障。"
+    },
+    {
+      "name": "BrakeLightFliSta",
+      "type": "input_signal",
+      "description": "制动灯故障状态信号，可能用于检测制动灯电路中的异常情况。"
+    },
+    {
+      "name": "BrakeLightFliErrSta",
+      "type": "fault_status",
+      "description": "制动灯故障错误状态，指示制动灯相关的硬件或软件故障。"
+    },
+    {
+      "name": "ExternalLightSwitchProcess",
+      "type": "input_signal",
+      "description": "外部灯光开关处理过程，可能涉及驾驶员通过开关输入来控制灯光。"
+    },
+    {
+      "name": "BrakeLightSw",
+      "type": "input_signal",
+      "description": "制动灯开关信号，由驾驶员操作制动踏板时触发。"
+    },
+    {
+      "name": "BrakeLightDrvErrPrm",
+      "type": "parameter",
+      "description": "制动灯驱动错误参数，可能用于诊断制动灯驱动电路的问题。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrakeLight",
+      "type": "output_signal",
+      "description": "制动灯的实际输出信号，控制车辆后部的制动灯点亮。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "fault_status",
+      "description": "表示系统正常，无故障发生。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步点亮延时",
+      "type": "timing_constraint",
+      "description": "左侧、右侧及高位制动灯需保持同步点亮，三侧最大延时不能超过 40ms。",
+      "value": "≤ 40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了制动灯系统的功能需求、信号交互逻辑以及相关的状态和错误处理机制，可用于验证制动灯在不同驾驶条件下的正确响应，确保其符合安全性和同步性要求。",
+  "uncertain_points": []
+}
+```

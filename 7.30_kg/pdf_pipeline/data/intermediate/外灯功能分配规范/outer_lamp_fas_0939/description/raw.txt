@@ -1,0 +1,48 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的状态转换与控制逻辑",
+  "row_semantics": "表格的每一行代表一个特定的功能或状态转换场景，描述了在不同条件下外灯系统的响应行为。",
+  "column_semantics": "表格没有明确的列标题，但内容按行组织，每行包含功能描述、输入条件、输出结果及相关信号。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "ExteriorLightSwitchProcess",
+    "Directed_light_GlobalStatus",
+    "Directed_light_ProStatus",
+    "Directed_light_FuncProStatus",
+    "KBC_ServiceInterface",
+    "LEZCT_RZCT",
+    "LEHZCT",
+    "LBH2CT"
+  ],
+  "core_conditions": [
+    "InstanceID",
+    "GlobalDelayPoint",
+    "KBC_ServiceInterface_CanSignal",
+    "LEZCT_RZCT_ControlSignal",
+    "LEHZCT_ControlSignal",
+    "LBH2CT_ControlSignal"
+  ],
+  "core_outputs": [
+    "Directed_light_GlobalStatus",
+    "Directed_light_ProStatus",
+    "Directed_light_FuncProStatus",
+    "LEZCT_RZCT_Status",
+    "LEHZCT_Status",
+    "LBH2CT_Status"
+  ],
+  "core_faults": [
+    "No Error"
+  ],
+  "core_timing_constraints": [
+    "GlobalDelayPoint"
+  ],
+  "engineering_interpretation": "该表格详细定义了外灯系统在不同输入信号和系统状态下的行为规范，可用于验证外灯功能的状态转换逻辑、信号交互以及故障处理机制。",
+  "uncertain_points": [
+    "具体信号的触发条件未明确说明",
+    "部分状态转换的具体时序要求未量化",
+    "未明确列出所有可能的故障模式"
+  ]
+}
+```

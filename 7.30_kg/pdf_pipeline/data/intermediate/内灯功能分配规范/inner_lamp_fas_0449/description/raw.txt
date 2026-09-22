@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Third Row Map Lamp Control Interface Specifications",
+  "row_semantics": "Each row represents a distinct interface signal related to the third-row map lamp control system, detailing its direction, type, sender, receiver, and specific signal values.",
+  "column_semantics": {
+    "Interface Name": "The name of the interface signal (e.g., ThirdRowMapLampRHSwReq).",
+    "Direction": "Indicates whether the signal is an input or output.",
+    "Type": "Specifies the data type (e.g., Internal).",
+    "Sender/Provider": "The module or component that sends or provides the signal (e.g., RHZCU).",
+    "Receiver/Consumer": "The module or component that receives or consumes the signal (e.g., RHZCU).",
+    "Channel": "The communication path for the signal (not specified in this table).",
+    "Source": "The origin of the interface (not specified in this table)."
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampRHSwReq",
+      "type": "Input Signal",
+      "description": "Request signal for the third-row map lamp switch state."
+    },
+    {
+      "name": "ThirdRowMapLampRHBrtLvl",
+      "type": "Output Signal",
+      "description": "Signal indicating the brightness level of the third-row map lamp."
+    },
+    {
+      "name": "ThirdRowMapLampRHSts",
+      "type": "Input Signal",
+      "description": "Status signal for the third-row map lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "interface": "ThirdRowMapLampRHSwReq",
+      "condition": "0x0=Idle; 0x1=Press; 0x2=Reserved; 0x3=Error"
+    },
+    {
+      "interface": "ThirdRowMapLampRHBrtLvl",
+      "condition": "0x0=OFF; 0x1=Level 1; 0x2=Level 2; ...; 0x1E=Level 30; 0x1F=Reserved"
+    },
+    {
+      "interface": "ThirdRowMapLampRHSts",
+      "condition": "0x0=OFF; 0x1=Level 1; 0x2=Level 2; ..."
+    }
+  ],
+  "core_outputs": [
+    {
+      "interface": "ThirdRowMapLampRHBrtLvl",
+      "output": "Brightness level from OFF to Level 30"
+    }
+  ],
+  "core_faults": [
+    {
+      "interface": "ThirdRowMapLampRHSwReq",
+      "fault": "0x3=Error"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interface signals for controlling and monitoring the third-row map lamp, including switch requests, brightness levels, and status information, which can be used to verify the correct functionality and response of the lamp control system under various conditions.",
+  "uncertain_points": []
+}
+```

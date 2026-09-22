@@ -1,0 +1,37 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "紧急制动灯熄灭控制逻辑与状态反馈机制",
+  "row_semantics": "描述了紧急制动灯（Brake Light）在不同控制器模块之间的点亮/熄灭状态、故障状态的反馈流程及同步要求。",
+  "column_semantics": "表格分为两部分：上方为具体的控制逻辑和状态反馈步骤，下方为备注中的功能要求和退出策略。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "RZCU (驱动处理模块)",
+    "LHZCU (制动灯开关控制模块)",
+    "ICB (外灯组合服务)"
+  ],
+  "core_conditions": [
+    "BrkLghtSts_HW (硬件点亮状态)",
+    "BrkLghtFltSts_HW (硬件故障状态)",
+    "BrkLghtSta (状态寄存器值)",
+    "BrkLghtFltSta (故障状态寄存器值)",
+    "IBS (Integrated Brake System) 信号"
+  ],
+  "core_outputs": [
+    "BrkLghtSts_0_Off (熄灭状态反馈)",
+    "BrkLghtFltSts_0_False (无故障状态反馈)",
+    "ExteriorLightControlSystem.BrakeLightSts (外部灯光控制系统制动灯状态)",
+    "ExteriorLightControlSystem.BrakeLightErrSts (外部灯光控制系统制动灯错误状态)"
+  ],
+  "core_faults": [
+    "BrkLghtFltSts_HW",
+    "BrkLghtFltSta"
+  ],
+  "core_timing_constraints": [
+    "三侧最大延时不能超过 40ms"
+  ],
+  "engineering_interpretation": "该表格详细定义了紧急制动灯系统中各模块间的状态交互逻辑，特别是熄灭过程中的状态反馈机制和同步性要求，可用于验证紧急制动灯系统的状态一致性、故障反馈及时性和熄灭同步性。",
+  "uncertain_points": []
+}
+```

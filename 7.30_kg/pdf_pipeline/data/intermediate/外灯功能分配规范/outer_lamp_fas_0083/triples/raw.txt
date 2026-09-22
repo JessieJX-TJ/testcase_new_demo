@@ -1,0 +1,95 @@
+```json
+[
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "整车模式为工厂模式（VehMd=0x2 = VehMd_2_FACTORY）且整车模式验证值有效（VehMdV=0x1=VehMdV_1_Valid）且后雾灯点亮状态（RearFogLightFucProStatus=0x1|0x2|0x3）且持续时间2分钟",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "VehMdV",
+      "RearFogLightFucProStatus",
+      "FactoryModeDuration"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯关闭",
+    "relation": "前提条件",
+    "tail": "LHZCU判断前雾灯关闭（ExteriorLightSwitchProcess.FrontFogLghtFucProStatus.FrontFogLghtFucProsSta=0x0=OFF）",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "FrontFogLightState"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯关闭",
+    "relation": "前提条件",
+    "tail": "LHZCU判断远光灯关闭（ExteriorLightSwitchProcess.MainBeamLightFucProStatus.MainBeamLghtFucProsSta=0x0=OFF）",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "MainBeamLightStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯控制模块LHZCU接口响应",
+    "relation": "输出为",
+    "tail": "Notifier: ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta=0x0=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RearFogLightFucProStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯控制组合服务ICB调用接口",
+    "relation": "输出为",
+    "tail": "Notifier: ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta=0x0=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "RearFogLightSwStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯控制信号",
+    "relation": "输出为",
+    "tail": "RearFogLightCtrl=0x0=RearFogLightCtrl_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RearFogLightCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯硬件控制信号",
+    "relation": "输出为",
+    "tail": "RearFogLightCtrl_HW=0x1=RearFogLightCtrl_HW_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RearFogLightCtrl_HW"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯开关状态获取",
+    "relation": "前提条件",
+    "tail": "当ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta接口参数为0x0=OFF时，ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta接口参数同时赋值0x0=OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "RearFogLightFucProStatus",
+      "RearFogLightSwStatus"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

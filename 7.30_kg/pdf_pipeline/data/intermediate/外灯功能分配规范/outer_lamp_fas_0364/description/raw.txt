@@ -1,0 +1,92 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "外灯功能 - 转向灯错误状态",
+  "row_semantics": "表格定义了两种转向灯（右转和左转）的错误状态查询接口，分别对应不同的实例ID。",
+  "column_semantics": {
+    "0": "功能名 (DirectionLight.DirectionLightErrorStatus)",
+    "1": "服务消费方 (SOA)",
+    "2": "RZCU控制器",
+    "3": "LHZCU控制器",
+    "4": "无明确标识",
+    "5": "硬线故障状态",
+    "6": "网络故障状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "功能模块",
+      "description": "外灯系统中的转向灯功能"
+    },
+    {
+      "name": "SOA",
+      "type": "服务提供方",
+      "description": "Service-Oriented Architecture，表示服务的消费者或提供者"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器",
+      "description": "Right Zone Control Unit，右侧区域控制单元"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器",
+      "description": "Left High Zone Control Unit，左侧高位区域控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例标识符，用于区分不同转向灯的状态查询接口",
+      "values": [
+        {
+          "value": "4",
+          "description": "右转转向灯状态查询接口"
+        },
+        {
+          "value": "5",
+          "description": "左转转向灯状态查询接口"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "输出信号",
+      "description": "转向灯错误状态反馈",
+      "values": [
+        {
+          "code": "0x0",
+          "status": "No Error"
+        },
+        {
+          "code": "0x1",
+          "status": "Error"
+        },
+        {
+          "code": "0x2",
+          "status": "Unknown"
+        }
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "HardLineFault",
+      "type": "故障状态",
+      "description": "硬线故障状态"
+    },
+    {
+      "name": "NetworkFault",
+      "type": "故障状态",
+      "description": "网络故障状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证车辆外灯系统中转向灯错误状态的查询接口功能，包括右转和左转转向灯的状态反馈以及与相关控制器（RZCU、LHZCU）的交互。",
+  "uncertain_points": []
+}
+```

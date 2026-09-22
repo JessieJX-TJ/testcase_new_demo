@@ -1,0 +1,72 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Vehicle Lock Status Signal Definition",
+  "row_semantics": "Each row defines a specific signal related to vehicle lock status, including its name, direction, type, sender, receiver, and detailed state definitions.",
+  "column_semantics": {
+    "Interface Name": "The name of the signal interface (e.g., VehLckSts).",
+    "Direction": "Indicates whether the signal is an input or output.",
+    "Type": "The communication protocol type (e.g., CAN).",
+    "Sender/Provider": "The module or controller that sends or provides the signal (e.g., LHZCU).",
+    "Receiver/Consumer": "The module or controller that receives or consumes the signal (e.g., RHZCU).",
+    "Channel": "The communication channel used for the signal transmission.",
+    "Interface Source": "The source system or subsystem providing the signal (e.g., Door Lock SSTS)."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehLckSts",
+      "type": "Signal",
+      "description": "Represents the vehicle lock status."
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "The Local Host Control Unit responsible for sending the lock status signal."
+    },
+    {
+      "name": "RHZCU",
+      "type": "Controller/Module",
+      "description": "The Remote Host Control Unit responsible for receiving the lock status signal."
+    },
+    {
+      "name": "Door Lock SSTS",
+      "type": "System/Subsystem",
+      "description": "The Door Lock Subsystem that provides the lock status signal."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "VehLckSts",
+      "states": [
+        {
+          "value": "0x0",
+          "description": "Unlocked"
+        },
+        {
+          "value": "0x1",
+          "description": "Signal Position Entry Unlocked"
+        },
+        {
+          "value": "0x2",
+          "description": "Interior Locked"
+        },
+        {
+          "value": "0x3",
+          "description": "Exterior Locked"
+        },
+        {
+          "value": "0x4",
+          "description": "Super Locked"
+        }
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the Vehicle Lock Status (VehLckSts) signal, detailing its communication parameters and possible states. It is used to verify the correct transmission and interpretation of the vehicle's lock status between the LHZCU and RHZCU modules via the CAN bus, ensuring that the door lock system operates as expected across different locking states.",
+  "uncertain_points": []
+}
+```

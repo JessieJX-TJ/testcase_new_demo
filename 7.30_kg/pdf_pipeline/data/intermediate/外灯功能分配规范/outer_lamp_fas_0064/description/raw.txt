@@ -1,0 +1,43 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "危险警报灯控制信号定义",
+  "row_semantics": "用户对危险警报灯的操作请求",
+  "column_semantics": {
+    "left_column": "描述用户执行的具体动作",
+    "right_column": "对应动作的信号赋值表达式"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Hazard Light",
+      "type": "function",
+      "description": "危险警报灯功能"
+    },
+    {
+      "name": "HzrdLghtSwReq",
+      "type": "signal",
+      "direction": "input",
+      "description": "危险警报灯开关请求信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "HzrdLghtSwReq_1_On",
+      "value": "0x1",
+      "description": "请求开启危险警报灯"
+    },
+    {
+      "name": "HzrdLghtSwReq_0_Off",
+      "value": "0x0",
+      "description": "请求关闭危险警报灯"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了危险警报灯开关请求信号HzrdLghtSwReq在不同操作下的数值映射，可用于验证整车电子系统中危险警报灯控制逻辑的正确性。",
+  "uncertain_points": []
+}
+```

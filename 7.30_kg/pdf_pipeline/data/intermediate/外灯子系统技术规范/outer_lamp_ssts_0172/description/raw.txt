@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "转向灯开关悬空状态下的方向灯控制逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，当转向灯开关处于悬空状态时，系统如何触发、执行动作、退出条件以及异常处理的逻辑流程。",
+  "column_semantics": {
+    "column_1": "逻辑阶段或条件类别（如前置条件、触发条件、执行动作、退出条件、异常处理）",
+    "column_2": "对应阶段的具体描述或参数"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILghtSwSOAEnPrm",
+      "type": "parameter",
+      "description": "配置字，用于启用/禁用转向灯开关悬空检测功能"
+    },
+    {
+      "name": "DILghtSwMdl",
+      "type": "module",
+      "description": "方向灯开关模块，负责持续发送方向灯开关状态"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "module",
+      "description": "方向灯控制模块，接收并处理方向灯开关状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字 DILghtSwSOAEnPrm == 1 (Enable)"
+    },
+    {
+      "condition": "触发条件",
+      "description": "转向拨杆开关悬空"
+    },
+    {
+      "condition": "退出条件",
+      "description": "转向灯开关变为非悬空"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "DirectionLightSwitchStatus",
+      "description": "由 DILghtSwMdl 持续发送的方向灯开关状态信号"
+    },
+    {
+      "output": "DirectionLightSwitchSta",
+      "value": "0x0 (OFF)",
+      "description": "表示方向灯开关处于关闭状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在触发条件下，DILghtSwMdl 至少需要发送三帧 DirectionLightSwitchStatus 信号"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证当转向灯开关处于悬空状态时，系统是否能够正确触发方向灯控制逻辑，并持续发送正确的方向灯开关状态信号，同时确保在开关状态改变后能够正确退出该逻辑。",
+  "uncertain_points": []
+}
+```

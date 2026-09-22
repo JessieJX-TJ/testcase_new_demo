@@ -1,0 +1,98 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "整车外灯控制逻辑与状态管理",
+  "row_semantics": "触发动作和执行动作的详细描述，定义了在特定条件下系统应执行的操作序列",
+  "column_semantics": "无明确列标题，表格内容分为两部分：左侧为动作类型（触发/执行），右侧为具体操作步骤和条件",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExtrLightCtrlCmmntnTyp",
+      "type": "controller",
+      "description": "外部灯光控制通信类型，配置为SOA"
+    },
+    {
+      "name": "ExtrLightStsCmmntnTyp",
+      "type": "controller",
+      "description": "外部灯光状态通信类型，配置为SOA"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "远光灯开关控制模块"
+    },
+    {
+      "name": "ICB",
+      "type": "service",
+      "description": "外灯组合服务接口控制基础服务"
+    },
+    {
+      "name": "SOA",
+      "type": "architecture",
+      "description": "Service-Oriented Architecture，面向服务的架构"
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "type": "mode",
+      "description": "用户模式，包括Sleep、Standby、XOTA等"
+    },
+    {
+      "name": "VehMd",
+      "type": "mode",
+      "description": "车辆模式，包括TRANSPORT、EXHIBITION、FACTORY等"
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "signal",
+      "description": "近光灯状态反馈"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "signal",
+      "description": "外部灯光开关处理过程"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLightFucProStatus",
+      "type": "signal",
+      "description": "主光灯功能过程状态"
+    },
+    {
+      "name": "MainBeamLightReq",
+      "type": "signal",
+      "description": "主光灯请求信号"
+    },
+    {
+      "name": "LMainBeamLightCtrl",
+      "type": "signal",
+      "description": "左主光灯控制信号"
+    },
+    {
+      "name": "RMainBeamLightCtrl",
+      "type": "signal",
+      "description": "右主光灯控制信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "工厂模式下远光灯开启时间",
+      "description": "在工厂模式下，远光灯开启2分钟",
+      "unit": "min"
+    },
+    {
+      "name": "远光灯持续时间",
+      "description": "远光灯点亮后持续2分钟",
+      "unit": "min"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了整车外灯（特别是远光灯和近光灯）在不同用户模式和车辆模式下的控制逻辑，以及通过LHZCU和ICB模块进行的信号交互和状态管理，可用于验证外灯控制系统在各种场景下的正确行为。",
+  "uncertain_points": [
+    "表格中未明确说明所有可能的车辆模式及其转换条件",
+    "未详细列出所有可能的故障状态及其处理逻辑"
+  ]
+}
+```

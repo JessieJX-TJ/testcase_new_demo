@@ -1,0 +1,37 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Reading Lamp Timer Functionality in Various Vehicle Modes",
+  "row_semantics": "Different operational conditions and modes of the vehicle that trigger specific timer behaviors for the reading lamp.",
+  "column_semantics": "The table does not have explicit columns; instead, it uses a structured text format to describe conditions and corresponding timer actions.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "Reading Lamp",
+    "SleepTimer",
+    "FactoryTimer"
+  ],
+  "core_conditions": [
+    "Reading Lamp is ON",
+    "Vehicle Mode: Sleep, Standby, XOTA",
+    "Vehicle Mode: Factory",
+    "Vehicle Mode: Factory (整车模式为工厂模式时)",
+    "User Mode: XOTA, Sleep, Standby"
+  ],
+  "core_outputs": [
+    "SleepTimer activated with 15min duration",
+    "FactoryTimer activated with 2min duration",
+    "Reading Lamp turns OFF after timer expires",
+    "Timer resets after expiration"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "SleepTimer: 15 minutes",
+    "FactoryTimer: 2 minutes",
+    "Special Note: In Sleep, Standby, XOTA modes, the 15min timer does not restart when switching between these modes"
+  ],
+  "engineering_interpretation": "This table defines the behavior of the reading lamp's automatic shutoff timers under different vehicle operating modes, specifying which timer is activated (SleepTimer or FactoryTimer) and their respective durations. It ensures the reading lamp turns off automatically after a set period to conserve power and prevent unnecessary illumination.",
+  "uncertain_points": [
+    "The exact timing mechanism for 'last triggered' principle is not detailed.",
+    "Specific hardware/controller implementation details are not provided."
+  ]
+}

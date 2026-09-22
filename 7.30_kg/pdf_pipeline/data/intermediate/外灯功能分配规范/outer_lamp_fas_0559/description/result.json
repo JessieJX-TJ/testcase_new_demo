@@ -1,0 +1,36 @@
+{
+  "table_type": "logic_table",
+  "topic": "大屏软开关触发位置灯开启的逻辑规范",
+  "row_semantics": "表格按场景描述、前置条件、触发动机作、执行动作的顺序展开，详细定义了在特定条件下系统如何响应用户操作并控制外灯。",
+  "column_semantics": "表格分为两列，左侧为标题或阶段说明，右侧为对应的具体内容或条件描述。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "大屏软开关",
+    "位置灯",
+    "S32G",
+    "ICB (Integrated Control Box)",
+    "LHZCU (Lighting and Hazard Control Unit)"
+  ],
+  "core_conditions": [
+    "UsgMd != 0x0 && UsgMd != 0x1 && UsgMdV == Valid",
+    "用户模式为Standby且FOTA下载中",
+    "OTAService.FOTATs = 0x0 = NoFOTA",
+    "ExtrLightCtrlCmmntnTyp = SOA",
+    "ExtrLightStsCmmntnTyp = SOA"
+  ],
+  "core_outputs": [
+    "SidePositionLight ON",
+    "FLSideLightCtrl_1_On",
+    "FRSideLightCtrl_1_On",
+    "RLSideLightCtrl_1_On",
+    "RRSideLightCtrl_1_On"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证当用户通过大屏软开关触发位置灯开启时，系统是否能正确响应，并按照预设的通信协议和控制逻辑，将服务接口信号转换为CAN信号，最终点亮指定的位置灯。",
+  "uncertain_points": [
+    "具体SOA和CAN的配置字开发细节未明确说明",
+    "PPV阶段及以后的SOA通讯方式开发细节未明确说明"
+  ]
+}

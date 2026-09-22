@@ -1,0 +1,112 @@
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (DoorFL3 Lamp Control)",
+  "row_semantics": "Each row represents a specific command or control signal for the DoorFL3 (Front Left Door) ambient lamp, detailing its input source, associated controller/module, and the specific parameter being controlled.",
+  "column_semantics": {
+    "Input": "The type of communication interface used for the signal (e.g., LIN bus).",
+    "LIN": "Indicates the signal is transmitted via LIN bus.",
+    "LHZCU": "Controller/module responsible for processing the signal.",
+    "DoorAmbtLampB_FL": "Specific door ambient lamp being controlled (Front Left).",
+    "LHZCU_LIN4": "Another instance or reference to the LHZCU module related to LIN4.",
+    "内灯SSTS": "Subsystem identifier for Interior Lighting Sub System."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorFL3LampFadeSpdCmd_1",
+      "type": "function",
+      "description": "Command to set the fade speed of the DoorFL3 ambient lamp."
+    },
+    {
+      "name": "DoorFL3LampOnOff_1",
+      "type": "function",
+      "description": "Command to turn the DoorFL3 ambient lamp on or off."
+    },
+    {
+      "name": "DoorFL3LampColorCmd_1",
+      "type": "function",
+      "description": "Command to set the color of the DoorFL3 ambient lamp."
+    },
+    {
+      "name": "DoorFL3LampBrtnsCmd_1",
+      "type": "function",
+      "description": "Command to set the brightness level of the DoorFL3 ambient lamp."
+    },
+    {
+      "name": "DoorFL3LampBrthngCmd_1",
+      "type": "function",
+      "description": "Command to set the breathing rate of the DoorFL3 ambient lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Speed Command",
+      "description": "Specifies the time duration for the lamp to transition from current to target state during fading.",
+      "values": [
+        "0x0: Default speed (2000ms)",
+        "0x1: 300ms",
+        "0x2: 100ms (reserved for future use)",
+        "0x3: Reserved"
+      ]
+    },
+    {
+      "name": "On/Off Request",
+      "description": "Controls the power state of the lamp.",
+      "values": [
+        "0x0: OFF",
+        "0x1: ON"
+      ]
+    },
+    {
+      "name": "Color Command",
+      "description": "Sets the color of the lamp using RGB values.",
+      "values": [
+        "0x00: No request",
+        "0x01-0xFF: Various color values",
+        "0x00 or undefined: Maintain current color"
+      ]
+    },
+    {
+      "name": "Brightness Command",
+      "description": "Adjusts the lamp's brightness as a percentage.",
+      "values": [
+        "0x00: No request",
+        "0x00: No request",
+        "0x65-0xFF: Reserved"
+      ]
+    },
+    {
+      "name": "Breathing Rate Command",
+      "description": "Sets the breathing effect rate of the lamp.",
+      "values": [
+        "0x0: No request",
+        "0x1-0x5: Various breathing rates"
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Fade Speed",
+      "description": "Time required for the lamp to transition between states during fading.",
+      "default_value": "2000ms",
+      "min_value": "100ms",
+      "max_value": "2000ms"
+    },
+    {
+      "name": "Breathing Rate",
+      "description": "Rate at which the lamp performs a breathing effect.",
+      "values": [
+        "0x1: Rate1",
+        "0x2: Rate2",
+        "0x3: Rate3",
+        "0x4: Rate4",
+        "0x5: Rate5"
+      ]
+    }
+  ],
+  "engineering_interpretation": "This table defines the control signals and parameters for the DoorFL3 ambient lamp within the Interior Lighting Sub System. It specifies how to configure the lamp's fade speed, on/off state, color, brightness, and breathing effect, enabling detailed testing of the lamp's behavior under various commands.",
+  "uncertain_points": []
+}

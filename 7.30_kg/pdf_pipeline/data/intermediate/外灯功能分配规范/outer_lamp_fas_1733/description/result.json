@@ -1,0 +1,60 @@
+{
+  "table_type": "logic_table",
+  "topic": "用户通过大屏软开关触发近光灯开启的条件分析",
+  "row_semantics": "表格按行列出触发近光灯开启所需的各项前置条件，每行代表一个独立的判断项。",
+  "column_semantics": {
+    "column_1": "描述条件的编号和逻辑关系（如1&2&3&4&5）",
+    "column_2": "详细描述每个条件的具体参数、值及其逻辑运算符"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "UsrMd",
+      "type": "module",
+      "description": "用户模式模块，包含睡眠、待机、OTA等状态"
+    },
+    {
+      "name": "VehMd",
+      "type": "module",
+      "description": "车辆模式模块，包含运输模式等状态"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Light and Hazard Zone Control Unit，负责位置灯的判断与控制"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "process",
+      "description": "外部灯光开关处理过程，涉及组合灯功能状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsrMd! = 0x0 (Sleep) & 0x1 (Standby) & 0x6 (XOTA)",
+      "description": "用户模式必须处于非睡眠、待机或OTA更新状态"
+    },
+    {
+      "condition": "UsrMdV = Valid",
+      "description": "用户模式数据有效"
+    },
+    {
+      "condition": "VehMd! = 0x3 (TRANSPORT)",
+      "description": "车辆模式不能处于运输模式"
+    },
+    {
+      "condition": "VehMdV = Valid",
+      "description": "车辆模式数据有效"
+    },
+    {
+      "condition": "LHZCU 已判断开启位置灯：ExteriorLightSwitchProcess.CombLightFucProStatus.CombLightFucProSta = 0x4 (SidePositionAndDippedBeamOnly SidePositionLight ON)",
+      "description": "LHZCU已确认侧位灯和近光灯已开启"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定系统状态下，用户通过大屏软开关触发近光灯开启所需满足的所有前置条件，可用于验证相关功能的正确性。",
+  "uncertain_points": []
+}

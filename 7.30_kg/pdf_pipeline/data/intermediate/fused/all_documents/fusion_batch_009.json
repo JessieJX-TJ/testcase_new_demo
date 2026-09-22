@@ -1,0 +1,635 @@
+[
+  {
+    "head": "转向灯状态为 Left_Direction_Light_On",
+    "relation": "输出为",
+    "tail": "参数值为 0x1",
+    "sources": [
+      "outer_lamp_fas_0079"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 Right_Direction_Light_On",
+    "relation": "输出为",
+    "tail": "参数值为 0x2",
+    "sources": [
+      "outer_lamp_fas_0079"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 Both_Side_Direction_Light_On",
+    "relation": "输出为",
+    "tail": "参数值为 0x3",
+    "sources": [
+      "outer_lamp_fas_0079"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 No_Flash",
+    "relation": "输出为",
+    "tail": "参数值为 0x0",
+    "sources": [
+      "outer_lamp_fas_0079"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 Left_Direction_Light_Flash",
+    "relation": "输出为",
+    "tail": "参数值为 0x1",
+    "sources": [
+      "outer_lamp_fas_0079"
+    ],
+    "conflict": true,
+    "conflict_note": "与 Left_Direction_Light_On 语义高度重叠（均映射至 0x1），但 'Flash' 强调闪烁行为，'On' 强调稳态点亮；二者在功能实现中可能对应同一寄存器值但不同驱动逻辑（如占空比控制）。需确认是否为同一信号的不同解释层级。"
+  },
+  {
+    "head": "转向灯状态为 Right_Direction_Light_Flash",
+    "relation": "输出为",
+    "tail": "参数值为 0x2",
+    "sources": [
+      "outer_lamp_fas_0079"
+    ],
+    "conflict": true,
+    "conflict_note": "与 Right_Direction_Light_On 语义高度重叠（均映射至 0x2），同上，存在稳态点亮 vs. 闪烁行为的语义歧义，需工程上下文澄清。"
+  },
+  {
+    "head": "转向灯状态为 Both_Side_Direction_Light_Flash",
+    "relation": "输出为",
+    "tail": "参数值为 0x3",
+    "sources": [
+      "outer_lamp_fas_0079"
+    ],
+    "conflict": true,
+    "conflict_note": "与 Both_Side_Direction_Light_On 语义高度重叠（均映射至 0x3），同上，存在双侧稳态点亮 vs. 同步闪烁的语义歧义。"
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "0平台-FAS-IBD05规范",
+    "sources": [
+      "outer_lamp_fas_0080"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "依赖于",
+    "tail": "版本 <1.0>",
+    "sources": [
+      "outer_lamp_fas_0080",
+      "outer_lamp_fas_0086",
+      "outer_lamp_fas_0147",
+      "outer_lamp_fas_0154",
+      "outer_lamp_fas_0163",
+      "outer_lamp_fas_0169",
+      "outer_lamp_fas_0179",
+      "outer_lamp_fas_0183",
+      "outer_lamp_fas_0223",
+      "outer_lamp_fas_0252",
+      "outer_lamp_fas_0270",
+      "outer_lamp_fas_0298",
+      "outer_lamp_fas_0306",
+      "outer_lamp_fas_0315",
+      "outer_lamp_fas_0379",
+      "outer_lamp_fas_0439",
+      "outer_lamp_fas_0447",
+      "outer_lamp_fas_0468",
+      "outer_lamp_fas_0508",
+      "outer_lamp_fas_0547",
+      "outer_lamp_fas_0553",
+      "outer_lamp_fas_0558",
+      "outer_lamp_fas_0566",
+      "outer_lamp_fas_0573",
+      "outer_lamp_fas_0574",
+      "outer_lamp_fas_0584",
+      "outer_lamp_fas_0723",
+      "outer_lamp_fas_0767",
+      "outer_lamp_fas_0776",
+      "outer_lamp_fas_0799",
+      "outer_lamp_fas_0809",
+      "outer_lamp_fas_0813",
+      "outer_lamp_fas_0820",
+      "outer_lamp_fas_0853",
+      "outer_lamp_fas_0875",
+      "outer_lamp_fas_0952",
+      "outer_lamp_fas_0968",
+      "outer_lamp_fas_1098",
+      "outer_lamp_fas_1141",
+      "outer_lamp_fas_1157",
+      "outer_lamp_fas_1160",
+      "outer_lamp_fas_1164",
+      "outer_lamp_fas_1183",
+      "outer_lamp_fas_1192",
+      "outer_lamp_fas_1197",
+      "outer_lamp_fas_1215",
+      "outer_lamp_fas_1217",
+      "outer_lamp_fas_1282",
+      "outer_lamp_fas_1359",
+      "outer_lamp_fas_1426",
+      "outer_lamp_fas_1444",
+      "outer_lamp_fas_1446",
+      "outer_lamp_fas_1494",
+      "outer_lamp_fas_1551",
+      "outer_lamp_fas_1592",
+      "outer_lamp_fas_1618",
+      "outer_lamp_fas_1625",
+      "outer_lamp_fas_1682",
+      "outer_lamp_fas_1727",
+      "outer_lamp_fas_1745"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯点亮",
+    "relation": "触发条件",
+    "tail": "ReverseLightCtrlReq = 0x1",
+    "sources": [
+      "outer_lamp_fas_0081"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯熄灭",
+    "relation": "触发条件",
+    "tail": "ReverseLightCtrlReq = 0x0",
+    "sources": [
+      "outer_lamp_fas_0081"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯驱动处理模块控制倒车灯点亮",
+    "relation": "输入为",
+    "tail": "RevsLghtCtrl_HW = 0x1",
+    "sources": [
+      "outer_lamp_fas_0081"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯驱动处理模块控制倒车灯熄灭",
+    "relation": "输入为",
+    "tail": "RevsLghtCtrl_HW = 0x0",
+    "sources": [
+      "outer_lamp_fas_0081"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制功能",
+    "relation": "触发条件",
+    "tail": "驾驶员侧车门打开",
+    "sources": [
+      "outer_lamp_fas_0082",
+      "outer_lamp_ssts_0461"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制功能",
+    "relation": "触发条件",
+    "tail": "车辆处于静止状态",
+    "sources": [
+      "outer_lamp_fas_0082",
+      "outer_lamp_ssts_0461"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门开启功能",
+    "relation": "抑制条件",
+    "tail": "车辆未处于驻车模式 或 电池电量低于 20%",
+    "sources": [
+      "outer_lamp_fas_0082"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身稳定控制系统激活",
+    "relation": "触发条件",
+    "tail": "检测到车辆侧滑角度超过设定阈值",
+    "sources": [
+      "outer_lamp_fas_0082"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "自动泊车辅助系统",
+    "relation": "依赖于",
+    "tail": "超声波传感器正常工作且雷达系统无故障",
+    "sources": [
+      "outer_lamp_fas_0082",
+      "outer_lamp_fas_0203"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "空调系统制冷功能",
+    "relation": "输出为",
+    "tail": "车内温度降至设定目标温度",
+    "sources": [
+      "outer_lamp_fas_0082"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "紧急制动辅助系统",
+    "relation": "优先级高于",
+    "tail": "常规巡航控制系统",
+    "sources": [
+      "outer_lamp_fas_0082"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门关闭功能",
+    "relation": "复位条件",
+    "tail": "接收到用户手动关闭指令 或 车辆速度超过 5 km/h",
+    "sources": [
+      "outer_lamp_fas_0082"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "整车模式为工厂模式 (VehMd = 0x2)",
+    "sources": [
+      "outer_lamp_fas_0083"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "整车模式验证值有效 (VehMdV = 0x1)",
+    "sources": [
+      "outer_lamp_fas_0083"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "后雾灯点亮状态 (RearFogLightFucProStatus ∈ {0x1, 0x2, 0x3})",
+    "sources": [
+      "outer_lamp_fas_0083"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "持续时间 ≥ 2 分钟",
+    "sources": [
+      "outer_lamp_fas_0083"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯关闭",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.FrontFogLghtFucProStatus.FrontFogLghtFucProsSta = 0x0",
+    "sources": [
+      "outer_lamp_fas_0083"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯关闭",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.MainBeamLightFucProStatus.MainBeamLghtFucProsSta = 0x0",
+    "sources": [
+      "outer_lamp_fas_0083"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯控制模块 LHZCU 接口响应",
+    "relation": "输出为",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta = 0x0",
+    "sources": [
+      "outer_lamp_fas_0083"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制组合服务 ICB 调用接口",
+    "relation": "输出为",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta = 0x0",
+    "sources": [
+      "outer_lamp_fas_0083"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯控制信号",
+    "relation": "输出为",
+    "tail": "RearFogLightCtrl = 0x0",
+    "sources": [
+      "outer_lamp_fas_0083"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯硬件控制信号",
+    "relation": "输出为",
+    "tail": "RearFogLightCtrl_HW = 0x1",
+    "sources": [
+      "outer_lamp_fas_0083"
+    ],
+    "conflict": true,
+    "conflict_note": "RearFogLightCtrl_HW = 0x1 表示硬件使能（ON），但 tail 描述为 'Off'，存在逻辑矛盾：HW=0x1 通常表示有效/开启，而 'Off' 应对应 HW=0x0。需核查信号定义一致性。"
+  },
+  {
+    "head": "后雾灯开关状态获取",
+    "relation": "前提条件",
+    "tail": "当 RearFogLghtFucProStatus = 0x0 时，RearFogLghtSwStatus 同步赋值为 0x0",
+    "sources": [
+      "outer_lamp_fas_0083"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯点亮",
+    "relation": "触发条件",
+    "tail": "APP_ICB 发送控制请求",
+    "sources": [
+      "outer_lamp_fas_0084"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯状态反馈",
+    "relation": "输出为",
+    "tail": "LHZCU 或 ICB",
+    "sources": [
+      "outer_lamp_fas_0084"
+    ],
+    "conflict": true,
+    "conflict_note": "同一 head-relation 对应两个互斥 tail（LHZCU 和 ICB），表明该反馈存在双向透传机制，但原始三元组未明确主从关系或路由逻辑，需补充协议上下文。"
+  },
+  {
+    "head": "车顶射灯故障状态反馈",
+    "relation": "输出为",
+    "tail": "LHZCU 或 ICB",
+    "sources": [
+      "outer_lamp_fas_0084"
+    ],
+    "conflict": true,
+    "conflict_note": "同上，存在多接收方歧义，需确认是否为冗余上报或条件分发。"
+  },
+  {
+    "head": "外灯组合服务状态透传",
+    "relation": "输出为",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0084"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯请求重发",
+    "relation": "前提条件",
+    "tail": "未收到成功反馈",
+    "sources": [
+      "outer_lamp_fas_0084"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯请求停止发送",
+    "relation": "超时约束",
+    "tail": "重试 3 次后仍未收到成功反馈",
+    "sources": [
+      "outer_lamp_fas_0084"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "触发条件",
+    "tail": "未收到状态反馈",
+    "sources": [
+      "outer_lamp_fas_0084",
+      "outer_lamp_fas_0738"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧远光灯开启",
+    "relation": "触发条件",
+    "tail": "LMainBeamLightCtrl = 0x1",
+    "sources": [
+      "outer_lamp_fas_0085"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧远光灯关闭",
+    "relation": "触发条件",
+    "tail": "LMainBeamLightCtrl = 0x0",
+    "sources": [
+      "outer_lamp_fas_0085"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "组合灯状态为侧位灯开启",
+    "relation": "输入为",
+    "tail": "CombLghtFucProSta",
+    "sources": [
+      "outer_lamp_fas_0085"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "组合灯状态为近光灯开启",
+    "relation": "输入为",
+    "tail": "CombLghtFucProSta",
+    "sources": [
+      "outer_lamp_fas_0085"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "组合灯状态为自动模式",
+    "relation": "输入为",
+    "tail": "CombLghtFucProSta",
+    "sources": [
+      "outer_lamp_fas_0085"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启",
+    "relation": "触发条件",
+    "tail": "RearFogLghtFucProStatus",
+    "sources": [
+      "outer_lamp_fas_0085"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "组合灯状态监控",
+    "relation": "依赖于",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_0085"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯状态监控",
+    "relation": "依赖于",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_0085"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "文档页码：748 of 935",
+    "sources": [
+      "outer_lamp_fas_0086"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "寻车灯控制模块 LHZCU",
+    "relation": "前提条件",
+    "tail": "尾门模块 RZCU 双闪灯请求值 ∈ {0x1, 0x2, 0x3, 0x4, 0x5}",
+    "sources": [
+      "outer_lamp_fas_0087"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "寻车灯控制模块 LHZCU",
+    "relation": "输出为",
+    "tail": "DircnLghtMdSts = 0x0 (Enabled)",
+    "sources": [
+      "outer_lamp_fas_0087"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "依赖于",
+    "tail": "LHZCU 控制信号",
+    "sources": [
+      "outer_lamp_fas_0087"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输入为",
+    "tail": "LHZCU 控制信号",
+    "sources": [
+      "outer_lamp_fas_0087"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驱动处理模块 LHZCU/RHZCU/RZCU",
+    "relation": "输入为",
+    "tail": "ICB 控制信号",
+    "sources": [
+      "outer_lamp_fas_0087"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开关控制模块 LHZCU",
+    "relation": "包含子功能",
+    "tail": "危险警报灯图标指示灯显示",
+    "sources": [
+      "outer_lamp_fas_0087"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "驱动处理模块 RHZCU/RZCU",
+    "relation": "输出到",
+    "tail": "寻车灯控制模块 LHZCU",
+    "sources": [
+      "outer_lamp_fas_0087"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "接口名称",
+    "relation": "输入来自",
+    "tail": "发送方",
+    "sources": [
+      "outer_lamp_fas_0089"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "接口名称",
+    "relation": "输出到",
+    "tail": "接收方",
+    "sources": [
+      "outer_lamp_fas_0089"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

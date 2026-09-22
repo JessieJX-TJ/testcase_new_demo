@@ -1,0 +1,65 @@
+```json
+[
+  {
+    "head": "后雾灯位置灯停止输出",
+    "relation": "前提条件",
+    "tail": "收到【RearFogLghtCtrlMdl】发送的 ControlRearFogPositionLight. RearFogPositionLightReq==0 (Off)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLghtCtrlMdl",
+      "ControlRearFogPositionLight",
+      "RearFogPositionLightReq==0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯位置灯状态持续发送",
+    "relation": "前提条件",
+    "tail": "收到【RearFogLghtCtrlMdl】发送的 ControlRearFogPositionLight. RearFogPositionLightReq==0 (Off)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLghtCtrlMdl",
+      "ControlRearFogPositionLight",
+      "RearFogPositionLightReq==0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯位置灯状态为 Off",
+    "relation": "依赖于",
+    "tail": "【RearFogLghtDrvMdl】持续发送 RearFogPositionLightStatus. RearFogPositionLightSta=0 (Off)至【RearFogLghtCtrlMdl】",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "RearFogLghtDrvMdl",
+      "RearFogPositionLightStatus",
+      "RearFogPositionLightSta=0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯位置灯状态至少发送三帧",
+    "relation": "前提条件",
+    "tail": "【RearFogLghtDrvMdl】持续发送 RearFogPositionLightStatus. RearFogPositionLightSta=0 (Off)至【RearFogLghtCtrlMdl】",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RearFogLghtDrvMdl",
+      "RearFogPositionLightStatus",
+      "RearFogPositionLightSta=0",
+      "Minimum Transmission Frames"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "退出后雾灯位置灯控制逻辑",
+    "relation": "触发条件",
+    "tail": "收到【RearFogLghtCtrlMdl】发送的 ControlRearFogPositionLight. RearFogPositionLightReq==1 (On)",
+    "triple_type": "退出条件",
+    "evidence_terms": [
+      "RearFogLghtCtrlMdl",
+      "ControlRearFogPositionLight",
+      "RearFogPositionLightReq==1"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

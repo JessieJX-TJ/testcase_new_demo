@@ -1,0 +1,46 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Side Position Light Status",
+  "row_semantics": "Each row represents a specific interface for querying the status of a side position light (either right-front or left-rear).",
+  "column_semantics": {
+    "1": "Function Name (e.g., SidePositionLight.SidePositionLightStatus)",
+    "2": "Consumption Type (SOA, ICB, LHZ CU)",
+    "3": "Description of the service and its purpose",
+    "4": "Interface Name",
+    "5": "Parameter Name",
+    "6": "Instance ID",
+    "7": "Status Definitions (0x0=OFF, 0x1=ON, 0x2=Error, 0x2=Unknown)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "Module",
+      "description": "Module responsible for managing side position lights."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightStatus",
+      "type": "Signal",
+      "description": "Status of the side position light, which can be OFF, ON, Error, or Unknown.",
+      "values": [
+        "0x0=OFF",
+        "0x1=ON",
+        "0x2=Error",
+        "0x2=Unknown"
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Error",
+      "description": "Indicates an error state in the side position light status."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines two interfaces for querying the status of side position lights (right-front and left-rear) within a vehicle's electronic system. It specifies the expected status values (OFF, ON, Error, Unknown) for each interface.",
+  "uncertain_points": []
+}

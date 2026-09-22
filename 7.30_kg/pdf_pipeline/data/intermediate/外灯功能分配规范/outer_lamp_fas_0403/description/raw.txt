@@ -1,0 +1,56 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "SuperECO Lite 贯穿式前位置灯使能开关状态显示",
+  "row_semantics": "描述HMI子系统根据外部灯光开关处理模块反馈的前位置灯使能开关状态，显示相应的开关关闭或开启状态。",
+  "column_semantics": "无明显列结构，主要为两行条件描述和对应的HMI显示状态。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "SuperECO Lite",
+      "type": "功能名",
+      "description": "贯穿式前位置灯使能开关状态显示功能"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "控制器/模块名",
+      "description": "外部灯光开关处理模块"
+    },
+    {
+      "name": "DayRunningLghtSwSta",
+      "type": "输入信号",
+      "description": "前位置灯使能开关状态"
+    },
+    {
+      "name": "HMI",
+      "type": "输出信号",
+      "description": "人机交互界面显示状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "{ExteriorLightSwitchProcess.DayRunningLghtSwSta}=0x0",
+      "description": "前位置灯使能开关状态为关闭（OFF）"
+    },
+    {
+      "condition": "{ExteriorLightSwitchProcess.DayRunningLghtSwSta}=0x1",
+      "description": "前位置灯使能开关状态为开启（ON）"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "HMI显示贯穿式前位置灯开关关闭",
+      "description": "当开关状态为0x0时，HMI显示灯开关关闭"
+    },
+    {
+      "output": "HMI显示贯穿式前位置灯开关开启",
+      "description": "当开关状态为0x1时，HMI显示灯开关开启"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证HMI子系统是否能够正确根据ExteriorLightSwitchProcess模块反馈的DayRunningLghtSwSta信号值，准确显示SuperECO Lite贯穿式前位置灯的开关状态。",
+  "uncertain_points": []
+}
+```

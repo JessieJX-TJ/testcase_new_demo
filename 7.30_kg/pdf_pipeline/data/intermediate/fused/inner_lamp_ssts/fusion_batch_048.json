@@ -1,0 +1,673 @@
+[
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "has_function_code_input",
+    "tail": "7280 → 9",
+    "sources": [
+      "inner_lamp_ssts_0521"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "has_function_code_input",
+    "tail": "7320 → 8",
+    "sources": [
+      "inner_lamp_ssts_0521"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "has_function_code_input",
+    "tail": "7360 → 7",
+    "sources": [
+      "inner_lamp_ssts_0521"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "has_function_code_input",
+    "tail": "7400 → 6",
+    "sources": [
+      "inner_lamp_ssts_0521"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLamp_RL_Sw_SIG",
+    "relation": "input_source",
+    "tail": "hardwire",
+    "sources": [
+      "inner_lamp_ssts_0523"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLamp_RR_Sw_SIG",
+    "relation": "input_source",
+    "tail": "hardwire",
+    "sources": [
+      "inner_lamp_ssts_0523"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLamp_RL_Sw_SIG",
+    "relation": "input_purpose",
+    "tail": "rear_reading_lamp_switch_state_acquisition",
+    "sources": [
+      "inner_lamp_ssts_0523"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLamp_RR_Sw_SIG",
+    "relation": "input_purpose",
+    "tail": "rear_reading_lamp_switch_state_acquisition",
+    "sources": [
+      "inner_lamp_ssts_0523"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLamp_RL_Sw_SIG",
+    "relation": "depends_on",
+    "tail": "MapLamp_RL / MapLamp_RR",
+    "sources": [
+      "inner_lamp_ssts_0523"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLamp_RR_Sw_SIG",
+    "relation": "depends_on",
+    "tail": "MapLamp_RL / MapLamp_RR",
+    "sources": [
+      "inner_lamp_ssts_0523"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle_Electrical_Electronic_System_Function_Hold_State",
+    "relation": "prerequisite",
+    "tail": "hold_source = NA",
+    "sources": [
+      "inner_lamp_ssts_0524"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle_Electrical_Electronic_System_Function_Hold_State",
+    "relation": "prerequisite",
+    "tail": "hold_reason = NA",
+    "sources": [
+      "inner_lamp_ssts_0524"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle_Electrical_Electronic_System_Function_Hold_State",
+    "relation": "prerequisite",
+    "tail": "note = NA",
+    "sources": [
+      "inner_lamp_ssts_0524"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient_Light_Brightness_Adjustment",
+    "relation": "trigger_condition",
+    "tail": "DoorFR1LampBrtnsCmd_1 transitions from 0x00 (no request) to non-0x00 (request)",
+    "sources": [
+      "inner_lamp_ssts_0530"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient_Light_Brightness_Maintenance",
+    "relation": "maintenance_condition",
+    "tail": "DoorFR1LampBrtnsCmd_1 = 0x00 (no request)",
+    "sources": [
+      "inner_lamp_ssts_0530"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient_Light_Turn_Off",
+    "relation": "trigger_condition",
+    "tail": "DoorFR1LampOnOff_1 = 0x00 (off request)",
+    "sources": [
+      "inner_lamp_ssts_0530"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient_Light_Turn_Off",
+    "relation": "depends_on",
+    "tail": "DoorFR1LampFadeSpdCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0530"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front_Passenger_Laser_Welcome_Lamp_Enable",
+    "relation": "trigger_condition",
+    "tail": "FrtPsngDoorFlorLampCtrlCmd = 0x1 (Open)",
+    "sources": [
+      "inner_lamp_ssts_0531"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front_Passenger_Laser_Welcome_Lamp_Disable",
+    "relation": "trigger_condition",
+    "tail": "FrtPsngDoorFlorLampCtrlCmd = 0x0 (Close)",
+    "sources": [
+      "inner_lamp_ssts_0531"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front_Passenger_Laser_Welcome_Lamp_Driver_Disable",
+    "relation": "suppression_condition",
+    "tail": "FrtPsngDoorFlorLampCtrlCmd = 0x0 (Close)",
+    "sources": [
+      "inner_lamp_ssts_0531"
+    ],
+    "conflict": true,
+    "conflict_note": "Same trigger condition as 'Front_Passenger_Laser_Welcome_Lamp_Disable', but labeled as suppression — potential semantic inconsistency in control intent or layering (driver vs. functional disable). Retained per rule 4."
+  },
+  {
+    "head": "Front_Passenger_Laser_Welcome_Lamp_Driver_Disable",
+    "relation": "fault_response",
+    "tail": "short_circuit_or_open_circuit_detected",
+    "sources": [
+      "inner_lamp_ssts_0531"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "pwm_output",
+    "tail": "soft-10 (PWM3 @ 0%) when speed_level = 1",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "pwm_output",
+    "tail": "standard-20 (PWM6 @ 0%) when speed_level = 1",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "pwm_output",
+    "tail": "bright-30 (PWM9 @ 0%) when speed_level = 1",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "pwm_output",
+    "tail": "soft-10 (PWM3 @ 0%) when speed_level = 2",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "pwm_output",
+    "tail": "standard-20 (PWM6 @ 0%) when speed_level = 2",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "pwm_output",
+    "tail": "bright-30 (PWM9 @ 0%) when speed_level = 2",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "pwm_output",
+    "tail": "soft-10 (PWM3 @ 0%) when speed_level = 3",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "pwm_output",
+    "tail": "standard-20 (PWM6 @ 0%) when speed_level = 3",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "pwm_output",
+    "tail": "bright-30 (PWM9 @ 0%) when speed_level = 3",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "response_time",
+    "tail": "0.75s when speed_level = 1",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "response_time",
+    "tail": "3s when speed_level = 2",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "response_time",
+    "tail": "instantaneous when speed_level = 3",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "response_time_scaling_factor",
+    "tail": "0.025s/step",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting scaling factors: '0.025s/step' vs '0.1s/step'. Both sourced from same doc; likely represent different operational modes or interpretation ambiguity — retained with conflict flag."
+  },
+  {
+    "head": "Body_Control_Module_or_External_Lighting_Module",
+    "relation": "response_time_scaling_factor",
+    "tail": "0.1s/step",
+    "sources": [
+      "inner_lamp_ssts_0532"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting scaling factors: '0.025s/step' vs '0.1s/step'. Both sourced from same doc; likely represent different operational modes or interpretation ambiguity — retained with conflict flag."
+  },
+  {
+    "head": "Remarks",
+    "relation": "includes_subfunction",
+    "tail": "supplementary_explanation_for_wake_up_sleep_mode",
+    "sources": [
+      "inner_lamp_ssts_0534",
+      "inner_lamp_ssts_0550"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "has_function_code_input",
+    "tail": "6200 → dimming_percentage = 42",
+    "sources": [
+      "inner_lamp_ssts_0537"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "has_function_code_input",
+    "tail": "6240 → dimming_percentage = 41",
+    "sources": [
+      "inner_lamp_ssts_0537"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "has_function_code_input",
+    "tail": "7840 → dimming_percentage = 0",
+    "sources": [
+      "inner_lamp_ssts_0537"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "dimming_percentage_depends_on",
+    "tail": "lighting_intensity_level_code = 6200 → 42",
+    "sources": [
+      "inner_lamp_ssts_0537"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "dimming_percentage_depends_on",
+    "tail": "lighting_intensity_level_code = 7840 → 0",
+    "sources": [
+      "inner_lamp_ssts_0537"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IFP_Center_Console_Physical_Button_Backlight",
+    "relation": "output",
+    "tail": "ICB_LIN3",
+    "sources": [
+      "inner_lamp_ssts_0538"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IFP_Center_Console_Physical_Button_Backlight",
+    "relation": "prerequisite",
+    "tail": "P12LM2 input = ICB_LIN3",
+    "sources": [
+      "inner_lamp_ssts_0538"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IFP_Center_Console_Physical_Button_Backlight",
+    "relation": "prerequisite",
+    "tail": "S12LM0/S12LM2/T1/M3/T2 input = ICB_LIN3",
+    "sources": [
+      "inner_lamp_ssts_0538"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IFP_Center_Console_Physical_Button_Backlight",
+    "relation": "prerequisite",
+    "tail": "S31LM0/M1 input = ICB_LIN3",
+    "sources": [
+      "inner_lamp_ssts_0538"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IFP_Center_Console_Physical_Button_Backlight",
+    "relation": "prerequisite",
+    "tail": "S32LM0/M1/X1 input = ICB_LIN3",
+    "sources": [
+      "inner_lamp_ssts_0538"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IFP_Center_Console_Physical_Button_Backlight",
+    "relation": "output",
+    "tail": "NA",
+    "sources": [
+      "inner_lamp_ssts_0538"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IFP_Center_Console_Physical_Button_Backlight",
+    "relation": "prerequisite",
+    "tail": "P12LM1 input = NA",
+    "sources": [
+      "inner_lamp_ssts_0538"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampColor_Cmd_1",
+    "relation": "controls",
+    "tail": "front_door_ambient_light_color",
+    "sources": [
+      "inner_lamp_ssts_0539"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampBrtns_Cmd_1",
+    "relation": "controls",
+    "tail": "front_door_ambient_light_brightness",
+    "sources": [
+      "inner_lamp_ssts_0539"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampBrthng_Cmd_1",
+    "relation": "controls",
+    "tail": "front_door_ambient_light_breathing_frequency",
+    "sources": [
+      "inner_lamp_ssts_0539"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampColor_Cmd_1",
+    "relation": "input_source",
+    "tail": "LIN_bus_signal_DoorAmbtLampA_FL",
+    "sources": [
+      "inner_lamp_ssts_0539"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampBrtns_Cmd_1",
+    "relation": "input_source",
+    "tail": "LIN_bus_signal_DoorAmbtLampA_FL",
+    "sources": [
+      "inner_lamp_ssts_0539"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampBrthng_Cmd_1",
+    "relation": "input_source",
+    "tail": "LIN_bus_signal_DoorAmbtLampA_FL",
+    "sources": [
+      "inner_lamp_ssts_0539"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "front_door_ambient_light_color",
+    "relation": "maintains_state_when",
+    "tail": "DoorFL1LampColor_Cmd_1 = 0 or undefined_color_code",
+    "sources": [
+      "inner_lamp_ssts_0539"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "front_door_ambient_light_brightness",
+    "relation": "maintains_state_when",
+    "tail": "DoorFL1LampBrtns_Cmd_1 = 0",
+    "sources": [
+      "inner_lamp_ssts_0539"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampBrthng_Cmd_1",
+    "relation": "breathing_rate_mode_depends_on",
+    "tail": "code_value_0x0_to_0xF",
+    "sources": [
+      "inner_lamp_ssts_0539"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampBrthng_Cmd_1",
+    "relation": "breathing_cycle_depends_on",
+    "tail": "rate_value_(e.g._Rate1,_Rate2)",
+    "sources": [
+      "inner_lamp_ssts_0539"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampBrthng_Cmd_1",
+    "relation": "outputs",
+    "tail": "original_breathing_mode_value_(e.g._Rate0-No_Request,_Rate1-500ms)",
+    "sources": [
+      "inner_lamp_ssts_0539"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrtnsCmd_1",
+    "relation": "controls",
+    "tail": "interior_light_brightness",
+    "sources": [
+      "inner_lamp_ssts_0540"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1",
+    "relation": "controls",
+    "tail": "interior_ambient_light_breathing_rate",
+    "sources": [
+      "inner_lamp_ssts_0540"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrtnsCmd_1",
+    "relation": "input_interface",
+    "tail": "LIN_LHZCU_IPAmbtLamp_M_LHZCU_LIN5",
+    "sources": [
+      "inner_lamp_ssts_0540"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1",
+    "relation": "input_interface",
+    "tail": "LIN_LHZCU_IPAmbtLamp_M_LHZCU_LIN5",
+    "sources": [
+      "inner_lamp_ssts_0540"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrtnsCmd_1",
+    "relation": "maintains_state_when",
+    "tail": "instruction_value = 0 or undefined",
+    "sources": [
+      "inner_lamp_ssts_0540"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1",
+    "relation": "maintains_state_when",
+    "tail": "instruction_value = 0",
+    "sources": [
+      "inner_lamp_ssts_0540"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1",
+    "relation": "instruction_value_mapping",
+    "tail": "0x1 → Rate1 (500ms)",
+    "sources": [
+      "inner_lamp_ssts_0540"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1",
+    "relation": "instruction_value_mapping",
+    "tail": "0xF → Rate15 (12s)",
+    "sources": [
+      "inner_lamp_ssts_0540"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

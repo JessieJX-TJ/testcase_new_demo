@@ -1,0 +1,86 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "左近光灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件、触发条件到执行动作、退出条件及异常处理。",
+  "column_semantics": "表格分为两列，左侧为功能描述类别（如前置条件、触发条件等），右侧为对应的具体内容或参数。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "exlDipBeamHwDrvEnPrm",
+      "type": "parameter",
+      "description": "左近光灯硬件驱动使能参数"
+    },
+    {
+      "name": "LDipdBeamLghtDrvMdl",
+      "type": "module",
+      "description": "左近光灯驱动模块"
+    },
+    {
+      "name": "DipdBeamHdlmp_LH_HSD",
+      "type": "controller",
+      "description": "左近光灯处理模块（硬件安全驱动）"
+    },
+    {
+      "name": "DipdBeamLghtCtrlMdl",
+      "type": "controller",
+      "description": "左近光灯控制模块"
+    },
+    {
+      "name": "DTC",
+      "type": "fault_status",
+      "description": "故障代码（Diagnostic Trouble Code）"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "exlDipBeamHwDrvEnPrm == 1",
+      "description": "左近光灯硬件驱动使能参数为1"
+    },
+    {
+      "condition": "左近光灯处于输出状态",
+      "description": "左近光灯当前处于点亮输出状态"
+    },
+    {
+      "condition": "检测到左近光灯短路到地",
+      "description": "系统检测到左近光灯电路存在短路至地的故障"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "description": "系统检测到之前存在的短路故障已恢复正常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "LDipdBeamLghtDrvMdl",
+      "action": "停止驱动左近光灯输出",
+      "description": "停止向左近光灯发送驱动信号"
+    },
+    {
+      "signal": "LDipdBeamLghtDrvMdl",
+      "action": "持续发送 DippedBeamLightStatus",
+      "description": "持续发送左近光灯状态信息，其中DippedBeamLightSta=0 (Off)"
+    },
+    {
+      "signal": "LDipdBeamLghtDrvMdl",
+      "action": "持续发送 DippedBeamLightErrorStatus",
+      "description": "持续发送左近光灯错误状态信息，其中DippedBeamLightErrorSta=0x1(Error)"
+    },
+    {
+      "signal": "DTC",
+      "action": "置位",
+      "description": "设置故障代码，表示检测到故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "左近光灯短路到地",
+      "description": "左近光灯电路发生短路至地的故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了当左近光灯发生短路到地故障时，系统应如何响应（如停止驱动、发送状态信息、置位故障代码）以及故障恢复后的退出条件，可用于验证整车电子电器系统在左近光灯短路故障情况下的诊断与保护功能。",
+  "uncertain_points": []
+}
+```

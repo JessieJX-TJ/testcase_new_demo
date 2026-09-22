@@ -1,0 +1,67 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Side Position Light Control",
+  "row_semantics": "Each row represents a distinct control function for side position lights, differentiated by the specific light being controlled (e.g., left front, right front, left rear).",
+  "column_semantics": {
+    "1": "Function Name (SidePositionLight.ControlSidePositionLight)",
+    "2": "Consumption Type (SOA/ICB)",
+    "3": "Interface Communication Type (SOA/ICB)",
+    "4": "Interface Communication Type (ICB)",
+    "5": "Interface Communication Type (ICB)",
+    "6": "Reserved/Broadcast Type (BS→CS)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "function",
+      "description": "Controls the illumination state of side position lights."
+    },
+    {
+      "name": "ControlSidePositionLight",
+      "type": "service_interface",
+      "description": "The service interface used to control the side position lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightReq",
+      "type": "input_parameter",
+      "description": "Request parameter for controlling the side position light.",
+      "details": {
+        "instanceID": {
+          "values": [
+            {
+              "id": 5,
+              "description": "Controls the left front position light."
+            },
+            {
+              "id": 6,
+              "description": "Controls the right front position light."
+            }
+          ]
+        },
+        "state": {
+          "values": [
+            {
+              "code": "0x0",
+              "description": "OFF"
+            },
+            {
+              "code": "0x1",
+              "description": "ON"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces and parameters required to control the side position lights on a vehicle, enabling tests to verify that the correct light is activated or deactivated based on the provided request parameters.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,71 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "左制动灯短路故障诊断与处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件、触发条件、执行动作、退出条件到异常处理。",
+  "column_semantics": "两列结构，左侧为条件/动作描述，右侧为具体参数或状态值。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "BrkLightDrvMdl",
+      "type": "controller_module",
+      "description": "制动灯驱动模块"
+    },
+    {
+      "name": "BrkLightCtrlMdl",
+      "type": "controller_module",
+      "description": "制动灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrkLightFbkSOAEnPrm",
+      "value": "1 (Enable)",
+      "description": "制动灯反馈安全监控使能参数"
+    },
+    {
+      "name": "左制动灯输出状态",
+      "value": "输出状态",
+      "description": "左制动灯当前处于点亮或输出状态"
+    },
+    {
+      "name": "触发条件",
+      "value": "检测到左制动灯短路到电源",
+      "description": "系统检测到左制动灯存在短路至电源的故障"
+    },
+    {
+      "name": "退出条件",
+      "value": "检测到短路恢复",
+      "description": "系统检测到之前存在的短路故障已恢复正常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLamp_LH_HSD",
+      "action": "停止驱动",
+      "description": "停止对左制动灯（BrkLamp_LH_HSD）的驱动"
+    },
+    {
+      "name": "BrakeLightState",
+      "value": "2 (Error)",
+      "action": "持续发送",
+      "description": "持续向BrakeLightCtrlMdl发送制动灯状态为错误（2）"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTCB104112",
+      "description": "置位DTC B104112，表示检测到左制动灯短路故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "action": "持续发送",
+      "description": "至少发送三帧BrakeLightState = 2信号"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当左制动灯发生短路至电源故障时，系统如何通过BrkLightDrvMdl和BrkLightCtrlMdl模块进行故障检测、状态上报和DTC记录，并在故障恢复后退出该处理流程。可用于验证整车制动灯系统的故障诊断与保护功能。",
+  "uncertain_points": []
+}
+```

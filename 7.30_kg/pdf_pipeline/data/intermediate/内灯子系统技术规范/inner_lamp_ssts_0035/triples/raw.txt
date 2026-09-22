@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "氛围灯开启请求",
+    "relation": "触发条件",
+    "tail": "LowIPALampOnOff_1_0_OFF 或 LowIPALampOnOff_1_1_ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["氛围灯开启请求", "LowIPALampOnOff_1_0_OFF", "LowIPALampOnOff_1_1_ON"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯点亮ON",
+    "relation": "前提条件",
+    "tail": "同时接收到非0值的颜色亮度指令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["点亮ON", "颜色亮度指令"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯颜色指令",
+    "relation": "输入为",
+    "tail": "LowIPALampColorCmd_1_0_No Request 或 0x01-0xFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["氛围灯颜色指令", "LowIPALampColorCmd_1_0_No Request", "0x01-0xFF"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "灯头颜色切换",
+    "relation": "依赖于",
+    "tail": "氛围灯颜色指令",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": ["灯头颜色切换", "氛围灯颜色指令"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯亮度指令",
+    "relation": "输入为",
+    "tail": "LowIPALampBrtnsCmd_1_0_No Request 或 0x01-0x64",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["氛围灯亮度指令", "LowIPALampBrtnsCmd_1_0_No Request", "0x01-0x64"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "灯头亮度调节",
+    "relation": "依赖于",
+    "tail": "氛围灯亮度指令",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": ["灯头亮度调节", "氛围灯亮度指令"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯呼吸指令",
+    "relation": "输入为",
+    "tail": "LowIPALampBrthngCmd_1_0_No Request 或 0x01-0xB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["氛围灯呼吸指令", "LowIPALampBrthngCmd_1_0_No Request", "0x01-0xB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "氛围灯渐变速度指令",
+    "relation": "输入为",
+    "tail": "UpIPCLampFadeSpdCmd_1_0_Spd0 至 UpIPCLampFadeSpdCmd_1_3_Spd3",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["氛围灯渐变速度指令", "UpIPCLampFadeSpdCmd_1_0_Spd0", "UpIPCLampFadeSpdCmd_1_3_Spd3"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "灯头颜色/亮度切换时间",
+    "relation": "超时约束",
+    "tail": "默认速度Spd0: 2000ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": ["灯头颜色/亮度切换时间", "Spd0: 2000ms"],
+    "confidence_note": "high"
+  }
+]
+```

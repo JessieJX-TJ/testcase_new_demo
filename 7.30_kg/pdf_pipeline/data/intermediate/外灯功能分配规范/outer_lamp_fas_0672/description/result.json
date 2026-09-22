@@ -1,0 +1,45 @@
+{
+  "table_type": "fault_table",
+  "topic": "Dipped Beam Light Error Status",
+  "row_semantics": "Each row represents a specific service interface call to retrieve the error status of either the left or right dipped beam light.",
+  "column_semantics": {
+    "A": "Function/module name (e.g., DippedBeamLight.DippedBeamLightErrorStatus)",
+    "B": "Consumption type (e.g., SOA, ICB)",
+    "C": "Controller/Module involved (e.g., RHZCU, LHZCU)",
+    "D": "Controller/Module involved (e.g., LHZCU)",
+    "E": "Unused column",
+    "F": "Fault state description (e.g., 硬线故障状态, 网络故障状态)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight",
+      "type": "function",
+      "description": "The function to check the error status of the dipped beam light."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightErrorSta",
+      "type": "output_signal",
+      "description": "The error status of the dipped beam light, which can be: No Error (0x0), Error (0x1), or Unknown (0x2)."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "HardLineFault",
+      "type": "fault_state",
+      "description": "Indicates a fault related to the hardline connection of the dipped beam light."
+    },
+    {
+      "name": "NetworkFault",
+      "type": "fault_state",
+      "description": "Indicates a fault related to the network communication for the dipped beam light."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for querying the error status of both the left and right dipped beam lights, specifying the expected output values and the associated fault states.",
+  "uncertain_points": []
+}

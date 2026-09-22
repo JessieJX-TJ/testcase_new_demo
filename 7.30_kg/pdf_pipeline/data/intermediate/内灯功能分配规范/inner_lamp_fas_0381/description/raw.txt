@@ -1,0 +1,79 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯（Map Lamp）亮度控制参数配置",
+  "row_semantics": "触发源定义了亮度控制的激活条件，包括HMI软开关和组合服务SOA两种方式。",
+  "column_semantics": {
+    "触发源": "定义亮度控制的启动来源，如用户通过HMI操作或系统内部服务调用。",
+    "开启时亮度值": "描述在特定触发条件下，外灯开启时的目标亮度设置，可能涉及基础服务、个性化数据及账户记忆值。",
+    "渐亮渐灭速度": "定义外灯从关闭到开启或从开启到关闭的过渡时间速率，由基础服务SOA控制。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "HMI软开关",
+      "type": "输入信号",
+      "description": "通过人机交互界面（HMI）的软件开关触发外灯亮度控制。"
+    },
+    {
+      "name": "组合服务 SOA",
+      "type": "输入信号",
+      "description": "基于面向服务架构（SOA）的组合服务，用于触发外灯亮度控制，包含MapLampService和MapLampLazyOnO两个子服务。"
+    },
+    {
+      "name": "MapLamp.MapLampBrightness",
+      "type": "输出信号",
+      "description": "基础服务SOA中定义的外灯亮度值，表示外灯开启时的具体亮度等级。"
+    },
+    {
+      "name": "PersonalizationData.MapLampDrEnbSet.FollowUpS",
+      "type": "输出信号",
+      "description": "个性化数据中的外灯驱动使能设置，可能影响亮度跟随策略。"
+    },
+    {
+      "name": "MapLampSet.MapLampSetInfo",
+      "type": "输出信号",
+      "description": "外灯设置信息，包含亮度相关的配置参数。"
+    },
+    {
+      "name": "账号个性化记忆亮度值",
+      "type": "输出信号",
+      "description": "根据用户账户个性化设置的记忆亮度值，用于外灯亮度控制。"
+    },
+    {
+      "name": "MapLamp.MapLampDimSpeed",
+      "type": "输出信号",
+      "description": "基础服务SOA中定义的外灯渐亮渐灭速度，控制亮度变化的快慢。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "触发源",
+      "description": "决定外灯亮度控制是否被激活的条件，包括HMI操作和组合服务调用。"
+    },
+    {
+      "name": "开启时亮度值",
+      "description": "外灯开启时的具体亮度设置，可能受多种因素影响，如基础服务、个性化数据和账户记忆值。"
+    },
+    {
+      "name": "渐亮渐灭速度",
+      "description": "外灯亮度变化的速率，由基础服务SOA控制。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MapLamp.MapLampBrightness",
+      "description": "外灯开启时的亮度值，是核心输出参数之一。"
+    },
+    {
+      "name": "MapLamp.MapLampDimSpeed",
+      "description": "外灯渐亮渐灭的速度，是核心输出参数之一。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证外灯亮度控制功能在不同触发源下的行为一致性，包括HMI操作和组合服务调用时的亮度值设置和渐亮渐灭速度控制。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,153 @@
+[
+  {
+    "head": "驱动后雾灯/近光灯点亮",
+    "relation": "触发条件",
+    "tail": "位置灯LHZCU/RHZCU/RZCU接收到ICB发送的位置灯控制请求硬线驱动位置灯点亮",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "位置灯LHZCU/RHZCU/RZCU",
+      "ICB",
+      "位置灯控制请求",
+      "硬线驱动"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1270",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "RearFogLight状态为ON",
+    "relation": "输出为",
+    "tail": "{RearFogLight. RearFogLightState. RearFogLightSta}=0x1=ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLight",
+      "RearFogLightState",
+      "RearFogLightSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1270",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "RearFogLightErrorStatus状态为No Error",
+    "relation": "输出为",
+    "tail": "{RearFogLight. RearFogLightErrorStatus. RearFogLightErrorSta}=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLight",
+      "RearFogLightErrorStatus",
+      "RearFogLightErrorSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1270",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "DippedBeamLight状态为ON",
+    "relation": "输出为",
+    "tail": "{DippedBeamLight.DippedBeamLightStatus. DippedBeamLightSta} (InstanceID=3)=0x1=ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DippedBeamLight",
+      "DippedBeamLightStatus",
+      "DippedBeamLightSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1270",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "SidePositionLight状态为ON",
+    "relation": "输出为",
+    "tail": "{SidePositionLight.SidePositionLightStatus. SidePositionLightSta} (InstanceID=5)=0x1=ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "SidePositionLight",
+      "SidePositionLightStatus",
+      "SidePositionLightSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1270",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "RearFogLightErrorStatus反馈至ICB",
+    "relation": "依赖于",
+    "tail": "{ExteriorLightSwitchProcess.RearFogLightSta.RearFogLghtSta}=0x1=ON",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "RearFogLightErrorStatus",
+      "ICB",
+      "ExteriorLightSwitchProcess"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1270",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "DippedBeamLightErrorStatus反馈至ICB",
+    "relation": "依赖于",
+    "tail": "{ExteriorLightControlSystem. RearFogLightSts. RearFogLghtSts}=0x1=On",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "DippedBeamLightErrorStatus",
+      "ICB",
+      "ExteriorLightControlSystem"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1270",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "SidePositionLightErrorStatus反馈至ICB",
+    "relation": "依赖于",
+    "tail": "{ExteriorLightControlSystem. RearFogLightErr.Sta. RearFogLghtErrSta}=0x0=No Error",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "SidePositionLightErrorStatus",
+      "ICB",
+      "ExteriorLightControlSystem"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1270",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "DippedBeamLight状态通过Instance ID获取",
+    "relation": "输入来自",
+    "tail": "exlDipdBeamHwDrvEnPrm=0x0||0x2;通过 Instance ID 3/4 获取近光灯状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DippedBeamLight",
+      "Instance ID",
+      "exlDipdBeamHwDrvEnPrm"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1270",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "SidePositionLight状态通过Instance ID获取",
+    "relation": "输入来自",
+    "tail": "exlSideLghtHwDrvEnPrm=0x0;备注:位置灯炮筒灯方案",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "SidePositionLight",
+      "Instance ID",
+      "exlSideLghtHwDrvEnPrm"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1270",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

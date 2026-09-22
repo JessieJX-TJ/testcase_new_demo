@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "七键开关请求下后雾灯控制逻辑",
+  "row_semantics": "描述在特定输入条件下，系统执行的动作和状态变化",
+  "column_semantics": {
+    "Column1": "条件/输入描述",
+    "Column2": "执行动作/输出描述"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "S32G",
+      "type": "controller",
+      "description": "整车控制器，负责接收开关请求并触发相关逻辑"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Light and Hazard Control Unit，负责组合开关状态管理和后雾灯控制"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外灯开关处理模块，管理外部灯光的开关状态"
+    },
+    {
+      "name": "IFPRearFoglghtSwReq_1_0_No Press",
+      "type": "input_signal",
+      "description": "后雾灯开关请求信号，表示开关未被按下"
+    },
+    {
+      "name": "exlRearFoglghtPrm",
+      "type": "system_state",
+      "description": "物理开关状态，指示后雾灯开关的物理位置"
+    },
+    {
+      "name": "CombLghtSwSta",
+      "type": "system_state",
+      "description": "组合开关显示状态，指示当前组合开关的位置"
+    },
+    {
+      "name": "AUTO",
+      "type": "mode_name",
+      "description": "自动模式，用于控制后雾灯的开启"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "IFPRearFoglghtSwReq_1_0_No Press",
+      "description": "后雾灯开关处于未按下的状态"
+    },
+    {
+      "condition": "exlRearFoglghtPrm=1",
+      "description": "物理开关处于特定位置（可能为关闭或中间位置）"
+    },
+    {
+      "condition": "RearFogLghtFucProsSta=0x0",
+      "description": "后雾灯功能处理状态为关闭"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "CombLghtSwSta=0x3=AUTO",
+      "description": "组合开关显示状态切换为AUTO模式"
+    },
+    {
+      "output": "执行后雾灯及关联位置灯开启",
+      "description": "在满足AUTO模式前置条件下，后雾灯及相关位置灯被开启"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在七键开关请求下，当后雾灯开关未被按下且物理开关处于特定位置时，LHZCU如何自动切换组合开关状态至AUTO模式，并根据条件判断是否开启后雾灯及相关位置灯。可用于验证后雾灯在不同开关状态下的正确控制逻辑。",
+  "uncertain_points": []
+}
+```

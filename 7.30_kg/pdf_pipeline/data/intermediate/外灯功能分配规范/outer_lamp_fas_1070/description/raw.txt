@@ -1,0 +1,54 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Side Position Light Control Interface Specifications",
+  "row_semantics": "Each row represents a distinct service interface for controlling either the left or right side position lights, with specific instance IDs and parameter definitions.",
+  "column_semantics": "The table is structured to show the service interface name, parameter details (including InstanceID and ON/OFF values), and associated system components (SOA, ICB) involved in the control process.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ControlSidePositionLight",
+      "type": "Function Name",
+      "description": "The service interface used to control the side position lights."
+    },
+    {
+      "name": "SidePositionLightReq",
+      "type": "Parameter Name",
+      "description": "The request parameter for the ControlSidePositionLight function, specifying whether the light should be turned ON or OFF."
+    },
+    {
+      "name": "InstanceID",
+      "type": "Identifier",
+      "description": "A unique identifier for each instance of the ControlSidePositionLight function, distinguishing between different control requests."
+    },
+    {
+      "name": "SOA",
+      "type": "System Component",
+      "description": "Service Oriented Architecture component, likely representing the software layer responsible for initiating the control request."
+    },
+    {
+      "name": "ICB",
+      "type": "System Component",
+      "description": "Inter-Computer Bus component, likely representing the communication bus or module facilitating the control signal transmission between systems."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0=OFF",
+      "type": "Input Signal",
+      "description": "A command value indicating that the side position light should be turned off."
+    },
+    {
+      "name": "0x1=ON",
+      "type": "Input Signal",
+      "description": "A command value indicating that the side position light should be turned on."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and interfaces for controlling the left and right side position lights, providing the necessary information to test the functionality of turning these lights on and off via specific service interfaces.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,41 @@
+{
+  "table_type": "signal_table",
+  "topic": "ICB 接收 CAN 信号与 LIN 接口信号的映射关系",
+  "row_semantics": "定义了 CAN 总线上的一个信号（SideLghtSts）如何通过 ICB 模块映射到 LIN 总线上的对应信号（VehSideLghtSts_IFP_1）。",
+  "column_semantics": "第一列表示 CAN 总线上的输入信号名称，第二列表示该信号在 LIN 总线上的对应输出信号名称及其赋值关系。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "集成控制盒 (Integrated Control Box)，负责接收 CAN 信号并进行处理。"
+    },
+    {
+      "name": "SideLghtSts",
+      "type": "input_signal",
+      "description": "CAN 总线上的侧灯状态信号，由外部传感器或系统提供。"
+    },
+    {
+      "name": "LIN",
+      "type": "communication_interface",
+      "description": "本地互联网络接口，用于车辆内部低速通信。"
+    },
+    {
+      "name": "VehSideLghtSts_IFP_1",
+      "type": "output_signal",
+      "description": "LIN 总线上的侧灯状态信号，由 ICB 根据 SideLghtSts 信号赋值后发送。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "VehSideLghtSts_IFP_1",
+      "description": "根据 SideLghtSts 信号值，在 LIN 总线上输出对应的侧灯状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证 ICB 模块是否正确实现了 CAN 信号到 LIN 信号的映射功能，确保 SideLghtSts 信号能够准确地在 LIN 总线上以 VehSideLghtSts_IFP_1 的形式输出。",
+  "uncertain_points": []
+}

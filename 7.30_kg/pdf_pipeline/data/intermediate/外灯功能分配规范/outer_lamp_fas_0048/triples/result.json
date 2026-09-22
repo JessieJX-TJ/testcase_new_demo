@@ -1,0 +1,81 @@
+[
+  {
+    "head": "转向灯拨杆开关关闭时,内部信号 DircnIndLampSwStsMntry 跳转为默认状态",
+    "relation": "触发条件",
+    "tail": "当转向灯拨杆开关关闭时 (硬线开关断开), [转向灯开关预处理模块]检测转向灯开关状态并做内部信号跳转为: DircnIndLampSwStsMntry=0x0=DircnIndLampSwStsMntry_0_off",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "转向灯拨杆开关关闭",
+      "DircnIndLampSwStsMntry",
+      "0x0=DircnIndLampSwStsMntry_0_off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0048",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "转向灯拨杆开关左侧一档触发时,内部信号 DircnIndLampSwStsMntry 跳转为短转向模式",
+    "relation": "触发条件",
+    "tail": "当转向灯拨杆开关左侧一档触发 (>50ms), [转向灯开关预处理模块]检测转向灯开关状态并做内部信号跳转为: DircnIndLampSwStsMntry=0x1=DircnIndLampSwStsMntry_1_LeftshortturnmodeSwitch active",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "转向灯拨杆开关左侧一档触发",
+      ">50ms",
+      "DircnIndLampSwStsMntry",
+      "0x1=DircnIndLampSwStsMntry_1_LeftshortturnmodeSwitch active"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0048",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "转向灯拨杆开关左侧二档触发时,内部信号 DircnIndLampSwStsMntry 跳转为长转向模式",
+    "relation": "触发条件",
+    "tail": "当转向灯拨杆开关左侧二档触发时 (硬线开关接通), [转向灯开关预处理模块]检测转向灯开关状态并做内部信号跳转为: DircnIndLampSwStsMntry=0x2=DircnIndLampSwStsMntry_2_LeftlongturnmodeSwitch active",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "转向灯拨杆开关左侧二档触发",
+      "硬线开关接通",
+      "DircnIndLampSwStsMntry",
+      "0x2=DircnIndLampSwStsMntry_2_LeftlongturnmodeSwitch active"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0048",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "转向灯拨杆开关左侧一档导通后,内部信号 DircnIndLampSwStsMntry 跳转为默认状态",
+    "relation": "超时约束",
+    "tail": "开关导通时按照信号周期持续发送 DircnIndLampSwStsMntry 导通状态,每次导通至少发送3帧,开关断开且至少发送3帧导通状态后跳转: DircnIndLampSwStsMntry=0x0=DircnIndLampSwStsMntry_0_off",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "转向灯拨杆开关左侧一档导通",
+      "3帧导通状态",
+      "DircnIndLampSwStsMntry",
+      "0x0=DircnIndLampSwStsMntry_0_off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0048",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "转向灯拨杆开关左侧二档导通后,内部信号 DircnIndLampSwStsMntry 跳转为默认状态",
+    "relation": "超时约束",
+    "tail": "开关导通时按照信号周期持续发送 DircnIndLampSwStsMntry 导通状态,每次导通至少发送3帧,开关断开且至少发送3帧导通状态后跳转: DircnIndLampSwStsMntry=0x0=DircnIndLampSwStsMntry_0_off",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "转向灯拨杆开关左侧二档导通",
+      "3帧导通状态",
+      "DircnIndLampSwStsMntry",
+      "0x0=DircnIndLampSwStsMntry_0_off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0048",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

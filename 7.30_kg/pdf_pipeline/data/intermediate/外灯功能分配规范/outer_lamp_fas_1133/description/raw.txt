@@ -1,0 +1,30 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "拖车模式下转向灯故障状态反馈机制",
+  "row_semantics": "描述在特定条件下（拖车模式），系统如何根据转向灯的故障状态生成相应的故障信号并反馈给TDM（Tailgate Domain Module）",
+  "column_semantics": "无明确列，内容为多行文本描述，包含条件、输入状态、输出信号及反馈逻辑",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "RZCU (Remote Zone Control Unit)",
+    "TDM (Tailgate Domain Module)",
+    "ExteriorLightControlSystem"
+  ],
+  "core_conditions": [
+    "拖车模式 (Trailer Mode)",
+    "前置条件满足 (Preconditions met)"
+  ],
+  "core_outputs": [
+    "DircnLghtFltsts (Direction Light Fault Status)",
+    "TurnlampFltSts (Turn Lamp Fault Status)"
+  ],
+  "core_faults": [
+    "Both_Side_Direction_Light_Error",
+    "No Error"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在拖车模式下，当转向灯出现故障时，RZCU如何检测故障状态，并将相应的故障代码（DircnLghtFltsts和TurnlampFltSts）反馈给TDM，以便系统进行故障诊断和处理。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,67 @@
+{
+  "table_type": "state_table",
+  "topic": "内灯 (Interior Light) 功能分配规范",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的系统状态或控制信号定义。",
+  "column_semantics": "列定义了信号的来源（输入/输出）、所属控制器/模块（如CAN、ZXZCU、RHZCU、VS SSTS等）以及具体的状态值含义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "UsgMdV",
+      "type": "system_state",
+      "description": "用户模式有效状态"
+    },
+    {
+      "name": "FrtPsgDoorOpenSts",
+      "type": "system_state",
+      "description": "前乘客侧车门开启状态"
+    },
+    {
+      "name": "RRDoorOpenSts",
+      "type": "system_state",
+      "description": "后右车门开启状态"
+    },
+    {
+      "name": "FrtPsgWlcmPedLghtCtrlCmd",
+      "type": "control_signal",
+      "description": "前乘客侧车窗照明控制命令"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0=Invalid",
+      "description": "无效状态"
+    },
+    {
+      "name": "0x1=Valid",
+      "description": "有效状态"
+    },
+    {
+      "name": "0x0=Closed",
+      "description": "车门关闭状态"
+    },
+    {
+      "name": "0x1=Open",
+      "description": "车门开启状态"
+    },
+    {
+      "name": "0x2=Ajar",
+      "description": "车门半开状态"
+    },
+    {
+      "name": "0x3=FullOpen",
+      "description": "车门完全打开状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FrtPsgWlcmPedLghtCtrlCmd",
+      "type": "output_signal",
+      "description": "控制前乘客侧车窗照明的命令信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了车辆内灯相关系统状态和控制信号的编码规则，可用于验证车门状态检测逻辑、用户模式有效性判断以及车窗照明控制命令的正确性。",
+  "uncertain_points": []
+}

@@ -1,0 +1,54 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 近光灯状态与故障状态",
+  "row_semantics": "表格的每一行代表一个特定的服务接口或参数查询，用于获取外灯（近光灯）的状态或故障信息。",
+  "column_semantics": "表格的列定义了该服务接口的消费方（SOA）、控制器/模块（如LHZCU、ICB）以及硬线故障状态等。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess.DippedBeamLightSta",
+      "type": "function_name",
+      "description": "近光灯状态查询服务接口"
+    },
+    {
+      "name": "DippedBeamLight.DippedBeamLightErrorStatus",
+      "type": "function_name",
+      "description": "近光灯故障状态查询服务接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DipdBeamLightSta",
+      "type": "input_parameter",
+      "description": "近光灯状态参数，可能的值包括：OFF (0x0), ON (0x1), Unknown (0x2)"
+    },
+    {
+      "name": "DippedBeamLightErrorSta",
+      "type": "input_parameter",
+      "description": "近光灯故障状态参数，可能的值包括：No Error (0x0), Error (0x1), Unknown (0x2)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Interface Name: DippedBeamLightSta",
+      "type": "output_signal",
+      "description": "返回近光灯当前状态"
+    },
+    {
+      "name": "Interface Name: DippedBeamLightErrorStatus",
+      "type": "output_signal",
+      "description": "返回左侧近光灯的故障状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DippedBeamLightErrorSta",
+      "type": "fault_status",
+      "description": "指示近光灯是否存在故障，包括无错误、有错误或未知状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了用于查询车辆外灯（近光灯）当前状态和故障状态的服务接口及其参数，可用于验证外灯控制系统在不同状态下的响应是否符合规范。",
+  "uncertain_points": []
+}

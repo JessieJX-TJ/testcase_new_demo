@@ -1,0 +1,101 @@
+[
+  {
+    "head": "左前雾灯停止输出",
+    "relation": "前提条件",
+    "tail": "左前雾灯处于输出状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "前置条件",
+      "FrtFogLghtDrvMdl",
+      "FogLamp_LH_HSD"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0247",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "左前雾灯短路到地故障被记录",
+    "relation": "前提条件",
+    "tail": "检测到左前雾灯短路到地",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "触发条件",
+      "DTC B1053 11"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0247",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "系统置位DTC B1053 11",
+    "relation": "故障响应",
+    "tail": "检测到左前雾灯短路到地",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "执行动作",
+      "置位 DTC B1053 11",
+      "触发条件"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0247",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "左前雾灯状态设置为关闭",
+    "relation": "输出为",
+    "tail": "LFrtFogLghtSts = 0x0 (OFF)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "LFrtFogLghtSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0247",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "左前雾灯故障状态设置为正常",
+    "relation": "输出为",
+    "tail": "LFrtFogLghtFltSts = 0x1 (Ture)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "LFrtFogLghtFltSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0247",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "左前雾灯错误状态设置为错误",
+    "relation": "输出为",
+    "tail": "FrontFogLightErrorStatus.FrontFogLightErrorSta{InstanceID=3} = 0x1 (Error)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "FrontFogLightErrorStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0247",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "左前雾灯恢复输出",
+    "relation": "复位条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "退出条件",
+    "evidence_terms": [
+      "退出条件"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0247",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  }
+]

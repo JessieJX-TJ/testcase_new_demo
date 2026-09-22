@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 方向灯控制与状态",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的接口或服务，描述其参数、调用方式及控制逻辑。",
+  "column_semantics": "列定义了该接口的服务类型（如SOA、ICB）、调用方/被调用方、以及控制方式（网络控制或硬线状态）。部分列用于区分不同控制器或模块。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "功能模块",
+      "description": "外灯中的方向灯系统"
+    },
+    {
+      "name": "ControlDirectionLight",
+      "type": "功能名",
+      "description": "控制右后转向灯的亮灭"
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "功能名",
+      "description": "获取左前转向灯的状态"
+    },
+    {
+      "name": "SOA",
+      "type": "控制器/模块",
+      "description": "Service-Oriented Architecture，面向服务架构"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块",
+      "description": "Integrated Circuit Board，集成电路板"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "Local Headlight Zone Control Unit，局部大灯区域控制单元"
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块",
+      "description": "Right Headlight Zone Control Unit，右侧大灯区域控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightReq",
+      "type": "输入信号",
+      "description": "控制方向灯请求参数，值为0x0=OFF或0x1=ON"
+    },
+    {
+      "name": "DirectionLightSta",
+      "type": "输出信号",
+      "description": "方向灯状态反馈参数，值为0x0=OFF、0x1=ON或0x2=Unknown"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯中方向灯的控制与状态查询接口，可用于验证方向灯控制命令的正确执行以及转向灯状态反馈的准确性。",
+  "uncertain_points": []
+}
+```

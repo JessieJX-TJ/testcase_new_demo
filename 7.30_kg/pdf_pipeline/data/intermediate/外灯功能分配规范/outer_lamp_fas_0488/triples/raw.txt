@@ -1,0 +1,100 @@
+```json
+[
+  {
+    "head": "转向灯状态为左转向",
+    "relation": "输入为",
+    "tail": "DircnLghtSts = 0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DircnLghtSts", "Left_Direction_Light_On"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态为右转向",
+    "relation": "输入为",
+    "tail": "DircnLghtSts = 0x2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DircnLghtSts", "Right_Direction_Light_On"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态为双侧转向",
+    "relation": "输入为",
+    "tail": "DircnLghtSts = 0x3",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DircnLghtSts", "Both_Side_Direction_Light_On"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态为关闭",
+    "relation": "输入为",
+    "tail": "DircnLghtSts = 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DircnLghtSts", "OFF"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯无故障",
+    "relation": "输入为",
+    "tail": "DircnLghtFtsts = 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DircnLghtFtsts", "No_Error"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯左侧方向灯故障",
+    "relation": "输入为",
+    "tail": "DircnLghtFtsts = 0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DircnLghtFtsts", "Left_Direction_Light_Error"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯右侧方向灯故障",
+    "relation": "输入为",
+    "tail": "DircnLghtFtsts = 0x2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DircnLghtFtsts", "Right_Direction_Light_Error"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯双侧方向灯故障",
+    "relation": "输入为",
+    "tail": "DircnLghtFtsts = 0x3",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DircnLghtFtsts", "Both_Side_Direction_Light_Error"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯控制接口被调用",
+    "relation": "前提条件",
+    "tail": "调用ExteriorLightControlSystem.ControlDirectionLight服务接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["ExteriorLightControlSystem.ControlDirectionLight", "调用该服务接口"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯点亮或熄灭",
+    "relation": "触发条件",
+    "tail": "调用ExteriorLightControlSystem.ControlDirectionLight服务接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["ExteriorLightControlSystem.ControlDirectionLight", "请求转向灯点亮或者熄灭"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态更新",
+    "relation": "依赖于",
+    "tail": "DircnLghtSts信号",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["DircnLghtSts"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯故障状态更新",
+    "relation": "依赖于",
+    "tail": "DircnLghtFtsts信号",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["DircnLghtFtsts"],
+    "confidence_note": "high"
+  }
+]
+```

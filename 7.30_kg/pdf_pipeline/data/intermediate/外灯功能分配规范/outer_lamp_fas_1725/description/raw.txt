@@ -1,0 +1,37 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "车辆模式（Vehicle Mode）定义与接口规范",
+  "row_semantics": "表格按功能模块或信号组进行组织，每行代表一个特定的车辆模式或相关接口定义。",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识该行描述的具体信号或功能模块。",
+    "Direction": "信号的方向，如输入、输出、提供或消费。",
+    "Type": "信号类型，例如CAN/LIN/SoA服务或硬线等。",
+    "Sender/Provider": "信号的发送方或提供方，通常是某个节点或服务。",
+    "Receiver/Consumer": "信号的接收方或消费方，通常是另一个节点或服务。",
+    "Channel": "信号传输的路径或通道，如指定信号通道。",
+    "Source": "接口来源，指明信号的来源位置或具体条目。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "type": "功能名",
+      "description": "车辆模式（Vehicle Mode）定义，表示车辆当前所处的不同状态或模式，如正常、碰撞、工厂、运输、动态、展览、工程和维修等。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "VehMd",
+      "type": "输出信号",
+      "description": "表示车辆当前的模式状态，由0x0到0xF共16种不同的模式值定义，每个值对应一种特定的车辆状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和规范车辆模式（VehMd）信号的接口信息，包括其类型、方向、发送方、接收方、传输通道及来源，是进行车辆模式状态验证测试的基础依据。",
+  "uncertain_points": []
+}
+```

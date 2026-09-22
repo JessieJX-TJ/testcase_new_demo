@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车电子系统中车身灯状态信号的接口定义与传输规范",
+  "row_semantics": "每行代表一个具体的信号接口定义，描述其在系统中的角色和属性。",
+  "column_semantics": {
+    "Interface Name": "信号接口的名称，用于标识该信号。",
+    "Direction": "信号的传输方向，如输入或输出。",
+    "Type": "信号的通信类型，如CAN/LIN、SOA服务等。",
+    "Sender/Provider": "信号的发送方或提供方，通常是某个功能模块或服务。",
+    "Receiver/Consumer": "信号的接收方或消费方，通常是另一个功能模块或服务。",
+    "Channel": "信号传输的路径或通道，如指定信号通道。",
+    "Source": "信号的来源，如内灯SSTS（Side Light Status Sensor）"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SideLghtSts_IFP_1",
+      "type": "Signal",
+      "description": "整车位置灯点亮状态信号，用于指示车辆侧灯的状态。"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "集成控制盒（Integrated Control Box），作为信号的发送方。"
+    },
+    {
+      "name": "IFP",
+      "type": "Controller/Module",
+      "description": "仪表盘处理单元（Instrument Panel Processor），作为信号的接收方。"
+    },
+    {
+      "name": "LIN",
+      "type": "Communication Protocol",
+      "description": "局域互联网络协议，用于信号传输。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "SideLghtSts_IFP_1",
+      "value": "0x0 (OFF) or 0x1 (ON)",
+      "description": "表示侧灯是否点亮，0x0表示关闭，0x1表示开启。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车侧灯状态信号（SideLghtSts_IFP_1）的接口规范，包括其传输方向、类型、发送方（ICB）、接收方（IFP）以及来源（内灯SSTS），可用于验证该信号在LIN总线上的正确传输和状态反馈。",
+  "uncertain_points": []
+}
+```

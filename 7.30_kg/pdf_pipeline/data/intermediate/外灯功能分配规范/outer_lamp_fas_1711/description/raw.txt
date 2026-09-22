@@ -1,0 +1,31 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 故障状态与控制规范",
+  "row_semantics": "表格按外灯的不同转向灯故障状态和控制接口进行分组，每一行代表一个具体的故障或控制功能。",
+  "column_semantics": "表格包含功能描述、输出方式、涉及的控制器/模块、网络状态以及具体的状态定义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "FRDircnLghtFlsts",  // 右前转向灯故障状态
+    "RLDircnLghtFlsts",  // 左后转向灯故障状态
+    "RRDircnLghtFlsts",  // 右后转向灯故障状态
+    "DirectionLight.ControlDirectionLight"  // 转向灯控制接口
+  ],
+  "core_conditions": [
+    "0x0=FALSE",
+    "0x1=TRUE"
+  ],
+  "core_outputs": [
+    "CANFD",
+    "ICB",
+    "LHZCU"
+  ],
+  "core_faults": [
+    "Network Fault Status"  // 网络故障状态
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证车辆外灯（特别是转向灯）的故障检测逻辑及控制接口的功能正确性，包括故障状态的上报和转向灯的点亮/熄灭控制。",
+  "uncertain_points": []
+}
+```

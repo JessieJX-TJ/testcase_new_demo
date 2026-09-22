@@ -1,0 +1,48 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "诊断 DTC (故障代码) 需求清单",
+  "row_semantics": "表格列出了一个具体的故障代码（DTC）的详细信息，包括其显示码、故障描述、置位条件和恢复条件。",
+  "column_semantics": {
+    "序号": "故障代码的编号，用于唯一标识该条目。",
+    "DTC 显示码": "故障代码的显示编码，用于在诊断工具中识别该故障。",
+    "故障描述": "对该故障现象的简要描述，帮助理解故障的具体表现。",
+    "故障置位条件": "触发该故障代码的条件或事件，即系统在什么情况下会记录该故障。",
+    "故障恢复条件": "清除该故障代码的条件，即系统在什么情况下会认为故障已解决并清除故障代码。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DTC",
+      "description": "诊断故障代码，用于标识特定的系统故障。",
+      "type": "system_component"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "故障置位条件",
+      "description": "触发DTC的系统状态或输入信号组合。",
+      "type": "condition"
+    },
+    {
+      "name": "故障恢复条件",
+      "description": "清除DTC的系统状态或输入信号组合。",
+      "type": "condition"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "DTC 显示码",
+      "description": "故障代码的唯一标识符，用于诊断和维修。",
+      "type": "fault_code"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子电器系统中特定故障代码的逻辑正确性，确保系统在满足置位条件时正确记录故障，并在满足恢复条件时正确清除故障。",
+  "uncertain_points": [
+    "由于表格中所有字段均为 'NA'，无法确定具体的故障代码、置位条件和恢复条件，需要进一步补充详细信息以进行测试验证。"
+  ]
+}
+```

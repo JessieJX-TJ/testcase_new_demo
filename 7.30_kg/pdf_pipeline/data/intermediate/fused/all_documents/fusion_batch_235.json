@@ -1,0 +1,475 @@
+[
+  {
+    "head": "Spd1",
+    "relation": "output_as",
+    "tail": "300ms",
+    "sources": [
+      "inner_lamp_ssts_0064"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Spd2",
+    "relation": "output_as",
+    "tail": "100ms",
+    "sources": [
+      "inner_lamp_ssts_0064"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Spd3",
+    "relation": "output_as",
+    "tail": "0ms",
+    "sources": [
+      "inner_lamp_ssts_0064"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightExitBreathingMode",
+    "relation": "precondition",
+    "tail": "CnsoLHALampOnOff_1 = 0x00 (lamp off request)",
+    "sources": [
+      "inner_lamp_ssts_0065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightExitBreathingMode",
+    "relation": "precondition",
+    "tail": "CnsoLHALampBrthngCmd_1 = 0x00 (no breathing request)",
+    "sources": [
+      "inner_lamp_ssts_0065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightStopBreathingMode",
+    "relation": "precondition",
+    "tail": "AmbtLghtLHRollingCtrl_1 is no longer sequentially stacked",
+    "sources": [
+      "inner_lamp_ssts_0065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightDirectOff",
+    "relation": "precondition",
+    "tail": "overvoltage or undervoltage fault in ambient light module",
+    "sources": [
+      "inner_lamp_ssts_0065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightDirectOff",
+    "relation": "precondition",
+    "tail": "LIN signal from ZCU not received for >6 seconds",
+    "sources": [
+      "inner_lamp_ssts_0065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightStateHold",
+    "relation": "state_hold_condition",
+    "tail": "in normal operation mode, regulated by CnsoLHALampColorCmd_ and related signals",
+    "sources": [
+      "inner_lamp_ssts_0065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightSteadyIllumination",
+    "relation": "precondition",
+    "tail": "AmbtLghtLHRollingCtrl_1 is no longer sequentially stacked AND color/brightness signals are valid",
+    "sources": [
+      "inner_lamp_ssts_0065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightStaticIllumination",
+    "relation": "precondition",
+    "tail": "AmbtLghtLHRollingCtrl_1 is no longer sequentially stacked AND color/brightness signals are invalid",
+    "sources": [
+      "inner_lamp_ssts_0065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampFadeSpdCmd_1",
+    "relation": "trigger_condition",
+    "tail": "Code value corresponds to specific rate (e.g., Rate1, Rate2)",
+    "sources": [
+      "inner_lamp_ssts_0066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampFadeSpdCmd_1",
+    "relation": "suppression_condition",
+    "tail": "command value = 0",
+    "sources": [
+      "inner_lamp_ssts_0066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampFadeSpdCmd_1",
+    "relation": "output_behavior",
+    "tail": "lamp head performs periodic breathing according to commanded cycle",
+    "sources": [
+      "inner_lamp_ssts_0066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampOnOff_1",
+    "relation": "trigger_condition",
+    "tail": "input signal DoorAmbtLampB_RL = ON",
+    "sources": [
+      "inner_lamp_ssts_0066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampOnOff_1",
+    "relation": "suppression_condition",
+    "tail": "input signal DoorAmbtLampB_RL = OFF",
+    "sources": [
+      "inner_lamp_ssts_0066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampColCmd_1",
+    "relation": "trigger_condition",
+    "tail": "DoorRL2LampOnOff_1 = ON AND non-zero color/brightness command received",
+    "sources": [
+      "inner_lamp_ssts_0066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampFadeSpdCmd_1",
+    "relation": "input_source",
+    "tail": "Spd0, Spd1, Spd2, Spd3",
+    "sources": [
+      "inner_lamp_ssts_0066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL1LampFadeSpdCmd_1",
+    "relation": "timeout_constraint",
+    "tail": "default speed Spd0: 2000ms",
+    "sources": [
+      "inner_lamp_ssts_0066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightIllumination",
+    "relation": "trigger_condition",
+    "tail": "FtwlFLLampOnOff_1 = ON request AND ambient light is OFF",
+    "sources": [
+      "inner_lamp_ssts_0067"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightIllumination",
+    "relation": "dependency",
+    "tail": "FtwlFLLampColorCmd_1, FtwlFLLampBrtnsCmd_1, FtwlFLLampFadeSpdCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0067"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightTurnOff",
+    "relation": "trigger_condition",
+    "tail": "FtwlFLLampOnOff_1 = OFF request AND fade-out executed per fade speed",
+    "sources": [
+      "inner_lamp_ssts_0067"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightTurnOff",
+    "relation": "dependency",
+    "tail": "FtwlFLLampFadeSpdCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0067"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PassengerFootwellLampRequestSignal",
+    "relation": "input_as",
+    "tail": "FtwlLampFRCtrlCmd",
+    "sources": [
+      "inner_lamp_ssts_0068"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PassengerFootwellLampHardwireOutput",
+    "relation": "output_as",
+    "tail": "FtwlAmbtLamp_FR_HSD",
+    "sources": [
+      "inner_lamp_ssts_0068"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PassengerFootwellLampRequestSignal",
+    "relation": "dependency",
+    "tail": "RHZCU",
+    "sources": [
+      "inner_lamp_ssts_0068"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PassengerFootwellLampHardwireOutput",
+    "relation": "dependency",
+    "tail": "RHZCU",
+    "sources": [
+      "inner_lamp_ssts_0068"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PassengerFootwellLampRequestSignal",
+    "relation": "input_from",
+    "tail": "Interior Lamp SSTS",
+    "sources": [
+      "inner_lamp_ssts_0068"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PassengerFootwellLampHardwireOutput",
+    "relation": "output_to",
+    "tail": "Interior Lamp SSTS",
+    "sources": [
+      "inner_lamp_ssts_0068"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightBrightnessAdjustment",
+    "relation": "trigger_condition",
+    "tail": "RoofLHALampBrtnsCmd_l transitions from 0x00 to non-0x00",
+    "sources": [
+      "inner_lamp_ssts_0069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLightStateRetention",
+    "relation": "fault_response",
+    "tail": "RoofLHALampBrtnsCmd_l is invalid",
+    "sources": [
+      "inner_lamp_ssts_0069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CalibrationItem",
+    "relation": "dependency",
+    "tail": "ParameterRange",
+    "sources": [
+      "inner_lamp_ssts_0071",
+      "inner_lamp_ssts_0080"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "relation": "trigger_condition",
+    "tail": "Code value ∈ [0x05, 0x0F] AND breathing cycle matches configured value",
+    "sources": [
+      "inner_lamp_ssts_0072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "relation": "suppression_condition",
+    "tail": "command value = 0",
+    "sources": [
+      "inner_lamp_ssts_0072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "relation": "reset_condition",
+    "tail": "command value = 0",
+    "sources": [
+      "inner_lamp_ssts_0072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "relation": "state_hold_condition",
+    "tail": "non-zero command value maintained",
+    "sources": [
+      "inner_lamp_ssts_0072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "relation": "dependency",
+    "tail": "breathing period defined as 500ms–12s",
+    "sources": [
+      "inner_lamp_ssts_0072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorAm btLampA_FR",
+    "relation": "controls",
+    "tail": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "sources": [
+      "inner_lamp_ssts_0072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "controls",
+    "tail": "DoorFR1LampBrthngCmd_1_x_Ratey",
+    "sources": [
+      "inner_lamp_ssts_0072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampFadeSpdCmd_1_x_SpdY",
+    "relation": "output_as",
+    "tail": "ambient light fade speed command",
+    "sources": [
+      "inner_lamp_ssts_0072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BacklightIllumination",
+    "relation": "trigger_condition",
+    "tail": "VehSideLghtSts_l_DCMFL_LIN = 0x03 (All_Side_Light_And_License_Plate_Light_On)",
+    "sources": [
+      "inner_lamp_ssts_0073"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BacklightTurnOff",
+    "relation": "trigger_condition",
+    "tail": "VehSideLghtSts_l_DCMFL_LIN = 0x00 (No_Side_Light_On)",
+    "sources": [
+      "inner_lamp_ssts_0073"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BacklightStateMaintain",
+    "relation": "trigger_condition",
+    "tail": "VehSideLghtSts_l_DCMFL_LIN ∈ {0x01 (Left_Side_Light_On_Only), 0x02 (Right_Side_Light_On_Only)}",
+    "sources": [
+      "inner_lamp_ssts_0073"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BacklightTurnOff",
+    "relation": "fault_response",
+    "tail": "backlight short-circuit or open-circuit fault detected",
+    "sources": [
+      "inner_lamp_ssts_0073",
+      "inner_lamp_ssts_0307",
+      "inner_lamp_ssts_0453"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflict between 'trigger_condition' (VehSideLghtSts_l_DCMFL_LIN = 0x00) and 'fault_response' (fault-driven forced-off): same head 'BacklightTurnOff' but mutually exclusive activation mechanisms — one is command-based, the other is fault-driven; both valid but require distinct handling logic."
+  },
+  {
+    "head": "DTSM_FL",
+    "relation": "output_as",
+    "tail": "VehSideLghtSts_l_DCMFL_LIN = 0x03 (All_Side_Light_And_License_Plate_Light_On)",
+    "sources": [
+      "inner_lamp_ssts_0073"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BacklightTurnOff",
+    "relation": "suppression_condition",
+    "tail": "backlight has no short-circuit/open-circuit fault",
+    "sources": [
+      "inner_lamp_ssts_0073"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflict with 'fault_response': suppression condition assumes fault absence, while fault_response activates on fault presence. Both describe valid but logically opposite preconditions for BacklightTurnOff — must be modeled as orthogonal conditions (command + fault override)."
+  },
+  {
+    "head": "VehicleEEConfiguration",
+    "relation": "precondition",
+    "tail": "CalibrationItem is a valid identifier AND CalibrationDescription is a valid description",
+    "sources": [
+      "inner_lamp_ssts_0074"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

@@ -1,0 +1,95 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "前雾灯控制逻辑",
+  "row_semantics": "描述触发前雾灯开启的条件和执行动作的逻辑流程",
+  "column_semantics": "分为场景描述、前置条件、触发动作、执行动作四个主要部分，详细列出了满足条件时系统各模块的状态及交互过程",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "大屏软开关",
+      "type": "输入信号",
+      "description": "用户通过中控大屏上的软件开关操作"
+    },
+    {
+      "name": "UsrMd",
+      "type": "系统状态",
+      "description": "用户模式，包括Sleep, Standby, Comfortable, XOTA等"
+    },
+    {
+      "name": "VehMd",
+      "type": "系统状态",
+      "description": "车辆模式，当前为TRANSPORT（运输）模式"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "外灯控制组合服务模块"
+    },
+    {
+      "name": "S32G",
+      "type": "控制器/模块",
+      "description": "车载计算单元，负责接收和处理请求"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "系统",
+      "description": "外灯控制系统"
+    },
+    {
+      "name": "FrontFogLightReq",
+      "type": "输出信号",
+      "description": "前雾灯请求信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsrMd != Sleep && UsrMd != Standby && UsrMd != Comfortable && UsrMd != XOTA",
+      "description": "用户模式不是睡眠、待机、舒适或OTA升级模式"
+    },
+    {
+      "condition": "UsrMdV = Valid",
+      "description": "用户模式值有效"
+    },
+    {
+      "condition": "VehMd = TRANSPORT",
+      "description": "车辆模式为运输模式"
+    },
+    {
+      "condition": "VehMdV = Valid",
+      "description": "车辆模式值有效"
+    },
+    {
+      "condition": "LHZCU 已判断关闭位置灯",
+      "description": "LHZCU模块已确认位置灯处于关闭状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "ExteriorLightControlSystem.ControlFrontFogLight_FrontFogLightReq = On",
+      "description": "外灯控制系统发出前雾灯开启请求"
+    },
+    {
+      "output": "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl_FrontFogLghtFucProReq = ON",
+      "description": "外灯开关过程中的前雾灯功能控制请求"
+    },
+    {
+      "output": "ExteriorLightSwitchProcess.FrontFogLghtFucProCtrl_FrontFogLghtFucProResp = ControlSuccess",
+      "description": "外灯开关过程中的前雾灯功能控制响应成功"
+    },
+    {
+      "output": "ExteriorLightSwitchProcess.CombLghtFucProStatus_CombLghtFucProSta = Only SidePositionLight",
+      "description": "组合灯功能状态变为仅侧位灯亮起"
+    },
+    {
+      "output": "ExteriorLightSwitchProcess.FrontFogLghtFucProStatus_FrontFogLghtFucProsSta = Only FrontFogLight",
+      "description": "前雾灯功能状态变为仅前雾灯亮起"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定条件下（如非睡眠模式、车辆处于运输模式且位置灯关闭），通过大屏软开关触发前雾灯开启的完整控制逻辑，包括信号交互、模块调用和状态更新，可用于验证前雾灯控制功能的正确性。",
+  "uncertain_points": []
+}
+```

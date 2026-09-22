@@ -1,0 +1,90 @@
+{
+  "table_type": "parameter_table",
+  "topic": "呼吸灯（呼吸周期）功能的控制参数定义",
+  "row_semantics": "表格定义了呼吸灯功能的控制指令及其相关参数，包括呼吸模式的停止条件、不同模式切换规则以及渐变速度的配置。",
+  "column_semantics": {
+    "第一列": "功能模块名称或指令类别",
+    "第二列": "输入信号来源（如LIN总线、LHZCU控制器等）",
+    "第三列及以后": "具体的输入信号或参数定义",
+    "第四列": "描述了呼吸灯渐变速度的指令代码及其对应的速度值"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "CnsoRHCLampFadeSpdCmd_1",
+      "type": "功能名",
+      "description": "呼吸灯渐变速度控制指令"
+    },
+    {
+      "name": "LIN",
+      "type": "控制器/模块名",
+      "description": "局域互联网络总线接口"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "车身控制单元"
+    },
+    {
+      "name": "CnsoAm btLampC_RH",
+      "type": "控制器/模块名",
+      "description": "右前大灯控制模块"
+    },
+    {
+      "name": "LHZCU_LIN5",
+      "type": "控制器/模块名",
+      "description": "车身控制单元的LIN5接口"
+    },
+    {
+      "name": "内灯SSTS",
+      "type": "控制器/模块名",
+      "description": "内部照明系统状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "指令值为0时，立即停止呼吸",
+      "description": "当接收到指令值为0时，呼吸灯功能将立即停止"
+    },
+    {
+      "condition": "不同呼吸模式切换时，立即停止当前呼吸，切换下一呼吸模式",
+      "description": "在不同呼吸模式之间切换时，当前呼吸模式会立即停止，并切换到新的呼吸模式"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "灯头按照对应的呼吸周期指令进行周期闪烁",
+      "description": "灯头根据呼吸周期指令进行周期性闪烁"
+    },
+    {
+      "output": "呼吸时忽略亮度信号",
+      "description": "在呼吸过程中，亮度信号被忽略"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "timing": "CnsoRHCLampFadeSpdCmd_1_0_Spd0",
+      "value": "2000ms",
+      "description": "默认渐变速度，从当前状态切换到目标状态所需时间为2000毫秒"
+    },
+    {
+      "timing": "CnsoRHCLampFadeSpdCmd_1_1_Spd1",
+      "value": "300ms",
+      "description": "渐变速度1，从当前状态切换到目标状态所需时间为300毫秒"
+    },
+    {
+      "timing": "CnsoRHCLampFadeSpdCmd_1_2_Spd2",
+      "value": "100ms",
+      "description": "渐变速度2，预留用于未来扩展，从当前状态切换到目标状态所需时间为100毫秒"
+    },
+    {
+      "timing": "CnsoRHCLampFadeSpdCmd_1_3_Spd3",
+      "value": "(预留0)",
+      "description": "渐变速度3，预留，当前未定义具体时间"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了呼吸灯功能的控制参数，包括呼吸模式的停止条件、不同模式切换规则以及渐变速度的配置。可用于验证呼吸灯功能在不同指令值下的行为，以及不同渐变速度下的状态切换时间是否符合规范。",
+  "uncertain_points": []
+}

@@ -1,0 +1,570 @@
+[
+  {
+    "head": "OHC 故障状态信号 OHCHwErr",
+    "relation": "输出为",
+    "tail": "0x0 → 所有阅读灯无故障",
+    "sources": [
+      "inner_lamp_ssts_0098"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHC 故障状态信号 OHCHwErr",
+    "relation": "输出为",
+    "tail": "0x1 → 任一阅读灯触发短路或开路故障",
+    "sources": [
+      "inner_lamp_ssts_0098"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHC 故障状态信号 OHCHwErr",
+    "relation": "诊断关联",
+    "tail": "MapLampXXErr = 0x1 (Error)",
+    "sources": [
+      "inner_lamp_ssts_0098"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统参数配置",
+    "relation": "前提条件",
+    "tail": "参数范围（Range）有效",
+    "sources": [
+      "inner_lamp_ssts_0100",
+      "inner_lamp_ssts_0582"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统参数配置",
+    "relation": "前提条件",
+    "tail": "分辨率（Factor）满足精度要求",
+    "sources": [
+      "inner_lamp_ssts_0100"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统参数配置",
+    "relation": "前提条件",
+    "tail": "默认值（Default）已设置",
+    "sources": [
+      "inner_lamp_ssts_0100"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯子系统",
+    "relation": "包含子功能",
+    "tail": "Interior Lighting Sub System",
+    "sources": [
+      "inner_lamp_ssts_0101",
+      "inner_lamp_ssts_0434"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "副驾地板迎宾灯控制回路对电源短路（Short to Battery）",
+    "relation": "触发条件",
+    "tail": "1) 副驾激光迎宾灯驱动激活；2) 驱动电流 < 阈值（TBD）A，持续 ≥100ms",
+    "sources": [
+      "inner_lamp_ssts_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "副驾地板迎宾灯控制回路对地短路（Short to Ground）",
+    "relation": "触发条件",
+    "tail": "1) 副驾激光迎宾灯驱动激活；2) 驱动电流 > 阈值（TBD）A，持续 ≥100ms",
+    "sources": [
+      "inner_lamp_ssts_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "副驾地板迎宾灯控制回路开路（Open Circuit）",
+    "relation": "触发条件",
+    "tail": "1) 副驾激光迎宾灯驱动激活；2) 驱动电流 < 阈值（TBD）A，持续 ≥100ms",
+    "sources": [
+      "inner_lamp_ssts_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "副驾地板迎宾灯控制回路对电源短路（Short to Battery）",
+    "relation": "抑制条件",
+    "tail": "电流有效值 > 阈值（TBD）A，持续 ≥100ms",
+    "sources": [
+      "inner_lamp_ssts_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "副驾地板迎宾灯控制回路对地短路（Short to Ground）",
+    "relation": "抑制条件",
+    "tail": "电流有效值 < 阈值（TBD）A，持续 ≥100ms",
+    "sources": [
+      "inner_lamp_ssts_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "副驾地板迎宾灯控制回路开路（Open Circuit）",
+    "relation": "抑制条件",
+    "tail": "电流有效值 > 阈值（TBD）A，持续 ≥100ms",
+    "sources": [
+      "inner_lamp_ssts_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统执行唤醒/休眠操作",
+    "relation": "前提条件",
+    "tail": "存在有效的唤醒源信号",
+    "sources": [
+      "inner_lamp_ssts_0103",
+      "inner_lamp_ssts_0464",
+      "inner_lamp_ssts_0108",
+      "inner_lamp_ssts_0331"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统进入休眠状态",
+    "relation": "前提条件",
+    "tail": "未检测到有效的唤醒源信号",
+    "sources": [
+      "inner_lamp_ssts_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统进入特定唤醒/休眠模式",
+    "relation": "输入为",
+    "tail": "指定的唤醒/休眠方式",
+    "sources": [
+      "inner_lamp_ssts_0103"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统行为",
+    "relation": "依赖于",
+    "tail": "备注中的补充说明",
+    "sources": [
+      "inner_lamp_ssts_0103"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System 控制级别 57",
+    "relation": "输入为",
+    "tail": "Target Luminance Value = 5900 cd/m²",
+    "sources": [
+      "inner_lamp_ssts_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System 控制级别 100",
+    "relation": "输入为",
+    "tail": "Target Luminance Value = 10000 cd/m²",
+    "sources": [
+      "inner_lamp_ssts_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System 控制级别 57",
+    "relation": "依赖于",
+    "tail": "Reference Threshold = 1000",
+    "sources": [
+      "inner_lamp_ssts_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System 控制级别 100",
+    "relation": "依赖于",
+    "tail": "Reference Threshold = 79",
+    "sources": [
+      "inner_lamp_ssts_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System 控制级别 57",
+    "relation": "输出为",
+    "tail": "Light Intensity Output 对应 Target Luminance Value = 5900 cd/m²",
+    "sources": [
+      "inner_lamp_ssts_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System 控制级别 100",
+    "relation": "输出为",
+    "tail": "Light Intensity Output 对应 Target Luminance Value = 10000 cd/m²",
+    "sources": [
+      "inner_lamp_ssts_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "子系统技术规范",
+    "relation": "控制对象",
+    "tail": "Interior Lighting Sub System",
+    "sources": [
+      "inner_lamp_ssts_0106",
+      "inner_lamp_ssts_0117",
+      "inner_lamp_ssts_0204",
+      "inner_lamp_ssts_0269",
+      "inner_lamp_ssts_0394",
+      "inner_lamp_ssts_0450"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头呼吸亮度曲线周期闪烁",
+    "relation": "前提条件",
+    "tail": "呼吸模式下忽略亮度信号",
+    "sources": [
+      "inner_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "指令值为0",
+    "relation": "触发条件",
+    "tail": "立即停止呼吸闪烁",
+    "sources": [
+      "inner_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "不同呼吸模式切换",
+    "relation": "触发条件",
+    "tail": "立即停止当前呼吸并切换至下一模式",
+    "sources": [
+      "inner_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowIPBLampFadeSpdCmd_1",
+    "relation": "输入为",
+    "tail": "LIN, RHZCU, LowIPAmbtLampB",
+    "sources": [
+      "inner_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowIPCLampOnOff_1",
+    "relation": "输入为",
+    "tail": "LIN, RHZCU, LowIPAmbtLampC",
+    "sources": [
+      "inner_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowIPCLampColorCmd_1",
+    "relation": "输入为",
+    "tail": "LIN, RHZCU, LowIPAmbtLampC",
+    "sources": [
+      "inner_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowIPCLampBrtnsCmd_1",
+    "relation": "输入为",
+    "tail": "LIN, RHZCU, LowIPAmbtLampC",
+    "sources": [
+      "inner_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowIPCLampBrthCmd_1",
+    "relation": "输入为",
+    "tail": "LIN, RHZCU, LowIPAmbtLampC",
+    "sources": [
+      "inner_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯头颜色/亮度切换过渡时间",
+    "relation": "前提条件",
+    "tail": "默认速度 Spd0 = 2000 ms",
+    "sources": [
+      "inner_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "指令值为0或未定义颜色号",
+    "relation": "前提条件",
+    "tail": "保持颜色不变",
+    "sources": [
+      "inner_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "指令值为0",
+    "relation": "前提条件",
+    "tail": "保持亮度不变",
+    "sources": [
+      "inner_lamp_ssts_0107"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智己汽车 Z-ONE-3.0 平台内灯子系统",
+    "relation": "包含子功能",
+    "tail": "SSTS-IBD10",
+    "sources": [
+      "inner_lamp_ssts_0109",
+      "inner_lamp_ssts_0147",
+      "inner_lamp_ssts_0202",
+      "inner_lamp_ssts_0220",
+      "inner_lamp_ssts_0377",
+      "inner_lamp_ssts_0509",
+      "inner_lamp_ssts_0522",
+      "inner_lamp_ssts_0533"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "依赖于",
+    "tail": "软件版本 < 1.2",
+    "sources": [
+      "inner_lamp_ssts_0110",
+      "inner_lamp_ssts_0408"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 85 → Parameter Set (0.3419, 0.2082, 215, 24, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 86 → Parameter Set (0.3248, 0.1626, 203, 0, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 87 → Parameter Set (0.3219, 0.2412, 201, 77, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 88 → Parameter Set (0.3219, 0.2212, 191, 48, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 89 → Parameter Set (0.3219, 0.2012, 181, 22, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 90 → Parameter Set (0.3090, 0.1561, 177, 0, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 91 → Parameter Set (0.3019, 0.2343, 166, 72, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 92 → Parameter Set (0.3019, 0.2143, 158, 45, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 93 → Parameter Set (0.2925, 0.1493, 152, 0, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 94 → Parameter Set (0.3019, 0.1943, 151, 21, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 95 → Parameter Set (0.2819, 0.2473, 142, 97, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 96 → Parameter Set (0.2819, 0.2673, 150, 128, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 97 → Parameter Set (0.2819, 0.2873, 158, 165, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 98 → Parameter Set (0.2819, 0.3073, 168, 206, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 99 → Parameter Set (0.2619, 0.2802, 124, 154, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 100 → Parameter Set (0.2619, 0.2602, 118, 120, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 101 → Parameter Set (0.2619, 0.2402, 112, 91, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输入为",
+    "tail": "Configuration Set 102 → Parameter Set (0.2619, 0.2202, 108, 64, 255)",
+    "sources": [
+      "inner_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

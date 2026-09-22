@@ -1,0 +1,81 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System (Map Lamp Dimming and Status)",
+  "row_semantics": "Different dimming speed settings and status feedback for map lamps in various lighting modes.",
+  "column_semantics": {
+    "Input": "Signal source or control input for the dimming speed setting.",
+    "LIN": "Local Interconnect Network communication interface.",
+    "LHZCU": "Lighting and Hazard Control Unit, likely a central controller for lighting functions.",
+    "OHC": "Overhead Console, possibly another control point for interior lighting.",
+    "Internal Light SSTS": "Internal Lighting Sub System Specification, indicating the system being controlled."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MapLampRRBrtLvl_1",
+      "type": "Parameter",
+      "description": "Map lamp rear right brightness level setting."
+    },
+    {
+      "name": "MapLampXXDimSpd_1",
+      "type": "Parameter",
+      "description": "Map lamp dimming speed setting for various modes."
+    },
+    {
+      "name": "MapLampXXSts_1",
+      "type": "Parameter",
+      "description": "Map lamp status feedback."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Speed_3",
+      "value": "0x2",
+      "description": "Indicates an instantaneous change in dimming speed."
+    },
+    {
+      "name": "Reserved",
+      "value": "0x3",
+      "description": "A reserved value for future use or undefined behavior."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MapLampFLDimSpd_1",
+      "type": "Output Signal",
+      "description": "Feedback on the front left map lamp dimming speed."
+    },
+    {
+      "name": "MapLampFRDimSpd_1",
+      "type": "Output Signal",
+      "description": "Feedback on the front right map lamp dimming speed."
+    },
+    {
+      "name": "MapLampRLDimSpd_1",
+      "type": "Output Signal",
+      "description": "Feedback on the rear left map lamp dimming speed."
+    },
+    {
+      "name": "MapLampRRDimSpd_1",
+      "type": "Output Signal",
+      "description": "Feedback on the rear right map lamp dimming speed."
+    },
+    {
+      "name": "MapLampFLSts_1",
+      "type": "Output Signal",
+      "description": "Status feedback for the front left map lamp."
+    },
+    {
+      "name": "MapLampFRSts_1",
+      "type": "Output Signal",
+      "description": "Status feedback for the front right map lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the dimming speed parameters and status feedback for map lamps within the Interior Lighting Sub System. It specifies how the lamps respond to different input signals from various controllers (LIN, LHZCU, OHC) and provides expected output statuses for testing and validation purposes.",
+  "uncertain_points": []
+}
+```

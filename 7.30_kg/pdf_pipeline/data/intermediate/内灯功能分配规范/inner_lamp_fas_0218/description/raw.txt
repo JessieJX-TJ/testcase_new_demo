@@ -1,0 +1,50 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Vehicle Lock Status and Charging Flap Control Signals for Interior Lighting",
+  "row_semantics": "Each row represents a specific signal or control command related to vehicle locking status, charging flap position, and charging flap lamp control.",
+  "column_semantics": "Columns define the signal type (Input/Output), communication interface (CAN, Internal), associated controller/module (IBS, RZCU), and additional system context (Interior Light, SS, TS).",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehLckSts",
+      "type": "system_state",
+      "description": "Vehicle lock status with various states including locked, super locked, reserved, and unknown."
+    },
+    {
+      "name": "VehSpdAvg",
+      "type": "input_signal",
+      "description": "Average vehicle speed input via CAN interface."
+    },
+    {
+      "name": "RLChrgrFlapSts",
+      "type": "input_signal",
+      "description": "Right rear charging flap status with multiple states including closed, open, closing, opening, middle stop, calibration active, can not detected, and reserved."
+    },
+    {
+      "name": "ChrgrFlapLampCtrlCmd",
+      "type": "output_signal",
+      "description": "Command to control the charging flap lamp, with options to close or open."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehSpdAvg",
+      "condition": "E=N*0.015625 kph",
+      "description": "Calculation formula for average vehicle speed."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ChrgrFlapLampCtrlCmd",
+      "output": "Close/Open",
+      "description": "Control command for the charging flap lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table is used to verify the correct mapping and behavior of vehicle lock status signals, charging flap position feedback, and charging flap lamp control commands within the interior lighting system, ensuring proper interaction between the IBS, RZCU, and other relevant modules.",
+  "uncertain_points": []
+}
+```

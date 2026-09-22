@@ -1,0 +1,48 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Side Position Light Control Interface Specifications",
+  "row_semantics": "Each row represents a distinct control interface for a specific side position light (left front, right front, left rear) with its associated parameters and usage instructions.",
+  "column_semantics": {
+    "1": "Function Name: Identifies the specific side position light control function.",
+    "2": "Consumption: Indicates the system or module that consumes this service interface.",
+    "3": "SOA: Service-Oriented Architecture component involved.",
+    "4": "Controller/Module: Specific controller or module name (e.g., LHZCU, RHZCU, RZCU).",
+    "5": "ICB: Interface Control Block component involved.",
+    "6-8": "Reserved or additional unspecified components"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SidePositionLight.ControlSidePositionLight",
+      "type": "function",
+      "description": "The generic service interface for controlling side position lights."
+    },
+    {
+      "name": "ControlSidePositionLightReq",
+      "type": "parameter",
+      "description": "The request parameter structure for the control interface."
+    },
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "An identifier to specify which side position light is being controlled (e.g., 1 for left front, 2 for right front, etc.)."
+    },
+    {
+      "name": "0x0=OFF",
+      "type": "input_signal",
+      "description": "Command to turn off the specified side position light."
+    },
+    {
+      "name": "0x1=ON",
+      "type": "input_signal",
+      "description": "Command to turn on the specified side position light."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for controlling the left front, right front, and left rear side position lights, specifying the required parameters and command values (ON/OFF) for each. It is used to verify that the correct service interface is called with the appropriate parameters to achieve the desired lighting state.",
+  "uncertain_points": []
+}

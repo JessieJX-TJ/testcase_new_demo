@@ -1,0 +1,101 @@
+{
+  "table_type": "logic_table",
+  "topic": "隧道变光功能逻辑",
+  "row_semantics": "触发条件与执行动作的对应关系",
+  "column_semantics": [
+    "触发条件 (Conditions)",
+    "执行动作 (Actions)"
+  ],
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight",
+      "type": "signal",
+      "description": "近光灯状态信号"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit, 灯光控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Control Box, 集成控制盒"
+    },
+    {
+      "name": "TunnelRemindInfo",
+      "type": "signal",
+      "description": "隧道提醒信息"
+    },
+    {
+      "name": "NaviRoadInfoService",
+      "type": "service",
+      "description": "导航道路信息服务"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "隧道变光模块 LHZCU 检测到前方 200m 有隧道",
+      "signal": "TunnelRemindInfo",
+      "value": "200m"
+    },
+    {
+      "condition": "环境光状态为白天",
+      "signal": "AutoLightOnReq",
+      "value": "0"
+    },
+    {
+      "condition": "车辆档位状态为 D 档",
+      "signal": "TrShiftLvrPos",
+      "value": "D"
+    },
+    {
+      "condition": "车速大于 20kph",
+      "signal": "VehSpdAvg",
+      "value": ">20kph"
+    },
+    {
+      "condition": "智慧场景灯光设置为使能",
+      "signal": "DLPSceSceneLightSet",
+      "value": "1"
+    },
+    {
+      "condition": "导航开启",
+      "signal": "NaviStatus",
+      "value": "1"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "近光灯控制模块 LHZCU 发出控制信号给 ICB",
+      "signal": "LHDCtrl",
+      "value": "ON"
+    },
+    {
+      "output": "ICB 将服务接口或控制信号转换成灯控 CAN 信号，并控制近光灯点亮",
+      "signal": "ICBCtrl",
+      "value": "CAN Signal"
+    },
+    {
+      "output": "外灯控制组合服务 ICB 调用接口",
+      "signal": "ExtLightCtrl",
+      "value": "ON"
+    },
+    {
+      "output": "HMI 子系统 ICB 调用接口",
+      "signal": "HMI Ctrl",
+      "value": "ON"
+    },
+    {
+      "output": "驱动处理模块 LHZCU/RHZCU 内部跳变为硬线输出，驱动近光灯点亮",
+      "signal": "DrvOutput",
+      "value": "ON"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定条件下（如进入隧道、白天、D档、车速>20kph等），系统如何通过LHZCU和ICB协同工作，自动点亮近光灯的功能逻辑。可用于验证隧道变光功能在不同驾驶场景下的正确性。",
+  "uncertain_points": []
+}

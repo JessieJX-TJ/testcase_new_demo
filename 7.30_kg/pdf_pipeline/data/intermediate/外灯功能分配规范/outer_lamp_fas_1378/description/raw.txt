@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "拖挂车外灯控制逻辑",
+  "row_semantics": "定义了不同外灯功能的控制信号及其执行动作",
+  "column_semantics": {
+    "第一列": "功能名称（如制动灯、倒车灯）",
+    "第二列": "输入信号（控制命令的变量名及值定义）",
+    "第三列": "执行动作（描述控制器对信号的响应行为）",
+    "第四列": "备注（补充说明或上下文信息）"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "TrlrBrkLghtOnReq",
+      "type": "input_signal",
+      "description": "拖挂车制动灯请求信号，0x1表示开启，0x0表示关闭"
+    },
+    {
+      "name": "TrlrRevsLghtOnReq",
+      "type": "input_signal",
+      "description": "拖挂车倒车灯请求信号，0x1表示开启，0x0表示关闭"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "TrlrBrkLghtOnReq = 0x1",
+      "description": "当制动灯请求信号为ON时"
+    },
+    {
+      "condition": "TrlrRevsLghtOnReq = 0x1",
+      "description": "当倒车灯请求信号为ON时"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "TDM 驱动拖挂车制动灯点亮或熄灭",
+      "description": "制动灯的实际状态由TDM模块根据请求信号控制"
+    },
+    {
+      "output": "TDM 驱动拖挂车倒车灯点亮或熄灭",
+      "description": "倒车灯的实际状态由TDM模块根据请求信号控制"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证TDM模块对外部拖挂车外灯（制动灯、倒车灯）请求信号的正确响应，确保在接收到特定输入信号时，能够准确点亮或熄灭对应的拖挂车外灯。",
+  "uncertain_points": []
+}
+```

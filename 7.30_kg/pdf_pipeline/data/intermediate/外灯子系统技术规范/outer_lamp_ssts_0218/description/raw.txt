@@ -1,0 +1,54 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Dipped Beam Light Control Logic",
+  "row_semantics": "Each row represents a distinct state or condition in the control logic for dipped beam lights, including trigger conditions, execution actions, exit conditions, and fault handling.",
+  "column_semantics": "The left column defines the condition type (e.g., Trigger Condition, Execution Action, Exit Condition), while the right column provides the detailed specification for that condition.",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DipdBeamCtrlMdl",
+      "type": "Controller/Module",
+      "description": "The main module responsible for controlling dipped beam lights."
+    },
+    {
+      "name": "LDipdBeamLghtDrvMdl",
+      "type": "Controller/Module",
+      "description": "The driver module responsible for outputting signals to control the dipped beam lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ControlDippedBeamLight.DippedBeamLightReq",
+      "type": "Input Signal",
+      "description": "Request signal for dipped beam light status from DipdBeamCtrlMdl. Values: 0 (Off), 1 (On)."
+    },
+    {
+      "name": "ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts",
+      "type": "System Status",
+      "description": "Current request status of dipped beam light from the exterior light control system."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DipdBeamHdlmp_LH_HSD",
+      "type": "Output Signal",
+      "description": "Signal output to stop driving the left dipped beam light."
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "Output Signal",
+      "description": "Status signal continuously sent by LDipdBeamLghtDrvMdl to indicate the current state of the dipped beam light."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "condition": "LDipdBeamLghtDrvMdl must send at least three frames of DippedBeamLightStatus to DipdBeamCtrlMdl."
+    }
+  ],
+  "engineering_interpretation": "This table defines the state machine logic for controlling dipped beam lights, specifying how the system responds to requests from the DipdBeamCtrlMdl module, what actions are taken by the LDipdBeamLghtDrvMdl module, and under what conditions the system transitions between states.",
+  "uncertain_points": []
+}
+```

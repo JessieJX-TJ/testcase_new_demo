@@ -1,0 +1,66 @@
+{
+  "table_type": "logic_table",
+  "topic": "前雾灯开启逻辑",
+  "row_semantics": "描述触发前雾灯开启的前置条件",
+  "column_semantics": "分为场景描述和前置条件两列，前置条件进一步细化为多个子条件",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "大屏软开关",
+      "type": "输入信号"
+    },
+    {
+      "name": "UsrMd",
+      "type": "系统状态",
+      "description": "用户模式，包括Sleep、Standby、Comfortable、XOTA等"
+    },
+    {
+      "name": "VehMd",
+      "type": "系统状态",
+      "description": "车辆模式，当前为TRANSPORT（运输模式）"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "Light and Hazard Control Unit，负责位置灯判断"
+    },
+    {
+      "name": "前雾灯",
+      "type": "输出信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsrMd != 0x0 (Sleep) && UsrMd != 0x1 (Standby) && UsrMd != 0x2 (Comfortable) && UsrMd != 0x6 (XOTA)",
+      "description": "用户模式不处于睡眠、待机、舒适或OTA升级模式"
+    },
+    {
+      "condition": "UsrMdV = Valid",
+      "description": "用户模式值有效"
+    },
+    {
+      "condition": "VehMd = 0x3 (TRANSPORT)",
+      "description": "车辆模式为运输模式"
+    },
+    {
+      "condition": "VehMdV = Valid",
+      "description": "车辆模式值有效"
+    },
+    {
+      "condition": "LHZCU 已判断开启位置灯",
+      "description": "Light and Hazard Control Unit 已完成位置灯开启判断"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "前雾灯",
+      "type": "输出信号",
+      "description": "在满足所有前置条件下被触发开启"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定用户模式、车辆模式及控制单元判断下，通过大屏软开关触发前雾灯开启的完整逻辑条件。可用于验证前雾灯开启功能在不同系统状态组合下的正确性。",
+  "uncertain_points": []
+}

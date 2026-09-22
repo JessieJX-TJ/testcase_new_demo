@@ -1,0 +1,89 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "整车外灯位置灯状态定义与控制",
+  "row_semantics": "表格按外灯的不同位置（左前、右前、左后、右后）和功能（位置灯状态、故障状态）进行分类，详细定义了各灯的状态编码及其输出方式。",
+  "column_semantics": "列标题表示信号的输出方式或所属控制器/模块：'Output'（输出类型）、'CANFD'（CAN FlexRay总线输出）、'ICB'（集成控制盒）、'LHZCU'（左后区域控制单元）。其中'Output'列进一步细分了具体信号的定义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FLSideLghtSts",
+      "type": "function",
+      "description": "左前位置灯状态"
+    },
+    {
+      "name": "FRSideLghtSts",
+      "type": "function",
+      "description": "右前位置灯状态"
+    },
+    {
+      "name": "RLSideLghtSts",
+      "type": "function",
+      "description": "左后位置灯状态"
+    },
+    {
+      "name": "RRSideLghtSts",
+      "type": "function",
+      "description": "右后位置灯状态"
+    },
+    {
+      "name": "FLSideLghtFltsts",
+      "type": "function",
+      "description": "左前位置灯故障状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FLSideLghtSts",
+      "output_to": ["CANFD", "ICB", "LHZCU"],
+      "values": {
+        "0x0": "Off",
+        "0x1": "On"
+      }
+    },
+    {
+      "name": "FRSideLghtSts",
+      "output_to": ["CANFD", "ICB", "LHZCU"],
+      "values": {
+        "0x0": "Off",
+        "0x1": "On"
+      }
+    },
+    {
+      "name": "RLSideLghtSts",
+      "output_to": ["CANFD", "ICB", "LHZCU"],
+      "values": {
+        "0x0": "Off",
+        "0x1": "On"
+      }
+    },
+    {
+      "name": "RRSideLghtSts",
+      "output_to": ["CANFD", "ICB", "LHZCU"],
+      "values": {
+        "0x0": "Off",
+        "0x1": "On"
+      }
+    },
+    {
+      "name": "FLSideLghtFltsts",
+      "output_to": ["CANFD", "ICB", "LHZCU"],
+      "values": {
+        "0x0": "No Fault",
+        "0x1": "Fault Detected"
+      }
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "FLSideLghtFltsts",
+      "description": "左前位置灯故障状态，用于指示灯是否发生故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯（位置灯）在不同位置的状态编码及其通过CAN/LIN/SOA服务/硬线输出的方式，可用于验证外灯状态信号的正确性及故障检测功能。",
+  "uncertain_points": []
+}
+```

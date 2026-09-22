@@ -1,0 +1,107 @@
+[
+  {
+    "head": "昼间行车灯熄灭",
+    "relation": "触发条件",
+    "tail": "外部应用请求(如 SuperEco)外灯组合服务 ICB",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外部应用请求",
+      "外灯组合服务 ICB",
+      "DayRunningLightReq"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1040",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "昼间行车灯熄灭",
+    "relation": "触发条件",
+    "tail": "{ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq}=0x0=OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外部应用请求",
+      "外灯组合服务 ICB",
+      "DayRunningLightReq"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1040",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "昼间行车灯处于激活状态",
+    "relation": "前提条件",
+    "tail": "昼间行车灯熄灭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "昼间行车灯处于激活状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1040",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "控制信号发送至 ICB",
+    "relation": "包含子功能",
+    "tail": "[昼间行车灯控制模块 LHZCU]信号跳变为 LDayTmRunngLghtCtrl=0x0=LDayTmRunngLghtCtrl_0_off, RDayTmRunngLghtCtrl=0x0=RDayTmRunngLghtCtrl_0_off",
+    "triple_type": "输入输出映射关系",
+    "evidence_terms": [
+      "控制信号",
+      "ICB",
+      "LHZCU",
+      "LDayTmRunngLghtCtrl",
+      "RDayTmRunngLghtCtrl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1040",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "DRL状态反馈",
+    "relation": "输出为",
+    "tail": "ICB将状态/故障状态反馈至 [昼间行车灯控制模块 LHZCU]",
+    "triple_type": "输入输出映射关系",
+    "evidence_terms": [
+      "DRL状态反馈",
+      "ICB",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1040",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "DRL无错误",
+    "relation": "输出为",
+    "tail": "[昼间行车灯控制模块 LHZCU]将状态/故障状态反馈至 ICB",
+    "triple_type": "输入输出映射关系",
+    "evidence_terms": [
+      "DRL无错误",
+      "LHZCU",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1040",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "DRL熄灭",
+    "relation": "故障响应",
+    "tail": "ICB将服务接口或控制信号转换成灯控 CAN 信号,控制昼间行车灯熄灭",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DRL熄灭",
+      "ICB",
+      "CAN信号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1040",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

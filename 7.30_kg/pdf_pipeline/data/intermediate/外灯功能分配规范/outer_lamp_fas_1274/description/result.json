@@ -1,0 +1,43 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 位置灯状态与故障状态",
+  "row_semantics": "表格的每一行代表一个特定的服务接口或参数定义，描述了与外灯（特别是位置灯）相关的状态信息和故障诊断。",
+  "column_semantics": "表格包含以下列：服务/接口名称、消费方（SOA）、控制器/模块（如LHZCU、ICB等）、以及该服务的具体参数定义（包括实例ID和状态值）。部分行有背景色区分，表示不同的服务类型。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SidePositionLightSta",
+      "type": "Parameter",
+      "description": "侧位灯状态参数，用于表示位置灯的当前状态（OFF, ON, Error, Unknown）"
+    },
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "Parameter",
+      "description": "侧位灯故障状态参数，用于表示位置灯是否存在故障"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "ExteriorLightSwitchProcess.SidePositionLightSta",
+      "type": "Output Signal",
+      "description": "通过订阅该服务，可以获取位置灯的状态（OFF, ON, Unknown）"
+    },
+    {
+      "name": "SidePositionLight.SidePositionLightErrorStatus",
+      "type": "Output Signal",
+      "description": "调用该服务接口，获取左前位置灯的故障状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "Fault Status",
+      "description": "指示侧位灯是否存在故障状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯系统中位置灯状态和服务接口的参数规范，可用于验证位置灯状态的正确性以及故障检测功能的有效性。",
+  "uncertain_points": []
+}

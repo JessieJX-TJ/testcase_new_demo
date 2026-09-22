@@ -1,0 +1,63 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯控制系统中的制动灯控制功能规范",
+  "row_semantics": "表格按功能模块划分，每一行代表一个与制动灯控制相关的服务接口或状态查询。",
+  "column_semantics": "列标题表示不同的系统架构或通信模式（SOA, ICB, LHZCU），用于区分不同上下文下的参数定义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrakeLightControl",
+      "type": "功能名",
+      "description": "用于控制制动灯点亮或熄灭的服务接口。"
+    },
+    {
+      "name": "BrakeLightFucProStatus",
+      "type": "功能名",
+      "description": "用于获取制动灯功能状态的服务接口。"
+    },
+    {
+      "name": "ControlBrakeLight",
+      "type": "功能名",
+      "description": "用于请求制动灯控制的服务接口。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Local High-level Zone Control Unit，本地高层区域控制单元，可能负责处理局部的灯光控制逻辑。"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "Integrated Communication Bus，集成通信总线，可能作为车辆内部通信网络的一部分。"
+    },
+    {
+      "name": "SOA",
+      "type": "控制器/模块名",
+      "description": "Service-Oriented Architecture，面向服务的架构，可能指代一种软件架构模式下的通信机制。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrakeLightCtrReq",
+      "type": "输入信号",
+      "description": "制动灯控制请求参数，取值为0x0=OFF或0x1=ON，用于指示制动灯的状态。"
+    },
+    {
+      "name": "BrakeLightFucProsSta",
+      "type": "输出信号",
+      "description": "制动灯功能状态参数，取值为0x0=OFF、0x1=ON或0x2=Unknown，表示制动灯当前的状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ControlBrakeLight",
+      "type": "方法/服务调用",
+      "description": "通过该服务接口获取制动灯的控制请求。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯控制系统中制动灯控制功能的接口规范，包括控制制动灯亮灭的请求参数、获取制动灯状态的方法以及相关的控制器/模块信息，可用于验证制动灯控制功能在不同通信模式下的正确性和一致性。",
+  "uncertain_points": []
+}

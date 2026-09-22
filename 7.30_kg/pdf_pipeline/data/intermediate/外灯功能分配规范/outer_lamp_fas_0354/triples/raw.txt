@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.FrontFogLightSta = 0x1 = ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["ExteriorLightSwitchProcess.FrontFogLightSta"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯状态反馈至ICB",
+    "relation": "触发条件",
+    "tail": "LHZCU将状态/故障状态接口反馈至ICB",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["LHZCU", "ICB"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务ICB订阅前雾灯状态",
+    "relation": "触发条件",
+    "tail": "ExteriorLightControlSystem. FrontFogLightSts = 0X1 = ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["ExteriorLightControlSystem", "FrontFogLightSts"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯开启同步性要求",
+    "relation": "状态保持条件",
+    "tail": "左侧和右侧前雾灯需保持同步点亮，两侧最大延时不超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": ["40ms", "前雾灯开启同步性"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB发送前雾灯光请求",
+    "relation": "触发条件",
+    "tail": "ExteriorLightControlSystem.ControlFrontFogLightReq",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["ICB", "ExteriorLightControlSystem", "ControlFrontFogLightReq"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB发送前雾灯光请求重发机制",
+    "relation": "超时约束",
+    "tail": "如超时2s未收到ControlSuccess反馈，尝试重发<=50ms周期3次；若仍失败则停止发送",
+    "triple_type": "时序约束",
+    "evidence_terms": ["2s", "<=50ms", "3次", "ControlSuccess"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "触发条件",
+    "tail": "针对Onchange类型的外灯状态服务，消费端在服务发现订阅或外灯控制请求后500ms内应主动通过Getter()方式获取状态",
+    "triple_type": "时序约束",
+    "evidence_terms": ["500ms", "Onchange", "Getter()"],
+    "confidence_note": "high"
+  }
+]
+```

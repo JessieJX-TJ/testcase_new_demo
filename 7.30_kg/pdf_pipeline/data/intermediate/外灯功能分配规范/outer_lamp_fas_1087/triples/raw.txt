@@ -1,0 +1,96 @@
+```json
+[
+  {
+    "head": "倒车灯开启",
+    "relation": "前提条件",
+    "tail": "RevsLghtSta=0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RevsLghtSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯状态同步",
+    "relation": "前提条件",
+    "tail": "左侧和右侧倒车灯需保持同步点亮",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "倒车灯开启同步性要求"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "倒车灯状态同步",
+    "relation": "超时约束",
+    "tail": "两侧最大延时不能超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "同步延时"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 倒车灯请求重发",
+    "relation": "前提条件",
+    "tail": "ReverseLightCtrlResp=0x0=ControlSuccess",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB倒车灯请求重发机制"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 倒车灯请求重发",
+    "relation": "超时约束",
+    "tail": "按照<=50ms周期重发3次",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "重发周期",
+      "重发次数"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 倒车灯请求停止发送",
+    "relation": "前提条件",
+    "tail": "尝试重发3次后仍未反馈请求成功",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "ICB倒车灯请求重发机制"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "前提条件",
+    "tail": "发送类型为Onchange的外灯状态服务",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外灯状态主动获取"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "超时约束",
+    "tail": "消费端在500ms内未收到状态反馈",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "状态获取延迟"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "依赖于",
+    "tail": "ExteriorLightControlSystem.ReverseLightSts",
+    "triple_type": "输入依赖",
+    "evidence_terms": [
+      "外灯状态主动获取",
+      "ExteriorLightControlSystem"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,68 @@
+```json
+[
+  {
+    "head": "远光灯在工厂模式下开启",
+    "relation": "触发条件",
+    "tail": "整车模式为工厂模式且远光灯反馈状态为关闭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd=0x2=VehMd_2_FACTORY",
+      "ExteriorLightSwitchProcess.MainBeamLightFucProStatus.MainBeamLightFucProsSta=0x1=ON"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯持续开启2分钟",
+    "relation": "状态保持条件",
+    "tail": "远光灯在工厂模式下已开启",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "远光灯在工厂模式下开启2min",
+      "持续2min"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯关闭",
+    "relation": "触发条件",
+    "tail": "近光灯反馈状态为关闭或LHZCU判断近光灯关闭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DippedBeamLightStatus=0x0=OFF",
+      "LHZCU判断近光灯关闭"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯开关控制模块LHZCU信号跳变为关闭",
+    "relation": "触发条件",
+    "tail": "主光灯请求信号为关闭",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LMainBeamLightCtrl=0x0=LMainBeamLightCtrl_0_off",
+      "RMainBeamLightCtrl=0x0=RMainBeamLightCtrl_0_off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务ICB调用基础服务",
+    "relation": "触发条件",
+    "tail": "主光灯请求信号为关闭",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "MainBeamLightReq=0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯在工厂模式下开启",
+    "relation": "抑制条件",
+    "tail": "非工厂模式",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "VehMd!=0x2"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

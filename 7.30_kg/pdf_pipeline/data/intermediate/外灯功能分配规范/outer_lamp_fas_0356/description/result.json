@@ -1,0 +1,68 @@
+{
+  "table_type": "signal_table",
+  "topic": "远光灯控制与状态反馈机制",
+  "row_semantics": "描述了ICB（集成控制盒）与LHZCU（远光灯开关控制模块）之间关于远光灯状态和故障信息的交互流程，以及外灯组合服务ICB订阅相关状态。",
+  "column_semantics": "无明确列结构，内容为按编号顺序排列的功能描述文本，主要包含信号名称、实例ID、状态值及说明。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "description": "Integrated Control Box，集成控制盒，负责接收和处理来自车辆各模块的控制信号，并向外部指示灯发送状态信息。"
+    },
+    {
+      "name": "LHZCU",
+      "description": "Main Beam Light Switch Control Unit，远光灯开关控制模块，负责采集远光灯的状态和故障信息，并将其反馈给ICB。"
+    },
+    {
+      "name": "RHZCU",
+      "description": "Remote Headlight Zone Control Unit，远程远光灯区域控制单元，可能是一个更高层级的控制模块或传感器组，用于获取远光灯状态。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "description": "外部灯光开关处理模块，负责管理外部灯光的开关逻辑。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "description": "外部灯光控制系统，负责对外部灯光进行统一管理和控制。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightFucProStatus",
+      "description": "主远光灯功能过程状态，当值为0x0时，表示远光灯处于关闭状态。"
+    },
+    {
+      "name": "MainBeamHwDrvEnPrm",
+      "description": "主远光灯硬件驱动使能参数，用于区分左侧和右侧远光灯的控制实例。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLightSta",
+      "description": "主远光灯状态，表示远光灯的当前开关状态（ON/OFF）。"
+    },
+    {
+      "name": "MainBeamLightErrSta",
+      "description": "主远光灯错误状态，表示远光灯是否存在故障。"
+    },
+    {
+      "name": "MainBeamLightSwSts",
+      "description": "主远光灯开关状态，表示远光灯开关的操作状态。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "MainBeamLightErrorStatus",
+      "description": "主远光灯错误状态，当值为0x0时，表示无错误。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "熄灭同步性要求",
+      "description": "左侧和右侧远光灯在熄灭时需保持同步，且两侧最大延时不能超过40ms。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了车辆远光灯系统中ICB与LHZCU之间的通信协议，包括远光灯的开关状态、故障状态的反馈机制，以及对远光灯熄灭同步性的要求，可用于验证远光灯控制系统的功能正确性和响应时间。",
+  "uncertain_points": []
+}

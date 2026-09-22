@@ -1,0 +1,61 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 头灯水平调节电机故障状态",
+  "row_semantics": "表格按功能模块和实例ID组织，每一行描述一个特定的头灯水平调节电机（左侧或右侧）的错误状态参数。",
+  "column_semantics": "列代表了不同系统或控制器对当前参数的参与情况，包括SOA、ICB、LHZCU等。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "HeadLightLevelingMotor.LevelingMotorErrorStatus",
+      "type": "功能模块",
+      "description": "头灯水平调节电机的错误状态查询接口"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.LevelingAdjustSta",
+      "type": "功能模块",
+      "description": "外部灯光开关过程中的水平调节状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "参数",
+      "description": "实例ID，用于区分左侧和右侧电机的状态查询。例如：1表示左侧，2表示右侧。"
+    },
+    {
+      "name": "LevelingMotorErrorSta",
+      "type": "输入信号",
+      "description": "水平调节电机的错误状态参数，其值可以是0x0（无错误）、0x1（错误）或0x2（未知）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "消费",
+      "type": "输出信号",
+      "description": "表示该参数被哪些系统或控制器所消耗（如SOA、ICB、LHZCU）。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "故障状态",
+      "description": "水平调节电机无错误状态。"
+    },
+    {
+      "name": "Error",
+      "type": "故障状态",
+      "description": "水平调节电机存在错误状态。"
+    },
+    {
+      "name": "Unknown",
+      "type": "故障状态",
+      "description": "水平调节电机状态未知。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了获取头灯水平调节电机（左侧和右侧）错误状态的接口参数及其在不同控制器间的交互关系，可用于验证车辆外灯功能中头灯水平调节电机的故障检测与报告机制。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,37 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯开关控制功能的访问权限限制",
+  "row_semantics": "表格定义了特定功能（VP3-63066）的访问权限限制条件，具体为对读取灯开关控制参数（VP3-25770）的访问权限。",
+  "column_semantics": {
+    "ID": "功能或参数的唯一标识符，表示被限制访问的具体功能或参数。",
+    "Restriction": "描述访问权限限制的类型或范围，此处指“读取”操作受限。",
+    "Value": "限制条件的具体描述，包括被限制的功能或参数的详细信息。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VP3-63066",
+      "type": "功能名",
+      "description": "被限制访问的目标功能或参数，具体为“灯开关控制”相关的功能。"
+    },
+    {
+      "name": "VP3-25770",
+      "type": "输入信号",
+      "description": "与目标功能相关的输入信号，表示灯开关状态或控制信号。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "读取操作",
+      "description": "仅当尝试读取灯开关控制参数时触发限制。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证系统是否正确实施了对灯开关控制参数（VP3-25770）的读取权限限制（ID: VP3-63066），确保未经授权的访问被拒绝。",
+  "uncertain_points": []
+}
+```

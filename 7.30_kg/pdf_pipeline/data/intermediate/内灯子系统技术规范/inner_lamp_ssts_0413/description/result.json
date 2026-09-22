@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"fault_table\",\n  \"topic\": \"诊断故障代码 (DTC) 需求清单\",\n  \"row_semantics\": \"每行代表一个特定的故障诊断代码 (DTC) 及其相关条件，用于识别和验证车辆电子系统中的电路故障。\",\n  \"column_semantics\": {\n    \"序号\": \"故障代码的编号，用于唯一标识每个故障类型。\",\n    \"DTC 显示码\": \"诊断故障代码的显示标识符，通常由系统生成。\",\n    \"故障描述\": \"对故障现象的详细描述，指明是哪个控制电路出现问题。\",\n    \"故障置位条件\": \"触发该故障代码的条件，包括状态、电流阈值等。\",\n    \"故障恢复条件\": \"清除故障代码所需的条件，通常是电流状态满足一定要求。\",\n  },\n  \"has_merged_cells\": true,\n  \"header_levels\": 1,\n  \"core_entities\": [\n    {\n      \"name\": \"The Rear Left Door Floor Lamp Control Circuit\",\n      \"type\": \"功能名\",\n      \"description\": \"左后门地板灯控制电路，涉及灯光的驱动和控制逻辑。\"\n    },\n    {\n      \"name\": \"TBD\",\n      \"type\": \"控制器/模块名\",\n      \"description\": \"待定的控制器或模块名称，具体指代负责该电路控制的电子单元。\"\n    }\n  ],\n  \"core_conditions\": [\n    {\n      \"name\": \"左后激光迎宾灯驱动激活状态\",\n      \"type\": \"系统状态\",\n      \"description\": \"左后激光迎宾灯处于点亮或准备点亮的状态，作为触发故障判断的前提条件之一。\"\n    },\n    {\n      \"name\": \"驱动电流小于阈值 (TBD) A\",\n      \"type\": \"输入信号\",\n      \"description\": \"控制电路中实际流过的电流低于预设的阈值，持续时间超过100ms，可能导致短路到电池的故障。\"\n    },\n    {\n      \"name\": \"驱动电流超过阈值 (TBD) A\",\n      \"type\": \"输入信号\",\n      \"description\": \"控制电路中实际流过的电流高于预设的阈值，持续时间超过100ms，可能导致短路到地的故障。\"\n    }\n  ],\n  \"core_outputs\": [],\n  \"core_faults\": [\n    {\n      \"code\": \"TBD\",\n      \"description\": \"The Rear Left Door Floor Lamp Control Circuit Short to battery\",\n      \"condition\": \"左后激光迎宾灯驱动激活状态下，驱动电流小于阈值 (TBD) A，持续100ms。\",\n      \"recovery\": \"电流有效值大于 (TBD) A，持续100ms。\"\n    },\n    {\n      \"code\": \"TBD\",\n      \"description\": \"The Rear Left Door Floor Lamp Control Circuit Short to ground\",\n      \"condition\": \"左后激光迎宾灯驱动激活状态下，驱动电流超过阈值 (TBD) A，持续100ms。\",\n      \"recovery\": \"电流有效值小于 (TBD) A，持续100ms。\"\n    },\n    {\n      \"code\": \"TBD\",\n      \"description\": \"The Rear Left Floor Lamp Control Circuit Open Circuit\",\n      \"condition\": \"左后激光迎宾灯驱动激活状态下，驱动电流小于阈值 (TBD) A，持续100ms。\",\n      \"recovery\": \"电流有效值大于 (TBD) A，持续100ms。\"\n    }\n  ],\n  \"core_timing_constraints\": [\n    {\n      \"name\": \"持续100ms\",\n      \"description\": \"故障条件需要在100毫秒内持续满足，以确认故障的发生并触发DTC置位。\"\n    }\n  ],\n  \"engineering_interpretation\": \"该表格定义了针对左后门地板灯控制电路可能出现的三种故障（短路到电池、短路到地、开路）的诊断条件和恢复条件，可用于开发和验证车辆电子系统的故障检测与诊断功能。\",\n  \"uncertain_points\": [\n    \"TBD: 控制器/模块的具体名称未明确给出，需进一步确认。\",\n    \"TBD: 驱动电流的阈值具体数值未明确给出，需进一步确认。\",\n    \"TBD: 故障恢复条件中的电流有效值阈值具体数值未明确给出，需进一步确认。\"\n  ]\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

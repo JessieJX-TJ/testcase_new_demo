@@ -1,0 +1,54 @@
+{
+  "table_type": "state_table",
+  "topic": "Exterior Lamp Function - Dipped Beam Light Status",
+  "row_semantics": "Each row represents a different service interface or process related to the status of the dipped beam (low beam) headlights.",
+  "column_semantics": {
+    "first_column": "Service Interface or Process Name",
+    "second_column": "Consumption Type (SOA, LHZCU)",
+    "third_column": "Controller/Module Involved (ICB, LHZCU)",
+    "fourth_column": "Reserved/Unused",
+    "fifth_column": "Reserved/Unused"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem.DippedBeamLightSts",
+      "type": "service_interface",
+      "description": "Service interface for querying the status of the dipped beam lights."
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.DippedBeamLightSta",
+      "type": "process",
+      "description": "Process responsible for switching and monitoring the status of the dipped beam lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DipdBeamLightSts",
+      "type": "input_signal",
+      "description": "Status parameter returned by the service interface, indicating the current state of the dipped beam lights."
+    },
+    {
+      "name": "DipdBeamLightSta",
+      "type": "input_signal",
+      "description": "Status parameter used in the light switch process to determine the state of the dipped beam lights."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightSts",
+      "type": "output_signal",
+      "description": "The status of the dipped beam lights, which can be OFF, ON, or Unknown."
+    },
+    {
+      "name": "DipdBeamLightSta",
+      "type": "output_signal",
+      "description": "The status of the dipped beam lights as processed by the system, reflecting the current operational state."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the functional specifications for querying and processing the status of the vehicle's dipped beam (low beam) headlights. It is used to verify that the system correctly reports and handles the ON/OFF/Unknown states of the dipped beam lights through defined service interfaces and internal processes.",
+  "uncertain_points": []
+}

@@ -1,0 +1,92 @@
+```json
+[
+  {
+    "head": "车顶射灯开启请求",
+    "relation": "前提条件",
+    "tail": "UsrMd != 0x0 && UsrMd != 0x1 && UsrMd != 0x6",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["UsrMd", "UsgMd_0_Sleep", "UsgMd_1_Standby", "UsgMd_6_X"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯开启请求",
+    "relation": "前提条件",
+    "tail": "UsrMdV = Valid",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["UsrMdV"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯开启请求",
+    "relation": "前提条件",
+    "tail": "VehMd == 0x3",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["VehMd", "VehMd_3_TRANSPORT"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯开启请求",
+    "relation": "前提条件",
+    "tail": "VehMdV = Valid",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["VehMdV"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯开启请求",
+    "relation": "前提条件",
+    "tail": "PersonalizationData.MainBeamEnhanceEnbSet.MainBeamEnhanceEnbSetInfo = 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["PersonalizationData.MainBeamEnhanceEnbSet.MainBeamEnhanceEnbSetInfo"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯开启请求",
+    "relation": "前提条件",
+    "tail": "LHZCU 已判断远光灯开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["LHZCU", "MainBeamLightFucProStatus"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯开启请求",
+    "relation": "前提条件",
+    "tail": "InsdFnCfgRoofSpotLght = 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["InsdFnCfgRoofSpotLght"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB_S32G M 收到 IPD 输入车顶射灯开启请求",
+    "relation": "触发条件",
+    "tail": "车顶射灯开启请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["ICB_S32G M", "IPD", "RoofSpotLightReq"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU 内部软件保持有效请求",
+    "relation": "状态保持条件",
+    "tail": "车顶射灯开启请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["LHZCU", "RoofSpotLightReq"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU 发送车顶射灯控制仲裁状态",
+    "relation": "输出为",
+    "tail": "RoofSpotLightFucProSta = 0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["LHZCU", "RoofSpotLightFucProSta"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 将车顶射灯开启状态发给[数字灯光 APP_ICB]",
+    "relation": "输出为",
+    "tail": "RoofSpotLightReq = 0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ICB", "RoofSpotLightReq"],
+    "confidence_note": "high"
+  }
+]
+```

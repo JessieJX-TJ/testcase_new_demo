@@ -1,0 +1,83 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "HMI 显示状态信号描述 - 远光灯自动控制功能",
+  "row_semantics": "逐条描述远光灯自动控制功能在不同条件下的 HMI 状态显示逻辑",
+  "column_semantics": "无列结构，内容为连续的文本描述和代码示例",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HMI 子系统 ICB",
+      "type": "controller",
+      "description": "Human Machine Interface sub-system Integrated Control Box, 负责处理 HMI 相关的输入输出和逻辑"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外部灯光开关处理模块，负责管理车灯的开关状态"
+    },
+    {
+      "name": "MainBeamLghtMdSta",
+      "type": "input_signal",
+      "description": "主灯模式状态，指示当前是手动模式还是自动模式"
+    },
+    {
+      "name": "MainBeamLghtFucProSta",
+      "type": "input_signal",
+      "description": "主灯功能过程状态，指示主灯的功能状态"
+    },
+    {
+      "name": "IHCEnableSetInfo",
+      "type": "input_signal",
+      "description": "IHC（Intelligent Headlamp Control）使能设置信息，用于配置 IHC 功能是否启用"
+    },
+    {
+      "name": "ServiceInterface",
+      "type": "input_signal",
+      "description": "服务接口，可能用于诊断或特殊模式的切换"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "IHC 开关使能",
+      "description": "当 IHCEnableSetInfo = 0x2 = ON 时，表示 IHC 功能已启用"
+    },
+    {
+      "condition": "近光灯点亮",
+      "description": "当 ExteriorLightSwitchProcess.CombLghtFucProSta = 0x4 = SidePositionAndDippedBeam ON || 0x2 = Only DippedBeamLight ON 时，表示近光灯处于点亮状态"
+    },
+    {
+      "condition": "远光灯非 IHC 自动点亮",
+      "description": "当 MainBeamLghtMdSta != 0x2(Auto_Mode) || ExteriorLightSwitchProcess.MainBeamLightFucProStatus.MainBeamLghtFucProsSta != 0x1(ON) 时，表示远光灯不是由 IHC 自动点亮的（即手动点亮）"
+    },
+    {
+      "condition": "远光灯自动控制模式且远光灯点亮",
+      "description": "当 MainBeamLghtMdSta = 0x2 = Auto_Mode && MainBeamLghtFucProsSta = 0x1 = ON 时，表示远光灯处于自动控制模式且已点亮"
+    },
+    {
+      "condition": "服务接口为 0x2",
+      "description": "当 ServiceInterface = 0x2 时，触发特定的远光灯自动控制图标显示逻辑"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "远光灯自动控制图标显示",
+      "description": "根据不同的条件，HMI 上的远光灯自动控制图标会显示为灰色或蓝色"
+    },
+    {
+      "output": "故障弹窗提醒",
+      "description": "当检测到远光灯自动控制故障时，HMI 会显示故障状态并弹出提醒窗口"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "AutoMainBeamLghtReq_3_CannotDetectedTheEnvironment",
+      "description": "无法检测环境，导致远光灯自动控制请求失败"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了 HMI 在远光灯自动控制功能中的状态显示规则，包括图标颜色变化和故障提示，可用于验证 HMI 状态显示逻辑与底层控制信号之间的正确映射关系。",
+  "uncertain_points": []
+}
+```

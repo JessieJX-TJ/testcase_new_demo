@@ -1,0 +1,562 @@
+[
+  {
+    "head": "Main Beam Light Control signal is triggered",
+    "relation": "触发条件",
+    "tail": "收到【MainBeamLghtCtrlMdl】发送的 MainBeamLightControl.MainBeamLightCtrReq == 0 (Off), InstanceID == 1",
+    "sources": [
+      "outer_lamp_ssts_0418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Main Beam Light Control signal is triggered",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtFbkSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Brake Light Open Circuit Detected",
+    "relation": "触发条件",
+    "tail": "BrkLghtFbkSOAEnPrm == 1 (Enable) && 左制动灯处于输出状态",
+    "sources": [
+      "outer_lamp_ssts_0420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Brake Light Open Circuit Detected",
+    "relation": "前提条件",
+    "tail": "BrkLghtFbkSOAEnPrm == 1 (Enable) && 左制动灯处于输出状态",
+    "sources": [
+      "outer_lamp_ssts_0420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl_HW is input",
+    "relation": "前提条件",
+    "tail": "RRDircnLghtSts is output",
+    "sources": [
+      "outer_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl_HW == 0x0",
+    "relation": "触发条件",
+    "tail": "右后转向灯熄灭",
+    "sources": [
+      "outer_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl_HW == 0x1",
+    "relation": "触发条件",
+    "tail": "右后转向灯点亮",
+    "sources": [
+      "outer_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtSts is output",
+    "relation": "依赖于",
+    "tail": "RRDircnLghtCtrl_HW is input",
+    "sources": [
+      "outer_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILamp_RH_HSD is output",
+    "relation": "输出为",
+    "tail": "尾灯",
+    "sources": [
+      "outer_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightControl_DirectionLightCtReq is input",
+    "relation": "输入为",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightControl_DirectionLightCtReq is invoked",
+    "relation": "触发条件",
+    "tail": "控制右后转向灯点亮或熄灭",
+    "sources": [
+      "outer_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDILghtDrvMdl drives DILamp_LH_HSD continuously",
+    "relation": "触发条件",
+    "tail": "收到【DILghtCtrlMdl】经统一分发的 FLDircnLghtCtrl_HW == 1 (On)",
+    "sources": [
+      "outer_lamp_ssts_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDILghtDrvMdl sends FLDILghtSts_HW == 1 (On) to DILghtCtrlMdl continuously",
+    "relation": "触发条件",
+    "tail": "收到【DILghtCtrlMdl】经统一分发的 FLDircnLghtCtrl_HW == 1 (On)",
+    "sources": [
+      "outer_lamp_ssts_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDILghtDrvMdl sends FLDILghtSts_HW == 1 (On) to DILghtCtrlMdl continuously",
+    "relation": "状态保持条件",
+    "tail": "至少发送三帧",
+    "sources": [
+      "outer_lamp_ssts_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exit left front turn signal continuous drive function",
+    "relation": "触发条件",
+    "tail": "收到【DILghtCtrlMdl】发送的 FLDircnLghtCtrl_HW == 0 (Off)",
+    "sources": [
+      "outer_lamp_ssts_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exlDircnLghtHwDrvEnPrm == 1 || 2",
+    "relation": "前提条件",
+    "tail": "FLDILghtDrvMdl drives DILamp_LH_HSD continuously",
+    "sources": [
+      "outer_lamp_ssts_0425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Position Lamp Open Circuit Detected",
+    "relation": "触发条件",
+    "tail": "左前位置灯处于输出状态",
+    "sources": [
+      "outer_lamp_ssts_0426"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1061 13 is set",
+    "relation": "诊断关联",
+    "tail": "Left Front Position Lamp Open Circuit Detected",
+    "sources": [
+      "outer_lamp_ssts_0426"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Light Driver Module stops driving brake light and CHMSL",
+    "relation": "触发条件",
+    "tail": "收到【BrkLghtCtrlMdl】发送的 BrkLghtCtrl_HW == 0 (Off)",
+    "sources": [
+      "outer_lamp_ssts_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Light Driver Module sends brake light status == 0 continuously",
+    "relation": "触发条件",
+    "tail": "收到【BrkLghtCtrlMdl】发送的 BrkLghtCtrl_HW == 0 (Off)",
+    "sources": [
+      "outer_lamp_ssts_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Light Driver Module sends brake light status == 0 continuously",
+    "relation": "状态保持条件",
+    "tail": "至少发送三帧",
+    "sources": [
+      "outer_lamp_ssts_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brake Light Driver Module stops driving brake light and CHMSL",
+    "relation": "前提条件",
+    "tail": "exlBrkLghtHwDrvEnPrm == 1 || 2",
+    "sources": [
+      "outer_lamp_ssts_0428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Lights Activated",
+    "relation": "触发条件",
+    "tail": "AirbagDpl == 0x1 || AirbagDplnvsn == 0x0 || VehCrashTyp != 0x0",
+    "sources": [
+      "outer_lamp_ssts_0429"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Lights Activated",
+    "relation": "触发条件",
+    "tail": "CrashOut duty cycle transitions from 80% (±10%) to 20% (±10%) for 3 cycles",
+    "sources": [
+      "outer_lamp_ssts_0429"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Lights Activated",
+    "relation": "触发条件",
+    "tail": "VehMd == 1_CRASH && VehMdV == 1_Valid",
+    "sources": [
+      "outer_lamp_ssts_0429"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Lights Activated",
+    "relation": "前提条件",
+    "tail": "HzrdLghtSwSOAEnPrm == 0 (Disable)",
+    "sources": [
+      "outer_lamp_ssts_0429"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Lights Activated",
+    "relation": "依赖于",
+    "tail": "VehMd == 1_CRASH && VehMdV == 1_Valid",
+    "sources": [
+      "outer_lamp_ssts_0429"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard Lights Activated",
+    "relation": "依赖于",
+    "tail": "CrashOut duty cycle transitions from 80% (±10%) to 20% (±10%) for 3 cycles",
+    "sources": [
+      "outer_lamp_ssts_0429"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System executes main beam light OFF request transmission",
+    "relation": "触发条件",
+    "tail": "用户关闭远光灯开关 || 开关处于悬空状态",
+    "sources": [
+      "outer_lamp_ssts_0430"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System executes main beam light OFF request transmission",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtSwSOAEnPrm == 0 (Disable)",
+    "sources": [
+      "outer_lamp_ssts_0430"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtSwReq",
+    "relation": "输出为",
+    "tail": "0x0 (Off)",
+    "sources": [
+      "outer_lamp_ssts_0430"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtSwReq",
+    "relation": "输出到",
+    "tail": "MainBeamLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0430"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Parameter Configuration Validation",
+    "relation": "前提条件",
+    "tail": "标定项/Item 必须存在于系统功能模块中",
+    "sources": [
+      "outer_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Parameter Range Validation",
+    "relation": "前提条件",
+    "tail": "参数范围/Range 必须在设计允许的数值区间内",
+    "sources": [
+      "outer_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Resolution Validation",
+    "relation": "前提条件",
+    "tail": "分辨率/Factor 必须满足最小可调单位的要求",
+    "sources": [
+      "outer_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Default Value Setting",
+    "relation": "前提条件",
+    "tail": "默认值/Default 必须为预设值，确保无配置时系统正常运行",
+    "sources": [
+      "outer_lamp_ssts_0432"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Position Lamp ON/OFF",
+    "relation": "触发条件",
+    "tail": "ControlSidePositionLight.SidePositionLightReq == 0x1",
+    "sources": [
+      "outer_lamp_ssts_0433"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Position Lamp OFF",
+    "relation": "触发条件",
+    "tail": "ControlSidePositionLight.SidePositionLightReq == 0x0",
+    "sources": [
+      "outer_lamp_ssts_0433"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Position Lamp Status == ON",
+    "relation": "输出为",
+    "tail": "SidePositionLightStatus.SidePositionLightStatus == 0x1",
+    "sources": [
+      "outer_lamp_ssts_0433"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Position Lamp Status == OFF",
+    "relation": "输出为",
+    "tail": "SidePositionLightStatus.SidePositionLightStatus == 0x0",
+    "sources": [
+      "outer_lamp_ssts_0433"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Front Position Lamp Status == Unknown",
+    "relation": "输出为",
+    "tail": "SidePositionLightStatus.SidePositionLightStatus == 0x2",
+    "sources": [
+      "outer_lamp_ssts_0433"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PosLamp_LH_HSD",
+    "relation": "控制对象",
+    "tail": "左前位置灯",
+    "sources": [
+      "outer_lamp_ssts_0433"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlSidePositionLight.SidePositionLightReq",
+    "relation": "输入为",
+    "tail": "左前位置灯控制请求",
+    "sources": [
+      "outer_lamp_ssts_0433"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus.SidePositionLightStatus",
+    "relation": "输出为",
+    "tail": "左前位置灯状态信息",
+    "sources": [
+      "outer_lamp_ssts_0433"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Side Position Light OFF",
+    "relation": "触发条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的 ControlSidePositionLight.SidePositionLightReq == 0 (Off), InstanceID == 4",
+    "sources": [
+      "outer_lamp_ssts_0434"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Position Lamp Short-to-Ground Detected",
+    "relation": "触发条件",
+    "tail": "执行动作",
+    "sources": [
+      "outer_lamp_ssts_0435"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLghtDrvMdl stops driving PosLamp_RH_HSD",
+    "relation": "输出为",
+    "tail": "PosLamp_RH_HSD",
+    "sources": [
+      "outer_lamp_ssts_0435"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLghtDrvMdl sends SidePositionLightStatus continuously",
+    "relation": "输出为",
+    "tail": "SidePositionLightStatus",
+    "sources": [
+      "outer_lamp_ssts_0435"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightSta == 0 (Off), InstanceID == 2",
+    "relation": "输入为",
+    "tail": "SideLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0435"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B106111 is set",
+    "relation": "输出为",
+    "tail": "DTCB106111",
+    "sources": [
+      "outer_lamp_ssts_0435"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Turn Signal Control Function Triggered",
+    "relation": "触发条件",
+    "tail": "Right Front Turn Signal Open Circuit Detected",
+    "sources": [
+      "outer_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Turn Signal Control Function Suppressed",
+    "relation": "抑制条件",
+    "tail": "exlDircnLghtHwDrvEnPrm == 1",
+    "sources": [
+      "outer_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtSts_HW",
+    "relation": "输出为",
+    "tail": "0x0 (Off)",
+    "sources": [
+      "outer_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtFltsts_HW",
+    "relation": "输出为",
+    "tail": "0x1 (True)",
+    "sources": [
+      "outer_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front Turn Signal is in output state",
+    "relation": "前提条件",
+    "tail": "Right Front Turn Signal is in output state",
+    "sources": [
+      "outer_lamp_ssts_0436"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System transmits main beam light ON request signal",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtSwSOAEnPrm == 0 (Disable)",
+    "sources": [
+      "outer_lamp_ssts_0437"
+    ],
+    "conflict": true,
+    "conflict_note": "与 outer_lamp_ssts_0430 中同配置字下触发 OFF 请求存在逻辑冲突：同一禁用配置下既触发ON又触发OFF，需确认是否为不同上下文（如不同模式、优先级或使能条件）"
+  }
+]

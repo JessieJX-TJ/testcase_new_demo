@@ -1,0 +1,508 @@
+```json
+[
+  {
+    "head": "LHZCU",
+    "relation": "输出为",
+    "tail": "low_beams_status",
+    "sources": ["outer_lamp_fas_0969"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "low_beams_status",
+    "relation": "输入为",
+    "tail": "LHZCU视觉光雨软件模块(SDK包)",
+    "sources": ["outer_lamp_fas_0969"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU视觉光雨软件模块(SDK包)",
+    "relation": "依赖于",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0969"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left_dipped_beam_control_signal",
+    "relation": "输入为",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": true,
+    "conflict_note": "同一信号存在多个输入源（CANFD/ICB/LHZCU），需确认物理链路层级：CANFD为总线通道，ICB为中间件服务，LHZCU为ECU实体；三者非互斥，但需明确数据流向（如：ICB订阅CANFD后转发给LHZCU）"
+  },
+  {
+    "head": "left_dipped_beam_control_signal",
+    "relation": "输入为",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": true,
+    "conflict_note": "同一信号存在多个输入源（CANFD/ICB/LHZCU），需确认物理链路层级：CANFD为总线通道，ICB为中间件服务，LHZCU为ECU实体；三者非互斥，但需明确数据流向（如：ICB订阅CANFD后转发给LHZCU）"
+  },
+  {
+    "head": "left_dipped_beam_control_signal",
+    "relation": "输入为",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": true,
+    "conflict_note": "同一信号存在多个输入源（CANFD/ICB/LHZCU），需确认物理链路层级：CANFD为总线通道，ICB为中间件服务，LHZCU为ECU实体；三者非互斥，但需明确数据流向（如：ICB订阅CANFD后转发给LHZCU）"
+  },
+  {
+    "head": "right_dipped_beam_control_signal",
+    "relation": "输入为",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": true,
+    "conflict_note": "同一信号存在多个输入源（CANFD/ICB/RHZCU），需确认物理链路层级：CANFD为总线通道，ICB为中间件服务，RHZCU为ECU实体；三者非互斥，但需明确数据流向"
+  },
+  {
+    "head": "right_dipped_beam_control_signal",
+    "relation": "输入为",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": true,
+    "conflict_note": "同一信号存在多个输入源（CANFD/ICB/RHZCU），需确认物理链路层级：CANFD为总线通道，ICB为中间件服务，RHZCU为ECU实体；三者非互斥，但需明确数据流向"
+  },
+  {
+    "head": "right_dipped_beam_control_signal",
+    "relation": "输入为",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": true,
+    "conflict_note": "同一信号存在多个输入源（CANFD/ICB/RHZCU），需确认物理链路层级：CANFD为总线通道，ICB为中间件服务，RHZCU为ECU实体；三者非互斥，但需明确数据流向"
+  },
+  {
+    "head": "left_dipped_beam_status_signal",
+    "relation": "输出为",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": true,
+    "conflict_note": "同一状态信号存在多个输出目标（CANFD/ICB/LHZCU），需确认信号发布方与消费方关系：LHZCU是生成方，CANFD/ICB是传输/中转通道"
+  },
+  {
+    "head": "left_dipped_beam_status_signal",
+    "relation": "输出为",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": true,
+    "conflict_note": "同一状态信号存在多个输出目标（CANFD/ICB/LHZCU），需确认信号发布方与消费方关系：LHZCU是生成方，CANFD/ICB是传输/中转通道"
+  },
+  {
+    "head": "left_dipped_beam_status_signal",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0970", "outer_lamp_fas_1156"],
+    "conflict": true,
+    "conflict_note": "同一状态信号存在多个输出目标（CANFD/ICB/LHZCU），需确认信号发布方与消费方关系：LHZCU是生成方，CANFD/ICB是传输/中转通道"
+  },
+  {
+    "head": "left_dipped_beam_control_signal",
+    "relation": "触发条件",
+    "tail": "0x1=LDipdBeamLghtCtrl_HW_1_On",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left_dipped_beam_control_signal",
+    "relation": "触发条件",
+    "tail": "0x0=LDipdBeamLghtCtrl_HW_0_Off",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "right_dipped_beam_control_signal",
+    "relation": "触发条件",
+    "tail": "0x1=RDipdBeamLghtCtrl_HW_1_On",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "right_dipped_beam_control_signal",
+    "relation": "触发条件",
+    "tail": "0x0=RDipdBeamLghtCtrl_HW_0_Off",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left_dipped_beam_status_signal",
+    "relation": "触发条件",
+    "tail": "0x1=LDipdBeamLghtSts_1_On",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left_dipped_beam_status_signal",
+    "relation": "触发条件",
+    "tail": "0x0=LDipdBeamLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_0970"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "控制对象",
+    "tail": "left_and_right_side_position_lights",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "触发条件",
+    "tail": "trailer_mode_enabled AND prerequisite_conditions_met",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "触发条件",
+    "tail": "exlSideLghtHwDrvEnPrm = 0x0",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TDM",
+    "relation": "输入为",
+    "tail": "TrlrSideLghtSts, TrlrSideLghtFltSts",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "依赖于",
+    "tail": "TDM_feedback_trailer_side_light_status_and_fault",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "前提条件",
+    "tail": "prerequisite_conditions_met",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "输出为",
+    "tail": "ExteriorLightSwitchProcess.SidePositionLightSta, ExteriorLightSwitchProcess.SidePositionLightErrSta",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输入为",
+    "tail": "ExteriorLightControlSystem.SidePositionLightSts",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "前提条件",
+    "tail": "trailer_mode_enabled AND prerequisite_conditions_met",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "前提条件",
+    "tail": "exlSideLghtHwDrvEnPrm = 0x0",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtVehSideLghtFltSts",
+    "relation": "输出为",
+    "tail": "RZCU_subscribed_front_vehicle_side_light_fault_status",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left_side_position_light_fault",
+    "relation": "触发条件",
+    "tail": "FrtVehSideLghtFltSts = 0x1",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "right_side_position_light_fault",
+    "relation": "触发条件",
+    "tail": "FrtVehSideLghtFltSts = 0x2",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left_and_right_side_position_lights_no_fault",
+    "relation": "触发条件",
+    "tail": "FrtVehSideLghtFltSts = 0x0",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left_and_right_side_position_lights_both_faulty",
+    "relation": "触发条件",
+    "tail": "FrtVehSideLghtFltSts = 0x3",
+    "sources": ["outer_lamp_fas_0971"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "rear_fog_light_on",
+    "relation": "触发条件",
+    "tail": "RearFogLight.RearFogLightControl.RearFogLightCtrReq = 0x1",
+    "sources": ["outer_lamp_fas_0972"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "rear_fog_light_off",
+    "relation": "触发条件",
+    "tail": "RearFogLight.RearFogLightControl.RearFogLightCtrReq = 0x0",
+    "sources": ["outer_lamp_fas_0972"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightCtrl_HW",
+    "relation": "依赖于",
+    "tail": "RearFogLightCtrReq",
+    "sources": ["outer_lamp_fas_0972"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "rear_fog_light_on",
+    "relation": "控制对象",
+    "tail": "hardwire_driven_rear_fog_light",
+    "sources": ["outer_lamp_fas_0972"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "rear_fog_light_off",
+    "relation": "控制对象",
+    "tail": "hardwire_driven_rear_fog_light",
+    "sources": ["outer_lamp_fas_0972"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_lamp_function",
+    "relation": "依赖于",
+    "tail": "software_version < 1.0",
+    "sources": ["outer_lamp_fas_0973"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "reverse_light_animation",
+    "relation": "触发条件",
+    "tail": "CAN_signal_or_service_interface_status = 0x1",
+    "sources": ["outer_lamp_fas_0975"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "reverse_light_animation",
+    "relation": "抑制条件",
+    "tail": "CAN_signal_or_service_interface_status = 0x0",
+    "sources": ["outer_lamp_fas_0975"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI_subsystem",
+    "relation": "故障响应",
+    "tail": "reverse_light_fault (RevsLightFltSts = 0x1)",
+    "sources": ["outer_lamp_fas_0975"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.ReverseLightErrSta",
+    "relation": "诊断关联",
+    "tail": "reverse_light_fault (RevsLightFltSts = 0x1)",
+    "sources": ["outer_lamp_fas_0975"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_lamp_function_activation",
+    "relation": "前提条件",
+    "tail": "user_mode = comfortable",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_lamp_function_activation",
+    "relation": "前提条件",
+    "tail": "user_mode = smart_parking",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_lamp_function_activation",
+    "relation": "前提条件",
+    "tail": "user_mode = intelligent_driving",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_lamp_function_activation",
+    "relation": "前提条件",
+    "tail": "user_mode = XOTA",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "body_control_function_activation",
+    "relation": "前提条件",
+    "tail": "vehicle_mode = factory",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "body_control_function_activation",
+    "relation": "前提条件",
+    "tail": "vehicle_mode = dynamometer",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "body_control_function_activation",
+    "relation": "前提条件",
+    "tail": "vehicle_mode = show_vehicle",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "body_control_function_activation",
+    "relation": "前提条件",
+    "tail": "vehicle_mode = normal",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "body_control_function_activation",
+    "relation": "前提条件",
+    "tail": "vehicle_mode = maintenance",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "power_tailgate_function_activation",
+    "relation": "前提条件",
+    "tail": "user_mode = XOTA",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_lamp_function_suppression",
+    "relation": "抑制条件",
+    "tail": "user_mode = sleep",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exterior_lamp_function_suppression",
+    "relation": "抑制条件",
+    "tail": "user_mode = standby",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "body_control_function_suppression",
+    "relation": "抑制条件",
+    "tail": "vehicle_mode = sleep",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "body_control_function_suppression",
+    "relation": "抑制条件",
+    "tail": "vehicle_mode = standby",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "power_tailgate_function_suppression",
+    "relation": "抑制条件",
+    "tail": "user_mode = sleep",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "power_tailgate_function_suppression",
+    "relation": "抑制条件",
+    "tail": "user_mode = standby",
+    "sources": ["outer_lamp_fas_0977"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "前提条件",
+    "tail": "subscribe_left_main_beam_status_service_invoked",
+    "sources": ["outer_lamp_fas_0978"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "前提条件",
+    "tail": "subscribe_right_main_beam_status_service_invoked",
+    "sources": ["outer_lamp_fas_0978"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left_main_beam_status_on",
+    "relation": "输入为",
+    "tail": "MainBeamLightSta",
+    "sources": ["outer_lamp_fas_0978"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "right_main_beam_status_on",
+    "relation": "输入为",
+    "tail": "MainBeamLightSta",
+    "sources": ["outer_lamp_fas_0978"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

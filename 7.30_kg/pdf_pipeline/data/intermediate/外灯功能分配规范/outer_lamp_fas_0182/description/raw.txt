@@ -1,0 +1,68 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "手动触发转向灯拨杆控制左侧转向灯开启的功能规范",
+  "row_semantics": "表格按功能执行的逻辑顺序，从前置条件到触发动作再到执行动作进行描述。",
+  "column_semantics": {
+    "场景描述": "描述整个功能场景的简要说明。",
+    "前置条件": "触发该功能前必须满足的系统状态或信号条件。",
+    "触发动作": "外部输入或内部事件，导致功能被激活的动作。",
+    "执行动作": "功能被触发后，系统内部执行的具体操作或软件行为。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "转向灯拨杆",
+      "type": "input_signal",
+      "description": "驾驶员手动操作的物理开关，用于请求转向灯点亮。"
+    },
+    {
+      "name": "转向灯开关预处理模块 LHZCU",
+      "type": "controller_module",
+      "description": "负责接收并初步处理转向灯开关信号的电子控制单元模块。"
+    },
+    {
+      "name": "转向灯开关控制模块 LHZCU",
+      "type": "controller_module",
+      "description": "负责最终决定转向灯是否点亮及其持续时间的电子控制单元模块。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsG Md",
+      "description": "通用模式（Usual Mode）变量，表示车辆当前的工作模式。",
+      "conditions": [
+        "0x0 = UsG Md_0_Sleep",
+        "0x1 = UsG Md_1_Standby",
+        "0x6 = UsG Md_2_Gear_direction_light_on"
+      ]
+    },
+    {
+      "name": "UsG MdV",
+      "description": "通用模式验证（Usual Mode Validation）变量，表示模式的有效性。",
+      "conditions": [
+        "Valid"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DircnLghtSwReq",
+      "description": "方向灯开关请求信号，指示转向灯的方向和状态。",
+      "value": "0x2 = DircnLghtSwReq_2_Left_Second_gear_direction_light_on"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "开关停留时间",
+      "description": "转向灯开关在某一档位停留的时间。",
+      "threshold": "50ms",
+      "behavior": "当停留时间 ≥ 50ms 时，有效请求；当停留时间 < 50ms 时，忽略请求。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了手动操作转向灯拨杆以点亮左侧转向灯的完整功能逻辑，包括触发条件、输入信号、内部处理流程以及与时间相关的响应规则，可用于验证转向灯控制系统在特定场景下的正确性和鲁棒性。",
+  "uncertain_points": []
+}
+```

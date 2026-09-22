@@ -1,0 +1,83 @@
+```json
+[
+  {
+    "head": "日间行车灯状态为关闭",
+    "relation": "输出为",
+    "tail": "{ExteriorLightSwitchProcess. DayRunningLightSta. DayRunningLghtSta}=0x0=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DayRunningLight.Sta",
+      "ExteriorLightSwitchProcess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "位置灯状态为关闭",
+    "relation": "输出为",
+    "tail": "{ExteriorLightSwitchProcess. SidePositionLightSta. SidePosnLghtSta}=0x0=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "SidePositionLight.Sta",
+      "ExteriorLightSwitchProcess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "日间行车灯错误状态为无错误",
+    "relation": "输出为",
+    "tail": "{ExteriorLightSwitchProcess. DayRunningLightErrSta. DayRunningLghtErrSta}=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DayRunningLight.ErrSta",
+      "ExteriorLightSwitchProcess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "位置灯错误状态为无错误",
+    "relation": "输出为",
+    "tail": "{ExteriorLightSwitchProcess. SidePositionLightErrSta. SidePosnLghtErrSta}=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "SidePositionLight.ErrSta",
+      "ExteriorLightSwitchProcess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "贯穿式位置灯控制模块LHZCU将位置灯状态反馈至ICB",
+    "relation": "包含子功能",
+    "tail": "位置灯状态反馈",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "SidePositionLight.Sta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "贯穿式位置灯控制模块LHZCU将日间行车灯状态反馈至ICB",
+    "relation": "包含子功能",
+    "tail": "日间行车灯状态反馈",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "DayRunningLight.Sta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "贯穿式位置灯退出的同步性允许的最大延时周期为40ms",
+    "relation": "超时约束",
+    "tail": "40ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "同步性延时周期",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

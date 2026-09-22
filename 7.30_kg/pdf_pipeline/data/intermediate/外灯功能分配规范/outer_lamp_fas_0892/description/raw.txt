@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 (Exterior Lamp Function) - 方向灯状态与模式",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的外灯相关服务接口或参数查询。",
+  "column_semantics": "列定义了该参数/接口的服务调用方（消费端）及其在不同控制器中的归属。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "function",
+      "description": "获取右转向灯错误状态的服务接口"
+    },
+    {
+      "name": "DirectionLightModeStatus",
+      "type": "function",
+      "description": "获取转向灯点亮模式的服务接口"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "signal",
+      "description": "返回方向灯错误状态，包括：No Error (0x0), Error (0x1), Unknown (0x2)",
+      "source": "LHZCU"
+    },
+    {
+      "name": "DirectionLightModeStatus",
+      "type": "signal",
+      "description": "返回转向灯模式，包括：Enabled (0x0), Disabled (0x1), Unknown (0x2)",
+      "source": "LHZCU"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "fault_state",
+      "description": "指示方向灯是否存在错误状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中方向灯的状态查询和模式获取相关的服务接口及其参数，主要用于验证外灯控制单元（如LHZCU）是否能正确响应并返回方向灯的错误状态和点亮模式。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,49 @@
+{
+  "table_type": "logic_table",
+  "topic": "后雾灯控制逻辑",
+  "row_semantics": "描述了触发后雾灯输出的条件和执行的动作",
+  "column_semantics": {
+    "第一列": "条件分类（前置条件、触发条件、执行动作）",
+    "第二列": "具体的条件或动作描述"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RearFogLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "后雾灯控制模块"
+    },
+    {
+      "name": "RearFogLghtDrvMdl",
+      "type": "controller_module",
+      "description": "后雾灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "ControlRearFogPositionLight",
+      "module": "RearFogLghtCtrlMdl",
+      "condition": "收到信号",
+      "description": "后雾灯控制模块发送的后雾灯位置控制信号"
+    },
+    {
+      "signal": "RearFogPositionLightReq",
+      "value": "1",
+      "comparison": "==",
+      "description": "后雾灯位置请求信号值为1，表示开启"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "FogLamp_HSD",
+      "module": "RearFogLghtDrvMdl",
+      "action": "持续驱动输出",
+      "description": "后雾灯驱动模块持续输出高电平以点亮后雾灯"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了当后雾灯控制模块发送控制信号且请求状态为开启时，后雾灯驱动模块应持续驱动后雾灯输出的功能逻辑，可用于验证后雾灯控制功能的正确性。",
+  "uncertain_points": []
+}

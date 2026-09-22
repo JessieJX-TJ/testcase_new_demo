@@ -1,0 +1,40 @@
+{
+  "table_type": "parameter_table",
+  "topic": "转向灯开关电阻值异常退出条件及处理",
+  "row_semantics": "定义了在转向灯开关电阻值超出正常范围时的系统退出条件和异常处理措施。",
+  "column_semantics": {
+    "column_1": "描述系统退出的条件或状态",
+    "column_2": "详细说明退出条件的具体参数及其容差"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "entity_type": "function_name",
+      "name": "转向灯开关"
+    },
+    {
+      "entity_type": "controller_module",
+      "name": "车身控制模块 (BCM)"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition_type": "parameter_threshold",
+      "parameter_name": "转向灯开关电阻值",
+      "value": "4020 Ω",
+      "tolerance": "±5%",
+      "comparison_operator": "非"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "fault_type": "hardware_failure",
+      "description": "转向灯开关电阻值超出正常范围（4020 Ω ±5%）"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证车身控制模块在转向灯开关电阻值异常时是否能够正确触发退出条件并执行相应的异常处理逻辑。",
+  "uncertain_points": []
+}

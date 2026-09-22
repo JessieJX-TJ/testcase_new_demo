@@ -1,0 +1,79 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "前雾灯控制与状态信息",
+  "row_semantics": "表格的每一行代表一个与前雾灯相关的参数或状态变量，描述其定义、可能的值及其含义。",
+  "column_semantics": {
+    "Column1": "参数/状态变量名称",
+    "Column2": "变量描述或功能说明",
+    "Column3": "变量的具体数值定义及其对应的中文解释",
+    "Column4": "存储格式（如高低位）及默认值",
+    "Column5": "数据来源模块（控制器）",
+    "Column6": "备注信息"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FrtFogLghtClsIRsn",
+      "type": "input_signal",
+      "description": "前雾灯关闭原因代码，记录前雾灯关闭的具体原因。",
+      "source": "LHZ CU"
+    },
+    {
+      "name": "FrontFogLghtFuCProsSta",
+      "type": "output_signal",
+      "description": "前雾灯功能过程状态，指示当前前雾灯的工作模式或组合状态。",
+      "source": "LHZ CU"
+    },
+    {
+      "name": "FrontFogLghtSta",
+      "type": "output_signal",
+      "description": "前雾灯状态，表示前雾灯的基本开关状态。",
+      "source": "LHZ"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FrtFogLghtClsIRsn",
+      "values": [
+        "0x00_None",
+        "0x01_SOARequestOff",
+        "0x02_UsageModeDissatisfaction",
+        "0x03_VehicleModeDissatisfaction",
+        "0x04_SidePositionLightOFF",
+        "0x05_FactoryModeTimeOver",
+        "0x06_OtherReasons",
+        "0x07~0xFF_Reversed"
+      ],
+      "description": "详细记录了前雾灯关闭的多种可能原因，包括系统请求关闭、使用模式不满足、车辆模式不满足、侧转向灯关闭、工厂模式超时以及其他未知原因。"
+    },
+    {
+      "name": "FrontFogLghtFuCProsSta",
+      "values": [
+        "0_OFF",
+        "1_OnlyFrontFogLghtON",
+        "2_FrontFogLghtAndRearFogLghtON",
+        "3_FrontFogLghtAndDippedLightON",
+        "4_FrontFogLghtAndSideLightON",
+        "5_Reversed",
+        "6_Reversed",
+        "7_Unknown"
+      ],
+      "description": "定义了前雾灯在不同工作模式下的组合状态，例如仅开启前雾灯、前雾灯与后雾灯同时开启、前雾灯与近光灯同时开启等复杂状态。"
+    },
+    {
+      "name": "FrontFogLghtSta",
+      "values": [
+        "0_OFF"
+      ],
+      "description": "表示前雾灯的基本开关状态，当前仅为关闭状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和规范前雾灯系统的控制逻辑和状态反馈，是进行前雾灯功能验证、状态监控以及故障诊断测试的重要依据。",
+  "uncertain_points": []
+}
+```

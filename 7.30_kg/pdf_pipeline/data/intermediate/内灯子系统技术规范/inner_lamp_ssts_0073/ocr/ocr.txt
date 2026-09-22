@@ -1,0 +1,15 @@
+前置条件
+背光灯无短路/开路故障
+触发条件
+接收到 LHZCU的请求信号VehSideLghtSts_1_DCMFL_LIN
+=0x3(All_Side_Light_And_License_Plate_Light_On)
+执行动作
+DTSM_FL驱动背光灯点亮
+退出条件
+接收 VehSideLghtSts_1_DCMFL_LIN =0x0
+(No_Side_Light_On),关闭背光灯
+接收 VehSideLghtSts_1_DCMFL_LIN=0x1
+(Left_Side_Light_On_Only) /0x2
+(Right_Side_Light_On_Only),维持上一状态
+异常处理
+检测到背光灯短路/开路故障,关闭背光灯

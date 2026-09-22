@@ -1,0 +1,36 @@
+b、{DippedBeamLight.DippedBeamLightStatus. DippedBeamLightSta}(InstanceID=4)=0x
+c、{DippedBeamLight.DippedBeamLightStatus. DippedBeamLightSta}(InstanceID=1)=0x
+d、{DippedBeamLight.DippedBeamLightStatus. DippedBeamLightSta}(InstanceID=2)=0x
+环境光状态为白天:AutoLghtOnReq_1=0x0=AutoLghtOnReq_0_False
+车辆档位状态为D档:TrShftLvrPos=0x4=TrShftLvrPos_4_Forward_Range_A;&&
+TrShftLvrPosV=0x0=TrShftLvrPosV_0_Valid
+车速大于20kph:VehSpdAvg≥20kph(可配置,TnnlAutoLghtCtrlEnbVehSpd)&&
+VehSpdAvgV=0x0=VehSpdAvgV_0_Valid
+智慧场景灯光设置为使能:PersonalizationData.DLPSceneLightSet.DLPSceneLightSetInfo=0x0
+导航开启:NaviRoadInfoService.NavStsInfo.NaviStatus=0x1
+备注:
+a.需求中同时存在SOA和CAN的,按照配置字开发
+b.需求中只存在一种通讯类型的,按照该通讯类型开发
+c.PPV阶段及以后按照SOA通讯方式开发:
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+触发动作
+[隧道变光模块LHZCU]检测到前方200m(可配置,TnnlAutoLghtCtrlDstLmt)有隧道:
+NaviRoadInfoService.TunnelRemindInfo.TunnelRemind<=200
+执行动作
+近光灯控制模块LHZCU同时发出控制信号给ICB:
+LDipdBeamLghtCtrl=0x1=LDipdBeamLghtCtrl_1_On
+RDipdBeamLghtCtrl=0x1=RDipdBeamLghtCtrl_1_On
+[近光灯控制模块LHZCU]接口发送:
+SidePositionAndDippedBeam ON;给 ICB
+ICB将服务接口或控制信号转换成灯控CAN信号,并控制近光灯点亮
+[外灯控制组合服务ICB]调用接口:
+ON,获取近光灯开关状态；当
+{ExteriorLightSwitchProcess.CombLghtFucProStatus.CombLghtFucProSta}接参数为Ox4=
+接口参数同时赋值0x2=DippedBeamLight ON
+[HMI子系统ICB]调用接口:
+SidePositionAndDippedBeam ON;或 LDipdBeamLghtCtrl=0x1=LDipdBeamLghtCtrl_1_On
+指示灯显示
+[外灯控制组合服务ICB]调用基础服务:
+[驱动处理模块LHZCU/RHZCU]内部跳变为硬线输出,驱动近光灯点亮
+[驱动模块LHZCU/RHZCU]将状态/故障状态反馈至[近光灯控制模块LHZCU]:

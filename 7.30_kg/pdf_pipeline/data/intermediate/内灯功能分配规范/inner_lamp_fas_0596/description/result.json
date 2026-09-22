@@ -1,0 +1,46 @@
+{
+  "table_type": "parameter_table",
+  "topic": "整车电子电器系统中化妆镜灯的保持策略",
+  "row_semantics": "描述特定功能（化妆镜灯）在不同条件下的保持行为及其原因",
+  "column_semantics": {
+    "保持源": "触发保持功能的具体来源或条件",
+    "保持原因": "详细解释为何需要保持该功能，包括涉及的具体组件和时间要求",
+    "备注": "对保持行为的补充说明"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "本地控制单元，负责管理化妆镜灯的保持逻辑"
+    },
+    {
+      "name": "TmdDlyLamp_LH_HSD",
+      "type": "输入信号",
+      "description": "一个与延迟相关的信号，可能用于控制化妆镜灯的保持时长"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "化妆镜灯切为待机或休眠状态",
+      "description": "当化妆镜灯进入待机或休眠模式时，触发保持机制"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "化妆镜灯本地保持15min",
+      "description": "在满足条件的情况下，化妆镜灯将被保持15分钟"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal": "TmdDlyLamp_LH_HSD",
+      "constraint": "本地保持15min",
+      "description": "该信号在本地环境下需确保化妆镜灯至少保持15分钟"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在LHZCU控制下，化妆镜灯在特定条件下（如待机或休眠）应保持15分钟的功能规范，可用于验证整车电子电器系统中化妆镜灯的保持逻辑是否符合设计要求。",
+  "uncertain_points": []
+}

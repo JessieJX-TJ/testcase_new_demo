@@ -1,0 +1,65 @@
+{
+  "table_type": "fault_table",
+  "topic": "右后位置灯故障状态获取",
+  "row_semantics": "故障状态代码定义",
+  "column_semantics": "无分列，内容为单一功能描述和参数定义",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "Interface",
+      "description": "获取右后位置灯故障状态的服务接口"
+    },
+    {
+      "name": "SidePositionLightErrorSta",
+      "type": "Parameter",
+      "description": "表示右后位置灯故障状态的参数"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "左侧后组合单元，负责处理车身相关控制逻辑"
+    },
+    {
+      "name": "LHZCU_ETH",
+      "type": "Controller/Module",
+      "description": "右侧后组合单元，可能与以太网通信相关"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightErrorSta",
+      "type": "Output Signal",
+      "description": "返回右后位置灯的故障状态值",
+      "values": [
+        {
+          "code": "0x0",
+          "status": "No Error",
+          "description": "无故障"
+        },
+        {
+          "code": "0x1",
+          "status": "Error",
+          "description": "存在故障"
+        },
+        {
+          "code": "0x2",
+          "status": "Unknown",
+          "description": "状态未知"
+        }
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SidePositionLightError",
+      "type": "Fault Status",
+      "description": "右后位置灯的故障状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了通过调用SidePositionLightErrorStatus接口获取右后位置灯故障状态的参数规范，可用于验证LHZCU和LHZCU_ETH控制器在不同故障状态下正确返回相应错误代码的能力。",
+  "uncertain_points": []
+}

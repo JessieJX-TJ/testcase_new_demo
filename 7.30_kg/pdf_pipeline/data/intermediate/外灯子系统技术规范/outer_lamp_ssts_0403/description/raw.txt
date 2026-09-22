@@ -1,0 +1,79 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯子系统 - 左前转向灯控制与状态",
+  "row_semantics": "表格按功能模块（如状态、控制请求）逐行定义了左前转向灯的相关信号及其交互。",
+  "column_semantics": {
+    "DILamp_LH_HSD": "功能模块名称",
+    "输出/输入": "信号类型（输入或输出）",
+    "片内": "信号所属的内部模块",
+    "LHZCU": "控制器单元",
+    "ICB": "集成控制盒",
+    "SOA": "服务导向架构",
+    "外灯SSTS": "外部灯系统状态",
+    "外灯EAS": "外部灯执行系统"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "FLDircnLghtSts",
+      "type": "功能名",
+      "description": "左前转向灯状态"
+    },
+    {
+      "name": "DirectionLightControl",
+      "type": "功能名",
+      "description": "左前转向灯控制请求"
+    },
+    {
+      "name": "DirectionLightState",
+      "type": "功能名",
+      "description": "左前转向灯状态获取"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "车身域控制器"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "集成控制盒"
+    },
+    {
+      "name": "SOA",
+      "type": "控制器/模块名",
+      "description": "服务导向架构"
+    },
+    {
+      "name": "外灯SSTS",
+      "type": "控制器/模块名",
+      "description": "外部灯系统状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightCtReq",
+      "type": "输入信号",
+      "description": "转向灯控制请求信号，用于点亮或熄灭转向灯"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtSts",
+      "type": "输出信号",
+      "description": "左前转向灯当前状态（0: Off, 1: On）"
+    },
+    {
+      "name": "DirectionLightState",
+      "type": "输出信号",
+      "description": "左前转向灯状态反馈（0: Off, 1: On, 2: Error, 3: Unknown）"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了左前转向灯的状态和控制接口，可用于验证转向灯控制请求的正确性以及状态反馈的准确性。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,141 @@
+{
+  "table_type": "logic_table",
+  "topic": "Vehicle Daytime Running Lamp (DRL) Deactivation Logic",
+  "row_semantics": "Each row represents a condition or action step in the logic flow for deactivating the DRL when exiting the Vehicle Daytime Running Lamp (VDR) active state.",
+  "column_semantics": "The table has two main columns: '前置条件' (Preconditions) and '触发动作' (Trigger Actions). The '前置条件' column lists the initial conditions required for the logic to apply, while the '触发动作' column details the specific actions or checks that must occur to achieve the desired outcome.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Vehicle Daytime Running Lamp (VDR)",
+      "type": "function",
+      "description": "A lighting system that remains on during vehicle operation in daylight conditions."
+    },
+    {
+      "name": "ExtrLghtCtrlCmmntnTyp",
+      "type": "parameter",
+      "description": "An external light control communication type parameter, configured based on SOA (Service-Oriented Architecture) or CAN (Controller Area Network) requirements."
+    },
+    {
+      "name": "TrShftLvrPos",
+      "type": "input_signal",
+      "description": "Transmission shift lever position signal."
+    },
+    {
+      "name": "TrShftLvrPosV",
+      "type": "input_signal",
+      "description": "Transmission shift lever position validity signal."
+    },
+    {
+      "name": "CombLghtSwSta",
+      "type": "input_signal",
+      "description": "Combined light switch status signal."
+    },
+    {
+      "name": "AutoHoldSysSts",
+      "type": "system_state",
+      "description": "Automatic parking hold system status."
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "Module responsible for processing exterior light switch inputs."
+    },
+    {
+      "name": "DayRunningLightFucProStatus",
+      "type": "output_signal",
+      "description": "Status of the day running light functionality."
+    },
+    {
+      "name": "DayRunngLghtDsblSts",
+      "type": "mode",
+      "description": "Mode indicating whether the day running light is disabled."
+    },
+    {
+      "name": "UsrMd",
+      "type": "mode",
+      "description": "User mode setting, which can be Normal Driving, AI Parking, AIPilot, Comfortable, etc."
+    },
+    {
+      "name": "VehMd",
+      "type": "mode",
+      "description": "Vehicle mode setting, which can be Factory, Transport, etc."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit, responsible for controlling various lighting functions."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "VDR is in active state",
+      "signal": "ExtrLghtCtrlCmmntnTyp",
+      "value": "0x0 = SOA"
+    },
+    {
+      "condition": "Vehicle is in Park gear",
+      "signal": "TrShftLvrPos",
+      "value": "0x1 = TrShftLvrPos_1_Park_Range"
+    },
+    {
+      "condition": "Light switch is in OFF position",
+      "signal": "CombLghtSwSta",
+      "value": "0x0 = OFF"
+    },
+    {
+      "condition": "Automatic parking hold is not in intervention mode",
+      "signal": "AutoHoldSysSts",
+      "value": "0x1 = AutoHoldSysSts_1_intervention"
+    },
+    {
+      "condition": "VDR is enabled in factory mode for 2 minutes",
+      "signal": "ExteriorLightSwitchProcess.DayRunningLightFucProStatus",
+      "value": "0x1 = ON"
+    },
+    {
+      "condition": "Day running light disable status changes from False to True",
+      "signal": "DayRunngLghtDsblSts",
+      "value": "0x1 = True"
+    },
+    {
+      "condition": "User mode is not one of the allowed modes",
+      "signal": "UsrMd",
+      "value": "Not NormalDriving, AI Parking, AIPilot, Comfortable"
+    },
+    {
+      "condition": "Vehicle mode is not Transport",
+      "signal": "VehMd",
+      "value": "Not 0x3 = VehMd_3_TRANSPORT"
+    },
+    {
+      "condition": "Front fog lights or front turn signals are activated",
+      "signal": "ExteriorLightSwitchProcess.CombLghtFucProStatus",
+      "value": "0x4 = SidePositionAndDippedBeamLight ON"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "Deactivate Vehicle Daytime Running Lamp",
+      "signal": "ExteriorLightSwitchProcess.DayRunningLightFucProStatus",
+      "value": "0x0 = OFF"
+    },
+    {
+      "output": "Disable Day Running Light",
+      "signal": "DayRunngLghtDsblSts",
+      "value": "0x0 = False"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "VDR remains on for 2 minutes in factory mode",
+      "timing": "2 min"
+    }
+  ],
+  "engineering_interpretation": "This table defines the logical conditions and actions required to deactivate the Vehicle Daytime Running Lamp (VDR) when exiting its active state. It specifies the necessary vehicle states, user inputs, and system statuses that must be met before the VDR can be turned off, ensuring safe and controlled operation of the vehicle's lighting system.",
+  "uncertain_points": [
+    "The exact timing relationship between the '2 min' factory mode duration and the subsequent deactivation of the VDR is not explicitly defined.",
+    "The specific behavior of the 'LHZCU' controller in response to the 'CombLghtFucProStatus' signal is not detailed beyond its role in judging the activation of near/fog lights."
+  ]
+}

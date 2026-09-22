@@ -1,0 +1,58 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Exterior Lighting Control Parameters",
+  "row_semantics": "Each row represents a specific parameter related to exterior lighting control, including communication type, status type, delay timing, and hardware driver enablement.",
+  "column_semantics": {
+    "1": "Parameter Name (e.g., ExtrLghtCtrlCmmtnTyp)",
+    "2": "Description/Type of Parameter",
+    "3": "Possible Values and Definitions for the Parameter",
+    "4": "Default Value or Initial Setting",
+    "5": "Additional Notes or Context"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ExtrLghtCtrlCmmtnTyp",
+      "type": "Parameter",
+      "description": "Communication type for exterior light control."
+    },
+    {
+      "name": "ExtrLghtStsCmmtnTyp",
+      "type": "Parameter",
+      "description": "Communication type for exterior light status."
+    },
+    {
+      "name": "NumPltLampCtrlDelayPrm",
+      "type": "Parameter",
+      "description": "Delay time for license plate lamp control."
+    },
+    {
+      "name": "exlSideLghtHwDrvEnPrm",
+      "type": "Parameter",
+      "description": "Enable/disable setting for side light hardware driver."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "parameter": "NumPltLampCtrlDelayPrm",
+      "description": "Specifies the delay time for license plate lamp control in milliseconds.",
+      "values": {
+        "0x0": "0ms",
+        "0x1": "20ms",
+        "0x2": "40ms",
+        "0x3": "60ms",
+        "0x4": "80ms",
+        "0x5": "100ms",
+        "0x6": "120ms",
+        "0x7": "140ms",
+        "0x8": "160ms"
+      }
+    }
+  ],
+  "engineering_interpretation": "This table defines configurable parameters for exterior lighting control systems, including communication protocols, status reporting types, and specific timing delays. It is used to verify that the system correctly initializes and configures these parameters according to the specified default values and operational requirements.",
+  "uncertain_points": []
+}

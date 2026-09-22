@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "系统执行主大灯控制逻辑",
+    "relation": "触发条件",
+    "tail": "远光灯开关短路到电源",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["远光灯开关短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统执行主大灯控制逻辑",
+    "relation": "前提条件",
+    "tail": "配置字MainBeamLghtSwSOAEnPrm==0(Disable)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["配置字MainBeamLghtSwSOAEnPrm==0(Disable)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主大灯开关模块持续发送关闭请求",
+    "relation": "输出为",
+    "tail": "MainBeamLghtSwReq=0x0 (Off)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["MainBeamLghtSwMdl", "MainBeamLghtSwReq=0x0 (Off)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主大灯开关模块持续发送关闭请求",
+    "relation": "控制对象",
+    "tail": "MainBeamLghtCtrlMdl",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["MainBeamLghtSwMdl", "MainBeamLghtCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统置位故障代码",
+    "relation": "诊断关联",
+    "tail": "DTC B1077 15",
+    "triple_type": "故障响应",
+    "evidence_terms": ["DTC B1077 15"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统退出主大灯控制逻辑",
+    "relation": "退出条件",
+    "tail": "远光灯开关非短路到电源",
+    "triple_type": "状态保持条件",
+    "evidence_terms": ["远光灯开关非短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主大灯开关模块持续发送关闭请求",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": ["至少发送三帧"],
+    "confidence_note": "high"
+  }
+]
+```

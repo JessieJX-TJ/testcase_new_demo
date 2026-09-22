@@ -1,0 +1,91 @@
+[
+  {
+    "head": "氛围灯点亮",
+    "relation": "触发条件",
+    "tail": "接收到氛围灯本地控制模块的开启请求信号 DoorFL1LampOnOff_1=0x1(ON)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFL1LampOnOff_1",
+      "DoorFL1LampColorCmd_1",
+      "DoorFL1LampBrtnsCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0584",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯点亮",
+    "relation": "触发条件",
+    "tail": "DoorFL1LampColorCmd_1!=0x00(No Request)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFL1LampOnOff_1",
+      "DoorFL1LampColorCmd_1",
+      "DoorFL1LampBrtnsCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0584",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯点亮",
+    "relation": "触发条件",
+    "tail": "DoorFL1LampBrtnsCmd_1!=0x00(No Request)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFL1LampOnOff_1",
+      "DoorFL1LampColorCmd_1",
+      "DoorFL1LampBrtnsCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0584",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯点亮",
+    "relation": "依赖于",
+    "tail": "[氛围灯驱动控制模块]按照对应颜色值 DoorFL1LampColorCmd_1、亮度值 DoorFL1LampBrtnsCmd_1、渐变速度 DoorFL1LampFadeSpdCmd_1 驱动",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorFL1LampColorCmd_1",
+      "DoorFL1LampBrtnsCmd_1",
+      "DoorFL1LampFadeSpdCmd_1",
+      "DoorFL1LampDrvCtrlMod"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0584",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "接收到氛围灯本地控制模块的请求信号 DoorFL1LampOnOff_1=0x0(OFF),按照对应渐变速度 DoorFL1LampFadeSpdCmd_1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFL1LampOnOff_1",
+      "DoorFL1LampFadeSpdCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0584",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "依赖于",
+    "tail": "DoorFL1LampDrvCtrlMod 按照对应渐变速度 DoorFL1LampFadeSpdCmd_1 控制",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorFL1LampFadeSpdCmd_1",
+      "DoorFL1LampDrvCtrlMod"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0584",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

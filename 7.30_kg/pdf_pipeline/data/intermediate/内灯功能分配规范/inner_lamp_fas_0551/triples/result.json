@@ -1,0 +1,90 @@
+[
+  {
+    "head": "阅读灯MapLampHMI模块下发请求信号",
+    "relation": "前提条件",
+    "tail": "S32L车型配置阅读灯数量不同",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "MapLampHMI",
+      "S32L",
+      "Configure Passenger"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0551",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "阅读灯MapLampCtrl模块下发请求信号",
+    "relation": "前提条件",
+    "tail": "S32L车型配置阅读灯数量不同",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "MapLampCtrl",
+      "S32L",
+      "Configure Passenger"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0551",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "ICB接收阅读灯亮度信息",
+    "relation": "超时约束",
+    "tail": "延时300ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "ICB",
+      "延时300ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0551",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "ICB发送新的亮度值",
+    "relation": "前提条件",
+    "tail": "判断6颗阅读灯点亮状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "亮度值",
+      "判断6颗阅读灯点亮状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0551",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "ZCU直驱导致ICB无法接收亮度信息",
+    "relation": "故障响应",
+    "tail": "S32L车型全车阅读软开关回弹问题",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "ZCU",
+      "ICB",
+      "S32L"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0551",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "后备箱灯优化描述",
+    "relation": "前提条件",
+    "tail": "15min计时期间的处理",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "后备箱灯",
+      "15min"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0551",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  }
+]

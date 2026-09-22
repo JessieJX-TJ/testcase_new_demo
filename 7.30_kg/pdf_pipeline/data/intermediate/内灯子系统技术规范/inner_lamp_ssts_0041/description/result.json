@@ -1,0 +1,93 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Roof LHBLamp breathing mode and fade speed control for Interior Lighting Sub System",
+  "row_semantics": "Each row represents a different breathing rate or fade speed setting for the roof left-hand high-bracket lamp (LHBLamp)",
+  "column_semantics": {
+    "Code Value": "Identifier for the specific breathing rate or fade speed setting",
+    "Period": "Time interval between each breathing cycle or fade step",
+    "Original Breathing Mode Value": "Reference to the original breathing mode if it's an新增 (new) setting"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "RoofLHLBLampBrthngCmd_1_RateX",
+      "type": "signal",
+      "description": "Command signal for controlling the breathing pattern of the roof left-hand high-bracket lamp"
+    },
+    {
+      "name": "RoofLHLBLampFadeSpdCmd_1_X_SpdY",
+      "type": "signal",
+      "description": "Command signal for controlling the fade speed of the roof left-hand high-bracket lamp"
+    },
+    {
+      "name": "RHZCU_LIN5",
+      "type": "controller",
+      "description": "Right High Zone Control Unit, LIN network interface"
+    },
+    {
+      "name": "SSTS",
+      "type": "system",
+      "description": "Sub System Technical Specification"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Rate0",
+      "description": "No request, stops breathing animation"
+    },
+    {
+      "name": "Rate1 - Rate15",
+      "description": "Different breathing rates from 500ms to 12s, some are新增 settings"
+    },
+    {
+      "name": "Code Value 0x0 - 0xF",
+      "description": "Specific commands for different breathing modes"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RoofAmbtLamp_B_LH",
+      "type": "output_signal",
+      "description": "Output signal controlling the ambient light behavior of the roof left-hand lamp"
+    },
+    {
+      "name": "SSTS",
+      "type": "system_output",
+      "description": "System output related to the sub-system technical specification"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Period",
+      "description": "Defines the time interval for each breathing cycle or fade step",
+      "values": [
+        "500ms",
+        "1s",
+        "2s",
+        "2.4s",
+        "3s",
+        "3.5s",
+        "4s",
+        "4.5s",
+        "5s",
+        "6s",
+        "7s",
+        "8s",
+        "10s",
+        "12s"
+      ]
+    },
+    {
+      "name": "Fade Speed",
+      "description": "Time required to transition from current state to target state when changing color/brightness",
+      "default_value": "2000ms",
+      "speed_values": [
+        "300ms"
+      ]
+    }
+  ],
+  "engineering_interpretation": "This table defines the breathing modes and fade speeds for the roof left-hand high-bracket lamp in the interior lighting system, specifying how the lamp should behave under different command codes. It is used to verify that the lamp correctly implements the specified breathing patterns and fade transitions according to the defined code values and timing constraints.",
+  "uncertain_points": []
+}

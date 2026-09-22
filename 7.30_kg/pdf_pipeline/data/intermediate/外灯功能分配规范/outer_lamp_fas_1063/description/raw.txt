@@ -1,0 +1,72 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "前雾灯（Front Fog Light）状态与故障监控规范",
+  "row_semantics": "表格按功能点编号（8和9）列出前雾灯相关的状态监控接口，包括通过ICB订阅的组合服务接口。",
+  "column_semantics": "表格未明确分列，主要通过行号区分不同功能点，并详细描述了每个功能点下的具体状态变量及其值。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "FrontFogLight",
+      "type": "功能模块",
+      "description": "前雾灯系统"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "控制器/模块",
+      "description": "外灯开关处理模块"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "控制器/模块",
+      "description": "外灯控制系统"
+    },
+    {
+      "name": "ICB",
+      "type": "通信接口",
+      "description": "Intelligent Control Bus，智能控制总线"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FrontFogLightSta",
+      "type": "输入信号",
+      "description": "前雾灯状态，如Off（关闭）"
+    },
+    {
+      "name": "FrontFogLightErrSta",
+      "type": "输入信号",
+      "description": "前雾灯错误状态，如No Error（无错误）"
+    },
+    {
+      "name": "FrontFogLightHwDrvEnPrm",
+      "type": "参数",
+      "description": "前雾灯硬件驱动使能参数"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FrontFogLightSts",
+      "type": "输出信号",
+      "description": "前雾灯状态，如Off或False"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "FrontFogLightErrorStatus",
+      "type": "故障状态",
+      "description": "前雾灯错误状态，指示是否存在故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "熄灭同步延时",
+      "type": "定时",
+      "description": "左侧和右侧前雾灯需保持同步熄灭，最大延时不超过40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了前雾灯系统的状态监控接口和故障检测逻辑，用于验证前雾灯在不同控制模式下的状态是否正确，并确保左右两侧前雾灯熄灭时的同步性符合要求。",
+  "uncertain_points": []
+}
+```

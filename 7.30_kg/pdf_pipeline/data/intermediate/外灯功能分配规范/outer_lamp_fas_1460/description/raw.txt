@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Dipped Beam Light Control Service Interfaces",
+  "row_semantics": "Each row represents a distinct service interface for controlling dipped beam lights, differentiated by the specific light (left or right) and potentially different system contexts.",
+  "column_semantics": {
+    "A": "Service Interface Name",
+    "B": "Consumption Type (SOA)",
+    "C": "Controller/Module (LHZCU)",
+    "D": "Controller/Module (RHZCU)",
+    "E": "Controller/Module (ICB)",
+    "F": "Reserved/Additional Context",
+    "G": "Reserved/Additional Context"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight.ControlDippedBeamLight",
+      "type": "function",
+      "description": "General service interface for controlling dipped beam lights."
+    },
+    {
+      "name": "DippedBeamLight.ControlDippedBeamLight",
+      "type": "function",
+      "description": "Specific service interface for controlling the left dipped beam light."
+    },
+    {
+      "name": "DippedBeamLight.ControlDippedBeamLight",
+      "type": "function",
+      "description": "Specific service interface for controlling the right dipped beam light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Parameter Name",
+      "value": "{DippedBeamLightReq}",
+      "description": "The parameter structure passed to the service interface."
+    },
+    {
+      "name": "InstanceID",
+      "value": "1 or 2",
+      "description": "Identifies the specific dipped beam light instance (1 for left, 2 for right)."
+    },
+    {
+      "name": "Control Value",
+      "value": "0x0=OFF; 0x1=ON",
+      "description": "Binary values to turn the dipped beam light on or off."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for controlling the left and right dipped beam lights, specifying the required parameters and their values. It is used to verify that the correct service calls are made with the appropriate parameters to achieve the desired lighting state.",
+  "uncertain_points": [
+    "The exact function of columns F and G is not specified in the table.",
+    "The 'BS→CS' label in the last row's context column may imply a specific communication mode or system state, but its exact meaning is not detailed."
+  ]
+}
+```

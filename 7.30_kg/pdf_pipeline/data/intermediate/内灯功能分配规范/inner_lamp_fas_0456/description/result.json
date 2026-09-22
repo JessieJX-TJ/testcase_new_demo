@@ -1,0 +1,68 @@
+{
+  "table_type": "structure_table",
+  "topic": "车辆外灯存储与控制模块的功能接口定义",
+  "row_semantics": "输入信号来源系统",
+  "column_semantics": "输出信号目标控制器",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LockingSystem",
+      "type": "system",
+      "description": "门锁子系统"
+    },
+    {
+      "name": "VehicleStateSystem",
+      "type": "system",
+      "description": "整车状态管理子系统"
+    },
+    {
+      "name": "CnsoStorgLampRCtrl(LHZCU)",
+      "type": "controller",
+      "description": "车身外灯存储与控制模块（位于LHZCU中）"
+    },
+    {
+      "name": "CnsoStorgLampRDrv(LHZCU)",
+      "type": "controller",
+      "description": "车身外灯存储与驱动模块（位于LHZCU中）"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehLckSts",
+      "type": "signal",
+      "description": "车辆锁止状态"
+    },
+    {
+      "name": "VehMd",
+      "type": "signal",
+      "description": "车辆模式"
+    },
+    {
+      "name": "VehMdV",
+      "type": "signal",
+      "description": "车辆模式值"
+    },
+    {
+      "name": "UsrMd",
+      "type": "signal",
+      "description": "用户模式"
+    },
+    {
+      "name": "UsrMdV",
+      "type": "signal",
+      "description": "用户模式值"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "CnsoStorgLampRCtrlCmd",
+      "type": "signal",
+      "description": "外灯存储与控制命令"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该结构图定义了车身外灯存储与控制模块（CnsoStorgLampRCtrl）与门锁系统、整车状态管理系统之间的输入信号接口，以及与外灯存储与驱动模块（CnsoStorgLampRDrv）之间的输出信号接口，可用于验证外灯控制逻辑在不同车辆状态下的正确性。",
+  "uncertain_points": []
+}

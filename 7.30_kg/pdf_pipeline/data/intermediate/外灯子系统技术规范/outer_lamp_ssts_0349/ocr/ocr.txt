@@ -1,0 +1,20 @@
+前置条件
+触发条件
+1. 收到【FrtFogLghtCtrlMdl】发送的 LFrtFogLghtCtrl_HW==0x1(On)
+2. 收到 SOA 服务
+{FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq}
+{InstanceID=3}=0x1(ON)
+执行动作
+1&2&3
+【FrtFogLghtDrvMdl】持续驱动左前雾灯输出(FogLamp_LH_HSD)
+【FrtFogLghtDrvMdl】持续发送LFrtFogLghtSts=0x1(On)至
+【RearFogLghtCtrlMdl】,至少发送三帧
+【FrtFogLghtDrvMdl】持续发送
+{FrontFogLight.FrontFogLightState.FrontFogLightSta}
+{InstanceID=3}=0x1(On)至【RearFogLghtCtrlMdl】,至少发送三
+帧
+退出条件
+1. 收到【FrtFogLghtCtrlMdl】发送的 LFrtFogLghtCtrl_HW==0x0(Off)
+2. 收到【RearFogLghtCtrlMdl】发送的
+{InstanceID=3}=0x0(Off)
+异常处理

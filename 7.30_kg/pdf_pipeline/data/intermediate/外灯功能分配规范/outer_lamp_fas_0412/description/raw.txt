@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "制动灯 CAN 信号故障处理逻辑",
+  "row_semantics": "描述不同 CAN 信号反馈状态下的系统行为",
+  "column_semantics": "无列，内容为单行文本描述",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "BrkLghtFltSta",
+      "type": "signal",
+      "description": "制动灯故障状态信号"
+    },
+    {
+      "name": "HMI",
+      "type": "system",
+      "description": "人机交互系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "当 CAN 信号反馈状态为 0x0 时",
+      "effect": "不做动画显示"
+    },
+    {
+      "condition": "当制动灯发生故障时",
+      "effect": "BrkLghtFltSta = 0x1 = BrkLghtFltSta_1_True"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "不做动画显示",
+      "description": "在特定 CAN 状态下，不触发动画显示"
+    },
+    {
+      "output": "HMI 子系统弹窗提醒",
+      "description": "当制动灯 CAN 信号发生故障时，HMI 系统触发弹窗提示"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "制动灯 CAN 信号故障",
+      "description": "制动灯相关 CAN 信号异常或故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了制动灯 CAN 信号故障时的系统响应逻辑，用于验证 HMI 系统在制动灯故障时是否能正确触发弹窗提醒，并确认在非故障状态下不显示动画。",
+  "uncertain_points": []
+}
+```

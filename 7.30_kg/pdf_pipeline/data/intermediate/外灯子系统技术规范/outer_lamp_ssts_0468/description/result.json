@@ -1,0 +1,68 @@
+{
+  "table_type": "logic_table",
+  "topic": "右后转向灯短路保护功能",
+  "row_semantics": "表格按逻辑流程顺序排列，描述了从前置条件到触发条件、执行动作、退出条件的完整控制逻辑。",
+  "column_semantics": "表格分为两列，左侧为逻辑阶段（如前置条件、触发条件等），右侧为该阶段的具体内容或描述。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RRDILghtDrvMdl",
+      "type": "controller_module",
+      "description": "右后转向灯驱动模块，负责控制转向灯的输出状态和发送反馈信号。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlDircnLghtHwDrvEnPrm",
+      "value": "1",
+      "description": "外部方向灯硬件驱动使能参数为1，表示功能处于激活状态。"
+    },
+    {
+      "name": "右后转向灯输出状态",
+      "value": "输出状态",
+      "description": "右后转向灯当前处于输出状态，准备进行检测。"
+    },
+    {
+      "name": "检测到右后转向灯短路到地",
+      "description": "系统检测到右后转向灯存在短路故障。"
+    },
+    {
+      "name": "检测到短路恢复",
+      "description": "系统检测到之前存在的短路故障已恢复正常。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DILamp_RH_HSD",
+      "action": "停止驱动",
+      "description": "停止向右后转向灯输出电信号，防止进一步损坏。"
+    },
+    {
+      "name": "RRDILghtSts_HW",
+      "value": "0 (Off)",
+      "action": "持续发送",
+      "description": "持续发送转向灯状态信号为关闭状态，至少发送三帧以确保信号稳定。"
+    },
+    {
+      "name": "RRDircnLghtFltsts_HW",
+      "value": "0x1 (True)",
+      "action": "反馈",
+      "description": "反馈转向灯故障状态为真，表示检测到故障。"
+    },
+    {
+      "name": "DTCC_B104A_11",
+      "action": "置位",
+      "description": "置位特定的诊断故障代码，用于记录和报告故障信息。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTCC_B104A_11",
+      "description": "右后转向灯短路故障代码，当检测到短路时被置位。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了右后转向灯在检测到短路故障时的保护逻辑，包括停止驱动、发送状态信号、反馈故障状态以及置位故障代码，并规定了在短路恢复时的退出条件，可用于验证转向灯系统的故障保护功能。",
+  "uncertain_points": []
+}

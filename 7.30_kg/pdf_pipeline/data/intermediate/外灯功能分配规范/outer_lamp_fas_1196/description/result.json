@@ -1,0 +1,40 @@
+{
+  "table_type": "logic_table",
+  "topic": "Reverse Light Control Logic for Trailer Mode",
+  "row_semantics": "Each row represents a step or condition in the reverse light control process, detailing the interaction between controllers (RZCU, TDM, LHZCU) and the resulting actions or status updates.",
+  "column_semantics": "The table does not have explicit columns; instead, it uses a vertical list of conditions and actions. Each entry describes a specific event or state change related to reverse light control.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "RZCU",
+    "TDM",
+    "LHZCU",
+    "ICB"
+  ],
+  "core_conditions": [
+    "Precondition satisfied",
+    "Trailer mode active",
+    "ReverseLightCtrlReq signal received",
+    "TrlrRevsLghtOnReq signal received",
+    "TrlrRevsLghtSts feedback received",
+    "TrlrRevsLghtFltSts feedback received"
+  ],
+  "core_outputs": [
+    "ReverseLightCtrlReq Instance ID=1/2 ON/OFF",
+    "TrlrRevsLghtOnReq Instance ID=1/2 ON/OFF",
+    "TrlrRevsLghtSts Instance ID=1/2 ON/OFF",
+    "TrlrRevsLghtFltSts Instance ID=0 False",
+    "ReverseLightSta Instance ID=2 ON/OFF",
+    "ReverseLightErrSta Instance ID=0 No Error",
+    "ReverseLghtSts Instance ID=1 ON/OFF",
+    "ReverseLghtErrSts Instance ID=0 No Error"
+  ],
+  "core_faults": [
+    "TrlrRevsLghtFltSts = 0x0 = TrlrRevsLghtFltSts_0_False"
+  ],
+  "core_timing_constraints": [
+    "RevsLghtHardWireDrvDelayPrm (default 0x6)"
+  ],
+  "engineering_interpretation": "This table defines the logic flow for controlling reverse lights in trailer mode, including signal exchanges between RZCU, TDM, and LHZCU, state transitions, and fault handling mechanisms.",
+  "uncertain_points": []
+}

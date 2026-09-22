@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "右后转向灯驱动模块执行关闭操作",
+    "relation": "触发条件",
+    "tail": "检测到右后转向灯开路",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["触发条件", "RRDILghtDrvMdl", "右后转向灯开路"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯硬件状态被设置为关闭",
+    "relation": "输出为",
+    "tail": "RRDircnLghtSts_HW = 0x0 (Off)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "RRDILghtDrvMdl", "RRDircnLghtSts_HW"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右后转向灯故障状态反馈为真",
+    "relation": "输出为",
+    "tail": "RRDircnLghtFltsts_HW = 0x1 (True)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "RRDILghtDrvMdl", "RRDircnLghtFltsts_HW"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "诊断代码B104A 13被置位",
+    "relation": "执行动作",
+    "tail": "置位 DTC B104A 13",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["执行动作", "DTC B104A 13"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统退出转向灯控制逻辑",
+    "relation": "退出条件",
+    "tail": "检测到开路恢复",
+    "triple_type": "功能退出条件",
+    "evidence_terms": ["退出条件", "开路恢复"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前置条件满足",
+    "relation": "前提条件",
+    "tail": "exlDircnLghtHwDrvEnPrm == 1",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "exlDircnLghtHwDrvEnPrm"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前置条件满足",
+    "relation": "前提条件",
+    "tail": "右后转向灯处于输出状态",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "右后转向灯状态"],
+    "confidence_note": "high"
+  }
+]
+```

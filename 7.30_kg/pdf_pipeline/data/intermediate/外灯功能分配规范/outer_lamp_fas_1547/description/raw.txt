@@ -1,0 +1,126 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "右侧转向灯点亮原因记录与控制逻辑",
+  "row_semantics": "表格按十六进制代码顺序列出右侧转向灯（RDirLight）点亮的各种可能原因及其对应的控制响应代码。",
+  "column_semantics": [
+    "第一列: 控制响应代码 (CtrlRsn)",
+    "第二列: 右侧转向灯点亮原因的中文描述",
+    "第三列: 对应的十六进制代码值",
+    "第四列: 存储规则说明",
+    "第五列: 控制器/模块名称"
+  ],
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RDirLightOpenCtrlRsn",
+      "type": "功能名",
+      "description": "右侧转向灯开启控制响应代码，用于标识转向灯点亮的具体原因。"
+    },
+    {
+      "name": "LHZ CU",
+      "type": "控制器/模块名",
+      "description": "左侧后视镜控制单元，负责处理转向灯相关的请求和控制信号。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FMCLightRequested",
+      "type": "输入信号",
+      "description": "来自前方照明系统（FMC）的灯光请求信号。"
+    },
+    {
+      "name": "SOARequestOn",
+      "type": "输入信号",
+      "description": "安全气囊系统（SOA）请求开启信号。"
+    },
+    {
+      "name": "TireBlowoutSts",
+      "type": "输入信号",
+      "description": "轮胎爆裂状态信号。"
+    },
+    {
+      "name": "DirectionLightSwitchOn",
+      "type": "输入信号",
+      "description": "方向灯开关开启信号。"
+    },
+    {
+      "name": "HazardLightSwitchOn",
+      "type": "输入信号",
+      "description": "危险警示灯开关开启信号。"
+    },
+    {
+      "name": "VehicleCrashSignalActive",
+      "type": "输入信号",
+      "description": "车辆碰撞信号激活状态。"
+    },
+    {
+      "name": "AirbagDeployedActive",
+      "type": "输入信号",
+      "description": "安全气囊已展开激活状态。"
+    },
+    {
+      "name": "ToffCrashActive",
+      "type": "输入信号",
+      "description": "碰撞后车辆稳定状态信号。"
+    },
+    {
+      "name": "VehicleIntrusionPreventAlarmHazardLightRequested",
+      "type": "输入信号",
+      "description": "车辆入侵预防报警危险灯请求信号。"
+    },
+    {
+      "name": "VCUBatteryThermalRunawayHazardLightRequested",
+      "type": "输入信号",
+      "description": "VCU电池热失控危险灯请求信号。"
+    },
+    {
+      "name": "BMSBatteryThermalRunawayHazardLightRequested",
+      "type": "输入信号",
+      "description": "BMS电池热失控危险灯请求信号。"
+    },
+    {
+      "name": "EmergencyBrakeHazardLightRequested",
+      "type": "输入信号",
+      "description": "紧急制动危险灯请求信号。"
+    },
+    {
+      "name": "RCWWaringHazardLightRequested",
+      "type": "输入信号",
+      "description": "倒车警告危险灯请求信号。"
+    },
+    {
+      "name": "IPDPilotHazardLightRequested",
+      "type": "输入信号",
+      "description": "智能驾驶辅助系统危险灯请求信号。"
+    },
+    {
+      "name": "ExteriorLockHazardLightRequested",
+      "type": "输入信号",
+      "description": "外部锁止危险灯请求信号。"
+    },
+    {
+      "name": "ExteriorUnlockHazardLightRequested",
+      "type": "输入信号",
+      "description": "外部解锁危险灯请求信号。"
+    },
+    {
+      "name": "PowerLiftgateHazardLightRequested",
+      "type": "输入信号",
+      "description": "电动后备箱危险灯请求信号。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RDirLightOpenCtrlRsn",
+      "type": "输出信号",
+      "description": "右侧转向灯开启控制响应代码，表示转向灯点亮的具体原因。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了右侧转向灯点亮的各种可能原因及其对应的控制响应代码，可用于验证LHZ CU在不同条件下正确识别并记录转向灯点亮原因的功能。",
+  "uncertain_points": []
+}
+```

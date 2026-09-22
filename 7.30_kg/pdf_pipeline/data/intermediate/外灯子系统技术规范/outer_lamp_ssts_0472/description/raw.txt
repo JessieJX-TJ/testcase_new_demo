@@ -1,0 +1,69 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "右远光灯开路故障诊断与处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，描述了从前置条件到异常处理的完整逻辑链。",
+  "column_semantics": "表格包含两列，左侧为逻辑阶段或状态描述，右侧为该阶段的具体条件或动作。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "MainBeamLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "主光灯反馈超时允许参数，用于控制是否启用超时检测。"
+    },
+    {
+      "name": "RMainBeamLightDrvMdl",
+      "type": "signal",
+      "description": "主光灯驱动模块，负责发送主光灯状态指令。"
+    },
+    {
+      "name": "MainBeamLghtCtrlMdl",
+      "type": "signal",
+      "description": "主光灯控制模块，接收并处理主光灯状态指令。"
+    },
+    {
+      "name": "DTCB105C13",
+      "type": "fault_status",
+      "description": "特定的DTC（诊断故障代码），表示右远光灯开路故障。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "stage": "前置条件",
+      "condition": "MainBeamLightFbkSOAEnPrm == 0 (Disable)"
+    },
+    {
+      "stage": "前置条件",
+      "condition": "右远光灯处于输出状态"
+    },
+    {
+      "stage": "触发条件",
+      "condition": "检测到右远光灯开路"
+    },
+    {
+      "stage": "退出条件",
+      "condition": "检测到开路恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "stage": "执行动作",
+      "action": "【RMainBeamLightDrvMdl】持续发送 RMainBeamLghtSts=0 (Off) 至 【MainBeamLghtCtrlMdl】，至少发送三帧。"
+    },
+    {
+      "stage": "执行动作",
+      "action": "置位 DTC B105C 13"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTCB105C13",
+      "description": "右远光灯开路故障代码，当检测到开路时被置位。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了右远光灯开路故障的诊断逻辑，包括触发条件、执行动作（如发送关闭指令和置位故障代码）以及退出条件，可用于验证车辆在右远光灯开路情况下的系统响应和故障处理机制。",
+  "uncertain_points": []
+}
+```

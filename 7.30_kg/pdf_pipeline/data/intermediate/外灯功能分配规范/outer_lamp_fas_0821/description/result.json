@@ -1,0 +1,107 @@
+{
+  "table_type": "logic_table",
+  "topic": "智驾控制开启车顶射灯功能规范",
+  "row_semantics": "表格按逻辑流程分为场景描述、前置条件、触发动作和执行动作四个阶段，详细定义了在特定条件下系统如何响应并执行车顶射灯的开启操作。",
+  "column_semantics": "表格包含两列：左侧为阶段标题（如‘前置条件’），右侧为该阶段的具体内容描述。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ICB_S32G M",
+      "type": "控制器/模块",
+      "description": "车身域控制器，负责接收IPD输入并转发车顶射灯开启请求。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "车顶射灯控制模块，负责处理车顶射灯的开启请求并控制其状态。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "系统",
+      "description": "外部灯光控制系统，包含车顶射灯的控制逻辑。"
+    },
+    {
+      "name": "PersonalizationData.MainBeamEnhanceEnbSet.MainBeamEnhanceEnbSetInfo",
+      "type": "系统状态",
+      "description": "远光灯增强使能状态信息，用于判断是否允许开启车顶射灯。"
+    },
+    {
+      "name": "UsrMd",
+      "type": "输入信号",
+      "description": "用户模式信号，表示车辆当前的使用模式（如睡眠、待机等）。"
+    },
+    {
+      "name": "VehMd",
+      "type": "输入信号",
+      "description": "车辆模式信号，表示车辆当前的运行模式（如运输模式）。"
+    },
+    {
+      "name": "InsdFnCfgRoofSpotLight",
+      "type": "输入信号",
+      "description": "具备车灯射灯功能的配置信号。"
+    },
+    {
+      "name": "RoofSpotLightReq",
+      "type": "输出信号",
+      "description": "车顶射灯开启请求信号，由LHZCU发送给ICB_S32G M。"
+    },
+    {
+      "name": "RoofSpotLightFucProSta",
+      "type": "输出信号",
+      "description": "车顶射灯功能状态信号，由LHZCU发送给外灯组合服务ICB。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsrMd != 0x0 && UsrMd != 0x1 && UsrMd != 0x6",
+      "description": "用户模式不为睡眠、待机或未知模式。"
+    },
+    {
+      "condition": "UsrMdV = Valid",
+      "description": "用户模式信号有效。"
+    },
+    {
+      "condition": "VehMd == 0x3",
+      "description": "车辆模式为TRANSPORT（运输）模式。"
+    },
+    {
+      "condition": "VehMdV = Valid",
+      "description": "车辆模式信号有效。"
+    },
+    {
+      "condition": "PersonalizationData.MainBeamEnhanceEnbSet.MainBeamEnhanceEnbSetInfo = 0x1",
+      "description": "远光灯增强功能已使能。"
+    },
+    {
+      "condition": "LHZCU 已判断远光灯开启",
+      "description": "LHZCU模块已判断远光灯处于开启状态。"
+    },
+    {
+      "condition": "InsdFnCfgRoofSpotLight = 0x1",
+      "description": "车辆具备车顶射灯功能。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "ICB_S32G M 收到 IPD 输入车顶射灯开启请求",
+      "description": "IPD（集成动力域）向ICB_S32G M发送车顶射灯开启请求。"
+    },
+    {
+      "output": "LHZCU 内部软件保持有效请求",
+      "description": "LHZCU模块内部维持车顶射灯开启的有效请求状态。"
+    },
+    {
+      "output": "LHZCU 发送车顶射灯控制仲裁状态",
+      "description": "LHZCU模块向ICB_S32G M发送车顶射灯控制仲裁状态。"
+    },
+    {
+      "output": "ICB 将车顶射灯开启状态发给[数字灯光 APP_ICB]",
+      "description": "ICB模块将车顶射灯开启状态反馈给数字灯光应用程序。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在远光灯增强使能且车辆处于运输模式下，智驾系统如何通过ICB_S32G M和LHZCU模块协同控制车顶射灯开启的功能逻辑，可用于验证车顶射灯在特定驾驶场景下的正确开启行为。",
+  "uncertain_points": []
+}

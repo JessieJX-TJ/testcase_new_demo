@@ -1,0 +1,92 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior lamp function) 的状态定义与分配规范",
+  "row_semantics": "表格按层级结构组织，主要分为三个逻辑层级：VehMdV (Vehicle Mode Version), UsG Md (User Mode), 和 UsG MdV (User Mode Version)，分别代表车辆模式版本、用户模式和用户模式版本的状态定义。",
+  "column_semantics": "表格包含两列：左侧为状态名称或描述，右侧为对应的十六进制数值定义。部分行存在合并单元格，用于分组说明。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMdV",
+      "type": "system_state",
+      "description": "车辆模式版本状态，定义了车辆模式的有效性。",
+      "values": [
+        {
+          "name": "VehMdV_0_Invalid",
+          "value": "0x0",
+          "description": "无效状态"
+        },
+        {
+          "name": "VehMdV_1_Valid",
+          "value": "0x1",
+          "description": "有效状态"
+        }
+      ]
+    },
+    {
+      "name": "UsG Md",
+      "type": "mode_name",
+      "description": "用户模式，定义了车辆的使用场景或驾驶模式。",
+      "values": [
+        {
+          "name": "UsG Md_0_Sleep",
+          "value": "0x0",
+          "description": "睡眠模式"
+        },
+        {
+          "name": "UsG Md_1_Standby",
+          "value": "0x1",
+          "description": "待机模式"
+        },
+        {
+          "name": "UsG Md_2_Comfortable",
+          "value": "0x2",
+          "description": "舒适模式"
+        },
+        {
+          "name": "UsG Md_3_NormalDriving",
+          "value": "0x3",
+          "description": "常规驾驶模式"
+        },
+        {
+          "name": "UsG Md_4_AIParking",
+          "value": "0x4",
+          "description": "自动驾驶泊车模式"
+        },
+        {
+          "name": "UsG Md_5_AIPIlot",
+          "value": "0x5",
+          "description": "自动驾驶辅助模式"
+        },
+        {
+          "name": "UsG Md_6_XOTA",
+          "value": "0x6",
+          "description": "XOTA（可能指某种特定功能或模式）"
+        }
+      ]
+    },
+    {
+      "name": "UsG MdV",
+      "type": "system_state",
+      "description": "用户模式版本状态，定义了用户模式的有效性。",
+      "values": [
+        {
+          "name": "UsG MdV_0_Invalid",
+          "value": "0x0",
+          "description": "无效状态"
+        },
+        {
+          "name": "UsG MdV_1_Valid",
+          "value": "0x1",
+          "description": "有效状态"
+        }
+      ]
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆在不同模式（如睡眠、待机、舒适、常规驾驶、自动驾驶泊车、自动驾驶辅助、XOTA）下的外灯功能相关的系统状态（VehMdV, UsG Md, UsG MdV）的数值编码，可用于验证外灯功能在不同车辆模式下的正确状态切换和有效性判断。",
+  "uncertain_points": []
+}

@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "other",
+  "topic": "外灯功能分配规范",
+  "row_semantics": "表格按触发动作和执行动作的顺序描述了外灯控制逻辑，详细说明了从S32G接收到大屏开关请求ICB输入到最终近光灯和位置灯点亮的整个流程。",
+  "column_semematics": "表格没有明确的列标题，内容以行的形式组织，每行描述一个步骤或状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "Z-ONE Z-ONE.3.0 平台-FAS-IBD05",
+    "S32G",
+    "LHZCU",
+    "ICB",
+    "HMI子系统"
+  ],
+  "core_conditions": [
+    "SOA and CAN同时存在",
+    "仅存在一种通讯类型",
+    "PPV阶段及以后",
+    "ExtrLightCtrlCmmntnTyp=0x0=SOA",
+    "ExtrLightStsCmmntnTyp=0x0=SOA",
+    "ExteriorLightControlSystem.ControlCombinedLight.CombinedLightReq=0x2=DippedBeamLight ON",
+    "ExteriorLightSwitchProcess.CombLightFucProCtrl.CombLightFucProCtrlReq=0x2=DippedBeamLight ON",
+    "ExteriorLightSwitchProcess.CombLightFucProCtrl.CombLightFucProCtrlResp=0x0=ControlSuccess",
+    "ExteriorLightControlProcess.CombLightFucProStatus.CombLightFucProSta=0x2=DippedBeamLight ON",
+    "ExteriorLightControlProcess.CombLightFucProStatus.CombLightFucProSta=0x4=SidePositionAndDippedBeam ON",
+    "ExteriorLightSwitchProcess.CombLightSwStatus.CombLightSwSta=0x2=DippedBeamLight ON",
+    "ExteriorLightSwitchProcess.CombLightSwStatus.CombLightSwSta=0x4=SidePositionAndDippedBeam ON"
+  ],
+  "core_outputs": [
+    "近光灯点亮",
+    "位置灯点亮",
+    "控制信号发送给ICB",
+    "CAN信号转换",
+    "HMI显示指示灯"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证外灯控制系统在不同通讯模式下的功能实现，特别是从大屏开关请求ICB输入到近光灯和位置灯点亮的完整控制流程，确保各模块间接口调用和状态反馈的正确性。",
+  "uncertain_points": [
+    "具体接口调用细节未完全明确",
+    "部分状态参数的具体含义未详细说明"
+  ]
+}
+```

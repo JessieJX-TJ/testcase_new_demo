@@ -1,0 +1,86 @@
+[
+  {
+    "head": "系统检测到左后转向灯短路",
+    "relation": "触发条件",
+    "tail": "执行动作:持续发送 DirectionLightControl. DirectionLightSta =2(Error)至 DILghtCtrlMdl,至少发送三帧",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "触发条件",
+      "执行动作"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0139",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "前置条件满足(DILghtFbkSOAEnPrm==1且左后转向灯处于输出状态)",
+    "relation": "前提条件",
+    "tail": "系统检测到左后转向灯短路",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "前置条件",
+      "触发条件"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0139",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "执行动作:置位 DTCCtrl B104A 13",
+    "relation": "故障响应",
+    "tail": "系统检测到左后转向灯短路",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "执行动作",
+      "触发条件"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0139",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "RLDILghtDrvMdl 持续发送 DirectionLightControl. DirectionLightSta =2(Error)",
+    "relation": "输出为",
+    "tail": "DILghtCtrlMdl",
+    "triple_type": "输入-输出",
+    "evidence_terms": [
+      "执行动作",
+      "模块名"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0139",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "DILghtCtrlMdl 接收 DirectionLightControl. DirectionLightSta =2(Error)",
+    "relation": "输入为",
+    "tail": "RLDILghtDrvMdl",
+    "triple_type": "输入-输出",
+    "evidence_terms": [
+      "执行动作",
+      "模块名"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0139",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "执行动作:持续发送 DirectionLightControl. DirectionLightSta =2(Error)至 DILghtCtrlMdl",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "执行动作",
+      "核心 Timing Constraints"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0139",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  }
+]

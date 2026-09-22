@@ -1,0 +1,83 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的分配规范",
+  "row_semantics": "触发动作和执行动作的步骤序列",
+  "column_semantics": "描述了在特定条件下，系统如何响应并执行外灯控制逻辑",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting Hazard Control Unit，负责判断关闭位置灯"
+    },
+    {
+      "name": "ICB",
+      "type": "service",
+      "description": "Integrated Control Block，提供外灯控制组合服务"
+    },
+    {
+      "name": "HMI子系统",
+      "type": "system",
+      "description": "Human-Machine Interface Subsystem，与用户交互的界面系统"
+    },
+    {
+      "name": "S32G",
+      "type": "processor",
+      "description": "车载处理器，接收大屏开关请求"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsgMdV",
+      "type": "input_signal",
+      "description": "Usage Mode Valid，使用模式有效标志"
+    },
+    {
+      "name": "VehMd",
+      "type": "input_signal",
+      "description": "Vehicle Mode，车辆模式"
+    },
+    {
+      "name": "ExteriorLightControlSystem.ControlCombinedLight.CombinedLightReq",
+      "type": "input_signal",
+      "description": "外部灯光控制系统，组合灯光请求信号"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.CombLtFucProStatus.CombLtFucProSta",
+      "type": "input_signal",
+      "description": "外部灯光开关过程，组合功能状态"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.CombLtSwStatus.CombLtSwSta",
+      "type": "input_signal",
+      "description": "外部灯光开关过程，组合开关状态"
+    },
+    {
+      "name": "InstanceID",
+      "type": "input_signal",
+      "description": "实例ID，用于区分不同侧位灯请求"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLight",
+      "type": "output_signal",
+      "description": "近光灯状态"
+    },
+    {
+      "name": "SidePositionAndDippedBeam",
+      "type": "output_signal",
+      "description": "侧位灯和近光灯状态"
+    },
+    {
+      "name": "ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts",
+      "type": "output_signal",
+      "description": "外部灯光控制，近光灯请求状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了在特定输入条件下，外灯系统（如近光灯、侧位灯）的控制逻辑和响应流程，可用于验证外灯功能在不同驾驶模式下的正确性。",
+  "uncertain_points": []
+}

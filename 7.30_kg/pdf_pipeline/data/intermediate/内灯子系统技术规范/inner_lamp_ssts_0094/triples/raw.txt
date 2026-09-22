@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "DoorFL5LampBrtnsCmd_1 命令控制前左门氛围灯亮度",
+    "relation": "输入为",
+    "tail": "LIN、LHZCU、LHZCU_LIN4",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFL5LampBrtnsCmd_1", "LIN", "LHZCU", "LHZCU_LIN4"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL5LampBrthngCmd_1 命令控制前左门氛围灯呼吸频率",
+    "relation": "输入为",
+    "tail": "LIN、LHZCU、LHZCU_LIN4",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFL5LampBrthngCmd_1", "LIN", "LHZCU", "LHZCU_LIN4"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "当 DoorFL5LampBrtnsCmd_1 指令值为 0 或未定义颜色号时",
+    "relation": "状态保持条件",
+    "tail": "前左门氛围灯亮度不变",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFL5LampBrtnsCmd_1", "亮度", "保持不变"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "当 DoorFL5LampBrthngCmd_1 指令值为 0 时",
+    "relation": "状态保持条件",
+    "tail": "前左门氛围灯呼吸模式不变",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFL5LampBrthngCmd_1", "呼吸模式", "保持不变"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL5LampBrthngCmd_1 指令值 0x0",
+    "relation": "输出为",
+    "tail": "No Request (无请求)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFL5LampBrthngCmd_1", "Rate0", "No Request"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL5LampBrthngCmd_1 指令值 0x1",
+    "relation": "输出为",
+    "tail": "Rate1 (周期 500ms, 新增(0-100%跳变))",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFL5LampBrthngCmd_1", "Rate1", "500ms", "新增(0-100%跳变)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL5LampBrthngCmd_1 指令值 0xF",
+    "relation": "输出为",
+    "tail": "Rate15 (周期 12s, 原呼吸模式 4)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFL5LampBrthngCmd_1", "Rate15", "12s", "原呼吸模式 4"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL5LampBrthngCmd_1 指令值范围 0x1-0xE",
+    "relation": "依赖于",
+    "tail": "不同的呼吸速率模式 (Rate1-Rate14)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFL5LampBrthngCmd_1", "Rate1-Rate14", "呼吸速率"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorFL5LampBrtnsCmd_1 指令值范围 0x65-0xFF",
+    "relation": "抑制条件",
+    "tail": "前左门氛围灯亮度调节功能",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DoorFL5LampBrtnsCmd_1", "保留值", "亮度调节"],
+    "confidence_note": "high"
+  }
+]
+```

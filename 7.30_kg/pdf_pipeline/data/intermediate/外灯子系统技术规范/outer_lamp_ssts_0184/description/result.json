@@ -1,0 +1,56 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯方向灯控制逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，触发条件满足时执行的动作，以及退出条件和异常处理。",
+  "column_semantics": {
+    "1": "条件/动作类别（如前置条件、触发条件、执行动作等）",
+    "2": "具体的条件或动作描述"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "方向灯反馈系统开环使能参数，值为1表示启用"
+    },
+    {
+      "name": "RRDILightDrvMdl",
+      "type": "module",
+      "description": "右后转向灯驱动模块"
+    },
+    {
+      "name": "DILightCtrlMdl",
+      "type": "module",
+      "description": "方向灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILightFbkSOAEnPrm == 1 (Enable)",
+      "description": "前置条件：方向灯反馈系统开环使能参数必须为1"
+    },
+    {
+      "condition": "收到【DILightCtrlMdl】发送的 DirectionLightControl.DirectionLightCtrlReq == 0 (Off) InstanceID=4",
+      "description": "触发条件：接收到方向灯控制模块发送的方向灯控制请求，请求状态为关闭（Off），实例ID为4"
+    },
+    {
+      "condition": "收到【DILightCtrlMdl】发送的 DirectionLightControl.DirectionLightCtrlReq == 1 (On) InstanceID=4",
+      "description": "退出条件：接收到方向灯控制模块发送的方向灯控制请求，请求状态为开启（On），实例ID为4"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "RRDILightDrvMdl 停止驱动右后转向灯输出 (DILamp_RH_HSD)",
+      "description": "执行动作：停止驱动右后转向灯输出"
+    },
+    {
+      "output": "RRDILightDrvMdl 持续发送 DirectionLightControl.DirectionLightSta == 0 (Off) InstanceID=4 至【DILightCtrlMdl】，至少发送三帧",
+      "description": "执行动作：持续发送方向灯状态为关闭（Off）的信息至方向灯控制模块，至少发送三帧"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子电器系统中方向灯控制模块与右后转向灯驱动模块之间的交互逻辑，确保在接收到正确的控制请求时，能够正确地停止驱动并发送相应的状态信息。",
+  "uncertain_points": []
+}

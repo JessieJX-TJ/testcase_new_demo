@@ -1,0 +1,95 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Auto 开关下，用户通过大屏软开关触发后雾灯/近光灯/位置灯的开启逻辑",
+  "row_semantics": "前置条件列表，描述了在特定场景下系统需要满足的各项状态和参数要求",
+  "column_semantics": "左侧为条件编号，右侧为具体的条件描述",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Auto",
+      "type": "功能名",
+      "description": "自动模式开关"
+    },
+    {
+      "name": "UsrMd",
+      "type": "控制器/模块名",
+      "description": "用户模式管理模块"
+    },
+    {
+      "name": "VehMd",
+      "type": "控制器/模块名",
+      "description": "车辆模式管理模块"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Light and Hazard Control Unit (灯光与危险警示控制单元)"
+    },
+    {
+      "name": "DippedBeamLight",
+      "type": "功能名",
+      "description": "近光灯"
+    },
+    {
+      "name": "SidePositionLight",
+      "type": "功能名",
+      "description": "位置灯"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "description": "用户模式必须处于睡眠、待机或XOTA模式",
+      "value": "0x0, 0x1, 0x6"
+    },
+    {
+      "name": "UsrMdV",
+      "description": "用户模式值有效",
+      "value": "Valid"
+    },
+    {
+      "name": "VehMd",
+      "description": "车辆模式必须处于运输模式",
+      "value": "0x3"
+    },
+    {
+      "name": "VehMdV",
+      "description": "车辆模式值有效",
+      "value": "Valid"
+    },
+    {
+      "name": "DippedBeamLight.Status",
+      "description": "近光灯反馈状态必须为关闭",
+      "value": "Off"
+    },
+    {
+      "name": "LHZCU",
+      "description": "LHZCU已判断位置灯关闭，近光灯关闭",
+      "value": "CombLightFucProSta = 0x0 ALL OFF; SidePositionAndDippedBeam OFF"
+    },
+    {
+      "name": "SidePositionLight.Status",
+      "description": "位置灯反馈状态必须为关闭",
+      "value": "Off"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLight",
+      "description": "近光灯开启",
+      "state": "On"
+    },
+    {
+      "name": "SidePositionLight",
+      "description": "位置灯开启",
+      "state": "On"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在Auto模式下，通过大屏软开关触发后雾灯、近光灯和位置灯开启所需的前置条件，可用于验证相关功能在特定场景下的正确性。",
+  "uncertain_points": []
+}
+```

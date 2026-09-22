@@ -1,0 +1,41 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "外灯控制逻辑 - 左制动灯输出状态验证",
+  "row_semantics": "前置条件列表，描述触发特定输出状态的必要条件",
+  "column_semantics": "无多列结构，仅包含条件描述文本",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "entity_name": "左制动灯 (Left Brake Light)",
+      "entity_type": "输出信号"
+    },
+    {
+      "entity_name": "exlBrkLghtHwDrvEnPrm",
+      "entity_type": "输入信号",
+      "description": "外部制动灯硬件驱动使能参数"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition_name": "exlBrkLghtHwDrvEnPrm==1",
+      "description": "外部制动灯硬件驱动使能参数值为1"
+    },
+    {
+      "condition_name": "左制动灯处于输出状态",
+      "description": "左制动灯当前处于点亮或激活状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output_name": "左制动灯输出状态",
+      "description": "左制动灯的实际输出状态（点亮/熄灭）"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证在特定前置条件下（如硬件驱动使能参数为1），左制动灯是否能够正确进入并保持输出状态，是外灯控制系统功能测试的重要依据。",
+  "uncertain_points": []
+}
+```

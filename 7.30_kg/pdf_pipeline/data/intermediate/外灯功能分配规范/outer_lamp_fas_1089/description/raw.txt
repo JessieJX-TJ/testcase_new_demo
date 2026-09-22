@@ -1,0 +1,56 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯功能 - 车顶射灯控制逻辑",
+  "row_semantics": "描述特定场景下的功能激活条件、触发机制和执行动作",
+  "column_semantics": [
+    "场景描述",
+    "前置条件",
+    "触发动作",
+    "执行动作"
+  ],
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "ICB_S32G_M",
+    "LHZCU",
+    "Vehicle Speed (VehSpdAvg)",
+    "Interior Light Control (ILC)",
+    "Exterior Light Switch Process",
+    "RoofSpotLightFucProCtrl"
+  ],
+  "core_conditions": [
+    "Vehicle Speed > 80km/h",
+    "ILC function is activated",
+    "Remote light enhancement function is enabled",
+    "LHZCU判断车速超过80km/h持续超过2s",
+    "VehSpdAvg >= 80Km/h",
+    "VehSpdAvg_V_0_Valid"
+  ],
+  "core_outputs": [
+    "RoofSpotLightFucProStatus = ON",
+    "RoofSpotLightFucProSta = ON",
+    "RoofSpotLightFucProSta = OFF",
+    "MainBeamEnhanceEnbSet.MainBeamEnhanceEnbSetInfo = 0x1",
+    "MainBeamLghtFucProsSta = 0x1",
+    "MainBeamLghtMdSta.MainBeamLghtMdSta = 0x2",
+    "InsdFnCfgRoofSpotLight = 0x1"
+  ],
+  "core_faults": [
+    "RoofSpotLight.Control.RoofSpotLight.RoofSpotLightResp = 0x0",
+    "RoofSpotLight.Control.RoofSpotLight.RoofSpotLightReq = 0x0",
+    "RoofSpotLightErrorStatus",
+    "ExteriorLightSwitchProcess.RoofSpotLightErrSta"
+  ],
+  "core_timing_constraints": [
+    "持续超过2s",
+    "<=50ms 周期重发3次",
+    "500ms (待定)"
+  ],
+  "engineering_interpretation": "该表格详细定义了在车辆速度大于80km/h且ILC功能激活时，车顶射灯自动点亮的控制逻辑，包括前置条件、触发条件和具体执行步骤，可用于验证车顶射灯在特定驾驶场景下的正确响应。",
+  "uncertain_points": [
+    "具体的'待定'时间值未明确给出",
+    "ICB_S32G M与LHZCU之间的通信协议细节未详述"
+  ]
+}
+```

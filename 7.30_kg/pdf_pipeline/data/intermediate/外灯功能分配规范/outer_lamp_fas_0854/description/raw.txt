@@ -1,0 +1,71 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "倒车灯控制流程与时序规范",
+  "row_semantics": "流程步骤或系统层级",
+  "column_semantics": "无，为单列结构图",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "倒车挡位",
+      "type": "输入信号"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "倒车灯控制模块，负责逻辑与信号处理"
+    },
+    {
+      "name": "S32G",
+      "type": "控制器/模块",
+      "description": "外灯SWC（软件组件），负责逻辑与异步发送"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器/模块",
+      "description": "倒车灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "倒车挡位",
+      "description": "触发倒车灯控制的初始条件"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RZCU 倒车灯驱动",
+      "description": "最终输出，控制倒车灯点亮"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "step": "倒车挡位 -> LHZCU",
+      "delay": "20ms",
+      "interface": "CANFD"
+    },
+    {
+      "step": "LHZCU -> S32G",
+      "delay": "50ms",
+      "interface": "Eth/Event"
+    },
+    {
+      "step": "S32G -> RZCU",
+      "delay": "20ms",
+      "interface": "Eth/Method"
+    },
+    {
+      "step": "RZCU 倒车灯驱动",
+      "delay": "50ms"
+    },
+    {
+      "total_delay": "170ms",
+      "description": "从倒车挡位激活到倒车灯完全点亮的总时延"
+    }
+  ],
+  "engineering_interpretation": "该图表用于验证倒车灯控制系统在特定时间约束下的功能正确性，确保从倒车挡位激活到倒车灯点亮的整个流程符合设计时序要求。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "转向灯开关状态处理逻辑",
+  "row_semantics": "描述在特定条件下，转向灯开关状态的内部信号跳转行为",
+  "column_semantics": "左侧为条件描述，右侧为对应的内部信号值变化",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "转向灯开关预处理模块",
+      "type": "controller"
+    },
+    {
+      "name": "DircnIndLampSwStsMntry",
+      "type": "signal"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "当转向灯开关导通输入阻值无法判断挡位时",
+      "description": "表示转向灯开关的物理输入状态异常或不确定"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DircnIndLampSwStsMntry",
+      "value": "0x5 = DircnIndLampSwStsMntry_5_UnknownPosition",
+      "description": "内部信号被设置为未知位置状态"
+    },
+    {
+      "signal": "DircnIndLampSwStsMntry",
+      "value": "0x0 = DircnIndLampSwStsMntry_0_off",
+      "description": "发送3帧后，内部信号恢复为默认关闭状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "event": "发送3帧后",
+      "action": "跳转为默认状态"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当转向灯开关输入异常时，系统如何通过内部信号进行状态管理和恢复的逻辑，可用于验证转向灯开关异常情况下的系统响应和状态恢复功能。",
+  "uncertain_points": []
+}
+```

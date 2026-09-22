@@ -1,0 +1,58 @@
+{
+  "table_type": "signal_table",
+  "topic": "MemParkingReserve功能的ADS灯开关控制逻辑",
+  "row_semantics": "表格定义了在不同模式下（白天和夜间）MemParkingReserve功能如何通过HWPSysAct_ADS模块控制ADS灯，并监控其状态反馈。",
+  "column_semantics": "第一列描述执行动作，第二列详细说明了动作的具体实现逻辑。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MemParkingReserve",
+      "type": "功能名",
+      "description": "停车辅助预留功能"
+    },
+    {
+      "name": "HWPSysAct_ADS",
+      "type": "控制器/模块名",
+      "description": "硬件系统活动ADS控制模块"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "车身控制单元"
+    },
+    {
+      "name": "ADSLamp_HSD",
+      "type": "输出信号",
+      "description": "ADS灯驱动硬线端口"
+    },
+    {
+      "name": "ADSLghtSts_HW",
+      "type": "输入信号",
+      "description": "ADS灯硬件状态反馈信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "HWPSysAct_ADS_1_Day",
+      "type": "模式名",
+      "description": "白天模式"
+    },
+    {
+      "name": "HWPSysAct_ADS_2_Night",
+      "type": "模式名",
+      "description": "夜间模式"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ADSLamp_HSD",
+      "type": "输出信号",
+      "description": "ADS灯的驱动信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证MemParkingReserve功能在不同模式下是否能正确控制ADS灯，并确保ADS灯的状态反馈与预期一致。",
+  "uncertain_points": []
+}

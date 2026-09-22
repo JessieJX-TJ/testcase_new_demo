@@ -1,0 +1,74 @@
+[
+  {
+    "head": "倒车灯故障诊断流程启动",
+    "relation": "触发条件",
+    "tail": "检测到倒车灯开路",
+    "triple_type": "逻辑条件",
+    "evidence_terms": [
+      "触发条件",
+      "检测到倒车灯开路"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0009",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "倒车灯故障诊断流程启动",
+    "relation": "前提条件",
+    "tail": "RevsLightFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "逻辑条件",
+    "evidence_terms": [
+      "前置条件",
+      "RevsLightFbkSOAEnPrm == 1 (Enable)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0009",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "【RevsLghtDrvMdl】持续发送 ReverseLightState. ReverseLightSta = 2 (Error)",
+    "relation": "输出为",
+    "tail": "【RevsLghtCtrlMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "RevsLghtDrvMdl",
+      "RevsLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0009",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "【RevsLghtDrvMdl】持续发送 ReverseLightState. ReverseLightSta = 2 (Error)",
+    "relation": "状态保持条件",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "执行动作",
+      "至少发送三帧"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0009",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "置位 DTC B1045 13",
+    "relation": "故障响应",
+    "tail": "检测到倒车灯开路",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "执行动作",
+      "DTC B1045 13",
+      "检测到倒车灯开路"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0009",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  }
+]

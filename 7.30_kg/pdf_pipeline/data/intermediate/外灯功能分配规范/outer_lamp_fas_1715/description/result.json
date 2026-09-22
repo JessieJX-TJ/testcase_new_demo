@@ -1,0 +1,84 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的状态定义与分配规范",
+  "row_semantics": "表格按功能模块划分，详细列出了不同系统状态的定义及其对应的数值编码。",
+  "column_semantics": "表格包含功能模块、功能描述、服务提供方及来源等信息，其中功能描述部分进一步细化了各状态的具体定义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "type": "system_state",
+      "description": "Vehicle Mode, 表示车辆的整体运行模式，如正常、碰撞、运输等"
+    },
+    {
+      "name": "VehMdV",
+      "type": "validation_state",
+      "description": "Vehicle Mode Validation, 表示车辆模式的有效性状态"
+    },
+    {
+      "name": "UsGmD",
+      "type": "usage_mode",
+      "description": "Usage Mode, 表示车辆的使用模式，如睡眠、待机、舒适等"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMd_0_NORMAL",
+      "description": "车辆处于正常运行模式"
+    },
+    {
+      "name": "VehMd_1_CRASH",
+      "description": "车辆检测到碰撞事件"
+    },
+    {
+      "name": "VehMd_2_FACTORY",
+      "description": "车辆处于工厂测试模式"
+    },
+    {
+      "name": "VehMd_3_TRANSPORT",
+      "description": "车辆处于运输模式"
+    },
+    {
+      "name": "VehMd_4_DYNO",
+      "description": "车辆处于测功机测试模式"
+    },
+    {
+      "name": "VehMd_5_EXHIBITION",
+      "description": "车辆处于展览模式"
+    },
+    {
+      "name": "VehMd_8_Engineering",
+      "description": "车辆处于工程调试模式"
+    },
+    {
+      "name": "VehMd_9_Service",
+      "description": "车辆处于服务模式"
+    },
+    {
+      "name": "VehMdV_0_Invalid",
+      "description": "车辆模式验证为无效"
+    },
+    {
+      "name": "VehMdV_1_Valid",
+      "description": "车辆模式验证为有效"
+    },
+    {
+      "name": "UsGmD_0_Sleep",
+      "description": "车辆处于睡眠模式"
+    },
+    {
+      "name": "UsGmD_1_Standby",
+      "description": "车辆处于待机模式"
+    },
+    {
+      "name": "UsGmD_2_Comfortable",
+      "description": "车辆处于舒适模式"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证车辆在不同运行模式（VehMd）下的外灯功能行为是否符合规范，以及模式验证状态（VehMdV）和使用模式（UsGmD）的正确性。",
+  "uncertain_points": []
+}

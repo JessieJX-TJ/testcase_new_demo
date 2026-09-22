@@ -1,0 +1,55 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Light Function Allocation Specification",
+  "row_semantics": "Each row represents a specific mapping or configuration parameter for interior lamp control, detailing different speed levels and states.",
+  "column_semantics": "The columns represent different input sources (e.g., LIN bus, OHC module, LHZCU) that provide signals to the system for controlling the interior lamps.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MapLampThrdLDimSpd_1",
+      "type": "parameter",
+      "description": "Mapping for third-level dimming speed of left interior lamp"
+    },
+    {
+      "name": "MapLampThrdRDimSpd_1",
+      "type": "parameter",
+      "description": "Mapping for third-level dimming speed of right interior lamp"
+    },
+    {
+      "name": "MapLampXXSts_1",
+      "type": "parameter",
+      "description": "General status mapping for interior lamps"
+    },
+    {
+      "name": "MapLampFLSts_1",
+      "type": "parameter",
+      "description": "Front left lamp status mapping"
+    },
+    {
+      "name": "MapLampFRSts_1",
+      "type": "parameter",
+      "description": "Front right lamp status mapping"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Speed Levels",
+      "description": "Defined values (0x0 to 0x3) for different dimming speeds, including manual, door-open, and reserved modes."
+    },
+    {
+      "name": "States",
+      "description": "Defined values (0x0 to 0x1F) for lamp states, ranging from OFF to Level 30, with 0x1F reserved."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Input Signals",
+      "description": "Signals from various modules (LIN, OHC, LHZCU) that influence the interior lamp behavior."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameter mappings for interior lamp control logic, specifying how different input signals from vehicle modules translate into specific dimming speeds and lamp states. It is used to verify that the correct lamp behavior is achieved under various input conditions.",
+  "uncertain_points": []
+}

@@ -1,0 +1,86 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Low IPALamp Breathng Cmd Parameters for Interior Lighting Subsystem",
+  "row_semantics": "Each row represents a different breathing rate or fade speed setting for the interior lamp, defining how the lamp behaves in terms of periodic flashing and color/亮度切换速度.",
+  "column_semematics": {
+    "Code Value": "The hexadecimal code representing a specific breathing rate or fade speed setting.",
+    "Period": "The time interval (in seconds) for the breathing pattern or fade speed.",
+    "Original Breathing Mode Value": "The corresponding original breathing mode value before any new additions."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LowIPALampBrthngCmd_1",
+      "type": "function",
+      "description": "Controls the breathing pattern of the interior lamp, determining its periodic flashing behavior."
+    },
+    {
+      "name": "LowIPALampFadeSpdCmd_1",
+      "type": "function",
+      "description": "Controls the fade speed of the interior lamp, determining how quickly the lamp changes from one state to another."
+    },
+    {
+      "name": "LowIPBLampOnOff_1",
+      "type": "function",
+      "description": "Controls the on/off state of the interior lamp, allowing it to be turned on or off as needed."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Regional Headlight Zone Control Unit, responsible for managing regional lighting functions."
+    },
+    {
+      "name": "LIN5",
+      "type": "communication_bus",
+      "description": "Local Interconnect Network 5, used for communication between vehicle modules."
+    },
+    {
+      "name": "SSTS",
+      "type": "subsystem",
+      "description": "Sub System Technical Specification, part of the overall system documentation."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Rate",
+      "description": "Defines the frequency of the lamp's breathing pattern, ranging from no request (/) to 12 seconds."
+    },
+    {
+      "name": "Fade Speed",
+      "description": "Defines the speed at which the lamp fades between states, with default and custom speeds available."
+    },
+    {
+      "name": "On/Off State",
+      "description": "Determines whether the lamp is active (ON) or inactive (OFF)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Lamp Behavior",
+      "description": "The resulting visual effect of the lamp, including breathing patterns and fade transitions."
+    },
+    {
+      "name": "Color/Brightness Change Time",
+      "description": "The duration required for the lamp to transition between different colors or brightness levels."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Breathing Period",
+      "description": "The time interval between each breathing cycle, ranging from no request to 12 seconds.",
+      "unit": "seconds"
+    },
+    {
+      "name": "Fade Speed",
+      "description": "The time required for the lamp to fade between states, with default values provided.",
+      "unit": "milliseconds"
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters for controlling the breathing and fading behavior of the interior lamp, including various rates and speeds. It can be used to verify that the lamp responds correctly to different commands, such as changing breathing rates, adjusting fade speeds, and toggling the lamp on/off.",
+  "uncertain_points": [
+    "The exact implementation details of how the RHZCU processes these commands are not specified in this table.",
+    "The specific timing constraints for certain modes (e.g., Rate9) may require further clarification."
+  ]
+}

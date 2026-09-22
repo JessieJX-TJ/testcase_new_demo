@@ -1,0 +1,364 @@
+```json
+[
+  {
+    "head": "Interior Lamp (内灯)",
+    "relation": "trigger condition for breathing flash",
+    "tail": "command value ≠ 0",
+    "sources": ["inner_lamp_ssts_0353", "inner_lamp_ssts_0356"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lamp (内灯)",
+    "relation": "suppression condition for breathing flash",
+    "tail": "command value = 0",
+    "sources": ["inner_lamp_ssts_0353", "inner_lamp_ssts_0356", "inner_lamp_ssts_0392"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lamp (内灯)",
+    "relation": "trigger condition for mode switching",
+    "tail": "transition between different breathing modes",
+    "sources": ["inner_lamp_ssts_0353", "inner_lamp_ssts_0356"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lamp (内灯)",
+    "relation": "suppression condition for current breathing mode",
+    "tail": "transition between different breathing modes",
+    "sources": ["inner_lamp_ssts_0353", "inner_lamp_ssts_0356"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lamp (内灯)",
+    "relation": "fade speed dependency",
+    "tail": "SpdCmd_1 (RoofRHBLampFadeSpdCmd_1)",
+    "sources": ["inner_lamp_ssts_0353", "inner_lamp_ssts_0356", "inner_lamp_ssts_0368"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lamp (内灯)",
+    "relation": "breathing cycle dependency",
+    "tail": "Code-defined period (e.g., via CnsoRHBLampFadeSpdCmd_1 or equivalent code mapping)",
+    "sources": ["inner_lamp_ssts_0353", "inner_lamp_ssts_0356"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lamp (内灯)",
+    "relation": "ON request input signal",
+    "tail": "LowIPBLampOnOff_1_1_ON",
+    "sources": ["inner_lamp_ssts_0353"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lamp (内灯)",
+    "relation": "OFF request input signal",
+    "tail": "LowIPBLampOnOff_1_0_OFF",
+    "sources": ["inner_lamp_ssts_0353"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lamp (内灯)",
+    "relation": "prerequisite for illumination",
+    "tail": "non-zero color/brightness command AND CnsoRHCLampOnOff_1 = ON",
+    "sources": ["inner_lamp_ssts_0353", "inner_lamp_ssts_0356", "inner_lamp_ssts_0367"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lamp (内灯)",
+    "relation": "controlled by",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_ssts_0353", "inner_lamp_ssts_0356", "inner_lamp_ssts_0367"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backlighting Control Circuit",
+    "relation": "short-to-battery detection condition",
+    "tail": "Backlight driving activation state AND driving current < threshold A, sustained for 100 ms",
+    "sources": ["inner_lamp_ssts_0355"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backlighting Control Circuit",
+    "relation": "short-to-ground detection condition",
+    "tail": "Backlight driving activation state AND driving current > threshold A, sustained for 100 ms",
+    "sources": ["inner_lamp_ssts_0355"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Backlighting Control Circuit",
+    "relation": "open-circuit detection condition",
+    "tail": "Backlight driving activation state AND driving current < threshold A, sustained for 100 ms",
+    "sources": ["inner_lamp_ssts_0355"],
+    "conflict": true,
+    "conflict_note": "Short-to-battery and open-circuit share identical electrical condition (current < threshold), but represent physically distinct faults; requires diagnostic differentiation logic (e.g., voltage measurement, impedance check) — conflict in fault discrimination logic"
+  },
+  {
+    "head": "Backlighting Control Circuit",
+    "relation": "fault detection timeout",
+    "tail": "100 ms",
+    "sources": ["inner_lamp_ssts_0355"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lamp (内灯)",
+    "relation": "prerequisite for periodic breathing",
+    "tail": "breathing mode is defined",
+    "sources": ["inner_lamp_ssts_0356"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lighting Fade Speed Command",
+    "relation": "input signal",
+    "tail": "CnsoRHBLampFadeSpdCmd_1",
+    "sources": ["inner_lamp_ssts_0356", "inner_lamp_ssts_0368"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lighting Fade Speed Command",
+    "relation": "default value",
+    "tail": "Spd0: 2000 ms",
+    "sources": ["inner_lamp_ssts_0356"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lighting Color Command",
+    "relation": "input signal",
+    "tail": "CnsoRHCLampColorCmd_1",
+    "sources": ["inner_lamp_ssts_0356", "inner_lamp_ssts_0367"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Lamp (门灯)",
+    "relation": "prerequisite for illumination",
+    "tail": "non-zero color/brightness command",
+    "sources": ["inner_lamp_ssts_0367"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR5LampOnOff_1",
+    "relation": "activation condition",
+    "tail": "LIN input signal received OR RHZCU issues DoorFR5LampOnOff_1_0_OFF / DoorFR5LampOnOff_1_1_ON",
+    "sources": ["inner_lamp_ssts_0367"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR5LampColorCmd_1",
+    "relation": "activation condition",
+    "tail": "LIN input signal received OR RHZCU issues 0x01–0xFF color value",
+    "sources": ["inner_lamp_ssts_0367"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR5LampBrtnsCmd_1",
+    "relation": "activation condition",
+    "tail": "LIN input signal received OR RHZCU issues 0x65–0xFF brightness value",
+    "sources": ["inner_lamp_ssts_0367"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR5LampBrthngCmd_1",
+    "relation": "activation condition",
+    "tail": "LIN input signal received OR RHZCU issues 0x0–0xF breathing rate value",
+    "sources": ["inner_lamp_ssts_0367"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Lamp (门灯)",
+    "relation": "color transition dependency",
+    "tail": "reception of color coordinate command (CnsoRHCLampColorCmd_1)",
+    "sources": ["inner_lamp_ssts_0367"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Lamp (门灯)",
+    "relation": "brightness hold condition",
+    "tail": "command value = 0 → brightness remains unchanged",
+    "sources": ["inner_lamp_ssts_0367"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrtPsgDoorFlorLampCtrlCmd",
+    "relation": "I/O direction",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_ssts_0359"],
+    "conflict": true,
+    "conflict_note": "Conflicting relation: same signal 'FrtPsgDoorFlorLampCtrlCmd' labeled both as 'input for' and 'output from' RHZCU — implies bidirectional interface or misclassification; requires clarification on data flow direction (e.g., command input vs. status feedback)"
+  },
+  {
+    "head": "FrtPsgDoorFlorLampCtrlCmd",
+    "relation": "dependency",
+    "tail": "SSTS",
+    "sources": ["inner_lamp_ssts_0359"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface naming",
+    "relation": "prerequisite",
+    "tail": "consistency across CAN/LIN/SOA/hardwire specifications",
+    "sources": ["inner_lamp_ssts_0359"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "illumination intensity adjustment input range",
+    "tail": "Input Signal Value: 3880–5520",
+    "sources": ["inner_lamp_ssts_0364"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "illumination intensity output range",
+    "tail": "Target Output Signal Value: 60–148",
+    "sources": ["inner_lamp_ssts_0364"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "parameter dependency",
+    "tail": "Parameter ID: 3880–5520",
+    "sources": ["inner_lamp_ssts_0364"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "output hold condition",
+    "tail": "Output remains at 79 for Input Signal Values 4000–4760",
+    "sources": ["inner_lamp_ssts_0364"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IM Motors (智己汽车)",
+    "relation": "controls",
+    "tail": "Interior Lighting Sub System",
+    "sources": ["inner_lamp_ssts_0365"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorPnlSeatFnSw_RL (左后门扶手开关)",
+    "relation": "input source",
+    "tail": "RZCU_LIN3",
+    "sources": ["inner_lamp_ssts_0366"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "P12LM1",
+    "relation": "dependency",
+    "tail": "RZCU_LIN3",
+    "sources": ["inner_lamp_ssts_0366"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S12LM2",
+    "relation": "dependency",
+    "tail": "RZCU_LIN3",
+    "sources": ["inner_lamp_ssts_0366"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S12LT1",
+    "relation": "dependency",
+    "tail": "RZCU_LIN3",
+    "sources": ["inner_lamp_ssts_0366"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S31LMO",
+    "relation": "dependency",
+    "tail": "RZCU_LIN3",
+    "sources": ["inner_lamp_ssts_0366"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S31LM1",
+    "relation": "activation condition",
+    "tail": "S31LM1-P version activated (V = 1)",
+    "sources": ["inner_lamp_ssts_0357"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S31LM1",
+    "relation": "controls",
+    "tail": "Four-door speaker ambient lighting",
+    "sources": ["inner_lamp_ssts_0357"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Signal mapping",
+    "relation": "dependency",
+    "tail": "S31LM1 controls four-door speaker ambient lighting",
+    "sources": ["inner_lamp_ssts_0357"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System wake-up/hibernation",
+    "relation": "prerequisite",
+    "tail": "valid wake-up source exists",
+    "sources": ["inner_lamp_ssts_0362", "inner_lamp_ssts_0506"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System wake-up/hibernation",
+    "relation": "input",
+    "tail": "wake-up source",
+    "sources": ["inner_lamp_ssts_0362", "inner_lamp_ssts_0506"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System wake-up/hibernation",
+    "relation": "dependency",
+    "tail": "wake-up source",
+    "sources": ["inner_lamp_ssts_0362"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System wake-up/hibernation",
+    "relation": "output",
+    "tail": "NA (not applicable or unspecified)",
+    "sources": ["inner_lamp_ssts_0361"],
+    "conflict": true,
+    "conflict_note": "Conflict: 'output' = 'NA' (inner_lamp_ssts_0361) contradicts functional expectation that wake-up/hibernation involves active control outputs (e.g., power rail enable, module reset); likely indicates missing specification or placeholder"
+  }
+]
+```

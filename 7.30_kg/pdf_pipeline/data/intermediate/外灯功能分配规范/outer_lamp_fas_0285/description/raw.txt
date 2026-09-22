@@ -1,0 +1,68 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "DirectionLight DirectionLightErrorStatus and DirectionLightErrorSatus",
+  "row_semantics": "Each row represents a specific service interface for subscribing to the error status of either the right or left turn signal lights.",
+  "column_semantics": {
+    "1": "Service Interface Name (e.g., DirectionLight.DirectionLightErrorStatus)",
+    "2": "Consumption Type (SOA, ICB, LHZCU)",
+    "3": "Network Fault Status"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "Function",
+      "description": "Controls the direction light system."
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "Interface",
+      "description": "Service interface for subscribing to the error status of the direction lights."
+    },
+    {
+      "name": "SOA",
+      "type": "Controller/Module",
+      "description": "Service-Oriented Architecture controller."
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "Integrated Control Board."
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Local Hazard Control Unit."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "Unique identifier for the instance of the service interface."
+    },
+    {
+      "name": "Parameter Name",
+      "description": "Name of the parameter being subscribed to, e.g., {DirectionLightErrorSta}."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "Signal",
+      "description": "Status of the direction light error, with values: 0x0=No Error, 0x1=Error, 0x2=Unknown."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "NetworkFaultStatus",
+      "type": "Fault State",
+      "description": "Indicates the network fault status related to the service interface."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for subscribing to the error status of the right and left turn signal lights, specifying the interface name, parameter, instance ID, and possible error states. It is used for testing the subscription functionality and error reporting of the direction light system.",
+  "uncertain_points": []
+}
+```

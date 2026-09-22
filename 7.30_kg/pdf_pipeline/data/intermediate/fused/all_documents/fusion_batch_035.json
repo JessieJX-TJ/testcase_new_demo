@@ -1,0 +1,485 @@
+[
+  {
+    "head": "伴我回家功能启用",
+    "relation": "前提条件",
+    "tail": "UsrMd ∈ {0x2, 0x3, 0x4, 0x5} AND VehMd ∉ {0x2, 0x3}",
+    "sources": [
+      "outer_lamp_fas_0377"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "伴我回家功能执行",
+    "relation": "触发条件",
+    "tail": "伴我回家功能启用",
+    "sources": [
+      "outer_lamp_fas_0377"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制信号发送",
+    "relation": "输出为",
+    "tail": "LDipdBeamLghtCtrl_0x1 = LDipdBeamLghtCtrl_1_On; RDipdBeamLghtCtrl_0x1 = RDipdBeamLghtCtrl_1_On",
+    "sources": [
+      "outer_lamp_fas_0377"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "依赖于",
+    "tail": "ICB调用DippedBeamLight基础服务",
+    "sources": [
+      "outer_lamp_fas_0377"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CAN信号传输",
+    "relation": "输出为",
+    "tail": "ICB将服务接口或控制信号转换为灯控CAN信号",
+    "sources": [
+      "outer_lamp_fas_0377"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯光开启时长",
+    "relation": "超时约束",
+    "tail": "FlwMeHomeEnadTmePrm = 30 s",
+    "sources": [
+      "outer_lamp_fas_0377"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "周期数据发送",
+    "relation": "状态保持条件",
+    "tail": "以500 ms周期发送至伴我回家控制模块（LHZCU）",
+    "sources": [
+      "outer_lamp_fas_0377"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "前提条件",
+    "tail": "文档第248页（共935页）",
+    "sources": [
+      "outer_lamp_fas_0379"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警告灯自动开启双闪",
+    "relation": "触发条件",
+    "tail": "紧急制动灯从激活状态跳变至退出状态（即制动灯由闪烁转为熄灭）",
+    "sources": [
+      "outer_lamp_fas_0380"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警告灯自动开启双闪",
+    "relation": "触发条件",
+    "tail": "VehSpdAvg < 10 km/h 持续 ≥ 1 s",
+    "sources": [
+      "outer_lamp_fas_0380"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警告灯自动开启双闪",
+    "relation": "触发条件",
+    "tail": "VehSpdAvgV = 0x0",
+    "sources": [
+      "outer_lamp_fas_0380"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警告灯自动开启双闪",
+    "relation": "前提条件",
+    "tail": "UseMd = All AND UseMdV = Valid AND VehMd = All AND VehMdV = Valid AND 制动灯处于激活状态",
+    "sources": [
+      "outer_lamp_fas_0380"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警告灯双闪模式",
+    "relation": "输出为",
+    "tail": "FLDircnLghtCtrl = 0x1; FRDircnLghtCtrl = 0x1; RLDircnLghtCtrl = 0x1; RRDircnLghtCtrl = 0x1",
+    "sources": [
+      "outer_lamp_fas_0380"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警告灯双闪模式",
+    "relation": "状态保持条件",
+    "tail": "以25 Hz频率闪烁（周期800 ms，先ON后OFF）",
+    "sources": [
+      "outer_lamp_fas_0380"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警告灯双闪模式",
+    "relation": "超时约束",
+    "tail": "控制信号发送间隔为400 ms",
+    "sources": [
+      "outer_lamp_fas_0380"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯同步性要求",
+    "relation": "超时约束",
+    "tail": "图标、声音与物理灯三者同步性最大允许延时为50 ms",
+    "sources": [
+      "outer_lamp_fas_0380",
+      "outer_lamp_fas_0755"
+    ],
+    "conflict": true,
+    "conflict_note": "与另一来源（outer_lamp_fas_0489）定义的40 ms最大延时存在冲突；二者均为同步性约束，数值不一致且无上下文说明优先级或适用场景"
+  },
+  {
+    "head": "危险警报灯同步性要求",
+    "relation": "超时约束",
+    "tail": "危险警报灯同步性最大允许延时为40 ms",
+    "sources": [
+      "outer_lamp_fas_0380",
+      "outer_lamp_fas_0489",
+      "outer_lamp_fas_0755"
+    ],
+    "conflict": true,
+    "conflict_note": "与另一来源（outer_lamp_fas_0755）定义的50 ms最大延时存在冲突；二者均为同步性约束，数值不一致且无上下文说明优先级或适用场景"
+  },
+  {
+    "head": "左侧前雾灯控制信号",
+    "relation": "输出为",
+    "tail": "LFrtFogLghtCtrl_HW → LHZCU via CANFD",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯控制信号",
+    "relation": "输出为",
+    "tail": "RFrtFogLghtCtrl_HW → RHZCU via CANFD",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯状态信号",
+    "relation": "输出为",
+    "tail": "LFrtFogLghtSts_HW → LHZCU via CANFD",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯状态信号",
+    "relation": "输出为",
+    "tail": "RFrtFogLghtSts_HW → RHZCU via CANFD",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯故障状态信号",
+    "relation": "输出为",
+    "tail": "LFrtFogLghtFltSts_HW → LHZCU via CANFD",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯控制信号",
+    "relation": "触发条件",
+    "tail": "LFrtFogLghtCtrl_HW = 0x1 (On)",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯控制信号",
+    "relation": "触发条件",
+    "tail": "LFrtFogLghtCtrl_HW = 0x0 (Off)",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯控制信号",
+    "relation": "触发条件",
+    "tail": "RFrtFogLghtCtrl_HW = 0x1 (On)",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯控制信号",
+    "relation": "触发条件",
+    "tail": "RFrtFogLghtCtrl_HW = 0x0 (Off)",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯状态信号",
+    "relation": "触发条件",
+    "tail": "LFrtFogLghtSts_HW = 0x1 (On)",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯状态信号",
+    "relation": "触发条件",
+    "tail": "LFrtFogLghtSts_HW = 0x0 (Off)",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯状态信号",
+    "relation": "触发条件",
+    "tail": "RFrtFogLghtSts_HW = 0x1 (On)",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯状态信号",
+    "relation": "触发条件",
+    "tail": "RFrtFogLghtSts_HW = 0x0 (Off)",
+    "sources": [
+      "outer_lamp_fas_0382"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯错误状态",
+    "relation": "前提条件",
+    "tail": "转向灯发生错误 → DirectionLightErrorStatus = 0x1",
+    "sources": [
+      "outer_lamp_fas_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯错误状态",
+    "relation": "前提条件",
+    "tail": "转向灯错误状态未知 → DirectionLightErrorStatus = 0x2",
+    "sources": [
+      "outer_lamp_fas_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "刹车灯错误状态",
+    "relation": "前提条件",
+    "tail": "刹车灯发生错误 → BrakeLightErrorStatus = 0x1",
+    "sources": [
+      "outer_lamp_fas_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "刹车灯错误状态",
+    "relation": "前提条件",
+    "tail": "刹车灯错误状态未知 → BrakeLightErrorStatus = 0x2",
+    "sources": [
+      "outer_lamp_fas_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯错误状态",
+    "relation": "前提条件",
+    "tail": "侧位灯发生错误 → SidePositionLightErrorStatus = 0x1",
+    "sources": [
+      "outer_lamp_fas_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯错误状态",
+    "relation": "前提条件",
+    "tail": "侧位灯错误状态未知 → SidePositionLightErrorStatus = 0x2",
+    "sources": [
+      "outer_lamp_fas_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆拖拽模式",
+    "relation": "前提条件",
+    "tail": "车辆处于拖拽模式 → VehDragMdSts = 0x1",
+    "sources": [
+      "outer_lamp_fas_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯错误状态",
+    "relation": "依赖于",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_fas_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "刹车灯错误状态",
+    "relation": "依赖于",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_fas_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "侧位灯错误状态",
+    "relation": "依赖于",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_fas_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆拖拽模式状态",
+    "relation": "依赖于",
+    "tail": "IPD, LHZCU, RZCU, PMA",
+    "sources": [
+      "outer_lamp_fas_0385"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯功能状态",
+    "relation": "输出为",
+    "tail": "MainBeamLghtFuCProsSta = 0x0 → OFF",
+    "sources": [
+      "outer_lamp_fas_0388"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯功能状态",
+    "relation": "输出为",
+    "tail": "MainBeamLghtFuCProsSta = 0x1 → ON",
+    "sources": [
+      "outer_lamp_fas_0388"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯功能状态",
+    "relation": "输出为",
+    "tail": "MainBeamLghtFuCProsSta = 0x2 → Unknown",
+    "sources": [
+      "outer_lamp_fas_0388"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯状态",
+    "relation": "输出为",
+    "tail": "MainBeamLghtSta = 0x0 → OFF",
+    "sources": [
+      "outer_lamp_fas_0388"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯状态",
+    "relation": "输出为",
+    "tail": "MainBeamLghtSta = 0x1 → ON",
+    "sources": [
+      "outer_lamp_fas_0388"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯状态",
+    "relation": "输出为",
+    "tail": "MainBeamLghtSta = 0x2 → Unknown",
+    "sources": [
+      "outer_lamp_fas_0388"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯错误状态",
+    "relation": "输出为",
+    "tail": "MainBeamLghtErrSta = 0x0 → No Error",
+    "sources": [
+      "outer_lamp_fas_0388"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

@@ -1,0 +1,468 @@
+```json
+[
+  {
+    "head": "RightDippedBeamLightControl",
+    "relation": "triggerCondition",
+    "tail": "Call service ControlDippedBeamLight with InstanceID=2, DippedBeamLightReq=0x1 (ON) or 0x0 (OFF)",
+    "sources": ["outer_lamp_fas_0287"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDippedBeamLightControl",
+    "relation": "triggerCondition",
+    "tail": "Call service ControlDippedBeamLight with InstanceID=3, DippedBeamLightReq=0x1 (ON) or 0x0 (OFF)",
+    "sources": ["outer_lamp_fas_0287"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightDippedBeamLightControl",
+    "relation": "dependsOn",
+    "tail": "RHZCU",
+    "sources": ["outer_lamp_fas_0287"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDippedBeamLightControl",
+    "relation": "dependsOn",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0287"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightDippedBeamLightControl",
+    "relation": "outputs",
+    "tail": "DippedBeamLightStatus",
+    "sources": ["outer_lamp_fas_0287"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDippedBeamLightControl",
+    "relation": "outputs",
+    "tail": "DippedBeamLightStatus",
+    "sources": ["outer_lamp_fas_0287"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "prerequisite",
+    "tail": "Z-ONE Platform",
+    "sources": ["outer_lamp_fas_0288", "outer_lamp_fas_1275"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "prerequisite",
+    "tail": "FAS-IBD05 Platform",
+    "sources": ["outer_lamp_fas_0288", "outer_lamp_fas_0290"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDaytimeRunningLightControlSignal",
+    "relation": "dependsOn",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0289"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightDaytimeRunningLightControlSignal",
+    "relation": "dependsOn",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0289"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDaytimeRunningLightStatusSignal",
+    "relation": "dependsOn",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0289"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightDaytimeRunningLightStatusSignal",
+    "relation": "dependsOn",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0289"],
+    "conflict": true,
+    "conflict_note": "Conflicting controller assignment: RDayTmRunngLghtSts depends on LHZCU per outer_lamp_fas_0289, but RDayTmRunngLghtCtrl depends on ICB — implies inconsistent signal routing or documentation error in right-side DRL status path"
+  },
+  {
+    "head": "DaytimeRunningLightStatusSignal",
+    "relation": "dependsOn",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0289"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDaytimeRunningLightControlSignal",
+    "relation": "triggerCondition",
+    "tail": "LeftDaytimeRunningLightStatusSignal = 0x1",
+    "sources": ["outer_lamp_fas_0289"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightDaytimeRunningLightControlSignal",
+    "relation": "triggerCondition",
+    "tail": "RightDaytimeRunningLightStatusSignal = 0x1",
+    "sources": ["outer_lamp_fas_0289"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDaytimeRunningLightControlSignal",
+    "relation": "triggerCondition",
+    "tail": "LeftDaytimeRunningLightStatusSignal = 0x0",
+    "sources": ["outer_lamp_fas_0289"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightDaytimeRunningLightControlSignal",
+    "relation": "triggerCondition",
+    "tail": "RightDaytimeRunningLightStatusSignal = 0x0",
+    "sources": ["outer_lamp_fas_0289"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "dependsOn",
+    "tail": "FunctionalAllocationSpecification_v1.0",
+    "sources": ["outer_lamp_fas_0290"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "hasSubfunction",
+    "tail": "Z-ONE-3.0_Platform_FAS-IBD05_Functionality",
+    "sources": ["outer_lamp_fas_0290"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OTAService.FOTATatus",
+    "relation": "outputs",
+    "tail": "0x0: NoFOTA",
+    "sources": ["outer_lamp_fas_0292"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OTAService.FOTATatus",
+    "relation": "dependsOn",
+    "tail": "S32G_MCU",
+    "sources": ["outer_lamp_fas_0292"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OTAService.FOTATatus",
+    "relation": "dependsOn",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0292"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampSystemFaultReporting",
+    "relation": "triggerCondition",
+    "tail": "FaultCode 0x1 detected",
+    "sources": ["outer_lamp_fas_0294"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampSystemFaultState",
+    "relation": "inputAs",
+    "tail": "FaultCode 0x1",
+    "sources": ["outer_lamp_fas_0294"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightDeactivation",
+    "relation": "prerequisite",
+    "tail": "UsrMd ∈ {NormalDriving, AIParking, AIPilot}",
+    "sources": ["outer_lamp_fas_0295"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightDeactivation",
+    "relation": "prerequisite",
+    "tail": "UsrMdV = Valid",
+    "sources": ["outer_lamp_fas_0295"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightDeactivation",
+    "relation": "prerequisite",
+    "tail": "VehMd ∉ {TRANSPORT, EXHIBITION}",
+    "sources": ["outer_lamp_fas_0295"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightDeactivation",
+    "relation": "prerequisite",
+    "tail": "VehMdV = Valid",
+    "sources": ["outer_lamp_fas_0295"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightDeactivation",
+    "relation": "prerequisite",
+    "tail": "LHZCU confirms MainBeamLight is OFF",
+    "sources": ["outer_lamp_fas_0295"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightDeactivation",
+    "relation": "prerequisite",
+    "tail": "VehSpdAvg > 20 km/h (configurable)",
+    "sources": ["outer_lamp_fas_0295"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightDeactivation",
+    "relation": "prerequisite",
+    "tail": "CombLghtSwStatus = AUTO",
+    "sources": ["outer_lamp_fas_0295"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightDeactivation",
+    "relation": "prerequisite",
+    "tail": "LHZCU confirms DippedBeamLight is ON",
+    "sources": ["outer_lamp_fas_0295"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightDeactivation",
+    "relation": "outputs",
+    "tail": "MainBeamLightFucProStatus.MainBeamLghtFucProsSta = OFF",
+    "sources": ["outer_lamp_fas_0295"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightActivation",
+    "relation": "triggerCondition",
+    "tail": "BrakePedalSwitch hardwire signal = closed",
+    "sources": ["outer_lamp_fas_0296"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightDeactivation",
+    "relation": "triggerCondition",
+    "tail": "BrakePedalSwitch hardwire signal = open",
+    "sources": ["outer_lamp_fas_0296"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwReq_0_Off",
+    "relation": "outputs",
+    "tail": "BrakeLightDeactivation",
+    "sources": ["outer_lamp_fas_0296"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwReq_1_On",
+    "relation": "outputs",
+    "tail": "BrakeLightActivation",
+    "sources": ["outer_lamp_fas_0296"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightActivation",
+    "relation": "dependsOn",
+    "tail": "BrkLghtSwReq_1_On",
+    "sources": ["outer_lamp_fas_0296"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightDeactivation",
+    "relation": "dependsOn",
+    "tail": "BrkLghtSwReq_0_Off",
+    "sources": ["outer_lamp_fas_0296"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightActivationOrDeactivation",
+    "relation": "inputFrom",
+    "tail": "BrakePedalSwitch hardwire signal",
+    "sources": ["outer_lamp_fas_0296"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDirectionLightStatus",
+    "relation": "inputAs",
+    "tail": "RRDircnLghtSts_HW_0_Off",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDirectionLightStatus",
+    "relation": "inputAs",
+    "tail": "RRDircnLghtSts_HW_1_On",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDirectionLightStatus",
+    "relation": "inputAs",
+    "tail": "FLDircnLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDirectionLightStatus",
+    "relation": "inputAs",
+    "tail": "FLDircnLghtSts_1_On",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDirectionLightStatus",
+    "relation": "inputAs",
+    "tail": "FRDircnLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDirectionLightStatus",
+    "relation": "inputAs",
+    "tail": "FRDircnLghtSts_1_On",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDirectionLightStatus",
+    "relation": "inputAs",
+    "tail": "RLDircnLghtSts_0_Off",
+    "sources": ["outer_lamp_fas_0297", "outer_lamp_fas_1315"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDirectionLightStatus",
+    "relation": "inputAs",
+    "tail": "RLDircnLghtSts_1_On",
+    "sources": ["outer_lamp_fas_0297", "outer_lamp_fas_1315"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDirectionLightStatus",
+    "relation": "outputs",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDirectionLightStatus",
+    "relation": "outputs",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDirectionLightStatus",
+    "relation": "outputs",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDirectionLightStatus",
+    "relation": "outputs",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDirectionLightStatus",
+    "relation": "controlledBy",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDirectionLightStatus",
+    "relation": "controlledBy",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDirectionLightStatus",
+    "relation": "controlledBy",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDirectionLightStatus",
+    "relation": "controlledBy",
+    "tail": "ICB",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDirectionLightStatus",
+    "relation": "dependsOn",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": true,
+    "conflict_note": "Direct conflict: RRDirectionLightStatus is both 'controlledBy ICB' and 'dependsOn LHZCU' — ambiguous ownership; likely indicates signal routing via ICB to LHZCU or vice versa. Requires architecture clarification."
+  },
+  {
+    "head": "FLDirectionLightStatus",
+    "relation": "dependsOn",
+    "tail": "LHZCU",
+    "sources": ["outer_lamp_fas_0297"],
+    "conflict": true,
+    "conflict_note": "Direct conflict: FLDirectionLightStatus is both 'controlledBy ICB' and 'dependsOn LHZCU' — ambiguous ownership; likely indicates signal routing via ICB to LHZCU or vice versa. Requires architecture clarification."
+  }
+]
+```

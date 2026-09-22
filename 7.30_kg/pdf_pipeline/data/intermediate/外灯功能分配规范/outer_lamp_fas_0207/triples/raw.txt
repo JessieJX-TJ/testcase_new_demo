@@ -1,0 +1,118 @@
+```json
+[
+  {
+    "head": "左前转向灯点亮",
+    "relation": "触发条件",
+    "tail": "ControlDirectionLight接口被周期调用且InstanceID=1且DirectionLightReq=0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ControlDirectionLight",
+      "InstanceID=1",
+      "DirectionLightReq=0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左前转向灯熄灭",
+    "relation": "触发条件",
+    "tail": "ControlDirectionLight接口被周期调用且InstanceID=1且DirectionLightReq=0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ControlDirectionLight",
+      "InstanceID=1",
+      "DirectionLightReq=0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯点亮",
+    "relation": "触发条件",
+    "tail": "ControlDirectionLight接口被周期调用且InstanceID=2且DirectionLightReq=0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ControlDirectionLight",
+      "InstanceID=2",
+      "DirectionLightReq=0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯熄灭",
+    "relation": "触发条件",
+    "tail": "ControlDirectionLight接口被周期调用且InstanceID=2且DirectionLightReq=0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ControlDirectionLight",
+      "InstanceID=2",
+      "DirectionLightReq=0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ControlDirectionLight接口调用",
+    "relation": "前提条件",
+    "tail": "方向灯需要被控制（左前或右前）",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ControlDirectionLight",
+      "DirectionLight"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左前转向灯状态",
+    "relation": "依赖于",
+    "tail": "InstanceID=1和DirectionLightReq参数值",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "InstanceID=1",
+      "DirectionLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯状态",
+    "relation": "依赖于",
+    "tail": "InstanceID=2和DirectionLightReq参数值",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "InstanceID=2",
+      "DirectionLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ControlDirectionLight接口",
+    "relation": "包含子功能",
+    "tail": "控制左前转向灯",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "ControlDirectionLight",
+      "DirectionLight"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ControlDirectionLight接口",
+    "relation": "包含子功能",
+    "tail": "控制右前转向灯",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "ControlDirectionLight",
+      "DirectionLight"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ControlDirectionLight接口调用",
+    "relation": "状态保持条件",
+    "tail": "周期性调用以维持转向灯状态",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "周期调用",
+      "ControlDirectionLight"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

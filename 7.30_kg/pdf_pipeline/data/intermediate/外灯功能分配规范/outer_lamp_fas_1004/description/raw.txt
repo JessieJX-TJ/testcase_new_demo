@@ -1,0 +1,82 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) - 转向灯控制与状态",
+  "row_semantics": "表格按转向灯的硬件控制信号和状态信号进行分组，每组包含控制信号及其对应的输出、通信协议、控制器模块等信息。",
+  "column_semantics": "第一列是信号名称；第二列描述信号类型（如输出）；后续列为该信号涉及的通信协议（如CANFD）、控制器模块（如LHZCU）等。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FLDircnLghtCtrl_HW",
+      "type": "功能名",
+      "description": "左前转向灯硬件控制信号"
+    },
+    {
+      "name": "FRDircnLghtCtrl_HW",
+      "type": "功能名",
+      "description": "右前转向灯硬件控制信号"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW",
+      "type": "功能名",
+      "description": "左后转向灯硬件控制信号"
+    },
+    {
+      "name": "RRDircnLghtCtrl_HW",
+      "type": "功能名",
+      "description": "右后转向灯硬件控制信号"
+    },
+    {
+      "name": "FLDircnLghtSts_HW",
+      "type": "系统状态",
+      "description": "左前转向灯硬件状态信号"
+    },
+    {
+      "name": "FRDircnLghtSts_HW",
+      "type": "系统状态",
+      "description": "右前转向灯硬件状态信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0",
+      "description": "信号值为0，表示转向灯关闭"
+    },
+    {
+      "name": "0x1",
+      "description": "信号值为1，表示转向灯开启"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtCtrl_HW",
+      "description": "左前转向灯控制信号输出"
+    },
+    {
+      "name": "FRDircnLghtCtrl_HW",
+      "description": "右前转向灯控制信号输出"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW",
+      "description": "左后转向灯控制信号输出"
+    },
+    {
+      "name": "RRDircnLghtCtrl_HW",
+      "description": "右后转向灯控制信号输出"
+    },
+    {
+      "name": "FLDircnLghtSts_HW",
+      "description": "左前转向灯状态信号输出"
+    },
+    {
+      "name": "FRDircnLghtSts_HW",
+      "description": "右前转向灯状态信号输出"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯转向灯系统的硬件控制信号和状态信号的规范，可用于验证转向灯控制逻辑是否正确实现，包括信号值与转向灯状态的对应关系以及各控制器模块的交互。",
+  "uncertain_points": []
+}
+```

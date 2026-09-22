@@ -1,0 +1,128 @@
+[
+  {
+    "head": "右前雾灯停止驱动",
+    "relation": "前提条件",
+    "tail": "右前雾灯处于输出状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "前置条件",
+      "【FrtFogLghtDrvMdl】停止驱动右前雾灯输出(FogLamp_RH_HSD)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0192",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "右前雾灯停止驱动",
+    "relation": "触发条件",
+    "tail": "检测到右前雾灯短路到地",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "触发条件",
+      "【FrtFogLghtDrvMdl】停止驱动右前雾灯输出(FogLamp_RH_HSD)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0192",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "右前雾灯设置错误状态",
+    "relation": "触发条件",
+    "tail": "检测到右前雾灯短路到地",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "触发条件",
+      "5.【FrtFogLghtDrvMdl】持续发送{FrontFogLight. FrontFogLightErrorStatus FrontFogLightErrorSta}{InstanceID=4} =0x1(Error)至"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0192",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "置位DTC B1053 11",
+    "relation": "触发条件",
+    "tail": "检测到右前雾灯短路到地",
+    "triple_type": "诊断关联",
+    "evidence_terms": [
+      "执行动作",
+      "6. 置位 DTC B1053 11"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0192",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "右前雾灯闪烁状态设置",
+    "relation": "前提条件",
+    "tail": "右前雾灯处于输出状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "前置条件",
+      "【FrtFogLghtDrvMdl】持续发送RFrtFogLghtFltSts=0x1(Ture)至"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0192",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "右前雾灯闪烁状态设置",
+    "relation": "触发条件",
+    "tail": "检测到右前雾灯短路到地",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "触发条件",
+      "【FrtFogLghtDrvMdl】持续发送RFrtFogLghtFltSts=0x1(Ture)至"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0192",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "前雾灯状态设置为关闭",
+    "relation": "前提条件",
+    "tail": "右前雾灯处于输出状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "前置条件",
+      "【FrtFogLghtDrvMdl】持续发送{FrontFogLight. FrontFogLightState.FrontFogLightSta}{InstanceID=4}=0x1(OFF)至"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0192",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "前雾灯状态设置为关闭",
+    "relation": "触发条件",
+    "tail": "检测到右前雾灯短路到地",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "触发条件",
+      "【FrtFogLghtDrvMdl】持续发送{FrontFogLight. FrontFogLightState.FrontFogLightSta}{InstanceID=4}=0x1(OFF)至"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0192",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "FrtFogLghtCtrlMdl信号至少发送三帧",
+    "relation": "状态保持条件",
+    "tail": "【FrtFogLghtDrvMdl】持续发送RFrtFogLghtSts=0x0(OFF)至",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "执行动作",
+      "【FrtFogLghtCtrlMdl】,至少发送三帧"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0192",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  }
+]

@@ -1,0 +1,95 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "屋顶氛围灯呼吸模式与渐变速度控制参数",
+  "row_semantics": "表格定义了屋顶氛围灯（RoofRHBLamp）的呼吸模式和渐变速度的控制参数，包括模式切换规则和不同渐变速度的指令。",
+  "column_semantics": {
+    "第一列": "功能模块或参数组名称",
+    "第二列": "输入信号来源（如LIN、SSTS等）",
+    "第三列至第七列": "具体的控制器/模块名称（如RHZCU、RoofAmbtLampB_RH等）",
+    "第八列": "描述参数的具体含义和取值范围"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RoofRHBLampFadeSpdCmd_1",
+      "type": "功能名",
+      "description": "屋顶氛围灯渐变速度控制命令"
+    },
+    {
+      "name": "Rate15",
+      "type": "参数名",
+      "description": "呼吸模式的闪烁频率（15Hz）"
+    },
+    {
+      "name": "12s",
+      "type": "参数名",
+      "description": "呼吸模式的周期时间（12秒）"
+    },
+    {
+      "name": "原呼吸模式 4",
+      "type": "参数名",
+      "description": "当前激活的呼吸模式编号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "呼吸模式切换",
+      "description": "当切换到不同呼吸模式时，立即停止当前模式并启动新模式"
+    },
+    {
+      "condition": "指令值为0",
+      "description": "当呼吸模式指令值为0时，立即停止呼吸闪烁"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "RoofRHBLampFadeSpdCmd_1_0_Spd0",
+      "description": "渐变速度指令，对应最慢渐变速度（2000ms）"
+    },
+    {
+      "output": "RoofRHBLampFadeSpdCmd_1_1_Spd1",
+      "description": "渐变速度指令，对应中等渐变速度（300ms）"
+    },
+    {
+      "output": "RoofRHBLampFadeSpdCmd_1_2_Spd2",
+      "description": "渐变速度指令，预留用于更快速度（100ms）"
+    },
+    {
+      "output": "RoofRHBLampFadeSpdCmd_1_3_Spd3",
+      "description": "渐变速度指令，预留（值为0）"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "呼吸周期",
+      "value": "12s",
+      "description": "呼吸模式的完整周期时间为12秒"
+    },
+    {
+      "constraint": "渐变速度",
+      "value": "2000ms",
+      "description": "默认渐变速度，从当前状态切换到目标状态所需时间为2000毫秒"
+    },
+    {
+      "constraint": "渐变速度 Spd1",
+      "value": "300ms",
+      "description": "中等渐变速度，从当前状态切换到目标状态所需时间为300毫秒"
+    },
+    {
+      "constraint": "渐变速度 Spd2",
+      "value": "100ms",
+      "description": "预留的快速渐变速度，从当前状态切换到目标状态所需时间为100毫秒"
+    },
+    {
+      "constraint": "渐变速度 Spd3",
+      "value": "预留 0",
+      "description": "预留的最快速渐变速度，值为0"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了屋顶氛围灯的呼吸模式和渐变速度的控制参数，可用于验证呼吸模式切换逻辑、渐变速度指令的正确性以及不同速度下状态切换的时间响应。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,104 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑规范",
+  "row_semantics": "表格的每一行代表一个独立的外灯功能需求场景，包括远光灯、制动灯、后雾灯和倒车灯的控制逻辑。",
+  "column_semantics": "表格包含两列：第一列描述功能需求场景及其备注信息；第二列详细说明该场景下调用的服务接口、对应的CAN信号或基础服务。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "S32G_M",
+      "type": "控制器/模块名",
+      "description": "提供组合服务的主控单元，负责调用外灯控制相关的组合服务。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "基础服务提供方，接收来自S32G_M的请求并执行相应的外灯点亮控制。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "系统模块名",
+      "description": "外灯控制系统，封装了所有外灯的控制逻辑和服务接口。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightReq",
+      "type": "输入信号",
+      "description": "远光灯控制请求信号，由S32G_M调用 ExteriorLightControlSystem 提供的组合服务触发。"
+    },
+    {
+      "name": "BrakeLightReq",
+      "type": "输入信号",
+      "description": "制动灯控制请求信号，由S32G_M调用 ExteriorLightControlSystem 提供的组合服务触发。"
+    },
+    {
+      "name": "RearFogLightReq",
+      "type": "输入信号",
+      "description": "后雾灯控制请求信号，由S32G_M调用 ExteriorLightControlSystem 提供的组合服务触发。"
+    },
+    {
+      "name": "ReverseLightReq",
+      "type": "输入信号",
+      "description": "倒车灯控制请求信号，由S32G_M调用 ExteriorLightControlSystem 提供的组合服务触发。"
+    },
+    {
+      "name": "BrkLightSrcReq",
+      "type": "输出信号",
+      "description": "制动灯CAN信号，由S32G_M对应调用LHZCU提供的基础服务生成。"
+    },
+    {
+      "name": "RearFogLightFucProCtrl",
+      "type": "输出信号",
+      "description": "后雾灯CAN信号，由S32G_M对应调用LHZCU提供的基础服务生成。"
+    },
+    {
+      "name": "ReverseLightFucProStatus",
+      "type": "系统状态",
+      "description": "倒车灯功能状态，由S32G_M对应调用LHZCU提供的基础服务返回。"
+    },
+    {
+      "name": "MainBeamLightFucProStatus",
+      "type": "系统状态",
+      "description": "远光灯功能状态，由S32G_M对应调用LHZCU提供的基础服务返回。"
+    },
+    {
+      "name": "RearFogLightFucProCtrl",
+      "type": "系统状态",
+      "description": "后雾灯功能控制状态，由S32G_M对应调用LHZCU提供的基础服务返回。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLight",
+      "type": "输出信号",
+      "description": "远光灯的实际点亮状态，由LHZCU根据 MainBeamLightReq 和 MainBeamLightFucProStatus 控制。"
+    },
+    {
+      "name": "BrakeLight",
+      "type": "输出信号",
+      "description": "制动灯的实际点亮状态，由LHZCU根据 BrakeLightReq 和 BrkLightSrcReq 控制。"
+    },
+    {
+      "name": "RearFogLight",
+      "type": "输出信号",
+      "description": "后雾灯的实际点亮状态，由LHZCU根据 RearFogLightReq 和 RearFogLightFucProCtrl 控制。"
+    },
+    {
+      "name": "ReverseLight",
+      "type": "输出信号",
+      "description": "倒车灯的实际点亮状态，由LHZCU根据 ReverseLightReq 和 ReverseLightFucProStatus 控制。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯（远光灯、制动灯、后雾灯、倒车灯）的控制逻辑，明确了S32G_M与LHZCU之间的服务调用关系、输入输出信号及系统状态交互，可用于验证外灯控制功能在不同场景下的正确性和一致性。",
+  "uncertain_points": [
+    "未明确说明各外灯功能的具体点亮时序要求。",
+    "未详细描述当S32G_M发送的控制请求与LHZCU实际执行结果不一致时的处理逻辑。",
+    "未提及各外灯功能的故障检测与恢复机制。"
+  ]
+}
+```

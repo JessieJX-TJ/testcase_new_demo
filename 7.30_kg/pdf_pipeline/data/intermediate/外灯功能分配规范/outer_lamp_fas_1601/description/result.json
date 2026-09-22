@@ -1,0 +1,45 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 转向灯状态",
+  "row_semantics": "表格按转向灯类型（左转灯和右转灯）进行区分，每行描述一个转向灯的状态参数定义。",
+  "column_semantics": {
+    "第一列": "功能模块名称",
+    "第二列": "消耗 (Consumption)",
+    "第三列": "SOA (Service-Oriented Architecture)",
+    "第四列": "ICB (Internal Communication Bus)",
+    "第五列": "LHZCU (Local Host Control Unit)",
+    "第六列": "未命名",
+    "第七列": "网络状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "功能模块",
+      "description": "外灯功能中的转向灯模块"
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "参数",
+      "description": "转向灯状态参数，包括OFF、ON、Unknown三种状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "输出信号",
+      "description": "表示转向灯当前的电气状态（关闭、开启或未知）",
+      "values": [
+        "0x0=OFF",
+        "0x1=ON",
+        "0x2=Unknown"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和规范车辆中左转灯和右转灯的状态参数及其在不同系统组件中的表现，可用于测试验证转向灯状态信息的正确传输与显示。",
+  "uncertain_points": []
+}

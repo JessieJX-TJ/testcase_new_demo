@@ -1,0 +1,41 @@
+{
+  "table_type": "fault_table",
+  "topic": "转向灯故障状态定义与输出",
+  "row_semantics": "表格按转向灯类型（左后、右后、左前、右前、左后）分组，每组定义了该转向灯的故障状态及其对应的输出信号和控制器。",
+  "column_semantics": {
+    "0": "转向灯类型及故障状态描述",
+    "1": "输出方式 (Output)",
+    "2": "CANFD",
+    "3": "ICB / RHZCU / RZCU",
+    "4": "LHZCU",
+    "5": "网络故障状态 / 硬线故障状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "转向灯类型",
+      "description": "包括左后转向灯 (RLDircnLghtFltsts)、右后转向灯 (RRDircnLghtFltsts)、左前转向灯 (FLDircnLghtFltsts_HW)、右前转向灯 (FRDircnLghtFltsts_HW) 和左后转向灯 (RLDircnLghtFltsts_HW)。"
+    },
+    {
+      "name": "控制器/模块",
+      "description": "涉及的控制器包括 CANFD、ICB、LHZCU、RHZCU 和 RZCU。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "故障状态输出",
+      "description": "每个转向灯故障状态对应两个输出值：0x0 表示 False（无故障），0x1 表示 True（有故障）。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "转向灯故障状态",
+      "description": "定义了不同转向灯在硬件 (HW) 或网络环境下的故障状态，如 RLDircnLghtFltsts_0_False 和 RRDircnLghtFltsts_1_True。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义整车电子系统中各转向灯的故障状态及其输出逻辑，是进行转向灯功能测试和故障诊断的重要依据。",
+  "uncertain_points": []
+}

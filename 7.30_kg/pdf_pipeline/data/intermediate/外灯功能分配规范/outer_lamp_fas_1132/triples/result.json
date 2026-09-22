@@ -1,0 +1,87 @@
+[
+  {
+    "head": "制动灯开关控制模块 (LHZCC) 激活",
+    "relation": "触发条件",
+    "tail": "收到 [集成式制动子系统] 输入: BrkSysBrkLghtsReqd = 0x1 = BrkSysBrkLghtsReqd_1_True",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "BrkSysBrkLghtsReqd",
+      "BrkSysBrkLghtsReqd_1_True"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1132",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "制动灯点亮信号 (BrkL.ghtCtrl_0x1) 输出为1",
+    "relation": "前提条件",
+    "tail": "制动灯开关控制模块 (LHZCC) 激活",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "BrkL.ghtCtrl_0x1",
+      "LHZCC"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1132",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "制动灯强制指示状态 (BrakeLightFrcProSta) 设置为0x1",
+    "relation": "前提条件",
+    "tail": "制动灯开关控制模块 (LHZCC) 激活",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "BrakeLightFrcProSta",
+      "LHZCC"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1132",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "ICB 接收信号 (BrkL.ghtCtrl_0x1 = BrkL.ghtCtrl_1_On)",
+    "relation": "前提条件",
+    "tail": "制动灯开关控制模块 (LHZCC) 输出制动灯点亮信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "BrkL.ghtCtrl_0x1",
+      "LHZCC"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1132",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "制动灯开关控制模块 (LHZCC) 状态保持条件",
+    "relation": "状态保持条件",
+    "tail": "BalanceID = 1",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "LHZCC",
+      "BalanceID"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "outer_lamp_fas_1132",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "制动灯开关控制模块 (LHZCC) 故障响应",
+    "relation": "故障响应",
+    "tail": "BrakeLightErrorSta != 0x0",
+    "triple_type": "故障响应与降级关系",
+    "evidence_terms": [
+      "LHZCC",
+      "BrakeLightErrorSta"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "outer_lamp_fas_1132",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

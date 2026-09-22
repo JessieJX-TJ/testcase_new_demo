@@ -1,0 +1,492 @@
+```json
+[
+  {
+    "head": "RearFogLightState",
+    "relation": "trigger_condition",
+    "tail": "LHZCU reports RearFogLightState = 0x1 (ON) to ICB",
+    "sources": ["outer_lamp_fas_0168"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightErrorStatus",
+    "relation": "trigger_condition",
+    "tail": "LHZCU reports RearFogLightErrorStatus = 0x0 (No Error) to ICB",
+    "sources": ["outer_lamp_fas_0168"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightSynchronization",
+    "relation": "timeout_constraint",
+    "tail": "Maximum latency between left and right rear fog lamps ≤ 40 ms",
+    "sources": ["outer_lamp_fas_0168"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightIndicatorDisplay",
+    "relation": "trigger_condition",
+    "tail": "ICB displays indicator when RearFogLightFucProStatus = 0x1 (Only RearFogLight Control)",
+    "sources": ["outer_lamp_fas_0168"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadlampStatus",
+    "relation": "trigger_condition",
+    "tail": "DriverCommand = Headlights ON AND AmbientLightLevel = Low",
+    "sources": ["outer_lamp_fas_0170"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TaillampStatus",
+    "relation": "trigger_condition",
+    "tail": "DriverCommand = BrakePedalPressed OR DriverCommand = TaillightManualSwitchON",
+    "sources": ["outer_lamp_fas_0170"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalStatus",
+    "relation": "trigger_condition",
+    "tail": "DriverCommand = TurnSignalActivated AND VehicleSpeed = Low",
+    "sources": ["outer_lamp_fas_0170"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadlampStatus",
+    "relation": "suppression_condition",
+    "tail": "AmbientLightLevel = High AND DriverCommand = Headlights OFF",
+    "sources": ["outer_lamp_fas_0170"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutomaticHeadlampDelay",
+    "relation": "timeout_constraint",
+    "tail": "IgnitionStatus = OFF",
+    "sources": ["outer_lamp_fas_0170"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DaytimeRunningLightDuration",
+    "relation": "timeout_constraint",
+    "tail": "DriverCommand = DaytimeRunningLights ON",
+    "sources": ["outer_lamp_fas_0170"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadlampControlAuthority",
+    "relation": "controlled_by",
+    "tail": "BCM receives DriverCommand and AmbientLightSensorInput",
+    "sources": ["outer_lamp_fas_0170"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalStatus",
+    "relation": "depends_on",
+    "tail": "VehicleSpeed = Low AND TurnSignalMode = Active",
+    "sources": ["outer_lamp_fas_0170"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadlampStatus",
+    "relation": "priority_over",
+    "tail": "DaytimeRunningLightStatus = ON",
+    "sources": ["outer_lamp_fas_0170"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadlampStatus",
+    "relation": "mutually_exclusive_with",
+    "tail": "DaytimeRunningLightStatus = ON",
+    "sources": ["outer_lamp_fas_0170"],
+    "conflict": true,
+    "conflict_note": "Priority_over and mutually_exclusive_with represent complementary behavioral constraints: priority defines activation precedence; mutual exclusivity defines coexistence prohibition. Both are valid and non-contradictory in functional safety context."
+  },
+  {
+    "head": "WarningLightStatus",
+    "relation": "trigger_condition",
+    "tail": "FaultDetection = LampFailure OR SensorMalfunction",
+    "sources": ["outer_lamp_fas_0170"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunctions",
+    "relation": "reset_condition",
+    "tail": "IgnitionStatus = OFF",
+    "sources": ["outer_lamp_fas_0170"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLampHardWireDriveDelay",
+    "relation": "prerequisite_condition",
+    "tail": "BrkLghtHardWireDrvDelayPrm = 0x0",
+    "sources": ["outer_lamp_fas_0171"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLampHardWireDriveDelay",
+    "relation": "prerequisite_condition",
+    "tail": "RevsLghtHardWireDrvDelayPrm = 0x6",
+    "sources": ["outer_lamp_fas_0171"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearPositionLampHardWireDriveDelay",
+    "relation": "prerequisite_condition",
+    "tail": "RrSideLghtHardWireDrvDelayPrm = 0x0",
+    "sources": ["outer_lamp_fas_0171"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightHardWireDriveEnable",
+    "relation": "input_value",
+    "tail": "exlDircnLghtHwDrvEnPrm = 0x2",
+    "sources": ["outer_lamp_fas_0171"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightHardWireDriveEnable",
+    "relation": "output_mode",
+    "tail": "DriveAndFeedback mode",
+    "sources": ["outer_lamp_fas_0171"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightHardWireDriveEnable",
+    "relation": "output_mode",
+    "tail": "OnlyDrive mode",
+    "sources": ["outer_lamp_fas_0171"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightHardWireDriveEnable",
+    "relation": "output_mode",
+    "tail": "Reversed mode",
+    "sources": ["outer_lamp_fas_0171"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightHardWireDriveEnable",
+    "relation": "suppression_condition",
+    "tail": "exlDircnLghtHwDrvEnPrm = 0x0",
+    "sources": ["outer_lamp_fas_0171"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLampHardWireDriveDelay",
+    "relation": "depends_on",
+    "tail": "E = N × 10 ms, where N ∈ [0x0, 0xF]",
+    "sources": ["outer_lamp_fas_0171"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLampHardWireDriveDelay",
+    "relation": "depends_on",
+    "tail": "E = N × 10 ms, where N ∈ [0x0, 0xF]",
+    "sources": ["outer_lamp_fas_0171"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearPositionLampHardWireDriveDelay",
+    "relation": "depends_on",
+    "tail": "E = N × 10 ms, where N ∈ [0x0, 0xF]",
+    "sources": ["outer_lamp_fas_0171"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombinedLightControlRequest",
+    "relation": "trigger_condition",
+    "tail": "CombinedLightReq contains valid control instruction",
+    "sources": ["outer_lamp_fas_0172"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombinedLightControlResponse",
+    "relation": "output_value",
+    "tail": "CombLghtFucProCtrlResp = 0x0 (ControlSuccess)",
+    "sources": ["outer_lamp_fas_0172"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombinedLightControlResponse",
+    "relation": "output_value",
+    "tail": "CombLghtFucProCtrlResp = 0x1 (Failed)",
+    "sources": ["outer_lamp_fas_0172"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombinedLightControlInterface",
+    "relation": "prerequisite_condition",
+    "tail": "ExteriorLightSwitchProcess.CombLghtFucProCtrl method is invoked",
+    "sources": ["outer_lamp_fas_0172"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombinedLightControlInterface",
+    "relation": "depends_on",
+    "tail": "CombLghtFucProCtrl interface",
+    "sources": ["outer_lamp_fas_0172"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftRearTurnSignalControl",
+    "relation": "prerequisite_condition",
+    "tail": "Periodic invocation of service interface for left rear turn signal control",
+    "sources": ["outer_lamp_fas_0173", "outer_lamp_fas_0256", "outer_lamp_fas_0344", "outer_lamp_fas_0507"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightRequest",
+    "relation": "input_value",
+    "tail": "0x0 = OFF; 0x1 = ON",
+    "sources": ["outer_lamp_fas_0173"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InstanceID=5",
+    "relation": "depends_on",
+    "tail": "LeftFrontTurnSignalControl",
+    "sources": ["outer_lamp_fas_0173"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InstanceID=6",
+    "relation": "depends_on",
+    "tail": "RightFrontTurnSignalControl",
+    "sources": ["outer_lamp_fas_0173"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InstanceID=7",
+    "relation": "depends_on",
+    "tail": "LeftRearTurnSignalControl",
+    "sources": ["outer_lamp_fas_0173"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ServiceInterfaceInvocation",
+    "relation": "prerequisite_condition",
+    "tail": "LeftFrontTurnSignalControl",
+    "sources": ["outer_lamp_fas_0173"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ServiceInterfaceInvocation",
+    "relation": "prerequisite_condition",
+    "tail": "RightFrontTurnSignalControl",
+    "sources": ["outer_lamp_fas_0173"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ServiceInterfaceInvocation",
+    "relation": "prerequisite_condition",
+    "tail": "LeftRearTurnSignalControl",
+    "sources": ["outer_lamp_fas_0173"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCUAutoSwitchToAUTO",
+    "relation": "prerequisite_condition",
+    "tail": "S32G receives IFP seven-button switch request edge transition",
+    "sources": ["outer_lamp_fas_0174"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCUAutoSwitchToAUTO",
+    "relation": "prerequisite_condition",
+    "tail": "IFPRearFoglghtSwReq_1_0_NoPress = 0x1",
+    "sources": ["outer_lamp_fas_0174"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombinationSwitchDisplayState",
+    "relation": "prerequisite_condition",
+    "tail": "LHZCU internally switches combination switch to AUTO mode",
+    "sources": ["outer_lamp_fas_0174"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogAndAssociatedPositionLampsActivation",
+    "relation": "prerequisite_condition",
+    "tail": "LHZCU verifies preconditions for rear fog lamp activation under AUTO mode",
+    "sources": ["outer_lamp_fas_0174"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLampNotActive",
+    "relation": "suppression_condition",
+    "tail": "RearFogLghtFucProsSta = 0x0",
+    "sources": ["outer_lamp_fas_0174"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombinationSwitchStatus",
+    "relation": "output_value",
+    "tail": "LHZCU internally switches combination switch to AUTO mode",
+    "sources": ["outer_lamp_fas_0174"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombinationSwitchStatus",
+    "relation": "output_value",
+    "tail": "CombLghtSwSta = 0x3 (AUTO)",
+    "sources": ["outer_lamp_fas_0174"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "HazardLightSwitOn",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "VehicleCrashSignalActive",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "AirbagDeployedActive",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "ToffCrashActive",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "VehicleIntrusionPreventAlarmHazardLightRequested",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "VCUBatteryThermalRunawayHazardLightRequested",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "BMSBatteryThermalRunawayHazardLightRequested",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "EmergencyBrakeHazardLightRequested",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "RCWWaringHazardLightRequested",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "IPDPilotHazardLightRequested",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLockHazardLightRequested",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "ExteriorUnlockHazardLightRequested",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignalHazardActivationReason",
+    "relation": "trigger_condition",
+    "tail": "PowerLiftgateHazardLightRequested",
+    "sources": ["outer_lamp_fas_0175"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftMainBeamLightControl",
+    "relation": "output_value",
+    "tail": "LMainBeamLghtCtrl = 0x0 (OFF)",
+    "sources": ["outer_lamp_fas_0176"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

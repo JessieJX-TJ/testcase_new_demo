@@ -1,0 +1,72 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "远光灯开关状态持续发送逻辑",
+  "row_semantics": "表格描述了在特定前置条件和触发条件下，系统执行的持续发送动作及其退出条件。",
+  "column_semantics": {
+    "1": "前置条件：配置字 MainBeamLightSwSOAEnPrm 设置为 Enable",
+    "2": "触发条件：用户打开远光灯开关，开关阻值为 300 Ω（±5%）",
+    "3": "执行动作：MainBeamLightSwMdl 持续发送 MainBeamLightSwitchStatus，其中 MainBeamLightSwitchSta = 0x1 (On) 至 MainBeamLightCtrlMdl，至少发送三帧",
+    "4": "退出条件：远光灯开关阻值变为非 300 Ω（±5%）",
+    "5": "异常处理：未明确说明"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightSwMdl",
+      "type": "controller_module",
+      "description": "主控模块，负责管理远光灯开关的状态发送"
+    },
+    {
+      "name": "MainBeamLightCtrlMdl",
+      "type": "controller_module",
+      "description": "控制模块，接收远光灯开关状态信息"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightSwSOAEnPrm",
+      "value": "1 (Enable)",
+      "description": "前置条件，表示远光灯开关状态输出使能"
+    },
+    {
+      "name": "MainBeamLightSwitchStatus",
+      "value": "0x1 (On)",
+      "description": "触发条件，表示远光灯开关处于开启状态"
+    },
+    {
+      "name": "MainBeamLightSwitchSta",
+      "value": "300 Ω (±5%)",
+      "description": "触发条件，表示远光灯开关的阻值在规定范围内"
+    },
+    {
+      "name": "退出条件",
+      "value": "非 300 Ω (±5%)",
+      "description": "当远光灯开关阻值超出规定范围时，停止发送动作"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLightSwitchStatus",
+      "value": "0x1 (On)",
+      "description": "输出信号，表示远光灯开关当前处于开启状态"
+    },
+    {
+      "name": "MainBeamLightCtrlMdl",
+      "target": "MainBeamLightCtrlMdl",
+      "description": "输出目标，将远光灯开关状态发送至控制模块"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "action": "持续发送",
+      "minimum_frames": 3,
+      "description": "在满足触发条件时，至少发送三帧远光灯开关状态"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了远光灯开关状态在特定条件下持续发送的逻辑，可用于验证远光灯开关状态输出功能的正确性和稳定性。",
+  "uncertain_points": []
+}
+```

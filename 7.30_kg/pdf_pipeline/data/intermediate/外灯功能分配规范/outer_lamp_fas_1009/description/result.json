@@ -1,0 +1,64 @@
+{
+  "table_type": "logic_table",
+  "topic": "车辆防入侵时危险警报灯激活逻辑",
+  "row_semantics": "表格按功能描述、前置条件、触发放动作、执行动作的顺序组织，详细定义了在特定条件下危险警报灯如何被触发和控制。",
+  "column_semantics": "表格分为两列，左侧为场景描述或动作类型（如前置条件、触发放动作、执行动作），右侧为具体的条件、配置或操作内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "危险警报灯",
+      "type": "功能",
+      "description": "当车辆触发防入侵时自动激活的警示灯，用于提醒用户车辆处于入侵状态。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "Light Hazard Control Unit，负责控制危险警报灯的开关和闪烁模式。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "description": "用户模式，值为All表示所有用户模式均满足条件。",
+      "type": "输入信号"
+    },
+    {
+      "name": "VehMd",
+      "description": "车辆模式，值为All表示所有车辆模式均满足条件。",
+      "type": "输入信号"
+    },
+    {
+      "name": "ExtrLghtCtrlCmmntnTyp",
+      "description": "外部灯光控制通信类型，可能的值包括SOA和CAN。",
+      "type": "配置需求"
+    },
+    {
+      "name": "ExtrLghtStsCmmntnTyp",
+      "description": "外部灯光状态通信类型，可能的值包括SOA和CAN。",
+      "type": "配置需求"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "VehIntrusionPrevnHzrdLmpReq",
+      "description": "车辆入侵预防危险灯请求信号，控制危险灯的闪烁频率和模式。",
+      "type": "输出信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "闪烁频率",
+      "value": "1.25Hz",
+      "description": "危险灯按照1.25Hz频率闪烁，即800ms一个闪烁周期发送。",
+      "type": "定时"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证车辆在触发防入侵时，危险警报灯是否能根据预设的通信类型和模式正确激活，并以指定的频率闪烁。",
+  "uncertain_points": [
+    "具体通信协议细节未明确说明。",
+    "未提及异常情况下的处理逻辑。",
+    "未明确说明不同用户模式下的优先级或差异处理。"
+  ]
+}

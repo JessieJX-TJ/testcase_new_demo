@@ -1,0 +1,19 @@
+[FAS-IBD05-0004]—集成式制动系统有效时,开启制动灯【服务链路,预留不开发】
+场景描述
+集成式制动系统有效时,打开制动灯
+前置条件
+[1&2&3&4]&[[5||6]&[7||8]]:
+1. UsgMd!=0x0=UsgMd_0_Sleep; &
+0x1=UsgMd_1_Standby;&
+0x6=UsgMd_6_XOTA
+2. UsgMdV=Valid
+3. VehMd!=0x3=VehMd_3_TRANSPORT
+VehMdV=Valid
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtCtrlCmmntnTyp=0x1=CAN
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+8.配置需求:ExtrLghtStsCmmntnTyp=0x1=CAN
+备注:
+a.需求中同时存在SOA和CAN的,按照配置字开发
+b.需求中只存在一种通讯类型的,按照该通讯类型开发
+c.PPV阶段及以后按照SOA通讯方式开发:

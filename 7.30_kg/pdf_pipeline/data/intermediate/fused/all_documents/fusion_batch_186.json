@@ -1,0 +1,582 @@
+[
+  {
+    "head": "ExternLightSubSystem",
+    "relation": "output_to",
+    "tail": "62 of 114",
+    "sources": [
+      "outer_lamp_ssts_0397"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExternLightSubSystem",
+    "relation": "input_from",
+    "tail": "92 of 114",
+    "sources": [
+      "outer_lamp_ssts_0404"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IMMotor",
+    "relation": "controls",
+    "tail": "ExternLightSubSystem",
+    "sources": [
+      "outer_lamp_ssts_0402"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightDrvMdl",
+    "relation": "outputs_signal",
+    "tail": "MainBeamLightState",
+    "sources": [
+      "outer_lamp_ssts_0398"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightDrvMdl",
+    "relation": "has_error_state",
+    "tail": "MainBeamLightSta = 2 (Error), InstanceID = 2",
+    "sources": [
+      "outer_lamp_ssts_0398"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightCtrlMdl",
+    "relation": "requires_min_frames",
+    "tail": "MainBeamLightDrvMdl outputs_signal MainBeamLightState",
+    "sources": [
+      "outer_lamp_ssts_0398"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC_B105C_12",
+    "relation": "triggered_by",
+    "tail": "MainBeamLightDrvMdl outputs_signal MainBeamLightState AND MainBeamLightSta = 2 (Error)",
+    "sources": [
+      "outer_lamp_ssts_0398"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExitCondition",
+    "relation": "triggered_by",
+    "tail": "short_circuit_recovery_detected",
+    "sources": [
+      "outer_lamp_ssts_0398"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLghtShortCircuitHandling",
+    "relation": "requires",
+    "tail": "RearFogLghtOutputActive",
+    "sources": [
+      "outer_lamp_ssts_0399"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLghtShortCircuitHandling",
+    "relation": "triggered_by",
+    "tail": "RearFogLghtShortToPowerDetected",
+    "sources": [
+      "outer_lamp_ssts_0399"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLghtDrvMdl",
+    "relation": "disables_output",
+    "tail": "RearFogLghtShortCircuitHandling",
+    "sources": [
+      "outer_lamp_ssts_0399"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLghtDrvMdl",
+    "relation": "outputs_signal",
+    "tail": "RearFogPositionLightStatus",
+    "sources": [
+      "outer_lamp_ssts_0399"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogPositionLightSta",
+    "relation": "set_to",
+    "tail": "0 (Off)",
+    "sources": [
+      "outer_lamp_ssts_0399"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC_B1053_12",
+    "relation": "triggered_by",
+    "tail": "RearFogLghtShortCircuitHandling",
+    "sources": [
+      "outer_lamp_ssts_0399"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExitCondition",
+    "relation": "reset_by",
+    "tail": "RearFogLghtShortCircuitHandling",
+    "sources": [
+      "outer_lamp_ssts_0399"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightBrkLghtShortCircuitDiagnosis",
+    "relation": "triggered_by",
+    "tail": "RightBrkLghtShortToPowerDetected",
+    "sources": [
+      "outer_lamp_ssts_0400"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "disables_output",
+    "tail": "RightBrkLghtOutputActive",
+    "sources": [
+      "outer_lamp_ssts_0400"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtCtrlMdl",
+    "relation": "outputs_error_status",
+    "tail": "BrkLghtDrvMdl",
+    "sources": [
+      "outer_lamp_ssts_0400"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtCtrlMdl",
+    "relation": "sends_min_frames",
+    "tail": "at_least_three_frames",
+    "sources": [
+      "outer_lamp_ssts_0400"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLghtOutputDriven",
+    "relation": "triggered_by",
+    "tail": "RearFogLghtCtrlMdl sends ControlRearFogPositionLight AND RearFogPositionLightReq == 1 (On)",
+    "sources": [
+      "outer_lamp_ssts_0401"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLghtDrvMdl",
+    "relation": "drives_output",
+    "tail": "FogLamp_HSD",
+    "sources": [
+      "outer_lamp_ssts_0401"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "set_to",
+    "tail": "0x1 (FLDircnLghtSts_1_On)",
+    "sources": [
+      "outer_lamp_ssts_0403"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "set_to",
+    "tail": "0x0 (FLDircnLghtSts_0_Off)",
+    "sources": [
+      "outer_lamp_ssts_0403"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightState",
+    "relation": "set_to",
+    "tail": "0x2 (Error)",
+    "sources": [
+      "outer_lamp_ssts_0403"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightState",
+    "relation": "set_to",
+    "tail": "0x3 (Unknown)",
+    "sources": [
+      "outer_lamp_ssts_0403"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightControl.DirectionLightCtReq",
+    "relation": "input_from",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_ssts_0403"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightControl.DirectionLightCtReq",
+    "relation": "output_to",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_ssts_0403"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "feedback_from",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_ssts_0403"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "subscribed_from",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_ssts_0403"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExceptionHandling",
+    "relation": "triggered_by",
+    "tail": "exception_type_detected",
+    "sources": [
+      "outer_lamp_ssts_0405"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExceptionHandling",
+    "relation": "initiated_by",
+    "tail": "predefined_exception_condition_met",
+    "sources": [
+      "outer_lamp_ssts_0405"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExceptionHandling",
+    "relation": "produces_output",
+    "tail": "executes_predefined_response_measures",
+    "sources": [
+      "outer_lamp_ssts_0405"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExceptionHandlingMode",
+    "relation": "depends_on",
+    "tail": "exception_type_and_severity",
+    "sources": [
+      "outer_lamp_ssts_0405"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwPreprocMdl",
+    "relation": "depends_on",
+    "tail": "BrkLghtSwitch",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtCtrlMdl",
+    "relation": "depends_on",
+    "tail": "BrkLghtSwPreprocMdl",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl",
+    "relation": "depends_on",
+    "tail": "BrkLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILightSwPreprocMdl",
+    "relation": "depends_on",
+    "tail": "DILightSwitch",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILightCtrlMdl",
+    "relation": "depends_on",
+    "tail": "DILightSwPreprocMdl",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDILightDrvMdl",
+    "relation": "depends_on",
+    "tail": "DILightCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDILightDrvMdl",
+    "relation": "depends_on",
+    "tail": "DILightCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDILightDrvMdl",
+    "relation": "depends_on",
+    "tail": "DILightCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDILightDrvMdl",
+    "relation": "depends_on",
+    "tail": "DILightCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtSwPreprocMdl",
+    "relation": "depends_on",
+    "tail": "HzrdLghtSwitch",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtCtrlMdl",
+    "relation": "depends_on",
+    "tail": "HzrdLghtSwPreprocMdl",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowBeamCtrlMdl",
+    "relation": "depends_on",
+    "tail": "LowBeamSwitch",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowBeamDrvMdl",
+    "relation": "depends_on",
+    "tail": "LowBeamCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0406"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILightStopDriving",
+    "relation": "requires",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILightStopDriving",
+    "relation": "triggered_by",
+    "tail": "DILightCtrlMdl sends DirectionLightCtrlReq == 0 (Off), InstanceID = 1",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILightStopDriving",
+    "relation": "results_in",
+    "tail": "FLDILightDrvMdl stops driving DILamp_LH_HSD",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILightSendStatus",
+    "relation": "requires",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILightSendStatus",
+    "relation": "triggered_by",
+    "tail": "DILightCtrlMdl sends DirectionLightCtrlReq == 0 (Off), InstanceID = 1",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILightSendStatus",
+    "relation": "results_in",
+    "tail": "FLDILightDrvMdl sends DirectionLightSta == 0 (Off), InstanceID = 1 to DILightCtrlMdl, at_least_three_frames",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILightExitControl",
+    "relation": "triggered_by",
+    "tail": "DILightCtrlMdl sends DirectionLightCtrlReq == 1 (On), InstanceID = 1",
+    "sources": [
+      "outer_lamp_ssts_0407"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtActivation",
+    "relation": "requires",
+    "tail": "HzrdLghtSwSOAEnPrm == 1 (Enable)",
+    "sources": [
+      "outer_lamp_ssts_0408"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtSwitchStatusSignal",
+    "relation": "triggered_by",
+    "tail": "user_presses_hzrd_switch_grounding",
+    "sources": [
+      "outer_lamp_ssts_0408"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtSwitchStatusSignal",
+    "relation": "depends_on",
+    "tail": "HzrdLghtSwMdl",
+    "sources": [
+      "outer_lamp_ssts_0408"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtSwitchStatusSignal",
+    "relation": "outputs",
+    "tail": "HazardLightSwitchStatus",
+    "sources": [
+      "outer_lamp_ssts_0408"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HzrdLghtSwitchStatusSignal",
+    "relation": "inputs",
+    "tail": "HazardLightSwitchSta = 1 (Active)",
+    "sources": [
+      "outer_lamp_ssts_0408"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

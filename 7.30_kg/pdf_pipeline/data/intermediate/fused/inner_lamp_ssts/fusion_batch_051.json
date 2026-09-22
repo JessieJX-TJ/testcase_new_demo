@@ -1,0 +1,372 @@
+[
+  {
+    "head": "左区域前后门氛围灯驱动控制",
+    "relation": "前提条件",
+    "tail": "LHAmbtLamp1ActMd模块被激活",
+    "sources": [
+      "inner_lamp_ssts_0560"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrthngCmd_1",
+    "relation": "触发条件",
+    "tail": "Code Value ≠ 0x0（触发周期闪烁）",
+    "sources": [
+      "inner_lamp_ssts_0561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrthngCmd_1",
+    "relation": "前提条件",
+    "tail": "Code Value = 0x0（停止呼吸）",
+    "sources": [
+      "inner_lamp_ssts_0561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrthngCmd_1",
+    "relation": "前提条件",
+    "tail": "Code Value ∈ {0x1, 0x2, ..., 0xFF}（切换呼吸模式）",
+    "sources": [
+      "inner_lamp_ssts_0561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrthngCmd_1",
+    "relation": "输出为",
+    "tail": "原始呼吸模式值（保持当前模式，除非被更新）",
+    "sources": [
+      "inner_lamp_ssts_0561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrthngCmd_1",
+    "relation": "依赖于",
+    "tail": "Period参数",
+    "sources": [
+      "inner_lamp_ssts_0561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrthngCmd_1",
+    "relation": "前提条件",
+    "tail": "灯头处于周期闪烁状态时，忽略亮度信号",
+    "sources": [
+      "inner_lamp_ssts_0561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampFadSpdCmd_1",
+    "relation": "触发条件",
+    "tail": "Input from LIN",
+    "sources": [
+      "inner_lamp_ssts_0561"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主驾激光迎宾灯",
+    "relation": "触发条件",
+    "tail": "DrvrDoorFlorLampCtrlCmd = 0x1 (Open)",
+    "sources": [
+      "inner_lamp_ssts_0562"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主驾激光迎宾灯",
+    "relation": "前提条件",
+    "tail": "无短路/开路故障",
+    "sources": [
+      "inner_lamp_ssts_0562"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯、车身控制、电动尾门等功能",
+    "relation": "前提条件",
+    "tail": "供电电压正常（9 V ≤ V ≤ 16 V）",
+    "sources": [
+      "inner_lamp_ssts_0563"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯、车身控制、电动尾门等功能",
+    "relation": "抑制条件",
+    "tail": "供电电压异常：低压（V < 6 V）、欠压（6 V ≤ V < 9 V）、过压（16 V < V ≤ 18 V）或高压（V > 18 V）",
+    "sources": [
+      "inner_lamp_ssts_0563"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampFadSpdCmd_l",
+    "relation": "前提条件",
+    "tail": "灯头颜色/亮度切换所需时间由该信号决定",
+    "sources": [
+      "inner_lamp_ssts_0564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampFadSpdCmd_l",
+    "relation": "输入为",
+    "tail": "0x0 → Spd0（默认渐变速度0）",
+    "sources": [
+      "inner_lamp_ssts_0564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampFadSpdCmd_l",
+    "relation": "输入为",
+    "tail": "0x1 → Spd1（默认渐变速度1）",
+    "sources": [
+      "inner_lamp_ssts_0564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampFadSpdCmd_l",
+    "relation": "输入为",
+    "tail": "0x2 → Spd2（默认渐变速度2，能力预留）",
+    "sources": [
+      "inner_lamp_ssts_0564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampFadSpdCmd_l",
+    "relation": "输入为",
+    "tail": "0x3 → Spd3（默认渐变速度3）",
+    "sources": [
+      "inner_lamp_ssts_0564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampBrthngCmd_l",
+    "relation": "触发条件",
+    "tail": "指令值 = Rate0（对应周期闪烁）",
+    "sources": [
+      "inner_lamp_ssts_0564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampBrthngCmd_l",
+    "relation": "抑制条件",
+    "tail": "灯头颜色/亮度切换进行中（呼吸与渐变互斥）",
+    "sources": [
+      "inner_lamp_ssts_0564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampBrthngCmd_l",
+    "relation": "触发条件",
+    "tail": "指令值 = 0x0（立即停止呼吸）",
+    "sources": [
+      "inner_lamp_ssts_0564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampBrthngCmd_l",
+    "relation": "抑制条件",
+    "tail": "指令值 = 0x0 时，禁止执行周期闪烁",
+    "sources": [
+      "inner_lamp_ssts_0564"
+    ],
+    "conflict": true,
+    "conflict_note": "与'触发条件：指令值 = Rate0（周期闪烁）'构成逻辑互斥；二者共存于同一信号，属设计级互斥约束，非数据错误"
+  },
+  {
+    "head": "DoorRR5LampFadSpdCmd_l",
+    "relation": "超时约束",
+    "tail": "Spd0 → 切换时间默认2000 ms",
+    "sources": [
+      "inner_lamp_ssts_0564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampFadSpdCmd_l",
+    "relation": "超时约束",
+    "tail": "Spd1 → 切换时间默认300 ms",
+    "sources": [
+      "inner_lamp_ssts_0564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR5LampFadSpdCmd_l",
+    "relation": "超时约束",
+    "tail": "Spd2 → 切换时间默认100 ms（能力预留）",
+    "sources": [
+      "inner_lamp_ssts_0564"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "背光灯驱动控制（LHZCU）",
+    "relation": "前提条件",
+    "tail": "背光灯无短路/开路故障",
+    "sources": [
+      "inner_lamp_ssts_0565"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "内灯子系统（Interior Lighting Sub System）",
+    "relation": "控制对象",
+    "tail": "智己汽车 Z-ONE-3.0 平台",
+    "sources": [
+      "inner_lamp_ssts_0566"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统功能",
+    "relation": "前提条件",
+    "tail": "供电电压异常：低压（V < 6 V）、欠压（6 V ≤ V < 9 V）、过压（16 V < V ≤ 18 V）或高压（V > 18 V）",
+    "sources": [
+      "inner_lamp_ssts_0567"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "功能或信号保持",
+    "relation": "前提条件",
+    "tail": "保持源为NA 或 保持原因为NA 或 备注为NA",
+    "sources": [
+      "inner_lamp_ssts_0568"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数验证",
+    "relation": "前提条件",
+    "tail": "配置项（Item）、描述（Description）、参数范围（Range）、定义（Conversion）、默认值（Default）均需明确且符合设计要求",
+    "sources": [
+      "inner_lamp_ssts_0570"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "速度等级为柔和-10（PWM3 0%）",
+    "relation": "输出为",
+    "tail": "速度1响应时间：0.75 s；速度2响应时间：3 s；速度3响应状态：瞬变",
+    "sources": [
+      "inner_lamp_ssts_0571"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "速度等级为标准-20（PWM6 0%）",
+    "relation": "输出为",
+    "tail": "速度1响应时间：0.75 s；速度2响应时间：3 s；速度3响应状态：瞬变",
+    "sources": [
+      "inner_lamp_ssts_0571"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "速度等级为明亮-30（PWM9 0%）",
+    "relation": "输出为",
+    "tail": "速度1响应时间：0.75 s；速度2响应时间：3 s；速度3响应状态：瞬变",
+    "sources": [
+      "inner_lamp_ssts_0571"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "说明列",
+    "relation": "依赖于",
+    "tail": "速度1（单位：0.025 s/档）；速度2（单位：0.1 s/档）",
+    "sources": [
+      "inner_lamp_ssts_0571"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智己汽车 Z-ONE-3.0 平台内灯子系统",
+    "relation": "包含子功能",
+    "tail": "智己汽车 Z-ONE-3.0 平台",
+    "sources": [
+      "inner_lamp_ssts_0572"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLDimSpd_1 / MapLampFRDimSpd_1 / MapLampRLDimSpd_1 / MapLampRRDimSpd_1",
+    "relation": "触发条件",
+    "tail": "MapLampXXDimSpd_1 输入 = 0x2 → 输出速度3（瞬变）",
+    "sources": [
+      "inner_lamp_ssts_0574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLDimSpd_1 / MapLampFRDimSpd_1 / MapLampRLDimSpd_1 / MapLampRRDimSpd_1",
+    "relation": "触发条件",
+    "tail": "MapLampXXDimSpd_1 输入 = 0x0 → 输出速度1（手动，快）",
+    "sources": [
+      "inner_lamp_ssts_0574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLSts_1 / MapLampFRSts_1",
+    "relation": "触发条件",
+    "tail": "MapLampXXSts_1 输入 = 0x1E → 输出Level_30",
+    "sources": [
+      "inner_lamp_ssts_0574"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

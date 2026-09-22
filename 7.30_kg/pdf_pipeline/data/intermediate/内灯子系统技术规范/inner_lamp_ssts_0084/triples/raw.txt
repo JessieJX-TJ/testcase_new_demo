@@ -1,0 +1,84 @@
+```json
+[
+  {
+    "head": "Ambient Lamp Color Change Request is Processed",
+    "relation": "触发条件",
+    "tail": "接收到氛围灯本地控制模块的颜色变化请求信号 CnsoLHALampColorCmd_1 != 0x00",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": [
+      "CnsoLHALampColorCmd_1",
+      "0x00"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Maintains Current Color",
+    "relation": "退出条件",
+    "tail": "接收到氛围灯本地控制模块的颜色变化请求信号 CnsoLHALampColorCmd_1 = 0x00 或者未定义颜色号",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": [
+      "CnsoLHALampColorCmd_1",
+      "0x00",
+      "未定义颜色号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp is Turned Off",
+    "relation": "触发条件",
+    "tail": "接收到氛围灯本地控制模块的请求信号 CnsoLHALampOnOff_1 = 0x0",
+    "triple_type": "IF-THEN规则",
+    "evidence_terms": [
+      "CnsoLHALampOnOff_1",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp is Turned Off",
+    "relation": "故障响应",
+    "tail": "氛围灯模块出现过压、欠压故障",
+    "triple_type": "故障响应规则",
+    "evidence_terms": [
+      "过压",
+      "欠压",
+      "故障"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp is Turned Off",
+    "relation": "超时约束",
+    "tail": "超过一定时间（默认6s）未接收到ZCU的LIN信号",
+    "triple_type": "超时规则",
+    "evidence_terms": [
+      "ZCU_LIN",
+      "6s"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp State Maintained",
+    "relation": "故障响应",
+    "tail": "当氛围灯颜色值 CnsoLHALampColorCmd_1 异常",
+    "triple_type": "故障响应规则",
+    "evidence_terms": [
+      "CnsoLHALampColorCmd_1",
+      "异常"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "PWM Driving Signal is Generated",
+    "relation": "输出为",
+    "tail": "[氛围灯驱动控制模块]按照色坐标切换对应颜色,并查表对应色值的PWM驱动氛围灯切换对应颜色",
+    "triple_type": "输入输出关系",
+    "evidence_terms": [
+      "PWM",
+      "色坐标",
+      "查找表"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

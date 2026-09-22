@@ -1,0 +1,89 @@
+```json
+[
+  {
+    "head": "近光灯和位置灯点亮",
+    "relation": "触发条件",
+    "tail": "ICB将服务接口或控制信号转换成灯控CAN信号，并控制近光灯和位置灯点亮",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "灯控CAN信号",
+      "近光灯",
+      "位置灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU发送近光灯请求状态",
+    "relation": "触发条件",
+    "tail": "[外灯控制组合服务ICB]调用接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "外灯控制组合服务ICB",
+      "接口调用"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位灯和近光灯关闭",
+    "relation": "抑制条件",
+    "tail": "ExteriorLightSwitchProcess.CombLtFucProStatus.CombLtFucProSta = 0x0 = ALL OFF || 0x3 = SidePositionAndDippedBeam OFF",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "CombLtFucProStatus",
+      "ALL OFF",
+      "SidePositionAndDippedBeam OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯请求状态为ON",
+    "relation": "输入为",
+    "tail": "{ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts} = 0x1 = ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightControl",
+      "DippedBeamLightRequestStatus",
+      "DippedBeamLightReqSts",
+      "ON"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "组合灯光请求为近光灯",
+    "relation": "前提条件",
+    "tail": "当组合灯光请求为近光灯",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "组合灯光请求",
+      "近光灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯和位置灯点亮",
+    "relation": "依赖于",
+    "tail": "组合灯光请求为近光灯",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "组合灯光请求",
+      "近光灯",
+      "近光灯和位置灯点亮"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU已判断关闭位置灯",
+    "relation": "前提条件",
+    "tail": "LHZCU已判断关闭位置灯",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "关闭位置灯"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

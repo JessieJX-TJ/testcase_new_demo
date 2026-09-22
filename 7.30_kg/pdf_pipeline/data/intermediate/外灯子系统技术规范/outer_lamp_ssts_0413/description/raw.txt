@@ -1,0 +1,71 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "远光灯开关短路到地故障诊断与处理逻辑",
+  "row_semantics": "表格定义了在特定前置条件下，当远光灯开关发生短路到地故障时，系统应执行的诊断和处理动作，以及退出条件。",
+  "column_semantics": {
+    "1": "前置条件：系统配置字 MainBeamLightSwSOAEnPrm 必须为 1 (Enable)。",
+    "2": "触发条件：远光灯开关发生短路到地故障。",
+    "3": "执行动作：系统持续发送主光灯开关状态信号，并置位 DTC B1077-11 故障码。",
+    "4": "退出条件：远光灯开关恢复正常（非短路到地）"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightSwSOAEnPrm",
+      "type": "parameter",
+      "description": "主光灯开关超限保护使能参数，值为 1 表示启用。"
+    },
+    {
+      "name": "DTC B1077-11",
+      "type": "fault_code",
+      "description": "诊断故障代码，表示主光灯开关短路到地故障。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MainBeamLightSwSOAEnPrm == 1",
+      "description": "系统必须启用主光灯开关超限保护功能。"
+    },
+    {
+      "condition": "远光灯开关短路到地",
+      "description": "触发故障诊断的物理条件。"
+    },
+    {
+      "condition": "远光灯开关非短路到地",
+      "description": "退出故障诊断模式的条件。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "MainBeamLightSwitchStatus",
+      "description": "主光灯开关状态信号，包含错误信息（0x2 Error）。"
+    },
+    {
+      "signal": "MainBeamLightCtrlMdl",
+      "description": "主光灯控制模块，用于接收并处理开关状态信号。"
+    },
+    {
+      "signal": "DTC B1077-11",
+      "description": "置位的故障代码，用于记录故障事件。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "MainBeamLightSwShortToGround",
+      "description": "主光灯开关短路到地故障。",
+      "detection_method": "通过检测 MainBeamLightSwSOAEnPrm 参数和开关状态判断。",
+      "action": "持续发送错误状态信号至 MainBeamLightCtrlMdl，并置位 DTC B1077-11。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧 MainBeamLightSwitchStatus 信号。",
+      "description": "确保系统能够稳定检测并确认故障状态。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了远光灯开关短路到地故障的诊断逻辑，可用于验证整车电子电器系统在该故障情况下的响应行为，包括信号发送、故障码置位及退出条件。",
+  "uncertain_points": []
+}
+```

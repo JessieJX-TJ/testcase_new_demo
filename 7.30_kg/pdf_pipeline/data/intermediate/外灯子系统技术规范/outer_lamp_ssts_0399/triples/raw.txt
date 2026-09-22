@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "后雾灯电路短路故障处理",
+    "relation": "前提条件",
+    "tail": "后雾灯处于输出状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["前置条件", "1. 后雾灯处于输出状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯电路短路故障处理",
+    "relation": "触发条件",
+    "tail": "检测到后雾灯短路到电源",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["触发条件", "检测到后雾灯短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【RearFogLghtDrvMdl】停止驱动后雾灯输出 (FogLamp_HSD)",
+    "relation": "依赖于",
+    "tail": "后雾灯电路短路故障处理",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "1. 【RearFogLghtDrvMdl】停止驱动后雾灯输出 (FogLamp_HSD)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【RearFogLghtDrvMdl】持续发送 RearFogPositionLightStatus",
+    "relation": "依赖于",
+    "tail": "后雾灯电路短路故障处理",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "2. 【RearFogLghtDrvMdl】持续发送 RearFogPositionLightStatus."],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RearFogPositionLightSta=0 (Off)",
+    "relation": "输入为",
+    "tail": "【RearFogLghtDrvMdl】持续发送 RearFogPositionLightStatus",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "RearFogPositionLightSta=0 (Off)至【RearFogLghtCtrlMdl】"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "置位 DTC B1053 12",
+    "relation": "故障响应",
+    "tail": "后雾灯电路短路故障处理",
+    "triple_type": "故障响应",
+    "evidence_terms": ["执行动作", "3. 置位 DTC B1053 12"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "退出条件",
+    "relation": "复位条件",
+    "tail": "后雾灯电路短路故障处理",
+    "triple_type": "退出条件",
+    "evidence_terms": ["退出条件", "检测到短路恢复"],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,63 @@
+{
+  "table_type": "fault_table",
+  "topic": "The Passenger Door Floor Lamp Control Circuit Fault Detection",
+  "row_semantics": "Each row represents a specific fault condition related to the passenger door floor lamp control circuit.",
+  "column_semantics": {
+    "1": "Fault ID or sequence number",
+    "2": "TBD (To Be Determined) - likely a placeholder for future use or internal reference",
+    "3": "Description of the fault condition",
+    "4": "Conditions that must be met for the fault to be triggered",
+    "5": "Resulting electrical characteristic or threshold condition"
+  },
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "Passenger Door Floor Lamp Control Circuit",
+      "type": "controller_module",
+      "description": "The electronic circuit responsible for controlling the floor lamp in the passenger door area."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Laser Welcome Light Driver Activation State",
+      "description": "The state where the laser welcome light driver is activated, indicating the system is attempting to illuminate the floor lamp."
+    },
+    {
+      "name": "Driving Current Threshold",
+      "description": "A predefined current value used as a reference to determine if the driving current is within acceptable limits."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Current RMS Value",
+      "description": "The root mean square value of the current flowing through the circuit, used to assess whether it exceeds or falls below the threshold."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Circuit Short to Battery",
+      "description": "A fault condition where the circuit is shorted directly to the battery, causing excessive current flow."
+    },
+    {
+      "name": "Circuit Short to Ground",
+      "description": "A fault condition where the circuit is shorted to ground, causing abnormal current behavior."
+    },
+    {
+      "name": "Circuit Open",
+      "description": "A fault condition where the circuit is open or disconnected, preventing normal current flow."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "Duration",
+      "value": "100ms",
+      "description": "The fault condition must persist for at least 100 milliseconds to be considered valid."
+    }
+  ],
+  "engineering_interpretation": "This table defines three distinct fault conditions for the passenger door floor lamp control circuit, specifying the activation state of the laser welcome light driver, the driving current threshold, and the resulting current RMS value. It is used to validate the circuit's behavior under various fault scenarios, ensuring proper detection and response by the vehicle's diagnostic system.",
+  "uncertain_points": [
+    "The exact meaning of 'TBD' in column 2 is not specified.",
+    "The specific threshold values for '(TBD) A' are not provided."
+  ]
+}

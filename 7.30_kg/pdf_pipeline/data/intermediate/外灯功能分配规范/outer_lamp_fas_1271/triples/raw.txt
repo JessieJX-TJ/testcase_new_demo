@@ -1,0 +1,72 @@
+```json
+[
+  {
+    "head": "拖挂车倒车灯开启",
+    "relation": "触发条件",
+    "tail": "LHZCU发送的外灯控制信号为倒车灯开启 (ExteriorLightSwitchProcess.ReverseLightFucProStatus.ReverseLghtFucProsSta=0x1=ON)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ExteriorLightSwitchProcess",
+      "ReverseLightFucProStatus",
+      "ReverseLghtFucProsSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车倒车灯关闭",
+    "relation": "触发条件",
+    "tail": "LHZCU发送的外灯控制信号为倒车灯关闭 (ExteriorLightSwitchProcess.ReverseLightFucProStatus.ReverseLghtFucProsSta=0x0=OFF)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ExteriorLightSwitchProcess",
+      "ReverseLightFucProStatus",
+      "ReverseLghtFucProsSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车倒车灯开启/关闭",
+    "relation": "前提条件",
+    "tail": "车辆具备拖车模式功能 (InsdFnCfgVehDragMd=0x1)",
+    "triple_type": "功能前置条件",
+    "evidence_terms": [
+      "InsdFnCfgVehDragMd"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车倒车灯开启/关闭",
+    "relation": "前提条件",
+    "tail": "拖挂模式开启 (VehDragMdSts=0x1=VehDragMdSts_1_On)",
+    "triple_type": "功能前置条件",
+    "evidence_terms": [
+      "VehDragMdSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车倒车灯开启/关闭",
+    "relation": "依赖于",
+    "tail": "LHZCU发送的外灯控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ExteriorLightSwitchProcess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB判断前置条件满足",
+    "relation": "执行动作",
+    "tail": "根据接收到的LHZCU发送的倒车灯开启或关闭请求",
+    "triple_type": "执行动作",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

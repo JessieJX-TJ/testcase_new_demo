@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能分配规范",
+  "row_semantics": "表格的每一行代表一个与外灯控制相关的服务或接口定义，详细描述了其功能、参数和调用方式。",
+  "column_semantics": "表格的列用于组织信息，包括服务名称、调用方（SOA）、依赖模块（如ICB、LHZCU）、以及具体的参数定义和说明。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem.ControlCombinedLight",
+      "type": "service",
+      "description": "组合近光灯控制服务，用于请求近光灯点亮或熄灭。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.CombLghtFucProCtrl",
+      "type": "service",
+      "description": "组合近光灯开关状态获取服务，用于请求近光灯的当前开关状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMdV",
+      "type": "input_signal",
+      "description": "用户模式值，指示服务/硬线的有效性。",
+      "values": [
+        {
+          "value": "0x0",
+          "description": "无效（Invalid）"
+        },
+        {
+          "value": "0x1",
+          "description": "有效（Valid）"
+        }
+      ]
+    },
+    {
+      "name": "CombinedLightReq",
+      "type": "parameter",
+      "description": "组合近光灯请求参数，指定需要执行的操作。",
+      "values": [
+        {
+          "value": "0x0",
+          "description": "关闭（OFF）"
+        },
+        {
+          "value": "0x1",
+          "description": "侧位灯开启（SidePositionLight ON）"
+        },
+        {
+          "value": "0x2",
+          "description": "近光灯开启（DippedBeamLight ON）"
+        },
+        {
+          "value": "0x3",
+          "description": "自动模式（AUTO）"
+        }
+      ]
+    },
+    {
+      "name": "CombLghtFucProCtrlReq",
+      "type": "parameter",
+      "description": "组合近光灯开关状态请求参数，当前仅定义了关闭状态。",
+      "values": [
+        {
+          "value": "0x0",
+          "description": "关闭（OFF）"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯控制系统中两个核心服务的接口规范，包括组合近光灯的控制请求和服务调用方式，以及近光灯开关状态的查询接口，可用于验证外灯控制逻辑的正确性和接口调用的合规性。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,89 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能分配规范",
+  "row_semantics": "表格按外灯的不同转向灯控制功能进行分组，每一行代表一个具体的转向灯控制功能及其相关的硬件和软件信号。",
+  "column_semantics": "表格的列定义了每个转向灯控制功能的输出类型、信号来源（如CANFD或内部信号）、以及涉及的控制器/模块。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "右后转向灯驱动控制",
+      "type": "function",
+      "description": "控制车辆右侧后部转向灯的硬件驱动"
+    },
+    {
+      "name": "FLDircnLghtCtrl_HW",
+      "type": "function",
+      "description": "左前转向灯硬件控制逻辑"
+    },
+    {
+      "name": "FRDircnLghtCtrl_HW",
+      "type": "function",
+      "description": "右前转向灯硬件控制逻辑"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW",
+      "type": "function",
+      "description": "左后转向灯硬件控制逻辑"
+    },
+    {
+      "name": "RRDircnLghtCtrl_HW",
+      "type": "function",
+      "description": "右后转向灯硬件控制逻辑"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "TailLpAsmbA_RH",
+      "type": "output_signal",
+      "description": "右后尾灯组件的输出信号"
+    },
+    {
+      "name": "FLDircnLghtCtrl_HW_0_Off",
+      "type": "output_signal",
+      "description": "左前转向灯HW控制信号，表示关闭状态"
+    },
+    {
+      "name": "FLDircnLghtCtrl_HW_1_on",
+      "type": "output_signal",
+      "description": "左前转向灯HW控制信号，表示开启状态"
+    },
+    {
+      "name": "FRDircnLghtCtrl_HW_0_Off",
+      "type": "output_signal",
+      "description": "右前转向灯HW控制信号，表示关闭状态"
+    },
+    {
+      "name": "FRDircnLghtCtrl_HW_1_on",
+      "type": "output_signal",
+      "description": "右前转向灯HW控制信号，表示开启状态"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW_0_Off",
+      "type": "output_signal",
+      "description": "左后转向灯HW控制信号，表示关闭状态"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW_1_on",
+      "type": "output_signal",
+      "description": "左后转向灯HW控制信号，表示开启状态"
+    },
+    {
+      "name": "RRDircnLghtCtrl_HW_0_Off",
+      "type": "output_signal",
+      "description": "右后转向灯HW控制信号，表示关闭状态"
+    },
+    {
+      "name": "RRDircnLghtCtrl_HW_1_on",
+      "type": "output_signal",
+      "description": "右后转向灯HW控制信号，表示开启状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了车辆外灯（特别是转向灯）的硬件控制逻辑，包括不同转向灯的控制信号输出类型（CANFD或内部信号）、信号值含义（0x0=Off, 0x1=on）以及涉及的控制器模块。可用于验证转向灯控制信号的正确性、信号与硬件驱动的对应关系，以及各控制器在转向灯控制中的职责分配。",
+  "uncertain_points": []
+}
+```

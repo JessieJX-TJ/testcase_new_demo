@@ -1,0 +1,63 @@
+{
+  "table_type": "logic_table",
+  "topic": "危险报警灯控制逻辑",
+  "row_semantics": "描述危险报警灯功能的触发条件、执行动作、退出条件及异常处理",
+  "column_semantics": {
+    "0": "条件/动作描述类别",
+    "1": "具体条件或动作描述"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "HazardLightSwitchStatus",
+      "type": "output_signal",
+      "description": "危险报警灯开关状态信号"
+    },
+    {
+      "name": "HazardLightSwitchSta",
+      "type": "system_state",
+      "description": "危险报警灯开关状态变量，值为1表示激活"
+    },
+    {
+      "name": "HzrdLghtSwMdl",
+      "type": "input_signal",
+      "description": "危险报警灯开关模块"
+    },
+    {
+      "name": "HzrdLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "危险报警灯控制模块"
+    },
+    {
+      "name": "HazardLightSwSOAEnPrm",
+      "type": "parameter",
+      "description": "危险报警灯开关安全防护使能参数"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字 HZrdLghtSwSOAEnPrm == 1 (Enable)"
+    },
+    {
+      "condition": "触发条件",
+      "description": "用户手动按下危险报警灯开关，开关接地"
+    },
+    {
+      "condition": "退出条件",
+      "description": "开关悬空"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "HzrdLghtSwMdl",
+      "action": "持续发送 HazardLightSwitchStatus",
+      "details": "HazardLightSwitchSta = 1 (Active) 至 HzrdLghtCtrlMdl，至少发送三帧"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了危险报警灯功能的控制逻辑，可用于验证当危险报警灯开关被正确操作时，系统是否能够按照预设规则持续发送正确的开关状态信号，并在开关断开时正确退出该模式。",
+  "uncertain_points": []
+}

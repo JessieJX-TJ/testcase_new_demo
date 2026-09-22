@@ -1,0 +1,114 @@
+```json
+{
+  "table_type": "other",
+  "topic": "外灯组合服务 (ICB) 订阅接口的技术规范与要求",
+  "row_semantics": "表格的每一行代表一个具体的工程需求或功能描述，涵盖了订阅接口的定义、同步性要求、重发机制以及状态主动获取的规则。",
+  "column_semantics": "表格包含两列：第一列是编号和标题（如 '10、[外灯组合服务 ICB]订阅接口:'），第二列是详细的技术说明和备注内容。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "controller",
+      "description": "外部灯光控制系统，负责管理车辆外部灯光的状态和控制逻辑。"
+    },
+    {
+      "name": "ICB",
+      "type": "module",
+      "description": "Integrated Control Box (集成控制盒)，作为车辆电子系统的核心控制器之一，负责处理和转发各种控制请求和状态反馈。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Local Headlight Zone Control Unit (局部大灯区域控制单元)，可能是一个专门用于控制局部区域灯光的子系统。"
+    },
+    {
+      "name": "S32G",
+      "type": "processor",
+      "description": "NXP S32G 系列处理器，通常用于汽车域控制器中，提供高性能计算能力以支持复杂的控制算法。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DippedBeamLightSts",
+      "type": "input_signal",
+      "description": "近光灯状态信号，指示近光灯当前是否开启（ON）。",
+      "value": "0x1=ON"
+    },
+    {
+      "name": "DipdBeamLghtSts",
+      "type": "output_signal",
+      "description": "近光灯亮起状态信号，表示近光灯的实际点亮状态。",
+      "value": "0x1=ON"
+    },
+    {
+      "name": "DippedBeamLightErrSts",
+      "type": "system_state",
+      "description": "近光灯错误状态信号，指示近光灯是否存在异常。",
+      "value": "0x0=No Error"
+    },
+    {
+      "name": "DipdBeamLghtErrSts",
+      "type": "system_state",
+      "description": "近光灯亮起错误状态信号，指示近光灯点亮过程中是否存在异常。",
+      "value": "0x0=No Error"
+    },
+    {
+      "name": "CombinedLightReq",
+      "type": "input_signal",
+      "description": "组合灯光请求信号，由 ICB 发送，用于请求外部灯光控制系统执行组合灯光操作。",
+      "value": "ExteriorLightControlSystem.ControlCombinedLight.CombinedLightReq"
+    },
+    {
+      "name": "CombinedLightResp",
+      "type": "output_signal",
+      "description": "组合灯光响应信号，表示外部灯光控制系统对组合灯光请求的反馈结果。",
+      "value": "ExteriorLightControlSystem.ControlCombinedLight.CombinedLightResp=0x0=ControlSuccess"
+    },
+    {
+      "name": "Onchange",
+      "type": "mode_name",
+      "description": "一种外灯状态服务模式，当外灯状态发生变化时触发。",
+      "value": "Onchange"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "GetStatus()",
+      "type": "function",
+      "description": "状态获取函数，用于消费端主动查询外灯当前的状态。",
+      "target": "ExteriorLightControlSystem"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "fault_status",
+      "description": "表示系统运行正常，没有检测到任何故障。",
+      "value": "0x0"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步延时",
+      "type": "timing_constraint",
+      "description": "近光灯开启时，左右两侧需保持同步点亮，最大延时不超过 40ms。",
+      "value": "≤40ms"
+    },
+    {
+      "name": "重发周期",
+      "type": "timing_constraint",
+      "description": "ICB 发送组合灯光请求后，若未收到反馈，应尝试按照 ≤50ms 的周期重发最多 3 次。",
+      "value": "≤50ms, max 3 times"
+    },
+    {
+      "name": "状态获取延迟",
+      "type": "timing_constraint",
+      "description": "针对 Onchange 类型的外灯状态服务，消费端在发现订阅或控制请求后的 500ms 内应主动获取状态。",
+      "value": "500ms"
+    }
+  ],
+  "engineering_interpretation": "该表格主要用于验证外灯组合服务 (ICB) 订阅接口的功能正确性、同步性、重发机制以及状态主动获取的及时性和准确性。",
+  "uncertain_points": []
+}
+```

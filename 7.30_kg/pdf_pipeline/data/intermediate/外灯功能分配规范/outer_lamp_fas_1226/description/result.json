@@ -1,0 +1,77 @@
+{
+  "table_type": "logic_table",
+  "topic": "慢行灯关闭控制逻辑",
+  "row_semantics": "表格按功能描述、前置条件、触发条件、执行动作和备注的顺序组织，详细定义了慢行灯关闭的触发逻辑。",
+  "column_semantics": "表格分为两列，左侧为功能描述、前置条件、触发条件、执行动作和备注的标题，右侧为对应的具体内容。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "慢行灯",
+      "type": "功能",
+      "description": "车辆在特定条件下点亮的辅助照明灯，用于提醒周围行人或车辆注意安全。"
+    },
+    {
+      "name": "迎宾光毯灯开关控制模块 LHZCU",
+      "type": "控制器/模块",
+      "description": "负责控制迎宾光毯灯开关的电子控制单元，本表中也涉及其驱动硬线端口 ManoeuvringLamp_HSD 的状态变化。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "慢行灯处于点亮状态",
+      "type": "系统状态",
+      "description": "慢行灯当前处于点亮状态是触发关闭的前提条件。"
+    },
+    {
+      "name": "车速超过 9km/h 超过 1s",
+      "type": "输入信号",
+      "description": "车辆行驶速度超过 9km/h 并持续超过 1 秒，作为触发条件之一。"
+    },
+    {
+      "name": "慢行灯使能开关关闭",
+      "type": "输入信号",
+      "description": "慢行灯的使能开关被关闭，表明驾驶员或系统主动要求关闭慢行灯。"
+    },
+    {
+      "name": "整车下电",
+      "type": "系统状态",
+      "description": "车辆电源完全关闭，导致所有外部灯光熄灭。"
+    },
+    {
+      "name": "整车主档位跳变为 P 档",
+      "type": "输入信号",
+      "description": "车辆从非停车档（如 D、R）切换到 P 档（停车档）。"
+    },
+    {
+      "name": "车辆行驶速度大于等于 20km/h",
+      "type": "输入信号",
+      "description": "车辆行驶速度达到或超过 20km/h，通常表示车辆已进入正常行驶状态。"
+    },
+    {
+      "name": "车辆近光灯/远光灯都关闭",
+      "type": "输入信号",
+      "description": "车辆的近光灯和远光灯均处于关闭状态，可能意味着车辆处于静止或低光照环境下的特殊模式。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ManoeuvringLamp_HSD",
+      "type": "输出信号",
+      "description": "慢行灯的驱动硬线端口，在满足触发条件后，将在 0.8 秒内逐渐熄灭。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "condition": "车速超过 9km/h 超过 1s",
+      "timing": "超过 1 秒"
+    },
+    {
+      "output": "ManoeuvringLamp_HSD",
+      "timing": "0.8 秒内渐灭"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了慢行灯关闭的详细逻辑，可用于验证车辆在不同驾驶场景下（如加速、换挡、下电等）慢行灯是否能够按照预期正确关闭。",
+  "uncertain_points": []
+}

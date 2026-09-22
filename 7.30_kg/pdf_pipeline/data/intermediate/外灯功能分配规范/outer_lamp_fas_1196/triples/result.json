@@ -1,0 +1,181 @@
+[
+  {
+    "head": "RZCU 控制拖车倒车灯点亮或熄灭",
+    "relation": "前提条件",
+    "tail": "前置条件满足",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RZCU",
+      "ReverseLightCtrlReq",
+      "Instance ID=1",
+      "ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1196",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU 控制拖车倒车灯点亮或熄灭",
+    "relation": "前提条件",
+    "tail": "接收到 ReverseLightCtrlReq Instance ID=1 = ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RZCU",
+      "ReverseLightCtrlReq",
+      "Instance ID=1",
+      "ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1196",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "TDM 控制拖车倒车灯点亮或熄灭",
+    "relation": "输入为",
+    "tail": "接收到 TrlrRevsLghtOnReq Instance ID=1 = ON 或 0x0 = TrlrRevsLghtOnReq_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "TDM",
+      "TrlrRevsLghtOnReq",
+      "Instance ID=1",
+      "ON",
+      "OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1196",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU 发送 TrlrRevsLghtOnReq Instance ID=1 = ON",
+    "relation": "触发条件",
+    "tail": "前置条件满足",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RZCU",
+      "ReverseLightCtrlReq",
+      "Instance ID=2",
+      "ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1196",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU 发送 TrlrRevsLghtOnReq Instance ID=1 = ON",
+    "relation": "触发条件",
+    "tail": "接收到 ReverseLightCtrlReq Instance ID=2 = ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RZCU",
+      "ReverseLightCtrlReq",
+      "Instance ID=2",
+      "ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1196",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "TDM 反馈拖车倒车灯状态给 RZCU",
+    "relation": "输出为",
+    "tail": "TrlrRevsLghtSts Instance ID=1 = ON 或 0x0 = TrlrRevsLghtSts_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "TDM",
+      "RZCU",
+      "TrlrRevsLghtSts",
+      "Instance ID=1",
+      "ON",
+      "OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1196",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU 根据 TDM 反馈设置 ReverseLightSta Instance ID=2",
+    "relation": "依赖于",
+    "tail": "接收到的 TDM 反馈 TrlrRevsLghtSts",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "RZCU",
+      "TDM",
+      "TrlrRevsLghtSts",
+      "ReverseLightSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1196",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU 根据 TDM 反馈设置 ReverseLightErrSta Instance ID=0",
+    "relation": "依赖于",
+    "tail": "接收到的 TDM 反馈 TrlrRevsLghtFltSts",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "RZCU",
+      "TDM",
+      "TrlrRevsLghtFltSts",
+      "ReverseLightErrSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1196",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "LHZCU 订阅并透传 ReverseLghtSts Instance ID=1",
+    "relation": "包含子功能",
+    "tail": "ExteriorLightSwitchProcess ReverseLightSta ReverseLghtSts",
+    "triple_type": "包含子功能",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "ExteriorLightSwitchProcess",
+      "ReverseLghtSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1196",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU 转发前车倒车灯故障状态给 TDM",
+    "relation": "前提条件",
+    "tail": "拖车模式下",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RZCU",
+      "TDM",
+      "拖车模式",
+      "RvsgFltSts_1_True"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1196",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU 转发前车倒车灯故障状态给 TDM",
+    "relation": "前提条件",
+    "tail": "当前车倒车灯的状态为故障",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RZCU",
+      "TDM",
+      "拖车模式",
+      "RvsgFltSts_1_True"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1196",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

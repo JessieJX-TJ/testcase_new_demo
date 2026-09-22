@@ -1,0 +1,65 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "危险警报灯激活逻辑",
+  "row_semantics": "表格定义了在特定前置条件下，危险警报灯（Hazard Warning Lamp）自动激活的逻辑规则。",
+  "column_semantics": "表格包含场景描述、前置条件列表以及备注信息。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "危险警报灯 (Hazard Warning Lamp)",
+      "type": "输出信号"
+    },
+    {
+      "name": "碰撞危险 (Collision Risk)",
+      "type": "输入信号"
+    },
+    {
+      "name": "车辆模式 (VehMd)",
+      "type": "系统状态"
+    },
+    {
+      "name": "使用模式 (UsG Md)",
+      "type": "系统状态"
+    },
+    {
+      "name": "通信类型 (Communication Type)",
+      "type": "配置参数"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "碰撞危险存在",
+      "signal": "碰撞危险",
+      "value": "True"
+    },
+    {
+      "condition": "车辆模式为All",
+      "signal": "VehMd",
+      "value": "All"
+    },
+    {
+      "condition": "使用模式为All或Valid",
+      "signal": "UsG Md",
+      "value": "All or Valid"
+    },
+    {
+      "condition": "通信类型配置为SOA或CAN",
+      "signal": "通信类型",
+      "value": "SOA or CAN"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "危险警报灯激活",
+      "signal": "危险警报灯",
+      "state": "Active"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证当车辆检测到碰撞危险时，危险警报灯是否根据预设的车辆模式、使用模式和通信类型正确激活。",
+  "uncertain_points": []
+}
+```

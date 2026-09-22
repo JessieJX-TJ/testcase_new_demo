@@ -1,0 +1,63 @@
+{
+  "table_type": "fault_table",
+  "topic": "整车电子电器系统诊断需求清单，专注于转向灯相关故障的检测与排除条件",
+  "row_semantics": "每行代表一个具体的故障诊断需求，包含故障代码、描述、进入条件和退出条件",
+  "column_semantics": {
+    "名称": "故障代码或诊断需求的唯一标识符",
+    "描述": "对故障现象的简要说明",
+    "进入条件": "触发该诊断流程的条件或信号状态",
+    "退出条件": "停止该诊断流程的条件或信号状态"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B1071_1E",
+      "type": "fault_code",
+      "description": "转向开关阻值超范围"
+    },
+    {
+      "name": "B1071_11",
+      "type": "fault_code",
+      "description": "转向灯开关短路到地"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "检测到未定义的阻值",
+      "description": "进入条件：检测到转向开关阻值不在已知定义范围内",
+      "source": "B1071_1E"
+    },
+    {
+      "name": "检测到已知定义的阻值",
+      "description": "退出条件：检测到转向开关阻值恢复到已知定义范围内",
+      "source": "B1071_1E"
+    },
+    {
+      "name": "开关检测到短路到地",
+      "description": "进入条件：检测到转向灯开关存在短路到地的情况",
+      "source": "B1071_11"
+    },
+    {
+      "name": "检测到未短路到地",
+      "description": "退出条件：检测到转向灯开关不再短路到地",
+      "source": "B1071_11"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "转向开关阻值异常",
+      "code": "B1071_1E",
+      "description": "转向开关阻值超出预设范围"
+    },
+    {
+      "name": "转向灯开关短路",
+      "code": "B1071_11",
+      "description": "转向灯开关与地之间发生短路"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证整车电子系统中转向灯相关故障的诊断逻辑，包括故障的检测条件、持续条件及清除条件，确保系统能够准确识别并处理转向灯电路中的异常情况。",
+  "uncertain_points": []
+}

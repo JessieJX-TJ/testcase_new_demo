@@ -1,0 +1,106 @@
+```json
+[
+  {
+    "head": "危险警报灯自动控制模块LHZCU信号跳变为控制双闪灯闪烁",
+    "relation": "前提条件",
+    "tail": "车辆挡位为非P档且收到动力系统故障点灯请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "TrShftLvrPos != 0x1",
+      "TrShftLvrPosV == 0x0",
+      "EPTLampOnReq = 0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "双闪灯按照1.25Hz频率闪烁",
+    "relation": "依赖于",
+    "tail": "危险警报灯自动控制模块LHZCU信号跳变",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "LHZCU信号跳变"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯流水模式使能",
+    "relation": "输出为",
+    "tail": "DirnLghtMdSts_0_Enabled",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DirnLghtMdSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB根据接收到的LHZCU发送的转向灯控制信号",
+    "relation": "输入为",
+    "tail": "LHZCU发送的转向灯控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB将状态/故障状态反馈至危险警报灯开关控制模块LHZCU",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "驱动处理模块RHZCU/RZCU接收ICB控制信号",
+    "relation": "输入为",
+    "tail": "ICB控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RHZCU",
+      "RZCU",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "双闪灯点亮/熄灭",
+    "relation": "控制对象",
+    "tail": "FLDirncLghtCtrl, FRDirncLghtCtrl, RLDirncLghtCtrl, RRDirncLghtCtrl",
+    "triple_type": "控制对象",
+    "evidence_terms": [
+      "FLDirncLghtCtrl",
+      "FRDirncLghtCtrl",
+      "RLDirncLghtCtrl",
+      "RRDirncLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯点亮状态/故障状态反馈至危险警报灯开关控制模块LHZCU",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RHZCU",
+      "RZCU",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "延时60ms",
+    "relation": "超时约束",
+    "tail": "ICB根据LHZCU控制输入并分发控制信号",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

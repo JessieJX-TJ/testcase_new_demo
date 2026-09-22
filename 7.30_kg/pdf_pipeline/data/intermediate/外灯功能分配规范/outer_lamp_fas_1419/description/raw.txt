@@ -1,0 +1,75 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "危险报警灯开关功能需求与测试条件",
+  "row_semantics": "表格定义了危险报警灯（Hazard Warning Lamp）开关功能的触发条件、解除条件、网络请求时长、涉及的节点以及相关的功能需求。",
+  "column_semantics": {
+    "alarm_source": "报警源，即触发危险报警灯的功能或事件来源。",
+    "controller": "控制该功能的电子控制单元（ECU）名称。",
+    "network_alarm_function_requirements": "网络报警事件的原因，即哪些节点配合做什么工作。",
+    "alarm_conditions": "触发危险报警灯的条件。",
+    "alarm_clear_conditions": "解除危险报警灯的条件。",
+    "network_request_duration": "网络请求持续时间。",
+    "alarm_events_involving_nodes": "涉及的节点（NOI）。",
+    "functional_requirements": "功能需求描述。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "危险报警灯开关",
+      "type": "功能名",
+      "description": "车辆危险报警灯的开启和关闭控制功能。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "负责处理危险报警灯相关逻辑的电子控制单元。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Hazard switch pressed request",
+      "type": "输入信号",
+      "description": "危险开关被按下请求信号，是触发危险报警灯的主要输入条件。"
+    },
+    {
+      "name": "Time Out",
+      "type": "系统状态",
+      "description": "表示网络请求超时的状态，可能影响危险报警灯的持续时间。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LHZCU做采集开关唤醒",
+      "type": "输出信号",
+      "description": "LHZCU采集开关信号并进行前置条件判断，启动驱动灯。"
+    },
+    {
+      "name": "Backbone_CANFD",
+      "type": "输出信号",
+      "description": "通过骨干CAN总线发送危险报警灯相关信号。"
+    },
+    {
+      "name": "LHZCU_SUB_F_CAN",
+      "type": "输出信号",
+      "description": "LHZCU子系统通过CAN总线发送特定信号。"
+    },
+    {
+      "name": "VMCU:接收绕过指令，启动驱动灯亮",
+      "type": "输出信号",
+      "description": "VMCU接收来自其他系统的绕过指令，以启动危险报警灯。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "10s",
+      "type": "阈值/定时",
+      "description": "网络请求持续时间为10秒，超过此时间可能导致报警灯解除或进入超时状态。"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证危险报警灯开关功能在不同输入条件下的正确响应，包括信号采集、网络通信、节点交互以及报警灯的实际点亮状态。",
+  "uncertain_points": []
+}
+```

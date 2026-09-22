@@ -1,0 +1,53 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "危险报警灯功能解除条件及网络保持规则",
+  "row_semantics": "描述在特定条件下，危险报警灯功能的解除方式以及相关控制器在网络中的保持状态。",
+  "column_semantics": {
+    "保持路径": "触发危险报警灯功能解除的路径或来源。",
+    "控制面": "执行功能解除操作的控制器接口或模块。",
+    "保持原因": "导致危险报警灯功能需要解除的具体原因。",
+    "保持解除条件": "危险报警灯功能得以解除的前提条件。",
+    "网络保持时间": "控制器在本地网络中保持其状态的时间长度。",
+    "控制面本地保持时间": "控制器在本地（非网络）环境中保持其状态的时间长度。",
+    "保持控制面": "在危险报警灯功能解除后，哪些控制器接口或模块仍需保持激活状态。",
+    "保持网段 (NOI)": "在特定网络段内，哪些控制器接口或模块仍需保持激活状态。",
+    "功能需求": "对危险报警灯功能解除后的具体要求和状态描述。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "危险报警灯开关",
+    "LHZCU",
+    "VMCU",
+    "RHZCU",
+    "LHA",
+    "RHA",
+    "Tail.pAsmbA_RH",
+    "Tail.pAsmbA_LH",
+    "Tail.pAsmbB"
+  ],
+  "core_conditions": [
+    "危险报警灯未关闭时，整车下电",
+    "always"
+  ],
+  "core_outputs": [
+    "危险报警灯转为待机模式",
+    "LHZCU驱动灯点亮",
+    "ZXD：接收状态信号做HMI显示",
+    "VMCU：驱动灯点亮",
+    "RHZCU：驱动灯点亮",
+    "LHA：点灯",
+    "RHA：点灯",
+    "Tail.pAsmbA_RH：点灯",
+    "Tail.pAsmbA_LH：点灯",
+    "Tail.pAsmbB：点灯"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "always"
+  ],
+  "engineering_interpretation": "该表格用于验证危险报警灯功能在车辆下电等特定场景下的正确解除流程，以及相关控制器在网络和本地环境中的状态保持规则，确保系统在异常情况下的安全性和可靠性。",
+  "uncertain_points": []
+}
+```

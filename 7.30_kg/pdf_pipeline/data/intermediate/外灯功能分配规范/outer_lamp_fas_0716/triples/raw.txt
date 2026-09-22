@@ -1,0 +1,87 @@
+```json
+[
+  {
+    "head": "前雾灯开启",
+    "relation": "前提条件",
+    "tail": "LHZCU判断前雾灯已开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "前雾灯",
+      "ExteriorLightSwitchProcess.FrontFogLghtFucProsSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "驱动处理模块RZCU内部跳变为硬线输出",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RZCU",
+      "后雾灯",
+      "驱动处理模块"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯指示灯显示",
+    "relation": "依赖于",
+    "tail": "HMI子系统ICB调用接口",
+    "triple_type": "功能依赖关系",
+    "evidence_terms": [
+      "HMI子系统",
+      "ICB",
+      "后雾灯指示灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯状态反馈",
+    "relation": "输入为",
+    "tail": "后雾灯控制模块LHZCU将状态反馈至ICB",
+    "triple_type": "输入输出关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "后雾灯状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯错误状态",
+    "relation": "输出为",
+    "tail": "后雾灯控制模块LHZCU将故障状态反馈至ICB",
+    "triple_type": "输入输出关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "后雾灯错误状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯关闭",
+    "relation": "抑制条件",
+    "tail": "无前雾灯功能，InsdFnCfgFrtFogLght=0x0",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "前雾灯",
+      "InsdFnCfgFrtFogLght"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯控制组合服务ICB调用",
+    "relation": "触发条件",
+    "tail": "S32G收到[大屏开关请求ICB]输入",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "S32G",
+      "ICB",
+      "大屏开关请求"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,80 @@
+{
+  "table_type": "logic_table",
+  "topic": "日行灯开关控制逻辑",
+  "row_semantics": "描述用户点击日行灯开关后，系统执行的详细动作序列和状态更新流程。",
+  "column_semantics": "表格包含三列：触发动作、执行动作、备注。其中“执行动作”列详细列出了控制流程中的各个步骤。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "外灯组合服务接口，负责接收用户请求并发送控制命令。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "日行灯控制单元，负责实际的日行灯硬件控制。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "Subsystem",
+      "description": "外部灯光控制系统，管理各种外部灯光的逻辑控制。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "Subsystem",
+      "description": "外部灯光开关处理模块，负责处理灯光开关的状态变化。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DayRunningLightReq",
+      "type": "Input Signal",
+      "description": "用户通过日行灯开关发出的请求信号，值为0x0=OFF或0x1=On。"
+    },
+    {
+      "name": "DayRunningLightFucProsSta",
+      "type": "Internal Status",
+      "description": "外灯组合服务中日行灯功能处理状态，值为0x0=OFF或0x1=On。"
+    },
+    {
+      "name": "DayRunningLghtSwSta",
+      "type": "Output Signal",
+      "description": "外部灯光开关处理模块中日行灯开关状态，值为0x0=OFF或0x1=On。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DayRunningLightResp",
+      "type": "Output Signal",
+      "description": "外灯组合服务对外部灯光请求的响应信号，值为0x0=ControlSuccess（成功）或其它错误代码。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "ICB_8295",
+      "type": "Fault Condition",
+      "description": "日行灯光请求重发机制相关的故障，当请求超时且未收到成功反馈时触发。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "重发周期",
+      "value": "<=50ms",
+      "description": "在请求状态未变且未收到成功反馈时，按照不超过50毫秒的周期尝试重发请求。"
+    },
+    {
+      "name": "重发次数",
+      "value": "3次",
+      "description": "最多尝试重发请求3次，若仍失败则停止发送。"
+    },
+    {
+      "name": "超时时间",
+      "value": "2s",
+      "description": "如果在2秒内未收到响应，则认为请求超时。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了用户操作日行灯开关时，系统内部各模块之间的交互逻辑、状态更新流程以及异常情况下的重发机制，可用于验证日行灯开关控制功能的正确性和鲁棒性。",
+  "uncertain_points": []
+}

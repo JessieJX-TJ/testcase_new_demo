@@ -1,0 +1,56 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯控制参数定义",
+  "row_semantics": "表格中的每一行代表一个具体的参数或状态定义，包括其数值范围和对应的功能描述。",
+  "column_semantics": "表格没有明确的列，所有信息都集中在一列中，通过缩进和层级结构来表示参数的分类和取值。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ThirdRowLeft",
+      "type": "input_signal",
+      "description": "第三排左侧灯的控制信号，可能用于外部照明或指示功能。"
+    },
+    {
+      "name": "ThirdRowRight",
+      "type": "input_signal",
+      "description": "第三排右侧灯的控制信号，与ThirdRowLeft类似，用于外部照明或指示。"
+    },
+    {
+      "name": "LampOnOff",
+      "type": "output_signal",
+      "description": "灯的开关状态控制信号，用于控制外部灯光的开启或关闭。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x4=ThirdRowLeft",
+      "description": "当信号值为0x4时，表示激活第三排左侧灯的功能。"
+    },
+    {
+      "name": "0x5=ThirdRowRight",
+      "description": "当信号值为0x5时，表示激活第三排右侧灯的功能。"
+    },
+    {
+      "name": "0x6~0xF=Reserved",
+      "description": "保留值范围，当前未使用，未来可能扩展功能。"
+    },
+    {
+      "name": "0x0=OFF",
+      "description": "当LampOnOff信号值为0x0时，表示灯处于关闭状态。"
+    },
+    {
+      "name": "0x1=ON",
+      "description": "当LampOnOff信号值为0x1时，表示灯处于开启状态。"
+    },
+    {
+      "name": "0x2=default",
+      "description": "当LampOnOff信号值为0x2时，表示灯处于默认状态（可能是系统初始化或复位状态）。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯控制相关的输入信号和输出信号的数值映射关系，主要用于验证外灯控制逻辑是否正确实现，例如检查在不同信号值下，第三排左右灯以及整体灯的开关状态是否符合预期。",
+  "uncertain_points": []
+}

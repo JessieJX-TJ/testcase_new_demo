@@ -1,0 +1,452 @@
+```json
+[
+  {
+    "head": "RLSideLghtFltsts",
+    "relation": "output_as",
+    "tail": "0x0 = False; 0x1 = True",
+    "sources": ["outer_lamp_fas_0498"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtFltsts",
+    "relation": "output_as",
+    "tail": "0x0 = False; 0x1 = True",
+    "sources": ["outer_lamp_fas_0498"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtSts",
+    "relation": "output_as",
+    "tail": "0x0 = Off; 0x1 = On",
+    "sources": ["outer_lamp_fas_0498"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtFltsts",
+    "relation": "output_as",
+    "tail": "0x0 = False; 0x1 = True",
+    "sources": ["outer_lamp_fas_0498"],
+    "conflict": true,
+    "conflict_note": "Conflicts with '0x0 = False' only (no 0x1 mapping) in original triple; full enum {0x0=False, 0x1=True} is consistently used for other *Fltsts signals (e.g., RLSideLghtFltsts, RRSideLghtFltsts) and confirmed in FAS-0509 for MainBeamLghtErrSta. Likely omission in source FAS-0498 — retained but flagged."
+  },
+  {
+    "head": "RLSideLghtFltsts",
+    "relation": "depends_on",
+    "tail": "CANFD, ICB, LHZCU",
+    "sources": ["outer_lamp_fas_0498"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtFltsts",
+    "relation": "depends_on",
+    "tail": "CANFD, ICB, LHZCU",
+    "sources": ["outer_lamp_fas_0498"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtSts",
+    "relation": "depends_on",
+    "tail": "CANFD, ICB, LHZCU",
+    "sources": ["outer_lamp_fas_0498"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtFltsts",
+    "relation": "depends_on",
+    "tail": "CANFD, ICB, LHZCU",
+    "sources": ["outer_lamp_fas_0498"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtStsCmmntnTyp",
+    "relation": "input_as",
+    "tail": "ExtrLghtStsCmmntnTyp",
+    "sources": ["outer_lamp_fas_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InsdFnCfgHdLampLvlg",
+    "relation": "input_as",
+    "tail": "InsdFnCfgHdLampLvlg",
+    "sources": ["outer_lamp_fas_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtStsCmmntnTyp",
+    "relation": "depends_on",
+    "tail": "0x0 = SOA; 0x1 = CAN; 0x2~0x7 = Reserve",
+    "sources": ["outer_lamp_fas_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InsdFnCfgHdLampLvlg",
+    "relation": "depends_on",
+    "tail": "0x0 = Manual; 0x1 = Auto",
+    "sources": ["outer_lamp_fas_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtStsCmmntnTyp",
+    "relation": "output_as",
+    "tail": "0x0",
+    "sources": ["outer_lamp_fas_0499"],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'depends_on' enum definition (0x0–0x7). 'output_as: 0x0' appears to be a default/initial value example, not the full encoding. Retained as distinct operational fact (default output), but flagged due to semantic tension with full enum spec."
+  },
+  {
+    "head": "InsdFnCfgHdLampLvlg",
+    "relation": "output_as",
+    "tail": "0x0",
+    "sources": ["outer_lamp_fas_0499"],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'depends_on' enum definition (0x0=Manual, 0x1=Auto). 'output_as: 0x0' likely denotes default/initial state, not exhaustive behavior. Retained but flagged for ambiguity."
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "depends_on",
+    "tail": "Section 692 of 935",
+    "sources": ["outer_lamp_fas_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "precondition",
+    "tail": "Section 32 of 935",
+    "sources": ["outer_lamp_fas_0506"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrSideLghtOnReq",
+    "relation": "precondition_for",
+    "tail": "LicensePlateLightIllumination",
+    "sources": ["outer_lamp_fas_0502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrSideLghtOnReq",
+    "relation": "input_as",
+    "tail": "TrlrSideLghtOnReq = 0x0",
+    "sources": ["outer_lamp_fas_0502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightActivationInterrupted",
+    "relation": "precondition",
+    "tail": "Immediate exit response",
+    "sources": ["outer_lamp_fas_0504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightArbitrationStrategy",
+    "relation": "contains_subfunction",
+    "tail": "HazardLightActivationInterrupted",
+    "sources": ["outer_lamp_fas_0504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus",
+    "relation": "trigger_condition",
+    "tail": "Feedback: {SidePositionLight.SidePositionLightStatus.SidePositionLightSta}{InstanceID=1}",
+    "sources": ["outer_lamp_fas_0505"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus",
+    "relation": "trigger_condition",
+    "tail": "Feedback: {SidePositionLight.SidePositionLightStatus.SidePositionLightSta}{InstanceID=2}",
+    "sources": ["outer_lamp_fas_0505"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightReq",
+    "relation": "input_as",
+    "tail": "Controls right-front turn signal (ON/OFF)",
+    "sources": ["outer_lamp_fas_0507"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightReq",
+    "relation": "input_as",
+    "tail": "Controls left-rear turn signal (ON/OFF)",
+    "sources": ["outer_lamp_fas_0507"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightReqServiceInterface",
+    "relation": "depends_on",
+    "tail": "Controls right-front turn signal (ON/OFF)",
+    "sources": ["outer_lamp_fas_0507"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightReqServiceInterface",
+    "relation": "depends_on",
+    "tail": "Controls left-rear turn signal (ON/OFF)",
+    "sources": ["outer_lamp_fas_0507"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtSts",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightControlSystem.MainBeamLightSts is called",
+    "sources": ["outer_lamp_fas_0509"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtErrSta",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightSwitchProcess.MainBeamLightErrSta is called",
+    "sources": ["outer_lamp_fas_0509"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtSts",
+    "relation": "output_as",
+    "tail": "0x0 = OFF",
+    "sources": ["outer_lamp_fas_0509"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtSts",
+    "relation": "output_as",
+    "tail": "0x1 = ON",
+    "sources": ["outer_lamp_fas_0509"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtSts",
+    "relation": "output_as",
+    "tail": "0x2 = Unknown",
+    "sources": ["outer_lamp_fas_0509"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtErrSta",
+    "relation": "output_as",
+    "tail": "0x0 = No Error",
+    "sources": ["outer_lamp_fas_0509"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtErrSta",
+    "relation": "output_as",
+    "tail": "0x1 = Error",
+    "sources": ["outer_lamp_fas_0509"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtErrSta",
+    "relation": "output_as",
+    "tail": "0x2 = Unknown",
+    "sources": ["outer_lamp_fas_0509"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLghtFucProCtrlReq",
+    "relation": "input_as",
+    "tail": "FrontFogLghtFucProCtrlReq",
+    "sources": ["outer_lamp_fas_0510"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLghtFucProCtrlResp",
+    "relation": "output_as",
+    "tail": "FrontFogLghtFucProCtrlResp",
+    "sources": ["outer_lamp_fas_0510"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLghtFucProsSta",
+    "relation": "depends_on",
+    "tail": "FrontFogLghtFucProsSta",
+    "sources": ["outer_lamp_fas_0510"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLghtFucProCtrlReq",
+    "relation": "precondition",
+    "tail": "ExteriorLightSwitchProcess.FrontFogLghtFucProStatus",
+    "sources": ["outer_lamp_fas_0510"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLghtFucProCtrlResp",
+    "relation": "precondition",
+    "tail": "FrontFogLghtFucProCtrlReq",
+    "sources": ["outer_lamp_fas_0510"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLghtFucProsSta",
+    "relation": "precondition",
+    "tail": "Notifier subscribes to service interface to determine fog lamp ON/OFF eligibility",
+    "sources": ["outer_lamp_fas_0510"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightSta",
+    "relation": "precondition",
+    "tail": "ICB converts interface/control signal to RTE signal for Digital Lighting SDK",
+    "sources": ["outer_lamp_fas_0511"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightFucProStatus",
+    "relation": "trigger_condition",
+    "tail": "LHZCU reads {ExteriorLightSwitchProcess.DayRunningLightFucProStatus} = 0x0 = OFF",
+    "sources": ["outer_lamp_fas_0511"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtSwSta",
+    "relation": "trigger_condition",
+    "tail": "Notifier reads {ExteriorLightSwitchProcess.CombLghtSwStatus.CombLghtSwSta} = 0x0 = OFF",
+    "sources": ["outer_lamp_fas_0511"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtFucProStatus",
+    "relation": "suppression_condition",
+    "tail": "{ExteriorLightSwitchProcess.CombLghtFucProStatus.CombLghtFucProStatus} = 0x0 = ALL.OFF",
+    "sources": ["outer_lamp_fas_0511"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightSta",
+    "relation": "input_as",
+    "tail": "{DayRunningLight.DayRunningLightState.DayRunningLightSta}{InstanceID=1} = 0x0 = OFF",
+    "sources": ["outer_lamp_fas_0511"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightSta",
+    "relation": "input_as",
+    "tail": "{SidePositionLight.SidePositionLightStatus.SidePositionLightSta}{InstanceID=5} = 0x0 = OFF",
+    "sources": ["outer_lamp_fas_0511"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightErrSta",
+    "relation": "input_as",
+    "tail": "{DayRunningLight.DayRunningLightErrorStatus}{InstanceID=1} = 0x0 = No Error",
+    "sources": ["outer_lamp_fas_0511"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightErrSta",
+    "relation": "input_as",
+    "tail": "{SidePositionLight.SidePositionLightErrorStatus}{InstanceID=5} = 0x0 = No Error",
+    "sources": ["outer_lamp_fas_0511"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "exlSideLghtHwDrvEnPrm",
+    "relation": "depends_on",
+    "tail": "0x0 = Position light private CAN communication scheme (instances 3–8)",
+    "sources": ["outer_lamp_fas_0511"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightRequestStatus",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightControl.DippedBeamLightRequestStatus = 0x1",
+    "sources": ["outer_lamp_fas_0512"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightRequestStatus",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightControl.DippedBeamLightRequestStatus = 0x0",
+    "sources": ["outer_lamp_fas_0512"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtFucProControlStatus",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightControl.CombLghtFucProControlStatus = 0x1 (Side Position Light ON)",
+    "sources": ["outer_lamp_fas_0512"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtFucProControlStatus",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightControl.CombLghtFucProControlStatus = 0x2 (Dipped Beam Light ON)",
+    "sources": ["outer_lamp_fas_0512"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtFucProControlStatus",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightControl.CombLghtFucProControlStatus = 0x3 (AUTO)",
+    "sources": ["outer_lamp_fas_0512"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtFucProControlStatus",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightControl.CombLghtFucProControlStatus = 0x4 (Unknown)",
+    "sources": ["outer_lamp_fas_0512"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightRequestStatus",
+    "relation": "output_as",
+    "tail": "ExteriorLightControl.DippedBeamLightRequestStatus",
+    "sources": ["outer_lamp_fas_0512"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

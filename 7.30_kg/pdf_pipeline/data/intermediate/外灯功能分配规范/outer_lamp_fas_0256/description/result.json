@@ -1,0 +1,51 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Control Interface Specifications",
+  "row_semantics": "Each row represents a specific control function for direction lights, detailing the interface name, parameter structure, and instance ID for different light configurations.",
+  "column_semantics": {
+    "0": "Function Name (e.g., ControlDirectionLight)",
+    "1": "Consumption Type (e.g., SOA, RHZCU, ICB)",
+    "2": "Controller/Module Name (e.g., RHZCU, RZCU, ICB)",
+    "3": "Control Method (e.g., Hard Line Control)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ControlDirectionLight",
+      "type": "function",
+      "description": "Service interface for controlling direction lights."
+    },
+    {
+      "name": "DirectionLightReq",
+      "type": "parameter",
+      "description": "Request parameter structure for controlling direction lights."
+    },
+    {
+      "name": "InstanceID",
+      "type": "identifier",
+      "description": "Unique identifier for each control instance."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Light Status",
+      "type": "input",
+      "description": "Controls the state of the direction light (ON/OFF)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Light Control",
+      "type": "output",
+      "description": "The result of applying the control command to the direction light."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interface parameters for controlling various direction lights (front right, rear left/right) in a vehicle. It specifies how to enable or disable these lights via a standardized API with unique instance IDs.",
+  "uncertain_points": [
+    "The exact mapping between 'RHZCU' and 'RZCU' controllers is not clear from the table.",
+    "The specific timing requirements for periodic calls are not detailed."
+  ]
+}

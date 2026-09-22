@@ -1,0 +1,50 @@
+```json
+[
+  {
+    "head": "远光灯闪烁功能被触发",
+    "relation": "触发条件",
+    "tail": "用户打开远光灯闪烁开关,开关阻值为1200Ω(±5%)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "触发条件",
+      "用户打开远光灯闪烁开关",
+      "开关阻值为1200Ω(±5%)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统执行远光灯闪烁动作",
+    "relation": "前提条件",
+    "tail": "配置字MainBeamLghtSwSOAEnPrm==1(Enable)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "前置条件",
+      "配置字MainBeamLghtSwSOAEnPrm==1(Enable)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "MainBeamLightSwitchStatus信号输出为0x3 (Flash)",
+    "relation": "输出为",
+    "tail": "【MainBeamLghtSwMdl】持续发送 MainBeamLightSwitchStatus. MainBeamLightSwitchSta=0x3 (Flash)至【MainBeamLghtCtrlMdl】",
+    "triple_type": "输入输出关系",
+    "evidence_terms": [
+      "执行动作",
+      "MainBeamLightSwitchStatus",
+      "MainBeamLightSwitchSta=0x3 (Flash)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯闪烁功能退出",
+    "relation": "退出条件",
+    "tail": "远光灯开关阻值变为非1200Ω(±5%)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "退出条件",
+      "远光灯开关阻值变为非1200Ω(±5%)"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,102 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能（Exterior Lamp Function）的状态与控制信号分配",
+  "row_semantics": "每一行代表一个具体的外灯状态或控制信号，包括左前、右前、左后、右后转向灯的状态，以及左前转向灯的网络状态。",
+  "column_semantics": {
+    "W": "功能描述或信号名称",
+    "U": "硬件状态 (HW) 描述",
+    "输出": "信号输出类型",
+    "CANFD": "通过 CANFD 总线传输的信号",
+    "RHZCU": "控制器模块名",
+    "LHZCU": "控制器模块名",
+    "硬线状态": "硬线连接状态",
+    "RZCU": "控制器模块名",
+    "网络状态": "网络通信状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "FLDircnLghtSts_HW",
+      "type": "信号",
+      "description": "左前转向灯硬件状态",
+      "values": {
+        "0x0": "Off",
+        "0x1": "On"
+      }
+    },
+    {
+      "name": "FRDircnLghtSts_HW",
+      "type": "信号",
+      "description": "右前转向灯硬件状态",
+      "values": {
+        "0x0": "Off",
+        "0x1": "On"
+      }
+    },
+    {
+      "name": "RLDircnLghtSts_HW",
+      "type": "信号",
+      "description": "左后转向灯硬件状态",
+      "values": {
+        "0x0": "Off",
+        "0x1": "On"
+      }
+    },
+    {
+      "name": "RRDircnLghtSts_HW",
+      "type": "信号",
+      "description": "右后转向灯硬件状态",
+      "values": {
+        "0x0": "Off",
+        "0x1": "On"
+      }
+    },
+    {
+      "name": "FLDircnLghtSts",
+      "type": "信号",
+      "description": "左前转向灯网络状态",
+      "values": {
+        "0x0": "Off",
+        "0x1": "On"
+      }
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtSts_HW",
+      "controller": "不确定",
+      "interface": "不确定"
+    },
+    {
+      "name": "FRDircnLghtSts_HW",
+      "controller": "不确定",
+      "interface": "不确定"
+    },
+    {
+      "name": "RLDircnLghtSts_HW",
+      "controller": "不确定",
+      "interface": "不确定"
+    },
+    {
+      "name": "RRDircnLghtSts_HW",
+      "controller": "不确定",
+      "interface": "不确定"
+    },
+    {
+      "name": "FLDircnLghtSts",
+      "controller": "ICB",
+      "interface": "CANFD"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯（主要是转向灯）在不同控制器下的硬件和网络状态信号的分配规范，可用于验证各控制器对转向灯状态的正确输出和通信。",
+  "uncertain_points": [
+    "具体控制器模块的详细功能和接口定义未明确给出。",
+    "信号的具体触发条件和逻辑关系未在表中体现。"
+  ]
+}
+```

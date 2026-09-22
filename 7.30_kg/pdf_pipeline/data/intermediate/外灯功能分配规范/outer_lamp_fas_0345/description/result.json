@@ -1,0 +1,47 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的状态定义与分配规范",
+  "row_semantics": "表格的每一行代表一个状态变量或控制信号，描述其在不同场景下的状态定义。",
+  "column_semantics": "表格没有明确的列，但通过合并单元格和嵌套结构展示了每个状态变量的详细定义及其可能的值。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMdV",
+      "type": "system_state",
+      "description": "Vehicle Mode Validity, 表示车辆模式的有效性状态"
+    },
+    {
+      "name": "UsGmD",
+      "type": "mode_name",
+      "description": "User Mode, 表示用户驾驶模式"
+    },
+    {
+      "name": "UsGmDV",
+      "type": "system_state",
+      "description": "User Mode Validity, 表示用户模式的有效性状态"
+    },
+    {
+      "name": "左侧昼间行车灯控制信号",
+      "type": "output_signal",
+      "description": "控制左侧昼间行车灯的输出信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CAN/LIN/SOA",
+      "description": "通信协议/总线类型，用于定义服务和硬件线束的详细规范"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "左侧昼间行车灯控制信号",
+      "type": "output_signal",
+      "description": "由CANFD、LHZCU、ICB等模块共同控制的输出信号，用于驱动左侧昼间行车灯"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯功能中涉及的车辆模式、用户模式及其有效性状态的详细规范，可用于验证相关控制器（如CANFD、LHZCU、ICB）在不同模式下对外灯控制信号的正确输出行为。",
+  "uncertain_points": []
+}

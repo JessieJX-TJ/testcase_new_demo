@@ -1,0 +1,97 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "危险警报灯开关控制模块(LHZCU)与外灯组合服务(ICB)之间的信号交互和状态反馈逻辑",
+  "row_semantics": "表格的每一行代表一个具体的控制或反馈步骤，编号从8到14，描述了LHZCU与ICB之间在不同场景下的信号传递和状态更新。",
+  "column_semantics": "表格没有明显的列结构，内容为连续的文本描述，主要通过编号来区分不同的逻辑步骤。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Light Hazard Control Unit，危险警报灯开关控制模块，负责处理危险警报灯的开关、闪烁模式及状态反馈。"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "Integrated Control Board，外灯组合服务控制器，负责接收LHZCU的信号并控制外灯（如转向灯）的状态。"
+    },
+    {
+      "name": "SDM",
+      "type": "Controller/Module",
+      "description": "Safety Domain Module，安全域模块，接收转向灯控制状态反馈。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlDircnLghtHwDrvEnPrm",
+      "type": "Input Signal",
+      "description": "通过域控获取转向灯硬件驱动使能参数，值为0x1时用于获取转向灯状态。"
+    },
+    {
+      "name": "DircnLghtSts",
+      "type": "System State",
+      "description": "方向灯状态，例如Both_Side_Direction_Light_On（双侧转向灯亮）或No_Error（无错误）。"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "type": "Mode Name",
+      "description": "车辆危险模式状态，例如Manual_Mode（手动模式）。"
+    },
+    {
+      "name": "EdrDircnIndLampSwSts",
+      "type": "Output Signal",
+      "description": "电子转向指示灯开关状态，例如3_hazard（危险模式）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtFltsts_HW",
+      "type": "Output Signal",
+      "description": "前左转向灯故障状态硬件接口，值为0x0表示无故障。"
+    },
+    {
+      "name": "FRDircnLghtFltsts_HW",
+      "type": "Output Signal",
+      "description": "前右转向灯故障状态硬件接口，值为0x0表示无故障。"
+    },
+    {
+      "name": "RLDircnLghtFltsts_HW",
+      "type": "Output Signal",
+      "description": "后左转向灯故障状态硬件接口，值为0x0表示无故障。"
+    },
+    {
+      "name": "RRDircnLghtFltsts_HW",
+      "type": "Output Signal",
+      "description": "后右转向灯故障状态硬件接口，值为0x0表示无故障。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLghtErrSts",
+      "type": "Fault Status",
+      "description": "方向灯错误状态，值为0x0表示无错误。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "1.25Hz",
+      "type": "Threshold",
+      "description": "危险警报灯开启闪烁频率要求为1.25Hz。"
+    },
+    {
+      "name": "50ms",
+      "type": "Timing Constraint",
+      "description": "危险警报灯图标闪烁频率与实际危险警报灯的闪烁频率需保持一致，三者同步性允许的最大延时为50ms。"
+    },
+    {
+      "name": "40ms",
+      "type": "Timing Constraint",
+      "description": "危险警报灯的同步性允许的最大延时周期为40ms。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了危险警报灯系统中，LHZCU与ICB之间在不同操作场景下的信号交互逻辑，包括转向灯状态的获取、危险模式的反馈以及闪烁频率的同步要求，可用于验证危险警报灯功能的正确性和一致性。",
+  "uncertain_points": []
+}
+```

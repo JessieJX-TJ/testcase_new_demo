@@ -1,0 +1,108 @@
+{
+  "table_type": "logic_table",
+  "topic": "阅读灯控制逻辑",
+  "row_semantics": "表格按功能阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "第一列定义了不同阶段的描述，第二列详细说明了该阶段的具体逻辑，包括输入信号、处理逻辑和输出行为。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MapLampXXBrtLvl_1",
+      "type": "input_signal",
+      "description": "阅读灯亮度请求信号，用于设置阅读灯的亮度等级（Level_1）"
+    },
+    {
+      "name": "MapLampXXDimSpd_l",
+      "type": "input_signal",
+      "description": "点亮/熄灭速度信号，用于控制阅读灯点亮或熄灭的速度（0x0, 0x1, 0x2）"
+    },
+    {
+      "name": "ReadLampDrvCtrlMod",
+      "type": "controller_module",
+      "description": "阅读灯驱动控制模块，负责根据请求信号控制阅读灯的点亮和熄灭"
+    },
+    {
+      "name": "OHC",
+      "type": "controller_module",
+      "description": "车载控制器，未触发欠压/过压保护"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "对应阅读灯无短路/开路故障",
+      "description": "确保阅读灯电路正常，无电气故障"
+    },
+    {
+      "condition": "OHC未触发欠压/过压保护",
+      "description": "确保车载控制器电源电压在正常范围内"
+    },
+    {
+      "condition": "接收到阅读灯控制模块的请求信号 MapLampXXBrtLvl_1 = 0x1 (Level_1)",
+      "description": "触发阅读灯点亮的条件"
+    },
+    {
+      "condition": "未接收到点亮速度信号",
+      "description": "当未指定点亮速度时，默认使用最快速度（速度1）"
+    },
+    {
+      "condition": "接收到熄灭请求信号 MapLampXXBrtLvl_1 = 0x0 (OFF)",
+      "description": "触发阅读灯熄灭的条件"
+    },
+    {
+      "condition": "未接收到熄灭速度信号",
+      "description": "当未指定熄灭速度时，默认使用最快速度（速度1）"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "点亮阅读灯",
+      "description": "根据请求信号和速度等级，通过PWM驱动点亮阅读灯",
+      "details": [
+        "速度1: 0.025秒/档",
+        "速度2: 0.1秒/档",
+        "速度3: 瞬间点亮"
+      ]
+    },
+    {
+      "output": "熄灭阅读灯",
+      "description": "根据请求信号和速度等级，通过PWM驱动熄灭阅读灯",
+      "details": [
+        "速度1: 0.025秒/档",
+        "速度2: 0.15秒/档",
+        "速度3: 瞬间熄灭"
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "单个阅读灯触发短路/开路故障",
+      "description": "检测到阅读灯电路存在短路或开路问题，直接关断对应阅读灯驱动"
+    },
+    {
+      "fault": "未接收到亮度请求信号",
+      "description": "如果未接收到亮度请求信号，即使收到点亮/熄灭速度信号，也直接关断对应阅读灯驱动"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "signal": "MapLampXXDimSpd_l",
+      "speed": "0x0",
+      "duration": "0.025秒/档",
+      "action": "点亮/熄灭"
+    },
+    {
+      "signal": "MapLampXXDimSpd_l",
+      "speed": "0x1",
+      "duration": "0.1秒/档",
+      "action": "点亮/熄灭"
+    },
+    {
+      "signal": "MapLampXXDimSpd_l",
+      "speed": "0x2",
+      "duration": "瞬时",
+      "action": "点亮/熄灭"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了阅读灯在不同条件下的点亮和熄灭逻辑，包括亮度请求信号、速度信号的处理方式以及故障情况下的应急响应，可用于验证阅读灯控制系统在各种工况下的正确性和鲁棒性。",
+  "uncertain_points": []
+}

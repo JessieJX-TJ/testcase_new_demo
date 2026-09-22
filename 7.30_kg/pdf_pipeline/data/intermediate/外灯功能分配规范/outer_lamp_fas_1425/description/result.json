@@ -1,0 +1,60 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 近光灯控制与状态",
+  "row_semantics": "表格按功能点（Function Point）列出，每个功能点描述了近光灯的控制接口和状态查询接口。",
+  "column_semantics": {
+    "功能名": "描述具体的功能点名称，如 'DippedBeamLight.ControlDippedBeamLight' 表示近光灯控制功能。",
+    "消费": "表示该功能由哪个模块或系统消费（调用）。",
+    "SOA": "Service-Oriented Architecture，服务导向架构，表示该功能的服务提供者。",
+    "ICB": "Internal Communication Bus，内部通信总线，表示该功能涉及的内部通信接口。",
+    "LHZCU": "Local High-level Zone Control Unit，本地高层区域控制单元，表示该功能涉及的具体控制器。",
+    "内部通讯": "表示该功能是否涉及内部通信。",
+    "硬线状态": "表示该功能是否通过硬线信号进行状态反馈。",
+    "Interface Name": "服务接口名称。",
+    "Parameter Name": "接口参数名称。",
+    "InstanceID": "实例ID，用于标识不同的实例。",
+    "状态值": "具体的参数值及其含义，如 '0x0=OFF; 0x1=ON' 表示开关状态。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight",
+      "type": "功能模块",
+      "description": "近光灯功能模块，负责控制和查询近光灯的状态。"
+    },
+    {
+      "name": "ControlDippedBeamLight",
+      "type": "功能",
+      "description": "控制右侧近光灯点亮或熄灭的功能接口。"
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "功能",
+      "description": "获取左侧近光灯状态的功能接口。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DippedBeamLightReq",
+      "type": "输入信号",
+      "description": "控制近光灯的请求参数，包含开关状态（OFF/ON）。"
+    },
+    {
+      "name": "DippedBeamLightSta",
+      "type": "输出信号",
+      "description": "返回近光灯的状态参数，可能为 OFF、ON 或 Unknown。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "输出信号",
+      "description": "返回近光灯当前的状态（OFF、ON 或 Unknown）。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了近光灯的控制接口和状态查询接口，可用于验证近光灯控制功能的正确性以及状态反馈的准确性。",
+  "uncertain_points": []
+}

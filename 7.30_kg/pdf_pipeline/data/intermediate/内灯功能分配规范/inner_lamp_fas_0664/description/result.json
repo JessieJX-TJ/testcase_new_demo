@@ -1,0 +1,65 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车电子系统中VehBcklghtngCtrlCmd信号的接口定义与控制逻辑",
+  "row_semantics": "每行代表一个接口或信号的具体定义及其在系统中的作用，包括其来源、方向、类型及关联的发送方和接收方。",
+  "column_semantics": {
+    "Interface Name": "接口名称，描述了信号或数据流的标识符。",
+    "Direction": "信号的方向，指示是输入还是输出。",
+    "Type": "信号的类型，如CAN/LIN/SOA服务、内部信号等。",
+    "Sender/Provider": "信号的提供方或发送节点，通常是控制器或服务。",
+    "Receiver/Consumer": "信号的消费方或接收节点，通常是控制器或服务。",
+    "Channel": "信号传输的路径或通道。",
+    "Interface Source": "接口的来源，如指定信号通道或来源。",
+    "Signal Values": "信号的具体值定义，如0x0=Close; 0x1=Open;"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehBcklghtngCtrlCmd",
+      "type": "Signal",
+      "description": "车辆后灯控制命令信号，用于控制内灯的状态。"
+    },
+    {
+      "name": "LHZC U",
+      "type": "Controller/Module",
+      "description": "后灯控制单元，作为信号的发送方（Provider）。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "后灯控制单元，作为信号的接收方（Consumer）。"
+    },
+    {
+      "name": "SST S",
+      "type": "System Component",
+      "description": "内灯系统，由VehBcklghtngCtrlCmd信号控制。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "VehBcklghtngCtrlCmd",
+      "values": [
+        {
+          "value": "0x0",
+          "state": "Close",
+          "description": "内灯关闭状态。"
+        },
+        {
+          "value": "0x1",
+          "state": "Open",
+          "description": "内灯开启状态。"
+        }
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆后灯控制命令信号（VehBcklghtngCtrlCmd）的接口属性及其在系统中的传输路径，可用于验证LHZC U控制器向LHZCU控制器发送内灯控制指令的功能正确性，确保内灯系统能够根据指令正确地开启或关闭。",
+  "uncertain_points": [
+    "表格未明确说明信号传输的具体协议（如CAN帧ID、波特率等）。",
+    "未提及信号传输的优先级或时间要求。",
+    "未详细描述故障处理机制或异常情况下的行为。"
+  ]
+}

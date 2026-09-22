@@ -1,0 +1,62 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能分配规范",
+  "row_semantics": "表格按功能模块逐条列出外灯控制接口的详细信息，包括接口名称、方向、类型、发送方/接收方、路径及接口来源。",
+  "column_semantics": {
+    "Interface Name": "接口名称，需与逻辑框图内容一致。",
+    "Direction": "接口的方向，如输入/输出或提供/消费。",
+    "Type": "接口类型，如CAN/LIN/SOA服务或硬线等。",
+    "Sender/Provider": "信号发送节点或SoA服务提供方。",
+    "Receiver/Consumer": "信号接收节点或SoA服务消费方。",
+    "Chann": "指定信号通道。",
+    "Interface Source": "指定信号来源。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "controller",
+      "description": "外灯控制系统，负责管理车辆外部灯光的控制逻辑。"
+    },
+    {
+      "name": "ControlCombinedLight",
+      "type": "function",
+      "description": "组合灯控制功能，用于控制近光灯、位置灯和自动灯光的点亮或熄灭。"
+    },
+    {
+      "name": "ControlRearFogLight",
+      "type": "function",
+      "description": "后雾灯控制功能，用于控制后雾灯的点亮或熄灭。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CombinedLightReq",
+      "type": "input_signal",
+      "description": "组合灯请求参数，包含侧位灯、近光灯和自动模式的控制状态。",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "SidePositionLight ON",
+        "0x2": "DippedBeamLight ON",
+        "0x3": "AUTO"
+      }
+    },
+    {
+      "name": "RearFogLightReq",
+      "type": "input_signal",
+      "description": "后雾灯请求参数，包含后雾灯的开关状态。",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "On"
+      }
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯控制系统中组合灯和后雾灯的控制接口及其参数，可用于验证外灯控制功能在不同请求参数下的正确响应，确保车辆外部灯光按照设计要求正常工作。",
+  "uncertain_points": []
+}
+```

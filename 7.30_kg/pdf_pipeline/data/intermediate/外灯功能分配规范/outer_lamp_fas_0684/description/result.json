@@ -1,0 +1,58 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Side Position Light Error Status and Control Parameters",
+  "row_semantics": "Each row represents a specific parameter or condition related to the side position light system, including error status, control enablement, and synchronization requirements.",
+  "column_semantics": "The table has two main columns: one for parameter descriptions and another for additional notes or comments.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "function",
+      "description": "The side position light function, which includes both the physical light and its associated control logic."
+    },
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "system_state",
+      "description": "The error status of the side position light system, indicating whether there are any faults or issues."
+    },
+    {
+      "name": "SidePositionLightErrorSta",
+      "type": "system_state",
+      "description": "The detailed error status of the side position light system, providing more granular information about the fault."
+    },
+    {
+      "name": "exlSideLghtHwDrvEnPrm",
+      "type": "input_signal",
+      "description": "A hardware driver enable parameter for the side position light, used to control the activation of the light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "value": "4",
+      "description": "Instance ID 4 is specified, likely corresponding to a particular configuration or version of the side position light system."
+    },
+    {
+      "name": "exlSideLghtHwDrvEnPrm",
+      "value": "0x1",
+      "description": "The hardware driver enable parameter is set to 0x1, indicating that the side position light is enabled."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "description": "The system is operating normally with no detected errors in the side position light."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "Synchronization Delay",
+      "value": "40ms",
+      "description": "The left and right side position lights must extinguish simultaneously, with a maximum delay of 40 milliseconds between them."
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters and conditions for the side position light system, including error status, hardware enablement, and synchronization requirements. It is used to verify that the side position lights operate correctly and maintain synchronization within the specified timing constraints.",
+  "uncertain_points": []
+}

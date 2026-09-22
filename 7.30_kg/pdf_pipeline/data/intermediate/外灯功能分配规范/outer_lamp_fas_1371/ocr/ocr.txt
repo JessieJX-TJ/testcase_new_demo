@@ -1,0 +1,30 @@
+场景描述
+用户通过操作远光灯开关由ON档位切换至Flash开关档位,用于退出远光灯控制
+前置条件
+远光灯处于激活状态
+备注:
+a.需求中同时存在SOA和CAN的,按照配置字开发
+b.需求中只存在一种通讯类型的,按照该通讯类型开发
+c.PPV阶段及以后按照SOA通讯方式开发:
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+触发动作
+1、[远光灯开关预处理模块LHZCU]将输入由
+MainBeamLghtOnReq==0x1=MainBeamLghtOnReq_1_On 切换至:
+MainBeamLghtOnReq=0x2=MainBeamLghtSwReq_2_Flash
+执行动作
+[远光灯开关控制模块LHZCU]内部软件跳变为无效退出(备注:开关预处理模块监测开关
+远光灯开关途径off档位时,开关停留时间>50ms时,直接响应off请求；开关停留时间
+略off档位,响应Flash 档位退出；)
+[远光灯开关控制模块LHZCU]信号跳变为:
+LMainBeamLghtCtrl=0x0=LMainBeamLghtCtrl_0_off
+RMainBeamLghtCtrl=0x0=RMainBeamLghtCtrl_0_off
+[远光灯开关控制模块LHZCU]接口响应:
+Notifier:
+[外灯组合服务ICB]调用基础服务:
+{MainBeamLight. ControlMainBeamLight. MainBeamLightReq}{InstanceID=1}=0x0=OFF
+{MainBeamLight. ControlMainBeamLight. MainBeamLightReq}{InstanceID=2}=0x0=OFF
+(exlMainBeamHwDrvEnPrm=0x0时,通过 InstanceID1,2 发送控制请求)
+{MainBeamLight. ControlMainBeamLight. MainBeamLightReq}{InstanceID=3}=0x0=OFF
+{MainBeamLight. ControlMainBeamLight. MainBeamLightReq}{InstanceID=4}=0x0=OFF
+(exlMainBeamHwDrvEnPrm=0x1时,通过InstanceID=3,4发送请求)

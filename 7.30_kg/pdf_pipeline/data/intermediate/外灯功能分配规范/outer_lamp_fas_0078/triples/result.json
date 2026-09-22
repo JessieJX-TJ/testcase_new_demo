@@ -1,0 +1,117 @@
+[
+  {
+    "head": "控制右后转向灯点亮或者熄灭",
+    "relation": "触发条件",
+    "tail": "周期调用ControlDirectionLight服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "周期调用该服务接口,控制右后转向灯点亮或者熄灭",
+      "Interface Name: ControlDirectionLight"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0078",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "订阅左前转向灯状态",
+    "relation": "触发条件",
+    "tail": "调用DirectionLightStatus服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "调用该服务接口,订阅左前转向灯状态",
+      "Interface Name: DirectionLightStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0078",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "订阅右前转向灯状态",
+    "relation": "触发条件",
+    "tail": "调用DirectionLightStatus服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "调用该服务接口,订阅右前转向灯状态",
+      "Interface Name: DirectionLightStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0078",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "方向灯状态为ON",
+    "relation": "输出为",
+    "tail": "ControlDirectionLight接口的DirectionLightReq参数为0x1",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {DirectionLightReq}",
+      "InstanceID=8",
+      "0x1=ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0078",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "方向灯状态为OFF",
+    "relation": "输出为",
+    "tail": "ControlDirectionLight接口的DirectionLightReq参数为0x0",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {DirectionLightReq}",
+      "InstanceID=8",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0078",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "方向灯状态为Unknown",
+    "relation": "输出为",
+    "tail": "DirectionLightStatus接口的DirectionLightSta参数为0x2",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "Parameter Name: {DirectionLightSta}",
+      "InstanceID=1",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0078",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "左前转向灯状态",
+    "relation": "依赖于",
+    "tail": "DirectionLightStatus接口的InstanceID=1",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DirectionLight.DirectionLightStatus",
+      "InstanceID=1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0078",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "右前转向灯状态",
+    "relation": "依赖于",
+    "tail": "DirectionLightStatus接口的InstanceID=2",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "DirectionLight.DirectionLightStatus",
+      "InstanceID=2"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0078",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  }
+]

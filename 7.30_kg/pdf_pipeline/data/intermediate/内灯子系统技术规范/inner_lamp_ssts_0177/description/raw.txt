@@ -1,0 +1,86 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "诊断 DTC 需求清单 (Diagnostic Trouble Code Requirement List)",
+  "row_semantics": "每行代表一个特定的故障诊断代码 (DTC) 及其相关的故障描述、触发条件和恢复条件。",
+  "column_semantics": {
+    "序号": "故障条目的编号，用于唯一标识每个故障项。",
+    "DTC 显示码": "待定 (TBD)，表示具体的故障代码将在后续确定。",
+    "故障描述": "对故障现象的简要描述，指明是背光灯控制电路的何种异常情况。",
+    "故障置位条件": "触发并记录该 DTC 的具体条件，包括状态和阈值。",
+    "故障恢复条件": "清除该 DTC 的条件，通常与置位条件相反或满足特定要求。",
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Back lighting Control Circuit",
+      "type": "功能名",
+      "description": "背光灯控制电路，涉及背光灯的驱动和控制逻辑。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Backlight driving activation state",
+      "description": "背光灯驱动激活状态，表示背光灯电路处于工作或准备工作的状态。",
+      "type": "系统状态"
+    },
+    {
+      "name": "Driving current",
+      "description": "驱动电流，指通过背光灯控制电路的实际电流值。",
+      "type": "输入信号"
+    },
+    {
+      "name": "Threshold value (TBD) A",
+      "description": "待定的阈值电流值，用于判断驱动电流是否正常。",
+      "type": "阈值"
+    },
+    {
+      "name": "Duration 100ms",
+      "description": "持续时间，表示故障条件需要持续一定时间才会触发 DTC。",
+      "type": "定时"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DTC Display Code",
+      "description": "诊断故障代码，用于在车辆故障诊断系统中识别具体的故障。",
+      "type": "输出信号"
+    }
+  ],
+  "core_faults": [
+    {
+      "code": "TBD",
+      "description": "Back lighting Control Circuit Short to battery",
+      "condition": "1) 背光灯驱动激活状态; 2) 驱动电流小于阈值 (TBD) A, 持续 100ms",
+      "recovery": "电流有效值大于 (TBD) A, 持续 100ms"
+    },
+    {
+      "code": "TBD",
+      "description": "Back lighting Control Circuit Short to ground",
+      "condition": "1) 背光灯驱动激活状态; 2) 驱动电流超过阈值 (TBD) A, 持续 100ms",
+      "recovery": "电流有效值小于 (TBD) A, 持续 100ms"
+    },
+    {
+      "code": "TBD",
+      "description": "Back lighting Control Circuit Open Circuit",
+      "condition": "1) 背光灯驱动激活状态; 2) 驱动电流小于阈值 (TBD) A, 持续 100ms",
+      "recovery": "电流有效值大于 (TBD) A, 持续 100ms"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "Duration 100ms",
+      "description": "所有故障条件均需持续至少 100 毫秒才能触发相应的 DTC。",
+      "type": "定时约束"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了背光灯控制电路可能出现的三种故障类型（短路到电池、短路到地、开路），并详细规定了触发这些故障诊断代码 (DTC) 的条件以及清除这些代码的条件，主要用于车辆电子系统中的故障检测和诊断。",
+  "uncertain_points": [
+    "DTC 显示码 (TBD) 具体数值未确定。",
+    "阈值 (TBD) A 的具体数值未确定。",
+    "控制器/模块名称未明确指出，但可推断为与背光灯控制相关的电子控制单元 (ECU)。",
+    "具体的测试验证场景未明确，如是在实验室环境下还是实际道路测试中进行验证。"
+  ]
+}
+```

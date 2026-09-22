@@ -1,0 +1,61 @@
+```json
+[
+  {
+    "head": "背光灯点亮",
+    "relation": "触发条件",
+    "tail": "接收到应用控制模块的请求信号 VehIlluminateCtrlCmd = 0x1 (Open)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehIlluminateCtrlCmd",
+      "0x1",
+      "Open"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "背光灯关闭",
+    "relation": "触发条件",
+    "tail": "接收到 VehIlluminateCtrlCmd = 0x0 (Close)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehIlluminateCtrlCmd",
+      "0x0",
+      "Close"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "背光灯点亮",
+    "relation": "执行动作",
+    "tail": "[背光灯驱动控制模块]发送驱动 RHZCU_BacklightLamp_HSD (高)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RHZCU_BacklightLamp_HSD",
+      "高"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "背光灯关闭",
+    "relation": "退出条件",
+    "tail": "接收 VehIlluminateCtrlCmd = 0x0 (Close)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "VehIlluminateCtrlCmd",
+      "0x0",
+      "Close"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "背光灯关闭",
+    "relation": "异常处理",
+    "tail": "检测到背光灯短路/开路故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "背光灯短路/开路故障"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

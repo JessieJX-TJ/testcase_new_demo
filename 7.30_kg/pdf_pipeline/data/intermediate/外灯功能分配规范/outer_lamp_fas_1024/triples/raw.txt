@@ -1,0 +1,104 @@
+```json
+[
+  {
+    "head": "S32G收到大屏开关请求ICB输入",
+    "relation": "触发条件",
+    "tail": "外灯控制组合服务ICB调用接口发送近光灯请求状态给LHZCU",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "S32G",
+      "大屏开关请求ICB",
+      "外灯控制组合服务ICB",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯控制组合服务ICB调用接口发送近光灯请求状态给LHZCU",
+    "relation": "触发条件",
+    "tail": "近光灯控制模块LHZCU接口响应",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外灯控制组合服务ICB",
+      "LHZCU",
+      "近光灯控制模块"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制模块LHZCU接口响应",
+    "relation": "输出为",
+    "tail": "近光灯控制信号LDipdBeamLghtCtrl=0x1=LDipdBeamLghtCtrl_1_On和RDipdBeamLghtCtrl=0x1=RDipdBeamLghtCtrl_1_On",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "近光灯控制模块",
+      "LDipdBeamLghtCtrl",
+      "RDipdBeamLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制模块LHZCU接口响应",
+    "relation": "输出为",
+    "tail": "位置灯控制信号FLSideLghtCtrl=0x1=FLSideLghtCtrl_1_On、FRSideLghtCtrl=0x1=FRSideLghtCtrl_1_On、RLSideLghtCtrl=0x1=RLSideLghtCtrl_1_On和RRSideLghtCtrl=0x1=RRSideLghtCtrl_1_On",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "近光灯控制模块",
+      "FLSideLghtCtrl",
+      "FRSideLghtCtrl",
+      "RLSideLghtCtrl",
+      "RRSideLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB分发控制信号至LHZCU/RHZCU",
+    "relation": "触发条件",
+    "tail": "ICB将服务接口或控制信号转换成灯控CAN信号，并控制近光灯和位置灯点亮",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "RHZCU",
+      "CAN信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "当组合灯光请求为近光灯",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.CombLightFucProStatus.CombLightFucProSta=0x2=DippedBeamLight ON",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "组合灯光请求",
+      "ExteriorLightSwitchProcess",
+      "DippedBeamLight"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "当组合灯光请求为近光灯且同时赋值0x2=DippedBeamLight ON",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.CombLightSwStatus.CombLightSwSta=0x4=SidePositionAndDippedBeam ON",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "组合灯光请求",
+      "DippedBeamLight",
+      "SidePosition"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI子系统ICB调用接口",
+    "relation": "触发条件",
+    "tail": "获取近光灯和位置灯指示灯显示",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "HMI子系统",
+      "ICB",
+      "指示灯显示"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,81 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯功能分配规范",
+  "row_semantics": "描述了在特定触发条件下，外灯（如制动灯）的控制逻辑和信号交互流程。",
+  "column_semantics": "表格分为两列，左侧为触发动作和执行动作的描述，右侧为具体的配置需求和备注信息。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "外灯功能 (Exterior lamp function)",
+      "type": "function",
+      "description": "指车辆外部灯光的功能，包括但不限于制动灯、示廓灯等。"
+    },
+    {
+      "name": "Z-ONE-3.0平台-FAS-IBD05",
+      "type": "platform",
+      "description": "车辆电子电气架构平台，定义了功能分配的具体实现环境。"
+    },
+    {
+      "name": "LHZCU (制动灯开关预处理模块)",
+      "type": "controller",
+      "description": "负责处理制动灯开关信号的控制器模块。"
+    },
+    {
+      "name": "KZCTU (制动处理模块)",
+      "type": "controller",
+      "description": "负责处理制动相关逻辑的控制器模块。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsGmD1=0x6=UsGmD_6_XOTA",
+      "type": "condition",
+      "description": "一个特定的诊断或软件版本标识，用于判断是否满足外灯功能的激活条件。"
+    },
+    {
+      "name": "BrkLghtSwReq_1_On",
+      "type": "input_signal",
+      "description": "制动灯开关请求信号，表示驾驶员已按下制动踏板。"
+    },
+    {
+      "name": "VehMd_3_TRANSPORT",
+      "type": "system_state",
+      "description": "车辆处于运输模式的状态，可能影响外灯的行为。"
+    },
+    {
+      "name": "SOA (Service Oriented Architecture)",
+      "type": "mode",
+      "description": "一种基于服务的架构模式，用于描述外灯控制的通信方式。"
+    },
+    {
+      "name": "CAN",
+      "type": "communication_protocol",
+      "description": "Controller Area Network，一种常用的车载网络通信协议。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLghtSwReq",
+      "type": "output_signal",
+      "description": "制动灯开关请求信号，由LHZCU模块输出，用于控制制动灯的点亮。"
+    },
+    {
+      "name": "BrkLghtCtrlCmmtnTyp",
+      "type": "signal",
+      "description": "制动灯控制命令类型，指示通过SOA还是CAN进行控制。"
+    },
+    {
+      "name": "BrkLghtStsCmmtnTyp",
+      "type": "signal",
+      "description": "制动灯状态命令类型，指示通过SOA还是CAN进行状态反馈。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了在制动灯开关被触发时，如何根据车辆当前状态（如运输模式）和通信方式（SOA或CAN），正确配置和控制制动灯的逻辑。可用于验证制动灯在不同场景下的响应是否符合设计规范。",
+  "uncertain_points": [
+    "具体的服务ID (InstanceID) 值未明确给出，仅以通用形式表示。",
+    "某些配置需求中的细节（如具体的SOA或CAN通信参数）未在表格中详细展开。"
+  ]
+}

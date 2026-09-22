@@ -1,0 +1,120 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 外部灯泡功能 (Exterior lamp function)",
+  "row_semantics": "表格按编号列出各项功能规范，描述了不同模块间的信号交互、状态控制及故障反馈机制。",
+  "column_semantics": "无明确列标题，内容为逐行的功能描述和信号赋值语句。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Z-ONE-3.0 Platform-FAS-IBD05",
+      "type": "platform",
+      "description": "车辆电子电气平台"
+    },
+    {
+      "name": "LHZCU/RHZCU/RZCU",
+      "type": "controller_module",
+      "description": "驱动处理模块，负责接收ICB控制信号并控制双闪灯退出点亮"
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "集成控制盒，接收控制信号并反馈状态/故障信息"
+    },
+    {
+      "name": "危险警报灯开关控制模块 LHZCU",
+      "type": "controller_module",
+      "description": "负责危险警报灯的开关控制"
+    },
+    {
+      "name": "外灯组合服务 ICB",
+      "type": "service_module",
+      "description": "接收转向灯点亮及故障状态CAN信号并转成对应的服务"
+    },
+    {
+      "name": "SDM",
+      "type": "controller_module",
+      "description": "安全数据管理器，接收转向灯控制状态反馈"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FRDirnLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "前右方向灯硬件控制信号"
+    },
+    {
+      "name": "RLDirnLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "后左方向灯硬件控制信号"
+    },
+    {
+      "name": "RRDirnLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "后右方向灯硬件控制信号"
+    },
+    {
+      "name": "exlDirncLghtHwDrvEnPrm",
+      "type": "input_signal",
+      "description": "通过域控获取转向灯状态"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "type": "system_state",
+      "description": "危险模式状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FRDirnLghtCtrl_0_Off",
+      "type": "output_signal",
+      "description": "前右方向灯控制信号关闭"
+    },
+    {
+      "name": "RLDirnLghtCtrl_0_Off",
+      "type": "output_signal",
+      "description": "后左方向灯控制信号关闭"
+    },
+    {
+      "name": "RRDirnLghtCtrl_0_Off",
+      "type": "output_signal",
+      "description": "后右方向灯控制信号关闭"
+    },
+    {
+      "name": "DirnLghtSts",
+      "type": "output_signal",
+      "description": "方向灯状态"
+    },
+    {
+      "name": "DirnLghtFltsts",
+      "type": "output_signal",
+      "description": "方向灯故障状态"
+    },
+    {
+      "name": "EDRDirnIndLampSwSts",
+      "type": "output_signal",
+      "description": "紧急危险指示灯开关状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrSts",
+      "type": "fault_status",
+      "description": "方向灯故障状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步性允许的最大延迟时间",
+      "value": "50ms",
+      "description": "危险警报灯闪烁频率与实际危险警报灯的闪烁频率需保持一致，三者同步性允许的最大延迟时间为50ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了车辆外部灯（如方向灯、危险警报灯）在不同控制模块之间的信号交互逻辑、状态控制规则以及故障反馈机制，可用于验证外灯系统的功能正确性和故障响应能力。",
+  "uncertain_points": [
+    "具体信号的触发条件未明确说明",
+    "部分模块的具体实现细节未给出"
+  ]
+}
+```

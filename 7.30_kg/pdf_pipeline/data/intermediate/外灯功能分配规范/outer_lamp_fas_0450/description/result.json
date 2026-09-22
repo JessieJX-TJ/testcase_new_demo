@@ -1,0 +1,50 @@
+{
+  "table_type": "state_table",
+  "topic": "Day Running Light (DRL) Control Module LHZCU",
+  "row_semantics": "Step-by-step logic for enabling/disabling the Day Running Light function based on external light switch status",
+  "column_semantics": "Not applicable (single column of sequential instructions)",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit, responsible for managing day running lights"
+    },
+    {
+      "name": "ICB",
+      "type": "input_signal",
+      "description": "External Light Switch Combination Service, provides status information about the external light switch"
+    },
+    {
+      "name": "DayRunningLghtDsblSts",
+      "type": "internal_variable",
+      "description": "Internal state variable controlling the enable/disable status of the day running light"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "ICB.Setter {ExteriorLightSwitchProcess.DayRunningLightFucProStatus.DayRunningLghtFucProsSta} == OFF",
+      "effect": "Set DayRunningLghtDsblSts = True"
+    },
+    {
+      "condition": "ICB.Setter {ExteriorLightSwitchProcess.DayRunningLightFucProStatus.DayRunningLghtFucProsSta} == ON",
+      "effect": "Clear DayRunningLghtDsblSts"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "DayRunningLghtDsblSts",
+      "description": "Controls whether the day running light is enabled or disabled"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "Power-down reset",
+      "description": "DayRunningLghtDsblSts is cleared when power is turned off"
+    }
+  ],
+  "engineering_interpretation": "This table defines the state transition logic for the Day Running Light function within the LHZCU, based on the status of the external light switch. It specifies how the internal enable/disable flag (DayRunningLghtDsblSts) is set or cleared in response to changes in the external light switch status.",
+  "uncertain_points": []
+}

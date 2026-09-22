@@ -1,0 +1,42 @@
+```json
+{
+  "table_type": "other",
+  "topic": "外灯功能 - 转向灯开关控制模块 LHZCU 的功能分配规范",
+  "row_semantics": "表格的每一行描述了转向灯系统中一个具体的控制逻辑或状态反馈要求，包括功能实现、信号交互和时序约束。",
+  "column_semantics": "表格分为两列：左侧为编号和备注说明，右侧为详细的功能描述和技术参数。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "LHZCU (转向灯开关控制模块)",
+    "ICB (Interior Control Box)",
+    "SDM (Smart Domain Module)",
+    "RZCU (Right Zone Control Unit)",
+    "DirectionLight (方向灯)",
+    "ExteriorLightSwitchProcess (外部灯光开关处理模块)"
+  ],
+  "core_conditions": [
+    "转向灯开关状态",
+    "转向灯闪烁频率",
+    "转向灯同步性",
+    "ICB 请求重发机制",
+    "外灯状态主动获取"
+  ],
+  "core_outputs": [
+    "转向灯点亮/熄灭",
+    "故障状态反馈至 ICB/SDM",
+    "转向灯闪烁模式",
+    "ICB 请求重发信号"
+  ],
+  "core_faults": [
+    "DirectionLightErrorStatus (方向灯错误状态)",
+    "ControlFailure (控制失败)"
+  ],
+  "core_timing_constraints": [
+    "转向灯同步性最大延时周期: 40ms",
+    "ICB 请求重发尝试周期: <=50ms",
+    "外灯状态主动获取超时时间: 500ms"
+  ],
+  "engineering_interpretation": "该表格用于验证转向灯开关控制模块 LHZCU 在不同场景下的功能实现，包括转向灯的点亮、闪烁、同步性以及与 ICB 和 SDM 的信号交互和故障反馈机制。",
+  "uncertain_points": []
+}
+```

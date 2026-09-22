@@ -1,0 +1,59 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 前雾灯控制与状态",
+  "row_semantics": "表格的每一行代表一个与前雾灯相关的控制或状态参数，包括请求（Req）、响应（Resp）以及通知器（Notifier）的状态。",
+  "column_semantics": "表格分为两大部分：左侧为功能描述和模块归属，右侧为具体的参数定义及其值含义。其中，右侧部分进一步细分为请求参数、响应参数和通知器参数。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FrontFogLghtFucProCtrlReq",
+      "type": "input_parameter",
+      "description": "前雾灯功能控制请求参数，用于发送控制指令（开/关）"
+    },
+    {
+      "name": "FrontFogLghtFucProCtrlResp",
+      "type": "output_parameter",
+      "description": "前雾灯功能控制响应参数，返回控制结果（成功/失败）"
+    },
+    {
+      "name": "FrontFogLghtFucProsSta",
+      "type": "state_parameter",
+      "description": "前雾灯功能状态参数，表示当前前雾灯的实际工作状态"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "module",
+      "description": "外部灯光开关处理模块，负责管理外部灯光的开关逻辑"
+    },
+    {
+      "name": "FrontFogLghtFucProStatus",
+      "type": "notifier",
+      "description": "前雾灯功能状态通知器，用于订阅并获取前雾灯的工作状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0=OFF",
+      "description": "表示关闭状态"
+    },
+    {
+      "name": "0x1=ON",
+      "description": "表示开启状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ControlSuccess",
+      "description": "控制成功响应"
+    },
+    {
+      "name": "Failed",
+      "description": "控制失败响应"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证前雾灯的功能控制流程，包括发送控制指令、接收响应以及监控实际状态的变化，确保系统能够正确执行前雾灯的开关操作并反馈相应状态。",
+  "uncertain_points": []
+}

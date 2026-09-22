@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "转向灯控制逻辑",
+  "row_semantics": "描述了在特定条件下，系统如何响应用户操作并执行相应的动作，以及退出条件和异常处理。",
+  "column_semantics": {
+    "0": "条件或动作的类别（如前置条件、触发条件、执行动作等）",
+    "1": "具体的条件或动作描述"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILghtSwSOAEnPrm",
+      "type": "配置参数",
+      "description": "方向灯开关优先级使能参数，值为1表示启用"
+    },
+    {
+      "name": "DILghtSwMdl",
+      "type": "模块/控制器",
+      "description": "方向灯开关模块"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "模块/控制器",
+      "description": "方向灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "配置字 DILghtSwSOAEnPrm == 1 (Enable)"
+    },
+    {
+      "condition": "触发条件",
+      "description": "用户轻拨左转向拨杆，开关阻值为 2000 Ω (±5%)"
+    },
+    {
+      "condition": "退出条件",
+      "description": "转向灯开关阻值变为非 2000 Ω (±5%)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DirectionLightSwitchStatus",
+      "value": "0x3 (Left Direction Light On 一档)",
+      "description": "持续发送方向灯开关状态，指示左侧方向灯开启一档"
+    },
+    {
+      "module": "DILghtCtrlMdl",
+      "action": "至少发送三帧",
+      "description": "向方向灯控制模块发送至少三帧控制信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定条件下（如用户轻拨左转向拨杆且开关阻值为2000Ω），系统应如何通过方向灯开关模块和控制模块实现左侧方向灯的正确点亮，并确保在退出条件满足时停止相关动作。可用于验证转向灯控制逻辑的功能正确性。",
+  "uncertain_points": []
+}
+```

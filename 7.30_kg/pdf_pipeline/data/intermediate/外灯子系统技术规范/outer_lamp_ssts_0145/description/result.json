@@ -1,0 +1,80 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯控制系统接口规范",
+  "row_semantics": "描述了外灯系统中不同功能的接口定义，包括控制信号和状态反馈信号。",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识具体的通信或控制点。",
+    "Direction": "信号流向，指示是输入还是输出。",
+    "Type": "信号类型，如硬线、SOA等。",
+    "Sender/Provider": "信号的发送方或提供方控制器。",
+    "Receiver/Consumer": "信号的接收方或消费方控制器。",
+    "Channel": "信号传输路径或通道。",
+    "Source": "接口来源模块或系统。",
+    "Additional Info": "对特定接口的详细说明，包括参数定义和取值范围。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "PosLamp_LH&RHS_D",
+      "type": "功能名",
+      "description": "左后位置灯硬线驱动接口，用于直接控制尾灯的点亮与熄灭。"
+    },
+    {
+      "name": "ControlSidePositionLight.SidePositionLightReq",
+      "type": "功能名",
+      "description": "左后位置灯控制请求接口，通过该接口可以请求点亮或熄灭左后位置灯。"
+    },
+    {
+      "name": "SidePositionLightStatus.SidePositionLightSta",
+      "type": "功能名",
+      "description": "左前转向灯状态反馈接口，用于获取左后位置灯的当前状态。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Local Headlight Control Unit，本地灯光控制单元，负责处理灯光相关的逻辑和控制。"
+    },
+    {
+      "name": "ICB/LHZCU",
+      "type": "控制器/模块名",
+      "description": "Integrated Control Box / Local Headlight Control Unit，集成控制盒或本地灯光控制单元，可能作为中央控制单元参与灯光控制。"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器/模块名",
+      "description": "Remote Zone Control Unit，远程区域控制单元，可能负责远程区域的灯光控制。"
+    },
+    {
+      "name": "尾灯",
+      "type": "系统状态",
+      "description": "表示尾灯的当前状态（点亮或熄灭）。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightReq",
+      "type": "输入信号",
+      "description": "控制左后位置灯点亮或熄灭的请求信号，取值为0x0=OFF, 0x1=ON。",
+      "source": "ICB/LHZCU"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "PosLamp_LH&RHS_D",
+      "type": "输出信号",
+      "description": "硬线驱动信号，直接控制左后位置灯的点亮与熄灭。",
+      "destination": "尾灯"
+    },
+    {
+      "name": "SidePositionLightStatus.SidePositionLightSta",
+      "type": "输出信号",
+      "description": "反馈左后位置灯的状态，取值为0x0=OFF, 0x1=ON, 0x2=Unknown。",
+      "source": "RZCU"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯系统中左后位置灯的控制与状态反馈接口，可用于验证灯光控制逻辑、信号传输路径以及状态反馈的正确性。",
+  "uncertain_points": []
+}

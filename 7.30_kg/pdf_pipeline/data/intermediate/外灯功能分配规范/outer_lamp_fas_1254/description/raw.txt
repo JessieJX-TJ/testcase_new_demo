@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "危险警报灯控制逻辑",
+  "row_semantics": "表格的每一行代表一个前置条件或配置需求，用于定义危险警报灯退出激活状态的触发条件。",
+  "column_semantics": "表格包含两列：第一列为场景描述和前置条件的标题，第二列为具体的条件内容。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "危险警报灯",
+      "type": "功能"
+    },
+    {
+      "name": "危险警报灯开关",
+      "type": "输入信号"
+    },
+    {
+      "name": "ExtrLightCtrlCmmtnTyp",
+      "type": "配置参数"
+    },
+    {
+      "name": "ExtrLightStsCmmtnTyp",
+      "type": "配置参数"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "危险警报灯处于激活状态",
+      "description": "这是危险警报灯退出激活状态的前提条件。"
+    },
+    {
+      "condition": "ExtrLightCtrlCmmtnTyp = 0x0 - SOA",
+      "description": "当控制通信类型为SOA时的配置要求。"
+    },
+    {
+      "condition": "ExtrLightCtrlCmmtnTyp = 0x1 - CAN",
+      "description": "当控制通信类型为CAN时的配置要求。"
+    },
+    {
+      "condition": "ExtrLightStsCmmtnTyp = 0x0 - SOA",
+      "description": "当状态通信类型为SOA时的配置要求。"
+    },
+    {
+      "condition": "ExtrLightStsCmmtnTyp = 0x1 - CAN",
+      "description": "当状态通信类型为CAN时的配置要求。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "危险警报灯退出激活状态",
+      "description": "通过危险警报灯开关操作后，危险警报灯从激活状态变为非激活状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定配置条件下，通过危险警报灯开关操作，使危险警报灯从激活状态退出的控制逻辑，可用于验证危险警报灯控制功能在不同通信类型下的行为一致性。",
+  "uncertain_points": [
+    "未明确指定控制器/模块名称",
+    "未详细说明危险警报灯开关的具体物理位置或操作方式",
+    "未提及异常情况下的处理逻辑"
+  ]
+}
+```

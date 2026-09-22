@@ -1,0 +1,68 @@
+```json
+[
+  {
+    "head": "RHALamp (Right Headlamp) 按照呼吸周期指令进行周期闪烁",
+    "relation": "前提条件",
+    "tail": "Code值为0x5至0xF中的任意一个",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CnsoRHALampBrthngCmd_1_x_Ratey",
+      "灯头按照对应的呼吸周期指令进行周期闪烁"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RHALamp (Right Headlamp) 停止闪烁",
+    "relation": "触发条件",
+    "tail": "Code值为Rate0 (No Request)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Rate0",
+      "No Request"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RHALamp (Right Headlamp) 切换呼吸模式",
+    "relation": "触发条件",
+    "tail": "Code值在不同呼吸模式间切换时",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "不同呼吸模式切换时,立即停止当前呼吸,切换下一呼吸模式"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RHALamp (Right Headlamp) 呼吸模式保持",
+    "relation": "状态保持条件",
+    "tail": "当Code值设置为特定Rate值时，持续以该周期闪烁",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "Rate1 - Rate15",
+      "周期"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RHALamp (Right Headlamp) 颜色/亮度渐变速度",
+    "relation": "输入为",
+    "tail": "CnsoRHALampFadeSpdCmd_1_x_Spdy",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CnsoRHALampFadeSpdCmd_1_x_Spdy",
+      "氛围灯渐变速度指令"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RHALamp (Right Headlamp) 颜色/亮度渐变时间",
+    "relation": "超时约束",
+    "tail": "默认速度Spd0: 2000ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "默认速度Spd0: 2000ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

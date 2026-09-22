@@ -1,0 +1,80 @@
+```json
+[
+  {
+    "head": "ICB 接收 LHZCU 发送的转向灯点亮及故障状态 CAN 信号",
+    "relation": "输入为",
+    "tail": "ExteriorLightControlSystem.DirectionLightSts. DirectionLghtSts=0x0=No Flash",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "转向灯点亮及故障状态 CAN 信号",
+      "DirectionLghtSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 接收 LHZCU 发送的转向灯点亮及故障状态 CAN 信号",
+    "relation": "输入为",
+    "tail": "ExteriorLightControlSystem.DirectionLightErrSts. DirectionLghtErrSts=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "转向灯点亮及故障状态 CAN 信号",
+      "DirectionLghtErrSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU 将实时状态发送至 ICB",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts=0x0=VehHzrdMdSts_0_No_Request",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "实时状态",
+      "VehHzrdMdSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU 将转向灯控制状态反馈至 SDM",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts=0x0=EDRDircnIndLampSwSts_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "SDM",
+      "转向灯控制状态",
+      "EDRDircnIndLampSwSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯同步性要求 (a&b)",
+    "relation": "前提条件",
+    "tail": "图标闪烁频率和声音提醒与实际危险警报灯的闪烁频率需保持一致，三者同步性允许的最大延时为 50ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "危险警报灯",
+      "同步性",
+      "50ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "危险警报灯同步性要求 (a&b)",
+    "relation": "前提条件",
+    "tail": "危险警报灯的同步性允许的最大延时周期为: 40ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "危险警报灯",
+      "同步性",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

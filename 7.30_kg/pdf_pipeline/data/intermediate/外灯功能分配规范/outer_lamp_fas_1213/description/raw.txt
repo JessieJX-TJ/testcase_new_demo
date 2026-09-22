@@ -1,0 +1,53 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "车顶射灯状态检测与故障反馈",
+  "row_semantics": "表格定义了对车顶射灯（RoofSpotLight）的两种状态检测：点亮状态和故障状态。",
+  "column_semantics": {
+    "执行检测": "描述需要执行的具体检测任务，即检测车顶射灯的点亮状态或故障状态。",
+    "输出": "描述对应检测任务的反馈信号及其在RTE接口中的状态。",
+    "备注": "此列为空，未提供额外信息。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "entity_name": "RoofSpotLight",
+      "entity_type": "功能名",
+      "description": "车顶射灯，车辆外部照明系统的一部分，用于提供局部照明或装饰性灯光效果。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition_name": "RoofSpotLightStatus",
+      "condition_type": "输入信号",
+      "description": "反映车顶射灯当前的点亮状态（如开启、关闭）。",
+      "source": "RoofSpotLight"
+    },
+    {
+      "condition_name": "RoofSpotLightErrorStatus",
+      "condition_type": "输入信号",
+      "description": "反映车顶射灯是否存在故障状态（如电路断路、短路等）。",
+      "source": "RoofSpotLight"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output_name": "RoofSpotLight.RoofSpotLightStatus.RoofSpotLightState",
+      "output_type": "输出信号",
+      "description": "通过RTE接口反馈车顶射灯的当前点亮状态。",
+      "target": "RTE"
+    },
+    {
+      "output_name": "RoofSpotLight.RoofSpotLightErrorStatus.RoofSpotLightErrorState",
+      "output_type": "输出信号",
+      "description": "通过RTE接口反馈车顶射灯的当前故障状态。",
+      "target": "RTE"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车顶射灯状态检测的测试验证规范，用于验证车辆电子控制单元（ECU）是否能够正确检测并反馈车顶射灯的点亮状态和故障状态，并通过RTE接口将这些状态传递给上层系统。",
+  "uncertain_points": []
+}
+```

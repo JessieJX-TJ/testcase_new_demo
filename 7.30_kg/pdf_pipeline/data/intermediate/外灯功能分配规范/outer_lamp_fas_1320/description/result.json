@@ -1,0 +1,137 @@
+{
+  "table_type": "signal_table",
+  "topic": "危险警报灯（转向灯）系统的状态与故障反馈机制",
+  "row_semantics": "表格按功能模块编号列出各项控制逻辑，描述了不同控制器之间关于转向灯状态、故障及控制模式的信号交互。",
+  "column_semantics": "无明确列标题，内容为逐行的功能描述和对应的信号赋值语句。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "Integrated Control Box，集成控制盒，负责接收并处理转向灯的状态和故障信息。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Light Hazard Zone Control Unit，灯光危险区域控制单元，负责管理危险警报灯的开关控制，并向其他模块反馈状态。"
+    },
+    {
+      "name": "SDM",
+      "type": "Controller/Module",
+      "description": "Safety Deployment Module，安全气囊控制模块，接收转向灯的控制状态反馈。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "Subsystem",
+      "description": "车身外部灯光控制系统，包含方向灯状态和错误状态的管理。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FLDircnLghtSts",
+      "type": "Input Signal",
+      "description": "前左转向灯状态，用于指示转向灯是否开启或关闭。"
+    },
+    {
+      "name": "FRDircnLghtSts",
+      "type": "Input Signal",
+      "description": "前右转向灯状态。"
+    },
+    {
+      "name": "RLDircnLghtSts",
+      "type": "Input Signal",
+      "description": "后左转向灯状态。"
+    },
+    {
+      "name": "RRDircnLghtSts",
+      "type": "Input Signal",
+      "description": "后右转向灯状态。"
+    },
+    {
+      "name": "exlDircnLghtHwDrvEnPrm",
+      "type": "Input Signal",
+      "description": "通过硬件驱动获取的转向灯状态参数。"
+    },
+    {
+      "name": "DircnLghtSts",
+      "type": "Output Signal",
+      "description": "转向灯总状态，表示当前转向灯的整体工作状态。"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "type": "Output Signal",
+      "description": "车辆危险模式状态，用于指示双闪灯模式是否激活。"
+    },
+    {
+      "name": "EDRDircnIndLampSwSts",
+      "type": "Output Signal",
+      "description": "电子驻车制动系统中的转向指示灯开关状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtFltsts",
+      "type": "Fault Status",
+      "description": "前左转向灯故障状态，指示是否存在故障。"
+    },
+    {
+      "name": "FRDircnLghtFltsts",
+      "type": "Fault Status",
+      "description": "前右转向灯故障状态。"
+    },
+    {
+      "name": "RLDircnLghtFltsts",
+      "type": "Fault Status",
+      "description": "后左转向灯故障状态。"
+    },
+    {
+      "name": "RRDircnLghtFltsts",
+      "type": "Fault Status",
+      "description": "后右转向灯故障状态。"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "type": "Fault Status",
+      "description": "转向灯整体故障状态。"
+    },
+    {
+      "name": "DirectionLghtSts",
+      "type": "System State",
+      "description": "方向灯状态，表示转向灯是否点亮。"
+    },
+    {
+      "name": "DirectionLghtErrSts",
+      "type": "System State",
+      "description": "方向灯错误状态，表示是否存在故障。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No_Flash",
+      "type": "Fault Condition",
+      "description": "转向灯未闪烁的故障状态。"
+    },
+    {
+      "name": "No_Error",
+      "type": "Fault Condition",
+      "description": "转向灯无错误的正常状态。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步延时",
+      "type": "Timing Constraint",
+      "description": "危险警报灯的图标闪烁频率、声音提醒与实际危险警报灯的闪烁频率需保持一致，三者同步性允许的最大延时时间为50ms。",
+      "value": "50ms"
+    },
+    {
+      "name": "最大周期",
+      "type": "Timing Constraint",
+      "description": "危险警报灯的同步性允许的最大延时周期为40ms。",
+      "value": "40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了危险警报灯系统中各控制器之间的信号交互逻辑，包括转向灯状态的获取、故障反馈以及双闪模式的控制，主要用于验证危险警报灯系统在不同工况下的状态一致性、故障检测能力和同步性能。",
+  "uncertain_points": []
+}

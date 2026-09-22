@@ -1,0 +1,76 @@
+{
+  "table_type": "signal_table",
+  "topic": "车辆外部灯光控制与状态监控",
+  "row_semantics": "表格定义了车辆外部灯光相关的控制信号和状态通知，包括左侧远光灯的控制以及组合灯和后雾灯的状态。",
+  "column_semantics": {
+    "1": "功能/信号名称",
+    "2": "输出类型 (CANFD, LHZCU, ICB等)",
+    "3": "CAN/LIN/SOA服务/硬线的详细定义，亦可指向具体条目"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LMainBeamLightCtrl",
+      "type": "controller",
+      "description": "左侧远光灯控制信号，由LHZCU模块控制。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.CombLghtFucProStatus",
+      "type": "module",
+      "description": "外部灯光开关处理模块，负责组合灯的功能状态监控。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.RearFogLghtFucProStatus",
+      "type": "module",
+      "description": "外部灯光开关处理模块，负责后雾灯的功能状态监控。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CombLghtFucProSta",
+      "description": "组合灯功能状态参数，包含近光灯、位置灯、自动灯光等状态。",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "SidePositionLight ON",
+        "0x2": "DippedBeamLight ON",
+        "0x3": "AUTO",
+        "0x4": "Unknown"
+      }
+    },
+    {
+      "name": "RearFogLghtFucProsSta",
+      "description": "后雾灯功能状态参数。",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "ON"
+      }
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LMainBeamLightCtrl_0_Off",
+      "description": "左侧远光灯关闭状态。",
+      "source": "LHZCU"
+    },
+    {
+      "name": "LMainBeamLightCtrl_1_On",
+      "description": "左侧远光灯开启状态。",
+      "source": "LHZCU"
+    },
+    {
+      "name": "CombLghtFucProStatus",
+      "description": "组合灯功能状态通知。",
+      "source": "SOA"
+    },
+    {
+      "name": "RearFogLghtFucProStatus",
+      "description": "后雾灯功能状态通知。",
+      "source": "SOA"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证车辆外部灯光系统的控制逻辑和状态反馈，确保远光灯、组合灯及后雾灯在不同驾驶场景下的正确响应和状态上报。",
+  "uncertain_points": []
+}

@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "远光灯自动控制模块 LHZCU 的状态判断与发送逻辑",
+  "row_semantics": "描述了在不同条件下，远光灯主模式状态（MainBeamLghtMdSta）的取值规则",
+  "column_semantics": "无列结构，内容为连续的行描述性规则",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "远光灯自动控制模块"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.MainBeamLghtMdSta.MainBeamLghtMdSta",
+      "type": "output_signal",
+      "description": "远光灯主模式状态输出信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "默认状态",
+      "description": "未手动开启且未满足自动开启条件时的状态"
+    },
+    {
+      "name": "手动开启",
+      "description": "用户手动操作开启远光灯时的状态"
+    },
+    {
+      "name": "自动开启前置条件满足",
+      "description": "系统自动开启远光灯的前置条件已达成时的状态"
+    },
+    {
+      "name": "自动开启未使能",
+      "description": "系统自动开启功能被禁用或无法执行时的状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLghtMdSta",
+      "value": "0x0",
+      "mode": "No_Request",
+      "description": "默认发送状态，表示无请求"
+    },
+    {
+      "name": "MainBeamLghtMdSta",
+      "value": "0x1",
+      "mode": "Manual_Mode",
+      "description": "手动开启远光灯时发送的状态"
+    },
+    {
+      "name": "MainBeamLghtMdSta",
+      "value": "0x2",
+      "mode": "Auto_Mode",
+      "description": "远光灯自动开启前置条件满足时发送的状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了远光灯自动控制模块 LHZCU 在不同场景下如何判断并发送远光灯状态，可用于验证模块在手动、自动及默认模式下的状态输出是否符合规范。",
+  "uncertain_points": []
+}
+```

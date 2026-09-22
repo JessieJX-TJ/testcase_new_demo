@@ -1,0 +1,63 @@
+{
+  "table_type": "logic_table",
+  "topic": "拖挂模式下拖挂车制动灯的开启/关闭逻辑",
+  "row_semantics": "表格按功能描述、前置条件、触发条件、执行动作的顺序展开，详细定义了在特定条件下控制器如何处理制动灯信号。",
+  "column_semantics": "第一列是功能描述或条件分类（如‘场景描述’、‘前置条件’等），第二列是具体的条件或动作内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Local Host Control Unit，负责发送外灯控制信号"
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "Remote Zone Control Unit，接收并判断前置条件，根据信号进行相应操作"
+    },
+    {
+      "name": "VehDragMdSts",
+      "type": "signal",
+      "description": "车辆拖挂模式状态信号"
+    },
+    {
+      "name": "InsdFnCfgVehDragMd",
+      "type": "signal",
+      "description": "拖车模式功能配置信号"
+    },
+    {
+      "name": "BrkLghtCtrl",
+      "type": "signal",
+      "description": "制动灯控制信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "车辆具备拖车模式功能",
+      "expression": "InsdFnCfgVehDragMd = 0x1"
+    },
+    {
+      "condition": "拖挂模式开启",
+      "expression": "VehDragMdSts = 0x1 = VehDragMdSts_1_On"
+    },
+    {
+      "condition": "LHZCU发送的外灯控制信号为制动灯开启",
+      "expression": "BrkLghtCtrl = 0x1 = BrkLghtCtrl_1_On"
+    },
+    {
+      "condition": "LHZCU发送的外灯控制信号为制动灯关闭",
+      "expression": "BrkLghtCtrl = 0x0 = BrkLghtCtrl_0_Off"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "RZCU判断前置条件满足后，对应发送制动灯控制信号",
+      "action": "RZCU根据接收到的BrkLghtCtrl信号（0x1或0x0）进行判断，并发送对应的BrkLghtCtrl信号（0x1或0x0）"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证在拖挂模式下，当拖挂车制动灯的开启/关闭信号由LHZCU发出时，RZCU是否能够正确接收并根据前置条件判断，进而正确发送相应的制动灯控制信号。",
+  "uncertain_points": []
+}

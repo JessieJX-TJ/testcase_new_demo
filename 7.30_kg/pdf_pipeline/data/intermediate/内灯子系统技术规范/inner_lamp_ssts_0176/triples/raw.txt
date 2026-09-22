@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "Ambient Lamp Brightness保持不变",
+    "relation": "状态保持条件",
+    "tail": "CnsoRHCLampBrtnsCmd_1指令值为0",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["CnsoRHCLampBrtnsCmd_1", "指令值为0"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Brightness控制命令有效",
+    "relation": "前提条件",
+    "tail": "CnsoRHCLampBrtnsCmd_1指令值范围为0x65-0xFF",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["CnsoRHCLampBrtnsCmd_1", "0x65-0xFF"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode设置为Rate1",
+    "relation": "输入为",
+    "tail": "CnsoRHCLampBrthngCmd_1 = 0x1",
+    "triple_type": "输入输出关系",
+    "evidence_terms": ["CnsoRHCLampBrthngCmd_1", "Rate1"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode周期为500ms",
+    "relation": "依赖于",
+    "tail": "Code值为Rate1",
+    "triple_type": "模式依赖关系",
+    "evidence_terms": ["Rate1", "500ms"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode周期为12s",
+    "relation": "依赖于",
+    "tail": "Code值为Rate15",
+    "triple_type": "模式依赖关系",
+    "evidence_terms": ["Rate15", "12s"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode为新增(0-100%跳变)",
+    "relation": "输入为",
+    "tail": "Code值为Rate0",
+    "triple_type": "输入输出关系",
+    "evidence_terms": ["Rate0", "新增(0-100%跳变)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode为原呼吸模式2(0-100%跳变)",
+    "relation": "输入为",
+    "tail": "Code值为Rate2",
+    "triple_type": "输入输出关系",
+    "evidence_terms": ["Rate2", "原呼吸模式2(0-100%跳变)"],
+    "confidence_note": "high"
+  }
+]
+```

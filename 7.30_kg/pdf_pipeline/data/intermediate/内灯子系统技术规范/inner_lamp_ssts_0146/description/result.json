@@ -1,0 +1,51 @@
+{
+  "table_type": "signal_table",
+  "topic": "ZCU发送的UpIPALampBrthngCmd_1信号对氛围灯亮度控制的时序规范",
+  "row_semantics": "信号值（0-1200）",
+  "column_semantics": "时间轴（单位：ms）",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ZCU",
+      "type": "Controller"
+    },
+    {
+      "name": "UpIPALampBrthngCmd_1",
+      "type": "Signal"
+    },
+    {
+      "name": "氛围灯",
+      "type": "Function"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Rate2",
+      "description": "变化率，1秒内从0%到100%",
+      "unit": "%/s"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "氛围灯亮度",
+      "description": "按照500ms亮度100%，500ms亮度0%循环执行",
+      "unit": "%"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "周期",
+      "value": "1000ms",
+      "description": "亮度在100%和0%之间切换的完整周期"
+    },
+    {
+      "name": "占空比",
+      "value": "50%",
+      "description": "亮度100%和0%各持续500ms"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证ZCU发送的UpIPALampBrthngCmd_1信号是否能够正确控制氛围灯按照指定的500ms亮度100%，500ms亮度0%的周期性模式进行点亮和熄灭。",
+  "uncertain_points": []
+}

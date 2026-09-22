@@ -1,0 +1,72 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车电子系统接口通信规范",
+  "row_semantics": "描述不同接口的通信方向、类型、发送方/接收方及其路径信息",
+  "column_semantics": {
+    "Interface Name": "接口名称",
+    "Direction": "通信方向（输入/输出）",
+    "Type": "通信类型（如CAN、SOA）",
+    "Sender/Provider": "发送方或提供方模块",
+    "Receiver/Consumer": "接收方或消费方模块",
+    "Channel": "通信路径或通道",
+    "Interface Source": "接口来源"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Light and Hazard Control Unit, 灯光与危险警示控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "Instrument Cluster Board, 仪表盘控制板"
+    },
+    {
+      "name": "ICB_S32G_M",
+      "type": "Controller/Module",
+      "description": "Instrument Cluster Board based on S32G Microcontroller, 基于S32G微控制器的仪表盘控制板"
+    },
+    {
+      "name": "RZCU",
+      "type": "Controller/Module",
+      "description": "Rear Zone Control Unit, 后区控制单元"
+    },
+    {
+      "name": "BKBCANFD",
+      "type": "Communication Channel",
+      "description": "Broadcom CAN Flexible Data Rate, 宽带CAN总线"
+    },
+    {
+      "name": "LHZCU_ETH",
+      "type": "Communication Channel",
+      "description": "Light and Hazard Control Unit Ethernet, 灯光与危险警示控制单元以太网"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Input/Output",
+      "description": "通信的方向性，区分数据流向"
+    },
+    {
+      "name": "CAN",
+      "description": "Controller Area Network, 控制器局域网通信协议"
+    },
+    {
+      "name": "SOA",
+      "description": "Service-Oriented Architecture, 面向服务的架构"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子系统中各控制器（如LHZCU、ICB）之间的通信接口规范，包括通信方向、类型、发送方/接收方及通信路径，可用于验证控制器间的数据传输功能是否符合设计要求。",
+  "uncertain_points": [
+    "接口来源 (Interface Source) 列的具体内容未明确说明其含义",
+    "部分行的 'Receiver/Consumer' 或 'Channel' 列为空，可能表示通用或默认配置，但具体含义不明确"
+  ]
+}
+```

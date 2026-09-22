@@ -1,0 +1,33 @@
+场景描述
+当车辆远光灯自动控制处于激活状态时,通过大屏控制开关、切换整车模式或者车载摄像头识别到车
+或者其他车辆信息后,将退出远光灯自动控制功能
+前置条件
+远光灯自动控制功能处于激活状态
+备注:
+a.需求中同时存在SOA和CAN的,按照配置字开发
+b.需求中只存在一种通讯类型的,按照该通讯类型开发
+c.PPV阶段及以后按照 SOA通讯方式开发:
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+触发动作
+[1&2]||[3&4]||5||6||7||8||9||10:
+UsgMd!=0x3=UsgMd_3_NormalDriving;&
+UsgMd!=0x4=UsgMd_4_AIParking;&
+UsgMd!=0x5=UsgMd_5_AIPilot
+UsgMdV=Valid
+VehMd=0x3=VehMd_3_TRANSPORT
+VehMd=0x5= VehMd_5_EXHIBITION
+VehMdV=Valid
+车速信号:
+VehSpdAvg≤20Km/h(可配置,AutoMaiBeamLghtDsblVehSpd)
+VehSpdAvgV=0x0=VehSpdAvgV_0_Valid；&&且持续 2S
+灯光开关状态:
+{ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta}!=0x3=AUTO
+近光灯状态:(a&b)||(c&d)
+1)近光灯反馈状态为关闭:(a&b)∥(c&d)
+(exlDipdBeamHwDrvEnPrm=0x0||0x2；通过 Instance ID 3/4获取近光灯状态)
+(exlDipdBeamHwDrvEnPrm=0x1；通过Instance ID 1/2 获取近光灯状态)
+或者
+2)LHZCU已判断近光灯关闭:
+SidePositionLight ON; | Ox3= SidePositionAndDippedBeam OFF
+环境光状态:

@@ -1,0 +1,34 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "近光灯状态定义与控制信号",
+  "row_semantics": "表格按功能模块（左侧和右侧近光灯）逐行列出不同状态下的控制信号定义，包括软件状态和硬件状态。",
+  "column_semantics": "列代表了信号的来源或传输方式（如输出、CANFD、ICB、LHZCU、网络状态等），以及具体的信号值定义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "LDipdBeamLghtSts", // 左侧近光灯状态
+    "RDipdBeamLghtSts", // 右侧近光灯状态
+    "LDipdBeamLghtSts_HW", // 左侧近光灯硬件状态
+    "RDipdBeamLghtSts_HW" // 右侧近光灯硬件状态
+  ],
+  "core_conditions": [
+    "0x0=Off", // 关闭状态
+    "0x1=On" // 开启状态
+  ],
+  "core_outputs": [
+    "LDipdBeamLghtSts_0_Off",
+    "LDipdBeamLghtSts_1_On",
+    "RDipdBeamLghtSts_0_Off",
+    "RDipdBeamLghtSts_1_On",
+    "LDipdBeamLghtSts_HW_0_Off",
+    "LDipdBeamLghtSts_HW_1_On",
+    "RDipdBeamLghtSts_HW_0_Off",
+    "RDipdBeamLghtSts_HW_1_On"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆左侧和右侧近光灯在软件状态和硬件状态下的控制信号值，可用于验证近光灯状态信号在不同通信协议（如CANFD、ICB、LHZCU）及网络/硬线状态下的正确性。",
+  "uncertain_points": []
+}
+```

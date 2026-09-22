@@ -1,0 +1,41 @@
+c、持续2min
+执行动
+[前雾灯控制模块LHZCU]接口响应:
+作
+Notifier:
+{ExteriorLightSwitchProcess. FrontFogLghtFucProStatus
+FrontFogLghtFucProsSta}=0x0=OFF
+[外灯控制组合服务ICB]调用基础服务
+[前雾灯控制模块LHZCU]同时发出控制信号给ICB:
+LFrtFogLghtCtrl=0x0=LFrtFogLghtCtrl_0_Off
+RFrtFogLghtCtrl=0x0=RFrtFogLghtCtrl_0_Off
+ICB分发信号至LHZCU/RHZCU:
+Nofier:
+{ExteriorLightSwitchProcess. FrontFogLghtSwStatus FrontFogLghtSwSta}=0x0=OFF
+获取前雾灯开关状态
+当{ExteriorLightSwitchProcess. FrontFogLghtFucProStatus FrontFogLghtFucProsSta}接
+口参数为0x0=OFF时,{ExteriorLightSwitchProcess. FrontFogLghtSwStatus
+FrontFogLghtSwSta}接口参数同时赋值 0x0=OFF
+[HMI子系统ICB]调用接口:
+{ExteriorLightSwitchProcess. FrontFogLghtFucProStatus FrontFogLghtFucProsSta}=
+0x0=OFF
+退出前雾灯指示灯显示
+5.[
+[外灯控制组合服务ICB]调用基础服务:
+{FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq}{InstanceID=1}
+=0x0=Off
+{FrontFogLight. FrontFogLightControl.FrontFogLightCtrReq}{InstanceID=2}
+(exlFrontFogLghtHwDrvEnPrm=0x0; 通过 InstanceID1,2 发送控制请求)
+{FrontFogLight.FrontFogLightControl.FrontFogLightCtrReq}{InstanceID=3}
+{FrontFogLight. FrontFogLightControl.FrontFogLightCtrReq}{InstanceID=4}
+(exlFrontFogLghtHwDrvEnPrm=0x1; 通过 InstanceID3,4 发送控制请求)
+[驱动处理模块LHZCU/RHZCU]内部跳变为硬线输出,退出前雾灯点亮
+[前雾灯控制模块LHZCU]订阅前雾灯状态/故障状态接口:
+LFrtFogLghtSts=0x0=LFrtFogLghtSts_0_Off
+RFrtFogLghtSts=0x0=RFrtFogLghtSts_0_Off
+LFrtFogLghtFltSts=0x0=LFrtFogLghtFltSts_0_False
+RFrtFogLghtFltSts=0x0= RFrtFogLghtFltSts_0_False
+{FrontFogLight. FrontFogLightState.FrontFogLightSta}{InstanceID=3}=0x0=Off
+{FrontFogLight. FrontFogLightState FrontFogLightSta}{InstanceID=4} =0x0=Off
+{FrontFogLight. FrontFogLightErrorStatus FrontFogLightErrorSta}{InstanceID=3}
+=0x0=No Error

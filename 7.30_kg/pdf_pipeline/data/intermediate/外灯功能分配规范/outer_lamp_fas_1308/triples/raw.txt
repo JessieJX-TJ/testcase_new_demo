@@ -1,0 +1,98 @@
+```json
+[
+  {
+    "head": "车顶射灯被请求关闭",
+    "relation": "触发条件",
+    "tail": "ICB_S32G_M收到IPD输入车顶射灯关闭请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB_S32G_M",
+      "IPD",
+      "RoofSpotLightReq=0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU判断远光灯关闭",
+    "relation": "前提条件",
+    "tail": "辅助远光使能情况下 LHZCU 判断远光灯关闭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "MainBeamEnhanceEnbSet.MainBeamEnhanceEnbSetInfo=0x0=Enabled",
+      "MainBeamFucProStatus=0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU发送仲裁状态",
+    "relation": "输出为",
+    "tail": "Notifier: RoofSpotLightFucProStatus.RoofSpotLightFucProSta=0x0=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "RoofSpotLightFucProStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务ICB转发车顶射灯开启状态",
+    "relation": "输出为",
+    "tail": "数字灯光APP_ICB: RoofSpotLightReq=0x0=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "数字灯光APP_ICB",
+      "RoofSpotLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "数字灯光APP_ICB控制车顶射灯熄灭",
+    "relation": "控制对象",
+    "tail": "车顶射灯",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "数字灯光APP_ICB",
+      "RoofSpotLight"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB反馈车顶射灯状态及故障状态给LHZCU",
+    "relation": "输出为",
+    "tail": "LHZCU: RoofSpotLightStatus.RoofSpotLightSta=0x0=OFF, RoofSpotLightErrorStatus.RoofSpotLightErrorSta=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "RoofSpotLightStatus",
+      "RoofSpotLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU反馈状态及故障给ICB",
+    "relation": "输出为",
+    "tail": "ICB: ExteriorLightSwitchProcess.RoofSpotLightSta.RoofSpotLghtSta=0x0=OFF, ExteriorLightSwitchProcess.RoofSpotLightErrSta.RoofSpotLghtErrSta=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB",
+      "ExteriorLightSwitchProcess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务ICB订阅并透传车顶射灯状态",
+    "relation": "输出为",
+    "tail": "ICB: ExteriorLightControlSystem.RoofSpotLightSts.RoofSpotLghtSts=0x0=OFF, ExteriorLightControlSystem.RoofSpotLightErrSts.RoofSpotLghtErrSts=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "ExteriorLightControlSystem"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

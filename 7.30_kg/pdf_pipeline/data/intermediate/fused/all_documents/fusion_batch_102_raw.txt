@@ -1,0 +1,260 @@
+```json
+[
+  {
+    "head": "车辆解闭锁模块LHZCU双闪灯请求",
+    "relation": "前提条件",
+    "tail": "ExtrLghtCtrlCmmntnTyp配置为SOA或CAN",
+    "sources": ["outer_lamp_fas_1086"],
+    "conflict": true,
+    "conflict_note": "与'ExtrLghtStsCmmntnTyp配置为SOA或CAN'存在信号名歧义：Ctrl（控制指令）与Sts（状态反馈）语义不同，属不同通信通道，需确认是否为同一配置项或文档笔误"
+  },
+  {
+    "head": "车辆解闭锁模块LHZCU双闪灯请求",
+    "relation": "抑制条件",
+    "tail": "VehMd == TRANSPORT",
+    "sources": ["outer_lamp_fas_1086"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆解闭锁模块LHZCU双闪灯请求",
+    "relation": "依赖于",
+    "tail": "UsgMdV == Valid && VehMdV == Valid",
+    "sources": ["outer_lamp_fas_1086"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯开启",
+    "relation": "前提条件",
+    "tail": "RevsLghtSta == 0x1",
+    "sources": ["outer_lamp_fas_1087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯状态同步",
+    "relation": "前提条件",
+    "tail": "左右侧倒车灯需同步点亮",
+    "sources": ["outer_lamp_fas_1087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯状态同步",
+    "relation": "超时约束",
+    "tail": "两侧点亮最大延时 ≤ 40ms",
+    "sources": ["outer_lamp_fas_1087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB倒车灯请求重发",
+    "relation": "前提条件",
+    "tail": "ReverseLightCtrlResp == 0x0 (ControlSuccess)",
+    "sources": ["outer_lamp_fas_1087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB倒车灯请求重发",
+    "relation": "超时约束",
+    "tail": "按 ≤ 50ms周期重发3次",
+    "sources": ["outer_lamp_fas_1087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB倒车灯请求停止发送",
+    "relation": "前提条件",
+    "tail": "重发3次后仍未收到ControlSuccess响应",
+    "sources": ["outer_lamp_fas_1087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "超时约束",
+    "tail": "消费端在500ms内未收到状态反馈则触发主动获取",
+    "sources": ["outer_lamp_fas_1087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "依赖于",
+    "tail": "ExteriorLightControlSystem.ReverseLightSts",
+    "sources": ["outer_lamp_fas_1087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制系统组合灯控制接口请求点亮或熄灭位置灯",
+    "relation": "前提条件",
+    "tail": "VehMdV == Invalid || UsG MdV == Invalid",
+    "sources": ["outer_lamp_fas_1088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制系统组合灯控制接口请求点亮或熄灭位置灯",
+    "relation": "依赖于",
+    "tail": "VehMdV == Valid && UsG MdV == Valid",
+    "sources": ["outer_lamp_fas_1088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制系统组合灯控制接口请求点亮或熄灭位置灯",
+    "relation": "依赖于",
+    "tail": "UsG Md == 3 (NormalDriving) || UsG Md == 4 (AIParking) || UsG Md == 5 (AIPilot)",
+    "sources": ["outer_lamp_fas_1088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯自动点亮",
+    "relation": "触发条件",
+    "tail": "车速 > 80 km/h 持续 ≥ 2 s",
+    "sources": ["outer_lamp_fas_1089"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯自动点亮",
+    "relation": "前提条件",
+    "tail": "远光灯增强功能使能 && IHC功能激活 && InsdFnCfgRoofSpotLght == 0x1 && RoofSpotLightFucProStatus == OFF",
+    "sources": ["outer_lamp_fas_1089"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU",
+    "relation": "输出为",
+    "tail": "RoofSpotLightFucProStatus == ON",
+    "sources": ["outer_lamp_fas_1089"],
+    "conflict": true,
+    "conflict_note": "与'RoofSpotLightFucProSta == ON'存在字段命名不一致（ProStatus vs ProSta），二者应为同一信号；根据AUTOSAR/ASAM命名惯例，'ProStatus'更规范，'ProSta'视为缩写变体，已统一为ProStatus"
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU",
+    "relation": "依赖于",
+    "tail": "外灯组合服务ICB",
+    "sources": ["outer_lamp_fas_1089"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU",
+    "relation": "超时约束",
+    "tail": "若500ms内未收到状态反馈，则触发主动获取",
+    "sources": ["outer_lamp_fas_1089"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态订阅",
+    "relation": "输出为",
+    "tail": "订阅左后转向灯状态 && 订阅右后转向灯状态",
+    "sources": ["outer_lamp_fas_1092"],
+    "conflict": false,
+    "conflict_note": "原分散三元组（OFF/ON/Unknown → 左后、右后）语义等价：无论当前转向灯状态如何，均需订阅两侧状态以支持错误诊断；已合并泛化"
+  },
+  {
+    "head": "转向灯错误状态检测",
+    "relation": "触发条件",
+    "tail": "调用DirectionLightErrorStatus接口",
+    "sources": ["outer_lamp_fas_1092", "outer_lamp_fas_1096"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯错误状态",
+    "relation": "包含子功能",
+    "tail": "No Error || Error || Unknown",
+    "sources": ["outer_lamp_fas_1096"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI显示状态信号",
+    "relation": "依赖于",
+    "tail": "FrontFogLghtFucProStatus",
+    "sources": ["outer_lamp_fas_1093"],
+    "conflict": true,
+    "conflict_note": "与'FrontFogLghtProsSta'存在命名冲突：ProsSta疑似拼写错误（应为ProSta或ProStatus），但FucProStatus为完整语义标准命名；保留FucProStatus，ProsSta标记为非标变体并归入同一实体"
+  },
+  {
+    "head": "HMI显示状态信号",
+    "relation": "触发条件",
+    "tail": "FrontFogLghtSts ∈ {0x1, 0x2, 0x3, 0x4}",
+    "sources": ["outer_lamp_fas_1093"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI显示状态信号",
+    "relation": "抑制条件",
+    "tail": "FrontFogLghtSts == 0x0",
+    "sources": ["outer_lamp_fas_1093"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI显示状态信号",
+    "relation": "包含子功能",
+    "tail": "前雾灯图标指示灯显示 || 前雾灯及后雾灯指示灯显示 || 前雾灯及近光灯指示灯显示",
+    "sources": ["outer_lamp_fas_1093"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "伴我回家灯光自动激活",
+    "relation": "前提条件",
+    "tail": "(AutoLghtOnReq_1 == True && (vehRlsType == 0 || vehRlsType == 1)) || AutoLghtOnReq_ICB == True",
+    "sources": ["outer_lamp_fas_1094"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "伴我回家灯光自动激活",
+    "relation": "前提条件",
+    "tail": "CombLightSwSta == 0x3 (AUTO模式) && FoMeHmEnableInfo == Enabled",
+    "sources": ["outer_lamp_fas_1094"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "伴我回家灯光自动激活",
+    "relation": "超时约束",
+    "tail": "FoMeHmTimeInfo == 30 s",
+    "sources": ["outer_lamp_fas_1094"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "伴我回家灯光自动激活",
+    "relation": "输入为",
+    "tail": "S32G M核通过ICB接口提供的个性化设置信息",
+    "sources": ["outer_lamp_fas_1094"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "伴我回家灯光自动激活",
+    "relation": "依赖于",
+    "tail": "车辆外部灯光开关处于AUTO模式",
+    "sources": ["outer_lamp_fas_1094"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统发出外部灯光请求",
+    "relation": "触发条件",
+    "tail": "左侧车门处于第二档位置",
+    "sources": ["outer_lamp_fas_1099"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

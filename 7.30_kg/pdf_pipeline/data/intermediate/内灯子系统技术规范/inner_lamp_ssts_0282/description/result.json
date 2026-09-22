@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"fault_table\",\n  \"topic\": \"诊断DTC需求清单\",\n  \"row_semantics\": \"每行代表一个具体的故障诊断码（DTC）及其相关条件，用于描述特定电路故障的触发和恢复条件。\",\n  \"column_semantics\": {\n    \"序号\": \"故障条目的编号，用于唯一标识每个故障项。\",\n    \"DTC显示码\": \"诊断故障代码的显示标识，通常为TBD（To Be Determined），表示待确定的具体代码。\",\n    \"故障描述\": \"对故障现象的详细描述，指明是哪个控制电路发生故障。\",\n    \"故障置位条件\": \"触发该DTC的条件，包括系统状态、驱动电流阈值及持续时间。\",\n    \"故障恢复条件\": \"清除该DTC的条件，通常与置位条件相反或满足特定阈值。\",\n  },\n  \"has_merged_cells\": true,\n  \"header_levels\": 1,\n  \"core_entities\": [\n    {\n      \"name\": \"The Driver Footwell Lamp Control Circuit\",\n      \"type\": \"功能名\",\n      \"description\": \"驾驶员脚部照明灯控制电路，涉及电路短路至电池、短路至地以及开路故障。\"\n    }\n  ],\n  \"core_conditions\": [\n    {\n      \"name\": \"主驾侧照脚灯驱动激活状态\",\n      \"type\": \"系统状态\",\n      \"description\": \"驾驶员侧脚部照明灯驱动电路处于激活状态，是故障触发的前提条件之一。\"\n    },\n    {\n      \"name\": \"驱动电流小手阈值 (TBD) A\",\n      \"type\": \"输入信号\",\n      \"description\": \"驱动电流低于某个阈值（具体数值待定），持续100ms后触发故障。\"\n    },\n    {\n      \"name\": \"驱动电流超过阈值 (TBD) A\",\n      \"type\": \"输入信号\",\n      \"description\": \"驱动电流超过某个阈值（具体数值待定），持续100ms后触发故障。\"\n    },\n    {\n      \"name\": \"持续100ms\",\n      \"type\": \"定时\",\n      \"description\": \"故障条件需要持续100毫秒才能被确认。\"\n    }\n  ],\n  \"core_outputs\": [],\n  \"core_faults\": [\n    {\n      \"name\": \"Circuit Short to battery\",\n      \"type\": \"故障状态\",\n      \"description\": \"电路短路至电池，导致电流异常增大。\"\n    },\n    {\n      \"name\": \"Circuit Short to ground\",\n      \"type\": \"故障状态\",\n      \"description\": \"电路短路至地，导致电流异常增大。\"\n    },\n    {\n      \"name\": \"Circuit Open Circuit\",\n      \"type\": \"故障状态\",\n      \"description\": \"电路开路，导致电流异常减小。\"\n    }\n  ],\n  \"core_timing_constraints\": [\n    {\n      \"condition\": \"持续100ms\",\n      \"description\": \"所有故障条件均需持续100毫秒才能触发DTC置位或恢复。\"\n    }\n  ],\n  \"engineering_interpretation\": \"该表格定义了驾驶员脚部照明灯控制电路的三种故障模式（短路至电池、短路至地、开路）的诊断逻辑，包括触发条件和恢复条件，可用于验证车辆电子控制系统在这些故障情况下的诊断能力。\",\n  \"uncertain_points\": [\n    \"DTC显示码（TBD）的具体数值未确定。\",\n    \"驱动电流阈值（TBD）的具体数值未确定。\",\n    \"故障恢复条件中电流有效值的具体阈值未确定。\"\n  ]\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

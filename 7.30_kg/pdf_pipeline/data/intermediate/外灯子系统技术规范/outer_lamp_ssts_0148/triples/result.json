@@ -1,0 +1,60 @@
+[
+  {
+    "head": "制动灯驱动模块持续发送制动灯状态",
+    "relation": "前提条件",
+    "tail": "制动灯状态为错误 (BrakeLightState = 2)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "BrkLightDrvMdl",
+      "BrakeLightState",
+      "Error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0148",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "制动灯控制模块接收制动灯状态",
+    "relation": "依赖于",
+    "tail": "制动灯驱动模块持续发送制动灯状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "BrkLightDrvMdl",
+      "BrkLightCtrlMdl",
+      "BrakeLightState"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0148",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "设置故障代码 DTC B1041 13",
+    "relation": "触发条件",
+    "tail": "制动灯状态为错误 (BrakeLightState = 2)",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DTC B1041 13",
+      "BrakeLightState",
+      "Error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0148",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "退出当前故障处理流程",
+    "relation": "触发条件",
+    "tail": "检测到开路恢复",
+    "triple_type": "退出条件",
+    "evidence_terms": [
+      "开路恢复"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0148",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  }
+]

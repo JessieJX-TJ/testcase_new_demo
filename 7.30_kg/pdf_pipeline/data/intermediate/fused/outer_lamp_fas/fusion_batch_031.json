@@ -1,0 +1,552 @@
+[
+  {
+    "head": "HeadLampLevelingState",
+    "relation": "output_to",
+    "tail": "CANFD, ICB",
+    "sources": [
+      "outer_lamp_fas_0338"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadLampLevelingFaultState",
+    "relation": "output_to",
+    "tail": "CANFD, ICB",
+    "sources": [
+      "outer_lamp_fas_0338"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManualHeadLampLevelingRequest",
+    "relation": "trigger_condition",
+    "tail": "HeadLampLevelSet service invocation",
+    "sources": [
+      "outer_lamp_fas_0338"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManualHeadLampLevelingRequest",
+    "relation": "input",
+    "tail": "HeadLampLevelSetInfo",
+    "sources": [
+      "outer_lamp_fas_0338"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManualHeadLampLevelingRequest",
+    "relation": "depends_on",
+    "tail": "HeadLampLevelingLevel1 to Level4",
+    "sources": [
+      "outer_lamp_fas_0338"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "prerequisite",
+    "tail": "Section 142 of Document 935",
+    "sources": [
+      "outer_lamp_fas_0339"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearDirectionLightStatus",
+    "relation": "prerequisite",
+    "tail": "DirectionLightErrorStatus interface invocation",
+    "sources": [
+      "outer_lamp_fas_0340"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightMode",
+    "relation": "prerequisite",
+    "tail": "DirectionLightModeStatus interface invocation",
+    "sources": [
+      "outer_lamp_fas_0340"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus.InstanceID=7",
+    "relation": "depends_on",
+    "tail": "DirectionLightErrorStatus interface (InstanceID=7)",
+    "sources": [
+      "outer_lamp_fas_0340"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightModeStatus.InstanceID=8",
+    "relation": "depends_on",
+    "tail": "DirectionLightModeStatus interface (InstanceID=8)",
+    "sources": [
+      "outer_lamp_fas_0340"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "NetworkFaultState",
+    "relation": "prerequisite",
+    "tail": "DirectionLightErrorStatus interface invocation",
+    "sources": [
+      "outer_lamp_fas_0340"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMIDangerWarningLampIndicator",
+    "relation": "trigger_condition",
+    "tail": "CAN signal = 0x1 OR service interface = 0x3",
+    "sources": [
+      "outer_lamp_fas_0341"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMIDangerWarningLampIndicator",
+    "relation": "suppression_condition",
+    "tail": "CAN signal = 0x0 OR service interface = 0x0",
+    "sources": [
+      "outer_lamp_fas_0341"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightFaultStatus",
+    "relation": "output_value",
+    "tail": "0x1 = DirectionLightFaultStatus_True",
+    "sources": [
+      "outer_lamp_fas_0341"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMIDangerWarningLampIndicator",
+    "relation": "depends_on",
+    "tail": "ExteriorLightSwitchProcess.DirectionLightFunctionProcessStatus.DirectionLightFunctionProcessStatus",
+    "sources": [
+      "outer_lamp_fas_0341"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMIFaultPopupAlert",
+    "relation": "fault_response",
+    "tail": "Hazard warning lamp fault",
+    "sources": [
+      "outer_lamp_fas_0341"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMIFaultPopupAlert",
+    "relation": "trigger_condition",
+    "tail": "DirectionLightFaultStatus = 0x1",
+    "sources": [
+      "outer_lamp_fas_0341"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightState.ON",
+    "relation": "input",
+    "tail": "DirectionLightReq = 0x1",
+    "sources": [
+      "outer_lamp_fas_0344"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightState.OFF",
+    "relation": "input",
+    "tail": "DirectionLightReq = 0x0",
+    "sources": [
+      "outer_lamp_fas_0344"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightControl",
+    "relation": "contains_subfunction",
+    "tail": "RightFrontDirectionLightControl",
+    "sources": [
+      "outer_lamp_fas_0344"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightControl",
+    "relation": "contains_subfunction",
+    "tail": "LeftRearDirectionLightControl",
+    "sources": [
+      "outer_lamp_fas_0344"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontDirectionLightControl",
+    "relation": "depends_on",
+    "tail": "InstanceID=2",
+    "sources": [
+      "outer_lamp_fas_0344"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftRearDirectionLightControl",
+    "relation": "depends_on",
+    "tail": "InstanceID=3",
+    "sources": [
+      "outer_lamp_fas_0344"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftDaytimeRunningLightControlSignal",
+    "relation": "output_to",
+    "tail": "CANFD LHZCU ICB",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleModeValidity",
+    "relation": "depends_on",
+    "tail": "CAN/LIN/SOA service/hardwire definition",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UserModeDefinition",
+    "relation": "depends_on",
+    "tail": "CAN/LIN/SOA service/hardwire definition",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UserModeDefinitionValidity",
+    "relation": "depends_on",
+    "tail": "CAN/LIN/SOA service/hardwire definition",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleModeValidity",
+    "relation": "state_maintenance_condition",
+    "tail": "0x1 = VehicleModeValidity_Valid",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehicleModeValidity",
+    "relation": "state_maintenance_condition",
+    "tail": "0x0 = VehicleModeValidity_Invalid",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UserModeDefinition",
+    "relation": "state_maintenance_condition",
+    "tail": "0x1 = UserModeDefinition_Standby",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UserModeDefinition",
+    "relation": "state_maintenance_condition",
+    "tail": "0x2 = UserModeDefinition_Comfortable",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UserModeDefinition",
+    "relation": "state_maintenance_condition",
+    "tail": "0x3 = UserModeDefinition_NormalDriving",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UserModeDefinition",
+    "relation": "state_maintenance_condition",
+    "tail": "0x4 = UserModeDefinition_AIParking",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UserModeDefinition",
+    "relation": "state_maintenance_condition",
+    "tail": "0x5 = UserModeDefinition_AIPilot",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UserModeDefinition",
+    "relation": "state_maintenance_condition",
+    "tail": "0x6 = UserModeDefinition_XOTA",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UserModeDefinitionValidity",
+    "relation": "state_maintenance_condition",
+    "tail": "0x1 = UserModeDefinitionValidity_Valid",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UserModeDefinitionValidity",
+    "relation": "state_maintenance_condition",
+    "tail": "0x0 = UserModeDefinitionValidity_Invalid",
+    "sources": [
+      "outer_lamp_fas_0345"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WelcomeAndFarewellLighting",
+    "relation": "trigger_condition",
+    "tail": "Refer to Digital Lighting SSTS",
+    "sources": [
+      "outer_lamp_fas_0346"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IntelligentSignalCommunication",
+    "relation": "trigger_condition",
+    "tail": "Refer to Digital Lighting SSTS",
+    "sources": [
+      "outer_lamp_fas_0346"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorHandleExternalLight",
+    "relation": "trigger_condition",
+    "tail": "Refer to Exterior Lamp SSTS",
+    "sources": [
+      "outer_lamp_fas_0346"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TunnelAdaptiveHeadlightDimming",
+    "relation": "trigger_condition",
+    "tail": "Refer to Digital Lighting SSTS",
+    "sources": [
+      "outer_lamp_fas_0346"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontDirectionLightHardwareState.ON",
+    "relation": "trigger_condition",
+    "tail": "FLDircnLghtSts_HW = 0x1",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontDirectionLightHardwareState.ON",
+    "relation": "trigger_condition",
+    "tail": "RLDircnLghtSts_HW = 0x1",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontDirectionLightHardwareState.OFF",
+    "relation": "trigger_condition",
+    "tail": "FLDircnLghtSts_HW = 0x0",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontDirectionLightHardwareState.OFF",
+    "relation": "trigger_condition",
+    "tail": "RLDircnLghtSts_HW = 0x0",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontDirectionLightFlashState.OFF",
+    "relation": "trigger_condition",
+    "tail": "FLDircnLghtFltsts_HW = 0x0",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontDirectionLightFlashState.OFF",
+    "relation": "trigger_condition",
+    "tail": "RLDircnLghtFltsts_HW = 0x0",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontDirectionLightFlashState.ON",
+    "relation": "trigger_condition",
+    "tail": "FLDircnLghtFltsts_HW = 0x1",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontDirectionLightFlashState.ON",
+    "relation": "trigger_condition",
+    "tail": "RLDircnLghtFltsts_HW = 0x1",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus.InstanceID=1",
+    "relation": "trigger_condition",
+    "tail": "DirectionLight.DirectionLightStatus.DirectionLightSta(InstanceID=1) = 0x1",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus.InstanceID=3",
+    "relation": "trigger_condition",
+    "tail": "DirectionLight.DirectionLightStatus.DirectionLightSta(InstanceID=3) = 0x1",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus.InstanceID=1",
+    "relation": "trigger_condition",
+    "tail": "DirectionLight.DirectionLightStatus.DirectionLightSta(InstanceID=1) = 0x0",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus.InstanceID=3",
+    "relation": "trigger_condition",
+    "tail": "DirectionLight.DirectionLightStatus.DirectionLightSta(InstanceID=3) = 0x0",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus.InstanceID=1",
+    "relation": "trigger_condition",
+    "tail": "DirectionLight.DirectionLightErrorStatus.DirectionLightErrorSta(InstanceID=1) = 0x0",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatus.InstanceID=3",
+    "relation": "trigger_condition",
+    "tail": "DirectionLight.DirectionLightErrorStatus.DirectionLightErrorSta(InstanceID=3) = 0x0",
+    "sources": [
+      "outer_lamp_fas_0347"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

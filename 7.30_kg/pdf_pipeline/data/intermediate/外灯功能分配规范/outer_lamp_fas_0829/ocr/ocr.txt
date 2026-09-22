@@ -1,0 +1,34 @@
+场景描述
+手动触发转向灯拨杆,控制左侧转向灯开启
+前置条件
+1&2&{[3||4]&[5||6]]:
+UsgMd!=0x0=UsgMd_0_Sleep;&
+UsgMd!=0x1=UsgMd_1_Standby;&
+UsgMd!=0x6=UsgMd_6_XOTA
+UsgMdV= Valid
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtCtrlCmmntnTyp=0x1=CAN
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtStsCmmntnTyp=0x1=CAN
+备注:
+a.需求中同时存在SOA和CAN的,按照配置字开发:
+b.需求中只存在一种通讯类型的,按照该通讯类型开发
+c.PPV阶段及以后按照SOA通讯方式开发:
+触发动作
+收到[转向灯开关预处理模块LHZCU]输入
+DircnLghtSwReq: 0x1=DircnLghtSwReq_1_Left_First_gear_direction_light_on
+执行动作
+1&2&3&4&5&6&7&8&9&10&11&12:
+1. [转向灯开关控制模块LHZCU]内部软件保持有效请求
+2. [转向灯开关控制模块LHZCU]信号发送为:(注同时具备SOA服务信号和CAN信号的
+后以SOA信号为主,下同)
+控制转向灯按照1.25Hz频率闪烁(先on后off),即按照800ms一个闪烁周期,发送3个闪
+发送400ms
+FLDircnLghtCtrl=0x1=FLDircnLghtCtrl_1_on
+RLDircnLghtCtrl=0x1=RLDircnLghtCtrl_1_on
+FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_Off
+RLDircnLghtCtrl=0x0=RLDircnLghtCtrl_0_Off
+发送转向灯流水模式使能状态:DircnLghtMdSts=0x0=DircnLghtMdSts_0_Enabled
+[转向灯开关控制模块LHZCU]接口发送:
+发送8个Cycle(Cycle:50ms)on
+Event:

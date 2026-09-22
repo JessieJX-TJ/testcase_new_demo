@@ -1,0 +1,127 @@
+[
+  {
+    "head": "DoorFR5LampFadeSpdCmd_1 信号被设置",
+    "relation": "触发条件",
+    "tail": "门灯进行渐变闪烁",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR5LampFadeSpdCmd_1",
+      "灯头按照对应的呼吸周期指令进行周期闪烁"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0472",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorFR5LampFadeSpdCmd_1 信号值为 0x0",
+    "relation": "输入为",
+    "tail": "默认速度 Spd0: 2000ms",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorFR5LampFadeSpdCmd_1",
+      "默认速度Spd0: 2000ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0472",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorFR6LampOnOff_1 信号值为 0x1",
+    "relation": "触发条件",
+    "tail": "门灯开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR6LampOnOff_1",
+      "0x1=DoorFR6LampOnOff_1_1_ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0472",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorFR6LampOnOff_1 信号值为 0x0",
+    "relation": "触发条件",
+    "tail": "门灯关闭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR6LampOnOff_1",
+      "0x0=DoorFR6LampOnOff_1_0_OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0472",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorFR6LampColCmd_1 信号非 0 值",
+    "relation": "前提条件",
+    "tail": "门灯点亮 ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR6LampColCmd_1",
+      "点亮ON时需同时接收到非0值的颜色亮度指令"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0472",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorFR5LampFadeSpdCmd_1 信号值为 0x0",
+    "relation": "抑制条件",
+    "tail": "门灯渐变闪烁",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "DoorFR5LampFadeSpdCmd_1",
+      "指令值为0时,立即停止呼吸"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0472",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "不同呼吸模式切换",
+    "relation": "触发条件",
+    "tail": "立即停止当前呼吸,切换下一呼吸模式",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "不同呼吸模式切换时,立即停止当前呼吸,切换下一呼吸模式"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0472",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DoorFR5LampFadeSpdCmd_1 信号值变化",
+    "relation": "依赖于",
+    "tail": "门灯渐变速度",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorFR5LampFadeSpdCmd_1",
+      "氛围灯渐变速度指令"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0472",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "门灯颜色/亮度切换",
+    "relation": "超时约束",
+    "tail": "默认速度 Spd0: 2000ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "灯头颜色/亮度切换时从当前状态到目标状态切换的所需的时间",
+      "默认速度Spd0: 2000ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0472",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  }
+]

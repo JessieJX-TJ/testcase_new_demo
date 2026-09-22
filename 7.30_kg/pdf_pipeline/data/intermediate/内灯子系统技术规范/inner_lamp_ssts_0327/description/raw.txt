@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "ZCU LIN信号异常及氛围灯颜色值异常的故障处理逻辑",
+  "row_semantics": "描述了两种不同的故障场景及其对应的系统行为",
+  "column_semantics": "无列结构，表格内容为两行独立的故障处理规则",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ZCU",
+      "type": "controller",
+      "description": "中央控制单元，负责发送LIN信号"
+    },
+    {
+      "name": "UpIPALampColorCmd_1",
+      "type": "signal",
+      "description": "氛围灯颜色值指令信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "超过一定时间（默认6s）未接收到ZCU的LIN信号",
+      "description": "表示ZCU与系统之间的通信中断"
+    },
+    {
+      "condition": "当氛围灯颜色值UpIPALampColorCmd_1异常",
+      "description": "表示该信号的值超出了正常范围或不符合预期"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "直接关闭氛围灯",
+      "description": "在LIN信号丢失的情况下，系统采取的保护措施"
+    },
+    {
+      "output": "维持上一时刻状态值",
+      "description": "在颜色值异常时，系统保持当前状态以避免误操作"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "ZCU LIN信号丢失",
+      "description": "ZCU未能按时发送LIN信号"
+    },
+    {
+      "fault": "UpIPALampColorCmd_1异常",
+      "description": "氛围灯颜色值信号超出正常范围"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "默认6s",
+      "description": "ZCU LIN信号丢失的判断时间阈值"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了ZCU LIN信号丢失和氛围灯颜色值异常时的故障处理逻辑，可用于验证系统在这些异常情况下的安全性和稳定性。",
+  "uncertain_points": []
+}
+```

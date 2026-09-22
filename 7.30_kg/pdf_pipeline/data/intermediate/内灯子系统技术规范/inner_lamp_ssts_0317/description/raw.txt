@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车电子系统接口信号定义与控制逻辑",
+  "row_semantics": "每行代表一个特定的接口信号或功能模块，描述其在系统中的角色、数据流向及关联的控制器。",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识信号或功能模块的唯一名称。",
+    "Direction": "信号的数据流向，如输入、输出、提供/消费等。",
+    "Type": "信号类型，如CAN/LIN通信、SOA服务、硬线连接等。",
+    "Sender/Provider": "信号的发送方或服务提供方，通常是某个控制器或模块。",
+    "Receiver/Consumer": "信号的接收方或服务消费方，通常是另一个控制器或模块。",
+    "Channel": "信号传输路径或通道，如指定信号通道。",
+    "Interface Source": "接口信号的来源，如指定信号来源或内灯SSTS（Self-Test System Status）"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LdSpcLampCtrlCmd",
+      "type": "signal",
+      "description": "后备箱灯驱动请求信号，用于控制后备箱灯的开关状态。0x0表示关闭，0x1表示打开。"
+    },
+    {
+      "name": "LdspcLamp_HSD",
+      "type": "signal",
+      "description": "内灯硬线输出信号，直接控制内灯的状态。"
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "区域控制单元，负责处理和转发相关信号，是多个信号的发送方和接收方。"
+    },
+    {
+      "name": "LdspcLamp_LH / PwrLftgtClsSw",
+      "type": "signal",
+      "description": "左侧内灯或电源左后门关闭开关信号，作为LdspcLamp_HSD的接收方。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "LdspcLamp_HSD",
+      "description": "输出信号，直接控制内灯的亮灭状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了整车电子系统中与内灯控制相关的接口信号，包括信号类型、流向、关联的控制器以及具体的控制逻辑，可用于验证内灯控制系统在不同场景下的信号交互和功能实现是否符合设计规范。",
+  "uncertain_points": []
+}
+```

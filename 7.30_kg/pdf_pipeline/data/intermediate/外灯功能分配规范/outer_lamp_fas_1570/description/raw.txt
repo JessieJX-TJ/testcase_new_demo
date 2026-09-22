@@ -1,0 +1,76 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Status and Error Monitoring",
+  "row_semantics": "Each row represents a specific service interface for subscribing to the status or error state of a direction light (turn signal) in a vehicle.",
+  "column_semantics": "The columns represent different system components or entities involved in the communication, such as SOA (Service-Oriented Architecture), ICB (Inter-Controller Bus), LHZCU (Local Host Control Unit), and network/system states.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "service_interface",
+      "description": "Interface for subscribing to the status of direction lights."
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "service_interface",
+      "description": "Interface for subscribing to the error status of direction lights."
+    },
+    {
+      "name": "SOA",
+      "type": "system_component",
+      "description": "Service-Oriented Architecture component responsible for service communication."
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "Inter-Controller Bus module facilitating communication between controllers."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Local Host Control Unit, likely the main control unit for direction lights."
+    },
+    {
+      "name": "Network Status",
+      "type": "system_state",
+      "description": "Indicates the current network communication status."
+    },
+    {
+      "name": "Hardline Fault Status",
+      "type": "fault_state",
+      "description": "Indicates the status of hardline faults related to direction lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightSta",
+      "type": "input_parameter",
+      "description": "Parameter name for direction light status, with values: OFF (0x0), ON (0x1), Unknown (0x2)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "output_signal",
+      "description": "Status of the direction light (left or right turn signal)."
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "output_signal",
+      "description": "Error status of the direction light."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Hardline Fault Status",
+      "type": "fault_condition",
+      "description": "Indicates if there is a fault in the hardline connection of the direction light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for monitoring the status and error conditions of direction lights in a vehicle. It specifies how different system components interact to subscribe to these statuses, which can be used to verify that the direction light system correctly reports its operational state and any faults.",
+  "uncertain_points": []
+}
+```

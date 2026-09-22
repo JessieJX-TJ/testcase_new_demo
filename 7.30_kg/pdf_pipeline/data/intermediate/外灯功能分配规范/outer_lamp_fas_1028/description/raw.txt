@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Dipped Beam Light Error Status and Switch Process Parameters",
+  "row_semantics": "Each row represents a specific service interface or process related to dipped beam light functionality, detailing its parameters, associated controllers/modules, and operational status.",
+  "column_semantics": "Columns represent different aspects of the service/process: the first column is the function/module name, followed by columns indicating which system (SOA, ICB, LHZCU) consumes the service, and finally a column for network fault status.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight.DippedBeamLightErrorStatus",
+      "type": "function",
+      "description": "Service interface to query the error status of the right-side dipped beam light."
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.DippedBeamLightErrSta",
+      "type": "process",
+      "description": "Process to query the error status of the dipped beam light during exterior light switching."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Network Fault Status",
+      "description": "Indicates whether there is a network fault affecting the communication of the service/process."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightErrorSta",
+      "type": "parameter",
+      "description": "Error status parameter for the dipped beam light, with values: 0x0=No Error, 0x1=Error, 0x2=Unknown."
+    },
+    {
+      "name": "DippedBeamLightErrSta",
+      "type": "parameter",
+      "description": "Error status parameter for the dipped beam light during switch process, with value: 0x0=No Error."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Dipped Beam Light Error",
+      "description": "Indicates an error condition in the dipped beam light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and interfaces for querying the error status of the dipped beam light system, both as a standalone service and as part of the exterior light switch process. It is used to verify that the correct error status is returned under normal and fault conditions.",
+  "uncertain_points": [
+    "The exact behavior when 'Network Fault Status' is active is not specified.",
+    "The relationship between the two 'DippedBeamLightErrorSta' parameters (one for each service/process) is not clearly defined."
+  ]
+}
+```

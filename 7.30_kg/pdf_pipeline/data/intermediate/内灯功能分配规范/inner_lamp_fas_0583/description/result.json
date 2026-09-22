@@ -1,0 +1,53 @@
+{
+  "table_type": "signal_table",
+  "topic": "Interior Light Function Allocation Specification for Z-ONE-3.0 Platform",
+  "row_semantics": "Each row represents a specific function or signal related to interior lighting and door status, detailing its mode definitions, input sources, and associated controllers/modules.",
+  "column_semantics": "The columns define the signal/function name, its possible values/modes, the input source (e.g., CAN, internal), the responsible controller/module (e.g., LHZCU), and additional system references like VS SSTS or门锁SSTS.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "UsrMdV",
+      "type": "mode",
+      "description": "User Mode Value for interior lighting, defining different operational modes such as Standby, Comfortable, Normal Driving, AI Parking, AIPilot, and XOTA."
+    },
+    {
+      "name": "DrvrDoorOpenSts",
+      "type": "status",
+      "description": "Driver's Door Open Status, indicating whether the front left door is closed, open, ajar, or fully open."
+    },
+    {
+      "name": "RLDoorOpenSts",
+      "type": "status",
+      "description": "Right Rear Door Open Status, similar to DrvrDoorOpenSts but for the right rear door."
+    },
+    {
+      "name": "DrvrWlcmPedlLghtCtrlCmd",
+      "type": "command",
+      "description": "Driver's Welcome Pedal Light Control Command, an output signal to control the welcome pedal light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Input Source",
+      "description": "Indicates where the signal/data originates, such as CAN bus, internal module, or other systems like VS SSTS."
+    },
+    {
+      "name": "Controller/Module",
+      "description": "Specifies the Electronic Control Unit (ECU) or module responsible for processing or controlling the signal, e.g., LHZCU."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DrvrWlcmPedlLghtCtrlCmd",
+      "description": "An output command sent to control the driver's welcome pedal light based on the defined logic."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the functional allocation and signal specifications for interior lighting modes and door status monitoring within the Z-ONE-3.0 platform. It is used to verify that the correct mode is activated based on user inputs and that door statuses are accurately reported to the relevant controllers.",
+  "uncertain_points": [
+    "The exact behavior of DrvrDoorOpenSts when the latch switch cannot detect the door ajar status is not fully detailed.",
+    "The specific timing or sequence requirements for DrvrWlcmPedlLghtCtrlCmd are not provided in this table."
+  ]
+}

@@ -1,0 +1,83 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑 - 右前转向灯停止驱动与状态发送",
+  "row_semantics": "描述了在特定前置条件满足时，系统如何根据触发条件执行动作，并最终达到退出条件的完整逻辑流程。",
+  "column_semantics": {
+    "1": "前置条件 (Precondition): 系统进入此逻辑的前提。",
+    "2": "触发条件 (Trigger Condition): 触发执行动作的事件或信号。",
+    "3": "执行动作 (Execution Action): 当触发条件满足时，系统执行的具体操作。",
+    "4": "退出条件 (Exit Condition): 结束当前逻辑流程的条件。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "exlDirCnLghtHwDrvEnPrm",
+      "type": "parameter",
+      "description": "外灯硬件驱动使能参数，值为1表示启用，2表示禁用。"
+    },
+    {
+      "name": "FRDILghtCtrlMdl",
+      "type": "module",
+      "description": "右前灯控制模块，负责处理转向灯相关的控制逻辑。"
+    },
+    {
+      "name": "FRDILghtDrvMdl",
+      "type": "module",
+      "description": "右前灯驱动模块，负责实际的灯光输出驱动。"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "module",
+      "description": "外部灯控制模块，提供统一的分发接口。"
+    },
+    {
+      "name": "FRDirCnLghtCtrl_HW",
+      "type": "signal",
+      "description": "硬件层面的右前灯控制信号，0表示关闭，1表示开启。"
+    },
+    {
+      "name": "FRDILghtSts_HW",
+      "type": "signal",
+      "description": "硬件层面的右前灯状态信号，0表示关闭，1表示开启。"
+    },
+    {
+      "name": "DILamp_RH_HSD",
+      "type": "output_signal",
+      "description": "右前转向灯的实际输出信号（High Side Driver）。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlDirCnLghtHwDrvEnPrm==1||2",
+      "description": "前置条件，表示外灯硬件驱动使能参数为1或2时，此逻辑生效。"
+    },
+    {
+      "name": "收到【DILghtCtrlMdl】统一分发的 FRDirCnLghtCtrl_HW ==0 (Off)",
+      "description": "触发条件，当接收到外部灯控制模块统一分发的右前灯控制信号为关闭状态时，触发此逻辑。"
+    },
+    {
+      "name": "收到【DILghtCtrlMdl】发送的 FRDirCnLghtCtrl_HW ==1 (On)",
+      "description": "退出条件，当接收到外部灯控制模块发送的右前灯控制信号为开启状态时，退出此逻辑。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DILamp_RH_HSD",
+      "action": "停止驱动",
+      "description": "执行动作1：停止驱动右前转向灯输出。"
+    },
+    {
+      "name": "FRDILghtSts_HW",
+      "value": "0 (Off)",
+      "action": "持续发送",
+      "description": "执行动作2：持续发送右前灯状态信号为关闭状态，至少发送三帧。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定条件下，系统如何正确地停止右前转向灯的驱动并发送正确的状态信号，是验证外灯控制系统功能正确性的重要测试依据。",
+  "uncertain_points": []
+}
+```

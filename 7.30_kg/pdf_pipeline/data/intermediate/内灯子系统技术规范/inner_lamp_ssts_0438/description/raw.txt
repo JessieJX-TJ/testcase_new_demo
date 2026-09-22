@@ -1,0 +1,66 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "右后激光迎宾灯无短路/开路故障处理逻辑",
+  "row_semantics": "表格按功能处理流程的阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "表格包含两列，第一列为功能处理阶段描述，第二列为该阶段的具体条件或动作。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RRDoorFlorLampCtrlCmd",
+      "type": "input_signal",
+      "description": "应用控制模块发送的请求信号，用于控制右后激光迎宾灯的开关状态。"
+    },
+    {
+      "name": "DoorFlorLamp_RR_HSD",
+      "type": "output_signal",
+      "description": "右后激光迎宾灯驱动模块输出的驱动信号，高电平表示开启。"
+    },
+    {
+      "name": "右后激光迎宾灯",
+      "type": "function_name",
+      "description": "车辆外部照明系统的一部分，用于在车门开启时提供迎宾照明。"
+    },
+    {
+      "name": "应用控制模块",
+      "type": "controller_module",
+      "description": "负责接收用户指令并下发控制命令的电子控制单元。"
+    },
+    {
+      "name": "右后激光迎宾灯驱动控制模块",
+      "type": "controller_module",
+      "description": "专门负责控制右后激光迎宾灯点亮与熄灭的驱动模块。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "stage": "前置条件",
+      "condition": "右后激光迎宾灯存在无短路/开路故障"
+    },
+    {
+      "stage": "触发条件",
+      "condition": "接收到应用控制模块的请求信号 RRDoorFlorLampCtrlCmd = 0x1 (Open)"
+    },
+    {
+      "stage": "退出条件",
+      "condition": "接收到 RRDoorFlorLampCtrlCmd = 0x0 (Close)，关闭右后激光迎宾灯驱动"
+    }
+  ],
+  "core_outputs": [
+    {
+      "stage": "执行动作",
+      "output": "[右后激光迎宾灯驱动控制模块]发送驱动 DoorFlorLamp_RR_HSD（高）"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "右后激光迎宾灯短路/开路故障",
+      "description": "当检测到右后激光迎宾灯存在短路或开路故障时，系统将关闭其驱动以防止进一步损坏或安全隐患。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了右后激光迎宾灯在无短路/开路故障情况下的正常控制逻辑，以及在检测到故障时的异常处理机制，可用于验证车辆外灯系统的故障诊断与保护功能。",
+  "uncertain_points": []
+}
+```

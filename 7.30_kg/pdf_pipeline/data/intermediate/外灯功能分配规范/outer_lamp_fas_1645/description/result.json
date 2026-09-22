@@ -1,0 +1,67 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯控制模块状态反馈与订阅接口规范",
+  "row_semantics": "表格按功能类别（日间行车灯、位置灯）和模块类型（控制模块LHZCU、组合服务ICB）进行组织，每类功能下定义了状态和故障反馈。",
+  "column_semantics": "无明确列，内容为逐行描述各功能的状态变量及其值。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "贯穿式前位置灯控制模块"
+    },
+    {
+      "name": "ICB",
+      "type": "service",
+      "description": "外灯组合服务模块"
+    },
+    {
+      "name": "DayRunningLight",
+      "type": "function",
+      "description": "日间行车灯"
+    },
+    {
+      "name": "SidePositionLight",
+      "type": "function",
+      "description": "位置灯"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DayRunningLightSta",
+      "type": "signal",
+      "description": "日间行车灯状态",
+      "value": "0x0=OFF"
+    },
+    {
+      "name": "SideLightSts",
+      "type": "signal",
+      "description": "位置灯状态",
+      "value": "0x0=Off"
+    },
+    {
+      "name": "DayRunningLghtErrSta",
+      "type": "signal",
+      "description": "日间行车灯故障状态",
+      "value": "0x0=No Error"
+    },
+    {
+      "name": "SidePosnLghtErrSta",
+      "type": "signal",
+      "description": "位置灯故障状态",
+      "value": "0x0=No Error"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "同步延时周期",
+      "description": "贯穿式前后位置灯退出的同步性允许的最大延时周期",
+      "value": "40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证外灯控制模块（LHZCU）和外灯组合服务（ICB）在日间行车灯和位置灯功能上的状态反馈是否符合规范，并确保前后位置灯退出时的同步性满足最大延时要求。",
+  "uncertain_points": []
+}

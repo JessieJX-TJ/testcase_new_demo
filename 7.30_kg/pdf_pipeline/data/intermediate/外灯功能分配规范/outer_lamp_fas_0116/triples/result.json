@@ -1,0 +1,106 @@
+[
+  {
+    "head": "紧急制动灯触发",
+    "relation": "前提条件",
+    "tail": "车辆处于紧急制动状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "车辆紧急制动灯处于激活状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0116",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "紧急制动灯触发",
+    "relation": "触发条件",
+    "tail": "收到紧急制动IBS请求输入",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "收到[紧急制动IBS]请求输入: EmgcBrkA=0x1=EmgcBrkA_1_True->0x0=EmgcBrkA_0_Fals && EmgcBrkAV=0x0=EmgcBrkAV_0_Valid"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0116",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "紧急制动灯触发",
+    "relation": "触发条件",
+    "tail": "验证有效 (EmgcBrkA=0x1, EmgcBrkAV=0x0)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "收到[紧急制动IBS]请求输入: EmgcBrkA=0x1=EmgcBrkA_1_True->0x0=EmgcBrkA_0_Fals && EmgcBrkAV=0x0=EmgcBrkAV_0_Valid"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0116",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "紧急制动灯触发",
+    "relation": "触发条件",
+    "tail": "危险报警灯开启 (FLDircnLghtCtrl=0x1, FRDircnLghtCtrl=0x1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "危险报警灯开启: FLDircnLghtCtrl=0x1=FLDircnLghtCtrl_1_on; & FRDircnLghtCtrl=0x1=FRDircnLghtCtrl_1_on;"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0116",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "制动灯优先级高于紧急制动灯",
+    "relation": "与...互斥",
+    "tail": "当车辆同时触发制动灯请求和紧急制动灯请求时",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "当车辆同时触发制动灯请求和紧急制动灯请求时,紧急制动灯>制动灯"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0116",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "紧急制动灯优先级高于制动灯",
+    "relation": "优先级高于",
+    "tail": "当车辆制动灯处于激活时",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "当车辆制动灯处于激活时,紧急制动灯触发请求,应立即打断制动灯执行动作,执行紧急制动灯请求"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0116",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "制动灯不响应紧急制动灯请求",
+    "relation": "抑制条件",
+    "tail": "当车辆紧急制动灯处理激活时",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "当车辆紧急制动灯处理激活时,制动灯触发请求,不响应制动灯请求"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0116",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "制动灯继续执行",
+    "relation": "前提条件",
+    "tail": "紧急制动灯退出后,制动灯还存在请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "当紧急制动灯退出后,如监测到制动灯还存在请求,应继续执行制动灯请求"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0116",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

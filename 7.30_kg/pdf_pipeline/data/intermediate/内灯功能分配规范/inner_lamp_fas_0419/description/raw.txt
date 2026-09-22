@@ -1,0 +1,103 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Interior Light Function Allocation Specification",
+  "row_semantics": "Each row represents a specific function or status related to interior lighting and door states, detailing their operational modes, input sources, and control logic.",
+  "column_semantics": "Columns define the context for each function: the first column is the function name, followed by its input source (e.g., CAN, internal), the involved controller/module (e.g., LHZCU), and the associated system or subsystem (e.g., Door Lock SSTs).",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "UsrMdV",
+      "type": "mode",
+      "description": "User mode variable defining different driving and usage scenarios such as Standby, Comfortable, Normal Driving, AIParking, AIPilot, and XOTA."
+    },
+    {
+      "name": "DrvrDoorOpenSts",
+      "type": "status",
+      "description": "Driver's side door open status, indicating whether the door is closed, partially open, or fully open."
+    },
+    {
+      "name": "RLDoorOpenSts",
+      "type": "status",
+      "description": "Rear left door open status, similar to DrvrDoorOpenSts but for the rear left door."
+    },
+    {
+      "name": "DrvrDoorFlorLampCtrlCmd",
+      "type": "command",
+      "description": "Command signal for controlling the driver's side floor lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMdV_Standby",
+      "description": "System is in standby mode."
+    },
+    {
+      "name": "UsrMdV_Comfortable",
+      "description": "System is in comfortable driving mode."
+    },
+    {
+      "name": "UsrMdV_NormalDriving",
+      "description": "System is in normal driving mode."
+    },
+    {
+      "name": "UsrMdV_AIParking",
+      "description": "System is in autonomous parking mode."
+    },
+    {
+      "name": "UsrMdV_AIPilot",
+      "description": "System is in autonomous driving pilot mode."
+    },
+    {
+      "name": "UsgMdV_XOTA",
+      "description": "System is undergoing over-the-air update."
+    },
+    {
+      "name": "FrontLeftDoorClosed",
+      "description": "Driver's side front door is fully closed."
+    },
+    {
+      "name": "FrontLeftDoorOpen",
+      "description": "Driver's side front door is partially open (Latch Switch cannot detect door ajar status)."
+    },
+    {
+      "name": "FrontLeftDoorAjar",
+      "description": "Driver's side front door is slightly ajar."
+    },
+    {
+      "name": "FrontLeftDoorFullOpen",
+      "description": "Driver's side front door is fully open."
+    },
+    {
+      "name": "RLDoorClosed",
+      "description": "Rear left door is fully closed."
+    },
+    {
+      "name": "RLDoorOpen",
+      "description": "Rear left door is partially open (Latch Switch cannot detect door ajar status)."
+    },
+    {
+      "name": "RLDoorAjar",
+      "description": "Rear left door is slightly ajar."
+    },
+    {
+      "name": "RLDoorFullOpen",
+      "description": "Rear left door is fully open."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DrvrDoorFlorLampCtrlCmd",
+      "description": "Signal used to control the activation or deactivation of the driver's side floor lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table specifies the functional allocation for interior lighting, particularly focusing on the driver's side and rear left door statuses and their corresponding modes. It can be used to verify that the correct lighting commands are issued based on the vehicle's operational mode and door status, ensuring proper functionality under various conditions.",
+  "uncertain_points": [
+    "The exact timing behavior of the DrvrDoorFlorLampCtrlCmd signal is not specified.",
+    "The interaction between different UsrMdV modes and door statuses is not detailed beyond the listed states."
+  ]
+}
+```

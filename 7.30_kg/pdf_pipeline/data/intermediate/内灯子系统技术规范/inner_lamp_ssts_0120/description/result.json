@@ -1,0 +1,59 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Ambient Lamp Breathing Mode Hold Off Percentage Configuration",
+  "row_semantics": "Each row represents a specific configuration parameter for the ambient lamp breathing mode hold-off percentage, defining the wait time and corresponding percentage value.",
+  "column_semantics": {
+    "1": "Parameter Name (e.g., AmbtLampBrthngRate5holdoffPercent)",
+    "2": "Description (e.g., Ambient Lamp Breathing Mode Wait Time)",
+    "3": "Range (e.g., 0 - 32)",
+    "4": "Equation/Formula (e.g., E = N*1%)",
+    "5": "Hexadecimal Value (e.g., 0xA)"
+  },
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "function",
+      "description": "The ambient lighting system in the vehicle."
+    },
+    {
+      "name": "Breathing Mode",
+      "type": "mode",
+      "description": "A dynamic lighting pattern where the brightness gradually increases and decreases."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Hold Off Percentage",
+      "description": "The percentage of time the ambient lamp remains off during the breathing cycle.",
+      "range": "0 - 32",
+      "formula": "E = N*1%",
+      "values": [
+        {
+          "value": "0xA",
+          "percentage": "10%"
+        },
+        {
+          "value": "0x14",
+          "percentage": "20%"
+        },
+        {
+          "value": "0x5",
+          "percentage": "5%"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Wait Time",
+      "description": "The duration the ambient lamp waits before transitioning to the next state in the breathing mode.",
+      "range": "0 - 32"
+    }
+  ],
+  "engineering_interpretation": "This table defines the configuration parameters for the ambient lamp's breathing mode hold-off percentage, specifying the wait time and corresponding percentage values. It is used to verify that the ambient lamp operates correctly within the defined timing and percentage constraints during the breathing mode.",
+  "uncertain_points": []
+}

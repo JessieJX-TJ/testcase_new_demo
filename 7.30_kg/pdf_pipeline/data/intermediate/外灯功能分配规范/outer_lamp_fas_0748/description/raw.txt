@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Vehicle Mode and Usage Mode Definitions for CAN/LIN/SOA Services",
+  "row_semantics": "Each row defines a specific parameter related to vehicle mode (VehMdV) or usage mode (UsG Md), including their valid states and associated modes.",
+  "column_semantics": "The table uses a hierarchical structure with merged cells to define parameters. The first column lists the parameter names, while the subsequent columns provide detailed definitions, including hexadecimal values and descriptions of valid states.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMdV",
+      "type": "system_state",
+      "description": "Vehicle Mode Validity, indicating whether the vehicle mode is valid or invalid."
+    },
+    {
+      "name": "UsG Md",
+      "type": "mode_name",
+      "description": "Usage Mode, defining different operational modes such as Sleep, Standby, Comfortable, Normal Driving, AI Parking, AI Pilot, and XOTA."
+    },
+    {
+      "name": "UsG MdV",
+      "type": "system_state",
+      "description": "Usage Mode Validity, indicating whether the usage mode is valid or invalid."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMdV_0_Invalid",
+      "description": "Indicates an invalid vehicle mode."
+    },
+    {
+      "name": "VehMdV_1_Valid",
+      "description": "Indicates a valid vehicle mode."
+    },
+    {
+      "name": "UsG Md_0_Sleep",
+      "description": "Sleep mode for usage."
+    },
+    {
+      "name": "UsG Md_1_Standby",
+      "description": "Standby mode for usage."
+    },
+    {
+      "name": "UsG Md_2_Comfortable",
+      "description": "Comfortable driving mode."
+    },
+    {
+      "name": "UsG Md_3_NormalDriving",
+      "description": "Normal driving mode."
+    },
+    {
+      "name": "UsG Md_4_AIParking",
+      "description": "AI-assisted parking mode."
+    },
+    {
+      "name": "UsG Md_5_AIPilot",
+      "description": "AI pilot mode."
+    },
+    {
+      "name": "UsG Md_6_XOTA",
+      "description": "XOTA (eXtended Over-The-Air) mode."
+    },
+    {
+      "name": "UsG MdV_0_Invalid",
+      "description": "Indicates an invalid usage mode."
+    },
+    {
+      "name": "UsG MdV_1_Valid",
+      "description": "Indicates a valid usage mode."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the valid states and modes for vehicle and usage modes within CAN/LIN/SOA services, which can be used to verify that the system correctly interprets and responds to different mode definitions in various operational scenarios.",
+  "uncertain_points": []
+}
+```

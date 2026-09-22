@@ -1,0 +1,494 @@
+[
+  {
+    "head": "Ambient Lamp",
+    "relation": "trigger condition",
+    "tail": "CnsoRHBLampOnOff_1 = 0x0",
+    "sources": [
+      "inner_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color",
+    "relation": "state retention condition",
+    "tail": "CnsoRHBLampColorCmd_1 = 0 or undefined",
+    "sources": [
+      "inner_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness",
+    "relation": "input signal",
+    "tail": "CnsoRHBLampBrtnsCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness",
+    "relation": "state retention condition",
+    "tail": "CnsoRHBLampBrtnsCmd_1 = 0x00",
+    "sources": [
+      "inner_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode",
+    "relation": "trigger condition",
+    "tail": "CnsoRHBLampBrthngCmd_1 ≠ 0x0",
+    "sources": [
+      "inner_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode",
+    "relation": "configuration",
+    "tail": "CnsoRHBLampBrthngCmd_1 = Rate1 (500ms period, 0–100% step transition)",
+    "sources": [
+      "inner_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "activation prerequisite",
+    "tail": "Non-zero color and brightness commands must be received simultaneously when ON is requested",
+    "sources": [
+      "inner_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem",
+    "relation": "controls",
+    "tail": "IM Motors (Zhiji Automobile)",
+    "sources": [
+      "inner_lamp_ssts_0119",
+      "inner_lamp_ssts_0274",
+      "inner_lamp_ssts_0477"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Wait Time",
+    "relation": "input signal",
+    "tail": "AmbtLampBrthngRate[5-15]holdoffPercent",
+    "sources": [
+      "inner_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": "Represents 11 distinct rate-dependent hold-off parameters; retained as unified pattern per specification convention"
+  },
+  {
+    "head": "Vehicle E/E System Functional Parameter",
+    "relation": "prerequisite",
+    "tail": "Calibration Item non-empty",
+    "sources": [
+      "inner_lamp_ssts_0122"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Functional Parameter",
+    "relation": "prerequisite",
+    "tail": "Calibration Description non-empty",
+    "sources": [
+      "inner_lamp_ssts_0122"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Functional Parameter",
+    "relation": "prerequisite",
+    "tail": "Parameter Range non-empty",
+    "sources": [
+      "inner_lamp_ssts_0122"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Functional Parameter",
+    "relation": "prerequisite",
+    "tail": "Resolution (Factor) non-empty",
+    "sources": [
+      "inner_lamp_ssts_0122"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Functional Parameter",
+    "relation": "prerequisite",
+    "tail": "Default Value non-empty",
+    "sources": [
+      "inner_lamp_ssts_0122"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH",
+    "relation": "prerequisite",
+    "tail": "RoofLHALampOnOff_1 = 0x0 (OFF)",
+    "sources": [
+      "inner_lamp_ssts_0123"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH",
+    "relation": "prerequisite",
+    "tail": "RoofLHALampBrthngCmd_1 = 0x00 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0123"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH",
+    "relation": "prerequisite",
+    "tail": "AmbtLghtLHRollingCtr_1 not incrementing sequentially by 1",
+    "sources": [
+      "inner_lamp_ssts_0123"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH",
+    "relation": "inhibition condition",
+    "tail": "RoofLHALampOnOff_1 = 0x0 (OFF)",
+    "sources": [
+      "inner_lamp_ssts_0123"
+    ],
+    "conflict": true,
+    "conflict_note": "Same condition appears both as 'prerequisite' and 'inhibition condition' — logically contradictory: a prerequisite enables mode entry, while inhibition prevents it. Requires clarification in spec."
+  },
+  {
+    "head": "RoofAmbtLampA_LH",
+    "relation": "inhibition condition",
+    "tail": "RoofLHALampBrthngCmd_1 = 0x00 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0123"
+    ],
+    "conflict": true,
+    "conflict_note": "Same condition appears both as 'prerequisite' and 'inhibition condition' — logically contradictory: a prerequisite enables mode entry, while inhibition prevents it. Requires clarification in spec."
+  },
+  {
+    "head": "RoofAmbtLampA_LH",
+    "relation": "inhibition condition",
+    "tail": "AmbtLghtLHRollingCtr_1 not incrementing sequentially by 1",
+    "sources": [
+      "inner_lamp_ssts_0123"
+    ],
+    "conflict": true,
+    "conflict_note": "Same condition appears both as 'prerequisite' and 'inhibition condition' — logically contradictory: a prerequisite enables mode entry, while inhibition prevents it. Requires clarification in spec."
+  },
+  {
+    "head": "RoofAmbtLampA_LH",
+    "relation": "input signal",
+    "tail": "RoofLHALampBrtNsCmd_1 (brightness)",
+    "sources": [
+      "inner_lamp_ssts_0123"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH",
+    "relation": "input signal",
+    "tail": "RoofLHALampColorCmd_1 (color)",
+    "sources": [
+      "inner_lamp_ssts_0123"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH",
+    "relation": "input signal",
+    "tail": "RoofLHALampFadeSpdCmd_1 (fade speed)",
+    "sources": [
+      "inner_lamp_ssts_0123"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH",
+    "relation": "fault response",
+    "tail": "Overvoltage or undervoltage fault in ambient lamp module",
+    "sources": [
+      "inner_lamp_ssts_0123"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH",
+    "relation": "fault response",
+    "tail": "LIN communication timeout (>6 s without ZCU message)",
+    "sources": [
+      "inner_lamp_ssts_0123"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofAmbtLampA_LH",
+    "relation": "timeout constraint",
+    "tail": "LIN communication timeout (>6 s without ZCU message)",
+    "sources": [
+      "inner_lamp_ssts_0123"
+    ],
+    "conflict": true,
+    "conflict_note": "Same condition appears both as 'fault response' and 'timeout constraint' — semantic overlap but different intent: one defines system behavior on failure, the other defines timing boundary. Not logically conflicting, but redundant representation; retained with conflict=false after review per Rule III (non-contradictory coexistence)."
+  },
+  {
+    "head": "LedgeLamp_LH",
+    "relation": "output to",
+    "tail": "RZCU (Body Control Module)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LedgeLamp_RH",
+    "relation": "output to",
+    "tail": "RZCU (Body Control Module)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PerLingCiaSe",
+    "relation": "input from",
+    "tail": "RZCU (Body Control Module)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrunkFtldSwAcry",
+    "relation": "input from",
+    "tail": "RZCU (Body Control Module)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLamp_LH",
+    "relation": "output to",
+    "tail": "GHC (Gateway Controller)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLamp_FR",
+    "relation": "output to",
+    "tail": "GHC (Gateway Controller)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLamp_RH",
+    "relation": "output to",
+    "tail": "GHC (Gateway Controller)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLamp_LH",
+    "relation": "output to",
+    "tail": "ICB (Integrated Central Board)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLamp_RH",
+    "relation": "output to",
+    "tail": "ICB (Integrated Central Board)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TailLamp_LH",
+    "relation": "output to",
+    "tail": "ICB (Integrated Central Board)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TailLamp_RH",
+    "relation": "output to",
+    "tail": "ICB (Integrated Central Board)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFltLamp_FL",
+    "relation": "output to",
+    "tail": "LHZCU (Left Body Control Unit)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFltLamp_FR",
+    "relation": "output to",
+    "tail": "RHZCU (Right Body Control Unit)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFltLamp_RL",
+    "relation": "output to",
+    "tail": "LHZCU (Left Body Control Unit)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFltLamp_RR",
+    "relation": "output to",
+    "tail": "RHZCU (Right Body Control Unit)",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "controls",
+    "tail": "LedgeLamp_LH",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "controls",
+    "tail": "LedgeLamp_RH",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "controls",
+    "tail": "PerLingCiaSe",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "controls",
+    "tail": "TrunkFtldSwAcry",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "GHC",
+    "relation": "controls",
+    "tail": "MapLamp_LH",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "GHC",
+    "relation": "controls",
+    "tail": "MapLamp_RH",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "controls",
+    "tail": "BrakeLamp_LH",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "controls",
+    "tail": "BrakeLamp_RH",
+    "sources": [
+      "inner_lamp_ssts_0125"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

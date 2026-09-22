@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Brake Light System Status and Control Parameters",
+  "row_semantics": "Each row represents a specific service interface or parameter related to the brake light system, detailing its function, associated controllers/modules, and parameter definitions.",
+  "column_semantics": "The columns categorize the information into: (1) Function/Service Name, (2) Consumption Type, (3) SOA (Service-Oriented Architecture), (4) ICB (Internal Communication Bus), (5) LHZCU (Local Headlight Zone Control Unit), (6) Network Fault Status, and (7) Detailed Parameter Definitions including Interface Name, Parameter Name, Instance ID, and value definitions.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "service_interface",
+      "description": "Interface for subscribing to brake light fault status."
+    },
+    {
+      "name": "BrakeLightSta",
+      "type": "parameter",
+      "description": "Parameter for subscribing to brake light state."
+    },
+    {
+      "name": "SOA",
+      "type": "controller_module",
+      "description": "Service-Oriented Architecture component involved in the interface."
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "Internal Communication Bus component involved in the interface."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Local Headlight Zone Control Unit, responsible for local control of brake lights."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "BrakeLightErrorSta",
+      "type": "output_signal",
+      "description": "Output signal indicating the error status of the brake light (No Error, Error, Unknown)."
+    },
+    {
+      "name": "BrakeLightSta",
+      "type": "output_signal",
+      "description": "Output signal indicating the on/off state of the brake light (OFF)."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "BrakeLightErrorSta",
+      "type": "fault_status",
+      "description": "Indicates whether there is an error in the brake light system (0x0=No Error, 0x1=Error, 0x2=Unknown)."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and interfaces for monitoring and controlling the brake light system, specifically focusing on error status and operational state. It can be used to verify that the system correctly reports and handles brake light faults and states as per the defined parameter values.",
+  "uncertain_points": []
+}
+```

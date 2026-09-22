@@ -1,0 +1,52 @@
+功能分配规范
+零束
+Function Allocation Specification
+Z-ONE
+外灯功能 Exterior lamp function
+Z-ONE-3.0平台-FAS-IBD05
+版本<1.0>
+5 of 935 页
+15.更新紧急制动灯ON/OFF周期调用说明:VP3-77940
+16. 更新远光灯自动开启功能需求说明:hVP3-77974；VP3-77977
+17.2.5.1.6 新增刹车灯诊断需求；2.5.2.6 新增倒车灯诊断需求
+18. 增加外灯请求发送未收到反馈情况下,尝试重发3次说明
+V4.1
+石小波
+PP阶段补充更新:
+为满足功能安全需求:
+1. 制动灯全链路从 SOA 服务更改为 CAN通讯(外灯组合服务除
+外)
+2. 转向灯全链路从 SOA 服务更改为 CAN 通讯(外灯组合服务除
+3. 近光灯基础服务:
+DippedBeamLight. ControlDippedBeamLight. DippedBeamLightReq更改为
+ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReq
+Sts
+ExteriorLightSwitchProcess. CombLghtFucProCtrl. CombLghtFucProCtrlReq
+更改为
+ExteriorLightControl.CombLghtFucProControlStatus.CombLghtFucProCtrlSt
+s；关联影响位置灯/自动灯/大灯关闭软开关控制,同步切换
+V5.0
+SOP阶段更新:
+根据展厅模式 PRD,更改远光灯 VS 模式,增加展车模式下限制远光灯:
+VP3-77886；VP3-77884；VP3-77880
+根据《拖挂模式平台PRD_3.0架构》v1.4,增加拖挂车外灯控制:
+VP3-116857;VP3-124063
+参考《数字外灯3.0PRD文档》,参考1.0项目策略,更新后雾灯控制逻
+辑,更新自动灯光自动退出逻辑:VP3-131946；VP3-77896
+根据产品PRD《S31L顶射灯功能文档》增加车顶射灯基础控制功能:
+VP3-116858;VP3-124063
+参考1.0项目策略,组合灯光挡位默认为AUTO状态:VP3-77897
+增加日行灯开关状态反馈说明:VP3-77963hVP3-119800
+根据智已需求,新增爆胎点亮双闪灯功能:VP3-149817
+补充远光灯点亮情况下,开启后雾灯功能需求:VP3-158011
+后碰预警根据法规要求更新,增加危险灯点亮3s后退出；更新与转向灯
+/危险告警灯/紧急制动灯优先级关系；VP3-136746；VP3-77964
+V5.1
+根据尾门系统输入,更改尾门请求危险告警灯开启的用户模式为
+所有模式:VP3-170000
+V6.0
+1. 根据《智慧灯光3.0PRD文档》V2.0,更新后碰预警退出条件,增
+加紧急制动触发退出条件；VP3-136746
+2. 增加 RLSS 故障或通讯丢失处理逻辑；VP3-77897
+3. 根据 OTA 输入在 XOTA 模式下需请求位置灯/转向灯点亮,更改
+位置灯/转向灯点灯前置条件及退出条件；VP3-77907；VP3-

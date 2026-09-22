@@ -1,0 +1,60 @@
+```json
+[
+  {
+    "head": "左远光灯短路故障处理功能被触发",
+    "relation": "触发条件",
+    "tail": "检测到左远光灯短路到电源",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["触发条件", "检测到左远光灯短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯停止输出",
+    "relation": "执行动作",
+    "tail": "【LMainBeamLghtDrvMdl】停止驱动左远光灯输出 (MainBeamLamp_LH_HSD)",
+    "triple_type": "故障响应",
+    "evidence_terms": ["执行动作", "【LMainBeamLghtDrvMdl】停止驱动左远光灯输出"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统发送主光灯错误状态",
+    "relation": "执行动作",
+    "tail": "【LMainBeamLghtDrvMdl】持续发送 MainBeamLightState. MainBeamLightSta = 2 (Error) InstanceID=1 至 【MainBeamLghtCtrlMdl】，至少发送三帧。",
+    "triple_type": "故障响应",
+    "evidence_terms": ["执行动作", "MainBeamLightState", "MainBeamLightSta = 2 (Error)", "【MainBeamLghtCtrlMdl】"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DTC B105C 12 故障码被置位",
+    "relation": "执行动作",
+    "tail": "3. 置位 DTCB105C 12",
+    "triple_type": "诊断关联",
+    "evidence_terms": ["执行动作", "DTC B105C 12"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左远光灯短路故障处理功能退出",
+    "relation": "退出条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "逻辑条件",
+    "evidence_terms": ["退出条件", "检测到短路恢复"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前置条件满足",
+    "relation": "前提条件",
+    "tail": "1. MainBeamLghtFbkSOAEnPrm==1(Enable)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "MainBeamLghtFbkSOAEnPrm==1(Enable)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前置条件满足",
+    "relation": "前提条件",
+    "tail": "2. 左远光灯处于输出状态",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["前置条件", "左远光灯处于输出状态"],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,116 @@
+{
+  "table_type": "structure_table",
+  "topic": "外灯控制系统架构与信号时序分析",
+  "row_semantics": "流程步骤或系统层级",
+  "column_semematics": "时间顺序或功能阶段",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "8295",
+      "type": "控制器/模块",
+      "description": "位置灯软开关"
+    },
+    {
+      "name": "S32G",
+      "type": "控制器/模块",
+      "description": "外灯组合服务基础，数字灯光SDK"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "位置灯控制模块"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块",
+      "description": "位置灯大屏请求模块"
+    },
+    {
+      "name": "LHA",
+      "type": "功能/输出信号",
+      "description": "左前大灯"
+    },
+    {
+      "name": "RHA",
+      "type": "功能/输出信号",
+      "description": "右前大灯"
+    },
+    {
+      "name": "TailLpAsmbA_RH",
+      "type": "功能/输出信号",
+      "description": "右后尾灯总成"
+    },
+    {
+      "name": "TailLpAsmbA_LH",
+      "type": "功能/输出信号",
+      "description": "左后尾灯总成"
+    },
+    {
+      "name": "TailLpAsmbB",
+      "type": "功能/输出信号",
+      "description": "备用尾灯总成"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "LHA",
+      "type": "输出信号",
+      "description": "前大灯点亮"
+    },
+    {
+      "name": "RHA",
+      "type": "输出信号",
+      "description": "前大灯点亮"
+    },
+    {
+      "name": "TailLpAsmbA_RH",
+      "type": "输出信号",
+      "description": "右后尾灯点亮"
+    },
+    {
+      "name": "TailLpAsmbA_LH",
+      "type": "输出信号",
+      "description": "左后尾灯点亮"
+    },
+    {
+      "name": "TailLpAsmbB",
+      "type": "输出信号",
+      "description": "备用尾灯点亮"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "8295位置灯软开关",
+      "duration": "30ms"
+    },
+    {
+      "name": "S32G外灯组合服务基础",
+      "duration": "20ms"
+    },
+    {
+      "name": "LHZCU位置灯控制模块",
+      "duration": "30ms"
+    },
+    {
+      "name": "S32G外灯SWC",
+      "duration": "10ms"
+    },
+    {
+      "name": "S32G数字灯光SDK",
+      "duration": "40ms"
+    },
+    {
+      "name": "LHA/RHA/TailLampAsmbl位置灯驱动",
+      "duration": "30ms"
+    },
+    {
+      "name": "总时延",
+      "duration": "270ms"
+    }
+  ],
+  "engineering_interpretation": "该图描述了外灯控制系统从用户输入到最终灯光输出的完整信号流和时序要求，可用于验证外灯点亮响应时间、信号传递路径及各模块间交互的正确性。",
+  "uncertain_points": []
+}

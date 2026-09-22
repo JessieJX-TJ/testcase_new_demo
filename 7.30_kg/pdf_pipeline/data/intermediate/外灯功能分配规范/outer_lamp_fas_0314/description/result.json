@@ -1,0 +1,59 @@
+{
+  "table_type": "other",
+  "topic": "外灯控制功能规范 - 制动灯状态与控制接口",
+  "row_semantics": "表格中的每一行代表一个独立的系统服务或功能接口，描述了制动灯的状态查询和控制操作。",
+  "column_semantics": {
+    "消费": "表示该服务是否被其他模块消费（调用）",
+    "SOA": "Service-Oriented Architecture，面向服务架构，表示该服务在SOA框架下的可用性",
+    "LHZCU": "Local High-level Central Control Unit，本地高层中央控制器，表示该服务由哪个控制器实现或参与",
+    "ICB": "Integrated Control Board，集成控制板，表示该服务与ICB模块的关系",
+    "其他列": "预留列，未定义具体用途"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess.BrakeLightFucProStatus",
+      "type": "功能名",
+      "description": "制动灯功能状态查询接口，用于订阅制动灯点亮或熄灭的条件是否满足"
+    },
+    {
+      "name": "ExteriorLightControlSystem.ControlBrakeLight",
+      "type": "功能名",
+      "description": "制动灯控制接口，用于发送制动灯的开关请求"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "本地高层中央控制器，负责处理制动灯相关的逻辑和控制"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "集成控制板，可能参与制动灯的信号传输或控制"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrakeLightFucProStatus",
+      "type": "输入信号",
+      "description": "制动灯功能状态参数，表示制动灯当前的状态（OFF, ON, Unknown）"
+    },
+    {
+      "name": "BrakeLightReq",
+      "type": "输入信号",
+      "description": "制动灯控制请求参数，表示期望的制动灯状态（OFF, ON）"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrakeLightResp",
+      "type": "输出信号",
+      "description": "制动灯控制响应参数，表示控制结果（ControlSuccess）"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中制动灯的功能状态查询和控制接口，包括状态参数、控制请求和响应，主要用于验证制动灯在不同控制请求下的状态变化及控制成功性。",
+  "uncertain_points": []
+}

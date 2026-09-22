@@ -1,0 +1,85 @@
+{
+  "table_type": "signal_table",
+  "topic": "转向灯开关信号交互与状态定义",
+  "row_semantics": "每行代表一个与转向灯相关的接口或信号定义，包括其方向、类型、发送方/接收方、路径及来源。",
+  "column_semantics": {
+    "Interface Name": "接口名称，即信号或数据的标识符。",
+    "Direction": "信号的方向，如输入、输出或提供。",
+    "Type": "信号的类型，如硬线、CAN等。",
+    "Sender/Provider": "信号的发送方或提供方。",
+    "Receiver/Consumer": "信号的接收方或消费方。",
+    "Channel": "信号传输的路径或通道。",
+    "Interface Source": "接口的来源模块或系统。",
+    "Description": "对信号功能的详细描述，包含具体的状态定义和数值含义。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "TurnSigSw_SIG",
+      "type": "Input Signal",
+      "description": "转向灯开关档位模拟输入信号，由外灯SSTS提供给LHZCU进行判断。",
+      "source": "Exterior Light SSTS",
+      "receiver": "LHZCU"
+    },
+    {
+      "name": "DircnLghtSwReq",
+      "type": "Output Signal",
+      "description": "转向灯开关请求信号，由LHZCU通过CAN/片内发送至ICB/LHZCU。",
+      "values": {
+        "0x0": "Off",
+        "0x1": "Left First Gear Direction Light On",
+        "0x2": "Left Second Gear Direction Light On",
+        "0x3": "Right First Gear Direction Light On",
+        "0x4": "Right Second Gear Direction Light On"
+      },
+      "source": "LHZCU",
+      "receiver": "ICB/LHZCU"
+    },
+    {
+      "name": "SOA ExteriorLightSwitch.DirectionLightSwitchStatus",
+      "type": "Provided Status",
+      "description": "转向灯开关状态提供接口，由SOA提供给LHZCU，详细定义见通信矩阵。",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "Left Direction Light On (Second Gear)",
+        "0x2": "Right Direction Light On (Second Gear)",
+        "0x3": "Left Direction Light On (First Gear)",
+        "0x4": "Right Direction Light On (First Gear)",
+        "0x5": "Error",
+        "0x6": "Unknown"
+      },
+      "source": "SOA",
+      "receiver": "LHZCU"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DircnLghtSwReq",
+      "description": "根据转向灯开关档位生成相应的转向灯请求信号。",
+      "conditions": [
+        "当转向灯开关处于不同档位时，生成对应的转向灯请求信号。",
+        "信号值范围为0x0到0x4，分别对应不同的转向灯状态。",
+        "信号通过CAN/片内通道传输。"
+      ]
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SOA ExteriorLightSwitch.DirectionLightSwitchStatus",
+      "description": "转向灯开关状态异常时，返回错误或未知状态。",
+      "fault_values": [
+        "0x5: Error",
+        "0x6: Unknown"
+      ]
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了转向灯开关信号的输入、输出及其状态反馈机制，可用于验证转向灯开关信号在不同档位下的正确生成与传输，以及转向灯状态反馈的准确性。",
+  "uncertain_points": [
+    "表格中未明确说明具体的测试用例或验证流程。",
+    "未提及具体的硬件连接细节或软件实现逻辑。",
+    "未明确说明故障检测的具体触发条件。"
+  ]
+}

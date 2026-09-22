@@ -1,0 +1,428 @@
+```json
+[
+  {
+    "head": "DoorFL1LampBrthng_Cmd_1",
+    "relation": "has_breathing_rate_mode",
+    "tail": "Code value (0x0–0xF)",
+    "sources": ["inner_lamp_ssts_0539"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampBrthng_Cmd_1",
+    "relation": "has_breathing_cycle",
+    "tail": "Rate value (e.g., Rate1, Rate2)",
+    "sources": ["inner_lamp_ssts_0539"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampBrthng_Cmd_1",
+    "relation": "outputs_breathing_pattern",
+    "tail": "Raw breathing pattern value (e.g., Rate0-No Request, Rate1-500ms)",
+    "sources": ["inner_lamp_ssts_0539"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1",
+    "relation": "controls_ambient_lamp_breathing_rate",
+    "tail": "LIN / LHZCU / IPAmbtLamp_M / LHZCU_LIN5 interface",
+    "sources": ["inner_lamp_ssts_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1",
+    "relation": "controls_interior_lamp_brightness",
+    "tail": "LIN / LHZCU / IPAmbtLamp_M / LHZCU_LIN5 interface",
+    "sources": ["inner_lamp_ssts_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1 == 0x0",
+    "relation": "precondition",
+    "tail": "ambient lamp breathing pattern remains unchanged",
+    "sources": ["inner_lamp_ssts_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1 == 0x0",
+    "relation": "precondition",
+    "tail": "interior lamp brightness remains unchanged",
+    "sources": ["inner_lamp_ssts_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1 == 0x0",
+    "relation": "suppresses_breathing_mode_change",
+    "tail": "no breathing mode change is triggered",
+    "sources": ["inner_lamp_ssts_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1",
+    "relation": "maps_to_breathing_rate",
+    "tail": "0x1 → Rate1 (500ms), 0x2 → Rate2 (600ms), ..., 0xF → Rate15 (12s)",
+    "sources": ["inner_lamp_ssts_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1",
+    "relation": "valid_range_for_breathing_rate",
+    "tail": "0x1–0xE maps to Rate1–Rate14",
+    "sources": ["inner_lamp_ssts_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1 == 0xA",
+    "relation": "outputs_breathing_rate",
+    "tail": "Rate10 (5s)",
+    "sources": ["inner_lamp_ssts_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IPMLampBrthngCmd_1 == 0xC",
+    "relation": "outputs_breathing_rate",
+    "tail": "Rate12 (7s)",
+    "sources": ["inner_lamp_ssts_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLBrtLvl_1",
+    "relation": "is_transmitted_by",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFRBrtLvl_1",
+    "relation": "is_transmitted_by",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRLBrtLvl_1",
+    "relation": "is_transmitted_by",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHC",
+    "relation": "receives_signal",
+    "tail": "MapLampFLBrtLvl_1",
+    "sources": ["inner_lamp_ssts_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHC",
+    "relation": "receives_signal",
+    "tail": "MapLampFRBrtLvl_1",
+    "sources": ["inner_lamp_ssts_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHC",
+    "relation": "receives_signal",
+    "tail": "MapLampRLBrtLvl_1",
+    "sources": ["inner_lamp_ssts_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLBrtLvl_1",
+    "relation": "brightness_level_depends_on",
+    "tail": "LHZCU-provided brightness level value",
+    "sources": ["inner_lamp_ssts_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFRBrtLvl_1",
+    "relation": "brightness_level_depends_on",
+    "tail": "LHZCU-provided brightness level value",
+    "sources": ["inner_lamp_ssts_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRLBrtLvl_1",
+    "relation": "brightness_level_depends_on",
+    "tail": "LHZCU-provided brightness level value",
+    "sources": ["inner_lamp_ssts_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFLBrtLvl_1",
+    "relation": "value_encoding",
+    "tail": "0x0=OFF, 0x1=Level_1, ..., 0x1E=Level_30, 0x1F=Reserved",
+    "sources": ["inner_lamp_ssts_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampFRBrtLvl_1",
+    "relation": "value_encoding",
+    "tail": "0x0=OFF, 0x1=Level_1, ..., 0x1E=Level_30, 0x1F=Reserved",
+    "sources": ["inner_lamp_ssts_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MapLampRLBrtLvl_1",
+    "relation": "value_encoding",
+    "tail": "0x0=OFF, 0x1=Level_1, ..., 0x1E=Level_30, 0x1F=Reserved",
+    "sources": ["inner_lamp_ssts_0542"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtSts",
+    "relation": "input_from",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0543", "inner_lamp_ssts_0545"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtSts",
+    "relation": "output_to",
+    "tail": "ICB",
+    "sources": ["inner_lamp_ssts_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtSts",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtSts_IFP_1",
+    "relation": "depends_on",
+    "tail": "ICB",
+    "sources": ["inner_lamp_ssts_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtSts_IFP_1",
+    "relation": "output_to",
+    "tail": "IFP",
+    "sources": ["inner_lamp_ssts_0543"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtSts",
+    "relation": "input_via",
+    "tail": "CAN channel from LHZCU",
+    "sources": ["inner_lamp_ssts_0545"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehSideLghtSts_1_RZCU",
+    "relation": "output_via",
+    "tail": "LIN channel to RZCU",
+    "sources": ["inner_lamp_ssts_0545"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtSts",
+    "relation": "depends_on",
+    "tail": "exterior lamp SSTS data source",
+    "sources": ["inner_lamp_ssts_0545"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehSideLghtSts_1_RZCU",
+    "relation": "depends_on",
+    "tail": "DoorPnlSeatFnSw_RL / DoorPnlSeatFnSw_RR / ThrdRowSeatSw_LH / ThrdRowSeatSw_RH",
+    "sources": ["inner_lamp_ssts_0545"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehSideLghtSts_1_RZCU",
+    "relation": "output_to",
+    "tail": "RZCU",
+    "sources": ["inner_lamp_ssts_0545"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LoadspaceLampControlCircuit_OpenCircuit",
+    "relation": "trigger_condition",
+    "tail": "1) Loadspace lamp driver activated; 2) Driver current < threshold (TBD) A for 100ms",
+    "sources": ["inner_lamp_ssts_0544", "inner_lamp_ssts_0546"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LoadspaceLampControlCircuit_OpenCircuit",
+    "relation": "timeout_constraint",
+    "tail": "Driver current < threshold (TBD) A for 100ms",
+    "sources": ["inner_lamp_ssts_0544"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowRightMapLampControlCircuit_ShortToBattery",
+    "relation": "trigger_condition",
+    "tail": "1) Circuit activated; 2) Driver current < threshold (TBD) A for 100ms",
+    "sources": ["inner_lamp_ssts_0546"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowRightMapLampControlCircuit_ShortToGround",
+    "relation": "trigger_condition",
+    "tail": "1) Circuit activated; 2) Driver current > threshold (TBD) A for 100ms",
+    "sources": ["inner_lamp_ssts_0546"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowRightMapLampControlCircuit_OpenCircuit",
+    "relation": "trigger_condition",
+    "tail": "1) Circuit activated; 2) Driver current < threshold (TBD) A for 100ms",
+    "sources": ["inner_lamp_ssts_0546"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowRightMapLampControlCircuit",
+    "relation": "activation_prerequisite",
+    "tail": "circuit activation state",
+    "sources": ["inner_lamp_ssts_0546"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "driver_current_anomaly",
+    "relation": "timeout_constraint",
+    "tail": "100ms duration",
+    "sources": ["inner_lamp_ssts_0546"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlAmbtLamp_FR_HSD",
+    "relation": "trigger_condition",
+    "tail": "signal asserted",
+    "sources": ["inner_lamp_ssts_0547"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlAmbtLamp_FR_HSD",
+    "relation": "suppression_condition",
+    "tail": "signal deasserted",
+    "sources": ["inner_lamp_ssts_0547"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlAmbtLamp_FR_HSD",
+    "relation": "prerequisite",
+    "tail": "ODH input signal",
+    "sources": ["inner_lamp_ssts_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlAmbtLamp_FR_HSD",
+    "relation": "depends_on",
+    "tail": "RHZCU_eSw10 controller module",
+    "sources": ["inner_lamp_ssts_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlAmbtLamp_FR_HSD",
+    "relation": "outputs_to",
+    "tail": "RHZCU controller module",
+    "sources": ["inner_lamp_ssts_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlAmbtLamp_FR_HSD",
+    "relation": "input_parameter",
+    "tail": "13.5",
+    "sources": ["inner_lamp_ssts_0548"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlAmbtLamp_FR_HSD",
+    "relation": "timeout_threshold",
+    "tail": "0.0481",
+    "sources": ["inner_lamp_ssts_0548"],
+    "conflict": true,
+    "conflict_note": "Conflicting timeout thresholds: 0.0481 vs 0.0502 — likely different test conditions or calibration variants; retain both"
+  },
+  {
+    "head": "FtwlAmbtLamp_FR_HSD",
+    "relation": "timeout_threshold",
+    "tail": "0.0502",
+    "sources": ["inner_lamp_ssts_0548"],
+    "conflict": true,
+    "conflict_note": "Conflicting timeout thresholds: 0.0481 vs 0.0502 — likely different test conditions or calibration variants; retain both"
+  },
+  {
+    "head": "Vehicle_Electrical_Electronic_Configuration_Parameters",
+    "relation": "prerequisite",
+    "tail": "Item = NA",
+    "sources": ["inner_lamp_ssts_0549"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle_Electrical_Electronic_Configuration_Parameters",
+    "relation": "prerequisite",
+    "tail": "Description = NA",
+    "sources": ["inner_lamp_ssts_0549"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle_Electrical_Electronic_Configuration_Parameters",
+    "relation": "prerequisite",
+    "tail": "Range = NA",
+    "sources": ["inner_lamp_ssts_0549"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle_Electrical_Electronic_Configuration_Parameters",
+    "relation": "prerequisite",
+    "tail": "Factor = NA",
+    "sources": ["inner_lamp_ssts_0549"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

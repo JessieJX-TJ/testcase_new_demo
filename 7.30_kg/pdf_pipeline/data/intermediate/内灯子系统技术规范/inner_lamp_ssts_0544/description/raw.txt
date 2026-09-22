@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Loadspace Lamp Control Circuit Open Circuit Detection",
+  "row_semantics": "Test case or condition definition for detecting an open circuit in the Loadspace Lamp control circuit.",
+  "column_semantics": {
+    "1": "Test Case Identifier (e.g., Test ID or Sequence Number)",
+    "2": "TBD (To Be Determined) - Placeholder for specific test details or parameters not yet defined",
+    "3": "Function Name: 'Loadspace Lamp Control Circuit Open Circuit'",
+    "4": "Description of the test conditions and expected behavior",
+    "5": "Threshold/Duration Requirement for triggering the fault detection"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Loadspace Lamp Control Circuit",
+      "type": "function",
+      "description": "The control circuit responsible for managing the operation of the loadspace lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "Back-up box lamp driven activation state",
+      "description": "The backup box lamp is activated or turned on."
+    },
+    {
+      "condition": "Driving current less than threshold",
+      "description": "The driving current through the circuit is below a specified threshold value."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "fault_name": "Open Circuit",
+      "description": "An open circuit condition in the Loadspace Lamp control circuit.",
+      "trigger_condition": "Driving current < threshold (TBD) A, sustained for 100ms"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "100ms",
+      "description": "The low driving current condition must persist for at least 100 milliseconds to trigger the fault detection."
+    }
+  ],
+  "engineering_interpretation": "This table defines a test condition for verifying the Loadspace Lamp control circuit's ability to detect an open circuit. It specifies that when the backup box lamp is activated and the driving current falls below a certain threshold for a sustained period (100ms), the system should recognize this as an open circuit fault.",
+  "uncertain_points": [
+    "The exact threshold value for the driving current (TBD) is not specified in the table.",
+    "The specific controller/module responsible for monitoring this circuit is not identified."
+  ]
+}
+```

@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "左后转向灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，描述了从前置条件到异常处理的完整故障处理过程。",
+  "column_semantics": "表格包含两列：左侧为阶段描述（如前置条件、触发条件等），右侧为该阶段的具体内容或动作。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "转向灯反馈超时使能参数，值为1表示启用"
+    },
+    {
+      "name": "RLDILightDrvMdl",
+      "type": "controller",
+      "description": "转向灯驱动模块，负责控制转向灯输出"
+    },
+    {
+      "name": "DILamp_LH_HSD",
+      "type": "signal",
+      "description": "左后转向灯输出信号"
+    },
+    {
+      "name": "DirectionLightControl",
+      "type": "signal",
+      "description": "方向灯控制信号"
+    },
+    {
+      "name": "DTC_B104A_11",
+      "type": "fault_code",
+      "description": "特定的诊断故障代码，表示左后转向灯短路故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILightFbkSOAEnPrm == 1 (Enable)",
+      "description": "转向灯反馈超时检测功能已启用"
+    },
+    {
+      "condition": "左后转向灯处于输出状态",
+      "description": "系统正在尝试输出左后转向灯信号"
+    },
+    {
+      "condition": "检测到左后转向灯短路到地",
+      "description": "检测到转向灯电路存在短路故障"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "description": "之前检测到的短路故障已恢复正常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "RLDILightDrvMdl 停止驱动左后转向灯输出 (DILamp_LH_HSD)",
+      "description": "停止向左后转向灯发送驱动信号"
+    },
+    {
+      "output": "RLDILightDrvMdl 持续发送 DirectionLightControl, DirectionLightSta = 2 (Error) InstanceID=3 至 DILightCtrlMdl",
+      "description": "持续发送错误状态信息给转向灯控制模块"
+    },
+    {
+      "output": "置位 DTC B104A_11",
+      "description": "设置特定的故障代码以记录故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "DTC_B104A_11",
+      "description": "左后转向灯短路到地故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了当左后转向灯发生短路到地故障时，系统应如何响应和处理的详细逻辑，包括停止驱动、发送错误信息、设置故障代码以及故障恢复后的退出条件，可用于验证整车电子电器系统在转向灯短路故障情况下的正确处理能力。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Control and Fault Monitoring",
+  "row_semantics": "Each row represents a specific service interface related to direction light control or fault status subscription.",
+  "column_semantics": "Columns represent different system components or control methods (e.g., SOA, LHZCU, ICB, RHZCU) and the type of control (e.g., hardline control).",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightErrSts",
+      "type": "service_interface",
+      "description": "Interface for subscribing to direction light fault status."
+    },
+    {
+      "name": "ControlDirectionLight",
+      "type": "service_interface",
+      "description": "Interfaces for controlling direction lights (left and right front)."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightErrSts",
+      "description": "Indicates the fault status of direction lights. Values: 0x0 (No Error), 0x1 (Error)."
+    },
+    {
+      "name": "DirectionLightReq",
+      "description": "Request parameter for controlling direction lights. Values: 0x0 (OFF), 0x1 (ON)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LeftFrontDirectionLight",
+      "description": "Controls the left front direction light (turn signal)."
+    },
+    {
+      "name": "RightFrontDirectionLight",
+      "description": "Controls the right front direction light (turn signal)."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightFault",
+      "description": "Represents a fault condition in the direction light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for monitoring direction light faults and controlling the left and right front direction lights, enabling tests to verify fault detection and light control functionality.",
+  "uncertain_points": []
+}
+```

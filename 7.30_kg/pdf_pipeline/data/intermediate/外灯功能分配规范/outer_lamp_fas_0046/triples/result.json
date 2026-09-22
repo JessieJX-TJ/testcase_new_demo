@@ -1,0 +1,76 @@
+[
+  {
+    "head": "HMI子系统做危险警报灯图标指示灯显示醒",
+    "relation": "触发条件",
+    "tail": "CAN信号状态为0x1 或者 服务接口为0x3",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "CAN信号状态",
+      "服务接口",
+      "HMI显示状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0046",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "HMI子系统不做危险警报灯图标指示灯显示醒",
+    "relation": "抑制条件",
+    "tail": "CAN信号状态为0x0 或者 服务接口为0x0",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "CAN信号状态",
+      "服务接口",
+      "HMI显示状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0046",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "HMI子系统根据危险警报灯服务接口或者CAN信号故障状态做故障弹窗提醒",
+    "relation": "触发条件",
+    "tail": "危险警报灯发生故障时 (DircnLghtFltsts_1_True)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "危险警报灯故障状态",
+      "HMI故障提醒"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0046",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "危险警报灯图标指示灯显示醒",
+    "relation": "依赖于",
+    "tail": "CAN信号状态为0x1 或者 服务接口为0x3",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "CAN信号状态",
+      "服务接口",
+      "HMI显示状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0046",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "危险警报灯图标指示灯不显示",
+    "relation": "依赖于",
+    "tail": "CAN信号状态为0x0 或者 服务接口为0x0",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "CAN信号状态",
+      "服务接口",
+      "HMI显示状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0046",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  }
+]

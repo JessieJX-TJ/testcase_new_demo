@@ -1,0 +1,55 @@
+{
+  "table_type": "fault_table",
+  "topic": "左制动灯电路短路故障诊断与处理",
+  "row_semantics": "表格按流程顺序描述了故障诊断的前置条件、触发条件、执行动作、退出条件及异常处理。",
+  "column_semantics": "第一列定义了流程阶段，第二列详细描述了该阶段的具体内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLghtDrvMdl",
+      "type": "controller_module",
+      "description": "制动灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlBrkLghtHwDrvEnPrm",
+      "value": "=1",
+      "description": "外部制动灯硬件驱动使能参数为1"
+    },
+    {
+      "name": "左制动灯未输出状态",
+      "description": "检测到左制动灯当前处于非输出状态"
+    },
+    {
+      "name": "检测到左制动动灯短路到电源",
+      "description": "系统检测到左制动灯存在短路至电源的故障"
+    },
+    {
+      "name": "检测到短路恢复",
+      "description": "系统检测到之前存在的短路故障已恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLghtFltSts_HW",
+      "value": "0x1 (BrkLghtFltSts_HW_1_True)",
+      "description": "硬件级制动灯故障状态反馈，设置为1表示存在故障"
+    },
+    {
+      "name": "DTC B1041 12",
+      "value": "",
+      "description": "设置特定的故障代码（DTC）B1041 12，表示左制动灯短路至电源故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "左制动灯短路到电源",
+      "description": "左制动灯电路发生短路并连接到电源"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了针对左制动灯短路至电源故障的诊断逻辑，包括故障检测、状态反馈和故障代码设置，可用于验证车辆制动灯系统的故障诊断功能。",
+  "uncertain_points": []
+}

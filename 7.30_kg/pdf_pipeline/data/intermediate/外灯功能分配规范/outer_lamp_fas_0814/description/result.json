@@ -1,0 +1,72 @@
+{
+  "table_type": "parameter_table",
+  "topic": "DirectionLightErrorStatus",
+  "row_semantics": "Each row represents a specific service interface call for subscribing to the error status of either the left or right turn signal lights.",
+  "column_semantics": {
+    "Row Header": "Service interface name and description (e.g., DirectionLight.DirectionLightErrorStatus)",
+    "Consumption": "Indicates the service is consumed",
+    "SOA": "Service Oriented Architecture component",
+    "ICB": "Internal Communication Bus component",
+    "LHZCU": "Local Host Control Unit",
+    "Network Fault Status": "Indicates the network fault status related to the service"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "Parameter",
+      "description": "Represents the error status of the direction light."
+    },
+    {
+      "name": "DirectionLight",
+      "type": "Function",
+      "description": "Controls the direction lights (turn signals)."
+    },
+    {
+      "name": "SOA",
+      "type": "Controller/Module",
+      "description": "Service-Oriented Architecture component responsible for communication."
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "Internal Communication Bus component for internal vehicle communication."
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Local Host Control Unit, likely the local control unit for the direction light system."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "Unique identifier for the instance of the parameter. InstanceID=6 for left turn light, InstanceID=7 for right turn light."
+    },
+    {
+      "name": "DirectionLightErrorSta",
+      "description": "The status parameter that can have values: 0x0 (No Error), 0x1 (Error), 0x2 (Unknown)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "NetworkFaultStatus",
+      "type": "Output Signal",
+      "description": "Indicates whether there is a network fault related to the subscription of the direction light error status."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightError",
+      "description": "An error condition in the direction light system, indicated by DirectionLightErrorSta = 0x1."
+    },
+    {
+      "name": "DirectionLightUnknownStatus",
+      "description": "An unknown status condition in the direction light system, indicated by DirectionLightErrorSta = 0x2."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and interfaces for subscribing to the error status of the left and right turn signal lights. It specifies the expected behavior when calling the DirectionLightErrorStatus service interface, including the possible error states and the network fault status.",
+  "uncertain_points": []
+}

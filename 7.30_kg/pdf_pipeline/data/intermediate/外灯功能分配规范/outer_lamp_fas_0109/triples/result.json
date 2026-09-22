@@ -1,0 +1,115 @@
+[
+  {
+    "head": "远光灯左侧和右侧同步点亮",
+    "relation": "前提条件",
+    "tail": "远光灯开启同步性要求:两侧最大延时不超过40ms",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "远光灯开启同步性要求",
+      "最大延时不超过40ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0109",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "AutoMaiBeamLghtCtrlDsblSts变量被设置为True",
+    "relation": "触发条件",
+    "tail": "一个点火循环内,远光灯自动控制功能处于激活状态时,检测到三次远光灯手动关闭请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "点火循环",
+      "自动控制功能激活",
+      "三次手动关闭请求"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0109",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "AutoMaiBeamLghtCtrlDsblSts变量被清除",
+    "relation": "复位条件",
+    "tail": "下电操作",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "下电"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0109",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "MainBeamLghtMdSta输出为Manual_Mode",
+    "relation": "触发条件",
+    "tail": "手动远光灯开启",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "手动远光灯开启",
+      "Manual_Mode"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0109",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "MainBeamLghtMdSta输出为Auto_Mode",
+    "relation": "触发条件",
+    "tail": "远光灯自动开启前置条件满足",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "自动开启前置条件满足",
+      "Auto_Mode"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0109",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "MainBeamLghtMdSta输出为No_Request",
+    "relation": "触发条件",
+    "tail": "远光灯未手动开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "未手动开启",
+      "自动开启未使能",
+      "No_Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0109",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "MainBeamLghtMdSta输出为No_Request",
+    "relation": "触发条件",
+    "tail": "远光灯自动开启未使能",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "未手动开启",
+      "自动开启未使能",
+      "No_Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0109",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "远光灯自动控制功能被抑制",
+    "relation": "抑制条件",
+    "tail": "AutoMaiBeamLghtCtrlDsblSts变量被设置为True",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "AutoMaiBeamLghtCtrlDsblSts=0x1=True"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0109",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  }
+]

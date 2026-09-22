@@ -1,0 +1,21 @@
+触发动作
+S32G收到[大屏开关请求ICB]输入
+执行动作
+1、[外灯控制组合服务ICB]调用接口发送近光灯请求状态给LHZCU:
+Notifer:
+2、[近光灯控制模块LHZCU]接口响应:
+Notifier:
+3、ICB将服务接口或控制信号转换成灯控CAN信号,并控制近光灯点亮:
+4、[外灯控制组合服务ICB]调用接口:
+5、[HMI子系统ICB]调用接口:
+获取近光灯指示灯显示:
+6、[外灯控制组合服务ICB]调用基础服务:
+{ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts}=0x1=On
+7、[驱动处理模块LHZCU/RHZCU]订阅ICB发送的近光灯控制状态
+近光灯点亮
+8、[驱动模块LHZCU/RHZCU]将状态/故障状态反馈至[近光灯控制模块LHZCU]:
+(exlDipdBeamHwDrvEnPrm=0x1；通过 Instance ID1/2 获取近光灯状态)
+ICB将状态/故障状态反馈至[近光灯控制模块LHZCU]
+(exlDipdBeamHwDrvEnPrm=0x0||0x2；通过 Instance ID 3/4 获取近光灯状态)
+9、近光灯控制模块LHZCU将状态/故障状态反馈至ICB
+{ExteriorLightSwitchProcess. DippedBeamLightSta. DipdBeamLghtSta}= 0x1=ON

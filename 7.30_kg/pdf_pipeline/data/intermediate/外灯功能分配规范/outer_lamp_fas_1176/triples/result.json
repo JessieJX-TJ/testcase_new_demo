@@ -1,0 +1,158 @@
+[
+  {
+    "head": "危险警报灯双闪模式启动",
+    "relation": "前提条件",
+    "tail": "接收到LHZCU模块的双闪灯ON/OFF控制信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "双闪灯ON/OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1176",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯双闪模式运行",
+    "relation": "状态保持条件",
+    "tail": "按照",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "1.25Hz",
+      "800ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1176",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯双闪模式运行",
+    "relation": "状态保持条件",
+    "tail": "25Hz频率闪烁,周期为800ms",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "1.25Hz",
+      "800ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1176",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "转向灯流水模式使能",
+    "relation": "前提条件",
+    "tail": "DirectionLightModeStatus设置为Enabled",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DirectionLightModeStatus",
+      "Enabled"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1176",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "外灯组合服务ICB调用",
+    "relation": "触发条件",
+    "tail": "接收到LHZCU发送的双闪灯ON/OFF信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "双闪灯ON/OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1176",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "外灯组合服务ICB延时调用",
+    "relation": "超时约束",
+    "tail": "延时60ms后调用基础服务",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "ICB",
+      "60ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1176",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "ICB控制双闪灯流水点亮",
+    "relation": "输入为",
+    "tail": "灯控CAN信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "CAN信号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1176",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯控制指令分发",
+    "relation": "超时约束",
+    "tail": "延时60ms后分发至驱动模块",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU/RHZCU/RZCU",
+      "60ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1176",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "驱动处理模块LHZCU/RHZCU/RZCU接收ICB信号",
+    "relation": "输入为",
+    "tail": "ICB服务接口或控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU/RHZCU/RZCU",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1176",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯图标指示灯显示",
+    "relation": "依赖于",
+    "tail": "驱动处理模块LHZCU/RHZCU/RZCU接收ICB信号",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "LHZCU/RHZCU/RZCU",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1176",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "危险警报灯声音提醒",
+    "relation": "依赖于",
+    "tail": "驱动处理模块LHZCU/RHZCU/RZCU接收ICB信号",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "LHZCU/RHZCU/RZCU",
+      "ICB"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1176",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "signal_table"
+  }
+]

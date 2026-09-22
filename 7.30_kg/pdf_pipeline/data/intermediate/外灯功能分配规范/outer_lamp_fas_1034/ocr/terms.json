@@ -1,0 +1,29 @@
+{
+  "doc_id": "outer_lamp_fas",
+  "image_id": "outer_lamp_fas_1034",
+  "image_path": "/home/fanhongxuan/TestCase_Agent/7.30_kg/智己PDF/output/13 Z-ONE-3.0平台-FAS-IBD05 外灯功能分配规范v7.7-20260408/auto/images/9489a6609bd25102fe91359c3a55cbba61a46e1c8e989609513041a9e3e81265.jpg",
+  "whitelist_terms": [
+    "场景描述",
+    "通过外灯组合服务请求制动灯点亮",
+    "前置条件",
+    "1&2&3&4",
+    "1. UsgMd!=0x0=UsgMd_0_Sleep; &",
+    "UsgMd!=0x1=UsgMd_1_Standby;&",
+    "UsgMd!=0x6=UsgMd_6_XOTA",
+    "2. UsgMdV=Valid",
+    "3. VehMd!=0x3=VehMd_3_TRANSPORT",
+    "4. VehMdV=Valid",
+    "触发动作",
+    "ICBS32G MCU:接收组合服务请求:",
+    "ExteriorLightControlSystem.ControlBrakeLight.BrakeLightReq=0x1=ON(或 0x0=OFF)",
+    "执行动作",
+    "1、ICB_S32G MCU 发送 BrkLghtSrvcReq=0x1=ON(或 0x0=OFF)给 LHZCU",
+    "2、LHZCU控制执行制动灯点亮或熄灭,并反馈对应的控制状态",
+    "备注",
+    "1、制动灯开启同步性要求:",
+    "左侧、右侧以及高位制动灯需保持同步点亮,三侧最大延时不超过40ms",
+    "2、制动灯服务请求CAN信号为周期发送,非仅发送3帧",
+    "3、BrkLghtSrvcReq！=0x0->=0x0,则关闭制动灯"
+  ],
+  "term_count": 21
+}

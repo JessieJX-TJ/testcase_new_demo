@@ -1,0 +1,428 @@
+```json
+[
+  {
+    "head": "外灯控制参数",
+    "relation": "依赖于",
+    "tail": "灯光模式选择",
+    "sources": ["outer_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门控制参数",
+    "relation": "依赖于",
+    "tail": "尾门开关状态",
+    "sources": ["outer_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯光亮度输出",
+    "relation": "输出为",
+    "tail": "外灯控制参数",
+    "sources": ["outer_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "尾门动作指令",
+    "relation": "输出为",
+    "tail": "电动尾门控制参数",
+    "sources": ["outer_lamp_ssts_0276"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左制动灯开路故障存在",
+    "relation": "触发条件",
+    "tail": "系统检测到左制动灯开路",
+    "sources": ["outer_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSts",
+    "relation": "控制对象",
+    "tail": "制动灯驱动模块持续发送制动灯状态为关闭",
+    "sources": ["outer_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯驱动模块动作",
+    "relation": "包含子功能",
+    "tail": "制动灯控制模块至少发送三帧制动灯控制信息",
+    "sources": ["outer_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtFltSts_HW",
+    "relation": "输出为",
+    "tail": "制动灯驱动模块反馈硬件故障状态",
+    "sources": ["outer_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1041 13",
+    "relation": "诊断关联",
+    "tail": "左制动灯开路故障",
+    "sources": ["outer_lamp_ssts_0277"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关信号SOA使能功能",
+    "relation": "触发条件",
+    "tail": "MainBeamLightSwSOAEnPrm == 1",
+    "sources": ["outer_lamp_ssts_0278", "outer_lamp_ssts_0279"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关信号SOA使能功能",
+    "relation": "抑制条件",
+    "tail": "MainBeamLightSwSOAEnPrm == 0",
+    "sources": ["outer_lamp_ssts_0278", "outer_lamp_ssts_0279"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwSOAEnPrm",
+    "relation": "输入为",
+    "tail": "0 或 1",
+    "sources": ["outer_lamp_ssts_0278"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwSOAEnPrm",
+    "relation": "默认值",
+    "tail": "0",
+    "sources": ["outer_lamp_ssts_0278"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwitchStatus.MainBeamLightSwitchSta",
+    "relation": "输出为",
+    "tail": "0x0 (Off)",
+    "sources": ["outer_lamp_ssts_0279"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLightSwitchStatus.MainBeamLightSwitchSta",
+    "relation": "输出帧数要求",
+    "tail": "至少发送三帧",
+    "sources": ["outer_lamp_ssts_0279"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关进入保持状态",
+    "relation": "触发条件",
+    "tail": "检测到定义阻值",
+    "sources": ["outer_lamp_ssts_0280"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动踏板开关粘连故障",
+    "relation": "前提条件",
+    "tail": "制动踏板开关粘连，高有效 > 600 s",
+    "sources": ["outer_lamp_ssts_0281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开关信号发送动作",
+    "relation": "前提条件",
+    "tail": "制动踏板开关粘连故障",
+    "sources": ["outer_lamp_ssts_0281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1066 73",
+    "relation": "置位前提",
+    "tail": "制动踏板开关粘连故障",
+    "sources": ["outer_lamp_ssts_0281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwSts",
+    "relation": "输入为",
+    "tail": "0x1 (On)",
+    "sources": ["outer_lamp_ssts_0281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSwStsV",
+    "relation": "输入为",
+    "tail": "0x1 (Invalid)",
+    "sources": ["outer_lamp_ssts_0281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动踏板开关粘连故障诊断过程结束",
+    "relation": "前提条件",
+    "tail": "制动踏板开关信号悬空",
+    "sources": ["outer_lamp_ssts_0281"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后位置灯短路到地故障",
+    "relation": "触发条件",
+    "tail": "左后位置灯处于输出状态且检测到短路到地",
+    "sources": ["outer_lamp_ssts_0282"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtDrvMdl",
+    "relation": "依赖于",
+    "tail": "左后位置灯处于输出状态",
+    "sources": ["outer_lamp_ssts_0282"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus",
+    "relation": "输出为",
+    "tail": "RLSideLghtDrvMdl",
+    "sources": ["outer_lamp_ssts_0282"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1061 11",
+    "relation": "诊断关联",
+    "tail": "左后位置灯短路到地故障",
+    "sources": ["outer_lamp_ssts_0282"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯状态信号发送",
+    "relation": "前提条件",
+    "tail": "exlDipBeamHwDrvEnPrm == 1 且右近光灯处于输出状态",
+    "sources": ["outer_lamp_ssts_0283"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯状态信号发送",
+    "relation": "触发条件",
+    "tail": "检测到右近光灯开路",
+    "sources": ["outer_lamp_ssts_0283"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightStatus",
+    "relation": "输出为",
+    "tail": "DipdBeamLghtCtrlMdl",
+    "sources": ["outer_lamp_ssts_0283"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightStatus",
+    "relation": "输出值",
+    "tail": "0 (Off), InstanceID = 2",
+    "sources": ["outer_lamp_ssts_0283"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLightStatus",
+    "relation": "依赖于",
+    "tail": "检测到右近光灯开路",
+    "sources": ["outer_lamp_ssts_0283"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogPositionLightStatus",
+    "relation": "输出为",
+    "tail": "RearFogLightDrvMdl",
+    "sources": ["outer_lamp_ssts_0284"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLightCtrlMdl",
+    "relation": "输入为",
+    "tail": "ControlRearFogPositionLight",
+    "sources": ["outer_lamp_ssts_0284"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogPositionLightSta",
+    "relation": "状态保持条件",
+    "tail": "至少发送三帧 RearFogPositionLightStatus",
+    "sources": ["outer_lamp_ssts_0284"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前位置灯电路开路故障",
+    "relation": "触发条件",
+    "tail": "右前位置灯处于输出状态",
+    "sources": ["outer_lamp_ssts_0286"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILamp_RH_HSD",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm == 1",
+    "sources": ["outer_lamp_ssts_0287"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILamp_RH_HSD",
+    "relation": "触发条件",
+    "tail": "DirectionLightCtrReq == 1 (On), InstanceID = 4",
+    "sources": ["outer_lamp_ssts_0287"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSta",
+    "relation": "输出为",
+    "tail": "DILightCtrlMdl",
+    "sources": ["outer_lamp_ssts_0287"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSta",
+    "relation": "输出值",
+    "tail": "1 (On), InstanceID = 4",
+    "sources": ["outer_lamp_ssts_0287"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "方向灯控制状态退出",
+    "relation": "触发条件",
+    "tail": "DirectionLightCtrReq == 0 (Off), InstanceID = 4",
+    "sources": ["outer_lamp_ssts_0287"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSta",
+    "relation": "状态保持条件",
+    "tail": "至少发送三帧",
+    "sources": ["outer_lamp_ssts_0287"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯反馈信号SOA使能功能",
+    "relation": "触发条件",
+    "tail": "DILightFbkSOAEnPrm == 1",
+    "sources": ["outer_lamp_ssts_0288"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯反馈信号SOA使能功能",
+    "relation": "抑制条件",
+    "tail": "DILightFbkSOAEnPrm == 0",
+    "sources": ["outer_lamp_ssts_0288"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DILightFbkSOAEnPrm",
+    "relation": "输入为",
+    "tail": "0 或 1",
+    "sources": ["outer_lamp_ssts_0288"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制",
+    "relation": "依赖于",
+    "tail": "标定项",
+    "sources": ["outer_lamp_ssts_0289"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制",
+    "relation": "依赖于",
+    "tail": "标定项",
+    "sources": ["outer_lamp_ssts_0289"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门",
+    "relation": "依赖于",
+    "tail": "标定项",
+    "sources": ["outer_lamp_ssts_0289"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯短路到电源故障处理",
+    "relation": "触发条件",
+    "tail": "检测到倒车灯短路到电源",
+    "sources": ["outer_lamp_ssts_0291"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯短路到电源故障处理",
+    "relation": "抑制条件",
+    "tail": "RevsLightFbkSOAEnPrm == 0 或倒车灯未处于输出状态",
+    "sources": ["outer_lamp_ssts_0291"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RevsLghtDrvMdl",
+    "relation": "输出为",
+    "tail": "倒车灯短路故障处理功能",
+    "sources": ["outer_lamp_ssts_0291"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightState.ReverseLightSta",
+    "relation": "输出为",
+    "tail": "2 (Error)",
+    "sources": ["outer_lamp_ssts_0291"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1045 12",
+    "relation": "故障响应",
+    "tail": "倒车灯短路到电源故障",
+    "sources": ["outer_lamp_ssts_0291"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1045 12",
+    "relation": "诊断关联",
+    "tail": "倒车灯短路到电源故障",
+    "sources": ["outer_lamp_ssts_0291"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

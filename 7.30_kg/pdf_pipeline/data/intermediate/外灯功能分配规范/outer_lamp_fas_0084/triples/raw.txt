@@ -1,0 +1,107 @@
+```json
+[
+  {
+    "head": "车顶射灯点亮",
+    "relation": "触发条件",
+    "tail": "APP_ICB发送控制请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "APP_ICB",
+      "RoofSpotLight.RoofSpotLightSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯状态反馈",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "RoofSpotLight.RoofSpotLightStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯故障状态反馈",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "RoofSpotLightErrorStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯状态反馈",
+    "relation": "输出为",
+    "tail": "ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ExteriorLightSwitchProcess.RoofSpotLightSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯故障状态反馈",
+    "relation": "输出为",
+    "tail": "ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "ExteriorLightSwitchProcess.RoofSpotLightErrSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务状态透传",
+    "relation": "输出为",
+    "tail": "ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightControlSystem",
+      "RoofSpotLightSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯请求重发",
+    "relation": "前提条件",
+    "tail": "未收到成功反馈",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB",
+      "ExteriorLightControlSystem",
+      "50ms",
+      "3次"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯请求停止发送",
+    "relation": "超时约束",
+    "tail": "尝试重发3次后仍未反馈成功",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB",
+      "50ms",
+      "3次"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "触发条件",
+    "tail": "未收到状态反馈",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "Onchange",
+      "500ms",
+      "Getter()"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

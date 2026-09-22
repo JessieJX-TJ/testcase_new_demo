@@ -1,0 +1,50 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Ambient Lamp Control)",
+  "row_semantics": "Each row represents a specific control command or status signal for the ambient lighting system, detailing its function, input source, and associated hardware components.",
+  "column_semantics": {
+    "Input": "The type of communication interface used for the signal (e.g., LIN bus).",
+    "LIN": "Indicates the signal is transmitted via LIN bus.",
+    "LHZCU": "Controller Module Name (Local Zone Control Unit).",
+    "CnsoAmbtLampX_LH/CnsoAmbtLampX_RH": "Specific ambient lamp control signals (left-hand or right-hand side).",
+    "LHZCU_LIN5": "Specific LIN channel within the LHZCU module.",
+    "内灯SSTS": "System Subsystem Name (Interior Lighting Sub System Technical Specification)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "AmbtLghtLHRolliingCtr_1",
+      "type": "Signal",
+      "description": "Ambient light rolling control signal, used for continuous synchronization and heartbeat monitoring."
+    },
+    {
+      "name": "CnsoLHALampOnOff_1",
+      "type": "Signal",
+      "description": "Ambient lamp on/off request signal, controlling the power state of the ambient lights."
+    },
+    {
+      "name": "CnsoLHALampColorCmd_1",
+      "type": "Signal",
+      "description": "Ambient lamp color command signal, specifying the desired color of the ambient lights."
+    },
+    {
+      "name": "CnsoLHALampBrtnsCmd_1",
+      "type": "Signal",
+      "description": "Ambient lamp brightness command signal, controlling the intensity level of the ambient lights."
+    },
+    {
+      "name": "CnsoLHALampBrthngCmd_1",
+      "type": "Signal",
+      "description": "Ambient lamp breathing command signal, controlling the dynamic breathing effect of the ambient lights."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the technical specifications for controlling the interior ambient lighting system, including commands for turning lights on/off, setting colors, adjusting brightness, and configuring breathing effects. It is used to verify that the LIN-based communication between the LHZCU and ambient lamps functions correctly according to the defined protocols.",
+  "uncertain_points": []
+}
+```

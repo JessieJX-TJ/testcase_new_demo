@@ -1,0 +1,105 @@
+[
+  {
+    "head": "拖挂车后雾灯开启",
+    "relation": "触发条件",
+    "tail": "LHZCU发送的外灯控制信号为后雾灯开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ExteriorLightSwitchProcess.RearFogLghtFucProStatus",
+      "RearFogLghtFucProsSta=0x1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1074",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "拖挂车后雾灯关闭",
+    "relation": "触发条件",
+    "tail": "LHZCU发送的外灯控制信号为后雾灯关闭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ExteriorLightSwitchProcess.RearFogLghtFucProStatus",
+      "RearFogLghtFucProsSta=0x0"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1074",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "外灯组合服务ICB调用基础服务",
+    "relation": "前提条件",
+    "tail": "前置条件满足",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "InsdFnCfgVehDragMd=0x1",
+      "VehDragMdSts=0x1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1074",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "前车后雾灯功能禁用",
+    "relation": "抑制条件",
+    "tail": "前置条件满足",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "RZCU",
+      "InsdFnCfgVehDragMd=0x1",
+      "VehDragMdSts=0x1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1074",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RearFogLightCtrReq输出为ON",
+    "relation": "输出为",
+    "tail": "外灯控制信号为后雾灯开启",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLight.RearFogLightControl.RearFogLightCtrReq",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1074",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RearFogLightCtrReq输出为OFF",
+    "relation": "输出为",
+    "tail": "外灯控制信号为后雾灯关闭",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLight.RearFogLightControl.RearFogLightCtrReq",
+      "LHZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1074",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "RZCU不响应前车后雾灯开启/关闭请求",
+    "relation": "抑制条件",
+    "tail": "前置条件满足",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "RZCU",
+      "InsdFnCfgVehDragMd=0x1",
+      "VehDragMdSts=0x1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1074",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

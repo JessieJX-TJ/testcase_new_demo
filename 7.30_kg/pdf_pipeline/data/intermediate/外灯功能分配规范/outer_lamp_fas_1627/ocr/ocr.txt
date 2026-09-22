@@ -1,0 +1,32 @@
+场景描述
+用户通过操作远光灯拨杆开关,触发远光灯的开启
+前置条件
+1&2&3&4&5
+UsgMd!=0x0=UsgMd_0_Sleep;&
+UsgMd!=0x1=UsgMd_1_Standby;&
+UsgMd!=0x6=UsgMd_6_XOTA
+UsgMdV=Valid
+VehMd!=0x3=VehMd3 TRANSPORT;& VehMd!=0x5= VehMd5 EXHIBITION
+VehMdV=Valid
+近光灯状态:
+1)近光灯反馈状态为开启:
+过 Instance ID 3/4 获取近光灯状态)
+Instance ID 1/2 获取近光灯状态)
+2)或LHZCU已判断开启近光灯:
+0x2= Only DippedBeamLight ON
+备注:
+a.需求中同时存在 SOA和CAN的,按照配置字开发
+b.需求中只存在一种通讯类型的,按照该通讯类型开发
+c.PPV阶段及以后按照 SOA通讯方式开发:
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+触发动作
+收到[远光灯开关预处理模块LHZCU]输入
+MainBeamLghtOnReq=0x1=MainBeamLghtOnReq_1_On
+执行动作
+[远光灯开关控制模块LHZCU]内部软件保持有效请求
+远光灯开关控制模块LHZCU]信号跳变为:
+LMainBeamLghtCtrl=0x1=LMainBeamLghtCtrl_1_On
+RMainBeamLghtCtrl=0x1=RMainBeamLghtCtrl_1_On
+[远光灯开关控制模块LHZCU]接口响应:
+Notifier:

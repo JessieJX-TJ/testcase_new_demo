@@ -1,0 +1,49 @@
+{
+  "table_type": "state_table",
+  "topic": "整车模式与用户模式的兼容性及功能激活状态",
+  "row_semantics": "表格的行代表不同的系统模式或状态，包括用户模式（如休眠、待机、舒适等）和整车模式（如工程、工厂、运输等）。",
+  "column_semantics": "表格的列代表具体的模式或状态名称，每个单元格中的 'X' 或 '√' 表示该模式组合下对应的功能是否被激活或允许。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "用户模式",
+      "type": "mode",
+      "values": [
+        "休眠",
+        "待机",
+        "舒适",
+        "正常驾驶",
+        "智能泊车",
+        "智能驾驶",
+        "XOTA"
+      ]
+    },
+    {
+      "name": "整车模式",
+      "type": "mode",
+      "values": [
+        "工程",
+        "工厂",
+        "运输",
+        "转毂",
+        "展车",
+        "碰撞",
+        "正常",
+        "维修"
+      ]
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "功能激活状态",
+      "description": "表示在特定模式组合下，相关功能是否被允许或激活。'√' 表示激活，'X' 表示不激活。",
+      "type": "output"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证在不同用户模式和整车模式组合下，车辆各功能模块（如外灯、车身控制、电动尾门等）的激活状态是否符合设计规范。",
+  "uncertain_points": []
+}

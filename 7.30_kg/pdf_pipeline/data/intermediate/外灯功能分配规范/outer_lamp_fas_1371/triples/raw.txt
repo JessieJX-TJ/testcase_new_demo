@@ -1,0 +1,75 @@
+```json
+[
+  {
+    "head": "远光灯开关控制模块LHZCU内部软件跳变为无效退出",
+    "relation": "前提条件",
+    "tail": "远光灯处于激活状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "远光灯处于激活状态",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯开关控制模块LHZCU内部软件跳变为无效退出",
+    "relation": "触发条件",
+    "tail": "用户通过操作远光灯开关由ON档位切换至Flash开关档位",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "用户通过操作远光灯开关",
+      "ON档位",
+      "Flash开关档位"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯开关控制模块LHZCU信号跳变为LMainBeamLghtCtrl_0_off",
+    "relation": "触发条件",
+    "tail": "远光灯开关预处理模块LHZCU接收到MainBeamLghtOnReq=0x2=MainBeamLghtSwReq_2_Flash",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "MainBeamLghtOnReq",
+      "LMainBeamLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务ICB调用基础服务并发送控制请求",
+    "relation": "触发条件",
+    "tail": "远光灯开关控制模块LHZCU信号跳变为RMainBeamLghtCtrl_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "RMainBeamLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯开关控制模块LHZCU内部软件跳变为无效退出",
+    "relation": "超时约束",
+    "tail": "开关停留时间>50ms时，直接响应off请求",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "开关停留时间",
+      "50ms",
+      "off请求"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯开关控制模块LHZCU内部软件跳变为无效退出",
+    "relation": "超时约束",
+    "tail": "开关停留时间<50ms时，响应Flash档位退出",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "开关停留时间",
+      "50ms",
+      "Flash档位"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

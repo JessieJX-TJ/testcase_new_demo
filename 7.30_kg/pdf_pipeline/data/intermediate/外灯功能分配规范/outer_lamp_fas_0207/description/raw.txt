@@ -1,0 +1,105 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 方向灯控制",
+  "row_semantics": "表格按方向灯（左前、右前）分别定义了控制接口的参数配置，包括调用周期、接口名称、参数类型及实例ID等。",
+  "column_semantics": {
+    "第一列": "功能模块名称",
+    "第二列": "消费方 (SOA)",
+    "第三列": "控制器/模块名 (LHZCU, RHZCU, RZCU)",
+    "第四列": "控制器/模块名 (ICB)",
+    "第五列": "未指定",
+    "第六列": "硬线控制"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight.ControlDirectionLight",
+      "type": "功能名",
+      "description": "方向灯控制功能，分为左前和右前两个实例。"
+    },
+    {
+      "name": "ControlDirectionLight",
+      "type": "接口名称",
+      "description": "用于控制方向灯亮灭的服务接口。"
+    },
+    {
+      "name": "DirectionLightReq",
+      "type": "参数名称",
+      "description": "控制方向灯请求参数，包含ON/OFF状态。"
+    },
+    {
+      "name": "InstanceID",
+      "type": "实例ID",
+      "description": "区分不同方向灯实例的标识符，如1表示左前，2表示右前。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "左侧前方转向灯控制单元。"
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块名",
+      "description": "右侧前方转向灯控制单元。"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器/模块名",
+      "description": "右侧后方转向灯控制单元。"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "智能控制盒，可能参与转向灯控制逻辑。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "周期调用ControlDirectionLight接口",
+      "description": "系统定期调用该接口以更新方向灯状态。"
+    },
+    {
+      "condition": "InstanceID=1",
+      "description": "当实例ID为1时，控制左前转向灯。"
+    },
+    {
+      "condition": "InstanceID=2",
+      "description": "当实例ID为2时，控制右前转向灯。"
+    },
+    {
+      "condition": "DirectionLightReq=0x0",
+      "description": "请求参数为0x0时，转向灯熄灭。"
+    },
+    {
+      "condition": "DirectionLightReq=0x1",
+      "description": "请求参数为0x1时，转向灯点亮。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "DirectionLight",
+      "description": "控制左前或右前转向灯的亮灭状态。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "Error",
+      "description": "当操作失败时返回错误代码0x1。"
+    },
+    {
+      "fault": "No Error",
+      "description": "操作成功时返回无错误代码0x0。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "周期调用",
+      "description": "接口需按一定周期被调用以维持方向灯的正常工作状态。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了车辆外灯中方向灯的控制参数和接口规范，可用于验证方向灯控制逻辑是否正确实现，包括左前和右前转向灯的独立控制、亮灭状态响应以及错误处理机制。",
+  "uncertain_points": []
+}
+```

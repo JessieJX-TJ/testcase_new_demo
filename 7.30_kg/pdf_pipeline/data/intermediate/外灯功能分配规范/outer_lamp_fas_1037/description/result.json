@@ -1,0 +1,60 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior lamp function) 的模式分配规范",
+  "row_semantics": "表格的行代表不同的功能模式或状态变量，包括车辆使用模式 (VehMd)、车辆使用模式验证 (VehMdV)、用户使用模式 (UsG Md) 和用户使用模式验证 (UsG MdV)",
+  "column_semantics": "表格的列主要分为两部分：左侧为模式变量名称，右侧为该变量的具体模式定义列表",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "description": "Vehicle Mode, 车辆运行模式, 定义了车辆在不同场景下的外部灯光行为"
+    },
+    {
+      "name": "VehMdV",
+      "description": "Vehicle Mode Validation, 车辆模式验证, 表示VehMd的有效性状态"
+    },
+    {
+      "name": "UsG Md",
+      "description": "User Usage Mode, 用户使用模式, 定义了根据用户需求设定的外部灯光行为"
+    },
+    {
+      "name": "UsG MdV",
+      "description": "User Usage Mode Validation, 用户模式验证, 表示UsG Md的有效性状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMd",
+      "values": [
+        "NORMAL",
+        "CRASH",
+        "FACTORY",
+        "TRANSPORT",
+        "DYN0",
+        "EXHIBITION",
+        "Engineering",
+        "Service"
+      ],
+      "description": "车辆运行模式，如正常驾驶、碰撞、工厂测试等"
+    },
+    {
+      "name": "UsG Md",
+      "values": [
+        "Sleep",
+        "Standby",
+        "Comfortable",
+        "NormalDriving",
+        "AIParking",
+        "AIPilot",
+        "XOTA"
+      ],
+      "description": "用户使用模式，如睡眠、待机、舒适模式、自动驾驶泊车等"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外部灯光功能在不同车辆模式和用户模式下的行为规范，可用于验证车辆在各种运行场景下（如正常驾驶、碰撞、工厂运输等）以及不同用户设置下（如自动驾驶泊车、舒适模式等）外部灯光是否按照预期正确工作。",
+  "uncertain_points": []
+}

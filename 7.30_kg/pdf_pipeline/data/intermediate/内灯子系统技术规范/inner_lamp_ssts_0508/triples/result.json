@@ -1,0 +1,112 @@
+[
+  {
+    "head": "Front Door FR1 Lamp Changes Color",
+    "relation": "触发条件",
+    "tail": "接收到氛围灯本地控制模块的颜色变化请求信号 DoorFR1LampColorCmd_l 从 0x00 (No Request) 变为非 0x00",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR1LampColorCmd_l",
+      "No Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0508",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "Front Door FR1 Lamp Maintains Current Color",
+    "relation": "抑制条件",
+    "tail": "接收到氛围灯本地控制模块的颜色变化请求信号 DoorFR1LampColorCmd_l 为 0x00 (No Request) 或者未定义颜色号",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "DoorFR1LampColorCmd_l",
+      "No Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0508",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "Front Door FR1 Lamp Turns Off",
+    "relation": "触发条件",
+    "tail": "接收到氛围灯本地控制模块的请求信号 DoorFR1LampOnOff_l 为 0x0 (OFF)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DoorFR1LampOnOff_l",
+      "OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0508",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "Front Door FR1 Lamp Fades Out",
+    "relation": "依赖于",
+    "tail": "DoorFR1LampFadeSpdCmd_l",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DoorFR1LampFadeSpdCmd_l"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0508",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "Front Door FR1 Lamp Is Turned Off",
+    "relation": "故障响应",
+    "tail": "氛围灯模块出现过压、欠压故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "过压",
+      "欠压"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0508",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "Front Door FR1 Lamp Is Turned Off",
+    "relation": "故障响应",
+    "tail": "超过6秒未接收到ZCU的LIN信号",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "ZCU_LIN_Signal",
+      "6s"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0508",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "Front Door FR1 Lamp Maintains Previous State",
+    "relation": "故障响应",
+    "tail": "当氛围灯颜色值 DoorFR1LampColorCmd_l 异常",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DoorFR1LampColorCmd_l"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0508",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "Front Door FR1 Lamp Is Turned Off",
+    "relation": "超时约束",
+    "tail": "超过6秒未接收到ZCU的LIN信号",
+    "triple_type": "超时约束",
+    "evidence_terms": [
+      "ZCU_LIN_Signal",
+      "6s"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0508",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

@@ -1,0 +1,121 @@
+```json
+[
+  {
+    "head": "左侧转向灯退出",
+    "relation": "前提条件",
+    "tail": "车辆处于VS模式",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "切换车辆VS模式"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧转向灯退出",
+    "relation": "前提条件",
+    "tail": "左侧转向灯处于激活状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "左侧转向灯处于激活状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧转向灯退出",
+    "relation": "前提条件",
+    "tail": "整车模式为工厂模式",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "整车模式为工厂模式"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧转向灯退出",
+    "relation": "前提条件",
+    "tail": "左转向灯内部状态为激活",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "左转向灯（或双跳灯）内部状态为处于激活"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧转向灯退出",
+    "relation": "前提条件",
+    "tail": "转向灯在工厂模式下开启2min",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "转向灯在工厂模式下开启2min"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯开关控制模块LHZCU信号跳变为熄灭状态",
+    "relation": "触发条件",
+    "tail": "ICB接收控制信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "转向灯开关控制模块LHZCU",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯熄灭",
+    "relation": "依赖于",
+    "tail": "ICB根据接收到的LHZCU信号进行转换处理",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "转向灯开关控制模块LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯熄灭",
+    "relation": "超时约束",
+    "tail": "ICB接收控制信号后延时60ms分发至LHZCU/RZCU",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "ICB",
+      "转向灯开关控制模块LHZCU",
+      "60ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯状态反馈至LHZCU",
+    "relation": "依赖于",
+    "tail": "驱动处理模块RZCU",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "驱动处理模块RZCU",
+      "转向灯开关控制模块LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯退出同步性要求",
+    "relation": "超时约束",
+    "tail": "最大延时50ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "转向灯退出同步性要求",
+      "50ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "单侧转向灯熄灭同步性允许的最大延时周期",
+    "relation": "超时约束",
+    "tail": "40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "单侧转向灯熄灭",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,86 @@
+```json
+[
+  {
+    "head": "左侧转向灯开启",
+    "relation": "触发条件",
+    "tail": "手动触发转向灯拨杆, 控制左侧转向灯开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "手动触发转向灯拨杆",
+      "控制左侧转向灯开启"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯开关状态反馈至 ICB",
+    "relation": "输出为",
+    "tail": "[转向灯开关控制模块LHZCU]将转向灯开关状态反馈至ICB",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "转向灯开关控制模块LHZCU",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯闪烁频率同步",
+    "relation": "状态保持条件",
+    "tail": "其图标闪烁频率和声音提醒与实际转向灯的闪烁频率需保持一致",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "图标闪烁频率",
+      "声音提醒",
+      "实际转向灯闪烁频率"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯同步性最大延时周期",
+    "relation": "超时约束",
+    "tail": "单侧转向灯的同步性允许的最大延时周期为:40ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "转向灯同步性",
+      "最大延时周期",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 转向灯请求重发机制",
+    "relation": "超时约束",
+    "tail": "状态未变, 对应的尝试按照<=50ms周期重发3次；尝试重发3次后仍未反馈请求成功, 则停止发送",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB",
+      "转向灯请求",
+      "50ms",
+      "3次"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "超时约束",
+    "tail": "针对发送类型为Onchange的外灯状态服务, 消费端在服务发现订阅或者外灯控制请求后的500ms(如未收到状态反馈, 应主动通过状态服务Getter()方式获取外灯状态)",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "外灯状态主动获取",
+      "500ms",
+      "Getter()"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯开关信号跳变为关闭状态",
+    "relation": "触发条件",
+    "tail": "[转向灯开关预处理模块LHZCU]开关信号跳变为: DircnLghtSwReq=0x0=DircnLghtSwReq_0_Off",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "转向灯开关预处理模块LHZCU",
+      "DircnLghtSwReq_0_Off"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,62 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "车辆外灯（位置灯）状态与故障状态定义",
+  "row_semantics": "表格的行代表不同的状态或故障类型，分别是位置灯的状态（SideLghtSts）和位置灯的故障状态（SideLghtFltsts）。",
+  "column_semantics": "表格的列定义了这些状态或故障在不同通信协议/控制器中的表示方式，包括输出（Output）、CANFD、LHZCU、ICB等。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SideLghtSts",
+      "description": "位置灯状态，表示外灯（如示廓灯）的开关状态。"
+    },
+    {
+      "name": "SideLghtFltsts",
+      "description": "位置灯故障状态，表示外灯是否存在故障。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "SideLghtSts_0_Off",
+      "description": "位置灯处于关闭状态。",
+      "value": "0x0"
+    },
+    {
+      "name": "SideLghtSts_1_On",
+      "description": "位置灯处于开启状态。",
+      "value": "0x1"
+    },
+    {
+      "name": "SideLghtFltsts_0_False",
+      "description": "位置灯无故障。",
+      "value": "0x0"
+    },
+    {
+      "name": "SideLghtFltsts_1_True",
+      "description": "位置灯存在故障。",
+      "value": "0x1"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SideLghtFltsts",
+      "description": "指示位置灯是否发生故障。",
+      "states": [
+        {
+          "state": "0x0",
+          "meaning": "无故障"
+        },
+        {
+          "state": "0x1",
+          "meaning": "有故障"
+        }
+      ]
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯（位置灯）的状态及其故障状态在不同通信协议和控制器中的编码规则，可用于验证外灯状态信号在CAN/LIN/SOA服务中的正确传输以及故障检测功能的有效性。",
+  "uncertain_points": []
+}
+```

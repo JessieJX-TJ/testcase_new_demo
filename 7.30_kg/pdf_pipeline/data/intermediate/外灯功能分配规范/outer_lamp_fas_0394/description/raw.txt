@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "前雾灯开启功能的触发条件",
+  "row_semantics": "逐行列出触发前雾灯开启所需的所有前置条件",
+  "column_semantics": "第一列（灰色背景）为条件分类标签，第二列（橙色背景）为具体的条件表达式",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "UsrMd",
+      "type": "controller_module",
+      "description": "用户模式模块，表示车辆的当前操作模式"
+    },
+    {
+      "name": "VehMd",
+      "type": "controller_module",
+      "description": "车辆模式模块，表示车辆的整体运行状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "1&2&3&4&5&6",
+      "description": "所有列出的六个子条件必须同时满足"
+    },
+    {
+      "condition": "UsrMd != 0x0 = UsrMd_0_Sleep && UsrMd != 0x1 = UsrMd_1_Standby && UsrMd != 0x6 = UsrMd_6_XOTA",
+      "description": "用户模式不能处于睡眠、待机或XOTA（远程升级）状态"
+    },
+    {
+      "condition": "UsrMdV = Valid",
+      "description": "用户模式值有效"
+    },
+    {
+      "condition": "VehMd != 0x3 = VehMd_3_TRANSPORT",
+      "description": "车辆模式不能处于运输模式"
+    },
+    {
+      "condition": "VehMdV = Valid",
+      "description": "车辆模式值有效"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FrontFogLamp",
+      "type": "output_signal",
+      "description": "前雾灯输出信号，当所有前置条件满足时被激活"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在何种系统状态下，通过大屏软开关可以成功触发前雾灯开启的功能。可用于验证前雾灯控制逻辑在不同用户和车辆模式下的正确性。",
+  "uncertain_points": []
+}
+```

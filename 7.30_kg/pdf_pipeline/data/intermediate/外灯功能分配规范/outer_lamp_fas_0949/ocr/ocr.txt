@@ -1,0 +1,33 @@
+[后雾灯控制模块LHZCU]接口响应:
+Notifier:
+{ExteriorLightSwitchProcess.CombLghtFucProStatus.CombLghtFucProSta}=0x2= Only
+DippedBeamLight
+RearFogLght ON
+[外灯控制组合服务ICB]调用基础服务
+[后雾灯控制模块LHZCU]同时发出控制信号给 ICB:
+RearFogLghtCtrl=0x1=RearFogLghtCtrl_1_On
+LDipdBeamLghtCtrl=0x1=LDipdBeamLghtCtrl_1_On
+RDipdBeamLghtCtrl=0x1=RDipdBeamLghtCtrl_1_On
+ICB分发控制信号至LHZCU/RHZCU/RZCU:
+RearFogLghtCtrl_HW=0x1=RearFogLghtCtrl_HW_1_On
+LDipdBeamLghtCtrl_HW=0x1=LDipdBeamLghtCtrl_HW_1_On
+RDipdBeamLghtCtrl_HW=0x1=RDipdBeamLghtCtrl_HW_1_On
+ICB将服务接口或控制信号转换成灯控CAN信号,并控制近光灯点亮
+[外灯控制组合服务ICB]调用接口:
+{ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta}=0x1=ON,获取后
+雾灯开关状态
+当{ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta}接口参
+数为 Ox1=Only RearFogLght ON;时,{ExteriorLightSwitchProcess.RearFogLghtSwStatus.
+RearFogLghtSwSta}接口参数同时赋值 0x1=ON
+[HMI子系统ICB]调用接口:
+获取后雾灯和近光灯指示灯显示
+[外灯控制组合服务ICB] 调用接口
+{RearFogLight.RearFogLightControl.RearFogLightCtrReq}=0x1=ON
+(InstanceID=1) (DippedBeamLight. ControlDippedBeamLight. DippedBeamLightReq)=
+0x1=ON
+(InstanceID=2) {DippedBeamLight. ControlDippedBeamLight. DippedBeamLightReq}=
+(InstanceID=3) {DippedBeamLight. ControlDippedBeamLight. DippedBeamLightReq)=
+(InstanceID=4) {DippedBeamLight. ControlDippedBeamLight. DippedBeamLightReq}=
+{ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts}=0x1=On
+[驱动处理模块LHZCU/RHZCU/RZCU]内部跳变为硬线输出,驱动后雾灯/近
+光灯点亮

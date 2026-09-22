@@ -1,0 +1,60 @@
+{
+  "table_type": "logic_table",
+  "topic": "左前转向灯控制逻辑",
+  "row_semantics": "表格按功能执行的阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "表格分为两列，左侧为条件/动作描述，右侧为具体的技术参数或状态值。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FLDILghtDrvMdl",
+      "type": "controller_module",
+      "description": "外灯驱动模块，负责管理车辆外部灯光的输出状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlDircnLghtHwDrvEnPrm",
+      "type": "input_signal",
+      "description": "硬件驱动使能参数，当其值为1时，表示允许对方向灯进行硬件驱动操作。",
+      "value": "1"
+    },
+    {
+      "name": "左前转向灯输出状态",
+      "type": "system_state",
+      "description": "指示左前转向灯当前是否处于输出状态（点亮）。",
+      "value": "输出状态"
+    },
+    {
+      "name": "左前转向灯开路检测",
+      "type": "input_signal",
+      "description": "检测左前转向灯电路是否存在开路故障。",
+      "value": "检测到开路"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtSts_HW",
+      "type": "output_signal",
+      "description": "硬件层方向灯状态信号，用于控制转向灯的实际输出。",
+      "value": "0x0 (Off)"
+    },
+    {
+      "name": "FLDircnLghtFltsts_HW",
+      "type": "feedback_signal",
+      "description": "硬件层方向灯故障状态反馈信号，用于报告转向灯的工作状态。",
+      "value": "0x1 (True)"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTCB104A13",
+      "type": "fault_status",
+      "description": "置位特定的诊断故障代码，表示检测到左前转向灯开路故障。",
+      "code": "B104A13"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在满足特定前置条件和触发条件下，系统如何通过外灯驱动模块控制左前转向灯的状态，并在检测到开路故障时反馈状态并置位故障代码的逻辑流程。",
+  "uncertain_points": []
+}

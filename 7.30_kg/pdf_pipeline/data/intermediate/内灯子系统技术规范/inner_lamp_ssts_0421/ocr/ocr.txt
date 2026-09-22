@@ -1,0 +1,26 @@
+此时亮度变化由氛围灯LIN模块控制,不响应亮度信号
+FtwlFLLampBrtnsCmd_1
+不同呼吸模式切换时,立即停止当前呼吸,切换下一呼吸模式:
+氛围灯呼吸指令周期信号FtwlFLLampBrthngCmd_1分为两种点亮状
+态,0%-100%跳变调节和0%-100%渐变调节
+1、0%-100%跳变调节
+此状态对应 FtwlFLLampBrthngCmd_1 中的 0x1(Rate1 500ms0-100%跳
+变)和0x2(Rate21s0-100%跳变)
+接收到 ZCU发送的 FtwlFLLampBrthngCmd_l=0x1(Rate1 500ms 0-100%
+跳变),氛围灯按照250ms亮度100%,250ms亮度0%循环执行
+接收到 ZCU发送的 FtwlFLLampBrthngCmd_1 中的 0x2(Rate2 1s0-100%
+跳变),氛围灯按照500ms亮度100%,500ms亮度0%循环执行；如下
+图所示:
+2、0%-100%渐变调节
+此状态对应 FtwlFLLampBrthngCmd 1中的 0x3-0xC、0xE(0-100%按照
+对应周期斜率渐变调节),控制策略如下:
+接收到 ZCU 发送的呼吸模式 FtwlFLLampBrthngCmd 1=0x3-0x15 时,氛
+围灯按照一定时间A,0%-100%渐亮,在最高点维持一定时间B:在按
+照时间A,100%-0%渐灭,在最低点维持一定时间B
+时间A=接收到的呼吸模式周期RateX*(0.5-AmbtLampBrthng
+RateXholdoffPercent)
+时间B=接收到的呼吸模式周期
+RateX*AmbtLampBrthngRateXholdoffPercent
+AmbtLampBrthngRateXholdoffPercent为呼吸模式周期等待时间百分比
+定义可标定值,默认值10%
+呼吸模式曲线参考如下:

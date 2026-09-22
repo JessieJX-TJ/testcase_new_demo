@@ -1,0 +1,44 @@
+{
+  "table_type": "fault_table",
+  "topic": "诊断 DTC 需求清单/Requirement List",
+  "row_semantics": "每行代表一个具体的故障诊断需求，包含故障代码、描述、触发条件和恢复条件。",
+  "column_semantics": {
+    "序号": "故障需求的编号或顺序标识。",
+    "DTC 显示码": "诊断故障代码（Diagnostic Trouble Code），用于唯一标识特定的故障。",
+    "故障描述": "对故障现象的简要文字描述。",
+    "故障置位条件": "触发并记录该 DTC 的具体条件或事件。",
+    "故障恢复条件": "清除该 DTC 所需满足的条件或事件。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DTC 显示码",
+      "type": "controller_module",
+      "description": "由车辆电子控制单元（ECU）生成的唯一代码，用于识别特定的系统或部件故障。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "故障置位条件",
+      "description": "触发并记录 DTC 的必要条件，可能包括传感器输入、系统状态或外部事件。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "故障恢复条件",
+      "description": "清除 DTC 所需满足的条件，通常涉及故障消失或系统恢复正常运行。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC 显示码",
+      "description": "表示系统中发生的特定故障类型，是诊断和维修的基础信息。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆电子系统中各类故障的诊断需求，可用于验证 ECU 是否能够正确地检测、记录和清除故障，并确保故障信息的准确性和可追溯性。",
+  "uncertain_points": [
+    "表格中的 'NA' 值表明具体的功能名、控制器模块、输入信号、输出信号、系统状态、模式名、阈值/定时等详细信息未在当前表格中明确列出，需要参考其他相关文档或规范进一步确认。"
+  ]
+}

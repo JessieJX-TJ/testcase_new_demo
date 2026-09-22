@@ -1,0 +1,69 @@
+{
+  "table_type": "logic_table",
+  "topic": "紧急减速/ABS激活时刹车灯闪烁功能",
+  "row_semantics": "前置条件列表，定义了触发该功能的系统状态和配置要求",
+  "column_semantics": "无多列，内容为单列描述性文本",
+  "has_merged_cells": false,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "UsrMd",
+      "type": "mode",
+      "description": "用户驾驶模式，包括Normal Driving、AI Parking、AI Pilot"
+    },
+    {
+      "name": "VehMd",
+      "type": "mode",
+      "description": "车辆模式，包括Engineering、CRASH、NORMAL、Service"
+    },
+    {
+      "name": "ExtrLghtCtrlCmmntnTyp",
+      "type": "configuration",
+      "description": "外部灯光控制通信类型，可配置为SOA或CAN"
+    },
+    {
+      "name": "ExtrLghtStsCmmntnTyp",
+      "type": "configuration",
+      "description": "外部灯光状态通信类型，可配置为SOA或CAN"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "UsrMd = 0x3 (Normal Driving) || UsrMd = 0x4 (AI Parking) || UsrMd = 0x5 (AI Pilot)",
+      "description": "用户驾驶模式处于正常驾驶、自动泊车或自动驾驶模式"
+    },
+    {
+      "condition": "UsrMdV = Valid",
+      "description": "用户驾驶模式值有效"
+    },
+    {
+      "condition": "VehMd = 0x8 (Engineering) || VehMd = 0x1 (CRASH) || VehMd = 0x0 (NORMAL) || VehMd = 0x9 (Service)",
+      "description": "车辆模式处于工程模式、碰撞模式、正常模式或服务模式"
+    },
+    {
+      "condition": "VehMdV = Valid",
+      "description": "车辆模式值有效"
+    },
+    {
+      "condition": "ExtrLghtCtrlCmmntnTyp = 0x0 (SOA) || ExtrLghtCtrlCmmntnTyp = 0x1 (CAN)",
+      "description": "外部灯光控制通信类型配置为SOA或CAN"
+    },
+    {
+      "condition": "ExtrLghtStsCmmntnTyp = 0x0 (SOA) || ExtrLghtStsCmmntnTyp = 0x1 (CAN)",
+      "description": "外部灯光状态通信类型配置为SOA或CAN"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "Brake Light Flashing",
+      "description": "在紧急减速或ABS激活时，触发刹车灯闪烁以加强后方指示"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定用户驾驶模式、车辆模式及通信配置下，紧急减速或ABS激活时触发刹车灯闪烁功能的前置条件，可用于验证相关功能在不同场景下的正确行为。",
+  "uncertain_points": [
+    "未明确说明具体控制器或模块名称",
+    "未详细描述刹车灯闪烁的具体频率和持续时间"
+  ]
+}

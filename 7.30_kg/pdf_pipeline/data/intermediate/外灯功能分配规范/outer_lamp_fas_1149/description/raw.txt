@@ -1,0 +1,40 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "外灯近光灯故障状态定义",
+  "row_semantics": "表格按功能模块划分，每一行代表一个具体的近光灯故障状态变量及其定义。",
+  "column_semantics": {
+    "第一条": "条目名称",
+    "第二条": "输出信号的详细定义和具体值含义",
+    "第三条": "输出目标控制器/模块列表"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "LDipdBeamLghtFltsts", // 左侧近光灯故障状态
+    "RDipdBeamLghtFltsts", // 右侧近光灯故障状态
+    "LDipdBeamLghtFltsts_HW", // 左侧近光灯硬件故障状态
+    "RDipdBeamLghtFltsts_HW" // 右侧近光灯硬件故障状态
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    "CANF D",
+    "ICB",
+    "LHZCU",
+    "RHZCU"
+  ],
+  "core_faults": [
+    "LDipdBeamLghtFltsts_0_False",
+    "LDipdBeamLghtFltsts_1_True",
+    "RDipdBeamLghtFltsts_0_False",
+    "RDipdBeamLghtFltsts_1_True",
+    "LDipdBeamLghtFltsts_HW_0_False",
+    "LDipdBeamLghtFltsts_HW_1_True",
+    "RDipdBeamLghtFltsts_HW_0_False",
+    "RDipdBeamLghtFltsts_HW_1_True"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中左侧和右侧近光灯的软件及硬件故障状态变量（LDipdBeamLghtFltsts 和 RDipdBeamLghtFltsts_HW），并指明了这些状态在不同控制器（如 CANF D、LHZCU）中的逻辑值含义（0x0= False, 0x1= True）。可用于验证外灯控制系统在近光灯发生故障时，相关故障状态信号是否正确地被检测、编码并发送到指定的控制器。",
+  "uncertain_points": []
+}
+```

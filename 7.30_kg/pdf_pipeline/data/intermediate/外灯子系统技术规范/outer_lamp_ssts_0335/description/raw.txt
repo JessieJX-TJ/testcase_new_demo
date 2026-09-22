@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Dipped Beam Light Control Logic",
+  "row_semantics": "Control logic and status update for dipped beam light operation",
+  "column_semantics": "Control request and corresponding system status",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ControlDippedBeamLight",
+      "type": "function",
+      "description": "Function to control the dipped beam light"
+    },
+    {
+      "name": "ExteriorLightControl",
+      "type": "module",
+      "description": "Module responsible for exterior lighting control"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DippedBeamLightReq",
+      "value": "1 (On)",
+      "description": "Request to turn on the dipped beam light"
+    },
+    {
+      "name": "InstanceID",
+      "value": "2",
+      "description": "Instance identifier for the control request"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightRequestStatus",
+      "value": "0x1=On",
+      "description": "Status of the dipped beam light request"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the control logic for the dipped beam light, specifying that when a request is made to turn it on (DippedBeamLightReq==1), the system updates the status to indicate that the dipped beam light is on (DippedBeamLightRequestStatus=0x1=On).",
+  "uncertain_points": []
+}
+```

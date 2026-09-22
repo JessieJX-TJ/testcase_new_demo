@@ -1,0 +1,64 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "右后位置灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件、触发条件、执行动作到退出条件和异常处理。",
+  "column_semantics": "第一列定义了不同阶段的描述（如前置条件、触发条件等），第二列详细说明了该阶段的具体内容。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RRSideLghtDrvMdl",
+      "type": "controller_module",
+      "description": "右侧位置灯驱动模块"
+    },
+    {
+      "name": "SideLightCtrlMdl",
+      "type": "controller_module",
+      "description": "侧位灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RightRearPositionLightOutputState",
+      "description": "右后位置灯处于输出状态"
+    },
+    {
+      "name": "RightRearPositionLightShortToGround",
+      "description": "检测到右后位置灯短路到地"
+    },
+    {
+      "name": "ShortCircuitRecovery",
+      "description": "检测到短路恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RRSideLghtDrvMdl_StopOutput",
+      "description": "停止驱动右后位置灯输出（PosLamp_LH&RH_HSD）"
+    },
+    {
+      "name": "RRSideLghtDrvMdl_SendStatus",
+      "description": "持续发送 SidePositionLightStatus. SidePositionLightSta=0 (Off) (InstanceID=4)"
+    },
+    {
+      "name": "DTC_B1061_11",
+      "description": "置位 DTC B1061 11 故障码"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC_B1061_11",
+      "description": "右后位置灯短路到地故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "MinimumSendFrames",
+      "description": "至少发送三帧 SidePositionLightStatus 消息"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证车辆在右后位置灯发生短路到地故障时，系统是否能够正确检测并执行相应的故障处理逻辑，包括停止输出、发送状态信息以及置位故障码，并在故障恢复后退出故障模式。",
+  "uncertain_points": []
+}
+```

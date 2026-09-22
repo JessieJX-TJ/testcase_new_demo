@@ -1,0 +1,40 @@
+{
+  "table_type": "signal_table",
+  "topic": "侧位灯控制逻辑",
+  "row_semantics": "定义了触发侧位灯关闭的条件和相关信号",
+  "column_semantics": {
+    "Column1": "前置条件，描述触发条件的前提",
+    "Column2": "触发条件，详细说明导致特定动作发生的事件或信号"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SideLightCtrlMdl",
+      "type": "controller_module",
+      "description": "侧位灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ControlSidePositionLight",
+      "type": "input_signal",
+      "description": "来自侧位灯控制模块的控制信号，用于指示侧位灯的状态"
+    },
+    {
+      "name": "SidePositionLightReq",
+      "type": "input_signal",
+      "description": "侧位灯请求信号，值为0表示关闭"
+    },
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "实例ID，值为4，可能用于标识特定的控制实例"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了当收到 SideLightCtrlMdl 发送的 ControlSidePositionLight 信号，且 SidePositionLightReq=0 (Off) 时，触发侧位灯关闭的测试验证条件。",
+  "uncertain_points": []
+}

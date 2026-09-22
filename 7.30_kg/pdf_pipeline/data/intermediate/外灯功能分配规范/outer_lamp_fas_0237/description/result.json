@@ -1,0 +1,48 @@
+{
+  "table_type": "logic_table",
+  "topic": "Automatic Lighting Control Module (LHZCU) Response Logic for Fog Light Status",
+  "row_semantics": "Execution actions and conditions under which specific control signals are generated or updated by the LHZCU and ICB modules.",
+  "column_semantics": "The table outlines a sequence of execution actions, each detailing the conditions under which certain external light switch process states and control signals are set or modified.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "LHZCU",
+    "ICB",
+    "ExteriorLightSwitchProcess",
+    "CombLghtFucProStatus",
+    "RearFogLightFucProsSta",
+    "FrontFogLightFucProsSta",
+    "LDipdBeamLghtCtrl",
+    "RDipdBeamLghtCtrl",
+    "FLSideLghtCtrl",
+    "FRSideLghtCtrl",
+    "RLSideLghtCtrl",
+    "RRSideLghtCtrl"
+  ],
+  "core_conditions": [
+    "vehRlsType==1",
+    "AutoLightOnReq_ICB_1_True",
+    "AutoLightOnReq_0_False",
+    "RearFogLightState",
+    "FrontFogLightState",
+    "exlFrontFogLghtHwDrvEnPrm",
+    "InsdFnCfgFrtFogLight"
+  ],
+  "core_outputs": [
+    "CombLghtSwSta",
+    "CombLghtFucProCtrl",
+    "LDipdBeamLghtCtrl_0_Off",
+    "RDipdBeamLghtCtrl_0_Off",
+    "FLSideLghtCtrl_0_Off",
+    "FRSideLghtCtrl_0_Off",
+    "RLSideLghtCtrl_0_Off",
+    "RRSideLghtCtrl_0_Off"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the logic for how the LHZCU and ICB modules respond to various input conditions related to fog light status and control requests, determining the appropriate output control signals for position lights and near lights. It is used to verify that the automatic lighting control system correctly interprets fog light feedback and generates the expected CAN signals for lighting control.",
+  "uncertain_points": [
+    "The exact timing relationship between the LHZCU and ICB module signal exchanges is not specified.",
+    "The behavior of the system when multiple conflicting input conditions occur simultaneously is not detailed."
+  ]
+}

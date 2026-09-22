@@ -1,0 +1,57 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯或车身控制模块的速度参数配置",
+  "row_semantics": "不同速度等级的设定值",
+  "column_semantics": "速度参数名称及其对应的数值（单位：毫秒）",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "Spd0",
+      "type": "speed_parameter",
+      "description": "默认速度，2000ms"
+    },
+    {
+      "name": "Spd1",
+      "type": "speed_parameter",
+      "description": "第一级速度，300ms"
+    },
+    {
+      "name": "Spd2",
+      "type": "speed_parameter",
+      "description": "第二级速度，100ms，能力预留"
+    },
+    {
+      "name": "Spd3",
+      "type": "speed_parameter",
+      "description": "第三级速度，预留为0"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "parameter": "Spd0",
+      "value": "2000ms",
+      "description": "默认速度，系统启动或未指定速度时使用"
+    },
+    {
+      "parameter": "Spd1",
+      "value": "300ms",
+      "description": "第一级快速速度，可能用于紧急或高优先级场景"
+    },
+    {
+      "parameter": "Spd2",
+      "value": "100ms",
+      "description": "第二级更快速度，能力预留，未来可扩展"
+    },
+    {
+      "parameter": "Spd3",
+      "value": "0ms",
+      "description": "最低速度，预留为0，可能用于特殊模式或关闭状态"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了外灯或车身控制模块在不同速度等级下的时间参数，可用于验证模块在不同速度模式下的响应时间和行为是否符合设计规范。",
+  "uncertain_points": []
+}

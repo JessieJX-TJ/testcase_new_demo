@@ -1,0 +1,412 @@
+```json
+[
+  {
+    "head": "DoorFL1Lamp",
+    "relation": "timeout_constraint",
+    "tail": "LIN signal from ZCU not received for >6 seconds",
+    "sources": ["inner_lamp_ssts_0245"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1Lamp",
+    "relation": "fault_response",
+    "tail": "DoorFL1LampColorCmd_1 invalid",
+    "sources": ["inner_lamp_ssts_0245"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical and Electronic System",
+    "relation": "prerequisite",
+    "tail": "NA",
+    "sources": ["inner_lamp_ssts_0246"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IM Smart EV",
+    "relation": "has_subsystem",
+    "tail": "Interior Lighting Sub System",
+    "sources": ["inner_lamp_ssts_0248"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampOnOff_1",
+    "relation": "trigger_condition",
+    "tail": "input source is LIN or RHZCU AND command value is 0x0 (OFF) or 0x1 (ON)",
+    "sources": ["inner_lamp_ssts_0249"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampColorCmd_1",
+    "relation": "trigger_condition",
+    "tail": "input source is LIN or RHZCU AND command value is 0x01–0xFF (valid color code)",
+    "sources": ["inner_lamp_ssts_0249"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampBrtNsCmd_1",
+    "relation": "trigger_condition",
+    "tail": "input source is LIN or RHZCU AND command value is 0x01–0x64 (brightness percentage)",
+    "sources": ["inner_lamp_ssts_0249"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampBrthngCmd_1",
+    "relation": "trigger_condition",
+    "tail": "input source is LIN or RHZCU AND command value is 0x01–0x0B (breathing rate index)",
+    "sources": ["inner_lamp_ssts_0249"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampOnOff_1",
+    "relation": "prerequisite",
+    "tail": "non-zero color/brightness command received simultaneously",
+    "sources": ["inner_lamp_ssts_0249"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampColorCmd_1",
+    "relation": "depends_on",
+    "tail": "color coordinate mapping to defined color name",
+    "sources": ["inner_lamp_ssts_0249"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampColorCmd_1",
+    "relation": "state_maintenance_condition",
+    "tail": "command value is 0 or undefined color code",
+    "sources": ["inner_lamp_ssts_0249"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampBrtNsCmd_1",
+    "relation": "depends_on",
+    "tail": "numerical brightness percentage value",
+    "sources": ["inner_lamp_ssts_0249"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampBrtNsCmd_1",
+    "relation": "state_maintenance_condition",
+    "tail": "command value is 0",
+    "sources": ["inner_lamp_ssts_0249"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampFadeSpdCmd_1_2_Spd2",
+    "relation": "input_source",
+    "tail": "DoorRR1LampFadeSpdCmd_1_2_Spd2",
+    "sources": ["inner_lamp_ssts_0249"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR2LampFadeSpdCmd_1_3_Spd3",
+    "relation": "input_source",
+    "tail": "DoorRR1LampFadeSpdCmd_1_3_Spd3",
+    "sources": ["inner_lamp_ssts_0249"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical and Electronic System Configuration",
+    "relation": "prerequisite",
+    "tail": "all configuration parameters (Item, Range, Factor, Default) must be defined",
+    "sources": ["inner_lamp_ssts_0250"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Lamp",
+    "relation": "trigger_condition",
+    "tail": "LdSpclampCtrlCmdu0x1 (Open) received from Application Control Module",
+    "sources": ["inner_lamp_ssts_0251"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Lamp",
+    "relation": "trigger_condition",
+    "tail": "LdSpclampCtrlCmdu0x0 (Close) received from Application Control Module",
+    "sources": ["inner_lamp_ssts_0251"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Lamp",
+    "relation": "fault_response",
+    "tail": "short circuit or open circuit fault detected",
+    "sources": ["inner_lamp_ssts_0251"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Lamp Driver Module",
+    "relation": "input_source",
+    "tail": "LdSpclampCtrlCmdu0x1 (Open) received from Application Control Module",
+    "sources": ["inner_lamp_ssts_0251"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Lamp",
+    "relation": "depends_on",
+    "tail": "Trunk Lamp Driver Module output LdspcLamp_HSD",
+    "sources": ["inner_lamp_ssts_0251"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Lamp",
+    "relation": "depends_on",
+    "tail": "LdSpclampCtrlCmdu0x0 (Close) received",
+    "sources": ["inner_lamp_ssts_0251"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "input_source",
+    "tail": "SideLghtSts CAN signal",
+    "sources": ["inner_lamp_ssts_0253"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "output_target",
+    "tail": "LIN interface",
+    "sources": ["inner_lamp_ssts_0253"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlAmbtLamp_FL",
+    "relation": "trigger_condition",
+    "tail": "ambient lamp is enabled",
+    "sources": ["inner_lamp_ssts_0254"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC Code",
+    "relation": "trigger_condition",
+    "tail": "fault set condition met",
+    "sources": ["inner_lamp_ssts_0255", "inner_lamp_ssts_0263", "inner_lamp_ssts_0265", "inner_lamp_ssts_0267", "inner_lamp_ssts_0301", "inner_lamp_ssts_0363", "inner_lamp_ssts_0485", "inner_lamp_ssts_0526"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC Code",
+    "relation": "clear_condition",
+    "tail": "fault recovery condition met",
+    "sources": ["inner_lamp_ssts_0255", "inner_lamp_ssts_0263", "inner_lamp_ssts_0265"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC Code",
+    "relation": "suppression_condition",
+    "tail": "fault recovery condition met",
+    "sources": ["inner_lamp_ssts_0263", "inner_lamp_ssts_0265"],
+    "conflict": true,
+    "conflict_note": "Relation 'clear_condition' and 'suppression_condition' describe same tail under same head — semantically overlapping; 'clear_condition' is standard diagnostic terminology, while 'suppression_condition' may imply conditional inhibition rather than clearing. Retained both per conflict policy."
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "has_subsystem",
+    "tail": "Z-ONE-3.0 Platform-SSTS-IBD10",
+    "sources": ["inner_lamp_ssts_0256", "inner_lamp_ssts_0279", "inner_lamp_ssts_0520"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "controls",
+    "tail": "IM Smart EV",
+    "sources": ["inner_lamp_ssts_0256", "inner_lamp_ssts_0261"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "input_source",
+    "tail": "Z-ONE-3.0 Platform-SSTS-IBD10",
+    "sources": ["inner_lamp_ssts_0256", "inner_lamp_ssts_0261"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Welcome Laser Lamp",
+    "relation": "trigger_condition",
+    "tail": "door open signal",
+    "sources": ["inner_lamp_ssts_0257"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Switch State Acquisition",
+    "relation": "input_source",
+    "tail": "reading lamp switch input signal",
+    "sources": ["inner_lamp_ssts_0257"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Brightness Control",
+    "relation": "depends_on",
+    "tail": "reading lamp brightness input signal",
+    "sources": ["inner_lamp_ssts_0257"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Mode Selection",
+    "relation": "trigger_condition",
+    "tail": "ambient lamp mode input signal",
+    "sources": ["inner_lamp_ssts_0257"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color Selection",
+    "relation": "trigger_condition",
+    "tail": "ambient lamp color selection input signal",
+    "sources": ["inner_lamp_ssts_0257"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Selection",
+    "relation": "trigger_condition",
+    "tail": "ambient lamp brightness selection input signal",
+    "sources": ["inner_lamp_ssts_0257"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Effect Activation",
+    "relation": "trigger_condition",
+    "tail": "ambient lamp breathing effect mode selection input signal",
+    "sources": ["inner_lamp_ssts_0257"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Node Control",
+    "relation": "trigger_condition",
+    "tail": "ambient lamp sub-node control input signal",
+    "sources": ["inner_lamp_ssts_0257"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Application Control Module",
+    "relation": "has_subfunction",
+    "tail": "Left-Zone Local Ambient Lamp Control Module",
+    "sources": ["inner_lamp_ssts_0257"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Application Control Module",
+    "relation": "has_subfunction",
+    "tail": "Right-Zone Local Ambient Lamp Control Module",
+    "sources": ["inner_lamp_ssts_0257"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front OHC Direct-Drive Lamp",
+    "relation": "trigger_condition",
+    "tail": "open circuit fault reported",
+    "sources": ["inner_lamp_ssts_0258"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Row Lamp",
+    "relation": "suppression_condition",
+    "tail": "open circuit fault reported",
+    "sources": ["inner_lamp_ssts_0258"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Configuration Item",
+    "relation": "prerequisite",
+    "tail": "Factor (resolution)",
+    "sources": ["inner_lamp_ssts_0259", "inner_lamp_ssts_0527"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Configuration Item",
+    "relation": "prerequisite",
+    "tail": "Default value",
+    "sources": ["inner_lamp_ssts_0259", "inner_lamp_ssts_0264", "inner_lamp_ssts_0371", "inner_lamp_ssts_0431", "inner_lamp_ssts_0527"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThirdRowMapLampLHErr",
+    "relation": "prerequisite",
+    "tail": "status bit = 0x1 OR (condition 1 OR condition 2)",
+    "sources": ["inner_lamp_ssts_0262"],
+    "conflict": true,
+    "conflict_note": "Two entries define same head/relation with inconsistent tails: one specifies 'status bit = 0x1', the other 'following conditions satisfy 1 || 2'. These are likely complementary (bit check is part of composite condition), but lack clarity. Marked as potential ambiguity pending domain validation."
+  },
+  {
+    "head": "ThirdRowMapLampLHErr",
+    "relation": "prerequisite",
+    "tail": "status bit = 0x0 AND no short/open circuit fault in reading lamp",
+    "sources": ["inner_lamp_ssts_0262"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC Code",
+    "relation": "diagnostic_association",
+    "tail": "fault description",
+    "sources": ["inner_lamp_ssts_0263", "inner_lamp_ssts_0526"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Fault Description",
+    "relation": "diagnostic_association",
+    "tail": "DTC Code",
+    "sources": ["inner_lamp_ssts_0265"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System",
+    "relation": "prerequisite",
+    "tail": "valid wake-up source signal present",
+    "sources": ["inner_lamp_ssts_0266"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System",
+    "relation": "prerequisite",
+    "tail": "no valid wake-up source signal present",
+    "sources": ["inner_lamp_ssts_0266"],
+    "conflict": true,
+    "conflict_note": "Mutually exclusive prerequisites for Wake vs Sleep states — logically consistent (complementary states), not contradictory. No conflict per rule #4 (not 'same semantic range with opposing conclusions'). Kept both."
+  }
+]
+```

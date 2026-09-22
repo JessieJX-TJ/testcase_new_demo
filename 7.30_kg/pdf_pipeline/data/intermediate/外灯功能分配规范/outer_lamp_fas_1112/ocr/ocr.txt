@@ -1,0 +1,41 @@
+ENO-Z
+Z-ONE-3.0平台-FAS-IBD05
+版本<1.0>
+428 of 935 页
+RRDircnLghtFltsts_HW =0x0=RRDircnLghtFltsts_HW_0_False
+(exlDircnLghtHwDrvEnPrm=0x1;通过域控获取转向灯状态；)
+7、ICB将状态/故障状态反馈至[危险警报灯开关控制模块LHZCU]:
+FLDircnLghtSts=0x1= FLDircnLghtSts _1_On(或 0x0= FLDircnLghtSts_0_OFF)
+FRDircnLghtSts=0x1=FRDircnLghtSts_1_On(或 0x0=FRDircnLghtSts_0_OFF)
+RLDircnLghtSts=0x1=RLDircnLghtSts_1_On(或 0x0=RLDircnLghtSts_0_OFF)
+RRDircnLghtSts=0x1=RRDircnLghtSts_1_On(或0x0=RRDircnLghtSts_0_OFF)
+FLDircnLghtFltsts=0x0=FLDircnLghtFltsts_0_False
+FRDircnLghtFltsts=0x0=FRDircnLghtFltsts_0_False
+RLDircnLghtFltsts=0x0=RLDircnLghtFltsts_0_False
+RRDircnLghtFltsts=0x0=RRDircnLghtFltsts_0_False
+(exlDircnLghtHwDrvEnPrm=0x0||0x2;通过数字灯控获取转向灯状态;)
+8、[危险警报灯自动控制模块LHZCU]将状态/故障状态反馈至ICB:
+DircnLghtSts=0x3=Both_Side_Direction_Light_On
+DircnLghtFltsts=0x0=DircnLghtFltsts_0_No_Error
+9、[外灯组合服务ICB]接收LHZCU发送的转向灯点亮及故障状态CAN信号转成对应的服务透传:
+10、[危险警报灯自动控制模块LHZCU]记忆本次双闪灯触发动作,并将模式状态实时发送至ICB::
+VehHzrdMdSts=0x8=VehHzrdMdSts_8_Alarm_trigger
+11、[危险警报灯自动控制模块LHZCU]将转向灯控制状态反馈至SDM:
+EDRDircnIndLampSwSts=0x3=EDRDircnIndLampSwSts_3_hazard
+[危险警报灯自动控制模块 LHZCU]根据 VehIntrusionPrevnHzrdLmpReq取值,控制闪烁[一个周期/
+控制信号跳变为:
+1、[危险警报灯开关控制模块LHZCU]信号跳变为:
+FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_Off
+FRDircnLghtCtrl=0x0=FRDircnLghtCtrl_0_Off
+RLDircnLghtCtrl=0x0=RLDircnLghtCtrl_0_Off
+RRDircnLghtCtrl=0x0=RRDircnLghtCtrl_0_Off
+并发送至 ICB
+2、ICB根据接收到的LHZCU发送的转向灯
+FLDircnLghtCtrl/FRDircnLghtCtrl/RLDircnLghtCtrl/RRDircnLghtCtrl=OFF,转换成数字灯控信
+闪灯熄灭
+3、ICB根据LHZCU控制输入,延时60ms将控制信号并分发至LHZCU、RHZCU和RZCU
+DircnLghtCtrlDelayPrm)
+FLDircnLghtCtrl_HW=0x0=FLDircnLghtCtrl_HW_0_Off
+FRDircnLghtCtrl_HW=0x0=FRDircnLghtCtrl_HW_0_Off
+RLDircnLghtCtrl_HW=0x0=RLDircnLghtCtrl_HW_0_Off
+RRDircnLghtCtrl_HW=0x0=RRDircnLghtCtrl_HW_0_Off

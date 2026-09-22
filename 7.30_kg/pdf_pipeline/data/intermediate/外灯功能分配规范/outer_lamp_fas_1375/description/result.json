@@ -1,0 +1,93 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的模式分配规范",
+  "row_semantics": "表格的行代表不同的模式变量 (Mode Variables)，如车辆使用模式 (VehMd) 和用户使用模式 (UsG Md) 及其验证状态 (V)",
+  "column_semantics": "表格没有明确的列，但通过垂直布局展示了不同模式变量的定义及其对应的数值含义",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "description": "Vehicle Mode, 表示车辆的运行模式，如工厂模式、运输模式、动态模式等"
+    },
+    {
+      "name": "VehMdV",
+      "description": "Vehicle Mode Validation, 表示车辆模式的有效性验证状态"
+    },
+    {
+      "name": "UsG Md",
+      "description": "User Usage Mode, 表示用户的使用模式，如睡眠、待机、舒适、正常驾驶等"
+    },
+    {
+      "name": "UsG MdV",
+      "description": "User Usage Mode Validation, 表示用户使用模式的有效性验证状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMd_2_FACTORY",
+      "description": "0x2, 工厂模式"
+    },
+    {
+      "name": "VehMd_3_TRANSPORT",
+      "description": "0x3, 运输模式"
+    },
+    {
+      "name": "VehMd_4_DYNO",
+      "description": "0x4, 动态测试模式"
+    },
+    {
+      "name": "VehMd_5_EXHIBITION",
+      "description": "0x5, 展示模式"
+    },
+    {
+      "name": "VehMd_8_Engineering",
+      "description": "0x8, 工程模式"
+    },
+    {
+      "name": "VehMd_9_Service",
+      "description": "0x9, 服务模式"
+    },
+    {
+      "name": "UsG Md_0_Sleep",
+      "description": "0x0, 睡眠模式"
+    },
+    {
+      "name": "UsG Md_1_Standby",
+      "description": "0x1, 待机模式"
+    },
+    {
+      "name": "UsG Md_2_Comfortable",
+      "description": "0x2, 舒适模式"
+    },
+    {
+      "name": "UsG Md_3_NormalDriving",
+      "description": "0x3, 正常驾驶模式"
+    },
+    {
+      "name": "UsG Md_4_AIParking",
+      "description": "0x4, 自动泊车模式"
+    },
+    {
+      "name": "UsG Md_5_AIPilot",
+      "description": "0x5, 自动驾驶模式"
+    },
+    {
+      "name": "UsG Md_6_XOTA",
+      "description": "0x6, 远程升级模式"
+    },
+    {
+      "name": "VehMdV_0_Invalid",
+      "description": "0x0, 车辆模式无效"
+    },
+    {
+      "name": "VehMdV_1_Valid",
+      "description": "0x1, 车辆模式有效"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯功能在不同车辆模式和用户使用模式下的状态编码，可用于验证外灯功能在各种模式切换时的行为是否符合规范。",
+  "uncertain_points": []
+}

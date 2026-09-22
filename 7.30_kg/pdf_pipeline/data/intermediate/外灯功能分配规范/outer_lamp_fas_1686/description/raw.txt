@@ -1,0 +1,88 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Vehicle Daytime Running Lamp (DRL) Control Module LHZCU Signal Transition and ICB Interaction Logic",
+  "row_semantics": "Each row represents a sequential step or action in the signal transition and control process between the Daytime Running Lamp Control Module (LHZCU) and the Integrated Body Controller (ICB).",
+  "column_semantics": "The table has two main columns: the left column lists the execution actions, and the right column provides detailed descriptions of each action, including signal changes, controller interactions, and status updates.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Daytime Running Lamp Control Module responsible for controlling the vehicle's daytime running lamps."
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "Integrated Body Controller that receives control signals from LHZCU and sends back status feedback."
+    },
+    {
+      "name": "UsrMd",
+      "type": "input_signal",
+      "description": "User mode signal indicating the current operational mode of the vehicle (e.g., Sleep, Standby, XOTA)."
+    },
+    {
+      "name": "UsrMdV",
+      "type": "input_signal",
+      "description": "Validation signal for the user mode."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd = 0x6",
+      "description": "Trigger condition for the DRL control logic to activate."
+    },
+    {
+      "name": "LDayTmRunningLightCtrl_1_on",
+      "description": "Signal indicating the left DRL is turned on."
+    },
+    {
+      "name": "RDayTmRunningLightCtrl_1_on",
+      "description": "Signal indicating the right DRL is turned on."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LDayTmRunningLightSts_1_on",
+      "description": "Status signal indicating the left DRL is on."
+    },
+    {
+      "name": "RDayTmRunningLightSts_1_on",
+      "description": "Status signal indicating the right DRL is on."
+    },
+    {
+      "name": "DayRunningLightFucProStatus",
+      "description": "Function pro status of the DRL system."
+    },
+    {
+      "name": "DayRunningLightFucProsSta",
+      "description": "Function pro status state of the DRL system."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DayRunningLightErrSta",
+      "description": "Error status of the DRL system, indicating any faults."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "40ms",
+      "description": "Maximum allowable delay time for DRL synchronization."
+    },
+    {
+      "name": "2s",
+      "description": "Timeout period for receiving expected DRL status response from ICB."
+    },
+    {
+      "name": "50ms",
+      "description": "Period for retransmitting DRL requests if no response is received."
+    }
+  ],
+  "engineering_interpretation": "This table defines the logic for transitioning the vehicle's daytime running lamps from one state to another, specifically when the vehicle enters a specific user mode (UsrMd = 0x6). It details the signal exchanges between the Daytime Running Lamp Control Module (LHZCU) and the Integrated Body Controller (ICB), including turning the DRLs on, sending status updates, and handling error conditions. The table also specifies timing constraints for synchronization and fault detection.",
+  "uncertain_points": [
+    "The exact internal implementation details of the 'ExteriorLightSwitchProcess' and 'ExteriorLightControlSystem' services are not fully specified in this table."
+  ]
+}
+```

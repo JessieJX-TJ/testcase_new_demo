@@ -1,0 +1,75 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "后雾灯控制逻辑与状态反馈机制",
+  "row_semantics": "表格按功能调用顺序编号，描述了从HMI子系统到外灯控制模块的信号交互流程，包括状态设置、控制请求、状态反馈及订阅。",
+  "column_semantics": "无明确列，内容为逐行的功能描述和信号赋值语句。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HMI子系统 ICB",
+      "type": "system_interface"
+    },
+    {
+      "name": "外灯控制组合服务 ICB",
+      "type": "service_interface"
+    },
+    {
+      "name": "驱动处理模块 RZCU",
+      "type": "controller_module"
+    },
+    {
+      "name": "后雾灯控制模块 LHZCU",
+      "type": "controller_module"
+    },
+    {
+      "name": "外灯组合服务 ICB",
+      "type": "service_interface"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RearFogLightCtrlReq",
+      "description": "后雾灯控制请求信号，用于触发后雾灯点亮或熄灭"
+    },
+    {
+      "name": "RearFogLightAcFlts",
+      "description": "后雾灯交流故障状态信号"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.RearFogLightFucProStatus",
+      "description": "外部灯光开关过程中的后雾灯功能状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogLightSts",
+      "description": "后雾灯当前状态（点亮/熄灭）"
+    },
+    {
+      "name": "RearFogLightState",
+      "description": "后雾灯实际状态"
+    },
+    {
+      "name": "RearFogLightErrorStatus",
+      "description": "后雾灯错误状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RearFogLightAcFlts",
+      "description": "后雾灯交流故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步延时",
+      "description": "后雾灯与近光灯开启需保持同步，最大延时不超过40ms",
+      "value": "40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了车辆后雾灯系统的控制逻辑、状态反馈机制以及与其他相关模块的交互接口，可用于验证后雾灯在不同模式下的正确控制、状态显示及故障反馈功能。",
+  "uncertain_points": []
+}
+```

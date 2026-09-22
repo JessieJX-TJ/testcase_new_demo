@@ -1,0 +1,24 @@
+ENO-Z
+Z-ONE-3.0平台-FAS-IBD05
+版本<1.0>
+794 of 935 页
+3)AutoLghtOnReq转发:
+将接收到的阳光雨量传感器/ICB发送的,AutoLghtOnReq_IlAutoLghtOnReq_ICB,转发为对应的
+AutoLghtOnReq,发送给ICB,持续转发
+2、[外灯组合服务ICB]调用基础服务:
+1)日行灯开启:
+2)位置灯开启:针对{InstanceID=1}{InstanceID=2}{InstanceID=3}{InstanceID=4},组合服务延时
+置需求:NumPltLampCtrlDelayPrm):
+(ex1SideLghtHwDrvEnPrm=0x1;备注:位置灯炮筒灯方案,以 instance1,2,3,4发送控制请求
+(exlSideLghtHwDrvEnPrm=0x0;备注:位置灯私有CAN通讯方案,以instance3,4,5,6,7,8
+3、ICB将服务接口或控制信号转换成对应RTE信号发给数字灯光SDK控制日间行车灯/位置灯开
+4、[外灯控制组合服务ICB]调用接口:
+1)日间行车灯开关状态:
+LHZCU根据日行灯控制仲裁状态:{ExteriorLightSwitchProcess. DayRunningLightFucProStatus.
+DayRunningLghtFucProsSta}=0x0=OFF(或0x1=On)
+同步设置日行灯开关状态:
+5、ICB将状态/故障状态反馈至[贯穿式前位置灯控制模块LHZCU]:
+1)日间行车灯:
+{DayRunningLight. DayRunningLightState. DayRunningLightSta}{InstanceID=1}=0x1=ON
+{DayRunningLight. DayRunningLightState. DayRunningLightSta}{InstanceID=2}=0x1=ON
+2)位置灯:

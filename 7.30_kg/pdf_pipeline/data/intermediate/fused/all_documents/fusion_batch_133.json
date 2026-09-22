@@ -1,0 +1,512 @@
+[
+  {
+    "head": "获取转向灯点亮或熄灭的条件是否满足",
+    "relation": "前提条件",
+    "tail": "调用 ExteriorLightSwitchProcess.s.DircnLghtFucProStatus 接口",
+    "sources": [
+      "outer_lamp_fas_1418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 'OFF'",
+    "relation": "输出为",
+    "tail": "DircnLghtFucProSta 参数值为 0x0",
+    "sources": [
+      "outer_lamp_fas_1418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 'Left_Direction_Light_On'",
+    "relation": "输出为",
+    "tail": "DircnLghtFucProSta 参数值为 0x1",
+    "sources": [
+      "outer_lamp_fas_1418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 'Right_Direction_Light_On'",
+    "relation": "输出为",
+    "tail": "DircnLghtFucProSta 参数值为 0x2",
+    "sources": [
+      "outer_lamp_fas_1418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 'Both_Side_Direction_Light_On'",
+    "relation": "输出为",
+    "tail": "DircnLghtFucProSta 参数值为 0x3",
+    "sources": [
+      "outer_lamp_fas_1418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 'Unknown'",
+    "relation": "输出为",
+    "tail": "DircnLghtFucProSta 参数值为 0x4",
+    "sources": [
+      "outer_lamp_fas_1418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "获取转向灯状态",
+    "relation": "前提条件",
+    "tail": "调用 ExteriorLightSwitchProcess.s.DirectionLightSta 接口",
+    "sources": [
+      "outer_lamp_fas_1418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 'No_Flash'",
+    "relation": "输出为",
+    "tail": "DircnLghtSta 参数值为 0x0",
+    "sources": [
+      "outer_lamp_fas_1418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 'Left_Direction_Light_Flash'",
+    "relation": "输出为",
+    "tail": "DircnLghtSta 参数值为 0x1",
+    "sources": [
+      "outer_lamp_fas_1418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 'Right_Direction_Light_Flash'",
+    "relation": "输出为",
+    "tail": "DircnLghtSta 参数值为 0x2",
+    "sources": [
+      "outer_lamp_fas_1418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态为 'Both_Side_Direction_Light_Flash'",
+    "relation": "输出为",
+    "tail": "DircnLghtSta 参数值为 0x3",
+    "sources": [
+      "outer_lamp_fas_1418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯开关",
+    "relation": "触发条件",
+    "tail": "Hazard switch pressed request",
+    "sources": [
+      "outer_lamp_fas_1419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯开关",
+    "relation": "超时约束",
+    "tail": "Time Out 10s",
+    "sources": [
+      "outer_lamp_fas_1419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU做采集开关唤醒",
+    "relation": "输入为",
+    "tail": "Hazard switch pressed request",
+    "sources": [
+      "outer_lamp_fas_1419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU做采集开关唤醒",
+    "relation": "输出为",
+    "tail": "Backbone_CANFD, LHZCU_SUB_F_CAN",
+    "sources": [
+      "outer_lamp_fas_1419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VMCU:接收绕过指令,启动驱动灯亮",
+    "relation": "依赖于",
+    "tail": "LHZCU做采集开关唤醒",
+    "sources": [
+      "outer_lamp_fas_1419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险报警灯开关",
+    "relation": "抑制条件",
+    "tail": "Time Out",
+    "sources": [
+      "outer_lamp_fas_1419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "触发条件",
+    "tail": "收到车辆电池热失控 RZCU 请求输入",
+    "sources": [
+      "outer_lamp_fas_1420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "触发条件",
+    "tail": "收到车辆电池热失控 ESS 请求输入",
+    "sources": [
+      "outer_lamp_fas_1420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动激活",
+    "relation": "触发条件",
+    "tail": "UsgMd=All, UsgMdV=Valid, VehMd=All, VehMdV=Valid",
+    "sources": [
+      "outer_lamp_fas_1420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU 信号跳变",
+    "relation": "输出为",
+    "tail": "危险警报灯自动激活",
+    "sources": [
+      "outer_lamp_fas_1420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMd=All",
+    "relation": "前提条件",
+    "tail": "危险警报灯自动激活",
+    "sources": [
+      "outer_lamp_fas_1420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsgMdV=Valid",
+    "relation": "前提条件",
+    "tail": "危险警报灯自动激活",
+    "sources": [
+      "outer_lamp_fas_1420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd=All",
+    "relation": "前提条件",
+    "tail": "危险警报灯自动激活",
+    "sources": [
+      "outer_lamp_fas_1420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMdV=Valid",
+    "relation": "前提条件",
+    "tail": "危险警报灯自动激活",
+    "sources": [
+      "outer_lamp_fas_1420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VCU Secy Wrng Info=0x2",
+    "relation": "输入为",
+    "tail": "危险警报灯自动激活",
+    "sources": [
+      "outer_lamp_fas_1420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BMSWrnngInfo=0x2",
+    "relation": "输入为",
+    "tail": "危险警报灯自动激活",
+    "sources": [
+      "outer_lamp_fas_1420"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能 (Exterior lamp function)",
+    "relation": "前提条件",
+    "tail": "80 of 935页",
+    "sources": [
+      "outer_lamp_fas_1421"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLSideLghtSts 左前位置灯状态",
+    "relation": "输入为",
+    "tail": "0x0 = FLSideLghtSts_0_Off, 0x1 = FLSideLghtSts_1_On",
+    "sources": [
+      "outer_lamp_fas_1423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRSideLghtSts 右前位置灯状态",
+    "relation": "输入为",
+    "tail": "0x0 = FRSideLghtSts_0_Off, 0x1 = FRSideLghtSts_1_On",
+    "sources": [
+      "outer_lamp_fas_1423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLSideLghtSts 左后位置灯状态",
+    "relation": "输入为",
+    "tail": "0x0 = RLSideLghtSts_0_Off, 0x1 = RLSideLghtSts_1_On",
+    "sources": [
+      "outer_lamp_fas_1423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRSideLghtSts 右后位置灯状态",
+    "relation": "输入为",
+    "tail": "0x0 = RRSideLghtSts_0_Off, 0x1 = RRSideLghtSts_1_On",
+    "sources": [
+      "outer_lamp_fas_1423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯点亮",
+    "relation": "触发条件",
+    "tail": "ICB 将服务接口或控制信号转换成灯控 CAN 信号；[远光灯驱动处理模块 LHZCU/RHZCU] 接收 ICB 控制信号，内部跳变为硬线输出",
+    "sources": [
+      "outer_lamp_fas_1424"
+    ],
+    "conflict": true,
+    "conflict_note": "同一 head-relation 下存在两条语义互补但表述不同的实现路径（CAN 转换 vs 硬线输出），非矛盾，属协同执行流程，已合并。"
+  },
+  {
+    "head": "远光灯自动开启",
+    "relation": "前提条件",
+    "tail": "[远光灯自动控制模块 LHZCU] 判断远光灯自动开启前置条件满足；AutoMaiBeamLghtCtrlDsblSts = 0x0 = False",
+    "sources": [
+      "outer_lamp_fas_1424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯状态反馈",
+    "relation": "输出为",
+    "tail": "{MainBeamLight.MainBeamLightStatus.MainBeamLightSta}{InstanceID=1}=0x1=ON 或 {MainBeamLight.MainBeamLightStatus.MainBeamLightSta}{InstanceID=2}=0x1=ON",
+    "sources": [
+      "outer_lamp_fas_1424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯错误状态反馈",
+    "relation": "输出为",
+    "tail": "{MainBeamLight.MainBeamLightErrorStatus.MainBeamLightErrorSta}{InstanceID=1}=0x0=No Error 或 {MainBeamLight.MainBeamLightErrorStatus.MainBeamLightErrorSta}{InstanceID=2}=0x0=No Error",
+    "sources": [
+      "outer_lamp_fas_1424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯同步点亮",
+    "relation": "超时约束",
+    "tail": "左侧和右侧远光灯需保持同步点亮，两侧最大延时不能超过 40ms",
+    "sources": [
+      "outer_lamp_fas_1424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯手动关闭请求",
+    "relation": "触发条件",
+    "tail": "一个点火循环内，远光灯自动控制功能处于激活状态时，检测到三次远光灯手动关闭请求",
+    "sources": [
+      "outer_lamp_fas_1424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能禁止",
+    "relation": "抑制条件",
+    "tail": "AutoMaiBeamLghtCtrlDsblSts = 0x1 = True",
+    "sources": [
+      "outer_lamp_fas_1424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "控制右侧近光灯点亮或者熄灭",
+    "relation": "触发条件",
+    "tail": "调用接口 ControlDippedBeamLight",
+    "sources": [
+      "outer_lamp_fas_1425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯状态",
+    "relation": "输出为",
+    "tail": "接口 DippedBeamLightStatus 返回参数 DippedBeamLightSta（支持 OFF/ON/Unknown）",
+    "sources": [
+      "outer_lamp_fas_1425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "控制右侧近光灯",
+    "relation": "依赖于",
+    "tail": "模块 SOA",
+    "sources": [
+      "outer_lamp_fas_1425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "获取左侧近光灯状态",
+    "relation": "依赖于",
+    "tail": "模块 LHZCU",
+    "sources": [
+      "outer_lamp_fas_1425"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统显示手动大灯水平高度开关状态",
+    "relation": "依赖于",
+    "tail": "个性化设置中手动大灯水平高度的设定值",
+    "sources": [
+      "outer_lamp_fas_1427"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "手动大灯开关状态",
+    "relation": "输出为",
+    "tail": "HeadLampLevelSetInfo",
+    "sources": [
+      "outer_lamp_fas_1427"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统显示手动大灯水平高度开关状态",
+    "relation": "包含子功能",
+    "tail": "手动大灯开关状态显示",
+    "sources": [
+      "outer_lamp_fas_1427"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯退出",
+    "relation": "触发条件",
+    "tail": "通过切换车辆VS模式",
+    "sources": [
+      "outer_lamp_fas_1428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯退出",
+    "relation": "前提条件",
+    "tail": "远光灯处于激活状态",
+    "sources": [
+      "outer_lamp_fas_1428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯退出",
+    "relation": "依赖于",
+    "tail": "车辆VS模式的切换",
+    "sources": [
+      "outer_lamp_fas_1428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SOA和CAN通讯",
+    "relation": "包含子功能",
+    "tail": "按照配置字开发",
+    "sources": [
+      "outer_lamp_fas_1428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "单一通讯类型",
+    "relation": "包含子功能",
+    "tail": "按照该通讯类型开发",
+    "sources": [
+      "outer_lamp_fas_1428"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

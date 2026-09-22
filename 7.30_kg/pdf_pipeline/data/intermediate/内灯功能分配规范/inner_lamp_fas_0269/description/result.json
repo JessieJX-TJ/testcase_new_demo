@@ -1,0 +1,68 @@
+{
+  "table_type": "logic_table",
+  "topic": "车门开闭控制逻辑",
+  "row_semantics": "流程步骤",
+  "column_semantics": "条件/动作",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "Timer_DoorOpen",
+      "type": "timer",
+      "description": "车门开启计时器"
+    },
+    {
+      "name": "Timer_DoorClose",
+      "type": "timer",
+      "description": "车门关闭计时器"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "车门全部关闭",
+      "description": "检测车门是否完全关闭的状态"
+    },
+    {
+      "name": "Timer_DoorOpen<2s",
+      "description": "车门开启时间小于2秒的判断"
+    },
+    {
+      "name": "Timer_DoorOpen>10min",
+      "description": "车门开启时间超过10分钟的判断"
+    },
+    {
+      "name": "Timer_DoorClose>3s",
+      "description": "车门关闭后持续时间超过3秒的判断"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "发送开阅灯信号",
+      "description": "当车门开启时，触发开阅灯信号"
+    },
+    {
+      "name": "发送关阅读灯信号",
+      "description": "当车门关闭且满足一定条件时，触发关阅读灯信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Timer_DoorOpen<2s",
+      "value": "2s",
+      "description": "车门开启时间限制"
+    },
+    {
+      "name": "Timer_DoorOpen>10min",
+      "value": "10min",
+      "description": "车门开启超时限制"
+    },
+    {
+      "name": "Timer_DoorClose>3s",
+      "value": "3s",
+      "description": "车门关闭后持续时间限制"
+    }
+  ],
+  "engineering_interpretation": "该逻辑表描述了车门开启和关闭过程中，基于定时器状态和车门物理状态的控制逻辑，可用于验证车门开启时阅读灯信号的正确触发以及车门关闭后阅读灯信号的及时关闭。",
+  "uncertain_points": []
+}

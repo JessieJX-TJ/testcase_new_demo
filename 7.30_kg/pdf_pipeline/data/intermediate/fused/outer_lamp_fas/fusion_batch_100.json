@@ -1,0 +1,584 @@
+[
+  {
+    "head": "DayRunningLightResp",
+    "relation": "precondition",
+    "tail": "TrShftLvrPos invalid or erroneous",
+    "sources": [
+      "outer_lamp_fas_1064"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.CombLghtFucProCtrl",
+    "relation": "invoked_by",
+    "tail": "position lamp switch state request",
+    "sources": [
+      "outer_lamp_fas_1065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtFucProCtrlReq",
+    "relation": "input_value",
+    "tail": "0x1 (SidePositionLight ON)",
+    "sources": [
+      "outer_lamp_fas_1065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtFucProCtrlReq",
+    "relation": "input_value",
+    "tail": "0x2 (DippedBeamLight ON)",
+    "sources": [
+      "outer_lamp_fas_1065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtFucProCtrlReq",
+    "relation": "input_value",
+    "tail": "0x3 (AUTO)",
+    "sources": [
+      "outer_lamp_fas_1065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.CombLghtFucProCtrl",
+    "relation": "output_value",
+    "tail": "CombLghtFucProCtrlResp = 0x0 (ControlSuccess) → position lamp switch state request successful",
+    "sources": [
+      "outer_lamp_fas_1065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.CombLghtFucProCtrl",
+    "relation": "output_value",
+    "tail": "CombLghtFucProCtrlResp = 0x1 (Failed) → position lamp switch state request failed",
+    "sources": [
+      "outer_lamp_fas_1065"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp deactivation",
+    "relation": "precondition",
+    "tail": "dipped beam lamp is active",
+    "sources": [
+      "outer_lamp_fas_1066",
+      "outer_lamp_fas_1144"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp deactivation",
+    "relation": "inhibition_condition",
+    "tail": "preconditions satisfied",
+    "sources": [
+      "outer_lamp_fas_1066",
+      "outer_lamp_fas_1144"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsrMd",
+    "relation": "transition_trigger",
+    "tail": "UsrMd = 0x0 (Sleep)",
+    "sources": [
+      "outer_lamp_fas_1066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UsrMd",
+    "relation": "transition_trigger",
+    "tail": "UsrMd = 0x6 (XOTA)",
+    "sources": [
+      "outer_lamp_fas_1066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd",
+    "relation": "transition_trigger",
+    "tail": "VehMd = 0x3 (Transport)",
+    "sources": [
+      "outer_lamp_fas_1066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "side position lamp deactivation",
+    "relation": "trigger_condition",
+    "tail": "SidePositionLightStatus transitions to OFF",
+    "sources": [
+      "outer_lamp_fas_1066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "detects",
+    "tail": "only side position lamps are ON",
+    "sources": [
+      "outer_lamp_fas_1066"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "hazard warning lamp activation",
+    "relation": "precondition",
+    "tail": "turn signal shall deactivate immediately",
+    "sources": [
+      "outer_lamp_fas_1067"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "hazard warning lamp deactivation or interruption",
+    "relation": "trigger_condition",
+    "tail": "turn signal shall respond and deactivate immediately",
+    "sources": [
+      "outer_lamp_fas_1067"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU (hazard warning lamp control module)",
+    "relation": "has_priority_over",
+    "tail": "SOA control requests",
+    "sources": [
+      "outer_lamp_fas_1067"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU (hazard warning lamp control module)",
+    "relation": "input_source",
+    "tail": "hazard lamp hardwire switch control and SOA control requests",
+    "sources": [
+      "outer_lamp_fas_1067"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp activation",
+    "relation": "trigger_condition",
+    "tail": "S32G receives ICB headlamp switch request from HMI",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp activation",
+    "relation": "trigger_condition",
+    "tail": "CombinedLightReq = 0x0 (OFF)",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp activation",
+    "relation": "trigger_condition",
+    "tail": "dipped beam lamp enabled for 2 min in factory mode",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp activation",
+    "relation": "trigger_condition",
+    "tail": "user mode = standby",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp activation",
+    "relation": "trigger_condition",
+    "tail": "follow-me-home preconditions not satisfied",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp activation",
+    "relation": "trigger_condition",
+    "tail": "ambient light & rain sensor auto-light enable = False",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp activation",
+    "relation": "inhibition_condition",
+    "tail": "S32G receives follow-me-home ICB request while follow-me-home function disabled",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp activation",
+    "relation": "inhibition_condition",
+    "tail": "dipped beam lamp ON due to rear fog lamp request under auto-light control",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp activation",
+    "relation": "inhibition_condition",
+    "tail": "current condition is daytime AND rear fog lamp is OFF",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp control output",
+    "relation": "output_value",
+    "tail": "LDipdBemLghtCtrl = 0x0 (LDipdBeamLghtCtrl_0_Off)",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "dipped beam lamp control output",
+    "relation": "output_value",
+    "tail": "RDipdBeamLghtCtrl = 0x0 (RDipdBeamLghtCtrl_0_Off)",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "depends_on",
+    "tail": "LHZCU emits lamp control signals to ICB",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB (HMI subsystem)",
+    "relation": "trigger_condition",
+    "tail": "ICB invokes exterior lamp combination service",
+    "sources": [
+      "outer_lamp_fas_1069"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left rear side position lamp",
+    "relation": "controlled_by",
+    "tail": "SidePositionLight",
+    "sources": [
+      "outer_lamp_fas_1070"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "right rear side position lamp",
+    "relation": "controlled_by",
+    "tail": "SidePositionLight",
+    "sources": [
+      "outer_lamp_fas_1070"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left rear side position lamp",
+    "relation": "depends_on",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_1070"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "right rear side position lamp",
+    "relation": "depends_on",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_1070"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "left rear side position lamp",
+    "relation": "depends_on",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_1070"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "right rear side position lamp",
+    "relation": "depends_on",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_1070"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "brake lamp illumination",
+    "relation": "trigger_condition",
+    "tail": "BrkLghtCtrl_HW = 0x1",
+    "sources": [
+      "outer_lamp_fas_1071"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "brake lamp illumination",
+    "relation": "trigger_condition",
+    "tail": "BrakeLightCtrReq.InstanceID = 1 AND value = On",
+    "sources": [
+      "outer_lamp_fas_1071"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "brake lamp drive processing module",
+    "relation": "input_condition",
+    "tail": "BrkLghtCtrl_HW = 0x1 AND BrakeLightCtrReq.InstanceID = 1 AND value = On",
+    "sources": [
+      "outer_lamp_fas_1071"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "turn signal deactivation synchronization requirement",
+    "relation": "precondition",
+    "tail": "turn signal is in two-step activation (e.g., flashing at step 2)",
+    "sources": [
+      "outer_lamp_fas_1072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "turn signal deactivation",
+    "relation": "trigger_condition",
+    "tail": "left turn signal is active",
+    "sources": [
+      "outer_lamp_fas_1072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "depends_on",
+    "tail": "LHZCU (turn signal switch control module) for turn signal switch status feedback",
+    "sources": [
+      "outer_lamp_fas_1072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SDM",
+    "relation": "depends_on",
+    "tail": "LHZCU (turn signal switch control module) for turn signal control status feedback",
+    "sources": [
+      "outer_lamp_fas_1072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "turn signal deactivation",
+    "relation": "timeout_constraint",
+    "tail": "maximum allowed desynchronization delay per side: 40 ms",
+    "sources": [
+      "outer_lamp_fas_1072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "turn signal deactivation synchronization requirement",
+    "relation": "timeout_constraint",
+    "tail": "maximum allowed desynchronization delay among all three channels (L/R/ICB): 50 ms",
+    "sources": [
+      "outer_lamp_fas_1072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU (turn signal switch control module)",
+    "relation": "controls_feedback_to",
+    "tail": "ICB (turn signal switch status feedback)",
+    "sources": [
+      "outer_lamp_fas_1072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU (turn signal switch control module)",
+    "relation": "controls_feedback_to",
+    "tail": "SDM (turn signal control status feedback)",
+    "sources": [
+      "outer_lamp_fas_1072"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "high beam lamp control activation",
+    "relation": "trigger_condition",
+    "tail": "vehicle mode ∈ {Normal Driving (0x3), AI Parking (0x4), AI Pilot (0x5)}",
+    "sources": [
+      "outer_lamp_fas_1073"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "high beam lamp control activation",
+    "relation": "precondition",
+    "tail": "UsrMd valid (UsrMdV = Valid)",
+    "sources": [
+      "outer_lamp_fas_1073"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "high beam lamp control activation",
+    "relation": "precondition",
+    "tail": "VehMd ≠ 0x3 (Transport)",
+    "sources": [
+      "outer_lamp_fas_1073"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "high beam lamp control activation",
+    "relation": "precondition",
+    "tail": "VehMd ≠ 0x5 (Exhibition)",
+    "sources": [
+      "outer_lamp_fas_1073"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "high beam lamp control activation",
+    "relation": "precondition",
+    "tail": "VehMd valid (VehMdV = Valid)",
+    "sources": [
+      "outer_lamp_fas_1073"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "high beam lamp control inhibition",
+    "relation": "inhibition_condition",
+    "tail": "VehMd = 0x3 (Transport)",
+    "sources": [
+      "outer_lamp_fas_1073"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "high beam lamp control inhibition",
+    "relation": "inhibition_condition",
+    "tail": "VehMd = 0x5 (Exhibition)",
+    "sources": [
+      "outer_lamp_fas_1073"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "trailer rear fog lamp activation",
+    "relation": "trigger_condition",
+    "tail": "LHZCU exterior lamp control signal = rear fog lamp ON",
+    "sources": [
+      "outer_lamp_fas_1074"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "trailer rear fog lamp deactivation",
+    "relation": "trigger_condition",
+    "tail": "LHZCU exterior lamp control signal = rear fog lamp OFF",
+    "sources": [
+      "outer_lamp_fas_1074"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB (exterior lamp combination service)",
+    "relation": "precondition",
+    "tail": "preconditions satisfied",
+    "sources": [
+      "outer_lamp_fas_1074"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

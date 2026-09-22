@@ -1,0 +1,74 @@
+{
+  "table_type": "parameter_table",
+  "topic": "External Light Switch Process - Directional Light Function Control",
+  "row_semantics": "The table describes the request and response parameters for controlling the directional lights (turn signals) of a vehicle, including the desired state of the lights and the system's response to the control command.",
+  "column_semantics": "The table is divided into two main sections: the Request (Req) parameters that define the desired light state, and the Response (Resp) parameters that indicate the success or failure of the control operation. The top section provides detailed definitions for these parameters.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess.DircnLghtFucProCtrl",
+      "type": "function_name",
+      "description": "The name of the service interface used to control the directional lights."
+    },
+    {
+      "name": "DircnLghtFucProCtrl",
+      "type": "interface_name",
+      "description": "The specific interface name for the directional light function control."
+    },
+    {
+      "name": "DirectionLightReq",
+      "type": "parameter_name",
+      "description": "The parameter used in the request to specify the desired state of the directional lights."
+    },
+    {
+      "name": "DircnLghtFucProCtrlResp",
+      "type": "parameter_name",
+      "description": "The parameter used in the response to indicate the result of the directional light control operation."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightReq",
+      "values": [
+        {
+          "code": "0x0",
+          "description": "No Flash"
+        },
+        {
+          "code": "0x1",
+          "description": "Left_Direction_Light_Flash"
+        },
+        {
+          "code": "0x2",
+          "description": "Right_Direction_Light_Flash"
+        },
+        {
+          "code": "0x3",
+          "description": "Both_Side_Direction_Light_Flash"
+        }
+      ],
+      "description": "Defines the possible states for the directional lights as requested by the control command."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DircnLghtFucProCtrlResp",
+      "values": [
+        {
+          "code": "0x0",
+          "description": "ControlSuccess"
+        },
+        {
+          "code": "0x1",
+          "description": "Failed"
+        }
+      ],
+      "description": "Indicates whether the directional light control command was successfully executed or failed."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the protocol for requesting and receiving responses related to the control of a vehicle's directional lights. It specifies the acceptable input values for requesting different light states and the expected output values indicating the success or failure of the command.",
+  "uncertain_points": []
+}

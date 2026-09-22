@@ -1,0 +1,60 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 近光灯状态获取",
+  "row_semantics": "表格按功能点（DippedBeamLight.DippedBeamLightStatus）分两行，分别描述左侧和右侧近光灯的状态获取接口。",
+  "column_semantics": "表格列出了该功能涉及的系统或模块（SOA, ICB, LHZ CU），以及网络状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight.DippedBeamLightStatus",
+      "type": "function",
+      "description": "获取近光灯状态的服务接口"
+    },
+    {
+      "name": "SOA",
+      "type": "controller",
+      "description": "Service-Oriented Architecture，服务导向架构"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Control Board，集成控制板"
+    },
+    {
+      "name": "LHZ CU",
+      "type": "controller",
+      "description": "Local Host Controller Unit，本地主机控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "实例ID，区分左右侧近光灯",
+      "values": {
+        "3": "左侧近光灯",
+        "4": "右侧近光灯"
+      }
+    },
+    {
+      "name": "DippedBeamLightSta",
+      "description": "近光灯状态参数",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "ON",
+        "0x2": "Unknown"
+      }
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightStatus",
+      "description": "返回的近光灯状态值",
+      "type": "signal"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了通过调用DippedBeamLightStatus接口，从SOA、ICB、LHZ CU等控制器获取左侧和右侧近光灯状态的规范，可用于验证车辆外灯系统中近光灯状态信息的正确读取。",
+  "uncertain_points": []
+}

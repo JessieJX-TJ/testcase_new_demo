@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "External Light Switch Process - Directional Light Function Control",
+  "row_semantics": "The table describes the request and response parameters for controlling the vehicle's directional lights (turn signals) via a service interface.",
+  "column_semantics": "The left column lists the function name, while the right section details the request and response parameters for that function.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess.DircnLghtFucProCtrl",
+      "type": "function",
+      "description": "Function to control the vehicle's directional lights."
+    },
+    {
+      "name": "SOA",
+      "type": "controller",
+      "description": "Service-Oriented Architecture component responsible for handling the request."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Local Hardware Control Unit, likely the body control module or gateway managing light functions."
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Inter-Communication Bus controller, facilitating communication between systems."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DircnLghtFucProCtrlReq",
+      "type": "input_signal",
+      "description": "Request parameter specifying the desired state of the directional lights.",
+      "values": [
+        "0x0=No Flash",
+        "0x1=Left_Direction_Light_Flash",
+        "0x2=Right_Direction_Light_Flash",
+        "0x3=Both_Side_Direction_Light_Flash"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DircnLghtFucProCtrlResp",
+      "type": "output_signal",
+      "description": "Response parameter indicating the success or failure of the directional light control request.",
+      "values": [
+        "0x0=ControlSuccess",
+        "0x1=Failed"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the protocol for requesting and receiving status updates on the activation or deactivation of a vehicle's turn signals through a specific service interface. It is used to verify that the system correctly interprets control commands and reports back with appropriate success or failure statuses.",
+  "uncertain_points": []
+}
+```

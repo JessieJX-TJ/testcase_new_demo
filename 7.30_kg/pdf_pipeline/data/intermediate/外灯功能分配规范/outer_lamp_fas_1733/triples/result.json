@@ -1,0 +1,84 @@
+[
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "用户通过大屏软开关触发",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "用户通过大屏软开关",
+      "触发近光灯的开启"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1733",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMd状态为非睡眠、待机或OTA更新",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsrMd != 0x0 (Sleep)",
+      "UsrMd = 0x1 (Standby)",
+      "UsrMd = 0x6 (XOTA)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1733",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMd数据有效",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsrMdV = Valid"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1733",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "车辆模式不处于运输模式",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd != 0x3 (TRANSPORT)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1733",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "VehMd数据有效",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMdV = Valid"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1733",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "LHZCU已判断开启位置灯(侧位灯和近光灯)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ExteriorLightSwitchProcess.CombLightFucProStatus.CombLightFucProSta = 0x4 (SidePositionAndDippedBeamOnly SidePositionLight ON)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1733",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

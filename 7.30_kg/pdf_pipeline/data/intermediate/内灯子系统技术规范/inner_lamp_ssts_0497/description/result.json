@@ -1,0 +1,85 @@
+{
+  "table_type": "logic_table",
+  "topic": "氛围灯颜色控制逻辑",
+  "row_semantics": "表格定义了氛围灯颜色变化的触发、执行、退出条件以及异常处理规则。",
+  "column_semantics": {
+    "第一列": "描述了不同阶段的条件或动作类型（如前置条件、触发条件、执行动作等）",
+    "第二列": "详细说明了对应条件或动作的具体内容"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RoofLHALampColorCmd_1",
+      "type": "input_signal",
+      "description": "本地控制模块发出的颜色变化请求信号，值为0x00表示无请求"
+    },
+    {
+      "name": "RoofLHALampOnOff_1",
+      "type": "input_signal",
+      "description": "本地控制模块发出的开关请求信号，值为0x0表示关闭"
+    },
+    {
+      "name": "RoofLHALampFadeSpdCmd_1",
+      "type": "parameter",
+      "description": "渐变速度参数，用于控制颜色切换的平滑度"
+    },
+    {
+      "name": "ZCU_LIN",
+      "type": "system_signal",
+      "description": "中央控制单元通过LIN总线发送的信号"
+    },
+    {
+      "name": "氛围灯驱动控制模块",
+      "type": "controller",
+      "description": "负责根据指令驱动氛围灯颜色变化和亮度调节的电子控制单元"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "description": "氛围灯处于开启状态"
+    },
+    {
+      "condition": "触发条件",
+      "description": "接收到RoofLHALampColorCmd_1信号从0x00变为非0x00"
+    },
+    {
+      "condition": "退出条件",
+      "description": "接收到RoofLHALampColorCmd_1为0x00或未定义颜色号，或接收到RoofLHALampOnOff_1为0x0"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "氛围灯颜色切换",
+      "description": "根据色坐标查表获取对应颜色，并驱动PWM电流实现颜色变化"
+    },
+    {
+      "output": "氛围灯关闭",
+      "description": "当接收到关闭信号时，按照渐变速度参数关闭氛围灯"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "过压/欠压故障",
+      "description": "氛围灯模块检测到电压异常时，直接关闭氛围灯"
+    },
+    {
+      "fault": "LIN信号丢失",
+      "description": "超过6秒未接收到ZCU的LIN信号时，关闭氛围灯"
+    },
+    {
+      "fault": "颜色值异常",
+      "description": "RoofLHALampColorCmd_1信号异常时，维持上一时刻状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "LIN信号超时",
+      "value": "6s",
+      "description": "默认超时时间为6秒"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证氛围灯颜色控制模块在不同输入信号下的行为逻辑，包括正常颜色切换、关闭操作以及多种异常情况下的保护机制。",
+  "uncertain_points": []
+}

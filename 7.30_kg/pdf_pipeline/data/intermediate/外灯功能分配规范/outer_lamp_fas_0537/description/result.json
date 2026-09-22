@@ -1,0 +1,49 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯控制系统参数配置",
+  "row_semantics": "表格中的每一行代表一个与外灯控制相关的系统参数或功能配置项。",
+  "column_semantics": {
+    "1": "参数名称 (Parameter Name)",
+    "2": "参数描述 (Parameter Description)",
+    "3": "参数值定义 (Value Definitions)",
+    "4": "默认值/当前值 (Default/Current Value)",
+    "5": "相关模块/功能说明 (Related Module/Function)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "AutoMaiBeamLghtDsblVehSpd",
+      "type": "功能参数",
+      "description": "自动远光灯禁用时的车辆速度阈值"
+    },
+    {
+      "name": "InsdFnCfgIntlgnntMaiBeamLght",
+      "type": "功能参数",
+      "description": "智能前大灯控制系统的启用状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "parameter": "AutoMaiBeamLghtDsblVehSpd",
+      "conditions": [
+        "0x0=20kph",
+        "0x1=30kph",
+        "0x2=Reverse",
+        "0x3=Reverse"
+      ]
+    },
+    {
+      "parameter": "InsdFnCfgIntlgnntMaiBeamLght",
+      "conditions": [
+        "0x0:无智能前大灯控制系统",
+        "0x1:有智能前大灯控制系统"
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯控制系统中两个关键参数的配置选项及其默认值，可用于验证车辆在不同车速下自动远光灯是否正确禁用，以及智能前大灯控制系统是否按预期启用或禁用。",
+  "uncertain_points": []
+}

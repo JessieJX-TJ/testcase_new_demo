@@ -1,0 +1,44 @@
+子系统技术规范
+Sub System Technical Specification
+IM
+内灯子系统Interior Lighting Sub System
+智己汽车
+Z-ONE-3.0平台-SSTS-
+版本<1.2>
+66 of 235 页
+IBD10
+②当点亮速度信号
+ThirdRowMapLampRHDimSpd=0x1(速度2)
+[阅读灯驱动控制模块]按照设定PWM驱动点亮阅
+读灯(速度0.1秒/档)
+③
+当点亮速度信号
+ThirdRowMapLampRHDimSpd=0x2(速度 3), [阅
+读灯驱动控制模块]按照设定PWM驱动阅读灯瞬
+间点亮
+④
+未接收到点亮速度信号时,按照默认
+ThirdRowMapLampRHDimSpd=0x0(速度 1)执
+行
+退出条件
+接收到阅读灯控制模块的请求信号
+ThirdRowMapLampRHBrtLvl=0x0(OFF)；[阅读灯驱动控
+制模块]驱动前排阅读灯按照以下熄灭阅读灯:
+①当熄灭速度信号
+ThirdRowMapLampRHDimSpd=0x0(速度1), [阅
+读灯驱动控制模块]按照设定 PWM 驱动熄灭阅读
+灯(速度0.025秒/档)
+②
+当熄灭速度信号
+[阅读灯驱动控制模块]按照设定 PWM 驱动熄灭阅
+读灯(速度0.15秒/档)
+读灯驱动控制模块]按照设定 PWM 驱动阅读灯瞬
+间熄灭
+ThirdRowMapLampRHDimSpd=0x0(速度1)执
+异常处理
+1、第三排右侧阅读灯触发短路/开路故障,直接关断对应
+阅读灯驱动
+2、
+未接收到阅读灯控制模块的亮度请求信号,直接关断
+第三排右侧阅读灯驱动(即使收到点亮熄灭速度信号
+ThirdRowMapLampRHDimSpd)

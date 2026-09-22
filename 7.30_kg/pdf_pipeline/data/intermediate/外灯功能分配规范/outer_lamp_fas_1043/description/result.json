@@ -1,0 +1,60 @@
+{
+  "table_type": "signal_table",
+  "topic": "危险警报灯（Hazard Warning Light）系统控制逻辑与信号交互规范",
+  "row_semantics": "按功能模块和控制流程顺序排列的控制规则描述",
+  "column_semantics": "无明确列，内容为连续的文本描述，每行代表一个独立的控制逻辑或状态反馈规则",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB",
+    "LHZCU",
+    "RHZCU",
+    "RZCU",
+    "FLDirnLghtCtrl_HW",
+    "FRDirnLghtCtrl_HW",
+    "RLDirnLghtCtrl_HW",
+    "RRDirnLghtCtrl_HW",
+    "DirclnLghtSts_HW",
+    "DirclnLghtFltsts_HW",
+    "DirclnLghtWDrvEnPrm",
+    "CrashHazardTi",
+    "VehHzrdMdSts",
+    "EDRDirclnIndLampSwSts"
+  ],
+  "core_conditions": [
+    "LHZCU 控制输入",
+    "延时 60ms",
+    "分发控制信号",
+    "驱动双闪灯点亮/熄灭",
+    "危险警报灯开关控制",
+    "危险警报灯图标指示灯显示",
+    "声音提醒",
+    "故障状态反馈",
+    "通过域控获取转向灯状态",
+    "通过数字灯控获取转向灯状态",
+    "碰撞触发双闪灯事件",
+    "手动关闭危险警报开关"
+  ],
+  "core_outputs": [
+    "FLDirnLghtCtrl_HW",
+    "FRDirnLghtCtrl_HW",
+    "RLDirnLghtCtrl_HW",
+    "RRDirnLghtCtrl_HW",
+    "DirclnLghtSts_HW",
+    "DirclnLghtFltsts_HW",
+    "VehHzrdMdSts_2_Collision_Mode",
+    "EDRDirclnIndLampSwSts_3_hazard"
+  ],
+  "core_faults": [
+    "DirclnLghtFltsts_HW_False",
+    "DirclnLghtFltsts_0_False",
+    "DirectionLightErrSts",
+    "No Error"
+  ],
+  "core_timing_constraints": [
+    "延时 60ms",
+    "CrashHazardTi (5s)"
+  ],
+  "engineering_interpretation": "该表格详细定义了危险警报灯系统的控制逻辑、信号交互流程以及故障反馈机制，可用于验证危险警报灯在不同驾驶场景下的正确响应、信号传递的准确性以及故障状态的检测与反馈。",
+  "uncertain_points": []
+}

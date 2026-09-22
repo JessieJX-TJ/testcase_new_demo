@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "OHC (Outside Handle Control) 故障状态信号定义",
+  "row_semantics": "描述 OHC 模块的故障状态信号（OHCHwErr）在不同状态位下的判定条件和含义。",
+  "column_semantics": {
+    "OHC 故障状态信号": "故障信号的名称，即 OHCHwErr。",
+    "状态位": "表示故障信号的具体状态值，如 0x0 和 0x1。",
+    "判定条件说明": "根据状态位解释故障的具体含义。",
+    "备注": "提供额外的信息或补充说明，此处为空。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "OHC",
+      "type": "module",
+      "description": " Outside Handle Control 模块，负责控制车辆外部把手的功能。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "OHCHwErr",
+      "state": "0x0",
+      "condition": "No error",
+      "description": "所有阅读灯无故障。"
+    },
+    {
+      "signal": "OHCHwErr",
+      "state": "0x1",
+      "condition": "Error",
+      "description": "任一阅读灯触发短路/开路故障，具体为 MapLampXXErr = 0x1 (Error)。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "fault_name": "MapLampXXErr",
+      "description": "与阅读灯相关的故障，当 OHCHwErr 状态为 0x1 时触发，表示存在短路或开路故障。",
+      "related_signal": "OHCHwErr"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证 OHC 模块的故障检测功能，确保在正常状态下（0x0）系统无错误，在异常状态下（0x1）能够正确识别并报告阅读灯的短路或开路故障。",
+  "uncertain_points": []
+}
+```

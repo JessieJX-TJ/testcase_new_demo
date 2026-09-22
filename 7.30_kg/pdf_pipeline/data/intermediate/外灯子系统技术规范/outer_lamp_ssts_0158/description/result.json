@@ -1,0 +1,54 @@
+{
+  "table_type": "fault_table",
+  "topic": "右后转向灯短路故障检测与处理",
+  "row_semantics": "表格按测试流程的阶段划分，包括前置条件、触发条件、执行动作和退出条件。",
+  "column_semantics": "表格包含两列：左侧为条件/动作描述，右侧为具体的技术细节或状态值。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RRDILghtDrvMdl",
+      "type": "controller_module",
+      "description": "右后转向灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlDircnLghtHwDrvEnPrmm",
+      "value": "1",
+      "description": "硬件驱动使能参数为1"
+    },
+    {
+      "name": "右后转向灯未输出状态",
+      "description": "右后转向灯当前处于未点亮状态"
+    },
+    {
+      "name": "检测到右后转向灯短路到电源",
+      "description": "系统检测到右后转向灯存在短路至电源的故障"
+    },
+    {
+      "name": "检测到短路恢复",
+      "description": "系统检测到之前存在的短路故障已恢复正常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RRDircnLghtFltsts_HW",
+      "value": "0x1 (True)",
+      "description": "硬件层面的右后转向灯故障状态反馈为真（表示检测到故障）"
+    },
+    {
+      "name": "置位 DTC B104A 12",
+      "description": "设置诊断故障代码 B104A 12，用于记录该故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "右后转向灯短路",
+      "description": "右后转向灯与电源之间发生短路"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了右后转向灯短路故障的检测逻辑、触发条件、系统响应动作及退出条件，可用于验证整车电子系统在转向灯短路故障情况下的诊断与保护功能。",
+  "uncertain_points": []
+}

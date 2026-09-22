@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"fault_table\",\n  \"topic\": \"整车外灯转向灯故障状态定义\",\n  \"row_semantics\": \"表格按功能模块划分，每一行代表一种转向灯的故障状态定义，包括右前、左后、右后及左前转向灯。\",\n  \"column_semantics\": \"表格列出了故障状态的输出方式（如CANFD、ICB等），以及对应的网络或硬件故障状态。\",\n  \"has_merged_cells\": true,\n  \"header_levels\": 2,\n  \"core_entities\": [\n    \"FRDircnLghtFltsts\", // 右前转向灯故障状态\n    \"RLDircnLghtFltsts\", // 左后转向灯故障状态\n    \"RRDircnLghtFltsts\", // 右后转向灯故障状态\n    \"FLDircnLghtFltsts_HW\" // 左前转向灯故障状态 (HW表示硬件相关)\n  ],\n  \"core_conditions\": [\n    \"0x0=FRDircnLghtFltsts_0_False;\",\n    \"0x1=FRDircnLghtFltsts_1_True;\",\n    \"0x0=RLDircnLghtFltsts_0_False;\",\n    \"0x1=RLDircnLghtFltsts_1_True;\",\n    \"0x0=RRDircnLghtFltsts_0_False;\",\n    \"0x1=RRDircnLghtFltsts_1_True;\",\n    \"0x0=FLDircnLghtFltsts_HW_0_False;\",\n    \"0x1=FLDircnLghtFltsts_HW_1_True;\"\n  ],\n  \"core_outputs\": [\n    \"输出\",\n    \"CANFD\",\n    \"ICB\",\n    \"LHZCU\",\n    \"网络故障状态\",\n    \"硬线故障状态\"\n  ],\n  \"core_faults\": [\n    \"FRDircnLghtFltsts\",\n    \"RLDircnLghtFltsts\",\n    \"RRDircnLghtFltsts\",\n    \"FLDircnLghtFltsts_HW\"\n  ],\n  \"core_timing_constraints\": [],\n  \"engineering_interpretation\": \"该表格定义了整车外灯系统中四种转向灯（右前、左后、右后、左前）的故障状态信号及其在不同通信接口（如CANFD、ICB、LHZCU）上的输出规则，用于测试验证转向灯故障状态信号的正确性与一致性。\",\n  \"uncertain_points\": []\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

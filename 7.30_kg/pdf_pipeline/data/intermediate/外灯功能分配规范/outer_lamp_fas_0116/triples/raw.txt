@@ -1,0 +1,135 @@
+```json
+[
+  {
+    "head": "紧急制动灯触发",
+    "relation": "前提条件",
+    "tail": "车辆处于紧急制动状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "车辆紧急制动灯处于激活状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "紧急制动灯触发",
+    "relation": "触发条件",
+    "tail": "收到紧急制动IBS请求输入且验证有效 (EmgcBrkA=0x1, EmgcBrkAV=0x0)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "收到[紧急制动IBS]请求输入: EmgcBrkA=0x1=EmgcBrkA_1_True->0x0=EmgcBrkA_0_Fals && EmgcBrkAV=0x0=EmgcBrkAV_0_Valid"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "紧急制动灯触发",
+    "relation": "触发条件",
+    "tail": "危险报警灯开启 (FLDircnLghtCtrl=0x1, FRDircnLghtCtrl=0x1)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "危险报警灯开启: FLDircnLghtCtrl=0x1=FLDircnLghtCtrl_1_on; & FRDircnLghtCtrl=0x1=FRDircnLghtCtrl_1_on;"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "紧急制动灯闪烁",
+    "relation": "执行动作",
+    "tail": "当前车速小于等于2km/h",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "满足触发动作1,且判断当前车速不大于2km/h"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯闪烁",
+    "relation": "执行动作",
+    "tail": "当前车速小于等于2km/h",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "继续执行5s闪烁"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "紧急制动灯闪烁",
+    "relation": "执行动作",
+    "tail": "当前车速大于2km/h",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "满足触发动作1,且判断当前车速大于2km/h"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯闪烁",
+    "relation": "执行动作",
+    "tail": "当前车速大于2km/h",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "继续执行2s闪烁"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制信号置为OFF",
+    "relation": "执行动作",
+    "tail": "延时60ms后将制动灯控制CAN信号置为OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB根据接收到的LHZCU发送BrkLghtCtrl=0x0=OFF,转换成数字灯光灯控CAN信号,控制紧急制动灯熄灭",
+      "ICB同样根据接收到的 LHZCU发送 BrkLghtCtrl=0x0=OFF,延时 60ms 将制动灯控制 CAN 信号 RZCU(配置需求:BrkLghtCtrlDelayPrm): BrkLghtCtrl_HW=0x0=BrkLghtCtrl_HW_0_Off"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "紧急制动灯动画显示退出",
+    "relation": "执行动作",
+    "tail": "接收BrkLghtCtrl=0x0信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB接收信号:BrkLghtCtrl=0x0=BrkLghtCtrl_0_Off,退出紧急制动灯触发的动画显示"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯优先级高于紧急制动灯",
+    "relation": "与...互斥",
+    "tail": "当车辆同时触发制动灯请求和紧急制动灯请求时",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "当车辆同时触发制动灯请求和紧急制动灯请求时,紧急制动灯>制动灯"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "紧急制动灯优先级高于制动灯",
+    "relation": "优先级高于",
+    "tail": "当车辆制动灯处于激活时",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "当车辆制动灯处于激活时,紧急制动灯触发请求,应立即打断制动灯执行动作,执行紧急制动灯请求"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯不响应紧急制动灯请求",
+    "relation": "抑制条件",
+    "tail": "当车辆紧急制动灯处理激活时",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "当车辆紧急制动灯处理激活时,制动灯触发请求,不响应制动灯请求"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯继续执行",
+    "relation": "前提条件",
+    "tail": "紧急制动灯退出后,制动灯还存在请求",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "当紧急制动灯退出后,如监测到制动灯还存在请求,应继续执行制动灯请求"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

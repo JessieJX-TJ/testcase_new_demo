@@ -1,0 +1,64 @@
+```json
+[
+  {
+    "head": "系统检测到左制动灯开路",
+    "relation": "触发条件",
+    "tail": "左制动灯开路故障存在",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "检测到左制动灯开路"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯驱动模块持续发送制动灯状态为关闭",
+    "relation": "控制对象",
+    "tail": "制动灯状态信号 (BrkLghtSts)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "【BrkLghtDrvMdl】持续发送 BrkLghtSts=0(Off)至"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯控制模块至少发送三帧制动灯控制信息",
+    "relation": "包含子功能",
+    "tail": "制动灯驱动模块动作",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "【BrkLghtCtrlMdl】,至少发送三帧"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯驱动模块反馈硬件故障状态",
+    "relation": "输出为",
+    "tail": "硬件故障状态信号 (BrkLghtFltSts_HW)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "【BrkLghtDrvMdl】反馈 BrkLghtFltSts_HW=0x1 (BrkLghtFltSts_HW_1_True)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统置位诊断故障代码 B1041 13",
+    "relation": "诊断关联",
+    "tail": "左制动灯开路故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "3. 置位 DTC B1041 13"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统检测到开路恢复",
+    "relation": "退出条件",
+    "tail": "左制动灯开路故障已排除",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "检测到开路恢复"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

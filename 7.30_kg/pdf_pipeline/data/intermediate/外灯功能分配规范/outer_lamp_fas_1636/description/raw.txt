@@ -1,0 +1,118 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Homecoming Light Control Function",
+  "row_semantics": "Each row represents a specific condition or action sequence in the homecoming light control process.",
+  "column_semantics": "The table is structured into three main sections: Scene Description, Precondition Conditions, Trigger Actions, and Execution Actions. Each section details different aspects of the function's behavior.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExtrLghtCtrlCmmntnTyp",
+      "type": "parameter",
+      "description": "Communication type configuration for external lighting control."
+    },
+    {
+      "name": "ExtrLghtStsCmmntnTyp",
+      "type": "parameter",
+      "description": "Status communication type configuration for external lighting."
+    },
+    {
+      "name": "S32G",
+      "type": "controller",
+      "description": "A central processing unit that handles personalization data and sends commands to the LHZCU."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting Homezone Control Unit, responsible for controlling exterior lights based on received signals."
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Interior Control Box, which receives control signals from the LHZCU for near and far beam lights."
+  ],
+  "core_conditions": [
+    {
+      "name": "SOA",
+      "type": "mode",
+      "description": "Service Oriented Architecture mode for communication."
+    },
+    {
+      "name": "CAN",
+      "type": "mode",
+      "description": "Controller Area Network mode for communication."
+    },
+    {
+      "name": "PPV",
+      "type": "phase",
+      "description": "Pre-Production Validation phase, indicating development stage."
+    },
+    {
+      "name": "CombLightSwSta",
+      "type": "signal",
+      "description": "Combined light switch status, used to determine if the light is in AUTO mode."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ExteriorLightSwitchProcess.CombLightSwStatus.CombLightSwSta",
+      "type": "signal",
+      "description": "Status of the combined light switch, set to AUTO when activated."
+    },
+    {
+      "name": "PersonalizationData.FollowMehomeSet.FoMeHmEnableInfo",
+      "type": "signal",
+      "description": "Enables or disables the follow-me-home feature."
+    },
+    {
+      "name": "UsrMd",
+      "type": "signal",
+      "description": "User mode setting, configured to Comfortable or Factory/Transport modes."
+    },
+    {
+      "name": "VehMd",
+      "type": "signal",
+      "description": "Vehicle mode setting, configured to Factory or Transport modes."
+    },
+    {
+      "name": "ExteriorLightControlSystem.ControlCombinedLight.CombinedLightReq",
+      "type": "signal",
+      "description": "Request signal to turn off combined lights."
+    },
+    {
+      "name": "LDipBeamLghtCtrl",
+      "type": "signal",
+      "description": "Control signal for left dip beam light."
+    },
+    {
+      "name": "RDipBeamLghtCtrl",
+      "type": "signal",
+      "description": "Control signal for right dip beam light."
+    },
+    {
+      "name": "LDipBeamLghtCtrl_HW",
+      "type": "signal",
+      "description": "Hardware control signal for left dip beam light."
+    },
+    {
+      "name": "RDipBeamLghtCtrl_HW",
+      "type": "signal",
+      "description": "Hardware control signal for right dip beam light."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "500ms",
+      "type": "timing",
+      "description": "The S32G sends a periodic update to the LHZCU every 500 milliseconds."
+    }
+  ],
+  "engineering_interpretation": "This table defines the logic for the 'Homecoming Light' function, detailing how the system responds to user input (e.g., turning on the car) by activating and controlling exterior lights. It specifies the conditions under which the function is enabled, the actions triggered by those conditions, and the resulting outputs to various controllers.",
+  "uncertain_points": [
+    "The exact timing of the 500ms update from S32G to LHZCU is not specified beyond its periodic nature.",
+    "The specific implementation details of the ICB's response to control signals are not provided."
+  ]
+}
+```

@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯大灯高度手动调节功能的接口与状态定义",
+  "row_semantics": "表格中的每一行代表一个独立的服务接口或状态查询，描述了与手动大灯高度调节相关的参数、调用方式及返回状态。",
+  "column_semantics": {
+    "第一列": "功能模块或服务名称",
+    "第二列": "消费方（Consumption）",
+    "第三列": "SOA (Service-Oriented Architecture) 接口",
+    "第四列": "ICB (Internal Communication Bus) 模块",
+    "第五列": "LHZCU (Local Host Control Unit) 控制器",
+    "第六至第八列": "预留或未使用的列"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "HeadLampLevelSet",
+      "type": "function",
+      "description": "手动大灯高度调节设置接口，用于请求调整大灯高度级别。"
+    },
+    {
+      "name": "LevelingAdjustFucProStatus",
+      "type": "function",
+      "description": "手动大灯高度调节功能状态查询接口，用于检查调节条件是否满足。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "HeadLampLevelSetInfo",
+      "type": "input_parameter",
+      "description": "手动大灯高度调节请求的参数，包含0x1至0x4四个级别，分别对应最低高、较低标准、标准较低、高最低。",
+      "values": [
+        "0x1=Level1; 最低 高",
+        "0x2=Level2; 较低 标准",
+        "0x3=Level3; 标准 较低",
+        "0x4=Level4; 高 最低"
+      ]
+    },
+    {
+      "name": "LevelingAdjustFucProsSta",
+      "type": "output_parameter",
+      "description": "手动大灯高度调节功能状态的返回值，包含NoRequest、Leveling1至Leveling4以及Unknown共六个状态。",
+      "values": [
+        "0x0=NoRequest;",
+        "0x1=Leveling1;",
+        "0x2=Leveling2;",
+        "0x3=Leveling3;",
+        "0x4=Leveling4;",
+        "0x5=Unknown;"
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了手动大灯高度调节功能的两个核心接口及其参数，可用于验证手动大灯高度调节请求的正确性以及调节功能状态的查询逻辑。",
+  "uncertain_points": []
+}
+```

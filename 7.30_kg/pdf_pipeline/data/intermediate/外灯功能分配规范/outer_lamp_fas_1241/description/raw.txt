@@ -1,0 +1,96 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "使能开关打开时开启迎宾光毯灯的功能规范",
+  "row_semantics": "表格按功能描述、前置条件、触发条件、执行动作和备注的顺序组织，详细定义了在特定条件下迎宾光毯灯（Welcome Lamp）如何被激活。",
+  "column_semantics": "表格分为多个逻辑区域，包括场景描述、前置条件、触发条件、执行动作和备注。前置条件、触发条件和执行动作部分进一步细分为多行，每行代表一个具体的条件或动作。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "迎宾光毯灯 (Welcome Lamp)",
+      "type": "功能",
+      "description": "车辆外部的一种照明功能，用于在车门打开时提供迎宾效果。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "外饰灯光控制单元，负责接收信号并控制迎宾光毯灯的开关状态。"
+    },
+    {
+      "name": "ExteriorRearviewMirrorDriver",
+      "type": "控制器/模块",
+      "description": "后视镜驱动器，负责管理后视镜的状态，包括折叠和展开。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlWelcomeGrandLampEnPrm",
+      "type": "输入信号",
+      "description": "车辆是否具备迎宾光毯灯功能的配置参数，值为0x1表示启用。",
+      "value": "0x1"
+    },
+    {
+      "name": "PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet",
+      "type": "输入信号",
+      "description": "通过大屏设置的迎宾光毯灯开关状态，值为0x0=Enabled表示启用。",
+      "value": "0x0=Enabled"
+    },
+    {
+      "name": "UsG Md",
+      "type": "系统状态",
+      "description": "整车电源模式，非休眠状态，值不等于0x0=UsG Md_0_Sleep。",
+      "value": "!= 0x0=UsG Md_0_Sleep"
+    },
+    {
+      "name": "档位",
+      "type": "系统状态",
+      "description": "整车当前的档位，必须为P挡。",
+      "value": "P挡"
+    },
+    {
+      "name": "AutoLghtOnReq",
+      "type": "输入信号",
+      "description": "光雨白天黑夜信号，值为1表示黑夜。",
+      "value": "==1"
+    },
+    {
+      "name": "ExteriorRearviewMirrorDriver.OutsideMirrorFoldStatus.OutsideMirrorFoldSts",
+      "type": "输入信号",
+      "description": "后视镜的折叠状态，值为1表示后视镜已展开。",
+      "value": "==1"
+    },
+    {
+      "name": "VehMd",
+      "type": "模式名",
+      "description": "车辆模式，进入展厅模式时，值为0x5=VehMd_5_EXHIBITION。",
+      "value": "0x5=VehMd_5_EXHIBITION"
+    },
+    {
+      "name": "任一车门（不含两盖）",
+      "type": "输入信号",
+      "description": "任意一个车门（不包括后备箱盖和前备箱盖）从关闭状态变为打开状态。",
+      "value": "跳变为打开"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "WelcomeLamp_HSD",
+      "type": "输出信号",
+      "description": "迎宾光毯灯的硬线端口信号，3秒内渐亮。",
+      "action": "渐亮"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "WelcomeLamp_HSD",
+      "type": "定时",
+      "description": "迎宾光毯灯的硬线端口信号在3秒内渐亮。",
+      "duration": "3s"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了在特定前置条件和触发条件下，迎宾光毯灯（Welcome Lamp）如何被激活的逻辑规则，可用于验证车辆在不同场景下迎宾光毯灯功能的行为是否符合设计要求。",
+  "uncertain_points": []
+}
+```

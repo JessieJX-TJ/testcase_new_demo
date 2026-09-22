@@ -1,0 +1,100 @@
+```json
+[
+  {
+    "head": "近光灯开启",
+    "relation": "触发条件",
+    "tail": "LHZCU判断CombLightFucProSta=0x4且SidePositionAndDippedBeam ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "CombLightFucProSta",
+      "SidePositionAndDippedBeam"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "relation": "前提条件",
+    "head": "前雾灯开启",
+    "tail": "LHZCU判断FrontFogLightFucProsSta=0x1且Only FrontFogLight ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "FrontFogLightFucProsSta",
+      "Only FrontFogLight"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "relation": "前提条件",
+    "head": "前雾灯开启",
+    "tail": "LHZCU判断FrontFogLightFucProsSta=0x3且FrontFogLightAndDippedLight ON || FrontFogLightAndSideLight ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "FrontFogLightFucProsSta",
+      "FrontFogLightAndDippedLight",
+      "FrontFogLightAndSideLight"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "relation": "前提条件",
+    "head": "远光灯开启且非闪烁",
+    "tail": "LHZCU判断MainBeamLightFucProsSta=0x1且MainBeamLghtOnReq!=0x2且MainBeamLghtSwReq_2_Flash",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "MainBeamLightFucProsSta",
+      "MainBeamLghtOnReq",
+      "MainBeamLghtSwReq_2_Flash"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "relation": "抑制条件",
+    "head": "位置灯关闭请求",
+    "tail": "LHZCU判断外灯组合开关挡位为位置灯光档或近光灯档或近光灯Auto点亮且CombLightFucProStatus.CombLightFucProSta =0x4=SidePositionAndDippedBeam ON",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "LHZCU",
+      "ExteriorLightSwitchProcess",
+      "CombLightFucProStatus",
+      "SidePositionAndDippedBeam"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "relation": "前提条件",
+    "head": "日间行车灯关闭",
+    "tail": "LHZCU判断DayRunningLightFucProStatus.DayRunningLightFucProsSta=0x0=OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "DayRunningLightFucProStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "relation": "输入为",
+    "head": "位置灯控制请求",
+    "tail": "NumPltLampCtrlDelayPrm信号，延时60ms",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "NumPltLampCtrlDelayPrm",
+      "60ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "relation": "超时约束",
+    "head": "位置灯控制请求",
+    "tail": "组合服务延时60ms调用",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "NumPltLampCtrlDelayPrm",
+      "60ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

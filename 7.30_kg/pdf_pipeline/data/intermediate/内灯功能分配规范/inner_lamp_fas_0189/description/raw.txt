@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "整车电子电器系统中乘客座位配置参数定义",
+  "row_semantics": "表格的每一行代表一个具体的配置项或其相关属性，用于定义和描述车辆中乘客座位的配置参数。",
+  "column_semantics": {
+    "配置项/Item": "参数的名称或标识符，用于唯一确定该配置项。",
+    "配置描述/Description": "对配置项的详细说明或功能描述。",
+    "参数范围/Range": "该配置项可接受的数值范围。",
+    "分辨率/Factor": "参数的分辨率或量化因子，通常用于将数值转换为实际值。",
+    "默认值/Default": "当未指定时，该配置项的默认取值。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Configure Passenger",
+      "type": "功能名",
+      "description": "用于配置车辆中乘客座位数量的功能项。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0-1",
+      "type": "参数范围",
+      "description": "表示该配置项的参数范围是0到1，可能对应两种座位配置（如五座或六座）。",
+      "unit": "无"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "0x0",
+      "type": "输出信号",
+      "description": "表示五座配置。",
+      "value": "0x0"
+    },
+    {
+      "name": "0x1",
+      "type": "输出信号",
+      "description": "表示六座配置。",
+      "value": "0x1"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆中乘客座位配置的参数及其默认值，可用于验证车辆在不同座位配置下的电子电器系统行为是否符合设计规范。",
+  "uncertain_points": [
+    "表格中'分辨率/Factor'列的具体作用未明确说明，可能需要进一步确认其在系统中的具体应用方式。",
+    "表格中'默认值/Default'列包含多个型号（如P12LM1, S12LM2/T1等）的默认值，但未明确这些型号与具体车型或配置的关系，可能存在不确定性。"
+  ]
+}
+```

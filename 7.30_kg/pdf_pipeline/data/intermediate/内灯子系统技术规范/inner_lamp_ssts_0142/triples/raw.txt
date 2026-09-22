@@ -1,0 +1,100 @@
+```json
+[
+  {
+    "head": "DoorRR3LampColorCmd_1 控制 rear right door ambient lamp 的颜色",
+    "relation": "输入为",
+    "tail": "LIN 接口的 DoorAm btLampC_RR 信号",
+    "triple_type": "输入关系",
+    "evidence_terms": [
+      "DoorRR3LampColorCmd_1",
+      "LIN",
+      "DoorAm btLampC_RR"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR3LampBrtnsCmd_1 控制 rear right door ambient lamp 的亮度",
+    "relation": "输入为",
+    "tail": "LIN 接口的 DoorAm btLampC_RR 信号",
+    "triple_type": "输入关系",
+    "evidence_terms": [
+      "DoorRR3LampBrtnsCmd_1",
+      "LIN",
+      "DoorAm btLampC_RR"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR3LampBrthngCmd_1 控制 rear right door ambient lamp 的呼吸模式",
+    "relation": "输入为",
+    "tail": "LIN 接口的 DoorAm btLampC_RR 信号",
+    "triple_type": "输入关系",
+    "evidence_terms": [
+      "DoorRR3LampBrthngCmd_1",
+      "LIN",
+      "DoorAm btLampC_RR"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "当 DoorRR3LampColorCmd_1 的值为 0x00 时，rear right door ambient lamp 的颜色保持不变",
+    "relation": "前提条件",
+    "tail": "指令值为 0 或未定义颜色号",
+    "triple_type": "功能规则",
+    "evidence_terms": [
+      "DoorRR3LampColorCmd_1",
+      "0x00",
+      "保持颜色不变"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "当 DoorRR3LampBrtnsCmd_1 的值为 0x00 时，rear right door ambient lamp 的亮度保持不变",
+    "relation": "前提条件",
+    "tail": "指令值为 0",
+    "triple_type": "功能规则",
+    "evidence_terms": [
+      "DoorRR3LampBrtnsCmd_1",
+      "0x00",
+      "保持亮度不变"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR3LampBrthngCmd_1 的不同 Code 值对应不同的呼吸周期",
+    "relation": "依赖于",
+    "tail": "Code 值 (如 Rate0, Rate1, ..., Rate15)",
+    "triple_type": "功能规则",
+    "evidence_terms": [
+      "DoorRR3LampBrthngCmd_1",
+      "Code 值",
+      "周期"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR3LampBrthngCmd_1 的呼吸模式 0x00 表示无请求",
+    "relation": "输出为",
+    "tail": "原呼吸模式值 / No Request",
+    "triple_type": "功能规则",
+    "evidence_terms": [
+      "DoorRR3LampBrthngCmd_1",
+      "0x00",
+      "No Request"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DoorRR3LampBrthngCmd_1 的呼吸模式 0x01-0x15 对应不同的呼吸速率",
+    "relation": "包含子功能",
+    "tail": "Rate1 (500ms) 到 Rate15 (4s)",
+    "triple_type": "功能规则",
+    "evidence_terms": [
+      "DoorRR3LampBrthngCmd_1",
+      "Code 值",
+      "周期"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

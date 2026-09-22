@@ -1,0 +1,66 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Status Subscription",
+  "row_semantics": "Each row represents a specific service interface call for subscribing to the status of a direction light (either right or left turn signal).",
+  "column_semantics": {
+    "A": "Function/module name (DirectionLight.DirectionLightStatus)",
+    "B": "Consumption type (SOA, ICB, LHZCU)",
+    "C": "Network status",
+    "D": "Description of the service interface and its purpose",
+    "E": "Interface details including parameter name and instance ID"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "function",
+      "description": "Controls and monitors the status of vehicle direction lights."
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "service_interface",
+      "description": "Provides the status of the direction lights (ON/OFF/Unknown)."
+    },
+    {
+      "name": "SOA",
+      "type": "communication_protocol",
+      "description": "Service-Oriented Architecture used for inter-module communication."
+    },
+    {
+      "name": "ICB",
+      "type": "communication_protocol",
+      "description": "Inter-Computer Bus used for communication between different ECUs."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Local Host Control Unit responsible for managing local vehicle functions."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RightTurnSignalSubscription",
+      "description": "Subscription to the status of the right front turn signal.",
+      "instance_id": 6
+    },
+    {
+      "name": "LeftTurnSignalSubscription",
+      "description": "Subscription to the status of the left rear turn signal.",
+      "instance_id": 7
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "signal",
+      "description": "The current status of the direction light (0x0=OFF, 0x1=ON, 0x2=Unknown)."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interfaces for subscribing to the status of vehicle direction lights (right front and left rear), specifying the communication protocols (SOA, ICB, LHZCU) and network status required for each subscription. It is used to verify that the system correctly subscribes to and reports the status of these lights.",
+  "uncertain_points": []
+}
+```

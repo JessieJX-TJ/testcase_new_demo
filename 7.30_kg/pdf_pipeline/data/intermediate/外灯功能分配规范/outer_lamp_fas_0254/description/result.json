@@ -1,0 +1,45 @@
+{
+  "table_type": "logic_table",
+  "topic": "前雾灯控制逻辑与接口响应规范",
+  "row_semantics": "表格按执行动作顺序描述了前雾灯控制模块(LHZCU)的接口响应、服务调用及状态变化过程，涵盖了从用户操作到硬件输出的完整控制链路。",
+  "column_semantics": "表格包含两列：左侧为执行动作序号和描述，右侧为对应的动作细节和代码片段。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "LHZCU (前雾灯控制模块)",
+    "ICB (外灯控制组合服务)",
+    "HMI子系统ICB (人机交互界面子系统ICB)",
+    "RHZCU (右前雾灯控制模块)",
+    "LFRtFogLightCtrl (左前雾灯控制信号)",
+    "RFRtFogLightCtrl (右前雾灯控制信号)",
+    "FrontFogLightSwStatus (前雾灯开关状态)",
+    "FrontFogLightFucProStatus (前雾灯功能状态)",
+    "FrontFogLightState (前雾灯状态)",
+    "FrontFogLightErrorStatus (前雾灯错误状态)"
+  ],
+  "core_conditions": [
+    "FrontFogLightSwStatus = OFF",
+    "FrontFogLightFucProStatus = OFF",
+    "FrontFogLightCtrl_0_Off",
+    "FrontFogLightCtrl_HW_0_Off",
+    "exFrontFogLghtHwDrvEnPrm = 0x0"
+  ],
+  "core_outputs": [
+    "LFRtFogLightCtrl = 0x0",
+    "RFRtFogLightCtrl = 0x0",
+    "FrontFogLightState = OFF",
+    "FrontFogLightErrorStatus = No Error"
+  ],
+  "core_faults": [
+    "FrontFogLightErrorStatus"
+  ],
+  "core_timing_constraints": [
+    "c、持续2min:"
+  ],
+  "engineering_interpretation": "该表格详细定义了前雾灯控制系统在不同模块间的服务调用、信号转换及状态反馈的逻辑流程，可用于验证前雾灯从开关操作到硬件点亮的完整控制路径是否符合设计规范。",
+  "uncertain_points": [
+    "具体CAN信号的编码细节未明确说明",
+    "ICB服务的具体实现逻辑未展开",
+    "HMI子系统的具体交互方式未描述"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯控制系统中后雾灯与近光灯的同步控制要求",
+  "row_semantics": "表格分为两部分：第一部分为系统状态参数定义，第二部分为功能实现的备注说明（包括同步性要求和组合开关模式下的行为）",
+  "column_semantics": "表格包含一个灰色背景的标题列（标注“备注”）和一个橙色背景的数据区域，数据区域包含两行文本描述。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "controller",
+      "description": "外灯控制系统，负责管理车辆外部灯光"
+    },
+    {
+      "name": "RearFogLightSts",
+      "type": "output_signal",
+      "description": "后雾灯状态信号，指示后雾灯是否开启"
+    },
+    {
+      "name": "RearFogLghtSta",
+      "type": "system_state",
+      "description": "后雾灯状态变量，表示后雾灯的实际状态"
+    },
+    {
+      "name": "RearFogLightErrSta",
+      "type": "fault_state",
+      "description": "后雾灯错误状态信号，指示是否存在故障"
+    },
+    {
+      "name": "RearFogLghtErrSta",
+      "type": "fault_state",
+      "description": "后雾灯错误状态变量，表示后雾灯的故障状态"
+    },
+    {
+      "name": "Auto",
+      "type": "mode_name",
+      "description": "组合开关的自动模式"
+    },
+    {
+      "name": "Daylight Mode",
+      "type": "mode_name",
+      "description": "白天模式"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "ExteriorLightControlSystem.RearFogLightSts = 0x0 = Off",
+      "description": "后雾灯处于关闭状态"
+    },
+    {
+      "condition": "ExteriorLightControlSystem.RearFogLghtSta = 0x0 = No Error",
+      "description": "后雾灯无故障"
+    },
+    {
+      "condition": "Combination Switch is in Auto mode",
+      "description": "组合开关设置为自动模式"
+    },
+    {
+      "condition": "Daylight Mode is active",
+      "description": "车辆处于白天模式"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "RearFogLightSts",
+      "description": "后雾灯状态信号，用于控制后雾灯的开启/关闭"
+    },
+    {
+      "output": "RearFogLghtSta",
+      "description": "后雾灯状态变量，反映后雾灯的实际工作状态"
+    },
+    {
+      "output": "Near Light/Position Lamp",
+      "type": "output_signal",
+      "description": "近光灯或位置灯，受后雾灯控制"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "RearFogLightErrSta",
+      "description": "后雾灯存在错误状态"
+    },
+    {
+      "fault": "RearFogLghtErrSta",
+      "description": "后雾灯存在错误状态变量"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "40ms",
+      "description": "后雾灯和近光灯在开启和熄灭时的最大延时不能超过40毫秒"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了外灯控制系统中后雾灯与近光灯的同步控制要求，包括状态参数、同步延时限制以及在特定模式下后雾灯对近光灯/位置灯的控制逻辑，可用于验证后雾灯与近光灯的同步性能及组合开关模式下的灯光响应。",
+  "uncertain_points": []
+}

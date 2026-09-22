@@ -1,0 +1,117 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "碰撞安全相关外灯控制逻辑",
+  "row_semantics": "表格按功能阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "第一列定义了功能阶段（如前置条件、触发条件等），第二列详细描述了该阶段的逻辑条件或动作。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "HzrdLightSwOAEnPrm",
+      "type": "parameter",
+      "description": "危险灯开关输出使能参数，用于控制危险灯是否启用"
+    },
+    {
+      "name": "AirbagDpl",
+      "type": "signal",
+      "description": "气囊部署状态信号"
+    },
+    {
+      "name": "AirbagDplInvsn",
+      "type": "signal",
+      "description": "气囊部署反向信号"
+    },
+    {
+      "name": "VehCrashTyp",
+      "type": "signal",
+      "description": "车辆碰撞类型信号"
+    },
+    {
+      "name": "CrashOut",
+      "type": "signal",
+      "description": "碰撞硬线信号"
+    },
+    {
+      "name": "VehMd",
+      "type": "signal",
+      "description": "车辆模式信号"
+    },
+    {
+      "name": "VehMdV",
+      "type": "signal",
+      "description": "车辆模式有效信号"
+    },
+    {
+      "name": "HzrdLightSwMdl",
+      "type": "controller",
+      "description": "危险灯开关模块，负责控制危险灯的输出"
+    },
+    {
+      "name": "VehCrashHazdReq",
+      "type": "output_signal",
+      "description": "车辆碰撞危险灯请求信号，用于控制危险灯的点亮"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "HzrdLightSwOAEnPrm == 0 (Disable)",
+      "description": "危险灯开关输出使能参数被禁用"
+    },
+    {
+      "condition": "未检测到碰撞网络信号",
+      "subconditions": [
+        "AirbagDpl == 0x0",
+        "AirbagDplInvsn == 0x1",
+        "VehCrashTyp == 0x0"
+      ],
+      "description": "未检测到气囊部署、气囊部署反向信号以及车辆碰撞类型信号"
+    },
+    {
+      "condition": "检测到碰撞硬线信号 CrashOut 占空比从 20% (±10%) 反转为 80% (±10%) 3个周期",
+      "description": "碰撞硬线信号占空比在3个周期内从低电平反转为高电平"
+    },
+    {
+      "condition": "检测到车辆未处于碰撞模式 VehMd != 1_CRASH & VehMdV == 1_Valid",
+      "description": "车辆模式信号不等于碰撞模式且车辆模式有效"
+    },
+    {
+      "condition": "检测到碰撞网络信号",
+      "subconditions": [
+        "AirbagDpl == 0x1",
+        "AirbagDplInvsn == 0x0",
+        "VehCrashTyp != 0x0"
+      ],
+      "description": "检测到气囊部署、气囊部署反向信号以及车辆碰撞类型信号"
+    },
+    {
+      "condition": "检测到碰撞硬线信号 CrashOut 占空比从 80% (±10%) 反转为 20% (±10%) 3个周期",
+      "description": "碰撞硬线信号占空比在3个周期内从高电平反转为低电平"
+    },
+    {
+      "condition": "检测到车辆处于碰撞模式 VehMd == 1_CRASH & VehMdV == 1_Valid",
+      "description": "车辆模式信号等于碰撞模式且车辆模式有效"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "VehCrashHazdReq",
+      "value": "0x0 (Off)",
+      "description": "持续发送危险灯关闭请求信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "condition": "CrashOut 占空比反转",
+      "timing": "3个周期",
+      "description": "碰撞硬线信号占空比反转需要持续3个周期"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在特定条件下（如未检测到碰撞信号且车辆未处于碰撞模式）如何控制危险灯的输出，主要用于验证危险灯在非碰撞场景下的正确行为。",
+  "uncertain_points": [
+    "具体控制器实现细节未明确说明",
+    "表格中未提及具体的测试环境或边界条件"
+  ]
+}
+```

@@ -1,0 +1,55 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯转向灯控制逻辑",
+  "row_semantics": "表格按功能执行的阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semematics": "表格包含两列：第一列为阶段描述（如前置条件），第二列为该阶段的具体内容或规则。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "转向灯反馈系统开启参数，值为1表示启用"
+    },
+    {
+      "name": "RLDILightDrvMdl",
+      "type": "controller",
+      "description": "转向灯驱动模块"
+    },
+    {
+      "name": "DILightCtrlMdl",
+      "type": "controller",
+      "description": "转向灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "前置条件",
+      "description": "DILightFbkSOAEnPrm == 1 (Enable)"
+    },
+    {
+      "name": "触发条件",
+      "description": "收到【DILightCtrlMdl】发送的DirectionLightControl.DirectionLightCtrReq == 0 (Off) InstanceID=3"
+    },
+    {
+      "name": "退出条件",
+      "description": "收到【DILightCtrlMdl】发送的DirectionLightControl.DirectionLightCtrReq == 1 (On) InstanceID=3"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RLDILightDrvMdl",
+      "action": "停止驱动左后转向灯输出 (DILamp_LH_HSD)",
+      "description": "当接收到关闭请求时，停止对应转向灯的驱动输出"
+    },
+    {
+      "name": "RLDILightDrvMdl",
+      "action": "持续发送 DirectionLightControl.DirectionLightSta == 0 (Off) InstanceID=3 至【DILightCtrlMdl】，至少发送三帧",
+      "description": "持续向控制模块反馈转向灯处于关闭状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子系统中转向灯控制模块与驱动模块之间的交互逻辑，可用于验证转向灯在接收到关闭请求后的正确响应行为，包括驱动停止和状态反馈。",
+  "uncertain_points": []
+}

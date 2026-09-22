@@ -1,0 +1,63 @@
+[
+  {
+    "head": "氛围灯亮度按照500ms亮度100%,500ms亮度0%循环执行",
+    "relation": "触发条件",
+    "tail": "接收到ZCU发送的UpIPALampBrthngCmd_1中的0x2(Rate2 1s 0-100%跳变)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ZCU",
+      "UpIPALampBrthngCmd_1",
+      "Rate2",
+      "氛围灯"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0146",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯亮度保持100%",
+    "relation": "状态保持条件",
+    "tail": "在500ms内,接收到UpIPALampBrthngCmd_1信号值为1000",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "UpIPALampBrthngCmd_1",
+      "氛围灯",
+      "500ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0146",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯亮度保持0%",
+    "relation": "状态保持条件",
+    "tail": "在500ms内,接收到UpIPALampBrthngCmd_1信号值为0",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "UpIPALampBrthngCmd_1",
+      "氛围灯",
+      "500ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0146",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "氛围灯亮度周期性切换",
+    "relation": "依赖于",
+    "tail": "UpIPALampBrthngCmd_1信号的Rate2变化率(1s 0-100%)",
+    "triple_type": "模式依赖关系",
+    "evidence_terms": [
+      "UpIPALampBrthngCmd_1",
+      "Rate2",
+      "氛围灯"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0146",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  }
+]

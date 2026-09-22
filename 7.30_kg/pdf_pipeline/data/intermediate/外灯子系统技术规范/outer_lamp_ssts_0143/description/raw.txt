@@ -1,0 +1,63 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Dipped Beam Light Control Logic",
+  "row_semantics": "Each row represents a distinct state or condition in the control logic for dipped beam lights, including entry conditions, actions performed, and exit conditions.",
+  "column_semantics": {
+    "Column 1": "Condition Type (e.g., Precondition, Trigger Condition, Execution Action, Exit Condition, Exception Handling)",
+    "Column 2": "Description of the specific condition, signal, or action related to the dipped beam light control"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DipdBeamLghtCtrlMdl",
+      "type": "Controller/Module",
+      "description": "Main module responsible for controlling dipped beam lights."
+    },
+    {
+      "name": "LDipdBeamLghtDrvMdl",
+      "type": "Controller/Module",
+      "description": "Driver module that controls the physical output of the dipped beam lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ControlDippedBeamLight.DippedBeamLightReq",
+      "description": "Request signal from DipdBeamLghtCtrlMdl to turn dipped beam light on or off.",
+      "values": [
+        "1 (On)",
+        "0 (Off)"
+      ]
+    },
+    {
+      "name": "ExteriorLightControl.DippedBeamLightRequestStatus.DippedBeamLightReqSts",
+      "description": "Status signal indicating the request status of the dipped beam light.",
+      "values": [
+        "0x1 (On)",
+        "0x0 (Off)"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LDipdBeamLghtDrvMdl.DipdBeamHdlmp_LH_HSD",
+      "description": "Physical output signal driving the left-hand dipped beam light.",
+      "type": "Output Signal"
+    },
+    {
+      "name": "LDipdBeamLghtDrvMdl.DippedBeamLightStatus",
+      "description": "Status signal sent back to indicate the current state of the dipped beam light.",
+      "type": "Output Signal"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "description": "At least three frames of DippedBeamLightStatus must be sent to DipdBeamLghtCtrlMdl when the dipped beam light is turned on."
+    }
+  ],
+  "engineering_interpretation": "This table defines the state machine logic for controlling dipped beam lights, specifying how the system responds to requests to turn the lights on or off, what actions are taken during each state, and how the system transitions between states based on input signals and internal statuses.",
+  "uncertain_points": []
+}
+```

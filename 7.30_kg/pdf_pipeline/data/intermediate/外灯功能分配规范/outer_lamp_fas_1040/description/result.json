@@ -1,0 +1,74 @@
+{
+  "table_type": "logic_table",
+  "topic": "昼间行车灯（Day Running Light, DRL）控制逻辑",
+  "row_semantics": "表格按时间顺序或流程步骤描述了DRL的控制逻辑，分为前置条件、触发动作和执行动作三个阶段。",
+  "column_semantics": "表格包含两列：左侧为条件/动作描述，右侧为详细的技术实现细节。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "昼间行车灯 (Day Running Light)",
+      "type": "功能",
+      "description": "车辆在白天行驶时开启的照明灯，用于提高车辆的可见性。"
+    },
+    {
+      "name": "外灯组合服务 ICB (Exterior Light Control System.Service.ICB)",
+      "type": "控制器/模块",
+      "description": "负责处理外部灯光相关请求的服务接口，包括DRL的控制请求。"
+    },
+    {
+      "name": "昼间行车灯控制模块 LHZCU (Lighting and Hazard Control Unit)",
+      "type": "控制器/模块",
+      "description": "负责接收并执行DRL相关的控制指令，管理DRL的状态和故障反馈。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "昼间行车灯处于激活状态",
+      "type": "系统状态",
+      "description": "DRL当前处于点亮状态，是触发后续控制逻辑的前提条件。"
+    },
+    {
+      "name": "SOA通讯方式",
+      "type": "模式名",
+      "description": "Service-Oriented Architecture (SOA) 通讯方式，用于车辆内部各模块之间的数据交换。"
+    },
+    {
+      "name": "CAN通讯方式",
+      "type": "模式名",
+      "description": "Controller Area Network (CAN) 通讯方式，另一种车辆内部数据传输协议。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DRL熄灭",
+      "type": "输出信号",
+      "description": "通过ICB将DRL的控制信号转换为CAN信号，最终导致DRL熄灭。"
+    },
+    {
+      "name": "DRL状态反馈",
+      "type": "输出信号",
+      "description": "LHZCU将DRL的当前状态（如熄灭、故障等）反馈给ICB。"
+    },
+    {
+      "name": "DRL故障状态反馈",
+      "type": "输出信号",
+      "description": "LHZCU将DRL的故障状态（如无错误、错误类型等）反馈给ICB。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DRL熄灭",
+      "type": "故障状态",
+      "description": "DRL未能正常熄灭，可能由控制信号发送失败或模块故障引起。"
+    },
+    {
+      "name": "DRL无错误",
+      "type": "故障状态",
+      "description": "DRL运行正常，无任何故障状态。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定前置条件下，如何通过ICB和LHZCU协同工作来控制DRL的熄灭过程，并确保状态和故障信息能够正确反馈。可用于验证DRL控制逻辑的正确性，包括信号转换、状态反馈和故障处理。",
+  "uncertain_points": []
+}

@@ -1,0 +1,56 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 近光灯状态获取",
+  "row_semantics": "表格按功能点（DippedBeamLightStatus）分组，分别描述右侧和左侧近光灯的状态获取逻辑。",
+  "column_semantics": {
+    "第一列": "功能点名称",
+    "第二列": "消费方 (SOA)",
+    "第三列": "RHZCU",
+    "第四列": "LHZCU",
+    "第五列": "未指定控制器",
+    "第六列": "硬线状态/网络状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight.DippedBeamLightStatus",
+      "type": "功能名",
+      "description": "近光灯状态获取服务接口"
+    },
+    {
+      "name": "RHZCU",
+      "type": "控制器/模块名",
+      "description": "右侧近光灯控制单元"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "左侧近光灯控制单元"
+    },
+    {
+      "name": "SOA",
+      "type": "输入信号",
+      "description": "Service-Oriented Architecture，表示服务调用方"
+    },
+    {
+      "name": "ICB",
+      "type": "输入信号",
+      "description": "Internal Communication Bus，内部通信总线"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightSta",
+      "type": "输出信号",
+      "description": "近光灯状态参数，包括OFF、ON、Unknown三种值"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中近光灯状态的查询接口规范，可用于验证不同控制器（RHZCU/LHZCU）与服务调用方（SOA）之间通过特定接口（DippedBeamLightStatus）正确获取左右侧近光灯状态的功能。",
+  "uncertain_points": []
+}
+```

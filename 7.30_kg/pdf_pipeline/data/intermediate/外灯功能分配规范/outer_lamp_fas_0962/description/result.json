@@ -1,0 +1,91 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 近光灯控制",
+  "row_semantics": "表格的每一行代表一个独立的近光灯控制服务接口，分别用于控制左侧和右侧近光灯以及左侧近光灯（可能为不同路径或模块）。",
+  "column_semantics": {
+    "功能名": "DippedBeamLight.ControlDippe dBeamLight (重复项，实际为三个不同的接口名称)",
+    "消费": "表示该功能由哪个系统或模块消费",
+    "SOA": "Service-Oriented Architecture, 表示服务面向架构",
+    "LHZCU": "Local High-level Central Unit, 局部高层中央单元",
+    "ICB": "Integrated Control Box, 集成控制盒",
+    "RHZCU": "Right Local High-level Central Unit, 右侧局部高层中央单元",
+    "BS→CS": "Body System to Chassis System, 车身系统到底盘系统的通信"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight.ControlDippe dBeamLight",
+      "type": "function_name",
+      "description": "控制近光灯的服务接口"
+    },
+    {
+      "name": "ControlDippedBeamLight",
+      "type": "interface_name",
+      "description": "服务接口名称"
+    },
+    {
+      "name": "{DippedBeamLightReq}",
+      "type": "parameter_name",
+      "description": "请求参数名称"
+    },
+    {
+      "name": "InstanceID",
+      "type": "parameter",
+      "description": "实例ID，用于区分不同的控制实例"
+    },
+    {
+      "name": "0x0=OFF; 0x1=ON;",
+      "type": "parameter_value",
+      "description": "控制状态参数值，0x0表示关闭，0x1表示开启"
+    },
+    {
+      "name": "SOA",
+      "type": "controller_module",
+      "description": "服务面向架构，可能指软件服务层"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "局部高层中央单元，车身域控制器"
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "集成控制盒，车身控制模块"
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller_module",
+      "description": "右侧局部高层中央单元"
+    },
+    {
+      "name": "BS→CS",
+      "type": "communication_path",
+      "description": "车身系统到底盘系统的通信路径"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "description": "通过实例ID区分控制目标（左侧、右侧或特定路径的左侧近光灯）"
+    },
+    {
+      "name": "{DippedBeamLightReq}",
+      "description": "通过参数值0x0或0x1控制近光灯的开关状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "近光灯点亮或熄灭",
+      "description": "执行结果，控制左侧或右侧近光灯的状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯近光灯的控制服务接口，包括左侧、右侧及特定路径的左侧近光灯的控制逻辑，明确了接口名称、参数类型、参数值含义以及涉及的控制器模块，可用于验证不同控制器对近光灯的控制功能是否符合规范。",
+  "uncertain_points": [
+    "表格中'Consumption'列的具体含义未明确说明，仅列出相关控制器模块，未说明其在功能实现中的具体作用。",
+    "表格中'BS→CS'路径的具体实现细节未描述，仅作为通信路径列出。"
+  ]
+}

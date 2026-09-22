@@ -1,0 +1,52 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯近光灯状态查询接口规范",
+  "row_semantics": "表格按功能模块划分，每一行代表一个独立的接口调用规范，描述了获取特定近光灯状态的方法。",
+  "column_semantics": "表格包含功能模块、接口名称、参数定义、实例ID及状态值定义等信息，以及与各控制器（SOA, ICB, LHZCU）的交互关系和网络状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "function",
+      "description": "查询左侧近光灯状态的接口"
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "function",
+      "description": "查询右侧近光灯状态的接口"
+    },
+    {
+      "name": "DippedBeamLightSta",
+      "type": "function",
+      "description": "查询近光灯整体状态的接口"
+    },
+    {
+      "name": "SOA",
+      "type": "controller",
+      "description": "车身域控制器"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "集成控制盒"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "左后区域控制单元"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightSta",
+      "type": "signal",
+      "description": "近光灯状态信号，可能的值包括：OFF (0x0), ON (0x1), Unknown (0x2)"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子系统中关于近光灯状态查询的接口规范，可用于验证各控制器（如SOA、ICB、LHZCU）对近光灯状态查询请求的响应正确性，确保系统能够准确获取并报告近光灯的当前状态。",
+  "uncertain_points": []
+}

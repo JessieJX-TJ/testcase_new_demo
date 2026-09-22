@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯系统状态与错误状态定义",
+  "row_semantics": "表格按功能模块（BrakeLight, SidePositionLight）和信号类型（Status, ErrorStatus）进行组织，每一行描述一个特定的信号或事件。",
+  "column_semantics": {
+    "1": "功能模块名称",
+    "2": "信号方向 (输入/输出)",
+    "3": "信号类型 (Field/Event)",
+    "4": "接口名称",
+    "5": "参数名称及其值定义",
+    "6": "涉及的控制器/模块 (SOA, RZCU, LHZCU, RZCU_ETH >LHZCU_ETH)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrakeLight",
+      "description": "刹车灯系统"
+    },
+    {
+      "name": "SidePositionLight",
+      "description": "侧位置灯系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrakeLightState",
+      "description": "刹车灯当前状态 (OFF, ON, Unknown)"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "description": "侧位置灯当前状态 (OFF, ON, Unknown)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrakeLightErrorStatus",
+      "description": "刹车灯错误状态 (No Error, Error, Unknown)"
+    },
+    {
+      "name": "SidePositionLightErrorStatus",
+      "description": "侧位置灯错误状态 (No Error, Error, Unknown)"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统（刹车灯和侧位置灯）的状态和错误状态的参数值及其对应的控制器模块，可用于验证相关外灯系统的状态信号是否符合规范定义。",
+  "uncertain_points": []
+}
+```

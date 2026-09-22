@@ -1,0 +1,59 @@
+```json
+[
+  {
+    "head": "车辆昼间行车灯退出功能",
+    "relation": "触发条件",
+    "tail": "驾驶模式为 Super Eco 模式且 DayRunningLightReq = OFF",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "Super Eco 模式",
+      "DayRunningLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DayRunningLightFucProStatus",
+    "relation": "输出为",
+    "tail": "OFF",
+    "triple_type": "逻辑映射",
+    "evidence_terms": [
+      "LHZCU",
+      "DayRunningLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "日间行车灯功能",
+    "relation": "抑制条件",
+    "tail": "驾驶模式为 Super Eco 模式",
+    "triple_type": "功能抑制",
+    "evidence_terms": [
+      "Super Eco 模式",
+      "DayRunningLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "LHZCU",
+    "relation": "依赖于",
+    "tail": "ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq",
+    "triple_type": "输入依赖",
+    "evidence_terms": [
+      "LHZCU",
+      "DayRunningLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Notifier",
+    "relation": "输出为",
+    "tail": "DayRunningLightFucProStatus = OFF",
+    "triple_type": "状态通知",
+    "evidence_terms": [
+      "LHZCU",
+      "DayRunningLightFucProStatus"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

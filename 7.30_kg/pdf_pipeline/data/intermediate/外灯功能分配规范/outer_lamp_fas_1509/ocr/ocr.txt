@@ -1,0 +1,40 @@
+前置条件
+1&2&3&4&5&6&7
+UsgMd!=0x0=UsgMd_0_Sleep;& UsgMd!=0x1=UsgMd_1_Standby;& UsgMd!=0x6=UsgMd_6_>
+UsgMdV=Valid
+VehMd!=0x3=VehMd_3_TRANSPORT;& VehMd!=0x5= VehMd_5_EXHIBITION
+VehMdV=Valid
+远光灯增强使能:PersonalizationData.MainBeamEnhanceEnbSet.MainBeamEnhanceEnbSetInfo=0x
+远光灯状态为开启:
+{MainBeamLight. MainBeamLightStatus. MainBeamLightSta}{InstanceID=1}=0x1=ON|
+{MainBeamLight. MainBeamLightStatus. MainBeamLightSta}{InstanceID=2}=0x1=ON
+(exlMainBeamHwDrvEnPrm=0x0时,通过InstanceID1,2 获取状态)
+{MainBeamLight. MainBeamLightStatus. MainBeamLightSta}{InstanceID=3}=0x1=ON|
+{MainBeamLight. MainBeamLightStatus. MainBeamLightSta}{InstanceID=4}=0x1=ON
+(exlMainBeamHwDrvEnPrm=0x1时,通过InstanceID=4 获取右侧远光灯状态)
+具备车灯射灯功能:InsdFnCfgRoofSpotLght=0x1
+触发动作
+ICB_S32GM收到IPD输入车顶射灯开启请求:
+ExteriorLightControlSystem.ControlRoofSpotLight.RoofSpotLightReq=0x1=ON
+[车顶射灯控制模块LHZCU]收到ICB_S32GM转发的车顶射灯开启请求:
+执行动作
+1、[车顶射灯控制模块LHZCU]内部软件保持有效请求
+2、[车顶射灯控制模块LHZCU]发送车顶射灯控制仲裁状态:
+Notifier:
+3、[外灯组合服务ICB]将车顶射灯开启状态发给[数字灯光APP_ICB]
+{RoofSpotLight.ControlRoofSpotLight.RoofSpotLightReq}=0x1=On
+4、[数字灯光APP_ICB]控制驱动车顶射灯点亮,具体参考数字灯光子系统
+5、[数字灯光APP_ICB]反馈车顶射灯状态及故障状态
+6、ICB将车顶射灯状态及故障状态反馈给LHZCU:
+{RoofSpotLight.RoofSpotLightStatus.RoofSpotLightSta}=0x1=On
+{RoofSpotLight. RoofSpotLightErrorStatus.RoofSpotLightErrorSta}=0x0=No Error
+7、[车顶射灯控制模块LHZCU]将车顶射灯状态及故障状态反馈给ICB:
+{ExteriorLightSwitchProcess.RoofSpotLightSta.RoofSpotLghtSta}=0x1=ON
+{ExteriorLightSwitchProcess.RoofSpotLightErrSta.RoofSpotLghtErrSta}=0x0=No Error
+8、[外灯组合服务ICB]订阅并透传:
+{ExteriorLightControlSystem.RoofSpotLightSts.RoofSpotLghtSts}=0x1=ON
+{ExteriorLightControlSystem.RoofSpotLightErrSts.RoofSpotLghtErrSts}=0x0=No Error
+备注
+1、车顶射灯驱动控制参考数字灯光 SSTS
+2、ICB_8295车顶射灯光请求重发机制:
+尝试按照<=50ms周期重发3次；尝试重发3次后仍未反馈请求成功,则停止发送

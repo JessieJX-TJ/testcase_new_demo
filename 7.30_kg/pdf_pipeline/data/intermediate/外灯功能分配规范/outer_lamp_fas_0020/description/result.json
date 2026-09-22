@@ -1,0 +1,49 @@
+{
+  "table_type": "other",
+  "topic": "外灯控制系统 - 日间行车灯控制与状态获取",
+  "row_semantics": "表格定义了两个服务接口：一个用于控制日间行车灯的开关，另一个用于获取日间行车灯的功能状态。",
+  "column_semantics": {
+    "1": "功能模块名称",
+    "2": "服务消费方 (SOA)",
+    "3": "控制器/模块名 (LHZCU)",
+    "4": "控制器/模块名 (ICB)",
+    "5": "预留列"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem.ControlDayRunningLight",
+      "type": "function",
+      "description": "控制日间行车灯的开关"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.DayRunningLightFucProStatus",
+      "type": "function",
+      "description": "获取日间行车灯的功能状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DayRunningLightReq",
+      "type": "input_parameter",
+      "description": "请求参数，用于指定日间行车灯的状态（0x0=OFF, 0x1=On）"
+    },
+    {
+      "name": "DayRunningLightFucProsSta",
+      "type": "input_parameter",
+      "description": "请求参数，用于获取日间行车灯的状态（0x0=OFF）"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DayRunningLightResp",
+      "type": "output_parameter",
+      "description": "响应参数，指示控制结果（0x0=ControlSuccess, 0x1=Failed）"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证外灯控制系统中日间行车灯的控制功能和状态获取功能，确保通过指定接口能够正确地点亮或熄灭日间行车灯，并能准确反馈其当前状态。",
+  "uncertain_points": []
+}

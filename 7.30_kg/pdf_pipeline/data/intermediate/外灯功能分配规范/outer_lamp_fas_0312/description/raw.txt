@@ -1,0 +1,92 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯状态与故障监控",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的外灯状态或故障监控项，详细定义了其输出信号的值含义及相关的通信方式。",
+  "column_semantics": {
+    "1": "功能模块名称，描述了具体的外灯状态或故障类型。",
+    "2": "信号类型，指示该信号为输出信号。",
+    "3": "通信协议/接口类型，如CANFD、ICB、LHZCU等，表示信号传输的媒介和标准。",
+    "4": "不确定，可能为预留字段或未明确说明的通信相关参数。",
+    "5": "不确定，可能为预留字段或未明确说明的通信相关参数。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RLSideLghtSts",
+      "type": "function",
+      "description": "左后位置灯状态监控"
+    },
+    {
+      "name": "RRSideLghtSts",
+      "type": "function",
+      "description": "右后位置灯状态监控"
+    },
+    {
+      "name": "FLSideLghtFltsts",
+      "type": "function",
+      "description": "左前位置灯故障状态监控"
+    },
+    {
+      "name": "FRSideLghtFltsts",
+      "type": "function",
+      "description": "右前位置灯故障状态监控"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "RLSideLghtSts",
+      "signal_name": "RLSideLghtSts",
+      "value_range": {
+        "0x0": "Off",
+        "0x1": "On"
+      },
+      "description": "左后位置灯的开关状态输出"
+    },
+    {
+      "name": "RRSideLghtSts",
+      "signal_name": "RRSideLghtSts",
+      "value_range": {
+        "0x0": "Off",
+        "0x1": "On"
+      },
+      "description": "右后位置灯的开关状态输出"
+    },
+    {
+      "name": "FLSideLghtFltsts",
+      "signal_name": "FLSideLghtFltsts",
+      "value_range": {
+        "0x0": "False",
+        "0x1": "True"
+      },
+      "description": "左前位置灯是否存在故障的输出"
+    },
+    {
+      "name": "FRSideLghtFltsts",
+      "signal_name": "FRSideLghtFltsts",
+      "value_range": {
+        "0x0": "False",
+        "0x1": "True"
+      },
+      "description": "右前位置灯是否存在故障的输出"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "FLSideLghtFltsts",
+      "description": "左前位置灯的故障状态，用于检测灯泡是否损坏或电路是否存在断路等问题。"
+    },
+    {
+      "name": "FRSideLghtFltsts",
+      "description": "右前位置灯的故障状态，用于检测灯泡是否损坏或电路是否存在断路等问题。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯（包括前后左右位置灯）的状态监控和故障检测信号的输出值含义及其通信方式，可用于验证车辆外灯系统在不同工况下的状态输出是否符合设计规范，以及故障检测功能是否正常工作。",
+  "uncertain_points": [
+    "第4列和第5列的具体含义不明确，可能是预留字段或未在此表中详细说明的通信相关参数。"
+  ]
+}
+```

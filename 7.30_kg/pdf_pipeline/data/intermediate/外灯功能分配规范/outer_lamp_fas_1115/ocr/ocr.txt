@@ -1,0 +1,13 @@
+转向灯状态
+HMI显示状态信号描述(以左侧转向灯为例描述):
+描述
+[HMI子系统]接收LHZCU发出的转向灯控制信号
+FLDircnLghtCtrl=0x0||0x1
+用于转向灯HMI显示
+当CAN信号状态为0x1时,做指示灯显示以及声音提醒
+当CAN信号状态为0x0时,不做指示灯显示和声音提醒
+当转向灯发生故障时:
+DircnLghtFltsts=0x1=DircnLghtFltsts_1_Left_Direction_Light_Error；显示左侧转向灯故障
+DircnLghtFltsts=0x2=DircnLghtFltsts_2_Right_Direction_Light_Error；显示右侧转向灯故障
+DircnLghtFltsts=0x3=DircnLghtFltsts_3_Both_Side_Direction_Light_Error;显示危险告警灯故障
+HMI子系统根据转向灯CAN信号故障状态做故障弹窗提醒

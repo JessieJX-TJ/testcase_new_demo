@@ -1,0 +1,75 @@
+{
+  "table_type": "logic_table",
+  "topic": "前雾灯开启条件",
+  "row_semantics": "描述触发前雾灯开启所需的具体前置条件，包括用户操作、系统状态和信号验证。",
+  "column_semantics": "表格分为两列：左侧为场景描述和前置条件的分类标题，右侧为具体的逻辑条件表达式。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "User",
+      "type": "input",
+      "description": "用户通过大屏软开关进行操作"
+    },
+    {
+      "name": "Front Fog Light",
+      "type": "output",
+      "description": "前雾灯开启功能"
+    },
+    {
+      "name": "UsrMd",
+      "type": "mode",
+      "description": "用户模式，包括Sleep, Standby, Comfortable, XOTA等状态"
+    },
+    {
+      "name": "VehMd",
+      "type": "mode",
+      "description": "车辆模式，当前指定为TRANSPORT（运输）模式"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "signal",
+      "description": "侧位灯状态反馈信号，用于判断位置灯是否开启"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "1&2&3&4&5&6",
+      "description": "所有六个前置条件必须同时满足"
+    },
+    {
+      "condition": "UsrMd != 0x0 && UsrMd != 0x1 && UsrMd != 0x2 && UsrMd != 0x6",
+      "description": "用户模式不能为Sleep、Standby或Comfortable，且必须为XOTA模式"
+    },
+    {
+      "condition": "UsrMdV = Valid",
+      "description": "用户模式值有效"
+    },
+    {
+      "condition": "VehMd == 0x3",
+      "description": "车辆模式必须为TRANSPORT模式"
+    },
+    {
+      "condition": "VehMdV = Valid",
+      "description": "车辆模式值有效"
+    },
+    {
+      "condition": "SidePositionLightStatus feedback is ON for specific instances",
+      "description": "位置灯反馈状态必须为开启，具体涉及InstanceID 5, 6, 7, 8以及额外的InstanceID 1, 2, 3, 4"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "Front Fog Light",
+      "description": "在满足所有前置条件后，前雾灯将被开启"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定用户操作（通过大屏软开关）下，前雾灯开启所需的完整逻辑条件。可用于测试验证前雾灯功能在不同用户模式、车辆模式以及位置灯状态下的正确响应。",
+  "uncertain_points": [
+    "未明确说明'Valid'的具体数值范围或阈值",
+    "未详细说明'Position Light Status'的反馈机制和更新频率",
+    "未提及异常情况下的默认行为或故障处理逻辑"
+  ]
+}

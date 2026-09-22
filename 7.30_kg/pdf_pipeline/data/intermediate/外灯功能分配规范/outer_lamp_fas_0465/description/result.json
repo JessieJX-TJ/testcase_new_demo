@@ -1,0 +1,50 @@
+{
+  "table_type": "parameter_table",
+  "topic": "后雾灯控制模块的自动灯光近光灯开启状态设置规则",
+  "row_semantics": "描述了后雾灯控制模块（LHZCU）中内部变量 AutoDipdBeamLghtONbyRrFogLghtSts 的不同设置条件和行为逻辑",
+  "column_semantics": "无列，内容为行内文本描述",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "后雾灯控制模块",
+      "type": "controller",
+      "description": "负责管理后雾灯及其与自动灯光系统联动的电子控制单元"
+    },
+    {
+      "name": "AutoDipdBeamLghtONbyRrFogLghtSts",
+      "type": "internal_variable",
+      "description": "后雾灯请求自动灯光近光灯开启状态的内部变量"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "Auto 开关开启状态",
+      "description": "当车辆的自动灯光功能（Auto）处于开启时"
+    },
+    {
+      "condition": "近光灯状态为关闭",
+      "description": "检测到近光灯当前处于关闭状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "AutoDipdBeamLghtONbyRrFogLghtSts = 0x1 = True",
+      "description": "设置后雾灯请求自动灯光开启状态为真，触发同步开启近光灯"
+    },
+    {
+      "output": "AutoDipdBeamLghtONbyRrFogLghtSts 置位清除",
+      "description": "在下电或近光灯关闭时，清除该变量的置位状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "最大延时",
+      "value": "40ms",
+      "description": "左侧和右侧后雾灯需保持同步点亮，两侧行为的最大延时不能超过 40 毫秒"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了后雾灯控制模块中一个关键内部变量的设置规则，用于实现后雾灯与自动近光灯的联动功能，并规定了同步点亮的延时要求，可用于验证后雾灯控制逻辑及灯光同步性能。",
+  "uncertain_points": []
+}

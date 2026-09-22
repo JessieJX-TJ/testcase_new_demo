@@ -1,0 +1,60 @@
+{
+  "table_type": "fault_table",
+  "topic": "制动灯系统故障诊断与处理",
+  "row_semantics": "表格的每一行代表一个故障诊断或处理过程中的不同阶段或条件。",
+  "column_semantics": "表格包含三个主要列，分别描述了执行动作、退出条件和异常处理。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLightDrvMdl",
+      "type": "module",
+      "description": "制动灯驱动模块"
+    },
+    {
+      "name": "BrkLightCtrlMdl",
+      "type": "module",
+      "description": "制动灯控制模块"
+    },
+    {
+      "name": "DTC B1041 13",
+      "type": "fault_code",
+      "description": "特定的故障代码，表示制动灯状态错误"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "BrakeLightState",
+      "value": "2 (Error)",
+      "description": "制动灯状态为错误状态"
+    },
+    {
+      "condition": "至少发送三帧",
+      "description": "持续发送制动灯状态信息，确保数据的可靠性"
+    },
+    {
+      "condition": "检测到开路恢复",
+      "description": "当开路故障恢复时，退出当前故障处理流程"
+    }
+  ],
+  "core_outputs": [
+    {
+      "action": "置位 DTC B1041 13",
+      "description": "当检测到制动灯状态错误时，设置特定的故障代码以记录故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "code": "DTC B1041 13",
+      "description": "制动灯状态错误，可能由电路开路或其他电气故障引起"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "确保在判断故障前有足够的数据帧进行验证，避免误判"
+    }
+  ],
+  "engineering_interpretation": "该表格用于定义制动灯系统中 BrakeLightState 错误状态的诊断逻辑，包括持续发送状态信息、设置故障代码以及故障恢复后的退出条件，适用于整车电子电器系统的故障诊断测试验证。",
+  "uncertain_points": []
+}

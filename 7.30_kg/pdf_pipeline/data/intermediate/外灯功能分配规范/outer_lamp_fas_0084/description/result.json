@@ -1,0 +1,130 @@
+{
+  "table_type": "other",
+  "topic": "车顶射灯及外灯组合服务控制逻辑与状态反馈机制",
+  "row_semantics": "表格内容按功能描述和控制流程顺序排列，每一条目详细说明了特定的控制或反馈步骤。",
+  "column_semantics": "表格仅有一列，用于展示详细的文本描述，没有横向的分类或对比。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "APP_ICB",
+      "type": "功能模块",
+      "description": "数字灯光应用程序接口，负责控制车顶射灯点亮"
+    },
+    {
+      "name": "APP_ICB",
+      "type": "功能模块",
+      "description": "数字灯光应用程序接口，负责反馈车顶射灯状态及故障状态"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器",
+      "description": "车身控制器，负责处理车顶射灯状态及故障状态的反馈"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器",
+      "description": "左侧车身控制单元，接收并处理车顶射灯状态及故障状态"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器",
+      "description": "车身控制器，订阅并透传外灯组合服务状态"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "系统",
+      "description": "外灯控制系统，管理车顶射灯请求重发机制"
+    },
+    {
+      "name": "RoofSpotLight",
+      "type": "功能模块",
+      "description": "车顶射灯模块，包含状态和错误状态反馈"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RoofSpotLightStatus.RoofSpotLightSta",
+      "type": "输入信号",
+      "description": "车顶射灯当前状态，如ON/OFF"
+    },
+    {
+      "name": "RoofSpotLightErrorStatus.RoofSpotLightErrSta",
+      "type": "输入信号",
+      "description": "车顶射灯错误状态，如无错误"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.RoofSpotLightSta",
+      "type": "输入信号",
+      "description": "外部灯光开关过程中的车顶射灯状态"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.RoofSpotLightErrSta",
+      "type": "输入信号",
+      "description": "外部灯光开关过程中的车顶射灯错误状态"
+    },
+    {
+      "name": "ExteriorLightControlSystem.RoofSpotLightSts",
+      "type": "输入信号",
+      "description": "外灯控制系统中的车顶射灯状态"
+    },
+    {
+      "name": "ExteriorLightControlSystem.RoofSpotLightErrSts",
+      "type": "输入信号",
+      "description": "外灯控制系统中的车顶射灯错误状态"
+    },
+    {
+      "name": "RoofSpotLight.ControlRoofSpotLight.RoofSpotLightReq",
+      "type": "输入信号",
+      "description": "车顶射灯控制请求信号"
+    },
+    {
+      "name": "RoofSpotLight.ControlRoofSpotLight.RoofSpotLightResp",
+      "type": "输出信号",
+      "description": "车顶射灯控制响应信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RoofSpotLight.RoofSpotLightSta",
+      "type": "输出信号",
+      "description": "车顶射灯状态反馈给LHZCU"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.RoofSpotLightSta",
+      "type": "输出信号",
+      "description": "车顶射灯状态反馈给ICB"
+    },
+    {
+      "name": "ExteriorLightControlSystem.RoofSpotLightSts",
+      "type": "输出信号",
+      "description": "外灯组合服务状态透传给ICB"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "故障状态",
+      "description": "表示车顶射灯无错误状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "50ms",
+      "type": "定时",
+      "description": "请求重发周期为50毫秒"
+    },
+    {
+      "name": "3次",
+      "type": "阈值",
+      "description": "请求重发尝试次数上限为3次"
+    },
+    {
+      "name": "500ms",
+      "type": "定时",
+      "description": "外灯状态主动获取的时间间隔为500毫秒"
+    }
+  ],
+  "engineering_interpretation": "该表格详细描述了车顶射灯及外灯组合服务的控制逻辑、状态反馈机制以及故障处理流程，可用于验证车顶射灯控制请求的正确性、状态反馈的及时性和故障处理的有效性。",
+  "uncertain_points": []
+}

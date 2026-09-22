@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "左制动灯输出状态检测逻辑",
+  "row_semantics": "定义了触发特定功能（左制动灯开路检测）的前置条件和触发条件",
+  "column_semantics": {
+    "第一列": "条件分类（前置条件/触发条件）",
+    "第二列": "具体条件描述"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLghtFbkSOAEnPrm",
+      "type": "input_signal",
+      "description": "制动灯反馈系统开路保护使能参数"
+    },
+    {
+      "name": "左制动灯",
+      "type": "output_signal",
+      "description": "车辆左侧的制动灯"
+    },
+    {
+      "name": "左制动动灯开路",
+      "type": "fault_state",
+      "description": "左制动灯电路出现开路故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "BrkLghtFbkSOAEnPrm == 1 (Enable)",
+      "description": "制动灯反馈系统开路保护功能已启用"
+    },
+    {
+      "condition": "左制动灯处于输出状态",
+      "description": "左制动灯当前正在工作并输出信号"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "左制动动灯开路",
+      "description": "当满足前置条件且检测到左制动灯开路时，系统将报告此故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "左制动动灯开路",
+      "description": "左制动灯电路存在开路问题"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证在制动灯反馈系统开路保护功能启用且左制动灯正常输出的情况下，系统能否正确检测并报告左制动灯开路故障。",
+  "uncertain_points": []
+}
+```

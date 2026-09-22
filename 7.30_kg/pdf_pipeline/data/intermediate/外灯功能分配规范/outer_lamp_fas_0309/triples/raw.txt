@@ -1,0 +1,92 @@
+```json
+[
+  {
+    "head": "订阅制动灯状态",
+    "relation": "触发条件",
+    "tail": "调用ExteriorLightSwitchProcess.BrakeLightSta服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.BrakeLightSta",
+      "调用该服务接口,订阅制动灯状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "订阅制动灯故障状态",
+    "relation": "触发条件",
+    "tail": "调用ExteriorLightSwitchProcess.BrakeLightErrSta服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.BrakeLightErrSta",
+      "调用该服务接口,订阅制动灯故障状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "BrakeLightSta参数值为ON",
+    "relation": "输入为",
+    "tail": "ExteriorLightSwitchProcess.BrakeLightSta服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "BrakeLightSta",
+      "0X1=ON"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "BrakeLightSta参数值为OFF",
+    "relation": "输入为",
+    "tail": "ExteriorLightSwitchProcess.BrakeLightSta服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "BrakeLightSta",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "BrakeLightErrSta参数值为Error",
+    "relation": "输入为",
+    "tail": "ExteriorLightSwitchProcess.BrakeLightErrSta服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "BrakeLightErrSta",
+      "0x1=Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "BrakeLightErrSta参数值为No Error",
+    "relation": "输入为",
+    "tail": "ExteriorLightSwitchProcess.BrakeLightErrSta服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "BrakeLightErrSta",
+      "0x0=No Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯故障状态",
+    "relation": "依赖于",
+    "tail": "ExteriorLightSwitchProcess.BrakeLightErrSta服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "BrakeLightErrSta",
+      "ExteriorLightSwitchProcess.BrakeLightErrSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯状态",
+    "relation": "依赖于",
+    "tail": "ExteriorLightSwitchProcess.BrakeLightSta服务接口",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "BrakeLightSta",
+      "ExteriorLightSwitchProcess.BrakeLightSta"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

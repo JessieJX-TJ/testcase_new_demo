@@ -1,0 +1,120 @@
+```json
+[
+  {
+    "head": "位置灯左侧和右侧同步点亮",
+    "relation": "前提条件",
+    "tail": "两侧最大延时不能超过40ms",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "位置灯开启同步性要求",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB发送组合灯光请求",
+    "relation": "触发条件",
+    "tail": "ExteriorLightControlSystem.ControlCombinedLight.CombinedLightReq",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB_8295组合灯光请求重发机制",
+      "ICB",
+      "ExteriorLightControlSystem"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB发送组合灯光请求重发",
+    "relation": "超时约束",
+    "tail": "如超时未收到ExteriorLightControlSystem.ControlCombinedLight.CombinedLightResp=0x0=ControlSuccess的反馈，且请求状态未变",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB_8295组合灯光请求重发机制",
+      "超时",
+      "0x0=ControlSuccess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB发送组合灯光请求重发",
+    "relation": "抑制条件",
+    "tail": "尝试重发3次后仍未反馈请求成功，则停止发送",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "ICB_8295组合灯光请求重发机制",
+      "重发3次",
+      "停止发送"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB发送位置灯请求",
+    "relation": "触发条件",
+    "tail": "SidePositionLight.ControlSidePositionLight.SidePositionLightReq",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB_S32G M位置灯请求重发机制",
+      "ICB",
+      "SidePositionLight"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB发送位置灯请求重发",
+    "relation": "超时约束",
+    "tail": "如2s未收到DSidePositionLight.ControlSidePositionLight.SidePositionLightResp=0x0=ControlSuccess的反馈，且请求状态未变",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB_S32G M位置灯请求重发机制",
+      "2s",
+      "0x0=ControlSuccess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB发送位置灯请求重发",
+    "relation": "抑制条件",
+    "tail": "尝试重发3次后仍未反馈请求成功，则停止发送",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "ICB_S32G M位置灯请求重发机制",
+      "重发3次",
+      "停止发送"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "前提条件",
+    "tail": "针对发送类型为Onchange的外灯状态服务",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外灯状态主动获取",
+      "Onchange"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "消费端获取外灯状态",
+    "relation": "超时约束",
+    "tail": "在服务发现订阅或者外灯控制请求后的500ms内未收到状态反馈",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "外灯状态主动获取",
+      "500ms"
+    ],
+    "confidence_note": "medium"
+  },
+  {
+    "head": "消费端获取外灯状态",
+    "relation": "触发条件",
+    "tail": "应主动通过状态服务Getter()方式获取外灯状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外灯状态主动获取",
+      "Getter()"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

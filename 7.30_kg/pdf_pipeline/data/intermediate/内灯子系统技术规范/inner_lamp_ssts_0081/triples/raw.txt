@@ -1,0 +1,115 @@
+```json
+[
+  {
+    "head": "RoofLHALampBrthngCmd_1 触发氛围灯亮度调节",
+    "relation": "触发条件",
+    "tail": "接收到 ZCU 发送的 RoofLHALampBrthngCmd_1 信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RoofLHALampBrthngCmd_1",
+      "ZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1_0x1 模式下氛围灯亮度调节",
+    "relation": "输入为",
+    "tail": "RoofLHALampBrthngCmd_1=0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RoofLHALampBrthngCmd_1_0x1",
+      "RoofLHALampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1_0x2 模式下氛围灯亮度调节",
+    "relation": "输入为",
+    "tail": "RoofLHALampBrthngCmd_1=0x2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RoofLHALampBrthngCmd_1_0x2",
+      "RoofLHALampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1_0x3-0xC, 0xE 模式下氛围灯亮度调节",
+    "relation": "输入为",
+    "tail": "RoofLHALampBrthngCmd_1=0x3-0xC 或 0xE",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RoofLHALampBrthngCmd_1_0x3-0xC, 0xE",
+      "RoofLHALampBrthngCmd_1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "不同呼吸模式切换",
+    "relation": "抑制条件",
+    "tail": "立即停止当前呼吸，切换下一呼吸模式",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "RoofLHALampBrthngCmd_1",
+      "呼吸模式切换"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1_0x1 模式亮度循环执行",
+    "relation": "状态保持条件",
+    "tail": "250ms 亮度 100%，250ms 亮度 0%",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "RoofLHALampBrthngCmd_1_0x1",
+      "250ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1_0x2 模式亮度循环执行",
+    "relation": "状态保持条件",
+    "tail": "500ms 亮度 100%，500ms 亮度 0%",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "RoofLHALampBrthngCmd_1_0x2",
+      "500ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1_0x3-0xC, 0xE 模式渐变调节",
+    "relation": "依赖于",
+    "tail": "AmbtLampBrthngRateXholdoffPercent 参数",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "RoofLHALampBrthngCmd_1_0x3-0xC, 0xE",
+      "AmbtLampBrthngRateXholdoffPercent"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "时间 A 计算",
+    "relation": "依赖于",
+    "tail": "RoofLHALampBrthngCmd_1 周期 RateX 和 AmbtLampBrthngRateXholdoffPercent",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "Time A",
+      "RateX",
+      "AmbtLampBrthngRateXholdoffPercent"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "时间 B 计算",
+    "relation": "依赖于",
+    "tail": "RoofLHALampBrthngCmd_1 周期",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "Time B",
+      "RateX"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

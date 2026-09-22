@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "制动灯开关控制功能分配需求",
+  "row_semantics": "描述制动灯状态信号的显示逻辑和条件",
+  "column_semantics": "左侧为状态描述，右侧为详细说明",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HMI",
+      "type": "system",
+      "description": "人机交互系统"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "车身控制单元"
+    },
+    {
+      "name": "BrkLghtCtrl",
+      "type": "signal",
+      "description": "制动灯控制信号"
+    },
+    {
+      "name": "CAN信号",
+      "type": "signal",
+      "description": "控制器局域网络反馈信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "BrkLghtCtrl = 0x0 || 0x1",
+      "description": "制动灯控制信号为0x0或0x1时"
+    },
+    {
+      "condition": "CAN信号反馈状态 = 0x1",
+      "description": "当CAN信号反馈状态为0x1时"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "制动灯HMI动画显示",
+      "description": "在满足条件时，制动灯应在HMI上显示动画"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了制动灯在特定控制信号和CAN反馈状态下，应在HMI上显示动画的规则，可用于验证制动灯状态显示功能的正确性。",
+  "uncertain_points": []
+}
+```

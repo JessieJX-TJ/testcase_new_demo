@@ -1,0 +1,74 @@
+```json
+[
+  {
+    "head": "HMI子系统不做图标指示灯显示",
+    "relation": "前提条件",
+    "tail": "服务接口或者CAN信号反馈状态为0x0",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "服务接口",
+      "CAN信号反馈状态",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI子系统做后雾灯显示",
+    "relation": "前提条件",
+    "tail": "服务接口反馈状态为0x1 或 CAN信号反馈状态为0x1",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "服务接口",
+      "CAN信号反馈状态",
+      "0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI子系统做后雾灯及近光灯显示",
+    "relation": "前提条件",
+    "tail": "服务接口反馈状态为0x2",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "服务接口",
+      "0x2"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI子系统做后雾灯及前雾灯显示",
+    "relation": "前提条件",
+    "tail": "服务接口反馈状态为0x3",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "服务接口",
+      "0x3"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RearFogLghtSwSta 输出为 0X1=ON",
+    "relation": "输入为",
+    "tail": "灯光开关状态描述中 [HMI子系统]订阅接口的 RearFogLghtSwStatus.RearFogLghtSwSta",
+    "triple_type": "输入-输出映射",
+    "evidence_terms": [
+      "灯光开关状态描述",
+      "RearFogLghtSwStatus",
+      "0X1=ON"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RearFogLghtSwSta 输出为 0x2=Unknown",
+    "relation": "输入为",
+    "tail": "灯光开关状态描述中 [HMI子系统]订阅接口的 RearFogLghtSwStatus.RearFogLghtSwSta",
+    "triple_type": "输入-输出映射",
+    "evidence_terms": [
+      "灯光开关状态描述",
+      "RearFogLghtSwStatus",
+      "0x2=Unknown"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

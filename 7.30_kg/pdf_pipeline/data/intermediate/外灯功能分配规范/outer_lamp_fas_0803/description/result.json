@@ -1,0 +1,81 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯（Dipped Beam Light）状态与控制接口规范",
+  "row_semantics": "表格的每一行代表一个独立的外灯相关服务接口或状态查询功能，描述了其调用目的、参数定义及涉及的系统模块。",
+  "column_semantics": {
+    "第一列": "功能模块或服务接口名称",
+    "第二列": "消费方 (Consumer) 模块/系统",
+    "第三列": "SOA (Service-Oriented Architecture) 接口",
+    "第四列": "ICB (Integrated Control Board)",
+    "第五列": "LHZCU (Local Headlight Zone Control Unit)",
+    "第六列": "预留或未指定模块",
+    "第七列": "网络状态或故障状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DippedBeamLight.DippedBeamLightStatus",
+      "type": "function",
+      "description": "获取右侧近光灯当前状态的服务接口。"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.DippedBeamLightStatus",
+      "type": "function",
+      "description": "获取近光灯整体状态的服务接口。"
+    },
+    {
+      "name": "DippedBeamLight.DippedBeamLightErrorStatus",
+      "type": "function",
+      "description": "获取左侧近光灯故障状态的服务接口。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "output_signal",
+      "description": "返回右侧近光灯的状态值，包括OFF、ON和Unknown三种状态。",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "ON",
+        "0x2": "Unknown"
+      }
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "output_signal",
+      "description": "返回近光灯的整体状态值，包括OFF、ON和Unknown三种状态。",
+      "values": {
+        "0x0": "OFF",
+        "0x1": "ON",
+        "0x2": "Unknown"
+      }
+    },
+    {
+      "name": "DippedBeamLightErrorStatus",
+      "type": "output_signal",
+      "description": "返回左侧近光灯的故障状态。",
+      "values": {
+        "uncertain": "具体值未在表中明确给出"
+      }
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DippedBeamLightErrorStatus",
+      "type": "fault_status",
+      "description": "指示左侧近光灯是否存在硬件故障。",
+      "values": {
+        "uncertain": "具体故障代码未在表中明确给出"
+      }
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中近光灯状态查询和故障检测相关的服务接口及其参数，可用于验证外灯控制系统在不同场景下正确响应状态查询请求，并准确报告故障信息。",
+  "uncertain_points": [
+    "DippedBeamLightErrorStatus的具体故障代码未在表中明确给出。",
+    "LHZCU在部分行中出现两次，但未明确其具体作用差异。",
+    "第七列（网络状态/硬线故障状态）的具体内容未在表中详细说明。"
+  ]
+}

@@ -1,0 +1,32 @@
+自动灯光 HMI
+HMI显示状态信号描述:
+需求
+[HMI子系统ICB]订阅接口:
+Notifier:
+{ExteriorLightSwitchProcess. CombLghtFucProStatus.CombLghtFucProSta}
+0x0=ALLOFF
+0X1=Only SidePositionLight ON
+0X2=Only DippedBeamLight ON
+0X3=SidePositionAndDippedBeam OFF
+0X4=SidePositionAndDippedBeam ON
+0x5=Unknown
+LDipdBeamLghtCtrl=0x0||0x1
+FLSideLghtCtrl=0x0||0x1
+FRSideLghtCtrl=0x0||0x1
+用于做自动灯光的仪表指示灯显示:
+当服务接口反馈状态为0x0/0x3或者CAN信号反馈状态为 0x0时,HMI子系统不做图标指
+当服务接口反馈状态为0x4或者CAN信号反馈状态为0x1时,HMI子系统做位置灯和近光
+自动灯光开关状态描述:
+{ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta}
+0x0=OFF
+0X1=SidePositionLight ON
+0X2=DippedBeamLight ON
+0X3=AUTO
+0x4=Unknown
+用于表征当前自动灯光开关所在的档位
+当反馈状态为 0x3时,HMI大屏将开关档位跳变为Auto
+自动灯光故障状态描述:
+位置灯故障状态:
+SideLghtFltsts=0x1=SideLghtFltsts_1_True
+近光灯故障状态:
+DipdBeamLghtFltSts=0x1=DipdBeamLghtFltsts_1_True

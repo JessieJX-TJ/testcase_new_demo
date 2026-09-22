@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯组合服务 ICB 订阅接口",
+  "row_semantics": "表格描述了外灯控制系统中后雾灯的状态和错误状态的订阅接口。",
+  "column_semantics": "第一列是功能描述，第二列是具体的信号值定义。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "controller"
+    },
+    {
+      "name": "RearFogLightSts",
+      "type": "output_signal"
+    },
+    {
+      "name": "RearFogLightErrSta",
+      "type": "fault_state"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "RearFogLightSts",
+      "description": "后雾灯状态，0x1 表示开启 (On)"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RearFogLightErrSta",
+      "description": "后雾灯错误状态，0x0 表示无错误 (No Error)"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "condition": "左侧和右侧后雾灯同时点亮",
+      "constraint": "最大延时不超过 40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证外灯控制系统中后雾灯的同步点亮功能及其状态监控，确保左右两侧后雾灯在规定时间内同步点亮且无错误状态。",
+  "uncertain_points": []
+}
+```

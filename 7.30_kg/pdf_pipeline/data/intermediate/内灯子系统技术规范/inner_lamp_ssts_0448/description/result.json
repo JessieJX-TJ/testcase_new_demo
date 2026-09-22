@@ -1,0 +1,50 @@
+{
+  "table_type": "signal_table",
+  "topic": "车身电子系统功能与信号映射关系",
+  "row_semantics": "表格的每一行代表一个具体的车身控制功能或开关，描述了该功能在不同配置下的信号输出情况。",
+  "column_semantics": "表格的每一列代表一种不同的配置或硬件平台（例如LIN4总线的不同节点），展示了在这些配置下对应功能的信号输出。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DoorPnlSeatFnSw_RR",
+      "type": "function",
+      "description": "右后门扶手开关"
+    },
+    {
+      "name": "ThrdRowSeatSw_LH",
+      "type": "function",
+      "description": "三排左座椅调节开关"
+    },
+    {
+      "name": "ThrdRowSeatSw_RH",
+      "type": "function",
+      "description": "三排右座椅调节开关"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "RZCU_LIN4",
+      "type": "signal",
+      "description": "通过LIN4总线输出的信号，表示相关功能的状态"
+    },
+    {
+      "name": "RZCU_LIN3",
+      "type": "signal",
+      "description": "通过LIN3总线输出的信号，表示相关功能的状态"
+    },
+    {
+      "name": "NA",
+      "type": "signal",
+      "description": "Not Applicable，表示在该配置下不适用或未定义"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证不同车身控制功能在特定硬件配置下的信号输出是否符合设计规范，确保各功能在正确路径上进行通信。",
+  "uncertain_points": [
+    "表格中未明确说明各个信号的具体数值含义（如高电平、低电平代表的状态）",
+    "未提供故障状态或异常情况下的信号行为"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "table_type": "signal_table",
+  "topic": "Rear Fog Light System",
+  "row_semantics": "Each row represents a specific interface or control signal related to the rear fog light system, detailing its function, data type, and associated parameters.",
+  "column_semantics": {
+    "1": "Function/Service Name",
+    "2": "Data Type (e.g., Consumption, Output)",
+    "3": "SOA (Service-Oriented Architecture) Interface",
+    "4": "RZCU (Rear Zone Control Unit)",
+    "5": "LHZCU (Left Hand Zone Control Unit)",
+    "6": "Additional Controller/Module",
+    "7": "Description/Details"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RearFogLight",
+      "type": "function",
+      "description": "The rear fog light system functionality."
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "Rear Zone Control Unit responsible for managing the rear fog light."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Left Hand Zone Control Unit, potentially involved in system coordination."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RearFogLightState",
+      "type": "state",
+      "description": "Current operational state of the rear fog light (OFF, ON, Error, Unknown).",
+      "values": [
+        "0x0=OFF",
+        "0x1=ON",
+        "0x2=Error",
+        "0x2=Unknown"
+      ]
+    },
+    {
+      "name": "RearFogLightErrorStatus",
+      "type": "fault_status",
+      "description": "Fault status of the rear fog light (No Error, Error, Unknown).",
+      "values": [
+        "0x0=No Error",
+        "0x1=Error",
+        "0x2=Unknown"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogCtrl_HW",
+      "type": "signal",
+      "direction": "output",
+      "interface": "CANFD",
+      "description": "Hardware control signal for the rear fog light, sent via CANFD interface."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RearFogLightErrorStatus",
+      "description": "Indicates if there is an error condition in the rear fog light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interfaces and signals for monitoring and controlling the rear fog light system, including its operational state and fault status. It is used to verify that the system correctly reports the state and error conditions of the rear fog light and that the hardware control signal is properly generated and transmitted.",
+  "uncertain_points": [
+    "The exact behavior of the 'Unknown' state in both RearFogLightState and RearFogLightErrorStatus is not clearly defined.",
+    "The role of LHZCU beyond being listed as a controller is not specified."
+  ]
+}

@@ -1,0 +1,23 @@
+[HMI子系统ICB]调用接口:
+Notifier:
+RearFogLghtCtrl=0x0=RearFogLghtCtrl_0_Off
+获取退出后雾灯指示灯显示
+[外灯控制组合服务ICB]调用接口:
+{RearFogLight.RearFogLightControl.RearFogLightCtrReq}=0x0=Off
+[驱动处理模块RZCU]内部跳变为硬线输出,停止驱动后雾灯点亮
+[驱动处理模块 RZCU]将状态/故障状态反馈至[后雾灯控制模块 LHZCU]:
+RearFogLghtSts=0x0=RearFogLghtSts_0_Off
+RearFogLghtFltsts=0x0=RearFogLghtFltsts_0_False
+{RearFogLight. RearFogLightState. RearFogLightSta}=0x0=Off
+{RearFogLight. RearFogLightErrorStatus. RearFogLightErrorSta}=0x0=No Error
+[后雾灯控制模块LHZCU]将状态/故障状态反馈至ICB:
+RearFogLghtAcSts=0x0=RearFogLghtAcSts_0_Off
+RearFogLghtAcFltsts=0x0=RearFogLghtAcFltsts_0_False
+{ExteriorLightSwitchProcess.RearFogLightSta.RearFogLghtSta}=0x0=Off
+[外灯组合服务ICB]订阅接口:
+{ExteriorLightControlSystem. RearFogLightSts. RearFogLghtSts}=0x0=Off
+备注
+1、后雾灯和近光灯开启同步性要求:
+左侧和右侧需保持同步熄灭,两侧最大延时不能超过40ms
+2、组合开关为Auto开关状态且白天模式下,后雾灯开启导致近光灯/位置灯点亮,在后
+雾灯手动关闭时需同时关闭近光灯/位置灯:

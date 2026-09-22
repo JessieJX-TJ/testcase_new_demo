@@ -1,0 +1,53 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Side Position Light (Position Lamp) Status and Error Feedback",
+  "row_semantics": "Each row represents the status or error status of a specific instance of the side position light, identified by InstanceID.",
+  "column_semantics": "The table has two main columns: one for the SidePositionLightStatus (indicating whether the light is ON or OFF) and another for the SidePositionLightErrorStatus (indicating if there is an error). Both columns are repeated for multiple instances.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "function",
+      "description": "A side position light, typically used as a marker or identification light on the sides of a vehicle."
+    },
+    {
+      "name": "InstanceID",
+      "type": "identifier",
+      "description": "A unique identifier for each side position light instance, ranging from 1 to 8 in this table."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightStatus",
+      "type": "input_signal",
+      "description": "Indicates the operational state of the side position light. Values include 'ON' or 'OFF'."
+    },
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "output_signal",
+      "description": "Indicates whether an error condition exists for the side position light. Values include 'No Error' or specific error codes."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "fault_status",
+      "description": "Reports any fault conditions detected in the side position light system, such as wiring issues or lamp failure."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "Synchronization Timing",
+      "description": "The left and right side position lights must be synchronized in their ON/OFF states, with a maximum delay of 40ms between them."
+    }
+  ],
+  "engineering_interpretation": "This table defines the expected status and error feedback for multiple instances of side position lights in a vehicle. It is used to verify that the lights operate correctly (ON/OFF) and report errors accurately via CAN communication.",
+  "uncertain_points": [
+    "The exact error codes for SidePositionLightErrorStatus beyond 'No Error' are not specified in the table.",
+    "The specific CAN communication protocol details for exlSideLightHwDrvEnPrm are not provided."
+  ]
+}
+```

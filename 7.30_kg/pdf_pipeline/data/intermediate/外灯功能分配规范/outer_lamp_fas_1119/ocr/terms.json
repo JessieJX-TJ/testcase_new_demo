@@ -1,0 +1,25 @@
+{
+  "doc_id": "outer_lamp_fas",
+  "image_id": "outer_lamp_fas_1119",
+  "image_path": "/home/fanhongxuan/TestCase_Agent/7.30_kg/智己PDF/output/13 Z-ONE-3.0平台-FAS-IBD05 外灯功能分配规范v7.7-20260408/auto/images/a0a66516c59a0f29f091f0ede43fd62d131fcc0336d2fe81e0091b69995c48a6.jpg",
+  "whitelist_terms": [
+    "备注",
+    "1、远光灯开启同步性要求:",
+    "左侧和右侧需保持同步点亮,两侧最大延时不能超过40ms",
+    "2、ICB远光灯请求重发机制:",
+    "未收到MainBeamLight.ControlMainBeamLight.MainBeamLightResp=0x0=ControlSuccess的反馈(对应",
+    "ID),且请求状态未变,对应的尝试按照<=50ms周期重发3次；尝试重发3次后仍未反馈请求成功",
+    "送",
+    "3、外灯状态主动获取:涉及LHZCU/ICB S32G M/ICB8295",
+    "针对发送类型为Onchange的外灯状态服务,消费端在服务发现订阅或者外灯控制请求后的500ms(",
+    "如未收到状态反馈,应主动通过状态服务Getter()方式获取外灯状态",
+    "4、前置条件中外灯状态判断(如近光灯点亮状态)优先采用LHZCU获取到的外灯点亮状态进行判断",
+    "状态无法获取:",
+    "1)信号丢失:如以上第3点所述,当500ms(待标定)后主动Getter()方式也无法获取外灯状态",
+    "2)网络丢失:以太网网络丢失",
+    "3)反馈的外灯点亮状态与LHZCU的控制状态不符",
+    "满足以上任意一条则采用LHZCU的外灯控制状态来判断灯光点亮状态:",
+    "以下外灯状态判断采取同样原则"
+  ],
+  "term_count": 17
+}

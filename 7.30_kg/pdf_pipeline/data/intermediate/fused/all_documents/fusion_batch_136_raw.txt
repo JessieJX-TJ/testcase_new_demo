@@ -1,0 +1,364 @@
+```json
+[
+  {
+    "head": "右侧近光灯熄灭",
+    "relation": "触发条件",
+    "tail": "调用 ControlDippedBeamLight 服务接口，参数 InstanceID=2，DippedBeamLightReq=0x0",
+    "sources": ["outer_lamp_fas_1460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯控制",
+    "relation": "依赖于",
+    "tail": "ControlDippedBeamLight 服务接口，参数 DippedBeamLightReq，InstanceID=1",
+    "sources": ["outer_lamp_fas_1460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯控制",
+    "relation": "依赖于",
+    "tail": "ControlDippedBeamLight 服务接口，参数 DippedBeamLightReq，InstanceID=2",
+    "sources": ["outer_lamp_fas_1460"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd_0_NORMAL",
+    "relation": "依赖于",
+    "tail": "车辆处于正常运行状态",
+    "sources": ["outer_lamp_fas_1461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd_1_CRASH",
+    "relation": "依赖于",
+    "tail": "车辆发生碰撞事件",
+    "sources": ["outer_lamp_fas_1461"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧转向灯关闭",
+    "relation": "触发条件",
+    "tail": "RDirLghtClsCtrlRsn_0_None, RDirLghtClsCtrlRsn_1_DirectionLightSwitchOff, RDirLghtClsCtrlRsn_2_HazardLightSwitchOff, RDirLghtClsCtrlRsn_3_VehicleCrashSignalNotActive, RDirLghtClsCtrlRsn_4_AirbagDeployedNotActive, RDirLghtClsCtrlRsn_5_ToffCrashNotActive, RDirLghtClsCtrlRsn_6_VehicleIntrusionPrevention",
+    "sources": ["outer_lamp_fas_1462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧转向灯关闭原因信息",
+    "relation": "状态保持条件",
+    "tail": "最近一次关闭原因存入最低序号位（FIFO）",
+    "sources": ["outer_lamp_fas_1462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧转向灯关闭原因代码",
+    "relation": "包含子功能",
+    "tail": "右侧转向灯关闭原因代码",
+    "sources": ["outer_lamp_fas_1462"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯状态",
+    "relation": "输出为",
+    "tail": "RLDircnLghtSts_HW: 0x0 = Off, 0x1 = On",
+    "sources": ["outer_lamp_fas_1463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯状态",
+    "relation": "输出为",
+    "tail": "RRDircnLghtSts_HW: 0x0 = Off, 0x1 = On",
+    "sources": ["outer_lamp_fas_1463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯开关状态",
+    "relation": "输出为",
+    "tail": "DircnIndLghtSwSts: 0x0 = Off, 0x1 = LeftOn, 0x2 = RightOn, 0x3 = Reserved",
+    "sources": ["outer_lamp_fas_1463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "方向盘转角",
+    "relation": "输出为",
+    "tail": "StrgWhlAng: 单位为度，计算公式为 N × 0.0625 − 2048；0xFFFF 表示错误标记",
+    "sources": ["outer_lamp_fas_1463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "方向盘转角有效性",
+    "relation": "输出为",
+    "tail": "StrgWhlAngV",
+    "sources": ["outer_lamp_fas_1463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoLightOnReq 信号转发",
+    "relation": "触发条件",
+    "tail": "阳光雨量传感器或 ICB 模块发送 AutoLightOnReq_IlAutoLightOnReq_ICB 信号",
+    "sources": ["outer_lamp_fas_1464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "日间行车灯开启",
+    "relation": "前提条件",
+    "tail": "接收到 AutoLightOnReq 信号且 InstanceID ∈ {1, 2}",
+    "sources": ["outer_lamp_fas_1464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯开启",
+    "relation": "前提条件",
+    "tail": "接收到 AutoLightOnReq 信号且 InstanceID = 8",
+    "sources": ["outer_lamp_fas_1464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "日间行车灯状态为 ON",
+    "relation": "输出为",
+    "tail": "DayRunningLightState = 0x1",
+    "sources": ["outer_lamp_fas_1464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯状态为 ON",
+    "relation": "输出为",
+    "tail": "SidePositionLightState = 0x1",
+    "sources": ["outer_lamp_fas_1464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "日间行车灯开关状态反馈",
+    "relation": "依赖于",
+    "tail": "LHZCU 基于 ExteriorLightSwitchProcess 和 DayRunningLightFucProStatus 进行状态仲裁",
+    "sources": ["outer_lamp_fas_1464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "日间行车灯错误状态",
+    "relation": "故障响应",
+    "tail": "DayRunningLightErrorStatus = 0x0",
+    "sources": ["outer_lamp_fas_1464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯错误状态",
+    "relation": "故障响应",
+    "tail": "SidePositionLightErrorStatus = 0x0",
+    "sources": ["outer_lamp_fas_1464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯、位置灯和后雾灯开启",
+    "relation": "前提条件",
+    "tail": "AutoSidePosnLghtONbyRrFogLghtSts = 0x1",
+    "sources": ["outer_lamp_fas_1465"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoSidePosnLghtONbyRrFogLghtSts = 0x1",
+    "relation": "触发条件",
+    "tail": "后雾灯请求自动触发位置灯开启",
+    "sources": ["outer_lamp_fas_1465"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoSidePosnLghtONbyRrFogLghtSts = 0x1",
+    "relation": "依赖于",
+    "tail": "自动灯光开关（Auto Switch）处于开启状态",
+    "sources": ["outer_lamp_fas_1465"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoSidePosnLghtONbyRrFogLghtSts = 0x1",
+    "relation": "超时约束",
+    "tail": "左右位置灯同步点亮，最大延时 ≤ 40 ms",
+    "sources": ["outer_lamp_fas_1465"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoSidePosnLghtONbyRrFogLghtSts",
+    "relation": "复位条件",
+    "tail": "系统下电清除",
+    "sources": ["outer_lamp_fas_1465"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoSidePosnLghtONbyRrFogLghtSts",
+    "relation": "抑制条件",
+    "tail": "检测到位置灯状态为关闭",
+    "sources": ["outer_lamp_fas_1465"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU 转向灯控制模块",
+    "relation": "连接到",
+    "tail": "S32G 外灯 SWC",
+    "sources": ["outer_lamp_fas_1467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S32G 数字灯光 SDK",
+    "relation": "输出到",
+    "tail": "LHA/RHA/TailLampAsmbl 转向灯驱动模块",
+    "sources": ["outer_lamp_fas_1467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S32G",
+    "relation": "包含子功能",
+    "tail": "外灯 SWC, 数字灯光 SDK",
+    "sources": ["outer_lamp_fas_1467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus",
+    "relation": "输入为",
+    "tail": "DirectionLightSta 参数",
+    "sources": ["outer_lamp_fas_1468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InstanceID = 5",
+    "relation": "依赖于",
+    "tail": "订阅左前转向灯状态",
+    "sources": ["outer_lamp_fas_1468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯功能",
+    "relation": "依赖于",
+    "tail": "Function Allocation Specification",
+    "sources": ["outer_lamp_fas_1470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯关闭",
+    "relation": "前提条件",
+    "tail": "车顶射灯当前处于点亮状态",
+    "sources": ["outer_lamp_fas_1472"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯关闭",
+    "relation": "抑制条件",
+    "tail": "用户模式为 Sleep / Standby / XOTA，或整车模式为 TRANSPORT，或远光灯增强功能被禁止",
+    "sources": ["outer_lamp_fas_1472"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯图标指示灯显示",
+    "relation": "前提条件",
+    "tail": "ICB 接收 FLDircnLghtCtrl = 0x0 且 FRDircnLghtCtrl = 0x0",
+    "sources": ["outer_lamp_fas_1475"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯图标指示灯声音提醒",
+    "relation": "前提条件",
+    "tail": "ICB 接收 FLDircnLghtCtrl = 0x0 且 FRDircnLghtCtrl = 0x0",
+    "sources": ["outer_lamp_fas_1475"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "双闪灯退出点亮",
+    "relation": "前提条件",
+    "tail": "LHZCU/RHZCU/RZCU 接收 ICB 发送的危险警报灯控制信号",
+    "sources": ["outer_lamp_fas_1475"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯开关控制模块 LHZCU 状态反馈",
+    "relation": "前提条件",
+    "tail": "LHZCU 向 ICB 反馈危险警报灯状态及故障状态",
+    "sources": ["outer_lamp_fas_1475"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯控制状态反馈至 SDM",
+    "relation": "前提条件",
+    "tail": "LHZCU 向 SDM 反馈转向灯控制状态",
+    "sources": ["outer_lamp_fas_1475"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯同步性要求",
+    "relation": "超时约束",
+    "tail": "仪表图标、前/后危险警报灯三者闪烁同步，最大延时 ≤ 50 ms",
+    "sources": ["outer_lamp_fas_1475"],
+    "conflict": true,
+    "conflict_note": "与 outer_lamp_fas_1475 中另一条 '危险警报灯同步性允许的最大延时周期 = 40ms' 存在数值冲突：50ms vs 40ms；需确认设计基准或是否分场景（如硬件链路 vs 软件仲裁）"
+  },
+  {
+    "head": "危险警报灯图标指示灯显示",
+    "relation": "抑制条件",
+    "tail": "exlDircnLghtHwDrvEnPrm = 0x1（域控制器提供转向灯状态）",
+    "sources": ["outer_lamp_fas_1475"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯功能启用",
+    "relation": "触发条件",
+    "tail": "InsdFnCfgRoofSpotLght = 0x1",
+    "sources": ["outer_lamp_fas_1477"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯功能禁用",
+    "relation": "触发条件",
+    "tail": "InsdFnCfgRoofSpotLght = 0x0",
+    "sources": ["outer_lamp_fas_1477"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LED 车顶灯",
+    "relation": "包含子功能",
+    "tail": "车顶射灯功能启用",
+    "sources": ["outer_lamp_fas_1477"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

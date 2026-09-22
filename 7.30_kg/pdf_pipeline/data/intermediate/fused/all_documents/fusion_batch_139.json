@@ -1,0 +1,606 @@
+[
+  {
+    "head": "ICB制动灯请求重发",
+    "relation": "触发条件",
+    "tail": "未收到BrakeLightCtrlResp",
+    "sources": [
+      "outer_lamp_fas_1507"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制模块LHZCU",
+    "relation": "依赖于",
+    "tail": "ICB返回BrakeLightState和BrakeLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_1507"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "触发条件",
+    "tail": "Onchange服务发现订阅或控制请求后500ms内未收到反馈",
+    "sources": [
+      "outer_lamp_fas_1507"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制请求重发",
+    "relation": "超时约束",
+    "tail": "尝试重发3次后仍未成功则停止发送",
+    "sources": [
+      "outer_lamp_fas_1507"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯错误状态",
+    "relation": "输出为",
+    "tail": "0x0 = No Error",
+    "sources": [
+      "outer_lamp_fas_1507"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "前提条件",
+    "tail": "UsgMd != 0x0 = UsgMd_0_Sleep",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "前提条件",
+    "tail": "UsgMd != 0x1 = UsgMd_1_Standby",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "前提条件",
+    "tail": "UsgMd != 0x6 = UsgMd_6_X",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "前提条件",
+    "tail": "UsgMdV = Valid",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "前提条件",
+    "tail": "VehMd != 0x3 = VehMd_3_TRANSPORT",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "前提条件",
+    "tail": "VehMd != 0x5 = VehMd_5_EXHIBITION",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "前提条件",
+    "tail": "VehMdV = Valid",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "前提条件",
+    "tail": "PersonalizationData.MainBeamEnhanceEnbSet.MainBeamEnhanceEnbSetInfo = 0x1",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "前提条件",
+    "tail": "远光灯状态为开启",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "前提条件",
+    "tail": "InsdFnCfgRoofSpotLght = 0x1",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "触发条件",
+    "tail": "ICB_S32G M收到IPD输入车顶射灯开启请求",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯开启",
+    "relation": "依赖于",
+    "tail": "车顶射灯控制模块LHZCU",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯点亮",
+    "relation": "控制对象",
+    "tail": "RoofSpotLight",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯状态反馈",
+    "relation": "输出为",
+    "tail": "RoofSpotLightStatus = 0x1 = ON",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯故障状态反馈",
+    "relation": "输出为",
+    "tail": "RoofSpotLightErrorStatus = 0x0 = No Error",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯请求重发",
+    "relation": "超时约束",
+    "tail": "按 ≤50ms 周期重发3次；3次后无响应则停止发送",
+    "sources": [
+      "outer_lamp_fas_1509"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "紧急制动灯故障",
+    "relation": "前提条件",
+    "tail": "BrakeLightFltSta = 0x1 = True",
+    "sources": [
+      "outer_lamp_fas_1512"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "紧急制动灯故障",
+    "relation": "前提条件",
+    "tail": "BrakeLightErrSta = 0x1 = Error",
+    "sources": [
+      "outer_lamp_fas_1512"
+    ],
+    "conflict": true,
+    "conflict_note": "BrakeLightFltSta 和 BrakeLightErrSta 语义高度重叠但命名不一致，疑似同一信号不同命名；需确认是否为冗余定义或存在逻辑差异（如：FltSta表征硬件故障，ErrSta表征通信/逻辑错误）"
+  },
+  {
+    "head": "HMI子系统显示故障弹窗提醒",
+    "relation": "触发条件",
+    "tail": "BrakeLightFltSta = 0x1 = True",
+    "sources": [
+      "outer_lamp_fas_1512"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统显示故障弹窗提醒",
+    "relation": "触发条件",
+    "tail": "BrakeLightErrSta = 0x1 = Error",
+    "sources": [
+      "outer_lamp_fas_1512"
+    ],
+    "conflict": true,
+    "conflict_note": "同上，与BrakeLightFltSta触发条件语义等价但信号名不同，构成潜在冲突"
+  },
+  {
+    "head": "BrakeLightFltSta",
+    "relation": "输出为",
+    "tail": "0x1 = True",
+    "sources": [
+      "outer_lamp_fas_1512"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightErrSta",
+    "relation": "输出为",
+    "tail": "0x1 = Error",
+    "sources": [
+      "outer_lamp_fas_1512"
+    ],
+    "conflict": true,
+    "conflict_note": "与BrakeLightFltSta输出语义近似但值域命名不一致（True vs Error），需确认是否为同一信号的两种表述或存在状态映射关系"
+  },
+  {
+    "head": "HMI子系统表征灯光开关处于Off档位",
+    "relation": "前提条件",
+    "tail": "服务接口反馈状态为0x0",
+    "sources": [
+      "outer_lamp_fas_1513"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统表征灯光开关处于前雾灯档位",
+    "relation": "前提条件",
+    "tail": "服务接口反馈状态为0x1",
+    "sources": [
+      "outer_lamp_fas_1513"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转发LIN信号 IFPFrontFoglghtOnSta_l",
+    "relation": "前提条件",
+    "tail": "服务接口反馈状态为0x0",
+    "sources": [
+      "outer_lamp_fas_1513"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转发LIN信号 IFPFrontFoglghtOnSta_l",
+    "relation": "前提条件",
+    "tail": "服务接口反馈状态为0x1",
+    "sources": [
+      "outer_lamp_fas_1513"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统显示故障弹窗提醒",
+    "relation": "触发条件",
+    "tail": "FrFogLghtFltSts_1 = True",
+    "sources": [
+      "outer_lamp_fas_1513"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI子系统显示故障弹窗提醒",
+    "relation": "前提条件",
+    "tail": "CAN信号故障状态",
+    "sources": [
+      "outer_lamp_fas_1513"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆处于休眠模式",
+    "relation": "前提条件",
+    "tail": "用户模式为休眠",
+    "sources": [
+      "outer_lamp_fas_1514",
+      "outer_lamp_fas_1658"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆处于待机模式",
+    "relation": "前提条件",
+    "tail": "用户模式为待机",
+    "sources": [
+      "outer_lamp_fas_1514",
+      "outer_lamp_fas_1658"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆处于舒适模式",
+    "relation": "前提条件",
+    "tail": "用户模式为舒适",
+    "sources": [
+      "outer_lamp_fas_1514",
+      "outer_lamp_fas_1658"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆处于XOTA模式",
+    "relation": "前提条件",
+    "tail": "用户模式为XOTA",
+    "sources": [
+      "outer_lamp_fas_1514",
+      "outer_lamp_fas_1658"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VRLS软件状态",
+    "relation": "输出为",
+    "tail": "0x0 = VRLSSts_ICB_0_False",
+    "sources": [
+      "outer_lamp_fas_1515"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VRLS软件状态",
+    "relation": "输出为",
+    "tail": "0x1 = VRLSSts_ICB_1_True",
+    "sources": [
+      "outer_lamp_fas_1515"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯光模式",
+    "relation": "输出为",
+    "tail": "0x0 = LghtOpMd_1_0_LightOperMod_Night",
+    "sources": [
+      "outer_lamp_fas_1515"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯光模式",
+    "relation": "输出为",
+    "tail": "0x1 = LghtOpMd_1_1_LightOperMod_Day",
+    "sources": [
+      "outer_lamp_fas_1515"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯光模式",
+    "relation": "输出为",
+    "tail": "0x2 = LghtOpMd_1_2_LightOperMod_Twilight",
+    "sources": [
+      "outer_lamp_fas_1515"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯光模式",
+    "relation": "输出为",
+    "tail": "0x3 = LghtOpMd_1_3_LightOperMod_Tunnel",
+    "sources": [
+      "outer_lamp_fas_1515"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "水平环境光流明值",
+    "relation": "输出为",
+    "tail": "E = N × 20",
+    "sources": [
+      "outer_lamp_fas_1515"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "上方环境光流明值",
+    "relation": "输出为",
+    "tail": "E = N × 20",
+    "sources": [
+      "outer_lamp_fas_1515"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯状态",
+    "relation": "输入为",
+    "tail": "DipdBeamLghtSts_1_On",
+    "sources": [
+      "outer_lamp_fas_1516"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯状态",
+    "relation": "输入为",
+    "tail": "DipdBeamLghtSts_0_Off",
+    "sources": [
+      "outer_lamp_fas_1516"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯故障状态",
+    "relation": "输入为",
+    "tail": "DipdBeamLghtFtsts_1_True",
+    "sources": [
+      "outer_lamp_fas_1516"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯故障状态",
+    "relation": "输入为",
+    "tail": "DipdBeamLghtFtsts_0_False",
+    "sources": [
+      "outer_lamp_fas_1516"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前位置灯控制信号",
+    "relation": "输入为",
+    "tail": "FLSideLghtCtrl_1_On",
+    "sources": [
+      "outer_lamp_fas_1516"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前位置灯控制信号",
+    "relation": "输入为",
+    "tail": "FLSideLghtCtrl_0_Off",
+    "sources": [
+      "outer_lamp_fas_1516"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前位置灯控制信号",
+    "relation": "输入为",
+    "tail": "FRSideLghtCtrl_0_Off",
+    "sources": [
+      "outer_lamp_fas_1516"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯故障状态",
+    "relation": "触发条件",
+    "tail": "近光灯状态为关闭",
+    "sources": [
+      "outer_lamp_fas_1516"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制",
+    "relation": "前提条件",
+    "tail": "周期调用该服务接口",
+    "sources": [
+      "outer_lamp_fas_1520"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯控制",
+    "relation": "前提条件",
+    "tail": "周期调用该服务接口",
+    "sources": [
+      "outer_lamp_fas_1520"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯控制",
+    "relation": "前提条件",
+    "tail": "周期调用该服务接口",
+    "sources": [
+      "outer_lamp_fas_1520"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制",
+    "relation": "输入为",
+    "tail": "DirectionLightReq",
+    "sources": [
+      "outer_lamp_fas_1520"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯控制",
+    "relation": "输入为",
+    "tail": "DirectionLightReq",
+    "sources": [
+      "outer_lamp_fas_1520"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯控制",
+    "relation": "输入为",
+    "tail": "DirectionLightReq",
+    "sources": [
+      "outer_lamp_fas_1520"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯控制",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_1520"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

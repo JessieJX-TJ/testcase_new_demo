@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Brake Light Control Logic",
+  "row_semantics": "Each row represents a distinct phase or condition in the brake light control logic, including precondition, trigger condition, execution action, exit condition, and exception handling.",
+  "column_semantics": "The left column lists the categories of logic components (e.g., Precondition, Trigger Condition, Execution Action), while the right column provides the detailed specification for each category.",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLightDrvMdl",
+      "type": "Controller/Module",
+      "description": "Brake Light Drive Module responsible for controlling the brake lights."
+    },
+    {
+      "name": "BrkLightCtrlMdl",
+      "type": "Controller/Module",
+      "description": "Brake Light Control Module that sends commands to control the brake light state."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrkLightFbkSOAEnPrm==1",
+      "type": "Precondition",
+      "description": "Feedback Safety Override Enable Parameter must be set to 1 (Enable) for the logic to proceed."
+    },
+    {
+      "name": "BrakeLight.BrakeLightState.BrakeLightSta[InstanceID=1]==0x0",
+      "type": "Trigger Condition",
+      "description": "The brake light state received from BrkLightCtrlMdl must be Off (0x0) to trigger the execution actions."
+    },
+    {
+      "name": "BrakeLight.BrakeLightState.BrakeLightSta[InstanceID=1]==0x1",
+      "type": "Exit Condition",
+      "description": "The logic exits when the brake light state received from BrkLightCtrlMdl changes to On (0x1)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLamp_LH_HSD&BrkLamp_RH_HSD&CHMSL_HSD",
+      "type": "Output Signal",
+      "description": "The brake light drive module stops driving the left-hand side, right-hand side, and center high-mounted stop lamp (CHMSL) outputs."
+    },
+    {
+      "name": "BrakeLight.BrakeLightState.BrakeLightSta",
+      "type": "Output Signal",
+      "description": "The brake light drive module continuously sends the brake light state as Off (0) to the BrkLightCtrlMdl, at least three frames."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the logic for controlling the brake lights when they are commanded to be off. It specifies the conditions under which the brake light drive module should stop driving the brake lamps and continue sending an 'Off' state to the control module until the command changes to 'On'. This logic is crucial for ensuring proper brake light behavior during normal operation and transitions.",
+  "uncertain_points": []
+}
+```

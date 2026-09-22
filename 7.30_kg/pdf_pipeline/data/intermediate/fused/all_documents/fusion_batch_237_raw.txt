@@ -1,0 +1,468 @@
+```json
+[
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "configured_with_control_code",
+    "tail": "4640",
+    "sources": ["inner_lamp_ssts_0082"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "configured_with_control_code",
+    "tail": "4680",
+    "sources": ["inner_lamp_ssts_0082"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "configured_with_control_code",
+    "tail": "4720",
+    "sources": ["inner_lamp_ssts_0082"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "configured_with_control_code",
+    "tail": "4760",
+    "sources": ["inner_lamp_ssts_0082"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "outputs",
+    "tail": "Target Luminance Value",
+    "sources": ["inner_lamp_ssts_0083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "consumes",
+    "tail": "Power",
+    "sources": ["inner_lamp_ssts_0083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "maps_brightness_level_to_target_luminance_and_power",
+    "tail": "Brightness Level 2360 → Target Luminance Value = 5900 cd/m², Power Consumption = 1000",
+    "sources": ["inner_lamp_ssts_0083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "maps_brightness_level_to_target_luminance_and_power",
+    "tail": "Brightness Level 4000 → Target Luminance Value = 10000 cd/m², Power Consumption = 79",
+    "sources": ["inner_lamp_ssts_0083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "power_consumption_depends_on",
+    "tail": "Brightness Level",
+    "sources": ["inner_lamp_ssts_0083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "target_luminance_value_depends_on",
+    "tail": "Brightness Level",
+    "sources": ["inner_lamp_ssts_0083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color Change Request",
+    "relation": "triggered_by",
+    "tail": "CnsoLHALampColorCmd_1 != 0x00",
+    "sources": ["inner_lamp_ssts_0084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "turned_off_by",
+    "tail": "CnsoLHALampOnOff_1 = 0x0",
+    "sources": ["inner_lamp_ssts_0084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "turned_off_due_to_fault",
+    "tail": "overvoltage_or_undervoltage_fault",
+    "sources": ["inner_lamp_ssts_0084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "turned_off_due_to_timeout",
+    "tail": "no LIN signal from ZCU received within 6 s",
+    "sources": ["inner_lamp_ssts_0084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp State",
+    "relation": "maintained_on_error",
+    "tail": "CnsoLHALampColorCmd_1 is invalid",
+    "sources": ["inner_lamp_ssts_0084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PWM Driving Signal",
+    "relation": "generated_by",
+    "tail": "ambient lamp driver control module mapping color coordinates and PWM values via lookup table",
+    "sources": ["inner_lamp_ssts_0084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "performs_breathing_mode",
+    "tail": "DoorFR1LampBrthngCmd_l = 0x3 (Rate3, 1 s cycle)",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp brightness",
+    "relation": "follows_quadratic_curve",
+    "tail": "AmbtLampBrthngRate3holdoffPercent = 10%",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp brightness",
+    "relation": "ramps_up_from_0_to_100_percent",
+    "tail": "400 ms interval",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp brightness",
+    "relation": "ramps_down_from_100_to_0_percent",
+    "tail": "400 ms interval",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp brightness level for Rate13",
+    "relation": "output_range",
+    "tail": "0–4 (mapped to 0%–100%)",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp brightness level for Rate15",
+    "relation": "output_range",
+    "tail": "78–355 (mapped to 0%–100%, where 1000 = 100%)",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Breathing mode cycle period",
+    "relation": "timeout_constraint",
+    "tail": "1 s",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hold-off phase duration",
+    "relation": "timeout_constraint",
+    "tail": "100 ms",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brightness data sampling for Rate13",
+    "relation": "sampling_interval",
+    "tail": "40 ms",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brightness data sampling for Rate15",
+    "relation": "sampling_interval",
+    "tail": "100 ms",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0 Platform",
+    "relation": "controls",
+    "tail": "Interior Lighting Sub System",
+    "sources": ["inner_lamp_ssts_0086", "inner_lamp_ssts_0089", "inner_lamp_ssts_0092", "inner_lamp_ssts_0106", "inner_lamp_ssts_0117", "inner_lamp_ssts_0118", "inner_lamp_ssts_0119", "inner_lamp_ssts_0186", "inner_lamp_ssts_0204", "inner_lamp_ssts_0240", "inner_lamp_ssts_0247", "inner_lamp_ssts_0269", "inner_lamp_ssts_0274", "inner_lamp_ssts_0338", "inner_lamp_ssts_0394", "inner_lamp_ssts_0450", "inner_lamp_ssts_0477", "inner_lamp_ssts_0528", "inner_lamp_ssts_0552"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior_Light_Control",
+    "relation": "activated_when",
+    "tail": "Lighting_Mode = 'Daytime_Lighting' AND Vehicle_Speed < 50 km/h",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric_Trunk operation",
+    "relation": "enabled_when",
+    "tail": "Trunk_Open_Status = 'Open' AND Vehicle_Speed < 10 km/h",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior_Light_Control",
+    "relation": "inhibited_when",
+    "tail": "Lighting_Mode = 'Night_Road_Lighting' OR Vehicle_Speed >= 50 km/h",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric_Trunk operation",
+    "relation": "inhibited_when",
+    "tail": "Trunk_Open_Status = 'Closed' OR Vehicle_Speed >= 10 km/h",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Light_Brightness_Level",
+    "relation": "set_to",
+    "tail": "1000 Lux when Lighting_Mode = 'Daytime_Lighting'",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk_Motor_Current",
+    "relation": "set_to",
+    "tail": "10 A when Trunk_Open_Status = 'Open'",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Light_Duration",
+    "relation": "set_to",
+    "tail": "1500 s when Lighting_Mode = 'Daytime_Lighting'",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Control_Module_Error",
+    "relation": "triggers_fault_response",
+    "tail": "disable Exterior_Light_Control and Electric_Trunk operation",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "controls",
+    "tail": "DoorAmisLampA_FL",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "controls",
+    "tail": "DoorAmisLampA_FR",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHC",
+    "relation": "controls",
+    "tail": "MapLamp_FL",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHC",
+    "relation": "controls",
+    "tail": "MapLamp_FR",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "controls",
+    "tail": "LdspcLamp_LH",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "controls",
+    "tail": "TrunkFnclSwAccry",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "contains_subfunction",
+    "tail": "intelligent_vehicle_control",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "contains_subfunction",
+    "tail": "logic_service",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "contains_subfunction",
+    "tail": "device_management",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "connected_to",
+    "tail": "ICB",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "connected_to",
+    "tail": "ICB",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "connected_to",
+    "tail": "ICB",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "receives_input_from",
+    "tail": "ICB (IterDoorOpenSw_FL)",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "receives_input_from",
+    "tail": "ICB (IterDoorOpenSw_FR)",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "receives_input_from",
+    "tail": "ICB (IterDoorOpenSw_RR)",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "receives_input_from",
+    "tail": "ICB (PwrLftgtClsSw)",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlLampFLCtrlCmd",
+    "relation": "input_to",
+    "tail": "Interior Lighting Sub System",
+    "sources": ["inner_lamp_ssts_0090"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlAmbtLamp_FL_HSD",
+    "relation": "output_from",
+    "tail": "Interior Lighting Sub System",
+    "sources": ["inner_lamp_ssts_0090"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlLampFLCtrlCmd",
+    "relation": "depends_on",
+    "tail": "SSTS",
+    "sources": ["inner_lamp_ssts_0090"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlAmbtLamp_FL_HSD",
+    "relation": "depends_on",
+    "tail": "SSTS",
+    "sources": ["inner_lamp_ssts_0090"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlLampFLCtrlCmd",
+    "relation": "input_from",
+    "tail": "LHZCU",
+    "sources": ["inner_lamp_ssts_0090"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlAmbtLamp_FL_HSD",
+    "relation": "output_to",
+    "tail": "FtwlAmbtLamp_FL",
+    "sources": ["inner_lamp_ssts_0090"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical and Electronic System Configuration Parameters",
+    "relation": "requires_compliance_with_design_specification",
+    "tail": "all configuration items (Item), ranges (Range), resolution factors (Factor), and default values (Default) must conform to design specification",
+    "sources": ["inner_lamp_ssts_0091", "inner_lamp_ssts_0349"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

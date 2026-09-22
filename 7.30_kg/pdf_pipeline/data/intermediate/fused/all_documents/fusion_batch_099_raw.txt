@@ -1,0 +1,460 @@
+```json
+[
+  {
+    "head": "RHA_Lamp",
+    "relation": "outputs",
+    "tail": "Hazard_Lamp_Hold_Source",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHB_Lamp",
+    "relation": "outputs",
+    "tail": "Hazard_Lamp_Hold_Source",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHA_Lamp",
+    "relation": "outputs",
+    "tail": "Hazard_Lamp_Hold_Source",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHB_Lamp",
+    "relation": "outputs",
+    "tail": "Hazard_Lamp_Hold_Source",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Hazard_Lamp_Function",
+    "relation": "state_hold_condition",
+    "tail": "always",
+    "sources": ["outer_lamp_fas_1060"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Emission",
+    "relation": "precondition",
+    "tail": "User_Mode != UsgMd_0_Sleep",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Emission",
+    "relation": "precondition",
+    "tail": "User_Mode ∈ {UsgMd_1_Standby, UsgMd_6_XOTA}",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Emission",
+    "relation": "precondition",
+    "tail": "User_Mode_Valid = true",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Emission",
+    "relation": "precondition",
+    "tail": "Vehicle_Mode != VehMd_3_TRANSPORT",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Emission",
+    "relation": "precondition",
+    "tail": "Vehicle_Mode_Valid = true",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Emission",
+    "relation": "precondition",
+    "tail": "Exterior_Light_Switch_Status != AUTO (0x3)",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Emission",
+    "relation": "precondition",
+    "tail": "DLP_Scene_Light_Setting = DISABLED (0x1)",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Emission",
+    "relation": "precondition",
+    "tail": "Tunnel_Detection_Active = true",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Emission",
+    "relation": "precondition",
+    "tail": "Road_Type = LinkTypeTunnel (0x2)",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Emission",
+    "relation": "precondition",
+    "tail": "Auto_Light_On_Request = true (0x1)",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Emission",
+    "relation": "precondition",
+    "tail": "Hazard_Lamp_Active = true",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dipped_Beam_Control_Signal_Emission",
+    "relation": "inhibition_condition",
+    "tail": "Hazard_Lamp_Active = true",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": true,
+    "conflict_note": "同一 head-relation pair 下，'Hazard_Lamp_Active = true' 同时作为 precondition 和 inhibition_condition，逻辑冲突：双闪开启既触发近光灯控制信号发出，又抑制其发出。需确认是否为条件分支（如不同子模式）或文档错误。"
+  },
+  {
+    "head": "ICB_Dipped_Beam_Off_Control",
+    "relation": "precondition",
+    "tail": "Exterior_Light_Switch_Status = OFF (0x0)",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_Dipped_Beam_Off_Control",
+    "relation": "precondition",
+    "tail": "LDipdBeamLghtCtrl = OFF (0x0)",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_Dipped_Beam_Off_Control",
+    "relation": "precondition",
+    "tail": "RDipdBeamLghtCtrl = OFF (0x0)",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_Dipped_Beam_Off_Control",
+    "relation": "depends_on",
+    "tail": "LHZCU_SidePositionAndDippedBeam_OFF_Interface_to_ICB",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_Service_Interface_Call",
+    "relation": "precondition",
+    "tail": "ICB_Dipped_Beam_Off_Control",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HMI_ICB_Interface_Call",
+    "relation": "precondition",
+    "tail": "ICB_Service_Interface_Call",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp_Indicator_Display",
+    "relation": "precondition",
+    "tail": "HMI_ICB_Interface_Call",
+    "sources": ["outer_lamp_fas_1061"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Turn_Signal_Switch",
+    "relation": "input_from",
+    "tail": "LHZCU_Switch_Preprocessing_Module",
+    "sources": ["outer_lamp_fas_1062", "outer_lamp_fas_1467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU_Switch_Preprocessing_Module",
+    "relation": "output_to",
+    "tail": "LHZCU_Turn_Signal_Control_Module",
+    "sources": ["outer_lamp_fas_1062", "outer_lamp_fas_1467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU_Turn_Signal_Control_Module",
+    "relation": "output_to",
+    "tail": "RZCU_TDM_Forwarding",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU_TDM_Forwarding",
+    "relation": "output_to",
+    "tail": "TDM_Trailer_Turn_Signal_Driver",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Position_Lamp_Soft_Switch",
+    "relation": "input_from",
+    "tail": "S32G_Headlight_Combination_To_Basic_Service",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S32G_Headlight_Combination_To_Basic_Service",
+    "relation": "output_to",
+    "tail": "LHZCU_Turn_Signal_Control_Module",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU_Turn_Signal_Control_Module",
+    "relation": "output_to",
+    "tail": "S32G_Headlight_SWC_Interface",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S32G_Headlight_SWC_Interface",
+    "relation": "output_to",
+    "tail": "RZCU_Service_To_CAN_Conversion",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU_Service_To_CAN_Conversion",
+    "relation": "output_to",
+    "tail": "TDM_Trailer_Turn_Signal_Driver",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU_Reversing_Lamp_Control_Module",
+    "relation": "output_to",
+    "tail": "S32G_Headlight_SWC_Interface",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU_Service_To_CAN_Conversion",
+    "relation": "output_to",
+    "tail": "TDM_Trailer_Reversing_Lamp_Driver",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "contains_subfunction",
+    "tail": "Switch_Preprocessing_Module",
+    "sources": ["outer_lamp_fas_1062", "outer_lamp_fas_1467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "contains_subfunction",
+    "tail": "Turn_Signal_Control_Module",
+    "sources": ["outer_lamp_fas_1062", "outer_lamp_fas_1467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S32G",
+    "relation": "contains_subfunction",
+    "tail": "Headlight_Combination_To_Basic_Service",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "S32G",
+    "relation": "contains_subfunction",
+    "tail": "Headlight_SWC_Interface",
+    "sources": ["outer_lamp_fas_1062"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front_Fog_Light_Status",
+    "relation": "precondition",
+    "tail": "ICB_Subscribes_Front_Fog_Light_Status_Interface",
+    "sources": ["outer_lamp_fas_1063"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front_Fog_Light_Error_Status",
+    "relation": "precondition",
+    "tail": "ICB_Subscribes_Front_Fog_Light_Status_Interface",
+    "sources": ["outer_lamp_fas_1063"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front_Fog_Light_Off_Synchronization",
+    "relation": "timeout_constraint",
+    "tail": "Left_and_Right_Front_Fog_Lights_Off_Synchronized; Max_Delay ≤ 40ms",
+    "sources": ["outer_lamp_fas_1063"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Between_Ranges (0x0)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Park_Range (0x1)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Reverse_Range (0x2)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Neutral_Range (0x3)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Forward_Range_A (0x4)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Forward_Range_B (0x5)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Forward_Range_C (0x6)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Forward_Range_D (0x7)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Forward_Range_E (0x8)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Forward_Range_F (0x9)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Forward_Range_G (0xA)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Forward_Range_H (0xB)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrShftLvrPos",
+    "relation": "maps_to",
+    "tail": "Lever_Position_Unknown (0xF)",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightResp",
+    "relation": "precondition",
+    "tail": "TrShftLvrPos_Valid = true",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightResp",
+    "relation": "precondition",
+    "tail": "Control_Success_Status = true",
+    "sources": ["outer_lamp_fas_1064"],
+    "conflict": true,
+    "conflict_note": "尾部值 '正确' 语义模糊，与明确状态码 'ControlSuccess' 不一致；且该条未指明是输出值还是判定条件。建议核实：是否应为 'DayRunningLightResp == ControlSuccess'？当前保留但标记潜在歧义。"
+  }
+]
+```

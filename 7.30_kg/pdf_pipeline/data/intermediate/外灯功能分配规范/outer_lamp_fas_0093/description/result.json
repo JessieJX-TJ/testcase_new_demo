@@ -1,0 +1,49 @@
+{
+  "table_type": "state_table",
+  "topic": "整车外灯转向灯功能状态与主控判断逻辑",
+  "row_semantics": "描述了在不同条件下，左前、左后及左侧转向灯的状态及其故障状态的组合情况。",
+  "column_semantics": {
+    "功能状态": "输入条件，描述车辆各转向灯的实际工作状态或故障状态。",
+    "主控判断后状态": "根据功能状态，主控系统对相应转向灯状态的判断结果。",
+    "备注": "用于记录额外信息或说明，当前表格中无具体内容。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LeftFrontTurnLight",
+      "description": "左前转向灯，包括其工作状态（on/off）和故障状态（True/False）。"
+    },
+    {
+      "name": "LeftRearTurnLight",
+      "description": "左后转向灯，包括其工作状态（on/off）和故障状态（True/False）。"
+    },
+    {
+      "name": "LeftSideTurnLight",
+      "description": "左侧转向灯，表示主控系统对其状态的判断结果（on/off 或故障状态 True/False）。"
+    }
+  ],
+  "core_conditions": [
+    "功能状态列中的所有组合条件，涵盖了转向灯的各种工作和故障场景。"
+  ],
+  "core_outputs": [
+    "主控判断后状态列，反映了主控系统对转向灯状态的最终判断结果。"
+  ],
+  "core_faults": [
+    {
+      "name": "LeftFrontTurnLightFault",
+      "description": "左前转向灯的故障状态，可能为 True（故障）或 False（正常）。"
+    },
+    {
+      "name": "LeftRearTurnLightFault",
+      "description": "左后转向灯的故障状态，可能为 True（故障）或 False（正常）。"
+    },
+    {
+      "name": "LeftSideTurnLightFault",
+      "description": "左侧转向灯的故障状态，由主控系统判断，可能为 True（故障）或 False（正常）。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证整车电子系统中转向灯状态判断的正确性，确保在各种工作和故障条件下，主控系统能够准确识别并处理左前、左后及左侧转向灯的状态。",
+  "uncertain_points": []
+}

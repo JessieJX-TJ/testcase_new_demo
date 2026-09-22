@@ -1,0 +1,65 @@
+{
+  "table_type": "signal_table",
+  "topic": "制动灯控制功能",
+  "row_semantics": "描述特定输入信号组合下，制动灯驱动模块的执行动作和预期行为",
+  "column_semantics": {
+    "输入": "定义触发制动灯点亮的具体硬件或软件信号及其值",
+    "执行动作": "描述在给定输入条件下，制动灯驱动处理模块应执行的具体操作",
+    "备注": "提供额外的说明、上下文信息或未明确的细节"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrkLghtCtrl_HW",
+      "type": "输入信号",
+      "description": "硬件层面的制动灯控制信号，用于直接控制制动灯的状态"
+    },
+    {
+      "name": "BrakeLight",
+      "type": "输出信号",
+      "description": "车辆外部的物理制动灯"
+    },
+    {
+      "name": "BrakeLightControl",
+      "type": "控制器/模块",
+      "description": "负责处理制动灯相关逻辑的电子控制单元（ECU）或软件模块"
+    },
+    {
+      "name": "BrakeLightCtrReq",
+      "type": "输入信号",
+      "description": "制动灯控制请求信号，可能来自驾驶员操作或其他系统"
+    },
+    {
+      "name": "InstanceID",
+      "type": "参数",
+      "description": "实例标识符，用于区分不同的制动灯控制实例"
+    }
+  ],
+  "core_conditions": [
+    {
+      "input_signal": "BrkLghtCtrl_HW",
+      "value": "0x1",
+      "description": "当BrkLghtCtrl_HW信号值为0x1时，表示制动灯控制请求已激活"
+    },
+    {
+      "input_signal": "BrakeLightCtrReq",
+      "instance_id": "1",
+      "value": "On",
+      "description": "当BrakeLightCtrReq信号的InstanceID为1且值为On时，表示具体的制动灯控制请求"
+    }
+  ],
+  "core_outputs": [
+    {
+      "action": "制灯亮",
+      "description": "在满足上述条件时，制动灯驱动处理模块应控制制动灯点亮"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在特定硬件和软件信号输入条件下，制动灯控制系统应如何响应，主要用于验证制动灯控制逻辑的正确性，确保在正确的输入条件下制动灯能够被正确点亮。",
+  "uncertain_points": [
+    "备注列的具体内容未在图片中显示，无法确定是否有额外的测试条件或限制。",
+    "表格中未明确列出所有可能的输入信号组合，可能存在其他未覆盖的场景。"
+  ]
+}

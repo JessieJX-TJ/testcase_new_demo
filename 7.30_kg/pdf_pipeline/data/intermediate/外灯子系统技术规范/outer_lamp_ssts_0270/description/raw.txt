@@ -1,0 +1,88 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "左远光灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件、触发条件、执行动作到退出条件和异常处理。",
+  "column_semantics": "表格包含两列：左侧为功能阶段描述（如前置条件、触发条件等），右侧为该阶段的具体内容或指令。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "主光灯反馈超时允许参数，用于控制是否启用相关保护机制。"
+    },
+    {
+      "name": "LMainBeamLightDrvMdl",
+      "type": "controller_module",
+      "description": "主光灯驱动模块，负责控制主光灯的输出状态。"
+    },
+    {
+      "name": "MainBeamLamp_LH_HSD",
+      "type": "output_signal",
+      "description": "左远光灯高压侧驱动信号，用于直接控制左远光灯的点亮与熄灭。"
+    },
+    {
+      "name": "MainBeamLghtSts",
+      "type": "system_state",
+      "description": "主光灯状态，表示当前主光灯的工作状态（如开启或关闭）。"
+    },
+    {
+      "name": "MainBeamLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "主光灯控制模块，负责发送控制指令以管理主光灯的状态。"
+    },
+    {
+      "name": "DTC_B105C_12",
+      "type": "fault_status",
+      "description": "诊断故障代码，表示检测到左远光灯短路故障。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MainBeamLightFbkSOAEnPrm == 0 (Disable)",
+      "description": "主光灯反馈超时允许参数被禁用，意味着系统不启用相关的超时保护机制。"
+    },
+    {
+      "condition": "左远光灯处于输出状态",
+      "description": "左远光灯当前处于点亮或准备点亮的状态。"
+    },
+    {
+      "condition": "检测到左远光灯短路到电源",
+      "description": "系统检测到左远光灯存在短路至电源的故障情况。"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "description": "系统检测到之前存在的短路故障已经恢复正常。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "action": "停止驱动左远光灯输出 (MainBeamLamp_LH_HSD)",
+      "description": "立即停止向左远光灯发送驱动信号，防止进一步损坏。"
+    },
+    {
+      "action": "持续发送 LMainBeamLghtSts = 0 (Off) 至 MainBeamLghtCtrlMdl",
+      "description": "持续发送主光灯关闭状态信号，确保主光灯保持熄灭状态，至少发送三帧。"
+    },
+    {
+      "action": "置位 DTC B105C 12",
+      "description": "记录并设置特定的诊断故障代码，用于后续故障诊断和维修。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTC_B105C_12",
+      "description": "左远光灯短路至电源故障。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在发送主光灯关闭状态信号时，必须至少发送三帧数据以确保信号的可靠性和完整性。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当左远光灯发生短路至电源故障时，系统应如何响应的详细逻辑，包括停止驱动、发送关闭状态信号以及记录故障代码，并规定了在故障恢复后如何退出该处理模式。",
+  "uncertain_points": []
+}
+```

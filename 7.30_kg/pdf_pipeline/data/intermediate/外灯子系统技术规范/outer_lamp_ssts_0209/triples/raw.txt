@@ -1,0 +1,76 @@
+```json
+[
+  {
+    "head": "侧位灯停止输出",
+    "relation": "触发条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==0(Off)(InstanceID=2)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRSSideLghtDrvMdl 停止驱动右前位置灯输出",
+    "relation": "前提条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==0(Off)(InstanceID=2)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "FRSSideLghtDrvMdl 持续发送侧位灯状态",
+    "relation": "前提条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==0(Off)(InstanceID=2)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位灯状态为关闭",
+    "relation": "输出为",
+    "tail": "FRSSideLghtDrvMdl 持续发送SidePositionLightStatus. SidePositionLightSta=0(Off)(InstanceID=2)至【SideLghtCtrlMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FRSSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "SidePositionLightSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统退出侧位灯控制状态",
+    "relation": "触发条件",
+    "tail": "收到【SideLghtCtrlMdl】发送的ControlSidePositionLight. SidePositionLightReq==1 (On)(InstanceID=2)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SideLghtCtrlMdl",
+      "ControlSidePositionLight",
+      "SidePositionLightReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "至少发送三帧侧位灯状态",
+    "relation": "状态保持条件",
+    "tail": "FRSSideLghtDrvMdl 持续发送SidePositionLightStatus. SidePositionLightSta=0(Off)(InstanceID=2)至【SideLghtCtrlMdl】",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "FRSSideLghtDrvMdl",
+      "SidePositionLightStatus",
+      "SidePositionLightSta"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

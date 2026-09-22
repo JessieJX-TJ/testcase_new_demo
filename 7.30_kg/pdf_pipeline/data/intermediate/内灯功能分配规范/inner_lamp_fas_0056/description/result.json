@@ -1,0 +1,40 @@
+{
+  "table_type": "parameter_table",
+  "topic": "整车背光控制功能的限制条件",
+  "row_semantics": "表格的每一行代表一个与整车背光控制相关的参数或限制条件。",
+  "column_semantics": {
+    "ID": "参数或限制条件的唯一标识符，用于追踪和引用。",
+    "Restriction": "描述具体的限制条件或规则，通常包含功能名称、模块编号等信息。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "整车背光控制",
+      "type": "function",
+      "description": "控制车辆整体背光的功能，可能涉及外灯、车身照明等系统。"
+    },
+    {
+      "name": "VP3-62747",
+      "type": "controller_module",
+      "description": "可能是负责整车背光控制的特定控制器或模块的编号。"
+    },
+    {
+      "name": "VP3-25751",
+      "type": "controller_module",
+      "description": "另一个与整车背光控制相关的控制器或模块编号，可能为备用或辅助模块。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "整车背光控制",
+      "description": "整个车辆的背光系统处于激活状态。",
+      "module": "VP3-62747"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车背光控制功能的限制条件，主要用于验证当控制器模块（如 VP3-62747）执行整车背光控制时，是否存在特定的限制或约束（如与 VP3-25751 模块的关系）。可用于测试整车背光控制在不同模块配置下的行为是否符合规范。",
+  "uncertain_points": []
+}

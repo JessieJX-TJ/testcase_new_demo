@@ -1,0 +1,79 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "内灯（Interior Light）功能分配规范",
+  "row_semantics": "表格按功能模块划分，每一行代表一个信号或状态的定义及其相关属性。",
+  "column_semantics": "列定义了信号的输入/输出类型、所属控制器/模块、以及相关的系统或子系统。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "UsrMdV",
+      "type": "input_signal",
+      "description": "用户模式值，表示车辆当前的操作模式，如正常驾驶、自动驾驶等。"
+    },
+    {
+      "name": "VehSpdAvg",
+      "type": "input_signal",
+      "description": "车辆平均速度，用于判断车辆是否处于静止或运动状态。"
+    },
+    {
+      "name": "LdspcOpenSts",
+      "type": "input_signal",
+      "description": "电动尾门开启状态，指示尾门是关闭还是打开。"
+    },
+    {
+      "name": "LdSpcLampCtrlCmd",
+      "type": "output_signal",
+      "description": "内灯控制命令，由系统发出以控制内灯的开关。"
+    },
+    {
+      "name": "RZCU/LHZC CU",
+      "type": "controller_module",
+      "description": "区域控制单元，负责处理与内灯、尾门等相关的控制逻辑。"
+    },
+    {
+      "name": "制动子系统 SST S",
+      "type": "system",
+      "description": "制动子系统，可能影响内灯的某些状态或控制逻辑。"
+    },
+    {
+      "name": "尾门 SST S",
+      "type": "system",
+      "description": "电动尾门系统，其状态会影响内灯的控制。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMdV_0_Invalid",
+      "description": "当UsrMdV为0时，表示用户模式无效。"
+    },
+    {
+      "name": "UsrMdV_1_Valid",
+      "description": "当UsrMdV为1时，表示用户模式有效。"
+    },
+    {
+      "name": "LdspcOpenSts_0_Load_Space_Closed",
+      "description": "当LdspcOpenSts为0时，表示负载空间（尾门）关闭。"
+    },
+    {
+      "name": "LdspcOpenSts_1_Load_Space_Open",
+      "description": "当LdspcOpenSts为1时，表示负载空间（尾门）打开。"
+    },
+    {
+      "name": "VehSpdAvg_N*0.015625 kph",
+      "description": "车辆平均速度的计算公式，用于判断车辆状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LdSpcLampCtrlCmd",
+      "description": "内灯控制命令，根据输入信号和系统状态决定内灯的开关。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了内灯控制系统中各信号的输入输出属性、所属模块及系统关联，可用于验证内灯在不同用户模式、车辆速度和尾门状态下的正确控制逻辑。",
+  "uncertain_points": []
+}
+```

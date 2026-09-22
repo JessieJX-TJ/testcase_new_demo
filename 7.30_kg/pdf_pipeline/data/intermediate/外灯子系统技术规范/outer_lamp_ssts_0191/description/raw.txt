@@ -1,0 +1,56 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "左前雾灯短路故障诊断与处理逻辑",
+  "row_semantics": "表格按行定义了故障触发条件、前置条件以及执行的动作序列。",
+  "column_semantics": "表格包含三列，分别描述了前置条件、触发条件和执行动作。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FrtFogLghtDrvMdl",
+      "type": "controller_module",
+      "description": "前雾灯驱动模块"
+    },
+    {
+      "name": "FrtFogLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "前雾灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "左前雾灯处于关闭状态",
+      "source": "前置条件"
+    },
+    {
+      "condition": "检测到左前雾灯短路到电源",
+      "source": "触发条件"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "LFrtFogLghtFltSts",
+      "value": "0x1 (True)",
+      "module": "FrtFogLghtDrvMdl",
+      "action": "持续发送至少三帧"
+    },
+    {
+      "signal": "FrontFogLightErrorStatus",
+      "value": "0x1 (Error)",
+      "instance_id": "3",
+      "module": "FrtFogLghtDrvMdl",
+      "action": "持续发送至少三帧"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_code": "DTC B1053 12",
+      "description": "左前雾灯短路故障代码"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了当左前雾灯发生短路到电源故障时，系统应如何检测并响应的诊断逻辑，包括发送特定信号至相关模块以及设置相应的故障代码。",
+  "uncertain_points": []
+}
+```

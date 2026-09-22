@@ -1,0 +1,74 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 前雾灯控制与状态",
+  "row_semantics": "描述前雾灯的控制接口和状态获取接口，分别针对左侧和右侧前雾灯。",
+  "column_semantics": {
+    "1": "功能模块/信号名称",
+    "2": "服务消费类型 (SOA)",
+    "3": "控制器/模块名称 (LHZCU, RHZCU)",
+    "4": "硬线状态"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FrontFogLightControl",
+      "description": "前雾灯控制接口，用于点亮或熄灭前雾灯。",
+      "type": "input_signal",
+      "module": "不确定",
+      "interface": "FrontFogLightControl",
+      "parameter": "FrontFogLightCtrReq",
+      "instanceID": 4,
+      "values": [
+        {"code": "0x0", "state": "OFF"},
+        {"code": "0x1", "state": "ON"}
+      ]
+    },
+    {
+      "name": "FrontFogLightState_Left",
+      "description": "左侧前雾灯状态获取接口。",
+      "type": "output_signal",
+      "module": "LHZCU",
+      "interface": "FrontFogLightState",
+      "parameter": "FrontFogLightSta",
+      "instanceID": 3,
+      "values": [
+        {"code": "0x0", "state": "OFF"},
+        {"code": "0x1", "state": "ON"},
+        {"code": "0x2", "state": "Unknown"}
+      ]
+    },
+    {
+      "name": "FrontFogLightState_Right",
+      "description": "右侧前雾灯状态获取接口。",
+      "type": "output_signal",
+      "module": "RHZCU",
+      "interface": "FrontFogLightState",
+      "parameter": "FrontFogLightSta",
+      "instanceID": 4,
+      "values": [
+        {"code": "0x0", "state": "OFF"}
+      ]
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FrontFogLightState_Left",
+      "states": ["OFF", "ON", "Unknown"]
+    },
+    {
+      "name": "FrontFogLightState_Right",
+      "states": ["OFF"]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆前雾灯的控制接口和状态反馈机制，可用于验证前雾灯的点亮、熄灭以及左右两侧前雾灯状态的正确性。",
+  "uncertain_points": [
+    "控制器/模块名称中未明确指定具体的ECU名称，仅使用了LHZCU和RHZCU作为占位符。",
+    "表格中未提供故障状态定义，无法直接用于故障模式测试。"
+  ]
+}
+```

@@ -1,0 +1,37 @@
+4、[驱动处理模块LHZCU/RHZCU/RZCU]接收ICB 控制信号,控制双闪灯退出点亮
+5、ICB接收控制信号:
+FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_Off;&
+FRDircnLghtCtrl=0x0=FRDircnLghtCtrl_0_Off
+做退出危险警报灯图标指示灯显示以及声音提醒
+6、[驱动处理模块LHZCU/RHZCU/RZCU]将状态/故障状态反馈至[危险警报灯开关控制模
+FRDircnLghtSts_HW =0x0=FRDircnLghtSts_HW_0_ Off
+RLDircnLghtSts_HW =0x0=RLDircnLghtSts_HW _0_ Off
+RRDircnLghtSts_HW =0x0=RRDircnLghtSts_HW_0_ Off
+FRDircnLghtFltsts_HW =0x0=FRDircnLghtFltsts_HW_0_False
+RLDircnLghtFltsts_HW =0x0=RLDircnLghtFltsts_HW_0_False
+RRDircnLghtFltsts_HW =0x0=RRDircnLghtFltsts_HW_0_False
+(exlDircnLghtHwDrvEnPrm=0x1;通过域控获取转向灯状态)
+7、ICB将状态/故障状态反馈至[危险警报灯开关控制模块LHZCU]:
+FLDircnLghtSts=0x0= FLDircnLghtSts_0_Off
+FRDircnLghtSts=0x0=FRDircnLghtSts_0_Off
+RLDircnLghtSts=0x0=RLDircnLghtSts_0_Off
+RRDircnLghtSts=0x0=RRDircnLghtSts_0_ Off
+FLDircnLghtFltsts=0x0=FLDircnLghtFltsts_0_False
+FRDircnLghtFltsts=0x0=FRDircnLghtFltsts_0_False
+RLDircnLghtFltsts=0x0=RLDircnLghtFltsts_0_False
+RRDircnLghtFltsts=0x0=RRDircnLghtFltsts_0_False
+(exlDircnLghtHwDrvEnPrm=0x0||0x2;通过数字灯控获取转向灯状态;)
+8、[危险警报灯自动控制模块LHZCU]将状态/故障状态反馈至ICB:
+DircnLghtSts=0x0=OFF
+DircnLghtFltsts=0x0=DircnLghtFltsts_0_No_Error
+9、[外灯组合服务ICB]接收LHZCU发送的转向灯点亮及故障状态CAN信号转成对应的服务
+{ExteriorLightControlSystem. DirectionLightSts. DirectionLghtSts}=0x0=No Flash
+10、[危险警报灯开关控制模块LHZCU]将双闪灯模式实时状态反馈至ICB:
+VehHzrdMdSts=0x0=VehHzrdMdSts_0_No_Request
+11、[危险警报灯开关控制模块LHZCU]将转向灯控制状态反馈至SDM:
+EDRDircnIndLampSwSts=0x0=EDRDircnIndLampSwSts_0_off
+备注
+危险警报灯同步性要求(a&b):
+a)其图标闪烁频率和声音提醒与实际危险警报灯的闪烁频率需保持一致,三者同步性允许的最大延时
+50ms
+b)危险警报灯的同步性允许的最大延时周期为:40ms

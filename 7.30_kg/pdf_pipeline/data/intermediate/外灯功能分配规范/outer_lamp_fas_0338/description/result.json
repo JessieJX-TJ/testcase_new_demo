@@ -1,0 +1,56 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 大灯高度调节状态与故障状态",
+  "row_semantics": "表格按功能点（Feature Point）组织，每一行代表一个特定的参数或状态信息。",
+  "column_semantics": "列标题表示数据的来源或目标系统模块，包括输出方向、CANFD通信接口、LHZCU控制器、ICB控制器等。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "HdlImpLvIgSts",
+      "type": "parameter",
+      "description": "大灯高度调节状态"
+    },
+    {
+      "name": "HdlImpLvIgFItSts",
+      "type": "parameter",
+      "description": "大灯高度调节故障状态"
+    },
+    {
+      "name": "PersonalizationData.HeadLampLevelSet",
+      "type": "parameter",
+      "description": "个性化设置 - 头灯高度调节级别"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "HdlImpLvIgSts",
+      "description": "表示当前大灯高度调节的级别状态，如NoRequest、Leveling1至Leveling4、Reserved。",
+      "source": "LHZCU",
+      "target": "CANFD, ICB"
+    },
+    {
+      "name": "HdlImpLvIgFItSts",
+      "description": "表示大灯高度调节是否存在故障，True表示有故障，False表示无故障。",
+      "source": "LHZCU",
+      "target": "CANFD, ICB"
+    },
+    {
+      "name": "PersonalizationData.HeadLampLevelSet",
+      "description": "用于设置手动大灯高度调节的功能请求，包含Level1至Level4的选项。",
+      "source": "SOA",
+      "target": "ICB"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "HdlImpLvIgFItSts",
+      "description": "当该参数值为True时，表示大灯高度调节系统存在故障。",
+      "condition": "HdlImpLvIgFItSts == True"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯大灯高度调节功能的状态和参数，可用于验证LHZCU控制器是否正确上报大灯调节状态及故障信息，并验证SOA系统能否正确下发手动调节请求给ICB控制器。",
+  "uncertain_points": []
+}

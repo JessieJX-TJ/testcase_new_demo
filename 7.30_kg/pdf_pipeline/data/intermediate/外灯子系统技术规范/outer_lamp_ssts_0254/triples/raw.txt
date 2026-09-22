@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "转向灯控制功能被禁用",
+    "relation": "前提条件",
+    "tail": "配置字DILghtSwSOAEnPrm==0(Disable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["前置条件", "配置字DILghtSwSOAEnPrm==0(Disable)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统发送右转向请求信号",
+    "relation": "触发条件",
+    "tail": "用户重拨右转向拨杆,开关阻值为1200Ω(±5%)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["触发条件", "用户重拨右转向拨杆,开关阻值为1200Ω(±5%)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯控制功能保持禁用状态",
+    "relation": "状态保持条件",
+    "tail": "配置字DILghtSwSOAEnPrm==0(Disable)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": ["前置条件", "配置字DILghtSwSOAEnPrm==0(Disable)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯控制功能退出",
+    "relation": "退出条件",
+    "tail": "转向灯开关变为非1200Ω(±5%)",
+    "triple_type": "功能退出条件",
+    "evidence_terms": ["退出条件", "转向灯开关变为非1200Ω(±5%)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【DILghtSwMdl】持续发送DircnLghtSwReq=0x2(Right_Second)",
+    "relation": "输出为",
+    "tail": "【DILghtCtrlMdl】",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["执行动作", "DircnLghtSwReq", "DILghtCtrlMdl"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "【DILghtSwMdl】至少发送三帧",
+    "relation": "包含子功能",
+    "tail": "【DILghtSwMdl】持续发送DircnLghtSwReq=0x2(Right_Second)",
+    "triple_type": "功能包含关系",
+    "evidence_terms": ["执行动作", "至少发送三帧"],
+    "confidence_note": "high"
+  }
+]
+```

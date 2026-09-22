@@ -1,0 +1,33 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的状态与控制信号分配",
+  "row_semantics": "表格按外灯的不同方向（左前、右前、左后、右后）分组，详细描述了每种转向灯的状态定义及其对应的硬件输出信号。",
+  "column_semantics": "第一列列出转向灯的名称和状态类型；第二列描述状态的具体数值定义；第三至六列分别表示该信号的输出方式（CANFD）、控制器模块（ICB, LHZCU）、网络状态以及硬线故障状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "FLDircnLghtSts",   // 左前转向灯状态
+    "FRDircnLghtSts",   // 右前转向灯状态
+    "RLDircnLghtSts",   // 左后转向灯状态
+    "RRDircnLghtSts"    // 右后转向灯状态
+  ],
+  "core_conditions": [
+    "0x0=Off",          // 灯光关闭状态
+    "0x1=On"            // 灯光开启状态
+  ],
+  "core_outputs": [
+    "CANFD",            // 输出协议
+    "ICB",              // 集成控制盒
+    "LHZCU",            // 车身域控制器
+    "网络状态",         // 网络通信状态
+    "硬线故障状态"      // 硬线连接故障状态
+  ],
+  "core_faults": [
+    "FLDircnLghtFlts_HW" // 左前转向灯硬件故障状态
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证外灯转向灯在不同方向上的状态定义及其通过CANFD总线传输到ICB和LHZCU控制器的正确性，同时检查网络状态和硬线连接的可靠性。",
+  "uncertain_points": []
+}
+```

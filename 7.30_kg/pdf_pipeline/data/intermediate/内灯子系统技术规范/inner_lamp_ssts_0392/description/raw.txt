@@ -1,0 +1,112 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "子系统技术规范 - 内灯子系统 (Interior Lighting Sub System) 的灯光控制功能",
+  "row_semantics": "表格的每一行代表一个具体的灯光控制功能或参数配置，按功能类型和参数值进行分类。",
+  "column_semantics": "表格包含输入信号、控制器/模块名、输出信号及对应的系统状态或模式。具体列包括：功能描述、输入信号（如LIN、LHZCU等）、以及与内灯SSTS相关的控制指令。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorFL4LampFadeSpdCmd_1",
+      "type": "function",
+      "description": "门灯渐变速度控制指令"
+    },
+    {
+      "name": "DoorFL5LampOnOff_1",
+      "type": "function",
+      "description": "门灯开启请求"
+    },
+    {
+      "name": "DoorFL5LampColOrCmd_1",
+      "type": "function",
+      "description": "门灯颜色控制指令"
+    },
+    {
+      "name": "Rate",
+      "type": "parameter",
+      "description": "呼吸模式的周期速率参数"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Local Hazard Control Unit, 车身控制器"
+    },
+    {
+      "name": "LIN",
+      "type": "communication_protocol",
+      "description": "Local Interconnect Network, 局部互联网络总线"
+    },
+    {
+      "name": "DoorAmbtLampD_FL",
+      "type": "output_signal",
+      "description": "前门氛围灯控制信号"
+    },
+    {
+      "name": "DoorAmbtLampE_FL",
+      "type": "output_signal",
+      "description": "前门氛围灯颜色控制信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "呼吸模式",
+      "description": "根据指定的呼吸周期速率（Rate）进行周期性闪烁"
+    },
+    {
+      "name": "停止呼吸",
+      "description": "当指令值为0时，立即停止呼吸模式"
+    },
+    {
+      "name": "模式切换",
+      "description": "不同呼吸模式切换时，立即停止当前呼吸并切换至下一模式"
+    },
+    {
+      "name": "亮度/颜色渐变",
+      "description": "灯头颜色或亮度切换时从当前状态到目标状态所需的时间，默认速度为2000ms"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorFL4LampFadeSpdCmd_1",
+      "description": "控制门灯渐变速度的指令，包括四种不同的速度等级"
+    },
+    {
+      "name": "DoorFL5LampOnOff_1",
+      "description": "控制门灯开启或关闭的请求指令"
+    },
+    {
+      "name": "DoorFL5LampColOrCmd_1",
+      "description": "控制门灯颜色的指令，支持多种颜色值"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Spd0",
+      "value": "2000ms",
+      "description": "默认渐变速度"
+    },
+    {
+      "name": "Spd1",
+      "value": "300ms",
+      "description": "第一种渐变速度"
+    },
+    {
+      "name": "Spd2",
+      "value": "100ms",
+      "description": "第二种渐变速度，能力预留"
+    },
+    {
+      "name": "Spd3",
+      "value": "0",
+      "description": "第三种渐变速度，预留"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了内灯子系统的灯光控制功能，包括呼吸模式的周期速率、渐变速度、开关请求和颜色控制等参数，可用于验证内灯系统在不同模式下的响应行为和控制精度。",
+  "uncertain_points": [
+    "表格中未明确说明所有呼吸模式的具体应用场景或优先级。",
+    "部分参数（如Spd2和Spd3）的功能细节未完全展开，可能存在未明确的使用场景。"
+  ]
+}
+```

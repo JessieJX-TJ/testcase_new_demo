@@ -1,0 +1,64 @@
+```json
+[
+  {
+    "head": "近光灯控制模块LHZCU将DippedBeamLight状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "{ExteriorLightSwitchProcess. DippedBeamLightSta. DipdBeamLghtSta}= 0x1=ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "近光灯控制模块LHZCU",
+      "DippedBeamLightStatus",
+      "ICB",
+      "ExteriorLightSwitchProcess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制模块LHZCU将SidePositionLight状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "{ExteriorLightSwitchProcess. DippedBeamLightSta. DipdBeamLghtSta}= 0x1=ON",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "近光灯控制模块LHZCU",
+      "SidePositionLightStatus",
+      "ICB",
+      "ExteriorLightSwitchProcess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯开启同步性要求",
+    "relation": "超时约束",
+    "tail": "左侧和右侧需保持同步点亮,两侧最大延时不能超过40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "近光灯",
+      "同步点亮",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "DippedBeamLightErrSta状态为Error",
+    "relation": "触发条件",
+    "tail": "{ExteriorLightSwitchProcess. DippedBeamLightErrSta. DipdBeamLghtErrSta}=0x0=No Error",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DippedBeamLightErrSta",
+      "Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "SidePositionLightErrSta状态为Error",
+    "relation": "触发条件",
+    "tail": "{ExteriorLightSwitchProcess. DippedBeamLightErrSta. DipdBeamLghtErrSta}=0x0=No Error",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "SidePositionLightErrSta",
+      "Error"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

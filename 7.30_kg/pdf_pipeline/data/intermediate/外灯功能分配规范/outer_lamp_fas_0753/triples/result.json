@@ -1,0 +1,164 @@
+[
+  {
+    "head": "DayTmRunngLightSts is OFF",
+    "relation": "前提条件",
+    "tail": "[外灯组合服务ICB]订阅接口: {ExteriorLightControlSystem. DayRunningLightSts. DayRunningLghtSts}=0x0=OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "[外灯组合服务ICB]订阅接口",
+      "ExteriorLightControlSystem",
+      "DayRunningLightSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0753",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayTmRunngLightFltsts is False",
+    "relation": "前提条件",
+    "tail": "[外灯组合服务ICB]订阅接口: {ExteriorLightControlSystem. DayRunningLightSts. DayRunningLghtSts}=0x0=OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "[外灯组合服务ICB]订阅接口",
+      "ExteriorLightControlSystem",
+      "DayRunningLightSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0753",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayRunngLghtDsblSts is True",
+    "relation": "触发条件",
+    "tail": "检测到[外灯组合服务ICB]Setter: {ExteriorLightSwitchProcess. DayRunningLightFucProStatus. DayRunningLghtFucProsSta}=0x0=OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB Setter",
+      "ExteriorLightSwitchProcess",
+      "DayRunningLightFucProStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0753",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayRunngLghtDsblSts is True",
+    "relation": "触发条件",
+    "tail": "则设置:DayRunngLghtDsblSts=0x1=True",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB Setter",
+      "ExteriorLightSwitchProcess",
+      "DayRunningLightFucProStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0753",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayRunngLghtDsblSts is cleared",
+    "relation": "触发条件",
+    "tail": "检测到[外灯组合服务ICB]Setter: {ExteriorLightSwitchProcess. DayRunningLightFucProStatus. DayRunningLghtFucProsSta}=0x1=ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB Setter",
+      "ExteriorLightSwitchProcess",
+      "DayRunningLightFucProStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0753",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayRunngLghtDsblSts is cleared",
+    "relation": "触发条件",
+    "tail": "则清除DayRunngLghtDsblSts 置位",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB Setter",
+      "ExteriorLightSwitchProcess",
+      "DayRunningLightFucProStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0753",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayRunngLghtDsblSts is False",
+    "relation": "复位条件",
+    "tail": "下电清除DayRunngLghtDsblSts 置位",
+    "triple_type": "功能复位条件",
+    "evidence_terms": [
+      "下电清除",
+      "DayRunngLghtDsblSts"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0753",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayTmRunngLightSts is OFF",
+    "relation": "依赖于",
+    "tail": "{ExteriorLightSwitchProcess. DayRunningLightSta. DayRunningLghtSta}=0x0=OFF",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "DayRunningLightSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0753",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayTmRunngLightFltsts is False",
+    "relation": "依赖于",
+    "tail": "{ExteriorLightSwitchProcess. DayRunningLightErrSta. DayRunningLghtErrSta}=0x0=No Error",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "DayRunningLightErrSta"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0753",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "DayRunngLghtDsblSts is True",
+    "relation": "前提条件",
+    "tail": "默认 DayRunngLghtDsblSts=0x0=False",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "DayRunngLghtDsblSts",
+      "默认值"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0753",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "昼间行车灯退出的同步性允许的最大延时周期为40ms",
+    "relation": "超时约束",
+    "tail": "昼间行车灯同步性要求",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "昼间行车灯",
+      "同步性",
+      "最大延时周期",
+      "40ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0753",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "parameter_table"
+  }
+]

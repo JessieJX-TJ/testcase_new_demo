@@ -1,0 +1,12 @@
+前置条件
+1.DILghtFbkSOAEnPrm==1(Enable)
+2.右后转向灯处于输出状态
+触发条件
+检测到右后转向灯短路到电源
+执行动作
+1.【RRDILghtDrvMdl】停止驱动右后转向灯输出(DILamp_RH_HSD)
+2.【RRDILghtDrvMdl】持续发送 DirectionLightControl. DirectionLightSta
+=2(Error)至【DILghtCtrlMdl】,至少发送三帧
+3.置位 DTC B104A 12
+退出条件
+检测到短路恢复

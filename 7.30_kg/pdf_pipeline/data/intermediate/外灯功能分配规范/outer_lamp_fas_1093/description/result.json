@@ -1,0 +1,41 @@
+{
+  "table_type": "state_table",
+  "topic": "HMI (Human-Machine Interface) Display State Signal Description for Front Fog Light Status",
+  "row_semantics": "Each row represents a specific state or condition of the front fog light system, including combinations with other lights (rear fog, dipped beam, side light).",
+  "column_semantics": "The table describes the HMI display behavior based on the status reported by the HMI子系统ICB (HMI Subsystem ICB) via the Notifier interface.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "HMI子系统ICB",
+      "type": "controller",
+      "description": "The HMI subsystem responsible for processing and displaying the status of vehicle lights."
+    },
+    {
+      "name": "FrontFogLghtFucProStatus",
+      "type": "input_signal",
+      "description": "The status signal from the exterior light switch process indicating the function status of the front fog light."
+    },
+    {
+      "name": "FrontFogLghtProsSta",
+      "type": "output_signal",
+      "description": "The processed status signal sent to the HMI for display purposes."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FrontFogLghtSts",
+      "description": "The status code representing the current state of the front fog light system, ranging from 0x0 (OFF) to 0x7 (Unknown)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "HMI显示状态信号",
+      "description": "The visual indication on the HMI screen showing the status of the front fog light and related lights."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table is used to verify that the HMI correctly displays the status of the front fog light system based on the input signals from the HMI子系统ICB. It ensures that the HMI reflects the correct combination of lights (e.g., only front fog light, front fog light and rear fog light, etc.) as specified in the protocol.",
+  "uncertain_points": []
+}

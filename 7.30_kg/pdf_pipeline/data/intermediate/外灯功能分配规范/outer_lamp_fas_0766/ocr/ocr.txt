@@ -1,0 +1,18 @@
+场景描述
+使能关开关闭时开启迎宾光毯灯
+前置条件
+1&2&3&4:
+车辆具备迎宾光毯灯功能:exlWelcomeGrandLampEnPrm==0x1
+大屏使能开关关闭:
+PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet==
+0x1= Disabled
+注:软开关链路:8295—32G—LHZCU
+整车电源模式非休眠:UsgMd!= 0x0=UsgMd_0_Sleep
+整车档位为P挡
+触发条件
+大屏使能开关跳变为打开:
+PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet→0
+x0= Enabled
+执行动作
+[迎宾光毯灯开关控制模块LHZCU]驱动硬线端口 WelcomeLamp_HSD3s 内
+渐亮,持续点亮3s,3s内渐灭

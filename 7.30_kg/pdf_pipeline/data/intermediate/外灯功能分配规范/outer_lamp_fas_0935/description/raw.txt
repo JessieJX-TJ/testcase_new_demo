@@ -1,0 +1,90 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能分配规范",
+  "row_semantics": "表格按外灯功能逐项列出其信号状态定义，包括输入/输出类型、通信协议、控制器等信息。",
+  "column_semantics": {
+    "功能名": "外灯相关功能的名称，如FogLghtFltSts（雾灯闪烁状态）",
+    "输入/输出": 信号的方向性（Input/Output）",
+    "CAN": 通信总线类型",
+    "RZCU": 控制器模块名称",
+    "TDM": 传输模式或协议类型",
+    "SFCANFD": 通信协议版本或类型"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FogLghtFltSts",
+      "type": "功能名",
+      "description": "雾灯闪烁状态"
+    },
+    {
+      "name": "TurnlampFltSts",
+      "type": "功能名",
+      "description": "转向灯闪烁状态"
+    },
+    {
+      "name": "FrtVehSideLghtFlts",
+      "type": "功能名",
+      "description": "前车侧灯闪烁状态"
+    },
+    {
+      "name": "BrkFltSts",
+      "type": "功能名",
+      "description": "刹车灯闪烁状态"
+    },
+    {
+      "name": "RvsgFltSts",
+      "type": "功能名",
+      "description": "倒车灯闪烁状态"
+    },
+    {
+      "name": "TrlrBrkLghtSts",
+      "type": "功能名",
+      "description": "拖车刹车灯状态"
+    },
+    {
+      "name": "TrlrBrkLghtFltSts",
+      "type": "功能名",
+      "description": "拖车刹车灯闪烁状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0",
+      "description": "逻辑值为假（False）"
+    },
+    {
+      "name": "0x1",
+      "description": "逻辑值为真（True）"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "CA N",
+      "type": "输入信号",
+      "description": "控制器区域网络（Controller Area Network）信号"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器/模块名",
+      "description": "车身控制单元（Body Control Unit）"
+    },
+    {
+      "name": "TDM",
+      "type": "系统状态",
+      "description": "时分复用（Time Division Multiplexing）传输模式"
+    },
+    {
+      "name": "SFCANFD",
+      "type": "通信协议",
+      "description": "CAN Flexible Data Rate (CAN FD) 协议"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中各功能信号的状态编码及其与控制器（RZCU）、通信协议（SFCANFD）之间的关系，可用于验证外灯功能在不同状态下的信号正确性及通信完整性。",
+  "uncertain_points": []
+}
+```

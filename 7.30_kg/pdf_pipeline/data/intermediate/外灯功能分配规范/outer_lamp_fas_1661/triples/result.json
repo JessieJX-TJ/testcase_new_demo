@@ -1,0 +1,164 @@
+[
+  {
+    "head": "转向灯流水模式使能状态",
+    "relation": "触发条件",
+    "tail": "发送8个Cycle(Cycle:50ms)off",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "发送8个Cycle(Cycle:50ms)off",
+      "转向灯流水模式使能状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1661",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "左侧转向灯图标指示灯显示以及声音提醒",
+    "relation": "触发条件",
+    "tail": "{ExteriorLightSwitchProcess. DircnLghtFucProStatus. DircnLghtFucProSta}=0x1=Left_Direction_Light_On",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "{ExteriorLightSwitchProcess. DircnLghtFucProStatus. DircnLghtFucProSta}=0x1=Left_Direction_Light_On",
+      "左侧转向灯图标指示灯显示",
+      "声音提醒"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1661",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯流水点亮",
+    "relation": "触发条件",
+    "tail": "ICB同步将服务接口或控制信号转换成灯控CAN信号",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "灯控CAN信号",
+      "转向灯流水点亮"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1661",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯流水点亮",
+    "relation": "依赖于",
+    "tail": "FLDirenLghtCtrl_HW=0x1=FLDirenLghtCtrl_HW_1_on; RLDirenLghtCtrl_HW=0x1=RLDirenLghtCtrl_HW_1_on",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FLDirenLghtCtrl_HW",
+      "RLDirenLghtCtrl_HW",
+      "转向灯流水点亮"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1661",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯状态反馈至转向灯开关控制模块LHZCU",
+    "relation": "触发条件",
+    "tail": "驱动处理模块LHZCU/RZCU将状态/故障状态反馈",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "驱动处理模块LHZCU/RZCU",
+      "转向灯开关控制模块LHZCU",
+      "转向灯状态反馈"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1661",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯错误状态",
+    "relation": "触发条件",
+    "tail": "DirectionLightErrorStatus",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DirectionLightErrorStatus",
+      "转向灯错误状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1661",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯错误状态",
+    "relation": "输出为",
+    "tail": "FLDirenLightFlsts_HW=0x0=FLDirenLightFltsts_HW_0_False; RLDirenLightFlsts_HW=0x0=RLDirenLightFltsts_HW_0_False",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FLDirenLightFlsts_HW",
+      "RLDirenLightFlsts_HW",
+      "转向灯错误状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1661",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯控制",
+    "relation": "抑制条件",
+    "tail": "当检测到服务丢失,仅收到制动控制CAN信号FLDircnLghtCtrl/RLDircnLghtCtrl",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "服务丢失",
+      "制动控制CAN信号",
+      "转向灯控制"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1661",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯控制",
+    "relation": "优先级高于",
+    "tail": "SOA服务信号",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "SOA服务信号",
+      "转向灯控制"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1661",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯控制",
+    "relation": "与...互斥",
+    "tail": "CAN信号有E2E保护且SOA服务无E2E保护的情况,当两者控制请求不一致时",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "CAN信号E2E保护",
+      "SOA服务E2E保护",
+      "转向灯控制"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1661",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "转向灯状态获取",
+    "relation": "超时约束",
+    "tail": "通过Instance ID 1/2/3/4获取转向灯状态,时限为60ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "Instance ID",
+      "转向灯状态获取",
+      "60ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1661",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "logic_table"
+  }
+]

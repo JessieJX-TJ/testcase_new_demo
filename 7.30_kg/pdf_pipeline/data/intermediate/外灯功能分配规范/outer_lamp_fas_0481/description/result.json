@@ -1,0 +1,53 @@
+{
+  "table_type": "parameter_table",
+  "topic": "External Light Control System - Direction Light Control",
+  "row_semantics": "The table describes parameters related to the control and status of direction lights in a vehicle's exterior lighting system.",
+  "column_semantics": "The columns represent different aspects of the parameter: the first column is the parameter name, the second column specifies the data type or interface (e.g., output, consumption), and subsequent columns list the relevant controllers/modules that interact with this parameter.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DircnLightSts",
+      "type": "input_parameter",
+      "description": "Current state of the direction lights (on/off, left/right, both sides)"
+    },
+    {
+      "name": "DircnLightFltsts",
+      "type": "output_parameter",
+      "description": "Fault status of the direction lights"
+    },
+    {
+      "name": "ControlDirectionLight",
+      "type": "function",
+      "description": "Method to control the direction lights (on/off, flash)"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DircnLightSts",
+      "description": "Indicates whether the direction lights are off, on for the left side, right side, or both sides."
+    },
+    {
+      "name": "DircnLightFltsts",
+      "description": "Indicates if there are any errors in the direction lights, such as no error, left side error, right side error, or both sides error."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DircnLightFltsts_1_Left_Direction_Light_Error",
+      "description": "Error condition for the left direction light."
+    },
+    {
+      "name": "DircnLightFltsts_2_Right_Direction_Light_Error",
+      "description": "Error condition for the right direction light."
+    },
+    {
+      "name": "DircnLightFltsts_3_Both_Side_Direction_Light_Error",
+      "description": "Error condition for both direction lights."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and methods used to control and monitor the direction lights in a vehicle's exterior lighting system. It can be used to verify the correct operation of direction light control logic, fault detection, and response across various controllers/modules.",
+  "uncertain_points": []
+}

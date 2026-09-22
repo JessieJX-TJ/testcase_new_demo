@@ -1,0 +1,33 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Firmware Over-The-Air (FOTA) 过程中的功能保持与禁用规则",
+  "row_semantics": "表格的每一行代表一个具体的逻辑块（功能模块）在 FOTA 过程中的行为规范，包括是否需要在 FOTA 期间保持该功能，以及在功能运行时是否禁止 FOTA 操作。",
+  "column_semantics": {
+    "逻辑块名称": "指代系统中的某个功能模块或子系统，如外灯控制、车身控制等。",
+    "FOTA 过程中需要保持的功能 (Y/N)": 表示在 FOTA 升级过程中，该功能是否必须保持正常运行。",
+    "功能运行时禁止 FOTA": 表示当该功能正在运行时，是否应该禁止进行 FOTA 升级。",
+    "功能运行时是否广播功能状态/相关信号": 表示在功能运行时，是否需要向其他系统或模块广播其状态或相关信号。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    "逻辑块名称"
+  ],
+  "core_conditions": [
+    "FOTA 过程中需要保持的功能 (Y/N)",
+    "功能运行时禁止 FOTA"
+  ],
+  "core_outputs": [
+    "功能运行时是否广播功能状态/相关信号"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义整车电子电器系统中各功能模块在 FOTA 升级过程中的行为约束，确保升级过程中关键功能的连续性和系统的稳定性。",
+  "uncertain_points": [
+    "具体的功能模块名称未在表格中列出，需根据实际系统设计补充。",
+    "功能状态/相关信号的具体内容和格式未明确，需进一步定义。",
+    "表格中未明确说明 FOTA 的具体触发条件和升级流程，需结合系统整体 FOTA 策略理解。"
+  ]
+}
+```

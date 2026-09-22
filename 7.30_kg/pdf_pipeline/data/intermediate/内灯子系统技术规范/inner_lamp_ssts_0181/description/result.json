@@ -1,0 +1,41 @@
+{
+  "table_type": "signal_table",
+  "topic": "整车电子电器系统中接口信号的定义与配置",
+  "row_semantics": "每行代表一个接口信号的具体定义和配置信息，包括其名称、方向、类型、发送方/接收方、路径及来源。",
+  "column_semantics": {
+    "Interface Name": "接口的名称，用于标识该信号。",
+    "Direction": "信号的传输方向，如输入、输出、提供或消费。",
+    "Type": "信号的类型，例如CAN/LIN总线信号、SOA服务或硬线信号。",
+    "Sender/Provider": "信号的发送方或提供方，通常是某个节点或服务。",
+    "Receiver/Consumer": "信号的接收方或消费方，通常是另一个节点或服务。",
+    "Channel": "信号传输的路径或通道，如指定的信号通道。",
+    "Source": "信号的来源，如指定信号来源或内部来源。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampLHBrtLvl",
+      "type": "Signal",
+      "description": "第三排地图灯左侧亮度等级信号，属于内部信号，用于控制地图灯的亮度。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "Lighting and Hazard Control Unit，即灯光和危险警示控制单元，负责处理与灯光相关的控制逻辑。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "ThirdRowMapLampLHBrtLvl",
+      "direction": "Input",
+      "source": "Internal (SSTS)",
+      "description": "由SSTS（可能为内部传感器或系统）提供的第三排地图灯左侧亮度等级信号，作为LHZCU的输入。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子电器系统中特定接口信号（如ThirdRowMapLampLHBrtLvl）的详细属性，可用于验证信号的正确配置、传输路径以及控制器间的交互关系，确保外灯控制系统功能的正常实现。",
+  "uncertain_points": []
+}

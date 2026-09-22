@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "后雾灯电路短路故障处理逻辑",
+  "row_semantics": "表格按功能执行的阶段划分，包括前置条件、触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "表格分为两列，左侧为阶段描述，右侧为该阶段的具体内容或参数。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RearFogLghtDrvMdl",
+      "type": "controller_module",
+      "description": "后雾灯驱动模块"
+    },
+    {
+      "name": "RearFogLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "后雾灯控制模块"
+    },
+    {
+      "name": "DTC B1053 12",
+      "type": "fault_code",
+      "description": "诊断故障代码，表示后雾灯电路短路故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FogLamp_HSD",
+      "type": "system_state",
+      "description": "后雾灯高压开关状态"
+    },
+    {
+      "name": "RearFogPositionLightStatus",
+      "type": "output_signal",
+      "description": "后雾灯位置灯状态信号"
+    },
+    {
+      "name": "RearFogPositionLightSta",
+      "type": "input_signal",
+      "description": "后雾灯位置灯状态值，用于判断是否关闭"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "【RearFogLghtDrvMdl】停止驱动后雾灯输出 (FogLamp_HSD)",
+      "type": "action",
+      "description": "当检测到后雾灯短路时，停止后雾灯的驱动输出"
+    },
+    {
+      "name": "【RearFogLghtDrvMdl】持续发送 RearFogPositionLightStatus",
+      "type": "action",
+      "description": "持续发送后雾灯位置灯状态信号，直到后雾灯控制模块接收到"
+    },
+    {
+      "name": "置位 DTC B1053 12",
+      "type": "action",
+      "description": "设置诊断故障代码，记录后雾灯电路短路故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC B1053 12",
+      "type": "fault_status",
+      "description": "后雾灯电路短路故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "至少发送三帧",
+      "type": "timing_constraint",
+      "description": "在故障状态下，后雾灯位置灯状态信号需要至少发送三帧"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当检测到后雾灯电路短路时，系统应如何响应（如停止驱动、发送状态信号、设置故障码）以及何时退出故障模式（如短路恢复），可用于验证后雾灯电路短路故障的检测与处理逻辑。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,593 @@
+[
+  {
+    "head": "MainBeamLghtErrSta is set to 0x1",
+    "relation": "outputs",
+    "tail": "Main Beam Light Error Status is Error",
+    "sources": [
+      "outer_lamp_fas_0388"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtErrSta is set to 0x2",
+    "relation": "outputs",
+    "tail": "Main Beam Light Error Status is Unknown",
+    "sources": [
+      "outer_lamp_fas_0388"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dissatisfaction occurs due to MainBeamLghtOpenCtrlRsn_6_FactoryModeTimeOver",
+    "relation": "requires",
+    "tail": "Main Beam Light Functionality Status is OFF",
+    "sources": [
+      "outer_lamp_fas_0388"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dissatisfaction occurs due to MainBeamLghtOpenCtrlRsn_7_AutoMainBeamLightControlNotRequested",
+    "relation": "requires",
+    "tail": "Main Beam Light Functionality Status is OFF",
+    "sources": [
+      "outer_lamp_fas_0388"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Dissatisfaction occurs due to MainBeamLghtClsCtrlRsn_8_OtherReasons",
+    "relation": "requires",
+    "tail": "Main Beam Light Functionality Status is OFF",
+    "sources": [
+      "outer_lamp_fas_0388"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Request Day Running Light Status",
+    "relation": "triggers",
+    "tail": "call interface DayRunningLightSts",
+    "sources": [
+      "outer_lamp_fas_0389"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day Running Light Status is OFF",
+    "relation": "outputs",
+    "tail": "0x0 = OFF",
+    "sources": [
+      "outer_lamp_fas_0389"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day Running Light Status is ON",
+    "relation": "outputs",
+    "tail": "0x1 = ON",
+    "sources": [
+      "outer_lamp_fas_0389"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day Running Light Status is Unknown",
+    "relation": "outputs",
+    "tail": "0x2 = Unknown",
+    "sources": [
+      "outer_lamp_fas_0389"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Subscribe to Day Running Light Error Status",
+    "relation": "triggers",
+    "tail": "call interface DayRunningLightErrSts",
+    "sources": [
+      "outer_lamp_fas_0389"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day Running Light Error Status is No Error",
+    "relation": "outputs",
+    "tail": "0x0 = No Error",
+    "sources": [
+      "outer_lamp_fas_0389"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day Running Light Error Status is Error",
+    "relation": "outputs",
+    "tail": "0x1 = Error",
+    "sources": [
+      "outer_lamp_fas_0389"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Day Running Light Error Status is Unknown",
+    "relation": "outputs",
+    "tail": "0x2 = Unknown",
+    "sources": [
+      "outer_lamp_fas_0389"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Request Deactivation of Day Running Light",
+    "relation": "triggers",
+    "tail": "call interface ControlDayRunningLight",
+    "sources": [
+      "outer_lamp_fas_0389"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Send Deactivate Day Running Light Command",
+    "relation": "outputs",
+    "tail": "0x0 = OFF",
+    "sources": [
+      "outer_lamp_fas_0389"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Position Lamp is Enabled in Factory Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode is Factory Mode (VehMd = 0x2)",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Position Lamp is Enabled in Factory Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode Value is VehMdV = 0x1",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": true,
+    "conflict_note": "VehMd=0x2 and VehMdV=0x1 appear inconsistent: VehMd is vehicle mode enum; VehMdV may be a variant or version field — semantic mapping not specified. Retained as potential conflict pending clarification."
+  },
+  {
+    "head": "Position Lamp is Enabled in Factory Mode",
+    "relation": "requires",
+    "tail": "Position Lamp is Illuminated (CombLghtFucProSta = 0x0)",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Position Lamp is Enabled in Factory Mode",
+    "relation": "requires",
+    "tail": "duration = 2 minutes",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Fog Light Triggers Position Lamp Activation via Auto Lighting",
+    "relation": "requires",
+    "tail": "ambient condition is daytime AND RearFogLghtFucProsSta = 0x1",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Fog Light Triggers Position Lamp Activation via Auto Lighting",
+    "relation": "requires",
+    "tail": "(AutoLghtOnReq_l = 0x0) OR (AutoLghtOnReq_ICB = 0x0)",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Fog Light Triggers Position Lamp Activation via Auto Lighting",
+    "relation": "requires",
+    "tail": "Exterior Light Switch Status = AUTO (CombLghtSwSta = 0x3)",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Fog Light Triggers Position Lamp Activation via Auto Lighting",
+    "relation": "requires",
+    "tail": "Rear Fog Light Functionality Status = OFF (RearFogLghtFucProsSta = 0x0)",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": true,
+    "conflict_note": "Contradicts previous tail 'RearFogLghtFucProsSta = 0x1' — same head/relation cannot require both ON and OFF for same signal. Conflicting activation logic."
+  },
+  {
+    "head": "Position Lamp Control Module (LHZCU) Interface Response",
+    "relation": "outputs",
+    "tail": "LHZCU interface response",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Position Lamp Control Module (LHZCU) Interface Response",
+    "relation": "depends_on",
+    "tail": "CombLghtFucProSta = 0x0 (ALL OFF)",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB Converts Service Interface/Control Signal to Lamp CAN Signal and Deactivates Position Lamp",
+    "relation": "outputs",
+    "tail": "ICB converts service/control signal to lamp CAN signal and deactivates position lamp",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB Converts Service Interface/Control Signal to Lamp CAN Signal and Deactivates Position Lamp",
+    "relation": "requires",
+    "tail": "ICB invokes underlying base service",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Retrieve Exit Indication for Position Lamp Display",
+    "relation": "outputs",
+    "tail": "exit indication for position lamp display",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Retrieve Exit Indication for Position Lamp Display",
+    "relation": "requires",
+    "tail": "HMI subsystem (ICB) calls interface",
+    "sources": [
+      "outer_lamp_fas_0390"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Light Activation",
+    "relation": "requires",
+    "tail": "User Mode (UsrMd) is not Sleep, Standby, or XOTA",
+    "sources": [
+      "outer_lamp_fas_0394"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Light Activation",
+    "relation": "requires",
+    "tail": "Vehicle Mode (VehMd) is not Transport Mode AND value is valid",
+    "sources": [
+      "outer_lamp_fas_0394"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Fog Light Activation",
+    "relation": "suppresses_if",
+    "tail": "User Mode (UsrMd) is Sleep, Standby, or XOTA OR Vehicle Mode (VehMd) is Transport Mode",
+    "sources": [
+      "outer_lamp_fas_0394"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Sleep Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode is one of: Engineering, Factory, Transport, Dyno, Show, Crash, Normal, Maintenance",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Standby Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode is one of: Engineering, Factory, Transport, Dyno, Show, Crash, Normal, Maintenance",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Comfort Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode is one of: Engineering, Factory, Transport, Dyno, Show, Crash, Normal, Maintenance",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Normal Driving Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode is one of: Engineering, Factory, Transport, Dyno, Show, Crash, Normal, Maintenance",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Smart Parking Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode is one of: Engineering, Factory, Transport, Dyno, Show, Crash, Normal, Maintenance",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in ADAS Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode is one of: Engineering, Factory, Transport, Dyno, Show, Crash, Normal, Maintenance",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in XOTA Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode is one of: Engineering, Factory, Transport, Dyno, Show, Crash, Normal, Maintenance",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Sleep Mode",
+    "relation": "suppresses_if",
+    "tail": "All functions (e.g., exterior lighting, body control) are inactive",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Standby Mode",
+    "relation": "suppresses_if",
+    "tail": "All functions (e.g., exterior lighting, body control) are inactive",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Comfort Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode corresponds to Comfort mode (activation state exists but specific enum value unspecified)",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Normal Driving Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode corresponds to Normal Driving mode (activation state exists but specific enum value unspecified)",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Smart Parking Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode corresponds to Smart Parking mode (activation state exists but specific enum value unspecified)",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in ADAS Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode corresponds to ADAS mode (activation state exists but specific enum value unspecified)",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in XOTA Mode",
+    "relation": "requires",
+    "tail": "Vehicle Mode corresponds to XOTA mode (activation state exists but specific enum value unspecified)",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Engineering Mode",
+    "relation": "depends_on",
+    "tail": "User Mode is Engineering",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Factory Mode",
+    "relation": "depends_on",
+    "tail": "User Mode is Factory",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Transport Mode",
+    "relation": "depends_on",
+    "tail": "User Mode is Transport",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Dyno Mode",
+    "relation": "depends_on",
+    "tail": "User Mode is Dyno",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Show Mode",
+    "relation": "depends_on",
+    "tail": "User Mode is Show",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Crash Mode",
+    "relation": "depends_on",
+    "tail": "User Mode is Crash",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Normal Mode",
+    "relation": "depends_on",
+    "tail": "User Mode is Normal",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle is in Maintenance Mode",
+    "relation": "depends_on",
+    "tail": "User Mode is Maintenance",
+    "sources": [
+      "outer_lamp_fas_0395"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "inputs",
+    "tail": "sender / provider",
+    "sources": [
+      "outer_lamp_fas_0396"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "outputs",
+    "tail": "receiver / consumer",
+    "sources": [
+      "outer_lamp_fas_0396"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "depends_on",
+    "tail": "path",
+    "sources": [
+      "outer_lamp_fas_0396"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "has_subfunction",
+    "tail": "direction",
+    "sources": [
+      "outer_lamp_fas_0396"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "has_subfunction",
+    "tail": "type",
+    "sources": [
+      "outer_lamp_fas_0396",
+      "outer_lamp_fas_1134"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

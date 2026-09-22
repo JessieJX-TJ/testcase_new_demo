@@ -1,0 +1,73 @@
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System - Door Rear Right Lamp Control Commands",
+  "row_semantics": "Each row represents a specific command for controlling the color, brightness, and breathing pattern of the rear right door ambient lamp.",
+  "column_semantics": {
+    "DoorRR3LampColorCmd_1": "Command for setting the color of the rear right door ambient lamp",
+    "Input": "Signal source or interface type (e.g., LIN, RHZCU)",
+    "LIN": "Local Interconnect Network communication",
+    "RHZCU": "Right Hand Zone Control Unit",
+    "DoorAmbtLampC_RR": "Door Ambient Lamp Command for RR",
+    "RHZCU_LIN4": "RHZCU's LIN4 interface",
+    "内灯SSTS": "Interior Lighting Sub System Technical Specification"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorRR3LampColorCmd_1",
+      "type": "command",
+      "description": "Controls the color of the rear right door ambient lamp using RGB coordinates."
+    },
+    {
+      "name": "DoorRR3LampBrtnsCmd_1",
+      "type": "command",
+      "description": "Adjusts the brightness of the rear right door ambient lamp as a percentage."
+    },
+    {
+      "name": "DoorRR3LampBrthngCmd_1",
+      "type": "command",
+      "description": "Configures the breathing (pulsing) pattern of the rear right door ambient lamp with various rates."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Hand Zone Control Unit responsible for processing commands and controlling the ambient lamp."
+    },
+    {
+      "name": "LIN",
+      "type": "communication_interface",
+      "description": "Local Interconnect Network used for sending commands to the RHZCU."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Color Value Range",
+      "description": "0x00-0xFF for all color values; 0x00 means no request or maintain current color."
+    },
+    {
+      "name": "Brightness Value Range",
+      "description": "0x00-0xFF; 0x00 means no request or maintain current brightness."
+    },
+    {
+      "name": "Breathing Rate Values",
+      "description": "0x00-0x15 represent different breathing rates from 500ms to 4s."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorAmbtLampC_RR",
+      "type": "output_signal",
+      "description": "The actual command sent to the rear right door ambient lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Breathing Rates",
+      "description": "Defined rates include 500ms, 1s, 2s, 2.4s, 3s, 3.5s, and 4s for different breathing patterns."
+    }
+  ],
+  "engineering_interpretation": "This table defines the command structure and parameter ranges for controlling the rear right door ambient lamp's color, brightness, and breathing pattern within the Interior Lighting Sub System. It is used to verify that the RHZCU correctly interprets and applies these commands via the LIN interface.",
+  "uncertain_points": []
+}

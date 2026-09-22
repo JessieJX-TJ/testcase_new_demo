@@ -1,0 +1,21 @@
+(exlDipdBeamHwDrvEnPrm=0x0||0x2；通过 Instance ID 3/4 获取近光灯状态)
+LDipdBeamLghtSts=0x1=LDipdBeamLghtSts_1_On
+RDipdBeamLghtSts=0x1=RDipdBeamLghtSts_1_On
+LDipdBeamLghtFltSts=0x0=LDipdBeamLghtFltsts_0_False
+RDipdBeamLghtFltSts=0x0=RDipdBeamLghtFltsts_0_False
+10.[近光灯控制模块LHZCU]将状态/故障状态反馈至ICB:
+DipdBeamLghtSts=0x1=DipdBeamLghtSts_1_On
+DipdBeamLghtFltSts=0x0=DipdBeamLghtFltsts_0_False
+{ExteriorLightSwitchProcess. DippedBeamLightSta. DipdBeamLghtSta}= 0x1=ON
+11.[外灯组合服务ICB]订阅接口:
+{ExteriorLightControlSystem. DippedBeamLightSts. DipdBeamLghtSts}= 0x1=ON
+12.[外灯组合服务ICB]订阅近光灯状态/故障状态接口:
+{ExteriorLightSwitchProcess DippedBeamLightSta DipdBeamLghtSta}= 0x1=ON
+备注
+1、近光灯开启同步性要求:
+左侧和右侧需保持同步点亮,两侧最大延时不能超过40ms
+2、ICB_8295组合灯光请求重发机制:
+应尝试按照<=50ms周期重发3次；尝试重发3次后仍未反馈请求成功,则停止发送
+3、外灯状态主动获取:涉及LHZCU/ICB_S32G M/ICB_8295
+针对发送类型为Onchange的外灯状态服务,消费端在服务发现订阅或者外灯控制请求后的500ms(待
+收到状态反馈,应主动通过状态服务Getter()方式获取外灯状态

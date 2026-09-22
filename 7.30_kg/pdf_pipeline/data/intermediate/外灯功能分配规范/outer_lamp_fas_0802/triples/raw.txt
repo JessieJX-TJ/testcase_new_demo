@@ -1,0 +1,74 @@
+```json
+[
+  {
+    "head": "外灯组合服务 ICB 接收 LHZCU 发送的转向灯点亮及故障状态 CAN 信号",
+    "relation": "输入为",
+    "tail": "LHZCU 发送的转向灯点亮及故障状态 CAN 信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "外灯组合服务 ICB",
+      "LHZCU",
+      "转向灯点亮及故障状态 CAN 信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯组合服务 ICB 将转向灯点亮及故障状态转换为对应的服务",
+    "relation": "依赖于",
+    "tail": "外灯组合服务 ICB 接收 LHZCU 发送的转向灯点亮及故障状态 CAN 信号",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "外灯组合服务 ICB",
+      "LHZCU",
+      "转向灯点亮及故障状态 CAN 信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯开关控制模块 LHZCU 将转向灯开关状态反馈至 ICB",
+    "relation": "输出为",
+    "tail": "ICB: DircnLghtSwReq=0x0=DircnLghtSwReq_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "转向灯开关控制模块 LHZCU",
+      "ICB",
+      "DircnLghtSwReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯开关控制模块 LHZCU 将转向灯控制状态反馈至 SDM",
+    "relation": "输出为",
+    "tail": "SDM: EDRDircnIndLampSwSts=0x0=EDRDircnIndLampSwSts_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "转向灯开关控制模块 LHZCU",
+      "SDM",
+      "EDRDircnIndLampSwSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯退出同步性要求 (a)",
+    "relation": "超时约束",
+    "tail": "图标闪烁频率和声音提醒与实际转向灯的闪烁频率需保持一致退出，三者同步性允许的最大延时为 50ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "转向灯退出同步性要求",
+      "50ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯退出同步性要求 (b)",
+    "relation": "超时约束",
+    "tail": "单侧转向灯熄灭同步性允许的最大延时周期为 40ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "转向灯退出同步性要求",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

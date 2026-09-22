@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"logic_table\",\n  \"topic\": \"外灯控制逻辑 - 统一分发模式下的RLD（Right Rear Door）灯光控制\",\n  \"row_semantics\": \"定义了在特定前置条件下，当触发条件满足时，系统输出的RLD灯光状态。\",\n  \"column_semantics\": {\n    \"0\": \"前置条件：系统需要满足的初始状态或配置。\",\n    \"1\": \"触发条件：导致系统状态或输出发生变化的事件或信号组合。\"\n  },\n  \"has_merged_cells\": false,\n  \"header_levels\": 1,\n  \"core_entities\": [\n    \"RLDirnLghtCtrlMdl_HW\" // RLD灯光控制器模块硬件状态\n  ],\n  \"core_conditions\": [\n    {\n      \"condition_type\": \"precondition\",\n      \"description\": \"exlDircnLghtHwDrvEnPrm == 1 || 2\",\n      \"details\": \"外部方向灯硬件驱动使能参数为1或2，表示方向灯硬件驱动已启用。\"\n    },\n    {\n      \"condition_type\": \"trigger_condition\",\n      \"description\": \"收到【DILghtCtrlMdl】统一分发的RLDirnLghtCtrl_HW == 0 (Off)\",\n      \"details\": \"接收到统一分发模块(DILghtCtrlMdl)发出的RLD灯光控制器硬件信号RLDirnLghtCtrl_HW为0，表示关闭RLD灯光。\"\n    }\n  ],\n  \"core_outputs\": [\n    {\n      \"signal_name\": \"RLDirnLghtCtrlMdl_HW\",\n      \"state\": \"Off\",\n      \"description\": \"RLD灯光控制器模块硬件输出信号设置为关闭状态。\"\n    }\n  ],\n  \"core_faults\": [],\n  \"core_timing_constraints\": [],\n  \"engineering_interpretation\": \"该表格用于验证在特定前置条件下，当接收到统一分发模块的RLD灯光关闭指令时，系统是否能够正确地将RLD灯光控制器硬件信号设置为关闭状态。\",\n  \"uncertain_points\": []\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

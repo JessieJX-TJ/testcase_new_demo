@@ -1,0 +1,63 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) - 屋顶射灯控制与状态",
+  "row_semantics": "每一行代表一个与屋顶射灯相关的接口或信号，包括控制、状态查询和错误状态。",
+  "column_semantics": "列定义了信号的输入/输出方向、所属模块（如ICB_S32 GM, ICB_S3 2G M LHZCU）、以及内部信号名称。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RoofSpotLight",
+      "type": "功能模块",
+      "description": "屋顶射灯系统，负责控制和状态管理。"
+    },
+    {
+      "name": "MainBeamLight",
+      "type": "功能模块",
+      "description": "主大灯系统，仅在表格中提及状态信息。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ControlRoofSpotLightReq",
+      "type": "输入信号",
+      "description": "用于控制屋顶射灯开关的请求信号，可设置为0x0=OFF或0x1=ON。",
+      "direction": "输入",
+      "module": "SO A"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RoofSpotLightStatus",
+      "type": "输出信号",
+      "description": "报告屋顶射灯当前的状态，0x0=OFF，0x1=ON，0x2=Unknown。",
+      "direction": "输出",
+      "module": "SO A"
+    },
+    {
+      "name": "RoofSpotLightErrorSta",
+      "type": "输出信号",
+      "description": "报告屋顶射灯的错误状态，0x0=No Error，0x1=Error，0x2=Unknown。",
+      "direction": "输出",
+      "module": "SO A"
+    },
+    {
+      "name": "MainBeamLightStatus",
+      "type": "输出信号",
+      "description": "报告主大灯的状态。",
+      "direction": "输出",
+      "module": "SO A"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RoofSpotLightErrSta",
+      "type": "故障状态",
+      "description": "屋顶射灯的错误状态字段，包含无错误、错误和未知三种状态。",
+      "signal_name": "RoofSpotLightErrSta"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了屋顶射灯系统的控制接口、状态反馈接口及其错误状态，可用于验证屋顶射灯的控制逻辑、状态响应及故障检测功能。",
+  "uncertain_points": []
+}

@@ -1,0 +1,52 @@
+功能分配规范
+Z
+零束
+Function Allocation Specification
+Z-ONE
+外灯功能 Exterior lamp function
+Z-ONE-3.0平台-FAS-IBD05
+版本<1.0>
+425 of 935 页
+[危险警报灯自动控制模块LHZCU]将转向灯控制状态反馈至 SDM:
+EDRDircnIndLampSwSts=0x3=EDRDircnIndLampSwSts_3_hazard
+[危险警报灯自动控制模块LHZCU]根据 VehIntrusionPrevnHzrdLmpReq取值,控制闪烁[一
+周期1后,控制信号跳变为:
+FLDircnLghtCtrl=0x0=FLDircnLghtCtrl_0_Off
+FRDircnLghtCtrl=0x0=FRDircnLghtCtrl_0_Off
+RLDircnLghtCtrl=0x0=RLDircnLghtCtrl_0_Off
+RRDircnLghtCtrl=0x0=RRDircnLghtCtrl_0_Off
+并将该控制信号发送至ICB
+[危险警报灯自动控制模块LHZCU]接口响应:
+Event:
+{ExteriorLightSwitchProcess. DircnLghtFucProStatus. DircnLghtFucProSta}=0x0=OFF
+[外灯组合服务ICB]调用基础服务,针对{InstanceID=1}{InstanceID=2}{InstanceID=3}{Instan
+组合服务延时 60ms 调用(配置需求:DircnLghtCtrlDelayPrm):
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=1}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=2}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=3}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=4}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=5}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=6}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=7}=0x0=OFF
+{DirectionLight. ControlDirectionLight. DirectionLightReq}{InstanceID=8}=0x0=OFF
+ICB将服务接口或控制信号转换成灯控CAN信号,控制双闪灯熄灭
+ICB 将控制信号延时60ms 分发至[驱动模块 LHZCU/RHZCU/RZCU](配置需求:
+DirenLghtCtrlDelayPrm):
+FLDircnLghtCtrl_HW=0x0=FLDirenLghtCtrl_HW_0_off
+FRDircnLghtCtrl_HW=0x0=FRDirenLghtCtrl_HW_0_off
+RLDirenLghtCtrl_HW=0x0=RLDircnLghtCtrl_HW_0_off
+RRDircnLghtCtrl_HW=0x0=RRDirenLghtCtrl_HW_0_off
+[驱动模块LHZCU/RHZCU/RZCU]接收ICB服务接口或控制信号,做退出整车双闪灯点亮
+ICB接收控制信号:
+做退出危险警报灯图标指示灯显示以及声音提醒
+18.[驱动处理模块LHZCU/RHZCU/RZCU]状态/故障状态反馈至 LHZCU:
+FLDircnLghtSts_HW=0x0=FLDircnLghtSts_HW_0_Off
+FRDircnLghtSts_HW=0x0=FRDircnLghtSts_HW_0_Off
+RLDircnLghtSts_HW=0x0=RLDircnLghtSts_HW_0_Off
+RRDircnLghtSts_HW =0x0=RRDircnLghtSts_HW_0_Off
+FLDircnLghtFltsts_HW=0x0=FLDirenLghtFltsts_HW_0_False
+FRDirenLghtFltsts_HW =0x0=FRDircnLghtFltsts_HW_0_False
+RLDircnLghtFltsts_HW=0x0=RLDircnLghtFltsts_HW_0_False
+RRDircnLghtFltsts_HW=0x0=RRDircnLghtFltsts_HW_0_False
+{DirectionLight. DirectionLightStatus. DirectionLightSta}{InstanceID=1}=0x0=OFF
+{DirectionLight. DirectionLightStatus. DirectionLightSta}{InstanceID=2}=0x0=OFF

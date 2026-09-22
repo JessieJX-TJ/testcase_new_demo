@@ -1,0 +1,29 @@
+功能分配规范
+零束
+Function Allocation Specification
+Z-ONE
+外灯功能Exterior lamp function
+Z-ONE-3.0平台-FAS-IBD05
+版本<1.0>
+777 of 935 页
+3、[外灯组合服务ICB]将车顶射灯开启状态发给[数字灯光 APP_ICB]
+{RoofSpotLight.ControlRoofSpotLight.RoofSpotLightReq}=0x1=On
+4、数字灯光APPICB]控制驱动车顶射灯点亮,具体参考数字灯光子系统
+5、[数字灯光APP_ICB]反馈车顶射灯状态及故障状态
+6、ICB将车顶射灯状态及故障状态反馈给LHZCU:
+{RoofSpotLight.RoofSpotLightStatus.RoofSpotLightSta}=0x1=On
+{RoofSpotLight. RoofSpotLightErrorStatus.RoofSpotLightErrorSta}=0x0=No Error
+7、[车顶射灯控制模块LHZCU]将车顶射灯状态及故障状态反馈给ICB:
+{ExteriorLightSwitchProcess.RoofSpotLightSta.RoofSpotLghtSta}=0x1=ON
+{ExteriorLightSwitchProcess.RoofSpotLightErrSta.RoofSpotLghtErrSta}=0x0=No Error
+8、[外灯组合服务ICB]订阅并透传:
+{ExteriorLightControlSystem.RoofSpotLightSts.RoofSpotLghtSts}=0x1=ON
+{ExteriorLightControlSystem.RoofSpotLightErrSts.RoofSpotLghtErrSts}=0x0=No Error
+备注
+1、远光增强使能情况下:
+1)远光灯点亮且车顶射灯未点亮,则第一次远光灯拨杆外推操作为开启车顶射灯
+2)内推远光灯拨杆(远光灯Flash方向)关闭操作远光灯不受影响,即远光灯开启,内推远
+闭远光灯同时关闭车顶射灯,具体参考远光灯关闭(on置为Flash)说明
+2)远光灯点亮且车顶射灯点亮,则往外推远光灯拨杆为关闭车顶射灯及远光灯
+2、此功能法规符合性(GB47855.1.7.3章节关于远光灯关闭说明)评估已由产品方评估为符
+性风险由产品方评估接受

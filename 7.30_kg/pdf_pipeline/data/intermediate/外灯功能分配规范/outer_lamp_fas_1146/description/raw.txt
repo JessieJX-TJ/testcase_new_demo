@@ -1,0 +1,104 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "后雾灯控制与状态监控",
+  "row_semantics": "表格按功能模块划分，每一行代表一个与后雾灯相关的控制或状态信号，详细定义了其值含义、输出来源及涉及的控制器。",
+  "column_semantics": "第一列为主功能模块名称；第二列描述信号的值定义；第三至第七列为信号的输出来源（如CANFD、RZCU等）及其对应的控制器/模块。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RearFogLightCtrl_HW",
+      "type": "功能名",
+      "description": "后雾灯硬件控制信号，用于直接控制后雾灯的开关状态。"
+    },
+    {
+      "name": "RearFogLghtSts",
+      "type": "系统状态",
+      "description": "后雾灯的实际状态（开启/关闭）。"
+    },
+    {
+      "name": "RearFogLghtAcSts",
+      "type": "系统状态",
+      "description": "后雾灯的激活状态（开启/关闭），可能与实际状态存在差异。"
+    },
+    {
+      "name": "RearFogLghtFltsts",
+      "type": "故障状态",
+      "description": "后雾灯是否存在故障的指示。"
+    },
+    {
+      "name": "RearFogLghtAcFltsts",
+      "type": "故障状态",
+      "description": "后雾灯激活过程中是否存在故障的指示。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0",
+      "value": "Off",
+      "description": "表示关闭状态。"
+    },
+    {
+      "name": "0x1",
+      "value": "On",
+      "description": "表示开启状态。"
+    },
+    {
+      "name": "0x0",
+      "value": "False",
+      "description": "表示无故障。"
+    },
+    {
+      "name": "0x1",
+      "value": "True",
+      "description": "表示存在故障。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogLightCtrl_HW",
+      "output_to": "硬件层",
+      "description": "直接控制后雾灯硬件的开关。"
+    },
+    {
+      "name": "RearFogLghtSts",
+      "output_to": "CAN/LIN/SOA服务",
+      "description": "报告后雾灯的实际物理状态。"
+    },
+    {
+      "name": "RearFogLghtAcSts",
+      "output_to": "CAN/LIN/SOA服务",
+      "description": "报告后雾灯的激活状态，可能反映软件层面的控制意图。"
+    },
+    {
+      "name": "RearFogLghtFltsts",
+      "output_to": "CAN/LIN/SOA服务",
+      "description": "报告后雾灯是否存在电气或机械故障。"
+    },
+    {
+      "name": "RearFogLghtAcFltsts",
+      "output_to": "CAN/LIN/SOA服务",
+      "description": "报告后雾灯激活过程中是否发生故障。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RearFogLghtFltsts",
+      "condition": "0x1",
+      "description": "后雾灯存在故障，可能导致灯光无法正常工作。"
+    },
+    {
+      "name": "RearFogLghtAcFltsts",
+      "condition": "0x1",
+      "description": "后雾灯激活过程中发生故障，可能影响驾驶安全。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了后雾灯系统的控制信号和状态信号的值含义及其在不同控制器/总线上的输出，可用于验证后雾灯控制逻辑、状态反馈以及故障检测功能的正确性。",
+  "uncertain_points": [
+    "具体条目指向的详细定义未在表格中给出。",
+    "各控制器（如RZCU、LHZCU等）的具体实现细节未明确说明。"
+  ]
+}
+```

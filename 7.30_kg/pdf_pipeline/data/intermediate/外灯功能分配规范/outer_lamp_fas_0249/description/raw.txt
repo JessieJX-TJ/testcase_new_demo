@@ -1,0 +1,113 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "外灯组合服务 (ICB) 的功能逻辑与信号交互",
+  "row_semantics": "流程步骤或信号流向",
+  "column_semantics": "无明确列，整体为流程图结构",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "自动灯光大屏请求 (ICB)",
+      "type": "输入信号"
+    },
+    {
+      "name": "外灯组合服务 (ICB)",
+      "type": "控制器/模块"
+    },
+    {
+      "name": "阳光雨量传感器",
+      "type": "输入信号"
+    },
+    {
+      "name": "(LHZCU)",
+      "type": "控制器/模块"
+    },
+    {
+      "name": "(RHZCU)",
+      "type": "控制器/模块"
+    },
+    {
+      "name": "LHA",
+      "type": "输出信号"
+    },
+    {
+      "name": "RHA",
+      "type": "输出信号"
+    },
+    {
+      "name": "TailIp.pAsmbA_RH",
+      "type": "输出信号"
+    },
+    {
+      "name": "TailIp.pAsmbA_LH",
+      "type": "输出信号"
+    },
+    {
+      "name": "TailIp.pAsmbB",
+      "type": "输出信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "自动灯光大屏请求 (ICB)",
+      "description": "外部触发的自动灯光请求信号"
+    },
+    {
+      "name": "阳光雨量传感器",
+      "description": "环境光照和雨量状态输入"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LHA",
+      "description": "左侧前大灯控制信号"
+    },
+    {
+      "name": "RHA",
+      "description": "右侧前大灯控制信号"
+    },
+    {
+      "name": "TailIp.pAsmbA_RH",
+      "description": "右侧尾灯组A控制信号"
+    },
+    {
+      "name": "TailIp.pAsmbA_LH",
+      "description": "左侧尾灯组A控制信号"
+    },
+    {
+      "name": "TailIp.pAsmbB",
+      "description": "尾灯组B控制信号"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal_pair": "自动灯光大屏请求 (ICB) -> 外灯组合服务 (ICB)",
+      "constraint": "30ms"
+    },
+    {
+      "signal_pair": "外灯组合服务 (ICB) -> LHA",
+      "constraint": "30ms"
+    },
+    {
+      "signal_pair": "外灯组合服务 (ICB) -> RHA",
+      "constraint": "30ms"
+    },
+    {
+      "signal_pair": "外灯组合服务 (ICB) -> TailIp.pAsmbA_RH",
+      "constraint": "30ms"
+    },
+    {
+      "signal_pair": "外灯组合服务 (ICB) -> TailIp.pAsmbA_LH",
+      "constraint": "30ms"
+    },
+    {
+      "signal_pair": "外灯组合服务 (ICB) -> TailIp.pAsmbB",
+      "constraint": "30ms"
+    }
+  ],
+  "engineering_interpretation": "该图表描述了外灯组合服务 (ICB) 如何接收自动灯光请求及环境传感器输入，并在30ms内生成相应的前大灯和尾灯控制信号，可用于验证外灯系统的响应时序和信号完整性。",
+  "uncertain_points": []
+}
+```

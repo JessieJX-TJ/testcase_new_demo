@@ -1,0 +1,124 @@
+{
+  "table_type": "signal_table",
+  "topic": "Vehicle Hazard Mode Status and Turn Signal Control Signals",
+  "row_semantics": "Each row represents a specific control or status signal related to vehicle hazard modes and turn signals, including their hexadecimal codes and descriptions.",
+  "column_semantics": "The first column contains the signal name and description. The subsequent columns indicate the communication medium (e.g., CANFD) and the involved controllers/modules (e.g., LHZCU, ICB).",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehHzrdMdSts",
+      "type": "system_state",
+      "description": "Vehicle Hazard Mode Status, representing various operational modes of the vehicle's hazard system."
+    },
+    {
+      "name": "FLDircnLghtCtrl",
+      "type": "output_signal",
+      "description": "Front Left Turn Light Control signal for controlling the left front turn light."
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "type": "output_signal",
+      "description": "Front Right Turn Light Control signal for controlling the right front turn light."
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "type": "output_signal",
+      "description": "Rear Left Turn Light Control signal for controlling the left rear turn light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Collision_Mode",
+      "type": "mode_name",
+      "description": "Collision mode indicating the vehicle is in a collision state."
+    },
+    {
+      "name": "SHWA_Mode",
+      "type": "mode_name",
+      "description": "Side Head-Up Warning Assist mode."
+    },
+    {
+      "name": "RCW_Mode",
+      "type": "mode_name",
+      "description": "Rear Cross Traffic Warning mode."
+    },
+    {
+      "name": "AI_Pilot_Warning_Mode",
+      "type": "mode_name",
+      "description": "Autonomous Intelligence Pilot Warning mode."
+    },
+    {
+      "name": "Battery_Thermal_Malfunction",
+      "type": "fault_state",
+      "description": "Battery thermal malfunction condition."
+    },
+    {
+      "name": "Emergency_Brake",
+      "type": "mode_name",
+      "description": "Emergency brake activation mode."
+    },
+    {
+      "name": "Alarm_trigger",
+      "type": "mode_name",
+      "description": "Alarm trigger mode."
+    },
+    {
+      "name": "Find_my_car",
+      "type": "mode_name",
+      "description": "Find my car mode."
+    },
+    {
+      "name": "ExtrLckLghtRmndr",
+      "type": "mode_name",
+      "description": "External Lock Light Reminder mode."
+    },
+    {
+      "name": "PwrLftgtDirIndcnLamp",
+      "type": "mode_name",
+      "description": "Power Left Target Direction Indicator Lamp mode."
+    },
+    {
+      "name": "TireBlowout",
+      "type": "fault_state",
+      "description": "Tire blowout condition."
+    },
+    {
+      "name": "SOARequest",
+      "type": "mode_name",
+      "description": "Service Operation Authorization Request mode."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtCtrl",
+      "type": "output_signal",
+      "description": "Controls the state of the front left turn light (0=Off, 1=On)."
+    },
+    {
+      "name": "FRDircnLghtCtrl",
+      "type": "output_signal",
+      "description": "Controls the state of the front right turn light (0=Off, 1=On)."
+    },
+    {
+      "name": "RLDircnLghtCtrl",
+      "type": "output_signal",
+      "description": "Controls the state of the rear left turn light (0=Off, 1=On)."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Battery_Thermal_Malfunction",
+      "type": "fault_state",
+      "description": "Indicates a thermal malfunction in the battery."
+    },
+    {
+      "name": "TireBlowout",
+      "type": "fault_state",
+      "description": "Indicates a tire blowout condition."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the mapping of hexadecimal codes to various vehicle hazard modes and turn signal control states, which can be used to verify the correct activation and deactivation of turn lights and hazard modes under different operational conditions.",
+  "uncertain_points": []
+}

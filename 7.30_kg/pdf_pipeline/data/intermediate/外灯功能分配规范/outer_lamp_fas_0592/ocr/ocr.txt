@@ -1,0 +1,31 @@
+(exlDircnLghtHwDrvEnPrm=0x1;通过 Instance ID 1/2/3/4 获取转向灯状态；)
+ICB将状态/故障状态反馈至[危险警报灯开关控制模块LHZCU]:
+FLDircnLghtSts=0x1=FLDirenLghtSts_1_On
+FRDircnLghtSts=0x1=FRDircnLghtSts_1_On
+RLDircnLghtSts=0x1=RLDircnLghtSts_1_On
+RRDircnLghtSts=0x1=RRDircnLghtSts_1_On
+FLDircnLghtFltsts=0x0=FLDirenLghtFltsts_0_False
+FRDircnLghtFltsts=0x0=FRDircnLghtFltsts_0_False
+RLDircnLghtFltsts=0x0=RLDircnLghtFltsts_0_False
+RRDirenLghtFltsts=0x0=RRDirenLghtFltsts_0_False
+(exlDircnLghtHwDrvEnPrm=0x0 || 0x2;通过 Instance ID 5/6/7/8 获取转向灯状态；)
+10.[危险警报灯开关控制模块LHZCU]将状态/故障状态反馈至ICB:
+DircnLghtSts=0x3=Both_Side_Direction_Light_On
+DirenLghtFltsts=0x0=DirenLghtFltsts_0_False
+{ExteriorLightSwitchProcess. DirectionLightErrSta. DircnLghtErrSta}=0x0=No Error
+11.[外灯组合服务ICB]订阅接口:
+12.[危险警报灯开关控制模块LHZCU]将双闪灯模式反馈至ICB:
+VehHzrdMdSts=0x1=VehHzrdMdSts_1_Manual_Mode
+ExteriorLightSwitchProcess.VehHzrdMdSta.VehHzrdMdSta=0x1
+[危险警报灯开关控制模块LHZCU]将开关状态反馈至ICB:
+HzrdLghtSwSts=0x1=HzrdLghtSwSts_1_On
+{ExteriorLightSwitchProcess. HazardLightSwitchStatus.HazardLightSwSts}=0x1=ON
+14.[危险警报灯开关控制模块LHZCU]将转向灯控制状态反馈至SDM
+EDRDircnIndLampSwSts=0x3=EDRDircnIndLampSwSts_3_hazard
+备注
+危险警报灯开启闪烁要求:
+[危险警报灯开关控制模块]控制危险警报灯以1.25Hz频率闪烁
+危险警报灯同步性要求(a&b):
+a)其图标闪烁频率和声音提醒与实际危险警报灯的闪烁频率需保持一致,三者同步性允许的最大延
+50ms
+b)危险警报灯的同步性允许的最大延时周期为:40ms

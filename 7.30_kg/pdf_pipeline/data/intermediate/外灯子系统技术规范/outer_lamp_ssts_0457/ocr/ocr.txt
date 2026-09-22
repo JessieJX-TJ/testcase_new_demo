@@ -1,0 +1,13 @@
+前置条件
+1.BrkLghtFbkSOAEnPrm==1(Enable)
+2.左制动灯处于输出状态
+触发条件
+检测到左制动灯短路到地
+执行动作
+1.【BrkLghtDrvMdl】停止驱动左制动灯(BrkLamp_LH_HSD)
+2.【BrkLghtDrvMdl】持续发送 BrakeLightState. BrakeLightSta=2(Error)
+至【BrkLghtCtrlMd1】,至少发送三帧
+3.置位DTCB104111
+退出条件
+检测到短路恢复
+异常处理

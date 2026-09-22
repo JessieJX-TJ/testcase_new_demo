@@ -1,0 +1,43 @@
+{
+  "table_type": "fault_table",
+  "topic": "阅读灯故障状态判定",
+  "row_semantics": "表格按故障信号号进行分类，列出不同状态位下的故障判定条件。",
+  "column_semantics": {
+    "阅读灯故障状态信号号": "标识具体的阅读灯故障信号，如ThirdRowMapLampLHErr。",
+    "状态位": "表示该故障信号的当前状态值，如0x0表示无错误，0x1表示存在错误。",
+    "判定条件说明": "详细描述在特定状态下如何判定故障，包括电流阈值等条件。",
+    "备注": "提供额外的说明或补充信息，此处为空。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "ThirdRowMapLampLHErr",
+      "type": "signal",
+      "description": "第三排阅读灯左侧（LH）的故障状态信号。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "状态位为0x0",
+      "description": "表示无错误，即阅读灯无短路或断路故障。"
+    },
+    {
+      "condition": "状态位为0x1",
+      "description": "表示存在错误，需满足以下两个条件之一：\n1. 阅读灯点亮时，电流超过最大电流值的1.5倍；\n2. 阅读灯熄灭时，电流低于最小电流值的0.1倍。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "fault_name": "ThirdRowMapLampLHErr",
+      "description": "第三排阅读灯左侧（LH）的故障状态信号，用于指示是否存在电气故障。",
+      "conditions": [
+        "状态位为0x1且满足电流异常条件。"
+      ]
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了第三排阅读灯左侧（LH）故障状态信号的判定逻辑，可用于验证阅读灯在点亮和熄灭状态下的电流是否符合预期阈值，从而判断是否存在电气故障。",
+  "uncertain_points": []
+}

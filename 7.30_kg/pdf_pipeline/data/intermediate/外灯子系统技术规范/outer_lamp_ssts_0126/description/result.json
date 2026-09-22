@@ -1,0 +1,83 @@
+{
+  "table_type": "fault_table",
+  "topic": "整车电子电器系统 - 外灯（右前雾灯）输出电路故障诊断需求",
+  "row_semantics": "每行代表一个具体的故障诊断场景或测试用例，针对右前雾灯的输出电路进行检测。",
+  "column_semantics": {
+    "名称": "故障诊断场景的唯一标识符，格式为B1053 XX，其中XX表示具体故障类型编号。",
+    "描述": "对该诊断场景的简要说明，指明了故障的具体表现形式。",
+    "进入条件": "触发该诊断场景开始执行的条件，即系统检测到的故障现象。",
+    "退出条件": "诊断场景结束的条件，即故障现象消失或恢复正常状态。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B1053_11",
+      "type": "function_name",
+      "description": "右前雾灯输出短路到地故障诊断"
+    },
+    {
+      "name": "B1053_12",
+      "type": "function_name",
+      "description": "右前雾灯输出短路到电源故障诊断"
+    },
+    {
+      "name": "B1053_13",
+      "type": "function_name",
+      "description": "右前雾灯输出开路故障诊断"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "检测到短路到地",
+      "description": "系统检测到右前雾灯输出端与地之间存在短路故障。",
+      "entity": "B1053_11"
+    },
+    {
+      "name": "检测到短路到电源",
+      "description": "系统检测到右前雾灯输出端与电源之间存在短路故障。",
+      "entity": "B1053_12"
+    },
+    {
+      "name": "检测到输出开路",
+      "description": "系统检测到右前雾灯输出端与外部电路断开连接。",
+      "entity": "B1053_13"
+    },
+    {
+      "name": "检测到未短路到地",
+      "description": "系统确认右前雾灯输出端与地之间不存在短路故障。",
+      "entity": "B1053_11"
+    },
+    {
+      "name": "检测到未短路到电源",
+      "description": "系统确认右前雾灯输出端与电源之间不存在短路故障。",
+      "entity": "B1053_12"
+    },
+    {
+      "name": "检测到输出开路恢复",
+      "description": "系统确认右前雾灯输出端从开路状态恢复到正常连接状态。",
+      "entity": "B1053_13"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "短路到地",
+      "description": "右前雾灯输出电路与车身接地之间发生异常导通。",
+      "entity": "B1053_11"
+    },
+    {
+      "name": "短路到电源",
+      "description": "右前雾灯输出电路与电源正极之间发生异常导通。",
+      "entity": "B1053_12"
+    },
+    {
+      "name": "开路",
+      "description": "右前雾灯输出电路与外部负载之间断开连接。",
+      "entity": "B1053_13"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了针对右前雾灯输出电路的三种主要故障模式（短路到地、短路到电源、开路）的诊断流程，包括触发条件和恢复条件，可用于指导整车电子电器系统的故障诊断测试验证。",
+  "uncertain_points": []
+}

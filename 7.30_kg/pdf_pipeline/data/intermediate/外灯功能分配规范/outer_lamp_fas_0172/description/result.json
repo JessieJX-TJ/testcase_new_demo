@@ -1,0 +1,73 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Combined Light Function Control Process",
+  "row_semantics": "The table describes the parameters and methods for controlling combined exterior lights, including request and response structures.",
+  "column_semantics": "The leftmost column lists the process/module name. The top row provides parameter names and their definitions. The main body details the method, request, and response parameters.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess.CombLghtFucProCtrl",
+      "type": "function_name",
+      "description": "The main function/process for controlling combined exterior lights."
+    },
+    {
+      "name": "SOA",
+      "type": "controller_module",
+      "description": "Service-Oriented Architecture component involved in the process."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Local Headlight Zone Control Unit, likely responsible for headlight control."
+    },
+    {
+      "name": "ICB",
+      "type": "controller_module",
+      "description": "Integrated Control Box, possibly a central control unit."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "CombinedLightReq",
+      "type": "input_parameter",
+      "description": "Request parameter for combined light control, specifying desired light states."
+    },
+    {
+      "name": "SidePositionLight",
+      "type": "mode_name",
+      "description": "Side position light state (ON/OFF)."
+    },
+    {
+      "name": "DippedBeamLight",
+      "type": "mode_name",
+      "description": "Dipped beam light state (ON/OFF)."
+    },
+    {
+      "name": "AUTO",
+      "type": "mode_name",
+      "description": "Automatic mode for light control."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "CombLghtFucProCtrlResp",
+      "type": "output_parameter",
+      "description": "Response parameter indicating the result of the combined light control request."
+    },
+    {
+      "name": "ControlSuccess",
+      "type": "system_state",
+      "description": "Indicates that the light control request was successfully processed."
+    },
+    {
+      "name": "Failed",
+      "type": "fault_state",
+      "description": "Indicates that the light control request failed."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interface for requesting and receiving responses related to combined exterior light control, allowing verification of the system's ability to correctly interpret and execute light control commands.",
+  "uncertain_points": []
+}

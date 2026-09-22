@@ -1,0 +1,498 @@
+[
+  {
+    "head": "左侧前雾灯熄灭",
+    "relation": "触发条件",
+    "tail": "FrontFogLightControl == 0x0 (OFF)",
+    "sources": [
+      "outer_lamp_ssts_0443"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯状态为开启",
+    "relation": "依赖于",
+    "tail": "LFrtFogLightSts == 0x1 (On)",
+    "sources": [
+      "outer_lamp_ssts_0443"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯状态为关闭",
+    "relation": "依赖于",
+    "tail": "LFrtFogLightSts == 0x0 (Off)",
+    "sources": [
+      "outer_lamp_ssts_0443"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯故障",
+    "relation": "依赖于",
+    "tail": "LFrtFogLightFltSts == 0x1 (True)",
+    "sources": [
+      "outer_lamp_ssts_0443"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯状态未知",
+    "relation": "依赖于",
+    "tail": "FrontFogLightState == 0x2 (Unknown)",
+    "sources": [
+      "outer_lamp_ssts_0443"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯硬线驱动信号有效",
+    "relation": "前提条件",
+    "tail": "FogLamp_LH_HSD interface exists and direction is output",
+    "sources": [
+      "outer_lamp_ssts_0443"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯CAN控制信号有效",
+    "relation": "前提条件",
+    "tail": "LFrtFogLightCtrl_HW interface exists and direction is input",
+    "sources": [
+      "outer_lamp_ssts_0443"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯CAN状态反馈信号有效",
+    "relation": "前提条件",
+    "tail": "LFrtFogLightSts interface exists and direction is output",
+    "sources": [
+      "outer_lamp_ssts_0443"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯CAN故障状态反馈信号有效",
+    "relation": "前提条件",
+    "tail": "LFrtFogLightFltSts interface exists and direction is output",
+    "sources": [
+      "outer_lamp_ssts_0443"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯SOA控制信号有效",
+    "relation": "前提条件",
+    "tail": "FrontFogLightControl interface exists and type is SOA",
+    "sources": [
+      "outer_lamp_ssts_0443"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧前雾灯SOA状态订阅信号有效",
+    "relation": "前提条件",
+    "tail": "FrontFogLightState interface exists and type is SOA",
+    "sources": [
+      "outer_lamp_ssts_0443"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左制动灯短路到电源故障被检测",
+    "relation": "触发条件",
+    "tail": "Brake light left short-to-battery detected",
+    "sources": [
+      "outer_lamp_ssts_0444"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl反馈制动灯故障状态",
+    "relation": "输出为",
+    "tail": "BrkLghtFltSts_HW == 0x1 (True)",
+    "sources": [
+      "outer_lamp_ssts_0444"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左制动灯短路到电源故障诊断功能启用",
+    "relation": "前提条件",
+    "tail": "exlBrkLghtHwDrvEnPrm == 1 and left brake light output state is inactive",
+    "sources": [
+      "outer_lamp_ssts_0444"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向拨杆开关检测到未定义的阻值",
+    "relation": "触发条件",
+    "tail": "Direction indicator switch detects undefined resistance",
+    "sources": [
+      "outer_lamp_ssts_0445"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向拨杆开关检测到未定义的阻值",
+    "relation": "诊断关联",
+    "tail": "DTC is set",
+    "sources": [
+      "outer_lamp_ssts_0445"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "【DILghtSwMdl】持续发送 DircnLghtSwReq = 0x0 (Off) 至 【DILghtCtrlMdl】",
+    "relation": "包含子功能",
+    "tail": "At least three frames sent and DTC is set",
+    "sources": [
+      "outer_lamp_ssts_0445"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动踏板开关信号进入悬空状态",
+    "relation": "触发条件",
+    "tail": "Brake pedal switch signal becomes floating after pedal release",
+    "sources": [
+      "outer_lamp_ssts_0447"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制参数的有效范围",
+    "relation": "前提条件",
+    "tail": "Outer lamp control parameter value is within defined range",
+    "sources": [
+      "outer_lamp_ssts_0448"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制参数的默认值",
+    "relation": "前提条件",
+    "tail": "Default value is used when body control parameter is unspecified",
+    "sources": [
+      "outer_lamp_ssts_0448"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门控制参数的定义",
+    "relation": "前提条件",
+    "tail": "Power tailgate control parameter is converted according to definition",
+    "sources": [
+      "outer_lamp_ssts_0448"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统进入休眠模式",
+    "relation": "前提条件",
+    "tail": "No valid wake-up source persists",
+    "sources": [
+      "outer_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "唤醒/休眠方式",
+    "relation": "依赖于",
+    "tail": "Specific wake-up source",
+    "sources": [
+      "inner_lamp_ssts_0108",
+      "inner_lamp_ssts_0160",
+      "inner_lamp_ssts_0534",
+      "outer_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "备注信息",
+    "relation": "包含子功能",
+    "tail": "Supplementary explanation for wake-up/sleep behavior",
+    "sources": [
+      "inner_lamp_ssts_0534",
+      "inner_lamp_ssts_0550",
+      "outer_lamp_ssts_0449"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "倒车灯系统执行故障处理动作",
+    "relation": "触发条件",
+    "tail": "Reverse light short-to-ground detected",
+    "sources": [
+      "outer_lamp_ssts_0451"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "【RevsLghtDrvMdl】停止驱动制动灯及高位制动灯 (RevsLamp_LH_HSD)",
+    "relation": "前提条件",
+    "tail": "RevsLghtFbkSOAEnPrm == 1 (Enable) and reverse light is in output state",
+    "sources": [
+      "outer_lamp_ssts_0451"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "【RevsLghtDrvMdl】持续发送 ReverseLightState.ReverseLightSta = 2 (Error) 至 【RevsLghtCtrlMdl】",
+    "relation": "输入为",
+    "tail": "Reverse light short-to-ground detected",
+    "sources": [
+      "outer_lamp_ssts_0451"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "置位 DTC B1045 11",
+    "relation": "故障响应",
+    "tail": "Reverse light short-to-ground detected",
+    "sources": [
+      "outer_lamp_ssts_0451"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左近光灯点亮",
+    "relation": "触发条件",
+    "tail": "ControlDippedBeamLight.DippedBeamLightReq == 0x1",
+    "sources": [
+      "outer_lamp_ssts_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左近光灯熄灭",
+    "relation": "触发条件",
+    "tail": "ControlDippedBeamLight.DippedBeamLightReq == 0x0",
+    "sources": [
+      "outer_lamp_ssts_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左近光灯状态为 ON",
+    "relation": "输出为",
+    "tail": "DippedBeamLightStatus.DippedBeamLightSta == 0x1",
+    "sources": [
+      "outer_lamp_ssts_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左近光灯状态为 OFF",
+    "relation": "输出为",
+    "tail": "DippedBeamLightStatus.DippedBeamLightSta == 0x0",
+    "sources": [
+      "outer_lamp_ssts_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左近光灯状态为 Unknown",
+    "relation": "输出为",
+    "tail": "DippedBeamLightStatus.DippedBeamLightSta == 0x2",
+    "sources": [
+      "outer_lamp_ssts_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左近光灯硬线驱动",
+    "relation": "控制对象",
+    "tail": "LHA",
+    "sources": [
+      "outer_lamp_ssts_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左近光灯控制请求",
+    "relation": "依赖于",
+    "tail": "SOA interface",
+    "sources": [
+      "outer_lamp_ssts_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左近光灯状态查询",
+    "relation": "依赖于",
+    "tail": "SOA interface",
+    "sources": [
+      "outer_lamp_ssts_0452"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯短路到地故障处理功能",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtFbkSOAEnPrm == 1 (Enable) and right main beam light is in output state",
+    "sources": [
+      "outer_lamp_ssts_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯短路到地故障处理功能",
+    "relation": "触发条件",
+    "tail": "Right main beam light short-to-ground detected",
+    "sources": [
+      "outer_lamp_ssts_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "【RMainBeamLghtDrvMdl】停止驱动右远光灯输出 (MainBeamLamp_RH_HSD)",
+    "relation": "故障响应",
+    "tail": "Right main beam light short-to-ground detected",
+    "sources": [
+      "outer_lamp_ssts_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "【RMainBeamLghtDrvMdl】持续发送 MainBeamLightState.MainBeamLightSta = 2 (Error), InstanceID = 2 至 【MainBeamLghtCtrlMdl】",
+    "relation": "故障响应",
+    "tail": "Right main beam light short-to-ground detected",
+    "sources": [
+      "outer_lamp_ssts_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "置位 DTC B105C 11",
+    "relation": "故障响应",
+    "tail": "Right main beam light short-to-ground detected",
+    "sources": [
+      "outer_lamp_ssts_0453"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制",
+    "relation": "依赖于",
+    "tail": "Parameter range",
+    "sources": [
+      "inner_lamp_fas_0319",
+      "outer_lamp_ssts_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门",
+    "relation": "依赖于",
+    "tail": "Resolution factor",
+    "sources": [
+      "outer_lamp_ssts_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制",
+    "relation": "输出为",
+    "tail": "Default value",
+    "sources": [
+      "outer_lamp_ssts_0454"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯短路故障处理功能被触发",
+    "relation": "触发条件",
+    "tail": "Right front turn signal short-to-ground detected",
+    "sources": [
+      "outer_lamp_ssts_0455"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统停止驱动右前转向灯",
+    "relation": "前提条件",
+    "tail": "exlDircnLghtHwDrvEnPrm == 1 and right front turn signal is in output state",
+    "sources": [
+      "outer_lamp_ssts_0455"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lighting System 大灯开关",
+    "relation": "触发条件",
+    "tail": "Key fob signal is valid OR door open status is closed",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lighting System 尾灯开关",
+    "relation": "触发条件",
+    "tail": "Ignition status is ON OR key fob signal is valid",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lights On/Off",
+    "relation": "触发条件",
+    "tail": "Door open status is open OR key fob signal is valid",
+    "sources": [
+      "outer_lamp_ssts_0456"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

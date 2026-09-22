@@ -1,0 +1,92 @@
+```json
+[
+  {
+    "head": "昼间行车灯退出",
+    "relation": "前提条件",
+    "tail": "车辆处于Super Eco驾驶模式",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "场景描述",
+      "Super Eco模式"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "昼间行车灯退出",
+    "relation": "前提条件",
+    "tail": "昼间行车灯处于激活状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "场景描述",
+      "激活状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "昼间行车灯熄灭",
+    "relation": "触发条件",
+    "tail": "ICB将服务接口或控制信号转换成灯控CAN信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "灯控CAN信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "昼间行车灯状态反馈",
+    "relation": "依赖于",
+    "tail": "[昼间行车灯控制模块LHZCU]",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "DayRunningLightSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "昼间行车灯错误状态反馈",
+    "relation": "依赖于",
+    "tail": "[昼间行车灯控制模块LHZCU]",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZCU",
+      "DayRunningLightErrSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "前雾灯默认关闭",
+    "relation": "抑制条件",
+    "tail": "无前雾灯功能 (InsdFnCfgFrtFogLght=0x0)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "前雾灯功能",
+      "InsdFnCfgFrtFogLght"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯开启且非闪烁",
+    "relation": "前提条件",
+    "tail": "LHZCU判断远光灯开启且非远光灯闪烁开启",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "MainBeamLightFucProStatus"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "昼间行车灯同步性要求",
+    "relation": "超时约束",
+    "tail": "昼间行车灯退出的同步性最大延时周期为40ms",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "40ms",
+      "昼间行车灯退出"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

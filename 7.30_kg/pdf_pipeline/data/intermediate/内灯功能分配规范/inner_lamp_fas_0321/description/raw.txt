@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Vehicle Lock Status (VehLckSts) Interface Definition",
+  "row_semantics": "Each row represents a specific state or condition of the vehicle lock status, with detailed definitions for each possible value.",
+  "column_semantics": {
+    "Interface Name": "The name of the interface being defined, which is 'VehLckSts'.",
+    "Direction": "Indicates whether the interface is an input or output. Here, it is '输入' (Input).",
+    "Type": "Specifies the type of data, which is '内部' (Internal).",
+    "Sender/Provider": "The entity responsible for sending or providing the data, which is 'LHZCU' (likely a Body Control Module or similar controller).",
+    "Receiver/Consumer": "The entity that receives or consumes the data, which is also 'LHZCU'.",
+    "Channel": "The communication path or channel used for this interface, which is not specified in the table.",
+    "Interface Source": "The source of the interface definition, which is '门锁 SSTS' (Door Lock SSTS, likely a subsystem or standard specification)."
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VehLckSts",
+      "type": "Signal",
+      "description": "Represents the current status of the vehicle's locking mechanism."
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "The Body Control Unit or equivalent module responsible for managing the vehicle's locking system."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "VehLckSts_0_Unlocked",
+      "value": "0x0",
+      "description": "The vehicle is unlocked."
+    },
+    {
+      "name": "VehLckSts_1_Signal_Position_Entry_Unlocked",
+      "value": "0x1",
+      "description": "The vehicle is unlocked due to a signal position entry."
+    },
+    {
+      "name": "VehLckSts_2_Interior_Locked",
+      "value": "0x2",
+      "description": "The interior of the vehicle is locked."
+    },
+    {
+      "name": "VehLckSts_3_Exterior_Locked",
+      "value": "0x3",
+      "description": "The exterior of the vehicle is locked."
+    },
+    {
+      "name": "VehLckSts_4_Super_locked",
+      "value": "0x4",
+      "description": "The vehicle is in a super locked state."
+    },
+    {
+      "name": "VehLckSts_5_Reserved",
+      "value": "0x5",
+      "description": "A reserved state for future use."
+    },
+    {
+      "name": "VehLckSts_6_Reserved",
+      "value": "0x6",
+      "description": "Another reserved state for future use."
+    },
+    {
+      "name": "VehLckSts_7_Unknown",
+      "value": "0x7",
+      "description": "The lock status is unknown."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the various states of the vehicle lock status (VehLckSts) and their corresponding hexadecimal values, which are used by the LHZCU controller to manage and communicate the locking mechanism's status within the vehicle.",
+  "uncertain_points": []
+}
+```

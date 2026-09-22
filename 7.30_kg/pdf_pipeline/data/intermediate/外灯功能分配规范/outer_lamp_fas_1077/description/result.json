@@ -1,0 +1,49 @@
+{
+  "table_type": "signal_table",
+  "topic": "Direction Light Control Logic and Status Feedback for LHZCU/RHZCU/RZCU Modules",
+  "row_semantics": "Each row represents a specific control or status feedback scenario related to direction lights, including signal conversion, module interaction, and system state updates.",
+  "column_semantics": "The table does not have explicit columns; instead, each row contains a block of code or configuration that defines the behavior of the direction light system under certain conditions.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB (Integrated Control Box)",
+    "LHZCU (Left Headlight Zone Control Unit)",
+    "RHZCU (Right Headlight Zone Control Unit)",
+    "RZCU (Rear Zone Control Unit)",
+    "DirectionLight (Direction Light System)",
+    "ControlDirectionLight (Control Direction Light System)"
+  ],
+  "core_conditions": [
+    "Signal Conversion from ICB to CAN Signal",
+    "Signal Distribution by ICB to LHZCU/RHZCU/RZCU",
+    "Module Reception of ICB Signals",
+    "Exit Hazard Warning Lamp Display",
+    "Hazard Warning Lamp Icon Display",
+    "Sound Alarm Trigger",
+    "Transition Turn Signal Status Acquisition"
+  ],
+  "core_outputs": [
+    "FLDirenLightCtrl_HW_0_off",
+    "FRDirenLightCtrl_HW_0_off",
+    "RLDirenLightCtrl_HW_0_off",
+    "RRDirenLightCtrl_HW_0_off",
+    "FLDirenLightFlsts_HW_0_False",
+    "FRDirenLightFlsts_HW_0_False",
+    "RLDirenLightFlsts_HW_0_False",
+    "RRDirenLightFlsts_HW_0_False",
+    "DirectionLightStatus",
+    "DirectionLightErrorStatus"
+  ],
+  "core_faults": [
+    "No Error",
+    "DirectionLightErrorStatus"
+  ],
+  "core_timing_constraints": [
+    "60ms distribution delay by ICB to LHZCU/RHZCU/RZCU"
+  ],
+  "engineering_interpretation": "This table defines the logic for converting and distributing direction light control signals from the Integrated Control Box (ICB) to the LHZCU/RHZCU/RZCU modules, as well as the status feedback mechanisms for these systems. It is used to verify the correct signal flow, timing, and error handling in the direction light control system.",
+  "uncertain_points": [
+    "The exact timing relationship between signal distribution and module response is not explicitly detailed beyond the 60ms delay.",
+    "The specific implementation details of the 'ExteriorLightSwitchProcess' function are not provided."
+  ]
+}

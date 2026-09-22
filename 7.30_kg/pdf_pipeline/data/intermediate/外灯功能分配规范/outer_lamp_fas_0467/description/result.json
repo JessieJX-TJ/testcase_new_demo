@@ -1,0 +1,69 @@
+{
+  "table_type": "parameter_table",
+  "topic": "转向灯硬线驱动使能状态及相关参数配置",
+  "row_semantics": "表格的每一行代表一个与转向灯控制相关的参数或功能配置项，包括其名称、描述、取值范围及默认值。",
+  "column_semantics": {
+    "column_1": "参数/功能名称 (Parameter/Function Name): 英文标识符，用于唯一识别该配置项。",
+    "column_2": "功能描述 (Description): 对该参数或功能的中文解释，说明其作用。",
+    "column_3": "参数取值范围及含义 (Value Range and Meaning): 定义了该参数可设置的值及其对应的含义。",
+    "column_4": "默认值 (Default Value): 如果未特别配置，系统将采用的初始值。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "exlDircnLghtHwDrvEnPrm",
+      "type": "parameter",
+      "description": "转向灯硬线驱动使能状态参数，用于控制转向灯硬线驱动是否启用以及工作模式。",
+      "details": {
+        "possible_values": [
+          {
+            "value": "0x0",
+            "meaning": "Disable"
+          },
+          {
+            "value": "0x1",
+            "meaning": "DriveAndFeedBack"
+          },
+          {
+            "value": "0x2",
+            "meaning": "Only Drive"
+          },
+          {
+            "value": "0x3",
+            "meaning": "Reversed"
+          }
+        ],
+        "default_value": "0x2"
+      }
+    },
+    {
+      "name": "exlDIAutoOffAnglePrm",
+      "type": "parameter",
+      "description": "方向盘转向灯点亮旋转角度值参数，定义了方向盘转动多少度后转向灯自动点亮。",
+      "details": {
+        "unit": "°",
+        "bit_width": 6,
+        "value_range": "0~63",
+        "default_value": "20°"
+      }
+    },
+    {
+      "name": "exlDIAutoOffAngleHystPrm",
+      "type": "parameter",
+      "description": "方向盘转向灯点亮侧反方向回正值参数，定义了方向盘从点亮侧反方向回转多少度后转向灯自动熄灭。",
+      "details": {
+        "unit": "°",
+        "bit_width": 6,
+        "value_range": "0~63",
+        "default_value": "10°"
+      }
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了转向灯控制系统中关键参数的配置规范，可用于验证转向灯在不同方向盘转动角度下的点亮和熄灭行为是否符合设计要求，确保系统在默认及配置状态下均能正确响应。",
+  "uncertain_points": []
+}

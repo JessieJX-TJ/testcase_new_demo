@@ -1,0 +1,56 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Main Beam Light Control Logic",
+  "row_semantics": "Trigger Conditions and Resulting Actions for Main Beam Light",
+  "column_semantics": "Conditions (Left Column) and Triggered Actions/States (Right Column)",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightCtrlMdl",
+      "type": "controller_module",
+      "description": "Controller module responsible for main beam light control"
+    },
+    {
+      "name": "MainBeamLightControl",
+      "type": "signal",
+      "description": "Signal sent from MainBeamLightCtrlMdl to control main beam light"
+    },
+    {
+      "name": "MainBeamLightCtrReq",
+      "type": "input_signal",
+      "description": "Request signal for main beam light control"
+    },
+    {
+      "name": "SOAEnPrm",
+      "type": "parameter",
+      "description": "System On Activation Enable Parameter"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MainBeamLightFbkSOAEnPrm == 1",
+      "description": "System On Activation Enable Parameter is set to 1 (Enabled)"
+    },
+    {
+      "condition": "MainBeamLightCtrReq == 0",
+      "description": "Main Beam Light Control Request is set to 0 (Off)"
+    },
+    {
+      "condition": "InstanceID == 1",
+      "description": "Instance ID is set to 1"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "MainBeamLightControl",
+      "description": "Main Beam Light Control signal is triggered"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the logic for triggering the Main Beam Light Control signal based on specific conditions, primarily used for testing the activation/deactivation logic of the main beam light system under defined parameter and request states.",
+  "uncertain_points": []
+}
+```

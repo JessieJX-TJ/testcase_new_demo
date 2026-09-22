@@ -1,0 +1,75 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "日间行车灯功能验证条件",
+  "row_semantics": "描述了在特定前置条件下，触发日间行车灯（DRL）自动开启的逻辑规则。",
+  "column_semantics": "表格分为三列：场景描述、前置条件、触发动作。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit，负责判断和控制外灯状态"
+    },
+    {
+      "name": "DRL",
+      "type": "function",
+      "description": "Daytime Running Light，车辆在白天行驶时自动开启的车灯"
+    },
+    {
+      "name": "Park Range",
+      "type": "system_state",
+      "description": "车辆处于驻车档位的状态"
+    },
+    {
+      "name": "CombLightSwSta",
+      "type": "input_signal",
+      "description": "组合开关状态，用于检测大灯开关的位置"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "车辆非P档位",
+      "signal": "TrShiftLvrPos_1_Park_Range",
+      "value": "0x1"
+    },
+    {
+      "condition": "大灯开关OFF档位",
+      "signal": "CombLightSwSta",
+      "value": "0x0"
+    },
+    {
+      "condition": "日间行车灯开启禁止状态为False",
+      "signal": "DayRunngLghtDsblSts",
+      "value": "False"
+    },
+    {
+      "condition": "前雾灯/前照灯处于关闭状态",
+      "signal": "FrontFogLghtFucProStatus",
+      "value": "0x0"
+    },
+    {
+      "condition": "远光灯关闭或闪烁开启",
+      "signal": "MainBeamLghtOnReq",
+      "value": "0x2"
+    },
+    {
+      "condition": "具备日行灯功能",
+      "signal": "InsdFnCfgDayRunngLght",
+      "value": "0x1"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "日间行车灯自动开启",
+      "signal": "ExteriorLightSwitchProcess",
+      "action": "CombLightFucProStatus = 0x0"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在满足特定车辆状态和灯光开关条件下，LHZCU如何判断并自动开启日间行车灯的逻辑规则，可用于验证车辆在不同驾驶模式下DRL功能的正确性。",
+  "uncertain_points": []
+}
+```

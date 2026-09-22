@@ -1,0 +1,22 @@
+场景描述
+用户通过大屏软开关,触发大灯关闭有效
+前置条件
+位置灯处于激活状态
+备注:
+a.需求中同时存在SOA和CAN的,按照配置字开发
+b.需求中只存在一种通讯类型的,按照该通讯类型开发
+c.PPV阶段及以后按照 SOA通讯方式开发:
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+触发动作
+S32G收到[大灯关闭请求ICB]输入
+{ExteriorLightControlSystem. ControlCombinedLight. CombinedLightReq}= Ox0=OFF
+执行动作
+[外灯控制组合服务ICB]调用接口发送位置灯关闭请求状态给LHZCU:
+Method:
+Req:
+{ExteriorLightSwitchProcess. CombLghtFucProCtrl. CombLghtFucProCtrlReq}=0x0=OFF
+Resp:
+Notifer:
+{ExteriorLightControl.CombLghtFucProControlStatus.CombLghtFucProCtrlSts}=0x0=OFF
+[位置灯控制模块LHZCU]接口响应:

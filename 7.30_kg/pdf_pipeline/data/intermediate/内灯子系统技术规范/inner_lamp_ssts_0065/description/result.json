@@ -1,0 +1,97 @@
+{
+  "table_type": "logic_table",
+  "topic": "子系统技术规范 - 内灯子系统 - 氛围灯控制逻辑",
+  "row_semantics": "表格的行代表不同的氛围灯模块或状态条件，包括具体的模块编号（如7400、7440等）以及退出条件和异常处理规则。",
+  "column_semantics": "表格的列主要分为两部分：左侧列列出具体的模块编号或条件描述，右侧列详细说明了与这些模块或条件相关的控制逻辑参数（如亮度、颜色、渐变速度等）。",
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "CnsoLHALampOnOff_1",
+      "type": "input_signal",
+      "description": "氛围灯控制模块的开关请求信号，值为0x00表示关闭"
+    },
+    {
+      "name": "CnsoLHALampBrthngCmd_1",
+      "type": "input_signal",
+      "description": "呼吸模式亮度调节命令，值为0x00表示无请求"
+    },
+    {
+      "name": "CnsoLHALampColorCmd_1",
+      "type": "input_signal",
+      "description": "氛围灯颜色调节命令"
+    },
+    {
+      "name": "CnsoLHALampFadeSpdCmd_1",
+      "type": "input_signal",
+      "description": "氛围灯渐变速度调节命令"
+    },
+    {
+      "name": "AmbtLghtLHRollingCtrl_1",
+      "type": "input_signal",
+      "description": "氛围灯滚动控制命令"
+    },
+    {
+      "name": "ZCU_LIN",
+      "type": "input_signal",
+      "description": "中央控制单元LIN总线信号"
+    },
+    {
+      "name": "CnsoAmbtLampA_LH",
+      "type": "output_signal",
+      "description": "左侧中央扶手氛围灯1的驱动信号"
+    },
+    {
+      "name": "CnsoRHCLampXX_1",
+      "type": "output_signal",
+      "description": "右侧中央扶手氛围灯1的驱动信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "CnsoLHALampOnOff_1 = 0x00",
+      "action": "退出呼吸模式，熄灭氛围灯"
+    },
+    {
+      "condition": "CnsoLHALampBrthngCmd_1 = 0x00",
+      "action": "退出呼吸模式，按照亮度、颜色和渐变速度执行"
+    },
+    {
+      "condition": "AmbtLghtLHRollingCtrl_1 不再按顺序叠加",
+      "action": "停止呼吸模式，常亮显示或静态点亮"
+    },
+    {
+      "condition": "超过6秒未接收到ZCU的LIN信号",
+      "action": "直接关闭氛围灯"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "氛围灯状态",
+      "description": "根据输入信号和条件，控制氛围灯的开启、关闭、呼吸模式、颜色、亮度和渐变速度"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "过压/欠压故障",
+      "description": "氛围灯模块出现过压或欠压时，直接关闭氛围灯"
+    },
+    {
+      "name": "LIN通信故障",
+      "description": "超过6秒未接收到ZCU的LIN信号时，直接关闭氛围灯"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "超时时间",
+      "value": "6秒",
+      "description": "超过6秒未接收到ZCU的LIN信号时触发异常处理"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了智能汽车内灯子系统中氛围灯的控制逻辑，包括正常工作模式下的亮度、颜色和渐变速度调节，以及在特定条件下（如接收关闭信号、无呼吸模式请求、滚动控制异常）的退出机制。同时，还规定了在硬件故障（如过压/欠压）和通信故障（如LIN信号丢失）时的异常处理策略。",
+  "uncertain_points": [
+    "具体模块编号（如7400、7440等）的具体功能未在表格中明确说明。",
+    "表格中未提及具体的硬件接口类型或电气特性。",
+    "未明确说明不同颜色值对应的RGB参数范围。"
+  ]
+}

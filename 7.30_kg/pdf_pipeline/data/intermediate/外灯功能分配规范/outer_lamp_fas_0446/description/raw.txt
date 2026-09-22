@@ -1,0 +1,107 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的功能分配规范",
+  "row_semantics": "表格的每一行代表一个具体的控制逻辑或执行动作，描述了在特定条件下外灯系统的状态、控制器行为或信号交互。",
+  "column_semantics": "表格没有明确的列，而是通过左侧的灰色背景区域（表示执行动作）和右侧的橙色背景区域（表示逻辑条件或执行内容）来组织信息。",
+  "has_merged_cells": false,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Z-ONE-3.0 Platform",
+      "type": "Platform",
+      "description": "车辆电子电气架构平台"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller",
+      "description": "Local Host Control Unit, 负责近光灯、前雾灯、远光灯、后雾灯的判断与控制"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller",
+      "description": "Integrated Control Board, 集成控制板，负责外灯组合服务和后雾灯控制模块的接口调用"
+    },
+    {
+      "name": "RZCU",
+      "type": "Controller",
+      "description": "Regional Zone Control Unit, 区域控制单元，负责驱动处理模块，包括硬线输出和故障反馈"
+    },
+    {
+      "name": "HMI子系统",
+      "type": "System",
+      "description": "Human-Machine Interface Subsystem, 人机交互子系统，负责显示后雾灯指示灯"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMd",
+      "type": "Input Signal",
+      "description": "Vehicle Mode, 车辆模式，如运输模式 (TRANSPORT) 或工厂模式 (FACTORY)"
+    },
+    {
+      "name": "SidePositionLight",
+      "type": "System State",
+      "description": "侧位灯状态，ON 表示开启，OFF 表示关闭"
+    },
+    {
+      "name": "FrontFogLight",
+      "type": "System State",
+      "description": "前雾灯状态"
+    },
+    {
+      "name": "MainBeamLight",
+      "type": "System State",
+      "description": "远光灯状态"
+    },
+    {
+      "name": "RearFogLight",
+      "type": "System State",
+      "description": "后雾灯状态"
+    },
+    {
+      "name": "InsdFnCgFrtFogLght",
+      "type": "Mode Name",
+      "description": "无前雾灯功能模式"
+    },
+    {
+      "name": "Factory Mode",
+      "type": "Mode Name",
+      "description": "工厂模式"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "Output Signal",
+      "description": "外部灯光开关过程，包含各种灯光的状态参数"
+    },
+    {
+      "name": "Notifier",
+      "type": "Output Signal",
+      "description": "通知信号，用于触发相关模块的响应"
+    },
+    {
+      "name": "RearFogLightCtrlReq",
+      "type": "Output Signal",
+      "description": "后雾灯控制请求信号"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RearFogLightErrorStatus",
+      "type": "Fault Status",
+      "description": "后雾灯错误状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "2min",
+      "type": "Timing Constraint",
+      "description": "后雾灯在工厂模式下开启 2 分钟"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了 Z-ONE-3.0 平台外灯功能的逻辑分配，包括近光灯、前雾灯、远光灯和后雾灯的判断逻辑以及相关的执行动作。它可用于验证外灯系统在不同车辆模式下的正确行为，特别是后雾灯在工厂模式下的开启时长和状态反馈。",
+  "uncertain_points": []
+}
+```

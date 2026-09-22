@@ -1,0 +1,582 @@
+[
+  {
+    "head": "SideLghtSts",
+    "relation": "outputs",
+    "tail": "SideLghtSts_0_Off",
+    "sources": [
+      "outer_lamp_fas_1660"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtSts",
+    "relation": "outputs",
+    "tail": "SideLghtSts_1_On",
+    "sources": [
+      "outer_lamp_fas_1660"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtFltsts",
+    "relation": "outputs",
+    "tail": "SideLghtFltsts_0_False",
+    "sources": [
+      "outer_lamp_fas_1660"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SideLghtFltsts",
+    "relation": "outputs",
+    "tail": "SideLghtFltsts_1_True",
+    "sources": [
+      "outer_lamp_fas_1660"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalSequentialModeEnable",
+    "relation": "trigger_condition",
+    "tail": "Send 8 cycles (50ms per cycle) of OFF signal",
+    "sources": [
+      "outer_lamp_fas_1661"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnIndicatorDisplayAndAudibleAlert",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightSwitchProcess.DircnLghtFucProStatus.DircnLghtFucProSta == 0x1 (Left_Direction_Light_On)",
+    "sources": [
+      "outer_lamp_fas_1661"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalSequentialIllumination",
+    "relation": "trigger_condition",
+    "tail": "ICB synchronously converts service interface or control signal into lamp-control CAN signal",
+    "sources": [
+      "outer_lamp_fas_1661"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalSequentialIllumination",
+    "relation": "depends_on",
+    "tail": "FLDirenLghtCtrl_HW == 0x1 (FLDirenLghtCtrl_HW_1_on) AND RLDirenLghtCtrl_HW == 0x1 (RLDirenLghtCtrl_HW_1_on)",
+    "sources": [
+      "outer_lamp_fas_1661"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalStatusFeedbackToLHZCU",
+    "relation": "trigger_condition",
+    "tail": "LHZCU/RZCU driver processing module feeds back status/fault status",
+    "sources": [
+      "outer_lamp_fas_1661"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalErrorStatus",
+    "relation": "trigger_condition",
+    "tail": "DirectionLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_1661"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalErrorStatus",
+    "relation": "outputs",
+    "tail": "FLDirenLightFlsts_HW == 0x0 (FLDirenLightFltsts_HW_0_False) AND RLDirenLightFlsts_HW == 0x0 (RLDirenLightFltsts_HW_0_False)",
+    "sources": [
+      "outer_lamp_fas_1661"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalControl",
+    "relation": "inhibition_condition",
+    "tail": "Service loss detected; only brake control CAN signals FLDircnLghtCtrl/RLDircnLghtCtrl received",
+    "sources": [
+      "outer_lamp_fas_1661"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalControl",
+    "relation": "has_higher_priority_than",
+    "tail": "SOA service signal",
+    "sources": [
+      "outer_lamp_fas_1661"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalControl",
+    "relation": "mutually_exclusive_with",
+    "tail": "When E2E-protected CAN signals conflict with non-E2E-protected SOA service requests",
+    "sources": [
+      "outer_lamp_fas_1661"
+    ],
+    "conflict": true,
+    "conflict_note": "Mutual exclusivity implies functional conflict under inconsistent inputs; requires arbitration logic definition"
+  },
+  {
+    "head": "TurnSignalStatusAcquisition",
+    "relation": "timeout_constraint",
+    "tail": "Acquire turn signal status via Instance ID 1/2/3/4 within 60ms",
+    "sources": [
+      "outer_lamp_fas_1661"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftRearTurnSignalIlluminationOrExtinction",
+    "relation": "prerequisite",
+    "tail": "Periodic invocation of service interface to control illumination/extinction",
+    "sources": [
+      "outer_lamp_fas_1662"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearTurnSignalIlluminationOrExtinction",
+    "relation": "prerequisite",
+    "tail": "Periodic invocation of service interface to control illumination/extinction",
+    "sources": [
+      "outer_lamp_fas_1662"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontTurnSignalIlluminationOrExtinction",
+    "relation": "prerequisite",
+    "tail": "Periodic invocation of service interface to control illumination/extinction",
+    "sources": [
+      "outer_lamp_fas_1662"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftRearTurnSignalState",
+    "relation": "input_as",
+    "tail": "DirectionLightReq",
+    "sources": [
+      "outer_lamp_fas_1662"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearTurnSignalState",
+    "relation": "input_as",
+    "tail": "DirectionLightReq",
+    "sources": [
+      "outer_lamp_fas_1662"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontTurnSignalState",
+    "relation": "input_as",
+    "tail": "DirectionLightReq",
+    "sources": [
+      "outer_lamp_fas_1662"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HardwiredControl",
+    "relation": "depends_on",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_1662"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "NetworkControl",
+    "relation": "depends_on",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_1662"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HardwiredControl",
+    "relation": "has_higher_priority_than",
+    "tail": "NetworkControl",
+    "sources": [
+      "outer_lamp_fas_1662"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLight",
+    "relation": "trigger_condition",
+    "tail": "InstanceID1 or InstanceID2: FrontFogLightStatus == 0x1",
+    "sources": [
+      "outer_lamp_fas_1666"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight",
+    "relation": "trigger_condition",
+    "tail": "InstanceID1,2,3,4 OR InstanceID5,6,7,8: SidePositionLightStatus == 0x1",
+    "sources": [
+      "outer_lamp_fas_1666"
+    ],
+    "conflict": true,
+    "conflict_note": "Two distinct instance groups (1–4 vs 5–8) both trigger 'SidePositionLight is ON'; indicates dual configuration modes — bulb lamp (1–4) vs private CAN (5–8). Not contradictory but requires mode-aware interpretation."
+  },
+  {
+    "head": "SidePositionLight",
+    "relation": "no_error_prerequisite",
+    "tail": "InstanceID1,2,3,4 OR InstanceID5,6,7,8: SidePositionLightErrorStatus == 0x0",
+    "sources": [
+      "outer_lamp_fas_1666"
+    ],
+    "conflict": true,
+    "conflict_note": "Same dual-instance-group pattern as trigger condition; confirms error checking applies across both hardware configurations."
+  },
+  {
+    "head": "FrontFogLight",
+    "relation": "no_error_prerequisite",
+    "tail": "InstanceID2: FrontFogLightErrorStatus == 0x0",
+    "sources": [
+      "outer_lamp_fas_1666"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLight",
+    "relation": "depends_on",
+    "tail": "CAN communication enabled (exlFrontFogLghtHwDrvEnPrm == 0x0); status acquired via InstanceID1/2",
+    "sources": [
+      "outer_lamp_fas_1666"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight",
+    "relation": "depends_on",
+    "tail": "Private CAN communication (exlSideLghtHwDrvEnPrm == 0x0); status feedback via InstanceID5,6,7,8 (e.g., P12L M1 PPV)",
+    "sources": [
+      "outer_lamp_fas_1666"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight",
+    "relation": "depends_on",
+    "tail": "Bulb lamp scheme (exlSideLghtHwDrvEnPrm == 0x1); status feedback via InstanceID1,2,3,4 (e.g., S31L EP)",
+    "sources": [
+      "outer_lamp_fas_1666"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightControl",
+    "relation": "prerequisite",
+    "tail": "X module not active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalControl",
+    "relation": "prerequisite",
+    "tail": "X module not active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightControl",
+    "relation": "prerequisite",
+    "tail": "√ module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightAutomaticControl",
+    "relation": "prerequisite",
+    "tail": "√ module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DaytimeRunningLightControl",
+    "relation": "prerequisite",
+    "tail": "√ module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ComingHomeLightControl",
+    "relation": "prerequisite",
+    "tail": "√ module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FindMeLightControl",
+    "relation": "prerequisite",
+    "tail": "√ module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutomaticLightControl",
+    "relation": "prerequisite",
+    "tail": "√ module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManualHeadlampAdjustment",
+    "relation": "prerequisite",
+    "tail": "√ module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutomaticHighBeamControl",
+    "relation": "prerequisite",
+    "tail": "√ module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EmergencyBrakingLightControl",
+    "relation": "prerequisite",
+    "tail": "√ module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightControl",
+    "relation": "prerequisite",
+    "tail": "√ module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DaytimeRunningLightControl",
+    "relation": "inhibition_condition",
+    "tail": "Time-limited module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutomaticLightControl",
+    "relation": "inhibition_condition",
+    "tail": "Time-limited module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightControl",
+    "relation": "inhibition_condition",
+    "tail": "Time-limited module active",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightControl",
+    "relation": "depends_on",
+    "tail": "X module",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalControl",
+    "relation": "depends_on",
+    "tail": "X module",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightControl",
+    "relation": "depends_on",
+    "tail": "√ module",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLightAutomaticControl",
+    "relation": "depends_on",
+    "tail": "√ module",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DaytimeRunningLightControl",
+    "relation": "depends_on",
+    "tail": "√ module",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ComingHomeLightControl",
+    "relation": "depends_on",
+    "tail": "√ module",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FindMeLightControl",
+    "relation": "depends_on",
+    "tail": "√ module",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutomaticLightControl",
+    "relation": "depends_on",
+    "tail": "√ module",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ManualHeadlampAdjustment",
+    "relation": "depends_on",
+    "tail": "√ module",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutomaticHighBeamControl",
+    "relation": "depends_on",
+    "tail": "√ module",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "EmergencyBrakingLightControl",
+    "relation": "depends_on",
+    "tail": "√ module",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightControl",
+    "relation": "depends_on",
+    "tail": "√ module",
+    "sources": [
+      "outer_lamp_fas_1668"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

@@ -1,0 +1,40 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "整车外灯系统状态与故障检测",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的灯光或转向灯相关状态/模式及其硬件故障检测结果。",
+  "column_semantics": "第一列为主功能名称，后续列为输出信号来源（如CANFD、控制器名称等），最右侧列为该状态的硬线故障状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "FLDircnLghtFltsts_HW", // 前右转向灯故障状态
+    "FRDircnLghtFltsts_HW", // 右前转向灯故障状态
+    "RLDircnLghtFltsts_HW", // 左后转向灯故障状态
+    "RRDircnLghtFltsts_HW", // 右后转向灯故障状态
+    "DircnLghtMdSts",        // 双闪灯闪烁模式
+    "DircnLghtSts"          // 转向灯状态
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    "CANFD",     // Controller Area Network Flexible Data Rate
+    "RHZCU",     // Right Hand Zone Control Unit
+    "LHZCU",     // Left Hand Zone Control Unit
+    "RZCU",      // Rear Zone Control Unit
+    "ICB RZCU",  // Integrated Circuit Board / Rear Zone Control Unit
+    "硬线故障状态" // Hardware Fault Status
+  ],
+  "core_faults": [
+    "FLDircnLghtFltsts_HW_0_False",
+    "FLDircnLghtFltsts_HW_1_True",
+    "FRDircnLghtFltsts_HW_0_False",
+    "FRDircnLghtFltsts_HW_1_True",
+    "RLDircnLghtFltsts_HW_0_False",
+    "RLDircnLghtFltsts_HW_1_True",
+    "RRDircnLghtFltsts_HW_0_False",
+    "RRDircnLghtFltsts_HW_1_True"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯系统中各转向灯及双闪灯的状态和故障检测逻辑，可用于验证不同控制器（如RHZCU, LHZCU, RZCU）对转向灯状态的输出是否符合预期，并检查是否存在硬件故障。",
+  "uncertain_points": []
+}
+```

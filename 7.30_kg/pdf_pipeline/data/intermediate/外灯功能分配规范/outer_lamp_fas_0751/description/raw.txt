@@ -1,0 +1,104 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Vehicle Exterior Lighting System Control Logic for Position Lights and Front Fog Lights",
+  "row_semantics": "Each row represents a specific condition or state related to the control logic of vehicle exterior lights, particularly focusing on position lights and front fog lights.",
+  "column_semantics": "The table does not have explicit columns; instead, it uses a structured text format where each line defines a condition or state variable related to lighting control.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "SidePositionLightStatus",
+      "type": "system_state",
+      "description": "Status of side position lights, including individual instances (ID 1-8) and private CAN communication feedback."
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "controller_module",
+      "description": "Module responsible for processing exterior light switch inputs and controlling light states."
+    },
+    {
+      "name": "VehMd",
+      "type": "mode_name",
+      "description": "Vehicle mode identifier, used to determine system behavior based on vehicle operational mode."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Lighting and Hazard Control Unit, involved in judging and controlling light states."
+    },
+    {
+      "name": "S32G",
+      "type": "controller_module",
+      "description": "Central gateway controller, involved in receiving and processing requests from various systems."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsGmMd_2_Comfortable",
+      "type": "input_signal",
+      "description": "User setting for comfortable driving mode."
+    },
+    {
+      "name": "UsGmMd_6_XOTA",
+      "type": "input_signal",
+      "description": "User setting for over-the-air update mode."
+    },
+    {
+      "name": "VehMd_3_TRANSPORT",
+      "type": "input_signal",
+      "description": "Vehicle mode indicating transport mode."
+    },
+    {
+      "name": "exlSideLghtHwDrvEnPrm",
+      "type": "input_signal",
+      "description": "Hardware driver enable parameter for side lights."
+    },
+    {
+      "name": "IFPFrontFoglightSwReq_1",
+      "type": "input_signal",
+      "description": "Request signal for front fog light switch input."
+    },
+    {
+      "name": "VehMd_2_FACTORY",
+      "type": "mode_name",
+      "description": "Factory mode for vehicle, typically used for testing or initial setup."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightSta",
+      "type": "output_signal",
+      "description": "Status output for side position lights, indicating On or Off."
+    },
+    {
+      "name": "CombLghtFucProSta",
+      "type": "output_signal",
+      "description": "Combined light function status, indicating whether side position and dipped beam lights are off."
+    },
+    {
+      "name": "FrontFogLightFucProStatus",
+      "type": "output_signal",
+      "description": "Status of front fog light function, indicating its operational state."
+    },
+    {
+      "name": "exlFrontFoglightPrm",
+      "type": "output_signal",
+      "description": "Parameter for front fog light, indicating its current state (e.g., on/off)."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "2min",
+      "type": "timing_constraint",
+      "description": "Front fog lights are automatically turned off after 2 minutes when in factory mode."
+    }
+  ],
+  "engineering_interpretation": "This table describes the control logic for vehicle exterior lighting systems, specifically focusing on the interplay between position lights and front fog lights under various vehicle modes and user settings. It details how different controllers (e.g., LHZCU, S32G) process inputs and determine the output states of these lights, ensuring proper functionality and safety compliance.",
+  "uncertain_points": [
+    "The exact timing relationship between the '2min' factory mode constraint and other system activities is not explicitly detailed.",
+    "The specific implementation details of the CAN communication feedback for position lights are not fully described."
+  ]
+}
+```

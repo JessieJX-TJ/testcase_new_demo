@@ -1,0 +1,73 @@
+{
+  "table_type": "logic_table",
+  "topic": "主远光灯控制逻辑",
+  "row_semantics": "表格按功能流程分为前置条件、触发条件、执行动作、退出条件和异常处理五个阶段，描述了主远光灯从禁用到启用再到关闭的完整控制逻辑。",
+  "column_semantics": "表格包含两列，左侧列为阶段描述（如前置条件、触发条件等），右侧列为该阶段的具体条件或动作列表。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "主远光灯反馈安全操作区域使能参数，用于判断系统是否允许主远光灯功能启用。"
+    },
+    {
+      "name": "MainBeamLightCtrlMdl",
+      "type": "controller",
+      "description": "主远光灯控制模块，负责接收指令并下发控制命令。"
+    },
+    {
+      "name": "LMainBeamLightCtrl_HW",
+      "type": "signal",
+      "description": "硬件层主远光灯控制信号，表示物理开关状态（On/Off）。"
+    },
+    {
+      "name": "LMainBeamLightDrvMdl",
+      "type": "controller",
+      "description": "主远光灯驱动模块，负责实际驱动灯光输出。"
+    },
+    {
+      "name": "MainBeamHlmp_LH_HSD",
+      "type": "signal",
+      "description": "左远光灯输出信号，表示左远光灯的实际点亮状态。"
+    },
+    {
+      "name": "LMainBeamLightSts",
+      "type": "signal",
+      "description": "主远光灯状态信号，表示主远光灯的软件层面开启状态（On/Off）。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MainBeamLightFbkSOAEnPrm == 0 (Disable)",
+      "description": "前置条件：系统处于禁用状态，不允许主远光灯功能启用。"
+    },
+    {
+      "condition": "收到【MainBeamLightCtrlMdl】统一分发的 LMainBeamLightCtrl_HW == 1 (On)",
+      "description": "触发条件：接收到主远光灯控制模块下发的硬件层开启信号。"
+    },
+    {
+      "condition": "收到【MainBeamLightCtrlMdl】发送的 LMainBeamLightCtrl_HW == 0 (Off)",
+      "description": "退出条件：接收到主远光灯控制模块下发的硬件层关闭信号。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "LMainBeamLightDrvMdl 持续驱动左远光灯输出 (MainBeamHlmp_LH_HSD)",
+      "description": "执行动作：驱动模块持续驱动左远光灯点亮。"
+    },
+    {
+      "output": "LMainBeamLightDrvMdl 持续发送 LMainBeamLightSts = 1 (On) 至 MainBeamLightCtrlMdl",
+      "description": "执行动作：驱动模块持续向控制模块发送主远光灯开启状态信号，至少发送三帧。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "至少发送三帧",
+      "description": "在主远光灯开启状态下，驱动模块需至少发送三帧主远光灯状态信号至控制模块，以确保信号传输的可靠性。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了主远光灯从禁用到启用再到关闭的完整控制逻辑，可用于验证主远光灯控制模块与驱动模块之间的信号交互、状态同步以及硬件开关响应的正确性。",
+  "uncertain_points": []
+}

@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "整车电子电器系统中危险报警灯开关粘连的诊断需求",
+  "row_semantics": "每行代表一个具体的诊断需求或故障代码，描述了特定故障的触发条件和退出条件。",
+  "column_semantics": {
+    "名称": "诊断需求的唯一标识符，通常为故障代码（如B104C 71）。",
+    "描述": "对该诊断需求的具体功能或故障现象的简要说明。",
+    "进入条件": "触发该诊断需求所需的条件，通常是某种输入信号的状态或持续时间。",
+    "退出条件": "解除该诊断需求所需的条件，即系统恢复正常状态的条件。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B104C 71",
+      "type": "故障代码",
+      "description": "危险报警灯开关粘连的诊断代码"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "危险报警灯开关状态",
+      "condition": "持续有效时间 > 20s",
+      "type": "输入信号",
+      "description": "当危险报警灯开关保持有效状态超过20秒时，触发诊断需求。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "code": "B104C 71",
+      "name": "危险报警灯开关粘连",
+      "description": "危险报警灯开关在操作后未能正常断开，导致持续有效状态。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "condition": "开关持续有效 > 20s",
+      "type": "定时阈值",
+      "description": "开关状态必须持续超过20秒才能触发诊断需求。"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了危险报警灯开关粘连的诊断逻辑，用于测试验证系统是否能够正确检测并处理开关粘连故障，确保在满足进入条件时触发诊断，并在满足退出条件时恢复正常。",
+  "uncertain_points": []
+}
+```

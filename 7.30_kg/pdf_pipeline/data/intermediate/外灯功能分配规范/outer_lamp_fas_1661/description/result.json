@@ -1,0 +1,52 @@
+{
+  "table_type": "logic_table",
+  "topic": "Exterior Light Switch Process and Directional Light Control Logic",
+  "row_semantics": "Specific control scenarios and their corresponding signal states for exterior lights, particularly directional lights, based on various inputs and system conditions.",
+  "column_semantics": "Not applicable (Logic table format with rows representing distinct control logics)",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ExteriorLightSwitchProcess",
+    "DirenLightFucProStatus",
+    "DirenLightFucProSta",
+    "DirectionLightModeStatus",
+    "DirenLightMdSts",
+    "ICB",
+    "LHZCU/RZCU",
+    "FLDirenLightCtrl",
+    "RLDirenLightCtrl",
+    "FLDirenLightSts",
+    "RLDirenLightSts",
+    "FLDirenLightFlsts",
+    "RLDirenLightFlsts",
+    "exlDirnLightHwDrvEnPrm"
+  ],
+  "core_conditions": [
+    "Cycle (50ms) off",
+    "InstanceID",
+    "SOA service signal",
+    "CAN signal E2E protection",
+    "Service loss detection",
+    "Control request mismatch"
+  ],
+  "core_outputs": [
+    "Left_Direction_Light_On",
+    "Right_Direction_Light_On",
+    "DirectionLightSta",
+    "DirectionLightErrorSta",
+    "DirectionLightFlsts"
+  ],
+  "core_faults": [
+    "DirectionLightErrorStatus"
+  ],
+  "core_timing_constraints": [
+    "60ms delay for CAN signal control",
+    "60ms division for ICB control signal to LHZCU/RZCU",
+    "Instance ID 1/2/3/4 for turning light status acquisition"
+  ],
+  "engineering_interpretation": "This table defines the logic for controlling exterior directional lights based on switch inputs, SOA signals, CAN communications, and fault detection. It specifies how the ICB and driving modules (LHZCU/RZCU) should respond to different conditions, including normal operation, service loss, and error states, ensuring proper light activation and error reporting.",
+  "uncertain_points": [
+    "The exact timing relationship between ICB control signal and LHZCU/RZCU processing is not explicitly detailed beyond the 60ms division.",
+    "The specific implementation of E2E protection for CAN signals is not elaborated in this table."
+  ]
+}

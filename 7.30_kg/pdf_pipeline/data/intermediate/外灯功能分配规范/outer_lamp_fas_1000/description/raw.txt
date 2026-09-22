@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Side Position Light Control Requirements",
+  "row_semantics": "Each row represents a specific side position light control request with its associated instance ID and operational status (On/Off).",
+  "column_semantics": "The table is structured into three main columns: the left column contains the control command syntax, the middle column provides the detailed command parameters and their values, and the right column describes the function of the control module responsible for driving the respective light.",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "function",
+      "description": "A function to control the side position lights."
+    },
+    {
+      "name": "ControlSidePositionLight.SidePositionLightReq",
+      "type": "controller",
+      "description": "The controller responsible for processing requests to control side position lights."
+    },
+    {
+      "name": "InstanceID",
+      "type": "input_signal",
+      "description": "An identifier for different instances of side position lights, used to specify which light to control."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Status",
+      "type": "input_signal",
+      "description": "Indicates whether the light should be turned on (0x1) or off (0x0)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Light Driving",
+      "type": "output_signal",
+      "description": "The action of turning the specified side position light on or off."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the control logic for various side position lights in a vehicle, specifying which instance ID corresponds to which physical light location and how to activate or deactivate it. It is used to verify that the correct side position light responds to the appropriate control command based on the InstanceID and Status value.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,592 @@
+[
+  {
+    "head": "HazardWarningLampActivation",
+    "relation": "precondition",
+    "tail": "VehMd=All",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampActivation",
+    "relation": "precondition",
+    "tail": "VehMdV=Valid",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampFlashing",
+    "relation": "controlledBy",
+    "tail": "HazardWarningSwitchControlModule_LHZCU",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampFlashing",
+    "relation": "dependsOn",
+    "tail": "HazardWarningSwitchControlModule_LHZCU maintains valid flashing request internally",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampFlashing",
+    "relation": "dependsOn",
+    "tail": "HazardWarningSwitchControlModule_LHZCU signal edge transition",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampFlashing",
+    "relation": "stateMaintenanceCondition",
+    "tail": "25Hz flashing frequency (ON→OFF sequence)",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampFlashing",
+    "relation": "timingConstraint",
+    "tail": "800ms per flash cycle",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalSequentialMode",
+    "relation": "controlledBy",
+    "tail": "InstrumentClusterBody_ICB",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalSequentialMode",
+    "relation": "inputFrom",
+    "tail": "HazardWarningSwitchControlModule_LHZCU",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalSequentialMode",
+    "relation": "dependsOn",
+    "tail": "DircnLghtMdSts=0x0=DircnLghtMdSts_0_Enabled",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampIndicatorDisplay",
+    "relation": "triggerCondition",
+    "tail": "HazardWarningLampActivation",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampAudibleAlert",
+    "relation": "triggerCondition",
+    "tail": "HazardWarningLampActivation",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampControlSignal",
+    "relation": "inputFrom",
+    "tail": "HazardWarningSwitchControlModule_LHZCU",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampControlSignal",
+    "relation": "outputTo",
+    "tail": "DriverProcessingModule_LHZCU_RHZCU_RZCU",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampControlSignal",
+    "relation": "dependsOn",
+    "tail": "ICB receives control signal from HazardWarningSwitchControlModule_LHZCU",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampControlSignal",
+    "relation": "timingConstraint",
+    "tail": "60ms delay",
+    "sources": [
+      "outer_lamp_fas_1595"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU_PreconditionCheckSatisfied",
+    "relation": "precondition",
+    "tail": "InsdFnCfgVehDragMd=0x1",
+    "sources": [
+      "outer_lamp_fas_1596"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU_PreconditionCheckSatisfied",
+    "relation": "precondition",
+    "tail": "VehDragMdSts=0x1=VehDragMdSts_1_On",
+    "sources": [
+      "outer_lamp_fas_1596"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtCtrl_SignalTransmission",
+    "relation": "triggerCondition",
+    "tail": "RZCU_PreconditionCheckSatisfied",
+    "sources": [
+      "outer_lamp_fas_1596"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrDirLghtOnReq_SignalTransmission",
+    "relation": "outputAs",
+    "tail": "RZCU generates based on received RLDircnLghtCtrl",
+    "sources": [
+      "outer_lamp_fas_1596"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtMdSts_StateTransition",
+    "relation": "dependsOn",
+    "tail": "RZCU received turn signal mode status",
+    "sources": [
+      "outer_lamp_fas_1596"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TrlrDirLghtMdSts_LeftTurnSignalControl",
+    "relation": "controlledBy",
+    "tail": "LeftTurnSignal",
+    "sources": [
+      "outer_lamp_fas_1596"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TDM_TrailerTurnSignalStatusFeedback",
+    "relation": "outputAs",
+    "tail": "HazardWarningSwitchControlModule_LHZCU",
+    "sources": [
+      "outer_lamp_fas_1596"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFltsts_DiagnosticMapping",
+    "relation": "diagnosticAssociation",
+    "tail": "TurnlampFltSts",
+    "sources": [
+      "outer_lamp_fas_1596"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightTurnSignal_TwoStepRequestExecution",
+    "relation": "precondition",
+    "tail": "50ms or less transition from Step1 to Step2 → execute Step2 directly",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightTurnSignal_TwoStepRequestExecution",
+    "relation": "precondition",
+    "tail": "more than 50ms transition from Step1 to Step2 → execute Step1 first, then Step2",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignal_Step1AutoDeactivation",
+    "relation": "precondition",
+    "tail": "deactivate after 3 flash cycles",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignal_Step1ManualDeactivation",
+    "relation": "precondition",
+    "tail": "deactivate within 3 flash cycles via switch operation",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignal_DeactivationBySwitchTransition",
+    "relation": "precondition",
+    "tail": "LeftTurnSignal_TwoStepRequestExecution",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightTurnSignal_Step1AutoDeactivation",
+    "relation": "precondition",
+    "tail": "deactivate after 3 flash cycles",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightTurnSignal_Step1ManualDeactivation",
+    "relation": "precondition",
+    "tail": "deactivate within 3 flash cycles via switch operation",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightTurnSignal_DeactivationBySwitchTransition",
+    "relation": "precondition",
+    "tail": "RightTurnSignal_TwoStepRequestExecution",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalFlashDeactivation",
+    "relation": "precondition",
+    "tail": "LeftStep1 + LeftStep1",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalFlashDeactivation",
+    "relation": "precondition",
+    "tail": "LeftStep1 + RightStep1",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalFlashDeactivation",
+    "relation": "precondition",
+    "tail": "LeftStep2 + LeftStep1",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalFlashDeactivation",
+    "relation": "precondition",
+    "tail": "LeftStep2 + RightStep1",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignal_TwoStepRequestExecution",
+    "relation": "precondition",
+    "tail": "LeftStep1 + LeftStep2",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignal_TwoStepRequestExecution",
+    "relation": "precondition",
+    "tail": "LeftStep2 + LeftStep2",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightTurnSignal_TwoStepRequestExecution",
+    "relation": "precondition",
+    "tail": "LeftStep1 + RightStep2",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightTurnSignal_TwoStepRequestExecution",
+    "relation": "precondition",
+    "tail": "LeftStep2 + RightStep2",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftTurnSignal_TwoStepExecution",
+    "relation": "precondition",
+    "tail": "RightStep2 + [incomplete condition]",
+    "sources": [
+      "outer_lamp_fas_1597"
+    ],
+    "conflict": true,
+    "conflict_note": "Tail is incomplete ('RightStep2+'), likely truncated; conflicts with other well-formed two-step preconditions. Requires verification from source doc outer_lamp_fas_1597."
+  },
+  {
+    "head": "CombLghtFucProStatus_AllOff",
+    "relation": "triggerCondition",
+    "tail": "ExteriorLightSwitchProcess.ReverseLightFucProStatus=OFF",
+    "sources": [
+      "outer_lamp_fas_1598"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLight_On",
+    "relation": "triggerCondition",
+    "tail": "CombLghtFucProStatus=OnlySidePositionLightON",
+    "sources": [
+      "outer_lamp_fas_1598"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DippedBeamLight_On",
+    "relation": "triggerCondition",
+    "tail": "CombLghtFucProStatus=OnlyDippedBeamLightON",
+    "sources": [
+      "outer_lamp_fas_1598"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionAndDippedBeam_On",
+    "relation": "triggerCondition",
+    "tail": "CombLghtFucProStatus=SidePositionAndDippedBeamON",
+    "sources": [
+      "outer_lamp_fas_1598"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLight_On",
+    "relation": "triggerCondition",
+    "tail": "RearFogLghtFucProStatus=OnlyRearFogLightON",
+    "sources": [
+      "outer_lamp_fas_1598"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLight_Off",
+    "relation": "triggerCondition",
+    "tail": "ControlDirectionLightReq=0x0",
+    "sources": [
+      "outer_lamp_fas_1598"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLight_ControlledBy",
+    "relation": "controlledBy",
+    "tail": "ControlDirectionLightReq",
+    "sources": [
+      "outer_lamp_fas_1598"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightFucProStatus_UnknownSuppression",
+    "relation": "suppressionCondition",
+    "tail": "ExteriorLightSwitchProcess.ReverseLightFucProStatus",
+    "sources": [
+      "outer_lamp_fas_1598"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLghtFucProStatus_ReservedSuppression",
+    "relation": "suppressionCondition",
+    "tail": "RearFogLghtFucProStatus values 0x4, 0x5, 0x6",
+    "sources": [
+      "outer_lamp_fas_1598"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalInstrumentIndicatorDisplay",
+    "relation": "dependsOn",
+    "tail": "ICB receives left front turn signal control signal",
+    "sources": [
+      "outer_lamp_fas_1600"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningInstrumentIndicatorDisplay",
+    "relation": "dependsOn",
+    "tail": "ICB receives both left and right front turn signal control signals simultaneously",
+    "sources": [
+      "outer_lamp_fas_1600"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HighBeamInstrumentIndicatorDisplay",
+    "relation": "dependsOn",
+    "tail": "ICB receives left high beam control signal",
+    "sources": [
+      "outer_lamp_fas_1600"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightControlSignalTransmission",
+    "relation": "triggerCondition",
+    "tail": "ICB forwards signal to RZCU",
+    "sources": [
+      "outer_lamp_fas_1600"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightControlSignalTransmission",
+    "relation": "triggerCondition",
+    "tail": "ICB forwards signal to RZCU",
+    "sources": [
+      "outer_lamp_fas_1600"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftRearTurnSignalStatus",
+    "relation": "inputFrom",
+    "tail": "DirectionLightStatus",
+    "sources": [
+      "outer_lamp_fas_1601"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearTurnSignalStatus",
+    "relation": "inputFrom",
+    "tail": "DirectionLightStatus",
+    "sources": [
+      "outer_lamp_fas_1601"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftRearTurnSignalStatus",
+    "relation": "dependsOn",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_1601"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightRearTurnSignalStatus",
+    "relation": "dependsOn",
+    "tail": "SOA",
+    "sources": [
+      "outer_lamp_fas_1601"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

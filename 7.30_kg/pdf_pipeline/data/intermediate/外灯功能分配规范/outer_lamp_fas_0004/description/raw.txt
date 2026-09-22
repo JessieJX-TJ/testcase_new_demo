@@ -1,0 +1,105 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "远光灯开关控制与状态监测",
+  "row_semantics": "表格按功能模块（如开关请求、开关状态）组织，每一行描述一个信号的定义、来源、目标及状态值。",
+  "column_semantics": {
+    "0": "功能模块/信号名称",
+    "1": "信号类型 (如输出、输入)",
+    "2": "信号来源/属性 (如硬线信号、内部信号、CANFD)",
+    "3": "目标控制器/模块 (如LHZCU, ICB)",
+    "4": "备注或未使用列"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "UsG MdV",
+      "type": "功能名",
+      "description": "用于判断远光灯开关请求的有效性"
+    },
+    {
+      "name": "MainBeamLghtSwReq",
+      "type": "功能名",
+      "description": "远光灯开关请求信号"
+    },
+    {
+      "name": "MainBeamLghtSwSts",
+      "type": "功能名",
+      "description": "远光灯开关状态信号"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Local Headlight Zone Control Unit，本地远光灯区域控制单元"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "Integrated Control Box，集成控制盒"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsG MdV_0_Invalid",
+      "type": "系统状态",
+      "description": "远光灯开关请求无效"
+    },
+    {
+      "name": "UsG MdV_1_Valid",
+      "type": "系统状态",
+      "description": "远光灯开关请求有效"
+    },
+    {
+      "name": "MainBeamLghtSwReq_0_Off",
+      "type": "模式名",
+      "description": "远光灯关闭请求"
+    },
+    {
+      "name": "MainBeamLghtSwReq_1_On",
+      "type": "模式名",
+      "description": "远光灯开启请求"
+    },
+    {
+      "name": "MainBeamLghtSwReq_2_Flash",
+      "type": "模式名",
+      "description": "远光灯闪光请求"
+    },
+    {
+      "name": "MainBeamLghtSwSts_0_Off",
+      "type": "系统状态",
+      "description": "远光灯处于关闭状态"
+    },
+    {
+      "name": "MainBeamLghtSwSts_1_On",
+      "type": "系统状态",
+      "description": "远光灯处于开启状态"
+    },
+    {
+      "name": "MainBeamLghtSwSts_2_Flash",
+      "type": "系统状态",
+      "description": "远光灯处于闪光状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "远光灯开关请求",
+      "type": "输出信号",
+      "description": "由LHZCU发出的远光灯开关控制信号",
+      "source": "LHZCU",
+      "target": "硬线信号"
+    },
+    {
+      "name": "远光灯开关状态",
+      "type": "输出信号",
+      "description": "由LHZCU或ICB发出的远光灯当前状态信号",
+      "source": "LHZCU/ICB",
+      "target": "CANFD"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了远光灯开关请求和状态信号的规范，包括信号的含义、来源、目标控制器以及可能的状态值。可用于验证远光灯控制系统在不同请求下的正确响应，确保信号传输的准确性和一致性。",
+  "uncertain_points": []
+}
+```

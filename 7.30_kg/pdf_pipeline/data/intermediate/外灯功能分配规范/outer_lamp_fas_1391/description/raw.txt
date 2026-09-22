@@ -1,0 +1,94 @@
+```json
+{
+  "table_type": "other",
+  "topic": "外灯功能分配规范",
+  "row_semantics": "版本迭代记录，每行代表一个版本的更新内容和日期",
+  "column_semantics": [
+    "版本号 (Version)",
+    "更新日期 (Date)",
+    "负责人 (Responsible Person)",
+    "更新内容 (Update Content)"
+  ],
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Function Allocation Specification",
+      "type": "Specification"
+    },
+    {
+      "name": "Exterior Lamp function",
+      "type": "Function"
+    },
+    {
+      "name": "Z-ONE-3.0 Platform-FAS-IBD05",
+      "type": "Platform"
+    },
+    {
+      "name": "石小波",
+      "type": "Engineer"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "PP阶段补充更新",
+      "description": "为满足功能安全需求的补充说明"
+    },
+    {
+      "name": "SOP阶段更新",
+      "description": "生产准备阶段的功能更新"
+    },
+    {
+      "name": "尾门系统输入",
+      "description": "根据尾门系统输入更改危险告警灯开启的用户模式"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "制动灯全链路通讯方式",
+      "description": "从SOA服务更改为CAN通讯"
+    },
+    {
+      "name": "转向灯全链路通讯方式",
+      "description": "从SOA服务更改为CAN通讯"
+    },
+    {
+      "name": "近光灯基础服务",
+      "description": "包含Dipped Beam Light控制逻辑变更"
+    },
+    {
+      "name": "远光灯模式切换",
+      "description": "根据展厅模式PRD更改远光灯VS模式"
+    },
+    {
+      "name": "危险告警灯开启模式",
+      "description": "根据尾门系统输入更改危险告警灯开启的用户模式"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "紧急制动灯ON/OFF周期调用异常",
+      "description": "尝试重发3次说明"
+    },
+    {
+      "name": "外灯请求发送未收到反馈",
+      "description": "尝试重发3次说明"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "后雾灯自动退出逻辑",
+      "description": "更新后雾灯控制逻辑，参考1.0项目策略"
+    },
+    {
+      "name": "危险告警灯优先级关系",
+      "description": "危险告警灯/紧急制动灯优先级关系"
+    }
+  ],
+  "engineering_interpretation": "该表格详细记录了外灯功能在不同开发阶段（PP、SOP）的更新内容，包括通讯协议变更、控制逻辑调整及新增功能需求，可用于验证外灯系统在各版本迭代中的功能正确性和安全性。",
+  "uncertain_points": [
+    "具体信号名称如VP3.77940等未明确其在系统中的具体作用或关联模块",
+    "部分更新内容的具体实现细节未在表格中展开"
+  ]
+}
+```

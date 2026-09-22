@@ -1,0 +1,37 @@
+{
+  "table_type": "logic_table",
+  "topic": "车辆远光灯控制逻辑",
+  "row_semantics": "描述特定场景下的功能行为及其前置条件",
+  "column_semantics": "分为‘场景描述’和‘前置条件’两列，详细说明触发条件和系统状态",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "远光灯",
+      "type": "系统状态"
+    },
+    {
+      "name": "车辆VS模式",
+      "type": "模式名"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "远光灯",
+      "state": "激活状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "远光灯",
+      "state": "退出"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在远光灯处于激活状态下，通过切换车辆VS模式来退出远光灯的功能逻辑，可用于验证车辆在不同通讯模式（SOA或CAN）下远光灯控制的正确性。",
+  "uncertain_points": [
+    "具体通讯配置字的开发细节未明确",
+    "未指定是否涉及其他相关控制器或模块"
+  ]
+}

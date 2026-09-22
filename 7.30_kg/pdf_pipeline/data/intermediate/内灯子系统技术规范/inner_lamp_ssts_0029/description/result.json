@@ -1,0 +1,88 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - DoorFL3 Lamp Breathing Mode and Fade Speed Control",
+  "row_semantics": "Each row represents a specific breathing rate or fade speed setting for the DoorFL3 lamp, including its corresponding code value, period, and original breathing mode.",
+  "column_semantics": {
+    "Code Value": "The hexadecimal code assigned to each breathing rate or fade speed setting.",
+    "Period": "The time interval (in seconds) for the breathing cycle or fade transition.",
+    "Original Breathing Mode Value": "The original breathing mode associated with the specific rate, if applicable."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorFL3LampBrthngCmd_l",
+      "type": "function",
+      "description": "Control command for the breathing mode of the DoorFL3 lamp."
+    },
+    {
+      "name": "DoorFL3LampFadeSpdCmd_l",
+      "type": "function",
+      "description": "Control command for the fade speed of the DoorFL3 lamp."
+    },
+    {
+      "name": "LIN",
+      "type": "controller",
+      "description": "Local Interconnect Network communication interface."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit."
+    },
+    {
+      "name": "DoorAm btLampC_FL",
+      "type": "controller",
+      "description": "Door Ambient Lamp Controller for the Front Left side."
+    },
+    {
+      "name": "LHZCU_LIN4",
+      "type": "controller",
+      "description": "Specific LIN channel for LHZCU communication."
+    },
+    {
+      "name": "SSTS",
+      "type": "system",
+      "description": "Sub System Technical Specification."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Rate0",
+      "description": "No request for breathing mode; stops current breathing."
+    },
+    {
+      "name": "Rate1 to Rate15",
+      "description": "Different breathing rates from 500ms to 12s, each with a specific original breathing mode."
+    },
+    {
+      "name": "Spd0 to Spd3",
+      "description": "Fade speed commands for the DoorFL3 lamp, with default and reserved speeds."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DoorFL3LampBrthngCmd_l",
+      "description": "Output command for controlling the breathing mode of the DoorFL3 lamp."
+    },
+    {
+      "name": "DoorFL3LampFadeSpdCmd_l",
+      "description": "Output command for controlling the fade speed of the DoorFL3 lamp."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Breathing Period",
+      "description": "Defined periods for each breathing rate from 500ms to 12s.",
+      "unit": "seconds"
+    },
+    {
+      "name": "Fade Speed",
+      "description": "Time required for color/亮度切换 from current to target state, with default 2000ms and reserved speeds.",
+      "unit": "milliseconds"
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameter settings for the DoorFL3 lamp's breathing mode and fade speed control within the Interior Lighting Sub System. It specifies the code values, periods, and original breathing modes for different rates, as well as the fade speed commands and their associated timing constraints.",
+  "uncertain_points": []
+}

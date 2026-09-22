@@ -1,0 +1,120 @@
+[
+  {
+    "head": "后雾灯点亮",
+    "relation": "触发条件",
+    "tail": "RearFogLightControl 接口接收到 Parameter Name: RearFogLightCtrReq 的值为 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLightControl",
+      "RearFogLightCtrReq",
+      "0x1=ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0064",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯熄灭",
+    "relation": "触发条件",
+    "tail": "RearFogLightControl 接口接收到 Parameter Name: RearFogLightCtrReq 的值为 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLightControl",
+      "RearFogLightCtrReq",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0064",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯状态为 ON",
+    "relation": "输出为",
+    "tail": "RearFogLightState 接口返回 Parameter Name: RearFogLightSta 的值为 0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLightState",
+      "RearFogLightSta",
+      "0x1=ON"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0064",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯状态为 OFF",
+    "relation": "输出为",
+    "tail": "RearFogLightState 接口返回 Parameter Name: RearFogLightSta 的值为 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLightState",
+      "RearFogLightSta",
+      "0x0=OFF"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0064",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯状态为 Error",
+    "relation": "输出为",
+    "tail": "RearFogLightState 接口返回 Parameter Name: RearFogLightSta 的值为 0x2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLightState",
+      "RearFogLightSta",
+      "0x2=Error"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0064",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯状态为 Unknown",
+    "relation": "输出为",
+    "tail": "RearFogLightState 接口返回 Parameter Name: RearFogLightSta 的值为 0x3",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RearFogLightState",
+      "RearFogLightSta",
+      "0x3=Unknown"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0064",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯控制指令发送",
+    "relation": "依赖于",
+    "tail": "ICB/LHZCU 调用 RearFogLightControl 接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB/LHZCU",
+      "RearFogLightControl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0064",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "后雾灯状态获取",
+    "relation": "依赖于",
+    "tail": "LHZCU 订阅 RearFogLightState 接口",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZCU",
+      "RearFogLightState"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0064",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "signal_table"
+  }
+]

@@ -1,0 +1,647 @@
+[
+  {
+    "head": "RRDoorFlorLampCtrlCmd",
+    "relation": "状态保持条件",
+    "tail": "0x0 = Close",
+    "sources": [
+      "inner_lamp_ssts_0482"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDoorFlorLampCtrlCmd",
+    "relation": "状态保持条件",
+    "tail": "0x1 = Open",
+    "sources": [
+      "inner_lamp_ssts_0482"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL3LampFadeSpdCmd_1",
+    "relation": "输入为",
+    "tail": "LIN 接口信号 DoorFL2LampFadeSpdCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": true,
+    "conflict_note": "信号名不一致：head 为 FL3，tail 中引用 FL2；疑似笔误或版本差异，需工程确认是否为同一信号或映射关系"
+  },
+  {
+    "head": "DoorFL3LampBrtnsCmd_1",
+    "relation": "输入为",
+    "tail": "LIN 接口信号 DoorFL3LampBrtnsCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL3LampBrthngCmd_1",
+    "relation": "输入为",
+    "tail": "LIN 接口信号 DoorFL3LampBrthngCmd_1",
+    "sources": [
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL3LampColorCmd_1",
+    "relation": "前提条件",
+    "tail": "接收到非0值的颜色亮度指令",
+    "sources": [
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL3LampColorCmd_1",
+    "relation": "状态保持条件",
+    "tail": "指令值为 0 或未定义颜色号",
+    "sources": [
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL3LampBrtnsCmd_1",
+    "relation": "状态保持条件",
+    "tail": "指令值为 0x00",
+    "sources": [
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL3LampBrthngCmd_1",
+    "relation": "前提条件",
+    "tail": "指令值为 0x00 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0483"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampColorCmd_1",
+    "relation": "触发条件",
+    "tail": "LHZCU 接收到 DoorRL5LampColorCmd_1 命令",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampColorCmd_1",
+    "relation": "输入为",
+    "tail": "0x01–0xFF 范围内的颜色值",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampColorCmd_1",
+    "relation": "状态保持条件",
+    "tail": "指令值为 0x00 或未定义颜色号",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrtnsCmd_1",
+    "relation": "触发条件",
+    "tail": "LHZCU 接收到 DoorRL5LampBrtnsCmd_1 命令",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrtnsCmd_1",
+    "relation": "输入为",
+    "tail": "0x00–0xFF 范围内的亮度百分比值",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrtnsCmd_1",
+    "relation": "状态保持条件",
+    "tail": "指令值为 0x00",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrthngCmd_1",
+    "relation": "触发条件",
+    "tail": "LHZCU 接收到 DoorRL5LampBrthngCmd_1 命令",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrthngCmd_1",
+    "relation": "输入为",
+    "tail": "0x00–0xFF 范围内的代码值",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrthngCmd_1",
+    "relation": "依赖于",
+    "tail": "Code 值与呼吸周期的映射关系",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL5LampBrthngCmd_1",
+    "relation": "输出为",
+    "tail": "原呼吸模式值",
+    "sources": [
+      "inner_lamp_ssts_0484"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "依赖于",
+    "tail": "Sender/Provider",
+    "sources": [
+      "inner_lamp_ssts_0486"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "依赖于",
+    "tail": "Receiver/Consumer",
+    "sources": [
+      "inner_lamp_ssts_0486"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interface Name",
+    "relation": "依赖于",
+    "tail": "Source",
+    "sources": [
+      "inner_lamp_ssts_0486"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "前提条件",
+    "tail": "Range",
+    "sources": [
+      "inner_lamp_ssts_0487",
+      "inner_lamp_ssts_0490",
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "前提条件",
+    "tail": "Factor",
+    "sources": [
+      "inner_lamp_ssts_0487",
+      "inner_lamp_ssts_0490",
+      "inner_lamp_ssts_0491",
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "前提条件",
+    "tail": "Default",
+    "sources": [
+      "inner_lamp_ssts_0487",
+      "inner_lamp_ssts_0490",
+      "inner_lamp_ssts_0491",
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "前提条件",
+    "tail": "Item",
+    "sources": [
+      "inner_lamp_ssts_0490",
+      "inner_lamp_ssts_0491",
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "前提条件",
+    "tail": "Description",
+    "sources": [
+      "inner_lamp_ssts_0490",
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "前提条件",
+    "tail": "Conversion",
+    "sources": [
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "前提条件",
+    "tail": "Item = NA",
+    "sources": [
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "前提条件",
+    "tail": "Description = NA",
+    "sources": [
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "前提条件",
+    "tail": "Range = NA",
+    "sources": [
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "前提条件",
+    "tail": "Conversion = NA",
+    "sources": [
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Configuration Parameter",
+    "relation": "前提条件",
+    "tail": "Default = NA",
+    "sources": [
+      "inner_lamp_ssts_0494"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E System Parameter Validation",
+    "relation": "前提条件",
+    "tail": "Item, Description, Range, Factor, Default 均需符合设计规范",
+    "sources": [
+      "inner_lamp_ssts_0490"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Control Parameter",
+    "relation": "依赖于",
+    "tail": "Item",
+    "sources": [
+      "inner_lamp_ssts_0491"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Parameter",
+    "relation": "依赖于",
+    "tail": "Item",
+    "sources": [
+      "inner_lamp_ssts_0491"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Control Parameter",
+    "relation": "依赖于",
+    "tail": "Item",
+    "sources": [
+      "inner_lamp_ssts_0491"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function",
+    "relation": "被禁止前提",
+    "tail": "Voltage < 6 V (Under-voltage)",
+    "sources": [
+      "inner_lamp_ssts_0492",
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function",
+    "relation": "被禁止前提",
+    "tail": "6 V ≤ Voltage < 9 V (Undervoltage)",
+    "sources": [
+      "inner_lamp_ssts_0492",
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function",
+    "relation": "被禁止前提",
+    "tail": "16 V ≤ Voltage ≤ 18 V (Overvoltage)",
+    "sources": [
+      "inner_lamp_ssts_0492",
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function",
+    "relation": "被禁止前提",
+    "tail": "Voltage > 18 V (High Voltage)",
+    "sources": [
+      "inner_lamp_ssts_0492",
+      "inner_lamp_ssts_0502"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function",
+    "relation": "使能前提",
+    "tail": "9 V ≤ Voltage ≤ 16 V (Normal Operating Voltage)",
+    "sources": [
+      "inner_lamp_ssts_0492"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "退出呼吸模式前提",
+    "tail": "FtwlFLLampOnOff_1 = 0x00 (OFF)",
+    "sources": [
+      "inner_lamp_ssts_0493"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "退出呼吸模式前提",
+    "tail": "FtwlFLLampBrthngCmd_1 = 0x00 (No Request)",
+    "sources": [
+      "inner_lamp_ssts_0493"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "停止呼吸模式前提",
+    "tail": "AmbtLghtLHRollingCtr_1 不再按 1 顺序叠加",
+    "sources": [
+      "inner_lamp_ssts_0493"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "故障响应",
+    "tail": "Overvoltage or Undervoltage Fault in Ambient Lamp Module",
+    "sources": [
+      "inner_lamp_ssts_0493"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "超时约束",
+    "tail": "No ZCU LIN Signal Received within 6 seconds",
+    "sources": [
+      "inner_lamp_ssts_0493"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Wake-up/Sleep Behavior",
+    "relation": "触发条件",
+    "tail": "Wake-up Source = NA",
+    "sources": [
+      "inner_lamp_ssts_0495"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Wake-up/Sleep Behavior",
+    "relation": "输入为",
+    "tail": "Wake-up Source = NA",
+    "sources": [
+      "inner_lamp_ssts_0495"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Wake-up/Sleep Behavior",
+    "relation": "依赖于",
+    "tail": "Wake-up Source = NA",
+    "sources": [
+      "inner_lamp_ssts_0495"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "前提条件",
+    "tail": "Breathing Mode Enabled",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "触发条件",
+    "tail": "Breathing Mode Stopped Immediately when Command = 0x00",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "触发条件",
+    "tail": "Breathing Mode Switched Immediately on Mode Change",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPBLampFadeSpdCmd_1",
+    "relation": "依赖于",
+    "tail": "Input Source: LIN / RHZCU / UpIPAmbtLampB / RHZCU_LIN5",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color/Brightness Transition Time",
+    "relation": "依赖于",
+    "tail": "Ambient Lamp Fade Speed Command",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPCLampOnOff_1",
+    "relation": "依赖于",
+    "tail": "Input Source: LIN / RHZCU / UpIPAmbtLampC / RHZCU_LIN5",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "前提条件",
+    "tail": "Ambient Lamp ON Request with Non-zero Color/Brightness Command",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPCLampColorCmd_1",
+    "relation": "依赖于",
+    "tail": "Input Source: LIN / RHZCU / UpIPAmbtLampC / RHZCU_LIN5",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "前提条件",
+    "tail": "Ambient Lamp Color Command Received",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color Switch",
+    "relation": "抑制条件",
+    "tail": "Command = 0x00 or Undefined Color Code",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPCLampBrtnsCmd_1",
+    "relation": "依赖于",
+    "tail": "Input Source: LIN / RHZCU / UpIPAmbtLampC / RHZCU_LIN5",
+    "sources": [
+      "inner_lamp_ssts_0496"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color Switch",
+    "relation": "触发条件",
+    "tail": "RoofLHALampColorCmd_1 transitions from 0x00 to non-0x00",
+    "sources": [
+      "inner_lamp_ssts_0497"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp",
+    "relation": "触发条件",
+    "tail": "RoofLHALampOnOff_1 = 0x00",
+    "sources": [
+      "inner_lamp_ssts_0497"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

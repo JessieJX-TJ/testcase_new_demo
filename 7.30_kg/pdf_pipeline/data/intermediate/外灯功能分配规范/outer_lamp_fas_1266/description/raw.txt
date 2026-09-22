@@ -1,0 +1,51 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 转向灯状态",
+  "row_semantics": "表格按行描述了不同转向灯（左转和右转）的状态参数及其相关服务接口信息。",
+  "column_semantics": {
+    "第一列": "功能模块或参数名称",
+    "第二列": "消耗方 (SOA)",
+    "第三列": "RZCU 控制器",
+    "第四列": "LHZCU 控制器",
+    "第五列": "硬线状态",
+    "第六列": "未使用"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "功能名",
+      "description": "转向灯状态参数，用于查询左右转向灯的当前状态。"
+    },
+    {
+      "name": "SOA",
+      "type": "控制器/模块名",
+      "description": "Service Oriented Architecture，代表服务调用方或服务提供方。"
+    },
+    {
+      "name": "RZCU",
+      "type": "控制器/模块名",
+      "description": "Right Zone Control Unit，右侧区域控制单元，负责管理右侧相关功能。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Left High Zone Control Unit，左侧高区域控制单元，负责管理左侧相关功能。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightSta",
+      "type": "输入信号",
+      "description": "转向灯状态参数的具体值，包括OFF、ON和Unknown三种状态。"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了通过服务接口订阅左右转向灯状态的方法，可用于验证车辆在不同状态下转向灯是否正确响应并上报其状态。",
+  "uncertain_points": []
+}
+```

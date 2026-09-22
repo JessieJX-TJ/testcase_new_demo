@@ -1,0 +1,54 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Status",
+  "row_semantics": "Each row represents a specific direction light status subscription request for different vehicle directions (right front, left rear, right rear).",
+  "column_semantics": {
+    "A": "Function/Feature Name",
+    "B": "Consumption Type",
+    "C": "SOA (Service-Oriented Architecture) Module",
+    "D": "RZCU (Right Zone Control Unit)",
+    "E": "LHZCU (Left High Zone Control Unit)",
+    "F": "Uncertain Column",
+    "G": "Hardware State"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "Interface",
+      "description": "Service interface for subscribing to direction light status."
+    },
+    {
+      "name": "DirectionLightSta",
+      "type": "Parameter",
+      "description": "Parameter name for the direction light status value."
+    },
+    {
+      "name": "InstanceID",
+      "type": "Identifier",
+      "description": "Unique instance identifier for each direction light status subscription."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0=OFF",
+      "description": "The direction light is in the OFF state."
+    },
+    {
+      "name": "0x1=ON",
+      "description": "The direction light is in the ON state."
+    },
+    {
+      "name": "0x2=Unknown",
+      "description": "The status of the direction light is unknown."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the service interface parameters for subscribing to the status of various direction lights (right front, left rear, right rear) in a vehicle. It specifies the interface name, parameter name, and possible status values (OFF, ON, Unknown) for each instance ID.",
+  "uncertain_points": [
+    "The purpose and behavior of the 'F' column are not clearly defined in the table."
+  ]
+}

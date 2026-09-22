@@ -1,0 +1,57 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Light Function Allocation Specification",
+  "row_semantics": "Each row represents a specific function or parameter related to interior lighting control, including lamp on/off states, personalized lamp settings, and map lamp control.",
+  "column_semantics": "Columns represent different system components or interfaces involved in the function allocation, such as SOA (Service-Oriented Architecture), ICB/ZXD (Internal Communication Bus / Zone eXtended Domain), and internal modules.",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "PersonalizationData.MapLampSet",
+      "type": "function",
+      "description": "Function for setting personalized interior lamp parameters."
+    },
+    {
+      "name": "LockMapLampOnOff",
+      "type": "function",
+      "description": "Function for controlling the on/off state of the map lamp lock."
+    },
+    {
+      "name": "GearMapLampOnOff",
+      "type": "function",
+      "description": "Function for controlling the on/off state of the map lamp based on gear selection."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "LampOnOff",
+      "description": "Controls the on/off state of various interior lamps (e.g., front right, rear left)."
+    },
+    {
+      "name": "MapLampSetInfo",
+      "description": "Parameter for setting different brightness levels (from Level1 to Level30) for personalized lamp settings."
+    },
+    {
+      "name": "LockMapLampOnOff",
+      "description": "Controls the on/off state of the map lamp lock with options: No Request, ON, OFF."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SOA",
+      "description": "Service-Oriented Architecture interface for service composition and data exchange."
+    },
+    {
+      "name": "ICB/ZXD",
+      "description": "Internal Communication Bus / Zone eXtended Domain interfaces for communication between internal modules."
+    },
+    {
+      "name": "内部",
+      "description": "Internal module or system component responsible for executing the function."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table specifies the functional allocation and parameter settings for interior lighting control, which can be used to verify the correct implementation of personalized lamp settings, map lamp control logic, and overall interior lighting functionality in the vehicle's electronic system.",
+  "uncertain_points": []
+}

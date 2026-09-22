@@ -1,0 +1,142 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯控制模块（LHZCU/RHZCU/RZCU）与ICB（集成控制盒）之间的信号交互规范",
+  "row_semantics": "表格按编号顺序描述了不同模块间信号的接收、发送及状态反馈的具体逻辑，涵盖了驱动处理、寻车灯控制、转向灯控制等多个功能模块。",
+  "column_semantics": "表格没有明确的列，内容以行号为索引，每行描述一个功能点或信号交互场景。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "Controller/Module",
+      "description": "寻车灯控制模块，负责寻车灯、转向灯等外灯的控制逻辑"
+    },
+    {
+      "name": "RHZCU",
+      "type": "Controller/Module",
+      "description": "驱动处理模块，负责接收来自ICB的控制信号，并将状态反馈给ICB"
+    },
+    {
+      "name": "RZCU",
+      "type": "Controller/Module",
+      "description": "驱动处理模块，与RHZCU类似，可能为不同车型或配置下的实现"
+    },
+    {
+      "name": "ICB",
+      "type": "Controller/Module",
+      "description": "集成控制盒，作为整车电子系统的中央控制器，接收并处理来自各模块的状态信息"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FLDirnLghtCtrl",
+      "type": "Input Signal",
+      "description": "前左方向灯控制信号，由ICB发送至RHZCU/RZCU"
+    },
+    {
+      "name": "FRDirnLghtCtrl",
+      "type": "Input Signal",
+      "description": "前右方向灯控制信号，由ICB发送至RHZCU/RZCU"
+    },
+    {
+      "name": "RLDirnLghtCtrl",
+      "type": "Input Signal",
+      "description": "后左方向灯控制信号，由ICB发送至RHZCU/RZCU"
+    },
+    {
+      "name": "RRDirnLghtCtrl",
+      "type": "Input Signal",
+      "description": "后右方向灯控制信号，由ICB发送至RHZCU/RZCU"
+    },
+    {
+      "name": "exlDircnLghtHwDrvEnPrm",
+      "type": "Input Signal",
+      "description": "通过域控获取的转向灯状态参数"
+    },
+    {
+      "name": "VehHzrdMdSts",
+      "type": "Output Signal",
+      "description": "车辆危险警示模式状态，由LHZCU反馈至ICB"
+    },
+    {
+      "name": "EDRDirnIndLampSwSts",
+      "type": "Output Signal",
+      "description": "电动尾门转向灯开关状态，由LHZCU反馈至SDM"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FLDirnLghtSts_HW",
+      "type": "System State",
+      "description": "前左方向灯硬件状态，由RHZCU/RZCU反馈至LHZCU"
+    },
+    {
+      "name": "FRDirnLghtSts_HW",
+      "type": "System State",
+      "description": "前右方向灯硬件状态，由RHZCU/RZCU反馈至LHZCU"
+    },
+    {
+      "name": "RLDirnLghtSts_HW",
+      "type": "System State",
+      "description": "后左方向灯硬件状态，由RHZCU/RZCU反馈至LHZCU"
+    },
+    {
+      "name": "RRDirnLghtSts_HW",
+      "type": "System State",
+      "description": "后右方向灯硬件状态，由RHZCU/RZCU反馈至LHZCU"
+    },
+    {
+      "name": "FLDirnLghtFltsts_HW",
+      "type": "Fault Status",
+      "description": "前左方向灯故障状态，由RHZCU/RZCU反馈至LHZCU"
+    },
+    {
+      "name": "FRDirnLghtFltsts_HW",
+      "type": "Fault Status",
+      "description": "前右方向灯故障状态，由RHZCU/RZCU反馈至LHZCU"
+    },
+    {
+      "name": "RLDirnLghtFltsts_HW",
+      "type": "Fault Status",
+      "description": "后左方向灯故障状态，由RHZCU/RZCU反馈至LHZCU"
+    },
+    {
+      "name": "RRDirnLghtFltsts_HW",
+      "type": "Fault Status",
+      "description": "后右方向灯故障状态，由RHZCU/RZCU反馈至LHZCU"
+    },
+    {
+      "name": "DircnLghtSts",
+      "type": "System State",
+      "description": "方向灯整体状态，由LHZCU反馈至ICB"
+    },
+    {
+      "name": "DircnLghtFltsts",
+      "type": "Fault Status",
+      "description": "方向灯故障状态，由LHZCU反馈至ICB"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLghtErrSts",
+      "type": "Fault Status",
+      "description": "方向灯系统错误状态，由ICB接收并处理"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "同步延时",
+      "value": "50ms",
+      "description": "危险警报灯图标闪烁频率与实际危险警报灯闪烁频率的一致性允许的最大延时"
+    },
+    {
+      "name": "周期",
+      "value": "40ms",
+      "description": "危险警报灯同步性的最大允许周期"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了整车外灯控制系统中，LHZCU/RHZCU/RZCU模块与ICB之间关于方向灯、转向灯、危险警示灯等信号的交互逻辑，包括控制信号的发送、状态反馈以及故障检测。可用于验证外灯控制系统的信号传输正确性、状态反馈及时性及故障诊断功能。",
+  "uncertain_points": []
+}
+```

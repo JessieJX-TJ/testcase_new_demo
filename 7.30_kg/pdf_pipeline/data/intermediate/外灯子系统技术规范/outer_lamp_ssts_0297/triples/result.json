@@ -1,0 +1,94 @@
+[
+  {
+    "head": "主远光灯开启",
+    "relation": "触发条件",
+    "tail": "收到【MainBeamLghtCtrlMdl】发送的MainBeamLightControl. MainBeamLightCtrReq ==1(On)InstanceID=2",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "MainBeamLghtCtrlMdl",
+      "MainBeamLightControl",
+      "MainBeamLightCtrReq",
+      "On",
+      "InstanceID=2"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0297",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "主远光灯开启",
+    "relation": "前提条件",
+    "tail": "1.MainBeamLghtFbkSOAEnPrm==1(Enable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "MainBeamLghtFbkSOAEnPrm",
+      "Enable"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0297",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "【RMainBeamLghtDrvMdl】持续驱动右远光灯输出",
+    "relation": "依赖于",
+    "tail": "主远光灯开启",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RMainBeamLghtDrvMdl",
+      "MainBeamHdlmp_RH_HSD"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0297",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "【RMainBeamLghtDrvMdl】持续发送MainBeamLightState",
+    "relation": "依赖于",
+    "tail": "主远光灯开启",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RMainBeamLghtDrvMdl",
+      "MainBeamLightState"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0297",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "主远光灯关闭",
+    "relation": "触发条件",
+    "tail": "收到【MainBeamLghtCtrlMdl】发送的MainBeamLightControl. MainBeamLightCtrReq ==0(Off)InstanceID=2",
+    "triple_type": "功能退出条件",
+    "evidence_terms": [
+      "MainBeamLghtCtrlMdl",
+      "MainBeamLightControl",
+      "MainBeamLightCtrReq",
+      "Off",
+      "InstanceID=2"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0297",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "主远光灯开启",
+    "relation": "状态保持条件",
+    "tail": "至少发送三帧 MainBeamLightCtrlMdl",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "MainBeamLightCtrlReq",
+      "On",
+      "InstanceID=2",
+      "MainBeamLightCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0297",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

@@ -1,0 +1,553 @@
+[
+  {
+    "head": "RFrtFogLghtFltSts_HW",
+    "relation": "包含子功能",
+    "tail": "0x0=RFrtFogLghtFltSts_HW_0_False",
+    "sources": [
+      "outer_lamp_fas_0100"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RFrtFogLghtFltSts_HW",
+    "relation": "包含子功能",
+    "tail": "0x1=RFrtFogLghtFltSts_HW_1_True",
+    "sources": [
+      "outer_lamp_fas_0100"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "输出为",
+    "tail": "DircnLghtSts=0x0=No Flash; DircnLghtFltsts=0x0=No Error",
+    "sources": [
+      "outer_lamp_fas_0101"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "输入为",
+    "tail": "{ExteriorLightControlSystem.DirectionLightSts.DirectionLghtSts}=0x0=No Flash; {ExteriorLightControlSystem.DirectionLightErrSts.DirectionLghtErrSts}=0x0=No Error",
+    "sources": [
+      "outer_lamp_fas_0101"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts=0x0=VehHzrdMdSts_0_No_Request",
+    "sources": [
+      "outer_lamp_fas_0101",
+      "outer_lamp_fas_0933"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts=0x0=EDRDircnIndLampSwSts_0_off",
+    "sources": [
+      "outer_lamp_fas_0101",
+      "outer_lamp_fas_0906",
+      "outer_lamp_fas_0933"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "危险警报灯同步性要求",
+    "relation": "超时约束",
+    "tail": "危险警报灯图标、左右转向灯及双闪灯三者闪烁频率需同步，最大允许延时为50ms",
+    "sources": [
+      "outer_lamp_fas_0101"
+    ],
+    "conflict": true,
+    "conflict_note": "与同源另一条‘最大延时周期为40ms’存在数值冲突（40ms vs 50ms）；二者均出自 outer_lamp_fas_0101，需设计评审确认基准值"
+  },
+  {
+    "head": "DirectionLightStatus",
+    "relation": "前提条件",
+    "tail": "订阅右后转向灯状态",
+    "sources": [
+      "outer_lamp_fas_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightStatus",
+    "relation": "前提条件",
+    "tail": "订阅左前转向灯状态",
+    "sources": [
+      "outer_lamp_fas_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSta",
+    "relation": "输出为",
+    "tail": "右后转向灯状态",
+    "sources": [
+      "outer_lamp_fas_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightSta",
+    "relation": "输出为",
+    "tail": "左前转向灯状态",
+    "sources": [
+      "outer_lamp_fas_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "硬线状态",
+    "relation": "依赖于",
+    "tail": "InstanceID=3",
+    "sources": [
+      "outer_lamp_fas_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "网络状态",
+    "relation": "依赖于",
+    "tail": "InstanceID=4",
+    "sources": [
+      "outer_lamp_fas_0102"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯状态",
+    "relation": "触发条件",
+    "tail": "LHZZCU将DipdBeamLightSts设置为0x1",
+    "sources": [
+      "outer_lamp_fas_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯错误状态",
+    "relation": "触发条件",
+    "tail": "LHZZCU将DipdBeamLightErrSta设置为0x0",
+    "sources": [
+      "outer_lamp_fas_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "接收",
+    "tail": "DipdBeamLightSts=0x1",
+    "sources": [
+      "outer_lamp_fas_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "接收",
+    "tail": "DipdBeamLightErrSta=0x0",
+    "sources": [
+      "outer_lamp_fas_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启同步性要求",
+    "relation": "超时约束",
+    "tail": "左右近光灯最大延时不超过40ms",
+    "sources": [
+      "outer_lamp_fas_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_8295组合灯光请求重发机制",
+    "relation": "超时约束",
+    "tail": "重发周期≤50ms，最多尝试3次后停止发送",
+    "sources": [
+      "outer_lamp_fas_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "超时约束",
+    "tail": "消费端须在500ms内通过Getter()方式获取状态",
+    "sources": [
+      "outer_lamp_fas_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess",
+    "relation": "依赖于",
+    "tail": "DipdBeamLightSta=0x1",
+    "sources": [
+      "outer_lamp_fas_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess",
+    "relation": "依赖于",
+    "tail": "DipdBeamLightErrSta=0x0",
+    "sources": [
+      "outer_lamp_fas_0104"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtFltsts",
+    "relation": "输出为",
+    "tail": "0x0=RLDircnLghtFltsts_0_False",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtFltsts",
+    "relation": "输出为",
+    "tail": "0x1=RLDircnLghtFltsts_1_True",
+    "sources": [
+      "outer_lamp_fas_0108",
+      "outer_lamp_fas_0931"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtFltsts",
+    "relation": "输出为",
+    "tail": "0x0=RRDircnLghtFltsts_0_False",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtFltsts",
+    "relation": "输出为",
+    "tail": "0x1=RRDircnLghtFltsts_1_True",
+    "sources": [
+      "outer_lamp_fas_0108",
+      "outer_lamp_fas_0931"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtFltsts_HW",
+    "relation": "输出为",
+    "tail": "0x0=FLDircnLghtFltsts_HW_0_False",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtFltsts_HW",
+    "relation": "输出为",
+    "tail": "0x1=FLDircnLghtFltsts_HW_1_True",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtFltsts_HW",
+    "relation": "输出为",
+    "tail": "0x0=FRDircnLghtFltsts_HW_0_False",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtFltsts_HW",
+    "relation": "输出为",
+    "tail": "0x1=FRDircnLghtFltsts_HW_1_True",
+    "sources": [
+      "outer_lamp_fas_0108",
+      "outer_lamp_fas_0888"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtFltsts",
+    "relation": "依赖于",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_fas_0108",
+      "outer_lamp_fas_0115",
+      "outer_lamp_fas_0665"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtFltsts",
+    "relation": "依赖于",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtFltsts_HW",
+    "relation": "依赖于",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0108",
+      "outer_lamp_fas_0115",
+      "outer_lamp_fas_0665"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtFltsts_HW",
+    "relation": "依赖于",
+    "tail": "RHZCU",
+    "sources": [
+      "outer_lamp_fas_0108",
+      "outer_lamp_fas_0115"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtFltsts",
+    "relation": "包含子功能",
+    "tail": "RLDircnLghtFltsts_0_False",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtFltsts",
+    "relation": "包含子功能",
+    "tail": "RLDircnLghtFltsts_1_True",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtFltsts",
+    "relation": "包含子功能",
+    "tail": "RRDircnLghtFltsts_0_False",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtFltsts",
+    "relation": "包含子功能",
+    "tail": "RRDircnLghtFltsts_1_True",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtFltsts_HW",
+    "relation": "包含子功能",
+    "tail": "FLDircnLghtFltsts_HW_0_False",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtFltsts_HW",
+    "relation": "包含子功能",
+    "tail": "FLDircnLghtFltsts_HW_1_True",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtFltsts_HW",
+    "relation": "包含子功能",
+    "tail": "FRDircnLghtFltsts_HW_0_False",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtFltsts_HW",
+    "relation": "包含子功能",
+    "tail": "FRDircnLghtFltsts_HW_1_True",
+    "sources": [
+      "outer_lamp_fas_0108"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开启同步性要求",
+    "relation": "前提条件",
+    "tail": "两侧远光灯最大延时不超过40ms",
+    "sources": [
+      "outer_lamp_fas_0109"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoMaiBeamLghtCtrlDsblSts",
+    "relation": "触发条件",
+    "tail": "一个点火循环内，远光灯自动控制功能激活时检测到三次手动关闭请求",
+    "sources": [
+      "outer_lamp_fas_0109"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutoMaiBeamLghtCtrlDsblSts",
+    "relation": "复位条件",
+    "tail": "下电操作",
+    "sources": [
+      "outer_lamp_fas_0109"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtMdSta",
+    "relation": "触发条件",
+    "tail": "手动远光灯开启 → 输出为 Manual_Mode",
+    "sources": [
+      "outer_lamp_fas_0109"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtMdSta",
+    "relation": "触发条件",
+    "tail": "远光灯自动开启前置条件满足 → 输出为 Auto_Mode",
+    "sources": [
+      "outer_lamp_fas_0109"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtMdSta",
+    "relation": "触发条件",
+    "tail": "远光灯未手动开启且自动开启未使能 → 输出为 No_Request",
+    "sources": [
+      "outer_lamp_fas_0109"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯自动控制功能",
+    "relation": "抑制条件",
+    "tail": "AutoMaiBeamLghtCtrlDsblSts = True",
+    "sources": [
+      "outer_lamp_fas_0109"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LEIXCT",
+    "relation": "前提条件",
+    "tail": "EPTBrkPdlDscrtInptSts = 0x1 → BrakelightCtrl_0x1",
+    "sources": [
+      "outer_lamp_fas_0110"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LEIXCT",
+    "relation": "前提条件",
+    "tail": "EPTBrkPdlDscrtInptSts = 0x0 → BrakelightCtrl_0x0",
+    "sources": [
+      "outer_lamp_fas_0110"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightCtrl",
+    "relation": "触发条件",
+    "tail": "EPTBrkPdlDscrtInptSts = 0x1 → 输出为 ON",
+    "sources": [
+      "outer_lamp_fas_0110"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightCtrl",
+    "relation": "触发条件",
+    "tail": "EPTBrkPdlDscrtInptSts = 0x0 → 输出为 OFF",
+    "sources": [
+      "outer_lamp_fas_0110"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLightCoopServiceReq",
+    "relation": "前提条件",
+    "tail": "EPTBrkPdlDscrtInptSts = 0x1 → 输出为 ON",
+    "sources": [
+      "outer_lamp_fas_0110"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

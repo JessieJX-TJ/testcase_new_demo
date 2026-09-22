@@ -1,0 +1,420 @@
+```json
+[
+  {
+    "head": "右侧前照灯模块 (RHZ CU) 报告近光灯错误状态为未知",
+    "relation": "触发条件",
+    "tail": "DipdBeamLightErrSta 内部变量值为 0x02",
+    "sources": ["outer_lamp_fas_0529"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯控制",
+    "relation": "触发条件",
+    "tail": "周期调用 ControlDirectionLight 接口",
+    "sources": ["outer_lamp_fas_0530"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯控制",
+    "relation": "输入为",
+    "tail": "DirectionLightReq 参数值为 0x1（点亮）或 0x0（熄灭）",
+    "sources": ["outer_lamp_fas_0530"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯状态订阅",
+    "relation": "触发条件",
+    "tail": "调用 DirectionLightStatus 接口",
+    "sources": ["outer_lamp_fas_0530"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯状态",
+    "relation": "输出为",
+    "tail": "DirectionLightSta 参数值为 0x1（ON）或 0x0（OFF）",
+    "sources": ["outer_lamp_fas_0530"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtCtrlCmmntnTyp 参数配置",
+    "relation": "依赖于",
+    "tail": "参数取值 {0x0=SOA; 0x1=CAN; 0x2~0x7=Reserve}",
+    "sources": ["outer_lamp_fas_0531"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtStsCmmntnTyp 参数配置",
+    "relation": "依赖于",
+    "tail": "参数取值 {0x0=SOA; 0x1=CAN; 0x2~0x7=Reserve}",
+    "sources": ["outer_lamp_fas_0531"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtCtrlCmmntnTyp 参数默认值",
+    "relation": "输出为",
+    "tail": "0x0",
+    "sources": ["outer_lamp_fas_0531"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtStsCmmntnTyp 参数默认值",
+    "relation": "输出为",
+    "tail": "0x0",
+    "sources": ["outer_lamp_fas_0531"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯请求重发",
+    "relation": "前提条件",
+    "tail": "未收到反馈且请求状态未变",
+    "sources": ["outer_lamp_fas_0532"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯请求重发",
+    "relation": "超时约束",
+    "tail": "超时 2 s 未收到反馈",
+    "sources": ["outer_lamp_fas_0532"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "停止发送前雾灯请求",
+    "relation": "前提条件",
+    "tail": "尝试重发 3 次后仍未成功",
+    "sources": ["outer_lamp_fas_0532"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "前提条件",
+    "tail": "未收到状态反馈",
+    "sources": ["outer_lamp_fas_0532"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "超时约束",
+    "tail": "500 ms 内未收到状态反馈",
+    "sources": ["outer_lamp_fas_0532"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯开启同步性",
+    "relation": "状态保持条件",
+    "tail": "左右侧需同步点亮，最大延时 ≤ 40 ms",
+    "sources": ["outer_lamp_fas_0532"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯开启",
+    "relation": "触发条件",
+    "tail": "FLDircnLghtCtrl_HW 值为 0x1",
+    "sources": ["outer_lamp_fas_0534", "outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯关闭",
+    "relation": "触发条件",
+    "tail": "FLDircnLghtCtrl_HW 值为 0x0",
+    "sources": ["outer_lamp_fas_0534", "outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯开启",
+    "relation": "触发条件",
+    "tail": "FRDircnLghtCtrl_HW 值为 0x1",
+    "sources": ["outer_lamp_fas_0534", "outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前转向灯关闭",
+    "relation": "触发条件",
+    "tail": "FRDircnLghtCtrl_HW 值为 0x0",
+    "sources": ["outer_lamp_fas_0534", "outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯开启",
+    "relation": "触发条件",
+    "tail": "RLDircnLghtCtrl_HW 值为 0x1",
+    "sources": ["outer_lamp_fas_0534", "outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯关闭",
+    "relation": "触发条件",
+    "tail": "RLDircnLghtCtrl_HW 值为 0x0",
+    "sources": ["outer_lamp_fas_0534", "outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯开启",
+    "relation": "触发条件",
+    "tail": "RRDircnLghtCtrl_HW 值为 0x1",
+    "sources": ["outer_lamp_fas_0534", "outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯关闭",
+    "relation": "触发条件",
+    "tail": "RRDircnLghtCtrl_HW 值为 0x0",
+    "sources": ["outer_lamp_fas_0534", "outer_lamp_fas_1004"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前转向灯状态",
+    "relation": "输出为",
+    "tail": "FLDircnLghtSts_HW 值为 0x1（开启）或 0x0（关闭）",
+    "sources": ["outer_lamp_fas_0534"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtCtrl_HW",
+    "relation": "控制对象",
+    "tail": "左前转向灯",
+    "sources": ["outer_lamp_fas_0534"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtCtrl_HW",
+    "relation": "控制对象",
+    "tail": "右前转向灯",
+    "sources": ["outer_lamp_fas_0534"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtCtrl_HW",
+    "relation": "控制对象",
+    "tail": "左后转向灯",
+    "sources": ["outer_lamp_fas_0534"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtCtrl_HW",
+    "relation": "控制对象",
+    "tail": "右后转向灯",
+    "sources": ["outer_lamp_fas_0534"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯状态",
+    "relation": "输出为",
+    "tail": "FrtFogLghtSts",
+    "sources": ["outer_lamp_fas_0536"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯故障状态",
+    "relation": "输出为",
+    "tail": "FrtFogLghtFltSts",
+    "sources": ["outer_lamp_fas_0536"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯故障状态",
+    "relation": "依赖于",
+    "tail": "前雾灯状态",
+    "sources": ["outer_lamp_fas_0536"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前位置灯控制信号",
+    "relation": "输出为",
+    "tail": "FLSideLghtCtrl",
+    "sources": ["outer_lamp_fas_0536"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前位置灯控制信号",
+    "relation": "输出为",
+    "tail": "FRSideLghtCtrl",
+    "sources": ["outer_lamp_fas_0536"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "自动远光灯禁用",
+    "relation": "前提条件",
+    "tail": "车辆速度 ≤ 20 kph 或 ≤ 30 kph",
+    "sources": ["outer_lamp_fas_0537"],
+    "conflict": true,
+    "conflict_note": "存在两个不同阈值（20kph vs 30kph），需确认设计意图：是否为版本差异、配置分支或误标？建议核查需求基线"
+  },
+  {
+    "head": "自动远光灯禁用",
+    "relation": "抑制条件",
+    "tail": "车辆处于倒车状态",
+    "sources": ["outer_lamp_fas_0537"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智能前大灯控制系统启用",
+    "relation": "前提条件",
+    "tail": "参数值为 0x1",
+    "sources": ["outer_lamp_fas_0537"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "智能前大灯控制系统禁用",
+    "relation": "前提条件",
+    "tail": "参数值为 0x0",
+    "sources": ["outer_lamp_fas_0537"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯状态",
+    "relation": "输出为",
+    "tail": "RDipdBeamLghtSts_HW",
+    "sources": ["outer_lamp_fas_0538"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯故障状态",
+    "relation": "输出为",
+    "tail": "LDipdBeamLghtFltSts_HW",
+    "sources": ["outer_lamp_fas_0538"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯故障状态",
+    "relation": "输出为",
+    "tail": "RDipdBeamLghtFltSts_HW",
+    "sources": ["outer_lamp_fas_0538"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯状态",
+    "relation": "依赖于",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0538"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯故障状态",
+    "relation": "依赖于",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0538"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯故障状态",
+    "relation": "依赖于",
+    "tail": "CANFD",
+    "sources": ["outer_lamp_fas_0538"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯状态",
+    "relation": "包含子功能",
+    "tail": "右侧近光灯硬件状态",
+    "sources": ["outer_lamp_fas_0538"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧近光灯故障状态",
+    "relation": "包含子功能",
+    "tail": "左侧近光灯硬件故障状态",
+    "sources": ["outer_lamp_fas_0538"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧近光灯故障状态",
+    "relation": "包含子功能",
+    "tail": "右侧近光灯硬件故障状态",
+    "sources": ["outer_lamp_fas_0538"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_8295 发送组合灯光请求",
+    "relation": "触发条件",
+    "tail": "ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq",
+    "sources": ["outer_lamp_fas_0539"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightResp",
+    "relation": "依赖于",
+    "tail": "ExteriorLightControlSystem.ControlDayRunningLight.DayRunningLightReq",
+    "sources": ["outer_lamp_fas_0539"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_8295 请求重发",
+    "relation": "前提条件",
+    "tail": "超时 2 s 未收到反馈且请求状态未变",
+    "sources": ["outer_lamp_fas_0539"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_8295 停止发送请求",
+    "relation": "前提条件",
+    "tail": "尝试重发 3 次后仍未反馈请求成功",
+    "sources": ["outer_lamp_fas_0539"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB_8295 请求重发周期",
+    "relation": "超时约束",
+    "tail": "≤ 50 ms 周期重发，条件为：超时 2 s 未收到反馈且请求状态未变",
+    "sources": ["outer_lamp_fas_0539"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯故障状态获取",
+    "relation": "触发条件",
+    "tail": "调用 SidePositionLightErrorStatus 接口（适用于左后、右后、右前位置灯）",
+    "sources": ["outer_lamp_fas_0540"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

@@ -1,0 +1,98 @@
+```json
+[
+  {
+    "head": "远光灯左侧和右侧同步点亮",
+    "relation": "前提条件",
+    "tail": "两侧最大延时不能超过40ms",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "远光灯开启同步性要求",
+      "左侧和右侧需保持同步点亮",
+      "两侧最大延时不能超过40ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB发送MainBeamLight请求",
+    "relation": "触发条件",
+    "tail": "未收到MainBeamLight.ControlMainBeamLight.MainBeamLightResp反馈且请求状态未变",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB远光灯请求重发机制",
+      "MainBeamLight.ControlMainBeamLight.MainBeamLightReq",
+      "MainBeamLight.ControlMainBeamLight.MainBeamLightResp=0x0=ControlSuccess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB请求重发",
+    "relation": "超时约束",
+    "tail": "尝试按照<=50ms周期重发3次，尝试重发3次后仍未反馈请求成功",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "ICB远光灯请求重发机制",
+      "<=50ms周期",
+      "重发3次"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "前提条件",
+    "tail": "发送类型为Onchange的外灯状态服务",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外灯状态主动获取",
+      "Onchange"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "依赖于",
+    "tail": "LHZCU/ICB_S32G_M/ICB_8295",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "外灯状态主动获取",
+      "LHZCU",
+      "ICB_S32G_M",
+      "ICB_8295"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态判断",
+    "relation": "优先级高于",
+    "tail": "LHZCU获取到的外灯点亮状态",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "前置条件中外灯状态判断",
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态判断",
+    "relation": "故障响应",
+    "tail": "信号丢失或网络丢失或反馈状态与控制状态不符",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "信号丢失",
+      "网络丢失",
+      "反馈的外灯点亮状态与LHZCU的控制状态不符"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态判断",
+    "relation": "超时约束",
+    "tail": "500ms（待标定）后仍无法获取外灯状态",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "500ms",
+      "主动Getter()方式也无法获取外灯状态"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

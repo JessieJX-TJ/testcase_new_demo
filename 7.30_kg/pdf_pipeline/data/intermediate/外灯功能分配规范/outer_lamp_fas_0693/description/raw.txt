@@ -1,0 +1,106 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Side Position Light and Dipped Beam Light Control Requirements",
+  "row_semantics": "Each row represents a specific control request or status update for side position lights and dipped beam lights, differentiated by InstanceID.",
+  "column_semantics": "The columns represent the control request (Req) and the corresponding status (Sts) for each light function, along with associated controller/module names.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "function",
+      "description": "Side position light control"
+    },
+    {
+      "name": "DippedBeamLight",
+      "type": "function",
+      "description": "Low beam (dipped beam) light control"
+    },
+    {
+      "name": "LHZCU/RHZCU/RZCU",
+      "type": "controller",
+      "description": "Driving processing module responsible for hardwire output of rear fog lights and near light lamps"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "External Light Combination Service ICB, subscribes to interfaces for external light control"
+    },
+    {
+      "name": "RZCU",
+      "type": "controller",
+      "description": "Driving processing module that feeds back state/error status to LHZCU"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "ControlSidePositionLight",
+      "type": "input_signal",
+      "description": "Request to control side position light"
+    },
+    {
+      "name": "ControlDippedBeamLight",
+      "type": "input_signal",
+      "description": "Request to control dipped beam light"
+    },
+    {
+      "name": "exlSideLightHwDrvEnPrm",
+      "type": "input_signal",
+      "description": "Hardware driver enable parameter for side lights"
+    },
+    {
+      "name": "RearFogLightCtrlTrReq",
+      "type": "input_signal",
+      "description": "Request to control rear fog light"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightReq",
+      "type": "output_signal",
+      "description": "Request signal for side position light control"
+    },
+    {
+      "name": "DippedBeamLightReq",
+      "type": "output_signal",
+      "description": "Request signal for dipped beam light control"
+    },
+    {
+      "name": "RearFogLightState",
+      "type": "output_signal",
+      "description": "State of rear fog light"
+    },
+    {
+      "name": "RearFogLightErrorStatus",
+      "type": "output_signal",
+      "description": "Error status of rear fog light"
+    },
+    {
+      "name": "RearFogLightStts",
+      "type": "output_signal",
+      "description": "Status of rear fog light in ICB"
+    },
+    {
+      "name": "RearFogLightErrSta",
+      "type": "output_signal",
+      "description": "Error status of rear fog light in ICB"
+    },
+    {
+      "name": "DippedBeamLightStatus",
+      "type": "output_signal",
+      "description": "Status of dipped beam light"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "fault_status",
+      "description": "Indicates no fault condition"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the control requests and status updates for side position lights and dipped beam lights across different instances, detailing interactions between controllers like LHZCU, RZCU, and ICB. It is used to verify the correct propagation of control signals and status feedback within the vehicle's lighting system.",
+  "uncertain_points": []
+}
+```

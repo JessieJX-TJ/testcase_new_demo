@@ -1,0 +1,69 @@
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform - IBD10)",
+  "row_semantics": "Each row represents a specific command or control signal for the right-hand side (RH) ambient lighting system, detailing its input source, associated controller/module, and the meaning of the command value.",
+  "column_semantics": {
+    "Input": "The source of the signal (e.g., LIN bus, LHZCU module).",
+    "LIN": "Signal from the LIN bus.",
+    "LHZCU": "Signal from the Local Zone Control Unit.",
+    "CnsoAmbtLampB_RH": "Specific command for the right-hand ambient lamp.",
+    "LHZCU_LIN5": "Signal from LHZCU via LIN5.",
+    "内灯SSTS": "Internal lighting subsystem."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "CnsoRHBLampOnOff_1",
+      "type": "command",
+      "description": "Turns the RH ambient lamp ON or OFF."
+    },
+    {
+      "name": "CnsoRHBLampColorCmd_1",
+      "type": "command",
+      "description": "Sets the color of the RH ambient lamp."
+    },
+    {
+      "name": "CnsoRHBLampBrtnsCmd_1",
+      "type": "command",
+      "description": "Adjusts the brightness of the RH ambient lamp."
+    },
+    {
+      "name": "CnsoRHBLampBrthngCmd_1",
+      "type": "command",
+      "description": "Configures the breathing rate of the RH ambient lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "灯光切换为色坐标对应的颜色",
+      "description": "When the color command is set to 0 or an undefined color code, the light maintains its current color."
+    },
+    {
+      "name": "指令值为0时保持亮度不变",
+      "description": "If the brightness command is 0x00, the light maintains its current brightness."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "灯光亮度调节到相应的百分比值",
+      "description": "The brightness command adjusts the lamp's brightness to a corresponding percentage value."
+    },
+    {
+      "name": "新增(0-100%跳变)",
+      "description": "The breathing rate command introduces a new mode where the brightness changes between 0% and 100%."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate1",
+      "value": "500ms",
+      "description": "The breathing rate is set to 500ms when the command is Rate1."
+    }
+  ],
+  "engineering_interpretation": "This table defines the control signals and their meanings for the RH ambient lighting system, including commands for turning the light on/off, setting color, adjusting brightness, and configuring breathing rates. It can be used to verify that the lighting system correctly interprets and responds to these commands under various conditions.",
+  "uncertain_points": [
+    "The exact behavior of the system when receiving undefined color codes is not fully specified."
+  ]
+}

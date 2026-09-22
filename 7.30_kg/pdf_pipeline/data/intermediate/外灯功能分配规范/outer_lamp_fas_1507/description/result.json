@@ -1,0 +1,120 @@
+{
+  "table_type": "signal_table",
+  "topic": "制动灯和外灯控制功能需求",
+  "row_semantics": "逐条列出制动灯和外灯控制相关的信号交互、状态获取及故障处理逻辑",
+  "column_semantics": "无明确列，内容为单行描述性文本，包含功能描述、信号名称、实例ID、值或状态",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "BrakeLight",
+      "type": "功能名",
+      "description": "制动灯控制相关功能"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "Integrated Control Box，集成控制盒，负责制动灯和外灯的控制与状态反馈"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Light and Hazard Control Unit，灯光和危险警示控制单元"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "系统状态",
+      "description": "外部灯光控制系统状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrakeLightState",
+      "type": "输入信号",
+      "description": "制动灯当前状态（ON/OFF）"
+    },
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "输出信号",
+      "description": "制动灯错误状态"
+    },
+    {
+      "name": "BrakeLightSwitchStatus",
+      "type": "输入信号",
+      "description": "制动灯开关状态"
+    },
+    {
+      "name": "BrakeLightCtrlReq",
+      "type": "输入信号",
+      "description": "制动灯控制请求"
+    },
+    {
+      "name": "BrakeLightCtrlResp",
+      "type": "输出信号",
+      "description": "制动灯控制响应"
+    },
+    {
+      "name": "BrakeLight_ghts_5tS",
+      "type": "模式名",
+      "description": "制动灯高亮闪烁状态"
+    },
+    {
+      "name": "BrakeLight_ghts_ErSta",
+      "type": "模式名",
+      "description": "制动灯错误状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrakeLightCtrlReq",
+      "type": "输出信号",
+      "description": "发送给ICB的制动灯控制请求"
+    },
+    {
+      "name": "BrakeLightCtrlResp",
+      "type": "输入信号",
+      "description": "从ICB返回的制动灯控制响应"
+    },
+    {
+      "name": "BrakeLightState",
+      "type": "输出信号",
+      "description": "制动灯最终执行状态"
+    },
+    {
+      "name": "BrakeLightErrorStatus",
+      "type": "输出信号",
+      "description": "制动灯系统错误状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "故障状态",
+      "description": "正常无错误状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "40ms",
+      "type": "阈值/定时",
+      "description": "制动灯开启同步最大延时"
+    },
+    {
+      "name": "50ms",
+      "type": "阈值/定时",
+      "description": "ICB重发制动灯请求的周期"
+    },
+    {
+      "name": "3次",
+      "type": "阈值/定时",
+      "description": "ICB重发制动灯请求的最大尝试次数"
+    },
+    {
+      "name": "500ms",
+      "type": "阈值/定时",
+      "description": "外灯状态主动获取的周期"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了车辆制动灯和外灯的控制逻辑、信号交互流程、状态反馈机制以及故障处理策略，可用于验证制动灯和外灯系统的功能正确性、状态同步性和故障恢复能力。",
+  "uncertain_points": []
+}

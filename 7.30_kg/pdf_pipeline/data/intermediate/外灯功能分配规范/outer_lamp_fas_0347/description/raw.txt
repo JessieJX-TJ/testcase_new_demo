@@ -1,0 +1,93 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "转向灯状态描述",
+  "row_semantics": "表格的每一行代表一个具体的转向灯状态配置或实例，描述了转向灯在硬件（HW）层面的状态、闪烁状态以及错误状态。",
+  "column_semantics": "表格没有明确的列，其内容为多行文本描述，每行定义了一个特定的转向灯状态变量及其值。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "FLDircnLghtSts_HW",
+      "type": "output_signal",
+      "description": "左前转向灯硬件状态"
+    },
+    {
+      "name": "RLDircnLghtSts_HW",
+      "type": "output_signal",
+      "description": "右前转向灯硬件状态"
+    },
+    {
+      "name": "FLDircnLghtFltsts_HW",
+      "type": "output_signal",
+      "description": "左前转向灯闪烁状态"
+    },
+    {
+      "name": "RLDircnLghtFltsts_HW",
+      "type": "output_signal",
+      "description": "右前转向灯闪烁状态"
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "system_state",
+      "description": "转向灯整体状态"
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "type": "fault_state",
+      "description": "转向灯错误状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FLDircnLghtSts_HW",
+      "value": "0x0 (Off) or 0x1 (On)",
+      "description": "表示左前转向灯是否点亮"
+    },
+    {
+      "name": "RLDircnLghtSts_HW",
+      "value": "0x0 (Off) or 0x1 (On)",
+      "description": "表示右前转向灯是否点亮"
+    },
+    {
+      "name": "FLDircnLghtFltsts_HW",
+      "value": "0x0 (False) or 0x1 (True)",
+      "description": "表示左前转向灯是否处于闪烁模式"
+    },
+    {
+      "name": "RLDircnLghtFltsts_HW",
+      "value": "0x0 (False) or 0x1 (True)",
+      "description": "表示右前转向灯是否处于闪烁模式"
+    },
+    {
+      "name": "DirectionLightStatus",
+      "instance_id": "1",
+      "value": "0x0 (OFF) or 0x1 (ON)",
+      "description": "实例ID=1的转向灯整体状态"
+    },
+    {
+      "name": "DirectionLightStatus",
+      "instance_id": "3",
+      "value": "0x0 (OFF) or 0x1 (ON)",
+      "description": "实例ID=3的转向灯整体状态"
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "instance_id": "1",
+      "value": "0x0 (No Error)",
+      "description": "实例ID=1的转向灯错误状态"
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "instance_id": "3",
+      "value": "0x0 (No Error)",
+      "description": "实例ID=3的转向灯错误状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证车辆转向灯在不同状态下的硬件输出信号值，包括转向灯的点亮/熄灭状态、闪烁模式以及错误状态，是进行转向灯功能测试和状态验证的重要依据。",
+  "uncertain_points": []
+}
+```

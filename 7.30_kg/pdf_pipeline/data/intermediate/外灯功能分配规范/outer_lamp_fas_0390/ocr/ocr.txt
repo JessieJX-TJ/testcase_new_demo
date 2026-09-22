@@ -1,0 +1,34 @@
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+触发动作
+UsgMd=0x0 = UsgMd_0_Sleep;&& UsgMdV=Valid
+UsgMd=0x1=UsgMd_1_Standby && UsgMdV=Valid
+位置灯在工厂模式下开启 2min:a&&b&&c
+a、整车模式为工厂模式:VehMd=0x2=VehMd2 FACTORY &&VehMdV=0x1=VehMdV_1
+b、位置灯点亮:{ExteriorLightSwitchProcess. CombLghtFucProStatus.CombLghtFucProSta}=0x
+c、持续2min
+位置灯点亮状态为后雾灯请求自动灯光的位置灯开启,且当前状态为白天,判断后雾
+即:AutoSidePosnLghtONbyRrFogLghtSts==0x1=True
+&
+(AutoLghtOnReq_l=0x0=AutoLghtOnReq_0_False(vehRlsType==0)
+||AutoLghtOnReq_ICB=0x0=AutoLghtOnReq_ICB_0_False (vehRlsType==1))；&
+{ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta}=0x3=AUTO; &
+执行动作
+[位置灯控制模块LHZCU]接口响应:
+Notifier:
+{ExteriorLightSwitchProcess. CombLghtFucProStatus.CombLghtFucProSta}=0x0=ALL OFF
+[外灯控制组合服务ICB]并调用基础服务
+位置灯控制模块LHZCU同时发出控制信号给ICB:
+FLSideLghtCtrl=0x0=FLSideLghtCtrl_0_Off
+FRSideLghtCtrl=0x0=FRSideLghtCtrl_0_Off
+RLSideLghtCtrl=0x0=RLSideLghtCtrl_0_Off
+RRSideLghtCtrl=0x0=RRSideLghtCtrl_0_Off
+ICB将服务接口或控制信号转换成灯控CAN信号,并控制位置灯熄灭
+[外灯控制组合服务ICB]调用接口:
+{ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta}=0x0=OFF,获取位置灯开关状态
+{ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta}接口参数同时赋值 Ox0=OFF
+[HMI子系统ICB]调用接口:
+获取退出位置灯指示灯显示
+[外灯控制组合服务ICB]调用基础服务,,针对
+{InstanceID=1}{InstanceID=2}{InstanceID=3}{InstanceID=4},组合服务延时 60ms调用(配置需
+NumPltLampCtrlDelayPrm):
+(ex1SideLghtHwDrvEnPrm=0x1;备注:位置灯炮筒灯方案,以instance1,2,3,4发送控制请求,如

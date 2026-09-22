@@ -1,0 +1,107 @@
+[
+  {
+    "head": "危险灯开关模块 HzrdLightSwMdl 持续发送 VehCrashHazdReq = 0x0 (Off)",
+    "relation": "触发条件",
+    "tail": "未检测到碰撞网络信号 (AirbagDpl == 0x0 & AirbagDplInvsn == 0x1 & VehCrashTyp == 0x0)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "HzrdLightSwOAEnPrm == 0",
+      "AirbagDpl",
+      "AirbagDplInvsn",
+      "VehCrashTyp",
+      "CrashOut",
+      "VehMd",
+      "VehMdV"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0377",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险灯开关模块 HzrdLightSwMdl 持续发送 VehCrashHazdReq = 0x0 (Off)",
+    "relation": "触发条件",
+    "tail": "检测到碰撞硬线信号 CrashOut 占空比从 20% (±10%) 反转为 80% (±10%) 3个周期",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "HzrdLightSwOAEnPrm == 0",
+      "AirbagDpl",
+      "AirbagDplInvsn",
+      "VehCrashTyp",
+      "CrashOut",
+      "VehMd",
+      "VehMdV"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0377",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险灯开关模块 HzrdLightSwMdl 持续发送 VehCrashHazdReq = 0x0 (Off)",
+    "relation": "触发条件",
+    "tail": "检测到车辆未处于碰撞模式 (VehMd != 1_CRASH & VehMdV == 1_Valid)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "HzrdLightSwOAEnPrm == 0",
+      "AirbagDpl",
+      "AirbagDplInvsn",
+      "VehCrashTyp",
+      "CrashOut",
+      "VehMd",
+      "VehMdV"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0377",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险灯开关模块 HzrdLightSwMdl 不发送 VehCrashHazdReq = 0x0 (Off)",
+    "relation": "抑制条件",
+    "tail": "检测到碰撞网络信号 (AirbagDpl == 0x1 || AirbagDplInvsn == 0x0 || VehCrashTyp != 0x0) 或 检测到碰撞硬线信号 CrashOut 占空比从 80% (±10%) 反转为 20% (±10%) 3个周期 或 检测到车辆处于碰撞模式 (VehMd == 1_CRASH & VehMdV == 1_Valid)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "AirbagDpl",
+      "AirbagDplInvsn",
+      "VehCrashTyp",
+      "CrashOut",
+      "VehMd",
+      "VehMdV"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0377",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险灯开关模块 HzrdLightSwMdl 输出 VehCrashHazdReq = 0x0 (Off)",
+    "relation": "输出为",
+    "tail": "危险灯开关模块 HzrdLightSwMdl 持续发送 VehCrashHazdReq = 0x0 (Off) 至 HzrdLghtCtrlMdl,至少发送三帧",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "HzrdLightSwMdl",
+      "VehCrashHazdReq",
+      "HzrdLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0377",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险灯开关模块 HzrdLightSwMdl 的状态保持条件",
+    "relation": "状态保持条件",
+    "tail": "在满足触发条件的情况下持续发送 VehCrashHazdReq = 0x0 (Off) 至 HzrdLghtCtrlMdl,至少发送三帧",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "HzrdLightSwMdl",
+      "VehCrashHazdReq",
+      "HzrdLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0377",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

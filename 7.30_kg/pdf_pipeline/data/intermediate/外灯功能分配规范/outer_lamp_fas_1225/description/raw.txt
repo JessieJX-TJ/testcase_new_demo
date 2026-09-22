@@ -1,0 +1,44 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior lamp function) 的车辆碰撞与紧急制动请求信号分配规范",
+  "row_semantics": "表格按功能类别（如AirbagDpl、Crash_Out等）组织，每一行描述一个特定的控制请求或状态输出，以及其对应的信号定义和传输路径。",
+  "column_semantics": "第一列为空白，第二列为功能名称；第三列起为信号传输路径或控制器模块列表（CANFD, SDM, LHZCU, IBS, IPD等），最后一列为详细信号定义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "AirbagDpl",       // 安全气囊展开请求
+    "AirbagDplInvsn",  // 安全气囊展开反向请求
+    "Crash_Out",       // 碰撞发生输出
+    "EmgcBrkA",        // 紧急制动请求
+    "RCWWrnng"         // 智驾后碰撞双闪灯请求
+  ],
+  "core_conditions": [
+    "VehCrshTyp_2_Side_Crash",   // 侧碰类型
+    "VehCrshTyp_3_Rear_Crash",   // 后碰类型
+    "VehCrshTyp_4_Pedestrian_Crash", // 行人碰撞类型
+    "AirbagDpl_0_False",         // 安全气囊未展开
+    "AirbagDpl_1_True",          // 安全气囊已展开
+    "AirbagDplInvsn_0_AirbagDeployed", // 安全气囊已展开（反向）
+    "AirbagDplInvsn_1_NoAirbagDeployed", // 安全气囊未展开（反向）
+    "EmgcBrkA_0_False",          // 紧急制动未请求
+    "EmgcBrkA_1_True",           // 紧急制动已请求
+    "EmgcBrkAV_0_Valid",         // 紧急制动验证有效
+    "EmgcBrkAV_1_Invalid",       // 紧急制动验证无效
+    "占空比为20%"                // Crash_Out信号的占空比条件
+  ],
+  "core_outputs": [
+    "CANFD",     // 控制区域网络总线
+    "SDM",       // 安全气囊控制模块
+    "LHZCU",     // 左前车身控制单元
+    "IBS",       // 智能刹车系统
+    "IPD"        // 智能泊车系统
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "Crash_Out: 占空比为20%" // 特定信号的时序约束
+  ],
+  "engineering_interpretation": "该表格定义了车辆在不同碰撞类型下（侧碰、后碰、行人碰撞）以及紧急制动场景中，各控制模块（如CANFD、SDM、LHZCU等）之间信号的分配与交互规则，主要用于验证车辆安全系统（如安全气囊、紧急制动）在特定工况下的正确触发与响应。",
+  "uncertain_points": []
+}
+```

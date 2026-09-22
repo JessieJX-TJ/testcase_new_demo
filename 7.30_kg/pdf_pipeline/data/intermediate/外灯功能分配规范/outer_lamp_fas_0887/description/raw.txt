@@ -1,0 +1,27 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "整车外灯状态信号定义与硬件接口规范",
+  "row_semantics": "表格按外灯功能模块（如左前转向灯、右前转向灯等）逐项列出其状态信号的定义、传输方式及硬件连接状态。",
+  "column_semantics": "列标题从左到右依次表示：信号类型（输出）、内部信号来源、控制器/模块名称（LHZCU, RHZCU, RZCU）、以及硬线状态。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "FLDircnLghtSts_HW", // 左前转向灯状态
+    "FRDircnLghtSts_HW", // 右前转向灯状态
+    "RLDircnLghtSts_HW", // 左后转向灯状态
+    "RRDircnLghtSts_HW"  // 右后转向灯状态
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    "0x0=Off",
+    "0x1=On"
+  ],
+  "core_faults": [
+    "Reversed"
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯（转向灯）的状态信号（如开启/关闭）在不同控制器（如LHZCU、RHZCU）和通信协议（如CANFD）下的具体编码和传输方式，可用于验证外灯控制信号的正确性及硬件接口的兼容性。",
+  "uncertain_points": []
+}
+```

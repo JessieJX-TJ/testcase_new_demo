@@ -1,0 +1,42 @@
+{
+  "table_type": "state_table",
+  "topic": "转向灯开关状态检测与内部信号跳转逻辑",
+  "row_semantics": "描述在转向灯开关断开时的系统行为",
+  "column_semantics": "展示当转向灯拨杆开关关闭时，系统如何检测并处理转向灯开关状态，并进行内部信号跳转",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "转向灯开关",
+      "type": "input_signal",
+      "description": "表示转向灯开关的状态"
+    },
+    {
+      "name": "DircnIndLghtSwSts",
+      "type": "output_signal",
+      "description": "内部信号，表示转向灯开关的状态值"
+    },
+    {
+      "name": "转向灯开关预处理模块",
+      "type": "controller_module",
+      "description": "负责检测转向灯开关状态并执行内部信号跳转的模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "转向灯开关断开",
+      "description": "当转向灯拨杆开关关闭（硬线开关断开）时"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DircnIndLghtSwSts",
+      "value": "0x0",
+      "description": "内部信号被设置为0x0，对应于DircnIndLghtSwSts_0_off状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证当转向灯开关断开时，转向灯开关预处理模块是否能够正确检测开关状态并将内部信号DircnIndLghtSwSts跳转至0x0（即DircnIndLghtSwSts_0_off状态）。",
+  "uncertain_points": []
+}

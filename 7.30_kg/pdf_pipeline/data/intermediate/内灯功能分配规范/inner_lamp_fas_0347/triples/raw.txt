@@ -1,0 +1,106 @@
+```json
+[
+  {
+    "head": "Vehicle Interior Light Behavior",
+    "relation": "depends on",
+    "tail": "VehLckSts (Vehicle Lock Status)",
+    "triple_type": "state dependency",
+    "evidence_terms": [
+      "VehLckSts_3_Exterior_Locked",
+      "VehLckSts_4_Super_locked",
+      "VehLckSts_7_Unknow"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Vehicle Interior Light Behavior",
+    "relation": "depends on",
+    "tail": "VehMd (Vehicle Mode)",
+    "triple_type": "state dependency",
+    "evidence_terms": [
+      "VehMd_0_NORMAL",
+      "VehMd_1_CRASH",
+      "VehMd_2_FACTORY",
+      "VehMd_3_TRANSPORT",
+      "VehMd_4_DYNO",
+      "VehMd_5_EXHIBITION",
+      "VehMd_8_Engineering",
+      "VehMd_9_Service"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Vehicle Interior Light Behavior",
+    "relation": "depends on",
+    "tail": "VehMdV (Vehicle Mode Validation)",
+    "triple_type": "state dependency",
+    "evidence_terms": [
+      "VehMdV_0_Invalid",
+      "VehMdV_1_Valid"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Interior Light On/Off",
+    "relation": "input from",
+    "tail": "CAN bus",
+    "triple_type": "input dependency",
+    "evidence_terms": [
+      "CAN"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Interior Light On/Off",
+    "relation": "input from",
+    "tail": "ZXD module",
+    "triple_type": "input dependency",
+    "evidence_terms": [
+      "ZXD"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Interior Light On/Off",
+    "relation": "input from",
+    "tail": "LHZCU module",
+    "triple_type": "input dependency",
+    "evidence_terms": [
+      "LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Interior Light On/Off",
+    "relation": "input from",
+    "tail": "VS SST S module",
+    "triple_type": "input dependency",
+    "evidence_terms": [
+      "VS",
+      "SST",
+      "S"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "VehMd (Vehicle Mode) is Valid",
+    "relation": "requires",
+    "tail": "VehMdV = VehMdV_1_Valid",
+    "triple_type": "validation requirement",
+    "evidence_terms": [
+      "VehMdV_1_Valid"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "VehMd (Vehicle Mode) is Invalid",
+    "relation": "results in",
+    "tail": "VehMdV = VehMdV_0_Invalid",
+    "triple_type": "validation result",
+    "evidence_terms": [
+      "VehMdV_0_Invalid"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "HMI 子系统显示左侧转向灯状态",
+    "relation": "触发条件",
+    "tail": "CAN 信号状态为 0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["CAN 信号状态", "0x1", "指示灯显示", "声音提醒"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI 子系统不显示左侧转向灯状态",
+    "relation": "抑制条件",
+    "tail": "CAN 信号状态为 0x0",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["CAN 信号状态", "0x0", "指示灯显示", "声音提醒"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI 子系统显示左侧转向灯故障",
+    "relation": "触发条件",
+    "tail": "DircnLghtFltsts = 0x1",
+    "triple_type": "故障响应",
+    "evidence_terms": ["DircnLghtFltsts", "0x1", "左侧转向灯故障", "故障弹窗提醒"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI 子系统显示右侧转向灯故障",
+    "relation": "触发条件",
+    "tail": "DircnLghtFltsts = 0x2",
+    "triple_type": "故障响应",
+    "evidence_terms": ["DircnLghtFltsts", "0x2", "右侧转向灯故障", "故障弹窗提醒"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI 子系统显示危险告警灯故障",
+    "relation": "触发条件",
+    "tail": "DircnLghtFltsts = 0x3",
+    "triple_type": "故障响应",
+    "evidence_terms": ["DircnLghtFltsts", "0x3", "危险告警灯故障", "故障弹窗提醒"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI 子系统根据转向灯 CAN 信号故障状态做故障弹窗提醒",
+    "relation": "依赖于",
+    "tail": "转向灯 CAN 信号故障状态",
+    "triple_type": "故障响应",
+    "evidence_terms": ["HMI 子系统", "转向灯 CAN 信号故障状态", "故障弹窗提醒"],
+    "confidence_note": "high"
+  }
+]
+```

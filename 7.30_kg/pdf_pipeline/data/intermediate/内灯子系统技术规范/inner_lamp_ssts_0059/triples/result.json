@@ -1,0 +1,100 @@
+[
+  {
+    "head": "氛围灯切换亮度",
+    "relation": "触发条件",
+    "tail": "接收到氛围灯本地控制模块亮度变化请求信号 DoorFL1LampBrtnsCmd_1=0x00(No Request)变化为！=0x00(No Request)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "DoorFL1LampBrtnsCmd_1",
+      "Brightness Change Request"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0059",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯保持当前亮度",
+    "relation": "状态保持条件",
+    "tail": "接收到 DoorFL1LampBrtnsCmd_1 信号为 0x65-0xFF",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "DoorFL1LampBrtnsCmd_1",
+      "Reserved Range"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0059",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "接收到氛围灯本地控制模块的请求信号 DoorFL1LampOnOff_1=0x0(OFF)",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "DoorFL1LampOnOff_1",
+      "Off Command"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0059",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯直接关闭",
+    "relation": "故障响应",
+    "tail": "氛围灯模块出现过压、欠压故障",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "Overvoltage/Undervoltage Fault",
+      "Module Failure"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0059",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯直接关闭",
+    "relation": "超时约束",
+    "tail": "超过一定时间(默认6s)未接收到ZCU的LIN信号",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "LIN Signal Timeout",
+      "ZCU Communication"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0059",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯维持上一时刻状态值",
+    "relation": "故障响应",
+    "tail": "当氛围灯亮度值 DoorFL1LampBrtnsCmd_1异常",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "Brightness Value Abnormality",
+      "DoorFL1LampBrtnsCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0059",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯处于关闭状态",
+    "relation": "前提条件",
+    "tail": "氛围灯切换亮度",
+    "triple_type": "IF-THEN",
+    "evidence_terms": [
+      "Ambient Lamp Closed State",
+      "Brightness Change"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0059",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

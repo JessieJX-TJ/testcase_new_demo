@@ -1,0 +1,149 @@
+```json
+[
+  {
+    "head": "拖挂车双跳灯开启",
+    "relation": "前提条件",
+    "tail": "车辆具备拖车模式功能 (InsdFnCfgVehDragMd=0x1)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "前置条件",
+      "1、车辆具备拖车模式功能"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车双跳灯开启",
+    "relation": "前提条件",
+    "tail": "拖挂模式开启 (VehDragMdSts=0x1=VehDragMdSts_1_On)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "前置条件",
+      "2、拖挂模式开启"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车双跳灯开启",
+    "relation": "触发条件",
+    "tail": "[转向灯开关控制模块LHZCU]信号发送为 RLDircnLghtCtrl=0x1 或 RRDircnLghtCtrl=0x1",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "触发条件",
+      "RLDircnLghtCtrl=0x1",
+      "RRDircnLghtCtrl=0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车双跳灯开启",
+    "relation": "依赖于",
+    "tail": "RZCU判断前置条件满足",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "执行动作",
+      "1、RZCU判断前置条件满足"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车双跳灯开启",
+    "relation": "依赖于",
+    "tail": "RZCU将订阅的转向灯模式状态 DircnLghtMdSts=0x0",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "执行动作",
+      "2、RZCU将订阅的转向灯模式状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车双跳灯开启",
+    "relation": "依赖于",
+    "tail": "TDM接收到 TrlrDirLghtOnReq=0x3 且 TrlrDirLghtMdSts=0x0",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "执行动作",
+      "3、TDM根据接收到的"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车双跳灯关闭",
+    "relation": "前提条件",
+    "tail": "拖挂模式开启 (VehDragMdSts=0x1=VehDragMdSts_1_On)",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "前置条件",
+      "2、拖挂模式开启"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车双跳灯关闭",
+    "relation": "触发条件",
+    "tail": "[转向灯开关控制模块LHZCU]信号发送为 RLDircnLghtCtrl=0x0 或 RRDircnLghtCtrl=0x0",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "触发条件",
+      "RLDircnLghtCtrl=0x0",
+      "RRDircnLghtCtrl=0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车双跳灯关闭",
+    "relation": "依赖于",
+    "tail": "TDM接收到 TrlrDirLghtOnReq=0x0 且 TrlrDirLghtMdSts=0x1",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "执行动作",
+      "3、TDM根据接收到的"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车双跳灯状态反馈",
+    "relation": "输出为",
+    "tail": "TrlrDirLghtSts",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "执行动作",
+      "4、TDM将拖车转向灯状态和故障状态反馈给LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车双跳灯故障状态反馈",
+    "relation": "输出为",
+    "tail": "DircnLghtFltsts",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "执行动作",
+      "4、TDM将拖车转向灯状态和故障状态反馈给LHZCU"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车双跳灯状态反馈",
+    "relation": "输入为",
+    "tail": "TrlrDirLghtSts",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "执行动作",
+      "5、LHZCU判断前置条件满足"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "拖挂车双跳灯状态反馈",
+    "relation": "输出为",
+    "tail": "DircnLghtSts",
+    "triple_type": "工程规则",
+    "evidence_terms": [
+      "执行动作",
+      "5、LHZCU判断前置条件满足"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,99 @@
+{
+  "table_type": "logic_table",
+  "topic": "Reading Lamp Control Logic for Large Display",
+  "row_semantics": "Step-by-step sequence of control logic and processing stages involved in handling the reading lamp switch operation on a large display.",
+  "column_semantics": "Each column represents a distinct module or component involved in the reading lamp control process, from user input to hardware driver execution.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "MapLampHMI",
+      "type": "controller",
+      "description": "User interface controller for the large display reading lamp."
+    },
+    {
+      "name": "PersonalizationData",
+      "type": "module",
+      "description": "Module responsible for personalization data processing related to the reading lamp."
+    },
+    {
+      "name": "MapLampCtrl",
+      "type": "controller",
+      "description": "Application-level controller for the reading lamp."
+    },
+    {
+      "name": "MapLampLocalCtrl",
+      "type": "controller",
+      "description": "Local control module for the reading lamp."
+    },
+    {
+      "name": "MapLampXXDrv",
+      "type": "driver",
+      "description": "Hardware driver for the reading lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "大屏开关阅读灯",
+      "type": "input_signal",
+      "description": "Signal indicating the user's action to turn the reading lamp on or off via the large display."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LIN信号",
+      "type": "output_signal",
+      "description": "Signal sent over LIN bus to the hardware driver for physical lamp control."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "step": 2,
+      "condition": "开关大屏处理",
+      "constraint": "<=20ms"
+    },
+    {
+      "step": 3,
+      "condition": "个性化服务调用",
+      "constraint": "<=30ms"
+    },
+    {
+      "step": 4,
+      "condition": "个性化处理",
+      "constraint": "<=50ms"
+    },
+    {
+      "step": 5,
+      "condition": "个性化服务调用",
+      "constraint": "<=30ms"
+    },
+    {
+      "step": 6,
+      "condition": "应用控制处理",
+      "constraint": "<=50ms"
+    },
+    {
+      "step": 7,
+      "condition": "基础服务调用",
+      "constraint": "<=50ms"
+    },
+    {
+      "step": 8,
+      "condition": "本地控制处理",
+      "constraint": "<=30ms"
+    },
+    {
+      "step": 9,
+      "condition": "LIN信号",
+      "constraint": "<=50ms"
+    },
+    {
+      "step": 10,
+      "condition": "驱动处理",
+      "constraint": "<=20ms"
+    }
+  ],
+  "engineering_interpretation": "This table defines the sequential control logic and timing constraints for the reading lamp activation/deactivation process initiated by the user through the large display. It is used to verify that each stage of the control flow (from HMI input to hardware driver execution) meets its specified timing requirements.",
+  "uncertain_points": []
+}

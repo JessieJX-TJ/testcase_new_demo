@@ -1,0 +1,89 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 方向灯控制",
+  "row_semantics": "表格的每一行代表一个独立的方向灯控制功能实例，分别对应左后和右后转向灯的控制。",
+  "column_semantics": {
+    "第一列": "功能描述，指明该行控制的是哪个方向灯（DirectionLight）及其具体操作（ControlDirectionLight）。",
+    "第二列": "资源消耗类型，如SOA（Service Oriented Architecture），表示该功能的实现方式或依赖。",
+    "第三列至第五列": "涉及的控制器/模块名称，包括SOA、RZCU、ICB等，表明哪些系统组件参与了该功能的执行。",
+    "第六列": "未明确标识，可能为预留字段或特定场景下的扩展。",
+    "第七列": "控制方式，分为硬线控制和网络控制，说明了信号传输的物理或逻辑路径。",
+    "第八列": "详细的功能参数配置，包括接口名称、参数名、实例ID以及具体的ON/OFF状态定义。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "description": "外部灯光中的方向灯，用于指示车辆转向意图。",
+      "sub_entities": [
+        {
+          "name": "LeftDirectionLight",
+          "description": "左后方向灯，用于控制车辆左转时的灯光闪烁。",
+          "instance_id": 3
+        },
+        {
+          "name": "RightDirectionLight",
+          "description": "右后方向灯，用于控制车辆右转时的灯光闪烁。",
+          "instance_id": 4
+        }
+      ]
+    },
+    {
+      "name": "ControlDirectionLight",
+      "description": "控制方向灯亮灭的具体操作。",
+      "parameters": [
+        {
+          "name": "Interface Name",
+          "value": "ControlDirectionLight"
+        },
+        {
+          "name": "Parameter Name",
+          "value": "{DirectionLightReq}"
+        },
+        {
+          "name": "InstanceID",
+          "value": "3 or 4"
+        },
+        {
+          "name": "ON/OFF States",
+          "value": "0x0=OFF; 0x1=ON;"
+        }
+      ]
+    },
+    {
+      "name": "Controllers/Modules",
+      "description": "参与方向灯控制的电子控制单元或软件模块。",
+      "modules": [
+        "SOA",
+        "RZCU",
+        "ICB"
+      ]
+    },
+    {
+      "name": "Control Method",
+      "description": "信号传输的物理或逻辑路径。",
+      "methods": [
+        "Hardline Control",
+        "Network Control"
+      ]
+    }
+  ],
+  "core_conditions": [
+    "周期性调用ControlDirectionLight服务接口",
+    "根据需求点亮或熄灭指定方向灯"
+  ],
+  "core_outputs": [
+    "DirectionLight (Left or Right) ON/OFF状态变化"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "周期性调用频率需满足车辆转向灯闪烁标准"
+  ],
+  "engineering_interpretation": "该表格定义了车辆外灯中方向灯的控制逻辑，包括左后和右后转向灯的控制参数、涉及的控制器模块以及控制方式（硬线或网络）。可用于验证方向灯在不同控制模式下是否能正确响应ON/OFF指令，并确保其按照预定周期闪烁。",
+  "uncertain_points": [
+    "第六列的具体用途未明确说明。",
+    "未提及异常情况下的处理机制（如故障模式）。",
+    "未明确周期性调用的具体时间间隔要求。"
+  ]
+}

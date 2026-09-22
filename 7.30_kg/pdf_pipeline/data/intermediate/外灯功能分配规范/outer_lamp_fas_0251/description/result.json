@@ -1,0 +1,42 @@
+{
+  "table_type": "other",
+  "topic": "外灯功能分配规范",
+  "row_semantics": "表格中的每一行代表一个具体的外灯功能或控制逻辑，描述了危险警报灯、外灯组合服务、ICB信号转换、驱动模块控制等不同场景下的功能实现细节。",
+  "column_semantics": "表格没有明确的列结构，内容以编号条目形式呈现，每一条目包含功能描述、控制逻辑、事件触发条件及相关的信号状态。",
+  "has_merged_cells": false,
+  "header_levels": 2,
+  "core_entities": [
+    "危险警报灯自动控制模块 LHZCU",
+    "外灯组合服务 ICB",
+    "ICB",
+    "驱动模块 LHZCU/RHZCU/RZCU",
+    "SDM",
+    "ICB"
+  ],
+  "core_conditions": [
+    "VehIntrusionPrevnHzrdLmpReq",
+    "DirectionLight.DirectionLightReq",
+    "ExteriorLightSwitchProcess",
+    "DirectionLightStatus",
+    "DirectionLightSts_HW"
+  ],
+  "core_outputs": [
+    "FLDirclnLghtCtrl",
+    "FRDirclnLghtCtrl",
+    "RLDirclnLghtCtrl",
+    "RRDirclnLghtCtrl",
+    "DirenLghtFucProStatus",
+    "DirenLghtFucProSta",
+    "DirectionLight.FlashSts_HW"
+  ],
+  "core_faults": [
+    "hazard",
+    "DirectionLight.FlashSts_HW_False"
+  ],
+  "core_timing_constraints": [
+    "60ms",
+    "1周期"
+  ],
+  "engineering_interpretation": "该表格详细定义了整车外灯系统的功能分配与控制逻辑，可用于验证危险警报灯闪烁、外灯组合服务延时控制、ICB信号转换为CAN信号、以及双闪灯熄灭等功能的正确性。",
+  "uncertain_points": []
+}

@@ -1,0 +1,43 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Reading Lamp Operation Parameters",
+  "row_semantics": "Specific configuration and behavior of the reading lamp under certain conditions",
+  "column_semantics": {
+    "保持源": "The source or condition that triggers the parameter setting (e.g., a specific mode or state)",
+    "保持原因": "The reason or description for maintaining the parameter, often reiterating the source condition",
+    "备注": "Additional notes or context regarding the parameter setting"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RHZCU",
+      "type": "controller_module",
+      "description": "Controller responsible for managing the reading lamp functionality"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Reading Lamp State",
+      "description": "The state of the reading lamp when it is turned off and enters standby or sleep mode"
+    },
+    {
+      "name": "Reading Lamp On Duration",
+      "description": "The duration for which the reading lamp remains on before turning off"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal": "Reading Lamp",
+      "condition": "Turned off and enters standby or sleep mode",
+      "duration": "15min",
+      "description": "The reading lamp remains on for 15 minutes before turning off when entering standby or sleep mode"
+    }
+  ],
+  "engineering_interpretation": "This table specifies the operational parameters for the reading lamp, particularly its on duration of 15 minutes before turning off when the vehicle enters standby or sleep mode. It is used to verify that the RHZCU correctly enforces this timing constraint.",
+  "uncertain_points": []
+}
+```

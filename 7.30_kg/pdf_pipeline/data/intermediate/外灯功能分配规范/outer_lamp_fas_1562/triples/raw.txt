@@ -1,0 +1,75 @@
+```json
+[
+  {
+    "head": "后雾灯控制请求重发",
+    "relation": "前提条件",
+    "tail": "超时2s未收到RearFogLight.RearFogLightControl.RearFogLightCtrResp=0x0=ControlSuccess的反馈",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLghtFucProCtrl.RearFogLghtFucProCtrlReq",
+      "RearFogLghtFucProCtrl.RearFogLghtFucProCtrlResp"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯控制请求重发",
+    "relation": "触发条件",
+    "tail": "请求状态未变且尝试按照<=50ms周期重发3次",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RearFogLight.RearFogLightControl.RearFogLightCtrReq",
+      "RearFogLight.RearFogLightControl.RearFogLightCtrResp",
+      "50ms",
+      "3次"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "停止发送后雾灯控制请求",
+    "relation": "超时约束",
+    "tail": "尝试重发3次后仍未反馈请求成功",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "50ms",
+      "3次",
+      "ControlSuccess"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "前提条件",
+    "tail": "消费端在服务发现订阅或者外灯控制请求后的500ms内未收到状态反馈",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Onchange",
+      "500ms",
+      "Getter()"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "触发条件",
+    "tail": "针对发送类型为Onchange的外灯状态服务",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Onchange",
+      "LHZCU",
+      "ICB_S32G M",
+      "ICB_8295"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "依赖于",
+    "tail": "状态服务Getter()方式",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "Getter()"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

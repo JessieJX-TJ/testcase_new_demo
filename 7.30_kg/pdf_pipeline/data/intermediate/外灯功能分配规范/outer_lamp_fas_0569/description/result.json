@@ -1,0 +1,66 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 (Exterior lamp function)",
+  "row_semantics": "定义了方向灯状态的参数配置，包括左转向灯和右转向灯的状态。",
+  "column_semantics": {
+    "第一列": "功能模块路径 (DirectionLight.DirectionLightStatus)",
+    "第二列": "消费 (Consumption)",
+    "第三列": "SOA (Service-Oriented Architecture)",
+    "第四列": "ICB (Internal Communication Bus)",
+    "第五列": "LHZCU (Local Host Control Unit)",
+    "第六列": "空列",
+    "第七列": "网络状态 (Network Status)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "功能模块",
+      "description": "外灯功能模块，包含方向灯状态信息。"
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "子模块/状态",
+      "description": "方向灯的具体状态，区分左转向灯和右转向灯。"
+    },
+    {
+      "name": "SOA",
+      "type": "通信接口",
+      "description": "面向服务架构下的通信接口，用于订阅方向灯状态。"
+    },
+    {
+      "name": "ICB",
+      "type": "通信总线",
+      "description": "内部通信总线，用于模块间数据传输。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器",
+      "description": "本地主机控制单元，负责处理方向灯相关的逻辑。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "实例标识符",
+      "description": "用于区分不同方向灯实例的ID，如7表示左转向灯，8表示右转向灯。"
+    },
+    {
+      "name": "DirectionLightSta",
+      "type": "状态参数",
+      "description": "方向灯状态参数，取值范围为0x0=OFF, 0x1=ON, 0x2=Unknown。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightStatus",
+      "type": "输出信号",
+      "description": "表示方向灯当前的状态（关闭、开启或未知）。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯系统中方向灯状态的参数配置，主要用于测试SOA接口对左、右转向灯状态的订阅功能，验证LHZCU是否能正确解析并上报方向灯状态。",
+  "uncertain_points": []
+}

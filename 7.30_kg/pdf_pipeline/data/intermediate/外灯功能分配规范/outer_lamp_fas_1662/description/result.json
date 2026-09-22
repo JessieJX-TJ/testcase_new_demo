@@ -1,0 +1,76 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light Control Interface Specifications",
+  "row_semantics": "Each row represents a specific direction light control function and its associated technical parameters.",
+  "column_semantics": {
+    "A": "Function Name (e.g., DirectionLight.ControlDirectionLight)",
+    "B": "Consumption Type (e.g., SOA, RZCU, ICB)",
+    "C": "Control Method (e.g., Hardwire Control, Network Control)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DirectionLight.ControlDirectionLight",
+      "type": "function",
+      "description": "Service interface for controlling direction lights."
+    },
+    {
+      "name": "ControlDirectionLight",
+      "type": "interface",
+      "description": "The name of the service interface used to control direction lights."
+    },
+    {
+      "name": "DirectionLightReq",
+      "type": "parameter",
+      "description": "Parameter structure passed to the interface for specifying control commands."
+    },
+    {
+      "name": "InstanceID",
+      "type": "identifier",
+      "description": "Unique identifier for each instance of the control request."
+    },
+    {
+      "name": "0x0=OFF",
+      "type": "command",
+      "description": "Command to turn off the direction light."
+    },
+    {
+      "name": "0x1=ON",
+      "type": "command",
+      "description": "Command to turn on the direction light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Left Rear Turn Signal",
+      "description": "Controls the left rear turning light."
+    },
+    {
+      "name": "Right Rear Turn Signal",
+      "description": "Controls the right rear turning light."
+    },
+    {
+      "name": "Left Front Turn Signal",
+      "description": "Controls the left front turning light."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Direction Light State",
+      "description": "The state of the direction light (on/off)."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Periodic Invocation",
+      "description": "The service interface is periodically called to control the lights."
+    }
+  ],
+  "engineering_interpretation": "This table defines the technical specifications for controlling various direction lights in a vehicle using a standardized service interface. It outlines the function names, parameter structures, and control methods for different types of direction lights (left rear, right rear, left front). The table is used to verify that the correct interface is invoked with the appropriate parameters to achieve the desired light control behavior.",
+  "uncertain_points": [
+    "The exact timing intervals for periodic invocation are not specified.",
+    "The specific implementation details of 'SOA', 'RZCU', and 'ICB' are not provided."
+  ]
+}

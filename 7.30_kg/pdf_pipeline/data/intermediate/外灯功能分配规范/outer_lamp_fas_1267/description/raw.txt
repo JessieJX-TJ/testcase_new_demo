@@ -1,0 +1,45 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 后雾灯控制与状态",
+  "row_semantics": "表格按功能模块划分，每一行代表一个独立的接口或服务定义，描述了后雾灯的控制方式和状态获取机制。",
+  "column_semantics": "列标题表示该接口或服务涉及的系统组件或参与者，包括：消费方 (Consumption)、SOA (Service-Oriented Architecture)、RZCU (Rear Zone Control Unit)、ICB (Integrated Control Box)、LHZCU (Left/Right Headlight Zone Control Unit)。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RearFogLightControl",
+      "type": "function",
+      "description": "后雾灯控制接口，用于点亮或熄灭后雾灯。"
+    },
+    {
+      "name": "RearFogLightState",
+      "type": "function",
+      "description": "后雾灯状态查询接口，用于获取后雾灯当前的工作状态。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "system",
+      "description": "外部灯光控制系统，包含后雾灯状态查询功能。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RearFogLightCtrlReq",
+      "type": "input_signal",
+      "description": "后雾灯控制请求参数，可设置为OFF（0x0）或ON（0x1）。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogLightSta",
+      "type": "output_signal",
+      "description": "后雾灯状态参数，可返回OFF（0x0）、ON（0x1）或Error（0x2），以及Unknown（0x2）状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了后雾灯的控制接口及其状态反馈机制，可用于验证后雾灯在不同控制请求下的点亮/熄灭行为，以及其状态反馈的准确性。",
+  "uncertain_points": []
+}
+```

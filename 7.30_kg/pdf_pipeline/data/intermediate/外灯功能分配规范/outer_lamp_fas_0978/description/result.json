@@ -1,0 +1,57 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 远光灯状态订阅",
+  "row_semantics": "表格定义了两个独立的信号接口，分别用于订阅左侧和右侧远光灯的状态。",
+  "column_semantics": "表格包含以下列：功能描述、服务类型（SOA/ICB）、控制器（LHZCU）以及具体的信号参数定义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "MainBeamLightStatus",
+      "type": "功能名",
+      "description": "表示远光灯的状态信息"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Local High Voltage Central Unit，本地高压中央单元，负责处理与高压相关的控制逻辑"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "InstanceID",
+      "type": "实例ID",
+      "description": "区分不同实例的标识符",
+      "values": [
+        {
+          "value": "1",
+          "description": "代表左侧远光灯实例"
+        },
+        {
+          "value": "2",
+          "description": "代表右侧远光灯实例"
+        }
+      ]
+    },
+    {
+      "name": "MainBeamLightSta",
+      "type": "输入信号",
+      "description": "远光灯状态参数",
+      "values": [
+        {
+          "value": "0x0=OFF",
+          "description": "远光灯关闭"
+        },
+        {
+          "value": "0x1=ON",
+          "description": "远光灯开启"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证LHZCU是否能够正确订阅并上报左侧和右侧远光灯的状态，确保在不同状态下（开/关）系统能够准确识别和响应。",
+  "uncertain_points": []
+}

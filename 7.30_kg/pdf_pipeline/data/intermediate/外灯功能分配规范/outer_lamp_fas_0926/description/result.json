@@ -1,0 +1,37 @@
+{
+  "table_type": "signal_table",
+  "topic": "转向灯闪烁状态反馈给TDM",
+  "row_semantics": "表示转向灯闪烁状态的信号值及其反馈行为",
+  "column_semantics": "无明确列，单行描述信号值与反馈关系",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "TurnlampFltSts",
+      "type": "signal",
+      "description": "转向灯闪烁状态信号"
+    },
+    {
+      "name": "TDM",
+      "type": "controller",
+      "description": "车身域控制器（TDM）"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "TurnlampFltSts",
+      "value": "0x0",
+      "description": "转向灯闪烁状态为0x0"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "TurnlampFltSts_0_NoFlr",
+      "description": "反馈给TDM的转向灯闪烁状态信号值为0x0且无故障"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证当转向灯闪烁状态信号值为0x0时，系统是否正确反馈给TDM，确保信号传输的准确性和完整性。",
+  "uncertain_points": []
+}

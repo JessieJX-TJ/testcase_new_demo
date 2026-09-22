@@ -1,0 +1,66 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Direction Light Control Logic",
+  "row_semantics": "Each row represents a distinct state or condition in the direction light control process.",
+  "column_semantics": {
+    "1": "Precondition conditions that must be met before entering the state.",
+    "2": "Trigger conditions that cause the system to enter this state.",
+    "3": "Actions performed by the system while in this state.",
+    "4": "Exit conditions that lead the system out of this state.",
+    "5": "Exception handling procedures for this state."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "Enable parameter for direction light feedback SOA (Safety Over-Ampere) protection."
+    },
+    {
+      "name": "RRDILightDrvMdl",
+      "type": "controller",
+      "description": "Right Rear Direction Indicator Light Driver Module, responsible for driving and controlling the right rear turn signal."
+    },
+    {
+      "name": "DILightCtrlMdl",
+      "type": "module",
+      "description": "Direction Light Control Module, which sends commands to control the direction lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DILightFbkSOAEnPrm==1",
+      "description": "The direction light feedback SOA enable parameter is set to 'Enable'."
+    },
+    {
+      "name": "DILightCtrlMdl.DirectionLightCtrlReq == 1 && InstanceID == 4",
+      "description": "The DILightCtrlMdl module sends a request to turn on the direction light with InstanceID 4."
+    },
+    {
+      "name": "DILightCtrlMdl.DirectionLightCtrlReq == 0 && InstanceID == 4",
+      "description": "The DILightCtrlMdl module sends a request to turn off the direction light with InstanceID 4."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RRDILightDrvMdl持续驱动右后转向灯输出(DILamp_RH_HSD)",
+      "description": "The RRDILightDrvMdl continuously drives the right rear turn signal output (DILamp_RH_HSD)."
+    },
+    {
+      "name": "RRDILightDrvMdl发送DirectionLightControl.DirectionLightSta==1至DILightCtrlMdl",
+      "description": "The RRDILightDrvMdl sends a status update indicating the direction light is on (DirectionLightSta==1) to the DILightCtrlMdl module."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "至少发送三帧",
+      "description": "The status update (DirectionLightSta==1) must be sent at least three frames to the DILightCtrlMdl module."
+    }
+  ],
+  "engineering_interpretation": "This table defines the state machine logic for controlling the right rear direction indicator light, including enabling conditions, trigger events, actions taken during the state, exit conditions, and timing requirements for status updates.",
+  "uncertain_points": []
+}
+```

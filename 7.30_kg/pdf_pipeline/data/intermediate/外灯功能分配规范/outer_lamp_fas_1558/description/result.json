@@ -1,0 +1,38 @@
+{
+  "table_type": "logic_table",
+  "topic": "转向灯开关控制模块 LHZCU 的功能逻辑与信号交互",
+  "row_semantics": "描述不同事件或状态下的系统行为和信号输出",
+  "column_semantics": "无明确列，内容为连续的文本描述，主要分为事件触发、信号发送/接收、状态反馈等逻辑分支",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "LHZCU (转向灯开关控制模块)",
+    "ICB (Inter-Controller Bus)",
+    "ExteriorLightSwitchProcess (外部灯光开关处理过程)",
+    "DirectionLight (方向灯)"
+  ],
+  "core_conditions": [
+    "转向灯 ON/OFF 状态",
+    "1.25Hz 频率闪烁周期 (50ms)",
+    "8个Cycle (400ms) 闪烁周期",
+    "流水模式使能状态",
+    "外灯组合服务 ICB 的配置需求"
+  ],
+  "core_outputs": [
+    "FLDirncLightCtrl, RLDirncLightCtrl (左右转向灯控制信号)",
+    "DirncLightFucProStatus (方向灯功能状态)",
+    "DirncLightMdSts (方向灯模式状态)",
+    "DirncLightFlits_HW (硬件方向灯闪烁状态)",
+    "DirectionLightErrorStatus (方向灯错误状态)"
+  ],
+  "core_faults": [
+    "DirectionLightErrorStatus (方向灯错误状态)"
+  ],
+  "core_timing_constraints": [
+    "1.25Hz 频率闪烁周期 (50ms)",
+    "8个Cycle (400ms) 闪烁周期",
+    "60ms 延时 (用于 ICB 信号转换)"
+  ],
+  "engineering_interpretation": "该表格详细定义了转向灯开关控制模块 (LHZCU) 在不同操作模式（如常规闪烁、流水模式）下的信号交互逻辑，包括与 ICB 的通信、内部状态管理以及与外部灯光开关处理过程的协调，可用于验证转向灯功能在各种场景下的正确性和时序准确性。",
+  "uncertain_points": []
+}

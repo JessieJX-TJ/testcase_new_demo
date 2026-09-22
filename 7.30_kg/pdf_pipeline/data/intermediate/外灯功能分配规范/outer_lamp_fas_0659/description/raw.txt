@@ -1,0 +1,70 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Rear Fog Light Function and Status Management",
+  "row_semantics": "Each row represents a specific internal variable or status related to the rear fog light system, including its control state, function status, error status, and control commands.",
+  "column_semantics": {
+    "Column1": "Variable Name/Status Description",
+    "Column2": "Internal Variable Value Before Service Assignment",
+    "Column3": "Description of Internal Variable Values",
+    "Column4": "Default Value",
+    "Column5": "Associated Controller/Module"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RearFogLightControl",
+      "type": "input_signal",
+      "description": "Received control command for the rear fog light."
+    },
+    {
+      "name": "RearFogLightFuCProsSta",
+      "type": "system_state",
+      "description": "Internal status of the rear fog light function and control logic."
+    },
+    {
+      "name": "RearFogLightSta",
+      "type": "system_state",
+      "description": "Current operational state of the rear fog light (ON/OFF/Unknown)."
+    },
+    {
+      "name": "RearFogLightErrSta",
+      "type": "fault_state",
+      "description": "Error status of the rear fog light system."
+    },
+    {
+      "name": "LHZ CU",
+      "type": "controller_module",
+      "description": "Controller Unit responsible for managing the rear fog light functions."
+    },
+    {
+      "name": "RZC",
+      "type": "controller_module",
+      "description": "Controller Unit responsible for receiving and processing rear fog light control commands."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "value": "0x00",
+      "description": "System is operating normally with no detected errors."
+    },
+    {
+      "name": "Error",
+      "value": "0x01",
+      "description": "An error has been detected in the rear fog light system."
+    },
+    {
+      "name": "Unknown",
+      "value": "0x02",
+      "description": "The system status is unknown or undefined."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the internal states, control signals, and error conditions for the rear fog light system, which can be used to verify the correct implementation of the rear fog light functionality, including its activation/deactivation logic, error handling, and communication with associated controller units.",
+  "uncertain_points": []
+}
+```

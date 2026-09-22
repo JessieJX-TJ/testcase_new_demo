@@ -1,0 +1,66 @@
+{
+  "table_type": "signal_table",
+  "topic": "阅读灯开关状态信号处理与控制逻辑",
+  "row_semantics": "表格定义了基于阅读灯开关状态信号的触发条件、执行动作、退出条件以及异常处理规则。",
+  "column_semantics": {
+    "第一列": "描述了不同阶段或类型的条件/动作类型（如前置条件、触发条件、执行动作等）",
+    "第二列": "详细说明了对应条件或动作的具体内容"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "LHZCU",
+      "type": "控制器",
+      "description": "Local Headlight Zone Control Unit，负责接收和处理阅读灯开关状态信号，并进行消抖处理。"
+    },
+    {
+      "name": "ThirdRowMapLamp_LH_Sw_SIG",
+      "type": "输入信号",
+      "description": "第三排左侧阅读灯开关状态硬线信号，用于检测开关的开/关状态。"
+    },
+    {
+      "name": "ThirdRowMapLampLHSwReq",
+      "type": "输出信号",
+      "description": "发送给第三排左侧阅读灯开关传感采集模块的请求信号，值为0x1表示按压，0x0表示空闲。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "触发条件",
+      "description": "接收到ThirdRowMapLamp_LH_Sw_SIG为低电平信号，且LHZCU完成30ms消抖处理，消除较长线束干扰后触发动作。"
+    },
+    {
+      "condition": "退出条件",
+      "description": "接收到ThirdRowMapLamp_LH_Sw_SIG为悬空状态，同时ThirdRowMapLampLHSwReq发送0x0（Idle）信号后退出当前状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "ThirdRowMapLampLHSwReq",
+      "value": "0x1 (Press)",
+      "description": "当触发条件满足时，发送按压信号以激活阅读灯。"
+    },
+    {
+      "output": "ThirdRowMapLampLHSwReq",
+      "value": "0x0 (Idle)",
+      "description": "当退出条件满足时，发送空闲信号以停止阅读灯激活。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "短路故障",
+      "description": "LHZCU不做开关的短路故障处理，不发送0x3信号。",
+      "action": "持续发送0x1信号"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "消抖处理",
+      "value": "30ms",
+      "description": "LHZCU对接收到的阅读灯开关状态信号进行30ms消抖处理，以消除较长线束干扰。"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证LHZCU对阅读灯开关状态信号的正确接收、消抖处理、状态转换及异常情况下的行为，确保其在不同条件下能够正确发送相应的控制信号。",
+  "uncertain_points": []
+}

@@ -1,0 +1,109 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Exterior Light Switch Process and Dipped Beam Light Control Logic",
+  "row_semantics": "Each row represents a specific condition or state transition related to the exterior light switch process, particularly focusing on dipped beam light control.",
+  "column_semantics": "The table does not have explicit columns; instead, it uses a vertical list of conditions and their corresponding actions or states. Each entry describes a specific scenario involving input signals, internal states, and output signals.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "function",
+      "description": "Main process for handling exterior light switching logic."
+    },
+    {
+      "name": "CombLtFucProStatus",
+      "type": "input_signal",
+      "description": "Combined function status signal for lights."
+    },
+    {
+      "name": "CombLtSwSta",
+      "type": "input_signal",
+      "description": "Combined switch status signal for lights."
+    },
+    {
+      "name": "LDipdBeamLghtCtrl",
+      "type": "controller_module",
+      "description": "Controller module for left dipped beam light."
+    },
+    {
+      "name": "RDipdBeamLghtCtrl",
+      "type": "controller_module",
+      "description": "Controller module for right dipped beam light."
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Control Box, responsible for converting service interfaces/control signals to CAN signals."
+    },
+    {
+      "name": "LHZCU/RHZCU",
+      "type": "controller_module",
+      "description": "Left/Right Headlight Zone Control Unit, responsible for controlling near light lamps."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "CombLtFucProStatus = 0x2",
+      "description": "Only Dipped Beam Light ON"
+    },
+    {
+      "condition": "CombLtSwSta = 0x1",
+      "description": "Dipped Beam Light ON"
+    },
+    {
+      "condition": "LDipdBeamLghtCtrl_HW = 0x1",
+      "description": "Hardware command for left dipped beam light ON"
+    },
+    {
+      "condition": "RDipdBeamLghtCtrl_HW = 0x1",
+      "description": "Hardware command for right dipped beam light ON"
+    },
+    {
+      "condition": "InstanceID",
+      "description": "Instance identifier for different control requests"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "LDipdBeamLghtCtrl",
+      "type": "output_signal",
+      "description": "Control signal for left dipped beam light"
+    },
+    {
+      "output": "RDipdBeamLghtCtrl",
+      "type": "output_signal",
+      "description": "Control signal for right dipped beam light"
+    },
+    {
+      "output": "DippedBeamLightReqSts",
+      "type": "output_signal",
+      "description": "Request status for dipped beam light"
+    },
+    {
+      "output": "DippedBeamLightSta",
+      "type": "output_signal",
+      "description": "Status of dipped beam light"
+    },
+    {
+      "output": "DippedBeamLightErrorSta",
+      "type": "output_signal",
+      "description": "Error status of dipped beam light"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "DippedBeamLightErrorSta",
+      "type": "fault_status",
+      "description": "Indicates an error in the dipped beam light system"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the logic for controlling dipped beam lights based on various input signals and internal states. It outlines how the system responds to different commands and statuses, including turning the lights on/off, handling CAN signals, and reporting errors. This is crucial for verifying the correct operation of the exterior light system under various conditions.",
+  "uncertain_points": [
+    "The exact timing behavior of the system is not specified in this table.",
+    "The detailed implementation of the ICB's conversion logic is not provided."
+  ]
+}
+```

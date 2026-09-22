@@ -1,0 +1,87 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "DIDs (Data Identifiers) Internal Parameter Data Identifiers for Reverse Light Control",
+  "row_semantics": "Each row represents a specific internal parameter related to the reverse light system, including its description, value table, default value, remarks, and associated ECU.",
+  "column_semantics": {
+    "Short Name": "The short name of the parameter identifier.",
+    "Description": "A brief explanation of what the parameter represents.",
+    "Value Table": "A list of possible values for the parameter, each with a hexadecimal code and a corresponding meaning.",
+    "Default": "The default value of the parameter when not otherwise specified.",
+    "Remark": "Additional notes or explanations about the parameter's behavior or usage.",
+    "ECU": "The Electronic Control Unit responsible for this parameter."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RevsLightOpenCtrlRsn",
+      "type": "parameter",
+      "description": "Reason for reverse light opening control.",
+      "controller": "LHZCU"
+    },
+    {
+      "name": "RevsLightClsCtrlRsn",
+      "type": "parameter",
+      "description": "Reason for reverse light closing control.",
+      "controller": "LHZCU"
+    },
+    {
+      "name": "ReverseLghtFucProsSta",
+      "type": "parameter",
+      "description": "Internal variable value before service assignment for reverse light function status.",
+      "controller": "LHZCU"
+    },
+    {
+      "name": "ReverseLghtSta",
+      "type": "parameter",
+      "description": "Internal variable value before service assignment for reverse light status.",
+      "controller": "LHZCU"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RevsLightOpenCtrlRsn",
+      "conditions": [
+        "0x00_None",
+        "0x01_ReversePosition",
+        "0x02_SOARequestOn",
+        "0x04_OtherReason"
+      ]
+    },
+    {
+      "name": "RevsLightClsCtrlRsn",
+      "conditions": [
+        "0x00_None",
+        "0x01_NotReversePosition",
+        "0x02_SOARquestOff",
+        "0x03_UsageModeDissatisfaction",
+        "0x04_VehicleModeDissatisfaction",
+        "0x05_FactoryModeOverTime",
+        "0x06_OtherReason"
+      ]
+    },
+    {
+      "name": "ReverseLghtFucProsSta",
+      "conditions": [
+        "0x00_OFF",
+        "0x01_ON",
+        "0x02_Unknown"
+      ]
+    },
+    {
+      "name": "ReverseLghtSta",
+      "conditions": [
+        "0x00_OFF",
+        "0x01_ON",
+        "0x02_Unknown"
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines internal parameters used by the LHZCU (Light Headlamp Zone Control Unit) to track and manage the reasons for reverse light activation and deactivation, as well as their functional and status states. It is primarily used for diagnostic purposes and to ensure proper logging of reverse light control events.",
+  "uncertain_points": []
+}
+```

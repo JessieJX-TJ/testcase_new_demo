@@ -1,0 +1,86 @@
+{
+  "table_type": "logic_table",
+  "topic": "危险警报灯控制逻辑",
+  "row_semantics": "描述不同输入信号组合下的执行动作和系统状态",
+  "column_semantics": {
+    "输入": "定义了控制危险警报灯和方向灯的硬件控制信号值",
+    "执行动作": "描述在给定输入下，危险警报灯和方向灯的实际行为",
+    "备注": "提供额外信息或说明"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FLDircnLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "左前方向灯硬件控制信号"
+    },
+    {
+      "name": "FRDircnLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "右前方向灯硬件控制信号"
+    },
+    {
+      "name": "RLDircnLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "左后方向灯硬件控制信号"
+    },
+    {
+      "name": "RRDircnLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "右后方向灯硬件控制信号"
+    },
+    {
+      "name": "DirectionLight.ControlDirectionLight",
+      "type": "input_signal",
+      "description": "方向灯控制请求信号，包含四个实例ID"
+    },
+    {
+      "name": "危险警报灯驱动处理模块硬线驱动",
+      "type": "controller_module",
+      "description": "负责处理危险警报灯硬线驱动的电子控制单元"
+    },
+    {
+      "name": "危险警报灯点亮",
+      "type": "output_signal",
+      "description": "危险警报灯处于点亮状态"
+    },
+    {
+      "name": "危险警报灯熄灭",
+      "type": "output_signal",
+      "description": "危险警报灯处于熄灭状态"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "FLDircnLghtCtrl_HW = 0x1; FRDircnLghtCtrl_HW = 0x1; RLDircnLghtCtrl_HW = 0x1;",
+      "description": "当所有方向灯硬件控制信号均为ON时"
+    },
+    {
+      "condition": "RRDircnLghtCtrl_HW = 0x1; {DirectionLight.ControlDirectionLight. DirectionLightReq}[InstanceID=1] = 0x1 = ON; ...",
+      "description": "当右后方向灯硬件控制信号为ON且对应的方向灯控制请求也为ON时"
+    },
+    {
+      "condition": "FLDircnLghtCtrl_HW = 0x0; FRDircnLghtCtrl_HW = 0x0; RLDircnLghtCtrl_HW = 0x0;",
+      "description": "当所有方向灯硬件控制信号均为OFF时"
+    },
+    {
+      "condition": "RRDircnLghtCtrl_HW = 0x0; {DirectionLight.ControlDirectionLight. DirectionLightReq}[InstanceID=1] = 0x0 = OFF; ...",
+      "description": "当右后方向灯硬件控制信号为OFF且对应的方向灯控制请求也为OFF时"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "危险警报灯点亮",
+      "description": "在特定输入条件下，危险警报灯被激活并点亮"
+    },
+    {
+      "output": "危险警报灯熄灭",
+      "description": "在特定输入条件下，危险警报灯被关闭并熄灭"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证危险警报灯驱动处理模块在不同方向灯控制信号输入下的正确响应，确保危险警报灯能够根据需求正确点亮或熄灭。",
+  "uncertain_points": []
+}

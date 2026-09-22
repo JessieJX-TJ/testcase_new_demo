@@ -1,0 +1,120 @@
+[
+  {
+    "head": "Ambient Lamp Breathing Mode Switch",
+    "relation": "触发条件",
+    "tail": "FtwlFLLampBrtnsCmd_1 changes mode",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "FtwlFLLampBrtnsCmd_1",
+      "呼吸模式切换"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0421",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Switch",
+    "relation": "抑制条件",
+    "tail": "当前呼吸模式停止",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "呼吸模式切换",
+      "停止当前呼吸"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0421",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "Ambient Lamp Brightness Control",
+    "relation": "依赖于",
+    "tail": "FtwlFLLampBrthngCmd_1 command signal",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FtwlFLLampBrthngCmd_1",
+      "亮度控制"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0421",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "Ambient Lamp Brightness Control",
+    "relation": "输入为",
+    "tail": "ZCU发送的FtwlFLLampBrthngCmd_1信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ZCU",
+      "FtwlFLLampBrthngCmd_1"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0421",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode (Step Change)",
+    "relation": "输入来自",
+    "tail": "ZCU发送的FtwlFLLampBrthngCmd_1 = 0x1 or 0x2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FtwlFLLampBrthngCmd_1",
+      "0x1",
+      "0x2"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0421",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode (Gradual Change)",
+    "relation": "输入来自",
+    "tail": "ZCU发送的FtwlFLLampBrthngCmd_1 = 0x3-0xC or 0xE",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FtwlFLLampBrthngCmd_1",
+      "0x3-0xC",
+      "0xE"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0421",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "Ambient Lamp Brightness Cycle (Step Change)",
+    "relation": "状态保持条件",
+    "tail": "Rate1 or Rate2 period duration",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "Rate1",
+      "Rate2",
+      "500ms",
+      "1s"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0421",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  },
+  {
+    "head": "Ambient Lamp Brightness Cycle (Gradual Change)",
+    "relation": "状态保持条件",
+    "tail": "时间A and 时间B duration",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "时间A",
+      "时间B",
+      "RateX",
+      "AmbtLampBrthngRateXholdoffPercent"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0421",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "signal_table"
+  }
+]

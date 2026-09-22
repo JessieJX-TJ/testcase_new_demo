@@ -1,0 +1,112 @@
+```json
+[
+  {
+    "head": "近光灯状态设置为ON",
+    "relation": "触发条件",
+    "tail": "LHZZCU将DipdBeamLightSts设置为0x1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZZCU",
+      "DipdBeamLightSts",
+      "0x1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯错误状态设置为No Error",
+    "relation": "触发条件",
+    "tail": "LHZZCU将DipdBeamLightErrSta设置为0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "LHZZCU",
+      "DipdBeamLightErrSta",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "ICB接收到DipdBeamLightSts=0x1",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZZCU",
+      "ICB",
+      "DipdBeamLightSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯错误状态反馈至ICB",
+    "relation": "输出为",
+    "tail": "ICB接收到DipdBeamLightErrSta=0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LHZZCU",
+      "ICB",
+      "DipdBeamLightErrSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯开启同步性要求",
+    "relation": "超时约束",
+    "tail": "左右近光灯最大延时不超过40ms",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "近光灯",
+      "同步点亮",
+      "40ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB_8295组合灯光请求重发机制",
+    "relation": "超时约束",
+    "tail": "重发周期<=50ms，尝试3次后未成功则停止发送",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB_8295",
+      "ControlCombinedLightReq",
+      "50ms",
+      "3次"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "超时约束",
+    "tail": "消费端在500ms内通过Getter()方式获取状态",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "LHZCU",
+      "ICB_S32G M",
+      "ICB_8295",
+      "500ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ExteriorLightSwitchProcess处理近光灯状态",
+    "relation": "依赖于",
+    "tail": "DipdBeamLightSta信号值为0x1",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "DipdBeamLightSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ExteriorLightSwitchProcess处理近光灯错误状态",
+    "relation": "依赖于",
+    "tail": "DipdBeamLightErrSta信号值为0x0",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess",
+      "DipdBeamLightErrSta"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,63 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "转向灯开关检测逻辑",
+  "row_semantics": "描述了在特定前置条件下，系统如何响应转向拨杆开关检测到未定义阻值的情况，并定义了执行动作、退出条件和异常处理。",
+  "column_semantics": {
+    "1": "前置条件：系统配置字DILghtSwSOAEnPrm必须为1（启用）",
+    "2": "触发条件：转向拨杆开关检测到未定义的阻值",
+    "3": "执行动作：持续发送DirectionLightSwitchStatus信号至DILghtCtrlMdl模块，并置位DTc标志",
+    "4": "退出条件：转向灯开关检测到已知定义的阻值",
+    "5": "异常处理：未定义"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILghtSwSOAEnPrm",
+      "type": "parameter",
+      "description": "配置字，用于启用转向灯开关检测功能"
+    },
+    {
+      "name": "DILghtSwMdl",
+      "type": "module",
+      "description": "转向灯开关模块，负责检测开关状态"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "module",
+      "description": "转向灯控制模块，接收并处理方向灯开关状态信号"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILghtSwSOAEnPrm == 1",
+      "description": "前置条件，表示转向灯开关检测功能已启用"
+    },
+    {
+      "condition": "转向拨杆开关检测到未定义的阻值",
+      "description": "触发条件，表示检测到异常或未知的开关状态"
+    },
+    {
+      "condition": "转向灯开关检测到已知定义的阻值",
+      "description": "退出条件，表示检测恢复正常状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DirectionLightSwitchStatus",
+      "value": "0x6 (Unknown)",
+      "description": "输出信号，表示当前转向灯开关状态为未知"
+    },
+    {
+      "signal": "DTc",
+      "value": "置位",
+      "description": "故障代码标志，表示检测到异常状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了转向灯开关检测的逻辑规则，可用于验证当转向拨杆开关检测到未定义阻值时，系统是否正确发送未知状态信号并置位故障代码，以及在检测到已知定义阻值时是否正确退出该逻辑状态。",
+  "uncertain_points": []
+}
+```

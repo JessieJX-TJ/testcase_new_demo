@@ -1,0 +1,44 @@
+```json
+[
+  {
+    "head": "转向灯开关信号 DircnLghtSwReq 跳变为关闭状态",
+    "relation": "触发条件",
+    "tail": "DircnLghtSwReq == 0x0",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["DircnLghtSwReq", "DircnLghtSwReq_0_Off"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外部灯光控制系统方向灯错误状态 ExteriorLightControlSystem.DirectionLightErrSts 设置为无错误",
+    "relation": "输入为",
+    "tail": "DircnLghtFltsts == 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ExteriorLightControlSystem.DirectionLightErrSts", "DircnLghtFltsts_0_No_Error"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外部灯光控制系统方向灯错误状态 ExteriorLightControlSystem.DirectionLightErrSts 设置为错误",
+    "relation": "输入为",
+    "tail": "DircnLghtFltsts != 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ExteriorLightControlSystem.DirectionLightErrSts", "DircnLghtFltsts_0_No_Error"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "流水模式信号 DircnLghtMdSts 默认发送为启用状态",
+    "relation": "输出为",
+    "tail": "DircnLghtMdSts == 0x0",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["DircnLghtMdSts", "DircnLghtMdSts_0_Enabled"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "外部灯光控制系统方向灯错误状态 ExteriorLightControlSystem.DirectionLightErrSts 设置为错误",
+    "relation": "故障响应",
+    "tail": "DircnLghtFltsts != 0x0",
+    "triple_type": "故障响应",
+    "evidence_terms": ["DirectionLightErrSts", "DircnLghtFltsts"],
+    "confidence_note": "high"
+  }
+]
+```

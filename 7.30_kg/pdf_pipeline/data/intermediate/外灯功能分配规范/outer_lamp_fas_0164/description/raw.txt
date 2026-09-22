@@ -1,0 +1,48 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "智驾控制车顶射灯的逻辑判断",
+  "row_semantics": "描述在特定场景下，系统根据输入条件执行的逻辑动作",
+  "column_semantics": {
+    "column_1": "场景描述：定义触发逻辑判断的具体条件或背景",
+    "column_2": "功能描述：详细说明在该场景下系统执行的动作"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "远光灯",
+      "type": "输入信号",
+      "description": "表示车辆远光灯的状态"
+    },
+    {
+      "name": "车顶射灯",
+      "type": "输出信号",
+      "description": "由智驾系统控制开启的灯光"
+    },
+    {
+      "name": "智驾系统",
+      "type": "控制器/模块名",
+      "description": "负责判断并控制车顶射灯开启的电子控制系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "signal": "远光灯",
+      "condition": "增强使能情况",
+      "description": "当远光灯处于增强使能状态时，触发后续逻辑"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "车顶射灯",
+      "action": "开启",
+      "description": "在满足条件时，由智驾系统控制车顶射灯开启"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证智驾系统在远光灯增强使能情况下，能否正确控制车顶射灯开启的功能逻辑。",
+  "uncertain_points": []
+}
+```

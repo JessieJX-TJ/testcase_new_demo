@@ -1,0 +1,104 @@
+```json
+[
+  {
+    "head": "近光灯开启",
+    "relation": "触发条件",
+    "tail": "S32G收到大屏开关请求ICB且CombinedLightReq=0x0=OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "S32G收到[大屏开关请求 ICB]",
+      "CombinedLightReq=0x0=OFF"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "触发条件",
+    "tail": "近光灯在工厂模式下开启2min且a&&b&&c",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "近光灯在工厂模式下开启2min",
+      "整车模式为工厂模式",
+      "近光灯点亮"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "触发条件",
+    "tail": "用户模式为standby且伴我回家前置条件不满足且阳光雨量传感器识别自动灯光开启为False",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "用户模式为 standby",
+      "伴我回家前置条件不满足",
+      "阳光雨量传感器识别自动灯光开启为False"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "抑制条件",
+    "tail": "S32G收到[伴我回家开关请求ICB]伴我回家功能未使能",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "S32G收到[伴我回家开关请求ICB]",
+      "伴我回家功能未使能"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "抑制条件",
+    "tail": "近光灯点亮状态为后雾灯请求自动灯光的近光灯开启，且当前状态为白天，判断后雾灯关闭",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "近光灯点亮状态为后雾灯请求自动灯光的近光灯开启",
+      "当前状态为白天",
+      "后雾灯关闭"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制信号输出",
+    "relation": "输出为",
+    "tail": "LDipdBemLghtCtrl=0x0=LDipdBeamLghtCtrl_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "LDipdBemLghtCtrl=0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯控制信号输出",
+    "relation": "输出为",
+    "tail": "R Dipd Beam Lght Ctrl=0x0=RDipdBeamLghtCtrl_0_Off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "R Dipd Beam Lght Ctrl=0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB将服务接口或控制信号转换成灯控CAN信号",
+    "relation": "依赖于",
+    "tail": "近光灯控制模块LHZCU发出控制信号给ICB",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "近光灯控制模块LHZCU",
+      "ICB"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "HMI子系统ICB调用接口",
+    "relation": "触发条件",
+    "tail": "外灯控制组合服务ICB调用基础服务",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "外灯控制组合服务ICB",
+      "基础服务"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

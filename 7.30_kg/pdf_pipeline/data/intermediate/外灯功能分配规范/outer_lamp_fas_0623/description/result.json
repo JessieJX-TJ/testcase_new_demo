@@ -1,0 +1,76 @@
+{
+  "table_type": "logic_table",
+  "topic": "寻车灯功能需求与控制逻辑",
+  "row_semantics": "描述了寻车灯功能的前置条件、触发动作和执行动作，构成一个完整的功能逻辑流程。",
+  "column_semantics": {
+    "场景描述": "对整个功能的业务场景进行简要说明。",
+    "前置条件": "触发该功能前必须满足的系统状态和信号条件。",
+    "触发动作": "导致功能被激活的具体事件或信号。",
+    "执行动作": "功能被激活后，系统执行的具体操作和输出信号变化。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "寻车灯请求模块 LHZCU",
+      "type": "控制器/模块",
+      "description": "负责处理寻车灯请求并控制双闪灯闪烁的核心模块。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "description": "用户模式，要求为睡眠（Sleep）或待机（Standby）状态。",
+      "values": [
+        "0x0 = Sleep",
+        "0x1 = Standby"
+      ]
+    },
+    {
+      "name": "UsrMdV",
+      "description": "用户模式有效性，要求为有效（Valid）。",
+      "values": [
+        "Valid"
+      ]
+    },
+    {
+      "name": "VehMd",
+      "description": "车辆模式，要求不为工厂（FACTORY）或运输（TRANSPORT）模式。",
+      "values": [
+        "0x2 = FACTORY",
+        "0x3 = TRANSPORT"
+      ]
+    },
+    {
+      "name": "VehMdV",
+      "description": "车辆模式有效性，要求为有效（Valid）。",
+      "values": [
+        "Valid"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FMCLightReq",
+      "description": "双闪灯请求信号，由LHZCU模块发出，用于控制双闪灯闪烁。",
+      "value": "0x1 = FMCLightReq_1_Ative"
+    },
+    {
+      "name": "双闪灯",
+      "description": "车辆外部灯光，按照1.25Hz频率闪烁（先on后off），周期800ms，每次亮400ms。",
+      "timing": "800ms周期，400ms亮"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal": "双闪灯",
+      "frequency": "1.25Hz",
+      "duty_cycle": "50%",
+      "on_duration": "400ms",
+      "off_duration": "400ms"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了在特定系统状态下，通过手机寻车按钮触发LHZCU模块控制双闪灯以声光反馈方式帮助用户定位车辆的功能逻辑，可用于验证寻车灯功能在不同系统模式下的正确响应和灯光输出。",
+  "uncertain_points": []
+}

@@ -1,0 +1,63 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "Ambient Lamp Breathing Control Logic",
+  "row_semantics": "Each row represents a condition-action pair for the ambient lamp breathing control logic.",
+  "column_semantics": {
+    "Column 1": "Condition Group (e.g., Precondition, Trigger Condition, Execution Action)",
+    "Column 2": "Description of the specific condition or action within that group"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "function",
+      "description": "The lighting system that provides mood lighting."
+    },
+    {
+      "name": "DoorFL1LampBrthngCmd_1",
+      "type": "signal",
+      "description": "Local control signal for the breathing speed of the front left ambient lamp."
+    },
+    {
+      "name": "AmbtLghtLHRollingCtr_1",
+      "type": "signal",
+      "description": "Synchronization signal for the ambient light rolling control."
+    },
+    {
+      "name": "DoorFL1LampBrtnsCmd_1",
+      "type": "signal",
+      "description": "Signal controlling the brightness modulation of the ambient lamp during breathing mode."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Precondition",
+      "description": "Ambient Lamp is in the 'on' state."
+    },
+    {
+      "name": "Trigger Condition",
+      "description": "Received local control module breathing speed command signal DoorFL1LampBrthngCmd_1 and ambient lamp synchronization signal AmbtLghtLHRollingCtr_1."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Execution Action",
+      "description": "The Ambient Lamp Drive Control Module adjusts the brightness of the ambient lamp according to the breathing command period DoorFL1LampBrthngCmd_1, performing 0%-100%-0% brightness modulation. The brightness change is controlled by the Ambient Lamp LIN module and does not respond to the brightness signal DoorFL1LampBrtnsCmd_1."
+    },
+    {
+      "name": "Mode Switching",
+      "description": "When switching between different breathing modes, the current breathing stops immediately, and the next breathing mode is activated."
+    },
+    {
+      "name": "Breathing Command Period Signal",
+      "description": "The ambient lamp breathing command period signal DoorFL1LampBrthngCmd_1 has two on states: 0%-100% step modulation and 0%-100% gradual modulation."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the logic for controlling the breathing mode of the ambient lamp, including how it responds to local control signals and synchronization signals, and how it switches between different breathing modes. It can be used to test the ambient lamp's response to various breathing speed commands and mode changes.",
+  "uncertain_points": []
+}
+```

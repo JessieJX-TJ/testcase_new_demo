@@ -1,0 +1,46 @@
+```json
+{
+  "table_type": "other",
+  "topic": "整车电子电器系统唤醒/休眠机制",
+  "row_semantics": "唤醒源与唤醒/休眠方式的组合关系",
+  "column_semantics": {
+    "唤醒源": "触发系统从休眠状态唤醒的来源或事件",
+    "唤醒/休眠方式": "系统响应唤醒请求时所采取的具体操作模式",
+    "备注": "对当前组合的补充说明或特殊要求"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "唤醒源",
+      "type": "input_signal",
+      "description": "触发系统唤醒的外部或内部信号/事件"
+    },
+    {
+      "name": "唤醒/休眠方式",
+      "type": "output_signal",
+      "description": "系统在接收到唤醒请求后进入的工作模式"
+    },
+    {
+      "name": "备注",
+      "type": "additional_info",
+      "description": "对当前唤醒/休眠配置的补充说明"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "唤醒/休眠方式",
+      "description": "系统根据唤醒源选择的特定工作模式"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于定义和验证整车电子电器系统在不同唤醒源触发下的唤醒/休眠行为，确保系统能够按照设计规范正确响应外部或内部的唤醒请求。",
+  "uncertain_points": [
+    "具体唤醒源的类型未明确（如CAN信号、按键、定时器等）",
+    "唤醒/休眠方式的具体实现细节未说明（如进入低功耗模式、启动ECU等）",
+    "备注中的内容未展开，无法确定是否有特殊要求"
+  ]
+}
+```

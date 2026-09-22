@@ -1,0 +1,72 @@
+{
+  "table_type": "signal_table",
+  "topic": "Roof Light Lamp Brightness Control Commands for Interior Lighting Subsystem",
+  "row_semantics": "Each row represents a specific command or configuration setting for controlling the brightness and breathing rate of the roof light lamp.",
+  "column_semantics": {
+    "Input": "The source of the command (e.g., LIN bus, RHZCU module).",
+    "LIN": "Command sent via the LIN communication protocol.",
+    "RHZCU": "Command sent from the Right Hand Zone Control Unit.",
+    "RoofAmbtLampA_LH": "Command sent to the Left Hand Roof Ambient Lamp.",
+    "RHZCU_LIN5": "Specific LIN channel used by RHZCU.",
+    "内灯SSTS": "Internal lighting subsystem status."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RoofLHALampBrtnsCmd_1",
+      "type": "command",
+      "description": "Brightness control command for the roof light lamp."
+    },
+    {
+      "name": "RoofLHALampBrthngCmd_1",
+      "type": "command",
+      "description": "Breathing rate control command for the roof light lamp."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Hand Zone Control Unit, responsible for sending commands to the roof light lamp."
+    },
+    {
+      "name": "RoofAmbtLampA_LH",
+      "type": "module",
+      "description": "Left Hand Roof Ambient Lamp, the target device for the brightness and breathing commands."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Brightness Level",
+      "description": "Defined as a percentage from 0% to 100%, with 0x00 indicating no request and 0x64-0xFF reserved."
+    },
+    {
+      "name": "Breathing Rate",
+      "description": "Defined by hexadecimal values from 0x0 to 0xF, each corresponding to a specific rate in seconds."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Code Value",
+      "description": "The hexadecimal code representing the specific brightness level or breathing rate."
+    },
+    {
+      "name": "Period",
+      "description": "The time interval for the breathing pattern, ranging from 500ms to 12s."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate0",
+      "value": "No Request",
+      "description": "Indicates that no request is made for a specific breathing rate."
+    },
+    {
+      "name": "Rate1 - Rate15",
+      "value": "500ms to 12s",
+      "description": "Defines the available breathing rates in seconds."
+    }
+  ],
+  "engineering_interpretation": "This table specifies the command codes and parameters for controlling the brightness and breathing rate of the roof light lamp within the interior lighting subsystem. It defines how different controllers can send commands via LIN to adjust the lamp's behavior, including its intensity and flashing pattern.",
+  "uncertain_points": []
+}

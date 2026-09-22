@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "伴我回家功能启用",
+    "relation": "前提条件",
+    "tail": "FoMeHmEnableInfo = Enabled",
+    "triple_type": "工程规则",
+    "evidence_terms": ["PersonalizationData.FollowMehomeSet", "FoMeHmEnableInfo"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯自动熄灭",
+    "relation": "触发条件",
+    "tail": "FoMeHmEnableInfo = Enabled",
+    "triple_type": "工程规则",
+    "evidence_terms": ["PersonalizationData.FollowMehomeSet", "FoMeHmEnableInfo", "30 seconds"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯自动熄灭时间",
+    "relation": "超时约束",
+    "tail": "30 seconds after FoMeHmEnableInfo = Enabled",
+    "triple_type": "工程规则",
+    "evidence_terms": ["PersonalizationData.FollowMehomeSet", "30 seconds"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧近光灯点亮",
+    "relation": "触发条件",
+    "tail": "DippedBeamLightReq = ON",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DippedBeamLight.ControlDippedBeamLight", "DippedBeamLightReq"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "左侧近光灯熄灭",
+    "relation": "触发条件",
+    "tail": "DippedBeamLightReq = OFF",
+    "triple_type": "工程规则",
+    "evidence_terms": ["DippedBeamLight.ControlDippedBeamLight", "DippedBeamLightReq"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "伴我回家功能禁用",
+    "relation": "抑制条件",
+    "tail": "FoMeHmEnableInfo = Disabled",
+    "triple_type": "工程规则",
+    "evidence_terms": ["PersonalizationData.FollowMehomeSet", "FoMeHmEnableInfo"],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,55 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的状态定义与分配规范",
+  "row_semantics": "表格的每一行代表一个特定的状态变量或状态机中的一个状态，描述了外灯系统在不同条件下的内部状态值及其含义。",
+  "column_semantics": {
+    "Column1": "状态变量名称 (State Variable Name)",
+    "Column2": "给服务赋值前内部变量值 (Internal Variable Value Before Service Assignment)",
+    "Column3": "详细状态定义 (Detailed State Definition)",
+    "Column4": "默认值/初始值 (Default/Initial Value)",
+    "Column5": "所属控制器/模块 (Controller/Module)",
+    "Column6": "备注信息 (Remarks)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "CombLghtFucProSta",
+      "type": "state_variable",
+      "description": "组合灯功能过程状态，表示组合灯（包括位置灯、近光灯等）的工作模式和状态。"
+    },
+    {
+      "name": "SidePosnLghtSta",
+      "type": "state_variable",
+      "description": "侧位灯状态，表示车辆侧面位置灯的工作状态。"
+    },
+    {
+      "name": "SidePosnLghtErrSta",
+      "type": "state_variable",
+      "description": "侧位灯错误状态，表示侧位灯是否存在故障或异常情况。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "SidePosnLghtErrSta_0_NoError",
+      "description": "无错误状态，表示侧位灯工作正常。"
+    },
+    {
+      "name": "SidePosnLghtErrSta_1_Error",
+      "description": "存在错误状态，表示侧位灯出现故障。"
+    },
+    {
+      "name": "SidePosnLghtErrSta_2_Unknown",
+      "description": "未知错误状态，表示侧位灯状态无法确定。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯系统中关键状态变量的内部数值编码及其对应的物理意义，可用于验证外灯控制逻辑是否正确实现，例如检查组合灯在不同驾驶模式下的状态切换是否符合规范，以及侧位灯在发生故障时能否正确上报错误状态。",
+  "uncertain_points": [
+    "表格未明确列出具体的输入信号或外部触发条件来驱动这些状态的变化。",
+    "未提供状态之间的转换规则或流程图，因此无法直接用于分析状态迁移路径。",
+    "未明确指出哪些控制器负责更新这些状态变量，具体实现细节未知。"
+  ]
+}

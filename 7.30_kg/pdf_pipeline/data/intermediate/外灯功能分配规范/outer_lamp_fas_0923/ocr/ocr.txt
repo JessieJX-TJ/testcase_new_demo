@@ -1,0 +1,29 @@
+1、UsgMd=0x0 = UsgMd_0_Sleep; | UsgMd=0x6=UsgMd_6_XOTA:
+2、UsgMdV=Valid
+3、VehMd=0x3=VehMd_3_TRANSPORT
+4、VehMdV=Valid
+5、LHZCU判断仅位置灯开启
+6、S32G 收到[大屏开关请求 ICB]输入:{ExteriorLightControlSystem. ControlCombinedLight.
+CombinedLightReq}=0x0=OFF
+7、近光灯在工厂模式下开启2min:a&&b&&c
+a、整车模式为工厂模式:VehMd=0x2 = VehMd_2 FACTORY && VehMdV=0x1=VehMdV
+b、近光灯点亮:
+{ExteriorLightSwitchProcess. CombLghtFucProStatus.CombLghtFucProSta}=0x2 | 0x4
+c、持续 2min
+8、用户模式为standby且伴我回家前置条件不满足:a&b
+a、用户模式为Standby:
+UsgMd=0x1 = UsgMd_1_Standby； & UsgMdV=Valid
+b、伴我回家前置条件不满足:b1||b2||b3
+b1、阳光雨量传感器识别自动灯光开启为False:
+AutoLghtOnReq_1=0x0=AutoLghtOnReq_1_0_False (vehRlsType==0)
+AutoLghtOnReq_ICB=0x0=AutoLghtOnReq_ICB_0_False (vehRlsType==1)
+b2、灯光开关档位状态不为 Auto:{ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtS
+=0x3=AUTO
+b3、S32G收到[伴我回家开关请求ICB]伴我回家功能未使能:
+9、近光灯点亮状态为后雾灯请求自动灯光的近光灯开启,且当前状态为白天,判断后雾灯关闭,即:
+(AutoLghtOnReq_l=0x0=AutoLghtOnReq_0_False(vehRlsType==0)
+AutoLghtOnReq_ICB=0x0=AutoLghtOnReq_ICB_0_False (vehRlsType==1))；&
+{ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta}=0x3=AUTO;&
+Notifier:
+{ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta}=0x0=OFF,获取近光灯开关状态
+{ExteriorLightSwitchProcess. CombLghtSwStatus. CombLghtSwSta}接口参数同时赋值 Ox0=OFF

@@ -1,0 +1,43 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Direction Light System Status and Mode Parameters",
+  "row_semantics": "Each row represents a specific service interface or parameter related to the direction light system, detailing its function, associated controllers/modules, and parameter definitions.",
+  "column_semantics": "The first column lists the service/function name. The subsequent columns indicate the consuming entities (e.g., SOA, ICB, LHZCU) and their roles in the interaction. The last column provides additional context such as network fault status.",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DirectionLight.DirectionLightErrorStatus",
+      "type": "service_interface",
+      "description": "Interface for querying the error status of the direction light."
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.DirectionLightModeStatus",
+      "type": "service_interface",
+      "description": "Interface for querying the mode status of the direction light."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DirectionLightErrorSta",
+      "type": "parameter",
+      "description": "Error status parameter for the direction light, with values: No Error (0x0), Error (0x1), Unknown (0x2)."
+    },
+    {
+      "name": "DircnLightMdSts",
+      "type": "parameter",
+      "description": "Mode status parameter for the direction light, with value: Enabled (0x0)."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DirectionLightErrorSta",
+      "type": "fault_status",
+      "description": "Indicates if there is an error in the direction light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters and interfaces for monitoring the error status and mode status of the direction light system, which can be used to verify the correct operation and fault detection of the direction light under various conditions.",
+  "uncertain_points": []
+}

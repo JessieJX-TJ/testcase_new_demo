@@ -1,0 +1,55 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制功能规范",
+  "row_semantics": "表格的每一行代表一个独立的外灯控制操作，具体为第三排阅读灯的开关控制。",
+  "column_semantics": "表格的每一列代表控制操作的不同维度：左侧列为操作意图（打开/关闭），中间列为组合服务SOA的API调用指令，右侧列为对该操作的文字描述。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "MapLampService",
+      "type": "controller",
+      "description": "地图灯服务模块，负责处理和执行与地图灯相关的控制请求。"
+    },
+    {
+      "name": "ThirdRowLeft",
+      "type": "function",
+      "description": "第三排左侧阅读灯的功能标识符。"
+    },
+    {
+      "name": "ThirdRowRight",
+      "type": "function",
+      "description": "第三排右侧阅读灯的功能标识符。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MapLampOnOffSts.LampID",
+      "type": "input_signal",
+      "description": "指定要控制的灯的ID，可以是ThirdRowLeft或ThirdRowRight。"
+    },
+    {
+      "name": "MapLampOnOffSts.LampOnOff",
+      "type": "input_signal",
+      "description": "控制命令，ON表示打开，OFF表示关闭。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "打开 / 关闭第三排左侧阅读灯",
+      "type": "output_action",
+      "description": "执行打开或关闭第三排左侧阅读灯的操作。"
+    },
+    {
+      "name": "打开 / 关闭第三排右侧阅读灯",
+      "type": "output_action",
+      "description": "执行打开或关闭第三排右侧阅读灯的操作。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了通过MapLampService服务对车辆第三排阅读灯进行开关控制的API接口规范，可用于验证相关服务在不同输入条件下是否能正确执行预期的灯光开关动作。",
+  "uncertain_points": []
+}
+```

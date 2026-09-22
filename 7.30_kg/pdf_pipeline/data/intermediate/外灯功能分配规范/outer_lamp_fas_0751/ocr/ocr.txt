@@ -1,0 +1,38 @@
+UsgMd=0x2=UsgMd_2_Comfortable;||
+UsgMd=0x6=UsgMd_6_XOTA
+UsgMdV=Valid
+VehMd=0x3 =VehMd3 TRANSPORT
+VehMdV=Valid
+位置灯状态:
+1)位置灯状态跳变为关闭:
+{SidePositionLightStatus. SidePositionLightSta} (InstanceID=5) =0x1=On-
+>0x0=OFF；&
+{SidePositionLightStatus. SidePositionLightSta} (InstanceID=6)=0x1=On->0x0=
+OFF; &
+{SidePositionLightStatus. SidePositionLightSta}(InstanceID=7)=0x1=On->0x0=
+{SidePositionLightStatus. SidePositionLightSta} (InstanceID=8) =0x1=On->0x0=
+OFF
+(exlSideLghtHwDrvEnPrm=0x0; 备注:位置灯私有 CAN通讯方案,以instance5
+6,7,8反馈的状态判断,如 P12LM1 PPV)
+{SidePositionLightStatus. SidePositionLightSta} (InstanceID=1)=0x1=On-
+{SidePositionLightStatus. SidePositionLightSta}(InstanceID=2) =0x1=On->0x0=
+{SidePositionLightStatus. SidePositionLightSta} (InstanceID=3)=0x1=On->0x0=
+{SidePositionLightStatus. SidePositionLightSta} (InstanceID=4)=0x1=On->0x0=
+(exlSideLghtHwDrvEnPrm=0x1;备注:位置灯炮筒灯方案,以instance1,2,3,4
+反馈的状态判断,如 S31L EP)
+或者
+2)LHZCU判断关闭位置灯:
+{ExteriorLightSwitchProcess.CombLghtFucProStatus.CombLghtFucProSta}=0x0= ALL
+OFF; | 0x3= SidePositionAndDippedBeam OFF
+手动开关关闭
+a.S32G收到[大屏开关请求ICB]输入
+{ExteriorLightControlSystem.ControlFrontFogLight FrontFogLightReq}=0x0=OFF
+(配置字: exlFrontFoglghtPrm=0(大屏开关))
+b. S32G 收到[七键开关请求 IFP]输入跳变
+IFPFrontFoglghtSwReq_1 ==0x0= IFPFrontFoglghtSwReq_1_0_No Press→ 0x1=
+IFPFrontFoglghtSwReq_1_1_Press
+(a.配置字: exlFrontFoglghtPrm=1(物理开关)
+b.前雾灯已开启:{ExteriorLightSwitchProcess. FrontFogLghtFucProStatus
+FrontFogLghtFucProsSta}=0x1||0x2||x3||0x4;)
+7.前雾灯在工厂模式下开启2min:a&&b&&c
+a、整车模式为工厂模式:VehMd=0x2=VehMd_2_FACTORY

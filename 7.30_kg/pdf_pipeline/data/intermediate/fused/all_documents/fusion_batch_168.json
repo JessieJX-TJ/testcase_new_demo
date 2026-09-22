@@ -1,0 +1,570 @@
+[
+  {
+    "head": "制动踏板粘连诊断功能",
+    "relation": "前提条件",
+    "tail": "开关持续有效 > 600s",
+    "sources": [
+      "outer_lamp_ssts_0110"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯停止驱动",
+    "relation": "前提条件",
+    "tail": "DILamp_LH_HSD == 1",
+    "sources": [
+      "outer_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": "原'exlDircnLghtHwDrvEnPrm==1'与'左后转向灯处于输出状态'语义等价，统一为硬件驱动使能信号DILamp_LH_HSD（标准模块信号名）；'DILamp_LH_HSD == 1'更精确表征驱动使能状态"
+  },
+  {
+    "head": "左后转向灯停止驱动",
+    "relation": "触发条件",
+    "tail": "检测到左后转向灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDILghtDrvMdl 停止驱动左后转向灯输出",
+    "relation": "依赖于",
+    "tail": "DILamp_LH_HSD",
+    "sources": [
+      "outer_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDILghtDrvMdl 持续发送 RLDILghtSts_HW = 0 (Off)",
+    "relation": "依赖于",
+    "tail": "DILightCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": "原'RLDILghtDrvMdl 持续发送 RLDILghtSts_HW=0 (Off)'规范化为标准信号赋值格式；'DILightCtrlMdl'为标准接收模块名"
+  },
+  {
+    "head": "RLDILghtDrvMdl 反馈 RLDircnLghtFltsts_HW = 0x1 (True)",
+    "relation": "依赖于",
+    "tail": "RLDircnLghtFltsts_HW",
+    "sources": [
+      "outer_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": "统一十六进制格式为'0x1'，保留语义；'RLDircnLghtFltsts_HW'为标准故障状态信号名"
+  },
+  {
+    "head": "设置 DTC_B104A_11",
+    "relation": "触发条件",
+    "tail": "检测到左后转向灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0111"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯错误被检测",
+    "relation": "触发条件",
+    "tail": "DippedBeamLightErrorStatus.DippedBeamLightSta == 0x1",
+    "sources": [
+      "outer_lamp_ssts_0112"
+    ],
+    "conflict": false,
+    "conflict_note": "原'Dipped Beam Light Error is detected'统一为中文功能名'近光灯错误被检测'；信号路径标准化为'.'分隔的结构体字段访问格式；'=='替代'='以符合工程规范"
+  },
+  {
+    "head": "RDipdBeamLghtDrvMdl 发送近光灯信号",
+    "relation": "前提条件",
+    "tail": "InstanceID == 2",
+    "sources": [
+      "outer_lamp_ssts_0112"
+    ],
+    "conflict": false,
+    "conflict_note": "原'RDipdBeamLghtDrvMdl sends DippedBeamLight'规范化为动宾结构中文功能名；'InstanceID == 2'为标准实例标识条件"
+  },
+  {
+    "head": "RDipdBeamLghtDrvMdl 至 DipdBmLghtCtrlMdl 的近光灯信号传输",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "sources": [
+      "outer_lamp_ssts_0112",
+      "outer_lamp_ssts_0114"
+    ],
+    "conflict": false,
+    "conflict_note": "合并来自 outer_lamp_ssts_0112 和 outer_lamp_ssts_0114 的相同超时约束；统一主语为信号传输行为，明确源/目标模块"
+  },
+  {
+    "head": "设置 DTC",
+    "relation": "故障响应",
+    "tail": "近光灯错误被检测",
+    "sources": [
+      "outer_lamp_ssts_0112"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "故障退出条件",
+    "relation": "复位条件",
+    "tail": "检测到短路恢复",
+    "sources": [
+      "outer_lamp_ssts_0112",
+      "outer_lamp_ssts_0115",
+      "outer_lamp_ssts_0121",
+      "outer_lamp_ssts_0122",
+      "outer_lamp_ssts_0151",
+      "outer_lamp_ssts_0320"
+    ],
+    "conflict": false,
+    "conflict_note": "多处共用同一复位逻辑，合并来源；'故障退出条件'比'退出条件'更准确体现上下文语义"
+  },
+  {
+    "head": "智己汽车",
+    "relation": "控制对象",
+    "tail": "外灯子系统",
+    "sources": [
+      "outer_lamp_ssts_0113",
+      "outer_lamp_ssts_0381",
+      "outer_lamp_ssts_0473"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯子系统",
+    "relation": "输入来自",
+    "tail": "3.0架构 - SSTTS-IBD02",
+    "sources": [
+      "outer_lamp_ssts_0113"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯子系统",
+    "relation": "输出到",
+    "tail": "105 of 114 页",
+    "sources": [
+      "outer_lamp_ssts_0119"
+    ],
+    "conflict": false,
+    "conflict_note": "覆盖 outer_lamp_ssts_0113 中的'54 of 114 页'，因 outer_lamp_ssts_0119 明确指向最新文档页码，属更具体信息；保留更具体版本"
+  },
+  {
+    "head": "外灯转向灯控制逻辑被触发",
+    "relation": "触发条件",
+    "tail": "用户轻拨右转向拨杆，开关阻值为 4020 Ω ±5%",
+    "sources": [
+      "outer_lamp_ssts_0114"
+    ],
+    "conflict": false,
+    "conflict_note": "单位空格标准化；'±'符号统一；保留物理量精度描述"
+  },
+  {
+    "head": "外灯转向灯控制逻辑被抑制",
+    "relation": "抑制条件",
+    "tail": "DILghtSwSOAEnPrm == 0",
+    "sources": [
+      "outer_lamp_ssts_0114"
+    ],
+    "conflict": false,
+    "conflict_note": "原'配置字DILghtSwSOAEnPrm==0(Disable)'简化为标准信号名+值判断；'=='符合工程表达习惯"
+  },
+  {
+    "head": "外灯转向灯控制逻辑执行动作",
+    "relation": "输入为",
+    "tail": "DILghtSwMdl 发送 DircnLghtSwReq == 0x3 (Right_First) 至 DILghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0114"
+    ],
+    "conflict": false,
+    "conflict_note": "模块名统一为标准缩写（DILghtSwMdl / DILghtCtrlMdl），信号赋值格式标准化"
+  },
+  {
+    "head": "右近光灯短路到地",
+    "relation": "触发条件",
+    "tail": "检测到右近光灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0115"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "停止驱动右近光灯输出",
+    "relation": "故障响应",
+    "tail": "右近光灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0115"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RDipdBeamLghtDrvMdl 发送 DippedBeamLightStatus",
+    "relation": "故障响应",
+    "tail": "右近光灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0115"
+    ],
+    "conflict": false,
+    "conflict_note": "统一命名风格：'RDipdBeamLghtDrvMdl 发送...'，与同模块其他条目一致"
+  },
+  {
+    "head": "RDipdBeamLghtDrvMdl 发送 DippedBeamLightErrorStatus",
+    "relation": "故障响应",
+    "tail": "右近光灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0115"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "置位 DTC",
+    "relation": "故障响应",
+    "tail": "右近光灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0115"
+    ],
+    "conflict": false,
+    "conflict_note": "与 outer_lamp_ssts_0112 中'设置 DTC'语义一致，但此处未指定DTC编号；不合并，因缺乏唯一标识，保留为泛化响应"
+  },
+  {
+    "head": "右近光灯驱动使能",
+    "relation": "前提条件",
+    "tail": "exlDipBeamHwDrvEnPrm == 1",
+    "sources": [
+      "outer_lamp_ssts_0115"
+    ],
+    "conflict": false,
+    "conflict_note": "原'前置条件'统一为'前提条件'；'右近光灯驱动使能'比'前置条件'更具语义；该信号为标准使能参数"
+  },
+  {
+    "head": "右近光灯驱动使能",
+    "relation": "前提条件",
+    "tail": "右近光灯处于输出状态",
+    "sources": [
+      "outer_lamp_ssts_0115"
+    ],
+    "conflict": true,
+    "conflict_note": "与上一条'exlDipBeamHwDrvEnPrm == 1'存在潜在冲突：前者是软件逻辑状态，后者是硬件使能信号；二者非等价，需同时满足，但'处于输出状态'可能依赖于使能信号，建议在设计中明确因果关系"
+  },
+  {
+    "head": "系统执行主大灯控制逻辑",
+    "relation": "触发条件",
+    "tail": "远光灯开关短路到电源",
+    "sources": [
+      "outer_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统执行主大灯控制逻辑",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtSwSOAEnPrm == 0",
+    "sources": [
+      "outer_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": "原'配置字...'统一为标准信号名+值"
+  },
+  {
+    "head": "主大灯开关模块持续发送关闭请求",
+    "relation": "输出为",
+    "tail": "MainBeamLghtSwReq == 0x0 (Off)",
+    "sources": [
+      "outer_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主大灯开关模块持续发送关闭请求",
+    "relation": "控制对象",
+    "tail": "MainBeamLghtCtrlMdl",
+    "sources": [
+      "outer_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统置位故障代码",
+    "relation": "诊断关联",
+    "tail": "DTC B1077 15",
+    "sources": [
+      "outer_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主大灯开关模块持续发送关闭请求",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "sources": [
+      "outer_lamp_ssts_0116"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右位置灯故障状态 B1061_11",
+    "relation": "触发条件",
+    "tail": "检测到右位置灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0117"
+    ],
+    "conflict": false,
+    "conflict_note": "原'Right Position Lamp is in B1061 11 state'重构为'右位置灯故障状态 B1061_11'，符合DTC命名惯例（下划线分隔）；'短路到地'术语统一"
+  },
+  {
+    "head": "右位置灯故障状态 B1061_12",
+    "relation": "触发条件",
+    "tail": "检测到右位置灯短路到电源",
+    "sources": [
+      "outer_lamp_ssts_0117"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右位置灯故障状态 B1061_13",
+    "relation": "触发条件",
+    "tail": "检测到右位置灯开路",
+    "sources": [
+      "outer_lamp_ssts_0117"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统功能保持",
+    "relation": "前提条件",
+    "tail": "满足保持原因",
+    "sources": [
+      "outer_lamp_ssts_0118"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统功能保持",
+    "relation": "依赖于",
+    "tail": "保持源",
+    "sources": [
+      "outer_lamp_ssts_0118"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统功能保持",
+    "relation": "状态保持条件",
+    "tail": "保持原因",
+    "sources": [
+      "outer_lamp_ssts_0118"
+    ],
+    "conflict": false,
+    "conflict_note": "三条关于'整车电子电器系统功能保持'的三元组语义高度重叠，但 relation 不同（前提条件/依赖于/状态保持条件）；经分析，'保持原因'是核心要素，其余为不同视角描述；此处保留最通用的'状态保持条件'，因其涵盖'前提'与'依赖'含义；另两条合并入 conflict_note 说明"
+  },
+  {
+    "head": "左后转向灯控制 RLDircnLghtCtrl_HW",
+    "relation": "输入为",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯控制 RLDircnLghtCtrl_HW",
+    "relation": "输出为",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯控制 RLDircnLghtCtrl_HW",
+    "relation": "依赖于",
+    "tail": "外灯 FAS",
+    "sources": [
+      "outer_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯硬线驱动 DILamp_LH_HSD",
+    "relation": "输出为",
+    "tail": "TailLpAsmbA_LH",
+    "sources": [
+      "outer_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯硬线驱动 DILamp_LH_HSD",
+    "relation": "输入来自",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯硬线驱动 DILamp_LH_HSD",
+    "relation": "依赖于",
+    "tail": "外灯 SSTS",
+    "sources": [
+      "outer_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯状态 RLDircnLghtSts",
+    "relation": "输出为",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯状态 RLDircnLghtSts",
+    "relation": "输入来自",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯状态 RLDircnLghtSts",
+    "relation": "依赖于",
+    "tail": "外灯 SSTS",
+    "sources": [
+      "outer_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯控制 RLDircnLghtCtrl_HW",
+    "relation": "触发条件",
+    "tail": "RLDircnLghtCtrl_HW == 0 (Off)",
+    "sources": [
+      "outer_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": "原'RLDircnLghtCtrl_HW_0_Off'重构为标准信号状态判断；'=='统一格式；增加语义注释'(Off)'"
+  },
+  {
+    "head": "左后转向灯控制 RLDircnLghtCtrl_HW",
+    "relation": "触发条件",
+    "tail": "RLDircnLghtCtrl_HW == 1 (On)",
+    "sources": [
+      "outer_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左后转向灯状态 RLDircnLghtSts",
+    "relation": "触发条件",
+    "tail": "RLDircnLghtSts == 0 (Off)",
+    "sources": [
+      "outer_lamp_ssts_0120"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "高位制动灯控制功能被触发",
+    "relation": "触发条件",
+    "tail": "检测到高位制动灯开路",
+    "sources": [
+      "outer_lamp_ssts_0121"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtDrvMdl 模块发送 BrkLghtSts = 0 (Off)",
+    "relation": "前提条件",
+    "tail": "exlCHMSLHwDrvEnPrm == 1",
+    "sources": [
+      "outer_lamp_ssts_0121"
+    ],
+    "conflict": false,
+    "conflict_note": "模块名统一为'BrkLghtDrvMdl'（原'BrkLghtDrvMdl模块'去冗余）；信号赋值标准化"
+  },
+  {
+    "head": "BrkLghtDrvMdl 模块发送 BrkLghtSts = 0 (Off)",
+    "relation": "前提条件",
+    "tail": "高位制动灯处于输出状态",
+    "sources": [
+      "outer_lamp_ssts_0121"
+    ],
+    "conflict": true,
+    "conflict_note": "与上一条'exlCHMSLHwDrvEnPrm == 1'构成并行前提，但'处于输出状态'是否独立于使能信号存疑；若'输出状态'由使能信号决定，则此条冗余；建议确认信号层级关系"
+  },
+  {
+    "head": "BrkLghtDrvMdl 模块反馈 BrkLghtFltSts_HW = 0x1 (True)",
+    "relation": "前提条件",
+    "tail": "检测到高位制动灯开路",
+    "sources": [
+      "outer_lamp_ssts_0121"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC_B1043_13 故障码被置位",
+    "relation": "前提条件",
+    "tail": "检测到高位制动灯开路",
+    "sources": [
+      "outer_lamp_ssts_0121"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "高位制动灯控制功能退出",
+    "relation": "触发条件",
+    "tail": "检测到开路恢复",
+    "sources": [
+      "outer_lamp_ssts_0121"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯短路故障处理功能被触发",
+    "relation": "触发条件",
+    "tail": "检测到后雾灯短路到地",
+    "sources": [
+      "outer_lamp_ssts_0122"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

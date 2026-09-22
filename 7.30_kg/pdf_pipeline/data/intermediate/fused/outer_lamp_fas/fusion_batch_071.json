@@ -1,0 +1,543 @@
+[
+  {
+    "head": "HazardWarningLampRequestArbitration",
+    "relation": "precondition",
+    "tail": "HazardWarningLampSwitchControlModule",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampAutomaticControlRequestArbitration",
+    "relation": "precondition",
+    "tail": "HazardWarningLampAutomaticControlModule",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLampRequestArbitration",
+    "relation": "precondition",
+    "tail": "RearFogLampSwitchControlModule",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WelcomeLightCarpetLampActivation",
+    "relation": "precondition",
+    "tail": "VehicleHasWelcomeLightCarpetFunction (exlWelcomeGrandLampEnPrm == 0x1)",
+    "sources": [
+      "outer_lamp_fas_0766"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WelcomeLightCarpetLampActivation",
+    "relation": "precondition",
+    "tail": "VehiclePowerModeNotSleep (UsgMd != UsgMd_0_Sleep)",
+    "sources": [
+      "outer_lamp_fas_0766"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WelcomeLightCarpetLampActivation",
+    "relation": "precondition",
+    "tail": "GearPositionIsPark (P-Gear)",
+    "sources": [
+      "outer_lamp_fas_0766"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WelcomeLightCarpetLampActivation",
+    "relation": "trigger_condition",
+    "tail": "PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet transitions to 0x0 (Enabled)",
+    "sources": [
+      "outer_lamp_fas_0766"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WelcomeLightCarpetLampActivation",
+    "relation": "inhibition_condition",
+    "tail": "PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet == 0x1 (Disabled)",
+    "sources": [
+      "outer_lamp_fas_0766"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WelcomeLightCarpetLampHSDRampUp",
+    "relation": "depends_on",
+    "tail": "WelcomeLightCarpetLampActivation",
+    "sources": [
+      "outer_lamp_fas_0766"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "WelcomeLightCarpetLampActivation",
+    "relation": "precondition",
+    "tail": "PersonalizationData.ExteriorLightSet.ExteriorLightSetInfo.WelcomeLampSet == 0x1 (Disabled)",
+    "sources": [
+      "outer_lamp_fas_0766"
+    ],
+    "conflict": true,
+    "conflict_note": "Contradictory with trigger_condition: same tail value '== 0x1 (Disabled)' appears both as inhibition condition and precondition — logically inconsistent unless interpreted as distinct contexts (e.g., initial state vs. runtime guard). Retained per rule #4."
+  },
+  {
+    "head": "DaytimeRunningLampRequestArbitration",
+    "relation": "precondition",
+    "tail": "DaytimeRunningLampControlModule",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ComingHomeLampRequestArbitration",
+    "relation": "precondition",
+    "tail": "ComingHomeControlModule",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FindMeLampRemoteRequestArbitration",
+    "relation": "precondition",
+    "tail": "FindMeLampRemoteControlModule",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FindMeLampRequestArbitration",
+    "relation": "precondition",
+    "tail": "FindMeLampControlModule",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SwitchFaultFeedback",
+    "relation": "precondition",
+    "tail": "BrakeLightSwitchPreprocessingModule",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SwitchFaultFeedback",
+    "relation": "precondition",
+    "tail": "TurnSignalSwitchPreprocessingModule",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SwitchFaultFeedback",
+    "relation": "precondition",
+    "tail": "HeadlightHighBeamSwitchPreprocessingModule",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SwitchFaultFeedback",
+    "relation": "precondition",
+    "tail": "HazardWarningLampSwitchPreprocessingModule",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSwitchPreprocessingModule",
+    "relation": "depends_on",
+    "tail": "ExteriorLightSubsystem",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalSwitchPreprocessingModule",
+    "relation": "depends_on",
+    "tail": "ExteriorLightSubsystem",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadlightHighBeamSwitchPreprocessingModule",
+    "relation": "depends_on",
+    "tail": "ExteriorLightSubsystem",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampSwitchPreprocessingModule",
+    "relation": "depends_on",
+    "tail": "ExteriorLightSubsystem",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowBeamSwitchControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RHZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PositionLampSwitchControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RHZCU/RZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AutomaticLightingSwitchControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RHZCU/RZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightSwitchControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalSwitchControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RHZCU/RZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HeadlightHighBeamSwitchControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RHZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLampControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampSwitchControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RHZCU/RZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RearFogLampSwitchControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardWarningLampAutomaticControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RHZCU/RZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FindMeLampRemoteControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RHZCU/RZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FindMeLampControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RHZCU/RZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ComingHomeControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RHZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DaytimeRunningLampControlModule",
+    "relation": "depends_on",
+    "tail": "LHZCU/ICB/RHZCU",
+    "sources": [
+      "outer_lamp_fas_0761"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightFunction",
+    "relation": "precondition",
+    "tail": "Page 704 of 935",
+    "sources": [
+      "outer_lamp_fas_0762"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalOnOffSignalReceived",
+    "relation": "trigger_condition",
+    "tail": "[ExteriorLightCombinationService_ICB] invokes base service",
+    "sources": [
+      "outer_lamp_fas_0763"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "[ExteriorLightCombinationService_ICB] invokes base service",
+    "relation": "precondition",
+    "tail": "DirectionLightReq signals (InstanceID=1 to InstanceID=8) are set",
+    "sources": [
+      "outer_lamp_fas_0763"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB converts service interface/control signal to lamp CAN signal",
+    "relation": "trigger_condition",
+    "tail": "Control sequential flashing of hazard lamps",
+    "sources": [
+      "outer_lamp_fas_0763"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB delays and distributes FindMeLamp remote control command by 60ms",
+    "relation": "precondition",
+    "tail": "[Drive modules LHZCU/RHZCU/RZCU] receive ICB service interface or control signal",
+    "sources": [
+      "outer_lamp_fas_0763"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB receives control signal",
+    "relation": "precondition",
+    "tail": "FLDirenLightCtrl_HW etc. signals are set to on state",
+    "sources": [
+      "outer_lamp_fas_0763"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "TurnSignalSequentialModeEnabled",
+    "relation": "precondition",
+    "tail": "DirectionLightModeStatus.DircnLghtMdSts == 0x0 (Enabled)",
+    "sources": [
+      "outer_lamp_fas_0763"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLampIconDisplayAndAudibleAlert",
+    "relation": "trigger_condition",
+    "tail": "ExteriorLightSwitchProcess.DircnLightFucProStatus == 0x5 (Both_Side_Direction_Light_On_With_)",
+    "sources": [
+      "outer_lamp_fas_0763"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLampIconDisplayAndAudibleAlert",
+    "relation": "trigger_condition",
+    "tail": "Flashing frequency = 25Hz",
+    "sources": [
+      "outer_lamp_fas_0763"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting physical constraints: 25Hz is outside automotive standard hazard flash range (typically 1–2 Hz). Likely a typo; retained per rule #4 pending verification."
+  },
+  {
+    "head": "LHZCU/RHZCU/RZCU status/fault feedback to LHZCU",
+    "relation": "trigger_condition",
+    "tail": "FLDirenLightSts_HW etc. signals are set to On state",
+    "sources": [
+      "outer_lamp_fas_0763"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDirenLightFltsts_HW == 0x0",
+    "relation": "trigger_condition",
+    "tail": "FLDirenLightFltsts_HW_0_False",
+    "sources": [
+      "outer_lamp_fas_0763"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDirenLightErrorSta == 0x0",
+    "relation": "trigger_condition",
+    "tail": "FLDirenLightErrorSta == 0x0 (No Error)",
+    "sources": [
+      "outer_lamp_fas_0763"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "InterfaceNameConsistencyWithLogicDiagram",
+    "relation": "precondition",
+    "tail": "VehMd",
+    "sources": [
+      "outer_lamp_fas_0764"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd",
+    "relation": "input_from",
+    "tail": "CAN/LIN/SoA service/hardwire",
+    "sources": [
+      "outer_lamp_fas_0764"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd",
+    "relation": "output_to",
+    "tail": "Signal sending node or SoA service provider",
+    "sources": [
+      "outer_lamp_fas_0764",
+      "outer_lamp_fas_1638"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd",
+    "relation": "depends_on",
+    "tail": "Signal receiving node or SoA service consumer",
+    "sources": [
+      "outer_lamp_fas_0764"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd",
+    "relation": "connected_to",
+    "tail": "Designated signal channel",
+    "sources": [
+      "outer_lamp_fas_0764"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehMd",
+    "relation": "input_from",
+    "tail": "Designated signal source",
+    "sources": [
+      "outer_lamp_fas_0764"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

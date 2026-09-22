@@ -1,0 +1,81 @@
+[
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "左侧和右侧需保持同步点亮,两侧最大延时不能超过40ms",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "近光灯开启",
+      "同步点亮",
+      "最大延时",
+      "40ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0845",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "ICB发送组合灯光请求",
+    "relation": "前提条件",
+    "tail": "ExteriorLightControlSystem.ControlCombinedLight.CombinedLightReq",
+    "triple_type": "输入为",
+    "evidence_terms": [
+      "ICB",
+      "组合灯光请求",
+      "ExteriorLightControlSystem"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0845",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "组合灯光请求反馈",
+    "relation": "依赖于",
+    "tail": "ExteriorLightControlSystem.ControlCombinedLight.CombinedLightResp=0x0=ControlSuccess",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "组合灯光请求",
+      "反馈",
+      "ControlSuccess"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0845",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "ICB_8295组合灯光请求重发",
+    "relation": "超时约束",
+    "tail": "应尝试按照<=50ms周期重发3次；尝试重发3次后仍未反馈请求成功,则停止发送",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "ICB_8295",
+      "重发机制",
+      "50ms",
+      "3次",
+      "停止发送"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0845",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  },
+  {
+    "head": "外灯状态主动获取",
+    "relation": "前提条件",
+    "tail": "针对发送类型为Onchange的外灯状态服务,消费端在服务发现订阅或者外灯控制请求后的500ms内应主动通过状态服务Getter()方式获取外灯状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "Onchange",
+      "状态服务",
+      "Getter()",
+      "500ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_0845",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "other"
+  }
+]

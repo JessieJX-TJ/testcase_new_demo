@@ -1,0 +1,52 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Side Position Light (Position Lamp) System Configuration and Status Feedback",
+  "row_semantics": "Each row represents a specific instance of the side position light system, detailing its status and error status.",
+  "column_semantics": "The columns represent different attributes of the side position light system, including its operational status and error status for each instance.",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "SidePositionLight",
+      "type": "function",
+      "description": "Side Position Light system, which includes both the main status and error status."
+    },
+    {
+      "name": "InstanceID",
+      "type": "identifier",
+      "description": "Unique identifier for each instance of the side position light system."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightStatus",
+      "type": "input_signal",
+      "description": "Indicates whether the side position light is ON or OFF."
+    },
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "input_signal",
+      "description": "Indicates if there is an error in the side position light system."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "No Error",
+      "type": "fault_status",
+      "description": "Indicates that the side position light system is functioning without errors."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "Synchronization Delay",
+      "type": "timing_constraint",
+      "description": "The left and right side position lights must extinguish simultaneously, with a maximum delay of 40ms between them."
+    }
+  ],
+  "engineering_interpretation": "This table defines the configuration and expected status feedback for multiple instances of the side position light system, ensuring proper synchronization and error detection as part of the vehicle's lighting control system.",
+  "uncertain_points": [
+    "The exact communication protocol (CAN vs. PPV) for each instance is not clearly specified beyond the comments.",
+    "The specific timing mechanism for enforcing the 40ms delay is not detailed in the table."
+  ]
+}

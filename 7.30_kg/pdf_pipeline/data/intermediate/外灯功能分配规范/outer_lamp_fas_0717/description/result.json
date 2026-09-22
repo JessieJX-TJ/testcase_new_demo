@@ -1,0 +1,70 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 侧位灯控制与状态",
+  "row_semantics": "表格按功能模块划分，每一行描述一个特定的接口或参数定义，包括其输入、输出、实例ID及功能说明。",
+  "column_semantics": "列标题包括：功能模块名称、输入信号类型（SOA）、涉及的控制器/模块列表（如RZCU, ICB_S32 GM等）、以及该接口的功能描述和参数定义。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SidePositionLightReq",
+      "type": "Parameter",
+      "description": "侧位灯控制请求参数，用于发送开/关指令。"
+    },
+    {
+      "name": "SidePositionLightSta",
+      "type": "Parameter",
+      "description": "侧位灯状态参数，用于获取灯的状态信息。"
+    },
+    {
+      "name": "ControlSidePositionLight",
+      "type": "Interface",
+      "description": "控制侧位灯亮灭的服务接口。"
+    },
+    {
+      "name": "SidePositionLightStatus",
+      "type": "Interface",
+      "description": "获取侧位灯状态的服务接口。"
+    },
+    {
+      "name": "RZCU",
+      "type": "Controller",
+      "description": "区域控制单元，负责接收并处理侧位灯控制请求。"
+    },
+    {
+      "name": "ICB_S32 GM",
+      "type": "Controller",
+      "description": "集成控制盒，可能参与侧位灯的逻辑判断或状态反馈。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "Controller",
+      "description": "局部区域控制单元，可能与左侧位置灯相关。"
+    },
+    {
+      "name": "LHZCU_ET",
+      "type": "Controller",
+      "description": "局部区域控制单元扩展版本，可能与右侧位置灯相关。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "0x0=OFF",
+      "description": "表示关闭状态，用于侧位灯控制请求和状态参数中。"
+    },
+    {
+      "name": "0x1=ON",
+      "description": "表示开启状态，用于侧位灯控制请求和状态参数中。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightStaus",
+      "description": "通过SidePositionLightStatus接口返回左前位置灯的状态。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了侧位灯的控制请求和服务接口，可用于验证车辆侧位灯在不同控制器下的开关控制逻辑及其状态反馈功能。",
+  "uncertain_points": []
+}

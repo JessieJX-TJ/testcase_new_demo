@@ -1,0 +1,49 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Ambient Lamp Breathing Mode Hold-Off Time Configuration",
+  "row_semantics": "Each row represents a specific parameter related to the hold-off time for different breathing rate modes of an ambient lamp.",
+  "column_semantics": {
+    "标定项/Item": "Parameter name or identifier for calibration.",
+    "标定描述/Description": "Description of the parameter's function or purpose.",
+    "参数范围/Range": "Valid range of values for the parameter.",
+    "分辨率/Factor": "Resolution or scaling factor for the parameter value.",
+    "默认值/Default": "Default value for the parameter if not calibrated."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "function",
+      "description": "An interior lighting system that provides mood lighting with a breathing mode effect."
+    },
+    {
+      "name": "Breathing Rate Modes",
+      "type": "mode",
+      "description": "Different rates at which the ambient lamp can pulse or 'breathe', each with its own hold-off time."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "parameter": "AmbitLampBrthngholdoffPercent",
+      "description": "Hold-off time for the general ambient lamp breathing mode.",
+      "range": "0 - FF (hexadecimal)",
+      "resolution": "E = N * 1%",
+      "default_value": "0xA (10%)"
+    },
+    {
+      "parameter": "AmbitLampBrthngRateXholdoffPercent",
+      "description": "Hold-off time for specific breathing rate modes (X = 1 to 12).",
+      "range": "0 - 32",
+      "resolution": "E = N * 1%",
+      "default_value": "0xA (10%) for most, except specific overrides"
+    }
+  ],
+  "engineering_interpretation": "This table defines the calibration parameters for configuring the hold-off time durations in various breathing rate modes of an ambient lamp. It is used to verify that the correct hold-off times are set for each breathing rate mode during system testing.",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,74 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Right Position Lamp Short Circuit Detection and Recovery Logic",
+  "row_semantics": "Each row represents a specific state or condition of the right position lamp system, including short circuit detection to ground, short circuit detection to power supply, and open circuit detection.",
+  "column_semantics": {
+    "名称": "Unique identifier for each state or condition, typically in the format B1061 XX where XX is a number indicating the specific scenario.",
+    "描述": "A brief description of the state or condition being monitored, such as 'Right Position Lamp outputs short circuit to ground'.",
+    "进入条件": "The condition that must be met to enter this specific state or condition, e.g., 'Detect short circuit to ground'.",
+    "退出条件": "The condition that must be met to exit this specific state or condition, e.g., 'Detect no short circuit to ground'."
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Right Position Lamp",
+      "type": "function",
+      "description": "The right side position lamp of the vehicle, which is monitored for electrical faults."
+    },
+    {
+      "name": "B1061 11",
+      "type": "state",
+      "description": "State where the right position lamp has detected a short circuit to ground."
+    },
+    {
+      "name": "B1061 12",
+      "type": "state",
+      "description": "State where the right position lamp has detected a short circuit to power supply."
+    },
+    {
+      "name": "B1061 13",
+      "type": "state",
+      "description": "State where the right position lamp has detected an open circuit."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Detect short circuit to ground",
+      "type": "input_signal",
+      "description": "Signal indicating that a short circuit to ground has been detected in the right position lamp."
+    },
+    {
+      "name": "Detect short circuit to power supply",
+      "type": "input_signal",
+      "description": "Signal indicating that a short circuit to power supply has been detected in the right position lamp."
+    },
+    {
+      "name": "Detect open circuit",
+      "type": "input_signal",
+      "description": "Signal indicating that an open circuit has been detected in the right position lamp."
+    },
+    {
+      "name": "Detect no short circuit to ground",
+      "type": "output_signal",
+      "description": "Signal indicating that the short circuit to ground condition has been resolved."
+    },
+    {
+      "name": "Detect no short circuit to power supply",
+      "type": "output_signal",
+      "description": "Signal indicating that the short circuit to power supply condition has been resolved."
+    },
+    {
+      "name": "Detect open circuit recovery",
+      "type": "output_signal",
+      "description": "Signal indicating that the open circuit condition has been resolved."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the fault detection and recovery logic for the right position lamp system, specifically for short circuit to ground, short circuit to power supply, and open circuit conditions. It can be used to verify the correct behavior of the lamp's fault detection system under various fault scenarios.",
+  "uncertain_points": []
+}
+```

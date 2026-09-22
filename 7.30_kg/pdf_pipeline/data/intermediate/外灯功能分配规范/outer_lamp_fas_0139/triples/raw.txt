@@ -1,0 +1,68 @@
+```json
+[
+  {
+    "head": "外灯组合服务 ICB 控制车顶射灯开启",
+    "relation": "触发条件",
+    "tail": "RoofSpotLight.Control.RoofSpotLight.RoofSpotLightReq = 0x1 = On",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["RoofSpotLight.Control.RoofSpotLight.RoofSpotLightReq"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "数字灯光 APP_ICB 反馈车顶射灯状态",
+    "relation": "输出为",
+    "tail": "RoofSpotLight.RoofSpotLightStatus.RoofSpotLightSta",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["数字灯光 APP_ICB", "RoofSpotLight.RoofSpotLightStatus.RoofSpotLightSta"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 将车顶射灯状态反馈给 LHZCU",
+    "relation": "输出为",
+    "tail": "ExteriorLightSwitchProcess.RoofSpotLightSta.RoofSpotLightSta",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ICB", "LHZCU", "ExteriorLightSwitchProcess.RoofSpotLightSta.RoofSpotLightSta"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ICB 将车顶射灯故障状态反馈给 LHZCU",
+    "relation": "输出为",
+    "tail": "ExteriorLightSwitchProcess.RoofSpotLightErrSta.RoofSpotLightErrSta",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["ICB", "LHZCU", "ExteriorLightSwitchProcess.RoofSpotLightErrSta.RoofSpotLightErrSta"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯控制模块 LHZCU 反馈车顶射灯状态给 ICB",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.RoofSpotLightSts.RoofSpotLightSts",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["LHZCU", "ICB", "ExteriorLightControlSystem.RoofSpotLightSts.RoofSpotLightSts"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "车顶射灯控制模块 LHZCU 反馈车顶射灯故障状态给 ICB",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.RoofSpotLightErrSts.RoofSpotLightErrSts",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["LHZCU", "ICB", "ExteriorLightControlSystem.RoofSpotLightErrSts.RoofSpotLightErrSts"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯点亮且车顶射灯未点亮",
+    "relation": "前提条件",
+    "tail": "第一次远光灯拨杆外推操作为开启车顶射灯",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["远光灯状态", "车顶射灯状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "远光灯点亮且车顶射灯点亮",
+    "relation": "前提条件",
+    "tail": "往外推远光灯拨杆为关闭车顶射灯及远光灯",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["远光灯状态", "车顶射灯状态"],
+    "confidence_note": "high"
+  }
+]
+```

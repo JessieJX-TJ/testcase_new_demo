@@ -1,0 +1,91 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Ambient Lamp Control Module Functionality",
+  "row_semantics": "Each row represents a distinct operational state or condition of the ambient lamp control system, including trigger conditions, execution actions, exit conditions, and fault handling.",
+  "column_semantics": {
+    "Column 1": "Trigger Conditions for State Entry",
+    "Column 2": "Actions Performed in the State"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FtwlFLLampColorCmd_1",
+      "type": "input_signal",
+      "description": "Signal requesting color change for the ambient lamp."
+    },
+    {
+      "name": "FtwlFLLampOnOff_1",
+      "type": "input_signal",
+      "description": "Signal to turn the ambient lamp on or off."
+    },
+    {
+      "name": "FtwlFLLampFadeSpdCmd_1",
+      "type": "input_signal",
+      "description": "Signal specifying the fade speed for turning off the ambient lamp."
+    },
+    {
+      "name": "ZCU_LIN_Signal",
+      "type": "input_signal",
+      "description": "LIN communication signal from the Zone Control Unit (ZCU)."
+    },
+    {
+      "name": "PWM",
+      "type": "output_signal",
+      "description": "Pulse Width Modulation signal used to drive the ambient lamp."
+    },
+    {
+      "name": "Ambient Lamp Module",
+      "type": "controller_module",
+      "description": "The local control module responsible for managing the ambient lamp's color and on/off states."
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "FtwlFLLampColorCmd_1 != 0x00",
+      "description": "A request for a color change has been received."
+    },
+    {
+      "condition": "FtwlFLLampOnOff_1 == 0x0",
+      "description": "An 'OFF' command has been received for the ambient lamp."
+    },
+    {
+      "condition": "FtwlFLLampColorCmd_1 == 0x00 or undefined",
+      "description": "No color change request is present or the color code is invalid."
+    },
+    {
+      "condition": "ZCU_LIN_Signal not received within 6 seconds",
+      "description": "Timeout condition indicating loss of communication with the ZCU."
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "PWM signal corresponding to the requested color",
+      "description": "The ambient lamp is driven to display the specified color."
+    },
+    {
+      "output": "Ambient lamp turned off",
+      "description": "The ambient lamp is deactivated according to the fade speed setting."
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "Overvoltage or undervoltage in the ambient lamp module",
+      "description": "Immediate shutdown of the ambient lamp to prevent damage."
+    },
+    {
+      "fault": "Invalid FtwlFLLampColorCmd_1 value",
+      "description": "Maintain the previous state if an abnormal color command is detected."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "6 seconds",
+      "description": "If no LIN signal from the ZCU is received within 6 seconds, the ambient lamp is immediately turned off."
+    }
+  ],
+  "engineering_interpretation": "This table defines the operational logic for an ambient lamp control module, detailing how it responds to input signals, performs actions, exits states, and handles faults. It is primarily used for testing the module's state transitions and fault recovery mechanisms under various input conditions.",
+  "uncertain_points": []
+}
+```

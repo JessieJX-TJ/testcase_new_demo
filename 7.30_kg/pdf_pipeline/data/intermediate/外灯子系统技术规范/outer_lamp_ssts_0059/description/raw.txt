@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "高位制动灯异常检测与处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，描述了高位制动灯系统在特定条件下的触发、执行、退出及异常处理规则。",
+  "column_semantics": "表格包含两列：左侧为条件或动作的描述，右侧为具体的参数或信号值。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "BrkLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "高位制动灯反馈超时允许参数，用于启用相关监控功能。"
+    },
+    {
+      "name": "BrkLightDrvMdl",
+      "type": "controller",
+      "description": "高位制动灯驱动模块，负责发送制动灯状态信息。"
+    },
+    {
+      "name": "BrkLightCtrlMdl",
+      "type": "controller",
+      "description": "高位制动灯控制模块，接收并处理制动灯状态信息。"
+    },
+    {
+      "name": "DTC B1043_13",
+      "type": "fault_code",
+      "description": "诊断故障代码，表示高位制动灯异常的具体错误类型。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "details": [
+        "BrkLightFbkSOAEnPrm === 1 (Enable) - 高位制动灯反馈超时监控功能已启用。",
+        "高位制动灯处于输出状态 - 制动灯应处于点亮状态。"
+      ]
+    },
+    {
+      "condition": "触发条件",
+      "details": [
+        "检测到高位制动灯开路 - 系统检测到制动灯电路断开。"
+      ]
+    },
+    {
+      "condition": "退出条件",
+      "details": [
+        "检测到开路恢复 - 系统检测到制动灯电路恢复正常。"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "BrakeLightState.BrakeLightSta",
+      "value": "2 (Error)",
+      "description": "高位制动灯状态信号被设置为错误状态（值为2）。"
+    },
+    {
+      "action": "持续发送 BrakeLightState.BrakeLightSta = 2 (Error) 至 BrkLightCtrlMdl",
+      "details": "至少发送三帧制动灯错误状态信号给控制模块。"
+    },
+    {
+      "action": "置位 DTC B1043_13",
+      "description": "记录诊断故障代码 B1043_13，表示高位制动灯开路故障。"
+    }
+  ],
+  "core_faults": [
+    {
+      "code": "DTC B1043_13",
+      "description": "高位制动灯开路故障。",
+      "type": "hardware_fault"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了高位制动灯系统在检测到开路故障时的诊断和处理逻辑，可用于验证高位制动灯系统的故障检测、信号发送及故障码记录功能。",
+  "uncertain_points": []
+}
+```

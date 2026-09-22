@@ -1,0 +1,54 @@
+{
+  "table_type": "parameter_table",
+  "topic": "DirectionLightStatus",
+  "row_semantics": "Each row represents a specific Direction Light status query interface with its associated parameters and instance ID.",
+  "column_semantics": {
+    "A": "Function Name (e.g., DirectionLight.DirectionLightStatus)",
+    "B": "Consumption Type (e.g., SOA, ICB)",
+    "C": "Controller/Module (e.g., RZCU, LHZCU)",
+    "D": "Description of the service interface and subscription behavior",
+    "E": "Interface Name (e.g., DirectionLightStatus)",
+    "F": "Parameter Name (e.g., {DirectionLightSta})",
+    "G": "InstanceID",
+    "H": "Status Values (e.g., OFF, ON, Unknown)",
+    "I": "State Type (e.g., Hardline Status, Network Status)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "function",
+      "description": "Represents the direction light system or module."
+    },
+    {
+      "name": "DirectionLightStatus",
+      "type": "interface",
+      "description": "The service interface used to query the status of direction lights."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Subscription",
+      "description": "The need to subscribe to the service interface before querying the light status."
+    },
+    {
+      "name": "InstanceID",
+      "description": "Different InstanceIDs (3, 4, 5) correspond to different direction light statuses (转向灯状态, 左前转向灯状态)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightSta",
+      "type": "output_signal",
+      "description": "The status parameter returned by the interface, which can be OFF, ON, or Unknown."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interfaces for querying the status of direction lights in a vehicle, specifying the required subscription behavior, the associated controllers/modules, and the possible status values. It is used for testing the correct implementation and response of the direction light status query interfaces under different configurations.",
+  "uncertain_points": [
+    "The exact meaning of 'SOA' and 'ICB' in column B is not explicitly defined in the table.",
+    "The purpose of the empty columns in the middle of the table is unclear."
+  ]
+}

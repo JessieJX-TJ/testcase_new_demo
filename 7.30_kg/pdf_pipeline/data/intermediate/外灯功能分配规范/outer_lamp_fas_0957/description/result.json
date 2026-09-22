@@ -1,0 +1,46 @@
+{
+  "table_type": "signal_table",
+  "topic": "制动灯控制信号交互与状态反馈机制",
+  "row_semantics": "描述了制动灯控制系统中不同模块间信号的发送、接收、处理及状态反馈的具体流程和逻辑。",
+  "column_semantics": "无明确列标题，内容为按编号顺序排列的技术规范条目，详细说明了信号交互的步骤、涉及的模块、信号值及其功能。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "ICB",
+    "RZCU",
+    "LHZCU",
+    "BrkLghtCtrl",
+    "BrkLghtSts",
+    "BrkLghtFltSts",
+    "BrkLghtDrvEnPrm",
+    "BrkLghtSwSts"
+  ],
+  "core_conditions": [
+    "BrkLghtCtrl_HW=0x1",
+    "BrkLghtSts_HW_1_On",
+    "BrkLghtFltSts_HW_0_False",
+    "exlBrkLghtHwDrvEnPrm=0x1",
+    "BrkLghtSwSts_1_On",
+    "UsrMd_0_Sleep",
+    "UsrMd_1_Standby",
+    "UsrMd_6_XOTA",
+    "UsrMdV_Valid"
+  ],
+  "core_outputs": [
+    "BrkLghtCtrl_1_On",
+    "BrkLghtSts_1_On",
+    "BrkLghtFltSts_0_False",
+    "BrkLghtSwSts_1_On",
+    "BrkLghtSwStsV_0_Valid"
+  ],
+  "core_faults": [
+    "BrkLghtFltSts_HW_0_False",
+    "BrkLghtErrSts"
+  ],
+  "core_timing_constraints": [
+    "60ms",
+    "40ms"
+  ],
+  "engineering_interpretation": "该表格详细定义了制动灯系统中各控制器（ICB、RZCU、LHZCU）之间的信号交互逻辑，包括控制信号的延时、状态反馈、故障检测以及点亮同步性要求，可用于验证制动灯系统的信号传输正确性和功能响应及时性。",
+  "uncertain_points": []
+}

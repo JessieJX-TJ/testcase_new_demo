@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "制动踏板开关粘连故障诊断与处理",
+  "row_semantics": "表格按功能阶段划分，包括触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "第一列定义了功能阶段（如触发条件、执行动作等），第二列详细描述了该阶段的具体内容。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "BrkLghtSwMdl",
+      "type": "module",
+      "description": "制动灯开关模块"
+    },
+    {
+      "name": "BrkLghtCtrlMdl",
+      "type": "module",
+      "description": "制动灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "制动踏板开关粘连",
+      "description": "制动踏板开关持续处于闭合状态超过600秒。",
+      "type": "input_signal",
+      "timing": {
+        "duration": ">600s",
+        "status": "TBD"
+      }
+    },
+    {
+      "name": "制动踏板开关信号悬空",
+      "description": "制动踏板开关信号未被检测到或处于不确定状态。",
+      "type": "exit_condition"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "BrkLghtSwReq",
+      "description": "制动灯开关请求信号，值为0x1表示开启。",
+      "type": "output_signal"
+    },
+    {
+      "name": "DTC B1066 73",
+      "description": "诊断故障代码，用于记录制动踏板开关粘连故障。",
+      "type": "fault_code"
+    },
+    {
+      "name": "BrkLghtSwSts",
+      "description": "制动灯开关状态，值为0x1=BrkLghtSwSts_1_On表示正常开启状态。",
+      "type": "feedback_signal"
+    },
+    {
+      "name": "BrkLghtSwStsV",
+      "description": "制动灯开关状态验证，值为0x1=BrkLghtSwStsV_1_Invalid表示验证失败。",
+      "type": "feedback_signal"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC B1066 73",
+      "description": "制动踏板开关粘连故障。",
+      "type": "fault_status"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "condition": "制动踏板开关粘连",
+      "duration": ">600s",
+      "status": "TBD"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了制动踏板开关粘连故障的诊断逻辑，包括触发条件、执行的动作（如发送特定信号、设置故障码）、反馈状态以及退出条件。可用于验证车辆在制动踏板开关粘连时是否能够正确诊断并记录故障。",
+  "uncertain_points": [
+    "触发条件中的时间阈值（>600s）尚未确定（TBD）。"
+  ]
+}
+```

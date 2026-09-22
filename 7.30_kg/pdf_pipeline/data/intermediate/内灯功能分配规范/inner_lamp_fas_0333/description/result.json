@@ -1,0 +1,17 @@
+{
+  "table_type": "other",
+  "topic": "",
+  "row_semantics": "",
+  "column_semantics": "",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "```json\n{\n  \"table_type\": \"signal_table\",\n  \"topic\": \"Interior Light Function Allocation Specification\",\n  \"row_semantics\": \"Each row represents a specific signal or command related to the interior light control, detailing its source, destination, and associated logic.\",\n  \"column_semantics\": {\n    \"Interface Name\": \"The name of the interface or signal, which should match the content in the logical block diagram.\",\n    \"Input/Output/Provide/Consume\": Indicates whether the signal is an input, output, provided by, or consumed by a component.\n    \"CAN/LIN/SOA Service/Hardwire etc\": The communication method or service type used for the signal (e.g., CAN bus, LIN bus, SOA service, or direct hardwiring).\n    \"Signal Sending Node or SoA Service Provider\": The node or service that sends the signal.\n    \"Signal Receiving Node or SoA Service Consumer\": The node or service that receives the signal.\n    \"Designated Signal Channel\": The specific channel through which the signal is transmitted.\n    \"Designated Signal Source\": The origin of the signal.\n  },\n  \"has_merged_cells\": true,\n  \"header_levels\": 3,\n  \"core_entities\": [\n    {\n      \"name\": \"RRDoorFlorLampCtrlCmd\",\n      \"type\": \"command\",\n      \"description\": \"Command to control the rear door flower lamp.\"\n    },\n    {\n      \"name\": \"RHZCU\",\n      \"type\": \"controller\",\n      \"description\": \"Rear High Zone Control Unit, responsible for processing commands and controlling the interior lights.\"\n    },\n    {\n      \"name\": \"RHZC U\",\n      \"type\": \"controller\",\n      \"description\": \"Rear High Zone Controller Unit, likely a sub-component or part of the RHZCU.\"\n    },\n    {\n      \"name\": \"SST S\",\n      \"type\": \"signal_source\",\n      \"description\": \"Signal source for the interior light, possibly referring to a specific lighting system or module.\"\n    }\n  ],\n  \"core_conditions\": [],\n  \"core_outputs\": [\n    {\n      \"name\": \"RRDoorFlorLampCtrlCmd\",\n      \"value\": \"0x0=Close; 0x1=Open;\",\n      \"description\": \"The command can take two values: 0x0 to close the rear door flower lamp and 0x1 to open it.\"\n    }\n  ],\n  \"core_faults\": [],\n  \"core_timing_constraints\": [],\n  \"engineering_interpretation\": \"This table specifies the function allocation for the interior light control system, particularly focusing on the command signal 'RRDoorFlorLampCtrlCmd' sent from the RHZC U controller to the RHZCU. It details how this command is transmitted (via internal CAN/LIN/SOA service) and what actions it triggers (closing or opening the rear door flower lamp). This information is crucial for testing the correct transmission and interpretation of the command signal within the vehicle's interior lighting system.\",\n  \"uncertain_points\": []\n}\n```",
+  "uncertain_points": [
+    "模型输出未能解析为标准JSON，已降级保存原始文本"
+  ]
+}

@@ -1,0 +1,90 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "DirectionLight功能状态与错误状态的接口定义",
+  "row_semantics": "表格的每一行代表一个特定的 DirectionLight 相关服务接口或状态查询，描述了其调用目的、参数名称、实例ID及可能的状态值。",
+  "column_semantics": {
+    "1": "功能模块路径 (Function Path)",
+    "2": "消费 (Consumption)",
+    "3": "SOA (Service-Oriented Architecture)",
+    "4": "ICB (Internal Communication Bus)",
+    "5": "LHZCU (Local Host Control Unit)",
+    "6": "网络状态 (Network Status) / 硬线故障状态 (Hardware Fault Status)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DirectionLight",
+      "type": "功能模块",
+      "description": "方向灯系统，包括左转向灯和右转向灯的状态监控。"
+    },
+    {
+      "name": "SOA",
+      "type": "通信协议",
+      "description": "面向服务的架构，用于不同系统间的交互。"
+    },
+    {
+      "name": "ICB",
+      "type": "通信总线",
+      "description": "内部通信总线，用于模块间的数据传输。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "本地主机控制单元，负责处理方向灯相关的逻辑和控制。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectionLightStatus",
+      "description": "方向灯状态查询接口，用于获取当前转向灯的工作状态。",
+      "parameters": [
+        {
+          "name": "DirectionLightSta",
+          "type": "输入信号",
+          "description": "表示转向灯状态的参数，可取值为OFF、ON或Unknown。"
+        },
+        {
+          "name": "InstanceID",
+          "type": "标识符",
+          "description": "实例ID，用于区分不同的转向灯状态查询实例。"
+        }
+      ]
+    },
+    {
+      "name": "DirectionLightErrorStatus",
+      "description": "方向灯错误状态查询接口，用于检测硬件故障。",
+      "parameters": [
+        {
+          "name": "InstanceID",
+          "type": "标识符",
+          "description": "实例ID，用于区分不同的错误状态查询实例。"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "转向灯状态",
+      "type": "输出信号",
+      "description": "指示左转或右转转向灯当前是关闭（OFF）、开启（ON）还是未知（Unknown）状态。"
+    },
+    {
+      "name": "硬线故障状态",
+      "type": "输出信号",
+      "description": "指示方向灯系统是否存在硬件故障。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "硬线故障",
+      "type": "故障状态",
+      "description": "当 DirectionLightErrorStatus 接口返回异常时，表明方向灯系统存在硬件连接问题。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了 DirectionLight 功能中转向灯状态查询和错误状态查询的接口规范，可用于验证车辆在不同场景下转向灯状态的正确性以及硬件故障检测功能的有效性。",
+  "uncertain_points": []
+}
+```

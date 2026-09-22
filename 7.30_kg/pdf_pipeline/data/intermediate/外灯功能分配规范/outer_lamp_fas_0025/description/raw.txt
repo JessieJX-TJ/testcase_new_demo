@@ -1,0 +1,90 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "车辆外灯故障状态定义",
+  "row_semantics": "表格按外灯位置（左前、右前、左后、右后）和整体位置灯状态，分别定义了各灯的故障状态信号。",
+  "column_semantics": "第一列为主功能/状态名称；第二列为输出类型；第三至六列为涉及的控制器/模块（CANFD, ICB, LHZCU等）；第七列为详细定义说明。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "FLSideLghtFltsts",
+      "type": "function",
+      "description": "左前位置灯故障状态"
+    },
+    {
+      "name": "FRSideLghtFltsts",
+      "type": "function",
+      "description": "右前位置灯故障状态"
+    },
+    {
+      "name": "RLSideLghtFltsts",
+      "type": "function",
+      "description": "左后位置灯故障状态"
+    },
+    {
+      "name": "RRSideLghtFltsts",
+      "type": "function",
+      "description": "右后位置灯故障状态"
+    },
+    {
+      "name": "SideLghtSts",
+      "type": "function",
+      "description": "整体位置灯状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "FLSideLghtFltsts",
+      "signal_type": "output",
+      "description": "左前位置灯故障状态信号，0x0表示False，0x1表示True"
+    },
+    {
+      "name": "FRSideLghtFltsts",
+      "signal_type": "output",
+      "description": "右前位置灯故障状态信号，0x0表示False，0x1表示True"
+    },
+    {
+      "name": "RLSideLghtFltsts",
+      "signal_type": "output",
+      "description": "左后位置灯故障状态信号，0x0表示False，0x1表示True"
+    },
+    {
+      "name": "RRSideLghtFltsts",
+      "signal_type": "output",
+      "description": "右后位置灯故障状态信号，0x0表示False，0x1表示True"
+    },
+    {
+      "name": "SideLghtSts",
+      "signal_type": "output",
+      "description": "整体位置灯状态信号"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "FLSideLghtFltsts",
+      "type": "fault",
+      "description": "左前位置灯故障"
+    },
+    {
+      "name": "FRSideLghtFltsts",
+      "type": "fault",
+      "description": "右前位置灯故障"
+    },
+    {
+      "name": "RLSideLghtFltsts",
+      "type": "fault",
+      "description": "左后位置灯故障"
+    },
+    {
+      "name": "RRSideLghtFltsts",
+      "type": "fault",
+      "description": "右后位置灯故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆四个位置灯（左前、右前、左后、右后）及其整体位置灯的状态信号，主要用于诊断和验证各位置灯的故障状态，支持整车外灯系统的测试与验证。",
+  "uncertain_points": []
+}
+```

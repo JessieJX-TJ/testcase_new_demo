@@ -1,0 +1,484 @@
+```json
+[
+  {
+    "head": "整车电子电器系统参数配置验证",
+    "relation": "前提条件",
+    "tail": "参数范围/Range、分辨率/Factor、默认值/Default 均需符合设计规范",
+    "sources": ["inner_lamp_ssts_0156"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "标定项/Item 的有效性验证",
+    "relation": "依赖于",
+    "tail": "标定描述/Description、参数范围/Range、分辨率/Factor、默认值/Default",
+    "sources": ["inner_lamp_ssts_0156"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统执行唤醒/休眠操作",
+    "relation": "触发条件",
+    "tail": "唤醒源为NA",
+    "sources": ["inner_lamp_ssts_0157", "inner_lamp_ssts_0352", "inner_lamp_ssts_0361"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统执行唤醒/休眠操作",
+    "relation": "输入为",
+    "tail": "唤醒源为NA",
+    "sources": ["inner_lamp_ssts_0157"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统执行唤醒/休眠操作",
+    "relation": "输出为",
+    "tail": "唤醒/休眠方式为NA",
+    "sources": ["inner_lamp_ssts_0157"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "参数范围/Range",
+    "relation": "前提条件",
+    "tail": "参数设置在有效取值范围内",
+    "sources": ["inner_lamp_ssts_0158"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "分辨率/Factor",
+    "relation": "前提条件",
+    "tail": "参数调节的最小可调整单位",
+    "sources": ["inner_lamp_ssts_0158"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "默认值/Default",
+    "relation": "前提条件",
+    "tail": "参数未被修改时的初始值",
+    "sources": ["inner_lamp_ssts_0158"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "点亮ON时需同时接收到非0值的颜色亮度指令",
+    "relation": "前提条件",
+    "tail": "CnsoLHBLampOnOff_1_1_ON",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯颜色指令",
+    "relation": "输入为",
+    "tail": "CnsoLHBLampColorCmd_1",
+    "sources": ["inner_lamp_ssts_0159", "inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯亮度指令",
+    "relation": "输入为",
+    "tail": "CnsoLHBLampBrtnsCmd_1",
+    "sources": ["inner_lamp_ssts_0159", "inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯呼吸指令",
+    "relation": "输入为",
+    "tail": "CnsoLHBLampBrthngCmd_1",
+    "sources": ["inner_lamp_ssts_0159", "inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHBLampColorCmd_1_0_No Request",
+    "relation": "触发条件",
+    "tail": "无颜色请求",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHBLampBrtnsCmd_1_0_No Request",
+    "relation": "触发条件",
+    "tail": "无亮度请求",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHBLampBrthngCmd_1_0_No Request",
+    "relation": "触发条件",
+    "tail": "无呼吸率请求",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "指令值为0或者未定义颜色号时保持颜色不变",
+    "relation": "状态保持条件",
+    "tail": "CnsoLHBLampColorCmd_1",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "指令值为0时保持亮度不变",
+    "relation": "状态保持条件",
+    "tail": "CnsoLHBLampBrtnsCmd_1",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Code值 0x0=CnsoLHBLampBrthngCmd_1_0_No Request",
+    "relation": "输入为",
+    "tail": "无呼吸率请求",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Code值 0x1=CnsoLHBLampBrthngCmd_1_1_Rate1",
+    "relation": "输入为",
+    "tail": "呼吸率模式Rate1 (500ms)",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Code值 0x2=CnsoLHBLampBrthngCmd_1_2_Rate2",
+    "relation": "输入为",
+    "tail": "呼吸率模式Rate2 (1s)",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Code值 0x3=CnsoLHBLampBrthngCmd_1_3_Rate3",
+    "relation": "输入为",
+    "tail": "呼吸率模式Rate3 (新增)",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Code值 0x4=CnsoLHBLampBrthngCmd_1_4_Rate4",
+    "relation": "输入为",
+    "tail": "呼吸率模式Rate4 (2s)",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Code值 0x5=CnsoLHBLampBrthngCmd_1_5_Rate5",
+    "relation": "输入为",
+    "tail": "呼吸率模式Rate5 (2.4s)",
+    "sources": ["inner_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统执行唤醒操作",
+    "relation": "前提条件",
+    "tail": "接收到有效的唤醒源信号",
+    "sources": ["inner_lamp_ssts_0160", "inner_lamp_ssts_0231", "inner_lamp_ssts_0339", "inner_lamp_ssts_0534"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统进入休眠模式",
+    "relation": "前提条件",
+    "tail": "未检测到有效的唤醒源信号",
+    "sources": ["inner_lamp_ssts_0160", "inner_lamp_ssts_0231", "inner_lamp_ssts_0331", "inner_lamp_ssts_0534"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯渐变速度指令",
+    "relation": "输入为",
+    "tail": "CnsoLHCLampFadeSpdCmd_1",
+    "sources": ["inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯开启请求",
+    "relation": "输入为",
+    "tail": "CnsoRHALampOnOff_1",
+    "sources": ["inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯颜色指令",
+    "relation": "输入为",
+    "tail": "CnsoRHALampColorCmd_1",
+    "sources": ["inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯亮度指令",
+    "relation": "输入为",
+    "tail": "CnsoRHALampBrtnsCmd_1",
+    "sources": ["inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "氛围灯呼吸指令",
+    "relation": "输入为",
+    "tail": "CnsoRHALampBrthngCmd_1",
+    "sources": ["inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "不同呼吸模式切换时,立即停止当前呼吸,切换下一呼吸模式",
+    "relation": "前提条件",
+    "tail": "CnsoRHALampBrthngCmd_1",
+    "sources": ["inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯光渐变速度默认为2000ms",
+    "relation": "状态保持条件",
+    "tail": "Spd0: 2000ms",
+    "sources": ["inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Spd1: 300ms",
+    "relation": "状态保持条件",
+    "tail": "灯光渐变速度",
+    "sources": ["inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Spd2: 100ms",
+    "relation": "状态保持条件",
+    "tail": "灯光渐变速度",
+    "sources": ["inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "灯光颜色/亮度切换时从当前状态到目标状态切换的所需的时间",
+    "relation": "前提条件",
+    "tail": "灯光渐变速度",
+    "sources": ["inner_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数",
+    "relation": "包含子功能",
+    "tail": "配置项/Item",
+    "sources": ["inner_lamp_ssts_0163", "inner_lamp_ssts_0188", "inner_lamp_ssts_0428"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数",
+    "relation": "包含子功能",
+    "tail": "标定描述/Description",
+    "sources": ["inner_lamp_ssts_0163", "inner_lamp_ssts_0188", "inner_lamp_ssts_0428"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数",
+    "relation": "包含子功能",
+    "tail": "参数范围/Range",
+    "sources": ["inner_lamp_ssts_0163", "inner_lamp_ssts_0188", "inner_lamp_ssts_0428"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数",
+    "relation": "包含子功能",
+    "tail": "定义/Conversion",
+    "sources": ["inner_lamp_ssts_0163", "inner_lamp_ssts_0188"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数",
+    "relation": "包含子功能",
+    "tail": "默认值/Default",
+    "sources": ["inner_lamp_ssts_0163", "inner_lamp_ssts_0188", "inner_lamp_ssts_0428"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System outputs specific brightness level",
+    "relation": "输入为",
+    "tail": "Parameter Identifier 4760 with Brightness Level 78",
+    "sources": ["inner_lamp_ssts_0164"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System outputs specific color temperature",
+    "relation": "输入为",
+    "tail": "Parameter Identifier 4760 with Color Temperature 11900",
+    "sources": ["inner_lamp_ssts_0164"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System outputs specific additional parameter",
+    "relation": "输入为",
+    "tail": "Parameter Identifier 4760 with Additional Parameter 79",
+    "sources": ["inner_lamp_ssts_0164"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System operates in mode defined by Parameter Identifier",
+    "relation": "依赖于",
+    "tail": "Parameter Identifier (e.g., 4760, 4800, etc.)",
+    "sources": ["inner_lamp_ssts_0164"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System operates within Threshold",
+    "relation": "依赖于",
+    "tail": "Measured/Threshold Value <= Target Value",
+    "sources": ["inner_lamp_ssts_0165"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System maintains State",
+    "relation": "状态保持条件",
+    "tail": "Measured/Threshold Value remains constant for a given Parameter Set Identifier and Secondary Setting Index",
+    "sources": ["inner_lamp_ssts_0165"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Reports Error",
+    "relation": "触发条件",
+    "tail": "ThirdRowMapLampRHErr 状态位为 0x1",
+    "sources": ["inner_lamp_ssts_0167"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Reports No Error",
+    "relation": "触发条件",
+    "tail": "ThirdRowMapLampRHErr 状态位为 0x0",
+    "sources": ["inner_lamp_ssts_0167"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Current Exceeds Maximum * 1.5",
+    "relation": "前提条件",
+    "tail": "Reading Lamp is On",
+    "sources": ["inner_lamp_ssts_0167"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Current Below Minimum * 0.1",
+    "relation": "前提条件",
+    "tail": "Reading Lamp is Off",
+    "sources": ["inner_lamp_ssts_0167"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Reading Lamp Fault Condition",
+    "relation": "诊断关联",
+    "tail": "Reading Lamp Current Exceeds Maximum * 1.5 OR Reading Lamp Current Below Minimum * 0.1",
+    "sources": ["inner_lamp_ssts_0167"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System outputs Target Output Level",
+    "relation": "输入为",
+    "tail": "Parameter Value and Control Input",
+    "sources": ["inner_lamp_ssts_0168"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System measures Expected Response",
+    "relation": "输出为",
+    "tail": "Measured Response",
+    "sources": ["inner_lamp_ssts_0168"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System operates within Parameter Value range",
+    "relation": "前提条件",
+    "tail": "Parameter Value between 720 and 2360",
+    "sources": ["inner_lamp_ssts_0168"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System supports Control Input values",
+    "relation": "前提条件",
+    "tail": "Control Input between 11 and 57",
+    "sources": ["inner_lamp_ssts_0168"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System achieves Target Output Level of 1000",
+    "relation": "触发条件",
+    "tail": "Parameter Value >= 1600 and Control Input >= 38",
+    "sources": ["inner_lamp_ssts_0168"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System maintains Target Output Level of 1000",
+    "relation": "状态保持条件",
+    "tail": "Parameter Value between 1600 and 2360 and Control Input between 38 and 57",
+    "sources": ["inner_lamp_ssts_0168"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统功能性能指标达到峰值",
+    "relation": "触发条件",
+    "tail": "参数值位于1800至2000区间",
+    "sources": ["inner_lamp_ssts_0169"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统功能性能指标在参数值为0时为0",
+    "relation": "触发条件",
+    "tail": "参数值等于0",
+    "sources": ["inner_lamp_ssts_0169"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "整车电子电器系统配置参数",
+    "relation": "前提条件",
+    "tail": "配置项/Item为NA",
+    "sources": ["inner_lamp_ssts_0170", "inner_lamp_ssts_0192"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

@@ -1,0 +1,111 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "制动灯控制系统接口规范",
+  "row_semantics": "每行代表一个与制动灯相关的接口或信号定义，描述其功能、数据类型、通信方式及关联的控制器和外灯部件。",
+  "column_semantics": {
+    "Interface Name": "接口名称，标识该信号的功能或作用点。",
+    "Direction": "信号的方向，指示是输入还是输出。",
+    "Type": "信号的数据类型，如CAN总线信号或硬线信号。",
+    "Sender/Provider": "信号的提供方，通常是某个控制器模块。",
+    "Receiver/Consumer": "信号的接收方，通常是另一个控制器或执行器。",
+    "Channel": "信号传输的路径或通道。",
+    "Interface Source": "信号的物理来源或对应的外灯部件。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrkLghtCtrl_HW",
+      "type": "input_signal",
+      "description": "硬件制动灯控制信号，由ICB提供给RZCU。",
+      "source": "外灯FAS"
+    },
+    {
+      "name": "BrkLamp_LH_HSD",
+      "type": "output_signal",
+      "description": "左制动灯驱动信号，由RZCU通过硬线驱动尾灯。",
+      "source": "外灯SSTS"
+    },
+    {
+      "name": "BrkLamp_RH_HSD",
+      "type": "output_signal",
+      "description": "右制动灯驱动信号，由RZCU通过硬线驱动尾灯。",
+      "source": "外灯SSTS"
+    },
+    {
+      "name": "CHMSL_HSD",
+      "type": "output_signal",
+      "description": "高位制动灯驱动信号，由RZCU通过硬线驱动高位制动灯。",
+      "source": "外灯SSTS"
+    },
+    {
+      "name": "BrkLghtSts",
+      "type": "output_signal",
+      "description": "制动灯状态反馈信号，由RZCU通过CAN总线发送给LHZCU。",
+      "source": "外灯SSTS"
+    },
+    {
+      "name": "BrakeLightState",
+      "type": "output_signal",
+      "description": "制动灯状态反馈详细信息，由RZCU通过CAN总线发送给ICB。",
+      "source": "外灯SSTS"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "BrkLghtCtrl_HW_0_Off",
+      "value": "0x0",
+      "description": "制动灯关闭状态。",
+      "associated_signal": "BrkLghtCtrl_HW"
+    },
+    {
+      "name": "BrkLghtCtrl_HW_1_On",
+      "value": "0x1",
+      "description": "制动灯开启状态。",
+      "associated_signal": "BrkLghtCtrl_HW"
+    },
+    {
+      "name": "BrkLghtSts_0_Off",
+      "value": "0x0",
+      "description": "制动灯关闭状态反馈。",
+      "associated_signal": "BrkLghtSts"
+    },
+    {
+      "name": "BrkLghtSts_1_On",
+      "value": "0x1",
+      "description": "制动灯开启状态反馈。",
+      "associated_signal": "BrkLghtSts"
+    },
+    {
+      "name": "BrakeLightState_0_OFF",
+      "value": "0x0",
+      "description": "制动灯关闭状态。",
+      "associated_signal": "BrakeLightState"
+    },
+    {
+      "name": "BrakeLightState_1_ON",
+      "value": "0x1",
+      "description": "制动灯开启状态。",
+      "associated_signal": "BrakeLightState"
+    },
+    {
+      "name": "BrakeLightState_2_Error",
+      "value": "0x2",
+      "description": "制动灯状态错误。",
+      "associated_signal": "BrakeLightState"
+    },
+    {
+      "name": "BrakeLightState_3_Unknown",
+      "value": "0x3",
+      "description": "制动灯状态未知。",
+      "associated_signal": "BrakeLightState"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车制动灯系统的控制与状态反馈接口，可用于验证制动灯从控制指令到实际点亮以及状态反馈的完整链路是否正常工作。",
+  "uncertain_points": []
+}
+```

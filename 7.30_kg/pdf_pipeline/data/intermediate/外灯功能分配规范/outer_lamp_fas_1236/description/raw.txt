@@ -1,0 +1,103 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "制动灯开关控制模块 LHZCU 的信号周期要求",
+  "row_semantics": "表格的每一行代表一个信号源或系统，描述其发送制动系统相关信号的周期要求。",
+  "column_semantics": {
+    "left_column": "信号来源或系统名称",
+    "right_column": "信号描述及发送周期"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "制动灯开关控制模块 LHZCU",
+      "type": "controller_module",
+      "description": "负责控制制动灯开关的核心电子控制单元。"
+    },
+    {
+      "name": "制动踏板位置监测子系统",
+      "type": "subsystem",
+      "description": "监测驾驶员踩下制动踏板的位置信息，并发送制动信号。"
+    },
+    {
+      "name": "集成式制动子系统",
+      "type": "subsystem",
+      "description": "集成了多种制动功能的子系统，提供制动信号。"
+    },
+    {
+      "name": "电动车辆再生制动系统",
+      "type": "subsystem",
+      "description": "利用电动机进行能量回收的制动系统，提供制动信号。"
+    },
+    {
+      "name": "制动灯开关预处理模块",
+      "type": "module",
+      "description": "对接收到的制动信号进行预处理后，发送制动灯开关请求信号。"
+    },
+    {
+      "name": "S32G",
+      "type": "controller",
+      "description": "一个高性能的微控制器，用于转发制动灯服务请求 CAN 信号。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "制动灯控制信号",
+      "type": "output_signal",
+      "description": "由制动灯开关控制模块发送的最终控制信号，用于点亮或熄灭制动灯。"
+    },
+    {
+      "name": "制动系统信号",
+      "type": "output_signal",
+      "description": "由各个制动子系统发送的通用制动信号，用于传递制动状态。"
+    },
+    {
+      "name": "制动灯开关请求信号",
+      "type": "output_signal",
+      "description": "由制动灯开关预处理模块发送的信号，请求开启或关闭制动灯。"
+    },
+    {
+      "name": "CAN 信号",
+      "type": "output_signal",
+      "description": "由 S32G 转发的制动灯服务请求 CAN 信号，用于与其他车载网络通信。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "signal": "制动灯控制信号",
+      "period": "内部处理时间 30ms + 信号发送周期",
+      "description": "该信号的发送周期由内部处理时间和实际发送周期共同决定。"
+    },
+    {
+      "signal": "制动系统信号",
+      "period": "20ms",
+      "description": "制动踏板位置监测子系统发送制动系统信号的周期为 20ms。"
+    },
+    {
+      "signal": "制动系统信号",
+      "period": "10ms",
+      "description": "集成式制动子系统发送制动系统信号的周期为 10ms。"
+    },
+    {
+      "signal": "制动系统信号",
+      "period": "100ms",
+      "description": "电动车辆再生制动系统发送制动系统信号的周期为 100ms。"
+    },
+    {
+      "signal": "制动灯开关请求信号",
+      "period": "内部处理时间 60ms + 信号发送周期 10ms",
+      "description": "该信号的发送周期由内部处理时间和实际发送周期共同决定。"
+    },
+    {
+      "signal": "CAN 信号",
+      "period": "20ms",
+      "description": "S32G 转发的制动灯服务请求 CAN 信号的周期为 20ms。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了制动灯开关控制模块及其相关子系统在不同场景下发送制动系统信号和制动灯控制信号的周期要求，是验证制动灯控制系统信号时序正确性的关键依据。",
+  "uncertain_points": []
+}
+```

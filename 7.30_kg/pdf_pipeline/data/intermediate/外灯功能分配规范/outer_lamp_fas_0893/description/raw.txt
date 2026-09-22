@@ -1,0 +1,44 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "制动灯唤醒功能需求",
+  "row_semantics": "描述在特定条件下，系统如何响应并触发制动灯相关的唤醒事件及其持续时间。",
+  "column_semantics": {
+    "唤醒源": "触发唤醒的条件或信号来源。",
+    "控制器": "执行控制逻辑的电子控制单元（ECU）名称。",
+    "网络唤醒功能需求": "对网络层唤醒机制的具体要求，包括节点配合工作。",
+    "唤醒条件": "满足哪些条件时触发唤醒。",
+    "唤醒解除条件": "满足哪些条件时解除唤醒状态。",
+    "网络需求时长 (s)": "网络层保持激活状态的持续时间。",
+    "唤醒事件涉及节点": "与该唤醒事件相关的具体节点或信号。",
+    "涉及两段 (NOI)": "可能涉及的两个阶段或区域。",
+    "功能需求": "详细描述制动灯开启后的具体行为和信号输出。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    "制动踏板开关",
+    "LHZCU"
+  ],
+  "core_conditions": [
+    "制动踏板开关触发电有效",
+    "Time Out: 10s"
+  ],
+  "core_outputs": [
+    "LHZCU",
+    "ZXD",
+    "VMCU",
+    "Tail_L_AsmbA_RH",
+    "Tail_L_AsmbA_LH",
+    "Tail_L_AsmbB",
+    "Backbone_CANFD",
+    "TAIL_CANFD"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "10s"
+  ],
+  "engineering_interpretation": "该表格用于验证当制动踏板开关被触发后，系统是否能在10秒内正确激活相关节点，并按照功能需求点亮相应的制动灯。",
+  "uncertain_points": []
+}
+```

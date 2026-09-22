@@ -1,0 +1,43 @@
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 - 侧位灯控制",
+  "row_semantics": "表格按功能模块划分，每行代表一个独立的侧位灯控制接口及其参数定义。",
+  "column_semantics": "第一列为主功能模块名称；第二列及后续列为该功能的调用关系（如消费、SOA、ICB等）；第三列及后续为具体参数定义区域。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SidePositionLight.ControlSidePositionLight",
+      "type": "function",
+      "description": "侧位灯控制功能，用于点亮或熄灭车辆右侧/左侧的侧位灯。"
+    },
+    {
+      "name": "ControlSidePositionLightReq",
+      "type": "parameter",
+      "description": "控制侧位灯请求参数，包含开关状态（0x0=OFF, 0x1=ON）。"
+    },
+    {
+      "name": "InstanceID",
+      "type": "identifier",
+      "description": "实例ID，用于区分不同的控制请求实例。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "SidePositionLightReq",
+      "value_range": "0x0 (OFF), 0x1 (ON)",
+      "description": "控制信号，决定侧位灯的亮灭状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "SidePositionLight",
+      "type": "output_signal",
+      "description": "实际的侧位灯状态输出，由控制信号决定。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆侧位灯的控制接口及其参数，可用于验证不同控制器（如SOA、ICB、LHZCU）对侧位灯的控制逻辑是否正确实现。",
+  "uncertain_points": []
+}

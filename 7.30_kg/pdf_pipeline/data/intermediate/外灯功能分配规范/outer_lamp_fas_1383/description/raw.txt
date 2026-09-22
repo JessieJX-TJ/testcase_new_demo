@@ -1,0 +1,44 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "外灯控制逻辑 - 近光灯与后雾灯联动功能",
+  "row_semantics": "描述特定条件下触发的动作及执行结果的逻辑规则",
+  "column_semantics": {
+    "1": "条件列表，定义触发动作的前提",
+    "2": "触发动作列表，描述在满足条件时执行的操作",
+    "3": "执行动作列表，详细说明动作的实现方式和参数"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    "UsrMd", // 用户模式
+    "VehMd", // 车辆模式
+    "DippedBeamLight", // 近光灯
+    "ExteriorLightSwitchProcess", // 外灯开关处理模块
+    "S32G", // 汽车电子控制单元
+    "ICB", // 集成控制盒
+    "RearFogLight" // 后雾灯
+  ],
+  "core_conditions": [
+    "UsrMd = Sleep || Standby || XOTA", // 用户模式为睡眠、待机或OTA更新
+    "VehMd = TRANSPORT", // 车辆模式为运输模式
+    "近光灯反馈状态为开启", // 近光灯实际状态为开启
+    "LHZCU 已判断开启近光灯", // LHZCU（Local Headlight Zone Control Unit）已判断应开启近光灯
+    "大开关请求 ICB 输入", // S32G 收到大开关请求 ICB 输入
+    "七键开关请求 IFP 输入跳变" // S32G 收到七键开关请求 IFP 输入跳变
+  ],
+  "core_outputs": [
+    "ExteriorLightControlSystem.ControlRearFogLight.RearFogLightReq = ON", // 请求后雾灯开启
+    "ExteriorLightSwitchProcess.RearFogLightFucProStatus.RearFogLghtFucProsSta = OFF", // 后雾灯功能状态关闭
+    "[外灯控制组合服务 ICB]调用接口: RearFogLightFucProCtrl.RearFogLightFucProCtrlReq = ON; Resp: RearFogLightFucProCtrl.RearFogLightFucProCtrlResp = ControlSuccess;" // 外灯控制组合服务调用成功
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在车辆处于运输模式且近光灯已开启的情况下，如何根据用户输入（如大开关或七键开关）来控制后雾灯的开启与关闭，并调用外灯控制组合服务完成相应操作。",
+  "uncertain_points": [
+    "具体 InstanceID 的含义未明确说明",
+    "exlDipdBeamHwDrvEnPrm 的具体作用和取值范围未详细解释",
+    "配置字 exlRearFoglightPrm 的具体数值含义未明确"
+  ]
+}
+```

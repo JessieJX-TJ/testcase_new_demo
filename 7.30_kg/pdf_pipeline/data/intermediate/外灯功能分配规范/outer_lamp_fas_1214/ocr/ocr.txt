@@ -1,0 +1,17 @@
+场景描
+拖挂模式下,拖挂车制动灯开启/关闭
+述
+前置条
+1&&2
+件
+1、车辆具备拖车模式功能:InsdFnCfgVehDragMd=0x1
+2、拖挂模式开启:VehDragMdSts=0x1=VehDragMdSts_1_On
+注:LHZCU、RZCU需判断此前置条件
+触发条
+LHZCU发送的外灯控制信号为制动灯开启/关闭:
+BrkLghtCtrl=0x1=BrkLghtCtrl_1_On(或
+0x0=BrkLghtCtrl_0_Off;)
+执行动
+1、RZCU判断前置条件满足,根据接收到的:
+作
+对应发送

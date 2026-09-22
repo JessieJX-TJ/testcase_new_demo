@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "车辆危险警示灯请求原因信息表",
+  "row_semantics": "表格的每一行代表一个特定的故障或事件代码，以及其对应的危险警示灯请求原因。",
+  "column_semantics": "表格包含三列：第一列为空白，第二列是十六进制代码及其对应的中文描述，第三列是对该代码的进一步说明（如亮灯原因信息）。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "HazardLightSwitOn", // 危险警示灯开关开启
+    "VehicleCrashSignalActive", // 车辆碰撞信号激活
+    "AirbagDeployedActive", // 安全气囊展开激活
+    "ToffCrashActive", // 碰撞触发时间激活
+    "VehicleIntrusionPreventAlarmHazardLightRequested", // 车辆入侵预防警报危险灯请求
+    "VCUBatteryThermalRunawayHazardLightRequested", // VCUB电池热失控危险灯请求
+    "BMSBatteryThermalRunawayHazardLightRequested", // BMS电池热失控危险灯请求
+    "EmergencyBrakeHazardLightRequested", // 紧急制动危险灯请求
+    "RCWWaringHazardLightRequested", // 倒车警告危险灯请求
+    "IPDPilotHazardLightRequested", // IPD驾驶员危险灯请求
+    "ExteriorLockHazardLightRequested", // 外部锁危险灯请求
+    "ExteriorUnlockHazardLightRequested", // 外部解锁危险灯请求
+    "PowerLiftgateHazardLightRequested" // 电动后备箱危险灯请求
+  ],
+  "core_conditions": [
+    "0x02", // HazardLightSwitOn
+    "0x03", // VehicleCrashSignalActive
+    "0x04", // AirbagDeployedActive
+    "0x05", // ToffCrashActive
+    "0x06", // VehicleIntrusionPreventAlarmHazardLightRequested
+    "0x07", // VCUBatteryThermalRunawayHazardLightRequested
+    "0x08", // BMSBatteryThermalRunawayHazardLightRequested
+    "0x09", // EmergencyBrakeHazardLightRequested
+    "0xA", // RCWWaringHazardLightRequested
+    "0xB", // IPDPilotHazardLightRequested
+    "0xC", // ExteriorLockHazardLightRequested
+    "0xD", // ExteriorUnlockHazardLightRequested
+    "0xE" // PowerLiftgateHazardLightRequested
+  ],
+  "core_outputs": [
+    "LDirLightOpenCtrlRsn_X_HazardLightRequested"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在不同车辆状态或故障条件下，危险警示灯被请求的具体原因代码。可用于验证车辆在发生碰撞、电池热失控、紧急制动等情况下，危险警示灯是否按照规范正确请求并点亮。",
+  "uncertain_points": []
+}
+```

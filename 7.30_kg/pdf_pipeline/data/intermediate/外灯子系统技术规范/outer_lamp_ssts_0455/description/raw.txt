@@ -1,0 +1,69 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "右前转向灯短路故障处理逻辑",
+  "row_semantics": "表格按流程顺序描述了从前置条件到异常处理的完整逻辑分支，每一行代表一个阶段或动作。",
+  "column_semantics": "表格分为两列，左侧为阶段/状态名称（如前置条件、触发条件、执行动作等），右侧为该阶段的具体内容或描述。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FRDILghtDrvMdl",
+      "type": "controller_module",
+      "description": "右前转向灯驱动模块"
+    },
+    {
+      "name": "DTC_B104A_11",
+      "type": "fault_code",
+      "description": "转向灯电路短路故障代码"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "exlDircnLghtHwDrvEnPrm",
+      "value": "==1",
+      "description": "外部方向灯硬件驱动使能参数为1"
+    },
+    {
+      "name": "右前转向灯处于输出状态",
+      "description": "右前转向灯当前处于点亮或闪烁的输出状态"
+    },
+    {
+      "name": "检测到右前转向灯短路到地",
+      "description": "系统检测到右前转向灯电路存在短路至地的故障"
+    },
+    {
+      "name": "检测到短路恢复",
+      "description": "系统检测到之前存在的短路故障已恢复正常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FRDILghtDrvMdl",
+      "action": "停止驱动右前转向灯输出",
+      "parameter": "DILamp_RH_HSD",
+      "description": "停止向右前转向灯输出驱动信号"
+    },
+    {
+      "name": "FRDILghtDrvMdl",
+      "action": "持续发送 FRDILghtSts_HW=0 (Off)",
+      "parameter": "DILghtCtrlMdl",
+      "description": "持续发送转向灯状态为关闭的指令，至少三帧"
+    },
+    {
+      "name": "FRDILghtDrvMdl",
+      "action": "反馈 FRDircnLghtFltsts_HW = 0x1 (True)",
+      "description": "反馈转向灯故障状态为真"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC_B104A_11",
+      "description": "右前转向灯电路短路至地故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了当右前转向灯发生短路故障时，系统如何通过停止驱动、发送关闭指令并反馈故障状态来处理该故障，并在故障恢复后退出处理流程。可用于验证转向灯短路故障检测与处理功能的正确性。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,124 @@
+```json
+[
+  {
+    "head": "Headlight Status is On",
+    "relation": "前提条件",
+    "tail": "Ignition Status is On and Lighting Mode Selection is Headlights",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["Ignition Status", "Lighting Mode Selection", "Headlight Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Taillight Status is On",
+    "relation": "前提条件",
+    "tail": "Ignition Status is On and Door Status is Closed",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["Ignition Status", "Door Status", "Taillight Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Turn Signal Status is On",
+    "relation": "前提条件",
+    "tail": "Lighting Mode Selection is Turn Signals",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["Lighting Mode Selection", "Turn Signal Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Tailgate Actuation Status is Active",
+    "relation": "前提条件",
+    "tail": "Tailgate Position is Open and Body Control Module (BCM) receives Tailgate Actuator Command",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["Tailgate Position", "Body Control Module (BCM)", "Tailgate Actuation Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Ambient Light Status is On",
+    "relation": "前提条件",
+    "tail": "Lighting Mode Selection is Ambient and Ambient Light Sensor detects Low Light Conditions",
+    "triple_type": "功能触发条件",
+    "evidence_terms": ["Lighting Mode Selection", "Ambient Light Status", "Ambient Light Sensor"],
+    "confidence_note": "medium"
+  },
+  {
+    "head": "Headlight Status is Off",
+    "relation": "抑制条件",
+    "tail": "Ignition Status is Off",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["Ignition Status", "Headlight Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Taillight Status is Off",
+    "relation": "抑制条件",
+    "tail": "Door Status is Open",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["Door Status", "Taillight Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Tailgate Actuation Status is Inactive",
+    "relation": "抑制条件",
+    "tail": "Tailgate Position is Closed",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": ["Tailgate Position", "Tailgate Actuation Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Headlight Status",
+    "relation": "输出为",
+    "tail": "Body Control Module (BCM)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["Body Control Module (BCM)", "Headlight Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Taillight Status",
+    "relation": "输出为",
+    "tail": "Body Control Module (BCM)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["Body Control Module (BCM)", "Taillight Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Turn Signal Status",
+    "relation": "输出为",
+    "tail": "Body Control Module (BCM)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["Body Control Module (BCM)", "Turn Signal Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Tailgate Actuation Status",
+    "relation": "输出为",
+    "tail": "Body Control Module (BCM)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": ["Body Control Module (BCM)", "Tailgate Actuation Status"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Tailgate Actuation Timeout",
+    "relation": "超时约束",
+    "tail": "Tailgate Actuation Status remains Active for more than 5 seconds",
+    "triple_type": "时序约束",
+    "evidence_terms": ["Tailgate Actuation Status", "Tailgate Actuation Timeout"],
+    "confidence_note": "medium"
+  },
+  {
+    "head": "Lighting System Fault",
+    "relation": "故障响应",
+    "tail": "Headlight Status is Off and Taillight Status is Off",
+    "triple_type": "故障响应",
+    "evidence_terms": ["Lighting System Fault", "Headlight Status", "Taillight Status"],
+    "confidence_note": "medium"
+  },
+  {
+    "head": "Tailgate Actuator Fault",
+    "relation": "故障响应",
+    "tail": "Tailgate Actuation Status is Inactive despite receiving Actuator Command",
+    "triple_type": "故障响应",
+    "evidence_terms": ["Tailgate Actuator Fault", "Tailgate Actuation Status", "Body Control Module (BCM)"],
+    "confidence_note": "medium"
+  }
+]
+```

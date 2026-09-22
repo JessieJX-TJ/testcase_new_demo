@@ -1,0 +1,81 @@
+```json
+[
+  {
+    "head": "转向灯停止驱动",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DILightFbkSOAEnPrm==1(Enable)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯停止驱动",
+    "relation": "触发条件",
+    "tail": "收到【DILightCtrlMdl】发送的 DirectionLightControl. DirectionLightCtrlReq ==0 (Off) InstanceID=1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DirectionLightCtrlReq ==0 (Off)",
+      "InstanceID=1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯持续发送状态",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DILightFbkSOAEnPrm==1(Enable)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯持续发送状态",
+    "relation": "触发条件",
+    "tail": "收到【DILightCtrlMdl】发送的 DirectionLightControl. DirectionLightCtrlReq ==0 (Off) InstanceID=1",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DirectionLightCtrlReq ==0 (Off)",
+      "InstanceID=1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯退出控制",
+    "relation": "触发条件",
+    "tail": "收到【DILightCtrlMdl】发送的 DirectionLightControl. DirectionLightCtrlReq ==1 (On) InstanceID=1",
+    "triple_type": "退出条件",
+    "evidence_terms": [
+      "DirectionLightCtrlReq ==1 (On)",
+      "InstanceID=1"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯停止驱动",
+    "relation": "输出为",
+    "tail": "【FLDILightDrvMdl】停止驱动左前转向灯输出 (DILamp_LH_HSD)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FLDILightDrvMdl",
+      "DILamp_LH_HSD"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "转向灯持续发送状态",
+    "relation": "输出为",
+    "tail": "【FLDILightDrvMdl】持续发送 DirectionLightControl. DirectionLightSta ==0 (Off) InstanceID=1 至【DILightCtrlMdl】，至少发送三帧。",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FLDILightDrvMdl",
+      "DILightCtrlMdl",
+      "DirectionLightSta ==0 (Off)",
+      "InstanceID=1"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

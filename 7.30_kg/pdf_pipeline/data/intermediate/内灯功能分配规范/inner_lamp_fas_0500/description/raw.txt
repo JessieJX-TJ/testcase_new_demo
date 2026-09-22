@@ -1,0 +1,109 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "整车电子电器系统外灯及阅读灯功能规范与更新",
+  "row_semantics": "版本迭代记录，按时间顺序展示不同软件版本的更新内容和功能变更。",
+  "column_semantics": {
+    "Column1": "未命名列，可能为行号或分组标识",
+    "Column2": "版本号 (Version Number)",
+    "Column3": "发布日期 (Release Date)",
+    "Column4": "负责人 (Engineer Name)",
+    "Column5": "更新描述 (Update Description)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "AS4PR",
+      "type": "Controller/Module",
+      "description": "内灯控制模块"
+    },
+    {
+      "name": "SVW A/B",
+      "type": "Vehicle Model",
+      "description": "大众B级车车型"
+    },
+    {
+      "name": "SVW B-SUV PVS",
+      "type": "Vehicle Model",
+      "description": "大众B级SUV车型"
+    },
+    {
+      "name": "L Project",
+      "type": "Vehicle Model",
+      "description": "特定项目车型"
+    },
+    {
+      "name": "IS4PR",
+      "type": "Controller/Module",
+      "description": "新增手套箱灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Reading Light State",
+      "description": "阅读灯点亮状态"
+    },
+    {
+      "name": "Backlight State",
+      "description": "背光灯状态"
+    },
+    {
+      "name": "Door Status",
+      "description": "车门开关状态"
+    },
+    {
+      "name": "Speed",
+      "description": "车辆速度"
+    },
+    {
+      "name": "Switch Control",
+      "description": "开关控制模式"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Reading Light Behavior",
+      "description": "阅读灯的点亮、熄灭、渐亮、渐灭等行为"
+    },
+    {
+      "name": "Backlight Behavior",
+      "description": "背光灯的点亮、熄灭行为"
+    },
+    {
+      "name": "Lighting Pattern",
+      "description": "灯光平台优化后的照明模式"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "VP3-62781",
+      "description": "LHZCU本地控制在收到阅读灯故障后，不关灯且点亮时不判断是否有故障"
+    },
+    {
+      "name": "VP3-148511",
+      "description": "S31L项目取消照脚灯直驱，将照脚灯描述删除"
+    },
+    {
+      "name": "VP3-170716",
+      "description": "大众B车5座车型增加背光灯LIN节点"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "延时控制",
+      "description": "顶灯延时控制章节中提到的延时机制"
+    },
+    {
+      "name": "渐亮渐灭",
+      "description": "阅读灯渐亮渐灭节章中提到的渐变时间"
+    }
+  ],
+  "engineering_interpretation": "该表格详细记录了多个整车电子电器系统版本（V3.5至V4.4）中关于外灯、阅读灯及相关控制模块的功能更新、逻辑优化和故障处理规则。可用于验证各版本下相关功能模块的行为一致性、逻辑正确性以及故障处理的有效性。",
+  "uncertain_points": [
+    "具体功能实现细节未在表格中明确说明",
+    "各版本间功能差异的具体影响范围未知",
+    "部分信号（如VP3系列）的具体触发条件和作用范围未详细定义"
+  ]
+}
+```

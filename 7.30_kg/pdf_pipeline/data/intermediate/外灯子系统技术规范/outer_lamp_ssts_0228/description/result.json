@@ -1,0 +1,57 @@
+{
+  "table_type": "fault_table",
+  "topic": "诊断需求清单",
+  "row_semantics": "列出具体的故障诊断需求，每行代表一个独立的诊断场景。",
+  "column_semantics": {
+    "名称": "故障诊断需求的唯一标识符或编号。",
+    "描述": "对故障现象的简要说明。",
+    "进入条件": "触发该诊断需求开始检测的条件。",
+    "退出条件": "停止该诊断需求检测的条件。",
+    "相关信号": "与该诊断需求相关的输入或输出信号。",
+    "系统状态": "在诊断过程中需要关注的系统状态。",
+    "模式名": "可能涉及的系统运行模式。",
+    "阈值/定时": "进入或退出条件中涉及的具体数值或时间限制。",
+    "故障状态": "诊断完成后可能确认的故障状态。",
+    "其他信息": "表格中未明确分类的其他相关信息。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B1066_73",
+      "type": "功能名",
+      "description": "光雨传感器掉线故障诊断的需求编号。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "节点丢失 > 2s",
+      "type": "进入条件",
+      "description": "当光雨传感器节点信号丢失持续超过2秒时，触发该诊断需求。",
+      "timing": "2s"
+    },
+    {
+      "condition": "收到 LIN 节点信号",
+      "type": "退出条件",
+      "description": "当重新接收到 LIN 总线上的光雨传感器节点信号时，退出该诊断需求。",
+      "signal": "LIN 节点信号"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "fault_name": "光雨传感器掉线",
+      "description": "光雨传感器与车辆电子控制单元（ECU）之间的通信中断。",
+      "status": "故障状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "节点丢失 > 2s",
+      "description": "故障判定的时间阈值为节点信号丢失持续超过2秒。",
+      "unit": "秒 (s)"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了光雨传感器掉线故障的诊断逻辑，用于测试车辆电子系统在传感器通信中断时能否正确检测并处理该故障。",
+  "uncertain_points": []
+}

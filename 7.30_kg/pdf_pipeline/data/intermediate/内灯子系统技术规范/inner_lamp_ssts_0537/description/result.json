@@ -1,0 +1,41 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System Parameter Mapping",
+  "row_semantics": "Lighting intensity levels or dimming settings for interior lights, represented by numerical codes (e.g., 6200, 6240, etc.)",
+  "column_semantics": "The first column contains unique parameter codes for different lighting intensity levels. The second column provides a corresponding numerical value (ranging from 0 to 42), likely representing the actual dimming percentage or control level. The remaining columns are empty and may be reserved for future use.",
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "Interior Lighting Sub System",
+      "type": "sub_system"
+    },
+    {
+      "name": "Z-ONE-3.0 Platform",
+      "type": "platform"
+    },
+    {
+      "name": "SSTS-IBD10",
+      "type": "controller_module"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Lighting Intensity Level Code",
+      "description": "Numerical code representing a specific dimming setting for interior lights."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Dimming Percentage/Control Value",
+      "description": "The corresponding numerical value indicating the actual dimming level or control signal output for the given intensity code."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines a mapping between internal parameter codes and their corresponding dimming values for the Interior Lighting Sub System. It is used to verify that the system correctly interprets and applies the specified lighting intensity levels as defined in the Z-ONE-3.0 platform's SSTS-IBD10 controller.",
+  "uncertain_points": [
+    "The exact meaning of the numerical values in the second column (e.g., whether they represent percentage, PWM duty cycle, or another unit) is not explicitly stated.",
+    "The purpose of the empty columns is unclear and may require further clarification."
+  ]
+}

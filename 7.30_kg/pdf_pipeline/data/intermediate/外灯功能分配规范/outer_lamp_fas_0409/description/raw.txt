@@ -1,0 +1,53 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "危险警报灯（Hazard Warning Lamp）的同步性与时序要求",
+  "row_semantics": "描述危险警报灯在动力故障触发时的闪烁特性及相关定时参数",
+  "column_semantics": "无明确列，内容为连续的文本描述",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "危险警报灯 (Hazard Warning Lamp)",
+      "type": "功能/输出信号"
+    },
+    {
+      "name": "动力故障 (Powertrain Fault)",
+      "type": "输入信号"
+    }
+  ],
+  "core_conditions": [
+    "动力故障触发"
+  ],
+  "core_outputs": [
+    {
+      "name": "危险警报灯点亮",
+      "description": "告警灯被激活"
+    },
+    {
+      "name": "危险警报灯闪烁",
+      "description": "告警灯以特定周期闪烁"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "同步延时周期",
+      "value": "40ms",
+      "description": "危险警报灯的同步性允许的最大延时周期"
+    },
+    {
+      "name": "闪烁周期数",
+      "value": "3个周期",
+      "description": "危险警报灯点亮后至少需闪烁的周期数量"
+    },
+    {
+      "name": "单周期时间",
+      "value": "50ms",
+      "description": "危险警报灯的一个闪烁周期的时间长度"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证动力故障触发时，危险警报灯的点亮、闪烁周期数及同步延时是否符合规范要求。",
+  "uncertain_points": []
+}
+```

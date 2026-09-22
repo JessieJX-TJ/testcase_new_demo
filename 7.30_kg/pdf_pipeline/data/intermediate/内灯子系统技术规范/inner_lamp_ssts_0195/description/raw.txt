@@ -1,0 +1,74 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System - Lamp Breathing and Fading Control",
+  "row_semantics": "Each row represents a specific breathing or fading rate configuration for the ambient lamp, including its code value, period, and associated original breathing mode.",
+  "column_semantics": {
+    "Code Value": "Unique identifier for each breathing/fading rate configuration.",
+    "Period": "Time duration for one cycle of the breathing/fading effect.",
+    "Original Breathing Mode Value": "Reference to the original breathing mode that this rate corresponds to."
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "UpIPCLampBrthngCmd_1",
+      "type": "Function Name",
+      "description": "Command for setting the breathing rate of the ambient lamp."
+    },
+    {
+      "name": "UpIPCLampFadeSpdCmd_1",
+      "type": "Function Name",
+      "description": "Command for setting the fading speed of the ambient lamp."
+    },
+    {
+      "name": "RHZCU",
+      "type": "Controller/Module Name",
+      "description": "Regional Headlight Zone Control Unit, responsible for processing commands related to lamp breathing and fading."
+    },
+    {
+      "name": "LIN",
+      "type": "Input Signal",
+      "description": "Local Interconnect Network bus for communication between modules."
+    },
+    {
+      "name": "UpIPAmbtLampC",
+      "type": "Output Signal",
+      "description": "Signal sent to control the ambient lamp's breathing or fading behavior."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Rate",
+      "description": "Defined by the Code Value (0x0 to 0xF), specifying the frequency of the breathing effect."
+    },
+    {
+      "name": "Fading Speed",
+      "description": "Defined by the Code Value (0x0 to 0xF), specifying the duration of the fading effect."
+    },
+    {
+      "name": "Command Value 0",
+      "description": "When the command value is 0, the lamp brightness remains unchanged."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Lamp Behavior",
+      "description": "The ambient lamp performs a breathing or fading effect according to the specified rate and mode."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Rate0",
+      "description": "No Request; does not trigger any breathing or fading effect."
+    },
+    {
+      "name": "Rate1 to Rate15",
+      "description": "Each rate has a specific period (from 500ms to 12s) defining the speed of the breathing or fading effect."
+    }
+  ],
+  "engineering_interpretation": "This table defines the mapping between command values and the corresponding breathing/fading rates for the interior ambient lamp. It is used to verify that the RHZCU correctly interprets the UpIPCLampBrthngCmd_1 and UpIPCLampFadeSpdCmd_1 commands and applies the appropriate breathing or fading behavior to the UpIPAmbtLampC output signal.",
+  "uncertain_points": []
+}
+```

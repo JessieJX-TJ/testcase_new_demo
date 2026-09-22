@@ -1,0 +1,68 @@
+{
+  "table_type": "logic_table",
+  "topic": "副驾侧照脚灯控制逻辑",
+  "row_semantics": "描述了副驾侧照脚灯从开启到关闭的完整控制流程，包括触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "第一列定义了流程中的不同阶段（前置条件、触发条件、执行动作、退出条件、异常处理），第二列详细描述了每个阶段的具体内容。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "FtwlLampFRCtrlCmd",
+      "type": "input_signal",
+      "description": "阅读灯应用控制模块发送的请求信号，用于控制副驾侧照脚灯的开启和关闭。"
+    },
+    {
+      "name": "FtwlAmbtLamp_FR_HSD",
+      "type": "output_signal",
+      "description": "副驾侧照脚灯驱动控制模块发送的PWM信号，用于控制脚灯的亮度渐变。"
+    },
+    {
+      "name": "FtwlAmbtLampLightupDelayPrm",
+      "type": "parameter",
+      "description": "可配置的参数，用于设置脚灯点亮和熄灭时的渐变时间，默认值为2秒。"
+    },
+    {
+      "name": "车身控制模块",
+      "type": "controller",
+      "description": "负责接收和处理来自阅读灯应用控制模块的请求，并控制副驾侧照脚灯的驱动模块。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "前置条件",
+      "description": "副驾侧照脚灯无短路/开路故障。"
+    },
+    {
+      "name": "触发条件",
+      "description": "接收到阅读灯应用控制模块的请求信号 FtwlLampFRCtrlCmd = 0x1 (Open)。"
+    },
+    {
+      "name": "退出条件",
+      "description": "接收到 FtwlLampFRCtrlCmd = 0x0 (Close)，PWM 值从 100% 到 0% 持续 FtwlAmbtLampLightupDelayPrm 时间后，渐进熄灭照脚灯。"
+    },
+    {
+      "name": "异常处理",
+      "description": "检测到副驾激光迎宾灯短路/开路故障时，立即熄灭并关闭副驾侧照脚灯驱动，不做渐进熄灭。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FtwlAmbtLamp_FR_HSD",
+      "description": "输出 PWM 信号，控制脚灯亮度从 0% 到 100%，实现渐进点亮；反之，从 100% 到 0%，实现渐进熄灭。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "副驾侧照脚灯短路/开路故障",
+      "description": "当检测到此故障时，系统将立即熄灭并关闭副驾侧照脚灯驱动，不进行渐进熄灭操作。"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "FtwlAmbtLampLightupDelayPrm",
+      "description": "脚灯点亮和熄灭时的渐变时间，可配置，默认值为 2 秒。"
+    }
+  ],
+  "engineering_interpretation": "该表格可用于验证副驾侧照脚灯在正常开启、关闭以及异常情况下的控制逻辑是否符合设计规范，确保其行为与预期一致。",
+  "uncertain_points": []
+}

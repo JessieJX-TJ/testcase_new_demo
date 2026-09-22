@@ -1,0 +1,36 @@
+{
+  "table_type": "parameter_table",
+  "topic": "External Lighting and Trailer Control System Parameters",
+  "row_semantics": "Each row represents a specific parameter related to lighting control and trailer system functionality, including enable/disable settings and timing delays.",
+  "column_semantics": {
+    "1": "Parameter Name",
+    "2": "Description and Possible Values",
+    "3": "Default Value",
+    "4": "Status/Remarks"
+  },
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "Lighting Hardware Driver Enable",
+    "Trailer Brake Light Hardware Driver Enable",
+    "Trailer Directional Light Control Delay Parameter",
+    "Trailer Brake Light Control Delay Parameter",
+    "Trailer Reverse Light Control Delay Parameter"
+  ],
+  "core_conditions": [
+    "Enable/Disable Status",
+    "Drive Mode (Drive and Feedback, Only Drive, Reversed)"
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    "Trailer Directional Light Control Delay: E = N * 10, N range 0x0~0xF",
+    "Trailer Brake Light Control Delay: E = N * 10, N range 0x0~0xF",
+    "Trailer Reverse Light Control Delay: E = N * 10, N range 0x0~0xF"
+  ],
+  "engineering_interpretation": "This table defines configuration parameters for the vehicle's external lighting system, particularly focusing on trailer-related lights such as brake, directional, and reverse lights. It specifies how these systems are enabled/disabled and includes timing delays for certain functions, which are crucial for testing the correct operation of the lighting system under various conditions.",
+  "uncertain_points": [
+    "The exact functional behavior of 'exlBrkLghtHwDrvEnPrm' in different driving modes is not fully detailed.",
+    "The purpose and impact of the '预留 (暂不开发)' entries are unclear without additional context."
+  ]
+}

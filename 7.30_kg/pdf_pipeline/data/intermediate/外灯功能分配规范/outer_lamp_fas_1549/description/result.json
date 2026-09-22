@@ -1,0 +1,105 @@
+{
+  "table_type": "signal_table",
+  "topic": "制动灯系统状态与请求信号定义",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的信号或状态变量，描述其在不同控制器间的交互。",
+  "column_semantics": "第一列为主功能模块名称；第二列为信号类型（输出）；后续列为涉及的控制器/模块名称。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "BrkLghtSta",
+      "type": "output_signal",
+      "description": "制动灯状态反馈信号",
+      "controllers": [
+        "CANFD",
+        "LHZCU",
+        "ICB"
+      ]
+    },
+    {
+      "name": "BrkLghtFltSta",
+      "type": "output_signal",
+      "description": "制动灯故障状态反馈信号",
+      "controllers": [
+        "CANFD",
+        "LHZCU",
+        "ICB",
+        "RZCU"
+      ]
+    },
+    {
+      "name": "CstRgtnBrkLgtReq",
+      "type": "output_signal",
+      "description": "惯性滑行制动灯请求信号",
+      "controllers": [
+        "CANFD",
+        "RZCU",
+        "LHZCU"
+      ]
+    },
+    {
+      "name": "CstRgtnBrkLgtReqV",
+      "type": "output_signal",
+      "description": "惯性滑行制动灯请求有效性信号",
+      "controllers": [
+        "CANFD",
+        "RZCU",
+        "LHZCU"
+      ]
+    },
+    {
+      "name": "BrkSysBrkLghtsReqd",
+      "type": "output_signal",
+      "description": "集成式制动系统制动灯请求信号",
+      "controllers": [
+        "CANFD",
+        "IBS",
+        "LHZCU"
+      ]
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "BrkLghtSta_0_Off",
+      "description": "制动灯关闭状态"
+    },
+    {
+      "name": "BrkLghtSta_1_On",
+      "description": "制动灯开启状态"
+    },
+    {
+      "name": "BrkLghtFltSta_0_False",
+      "description": "制动灯故障状态为假（无故障）"
+    },
+    {
+      "name": "BrkLghtFltSta_1_True",
+      "description": "制动灯故障状态为真（有故障）"
+    },
+    {
+      "name": "CstRgtnBrkLgtReq_0_NoRequest",
+      "description": "无惯性滑行制动灯请求"
+    },
+    {
+      "name": "CstRgtnBrkLgtReq_1_Request",
+      "description": "有惯性滑行制动灯请求"
+    },
+    {
+      "name": "CstRgtnBrkLgtReqV_0_Valid",
+      "description": "惯性滑行制动灯请求有效"
+    },
+    {
+      "name": "CstRgtnBrkLgtReqV_1_Invalid",
+      "description": "惯性滑行制动灯请求无效"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "BrkLghtFltSta",
+      "description": "制动灯故障状态反馈"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了制动灯系统的多个关键信号及其在不同控制器间的交互逻辑，可用于验证制动灯状态反馈、故障检测以及制动灯请求的有效性等测试场景。",
+  "uncertain_points": []
+}

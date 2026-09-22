@@ -1,0 +1,77 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Reverse Light System Status and Fault Feedback",
+  "row_semantics": "Each row represents a specific signal or status related to the reverse light system, including its state and fault conditions.",
+  "column_semantics": {
+    "1": "Signal Name/Description",
+    "2": "Output Type (e.g., CANFD, RZCU, LHZCU)",
+    "3": "Controller/Module Involved in Output",
+    "4": "Controller/Module Involved in Output",
+    "5": "Controller/Module Involved in Output",
+    "6": "Hard Line Fault Status"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RevsLghtFltSts",
+      "type": "signal",
+      "description": "Reverse Light Fault Status Feedback"
+    },
+    {
+      "name": "RevsLghtSta",
+      "type": "signal",
+      "description": "Reverse Light State Feedback"
+    },
+    {
+      "name": "RevsLghtFltSta",
+      "type": "signal",
+      "description": "Reverse Light Fault Status"
+    },
+    {
+      "name": "ReverseLightState",
+      "type": "service",
+      "description": "Service Interface for Reverse Light State Subscription"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "RevsLghtFltSts",
+      "value": "0x0=RevsLghtFltSts_0_False; 0x1=RevsLghtFltSts_1_True;",
+      "description": "Indicates whether there is a fault in the reverse light system."
+    },
+    {
+      "name": "RevsLghtSta",
+      "value": "0x0=RevsLghtSta_0_off; 0x1=RevsLghtSta_1_on;",
+      "description": "Indicates the current state of the reverse light (off or on)."
+    },
+    {
+      "name": "RevsLghtFltSta",
+      "value": "0x0=RevsLghtFltSta_0_False; 0x1=RevsLghtFltSta_1_True;",
+      "description": "Indicates the fault status of the reverse light."
+    },
+    {
+      "name": "ReverseLightState",
+      "value": "SOA, RZCU, LHZCU",
+      "description": "Consumes services from SOA and provides state information to RZCU and LHZCU."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RevsLghtFltSts",
+      "condition": "0x1",
+      "description": "Fault condition indicating a problem with the reverse light system."
+    },
+    {
+      "name": "RevsLghtFltSta",
+      "condition": "0x1",
+      "description": "Fault condition indicating a problem with the reverse light."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the signals and their associated states/faults for the reverse light system, detailing how different controllers (CANFD, RZCU, LHZCU, ICB) interact with these signals. It is used to verify that the reverse light system correctly reports its state and fault conditions across various modules.",
+  "uncertain_points": []
+}
+```

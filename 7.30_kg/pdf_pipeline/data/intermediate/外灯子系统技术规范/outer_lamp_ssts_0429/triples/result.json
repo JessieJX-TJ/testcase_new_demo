@@ -1,0 +1,102 @@
+[
+  {
+    "head": "危险灯开启",
+    "relation": "触发条件",
+    "tail": "检测到碰撞网络信号 (AirbagDpl == 0x1 || AirbagDplnvsn == 0x0 || VehCrashTyp != 0x0)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "AirbagDpl",
+      "AirbagDplnvsn",
+      "VehCrashTyp"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0429",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险灯开启",
+    "relation": "触发条件",
+    "tail": "检测到碰撞硬线信号 (CrashOut 占空比从 80% (±10%) 反转为 20% (±10%) 3个周期)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CrashOut",
+      "占空比",
+      "3个周期"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0429",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险灯开启",
+    "relation": "触发条件",
+    "tail": "检测到车辆处于碰撞模式 (VehMd == 1_CRASH",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "VehMdV"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0429",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险灯开启",
+    "relation": "触发条件",
+    "tail": "VehMdV == 1_Valid)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd",
+      "VehMdV"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0429",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险灯开启",
+    "relation": "前提条件",
+    "tail": "配置字 HzrdLghtSwSOAEnPrm == 0 (Disable)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "HzrdLghtSwSOAEnPrm"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0429",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险灯开启",
+    "relation": "依赖于",
+    "tail": "车辆处于碰撞模式 (VehMd == 1_CRASH && VehMdV == 1_Valid)",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "VehMd",
+      "VehMdV"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0429",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险灯开启",
+    "relation": "依赖于",
+    "tail": "碰撞硬线信号 CrashOut 占空比变化 (3个周期)",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "CrashOut",
+      "占空比",
+      "3个周期"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0429",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

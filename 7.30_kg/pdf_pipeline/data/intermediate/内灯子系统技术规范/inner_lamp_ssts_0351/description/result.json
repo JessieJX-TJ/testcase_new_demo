@@ -1,0 +1,95 @@
+{
+  "table_type": "parameter_table",
+  "topic": "DoorRL6LampFadeSpdCmd_1 parameter definition for ambient lighting fade speed control",
+  "row_semantics": "Each row defines a specific fade speed command for the right rear door ambient lamp, including its hexadecimal value and corresponding speed description.",
+  "column_semantics": {
+    "0": "Parameter name: DoorRL6LampFadeSpdCmd_1",
+    "1": "Input source: LIN (Local Interconnect Network)",
+    "2": "Controller/Module: LHZCU (Left Hand Zone Control Unit)",
+    "3": "Signal name: DoorAmbtLampF_RL (Right Rear Door Ambient Lamp Feedback)",
+    "4": "Controller/Module: LHZCU_LIN4",
+    "5": "System component: 内灯 (Interior Light)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "DoorRL6LampFadeSpdCmd_1",
+      "type": "parameter",
+      "description": "Command to set the fade speed of the right rear door ambient lamp"
+    },
+    {
+      "name": "LIN",
+      "type": "input_signal",
+      "description": "Local Interconnect Network communication bus"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "Left Hand Zone Control Unit responsible for processing the command"
+    },
+    {
+      "name": "DoorAmbtLampF_RL",
+      "type": "output_signal",
+      "description": "Feedback signal from the right rear door ambient lamp"
+    },
+    {
+      "name": "LHZCU_LIN4",
+      "type": "controller_module",
+      "description": "Specific LIN interface within the LHZCU"
+    },
+    {
+      "name": "内灯",
+      "type": "system_component",
+      "description": "Interior light system"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DoorRL6LampFadeSpdCmd_1_Spd0",
+      "type": "output_value",
+      "description": "Fade speed command with default duration of 2000ms"
+    },
+    {
+      "name": "DoorRL6LampFadeSpdCmd_1_Spd1",
+      "type": "output_value",
+      "description": "Fade speed command with duration of 300ms"
+    },
+    {
+      "name": "DoorRL6LampFadeSpdCmd_1_Spd2",
+      "type": "output_value",
+      "description": "Fade speed command with duration of 100ms (reserved for future use)"
+    },
+    {
+      "name": "DoorRL6LampFadeSpdCmd_1_Spd3",
+      "type": "output_value",
+      "description": "Fade speed command with duration of 0ms (reserved)"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "DoorRL6LampFadeSpdCmd_1_Spd0",
+      "value": "2000ms",
+      "description": "Default time required to switch from current state to target state when changing lamp color or brightness"
+    },
+    {
+      "name": "DoorRL6LampFadeSpdCmd_1_Spd1",
+      "value": "300ms",
+      "description": "Time required to switch from current state to target state when changing lamp color or brightness"
+    },
+    {
+      "name": "DoorRL6LampFadeSpdCmd_1_Spd2",
+      "value": "100ms",
+      "description": "Time required to switch from current state to target state when changing lamp color or brightness; reserved for future use"
+    },
+    {
+      "name": "DoorRL6LampFadeSpdCmd_1_Spd3",
+      "value": "0ms",
+      "description": "Time required to switch from current state to target state when changing lamp color or brightness; reserved"
+    }
+  ],
+  "engineering_interpretation": "This table defines the parameters for controlling the fade speed of the right rear door ambient lamp, specifying different speed levels and their corresponding durations. It is used to verify that the system correctly interprets and applies the fade speed commands sent via LIN communication to the LHZCU.",
+  "uncertain_points": []
+}

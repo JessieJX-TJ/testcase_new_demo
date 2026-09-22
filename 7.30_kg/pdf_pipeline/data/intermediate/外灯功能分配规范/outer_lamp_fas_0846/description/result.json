@@ -1,0 +1,99 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯系统中位置灯开关与前雾灯开启的逻辑控制规则",
+  "row_semantics": "描述在特定前置条件下，触发特定动作的场景逻辑",
+  "column_semantics": {
+    "Column1": "场景描述，概括了用户操作和系统响应的总体条件",
+    "Column2": "前置条件，详细列出了使该场景生效的所有技术参数和状态要求"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "controller",
+      "description": "外部灯光控制系统，负责管理车辆外部灯光的逻辑和状态"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Control Unit，灯光和危险警示控制单元，可能参与前雾灯状态判断"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "PositionLightSwitchStatus",
+      "description": "位置灯开关的状态，当前为OFF挡位"
+    },
+    {
+      "name": "UsrMd",
+      "description": "用户模式，包括Sleep、Standby、Transport等状态",
+      "values": [
+        "0x0_Sleep",
+        "0x1_Standby",
+        "0x3_Transport"
+      ]
+    },
+    {
+      "name": "VehMd",
+      "description": "车辆模式，表示车辆当前的运行状态",
+      "values": [
+        "0x3_TransPORT"
+      ]
+    },
+    {
+      "name": "CombLightSwStatus",
+      "description": "组合灯光开关状态，必须为关闭或位置灯（Side Position Light）状态",
+      "values": [
+        "0x0_OFF",
+        "0x1_SidePositionLight_ON"
+      ]
+    },
+    {
+      "name": "FrontFogLightState",
+      "description": "前雾灯反馈状态，必须为关闭",
+      "values": [
+        "0x0_OFF"
+      ]
+    },
+    {
+      "name": "FrontFogLightHwDrvEnPrm",
+      "description": "前雾灯硬件驱动使能参数，用于获取前雾灯状态",
+      "values": [
+        "0x0",
+        "0x1"
+      ]
+    },
+    {
+      "name": "ExteriorLightSwitchProcess.FrontFogLghtFucProStatus",
+      "description": "外部灯光开关处理中的前雾灯功能状态",
+      "values": [
+        "0x0_OFF"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogLightReq",
+      "description": "后雾灯请求信号，从OFF切换到ON",
+      "values": [
+        "0x0_OFF",
+        "0x1_ON"
+      ]
+    },
+    {
+      "name": "exlRearFoglightPrm",
+      "description": "后雾灯配置参数，设置为0，表示大屏开关开启",
+      "values": [
+        "0"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在位置灯开关处于OFF挡位时，通过大屏点击后雾灯开启的触发逻辑。它详细列出了所有前置条件，包括用户模式、车辆模式、组合灯光状态以及前雾灯的当前状态，并指明了触发动作是将后雾灯请求信号从OFF切换到ON，同时设置相关配置参数。",
+  "uncertain_points": [
+    "表格中提到'无前雾灯功能'时，默认前雾灯为关闭状态，但未明确说明如何检测前雾灯功能是否存在。",
+    "对于'Instance ID'的使用，虽然提到了通过不同ID获取前雾灯状态，但未详细说明这些ID的具体来源和分配机制。"
+  ]
+}

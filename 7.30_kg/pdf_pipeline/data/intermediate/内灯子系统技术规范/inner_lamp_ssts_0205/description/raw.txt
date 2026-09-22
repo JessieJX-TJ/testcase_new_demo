@@ -1,0 +1,72 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform-SSTS-IBD10)",
+  "row_semantics": "Each row represents a specific lighting parameter or configuration setting for the interior lighting system, identified by a unique parameter ID (e.g., 214, 215).",
+  "column_semantics": {
+    "1": "Parameter ID (unique identifier for each lighting configuration)",
+    "2": "First numerical parameter (likely related to brightness or intensity adjustment)",
+    "3": "Second numerical parameter (possibly another intensity or color-related value)",
+    "4": "Third numerical parameter (could be a fixed value like maximum brightness or a threshold)",
+    "5": "Fourth numerical parameter (possibly a target brightness level or a secondary control value)",
+    "6": "Fifth numerical parameter (could be a priority level, a status code, or a fault indicator)",
+    "7": "Color-coded cell (visual representation of the parameter's status or category)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "Interior Lighting Sub System",
+      "type": "subsystem",
+      "description": "The internal lighting system of the vehicle, including ambient lights, map lights, and other interior illumination features."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Parameter ID",
+      "description": "Unique identifier for each lighting configuration setting.",
+      "type": "input"
+    },
+    {
+      "name": "Brightness/Intensity Parameters",
+      "description": "Numerical values controlling the brightness, intensity, or color characteristics of the interior lights.",
+      "type": "input"
+    },
+    {
+      "name": "Target Brightness Level",
+      "description": "The desired brightness level for the lighting configuration.",
+      "type": "input"
+    },
+    {
+      "name": "Priority/Status Code",
+      "description": "A numerical value indicating the priority, status, or fault condition associated with the lighting parameter.",
+      "type": "input"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Lighting Output",
+      "description": "The actual illumination produced by the interior lighting system based on the configured parameters.",
+      "type": "output"
+    },
+    {
+      "name": "Dynamic Skin Signal",
+      "description": "A signal related to dynamic lighting effects or adaptive lighting modes within the interior lighting system.",
+      "type": "output"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Fault Indicator",
+      "description": "A numerical value in the 'Priority/Status Code' column that indicates a fault or abnormal condition in the lighting parameter.",
+      "type": "fault"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the detailed parameter settings for various interior lighting configurations within the Z-ONE-3.0 platform. It is used to configure the behavior of the interior lighting system, including brightness levels, intensity adjustments, and dynamic lighting effects. The data can be used to verify that the lighting system responds correctly to different parameter inputs and that it operates within specified limits without faults.",
+  "uncertain_points": [
+    "The exact meaning of the fifth numerical parameter (Column 6) is not explicitly defined in the table.",
+    "The specific mapping between the color-coded cells and their corresponding statuses or categories is not provided."
+  ]
+}
+```

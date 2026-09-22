@@ -1,0 +1,492 @@
+```json
+[
+  {
+    "head": "右前雾灯开路故障诊断功能",
+    "relation": "故障响应",
+    "tail": "置位 DTC B1053 13",
+    "sources": ["outer_lamp_ssts_0147"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯驱动模块",
+    "relation": "前提条件",
+    "tail": "制动灯状态为错误 (BrakeLightState = 2)",
+    "sources": ["outer_lamp_ssts_0148"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制模块",
+    "relation": "依赖于",
+    "tail": "制动灯驱动模块",
+    "sources": ["outer_lamp_ssts_0148"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1041 13",
+    "relation": "触发条件",
+    "tail": "制动灯状态为错误 (BrakeLightState = 2)",
+    "sources": ["outer_lamp_ssts_0148"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "故障处理流程",
+    "relation": "退出条件",
+    "tail": "检测到开路恢复",
+    "sources": ["outer_lamp_ssts_0148"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主远光灯开启",
+    "relation": "触发条件",
+    "tail": "RMainBeamLghtCtrl_HW == 1 (On)",
+    "sources": ["outer_lamp_ssts_0149"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主远光灯控制逻辑",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtFbkSOAEnPrm == 0 (Disable)",
+    "sources": ["outer_lamp_ssts_0149"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右远光灯输出",
+    "relation": "输出为",
+    "tail": "MainBeamHdlmp_RH_HSD",
+    "sources": ["outer_lamp_ssts_0149"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "主远光灯状态信号",
+    "relation": "输出为",
+    "tail": "RMainBeamLghtSts == 1 (On), 至少发送三帧",
+    "sources": ["outer_lamp_ssts_0149"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯子系统",
+    "relation": "包含子功能",
+    "tail": "3.0 架构 - SSTS-IBD02",
+    "sources": ["outer_lamp_ssts_0150"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯子系统",
+    "relation": "控制对象",
+    "tail": "子系统技术规范",
+    "sources": ["outer_lamp_ssts_0150"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前位置灯短路到电源故障",
+    "relation": "触发条件",
+    "tail": "检测到左前位置灯短路到电源",
+    "sources": ["outer_lamp_ssts_0151"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前位置灯短路到电源故障",
+    "relation": "故障响应",
+    "tail": "停止驱动左前位置灯输出",
+    "sources": ["outer_lamp_ssts_0151"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前位置灯短路到电源故障",
+    "relation": "故障响应",
+    "tail": "持续发送侧位置灯状态 (Off)",
+    "sources": ["outer_lamp_ssts_0151"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前位置灯短路到电源故障",
+    "relation": "故障响应",
+    "tail": "置位 DTC B1061 12",
+    "sources": ["outer_lamp_ssts_0151"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯驱动模块",
+    "relation": "前提条件",
+    "tail": "控制制动灯控制模块",
+    "sources": ["outer_lamp_ssts_0152"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightState == 1",
+    "relation": "输出为",
+    "tail": "制动灯驱动模块",
+    "sources": ["outer_lamp_ssts_0152"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrakeLightState == 0 (InstanceID=1)",
+    "relation": "输入为",
+    "tail": "制动灯控制模块",
+    "sources": ["outer_lamp_ssts_0152"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯驱动模块",
+    "relation": "状态保持条件",
+    "tail": "BrakeLightState == 1, 至少发送三帧",
+    "sources": ["outer_lamp_ssts_0152"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯点亮",
+    "relation": "触发条件",
+    "tail": "RFrtFogLghtCtrl_HW == 0x1",
+    "sources": ["outer_lamp_ssts_0153"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯熄灭",
+    "relation": "触发条件",
+    "tail": "RFrtFogLghtCtrl_HW == 0x0",
+    "sources": ["outer_lamp_ssts_0153"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯状态",
+    "relation": "输出为",
+    "tail": "RFrtFogLghtSts == 0x1 (On)",
+    "sources": ["outer_lamp_ssts_0153"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯状态",
+    "relation": "输出为",
+    "tail": "RFrtFogLghtSts == 0x0 (Off)",
+    "sources": ["outer_lamp_ssts_0153"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯故障状态",
+    "relation": "输出为",
+    "tail": "RFrtFogLghtFltSts == 0x1 (True)",
+    "sources": ["outer_lamp_ssts_0153"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯故障状态",
+    "relation": "输出为",
+    "tail": "RFrtFogLghtFltSts == 0x0 (False)",
+    "sources": ["outer_lamp_ssts_0153"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FrontFogLightControl 接口",
+    "relation": "触发条件",
+    "tail": "FrontFogLightControl == ON",
+    "sources": ["outer_lamp_ssts_0153"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯点亮",
+    "relation": "依赖于",
+    "tail": "FrontFogLightControl == ON",
+    "sources": ["outer_lamp_ssts_0153"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右侧前雾灯熄灭",
+    "relation": "依赖于",
+    "tail": "FrontFogLightControl == OFF",
+    "sources": ["outer_lamp_ssts_0153"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "逻辑块",
+    "relation": "前提条件",
+    "tail": "FOTA 过程中需保持该功能 (Y)",
+    "sources": ["outer_lamp_ssts_0154"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "逻辑块",
+    "relation": "抑制条件",
+    "tail": "功能运行时禁止 FOTA (Y)",
+    "sources": ["outer_lamp_ssts_0154"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "逻辑块",
+    "relation": "依赖于",
+    "tail": "功能运行时是否广播功能状态/相关信号",
+    "sources": ["outer_lamp_ssts_0154"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制参数分辨率",
+    "relation": "依赖于",
+    "tail": "外灯控制参数配置描述",
+    "sources": ["outer_lamp_ssts_0155"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车身控制参数默认值",
+    "relation": "输出为",
+    "tail": "车身控制参数配置项",
+    "sources": ["outer_lamp_ssts_0155"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门控制参数范围",
+    "relation": "输入为",
+    "tail": "电动尾门控制参数配置描述",
+    "sources": ["outer_lamp_ssts_0155"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯输出有效",
+    "relation": "前提条件",
+    "tail": "转向灯输出有效",
+    "sources": ["outer_lamp_ssts_0156"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯输出有效",
+    "relation": "状态保持条件",
+    "tail": "转向灯输出有效",
+    "sources": ["outer_lamp_ssts_0156"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关故障检测",
+    "relation": "前提条件",
+    "tail": "MainBeamLghtSwSOAEnPrm == 1 (Enable)",
+    "sources": ["outer_lamp_ssts_0157"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关故障检测",
+    "relation": "触发条件",
+    "tail": "远光灯开关检测到未定义的阻值",
+    "sources": ["outer_lamp_ssts_0157"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关故障检测",
+    "relation": "抑制条件",
+    "tail": "远光灯开关检测到已知定义的阻值",
+    "sources": ["outer_lamp_ssts_0157"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关状态错误",
+    "relation": "输出为",
+    "tail": "MainBeamLightSwitchStatus == 0x2 (Error)",
+    "sources": ["outer_lamp_ssts_0157"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC B1077 1C",
+    "relation": "故障响应",
+    "tail": "远光灯开关故障检测",
+    "sources": ["outer_lamp_ssts_0157"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关状态错误",
+    "relation": "输出到",
+    "tail": "远光灯控制模块",
+    "sources": ["outer_lamp_ssts_0157"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯开关状态错误",
+    "relation": "状态保持要求",
+    "tail": "至少发送三帧",
+    "sources": ["outer_lamp_ssts_0157"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯短路故障",
+    "relation": "触发条件",
+    "tail": "检测到右后转向灯短路到电源",
+    "sources": ["outer_lamp_ssts_0158"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯短路故障检测",
+    "relation": "前提条件",
+    "tail": "exlDircnLghtHwDrvEnPrm == 1",
+    "sources": ["outer_lamp_ssts_0158"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯短路故障检测",
+    "relation": "前提条件",
+    "tail": "右后转向灯处于未输出状态",
+    "sources": ["outer_lamp_ssts_0158"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右后转向灯短路故障检测",
+    "relation": "输出为",
+    "tail": "RRDircnLghtFltsts_HW == 0x1 (True)",
+    "sources": ["outer_lamp_ssts_0158"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制参数亮度设置",
+    "relation": "前提条件",
+    "tail": "参数范围为 0 到 100",
+    "sources": ["outer_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电动尾门开启角度",
+    "relation": "前提条件",
+    "tail": "默认值设置为 80 度",
+    "sources": ["outer_lamp_ssts_0159"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "系统休眠唤醒",
+    "relation": "触发条件",
+    "tail": "电平跳变沿触发唤醒",
+    "sources": ["outer_lamp_ssts_0160"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "电平跳变沿触发唤醒",
+    "relation": "输入为",
+    "tail": "电信号上升沿或下降沿变化",
+    "sources": ["outer_lamp_ssts_0160"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制信号 BrkLghtCtrl_HW",
+    "relation": "输入为",
+    "tail": "ICB 模块",
+    "sources": ["outer_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯控制信号 BrkLghtCtrl_HW",
+    "relation": "输出为",
+    "tail": "RZCU 控制器",
+    "sources": ["outer_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯关闭",
+    "relation": "触发条件",
+    "tail": "BrkLghtCtrl_HW == 0x0 (Off)",
+    "sources": ["outer_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "触发条件",
+    "tail": "BrkLghtCtrl_HW == 0x1 (On)",
+    "sources": ["outer_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左制动灯驱动信号 BrkLamp_LH_HSD",
+    "relation": "输出为",
+    "tail": "尾灯",
+    "sources": ["outer_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右制动灯驱动信号 BrkLamp_RH_HSD",
+    "relation": "输出为",
+    "tail": "尾灯",
+    "sources": ["outer_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "高位制动灯驱动信号 CHMSL_HSD",
+    "relation": "输出为",
+    "tail": "高位制动灯",
+    "sources": ["outer_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯关闭状态反馈",
+    "relation": "触发条件",
+    "tail": "BrkLghtSts == 0x0 (Off)",
+    "sources": ["outer_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯开启状态反馈",
+    "relation": "触发条件",
+    "tail": "BrkLghtSts == 0x1 (On)",
+    "sources": ["outer_lamp_ssts_0161"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "制动灯状态为错误",
+    "relation": "冲突项：语义重叠但归属不同实体",
+    "tail": "BrakeLightState == 2",
+    "sources": ["outer_lamp_ssts_0148", "outer_lamp_ssts_0152"],
+    "conflict": true,
+    "conflict_note": "outer_lamp_ssts_0148 将 BrakeLightState == 2 定义为故障前提；outer_lamp_ssts_0152 仅定义 BrakeLightState == 1 和 == 0，未定义 == 2 含义。存在状态编码不一致风险，建议核查 BrakeLightState 状态空间定义（0:Off, 1:On, 2:Error?）"
+  }
+]
+```

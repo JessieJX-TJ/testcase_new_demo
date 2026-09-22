@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "外灯功能 - 侧位灯故障状态",
+  "row_semantics": "表格按外灯的左侧和右侧位置灯分别列出其故障状态信息。",
+  "column_semantics": {
+    "0": "功能模块路径",
+    "1": "服务调用类型 (SOA)",
+    "2": "控制器/模块 (ICB)",
+    "3": "控制器/模块 (LHZCU)",
+    "4": "控制器/模块 (BS→LH ZCU)",
+    "5": "未使用"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "SidePositionLight.SidePositionLightErrorStatus",
+      "type": "function",
+      "description": "获取侧位灯（包括左前和右前）的故障状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "signal",
+      "description": "返回侧位灯的错误状态码",
+      "values": {
+        "0x0": "No Error",
+        "0x1": "Error",
+        "0x2": "Unknown"
+      }
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "fault_state",
+      "description": "表示侧位灯是否存在故障或未知状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了通过SOA服务接口查询车辆左侧和右侧前部位置灯故障状态的规范，可用于验证车身控制单元（LHZCU）对外灯故障状态的正确上报。",
+  "uncertain_points": []
+}
+```

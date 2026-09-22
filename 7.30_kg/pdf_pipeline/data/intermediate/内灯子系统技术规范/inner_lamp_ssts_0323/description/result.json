@@ -1,0 +1,47 @@
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform - SSTs - IBD10)",
+  "row_semantics": "Each row represents a specific signal or control command related to the vehicle's interior backlighting system, detailing its source, destination, and functional behavior.",
+  "column_semantics": {
+    "Unnamed_Column_1": "Function or Signal Name (e.g., VehBacklightngLH CtrlCmd, LHZCU_BacklightLamp_HSD)",
+    "Unnamed_Column_2": "Signal Type (Input/Output)",
+    "Unnamed_Column_3": "Signal Medium (CAN/LIN/SOA Service/Hardwire)",
+    "Unnamed_Column_4": "Provider (Controller or Service that sends the signal)",
+    "Unnamed_Column_5": "Consumer (Controller or Service that receives the signal)",
+    "Unnamed_Column_6": "Designated Signal Channel",
+    "Unnamed_Column_7": "Designated Signal Source"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "VehBacklightngLH CtrlCmd",
+      "type": "Control Command",
+      "description": "Command for controlling the left-hand side vehicle backlight."
+    },
+    {
+      "name": "LHZCU_BacklightLamp_HSD",
+      "type": "Output Signal",
+      "description": "Hardwired output signal from the Local Hub Zone Control Unit (LHZCU) to drive the backlight lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehBacklightngLH CtrlCmd",
+      "value": "0x0=Close; 0x1=Open",
+      "description": "Specifies the state of the backlight: 0x0 indicates the backlight is closed (off), and 0x1 indicates it is open (on)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "LHZCU_BacklightLamp_HSD",
+      "source": "LHZCU",
+      "destination": "FLDSP / RLDSP / IterDoorOpenSw_FL / IterDoorOpenSw_RL / RoofSw",
+      "description": "The hardwired signal output by the LHZCU to control the backlight lamp based on the received command."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the communication and control logic for the vehicle's interior backlighting system, specifying how commands are sent from the LHZCU to control the backlight and how the backlight status is communicated back to the system.",
+  "uncertain_points": []
+}

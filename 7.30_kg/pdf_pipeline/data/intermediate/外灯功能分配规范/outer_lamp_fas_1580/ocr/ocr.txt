@@ -1,0 +1,35 @@
+9、环境光状态:
+AutoLghtOnReq_l=0x1=AutoLghtOnReq_1_True (vehRlsType==0)
+AutoLghtOnReq_ICB=0x1=AutoLghtOnReq_ICB_1_True (vehRlsType==1)
+10、车辆档位状态为D档:
+TrShftLvrPos=0x4=TrShftLvrPos_4_Forward_Range_A(车辆档位为D 档)；&&
+TrShftLvrPosV=0x0=TrShftLvrPosV_0_Valid
+11、自动远光灯开启内部禁止状态为False:AutoMaiBeamLghtCtrlDsblSts=0x0=False
+12、具备智能前大灯控制功能:InsdFnCfgIntlgntMaiBeamLght=0x1
+13、IHC开关使能状态:
+iIHCEnbSetSts=0x0=Enable(对应CAN信号IHCEnbSetSts):(预留方案:
+PersonalizationData.IHCEnableSet.IHCEnableSetInfo=0x2=ON;)
+备注:
+a.需求中同时存在SOA和CAN的,按照配置字开发
+b.需求中只存在一种通讯类型的,按照该通讯类型开发:
+c.PPV阶段及以后按照SOA通讯方式开发:
+配置需求:ExtrLghtCtrlCmmntnTyp=0x0=SOA
+配置需求:ExtrLghtStsCmmntnTyp=0x0=SOA
+触发动作
+1、[远光灯自动控制模块LHZCU]收到[智驾摄像头识别信息IPD]请求输入为远光灯开启:
+ALMainBeamLghtCtrl=0x1=ALMainBeamLghtCtrl_1 RequestOnFromCamera
+&& ARMainBeamLghtCtrl=0x1=ARMainBeamLghtCtrl_1_RequestOnFromCamera
+(PPV阶段LHZCU接收此信号判断)
+AutoMainBeamLghtReq=0x1=AutoMainBeamLghtReq_1_RequestOnFromCamera
+(PP阶段LHZCU接收此信号判断)
+2、车速大于等于40km/h超过两秒且IPD未请求远光灯关闭:a&b
+a、VehSpdAvg≥40Km/h(可配置,AutoMaiBeamLghtEnbVehSpd)&&
+VehSpdAvgV=0x0=VehSpdAvgV_0_Valid；&&持续2s
+b、IPD未请求远光灯关闭:
+ALMainBeamLghtCtrl！=0x2=ALMainBeamLghtCtrl_2_RequestOffFromCamera; &&
+ARMainBeamLghtCtrl!=0x2=ARMainBeamLghtCtrl_2_RequestOffFromCamera
+AutoMainBeamLghtReq！=0x2=AutoMainBeamLghtReq_2_RequestOffFromCamera
+(PP阶段及以后LHZCU接收此信号判断)
+执行动作
+1、[远光灯开关控制模块LHZCU]接口响应:
+Notifier:

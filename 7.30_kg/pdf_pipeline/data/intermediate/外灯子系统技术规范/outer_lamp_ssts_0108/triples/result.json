@@ -1,0 +1,90 @@
+[
+  {
+    "head": "右远光灯开路故障被检测",
+    "relation": "触发条件",
+    "tail": "检测到右远光灯开路",
+    "triple_type": "逻辑规则",
+    "evidence_terms": [
+      "触发条件",
+      "检测到右远光灯开路"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0108",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "系统执行主光灯状态发送",
+    "relation": "前提条件",
+    "tail": "1.MainBeamLghtFbkSOAEnPrm==1(Enable)",
+    "triple_type": "逻辑规则",
+    "evidence_terms": [
+      "前置条件",
+      "MainBeamLghtFbkSOAEnPrm==1(Enable)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0108",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "系统执行主光灯状态发送",
+    "relation": "前提条件",
+    "tail": "2. 右远光灯处于输出状态",
+    "triple_type": "逻辑规则",
+    "evidence_terms": [
+      "前置条件",
+      "右远光灯处于输出状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0108",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "【RMainBeamLghtDrvMdl】持续发送 MainBeamLightState",
+    "relation": "输入为",
+    "tail": "MainBeamLightSta = 2 (Error) InstanceID=2",
+    "triple_type": "输入输出关系",
+    "evidence_terms": [
+      "执行动作",
+      "RMainBeamLghtDrvMdl",
+      "MainBeamLightState",
+      "MainBeamLightSta",
+      "InstanceID"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0108",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "【RMainBeamLghtDrvMdl】持续发送 MainBeamLightState",
+    "relation": "输出为",
+    "tail": "【MainBeamLghtCtrlMdl】",
+    "triple_type": "输入输出关系",
+    "evidence_terms": [
+      "执行动作",
+      "RMainBeamLghtDrvMdl",
+      "MainBeamLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0108",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "【RMainBeamLghtDrvMdl】持续发送 MainBeamLightState",
+    "relation": "超时约束",
+    "tail": "至少发送三帧",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "执行动作",
+      "至少发送三帧"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0108",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "fault_table"
+  }
+]

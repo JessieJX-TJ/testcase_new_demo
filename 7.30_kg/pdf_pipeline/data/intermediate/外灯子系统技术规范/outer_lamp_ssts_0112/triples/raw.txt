@@ -1,0 +1,62 @@
+```json
+[
+  {
+    "head": "Dipped Beam Light Error is detected",
+    "relation": "触发条件",
+    "tail": "DippedBeamLightErrorStatus.DippedBeamLightSta = 0x1 (Error)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "DippedBeamLightErrorStatus.DippedBeamLightSta",
+      "0x1 (Error)"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "RDipdBeamLghtDrvMdl sends DippedBeamLight",
+    "relation": "前提条件",
+    "tail": "InstanceID = 2",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RDipdBeamLghtDrvMdl",
+      "DippedBeamLight",
+      "InstanceID"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "至少发送三帧",
+    "relation": "超时约束",
+    "tail": "RDipdBeamLghtDrvMdl sends DippedBeamLight to DipdBmLghtCtrlMdl",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RDipdBeamLghtDrvMdl",
+      "DippedBeamLight",
+      "DipdBmLghtCtrlMdl",
+      "three frames"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "Set DTC",
+    "relation": "故障响应",
+    "tail": "Dipped Beam Light Error is detected",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "DTC",
+      "Dipped Beam Light Error"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "退出条件",
+    "relation": "复位条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "异常处理",
+    "evidence_terms": [
+      "ExitCondition",
+      "Short Circuit Recovery"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

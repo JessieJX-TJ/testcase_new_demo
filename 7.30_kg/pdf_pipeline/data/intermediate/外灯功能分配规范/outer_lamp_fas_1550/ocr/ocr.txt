@@ -1,0 +1,20 @@
+(exlMainBeamHwDrvEnPrm=0x0时,通过InstanceID1,2发送控制请求)
+(exlMainBeamHwDrvEnPrm=0x1时,通过 InstanceID=3,4发送请求)
+(exlMainBeamTypePrm=0x1=Main beam and dipped beam are one bulb；即当远光灯与近光灯为一个灯
+控制近光灯)
+ICB接收控制信号:
+LMainBeamLghtCtrl=0x1=LMainBeamLghtCtrl_1_On
+做远光灯图标指示灯显示
+[远光灯驱动处理模块LHZCU/RHZCU]将远光灯执行状态反馈至[远光灯开关控制模块LHZCU]:
+LMainBeamLghtSts=0x1=LMainBeamLghtSts_1_On
+RMainBeamLghtSts=0x1=RMainBeamLghtSts_1_On
+ICB 将状态/故障状态反馈至[远光灯开关控制模块 LHZCU]:
+LMainBeamLghtFltSts=0x0=LMainBeamLghtFltSts_0_False
+RMainBeamLghtFltSts=0x0=RMainBeamLghtFltSts_0_False
+(exlMainBeamHwDrvEnPrm=0x0时,通过InstanceID1,2获取状态)
+[远光灯开关控制模块LHZCU]从RHZCU获取远光灯状态/故障:
+(exlMainBeamHwDrvEnPrm=0x1时,通过 InstanceID=4 获取右侧远光灯状态)
+7.[远光灯开关控制模块LHZCU]将状态/故障状态反馈至ICB:
+MainBeamLghtSts=0x1=MainBeamLghtSts_1_On
+MainBeamLghtFltSts=0x0=MainBeamLghtFltSts_0_False
+8.[外灯组合服务ICB]订阅接口:

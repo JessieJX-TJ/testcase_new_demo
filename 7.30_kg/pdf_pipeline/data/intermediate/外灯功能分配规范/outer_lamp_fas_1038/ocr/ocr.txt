@@ -1,0 +1,25 @@
+(exlDipdBeamHwDrvEnPrm=0x1；通过Instance ID1/2获取近光灯状态)
+[自动灯光控制模块LHZCU]订阅位置灯状态/故障状态接口:
+FLSideLghtSts=0x1=FLSideLghtSts_1_On
+FRSideLghtSts=0x1=FRSideLghtSts_1_On
+RLSideLghtSts=0x1=RLSideLghtSts_1_On
+RRSideLghtSts=0x1=RRSideLghtSts 1 On
+FLSideLghtFltsts=0x0=FLSideLghtFltsts_0_False
+FRSideLghtFltsts=0x0=FRSideLghtFltsts_0_False
+RLSideLghtFltsts=0x0=RLSideLghtFltsts_0_False
+RRSideLghtFltsts=0x0=RRSideLghtFltsts_0_False
+(exlSideLghtHwDrvEnPrm=0x0；备注:位置灯私有CAN通讯方案,以instance5,6,7,8反馈状态
+PPV)
+(exlSideLghtHwDrvEnPrm=0x1；备注:位置灯炮筒灯方案,以instance1,2,3,4反馈状态,如 S31
+备注
+1、位置灯和近光灯开启同步性要求:
+左侧和右侧需保持同步点亮,两侧最大延时不能超过40ms
+2、[自动灯光控制模块 LHZCU]默认组合开关状态为AUTO
+3、RLSS 发生故障时,RLSS 默认发送AutoLghtOnReq_l=0x1=AutoLghtOnReq_1_True (vehRlsTyp
+AutoLghtOnReq_ICB=0x1=AutoLghtOnReq_ICB_1_True (vehRlsType==1)
+4、LHZCU检测到:a|b
+a、RLSS节点丢失
+b、RLSS LIN(LHZCU LIN2)通讯丢失或故障持续 3min
+则内部默认设置AutoLghtOnReq_l=0x1=AutoLghtOnReq_1_True(vehRlsType==0)|
+AutoLghtOnReq_ICB=0x1=AutoLghtOnReq_ICB_1_True(vehRlsType==1)；按照内部设置的
+AutoLghtOnReq_1 处理灯光逻辑

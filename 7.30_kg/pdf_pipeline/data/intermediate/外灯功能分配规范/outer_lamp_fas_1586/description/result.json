@@ -1,0 +1,45 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 - 右后转向灯故障状态及控制",
+  "row_semantics": "表格按功能模块划分，每一行代表一个与右后转向灯相关的信号或控制接口描述。",
+  "column_semantics": "第一列为主功能/信号名称；后续列为该信号的属性或相关模块（如输出、消耗、所属控制器等）；最右侧为控制方式（如网络故障状态、硬线控制）。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RRDircnLghtFlsts",
+      "type": "signal",
+      "description": "右后转向灯故障状态信号"
+    },
+    {
+      "name": "DirectionLight.ControlDirectionLight",
+      "type": "function",
+      "description": "控制左前和右前转向灯亮灭的功能接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RRDircnLghtFlsts_0_False",
+      "description": "表示右后转向灯无故障"
+    },
+    {
+      "name": "RRDircnLghtFlsts_1_True",
+      "description": "表示右后转向灯存在故障"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "DirectionLightReq",
+      "description": "方向灯控制请求参数，用于指定转向灯的开关状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "RRDircnLghtFlsts",
+      "description": "右后转向灯的故障状态，可为False（无故障）或True（有故障）"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了右后转向灯的故障状态信号及其控制接口，可用于验证转向灯系统在不同故障状态下的行为以及通过软件接口正确控制转向灯的亮灭。",
+  "uncertain_points": []
+}

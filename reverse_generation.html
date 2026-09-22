@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batch Reverse Case Generation</title>
+  <link rel="stylesheet" href="static/css/platform.css?v=20260915-rg">
+  <link rel="stylesheet" href="static/css/reverse_generation.css?v=20260915-rg">
+</head>
+<body class="reverse-platform-page">
+  <div class="app-shell reverse-app-shell">
+    <aside class="app-rail" aria-label="Main navigation">
+      <a class="brand" href="./index.html#overview" aria-label="Workbench">
+        <span class="brand-mark"><i data-lucide="car"></i></span>
+        <span class="brand-name">Workbench<small>Automotive Manufacturing</small></span>
+      </a>
+      <nav class="rail-nav">
+        <a class="rail-link" href="./index.html#overview" title="Overview"><i data-lucide="layout-dashboard"></i><span>Overview</span></a>
+        <a class="rail-link" href="./index.html#graph" title="Graph"><i data-lucide="network"></i><span>Graph</span></a>
+        <a class="rail-link" href="./index.html#ontology" title="Ontology"><i data-lucide="layers"></i><span>Ontology</span></a>
+        <a class="rail-link" href="./index.html#skill" title="Skill"><i data-lucide="sparkles"></i><span>Skill</span></a>
+        <a class="rail-link" href="./index.html#search" title="Search"><i data-lucide="search"></i><span>Search</span></a>
+        <a class="rail-link" href="./index.html#qa" title="Knowledge Q&A"><i data-lucide="bot"></i><span>Knowledge Q&A</span></a>
+        <a class="rail-link" href="./index.html#test-case-generation" title="Test Case Generation"><i data-lucide="file-plus-2"></i><span>Test Case Generation</span></a>
+        <a class="rail-link is-active" href="reverse_generation.html" title="Batch Reverse Case Generation" aria-current="page"><i data-lucide="git-pull-request-arrow"></i><span>Batch Reverse Case Generation</span></a>
+      </nav>
+      <div class="rail-bottom">
+        <a class="rail-link" href="./index.html#account" title="Groups & Accounts"><i data-lucide="users"></i><span>Groups & Accounts</span></a>
+      </div>
+    </aside>
+
+    <div class="app-main">
+      <header class="topbar">
+        <div class="breadcrumb"><span>Automotive Manufacturing</span><b>/</b><strong>Batch Reverse Case Generation</strong></div>
+        <div class="topbar-actions">
+          <span class="service-status"><i></i>Connected</span>
+          <a class="reverse-account-link" href="./index.html#account"><i data-lucide="users"></i><span>Groups & Accounts</span></a>
+        </div>
+      </header>
+
+      <main class="workspace reverse-workspace">
+        <div class="container">
+          <div class="toolbar">
+            <div class="search-box">
+              <input id="searchBox" type="search" placeholder="Search case name, ID, expected behavior...">
+            </div>
+            <div class="filter-box">
+              <select id="filterType">
+                <option value="all">All Cases</option>
+                <option value="single">Single Expected Result</option>
+                <option value="multiple">Multiple Expected Results</option>
+              </select>
+            </div>
+            <div class="mode-switch" role="tablist">
+              <button type="button" class="mode-button active" data-mode="action">Action</button>
+              <button type="button" class="mode-button" data-mode="expected">Expected Behavior</button>
+            </div>
+            <div class="batch-actions">
+              <button id="selectAll" class="btn-secondary" type="button">Select All</button>
+              <button id="clearSelection" class="btn-secondary" type="button">Clear Selection</button>
+            </div>
+            <div class="stats-box"><span id="statsText">Loading...</span></div>
+          </div>
+
+          <div class="main-content">
+            <aside class="action-sidebar">
+              <div class="sidebar-header">
+                <h3>Test Type</h3>
+                <span id="actionCount" class="count-badge">0</span>
+              </div>
+              <div id="actionList" class="action-list"><div class="loading">Loading...</div></div>
+            </aside>
+
+            <main class="case-list-panel">
+              <div class="panel-header">
+                <div class="header-left"><span id="caseCount" class="count-badge">0 cases</span></div>
+                <span id="selectedCount" class="selected-count">Selected: 0</span>
+              </div>
+              <div id="caseList" class="case-list">
+                <div class="empty-state"><p>Select a test type first, then choose an action or expected behavior</p></div>
+              </div>
+              <div class="action-buttons">
+                <button id="generateBtn" class="btn-primary" type="button" disabled>Generate Reverse Cases (<span id="generateCount">0</span>)</button>
+                <button id="exportBtn" class="btn-secondary" type="button">Export Selected Cases</button>
+              </div>
+            </main>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="progressModal" class="modal">
+    <div class="modal-content">
+      <h3 id="taskStatusTitle">Generating reverse cases</h3>
+      <div class="progress-container">
+        <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+        <p id="progressText" class="progress-text">0 / 0 (0%)</p>
+      </div>
+      <p id="taskStatusMessage" class="progress-tip"></p>
+      <div class="modal-footer">
+        <button id="retryTaskBtn" class="btn-primary" type="button" hidden>Retry</button>
+        <button id="refreshTaskBtn" class="btn-secondary" type="button" hidden>Refresh</button>
+        <button id="closeProgressBtn" class="btn-secondary" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="resultModal" class="modal">
+    <div class="modal-content large">
+      <div class="modal-header">
+        <h3>Generation Results</h3>
+        <button id="closeResultModal" class="close-btn" type="button" aria-label="Close">&times;</button>
+      </div>
+      <div id="resultContent" class="result-content"></div>
+      <div class="modal-footer">
+        <button id="downloadBtn" class="btn-primary" type="button"><i data-lucide="file-down" aria-hidden="true"></i><span>Export Excel</span></button>
+        <button id="closeBtn" class="btn-secondary" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="static/js/reverse_generation.js?v=20260915-rg"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (window.lucide) window.lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

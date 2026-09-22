@@ -1,0 +1,119 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能分配规范",
+  "row_semantics": "表格的每一行代表一个具体的外灯功能状态或控制信号，描述了该信号的输入/输出属性、通信方式、所属控制器以及相关的CANFD信号。",
+  "column_semantics": {
+    "功能名": "表示具体的外灯功能名称，如倒车灯、雾灯、转向灯等。",
+    "输入/输出": "指示该信号是作为输入还是输出。",
+    "CA N": "表示该信号通过CAN总线传输。",
+    "TDM": "表示该信号使用时间分复用（Time Division Multiplexing）技术。",
+    "RZCU": "表示该信号由区域中央控制单元（Regional Zone Control Unit）处理。",
+    "SFCANFD": "表示该信号通过高速CANFD总线传输。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "TrlrRevsLghtSts",
+      "type": "功能名",
+      "description": "拖车反光灯状态"
+    },
+    {
+      "name": "TrlrRevsLghtFltSts",
+      "type": "功能名",
+      "description": "拖车反光灯故障状态"
+    },
+    {
+      "name": "TrlrRrFogLghtSts",
+      "type": "功能名",
+      "description": "拖车后雾灯状态"
+    },
+    {
+      "name": "TrlrRrFogLghtFltSts",
+      "type": "功能名",
+      "description": "拖车后雾灯故障状态"
+    },
+    {
+      "name": "TrlrDirLghtSts",
+      "type": "功能名",
+      "description": "拖车方向灯状态"
+    },
+    {
+      "name": "TrlrDirLghtFltSts",
+      "type": "功能名",
+      "description": "拖车方向灯故障状态"
+    },
+    {
+      "name": "TrlrSideLghtSts",
+      "type": "功能名",
+      "description": "拖车侧灯状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "TrlrRevsLghtSts",
+      "type": "输出信号",
+      "controller": "RZCU",
+      "communication": "SFCANFD"
+    },
+    {
+      "name": "TrlrRevsLghtFltSts",
+      "type": "输出信号",
+      "controller": "RZCU",
+      "communication": "SFCANFD"
+    },
+    {
+      "name": "TrlrRrFogLghtSts",
+      "type": "输出信号",
+      "controller": "RZCU",
+      "communication": "SFCANFD"
+    },
+    {
+      "name": "TrlrRrFogLghtFltSts",
+      "type": "输出信号",
+      "controller": "RZCU",
+      "communication": "SFCANFD"
+    },
+    {
+      "name": "TrlrDirLghtSts",
+      "type": "输出信号",
+      "controller": "RZCU",
+      "communication": "SFCANFD"
+    },
+    {
+      "name": "TrlrDirLghtFltSts",
+      "type": "输出信号",
+      "controller": "RZCU",
+      "communication": "SFCANFD"
+    },
+    {
+      "name": "TrlrSideLghtSts",
+      "type": "输出信号",
+      "controller": "RZCU",
+      "communication": "SFCANFD"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "TrlrRevsLghtFltSts",
+      "type": "故障状态",
+      "description": "拖车反光灯故障状态，0x1表示True（故障）"
+    },
+    {
+      "name": "TrlrRrFogLghtFltSts",
+      "type": "故障状态",
+      "description": "拖车后雾灯故障状态，0x1表示True（故障）"
+    },
+    {
+      "name": "TrlrDirLghtFltSts",
+      "type": "故障状态",
+      "description": "拖车方向灯故障状态，0x1表示NoFlr（无左转向灯），0x3表示LeAndRiFlr（左和右转向灯均故障）"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了车辆外灯系统的各个功能状态及其对应的输出信号，包括正常工作状态和故障状态，可用于验证外灯系统在不同工况下的信号输出是否符合设计规范。",
+  "uncertain_points": []
+}
+```

@@ -1,0 +1,97 @@
+{
+  "table_type": "state_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的状态分配规范",
+  "row_semantics": "表格按层级结构组织，主要分为三个顶层状态维度：VehMd (Vehicle Mode, 车辆模式), VehMdV (Vehicle Mode Validity, 车辆模式有效性), 和 UsG Md (Usage Mode, 使用模式). 每个维度下定义了具体的模式或状态值及其含义。",
+  "column_semantics": "表格包含两列：左侧列为状态维度名称（如 VehMd），右侧为该维度下的具体状态列表及其描述。",
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "VehMd",
+      "description": "车辆运行模式，定义了车辆在不同场景下的操作状态。"
+    },
+    {
+      "name": "VehMdV",
+      "description": "车辆模式的有效性状态，指示当前车辆模式是否被系统认可和激活。"
+    },
+    {
+      "name": "UsG Md",
+      "description": "使用模式，描述了车辆的用户使用场景或驾驶风格。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehMd_0_NORMAL",
+      "description": "正常运行模式"
+    },
+    {
+      "name": "VehMd_1_CRASH",
+      "description": "碰撞检测模式"
+    },
+    {
+      "name": "VehMd_2_FACTORY",
+      "description": "工厂测试模式"
+    },
+    {
+      "name": "VehMd_3_TRANSPORT",
+      "description": "运输模式"
+    },
+    {
+      "name": "VehMd_4_DYNO",
+      "description": "测功机模式"
+    },
+    {
+      "name": "VehMd_5_EXHIBITION",
+      "description": "展览模式"
+    },
+    {
+      "name": "VehMd_8_Engineering",
+      "description": "工程模式"
+    },
+    {
+      "name": "VehMd_9_Service",
+      "description": "服务模式"
+    },
+    {
+      "name": "VehMdV_0_Invalid",
+      "description": "车辆模式无效"
+    },
+    {
+      "name": "VehMdV_1_Valid",
+      "description": "车辆模式有效"
+    },
+    {
+      "name": "UsG Md_0_Sleep",
+      "description": "睡眠模式"
+    },
+    {
+      "name": "UsG Md_1_Standby",
+      "description": "待机模式"
+    },
+    {
+      "name": "UsG Md_2_Comfortable",
+      "description": "舒适模式"
+    },
+    {
+      "name": "UsG Md_3_NormalDriving",
+      "description": "常规驾驶模式"
+    },
+    {
+      "name": "UsG Md_4_AIParking",
+      "description": "自动驾驶泊车模式"
+    },
+    {
+      "name": "UsG Md_5_AIPilot",
+      "description": "自动驾驶辅助模式"
+    },
+    {
+      "name": "UsG Md_6_XOTA",
+      "description": "XOTA (eXtended Over-The-Air) 更新模式"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了车辆外灯功能在不同车辆模式、模式有效性及使用场景下的状态配置。可用于验证外灯功能在各种车辆运行状态和用户场景下的正确行为，确保其符合设计规范。",
+  "uncertain_points": []
+}

@@ -1,0 +1,526 @@
+[
+  {
+    "head": "DircnIndLghtMdSts",
+    "relation": "output_via",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_0127"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtCtrl",
+    "relation": "output_via",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_0127"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtSwReq",
+    "relation": "depends_on",
+    "tail": "DirectionLightSwitchRequest",
+    "sources": [
+      "outer_lamp_fas_0127"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnIndLghtMdSts",
+    "relation": "depends_on",
+    "tail": "DirectionLightSwitchStatus",
+    "sources": [
+      "outer_lamp_fas_0127"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "outputs_to",
+    "tail": "DirenLightSts=0x0=OFF",
+    "sources": [
+      "outer_lamp_fas_0128"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "outputs_to",
+    "tail": "VehHzrdMdSts=VehHzrdMdSts_0_No_Request",
+    "sources": [
+      "outer_lamp_fas_0128",
+      "outer_lamp_fas_01526"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "outputs_to",
+    "tail": "EDRDircnIndLampSwSts=EDRDircnIndLampSwSts_0_off",
+    "sources": [
+      "outer_lamp_fas_0128"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB",
+    "relation": "subscribes_to",
+    "tail": "ExteriorLightControlSystem.DirectionLightSts=NoFlash",
+    "sources": [
+      "outer_lamp_fas_0128"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "requires_condition",
+    "tail": "exlDircnLightHwDrvEnPrm ∈ {0x0, 0x2}",
+    "sources": [
+      "outer_lamp_fas_0128"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "requires_condition",
+    "tail": "Instance ID ∈ {5,6,7,8} for DirectionLight status acquisition",
+    "sources": [
+      "outer_lamp_fas_0128"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "HazardLightSynchronization",
+    "relation": "timeout_constraint",
+    "tail": "max_delay=40ms",
+    "sources": [
+      "outer_lamp_fas_0128"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting timeout values: 40ms (for hazard light sync) vs 50ms (for icon/sound/light synchronization). Both appear in same spec section 'outer_lamp_fas_0128' and refer to synchronization — likely inconsistent specification."
+  },
+  {
+    "head": "HazardLightSynchronization",
+    "relation": "timeout_constraint",
+    "tail": "max_delay=50ms (icon, sound, and physical lamp flash must be synchronized)",
+    "sources": [
+      "outer_lamp_fas_0128"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicting timeout values: 40ms (for hazard light sync) vs 50ms (for icon/sound/light synchronization). Both appear in same spec section 'outer_lamp_fas_0128' and refer to synchronization — likely inconsistent specification."
+  },
+  {
+    "head": "DayRunningLightErrorStatus",
+    "relation": "triggered_by",
+    "tail": "service_call_DayRunningLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_0129"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightSts",
+    "relation": "triggered_by",
+    "tail": "service_call_DayRunningLightSts",
+    "sources": [
+      "outer_lamp_fas_0129"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DayRunningLightErrorSta",
+    "relation": "output_format",
+    "tail": "0x0=NoError; 0x1=Error; 0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_0129"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightFucProCtrl=ON",
+    "relation": "triggers",
+    "tail": "RoofSpotLightFucProStatus=ON",
+    "sources": [
+      "outer_lamp_fas_0130"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightFucProCtrl=OFF",
+    "relation": "triggers",
+    "tail": "RoofSpotLightFucProStatus=OFF",
+    "sources": [
+      "outer_lamp_fas_0130"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightErrSts=Error",
+    "relation": "triggers",
+    "tail": "RoofSpotLightFucProStatus=Unknown",
+    "sources": [
+      "outer_lamp_fas_0130"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightErrSts=NoError",
+    "relation": "enables_state",
+    "tail": "RoofSpotLightFucProStatus ∈ {ON, OFF}",
+    "sources": [
+      "outer_lamp_fas_0130"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightFucProStatus=ON",
+    "relation": "depends_on",
+    "tail": "RoofSpotLightFucProCtrl=ON",
+    "sources": [
+      "outer_lamp_fas_0130"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightFucProStatus=OFF",
+    "relation": "depends_on",
+    "tail": "RoofSpotLightFucProCtrl=OFF",
+    "sources": [
+      "outer_lamp_fas_0130"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightSta=ON",
+    "relation": "input_from",
+    "tail": "RoofSpotLightFucProStatus=ON",
+    "sources": [
+      "outer_lamp_fas_0130"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightSta=OFF",
+    "relation": "input_from",
+    "tail": "RoofSpotLightFucProStatus=OFF",
+    "sources": [
+      "outer_lamp_fas_0130"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorStatusSubscription",
+    "relation": "requires_condition",
+    "tail": "service_call_DirectionLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_0131"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontDirectionLightControl",
+    "relation": "requires_condition",
+    "tail": "periodic_service_call_ControlLeftFrontDirectionLight",
+    "sources": [
+      "outer_lamp_fas_0131",
+      "outer_lamp_fas_0173",
+      "outer_lamp_fas_0894",
+      "outer_lamp_fas_1413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontDirectionLightControl",
+    "relation": "requires_condition",
+    "tail": "periodic_service_call_ControlRightFrontDirectionLight",
+    "sources": [
+      "outer_lamp_fas_0131",
+      "outer_lamp_fas_0173",
+      "outer_lamp_fas_0256",
+      "outer_lamp_fas_0344",
+      "outer_lamp_fas_0507",
+      "outer_lamp_fas_0894"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLghtErrSts",
+    "relation": "input_as",
+    "tail": "DirectionLightErrorStatus",
+    "sources": [
+      "outer_lamp_fas_0131"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightReq",
+    "relation": "input_as",
+    "tail": "LeftFrontDirectionLightRequest",
+    "sources": [
+      "outer_lamp_fas_0131"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightReq",
+    "relation": "input_as",
+    "tail": "RightFrontDirectionLightRequest",
+    "sources": [
+      "outer_lamp_fas_0131"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "has_subfunction",
+    "tail": "Z-ONE-3.0-Platform-FAS-IBD05",
+    "sources": [
+      "outer_lamp_fas_0132",
+      "outer_lamp_fas_0212",
+      "outer_lamp_fas_0299",
+      "outer_lamp_fas_0421",
+      "outer_lamp_fas_0637",
+      "outer_lamp_fas_0728",
+      "outer_lamp_fas_0754",
+      "outer_lamp_fas_0999",
+      "outer_lamp_fas_1008",
+      "outer_lamp_fas_1030",
+      "outer_lamp_fas_1053",
+      "outer_lamp_fas_1182",
+      "outer_lamp_fas_1190",
+      "outer_lamp_fas_1206",
+      "outer_lamp_fas_1334",
+      "outer_lamp_fas_1396",
+      "outer_lamp_fas_1455",
+      "outer_lamp_fas_1469",
+      "outer_lamp_fas_1511",
+      "outer_lamp_fas_1517",
+      "outer_lamp_fas_1534",
+      "outer_lamp_fas_1587",
+      "outer_lamp_fas_1731"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLampFunction",
+    "relation": "requires_version",
+    "tail": "version < 1.0",
+    "sources": [
+      "outer_lamp_fas_0132",
+      "outer_lamp_fas_0637",
+      "outer_lamp_fas_0842",
+      "outer_lamp_fas_0988",
+      "outer_lamp_fas_0999",
+      "outer_lamp_fas_1014",
+      "outer_lamp_fas_1030",
+      "outer_lamp_fas_1053",
+      "outer_lamp_fas_1135",
+      "outer_lamp_fas_1190",
+      "outer_lamp_fas_1287",
+      "outer_lamp_fas_1534"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus",
+    "relation": "triggered_by",
+    "tail": "InstanceID=5 → LeftFrontPositionLightStatus",
+    "sources": [
+      "outer_lamp_fas_0133"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SidePositionLightStatus",
+    "relation": "triggered_by",
+    "tail": "InstanceID=6 → RightFrontPositionLightStatus",
+    "sources": [
+      "outer_lamp_fas_0133"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LeftFrontPositionLightStatus",
+    "relation": "output_from",
+    "tail": "SidePositionLightStatus(InstanceID=5)",
+    "sources": [
+      "outer_lamp_fas_0133"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RightFrontPositionLightStatus",
+    "relation": "output_from",
+    "tail": "SidePositionLightStatus(InstanceID=6)",
+    "sources": [
+      "outer_lamp_fas_0133"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlRoofSpotLight",
+    "relation": "triggered_by",
+    "tail": "parameter=0x1=ON",
+    "sources": [
+      "outer_lamp_fas_0134"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ControlRoofSpotLight",
+    "relation": "triggered_by",
+    "tail": "parameter=0x0=OFF",
+    "sources": [
+      "outer_lamp_fas_0134"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightStatus",
+    "relation": "input_from",
+    "tail": "parameter=0x1=ON",
+    "sources": [
+      "outer_lamp_fas_0134"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightStatus",
+    "relation": "input_from",
+    "tail": "parameter=0x0=OFF",
+    "sources": [
+      "outer_lamp_fas_0134"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightStatus",
+    "relation": "input_from",
+    "tail": "parameter=0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_0134"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightErrorStatus",
+    "relation": "input_from",
+    "tail": "parameter=0x0=NoError",
+    "sources": [
+      "outer_lamp_fas_0134"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightErrorStatus",
+    "relation": "input_from",
+    "tail": "parameter=0x1=Error",
+    "sources": [
+      "outer_lamp_fas_0134"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofSpotLightErrorStatus",
+    "relation": "input_from",
+    "tail": "parameter=0x2=Unknown",
+    "sources": [
+      "outer_lamp_fas_0134"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowBeamLightActivation",
+    "relation": "requires_condition",
+    "tail": "user_trigger_via_infotainment_soft_switch",
+    "sources": [
+      "outer_lamp_fas_0135",
+      "outer_lamp_fas_0805",
+      "outer_lamp_fas_1733"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowBeamLightActivation",
+    "relation": "requires_condition",
+    "tail": "UsrMd ∈ {0x0=Sleep, 0x1=Standby, 0x6=XOTA}",
+    "sources": [
+      "outer_lamp_fas_0135"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowBeamLightActivation",
+    "relation": "requires_condition",
+    "tail": "UsrMdV=Valid",
+    "sources": [
+      "outer_lamp_fas_0135"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowBeamLightActivation",
+    "relation": "requires_condition",
+    "tail": "VehMd=0x3=TRANSPORT",
+    "sources": [
+      "outer_lamp_fas_0135"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LowBeamLightActivation",
+    "relation": "requires_condition",
+    "tail": "VehMdV=Valid",
+    "sources": [
+      "outer_lamp_fas_0135"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

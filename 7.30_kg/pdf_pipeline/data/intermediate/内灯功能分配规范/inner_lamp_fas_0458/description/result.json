@@ -1,0 +1,53 @@
+{
+  "table_type": "structure_table",
+  "topic": "智己 S31L 车型阅读灯功能逻辑框图",
+  "row_semantics": "表示系统中的不同模块或功能单元，从左到右、从上到下描述了信号和控制流的层级关系。",
+  "column_semantics": "无明确列概念，整体为流程图结构，通过连接线展示模块间的交互关系。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    "MapLampHMI (ICB/ZXD)",
+    "IntelligentScenes",
+    "PersonalizationDataSystem",
+    "MapLampDoorInteraction (ICB/ZXD)",
+    "LockingSystem",
+    "VehicleStateSystem",
+    "MapLampCtrl (ICB/ZXD)",
+    "MapLampLocalCtrl (RHZCU)",
+    "MapLampLocalCtrl (LHZCU)",
+    "ThirdRowMapLampRHRDrv (RHZCU)",
+    "ThirdRowMapLampRHDrv (RHZCU)",
+    "ThirdRowMapLampLHDrv (LHZCU)",
+    "ThirdRowMapLampLHDrv (LHZCU)",
+    "MapLampXXSnr (OHC)",
+    "MapLampXXDrv (OHC)"
+  ],
+  "core_conditions": [
+    "XXDoorOpenSts",
+    "VeMLokSts",
+    "VeMAdv",
+    "UsqMAd",
+    "UsqMAdv",
+    "OHCChEnr_"
+  ],
+  "core_outputs": [
+    "MapLampService.MapLampOn(组合服务)",
+    "PersonalizationData.MapLampDEnbSet",
+    "DoorMapLampXX",
+    "MapLampSystem.MapLampBrightnessx(基础服务)",
+    "ThirdRowMapLamp",
+    "ThirdRowMapLampBrightness",
+    "MapLampXX5aReq_",
+    "MapLampXXBrLtU_",
+    "MapLampXXDimSpd_",
+    "MapLampXXEr_"
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该图表详细描述了智己 S31L 车型阅读灯系统的功能逻辑，包括用户界面交互、个性化设置、车门状态感知、车身状态管理以及各区域阅读灯的控制与驱动。可用于验证阅读灯在不同场景下的点亮、亮度调节及故障保护功能。",
+  "uncertain_points": [
+    "具体的服务实现细节未在图中明确说明。",
+    "各模块间的具体通信协议（如SOA、CAN、LIN、SPI）的优先级和时序关系未量化。",
+    "部分信号的具体阈值或定时参数未给出。"
+  ]
+}

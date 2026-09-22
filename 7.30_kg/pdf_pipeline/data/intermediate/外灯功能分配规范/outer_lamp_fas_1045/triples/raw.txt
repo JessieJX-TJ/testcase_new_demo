@@ -1,0 +1,87 @@
+```json
+[
+  {
+    "head": "寻车灯远程控制模块LHZCU控制信号跳变",
+    "relation": "前提条件",
+    "tail": "用户模式为Sleep或Standby，车辆模式非Factory且非Transport，外部灯光控制通信类型为SOA或CAN，外部灯光状态通信类型为SOA或CAN",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsrMd=0x0_Sleep",
+      "UsrMd=0x1_Standby",
+      "VehMd!=0x2",
+      "VehMd!=0x3",
+      "ExtrLghtCtrlCmmntnTyp=0x0=SOA",
+      "ExtrLghtCtrlCmmntnTyp=0x1=CAN",
+      "ExtrLghtStsCmmntnTyp=0x0=SOA",
+      "ExtrLghtStsCmmntnTyp=0x1=CAN"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "寻车灯远程控制模块LHZCU控制信号跳变",
+    "relation": "触发条件",
+    "tail": "收到[寻车灯请求模块LHZCU]双闪灯请求，FMCLightReq=0x1=FMCLightReq_1_Atcive",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "FMCLightReq=0x1",
+      "FMCLightReq_1_Atcive"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "控制双闪灯闪烁",
+    "relation": "依赖于",
+    "tail": "寻车灯远程控制模块LHZCU控制信号跳变为",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "LHZCU",
+      "控制信号跳变"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯流水模式使能",
+    "relation": "输出为",
+    "tail": "DircnLghtMdSts=0x0=DircnLghtMdSts_0_Enabled",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "DircnLghtMdSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯控制信号发送",
+    "relation": "输出为",
+    "tail": "FLDircnLghtCtrl, FRDircnLghtCtrl, RLDircnLghtCtrl, RRDircnLghtCtrl",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "FLDircnLghtCtrl",
+      "FRDircnLghtCtrl",
+      "RLDircnLghtCtrl",
+      "RRDircnLghtCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯控制信号发送",
+    "relation": "超时约束",
+    "tail": "每400ms发送一次",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "400ms"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "方向灯流水模式持续",
+    "relation": "超时约束",
+    "tail": "8个Cycle (50ms) on",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "8个Cycle",
+      "50ms"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

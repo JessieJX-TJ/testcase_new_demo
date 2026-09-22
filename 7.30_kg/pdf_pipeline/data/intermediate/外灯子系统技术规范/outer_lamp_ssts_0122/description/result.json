@@ -1,0 +1,77 @@
+{
+  "table_type": "fault_table",
+  "topic": "后雾灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程分为前置条件、触发条件、执行动作、退出条件和异常处理五个阶段。",
+  "column_semantics": "表格包含两列，第一列为条件/动作描述，第二列为具体的技术实现细节。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "RearFogLghtDrvMdl",
+      "type": "controller_module",
+      "description": "后雾灯驱动模块"
+    },
+    {
+      "name": "FogLamp_HSD",
+      "type": "output_signal",
+      "description": "后雾灯高压开关驱动信号"
+    },
+    {
+      "name": "RearFogPositionLightStatus",
+      "type": "output_signal",
+      "description": "后雾灯位置灯状态信号"
+    },
+    {
+      "name": "RearFogLghtCtrlMdl",
+      "type": "controller_module",
+      "description": "后雾灯控制模块"
+    },
+    {
+      "name": "DTC B1053 11",
+      "type": "fault_status",
+      "description": "诊断故障代码，表示后雾灯短路故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "前置条件",
+      "description": "后雾灯处于输出状态"
+    },
+    {
+      "name": "触发条件",
+      "description": "检测到后雾灯短路到地"
+    },
+    {
+      "name": "退出条件",
+      "description": "检测到短路恢复"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "FogLamp_HSD",
+      "action": "停止驱动后雾灯输出"
+    },
+    {
+      "name": "RearFogPositionLightStatus",
+      "action": "持续发送 RearFogPositionLightStatus. RearFogPositionLightSta=0 (Off) 至 RearFogLghtCtrlMdl"
+    },
+    {
+      "name": "DTC B1053 11",
+      "action": "置位故障码"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DTC B1053 11",
+      "description": "后雾灯短路到地故障"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "condition": "持续发送 RearFogPositionLightStatus",
+      "constraint": "至少发送三帧"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了当检测到后雾灯短路到地时，系统应如何响应（如停止驱动、发送状态信息并置位故障码），以及在短路恢复时如何退出该故障处理模式。可用于验证后雾灯电路的短路保护功能及故障诊断与恢复机制。",
+  "uncertain_points": []
+}

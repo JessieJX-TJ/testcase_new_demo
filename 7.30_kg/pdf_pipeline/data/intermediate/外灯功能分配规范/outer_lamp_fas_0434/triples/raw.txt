@@ -1,0 +1,69 @@
+```json
+[
+  {
+    "head": "ADS灯关闭",
+    "relation": "前提条件",
+    "tail": "迎宾光毯灯处于点亮状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "迎宾光毯灯处于点亮状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ADS灯关闭",
+    "relation": "前提条件",
+    "tail": "整车未处于展厅模式: VehMd != 0x5 = VehMd_5_EXHIBITIO",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "整车未处于展厅模式",
+      "VehMd"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ADS灯关闭",
+    "relation": "触发条件",
+    "tail": "ADS使能开关关闭: ADSMarkerLampSet == 0x1 = Disabled",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ADS使能开关关闭",
+      "ADSMarkerLampSet"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ADS灯关闭",
+    "relation": "触发条件",
+    "tail": "整车下电",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "整车下电"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ADS灯关闭",
+    "relation": "触发条件",
+    "tail": "收到智驾状态信号: MemParkingReserveIPD5 == 0x0 (HWPSysAct_ADS_0_NoActive) || 0x3 (HWPSysAct_ADS_0_Reserved)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "智驾状态信号",
+      "MemParkingReserveIPD5"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "ADS灯关闭",
+    "relation": "执行动作",
+    "tail": "[ADS灯开关控制模块 LHZCU]立即停止驱动硬线端口ADSLamp_HSD, 并反馈状态ADSLghtSts_HW = 0 (Off)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ADS灯开关控制模块 LHZCU",
+      "ADSLamp_HSD",
+      "ADSLghtSts_HW"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

@@ -1,0 +1,58 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯转向灯控制逻辑",
+  "row_semantics": "表格描述了在特定前置条件下，触发转向灯控制逻辑的执行动作、退出条件及异常处理。",
+  "column_semantics": {
+    "1": "前置条件：系统配置状态",
+    "2": "触发条件：用户操作与开关阻值"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILghtSwSOAEnPrm",
+      "type": "parameter",
+      "description": "外灯转向开关安全功能使能参数，当前设置为禁用（0）"
+    },
+    {
+      "name": "DILghtSwMdl",
+      "type": "controller",
+      "description": "外灯转向开关模块，负责发送转向请求信号"
+    },
+    {
+      "name": "DILghtCtrlMdl",
+      "type": "controller",
+      "description": "外灯控制模块，接收转向请求并执行相应动作"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "前置条件",
+      "details": "配置字 DILghtSwSOAEnPrm == 0 (Disable)"
+    },
+    {
+      "condition": "触发条件",
+      "details": "用户轻拨右转向拨杆，开关阻值为 4020 Ω (±5%)"
+    },
+    {
+      "condition": "退出条件",
+      "details": "转向灯开关阻值变为非 4020 Ω (±5%)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DircnLghtSwReq",
+      "value": "0x3 (Right_First)",
+      "description": "持续发送右转向优先请求信号至外灯控制模块"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "action": "执行动作",
+      "details": "至少发送三帧 DircnLghtSwReq 信号"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证外灯转向灯控制逻辑在特定输入条件下是否正确执行，并确保在退出条件满足时能够正确停止相关动作。",
+  "uncertain_points": []
+}

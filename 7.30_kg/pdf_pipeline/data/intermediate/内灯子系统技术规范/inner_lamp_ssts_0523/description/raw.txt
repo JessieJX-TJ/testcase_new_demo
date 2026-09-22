@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "Interior Lighting Sub System (内灯子系统) for Map Lamp (后排阅读灯) functionality",
+  "row_semantics": "Each row represents a specific signal or condition related to the Map Lamp system, detailing its input, associated hardware, and control logic.",
+  "column_semantics": {
+    "MapLamp_XX_Sw_SIG": "Signal name for Map Lamp switch input (e.g., MapLamp_RL_Sw_SIG for rear left map lamp switch)",
+    "输入": "Indicates the type of signal or input (e.g., hardwire input)",
+    "硬线": "Specifies that the signal is a hardwired input",
+    "MapLamp_RL/MapLamp_RR": "Represents the physical location or channel of the map lamp (rear left or rear right)",
+    "OHC": "Could refer to Overhead Console or another relevant module/system",
+    "内灯 SSTS": "Internal Lighting Sub System State Transition Specification"
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "MapLamp_RL_Sw_SIG",
+      "type": "input_signal",
+      "description": "Signal from the rear left map lamp switch"
+    },
+    {
+      "name": "MapLamp_RR_Sw_SIG",
+      "type": "input_signal",
+      "description": "Signal from the rear right map lamp switch"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MapLamp_RL_Sw_SIG is active",
+      "description": "Rear left map lamp switch is pressed"
+    },
+    {
+      "condition": "MapLamp_RR_Sw_SIG is active",
+      "description": "Rear right map lamp switch is pressed"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the input signals for the rear map lamps in the interior lighting system, specifically detailing the switch inputs and their associated hardware connections. It can be used to verify that the correct signals are being detected when the map lamp switches are activated.",
+  "uncertain_points": [
+    "The exact meaning of 'OHC' is not explicitly defined in the table.",
+    "The purpose of the '内灯 SSTS' column is not clearly explained beyond its label."
+  ]
+}
+```

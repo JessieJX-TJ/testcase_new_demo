@@ -1,0 +1,106 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "远光灯开关控制逻辑",
+  "row_semantics": "描述了在特定前置条件下，用户操作远光灯拨杆开关时，系统触发和执行的动作序列。",
+  "column_semantics": "表格分为两列，左侧为条件/动作描述的标题行，右侧为对应的具体内容或参数。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "远光灯拨杆开关",
+      "type": "功能",
+      "description": "用户手动操作的物理开关，用于控制远光灯的开启与关闭。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "远光灯开关控制模块（Main Beam Light Control Module），负责接收开关信号并控制远光灯状态。"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块",
+      "description": "外灯组合服务（Interior/Exterior Lighting Service Controller），用于同步远光灯的ON/OFF状态。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "UsrMd",
+      "description": "用户模式，要求处于睡眠、待机或XOTA模式。",
+      "conditions": [
+        "UsrMd = 0x0 (Sleep)",
+        "UsrMd = 0x1 (Standby)",
+        "UsrMd = 0x6 (XOTA)"
+      ]
+    },
+    {
+      "name": "VehMd",
+      "description": "车辆模式，要求处于运输或展览模式。",
+      "conditions": [
+        "VehMd != 0x3 (TRANSPORT)",
+        "VehMd != 0x5 (EXHIBITION)"
+      ]
+    },
+    {
+      "name": "UsrMdV",
+      "description": "用户模式有效性。",
+      "conditions": [
+        "UsrMdV = Valid"
+      ]
+    },
+    {
+      "name": "VehMdV",
+      "description": "车辆模式有效性。",
+      "conditions": [
+        "VehMdV = Valid"
+      ]
+    },
+    {
+      "name": "通讯类型配置",
+      "description": "根据需求配置SOA或CAN通讯方式。",
+      "conditions": [
+        "PPV阶段及以后按SOA通讯方式开发"
+      ]
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "MainBeamLghtOnReq",
+      "description": "远光灯开启请求信号，由LHZCU模块发出。",
+      "value": "0x2 = MainBeamLghtSwReq_2_Flash"
+    },
+    {
+      "name": "LMainBeamLghtCtrl",
+      "description": "主远光灯控制信号，由LHZCU模块输出。",
+      "states": [
+        "0x1 = ON",
+        "0x0 = OFF"
+      ]
+    },
+    {
+      "name": "RMainBeamLghtCtrl",
+      "description": "右远光灯控制信号，由LHZCU模块输出。",
+      "states": [
+        "0x1 = ON",
+        "0x0 = OFF"
+      ]
+    },
+    {
+      "name": "MainBeamLghtFucProStatus",
+      "description": "主远光灯功能过程状态，由Notifier监控。",
+      "states": [
+        "0x1 = ON",
+        "0x0 = OFF"
+      ]
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了在满足特定前置条件（如用户和车辆模式）下，用户操作远光灯拨杆开关时，系统内部软件保持有效请求，并通过LHZCU模块控制远光灯的开启与关闭，同时同步更新相关状态信息。",
+  "uncertain_points": [
+    "具体何时进入PPV阶段未明确说明。",
+    "SOA和CAN通讯类型的详细配置细节未展开。",
+    "Notifier的具体实现机制未描述。"
+  ]
+}
+```

@@ -1,0 +1,59 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "转向灯拨杆开关状态与内部信号跳转逻辑",
+  "row_semantics": "描述用户操作（转向灯拨杆开关动作）及其对应的内部信号变化",
+  "column_semantics": "第一列表示用户动作，第二列详细说明该动作触发的条件及内部信号赋值",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "转向灯拨杆开关",
+      "type": "input_signal",
+      "description": "用户手动操作的物理开关"
+    },
+    {
+      "name": "DircnIndLampSwStsMntry",
+      "type": "internal_signal",
+      "description": "内部状态变量，记录转向灯开关的状态"
+    },
+    {
+      "name": "[转向灯开关预处理模块]",
+      "type": "controller_module",
+      "description": "负责检测转向灯开关状态并进行预处理的软件模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "当转向灯拨杆开关关闭时 (硬线开关断开)",
+      "timing": "无特定定时，即时响应",
+      "value": "0x0=DircnIndLampSwStsMntry_0_off"
+    },
+    {
+      "condition": "当转向灯拨杆开关左侧一档触发 (>50ms)",
+      "timing": ">50ms",
+      "value": "0x1=DircnIndLampSwStsMntry_1_LeftshortturnmodeSwitch active"
+    },
+    {
+      "condition": "当转向灯拨杆开关左侧二档触发",
+      "timing": "无特定定时，即时响应",
+      "value": "0x2=DircnIndLampSwStsMntry_2_LeftlongturnmodeSwitch active"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "DircnIndLampSwStsMntry",
+      "state": "根据开关位置切换至不同模式或默认状态"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "constraint": "左侧一档触发需持续 >50ms",
+      "description": "用于区分短暂触发和有效指令"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了转向灯拨杆开关在不同操作状态下，[转向灯开关预处理模块]如何检测开关状态并更新内部信号 DircnIndLampSwStsMntry 的值，可用于验证转向灯控制逻辑在不同开关输入下的正确响应。",
+  "uncertain_points": []
+}
+```

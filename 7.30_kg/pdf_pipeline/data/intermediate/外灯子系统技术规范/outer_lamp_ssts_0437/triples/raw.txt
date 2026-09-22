@@ -1,0 +1,48 @@
+```json
+[
+  {
+    "head": "系统发送远光灯开启请求信号",
+    "relation": "前提条件",
+    "tail": "配置字 MainBeamLghtSwSOAEnPrm == 0 (Disable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "MainBeamLghtSwSOAEnPrm"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统发送远光灯开启请求信号",
+    "relation": "触发条件",
+    "tail": "用户打开远光灯开关,开关阻值为300Ω(±5%)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "用户打开远光灯开关",
+      "300Ω"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统发送远光灯开启请求信号",
+    "relation": "执行动作",
+    "tail": "1.【MainBeamLghtSwMdl】持续发送MainBeamLghtSwReq=0x1(On)至【MainBeamLghtCtrlMdl】,至少发送三帧",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "MainBeamLghtSwMdl",
+      "MainBeamLghtSwReq",
+      "MainBeamLghtCtrlMdl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统退出远光灯开启请求状态",
+    "relation": "退出条件",
+    "tail": "远光灯开关阻值变为非300Ω(±5%)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "远光灯开关阻值",
+      "300Ω"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

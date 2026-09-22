@@ -1,0 +1,71 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "远光灯状态描述",
+  "row_semantics": "表格按功能描述的逻辑顺序排列，分为HMI显示状态信号描述和远光灯故障状态两大部分。",
+  "column_semantics": "表格没有明确的列，内容为连续的文本描述，主要通过编号来区分不同的状态或条件。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "HMI子系统",
+      "type": "system",
+      "description": "负责用户界面显示的子系统"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Light Headlamp Control Unit，远光灯控制单元"
+    },
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "process",
+      "description": "外部灯光开关处理模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "MainBeamLightCtrl",
+      "type": "input_signal",
+      "description": "远光灯控制信号，值为0x0或0x1"
+    },
+    {
+      "name": "MainBeamLightFucProStatus",
+      "type": "input_signal",
+      "description": "远光灯功能过程状态"
+    },
+    {
+      "name": "MainBeamLightFltSts",
+      "type": "input_signal",
+      "description": "远光灯故障状态"
+    },
+    {
+      "name": "CAN信号反馈状态",
+      "type": "input_signal",
+      "description": "通过CAN总线反馈的信号状态"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "HMI显示远光灯图标",
+      "type": "output_signal",
+      "description": "HMI子系统根据信号状态决定是否显示远光灯图标"
+    },
+    {
+      "name": "故障弹窗提醒",
+      "type": "output_signal",
+      "description": "当检测到远光灯故障时，HMI子系统触发故障弹窗提醒"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "MainBeamLightErrSta",
+      "type": "fault_state",
+      "description": "远光灯错误状态，值为0x1表示Error"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了远光灯在不同控制信号和故障状态下的HMI显示行为和故障处理逻辑，可用于验证HMI子系统在接收LHZCU控制信号或CAN信号反馈时，正确显示远光灯图标，并在远光灯发生故障时触发相应的故障弹窗提醒。",
+  "uncertain_points": []
+}
+```

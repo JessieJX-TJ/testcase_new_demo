@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Interior Lighting Sub System (Z-ONE-3.0 Platform) - Low IPB Lamp Control Commands",
+  "row_semantics": "Each row represents a specific command for controlling the Low Intensity Positioning Beam (IPB) Lamp, including color, brightness, and breathing rate.",
+  "column_semantics": {
+    "Input": "The communication interface or source of the command (e.g., LIN bus, RHZCU module).",
+    "LIN": "Command from the Local Interconnect Network bus.",
+    "RHZCU": "Command from the Right Hand Zone Control Unit.",
+    "LowIPAmbtLampB": "Command from the Low Intensity Ambient Lamp Bus.",
+    "RHZCU_LIN5": "Specific command from RHZCU via LIN5 interface.",
+    "内灯SSTS": "Internal lighting subsystem status."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "LowIPBLampColorCmd_1",
+      "type": "command",
+      "description": "Controls the color of the Low IPB Lamp."
+    },
+    {
+      "name": "LowIPBLampBrtnsCmd_1",
+      "type": "command",
+      "description": "Controls the brightness of the Low IPB Lamp."
+    },
+    {
+      "name": "LowIPBLampBrthngCmd_1",
+      "type": "command",
+      "description": "Controls the breathing rate of the Low IPB Lamp."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Color Value",
+      "description": "Range from 0x00 to 0xFF, where 0x00 means no request and other values correspond to specific colors.",
+      "type": "input_parameter"
+    },
+    {
+      "name": "Brightness Value",
+      "description": "Range from 0x01 to 0x64 (1%-100%) for brightness adjustment.",
+      "type": "input_parameter"
+    },
+    {
+      "name": "Breathing Rate Value",
+      "description": "Range from 0x00 to 0x1F, with each value corresponding to a specific breathing rate in milliseconds.",
+      "type": "input_parameter"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Lamp Color",
+      "description": "The actual color displayed by the lamp based on the command.",
+      "type": "output_state"
+    },
+    {
+      "name": "Lamp Brightness",
+      "description": "The actual brightness level of the lamp.",
+      "type": "output_state"
+    },
+    {
+      "name": "Lamp Breathing Rate",
+      "description": "The frequency at which the lamp's brightness changes over time.",
+      "type": "output_state"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Breathing Rate Timing",
+      "description": "Defined rates range from 500ms to 5s, with specific modes for original and new breathing patterns.",
+      "type": "timing_constraint"
+    }
+  ],
+  "engineering_interpretation": "This table defines the command structure and parameter ranges for controlling the Low IPB Lamp's color, brightness, and breathing rate within the Interior Lighting Sub System. It is used to verify that the lamp responds correctly to various input commands across different interfaces.",
+  "uncertain_points": []
+}
+```

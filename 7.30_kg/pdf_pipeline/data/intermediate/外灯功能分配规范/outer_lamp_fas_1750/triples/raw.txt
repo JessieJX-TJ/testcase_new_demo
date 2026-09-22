@@ -1,0 +1,113 @@
+```json
+[
+  {
+    "head": "制动灯开启",
+    "relation": "触发条件",
+    "tail": "集成式制动系统有效且前置条件满足",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "集成式制动系统有效时",
+      "打开制动灯",
+      "[1&2&3&4]&[[5||6]&[7||8]]"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "前提条件",
+    "tail": "UsrMd状态为0x1=Standby或0x6=XOTA，且UsgMdV=Valid",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "UsrMd!=0x0=UsgMd_0_Sleep",
+      "0x1=UsgMd_1_Standby",
+      "0x6=UsgMd_6_XOTA",
+      "UsgMdV=Valid"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "前提条件",
+    "tail": "VehMd状态为0x3=TRANSPORT，且VehMdV=Valid",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "VehMd!=0x3=VehMd_3_TRANSPORT",
+      "VehMdV=Valid"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "前提条件",
+    "tail": "ExtrLghtCtrlCmmntnTyp配置为SOA或CAN，ExtrLghtStsCmmntnTyp配置为SOA或CAN",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExtrLghtCtrlCmmntnTyp=0x0=SOA",
+      "ExtrLghtCtrlCmmntnTyp=0x1=CAN",
+      "ExtrLghtStsCmmntnTyp=0x0=SOA",
+      "ExtrLghtStsCmmntnTyp=0x1=CAN"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "抑制条件",
+    "tail": "当集成式制动系统无效时",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "集成式制动系统有效时"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "依赖于",
+    "tail": "UsrMd控制器的状态",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "UsrMd"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "依赖于",
+    "tail": "VehMd控制器的状态",
+    "triple_type": "模式或状态依赖关系",
+    "evidence_terms": [
+      "VehMd"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "依赖于",
+    "tail": "ExtrLghtCtrlCmmntnTyp通信类型配置",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExtrLghtCtrlCmmntnTyp"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "依赖于",
+    "tail": "ExtrLghtStsCmmntnTyp通信类型配置",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExtrLghtStsCmmntnTyp"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开启",
+    "relation": "优先级高于",
+    "tail": "PPV阶段及以后按照SOA通讯方式开发",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "备注c"
+    ],
+    "confidence_note": "medium"
+  }
+]
+```

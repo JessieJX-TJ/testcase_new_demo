@@ -1,0 +1,71 @@
+[
+  {
+    "head": "右后激光迎宾灯驱动被开启",
+    "relation": "触发条件",
+    "tail": "接收到应用控制模块的请求信号 RRDoorFlorLampCtrlCmd = 0x1 (Open)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RRDoorFlorLampCtrlCmd",
+      "Open"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0438",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "右后激光迎宾灯驱动被关闭",
+    "relation": "触发条件",
+    "tail": "接收到 RRDoorFlorLampCtrlCmd = 0x0 (Close)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "RRDoorFlorLampCtrlCmd",
+      "Close"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0438",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "右后激光迎宾灯驱动控制模块发送驱动 DoorFlorLamp_RR_HSD(高)",
+    "relation": "输入为",
+    "tail": "接收到应用控制模块的请求信号 RRDoorFlorLampCtrlCmd = 0x1 (Open)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "RRDoorFlorLampCtrlCmd",
+      "DoorFlorLamp_RR_HSD"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0438",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "右后激光迎宾灯驱动被关闭",
+    "relation": "依赖于",
+    "tail": "接收到 RRDoorFlorLampCtrlCmd = 0x0 (Close)",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "RRDoorFlorLampCtrlCmd",
+      "Close"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0438",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "fault_table"
+  },
+  {
+    "head": "右后激光迎宾灯驱动被关闭",
+    "relation": "故障响应",
+    "tail": "检测到右后激光迎宾灯短路/开路故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "右后激光迎宾灯短路/开路故障"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0438",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "fault_table"
+  }
+]

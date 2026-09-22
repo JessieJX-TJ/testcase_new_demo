@@ -1,0 +1,348 @@
+```json
+[
+  {
+    "head": "DoorFR1Lamp",
+    "relation": "故障响应",
+    "tail": "LIN signal from ZCU not received for >6s",
+    "sources": ["inner_lamp_ssts_0190"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RespirationMode",
+    "relation": "前提条件",
+    "tail": "DoorFR1LampBrthngCmd_1 == 0x00",
+    "sources": ["inner_lamp_ssts_0190"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampBrthngCmd_1 == 0x1 (Rate1: 500ms 0–100% ramp)",
+    "relation": "触发条件",
+    "tail": "Ambient lamp cycles between 100% and 0% brightness every 250ms (on 250ms, off 250ms)",
+    "sources": ["inner_lamp_ssts_0191"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampBrthngCmd_1 == 0x2 (Rate2: 1s 0–100% ramp)",
+    "relation": "触发条件",
+    "tail": "Ambient lamp cycles between 100% and 0% brightness every 500ms (on 500ms, off 500ms)",
+    "sources": ["inner_lamp_ssts_0191"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL1LampBrthngCmd_1 ∈ {0x3–0xC, 0xE} (0–100% linear ramp per cycle)",
+    "relation": "触发条件",
+    "tail": "Ambient lamp ramps from 0% to 100% over time A, holds at 100% for time B, then ramps from 100% to 0% over time A, holds at 0% for time B",
+    "sources": ["inner_lamp_ssts_0191"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbiLampBrightness",
+    "relation": "依赖于",
+    "tail": "DoorFL1LampBrthngCmd_1",
+    "sources": ["inner_lamp_ssts_0191"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle E/E Configuration Parameters",
+    "relation": "前提条件",
+    "tail": "Resolution/Factor = NA",
+    "sources": ["inner_lamp_ssts_0192"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL6LampBrthngCmd_1 == 0x0 (No Request)",
+    "relation": "触发条件",
+    "tail": "Lamp head performs periodic breathing per configured cycle command",
+    "sources": ["inner_lamp_ssts_0193"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL6LampBrthngCmd_1 == 0x0 (No Request)",
+    "relation": "依赖于",
+    "tail": "DoorFL6LampFadeSpdCmd_1",
+    "sources": ["inner_lamp_ssts_0193"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL6LampBrthngCmd_1 == 0x0 (No Request)",
+    "relation": "前提条件",
+    "tail": "Lamp head performs periodic breathing per configured cycle command",
+    "sources": ["inner_lamp_ssts_0193"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFL6LampBrthngCmd_1 == 0x0 (No Request)",
+    "relation": "超时约束",
+    "tail": "Transition time from current to target color/brightness state",
+    "sources": ["inner_lamp_ssts_0193"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rate0",
+    "relation": "触发条件",
+    "tail": "Lamp head performs periodic breathing per configured cycle command",
+    "sources": ["inner_lamp_ssts_0193"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rate0",
+    "relation": "抑制条件",
+    "tail": "Transition time from current to target color/brightness state",
+    "sources": ["inner_lamp_ssts_0193"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDSP_R_FrontRightDoorWindowSwitch",
+    "relation": "输入为",
+    "tail": ["P12LM1", "S12LM2", "S12LT1", "S31LMO"],
+    "sources": ["inner_lamp_ssts_0196"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDSP_R_RearRightDoorWindowSwitch",
+    "relation": "输入为",
+    "tail": ["P12LM1", "S12LM2", "S12LT1", "S31LMO"],
+    "sources": ["inner_lamp_ssts_0196"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IterDoorOpenSw_FR_FrontRightDoorInnerLatchSwitch",
+    "relation": "输入为",
+    "tail": ["P12LM1", "S12LM2", "S12LT1", "S31LMO"],
+    "sources": ["inner_lamp_ssts_0196"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IterDoorOpenSw_RR_RearRightDoorInnerLatchSwitch",
+    "relation": "输入为",
+    "tail": ["P12LM1", "S12LM2", "S12LT1", "S31LMO"],
+    "sources": ["inner_lamp_ssts_0196"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoUSB1_R_CenterConsoleUSBPort",
+    "relation": "输入为",
+    "tail": ["P12LM1", "S12LM2", "S12LT1"],
+    "sources": ["inner_lamp_ssts_0196"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "SecRowSeatAmrstSw_RH_SecondRowRightSeatArmrestSwitch",
+    "relation": "输入为",
+    "tail": "S31LMO",
+    "sources": ["inner_lamp_ssts_0196"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ThrdRowUSB_RH_ThirdRowRightUSBPort",
+    "relation": "输入为",
+    "tail": "S31LMO",
+    "sources": ["inner_lamp_ssts_0196"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBreathingModeExecution",
+    "relation": "触发条件",
+    "tail": "CnsoLHALampBrthngCmd_l != 0x0 AND AmbtLghtLHRollingCtr_1 is active",
+    "sources": ["inner_lamp_ssts_0197"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampIlluminatedState",
+    "relation": "前提条件",
+    "tail": "AmbientLampBreathingModeExecution",
+    "sources": ["inner_lamp_ssts_0197"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampDriverModule",
+    "relation": "输入为",
+    "tail": "CnsoLHALampBrthngCmd_l",
+    "sources": ["inner_lamp_ssts_0197"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampDriverModule",
+    "relation": "依赖于",
+    "tail": "AmbtLghtLHRollingCtr_1",
+    "sources": ["inner_lamp_ssts_0197"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBreathingMode_Rate3_1s",
+    "relation": "依赖于",
+    "tail": "CnsoLHALampBrthngCmd_l == 0x3",
+    "sources": ["inner_lamp_ssts_0198"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBreathingMode_Rate15",
+    "relation": "依赖于",
+    "tail": "CnsoLHALampBrthngCmd_l == 0xF",
+    "sources": ["inner_lamp_ssts_0198"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBrightness_Rate3_1s",
+    "relation": "输入为",
+    "tail": "Time-based progression from 0 to 8 over 640ms",
+    "sources": ["inner_lamp_ssts_0198"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBrightness_Rate15",
+    "relation": "输入为",
+    "tail": "Time-based progression from 0 to 8 over 1600ms",
+    "sources": ["inner_lamp_ssts_0198"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampHoldOffPhase",
+    "relation": "超时约束",
+    "tail": "400ms duration at peak brightness before fade-out",
+    "sources": ["inner_lamp_ssts_0198"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBreathingTiming_Rate3_1s",
+    "relation": "超时约束",
+    "tail": "40ms per step over 200 data points",
+    "sources": ["inner_lamp_ssts_0198"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampBreathingTiming_Rate15",
+    "relation": "超时约束",
+    "tail": "100ms per step over 120 data points",
+    "sources": ["inner_lamp_ssts_0198"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampFadeSpdCmd_1",
+    "relation": "触发条件",
+    "tail": "Controls lamp head breathing mode",
+    "sources": ["inner_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampFadeSpdCmd_1 == 0x1",
+    "relation": "依赖于",
+    "tail": "Fade speed = 300ms",
+    "sources": ["inner_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL2LampFadeSpdCmd_1 == 0x2",
+    "relation": "依赖于",
+    "tail": "Fade speed = 100ms",
+    "sources": ["inner_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampOnOff_1 == 0x1",
+    "relation": "依赖于",
+    "tail": "Lamp head ON request",
+    "sources": ["inner_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampOnOff_1 == 0x0",
+    "relation": "前提条件",
+    "tail": "Lamp head stops breathing",
+    "sources": ["inner_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampOnOff_1 != 0x0",
+    "relation": "前提条件",
+    "tail": "Lamp head turns ON when non-zero color/brightness command is received",
+    "sources": ["inner_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampColorCmd_1",
+    "relation": "触发条件",
+    "tail": "Controls lamp head color",
+    "sources": ["inner_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrtnsCmd_1",
+    "relation": "触发条件",
+    "tail": "Controls lamp head brightness",
+    "sources": ["inner_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampColorCmd_1 == 0x0 OR undefined",
+    "relation": "状态保持条件",
+    "tail": "Lamp head retains current color",
+    "sources": ["inner_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampBrtnsCmd_1 == 0x0",
+    "relation": "前提条件",
+    "tail": "Lamp head brightness remains unchanged",
+    "sources": ["inner_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL3LampOnOff_1",
+    "relation": "触发条件",
+    "tail": "Controls lamp head on/off state",
+    "sources": ["inner_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbientLampModeTransition",
+    "relation": "前提条件",
+    "tail": "Switching between different breathing modes",
+    "sources": ["inner_lamp_ssts_0199"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

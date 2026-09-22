@@ -1,0 +1,80 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Side Position Light Error Status",
+  "row_semantics": "Each row represents a different interface or process related to the side position light error status, including its consumption and data exchange with various controllers/modules.",
+  "column_semantics": {
+    "first_column": "Process or Interface Name (e.g., ExteriorLightSwitchProcess.SidePositionLightErrSta)",
+    "second_column": "Consumption Type (e.g., SOA, LHZCU, ICB)",
+    "third_column": "Controller/Module Involved in Data Exchange",
+    "fourth_column": "Description of the Interface/Process",
+    "fifth_column": "Interface Name and Parameter Name for the Error Status",
+    "sixth_column": "Error Status Definitions (0x0=No Error; 0x1=Error; 0x2=Unknown)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightSwitchProcess",
+      "type": "process",
+      "description": "Process responsible for handling exterior light switch operations."
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "system",
+      "description": "System responsible for controlling exterior lights."
+    },
+    {
+      "name": "SOA",
+      "type": "controller",
+      "description": "Service Oriented Architecture, likely a middleware or service layer."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Local Hardware Control Unit, possibly a local control module."
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Circuit Board, likely an electronic control module."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "SidePositionLightErrSta",
+      "type": "signal",
+      "description": "Signal representing the error status of the side position light.",
+      "values": {
+        "0x0": "No Error",
+        "0x1": "Error",
+        "0x2": "Unknown"
+      }
+    },
+    {
+      "name": "SidePositionLightErrSts",
+      "type": "signal",
+      "description": "Signal representing the error status of the side position light in a different context or system.",
+      "values": {
+        "0x0": "No Error"
+      }
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "SidePositionLightErrorStatus",
+      "type": "fault",
+      "description": "Indicates an error condition in the side position light system.",
+      "status_definitions": {
+        "0x0": "No Error",
+        "0x1": "Error",
+        "0x2": "Unknown"
+      }
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the interfaces and parameters for querying the error status of the side position light across different systems and controllers. It is used to verify that the correct error status is reported by the relevant modules when errors occur in the side position light system.",
+  "uncertain_points": []
+}
+```

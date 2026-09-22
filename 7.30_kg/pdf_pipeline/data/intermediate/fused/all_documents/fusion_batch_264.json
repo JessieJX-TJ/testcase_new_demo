@@ -1,0 +1,602 @@
+[
+  {
+    "head": "Rear Left Door Floor Lamp Control Circuit Short to Ground",
+    "relation": "precondition",
+    "tail": "Drive Current Exceeds Threshold (TBD) A",
+    "sources": [
+      "inner_lamp_ssts_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Left Floor Lamp Control Circuit Open Circuit",
+    "relation": "precondition",
+    "tail": "Drive Current Below Threshold (TBD) A",
+    "sources": [
+      "inner_lamp_ssts_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Left Door Floor Lamp Control Circuit Short to Battery",
+    "relation": "timeout_constraint",
+    "tail": "100 ms",
+    "sources": [
+      "inner_lamp_ssts_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Left Door Floor Lamp Control Circuit Short to Ground",
+    "relation": "timeout_constraint",
+    "tail": "100 ms",
+    "sources": [
+      "inner_lamp_ssts_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Rear Left Floor Lamp Control Circuit Open Circuit",
+    "relation": "timeout_constraint",
+    "tail": "100 ms",
+    "sources": [
+      "inner_lamp_ssts_0413"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL6LampBrthngCmd_1",
+    "relation": "triggers",
+    "tail": "Ambient Lamp Breathing Mode",
+    "sources": [
+      "inner_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL6LampBrthngCmd_1",
+    "relation": "stops",
+    "tail": "Ambient Lamp Breathing Mode",
+    "sources": [
+      "inner_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL6LampBrthngCmd_1",
+    "relation": "switches",
+    "tail": "Ambient Lamp Breathing Mode",
+    "sources": [
+      "inner_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL6LampBrthngCmd_1",
+    "relation": "depends_on",
+    "tail": "Breathing Period Value from Period List",
+    "sources": [
+      "inner_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL6LampBrthngCmd_1",
+    "relation": "depends_on",
+    "tail": "Previous Breathing Mode Value",
+    "sources": [
+      "inner_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL6LampBrthngCmd_1",
+    "relation": "suppresses",
+    "tail": "Ambient Lamp Breathing Mode",
+    "sources": [
+      "inner_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": "Redundant with 'stops' relation; retained as distinct semantic nuance (suppression vs. termination)"
+  },
+  {
+    "head": "DoorRL6LampBrthngCmd_1",
+    "relation": "immediately_stops_current_breathing",
+    "tail": "On Code Value Change",
+    "sources": [
+      "inner_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRL6LampBrthngCmd_1",
+    "relation": "breathing_period_range",
+    "tail": "500 ms to 12 s",
+    "sources": [
+      "inner_lamp_ssts_0414"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left Map Lamp",
+    "relation": "illuminates",
+    "tail": "ThirdRowMapLampLHBrtLvl = 0x1 (Level_1)",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left Map Lamp",
+    "relation": "extinguishes",
+    "tail": "ThirdRowMapLampLHBrtLvl = 0x0 (OFF)",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left Map Lamp Driver",
+    "relation": "inputs_pwm_from",
+    "tail": "ThirdRowMapLampLHDimSpd (0x0, 0x1, 0x2)",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left Map Lamp",
+    "relation": "instantly_illuminates",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x2",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'instantly_extinguishes' under same condition — contradictory behavior for identical input value"
+  },
+  {
+    "head": "Third Row Left Map Lamp",
+    "relation": "instantly_extinguishes",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x2",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'instantly_illuminates' under same condition — contradictory behavior for identical input value"
+  },
+  {
+    "head": "Third Row Left Map Lamp",
+    "relation": "illuminates_at_speed_1",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x0",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left Map Lamp",
+    "relation": "illuminates_at_speed_2",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x1",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left Map Lamp",
+    "relation": "extinguishes_at_speed_1",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x0",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left Map Lamp",
+    "relation": "extinguishes_at_speed_2",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x1",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left Map Lamp",
+    "relation": "defaults_to_illumination_speed_1",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x0 when dimming speed signal is absent",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left Map Lamp",
+    "relation": "defaults_to_extinction_speed_1",
+    "tail": "ThirdRowMapLampLHDimSpd = 0x0 when dimming speed signal is absent",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left Map Lamp Driver",
+    "relation": "shuts_down",
+    "tail": "Short Circuit or Open Circuit Fault Detected",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Third Row Left Map Lamp Driver",
+    "relation": "shuts_down",
+    "tail": "Absence of ThirdRowMapLampLHBrtLvl brightness request signal",
+    "sources": [
+      "inner_lamp_ssts_0416"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RZCU",
+    "relation": "receives_can_signal",
+    "tail": "SideLghtSts",
+    "sources": [
+      "inner_lamp_ssts_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Side Light Signal",
+    "relation": "maintains_state",
+    "tail": "LHZCU–RZCU Communication Loss",
+    "sources": [
+      "inner_lamp_ssts_0417"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IP Upper Trim Ambient Lamp 1",
+    "relation": "outputs_signal",
+    "tail": "UpIPALampXX_1",
+    "sources": [
+      "inner_lamp_ssts_0418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IP Upper Trim Ambient Lamp 2",
+    "relation": "outputs_signal",
+    "tail": "UpIPBLampXX_1",
+    "sources": [
+      "inner_lamp_ssts_0418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IP Upper Trim Ambient Lamp 3",
+    "relation": "outputs_signal",
+    "tail": "UpIPCLampXX_1",
+    "sources": [
+      "inner_lamp_ssts_0418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IP Lower Trim Ambient Lamp 1",
+    "relation": "outputs_signal",
+    "tail": "LowIPALampXX_1",
+    "sources": [
+      "inner_lamp_ssts_0418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IP Lower Trim Ambient Lamp 2",
+    "relation": "outputs_signal",
+    "tail": "LowIPBLampXX_1",
+    "sources": [
+      "inner_lamp_ssts_0418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "IP Lower Trim Ambient Lamp 3",
+    "relation": "outputs_signal",
+    "tail": "LowIPCLampXX_1",
+    "sources": [
+      "inner_lamp_ssts_0418"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC Display Code",
+    "relation": "triggers_fault_set",
+    "tail": "Fault Set Condition",
+    "sources": [
+      "inner_lamp_ssts_0419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DTC Display Code",
+    "relation": "triggers_fault_clear",
+    "tail": "Fault Clear Condition",
+    "sources": [
+      "inner_lamp_ssts_0419"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlFLLampBrtnsCmd_1",
+    "relation": "triggers",
+    "tail": "Ambient Lamp Breathing Mode Switch",
+    "sources": [
+      "inner_lamp_ssts_0421"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlFLLampBrtnsCmd_1",
+    "relation": "suppresses",
+    "tail": "Current Breathing Mode",
+    "sources": [
+      "inner_lamp_ssts_0421"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlFLLampBrthngCmd_1",
+    "relation": "controls",
+    "tail": "Ambient Lamp Brightness",
+    "sources": [
+      "inner_lamp_ssts_0421"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlFLLampBrthngCmd_1",
+    "relation": "inputs_from_zcu",
+    "tail": "ZCU Signal",
+    "sources": [
+      "inner_lamp_ssts_0421"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlFLLampBrthngCmd_1",
+    "relation": "enables_step_change_breathing_mode",
+    "tail": "0x1 or 0x2",
+    "sources": [
+      "inner_lamp_ssts_0421"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlFLLampBrthngCmd_1",
+    "relation": "enables_gradual_change_breathing_mode",
+    "tail": "0x3–0xC or 0xE",
+    "sources": [
+      "inner_lamp_ssts_0421"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlFLLampBrthngCmd_1",
+    "relation": "step_change_brightness_cycle_duration",
+    "tail": "Rate1 or Rate2 period duration",
+    "sources": [
+      "inner_lamp_ssts_0421"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FtwlFLLampBrthngCmd_1",
+    "relation": "gradual_change_brightness_cycle_duration",
+    "tail": "Time A and Time B duration",
+    "sources": [
+      "inner_lamp_ssts_0421"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Console Ambient Lamp Execution Module",
+    "relation": "controls",
+    "tail": "Left Console Ambient Lamp Driver Controller",
+    "sources": [
+      "inner_lamp_ssts_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Left Footwell Ambient Lamp Execution Module",
+    "relation": "controls",
+    "tail": "Left Footwell Ambient Lamp Driver Controller",
+    "sources": [
+      "inner_lamp_ssts_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Front/Rear Door Ambient Lamp Execution Module",
+    "relation": "controls",
+    "tail": "Right Front/Rear Door Ambient Lamp Driver Controller",
+    "sources": [
+      "inner_lamp_ssts_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right Roof Ambient Lamp Execution Module",
+    "relation": "controls",
+    "tail": "Right Roof Ambient Lamp Driver Controller",
+    "sources": [
+      "inner_lamp_ssts_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Right IP Ambient Lamp Execution Module",
+    "relation": "controls",
+    "tail": "Right IP Ambient Lamp Driver Controller",
+    "sources": [
+      "inner_lamp_ssts_0423"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampCtrlCmd",
+    "relation": "inputs_to",
+    "tail": "Vanity Mirror Lamp Driver",
+    "sources": [
+      "inner_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampCtrlCmd",
+    "relation": "depends_on",
+    "tail": "LHZCU",
+    "sources": [
+      "inner_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampCtrlCmd",
+    "relation": "outputs_to_hardware",
+    "tail": "TmdDlyLamp_HSD",
+    "sources": [
+      "inner_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampCtrlCmd",
+    "relation": "drives_lamp_output",
+    "tail": "VatyMirLamp_LH/RH",
+    "sources": [
+      "inner_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampCtrlCmd",
+    "relation": "controls",
+    "tail": "VatyMirLampCtrlCmd Hardware Line",
+    "sources": [
+      "inner_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampCtrlCmd",
+    "relation": "precondition_for_close",
+    "tail": "0x0 = Close",
+    "sources": [
+      "inner_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VatyMirLampCtrlCmd",
+    "relation": "precondition_for_open",
+    "tail": "0x1 = Open",
+    "sources": [
+      "inner_lamp_ssts_0424"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLghtLHRolliingCtr_1",
+    "relation": "suppresses",
+    "tail": "Ambient Lamp Breathing Mode",
+    "sources": [
+      "inner_lamp_ssts_0426"
+    ],
+    "conflict": false,
+    "conflict_note": "Signal no longer cycling → breathing stops"
+  },
+  {
+    "head": "CnsoLHALampOnOff_1",
+    "relation": "enables_illumination",
+    "tail": "Non-zero color/brightness command received",
+    "sources": [
+      "inner_lamp_ssts_0426"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHALampColorCmd_1",
+    "relation": "maintains_color",
+    "tail": "Command value = 0 or undefined color ID",
+    "sources": [
+      "inner_lamp_ssts_0426"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CnsoLHALampBrtnsCmd_1",
+    "relation": "maintains_brightness",
+    "tail": "Command value = 0",
+    "sources": [
+      "inner_lamp_ssts_0426"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

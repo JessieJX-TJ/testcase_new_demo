@@ -1,0 +1,500 @@
+```json
+[
+  {
+    "head": "Ambient Light Fade Speed Command",
+    "relation": "input as",
+    "tail": "UpIPALampFadeSpdCmd_1_1_Spd1",
+    "sources": ["inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Light Fade Speed Command",
+    "relation": "input as",
+    "tail": "UpIPALampFadeSpdCmd_1_2_Spd2",
+    "sources": ["inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Light Fade Speed Command",
+    "relation": "input as",
+    "tail": "UpIPALampFadeSpdCmd_1_3_Spd3",
+    "sources": ["inner_lamp_ssts_0463"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Sleep Entry",
+    "relation": "precondition",
+    "tail": "No valid wake-up source signal present",
+    "sources": ["inner_lamp_ssts_0464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Wake/Sleep Behavior",
+    "relation": "inhibition condition",
+    "tail": "Wake-up source is NA",
+    "sources": ["inner_lamp_ssts_0464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Wake/Sleep Behavior",
+    "relation": "inhibition condition",
+    "tail": "Wake/sleep method is NA",
+    "sources": ["inner_lamp_ssts_0464"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical and Electronic System Parameter Configuration",
+    "relation": "precondition",
+    "tail": "Parameter range (Range) is valid",
+    "sources": ["inner_lamp_ssts_0466"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical and Electronic System Parameter Configuration",
+    "relation": "precondition",
+    "tail": "Resolution (Factor) is positive",
+    "sources": ["inner_lamp_ssts_0466"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical and Electronic System Parameter Configuration",
+    "relation": "precondition",
+    "tail": "Default value is within parameter range (Range)",
+    "sources": ["inner_lamp_ssts_0466"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Door Lamp Breathing Mode Brightness Adjustment",
+    "relation": "trigger condition",
+    "tail": "DoorFL1LampBrthngCmd_l = 0x3 (Rate3, 1s period)",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brightness transition from 0% to 100%",
+    "relation": "depends on",
+    "tail": "y = x² curve over 400ms within breathing cycle",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Brightness transition from 100% to 0%",
+    "relation": "depends on",
+    "tail": "100ms hold followed by AmbiLampBrthng Rate3holdoffPercent control",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Breathing Mode Rate13",
+    "relation": "input as",
+    "tail": "0xD in DoorFL1LampBrthngCmd_l",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Breathing Mode Rate15",
+    "relation": "input as",
+    "tail": "0xF in DoorFL1LampBrthngCmd_l",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Breathing Mode Rate13 Brightness Curve",
+    "relation": "output as",
+    "tail": "200 data points, brightness % sampled every 40ms",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Breathing Mode Rate15 Brightness Curve",
+    "relation": "output as",
+    "tail": "120 data points, brightness % sampled every 100ms",
+    "sources": ["inner_lamp_ssts_0467"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical System Function Enabled",
+    "relation": "precondition",
+    "tail": "Battery voltage in normal range (9V–16V)",
+    "sources": ["inner_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical System Function Prohibited",
+    "relation": "precondition",
+    "tail": "Battery voltage in low voltage range (<6V)",
+    "sources": ["inner_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical System Function Prohibited",
+    "relation": "precondition",
+    "tail": "Battery voltage in undervoltage range (6V–9V)",
+    "sources": ["inner_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical System Function Prohibited",
+    "relation": "precondition",
+    "tail": "Battery voltage in overvoltage range (16V–18V)",
+    "sources": ["inner_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical System Function Prohibited",
+    "relation": "precondition",
+    "tail": "Battery voltage in high voltage range (>18V)",
+    "sources": ["inner_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical System Function Enabled",
+    "relation": "input as",
+    "tail": "Normal voltage (9V–16V)",
+    "sources": ["inner_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical System Function Prohibited",
+    "relation": "input as",
+    "tail": "Low voltage (<6V)",
+    "sources": ["inner_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical System Function Prohibited",
+    "relation": "input as",
+    "tail": "Undervoltage (6V–9V)",
+    "sources": ["inner_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical System Function Prohibited",
+    "relation": "input as",
+    "tail": "Overvoltage (16V–18V)",
+    "sources": ["inner_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical System Function Prohibited",
+    "relation": "input as",
+    "tail": "High voltage (>18V)",
+    "sources": ["inner_lamp_ssts_0468"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Function",
+    "relation": "inhibition condition",
+    "tail": "Battery voltage <6V (low voltage)",
+    "sources": ["inner_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Function",
+    "relation": "inhibition condition",
+    "tail": "Battery voltage <6V (low voltage)",
+    "sources": ["inner_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Function",
+    "relation": "inhibition condition",
+    "tail": "Battery voltage <6V (low voltage)",
+    "sources": ["inner_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Function",
+    "relation": "inhibition condition",
+    "tail": "Battery voltage 6V–9V (undervoltage)",
+    "sources": ["inner_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Function",
+    "relation": "inhibition condition",
+    "tail": "Battery voltage 6V–9V (undervoltage)",
+    "sources": ["inner_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Function",
+    "relation": "inhibition condition",
+    "tail": "Battery voltage 6V–9V (undervoltage)",
+    "sources": ["inner_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Function",
+    "relation": "inhibition condition",
+    "tail": "Battery voltage 16V–18V (overvoltage)",
+    "sources": ["inner_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Function",
+    "relation": "inhibition condition",
+    "tail": "Battery voltage 16V–18V (overvoltage)",
+    "sources": ["inner_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Function",
+    "relation": "inhibition condition",
+    "tail": "Battery voltage 16V–18V (overvoltage)",
+    "sources": ["inner_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp Function",
+    "relation": "inhibition condition",
+    "tail": "Battery voltage >18V (high voltage)",
+    "sources": ["inner_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Body Control Function",
+    "relation": "inhibition condition",
+    "tail": "Battery voltage >18V (high voltage)",
+    "sources": ["inner_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Power Tailgate Function",
+    "relation": "inhibition condition",
+    "tail": "Battery voltage >18V (high voltage)",
+    "sources": ["inner_lamp_ssts_0469"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLghtRHRollingCtr_1 Signal",
+    "relation": "precondition",
+    "tail": "LIN heartbeat usage enabled",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLghtRHRollingCtr_1 Signal",
+    "relation": "trigger condition",
+    "tail": "Signal ceases to be superimposed",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampOnOff_1 Signal",
+    "relation": "precondition",
+    "tail": "Non-zero color/brightness command received simultaneously",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampColorCmd_1 Value = 0",
+    "relation": "state retention condition",
+    "tail": "Lamp head color remains unchanged",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampBrtnsCmd_1 Value = 0",
+    "relation": "state retention condition",
+    "tail": "Lamp head brightness remains unchanged",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampBrthngCmd_1 Signal",
+    "relation": "output as",
+    "tail": "DoorAmbtLampA_FR",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampBrtnsCmd_1 Signal",
+    "relation": "output as",
+    "tail": "DoorAmbtLampA_FR",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampColorCmd_1 Signal",
+    "relation": "output as",
+    "tail": "DoorAmbtLampA_FR",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampOnOff_1 Signal",
+    "relation": "output as",
+    "tail": "DoorAmbtLampA_FR",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLghtRHRollingCtr_1 Signal",
+    "relation": "input as",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampOnOff_1 Signal",
+    "relation": "input as",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampColorCmd_1 Signal",
+    "relation": "input as",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampBrtnsCmd_1 Signal",
+    "relation": "input as",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorFR1LampBrthngCmd_1 Signal",
+    "relation": "input as",
+    "tail": "RHZCU",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "AmbtLghtRHRollingCtr_1 Signal",
+    "relation": "depends on",
+    "tail": "LIN communication protocol",
+    "sources": ["inner_lamp_ssts_0470"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Seat Heating Function",
+    "relation": "trigger condition",
+    "tail": "DoorPnlSeatFnSw_RL",
+    "sources": ["inner_lamp_ssts_0471"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Seat Heating Function",
+    "relation": "trigger condition",
+    "tail": "DoorPnlSeatFnSw_RR",
+    "sources": ["inner_lamp_ssts_0471"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Seat Heating Function",
+    "relation": "trigger condition",
+    "tail": "ThrdRowSeatSw_LH",
+    "sources": ["inner_lamp_ssts_0471"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Seat Heating Function",
+    "relation": "trigger condition",
+    "tail": "ThrdRowSeatSw_RH",
+    "sources": ["inner_lamp_ssts_0471"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ventilation Function",
+    "relation": "trigger condition",
+    "tail": "DoorPnlSeatFnSw_RL",
+    "sources": ["inner_lamp_ssts_0471"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Massage Function",
+    "relation": "trigger condition",
+    "tail": "DoorPnlSeatFnSw_RL",
+    "sources": ["inner_lamp_ssts_0471"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Vehicle Electrical System Function Prohibited",
+    "relation": "precondition",
+    "tail": "Battery voltage in undervoltage range (6V–9V)",
+    "sources": ["inner_lamp_ssts_0468", "inner_lamp_ssts_0469"],
+    "conflict": true,
+    "conflict_note": "Same tail 'undervoltage (6V–9V)' appears both as precondition for prohibition (ssts_0468) and inhibition condition for multiple functions (ssts_0469). While semantically aligned, the modeling scope differs: ssts_0468 governs system-level function enablement, whereas ssts_0469 governs functional inhibition at subsystem level. No logical contradiction, but cross-layer consistency should be verified."
+  },
+  {
+    "head": "Vehicle Electrical System Function Prohibited",
+    "relation": "precondition",
+    "tail": "Battery voltage in overvoltage range (16V–18V)",
+    "sources": ["inner_lamp_ssts_0468", "inner_lamp_ssts_0469"],
+    "conflict": true,
+    "conflict_note": "Same tail 'overvoltage (16V–18V)' appears both as precondition for prohibition (ssts_0468) and inhibition condition for multiple functions (ssts_0469). Consistent semantics across layers; conflict marked for traceability and validation of unified voltage classification boundaries."
+  },
+  {
+    "head": "Vehicle Electrical System Function Prohibited",
+    "relation": "precondition",
+    "tail": "Battery voltage in high voltage range (>18V)",
+    "sources": ["inner_lamp_ssts_0468", "inner_lamp_ssts_0469"],
+    "conflict": true,
+    "conflict_note": "Same tail 'high voltage (>18V)' appears both as precondition for prohibition (ssts_0468) and inhibition condition for multiple functions (ssts_0469). Confirmed consistent usage; conflict flagged to ensure harmonization with ISO 16750-2/ISO 7637-2 test definitions."
+  }
+]
+```

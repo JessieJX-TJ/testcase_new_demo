@@ -1,0 +1,61 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Main Beam Light Functionality Status and Dissatisfaction Reasons",
+  "row_semantics": "Each row represents a specific internal variable or status related to the main beam light system, including its operational state, functionality status, error status, and reasons for dissatisfaction.",
+  "column_semantics": {
+    "A": "Variable Name/Status Identifier",
+    "B": "Description of the Variable's Purpose (Before Service Assignment)",
+    "C": "Possible Values and Their Meanings",
+    "D": "Default Value",
+    "E": "Associated Controller/Module (LHZ CU)",
+    "F": "Uncertain Points"
+  },
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLghtFuCProsSta",
+      "type": "internal_variable",
+      "description": "Functionality status of the main beam light before service assignment."
+    },
+    {
+      "name": "MainBeamLghtSta",
+      "type": "internal_variable",
+      "description": "Current operational state of the main beam light."
+    },
+    {
+      "name": "MainBeamLghtErrSta",
+      "type": "internal_variable",
+      "description": "Error status of the main beam light."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Dissatisfaction",
+      "description": "Reasons for dissatisfaction with the main beam light operation."
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "MaiBeamLghtOpenCtrlRsn_6_FactoryModeTimeOver",
+      "description": "Factory mode timeout occurred during open control."
+    },
+    {
+      "name": "MaiBeamLghtOpenCtrlRsn_7_AuoMainBeamLightControlNotRequested",
+      "description": "Main beam light control not requested."
+    },
+    {
+      "name": "MaiBeamLghtClsCtrlRsn_8_OtherReasons",
+      "description": "Closed control due to other unspecified reasons."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the internal states, functionality statuses, and error conditions of the main beam light system, along with potential reasons for dissatisfaction. It is used for verifying the correct behavior and fault handling of the main beam light under various operational scenarios.",
+  "uncertain_points": [
+    "The exact meaning of 'Reversed' in the dissatisfaction section is not clearly defined.",
+    "The context of 'Unknown' states in MainBeamLghtFuCProsSta and MainBeamLghtSta requires further clarification."
+  ]
+}
+```

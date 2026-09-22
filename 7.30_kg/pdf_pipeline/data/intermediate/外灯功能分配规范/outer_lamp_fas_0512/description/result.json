@@ -1,0 +1,58 @@
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的信号定义与状态",
+  "row_semantics": "表格中的每一行代表一个特定的外灯控制信号或状态变量，描述其在系统中的作用和参数定义。",
+  "column_semantics": {
+    "Row Header": "信号或状态变量的名称",
+    "Input/Output": "指示该信号是输入还是输出",
+    "SOA": "Service Oriented Architecture 相关标识",
+    "S32G_MC_U": "可能指代基于 S32G 微控制器单元的软件模块或接口",
+    "LHZCU": "左后区域控制单元 (Left Rear Zone Control Unit)",
+    "RHZCU": "右后区域控制单元 (Right Rear Zone Control Unit)",
+    "LHZCU_ETH": "左后区域控制单元以太网接口",
+    "RHZCU_ETH": "右后区域控制单元以太网接口"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "ExteriorLightControl.DippedBeamLightRequestStatus",
+      "type": "Signal",
+      "description": "表示近光灯请求状态的信号，用于控制系统是否开启近光灯。",
+      "parameters": [
+        {
+          "name": "DippedBeamLightReqSts",
+          "type": "Parameter",
+          "values": {
+            "0x0": "OFF",
+            "0x1": "ON"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ExteriorLightControl.CombLightFucProControlStatus",
+      "type": "Signal",
+      "description": "表示组合灯功能保护控制状态的信号，用于管理多种灯光模式。",
+      "parameters": [
+        {
+          "name": "CombLightFucProCtrlSts",
+          "type": "Parameter",
+          "values": {
+            "0x0": "OFF",
+            "0x1": "SidePositionLight ON",
+            "0x2": "DippedBeamLight ON",
+            "0x3": "AUTO",
+            "0x4": "unknown"
+          }
+        }
+      ]
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了外灯控制系统中两个关键信号（Dipped Beam Light Request Status 和 Comb Light Fuc Pro Control Status）的参数、取值及其在不同控制单元中的映射关系，可用于验证外灯功能在不同模式下的正确控制逻辑。",
+  "uncertain_points": []
+}

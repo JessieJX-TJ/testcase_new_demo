@@ -1,0 +1,70 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "化妆镜灯控制系统架构",
+  "row_semantics": "输入信号来源系统",
+  "column_semantics": "信号传输路径与控制模块",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "化妆镜灯",
+      "type": "功能"
+    },
+    {
+      "name": "VatyMirLampLHCtrl(LHZCU)",
+      "type": "控制器/模块"
+    },
+    {
+      "name": "VatyMirLampDrv(LHZCU)",
+      "type": "控制器/模块"
+    },
+    {
+      "name": "LockingSystem",
+      "type": "系统"
+    },
+    {
+      "name": "VehicleStateSystem",
+      "type": "系统"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "VehLckSts",
+      "type": "输入信号",
+      "source": "LockingSystem"
+    },
+    {
+      "name": "VehMd",
+      "type": "输入信号",
+      "source": "VehicleStateSystem"
+    },
+    {
+      "name": "VehMdV",
+      "type": "输入信号",
+      "source": "VehicleStateSystem"
+    },
+    {
+      "name": "UsrMd",
+      "type": "输入信号",
+      "source": "VehicleStateSystem"
+    },
+    {
+      "name": "UsrMdV",
+      "type": "输入信号",
+      "source": "VehicleStateSystem"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "VatyMirLampCtrlCmd",
+      "type": "输出信号",
+      "destination": "VatyMirLampDrv(LHZCU)"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该图描述了化妆镜灯的控制逻辑，展示了门锁系统和整车状态管理系统如何向化妆镜灯控制器（VatyMirLampLHCtrl）提供输入信号，并由控制器生成控制命令发送给驱动模块（VatyMirLampDrv），可用于验证化妆镜灯在不同车辆状态下的正确响应。",
+  "uncertain_points": []
+}
+```

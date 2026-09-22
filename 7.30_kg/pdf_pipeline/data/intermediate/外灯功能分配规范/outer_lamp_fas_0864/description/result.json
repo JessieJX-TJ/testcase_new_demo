@@ -1,0 +1,57 @@
+{
+  "table_type": "logic_table",
+  "topic": "转向灯控制逻辑",
+  "row_semantics": "表格按功能描述、前置条件、触发动作和执行动作的顺序组织，详细定义了特定场景下的转向灯行为。",
+  "column_semantics": "表格包含两列：左侧为描述性标题（如‘场景描述’、‘前置条件’等），右侧为对应的具体内容或配置要求。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "转向灯",
+      "type": "功能",
+      "description": "车辆外部灯光系统的一部分，用于指示车辆转向意图。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "description": "Light Hazard Control Unit，转向灯开关控制模块，负责管理转向灯的状态和信号输出。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "转向灯档位",
+      "description": "转向灯处于一档开启状态。",
+      "signal": " uncertain_points"
+    },
+    {
+      "name": "通讯类型",
+      "description": "需求中可能存在SOA（Service-Oriented Architecture）或CAN（Controller Area Network）两种通讯类型。",
+      "signal": "ExtrLghtCtrlCmmtnTyp, ExtrLghtStsCmmtnTyp"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "转向灯状态",
+      "description": "根据前置条件和触发动作，转向灯将退出当前开启状态。",
+      "signal": "DirctnLghtSwReq"
+    },
+    {
+      "name": "LHZCU内部软件状态",
+      "description": "转向灯开关控制模块LHZCU的内部软件状态将变为无请求。",
+      "signal": " uncertain_points"
+    },
+    {
+      "name": "LHZCU信号输出",
+      "description": "转向灯开关控制模块LHZCU的信号输出将变为关闭状态。",
+      "signal": " uncertain_points"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证转向灯在特定档位开启时，是否能够正确退出并恢复到无请求状态，确保LHZCU模块的行为符合设计规范。",
+  "uncertain_points": [
+    "具体的信号名称未完全明确，如'DirctnLghtSwReq'的具体含义和范围未详细说明。",
+    "LHZCU内部软件状态和信号输出的具体实现细节未给出。",
+    "通讯类型的具体配置字开发细节未明确说明。"
+  ]
+}

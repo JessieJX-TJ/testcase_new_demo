@@ -1,0 +1,58 @@
+```json
+[
+  {
+    "head": "系统执行主光灯关闭请求发送",
+    "relation": "触发条件",
+    "tail": "用户关闭远光灯开关，且开关处于悬空状态",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "用户关闭远光灯开关",
+      "开关悬空"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统执行主光灯关闭请求发送",
+    "relation": "前提条件",
+    "tail": "配置字 MainBeamLghtSwSOAEnPrm == 0 (Disable)",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "配置字 MainBeamLghtSwSOAEnPrm == 0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主光灯开关请求信号 MainBeamLghtSwReq",
+    "relation": "输出为",
+    "tail": "0x0 (Off)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "MainBeamLghtSwReq",
+      "0x0"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "主光灯开关请求信号 MainBeamLghtSwReq",
+    "relation": "输出到",
+    "tail": "主光灯控制模块 MainBeamLghtCtrlMdl",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "MainBeamLghtSwReq",
+      "MainBeamLghtCtrlMdl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统退出主光灯关闭请求发送逻辑",
+    "relation": "退出条件",
+    "tail": "远光灯开关变为非悬空状态",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "远光灯开关",
+      "非悬空"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

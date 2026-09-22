@@ -1,0 +1,131 @@
+```json
+[
+  {
+    "head": "制动灯开关控制模块 LHZCU 发送 BrkLghtCtrl_0_off",
+    "relation": "触发条件",
+    "tail": "收到制动灯服务请求 BrkLghtSrvcReq = OFF",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "制动灯服务请求",
+      "BrkLghtSrvcReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯熄灭",
+    "relation": "前提条件",
+    "tail": "ICB 将 CAN 控制信号转换成数字灯光灯控 CAN 信号，控制制动灯熄灭",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ICB",
+      "CAN 控制信号",
+      "数字灯光灯控 CAN 信号"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯点亮状态反馈至制动灯开关控制模块 LHZCU",
+    "relation": "依赖于",
+    "tail": "驱动处理模块 RZCU 接收 ICB 控制信号并输出制动灯点亮状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "驱动处理模块 RZCU",
+      "ICB",
+      "制动灯点亮状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯开关控制模块 LHZCU 反馈状态至 ICB",
+    "relation": "依赖于",
+    "tail": "外灯组合服务 ICB 将接收到的制动灯点亮状态及故障状态 CAN 信号转为服务状态",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "外灯组合服务 ICB",
+      "制动灯点亮状态",
+      "故障状态"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "整车模式不满足 VehMd != TRANSPORT 或 VehMdV != Valid",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "整车模式",
+      "VehMd",
+      "VehMdV"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "收到制动灯开关预处理模块输入 BrkLghtSwReq != Off",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "制动灯开关预处理模块",
+      "BrkLghtSwReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "收到制动踏板位置监测子系统输入 EPTBrkPdlDscrtInptSts != BrakeApplied",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "制动踏板位置监测子系统",
+      "EPTBrkPdlDscrtInptSts"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "收到电动车辆再生制动系统输入 CstRgtnBrkLgtReq != NoRequest",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "电动车辆再生制动系统",
+      "CstRgtnBrkLgtReq"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "收到集成式制动子系统输入 BrkSysBrkLghtsReqd != False",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "集成式制动子系统",
+      "BrkSysBrkLghtsReqd"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯不点亮",
+    "relation": "抑制条件",
+    "tail": "紧急制动未激活 EmgcBrkA = False 或 EmgcBrkAV = Invalid",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "紧急制动",
+      "EmgcBrkA",
+      "EmgcBrkAV"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "制动灯点亮状态反馈超时",
+    "relation": "超时约束",
+    "tail": "ICB 将控制信号延时 60ms 分发至 RZCU",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "ICB",
+      "RZCU",
+      "60ms 延时"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

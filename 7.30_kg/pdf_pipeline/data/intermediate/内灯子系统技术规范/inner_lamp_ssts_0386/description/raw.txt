@@ -1,0 +1,46 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "整车电子电器系统配置参数表",
+  "row_semantics": "表格的每一行代表一个具体的配置项，用于定义或描述系统中的某个参数。",
+  "column_semantics": {
+    "配置项/Item": "参数的名称或标识符，用于唯一识别该配置项。",
+    "配置描述/Description": "对该配置项的详细说明，解释其功能或作用。",
+    "参数范围/Range": "该配置项可接受的有效值范围。",
+    "分辨率/Factor": "参数的最小变化单位或精度。",
+    "默认值/Default": "在未特别设置时，系统使用的默认值。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "配置项/Item",
+      "type": "Parameter",
+      "description": "系统中需要配置的具体参数名称。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "参数范围/Range",
+      "type": "Condition",
+      "description": "定义了参数的有效取值区间，确保参数值在合理范围内。"
+    },
+    {
+      "name": "分辨率/Factor",
+      "type": "Condition",
+      "description": "指定了参数的最小变化步长，影响参数调整的精细程度。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "默认值/Default",
+      "type": "Output",
+      "description": "当参数未被显式设置时，系统将采用的预设值。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证系统中各项配置参数的正确性，包括参数的有效范围、分辨率以及默认值是否符合设计要求。",
+  "uncertain_points": []
+}
+```

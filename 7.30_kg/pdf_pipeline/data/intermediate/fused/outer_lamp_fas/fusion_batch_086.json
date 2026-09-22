@@ -1,0 +1,602 @@
+[
+  {
+    "head": "RMainBeamLghtCtrl",
+    "relation": "outputs",
+    "tail": "0x1 = ON",
+    "sources": [
+      "outer_lamp_fas_0921"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "MainBeamLghtFucProStatus",
+    "relation": "outputs",
+    "tail": "0x1 = ON",
+    "sources": [
+      "outer_lamp_fas_0921"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PrerequisiteConditionSatisfied",
+    "relation": "requires",
+    "tail": "UsrMd != 0x0 = UsgMd_0_Sleep",
+    "sources": [
+      "outer_lamp_fas_0921"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PrerequisiteConditionSatisfied",
+    "relation": "requires",
+    "tail": "UsrMd = 0x1 = UsgMd_1_Standby",
+    "sources": [
+      "outer_lamp_fas_0921"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PrerequisiteConditionSatisfied",
+    "relation": "requires",
+    "tail": "UsrMd = 0x6 = UsgMd_6_XOTA",
+    "sources": [
+      "outer_lamp_fas_0921"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PrerequisiteConditionSatisfied",
+    "relation": "requires",
+    "tail": "UsgMdV = Valid",
+    "sources": [
+      "outer_lamp_fas_0921"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PrerequisiteConditionSatisfied",
+    "relation": "requires",
+    "tail": "VehMd != 0x3 = VehMd_3_TRANSPORT",
+    "sources": [
+      "outer_lamp_fas_0921"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PrerequisiteConditionSatisfied",
+    "relation": "requires",
+    "tail": "VehMd != 0x5 = VehMd_5_EXHIBITION",
+    "sources": [
+      "outer_lamp_fas_0921"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PrerequisiteConditionSatisfied",
+    "relation": "requires",
+    "tail": "VehMdV = Valid",
+    "sources": [
+      "outer_lamp_fas_0921"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PPVPhaseAndLater",
+    "relation": "dependsOn",
+    "tail": "SOACommunication",
+    "sources": [
+      "outer_lamp_fas_0921"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExtrLghtCtrlCmmtnTyp",
+    "relation": "inputs",
+    "tail": "0x0 = SOA; 0x1 = CAN; 0x2~0x7 = Reserved",
+    "sources": [
+      "outer_lamp_fas_0922"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtInFactoryModeActivation",
+    "relation": "requires",
+    "tail": "VehMd = 0x2 = VehMd_2_FACTORY",
+    "sources": [
+      "outer_lamp_fas_0923"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtInFactoryModeActivation",
+    "relation": "requires",
+    "tail": "CombLghtFucProStatus = 0x2 || 0x4",
+    "sources": [
+      "outer_lamp_fas_0923"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtInFactoryModeActivation",
+    "relation": "requires",
+    "tail": "Duration = 2 minutes",
+    "sources": [
+      "outer_lamp_fas_0923"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtDeactivation",
+    "relation": "triggeredBy",
+    "tail": "ICB.ControlCombinedLight.CombinedLightReq = 0x0",
+    "sources": [
+      "outer_lamp_fas_0923"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtDeactivation",
+    "relation": "triggeredBy",
+    "tail": "UsrMd = 0x1 = UsgMd_1_Standby",
+    "sources": [
+      "outer_lamp_fas_0923"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtDeactivation",
+    "relation": "triggeredBy",
+    "tail": "AccompanyMeHomePreconditionNotMet: UsGmD_1_Standby = 0x1 && UsGmD_V = Valid && (b1 || b2 || b3) = false",
+    "sources": [
+      "outer_lamp_fas_0923"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtDeactivation",
+    "relation": "triggeredBy",
+    "tail": "AutoDipdBeamLghtONbyRrFogLghtSts = 0x1 && AutoSidePosnLghtONbyRrFogLghtSts = 0x1 && AutoLghtOnReq_I_0x0 = false && AutoLghtOnReq_ICB_0x0 = false && CombLghtSwStatus = 0x3",
+    "sources": [
+      "outer_lamp_fas_0923"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "outputs",
+    "tail": "CombLghtFucProStatus = 0x0",
+    "sources": [
+      "outer_lamp_fas_0923"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICBToCANConversion",
+    "relation": "outputs",
+    "tail": "CombLghtDeactivation",
+    "sources": [
+      "outer_lamp_fas_0923"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB.ExteriorLightControlService",
+    "relation": "triggeredBy",
+    "tail": "CombLghtSwStatus = 0x0 = OFF",
+    "sources": [
+      "outer_lamp_fas_0923"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "CombLghtInFactoryModeActivation",
+    "relation": "maintainedFor",
+    "tail": "2 minutes",
+    "sources": [
+      "outer_lamp_fas_0923"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSrvcReq",
+    "relation": "inputsFrom",
+    "tail": "BKBCANFD",
+    "sources": [
+      "outer_lamp_fas_0924"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSrvcReq",
+    "relation": "outputsTo",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0924"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSrvcReq",
+    "relation": "inputsFrom",
+    "tail": "S32G_MCU",
+    "sources": [
+      "outer_lamp_fas_0924"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSrvcReq_0_OFF",
+    "relation": "dependsOn",
+    "tail": "BrkLghtSrvcReq",
+    "sources": [
+      "outer_lamp_fas_0924"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "BrkLghtSrvcReq_1_ON",
+    "relation": "dependsOn",
+    "tail": "BrkLghtSrvcReq",
+    "sources": [
+      "outer_lamp_fas_0924"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "inputs",
+    "tail": "0x0 = FLDircnLghtSts_0_Off",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "inputs",
+    "tail": "0x1 = FLDircnLghtSts_1_On",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtSts",
+    "relation": "inputs",
+    "tail": "0x0 = FRDircnLghtSts_0_Off",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FRDircnLghtSts",
+    "relation": "inputs",
+    "tail": "0x1 = FRDircnLghtSts_1_On",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtSts",
+    "relation": "inputs",
+    "tail": "0x0 = RLDircnLghtSts_0_Off",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RLDircnLghtSts",
+    "relation": "inputs",
+    "tail": "0x1 = RLDircnLghtSts_1_On",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtSts",
+    "relation": "inputs",
+    "tail": "0x0 = RRDircnLghtSts_0_Off",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RRDircnLghtSts",
+    "relation": "inputs",
+    "tail": "0x1 = RRDircnLghtSts_1_On",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtFltsts",
+    "relation": "inputs",
+    "tail": "0x0 = FLDircnLghtFltsts_0_False",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "outputsTo",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "outputsTo",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtSts",
+    "relation": "dependsOn",
+    "tail": "NetworkStatus",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtFltsts",
+    "relation": "outputsTo",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtFltsts",
+    "relation": "outputsTo",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtFltsts",
+    "relation": "outputsTo",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "FLDircnLghtFltsts",
+    "relation": "dependsOn",
+    "tail": "NetworkFaultStatus",
+    "sources": [
+      "outer_lamp_fas_0925"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtBlinkSts",
+    "relation": "outputs",
+    "tail": "0x0 && NoFault",
+    "sources": [
+      "outer_lamp_fas_0926"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehHzrdMdSta",
+    "relation": "outputs",
+    "tail": "No_Request",
+    "sources": [
+      "outer_lamp_fas_0927"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "VehHzrdMdSta",
+    "relation": "outputs",
+    "tail": "Manual_Mode",
+    "sources": [
+      "outer_lamp_fas_0927"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.VehHzrdMdSta",
+    "relation": "dependsOn",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0927"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightSwitchProcess.VehHzrdMdSta",
+    "relation": "connectedTo",
+    "tail": "ICB_8295/ICB_S32GM",
+    "sources": [
+      "outer_lamp_fas_0927"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightCtrReq",
+    "relation": "inputs",
+    "tail": "0x0 = OFF",
+    "sources": [
+      "outer_lamp_fas_0930"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ReverseLightCtrReq",
+    "relation": "inputs",
+    "tail": "0x1 = ON",
+    "sources": [
+      "outer_lamp_fas_0930"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFltsts",
+    "relation": "outputs",
+    "tail": "0x1 = DircnLghtFltsts_1_Left_Direction_Light_Error",
+    "sources": [
+      "outer_lamp_fas_0931"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFltsts",
+    "relation": "outputs",
+    "tail": "0x2 = DircnLghtFltsts_2_Right_Direction_Light_Error",
+    "sources": [
+      "outer_lamp_fas_0931"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFltsts",
+    "relation": "outputs",
+    "tail": "0x3 = DircnLghtFltsts_3_Both_Side_Direction_Light_Error",
+    "sources": [
+      "outer_lamp_fas_0931"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.DircnLghtControlInterface",
+    "relation": "triggeredBy",
+    "tail": "Service invocation to turn direction lights ON/OFF",
+    "sources": [
+      "outer_lamp_fas_0931"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFltsts",
+    "relation": "dependsOn",
+    "tail": "CANFD",
+    "sources": [
+      "outer_lamp_fas_0931"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFltsts",
+    "relation": "dependsOn",
+    "tail": "LHZCU",
+    "sources": [
+      "outer_lamp_fas_0931"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFltsts",
+    "relation": "dependsOn",
+    "tail": "ICB",
+    "sources": [
+      "outer_lamp_fas_0931"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DircnLghtFltsts",
+    "relation": "dependsOn",
+    "tail": "RZCU",
+    "sources": [
+      "outer_lamp_fas_0931"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.MainBeamLightErrSts",
+    "relation": "triggeredBy",
+    "tail": "Subscription to main beam light error status",
+    "sources": [
+      "outer_lamp_fas_0932"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ExteriorLightControlSystem.MainBeamLightErrSts",
+    "relation": "outputs",
+    "tail": "0x0 = No Error; 0x1 = Error; 0x2 = Unknown",
+    "sources": [
+      "outer_lamp_fas_0932"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

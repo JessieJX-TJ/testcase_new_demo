@@ -1,0 +1,558 @@
+[
+  {
+    "head": "近光灯开启",
+    "relation": "前提条件",
+    "tail": "位置灯状态为关闭",
+    "sources": [
+      "outer_lamp_fas_0135"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯状态为关闭",
+    "relation": "依赖于",
+    "tail": "{SidePositionLightStatus.SidePositionLightSta}(InstanceID=1-8) = OFF",
+    "sources": [
+      "outer_lamp_fas_0135"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "位置灯状态为关闭",
+    "relation": "依赖于",
+    "tail": "LHZCU已判断关闭位置灯",
+    "sources": [
+      "outer_lamp_fas_0135"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "近光灯开启",
+    "relation": "抑制条件",
+    "tail": "位置灯状态不为关闭",
+    "sources": [
+      "outer_lamp_fas_0135"
+    ],
+    "conflict": true,
+    "conflict_note": "与'近光灯开启 → 前提条件 → 位置灯状态为关闭'逻辑矛盾：同一功能（近光灯开启）既要求位置灯关闭，又在位置灯不关闭时被抑制；二者语义等价但关系方向相反，构成条件冲突。需确认是否为互斥控制策略或存在优先级。"
+  },
+  {
+    "head": "刹车灯闪烁",
+    "relation": "触发条件",
+    "tail": "车辆处于紧急减速或ABS激活",
+    "sources": [
+      "outer_lamp_fas_0136"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧转向灯退出",
+    "relation": "前提条件",
+    "tail": "车辆处于VS模式",
+    "sources": [
+      "outer_lamp_fas_0137"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧转向灯退出",
+    "relation": "前提条件",
+    "tail": "左侧转向灯处于激活状态",
+    "sources": [
+      "outer_lamp_fas_0137"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧转向灯退出",
+    "relation": "前提条件",
+    "tail": "整车模式为工厂模式",
+    "sources": [
+      "outer_lamp_fas_0137"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左侧转向灯退出",
+    "relation": "前提条件",
+    "tail": "转向灯在工厂模式下开启2min",
+    "sources": [
+      "outer_lamp_fas_0137"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯熄灭",
+    "relation": "依赖于",
+    "tail": "ICB根据接收到的LHZCU信号进行转换处理",
+    "sources": [
+      "outer_lamp_fas_0137"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯熄灭",
+    "relation": "超时约束",
+    "tail": "ICB接收控制信号后延时60ms分发至LHZCU/RZCU",
+    "sources": [
+      "outer_lamp_fas_0137"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯状态反馈至LHZCU",
+    "relation": "依赖于",
+    "tail": "驱动处理模块RZCU",
+    "sources": [
+      "outer_lamp_fas_0137"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "转向灯退出同步性要求",
+    "relation": "超时约束",
+    "tail": "最大延时50ms",
+    "sources": [
+      "outer_lamp_fas_0137"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "单侧转向灯熄灭同步性允许的最大延时周期",
+    "relation": "超时约束",
+    "tail": "40ms",
+    "sources": [
+      "outer_lamp_fas_0137"
+    ],
+    "conflict": true,
+    "conflict_note": "与'转向灯退出同步性要求 → 超时约束 → 最大延时50ms'冲突：同属转向灯熄灭同步性约束，但数值不一致（40ms vs 50ms）。需确认是否针对不同场景（如单侧vs双侧）或存在版本差异。"
+  },
+  {
+    "head": "外灯组合服务ICB控制车顶射灯开启",
+    "relation": "触发条件",
+    "tail": "RoofSpotLight.Control.RoofSpotLight.RoofSpotLightReq = 0x1",
+    "sources": [
+      "outer_lamp_fas_0139"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "数字灯光APP_ICB反馈车顶射灯状态",
+    "relation": "输出为",
+    "tail": "RoofSpotLight.RoofSpotLightStatus.RoofSpotLightSta",
+    "sources": [
+      "outer_lamp_fas_0139"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB将车顶射灯状态反馈给LHZCU",
+    "relation": "输出为",
+    "tail": "ExteriorLightSwitchProcess.RoofSpotLightSta.RoofSpotLightSta",
+    "sources": [
+      "outer_lamp_fas_0139"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "ICB将车顶射灯故障状态反馈给LHZCU",
+    "relation": "输出为",
+    "tail": "ExteriorLightSwitchProcess.RoofSpotLightErrSta.RoofSpotLightErrSta",
+    "sources": [
+      "outer_lamp_fas_0139"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU反馈车顶射灯状态给ICB",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.RoofSpotLightSts.RoofSpotLightSts",
+    "sources": [
+      "outer_lamp_fas_0139"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车顶射灯控制模块LHZCU反馈车顶射灯故障状态给ICB",
+    "relation": "输出为",
+    "tail": "ExteriorLightControlSystem.RoofSpotLightErrSts.RoofSpotLightErrSts",
+    "sources": [
+      "outer_lamp_fas_0139"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯点亮且车顶射灯未点亮",
+    "relation": "前提条件",
+    "tail": "第一次远光灯拨杆外推操作为开启车顶射灯",
+    "sources": [
+      "outer_lamp_fas_0139"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "远光灯点亮且车顶射灯点亮",
+    "relation": "前提条件",
+    "tail": "往外推远光灯拨杆为关闭车顶射灯及远光灯",
+    "sources": [
+      "outer_lamp_fas_0139"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启请求",
+    "relation": "前提条件",
+    "tail": "用户模式为待机或XOTA",
+    "sources": [
+      "outer_lamp_fas_0140"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启请求",
+    "relation": "前提条件",
+    "tail": "车辆模式为运输模式",
+    "sources": [
+      "outer_lamp_fas_0140"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启请求",
+    "relation": "前提条件",
+    "tail": "远光灯已开启",
+    "sources": [
+      "outer_lamp_fas_0140"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启请求",
+    "relation": "触发条件",
+    "tail": "S32G收到大屏开关请求ICB输入",
+    "sources": [
+      "outer_lamp_fas_0140"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯开启请求",
+    "relation": "输入为",
+    "tail": "{ExteriorLightControlSystem.ControlRearFogLight.RearFogLightReq} = 0x1",
+    "sources": [
+      "outer_lamp_fas_0140"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "外灯控制组合服务ICB调用接口",
+    "relation": "依赖于",
+    "tail": "后雾灯开启请求",
+    "sources": [
+      "outer_lamp_fas_0140"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后雾灯功能过程控制响应",
+    "relation": "输出为",
+    "tail": "控制成功",
+    "sources": [
+      "outer_lamp_fas_0140"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯状态为关闭",
+    "relation": "前提条件",
+    "tail": "外灯组合服务ICB订阅前雾灯状态接口",
+    "sources": [
+      "outer_lamp_fas_0141"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯无故障",
+    "relation": "前提条件",
+    "tail": "外灯组合服务ICB订阅前雾灯故障状态接口",
+    "sources": [
+      "outer_lamp_fas_0141"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯系统状态为关闭",
+    "relation": "前提条件",
+    "tail": "外灯组合服务ICB订阅前雾灯系统状态接口",
+    "sources": [
+      "outer_lamp_fas_0141"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯系统无故障",
+    "relation": "前提条件",
+    "tail": "外灯组合服务ICB订阅前雾灯系统故障状态接口",
+    "sources": [
+      "outer_lamp_fas_0141"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯左侧熄灭",
+    "relation": "依赖于",
+    "tail": "前雾灯右侧熄灭",
+    "sources": [
+      "outer_lamp_fas_0141"
+    ],
+    "conflict": true,
+    "conflict_note": "与'前雾灯右侧熄灭 → 依赖于 → 前雾灯左侧熄灭'构成双向循环依赖，违反因果逻辑；需确认是否为同步熄灭的等效描述，建议统一为'前雾灯左右侧需同步熄灭'并合并为一条三元组。"
+  },
+  {
+    "head": "前雾灯关闭",
+    "relation": "超时约束",
+    "tail": "左侧和右侧熄灭的最大延时不超过40ms",
+    "sources": [
+      "outer_lamp_fas_0141"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯实例ID=3状态为关闭",
+    "relation": "输出为",
+    "tail": "{InstanceID=3} = 0x0",
+    "sources": [
+      "outer_lamp_fas_0145"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯实例ID=4状态为关闭",
+    "relation": "输出为",
+    "tail": "{InstanceID=4} = 0x0",
+    "sources": [
+      "outer_lamp_fas_0145"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "前雾灯实例ID=3错误状态为无错误",
+    "relation": "输出为",
+    "tail": "{InstanceID=3} = 0x0",
+    "sources": [
+      "outer_lamp_fas_0145"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前雾灯状态为关闭",
+    "relation": "前提条件",
+    "tail": "前雾灯实例ID=3状态为关闭",
+    "sources": [
+      "outer_lamp_fas_0145"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前雾灯状态为关闭",
+    "relation": "前提条件",
+    "tail": "前雾灯实例ID=4状态为关闭",
+    "sources": [
+      "outer_lamp_fas_0145"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "左前雾灯故障状态为False",
+    "relation": "前提条件",
+    "tail": "前雾灯实例ID=3错误状态为无错误",
+    "sources": [
+      "outer_lamp_fas_0145"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "右前雾灯故障状态为False",
+    "relation": "前提条件",
+    "tail": "前雾灯实例ID=3错误状态为无错误",
+    "sources": [
+      "outer_lamp_fas_0145"
+    ],
+    "conflict": true,
+    "conflict_note": "逻辑错误：右前雾灯故障状态不应依赖于左前雾灯（ID=3）的错误状态；应依赖ID=4的错误状态。该条与ID=4状态定义不一致，构成数据映射冲突。"
+  },
+  {
+    "head": "订阅左后转向灯状态",
+    "relation": "触发条件",
+    "tail": "调用该服务接口,订阅左后转向灯状态",
+    "sources": [
+      "outer_lamp_fas_0146",
+      "outer_lamp_fas_0190",
+      "outer_lamp_fas_0285",
+      "outer_lamp_fas_0357",
+      "outer_lamp_fas_0569",
+      "outer_lamp_fas_0608",
+      "outer_lamp_fas_0620",
+      "outer_lamp_fas_0720",
+      "outer_lamp_fas_0902",
+      "outer_lamp_fas_0943",
+      "outer_lamp_fas_0989",
+      "outer_lamp_fas_1092",
+      "outer_lamp_fas_1266",
+      "outer_lamp_fas_1457",
+      "outer_lamp_fas_1529",
+      "outer_lamp_fas_1542",
+      "outer_lamp_fas_1570"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta输出为0x0",
+    "relation": "输出为",
+    "tail": "订阅右前转向灯状态",
+    "sources": [
+      "outer_lamp_fas_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta输出为0x1",
+    "relation": "输出为",
+    "tail": "订阅右前转向灯状态",
+    "sources": [
+      "outer_lamp_fas_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta输出为0x2",
+    "relation": "输出为",
+    "tail": "订阅右前转向灯状态",
+    "sources": [
+      "outer_lamp_fas_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta输出为0x0",
+    "relation": "输出为",
+    "tail": "订阅左后转向灯状态",
+    "sources": [
+      "outer_lamp_fas_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta输出为0x1",
+    "relation": "输出为",
+    "tail": "订阅左后转向灯状态",
+    "sources": [
+      "outer_lamp_fas_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DirectionLightErrorSta输出为0x2",
+    "relation": "输出为",
+    "tail": "订阅左后转向灯状态",
+    "sources": [
+      "outer_lamp_fas_0146"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆处于拖挂模式",
+    "relation": "前提条件",
+    "tail": "InsdFnCfgVehDragMd = 0x1",
+    "sources": [
+      "outer_lamp_fas_0149"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "车辆处于无拖挂模式",
+    "relation": "前提条件",
+    "tail": "InsdFnCfgVehDragMd = 0x0",
+    "sources": [
+      "outer_lamp_fas_0149"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后转向灯延迟时间由N决定",
+    "relation": "输入为",
+    "tail": "RrDirLghtHardWireDrvDelayPrm = E = N * 10",
+    "sources": [
+      "outer_lamp_fas_0149"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "后转向灯延迟时间计算公式",
+    "relation": "包含子功能",
+    "tail": "E = N * 10",
+    "sources": [
+      "outer_lamp_fas_0149"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "订阅右侧远光灯状态",
+    "relation": "触发条件",
+    "tail": "调用MainBeamLightStatus服务接口",
+    "sources": [
+      "outer_lamp_fas_0151"
+    ],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]

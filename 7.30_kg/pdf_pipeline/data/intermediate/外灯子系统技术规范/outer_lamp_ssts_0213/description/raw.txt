@@ -1,0 +1,59 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "整车电子电器系统中左前转向灯开路故障检测与处理",
+  "row_semantics": "表格定义了在特定触发条件下，系统执行的动作、退出条件以及异常处理逻辑，属于故障诊断与处理规则。",
+  "column_semantics": {
+    "触发条件": "系统检测到的故障发生前提条件。",
+    "执行动作": "当触发条件满足时，系统需要执行的具体操作或状态设置。",
+    "退出条件": "故障处理完成后，系统恢复到正常状态的前提条件。",
+    "异常处理": "针对未预见情况的处理方式。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FLDILightDrvMdl",
+      "type": "controller_module",
+      "description": "车身灯光驱动模块，负责控制车辆灯光系统的运行。"
+    },
+    {
+      "name": "DILightCtrlMdl",
+      "type": "controller_module",
+      "description": "车身灯光控制模块，接收来自驱动模块的信号并进行处理。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "检测到左前转向灯开路",
+      "signal": "LeftFrontTurnSignalOpenCircuit",
+      "status": "detected",
+      "description": "系统检测到左前转向灯存在开路故障。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "action": "持续发送 DirectionLightControl.DirectionLightSta = 2 (Error) 至 DILightCtrlMdl",
+      "signal": "DirectionLightControl.DirectionLightSta",
+      "value": "2 (Error)",
+      "target": "DILightCtrlMdl",
+      "description": "将转向灯状态设置为错误（2），并向灯光控制模块发送该信息，至少发送三帧以确保可靠性。"
+    },
+    {
+      "action": "置位 DTC B104A 13",
+      "fault_code": "DTC B104A 13",
+      "description": "记录具体的故障代码，用于后续诊断和维修参考。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "LeftFrontTurnSignalOpenCircuit",
+      "code": "DTC B104A 13",
+      "description": "左前转向灯开路故障，可能导致转向灯无法正常工作或发出错误信号。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车电子电器系统中左前转向灯开路故障的检测、处理及记录规则，可用于验证系统在转向灯开路情况下的故障诊断与响应功能是否符合设计要求。",
+  "uncertain_points": []
+}
+```

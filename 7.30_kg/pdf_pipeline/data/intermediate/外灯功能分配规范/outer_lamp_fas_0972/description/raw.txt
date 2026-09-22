@@ -1,0 +1,40 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "后雾灯控制逻辑",
+  "row_semantics": "描述后雾灯在不同控制请求下的硬件驱动状态",
+  "column_semantics": "左侧为控制请求与硬件驱动的映射关系，右侧为功能描述",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RearFogLight",
+      "type": "功能名",
+      "description": "后雾灯系统"
+    },
+    {
+      "name": "RearFogLightControl",
+      "type": "控制器/模块名",
+      "description": "后雾灯控制模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "RearFogLightCtrReq",
+      "type": "输入信号",
+      "description": "后雾灯控制请求信号，值为0x1（On）或0x0（Off）"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "RearFogLightCtrl_HW",
+      "type": "输出信号",
+      "description": "后雾灯硬件驱动控制信号，值为RearFogLightCtrl_HW_1_On（点亮）或RearFogLightCtrl_HW_0_Off（关闭）"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了后雾灯控制模块如何根据软件请求（RearFogLightCtrReq）来驱动硬件（RearFogLightCtrl_HW），用于验证后雾灯点亮和关闭的正确逻辑。",
+  "uncertain_points": []
+}
+```

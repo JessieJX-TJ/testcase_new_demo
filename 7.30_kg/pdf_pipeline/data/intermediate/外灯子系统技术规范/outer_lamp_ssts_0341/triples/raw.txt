@@ -1,0 +1,52 @@
+```json
+[
+  {
+    "head": "右前转向灯短路故障诊断功能被触发",
+    "relation": "触发条件",
+    "tail": "检测到右前转向灯短路到电源",
+    "triple_type": "逻辑规则",
+    "evidence_terms": ["触发条件", "检测到右前转向灯短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯输出停止",
+    "relation": "前提条件",
+    "tail": "DILightFbkSOAEnPrm == 1 (Enable)",
+    "triple_type": "工程规则",
+    "evidence_terms": ["前置条件", "DILightFbkSOAEnPrm == 1 (Enable)"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯输出停止",
+    "relation": "前提条件",
+    "tail": "右前转向灯处于输出状态",
+    "triple_type": "工程规则",
+    "evidence_terms": ["前置条件", "右前转向灯处于输出状态"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统置位 DTC B104A 12",
+    "relation": "执行动作",
+    "tail": "检测到右前转向灯短路到电源",
+    "triple_type": "故障响应",
+    "evidence_terms": ["执行动作", "置位 DTC B104A 12", "触发条件", "检测到右前转向灯短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "系统持续发送 DirectionLightControl.DirectionLightSta = 2 (Error)",
+    "relation": "执行动作",
+    "tail": "检测到右前转向灯短路到电源",
+    "triple_type": "故障响应",
+    "evidence_terms": ["执行动作", "持续发送 DirectionLightControl. DirectionLightSta = 2(Error)", "触发条件", "检测到右前转向灯短路到电源"],
+    "confidence_note": "high"
+  },
+  {
+    "head": "右前转向灯短路故障诊断功能退出",
+    "relation": "退出条件",
+    "tail": "检测到短路恢复",
+    "triple_type": "逻辑规则",
+    "evidence_terms": ["退出条件", "检测到短路恢复"],
+    "confidence_note": "high"
+  }
+]
+```

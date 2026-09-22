@@ -1,0 +1,126 @@
+```json
+{
+  "table_type": "logic_table",
+  "topic": "External Light Switching Process and Control Logic for Vehicle Lighting Systems",
+  "row_semantics": "Each row represents a specific control logic or switching process related to external vehicle lighting, including direct light control, external light switch processes, IBCM (Integrated Body Control Module) service handling, ICM (Instrument Cluster Module) signal conversion, and automatic dimming based on ambient light.",
+  "column_semantics": "The table does not have explicit columns; instead, it uses a structured text format where each entry describes a specific condition, input, output, or process related to the external lighting system. The information is presented in a sequential list format.",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "PL_DirectLightCtrl",
+      "type": "controller_module",
+      "description": "Primary controller for direct lighting functions."
+    },
+    {
+      "name": "PRD_DirectLightCtrl",
+      "type": "controller_module",
+      "description": "Pre-processor for direct lighting control signals."
+    },
+    {
+      "name": "KRK_DirectLightCtrl",
+      "type": "controller_module",
+      "description": "Key-related controller for direct lighting functions."
+    },
+    {
+      "name": "IBCM",
+      "type": "controller_module",
+      "description": "Integrated Body Control Module responsible for managing various body functions including lighting."
+    },
+    {
+      "name": "ICM",
+      "type": "controller_module",
+      "description": "Instrument Cluster Module responsible for displaying information and converting signals for the instrument cluster."
+    },
+    {
+      "name": "LHZC1",
+      "type": "signal",
+      "description": "A CAN bus signal used for communication between modules regarding lighting status."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DirectLightFncProStatus",
+      "type": "input_signal",
+      "description": "Status of the direct light function processing."
+    },
+    {
+      "name": "LHZC1_LightStatus",
+      "type": "input_signal",
+      "description": "Lighting status received from the LHZC1 CAN bus signal."
+    },
+    {
+      "name": "AmbientLightLevel",
+      "type": "input_signal",
+      "description": "Level of ambient light detected by sensors."
+    },
+    {
+      "name": "Side_Direction",
+      "type": "input_signal",
+      "description": "Directional input indicating side-specific lighting requirements."
+    },
+    {
+      "name": "DimmableLightStatus",
+      "type": "input_signal",
+      "description": "Status indicating whether the light is dimmable."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "PL_DirectLightCtrl_1_on",
+      "type": "output_signal",
+      "description": "Signal to turn on the primary direct light control."
+    },
+    {
+      "name": "PRD_DirectLightCtrl_1_on",
+      "type": "output_signal",
+      "description": "Signal to turn on the pre-processed direct light control."
+    },
+    {
+      "name": "KRK_DirectLightCtrl_1_on",
+      "type": "output_signal",
+      "description": "Signal to turn on the key-related direct light control."
+    },
+    {
+      "name": "ExternalLightSwitchProcess",
+      "type": "process",
+      "description": "Process for switching external lights based on inputs."
+    },
+    {
+      "name": "DimmableLightCtrl_Delay_Pulse",
+      "type": "output_signal",
+      "description": "Pulse signal for delaying dimmable light control."
+    },
+    {
+      "name": "LHZC1_LightStatus",
+      "type": "output_signal",
+      "description": "Updated lighting status sent via the LHZC1 CAN bus."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "DimmableLightCtrl_Delay_Pulse",
+      "type": "fault_status",
+      "description": "Indicates a fault in the delay pulse for dimmable light control."
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "name": "Cycle",
+      "type": "timing_constraint",
+      "description": "Defines the cycle time for certain processes, such as 50ms per cycle."
+    },
+    {
+      "name": "800ms",
+      "type": "timing_constraint",
+      "description": "Defines a timeout period of 800ms for certain operations."
+    }
+  ],
+  "engineering_interpretation": "This table outlines the logic and control processes for external vehicle lighting systems, including direct light control, external light switching, IBCM service handling, ICM signal conversion, and automatic dimming based on ambient light. It is used to verify the correct implementation of these lighting control functions and their interactions with other vehicle systems.",
+  "uncertain_points": [
+    "The exact timing relationships between different processes are not explicitly defined beyond the 'Cycle' and '800ms' constraints.",
+    "The specific thresholds for ambient light levels that trigger automatic dimming are not provided.",
+    "The detailed behavior of the 'DimmableLightCtrl_Delay_Pulse' fault status is not elaborated upon."
+  ]
+}
+```

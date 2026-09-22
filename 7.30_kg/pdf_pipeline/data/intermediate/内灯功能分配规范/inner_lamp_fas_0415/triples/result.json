@@ -1,0 +1,187 @@
+[
+  {
+    "head": "Reading Lamp is ON",
+    "relation": "前提条件",
+    "tail": "Vehicle Mode: Sleep, Standby, XOTA",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "阅读灯处于点亮状态时,切到休眠模式或待机模式或XOTA模式"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Reading Lamp is ON",
+    "relation": "前提条件",
+    "tail": "Vehicle Mode: Factory",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "阅读灯处于点亮状态时,切到工厂模式"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "User Mode: XOTA or Sleep or Standby",
+    "relation": "前提条件",
+    "tail": "Reading Lamp is ON",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "用户模式为 XOTA 或休眠或待机时,阅读灯被点亮后"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "依赖于",
+    "tail": "Reading Lamp is ON and Vehicle Mode: Sleep, Standby, XOTA",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "阅读灯处于点亮状态时,切到休眠模式或待机模式或XOTA模式,开启计时器 SleepTimer",
+      "用户模式为 XOTA 或休眠或待机时,阅读灯被点亮后,开启计时器 SleepTimer"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "依赖于",
+    "tail": "Reading Lamp is ON and Vehicle Mode: Factory",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "阅读灯处于点亮状态时,切到工厂模式,开启计时器 FactoryTimer",
+      "整车模式为工厂模式时,阅读灯被点亮后,开启计时器 FactoryTimer"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "SleepTimer or FactoryTimer",
+    "relation": "超时约束",
+    "tail": "Reading Lamp is ON",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "休眠模式/待机模式/XOTA 模式/工厂模式计时器超时(SleepTimer,FactoryTimer)",
+      "就熄灭阅读灯,熄灭后计时器清零"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "优先级高于",
+    "tail": "FactoryTimer",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "计时器原则上以最后一个触发为准"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "优先级高于",
+    "tail": "SleepTimer",
+    "triple_type": "优先级与互斥关系",
+    "evidence_terms": [
+      "计时器原则上以最后一个触发为准"
+    ],
+    "confidence_note": "medium",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "复位条件",
+    "tail": "Reading Lamp turns OFF",
+    "triple_type": "时序、保持、复退相关约束",
+    "evidence_terms": [
+      "就熄灭阅读灯,熄灭后计时器清零"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "复位条件",
+    "tail": "Reading Lamp turns OFF",
+    "triple_type": "时序、保持、复退相关约束",
+    "evidence_terms": [
+      "就熄灭阅读灯,熄灭后计时器清零"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "包含子功能",
+    "tail": "15min duration",
+    "triple_type": "时序、保持、复退相关约束",
+    "evidence_terms": [
+      "SleepTimer,计时器时间为 15min"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "包含子功能",
+    "tail": "2min duration",
+    "triple_type": "时序、保持、复退相关约束",
+    "evidence_terms": [
+      "开启计时器 FactoryTimer,计时器时间为 2min"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "SleepTimer",
+    "relation": "抑制条件",
+    "tail": "Vehicle Mode: Factory",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "整车模式为工厂模式时,阅读灯被点亮后,开启计时器 FactoryTimer"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "FactoryTimer",
+    "relation": "抑制条件",
+    "tail": "Vehicle Mode: Sleep, Standby, XOTA",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "阅读灯处于点亮状态时,切到工厂模式"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_fas_0415",
+    "source_doc_id": "inner_lamp_fas",
+    "source_table_type": "parameter_table"
+  }
+]

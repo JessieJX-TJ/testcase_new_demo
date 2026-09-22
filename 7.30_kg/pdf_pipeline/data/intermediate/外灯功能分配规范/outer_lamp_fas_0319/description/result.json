@@ -1,0 +1,76 @@
+{
+  "table_type": "other",
+  "topic": "转向灯开关控制模块的功能需求与同步性要求",
+  "row_semantics": "表格分为两个主要部分：上方为功能描述和状态定义，下方为备注中的同步性要求。",
+  "column_semantics": "表格没有明确的列，内容以行的形式组织，每行描述一个具体的需求或条件。",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "转向灯开关控制模块 LHZCU",
+      "type": "controller_module",
+      "description": "负责管理转向灯的开关状态，并将相关状态反馈至其他系统（ICB 和 SDM）。"
+    },
+    {
+      "name": "ExteriorLightControlSystem",
+      "type": "system",
+      "description": "外部灯光控制系统，包含方向灯的状态和错误状态。"
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Interface Control Block，接口控制块，接收转向灯开关状态反馈。"
+    },
+    {
+      "name": "SDM",
+      "type": "controller",
+      "description": "Safety Domain Module，安全域模块，接收转向灯控制状态反馈。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DircnLghtSwReq",
+      "type": "input_signal",
+      "description": "转向灯开关请求信号，值为0x0表示关闭状态。"
+    },
+    {
+      "name": "DirectionLightSwitchStatus",
+      "type": "system_state",
+      "description": "方向灯开关状态，值为0x0表示关闭状态。"
+    },
+    {
+      "name": "EDRDircnIndLampSwSts",
+      "type": "output_signal",
+      "description": "EDR（Event Data Recorder）中记录的方向指示灯开关状态，值为0x0表示关闭状态。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "ExteriorLightControlSystem.DirectionLightSts",
+      "type": "output_signal",
+      "description": "外部灯光控制系统中的方向灯状态，值为0x0表示无闪烁。"
+    },
+    {
+      "name": "ExteriorLightControlSystem.DirectionLghtErrSts",
+      "type": "output_signal",
+      "description": "外部灯光控制系统中的方向灯错误状态，值为0x0表示无错误。"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "同步退出延时",
+      "type": "timing_constraint",
+      "description": "转向灯的图标闪烁频率、声音提醒与实际转向灯的闪烁频率需保持一致退出，三者同步性允许的最大延时为50ms。",
+      "value": "50ms"
+    },
+    {
+      "name": "熄灭同步延时周期",
+      "type": "timing_constraint",
+      "description": "单侧转向灯熄灭同步性允许的最大延时周期为40ms。",
+      "value": "40ms"
+    }
+  ],
+  "engineering_interpretation": "该表格用于验证转向灯开关控制模块（LHZCU）在不同系统（ICB 和 SDM）之间的状态反馈功能，以及转向灯在闪烁和熄灭过程中的同步性是否符合规定的最大延时要求。",
+  "uncertain_points": []
+}

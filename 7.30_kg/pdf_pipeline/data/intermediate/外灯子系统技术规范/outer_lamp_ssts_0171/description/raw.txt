@@ -1,0 +1,91 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "外灯（左远光灯）输出电路故障诊断需求",
+  "row_semantics": "每行代表一个具体的故障诊断场景或测试用例，针对左远光灯的输出电路进行不同类型的短路或开路检测。",
+  "column_semantics": {
+    "名称": "故障诊断场景的唯一标识符，格式为B105C XX，其中XX表示具体故障类型编号。",
+    "描述": "对当前诊断场景的简要文字说明，指明是哪种类型的短路或开路故障。",
+    "进入条件": "触发该故障诊断流程的前置条件，即系统需要检测到特定的故障状态。",
+    "退出条件": "结束该故障诊断流程的后置条件，即系统需要确认故障状态已解除或不再满足诊断条件。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "B105C 11",
+      "description": "左远光灯输出短路到地故障诊断",
+      "type": "fault_diagnosis_scenario"
+    },
+    {
+      "name": "B105C 12",
+      "description": "左远光灯输出短路到电源故障诊断",
+      "type": "fault_diagnosis_scenario"
+    },
+    {
+      "name": "B105C 13",
+      "description": "左远光灯输出开路故障诊断",
+      "type": "fault_diagnosis_scenario"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "检测到短路到地",
+      "description": "系统检测到左远光灯输出端与地之间存在短路。",
+      "type": "entry_condition",
+      "entity": "B105C 11"
+    },
+    {
+      "name": "检测到短路到电源",
+      "description": "系统检测到左远光灯输出端与电源之间存在短路。",
+      "type": "entry_condition",
+      "entity": "B105C 12"
+    },
+    {
+      "name": "检测到输出开路",
+      "description": "系统检测到左远光灯输出端与外部电路断开连接。",
+      "type": "entry_condition",
+      "entity": "B105C 13"
+    },
+    {
+      "name": "检测到未短路到地",
+      "description": "系统确认左远光灯输出端与地之间不存在短路。",
+      "type": "exit_condition",
+      "entity": "B105C 11"
+    },
+    {
+      "name": "检测到未短路到电源",
+      "description": "系统确认左远光灯输出端与电源之间不存在短路。",
+      "type": "exit_condition",
+      "entity": "B105C 12"
+    },
+    {
+      "name": "检测到输出开路",
+      "description": "系统确认左远光灯输出端与外部电路已恢复连接。",
+      "type": "exit_condition",
+      "entity": "B105C 13"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "name": "Left Headlamp Output Short to Ground",
+      "description": "Left headlamp output circuit is shorted to ground.",
+      "diagnosis_code": "B105C 11"
+    },
+    {
+      "name": "Left Headlamp Output Short to Power",
+      "description": "Left headlamp output circuit is shorted to power supply.",
+      "diagnosis_code": "B105C 12"
+    },
+    {
+      "name": "Left Headlamp Output Open Circuit",
+      "description": "Left headlamp output circuit is open (disconnected).",
+      "diagnosis_code": "B105C 13"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了针对左远光灯输出电路的三种主要故障诊断场景：短路到地、短路到电源和开路。它详细列出了每个诊断场景的进入和退出条件，用于指导整车电子电器系统的故障诊断测试验证，确保在发生这些特定故障时，系统能够正确检测并处理。",
+  "uncertain_points": []
+}
+```

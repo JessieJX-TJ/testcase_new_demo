@@ -1,0 +1,35 @@
+场景
+Auto开关下,用户通过大屏软开关,触发后雾灯/近光灯/位置灯的开启
+描述
+前置
+1&2&3&4&5&6&7&8&9
+条件
+UsgMd!=0x0 = UsgMd_0_Sleep;&
+UsgMd!=0x1 = UsgMd_1_Standby; &
+UsgMd!=0x6=UsgMd_6_XOTA
+UsgMdV=Valid
+VehMd!=0x3 = VehMd 3 TRANSPORT
+VehMdV=Valid
+近光灯状态:
+1)近光灯反馈状态为关闭:(a&b)(c&d)
+a、{DippedBeamLight.DippedBeamLightStatus. DippedBeamLightSta}
+(InstanceID=3)=0x0=Off; &
+b、{DippedBeamLight.DippedBeamLightStatus. DippedBeamLightSta}
+(InstanceID=4)=0x0=Off
+(exlDipdBeamHwDrvEnPrm=0x0||0x2；通过 Instance ID 3/4获取近光灯状
+态)
+c、{DippedBeamLight.DippedBeamLightStatus. DippedBeamLightSta}
+(InstanceID=1)=0x0=Off;&
+d、{DippedBeamLight.DippedBeamLightStatus. DippedBeamLightSta}
+(InstanceID=2)=0x0=Off
+(exlDipdBeamHwDrvEnPrm=0x1；通过 Instance ID 1/2 获取近光灯状态)
+或者
+2)LHZCU已判断位置灯关闭,近光灯关闭:
+{ExteriorLightSwitchProcess.
+CombLghtFucProStatus.CombLghtFucProSta}=0x0= ALL OFF;0x3=
+SidePositionAndDippedBeam OFF
+位置灯状态:
+1)位置灯反馈状态为关闭:
+{SidePositionLightStatus. SidePositionLightSta}(InstanceID=5) =0x0=OFF; &
+{SidePositionLightStatus. SidePositionLightSta}(InstanceID=6)=0x0=OFF; &
+{SidePositionLightStatus. SidePositionLightSta}(InstanceID=7)=0x0=OFF; &

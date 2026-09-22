@@ -1,0 +1,75 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "Ambient Lamp Breathing Mode Timing Parameters",
+  "row_semantics": "Time-based progression of ambient lamp brightness levels during breathing mode cycles",
+  "column_semantics": {
+    "Time": "Elapsed time in milliseconds from the start of the breathing cycle",
+    "Brightness (100%)": "Normalized brightness level (0-4) representing the current state of the breathing cycle for Rate13",
+    "Brightness (1000映射100%)": "Mapped brightness level (78-355) representing the current state of the breathing cycle for Rate15"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Ambient Lamp",
+      "type": "function",
+      "description": "Exterior lighting system that performs a breathing (pulsing) illumination pattern"
+    },
+    {
+      "name": "DoorFR1LampBrthngCmd_l",
+      "type": "input_signal",
+      "description": "Command signal to control the breathing mode of the front right door ambient lamp"
+    },
+    {
+      "name": "Rate13",
+      "type": "mode",
+      "description": "Breathing rate configuration with 200 data points over 40ms intervals"
+    },
+    {
+      "name": "Rate15",
+      "type": "mode",
+      "description": "Breathing rate configuration with 120 data points over 100ms intervals"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "DoorFR1LampBrthngCmd_l",
+      "value": "0x3 (Rate3 1s)",
+      "description": "Specific command value triggering the breathing mode with a 1-second period"
+    },
+    {
+      "name": "AmbtLampBrthngRate3holdoffPercent",
+      "value": "10%",
+      "description": "Percentage of the breathing cycle dedicated to the hold-off phase (dimming)"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Brightness",
+      "type": "output_signal",
+      "description": "Light intensity level of the ambient lamp, represented as a normalized value or mapped analog value"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Breathing Period",
+      "value": "1s",
+      "description": "The total duration of one complete breathing cycle"
+    },
+    {
+      "name": "Hold-off Time",
+      "value": "100ms",
+      "description": "Duration of the dimming phase within the breathing cycle"
+    },
+    {
+      "name": "Data Sampling Interval",
+      "value": "40ms (Rate13), 100ms (Rate15)",
+      "description": "Time interval between successive brightness level measurements"
+    }
+  ],
+  "engineering_interpretation": "This table defines the timing and brightness profiles for two different breathing rates (Rate13 and Rate15) of an ambient lamp, which can be used to verify the correct implementation of the breathing mode functionality in response to specific command inputs.",
+  "uncertain_points": []
+}
+```

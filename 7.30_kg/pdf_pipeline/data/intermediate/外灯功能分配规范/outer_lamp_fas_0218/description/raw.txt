@@ -1,0 +1,152 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "远光灯控制功能时序与模块交互",
+  "row_semantics": "流程步骤或系统层级",
+  "column_semantics": "时间点或阶段",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "远光灯开关",
+      "type": "输入信号"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块",
+      "sub_components": [
+        {
+          "name": "开关预处理模块",
+          "response_time": "60ms",
+          "functions": [
+            "采样",
+            "信号处理"
+          ]
+        },
+        {
+          "name": "远光灯控制模块",
+          "response_time": "30ms",
+          "functions": [
+            "逻辑",
+            "信号处理"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "S32G",
+      "type": "控制器/模块",
+      "sub_components": [
+        {
+          "name": "外灯SWC",
+          "response_time": "10ms",
+          "functions": [
+            "逻辑"
+          ]
+        },
+        {
+          "name": "数字灯光SDK",
+          "response_time": "40ms",
+          "functions": []
+        }
+      ]
+    },
+    {
+      "name": "LHA/RHA",
+      "type": "控制器/模块",
+      "sub_components": [
+        {
+          "name": "远光灯驱动",
+          "response_time": "30ms",
+          "functions": []
+        }
+      ]
+    },
+    {
+      "name": "CANFD",
+      "type": "通信接口"
+    },
+    {
+      "name": "Eth/Event",
+      "type": "通信接口"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "硬线采集",
+      "description": "远光灯开关信号通过硬线直接采集到LHZCU"
+    },
+    {
+      "name": "内部通讯",
+      "description": "LHZCU内部模块间的数据交换"
+    },
+    {
+      "name": "Eth/Event",
+      "description": "LHZCU与S32G之间的以太网事件通信"
+    },
+    {
+      "name": "内部通讯",
+      "description": "S32G内部模块间的数据交换"
+    },
+    {
+      "name": "CANFD",
+      "description": "S32G与LHA/RHA之间的CANFD通信"
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "远光灯驱动信号",
+      "target": "LHA/RHA",
+      "description": "由LHA/RHA输出，用于驱动远光灯"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "step": "远光灯开关信号采集",
+      "time": "60ms",
+      "description": "从开关信号采集到LHZCU预处理完成的时间"
+    },
+    {
+      "step": "LHZCU内部处理",
+      "time": "30ms",
+      "description": "LHZCU内部控制模块完成逻辑和信号处理的时间"
+    },
+    {
+      "step": "Eth/Event通信",
+      "time": "50ms",
+      "description": "LHZCU与S32G之间以太网事件通信的延迟"
+    },
+    {
+      "step": "S32G外灯SWC处理",
+      "time": "10ms",
+      "description": "S32G内部外灯SWC模块的响应时间"
+    },
+    {
+      "step": "S32G数字灯光SDK处理",
+      "time": "40ms",
+      "description": "S32G内部数字灯光SDK的处理时间"
+    },
+    {
+      "step": "CANFD通信",
+      "time": "40ms",
+      "description": "S32G与LHA/RHA之间CANFD通信的延迟"
+    },
+    {
+      "step": "LHA/RHA远光灯驱动",
+      "time": "30ms",
+      "description": "LHA/RHA完成远光灯驱动输出的时间"
+    },
+    {
+      "step": "总时延",
+      "time": "260ms",
+      "description": "从远光灯开关信号采集到远光灯实际点亮的总响应时间"
+    }
+  ],
+  "engineering_interpretation": "该表格描述了远光灯从开关信号采集到最终驱动输出的完整控制链路及其各环节的响应时间，可用于验证整车远光灯系统的启动时序是否满足设计要求。",
+  "uncertain_points": [
+    "具体信号名称未详细列出（如远光灯驱动信号的具体ID）",
+    "未明确说明异常情况下的处理机制（如故障模式）"
+  ]
+}
+```

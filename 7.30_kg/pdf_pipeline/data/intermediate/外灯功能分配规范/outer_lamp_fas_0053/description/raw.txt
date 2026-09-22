@@ -1,0 +1,47 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 的信号分配规范",
+  "row_semantics": "每一行描述一个特定的信号交互或控制逻辑，通常涉及 ICB (Integrated Control Box) 和 LHZCU/RZCU (转向灯开关控制模块) 之间的信号传递与状态更新。",
+  "column_semantics": "表格没有明确的列，内容为连续的文本描述，每行包含一个编号的逻辑步骤，详细说明了信号的发送、接收、处理及状态反馈。",
+  "has_merged_cells": false,
+  "header_levels": 2,
+  "core_entities": [
+    "ICB",
+    "LHZCU",
+    "RZCU",
+    "DirectionLight"
+  ],
+  "core_conditions": [
+    "ControlDirectionLight",
+    "DirectionLightReq",
+    "DirectionLightCtrl_HW",
+    "DirectionLightFucProStatus",
+    "DirectionLightFucProSta",
+    "DirectionLightSwitchProcess",
+    "DirectionLightErrSta",
+    "DirectionLightSts",
+    "DirectionLightFlits",
+    "DirectionLightSwReq",
+    "DirectionLightSwitchStatus"
+  ],
+  "core_outputs": [
+    "DirectionLightStatus",
+    "DirectionLightErrorStatus",
+    "DirectionLightSta",
+    "DirectionLightErrSta",
+    "DirectionLightSts_0_Off",
+    "DirectionLightFlits_0_False",
+    "DirectionLightSwReq_0_off"
+  ],
+  "core_faults": [
+    "DirectionLightErrorStatus",
+    "DirectionLightErrSta"
+  ],
+  "core_timing_constraints": [
+    "60ms延发至LHZCU/RZCU"
+  ],
+  "engineering_interpretation": "该表格定义了车辆外灯（如转向灯）在不同控制模块（ICB, LHZCU, RZCU）之间的信号交互逻辑，包括正常操作流程和故障状态反馈机制，可用于验证外灯系统的信号传输正确性、状态同步性和故障诊断功能。",
+  "uncertain_points": []
+}
+```

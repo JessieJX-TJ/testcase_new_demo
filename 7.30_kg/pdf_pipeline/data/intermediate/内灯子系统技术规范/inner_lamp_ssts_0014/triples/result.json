@@ -1,0 +1,151 @@
+[
+  {
+    "head": "Ambient Lamp Breathing Mode Switch",
+    "relation": "触发条件",
+    "tail": "接收到 ZCU 发送的 CnsoLHALampBrthngCmd_1 中的 0x1 或 0x2 命令",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "CnsoLHALampBrtnsCmd_1",
+      "ZCU",
+      "0x1",
+      "0x2"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0014",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Switch",
+    "relation": "抑制条件",
+    "tail": "此时亮度变化由氛围灯 LIN 模块控制,不响应亮度信号",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "LIN 模块",
+      "亮度信号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0014",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp Step Change Mode (0x1)",
+    "relation": "输入为",
+    "tail": "接收到 ZCU 发送的 CnsoLHALampBrthngCmd_1 = 0x1 命令",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CnsoLHALampBrthngCmd_1",
+      "0x1",
+      "ZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0014",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp Step Change Mode (0x1)",
+    "relation": "输出为",
+    "tail": "氛围灯按照 250ms 亮度 100%,250ms 亮度 0% 循环执行",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "亮度 100%",
+      "亮度 0%",
+      "250ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0014",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp Step Change Mode (0x2)",
+    "relation": "输入为",
+    "tail": "接收到 ZCU 发送的 CnsoLHALampBrthngCmd_1 = 0x2 命令",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CnsoLHALampBrthngCmd_1",
+      "0x2",
+      "ZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0014",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp Step Change Mode (0x2)",
+    "relation": "输出为",
+    "tail": "氛围灯按照 500ms 亮度 100%,500ms 亮度 0% 循环执行",
+    "triple_type": "输入与 output 映射关系",
+    "evidence_terms": [
+      "亮度 100%",
+      "亮度 0%",
+      "500ms"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0014",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp Gradual Change Mode (0x3-0xE)",
+    "relation": "输入为",
+    "tail": "接收到 ZCU 发送的 CnsoLHALampBrthngCmd_1 = 0x3-0xE 命令",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CnsoLHALampBrthngCmd_1",
+      "0x3-0xE",
+      "ZCU"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0014",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp Gradual Change Mode",
+    "relation": "依赖于",
+    "tail": "呼吸模式周期 RateX 和 AmbtLampBrthngRateXholdoffPercent 参数",
+    "triple_type": "状态依赖关系",
+    "evidence_terms": [
+      "RateX",
+      "AmbtLampBrthngRateXholdoffPercent"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0014",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp Gradual Change Mode",
+    "relation": "超时约束",
+    "tail": "时间 A = 接收到的呼吸模式周期 RateX * (0.5 - AmbtLampBrthngRateXholdoffPercent)",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RateX",
+      "AmbtLampBrthngRateXholdoffPercent",
+      "时间 A"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0014",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  },
+  {
+    "head": "Ambient Lamp Gradual Change Mode",
+    "relation": "超时约束",
+    "tail": "时间 B = 接收到的呼吸模式周期 RateX * AmbtLampBrthngRateXholdoffPercent",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "RateX",
+      "AmbtLampBrthngRateXholdoffPercent",
+      "时间 B"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0014",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "parameter_table"
+  }
+]

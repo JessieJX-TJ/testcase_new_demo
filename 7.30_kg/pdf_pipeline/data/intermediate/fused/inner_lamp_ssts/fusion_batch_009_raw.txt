@@ -1,0 +1,476 @@
+```json
+[
+  {
+    "head": "Third Row Left MapLamp Control Circuit Open",
+    "relation": "超时约束",
+    "tail": "Duration Condition of 100ms",
+    "sources": ["inner_lamp_ssts_0077"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "触发条件",
+    "tail": "DoorFR1LampColorCmd_",
+    "sources": ["inner_lamp_ssts_0078"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "触发条件",
+    "tail": "DoorFR1LampBrtNsCmd_",
+    "sources": ["inner_lamp_ssts_0078"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Illumination",
+    "relation": "触发条件",
+    "tail": "DoorFR1LampFadeSpdCmd_1",
+    "sources": ["inner_lamp_ssts_0078"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Turn Off",
+    "relation": "触发条件",
+    "tail": "DoorFR1LampOnOff_l = 0x0",
+    "sources": ["inner_lamp_ssts_0078"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Turn Off",
+    "relation": "故障响应",
+    "tail": "Overvoltage or Undervoltage Fault in Ambient Lamp Module",
+    "sources": ["inner_lamp_ssts_0078", "inner_lamp_ssts_0115", "inner_lamp_ssts_0455"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Turn Off",
+    "relation": "超时约束",
+    "tail": "No LIN Signal from ZCU for >6s",
+    "sources": ["inner_lamp_ssts_0078"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Parameter or State Retention Cause",
+    "relation": "前提条件",
+    "tail": "Retention Reason (NA)",
+    "sources": ["inner_lamp_ssts_0079"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1 Triggers Ambient Lamp Brightness Adjustment",
+    "relation": "触发条件",
+    "tail": "RoofLHALampBrthngCmd_1 Signal Received from ZCU",
+    "sources": ["inner_lamp_ssts_0081"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1 = 0x1 Mode",
+    "relation": "输入为",
+    "tail": "RoofLHALampBrthngCmd_1 = 0x1",
+    "sources": ["inner_lamp_ssts_0081"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1 = 0x2 Mode",
+    "relation": "输入为",
+    "tail": "RoofLHALampBrthngCmd_1 = 0x2",
+    "sources": ["inner_lamp_ssts_0081"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1 = 0x3–0xC or 0xE Mode",
+    "relation": "输入为",
+    "tail": "RoofLHALampBrthngCmd_1 ∈ {0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xA, 0xB, 0xC, 0xE}",
+    "sources": ["inner_lamp_ssts_0081"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Switching",
+    "relation": "抑制条件",
+    "tail": "Immediate termination of current breathing cycle and transition to next mode",
+    "sources": ["inner_lamp_ssts_0081"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1 = 0x1 Mode Brightness Cycling",
+    "relation": "状态保持条件",
+    "tail": "250ms at 100% brightness, 250ms at 0% brightness",
+    "sources": ["inner_lamp_ssts_0081"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1 = 0x2 Mode Brightness Cycling",
+    "relation": "状态保持条件",
+    "tail": "500ms at 100% brightness, 500ms at 0% brightness",
+    "sources": ["inner_lamp_ssts_0081"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RoofLHALampBrthngCmd_1 = 0x3–0xC or 0xE Mode Gradient Adjustment",
+    "relation": "依赖于",
+    "tail": "AmbtLampBrthngRateXholdoffPercent Parameter",
+    "sources": ["inner_lamp_ssts_0081"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Time A Calculation",
+    "relation": "依赖于",
+    "tail": "RoofLHALampBrthngCmd_1 Cycle RateX and AmbtLampBrthngRateXholdoffPercent",
+    "sources": ["inner_lamp_ssts_0081"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Time B Calculation",
+    "relation": "依赖于",
+    "tail": "RoofLHALampBrthngCmd_1 Cycle",
+    "sources": ["inner_lamp_ssts_0081"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System Control Code 4520",
+    "relation": "输入为",
+    "tail": "Parameter Values: 84, 11300, 79",
+    "sources": ["inner_lamp_ssts_0082"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System Control Code 4560",
+    "relation": "输入为",
+    "tail": "Parameter Values: 83, 11400, 79",
+    "sources": ["inner_lamp_ssts_0082"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System Control Code 4600",
+    "relation": "输入为",
+    "tail": "Parameter Values: 82, 11500, 79",
+    "sources": ["inner_lamp_ssts_0082"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System Control Code 4640",
+    "relation": "输入为",
+    "tail": "Parameter Values: 81, 11600, 79",
+    "sources": ["inner_lamp_ssts_0082"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System Control Code 4680",
+    "relation": "输入为",
+    "tail": "Parameter Values: 80, 11700, 79",
+    "sources": ["inner_lamp_ssts_0082"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System Control Code 4720",
+    "relation": "输入为",
+    "tail": "Parameter Values: 79, 11800, 79",
+    "sources": ["inner_lamp_ssts_0082"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System Control Code 4760",
+    "relation": "输入为",
+    "tail": "Parameter Values: 78, 11900, 79",
+    "sources": ["inner_lamp_ssts_0082"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "输出为",
+    "tail": "Target Luminance Value",
+    "sources": ["inner_lamp_ssts_0083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System",
+    "relation": "消耗",
+    "tail": "Power",
+    "sources": ["inner_lamp_ssts_0083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System Operation at Brightness Level 2360",
+    "relation": "触发条件",
+    "tail": "Target Luminance Value = 5900 cd/m² and Power Consumption = 1000",
+    "sources": ["inner_lamp_ssts_0083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System Operation at Brightness Level 4000",
+    "relation": "触发条件",
+    "tail": "Target Luminance Value = 10000 cd/m² and Power Consumption = 79",
+    "sources": ["inner_lamp_ssts_0083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System Power Consumption",
+    "relation": "依赖于",
+    "tail": "Brightness Level",
+    "sources": ["inner_lamp_ssts_0083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Sub System Target Luminance Value",
+    "relation": "依赖于",
+    "tail": "Brightness Level",
+    "sources": ["inner_lamp_ssts_0083"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color Change Request Processing",
+    "relation": "触发条件",
+    "tail": "CnsoLHALampColorCmd_1 ≠ 0x00",
+    "sources": ["inner_lamp_ssts_0084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Turn Off",
+    "relation": "触发条件",
+    "tail": "CnsoLHALampOnOff_1 = 0x0",
+    "sources": ["inner_lamp_ssts_0084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Turn Off",
+    "relation": "故障响应",
+    "tail": "Overvoltage or Undervoltage Fault in Ambient Lamp Module",
+    "sources": ["inner_lamp_ssts_0078", "inner_lamp_ssts_0084", "inner_lamp_ssts_0115", "inner_lamp_ssts_0455"],
+    "conflict": true,
+    "conflict_note": "Same head/relation pair ('Ambient Lamp Turn Off' + '故障响应') with identical tail semantics across multiple sources — merged but retains all source IDs; no semantic conflict detected."
+  },
+  {
+    "head": "Ambient Lamp Turn Off",
+    "relation": "超时约束",
+    "tail": "No LIN Signal from ZCU for >6s",
+    "sources": ["inner_lamp_ssts_0078", "inner_lamp_ssts_0084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp State Retention",
+    "relation": "故障响应",
+    "tail": "CnsoLHALampColorCmd_1 Abnormal",
+    "sources": ["inner_lamp_ssts_0084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "PWM Driving Signal Generation",
+    "relation": "输出为",
+    "tail": "PWM signal generated per color coordinate lookup table to drive ambient lamp color transition",
+    "sources": ["inner_lamp_ssts_0084"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Mode Activation",
+    "relation": "触发条件",
+    "tail": "DoorFR1LampBrthngCmd_l = 0x3 (Rate3, 1s period)",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Quadratic Curve",
+    "relation": "依赖于",
+    "tail": "AmbtLampBrthngRate3holdoffPercent = 10%",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Ramp-Up",
+    "relation": "输入为",
+    "tail": "400ms time interval",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Ramp-Down",
+    "relation": "输入为",
+    "tail": "400ms time interval",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Level for Rate13",
+    "relation": "输出为",
+    "tail": "Brightness values (100% scale) mapped from 0 to 4",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Level for Rate15",
+    "relation": "输出为",
+    "tail": "Brightness values (1000 → 100% scale) mapped from 78 to 355",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Cycle Period",
+    "relation": "超时约束",
+    "tail": "1s",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Hold-off Phase Duration",
+    "relation": "超时约束",
+    "tail": "100ms",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Sampling Interval for Rate13",
+    "relation": "超时约束",
+    "tail": "40ms",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Sampling Interval for Rate15",
+    "relation": "超时约束",
+    "tail": "100ms",
+    "sources": ["inner_lamp_ssts_0085"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0 Platform",
+    "relation": "控制对象",
+    "tail": "Interior Lighting Sub System",
+    "sources": ["inner_lamp_ssts_0086", "inner_lamp_ssts_0248", "inner_lamp_ssts_0312"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Light Control Activation",
+    "relation": "前提条件",
+    "tail": "Lighting_Mode = 'Daytime_Lighting' AND Vehicle_Speed < 50 km/h",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Trunk Operation Enablement",
+    "relation": "前提条件",
+    "tail": "Trunk_Open_Status = 'Open' AND Vehicle_Speed < 10 km/h",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Light Control Inhibition",
+    "relation": "抑制条件",
+    "tail": "Lighting_Mode = 'Night_Road_Lighting' OR Vehicle_Speed ≥ 50 km/h",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Electric Trunk Operation Inhibition",
+    "relation": "抑制条件",
+    "tail": "Trunk_Open_Status = 'Closed' OR Vehicle_Speed ≥ 10 km/h",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Light Brightness Level",
+    "relation": "输入为",
+    "tail": "Lighting_Mode = 'Daytime_Lighting'",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Trunk Motor Current",
+    "relation": "输入为",
+    "tail": "Trunk_Open_Status = 'Open'",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Light Duration",
+    "relation": "输入为",
+    "tail": "Lighting_Mode = 'Daytime_Lighting'",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Control Module Error Detection",
+    "relation": "故障响应",
+    "tail": "Exterior Light Control disabled and Electric Trunk operation disabled",
+    "sources": ["inner_lamp_ssts_0087"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "LHZCU",
+    "relation": "控制对象",
+    "tail": "DoorAmisLampA_FL",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "RHZCU",
+    "relation": "控制对象",
+    "tail": "DoorAmisLampA_FR",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "OHC",
+    "relation": "控制对象",
+    "tail": "MapLamp_FL",
+    "sources": ["inner_lamp_ssts_0088"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

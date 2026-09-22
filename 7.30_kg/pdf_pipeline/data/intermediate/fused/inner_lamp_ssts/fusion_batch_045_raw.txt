@@ -1,0 +1,468 @@
+```json
+[
+  {
+    "head": "Ambient Lamp Color Remains Unchanged",
+    "relation": "Suppression Condition",
+    "tail": "RoofLHALampColorCmd_1 = 0x00 or undefined color code",
+    "sources": ["inner_lamp_ssts_0497"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Turns OFF",
+    "relation": "Suppression Condition",
+    "tail": "RoofLHALampOnOff_1 = 0x0",
+    "sources": ["inner_lamp_ssts_0497"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Color Switching",
+    "relation": "Depends On",
+    "tail": "RoofLHALampColorCmd_1",
+    "sources": ["inner_lamp_ssts_0497"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Turns OFF",
+    "relation": "Depends On",
+    "tail": "RoofLHALampOnOff_1",
+    "sources": ["inner_lamp_ssts_0497"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp State Maintained",
+    "relation": "Fault Response",
+    "tail": "RoofLHALampColorCmd_1 abnormal",
+    "sources": ["inner_lamp_ssts_0497"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp System Enabled",
+    "relation": "Trigger Condition",
+    "tail": "Supply Voltage Normal (9V–16V)",
+    "sources": ["inner_lamp_ssts_0498", "inner_lamp_ssts_0502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp System Disabled",
+    "relation": "Prerequisite Condition",
+    "tail": "Supply Voltage Low (<6V)",
+    "sources": ["inner_lamp_ssts_0498", "inner_lamp_ssts_0502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp System Disabled",
+    "relation": "Prerequisite Condition",
+    "tail": "Supply Voltage Under-voltage (6V–9V)",
+    "sources": ["inner_lamp_ssts_0498", "inner_lamp_ssts_0502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp System Disabled",
+    "relation": "Prerequisite Condition",
+    "tail": "Supply Voltage Over-voltage (16V–18V)",
+    "sources": ["inner_lamp_ssts_0498", "inner_lamp_ssts_0502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp System Disabled",
+    "relation": "Prerequisite Condition",
+    "tail": "Supply Voltage High (>18V)",
+    "sources": ["inner_lamp_ssts_0498", "inner_lamp_ssts_0502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp System Enabled",
+    "relation": "Input Is",
+    "tail": "Supply Voltage Normal (9V–16V)",
+    "sources": ["inner_lamp_ssts_0498"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp System Disabled",
+    "relation": "Input Is",
+    "tail": "Supply Voltage Low (<6V)",
+    "sources": ["inner_lamp_ssts_0498"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp System Disabled",
+    "relation": "Input Is",
+    "tail": "Supply Voltage Under-voltage (6V–9V)",
+    "sources": ["inner_lamp_ssts_0498"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp System Disabled",
+    "relation": "Input Is",
+    "tail": "Supply Voltage Over-voltage (16V–18V)",
+    "sources": ["inner_lamp_ssts_0498"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Exterior Lamp System Disabled",
+    "relation": "Input Is",
+    "tail": "Supply Voltage High (>18V)",
+    "sources": ["inner_lamp_ssts_0498"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Executes Breathing Control",
+    "relation": "Trigger Condition",
+    "tail": "UpIPALampBrthngCmd_1 ≠ 0x0 (No Request) AND AmbtLghtRHRollingCtr_1 active",
+    "sources": ["inner_lamp_ssts_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Brightness Controlled by LIN Module",
+    "relation": "Depends On",
+    "tail": "UpIPALampBrtnsCmd_1",
+    "sources": ["inner_lamp_ssts_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Current Breathing Mode Stops",
+    "relation": "Trigger Condition",
+    "tail": "Breathing mode switching occurs",
+    "sources": ["inner_lamp_ssts_0499", "inner_lamp_ssts_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPALampBrthngCmd_1",
+    "relation": "Supports Sub-function",
+    "tail": "0%–100% step transition",
+    "sources": ["inner_lamp_ssts_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "UpIPALampBrthngCmd_1",
+    "relation": "Supports Sub-function",
+    "tail": "0%–100% smooth transition",
+    "sources": ["inner_lamp_ssts_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Breathing Pattern: 250ms ON (100%) + 250ms OFF (0%)",
+    "relation": "Input Is",
+    "tail": "UpIPALampBrthngCmd_1 = 0x1 (Rate1: 500ms, step transition)",
+    "sources": ["inner_lamp_ssts_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "0%–100% step transition",
+    "relation": "Input Is",
+    "tail": "UpIPALampBrthngCmd_1 = 0x1",
+    "sources": ["inner_lamp_ssts_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "0%–100% smooth transition",
+    "relation": "Input Is",
+    "tail": "UpIPALampBrthngCmd_1 = 0x2 (Rate2: 1s, smooth transition)",
+    "sources": ["inner_lamp_ssts_0499"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Z-ONE-3.0 Platform-SSTS-IBD10",
+    "relation": "Controls",
+    "tail": "Interior Lighting Subsystem",
+    "sources": ["inner_lamp_ssts_0500"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR6LampFadeSpdCmd_1 Activated",
+    "relation": "Trigger Condition",
+    "tail": "RHZCU_LIN4 input signal valid (0x0–0x3)",
+    "sources": ["inner_lamp_ssts_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR6LampFadeSpdCmd_1 Suppressed",
+    "relation": "Suppression Condition",
+    "tail": "Command value = 0x0",
+    "sources": ["inner_lamp_ssts_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "DoorRR6LampFadeSpdCmd_1 Output Behavior",
+    "relation": "Output Is",
+    "tail": "DoorAmbtLampFRR",
+    "sources": ["inner_lamp_ssts_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Breathing Mode Switching Behavior",
+    "relation": "Suppression Condition",
+    "tail": "Immediately stop current breathing and switch to next mode",
+    "sources": ["inner_lamp_ssts_0501"],
+    "conflict": true,
+    "conflict_note": "Conflicts with 'Trigger Condition: Breathing mode switching occurs' — same head/relation but opposite semantic intent (one triggers action, one suppresses it as a condition). Likely reflects dual-phase control logic (trigger initiates switch; suppression defines how it's executed), but phrasing creates ambiguity. Retained with conflict flag pending clarification."
+  },
+  {
+    "head": "Lamp Head Flashing Behavior",
+    "relation": "Depends On",
+    "tail": "Corresponding breathing cycle command",
+    "sources": ["inner_lamp_ssts_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Lamp Head Flashing Behavior",
+    "relation": "Timeout Constraint",
+    "tail": "Brightness signals ignored during breathing execution",
+    "sources": ["inner_lamp_ssts_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Ambient Lamp Fade Speed Command",
+    "relation": "Input Is",
+    "tail": "LIN bus signal",
+    "sources": ["inner_lamp_ssts_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Spd0 Response Time",
+    "relation": "State Hold Condition",
+    "tail": "Default speed Spd0: 2000ms",
+    "sources": ["inner_lamp_ssts_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Spd1 Response Time",
+    "relation": "State Hold Condition",
+    "tail": "Spd1: 300ms",
+    "sources": ["inner_lamp_ssts_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Spd2 Response Time",
+    "relation": "State Hold Condition",
+    "tail": "Spd2: 100ms",
+    "sources": ["inner_lamp_ssts_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Spd2 Response Time",
+    "relation": "State Hold Condition",
+    "tail": "(Reserved capability)",
+    "sources": ["inner_lamp_ssts_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Spd3 Response Time",
+    "relation": "State Hold Condition",
+    "tail": "Spd3: (reserved, value 0)",
+    "sources": ["inner_lamp_ssts_0501"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Enabled",
+    "relation": "Prerequisite Condition",
+    "tail": "Supply Voltage Normal (9V–16V)",
+    "sources": ["inner_lamp_ssts_0502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disabled",
+    "relation": "Suppression Condition",
+    "tail": "Supply Voltage Low (<6V)",
+    "sources": ["inner_lamp_ssts_0502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disabled",
+    "relation": "Suppression Condition",
+    "tail": "Supply Voltage Under-voltage (6V–9V)",
+    "sources": ["inner_lamp_ssts_0502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disabled",
+    "relation": "Suppression Condition",
+    "tail": "Supply Voltage Over-voltage (16V–18V)",
+    "sources": ["inner_lamp_ssts_0502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "System Function Disabled",
+    "relation": "Suppression Condition",
+    "tail": "Supply Voltage High (>18V)",
+    "sources": ["inner_lamp_ssts_0502"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem Outputs Orange Light",
+    "relation": "Trigger Condition",
+    "tail": "Parameter Code = 213",
+    "sources": ["inner_lamp_ssts_0503"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem Outputs Amber-Red Light",
+    "relation": "Trigger Condition",
+    "tail": "Parameter Code = 214",
+    "sources": ["inner_lamp_ssts_0503"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem Outputs Red Light",
+    "relation": "Trigger Condition",
+    "tail": "Parameter Code = 233",
+    "sources": ["inner_lamp_ssts_0503"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem Outputs Pink Light",
+    "relation": "Trigger Condition",
+    "tail": "Parameter Code = 244",
+    "sources": ["inner_lamp_ssts_0503"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem Outputs Dynamic Skin Signal",
+    "relation": "Trigger Condition",
+    "tail": "Parameter Code = 247 or 255",
+    "sources": ["inner_lamp_ssts_0503"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem Outputs High Brightness",
+    "relation": "Input Is",
+    "tail": "Fourth Parameter Value (e.g., PWM Duty Cycle) is high",
+    "sources": ["inner_lamp_ssts_0503"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem Outputs Low Brightness",
+    "relation": "Input Is",
+    "tail": "Fourth Parameter Value (e.g., PWM Duty Cycle) is low",
+    "sources": ["inner_lamp_ssts_0503"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem Outputs Orange Light",
+    "relation": "Depends On",
+    "tail": "First Parameter Value (Red Channel) high AND Second Parameter Value (Green Channel) moderate",
+    "sources": ["inner_lamp_ssts_0503"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Interior Lighting Subsystem Outputs Red Light",
+    "relation": "Depends On",
+    "tail": "First Parameter Value (Red Channel) very high AND Second Parameter Value (Green Channel) very low",
+    "sources": ["inner_lamp_ssts_0503"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Turns ON",
+    "relation": "Trigger Condition",
+    "tail": "DoorFR2LampOnOff_1 = 0x1 (ON) received via LIN",
+    "sources": ["inner_lamp_ssts_0504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Turns OFF",
+    "relation": "Trigger Condition",
+    "tail": "DoorFR2LampOnOff_1 = 0x0 (OFF) received via LIN",
+    "sources": ["inner_lamp_ssts_0504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Brightness Adjusted",
+    "relation": "Trigger Condition",
+    "tail": "DoorFR2LampBrtnsCmd_1 ∈ [0x65, 0xFF] received via LIN",
+    "sources": ["inner_lamp_ssts_0504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Color Set",
+    "relation": "Trigger Condition",
+    "tail": "DoorFR2LampColorCmd_1 ∈ [0x01, 0xFF] received via LIN",
+    "sources": ["inner_lamp_ssts_0504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Color Maintained",
+    "relation": "Trigger Condition",
+    "tail": "DoorFR2LampColorCmd_1 = 0x0 (No Request) received via LIN",
+    "sources": ["inner_lamp_ssts_0504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Brightness Maintained",
+    "relation": "Trigger Condition",
+    "tail": "DoorFR2LampBrtnsCmd_1 = 0x0 (No Request) received via LIN",
+    "sources": ["inner_lamp_ssts_0504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Brightness Maintained",
+    "relation": "State Hold Condition",
+    "tail": "DoorFR2LampBrtnsCmd_1 = 0x0 (No Request) received via LIN",
+    "sources": ["inner_lamp_ssts_0504"],
+    "conflict": false,
+    "conflict_note": ""
+  },
+  {
+    "head": "Front Right Door Ambient Lamp Color Maintained",
+    "relation": "State Hold Condition",
+    "tail": "DoorFR2LampColorCmd_1 = 0x0 (No Request) received via LIN",
+    "sources": ["inner_lamp_ssts_0504"],
+    "conflict": false,
+    "conflict_note": ""
+  }
+]
+```

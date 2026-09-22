@@ -1,0 +1,109 @@
+[
+  {
+    "head": "危险报警灯功能启用",
+    "relation": "前提条件",
+    "tail": "配置字 HzrdLightSwSOAEnPrm == 1 (Enable)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "前置条件",
+      "HzrdLightSwSOAEnPrm"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0034",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险报警灯状态发送",
+    "relation": "触发条件",
+    "tail": "用户松开危险报警灯开关,开关悬空",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "触发条件",
+      "HzrdLightSwMdl",
+      "HazardLightSwitchStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0034",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "HzrdLightSwMdl 模块持续发送 HazardLightSwitchStatus",
+    "relation": "依赖于",
+    "tail": "危险报警灯状态发送",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "HzrdLightSwMdl",
+      "HazardLightSwitchStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0034",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "HzrdLghtCtrlMdl 接收 HazardLightSwitchStatus",
+    "relation": "依赖于",
+    "tail": "HzrdLightSwMdl 模块持续发送 HazardLightSwitchStatus",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "HzrdLghtCtrlMdl",
+      "HzrdLightSwMdl",
+      "HazardLightSwitchStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0034",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "危险报警灯功能退出",
+    "relation": "复位条件",
+    "tail": "开关接地",
+    "triple_type": "功能退出条件",
+    "evidence_terms": [
+      "退出条件",
+      "HzrdLightSwMdl",
+      "HzrdLghtCtrlMdl"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0034",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "HzrdLightSwMdl 模块持续发送 HazardLightSwitchStatus",
+    "relation": "状态保持条件",
+    "tail": "用户松开危险报警灯开关,开关悬空",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "执行动作",
+      "触发条件",
+      "HzrdLightSwMdl",
+      "HazardLightSwitchStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0034",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "HzrdLightSwMdl 模块至少发送三帧 HazardLightSwitchStatus",
+    "relation": "超时约束",
+    "tail": "用户松开危险报警灯开关,开关悬空",
+    "triple_type": "时序约束",
+    "evidence_terms": [
+      "执行动作",
+      "触发条件",
+      "HzrdLightSwMdl",
+      "HazardLightSwitchStatus"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_ssts_0034",
+    "source_doc_id": "outer_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

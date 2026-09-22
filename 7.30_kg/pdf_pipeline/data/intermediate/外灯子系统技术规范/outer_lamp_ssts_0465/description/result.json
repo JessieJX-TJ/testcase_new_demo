@@ -1,0 +1,46 @@
+{
+  "table_type": "logic_table",
+  "topic": "外灯转向灯控制逻辑",
+  "row_semantics": "逐行描述触发条件和执行动作的逻辑关系",
+  "column_semantics": "第一列定义前置条件，第二列定义触发条件，第三列定义执行动作",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "DILightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "转向灯反馈系统开环保护使能参数"
+    },
+    {
+      "name": "DILightCtrlMdl",
+      "type": "module",
+      "description": "转向灯控制模块"
+    },
+    {
+      "name": "RLDILightDrvMdl",
+      "type": "module",
+      "description": "右后转向灯驱动模块"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "DILightFbkSOAEnPrm == 1 (Enable)",
+      "description": "转向灯反馈系统开环保护功能已启用"
+    },
+    {
+      "condition": "收到【DILightCtrlMdl】发送的 DirectionLightControl. DirectionLightCtrlReq == 1 (On) InstanceID=3",
+      "description": "接收到转向灯控制模块发出的方向灯控制请求，请求为开启状态，实例ID为3"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "RLDILightDrvMdl",
+      "action": "持续驱动左后转向灯输出 (DILamp_LH_HSD)",
+      "description": "右后转向灯驱动模块持续驱动左后转向灯输出"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格用于验证当转向灯反馈系统开环保护功能启用时，接收到特定转向灯控制请求后，右后转向灯驱动模块是否能够正确持续驱动左后转向灯输出。",
+  "uncertain_points": []
+}

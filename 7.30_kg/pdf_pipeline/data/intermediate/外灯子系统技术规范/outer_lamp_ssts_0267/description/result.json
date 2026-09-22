@@ -1,0 +1,80 @@
+{
+  "table_type": "fault_table",
+  "topic": "右前雾灯短路故障诊断与处理",
+  "row_semantics": "表格按功能流程顺序排列，描述了从故障检测到处理的完整逻辑。",
+  "column_semantics": {
+    "前置条件": "触发故障诊断的前提状态。",
+    "触发条件": "导致系统进入故障处理模式的具体事件或信号变化。",
+    "执行动作": "系统在检测到故障后执行的一系列操作，包括信号发送和状态设置。",
+    "退出条件": "故障处理结束、系统恢复正常的状态。",
+    "异常处理": "未定义或预留的异常情况处理规则。"
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "FrtFogLghtDrvMdl",
+      "type": "controller_module",
+      "description": "前雾灯驱动模块，负责控制前雾灯的操作和状态反馈。"
+    },
+    {
+      "name": "DTC B1053 12",
+      "type": "fault_code",
+      "description": "诊断故障代码，用于记录和报告特定的电气故障（此处为右前雾灯短路）。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "右前雾灯处于关闭状态",
+      "source": "前置条件",
+      "description": "系统在检查故障前，确保右前雾灯当前处于关闭状态，以避免干扰判断。"
+    },
+    {
+      "condition": "检测到右前雾灯短路到电源",
+      "source": "触发条件",
+      "description": "系统通过监测电路状态，确认右前雾灯存在短路至电源的故障。"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "source": "退出条件",
+      "description": "当系统检测到短路故障已解除时，退出故障处理模式。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "signal": "RFrtFogLghtFltSts",
+      "value": "0x1 (True)",
+      "action": "持续发送",
+      "module": "FrtFogLghtDrvMdl",
+      "description": "向车身控制器发送右前雾灯故障状态为真，表示存在故障。",
+      "repetition": "至少三帧"
+    },
+    {
+      "signal": "FrontFogLightErrorStatus",
+      "value": "0x1 (Error)",
+      "instance_id": "4",
+      "action": "持续发送",
+      "module": "FrtFogLghtDrvMdl",
+      "description": "向车身控制器发送前雾灯错误状态为错误，具体实例ID为4，表示特定的故障类型。",
+      "repetition": "至少三帧"
+    },
+    {
+      "action": "置位",
+      "fault_code": "DTC B1053 12",
+      "description": "系统将诊断故障代码B1053 12置位，用于记录该故障以便后续诊断和维修。",
+      "repetition": "一次"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault_name": "Right Front Fog Light Short to Power",
+      "code": "DTC B1053 12",
+      "description": "右前雾灯与电源之间发生短路故障。",
+      "severity": "High",
+      "impact": "可能导致雾灯无法正常工作，影响夜间行车安全。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格详细定义了右前雾灯短路故障的诊断逻辑、系统响应动作及故障代码记录规则，可用于验证整车电子电器系统在检测到此类电气故障时的行为是否符合设计规范。",
+  "uncertain_points": []
+}

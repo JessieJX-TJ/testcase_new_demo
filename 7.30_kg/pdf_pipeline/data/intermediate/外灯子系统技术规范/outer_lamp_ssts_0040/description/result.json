@@ -1,0 +1,55 @@
+{
+  "table_type": "parameter_table",
+  "topic": "Right Rear Turn Signal Lamp Status Control and Monitoring",
+  "row_semantics": "The left column defines the functional parameter being controlled or monitored, while the right column provides detailed parameter definitions including instance ID, possible values, and their meanings.",
+  "column_semantics": "The table has a single main column on the left for parameter names and a merged cell area on the right that contains detailed parameter information. There are no distinct columns for different data types or categories.",
+  "has_merged_cells": true,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "DirectionLightCtrlReq",
+      "type": "input_parameter",
+      "description": "Request to control the direction light (turn signal)."
+    },
+    {
+      "name": "DirectionLightState",
+      "type": "output_parameter",
+      "description": "Current state of the direction light."
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "DirectionLightState",
+      "values": [
+        {
+          "value": "0x0",
+          "meaning": "OFF"
+        },
+        {
+          "value": "0x1",
+          "meaning": "On"
+        },
+        {
+          "value": "0x2",
+          "meaning": "Error"
+        },
+        {
+          "value": "0x3",
+          "meaning": "Unknown"
+        }
+      ],
+      "description": "Indicates the operational status of the right rear turn signal lamp."
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "Error",
+      "value": "0x2",
+      "description": "Indicates a fault condition in the direction light system."
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the parameters for controlling and monitoring the right rear turn signal lamp's state within a vehicle's exterior lighting system, specifying valid input commands and output states.",
+  "uncertain_points": []
+}

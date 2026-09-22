@@ -1,0 +1,61 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "诊断DTC需求清单",
+  "row_semantics": "表格中的每一行代表一个具体的故障诊断代码（DTC）及其相关条件和恢复条件。",
+  "column_semantics": {
+    "序号": "故障条目的编号，用于唯一标识该故障信息。",
+    "DTC 显示码": "故障诊断代码的显示标识符，用于在车辆诊断系统中识别特定故障。",
+    "故障描述": "对故障现象的详细描述，帮助理解故障的本质。",
+    "故障置位条件": "触发故障代码设置的具体条件或事件。",
+    "故障恢复条件": "清除故障代码所需的条件或状态。",
+  },
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "Timed delay Control Circuit short to ground",
+      "type": "功能名",
+      "description": "定时延迟控制电路短路至地的故障现象。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "节电延时驱动激活状态",
+      "description": "节电模式下延时驱动功能被激活的状态。",
+      "source": "故障置位条件"
+    },
+    {
+      "condition": "驱动电流超过阈值 (TBD)A, 持续 100ms",
+      "description": "驱动电流超过预设阈值(TBD)安培，并持续100毫秒。",
+      "source": "故障置位条件"
+    },
+    {
+      "condition": "电流有效值小于 (TBD)A",
+      "description": "电流有效值低于预设阈值(TBD)安培。",
+      "source": "故障恢复条件"
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [
+    {
+      "code": "TBD",
+      "description": "定时延迟控制电路短路至地的故障代码。",
+      "type": "故障状态"
+    }
+  ],
+  "core_timing_constraints": [
+    {
+      "constraint": "持续 100ms",
+      "description": "故障置位条件中电流超过阈值需要持续100毫秒。",
+      "source": "故障置位条件"
+    }
+  ],
+  "engineering_interpretation": "该表格定义了针对‘定时延迟控制电路短路至地’这一故障的诊断逻辑，包括其触发条件、恢复条件及相关的阈值和时间限制，可用于验证车辆电子控制系统在特定故障情况下的诊断功能是否符合设计要求。",
+  "uncertain_points": [
+    "DTC 显示码为 TBD，具体代码未明确给出。",
+    "阈值 (TBD)A 具体数值未明确给出。",
+    "故障恢复条件中电流有效值小于 (TBD)A 的具体阈值未明确给出。"
+  ]
+}
+```

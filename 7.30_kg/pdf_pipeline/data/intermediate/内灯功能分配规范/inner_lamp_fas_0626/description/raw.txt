@@ -1,0 +1,44 @@
+```json
+{
+  "table_type": "structure_table",
+  "topic": "后备箱灯物理框图",
+  "row_semantics": "无行概念，为单层结构图",
+  "column_semantics": "无列概念，为水平连接示意图",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RZCU/LHZCU",
+      "type": "controller",
+      "description": "区域控制单元/左后区域控制单元，负责后备箱灯的控制"
+    },
+    {
+      "name": "OPH",
+      "type": "module",
+      "description": "外部照明模块，作为RZCU/LHZCU的子模块"
+    },
+    {
+      "name": "LdspcLamp_LH",
+      "type": "output_signal",
+      "description": "左侧后备箱灯信号"
+    },
+    {
+      "name": "LdspcLamp_RH",
+      "type": "output_signal",
+      "description": "右侧后备箱灯信号"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "LdspcLamp_HSD",
+      "type": "signal",
+      "description": "后备箱灯高速数据总线信号，从OPH输出至LdspcLamp_LH和LdspcLamp_RH"
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该图用于验证RZCU/LHZCU系统对后备箱灯（LdspcLamp_LH和LdspcLamp_RH）的控制功能，确保通过OPH模块输出的LdspcLamp_HSD信号能够正确驱动两侧后备箱灯。",
+  "uncertain_points": []
+}
+```

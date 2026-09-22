@@ -1,0 +1,112 @@
+[
+  {
+    "head": "危险警报灯自动控制模块 LHZCU 将转向灯控制状态反馈至 SDM",
+    "relation": "输出为",
+    "tail": "EDRDircnIndLampSwSts_0_off",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "危险警报灯自动控制模块 LHZCU",
+      "转向灯控制状态",
+      "SDM",
+      "EDRDircnIndLampSwSts_0_off"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1526",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "ICB 状态/故障状态反馈至 LHZCU",
+    "relation": "依赖于",
+    "tail": "FLDircnLghtSts_0_Off, FRDircnLghtSts_0_Off, RLDircnLghtSts_0_Off, RRDirenLghtSts_0_Off, FLDirenLghtFltsts_0_False, FRDirenLghtFltsts_0_False, RLDirenLghtFltsts_0_False, RRDirenLghtFltsts_0_False",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LHZCU",
+      "方向灯状态",
+      "方向灯故障状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1526",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU 将状态/故障状态反馈至 ICB",
+    "relation": "输出为",
+    "tail": "DirenLghtSts=0x0=OFF, DircnLghtFltsts=0x0=DircnLghtFltsts_0_False",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "危险警报灯自动控制模块 LHZCU",
+      "ICB",
+      "方向灯状态",
+      "方向灯故障状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1526",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "外灯组合服务 ICB 订阅接口",
+    "relation": "输出为",
+    "tail": "{ExteriorLightControlSystem. DirectionLightSts. DirectionLghtSts}=0x0=No Flash",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "外灯组合服务 ICB",
+      "ExteriorLightControlSystem",
+      "方向灯状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1526",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "危险警报灯自动控制模块 LHZCU 将实时状态发送至 ICB",
+    "relation": "输出为",
+    "tail": "VehHzrdMdSts== VehHzrdMdSts_0_No_Request;(PPV)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "危险警报灯自动控制模块 LHZCU",
+      "ICB",
+      "车辆危险模式状态"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1526",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "危险警报灯同步性要求 (a&b)",
+    "relation": "超时约束",
+    "tail": "50ms; // 三者同步性允许的最大延时",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "危险警报灯",
+      "图标闪烁频率",
+      "声音提醒",
+      "实际危险警报灯闪烁频率",
+      "三者同步性"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1526",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  },
+  {
+    "head": "危险警报灯同步性要求 (a&b)",
+    "relation": "超时约束",
+    "tail": "40ms; // 危险警报灯的同步性允许的最大延时周期",
+    "triple_type": "时序、保持、复位相关约束",
+    "evidence_terms": [
+      "危险警报灯",
+      "同步性",
+      "最大延时周期"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "outer_lamp_fas_1526",
+    "source_doc_id": "outer_lamp_fas",
+    "source_table_type": "state_table"
+  }
+]

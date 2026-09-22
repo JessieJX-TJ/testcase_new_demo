@@ -1,0 +1,55 @@
+{
+  "table_type": "state_table",
+  "topic": "倒车灯驱动处理模块的状态描述",
+  "row_semantics": "表格的每一行代表倒车灯系统在特定状态下的一个属性或变量的定义及其当前值。",
+  "column_semantics": "表格没有明确的列，而是通过文本描述来定义每个状态变量的名称和值。",
+  "has_merged_cells": false,
+  "header_levels": 0,
+  "core_entities": [
+    {
+      "name": "RevsLightSts",
+      "type": "system_state",
+      "description": "倒车灯状态，表示当前倒车灯的实际执行情况。"
+    },
+    {
+      "name": "RevsLightFltSts",
+      "type": "system_state",
+      "description": "倒车灯故障状态，表示倒车灯是否存在故障。"
+    },
+    {
+      "name": "ReverseLight",
+      "type": "output_signal",
+      "description": "倒车灯输出信号，控制倒车灯的亮灭。"
+    },
+    {
+      "name": "ReverseLightState",
+      "type": "output_signal",
+      "description": "倒车灯状态信号，指示倒车灯当前是开启还是关闭。"
+    },
+    {
+      "name": "ReverseLightErrorStatus",
+      "type": "fault_status",
+      "description": "倒车灯错误状态，表示倒车灯是否存在错误。"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "ReverseLight",
+      "description": "倒车灯的物理输出，由系统控制点亮或熄灭。"
+    },
+    {
+      "name": "ReverseLightState",
+      "description": "倒车灯的逻辑状态，表示倒车灯当前是ON还是OFF。"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "ReverseLightErrorStatus",
+      "description": "倒车灯系统的错误状态，用于检测倒车灯是否出现异常。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了倒车灯驱动处理模块的关键状态变量及其当前值，可用于验证倒车灯系统在不同状态下的行为是否符合设计规范，例如检查倒车灯是否正确响应控制信号、是否报告正确的状态以及是否正确检测和报告故障。",
+  "uncertain_points": []
+}

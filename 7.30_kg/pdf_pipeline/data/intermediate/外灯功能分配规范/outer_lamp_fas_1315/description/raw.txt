@@ -1,0 +1,98 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "整车外灯转向灯状态与故障检测",
+  "row_semantics": "表格按功能模块划分，每一行代表一个特定的转向灯状态或故障状态信息。",
+  "column_semantics": {
+    "0": "输出类型（Output Type）",
+    "1": "CANFD (Controller Area Network Flexible Data Rate)",
+    "2": "ICB (Integrated Control Board)",
+    "3": "LHZCU (Local Zone Control Unit)",
+    "4": "网络状态 (Network Status)"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "RLDircnLghtSts",
+      "description": "左后转向灯状态"
+    },
+    {
+      "name": "RRDircnLghtSts",
+      "description": "右后转向灯状态"
+    },
+    {
+      "name": "FLDircnLghtFltsts",
+      "description": "左前转向灯故障状态"
+    },
+    {
+      "name": "FRDircnLghtFltsts",
+      "description": "右前转向灯故障状态"
+    },
+    {
+      "name": "RLDircnLghtFltsts",
+      "description": "左后转向灯故障状态"
+    }
+  ],
+  "core_conditions": [],
+  "core_outputs": [
+    {
+      "name": "RLDircnLghtSts_0_Off",
+      "description": "左后转向灯关闭状态"
+    },
+    {
+      "name": "RLDircnLghtSts_1_On",
+      "description": "左后转向灯开启状态"
+    },
+    {
+      "name": "RRDircnLghtSts_0_Off",
+      "description": "右后转向灯关闭状态"
+    },
+    {
+      "name": "RRDircnLghtSts_1_On",
+      "description": "右后转向灯开启状态"
+    },
+    {
+      "name": "FLDircnLghtFltsts_0_False",
+      "description": "左前转向灯无故障状态"
+    },
+    {
+      "name": "FLDircnLghtFltsts_1_True",
+      "description": "左前转向灯存在故障状态"
+    },
+    {
+      "name": "FRDircnLghtFltsts_0_False",
+      "description": "右前转向灯无故障状态"
+    },
+    {
+      "name": "FRDircnLghtFltsts_1_True",
+      "description": "右前转向灯存在故障状态"
+    },
+    {
+      "name": "RLDircnLghtFltsts_0_False",
+      "description": "左后转向灯无故障状态"
+    },
+    {
+      "name": "RLDircnLghtFltsts_1_True",
+      "description": "左后转向灯存在故障状态"
+    }
+  ],
+  "core_faults": [
+    {
+      "name": "FLDircnLghtFltsts",
+      "description": "左前转向灯故障状态"
+    },
+    {
+      "name": "FRDircnLghtFltsts",
+      "description": "右前转向灯故障状态"
+    },
+    {
+      "name": "RLDircnLghtFltsts",
+      "description": "左后转向灯故障状态"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了整车外灯系统中前后左右四个方向转向灯的状态（开启/关闭）及其故障检测状态，可用于验证各转向灯在不同控制器（CANFD, ICB, LHZCU）下的状态输出和故障上报功能是否符合设计规范。",
+  "uncertain_points": []
+}
+```

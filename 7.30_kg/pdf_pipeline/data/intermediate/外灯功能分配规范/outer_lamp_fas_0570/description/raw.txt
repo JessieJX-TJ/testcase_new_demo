@@ -1,0 +1,97 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "外灯功能 (Exterior Lamp Function) 配置与控制规范",
+  "row_semantics": "表格的每一行代表一个独立的外灯相关功能或服务接口，描述其参数、控制逻辑及交互方式。",
+  "column_semantics": {
+    "功能/接口名称": "定义了具体的外灯功能或服务接口的名称。",
+    "消费 SOA": "表示该功能是否通过SOA（Service-Oriented Architecture）进行消费。",
+    "ICB": "表示该功能涉及的控制器模块名称。",
+    "LHZCU": "表示该功能涉及的另一个控制器模块名称。",
+    "其他列": "可能用于进一步的功能分类或扩展信息，但在此表中未具体填充内容。"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "PersonalizationData.FollowMehomeSet",
+      "type": "功能名",
+      "description": "伴我回家个性化功能设置，允许用户启用或禁用近光灯在特定时间后自动熄灭的功能。"
+    },
+    {
+      "name": "DippedBeamLight.ControlDippedBeamLight",
+      "type": "功能名",
+      "description": "左侧近光灯的控制功能，用于点亮或熄灭近光灯。"
+    },
+    {
+      "name": "FoMeHmEnableInfo",
+      "type": "输入信号",
+      "description": "用于配置伴我回家功能的使能状态，包括禁用、默认开启（30秒后熄灭）和完全禁用三种模式。"
+    },
+    {
+      "name": "DippedBeamLightReq",
+      "type": "输入信号",
+      "description": "用于控制左侧近光灯的请求信号，可以是点亮（ON）或熄灭（OFF）。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "控制器/模块名",
+      "description": "Local High-level Zone Control Unit，本地高层区域控制单元，负责处理外灯相关的高级控制逻辑。"
+    },
+    {
+      "name": "ICB",
+      "type": "控制器/模块名",
+      "description": "Integrated Control Board，集成控制板，可能参与外灯功能的底层控制或数据传输。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "FoMeHmEnableInfo",
+      "values": [
+        {
+          "code": "0x0",
+          "value": "NoRequest",
+          "description": "无请求，不执行任何操作。"
+        },
+        {
+          "code": "0x1",
+          "value": "Enabled",
+          "description": "功能启用，默认开启时间为30秒，开启后近光灯将在30秒后熄灭。"
+        },
+        {
+          "code": "0x2",
+          "value": "Disabled",
+          "description": "功能禁用，近光灯不会自动熄灭。"
+        }
+      ]
+    },
+    {
+      "name": "DippedBeamLightReq",
+      "values": [
+        {
+          "code": "0x0",
+          "value": "OFF",
+          "description": "熄灭近光灯。"
+        },
+        {
+          "code": "0x1",
+          "value": "ON",
+          "description": "点亮近光灯。"
+        }
+      ]
+    }
+  ],
+  "core_outputs": [],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "function": "PersonalizationData.FollowMehomeSet",
+      "condition": "FoMeHmEnableInfo = Enabled",
+      "timing": "30 seconds",
+      "description": "当伴我回家功能启用时，近光灯将在30秒后自动熄灭。"
+    }
+  ],
+  "engineering_interpretation": "该表格详细定义了外灯系统的两个核心功能：伴我回家功能的个性化设置以及左侧近光灯的直接控制。可用于验证外灯系统在不同配置下的行为是否符合预期，特别是伴我回家功能的时间延迟和灯光开关状态。",
+  "uncertain_points": []
+}
+```

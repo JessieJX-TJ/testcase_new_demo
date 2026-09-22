@@ -1,0 +1,83 @@
+```json
+{
+  "table_type": "state_table",
+  "topic": "Automatic Lighting System Activation and Deactivation Logic",
+  "row_semantics": "Each row represents a specific condition-action pair for the automatic lighting system, detailing the trigger conditions and corresponding actions taken by the system.",
+  "column_semantics": {
+    "1": "Condition Description",
+    "2": "Trigger Conditions",
+    "3": "Execution Actions"
+  },
+  "has_merged_cells": true,
+  "header_levels": 2,
+  "core_entities": [
+    {
+      "name": "Automatic Lighting Module",
+      "type": "controller",
+      "description": "The central module responsible for managing the automatic lighting functions."
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller",
+      "description": "Lighting and Hazard Warning Control Unit, involved in controlling fog lights and other exterior lighting."
+    },
+    {
+      "name": "ICB",
+      "type": "controller",
+      "description": "Integrated Control Board, used for signal conversion and control of position and near lights."
+    },
+    {
+      "name": "HMI",
+      "type": "interface",
+      "description": "Human-Machine Interface, used to display the status of automatic lighting."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Automatic Lighting Status",
+      "description": "Indicates whether the automatic lighting function is active or inactive."
+    },
+    {
+      "name": "Sunlight/Rain Sensor Mode",
+      "description": "Switches between nighttime and daytime modes based on environmental conditions."
+    },
+    {
+      "name": "Fog Light Status",
+      "description": "Controls the on/off state of front and rear fog lights."
+    },
+    {
+      "name": "Vehicle Motion State",
+      "description": "Indicates whether the vehicle is in TRANSPORT mode (moving) or stationary."
+    },
+    {
+      "name": "User Setting Modes",
+      "description": "Different user-defined settings such as Sleep, Standby, and XOTA (eXtended Operation Time Adjustment)."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Exterior Light Switch Process",
+      "description": "Controls the overall status of exterior lights, including combination lights, fog lights, and side position lights."
+    },
+    {
+      "name": "CAN Signal",
+      "description": "Signal sent to the ICB for converting service/control signals into CAN format for further processing."
+    },
+    {
+      "name": "Dipped Beam Request Status",
+      "description": "Status indicating whether the dipped beam (low beam) is requested or not."
+    },
+    {
+      "name": "HMI Display",
+      "description": "Displays the current status of automatic lighting functions to the driver."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "This table defines the logic for activating and deactivating the automatic lighting system based on various input conditions, such as vehicle motion, user settings, and environmental sensors. It specifies the actions taken by different controllers (LHZCU, ICB) to ensure proper operation of exterior lights under different scenarios.",
+  "uncertain_points": [
+    "The exact threshold values for 'vehRIsType' transitions are not specified in the table.",
+    "The detailed behavior of the 'CombLghtSwSta' parameter when set to AUTO is not fully explained."
+  ]
+}
+```

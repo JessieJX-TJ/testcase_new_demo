@@ -1,0 +1,24 @@
+Method:
+Req:
+Resp:
+2、[后雾灯控制模块LHZCU]接口响应:
+Notifier:
+3、[外灯控制组合服务ICB]调用接口:
+4、[HMI子系统ICB]调用接口:
+获取后雾灯指示灯显示:
+5、[外灯控制组合服务ICB]调用接口:{RearFogLight.RearFogLightControl.RearFogLightCtrReq}=0x1=
+6、[驱动处理模块RZCU内部跳变为硬线输出,驱动后雾灯点亮:
+7、[驱动处理模块RZCU]将状态/故障状态反馈至[后雾灯控制模块LHZCU]:
+{RearFogLight. RearFogLightState. RearFogLightSta}=0x1=ON
+{RearFogLight. RearFogLightErrorStatus. RearFogLightErrorSta}=Ox0=No Error
+8、[后雾灯控制模块LHZCU将状态/故障状态反馈至ICB:
+{ExteriorLightSwitchProcess.RearFogLightSta.RearFogLghtSta}=0x1=ON
+9、[外灯组合服务ICB]订阅接口:
+{ExteriorLightControlSystem. RearFogLightSts. RearFogLghtSts}=0x1=On
+1、后雾灯开启同步性要求:
+左侧和右侧需保持同步点亮,两侧最大延时不能超过40ms
+2、ICB 8295后雾灯光请求重发机制:
+尝试按照<=50ms周期重发3次；尝试重发3次后仍未反馈请求成功,则停止发送
+3、ICB S32GM后雾灯光请求重发机制:
+求状态未变,应尝试按照<=50ms周期重发3次；尝试重发3次后仍未反馈请求成功,则停止发送
+4、ICB S32GM后雾灯请求重发机制:

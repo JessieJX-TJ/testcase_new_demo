@@ -1,0 +1,78 @@
+```json
+{
+  "table_type": "fault_table",
+  "topic": "左远光灯短路故障处理逻辑",
+  "row_semantics": "表格按功能流程顺序排列，从前置条件、触发条件到执行动作、退出条件及异常处理。",
+  "column_semantics": "表格包含两列：左侧为条件/动作描述，右侧为具体参数或指令。",
+  "has_merged_cells": true,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "MainBeamLightFbkSOAEnPrm",
+      "type": "parameter",
+      "description": "主光灯反馈超时允许使能参数"
+    },
+    {
+      "name": "LMainBeamLghtDrvMdl",
+      "type": "module",
+      "description": "左远光灯驱动模块"
+    },
+    {
+      "name": "MainBeamLightState",
+      "type": "signal",
+      "description": "主光灯状态信号"
+    },
+    {
+      "name": "MainBeamLghtCtrlMdl",
+      "type": "module",
+      "description": "主光灯控制模块"
+    },
+    {
+      "name": "DTC B105C 12",
+      "type": "fault_code",
+      "description": "诊断故障代码，表示左远光灯短路故障"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "MainBeamLightFbkSOAEnPrm == 1 (Enable)",
+      "description": "主光灯反馈超时允许使能参数必须为使能状态"
+    },
+    {
+      "condition": "左远光灯处于输出状态",
+      "description": "左远光灯当前处于点亮输出状态"
+    },
+    {
+      "condition": "检测到左远光灯短路到电源",
+      "description": "系统检测到左远光灯存在短路到电源的故障"
+    },
+    {
+      "condition": "检测到短路恢复",
+      "description": "系统检测到之前存在的短路故障已恢复正常"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "【LMainBeamLghtDrvMdl】停止驱动左远光灯输出 (MainBeamLamp_LH_HSD)",
+      "description": "停止左远光灯的驱动输出，以保护电路"
+    },
+    {
+      "output": "【LMainBeamLghtDrvMdl】持续发送 MainBeamLightState. MainBeamLightSta = 2 (Error) InstanceID=1 至 【MainBeamLghtCtrlMdl】，至少发送三帧。",
+      "description": "持续发送错误状态信息给主光灯控制模块，表明存在故障"
+    },
+    {
+      "output": "置位 DTC B105C 12",
+      "description": "设置特定的诊断故障代码，用于记录和报告故障"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "DTC B105C 12",
+      "description": "左远光灯短路到电源故障"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格定义了当左远光灯发生短路到电源故障时，系统应如何响应（停止驱动、发送错误状态、设置故障码）以及在故障恢复后如何退出该处理模式。可用于验证整车电子电器系统在左远光灯短路故障情况下的正确诊断与保护机制。",
+  "uncertain_points": []
+}
+```

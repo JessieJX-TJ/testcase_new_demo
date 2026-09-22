@@ -1,0 +1,117 @@
+[
+  {
+    "head": "氛围灯亮度发生变化",
+    "relation": "触发条件",
+    "tail": "接收到氛围灯本地控制模块亮度变化请求信号 FtwlFLLampBrtnsCmd_l 从 0x00 变为非 0x00",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "触发条件",
+      "接收到氛围灯本地控制模块亮度变化请求信号",
+      "FtwlFLLampBrtnsCmd_l=0x00(No Request)变化为！"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0015",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯保持当前亮度不变",
+    "relation": "状态保持条件",
+    "tail": "接收到氛围灯本地控制模块亮度变化请求信号 FtwlFLLampBrtnsCmd_l = 0x00",
+    "triple_type": "功能抑制条件",
+    "evidence_terms": [
+      "退出条件",
+      "接收到氛围灯本地控制模块的亮度变化请求信号",
+      "FtwlFLLampBrtnsCmd_l=0x00(No Request)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0015",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "接收到氛围灯本地控制模块的请求信号 FtwlFLLampOnOff_l = 0x00 (OFF)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "退出条件",
+      "接收到氛围灯本地控制模块的请求信号",
+      "FtwlFLLampOnOff_1=0x0(OFF)"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0015",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯亮度值维持上一时刻状态",
+    "relation": "触发条件",
+    "tail": "当氛围灯亮度值 FtwlFLLampBrtnsCmd_l 异常",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "异常处理",
+      "当氛围灯亮度值异常"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0015",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "超过一定时间(默认6s)未接收到ZCU的LIN信号",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "异常处理",
+      "超过一定时间未接收到ZCU的LIN信号"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0015",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯关闭",
+    "relation": "触发条件",
+    "tail": "氛围灯模块出现过压、欠压故障",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "异常处理",
+      "氛围灯模块出现过压、欠压故障"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0015",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "PWM信号输出",
+    "relation": "输出为",
+    "tail": "[氛围灯驱动控制模块]按照亮度设置表对应亮度值",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "执行动作",
+      "PWM驱动氛围灯切换亮度"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0015",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  },
+  {
+    "head": "氛围灯亮度值异常",
+    "relation": "诊断关联",
+    "tail": "FtwlFLLampBrtnsCmd_l",
+    "triple_type": "故障响应",
+    "evidence_terms": [
+      "异常处理",
+      "当氛围灯亮度值异常"
+    ],
+    "confidence_note": "high",
+    "source_image_id": "inner_lamp_ssts_0015",
+    "source_doc_id": "inner_lamp_ssts",
+    "source_table_type": "logic_table"
+  }
+]

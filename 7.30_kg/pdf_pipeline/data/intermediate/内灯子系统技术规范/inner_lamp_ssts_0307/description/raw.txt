@@ -1,0 +1,52 @@
+```json
+{
+  "table_type": "signal_table",
+  "topic": "车辆背光灯控制逻辑",
+  "row_semantics": "表格按功能阶段划分，包括触发条件、执行动作、退出条件和异常处理。",
+  "column_semantics": "第一列定义了功能阶段的名称，第二列详细描述了该阶段的条件或动作。",
+  "has_merged_cells": false,
+  "header_levels": 1,
+  "core_entities": [
+    {
+      "name": "VehBacklightngLHCtrlCmd",
+      "type": "input_signal",
+      "description": "应用控制模块发送的请求信号，用于控制左后背光灯的状态。"
+    },
+    {
+      "name": "LHZCU_BacklightLamp_HSD",
+      "type": "output_signal",
+      "description": "背光灯驱动控制模块发送的驱动信号，控制背光灯的点亮状态。"
+    },
+    {
+      "name": "LHZCU",
+      "type": "controller_module",
+      "description": "背光灯驱动控制模块，负责接收指令并驱动背光灯。"
+    }
+  ],
+  "core_conditions": [
+    {
+      "condition": "接收到 VehBacklightngLHCtrlCmd = 0x1 (Open)",
+      "description": "触发条件，表示应用控制模块请求打开背光灯。"
+    },
+    {
+      "condition": "接收到 VehBacklightngLHCtrlCmd = 0x0 (Close)",
+      "description": "退出条件，表示应用控制模块请求关闭背光灯。"
+    }
+  ],
+  "core_outputs": [
+    {
+      "output": "LHZCU_BacklightLamp_HSD (高)",
+      "description": "执行动作，表示驱动背光灯点亮。"
+    }
+  ],
+  "core_faults": [
+    {
+      "fault": "背光灯短路/开路故障",
+      "description": "异常处理中检测到的故障类型，触发关闭背光灯的动作。"
+    }
+  ],
+  "core_timing_constraints": [],
+  "engineering_interpretation": "该表格可用于验证车辆背光灯控制模块在接收到不同命令时的正确响应行为，包括正常点亮/关闭以及故障情况下的安全处理。",
+  "uncertain_points": []
+}
+```

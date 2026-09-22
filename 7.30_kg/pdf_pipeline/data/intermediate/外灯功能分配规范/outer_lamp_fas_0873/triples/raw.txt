@@ -1,0 +1,75 @@
+```json
+[
+  {
+    "head": "后雾灯开启",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta = 0x1 (Only RearFogLght ON)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "近光灯点亮",
+    "relation": "依赖于",
+    "tail": "ICB将服务接口或控制信号转换成灯控CAN信号",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ICB",
+      "LDipBeamLightCtrl"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "组合灯光功能状态为侧位灯和近光灯开启",
+    "relation": "输出为",
+    "tail": "CombLghtFucProSta = 0x4 (SidePositionAndDippedBeam ON)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "CombLghtFucProSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯开关状态为开启",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta = 0x1 (ON)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯仅开启时",
+    "relation": "前提条件",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta = 0x1 (Only RearFogLght ON)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.RearFogLghtFucProStatus.RearFogLghtFucProsSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "后雾灯仅开启时",
+    "relation": "输出为",
+    "tail": "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta = 0x1 (ON)",
+    "triple_type": "输入与输出映射关系",
+    "evidence_terms": [
+      "ExteriorLightSwitchProcess.RearFogLghtSwStatus.RearFogLghtSwSta"
+    ],
+    "confidence_note": "high"
+  },
+  {
+    "head": "侧位灯请求信号为开启",
+    "relation": "前提条件",
+    "tail": "SidePositionLightReq = 0x1 (ON)",
+    "triple_type": "功能触发条件",
+    "evidence_terms": [
+      "SidePositionLightReq"
+    ],
+    "confidence_note": "high"
+  }
+]
+```

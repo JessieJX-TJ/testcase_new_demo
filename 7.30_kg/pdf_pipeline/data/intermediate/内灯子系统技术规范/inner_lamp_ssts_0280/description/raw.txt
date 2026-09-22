@@ -1,0 +1,60 @@
+```json
+{
+  "table_type": "parameter_table",
+  "topic": "DoorRR4LampBrthngCmd_1 (Door Rear Right 4 Lamp Breathing Command 1) for Interior Lighting Sub System",
+  "row_semantics": "Each row represents a specific breathing rate command value (Code Value) and its corresponding periodic behavior in the ambient lighting system.",
+  "column_semantics": {
+    "Code Value": "The hexadecimal command code sent to control the breathing rate of the door rear right 4 lamp.",
+    "周期": "The period (in seconds) at which the lamp will breathe according to the specified rate.",
+    "原呼吸模式值": "The original breathing mode value that corresponds to the given rate, indicating how the brightness changes over time."
+  },
+  "has_merged_cells": true,
+  "header_levels": 3,
+  "core_entities": [
+    {
+      "name": "DoorRR4LampBrthngCmd_1",
+      "type": "function",
+      "description": "Command for controlling the breathing rate of the door rear right 4 lamp in the interior lighting system."
+    },
+    {
+      "name": "RHZCU",
+      "type": "controller",
+      "description": "Right Hand Zone Control Unit, responsible for processing commands related to the RHZCU_LIN4 network."
+    },
+    {
+      "name": "SSTS",
+      "type": "system",
+      "description": "Sub System Technical Specification, part of the Interior Lighting Sub System."
+    }
+  ],
+  "core_conditions": [
+    {
+      "name": "Breathing Rate Command",
+      "description": "A hexadecimal value (0x0 to 0xF) that specifies the desired breathing rate of the lamp."
+    },
+    {
+      "name": "Period",
+      "description": "The time interval (in seconds) between each breathing cycle, ranging from 500ms to 12s."
+    }
+  ],
+  "core_outputs": [
+    {
+      "name": "Lamp Breathing Behavior",
+      "description": "The actual breathing pattern of the lamp as defined by the specified rate and period."
+    }
+  ],
+  "core_faults": [],
+  "core_timing_constraints": [
+    {
+      "name": "Period Timing",
+      "description": "The lamp must breathe at the specified period (e.g., 500ms, 1s, etc.) as defined by the Code Value."
+    },
+    {
+      "name": "Rate Change Timing",
+      "description": "When switching between different breathing rates, the current breathing must stop immediately before switching to the new rate."
+    }
+  ],
+  "engineering_interpretation": "This table defines the mapping between hexadecimal command codes and their corresponding breathing rates for the door rear right 4 lamp in the interior lighting system. It is used to verify that the lamp responds correctly to each command by displaying the expected breathing pattern at the specified period.",
+  "uncertain_points": []
+}
+```
